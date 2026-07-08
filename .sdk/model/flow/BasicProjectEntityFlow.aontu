@@ -1,0 +1,18 @@
+# BasicProjectEntityFlow
+
+main: kit: flow: BasicProjectEntityFlow:
+{
+  entity: "project_entity",
+  kind: "basic",
+  name: "BasicProjectEntityFlow",
+  step: [
+    {
+      input: {
+        ref: "project_entity_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicProjectEntityFlow"
+}

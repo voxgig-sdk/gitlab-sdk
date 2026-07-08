@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "api_entities_organizations_organization": {
+      "API_ENTITIES_ORGANIZATIONS_ORGANIZATION00": {
+        "id": "API_ENTITIES_ORGANIZATIONS_ORGANIZATION00"
+      },
+      "API_ENTITIES_ORGANIZATIONS_ORGANIZATION01": {
+        "id": "API_ENTITIES_ORGANIZATIONS_ORGANIZATION01"
+      },
+      "API_ENTITIES_ORGANIZATIONS_ORGANIZATION02": {
+        "id": "API_ENTITIES_ORGANIZATIONS_ORGANIZATION02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_organizations_organization": {
+      "api_entities_organizations_organization_ref01": {}
+    }
+  }
+}

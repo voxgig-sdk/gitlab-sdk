@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "system_hook": {
+      "SYSTEM_HOOK00": {
+        "id": "SYSTEM_HOOK00"
+      },
+      "SYSTEM_HOOK01": {
+        "id": "SYSTEM_HOOK01"
+      },
+      "SYSTEM_HOOK02": {
+        "id": "SYSTEM_HOOK02"
+      }
+    }
+  },
+  "new": {
+    "system_hook": {
+      "system_hook_ref01": {}
+    }
+  }
+}

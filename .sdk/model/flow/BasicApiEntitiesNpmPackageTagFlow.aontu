@@ -1,0 +1,28 @@
+# BasicApiEntitiesNpmPackageTagFlow
+
+main: kit: flow: BasicApiEntitiesNpmPackageTagFlow:
+{
+  entity: "api_entities_npm_package_tag",
+  kind: "basic",
+  name: "BasicApiEntitiesNpmPackageTagFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_npm_package_tag_ref01",
+        srcdatavar: "api_entities_npm_package_tag_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_npm_package_tag_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesNpmPackageTagFlow"
+}

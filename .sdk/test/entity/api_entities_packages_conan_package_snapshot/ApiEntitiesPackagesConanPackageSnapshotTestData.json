@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "api_entities_packages_conan_package_snapshot": {
+      "API_ENTITIES_PACKAGES_CONAN_PACKAGE_SNAPSHOT00": {
+        "package_snapshot": {},
+        "conan_id": "CONAN01",
+        "conan_package_reference": "CONAN_PACKAGE_REFERENCE01",
+        "package_channel": "PACKAGE_CHANNEL01",
+        "package_username": "PACKAGE_USERNAME01",
+        "package_version": "PACKAGE_VERSION01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PACKAGES_CONAN_PACKAGE_SNAPSHOT00"
+      },
+      "API_ENTITIES_PACKAGES_CONAN_PACKAGE_SNAPSHOT01": {
+        "package_snapshot": {},
+        "conan_id": "CONAN01",
+        "conan_package_reference": "CONAN_PACKAGE_REFERENCE01",
+        "package_channel": "PACKAGE_CHANNEL01",
+        "package_username": "PACKAGE_USERNAME01",
+        "package_version": "PACKAGE_VERSION01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PACKAGES_CONAN_PACKAGE_SNAPSHOT01"
+      },
+      "API_ENTITIES_PACKAGES_CONAN_PACKAGE_SNAPSHOT02": {
+        "package_snapshot": {},
+        "conan_id": "CONAN01",
+        "conan_package_reference": "CONAN_PACKAGE_REFERENCE01",
+        "package_channel": "PACKAGE_CHANNEL01",
+        "package_username": "PACKAGE_USERNAME01",
+        "package_version": "PACKAGE_VERSION01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PACKAGES_CONAN_PACKAGE_SNAPSHOT02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_packages_conan_package_snapshot": {
+      "api_entities_packages_conan_package_snapshot_ref01": {
+        "package_snapshot": {}
+      }
+    }
+  }
+}

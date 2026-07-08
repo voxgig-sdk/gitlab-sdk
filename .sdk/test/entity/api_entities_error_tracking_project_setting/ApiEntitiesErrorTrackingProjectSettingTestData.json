@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "api_entities_error_tracking_project_setting": {
+      "API_ENTITIES_ERROR_TRACKING_PROJECT_SETTING00": {
+        "active": true,
+        "api_url": "s33",
+        "integrated": true,
+        "project_name": "s35",
+        "sentry_external_url": "s36",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_ERROR_TRACKING_PROJECT_SETTING00"
+      },
+      "API_ENTITIES_ERROR_TRACKING_PROJECT_SETTING01": {
+        "active": true,
+        "api_url": "s65",
+        "integrated": true,
+        "project_name": "s67",
+        "sentry_external_url": "s68",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_ERROR_TRACKING_PROJECT_SETTING01"
+      },
+      "API_ENTITIES_ERROR_TRACKING_PROJECT_SETTING02": {
+        "active": true,
+        "api_url": "s97",
+        "integrated": true,
+        "project_name": "s99",
+        "sentry_external_url": "s9a",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_ERROR_TRACKING_PROJECT_SETTING02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_error_tracking_project_setting": {
+      "api_entities_error_tracking_project_setting_ref01": {
+        "active": true,
+        "api_url": "sc9",
+        "integrated": true,
+        "project_name": "scb",
+        "sentry_external_url": "scc"
+      }
+    }
+  }
+}

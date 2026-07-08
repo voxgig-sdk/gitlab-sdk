@@ -1,0 +1,24 @@
+# BasicDeploymentFlow
+
+main: kit: flow: BasicDeploymentFlow:
+{
+  entity: "deployment",
+  kind: "basic",
+  name: "BasicDeploymentFlow",
+  step: [
+    {
+      input: {
+        ref: "deployment_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "deployment01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicDeploymentFlow"
+}

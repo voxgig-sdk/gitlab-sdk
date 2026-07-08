@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "namespace": {
+      "NAMESPACE00": {
+        "id": "NAMESPACE00"
+      },
+      "NAMESPACE01": {
+        "id": "NAMESPACE01"
+      },
+      "NAMESPACE02": {
+        "id": "NAMESPACE02"
+      }
+    }
+  },
+  "new": {
+    "namespace": {
+      "namespace_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,33 @@
+# BasicApiEntitiesBulkImportsEntityFailureFlow
+
+main: kit: flow: BasicApiEntitiesBulkImportsEntityFailureFlow:
+{
+  entity: "api_entities_bulk_imports_entity_failure",
+  kind: "basic",
+  name: "BasicApiEntitiesBulkImportsEntityFailureFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_bulk_imports_entity_failure_ref01",
+        srcdatavar: "api_entities_bulk_imports_entity_failure_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        bulk_import_id: "bulk_import01",
+        id: "api_entities_bulk_imports_entity_failure01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_bulk_imports_entity_failure_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesBulkImportsEntityFailureFlow"
+}

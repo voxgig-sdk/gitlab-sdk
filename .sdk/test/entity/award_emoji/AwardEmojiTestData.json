@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "award_emoji": {
+      "AWARD_EMOJI00": {
+        "epic_id": "EPIC01",
+        "group_id": "GROUP01",
+        "note_id": "NOTE01",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "snippet_id": "SNIPPET01",
+        "id": "AWARD_EMOJI00"
+      },
+      "AWARD_EMOJI01": {
+        "epic_id": "EPIC01",
+        "group_id": "GROUP01",
+        "note_id": "NOTE01",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "snippet_id": "SNIPPET01",
+        "id": "AWARD_EMOJI01"
+      },
+      "AWARD_EMOJI02": {
+        "epic_id": "EPIC01",
+        "group_id": "GROUP01",
+        "note_id": "NOTE01",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "snippet_id": "SNIPPET01",
+        "id": "AWARD_EMOJI02"
+      }
+    }
+  },
+  "new": {
+    "award_emoji": {
+      "award_emoji_ref01": {}
+    }
+  }
+}

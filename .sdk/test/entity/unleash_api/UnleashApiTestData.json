@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "unleash_api": {
+      "UNLEASH_API00": {
+        "unleash_id": "UNLEASH01",
+        "id": "UNLEASH_API00"
+      },
+      "UNLEASH_API01": {
+        "unleash_id": "UNLEASH01",
+        "id": "UNLEASH_API01"
+      },
+      "UNLEASH_API02": {
+        "unleash_id": "UNLEASH01",
+        "id": "UNLEASH_API02"
+      }
+    }
+  },
+  "new": {
+    "unleash_api": {
+      "unleash_api_ref01": {}
+    }
+  }
+}

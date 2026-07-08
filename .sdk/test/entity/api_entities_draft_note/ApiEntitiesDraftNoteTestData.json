@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "api_entities_draft_note": {
+      "API_ENTITIES_DRAFT_NOTE00": {
+        "author_id": "AUTHOR01",
+        "commit_id": "COMMIT01",
+        "discussion_id": "DISCUSSION01",
+        "id": "API_ENTITIES_DRAFT_NOTE00",
+        "line_code": "s5e",
+        "merge_request_id": "MERGE_REQUEST01",
+        "note": "s60",
+        "position": {},
+        "resolve_discussion": true,
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_DRAFT_NOTE01": {
+        "author_id": "AUTHOR01",
+        "commit_id": "COMMIT01",
+        "discussion_id": "DISCUSSION01",
+        "id": "API_ENTITIES_DRAFT_NOTE01",
+        "line_code": "sb8",
+        "merge_request_id": "MERGE_REQUEST01",
+        "note": "sba",
+        "position": {},
+        "resolve_discussion": true,
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_DRAFT_NOTE02": {
+        "author_id": "AUTHOR01",
+        "commit_id": "COMMIT01",
+        "discussion_id": "DISCUSSION01",
+        "id": "API_ENTITIES_DRAFT_NOTE02",
+        "line_code": "s112",
+        "merge_request_id": "MERGE_REQUEST01",
+        "note": "s114",
+        "position": {},
+        "resolve_discussion": true,
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_draft_note": {
+      "api_entities_draft_note_ref01": {
+        "author_id": "AUTHOR01",
+        "commit_id": "COMMIT01",
+        "discussion_id": "DISCUSSION01",
+        "line_code": "s16c",
+        "merge_request_id": "MERGE_REQUEST01",
+        "note": "s16e",
+        "position": {},
+        "resolve_discussion": true
+      }
+    }
+  }
+}

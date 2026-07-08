@@ -1,0 +1,84 @@
+# Entity: issue_link
+
+main: kit: entity: issue_link: {
+
+  alias: field: {}
+
+  name: "issue_link"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "issue_link_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "issue_id"
+                orig: "issue_iid"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "project_id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/api/v4/projects/{id}/issues/{issue_iid}/links/{issue_link_id}"
+          parts: [
+            "api"
+            "v4"
+            "projects"
+            "{project_id}"
+            "issues"
+            "{issue_id}"
+            "links"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              id: "project_id"
+              issue_iid: "issue_id"
+              issue_link_id: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+              "issue_id"
+              "project_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "project"
+        "issue"
+      ]
+    ]
+  }
+
+
+
+}

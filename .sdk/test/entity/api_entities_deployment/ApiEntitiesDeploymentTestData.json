@@ -1,0 +1,60 @@
+{
+  "existing": {
+    "api_entities_deployment": {
+      "API_ENTITIES_DEPLOYMENT00": {
+        "created_at": "s64",
+        "deployable": {},
+        "environment": {},
+        "id": "API_ENTITIES_DEPLOYMENT00",
+        "iid": "s68",
+        "ref": "s69",
+        "sha": "s6a",
+        "status": "s6b",
+        "updated_at": "s6c",
+        "user": {},
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_DEPLOYMENT01": {
+        "created_at": "sc8",
+        "deployable": {},
+        "environment": {},
+        "id": "API_ENTITIES_DEPLOYMENT01",
+        "iid": "scc",
+        "ref": "scd",
+        "sha": "sce",
+        "status": "scf",
+        "updated_at": "sd0",
+        "user": {},
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_DEPLOYMENT02": {
+        "created_at": "s12c",
+        "deployable": {},
+        "environment": {},
+        "id": "API_ENTITIES_DEPLOYMENT02",
+        "iid": "s130",
+        "ref": "s131",
+        "sha": "s132",
+        "status": "s133",
+        "updated_at": "s134",
+        "user": {},
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_deployment": {
+      "api_entities_deployment_ref01": {
+        "created_at": "s190",
+        "deployable": {},
+        "environment": {},
+        "iid": "s194",
+        "ref": "s195",
+        "sha": "s196",
+        "status": "s197",
+        "updated_at": "s198",
+        "user": {}
+      }
+    }
+  }
+}

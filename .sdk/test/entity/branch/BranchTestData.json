@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "branch": {
+      "BRANCH00": {
+        "project_id": "PROJECT01",
+        "id": "BRANCH00"
+      },
+      "BRANCH01": {
+        "project_id": "PROJECT01",
+        "id": "BRANCH01"
+      },
+      "BRANCH02": {
+        "project_id": "PROJECT01",
+        "id": "BRANCH02"
+      }
+    }
+  },
+  "new": {
+    "branch": {
+      "branch_ref01": {}
+    }
+  }
+}

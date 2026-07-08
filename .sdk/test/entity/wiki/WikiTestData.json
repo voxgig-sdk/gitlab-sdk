@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "wiki": {
+      "WIKI00": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "WIKI00"
+      },
+      "WIKI01": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "WIKI01"
+      },
+      "WIKI02": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "WIKI02"
+      }
+    }
+  },
+  "new": {
+    "wiki": {
+      "wiki_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "rpm": {
+      "RPM00": {
+        "project_id": "PROJECT01",
+        "id": "RPM00"
+      },
+      "RPM01": {
+        "project_id": "PROJECT01",
+        "id": "RPM01"
+      },
+      "RPM02": {
+        "project_id": "PROJECT01",
+        "id": "RPM02"
+      }
+    }
+  },
+  "new": {
+    "rpm": {
+      "rpm_ref01": {}
+    }
+  }
+}

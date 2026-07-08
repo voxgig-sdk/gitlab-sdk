@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "api_entities_nuget_service_index": {
+      "API_ENTITIES_NUGET_SERVICE_INDEX00": {
+        "resource": [],
+        "version": "s15",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_NUGET_SERVICE_INDEX01": {
+        "resource": [],
+        "version": "s29",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_NUGET_SERVICE_INDEX02": {
+        "resource": [],
+        "version": "s3d",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_nuget_service_index": {
+      "api_entities_nuget_service_index_ref01": {
+        "resource": [],
+        "version": "s51"
+      }
+    }
+  }
+}

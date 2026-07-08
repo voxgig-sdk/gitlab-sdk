@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "api_entities_projects_container_registry_protection_rule": {
+      "API_ENTITIES_PROJECTS_CONTAINER_REGISTRY_PROTECTION_RULE00": {
+        "id": "API_ENTITIES_PROJECTS_CONTAINER_REGISTRY_PROTECTION_RULE00",
+        "minimum_access_level_for_delete": "s33",
+        "minimum_access_level_for_push": "s34",
+        "project_id": "PROJECT01",
+        "repository_path_pattern": "s36"
+      },
+      "API_ENTITIES_PROJECTS_CONTAINER_REGISTRY_PROTECTION_RULE01": {
+        "id": "API_ENTITIES_PROJECTS_CONTAINER_REGISTRY_PROTECTION_RULE01",
+        "minimum_access_level_for_delete": "s65",
+        "minimum_access_level_for_push": "s66",
+        "project_id": "PROJECT01",
+        "repository_path_pattern": "s68"
+      },
+      "API_ENTITIES_PROJECTS_CONTAINER_REGISTRY_PROTECTION_RULE02": {
+        "id": "API_ENTITIES_PROJECTS_CONTAINER_REGISTRY_PROTECTION_RULE02",
+        "minimum_access_level_for_delete": "s97",
+        "minimum_access_level_for_push": "s98",
+        "project_id": "PROJECT01",
+        "repository_path_pattern": "s9a"
+      }
+    }
+  },
+  "new": {
+    "api_entities_projects_container_registry_protection_rule": {
+      "api_entities_projects_container_registry_protection_rule_ref01": {
+        "minimum_access_level_for_delete": "sc9",
+        "minimum_access_level_for_push": "sca",
+        "project_id": "PROJECT01",
+        "repository_path_pattern": "scc"
+      }
+    }
+  }
+}

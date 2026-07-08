@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "api_entities_basic_ref": {
+      "API_ENTITIES_BASIC_REF00": {
+        "name": "s14",
+        "type": "s15",
+        "project_id": "PROJECT01",
+        "sha": "SHA01"
+      },
+      "API_ENTITIES_BASIC_REF01": {
+        "name": "s28",
+        "type": "s29",
+        "project_id": "PROJECT01",
+        "sha": "SHA01"
+      },
+      "API_ENTITIES_BASIC_REF02": {
+        "name": "s3c",
+        "type": "s3d",
+        "project_id": "PROJECT01",
+        "sha": "SHA01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_basic_ref": {
+      "api_entities_basic_ref_ref01": {
+        "name": "s50",
+        "type": "s51"
+      }
+    }
+  }
+}

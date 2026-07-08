@@ -1,0 +1,24 @@
+# BasicAccessRequestFlow
+
+main: kit: flow: BasicAccessRequestFlow:
+{
+  entity: "access_request",
+  kind: "basic",
+  name: "BasicAccessRequestFlow",
+  step: [
+    {
+      input: {
+        ref: "access_request_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "access_request01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicAccessRequestFlow"
+}

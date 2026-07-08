@@ -1,0 +1,32 @@
+# BasicApiEntitiesSshKeyWithUserFlow
+
+main: kit: flow: BasicApiEntitiesSshKeyWithUserFlow:
+{
+  entity: "api_entities_ssh_key_with_user",
+  kind: "basic",
+  name: "BasicApiEntitiesSshKeyWithUserFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_ssh_key_with_user_ref01",
+        srcdatavar: "api_entities_ssh_key_with_user_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_ssh_key_with_user01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_ssh_key_with_user_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesSshKeyWithUserFlow"
+}

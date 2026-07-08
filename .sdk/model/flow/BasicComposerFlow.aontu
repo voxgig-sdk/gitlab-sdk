@@ -1,0 +1,22 @@
+# BasicComposerFlow
+
+main: kit: flow: BasicComposerFlow:
+{
+  entity: "composer",
+  kind: "basic",
+  name: "BasicComposerFlow",
+  step: [
+    {
+      input: {
+        ref: "composer_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicComposerFlow"
+}

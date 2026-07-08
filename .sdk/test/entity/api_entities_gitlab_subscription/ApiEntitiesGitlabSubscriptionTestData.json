@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "api_entities_gitlab_subscription": {
+      "API_ENTITIES_GITLAB_SUBSCRIPTION00": {
+        "billing": {},
+        "plan": {},
+        "usage": {},
+        "namespace_id": "NAMESPACE01",
+        "id": "API_ENTITIES_GITLAB_SUBSCRIPTION00"
+      },
+      "API_ENTITIES_GITLAB_SUBSCRIPTION01": {
+        "billing": {},
+        "plan": {},
+        "usage": {},
+        "namespace_id": "NAMESPACE01",
+        "id": "API_ENTITIES_GITLAB_SUBSCRIPTION01"
+      },
+      "API_ENTITIES_GITLAB_SUBSCRIPTION02": {
+        "billing": {},
+        "plan": {},
+        "usage": {},
+        "namespace_id": "NAMESPACE01",
+        "id": "API_ENTITIES_GITLAB_SUBSCRIPTION02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_gitlab_subscription": {
+      "api_entities_gitlab_subscription_ref01": {
+        "billing": {},
+        "plan": {},
+        "usage": {}
+      }
+    }
+  }
+}

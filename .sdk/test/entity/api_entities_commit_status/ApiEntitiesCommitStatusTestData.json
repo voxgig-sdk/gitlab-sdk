@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "api_entities_commit_status": {
+      "API_ENTITIES_COMMIT_STATUS00": {
+        "allow_failure": true,
+        "author": {},
+        "coverage": 142,
+        "created_at": "s8f",
+        "description": "s90",
+        "finished_at": "s91",
+        "id": "API_ENTITIES_COMMIT_STATUS00",
+        "name": "s93",
+        "pipeline_id": "PIPELINE01",
+        "ref": "s95",
+        "sha": "s96",
+        "started_at": "s97",
+        "status": "s98",
+        "target_url": "s99",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_COMMIT_STATUS01": {
+        "allow_failure": true,
+        "author": {},
+        "coverage": 282,
+        "created_at": "s11b",
+        "description": "s11c",
+        "finished_at": "s11d",
+        "id": "API_ENTITIES_COMMIT_STATUS01",
+        "name": "s11f",
+        "pipeline_id": "PIPELINE01",
+        "ref": "s121",
+        "sha": "s122",
+        "started_at": "s123",
+        "status": "s124",
+        "target_url": "s125",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_COMMIT_STATUS02": {
+        "allow_failure": true,
+        "author": {},
+        "coverage": 422,
+        "created_at": "s1a7",
+        "description": "s1a8",
+        "finished_at": "s1a9",
+        "id": "API_ENTITIES_COMMIT_STATUS02",
+        "name": "s1ab",
+        "pipeline_id": "PIPELINE01",
+        "ref": "s1ad",
+        "sha": "s1ae",
+        "started_at": "s1af",
+        "status": "s1b0",
+        "target_url": "s1b1",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_commit_status": {
+      "api_entities_commit_status_ref01": {
+        "allow_failure": true,
+        "author": {},
+        "coverage": 562,
+        "created_at": "s233",
+        "description": "s234",
+        "finished_at": "s235",
+        "name": "s237",
+        "pipeline_id": "PIPELINE01",
+        "ref": "s239",
+        "sha": "s23a",
+        "started_at": "s23b",
+        "status": "s23c",
+        "target_url": "s23d"
+      }
+    }
+  }
+}

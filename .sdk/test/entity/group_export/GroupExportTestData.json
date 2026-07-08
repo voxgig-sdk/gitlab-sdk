@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "group_export": {
+      "GROUP_EXPORT00": {
+        "group_id": "GROUP01",
+        "id": "GROUP_EXPORT00"
+      },
+      "GROUP_EXPORT01": {
+        "group_id": "GROUP01",
+        "id": "GROUP_EXPORT01"
+      },
+      "GROUP_EXPORT02": {
+        "group_id": "GROUP01",
+        "id": "GROUP_EXPORT02"
+      }
+    }
+  },
+  "new": {
+    "group_export": {
+      "group_export_ref01": {}
+    }
+  }
+}

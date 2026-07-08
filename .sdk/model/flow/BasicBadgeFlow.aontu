@@ -1,0 +1,24 @@
+# BasicBadgeFlow
+
+main: kit: flow: BasicBadgeFlow:
+{
+  entity: "badge",
+  kind: "basic",
+  name: "BasicBadgeFlow",
+  step: [
+    {
+      input: {
+        ref: "badge_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "badge01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicBadgeFlow"
+}

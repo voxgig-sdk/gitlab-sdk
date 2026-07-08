@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "api_entities_error_tracking_client_key": {
+      "API_ENTITIES_ERROR_TRACKING_CLIENT_KEY00": {
+        "active": true,
+        "id": "API_ENTITIES_ERROR_TRACKING_CLIENT_KEY00",
+        "public_key": "s2a",
+        "sentry_dsn": "s2b",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_ERROR_TRACKING_CLIENT_KEY01": {
+        "active": true,
+        "id": "API_ENTITIES_ERROR_TRACKING_CLIENT_KEY01",
+        "public_key": "s52",
+        "sentry_dsn": "s53",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_ERROR_TRACKING_CLIENT_KEY02": {
+        "active": true,
+        "id": "API_ENTITIES_ERROR_TRACKING_CLIENT_KEY02",
+        "public_key": "s7a",
+        "sentry_dsn": "s7b",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_error_tracking_client_key": {
+      "api_entities_error_tracking_client_key_ref01": {
+        "active": true,
+        "public_key": "sa2",
+        "sentry_dsn": "sa3"
+      }
+    }
+  }
+}

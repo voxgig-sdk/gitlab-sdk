@@ -1,0 +1,87 @@
+{
+  "existing": {
+    "api_entities_release": {
+      "API_ENTITIES_RELEASE00": {
+        "asset": {},
+        "author": {},
+        "commit": {},
+        "commit_path": "s99",
+        "created_at": "s9a",
+        "description": "s9b",
+        "description_html": "s9c",
+        "evidence": {},
+        "link": {},
+        "milestone": {},
+        "name": "sa0",
+        "released_at": "sa1",
+        "tag_name": "sa2",
+        "tag_path": "sa3",
+        "upcoming_release": true,
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "id": "API_ENTITIES_RELEASE00"
+      },
+      "API_ENTITIES_RELEASE01": {
+        "asset": {},
+        "author": {},
+        "commit": {},
+        "commit_path": "s12f",
+        "created_at": "s130",
+        "description": "s131",
+        "description_html": "s132",
+        "evidence": {},
+        "link": {},
+        "milestone": {},
+        "name": "s136",
+        "released_at": "s137",
+        "tag_name": "s138",
+        "tag_path": "s139",
+        "upcoming_release": true,
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "id": "API_ENTITIES_RELEASE01"
+      },
+      "API_ENTITIES_RELEASE02": {
+        "asset": {},
+        "author": {},
+        "commit": {},
+        "commit_path": "s1c5",
+        "created_at": "s1c6",
+        "description": "s1c7",
+        "description_html": "s1c8",
+        "evidence": {},
+        "link": {},
+        "milestone": {},
+        "name": "s1cc",
+        "released_at": "s1cd",
+        "tag_name": "s1ce",
+        "tag_path": "s1cf",
+        "upcoming_release": true,
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "id": "API_ENTITIES_RELEASE02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_release": {
+      "api_entities_release_ref01": {
+        "asset": {},
+        "author": {},
+        "commit": {},
+        "commit_path": "s25b",
+        "created_at": "s25c",
+        "description": "s25d",
+        "description_html": "s25e",
+        "evidence": {},
+        "link": {},
+        "milestone": {},
+        "name": "s262",
+        "released_at": "s263",
+        "tag_name": "s264",
+        "tag_path": "s265",
+        "upcoming_release": true
+      }
+    }
+  }
+}

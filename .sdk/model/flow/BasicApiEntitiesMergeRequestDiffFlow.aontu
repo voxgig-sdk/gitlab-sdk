@@ -1,0 +1,27 @@
+# BasicApiEntitiesMergeRequestDiffFlow
+
+main: kit: flow: BasicApiEntitiesMergeRequestDiffFlow:
+{
+  entity: "api_entities_merge_request_diff",
+  kind: "basic",
+  name: "BasicApiEntitiesMergeRequestDiffFlow",
+  step: [
+    {
+      match: {
+        merge_request_id: "merge_request01",
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_merge_request_diff_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesMergeRequestDiffFlow"
+}

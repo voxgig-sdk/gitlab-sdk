@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "page": {
+      "PAGE00": {
+        "project_id": "PROJECT01",
+        "id": "PAGE00"
+      },
+      "PAGE01": {
+        "project_id": "PROJECT01",
+        "id": "PAGE01"
+      },
+      "PAGE02": {
+        "project_id": "PROJECT01",
+        "id": "PAGE02"
+      }
+    }
+  },
+  "new": {
+    "page": {
+      "page_ref01": {}
+    }
+  }
+}

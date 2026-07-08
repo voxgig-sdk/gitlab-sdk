@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "ee_api_entities_ssh_certificate": {
+      "EE_API_ENTITIES_SSH_CERTIFICATE00": {
+        "created_at": "s28",
+        "id": "EE_API_ENTITIES_SSH_CERTIFICATE00",
+        "key": "s2a",
+        "title": "s2b",
+        "group_id": "GROUP01"
+      },
+      "EE_API_ENTITIES_SSH_CERTIFICATE01": {
+        "created_at": "s50",
+        "id": "EE_API_ENTITIES_SSH_CERTIFICATE01",
+        "key": "s52",
+        "title": "s53",
+        "group_id": "GROUP01"
+      },
+      "EE_API_ENTITIES_SSH_CERTIFICATE02": {
+        "created_at": "s78",
+        "id": "EE_API_ENTITIES_SSH_CERTIFICATE02",
+        "key": "s7a",
+        "title": "s7b",
+        "group_id": "GROUP01"
+      }
+    }
+  },
+  "new": {
+    "ee_api_entities_ssh_certificate": {
+      "ee_api_entities_ssh_certificate_ref01": {
+        "created_at": "sa0",
+        "key": "sa2",
+        "title": "sa3"
+      }
+    }
+  }
+}

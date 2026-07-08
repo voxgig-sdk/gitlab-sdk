@@ -1,0 +1,26 @@
+# BasicStarrerFlow
+
+main: kit: flow: BasicStarrerFlow:
+{
+  entity: "starrer",
+  kind: "basic",
+  name: "BasicStarrerFlow",
+  step: [
+    {
+      match: {
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "starrer_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicStarrerFlow"
+}

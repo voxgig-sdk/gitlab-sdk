@@ -1,0 +1,33 @@
+# BasicTestReportSummaryFlow
+
+main: kit: flow: BasicTestReportSummaryFlow:
+{
+  entity: "test_report_summary",
+  kind: "basic",
+  name: "BasicTestReportSummaryFlow",
+  step: [
+    {
+      input: {
+        ref: "test_report_summary_ref01",
+        srcdatavar: "test_report_summary_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "test_report_summary01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-test_report_summary_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTestReportSummaryFlow"
+}

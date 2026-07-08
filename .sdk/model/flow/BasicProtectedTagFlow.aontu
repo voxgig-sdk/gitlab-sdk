@@ -1,0 +1,24 @@
+# BasicProtectedTagFlow
+
+main: kit: flow: BasicProtectedTagFlow:
+{
+  entity: "protected_tag",
+  kind: "basic",
+  name: "BasicProtectedTagFlow",
+  step: [
+    {
+      input: {
+        ref: "protected_tag_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "protected_tag01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicProtectedTagFlow"
+}

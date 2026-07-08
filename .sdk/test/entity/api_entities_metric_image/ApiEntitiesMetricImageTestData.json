@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "api_entities_metric_image": {
+      "API_ENTITIES_METRIC_IMAGE00": {
+        "created_at": "s3c",
+        "file_path": "s3d",
+        "filename": "s3e",
+        "id": "API_ENTITIES_METRIC_IMAGE00",
+        "url": "s40",
+        "url_text": "s41",
+        "alert_management_alert_id": "ALERT_MANAGEMENT_ALERT01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_METRIC_IMAGE01": {
+        "created_at": "s78",
+        "file_path": "s79",
+        "filename": "s7a",
+        "id": "API_ENTITIES_METRIC_IMAGE01",
+        "url": "s7c",
+        "url_text": "s7d",
+        "alert_management_alert_id": "ALERT_MANAGEMENT_ALERT01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_METRIC_IMAGE02": {
+        "created_at": "sb4",
+        "file_path": "sb5",
+        "filename": "sb6",
+        "id": "API_ENTITIES_METRIC_IMAGE02",
+        "url": "sb8",
+        "url_text": "sb9",
+        "alert_management_alert_id": "ALERT_MANAGEMENT_ALERT01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_metric_image": {
+      "api_entities_metric_image_ref01": {
+        "created_at": "sf0",
+        "file_path": "sf1",
+        "filename": "sf2",
+        "url": "sf4",
+        "url_text": "sf5"
+      }
+    }
+  }
+}

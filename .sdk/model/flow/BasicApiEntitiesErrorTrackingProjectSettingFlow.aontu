@@ -1,0 +1,51 @@
+# BasicApiEntitiesErrorTrackingProjectSettingFlow
+
+main: kit: flow: BasicApiEntitiesErrorTrackingProjectSettingFlow:
+{
+  entity: "api_entities_error_tracking_project_setting",
+  kind: "basic",
+  name: "BasicApiEntitiesErrorTrackingProjectSettingFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_error_tracking_project_setting_ref01",
+        srcdatavar: "api_entities_error_tracking_project_setting_ref01_data",
+        suffix: "_up0",
+        textfield: "api_url"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_error_tracking_project_setting_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_error_tracking_project_setting_ref01",
+        srcdatavar: "api_entities_error_tracking_project_setting_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_error_tracking_project_setting01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_error_tracking_project_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesErrorTrackingProjectSettingFlow"
+}

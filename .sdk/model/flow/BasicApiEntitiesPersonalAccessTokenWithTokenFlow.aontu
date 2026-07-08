@@ -1,0 +1,18 @@
+# BasicApiEntitiesPersonalAccessTokenWithTokenFlow
+
+main: kit: flow: BasicApiEntitiesPersonalAccessTokenWithTokenFlow:
+{
+  entity: "api_entities_personal_access_token_with_token",
+  kind: "basic",
+  name: "BasicApiEntitiesPersonalAccessTokenWithTokenFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_personal_access_token_with_token_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesPersonalAccessTokenWithTokenFlow"
+}

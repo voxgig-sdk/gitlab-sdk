@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "ee_api_entities_issuable_metric_image": {
+      "EE_API_ENTITIES_ISSUABLE_METRIC_IMAGE00": {
+        "created_at": "s3c",
+        "file_path": "s3d",
+        "filename": "s3e",
+        "id": "EE_API_ENTITIES_ISSUABLE_METRIC_IMAGE00",
+        "url": "s40",
+        "url_text": "s41",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01"
+      },
+      "EE_API_ENTITIES_ISSUABLE_METRIC_IMAGE01": {
+        "created_at": "s78",
+        "file_path": "s79",
+        "filename": "s7a",
+        "id": "EE_API_ENTITIES_ISSUABLE_METRIC_IMAGE01",
+        "url": "s7c",
+        "url_text": "s7d",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01"
+      },
+      "EE_API_ENTITIES_ISSUABLE_METRIC_IMAGE02": {
+        "created_at": "sb4",
+        "file_path": "sb5",
+        "filename": "sb6",
+        "id": "EE_API_ENTITIES_ISSUABLE_METRIC_IMAGE02",
+        "url": "sb8",
+        "url_text": "sb9",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "ee_api_entities_issuable_metric_image": {
+      "ee_api_entities_issuable_metric_image_ref01": {
+        "created_at": "sf0",
+        "file_path": "sf1",
+        "filename": "sf2",
+        "url": "sf4",
+        "url_text": "sf5"
+      }
+    }
+  }
+}

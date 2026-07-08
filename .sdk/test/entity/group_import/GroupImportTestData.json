@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "group_import": {
+      "GROUP_IMPORT00": {
+        "id": "GROUP_IMPORT00"
+      },
+      "GROUP_IMPORT01": {
+        "id": "GROUP_IMPORT01"
+      },
+      "GROUP_IMPORT02": {
+        "id": "GROUP_IMPORT02"
+      }
+    }
+  },
+  "new": {
+    "group_import": {
+      "group_import_ref01": {}
+    }
+  }
+}

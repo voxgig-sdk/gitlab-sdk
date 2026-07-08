@@ -1,0 +1,63 @@
+# BasicApiEntitiesNamespaceFlow
+
+main: kit: flow: BasicApiEntitiesNamespaceFlow:
+{
+  entity: "api_entities_namespace",
+  kind: "basic",
+  name: "BasicApiEntitiesNamespaceFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_namespace_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_namespace_ref01",
+        srcdatavar: "api_entities_namespace_ref01_data",
+        suffix: "_up0",
+        textfield: "additional_purchased_storage_ends_on"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_namespace_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_namespace_ref01",
+        srcdatavar: "api_entities_namespace_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_namespace01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_namespace_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesNamespaceFlow"
+}

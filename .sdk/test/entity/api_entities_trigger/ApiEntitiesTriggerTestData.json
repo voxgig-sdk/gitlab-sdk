@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "api_entities_trigger": {
+      "API_ENTITIES_TRIGGER00": {
+        "created_at": "s50",
+        "description": "s51",
+        "expires_at": "s52",
+        "id": "API_ENTITIES_TRIGGER00",
+        "last_used": "s54",
+        "owner": {},
+        "token": "s56",
+        "updated_at": "s57",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_TRIGGER01": {
+        "created_at": "sa0",
+        "description": "sa1",
+        "expires_at": "sa2",
+        "id": "API_ENTITIES_TRIGGER01",
+        "last_used": "sa4",
+        "owner": {},
+        "token": "sa6",
+        "updated_at": "sa7",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_TRIGGER02": {
+        "created_at": "sf0",
+        "description": "sf1",
+        "expires_at": "sf2",
+        "id": "API_ENTITIES_TRIGGER02",
+        "last_used": "sf4",
+        "owner": {},
+        "token": "sf6",
+        "updated_at": "sf7",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_trigger": {
+      "api_entities_trigger_ref01": {
+        "created_at": "s140",
+        "description": "s141",
+        "expires_at": "s142",
+        "last_used": "s144",
+        "owner": {},
+        "token": "s146",
+        "updated_at": "s147"
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "nuget_package": {
+      "NUGET_PACKAGE00": {
+        "catalog_entry": {},
+        "count": "s47",
+        "id": "NUGET_PACKAGE00",
+        "item": [],
+        "lower": "s4a",
+        "package_content": "s4b",
+        "upper": "s4c",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "NUGET_PACKAGE01": {
+        "catalog_entry": {},
+        "count": "s8d",
+        "id": "NUGET_PACKAGE01",
+        "item": [],
+        "lower": "s90",
+        "package_content": "s91",
+        "upper": "s92",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "NUGET_PACKAGE02": {
+        "catalog_entry": {},
+        "count": "sd3",
+        "id": "NUGET_PACKAGE02",
+        "item": [],
+        "lower": "sd6",
+        "package_content": "sd7",
+        "upper": "sd8",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "nuget_package": {
+      "nuget_package_ref01": {
+        "catalog_entry": {},
+        "count": "s119",
+        "item": [],
+        "lower": "s11c",
+        "package_content": "s11d",
+        "upper": "s11e"
+      }
+    }
+  }
+}

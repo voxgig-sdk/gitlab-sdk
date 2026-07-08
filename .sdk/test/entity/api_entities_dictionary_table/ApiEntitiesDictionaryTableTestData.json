@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "api_entities_dictionary_table": {
+      "API_ENTITIES_DICTIONARY_TABLE00": {
+        "feature_category": [],
+        "table_name": "s15",
+        "databas_id": "DATABAS01",
+        "id": "API_ENTITIES_DICTIONARY_TABLE00"
+      },
+      "API_ENTITIES_DICTIONARY_TABLE01": {
+        "feature_category": [],
+        "table_name": "s29",
+        "databas_id": "DATABAS01",
+        "id": "API_ENTITIES_DICTIONARY_TABLE01"
+      },
+      "API_ENTITIES_DICTIONARY_TABLE02": {
+        "feature_category": [],
+        "table_name": "s3d",
+        "databas_id": "DATABAS01",
+        "id": "API_ENTITIES_DICTIONARY_TABLE02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_dictionary_table": {
+      "api_entities_dictionary_table_ref01": {
+        "feature_category": [],
+        "table_name": "s51"
+      }
+    }
+  }
+}

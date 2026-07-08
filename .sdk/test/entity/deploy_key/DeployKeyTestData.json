@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "deploy_key": {
+      "DEPLOY_KEY00": {
+        "project_id": "PROJECT01",
+        "id": "DEPLOY_KEY00"
+      },
+      "DEPLOY_KEY01": {
+        "project_id": "PROJECT01",
+        "id": "DEPLOY_KEY01"
+      },
+      "DEPLOY_KEY02": {
+        "project_id": "PROJECT01",
+        "id": "DEPLOY_KEY02"
+      }
+    }
+  },
+  "new": {
+    "deploy_key": {
+      "deploy_key_ref01": {}
+    }
+  }
+}

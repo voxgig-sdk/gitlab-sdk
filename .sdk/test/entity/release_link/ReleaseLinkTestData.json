@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "release_link": {
+      "RELEASE_LINK00": {
+        "project_id": "PROJECT01",
+        "release_id": "RELEASE01",
+        "id": "RELEASE_LINK00"
+      },
+      "RELEASE_LINK01": {
+        "project_id": "PROJECT01",
+        "release_id": "RELEASE01",
+        "id": "RELEASE_LINK01"
+      },
+      "RELEASE_LINK02": {
+        "project_id": "PROJECT01",
+        "release_id": "RELEASE01",
+        "id": "RELEASE_LINK02"
+      }
+    }
+  },
+  "new": {
+    "release_link": {
+      "release_link_ref01": {}
+    }
+  }
+}

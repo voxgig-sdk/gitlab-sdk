@@ -1,0 +1,27 @@
+# BasicApiEntitiesPackageFileFlow
+
+main: kit: flow: BasicApiEntitiesPackageFileFlow:
+{
+  entity: "api_entities_package_file",
+  kind: "basic",
+  name: "BasicApiEntitiesPackageFileFlow",
+  step: [
+    {
+      match: {
+        package_id: "package01",
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_package_file_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPackageFileFlow"
+}

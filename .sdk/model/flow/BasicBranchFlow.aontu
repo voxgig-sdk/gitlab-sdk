@@ -1,0 +1,23 @@
+# BasicBranchFlow
+
+main: kit: flow: BasicBranchFlow:
+{
+  entity: "branch",
+  kind: "basic",
+  name: "BasicBranchFlow",
+  step: [
+    {
+      input: {
+        ref: "branch_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "branch01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicBranchFlow"
+}

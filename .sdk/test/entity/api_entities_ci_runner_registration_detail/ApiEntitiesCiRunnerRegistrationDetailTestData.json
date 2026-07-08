@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "api_entities_ci_runner_registration_detail": {
+      "API_ENTITIES_CI_RUNNER_REGISTRATION_DETAIL00": {
+        "id": "API_ENTITIES_CI_RUNNER_REGISTRATION_DETAIL00"
+      },
+      "API_ENTITIES_CI_RUNNER_REGISTRATION_DETAIL01": {
+        "id": "API_ENTITIES_CI_RUNNER_REGISTRATION_DETAIL01"
+      },
+      "API_ENTITIES_CI_RUNNER_REGISTRATION_DETAIL02": {
+        "id": "API_ENTITIES_CI_RUNNER_REGISTRATION_DETAIL02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_ci_runner_registration_detail": {
+      "api_entities_ci_runner_registration_detail_ref01": {}
+    }
+  }
+}

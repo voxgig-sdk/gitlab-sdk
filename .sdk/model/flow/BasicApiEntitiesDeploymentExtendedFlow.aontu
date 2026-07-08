@@ -1,0 +1,68 @@
+# BasicApiEntitiesDeploymentExtendedFlow
+
+main: kit: flow: BasicApiEntitiesDeploymentExtendedFlow:
+{
+  entity: "api_entities_deployment_extended",
+  kind: "basic",
+  name: "BasicApiEntitiesDeploymentExtendedFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_deployment_extended_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      data: {
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "api_entities_deployment_extended_ref01",
+        srcdatavar: "api_entities_deployment_extended_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_deployment_extended_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_deployment_extended_ref01",
+        srcdatavar: "api_entities_deployment_extended_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_deployment_extended01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_deployment_extended_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesDeploymentExtendedFlow"
+}

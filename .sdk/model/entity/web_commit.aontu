@@ -1,0 +1,35 @@
+# Entity: web_commit
+
+main: kit: entity: web_commit: {
+
+  alias: field: {}
+
+  name: "web_commit"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/v4/web_commits/public_key"
+          parts: [
+            "api"
+            "v4"
+            "web_commits"
+            "public_key"
+          ]
+          select: {
+            "$action": "public_key"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

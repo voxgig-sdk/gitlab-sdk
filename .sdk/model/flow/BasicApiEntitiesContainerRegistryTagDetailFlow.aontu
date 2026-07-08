@@ -1,0 +1,34 @@
+# BasicApiEntitiesContainerRegistryTagDetailFlow
+
+main: kit: flow: BasicApiEntitiesContainerRegistryTagDetailFlow:
+{
+  entity: "api_entities_container_registry_tag_detail",
+  kind: "basic",
+  name: "BasicApiEntitiesContainerRegistryTagDetailFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_container_registry_tag_detail_ref01",
+        srcdatavar: "api_entities_container_registry_tag_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_container_registry_tag_detail01",
+        project_id: "project01",
+        repository_id: "repository01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_container_registry_tag_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesContainerRegistryTagDetailFlow"
+}

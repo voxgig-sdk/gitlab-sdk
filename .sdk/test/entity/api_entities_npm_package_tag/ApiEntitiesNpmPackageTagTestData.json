@@ -1,0 +1,31 @@
+{
+  "existing": {
+    "api_entities_npm_package_tag": {
+      "API_ENTITIES_NPM_PACKAGE_TAG00": {
+        "dist_tag": {},
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_NPM_PACKAGE_TAG00"
+      },
+      "API_ENTITIES_NPM_PACKAGE_TAG01": {
+        "dist_tag": {},
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_NPM_PACKAGE_TAG01"
+      },
+      "API_ENTITIES_NPM_PACKAGE_TAG02": {
+        "dist_tag": {},
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_NPM_PACKAGE_TAG02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_npm_package_tag": {
+      "api_entities_npm_package_tag_ref01": {
+        "dist_tag": {}
+      }
+    }
+  }
+}

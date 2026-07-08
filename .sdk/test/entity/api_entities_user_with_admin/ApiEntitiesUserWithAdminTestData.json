@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "api_entities_user_with_admin": {
+      "API_ENTITIES_USER_WITH_ADMIN00": {
+        "key": "s14",
+        "value": "s15"
+      },
+      "API_ENTITIES_USER_WITH_ADMIN01": {
+        "key": "s28",
+        "value": "s29"
+      },
+      "API_ENTITIES_USER_WITH_ADMIN02": {
+        "key": "s3c",
+        "value": "s3d"
+      }
+    }
+  },
+  "new": {
+    "api_entities_user_with_admin": {
+      "api_entities_user_with_admin_ref01": {
+        "key": "s50",
+        "value": "s51"
+      }
+    }
+  }
+}

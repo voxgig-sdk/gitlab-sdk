@@ -1,0 +1,22 @@
+# BasicApiEntitiesUserWithAdminFlow
+
+main: kit: flow: BasicApiEntitiesUserWithAdminFlow:
+{
+  entity: "api_entities_user_with_admin",
+  kind: "basic",
+  name: "BasicApiEntitiesUserWithAdminFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_user_with_admin_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesUserWithAdminFlow"
+}

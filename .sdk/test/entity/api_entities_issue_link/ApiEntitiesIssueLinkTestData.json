@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "api_entities_issue_link": {
+      "API_ENTITIES_ISSUE_LINK00": {
+        "link_type": "s1e",
+        "source_issue": {},
+        "target_issue": {},
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_ISSUE_LINK00"
+      },
+      "API_ENTITIES_ISSUE_LINK01": {
+        "link_type": "s3c",
+        "source_issue": {},
+        "target_issue": {},
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_ISSUE_LINK01"
+      },
+      "API_ENTITIES_ISSUE_LINK02": {
+        "link_type": "s5a",
+        "source_issue": {},
+        "target_issue": {},
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_ISSUE_LINK02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_issue_link": {
+      "api_entities_issue_link_ref01": {
+        "link_type": "s78",
+        "source_issue": {},
+        "target_issue": {}
+      }
+    }
+  }
+}

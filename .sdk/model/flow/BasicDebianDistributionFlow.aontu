@@ -1,0 +1,24 @@
+# BasicDebianDistributionFlow
+
+main: kit: flow: BasicDebianDistributionFlow:
+{
+  entity: "debian_distribution",
+  kind: "basic",
+  name: "BasicDebianDistributionFlow",
+  step: [
+    {
+      input: {
+        ref: "debian_distribution_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "debian_distribution01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicDebianDistributionFlow"
+}

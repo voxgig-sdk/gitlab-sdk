@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "api_entities_tag": {
+      "API_ENTITIES_TAG00": {
+        "commit": {},
+        "created_at": "s47",
+        "message": "s48",
+        "name": "s49",
+        "protected": true,
+        "release": {},
+        "target": "s4c",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_TAG00"
+      },
+      "API_ENTITIES_TAG01": {
+        "commit": {},
+        "created_at": "s8d",
+        "message": "s8e",
+        "name": "s8f",
+        "protected": true,
+        "release": {},
+        "target": "s92",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_TAG01"
+      },
+      "API_ENTITIES_TAG02": {
+        "commit": {},
+        "created_at": "sd3",
+        "message": "sd4",
+        "name": "sd5",
+        "protected": true,
+        "release": {},
+        "target": "sd8",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_TAG02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_tag": {
+      "api_entities_tag_ref01": {
+        "commit": {},
+        "created_at": "s119",
+        "message": "s11a",
+        "name": "s11b",
+        "protected": true,
+        "release": {},
+        "target": "s11e"
+      }
+    }
+  }
+}

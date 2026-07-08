@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "api_entities_deployment_extended": {
+      "API_ENTITIES_DEPLOYMENT_EXTENDED00": {
+        "approval": {},
+        "approval_summary": {},
+        "created_at": "s84",
+        "deployable": {},
+        "environment": {},
+        "id": "API_ENTITIES_DEPLOYMENT_EXTENDED00",
+        "iid": "s88",
+        "pending_approval_count": "s89",
+        "ref": "s8a",
+        "sha": "s8b",
+        "status": "s8c",
+        "updated_at": "s8d",
+        "user": {},
+        "project_id": "PROJECT01",
+        "deployment_id": "DEPLOYMENT01"
+      },
+      "API_ENTITIES_DEPLOYMENT_EXTENDED01": {
+        "approval": {},
+        "approval_summary": {},
+        "created_at": "s106",
+        "deployable": {},
+        "environment": {},
+        "id": "API_ENTITIES_DEPLOYMENT_EXTENDED01",
+        "iid": "s10a",
+        "pending_approval_count": "s10b",
+        "ref": "s10c",
+        "sha": "s10d",
+        "status": "s10e",
+        "updated_at": "s10f",
+        "user": {},
+        "project_id": "PROJECT01",
+        "deployment_id": "DEPLOYMENT01"
+      },
+      "API_ENTITIES_DEPLOYMENT_EXTENDED02": {
+        "approval": {},
+        "approval_summary": {},
+        "created_at": "s188",
+        "deployable": {},
+        "environment": {},
+        "id": "API_ENTITIES_DEPLOYMENT_EXTENDED02",
+        "iid": "s18c",
+        "pending_approval_count": "s18d",
+        "ref": "s18e",
+        "sha": "s18f",
+        "status": "s190",
+        "updated_at": "s191",
+        "user": {},
+        "project_id": "PROJECT01",
+        "deployment_id": "DEPLOYMENT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_deployment_extended": {
+      "api_entities_deployment_extended_ref01": {
+        "approval": {},
+        "approval_summary": {},
+        "created_at": "s20a",
+        "deployable": {},
+        "environment": {},
+        "iid": "s20e",
+        "pending_approval_count": "s20f",
+        "ref": "s210",
+        "sha": "s211",
+        "status": "s212",
+        "updated_at": "s213",
+        "user": {}
+      }
+    }
+  }
+}

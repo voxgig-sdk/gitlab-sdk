@@ -1,0 +1,88 @@
+# BasicApiEntitiesReleasesLinkFlow
+
+main: kit: flow: BasicApiEntitiesReleasesLinkFlow:
+{
+  entity: "api_entities_releases_link",
+  kind: "basic",
+  name: "BasicApiEntitiesReleasesLinkFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_releases_link_ref01"
+      }
+
+      match: {
+        project_id: "project01",
+        release_id: "release01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        project_id: "project01",
+        release_id: "release01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_releases_link_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      data: {
+        project_id: "project01",
+        release_id: "release01"
+      }
+
+      input: {
+        ref: "api_entities_releases_link_ref01",
+        srcdatavar: "api_entities_releases_link_ref01_data",
+        suffix: "_up0",
+        textfield: "direct_asset_url"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_releases_link_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_releases_link_ref01",
+        srcdatavar: "api_entities_releases_link_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_releases_link01",
+        project_id: "project01",
+        release_id: "release01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_releases_link_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesReleasesLinkFlow"
+}

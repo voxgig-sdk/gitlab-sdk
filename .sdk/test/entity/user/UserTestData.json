@@ -1,0 +1,60 @@
+{
+  "existing": {
+    "user": {
+      "USER00": {
+        "avatar_path": "s64",
+        "avatar_url": "s65",
+        "custom_attribute": [],
+        "id": "USER00",
+        "locked": true,
+        "name": "s69",
+        "public_email": "s6a",
+        "state": "s6b",
+        "username": "s6c",
+        "web_url": "s6d",
+        "project_id": "PROJECT01"
+      },
+      "USER01": {
+        "avatar_path": "sc8",
+        "avatar_url": "sc9",
+        "custom_attribute": [],
+        "id": "USER01",
+        "locked": true,
+        "name": "scd",
+        "public_email": "sce",
+        "state": "scf",
+        "username": "sd0",
+        "web_url": "sd1",
+        "project_id": "PROJECT01"
+      },
+      "USER02": {
+        "avatar_path": "s12c",
+        "avatar_url": "s12d",
+        "custom_attribute": [],
+        "id": "USER02",
+        "locked": true,
+        "name": "s131",
+        "public_email": "s132",
+        "state": "s133",
+        "username": "s134",
+        "web_url": "s135",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "user": {
+      "user_ref01": {
+        "avatar_path": "s190",
+        "avatar_url": "s191",
+        "custom_attribute": [],
+        "locked": true,
+        "name": "s195",
+        "public_email": "s196",
+        "state": "s197",
+        "username": "s198",
+        "web_url": "s199"
+      }
+    }
+  }
+}

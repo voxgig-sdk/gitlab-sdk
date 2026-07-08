@@ -1,0 +1,18 @@
+# BasicContainerRegistryEventFlow
+
+main: kit: flow: BasicContainerRegistryEventFlow:
+{
+  entity: "container_registry_event",
+  kind: "basic",
+  name: "BasicContainerRegistryEventFlow",
+  step: [
+    {
+      input: {
+        ref: "container_registry_event_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicContainerRegistryEventFlow"
+}

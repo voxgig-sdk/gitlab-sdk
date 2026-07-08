@@ -1,0 +1,73 @@
+# Entity: tag
+
+main: kit: entity: tag: {
+
+  alias: field: {}
+
+  name: "tag"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "tag_name"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "project_id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/api/v4/projects/{id}/repository/tags/{tag_name}"
+          parts: [
+            "api"
+            "v4"
+            "projects"
+            "{project_id}"
+            "repository"
+            "tags"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              id: "project_id"
+              tag_name: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+              "project_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "project"
+      ]
+    ]
+  }
+
+
+
+}

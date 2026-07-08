@@ -1,0 +1,27 @@
+# BasicApiEntitiesLicenseFlow
+
+main: kit: flow: BasicApiEntitiesLicenseFlow:
+{
+  entity: "api_entities_license",
+  kind: "basic",
+  name: "BasicApiEntitiesLicenseFlow",
+  step: [
+    {
+      match: {
+        name: "name01",
+        type: "type01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_license_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesLicenseFlow"
+}

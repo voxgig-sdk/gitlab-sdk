@@ -1,0 +1,25 @@
+{
+  "existing": {
+    "ee_api_entities_geo_pipeline_ref": {
+      "EE_API_ENTITIES_GEO_PIPELINE_REF00": {
+        "pipeline_ref": [],
+        "gl_repository": "GL_REPOSITORY01"
+      },
+      "EE_API_ENTITIES_GEO_PIPELINE_REF01": {
+        "pipeline_ref": [],
+        "gl_repository": "GL_REPOSITORY01"
+      },
+      "EE_API_ENTITIES_GEO_PIPELINE_REF02": {
+        "pipeline_ref": [],
+        "gl_repository": "GL_REPOSITORY01"
+      }
+    }
+  },
+  "new": {
+    "ee_api_entities_geo_pipeline_ref": {
+      "ee_api_entities_geo_pipeline_ref_ref01": {
+        "pipeline_ref": []
+      }
+    }
+  }
+}

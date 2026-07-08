@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "secure_file": {
+      "SECURE_FILE00": {
+        "project_id": "PROJECT01",
+        "id": "SECURE_FILE00"
+      },
+      "SECURE_FILE01": {
+        "project_id": "PROJECT01",
+        "id": "SECURE_FILE01"
+      },
+      "SECURE_FILE02": {
+        "project_id": "PROJECT01",
+        "id": "SECURE_FILE02"
+      }
+    }
+  },
+  "new": {
+    "secure_file": {
+      "secure_file_ref01": {}
+    }
+  }
+}

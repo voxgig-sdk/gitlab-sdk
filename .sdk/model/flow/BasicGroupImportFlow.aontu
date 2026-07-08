@@ -1,0 +1,18 @@
+# BasicGroupImportFlow
+
+main: kit: flow: BasicGroupImportFlow:
+{
+  entity: "group_import",
+  kind: "basic",
+  name: "BasicGroupImportFlow",
+  step: [
+    {
+      input: {
+        ref: "group_import_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicGroupImportFlow"
+}

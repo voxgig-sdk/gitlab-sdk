@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "container_registry_event": {
+      "CONTAINER_REGISTRY_EVENT00": {
+        "id": "CONTAINER_REGISTRY_EVENT00"
+      },
+      "CONTAINER_REGISTRY_EVENT01": {
+        "id": "CONTAINER_REGISTRY_EVENT01"
+      },
+      "CONTAINER_REGISTRY_EVENT02": {
+        "id": "CONTAINER_REGISTRY_EVENT02"
+      }
+    }
+  },
+  "new": {
+    "container_registry_event": {
+      "container_registry_event_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "api_entities_feature_flag": {
+      "API_ENTITIES_FEATURE_FLAG00": {
+        "active": true,
+        "created_at": "s51",
+        "description": "s52",
+        "name": "s53",
+        "scope": "s54",
+        "strategy": {},
+        "updated_at": "s56",
+        "version": "s57",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_FEATURE_FLAG00"
+      },
+      "API_ENTITIES_FEATURE_FLAG01": {
+        "active": true,
+        "created_at": "sa1",
+        "description": "sa2",
+        "name": "sa3",
+        "scope": "sa4",
+        "strategy": {},
+        "updated_at": "sa6",
+        "version": "sa7",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_FEATURE_FLAG01"
+      },
+      "API_ENTITIES_FEATURE_FLAG02": {
+        "active": true,
+        "created_at": "sf1",
+        "description": "sf2",
+        "name": "sf3",
+        "scope": "sf4",
+        "strategy": {},
+        "updated_at": "sf6",
+        "version": "sf7",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_FEATURE_FLAG02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_feature_flag": {
+      "api_entities_feature_flag_ref01": {
+        "active": true,
+        "created_at": "s141",
+        "description": "s142",
+        "name": "s143",
+        "scope": "s144",
+        "strategy": {},
+        "updated_at": "s146",
+        "version": "s147"
+      }
+    }
+  }
+}

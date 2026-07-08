@@ -1,0 +1,28 @@
+# BasicApiEntitiesPagesDomainBasicFlow
+
+main: kit: flow: BasicApiEntitiesPagesDomainBasicFlow:
+{
+  entity: "api_entities_pages_domain_basic",
+  kind: "basic",
+  name: "BasicApiEntitiesPagesDomainBasicFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_pages_domain_basic_ref01",
+        srcdatavar: "api_entities_pages_domain_basic_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_pages_domain_basic_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPagesDomainBasicFlow"
+}

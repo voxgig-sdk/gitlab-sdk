@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "api_entities_compare": {
+      "API_ENTITIES_COMPARE00": {
+        "commit": {},
+        "compare_same_ref": false,
+        "compare_timeout": true,
+        "diff": [],
+        "web_url": "s36",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_COMPARE01": {
+        "commit": {},
+        "compare_same_ref": false,
+        "compare_timeout": true,
+        "diff": [],
+        "web_url": "s68",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_COMPARE02": {
+        "commit": {},
+        "compare_same_ref": false,
+        "compare_timeout": true,
+        "diff": [],
+        "web_url": "s9a",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_compare": {
+      "api_entities_compare_ref01": {
+        "commit": {},
+        "compare_same_ref": false,
+        "compare_timeout": true,
+        "diff": [],
+        "web_url": "scc"
+      }
+    }
+  }
+}

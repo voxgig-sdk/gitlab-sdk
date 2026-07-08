@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "api_entities_contributor": {
+      "API_ENTITIES_CONTRIBUTOR00": {
+        "addition": "s32",
+        "commit": "s33",
+        "deletion": "s34",
+        "email": "s35",
+        "name": "s36",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CONTRIBUTOR00"
+      },
+      "API_ENTITIES_CONTRIBUTOR01": {
+        "addition": "s64",
+        "commit": "s65",
+        "deletion": "s66",
+        "email": "s67",
+        "name": "s68",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CONTRIBUTOR01"
+      },
+      "API_ENTITIES_CONTRIBUTOR02": {
+        "addition": "s96",
+        "commit": "s97",
+        "deletion": "s98",
+        "email": "s99",
+        "name": "s9a",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CONTRIBUTOR02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_contributor": {
+      "api_entities_contributor_ref01": {
+        "addition": "sc8",
+        "commit": "sc9",
+        "deletion": "sca",
+        "email": "scb",
+        "name": "scc"
+      }
+    }
+  }
+}

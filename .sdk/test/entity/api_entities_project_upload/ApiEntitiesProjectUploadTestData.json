@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "api_entities_project_upload": {
+      "API_ENTITIES_PROJECT_UPLOAD00": {
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PROJECT_UPLOAD00"
+      },
+      "API_ENTITIES_PROJECT_UPLOAD01": {
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PROJECT_UPLOAD01"
+      },
+      "API_ENTITIES_PROJECT_UPLOAD02": {
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PROJECT_UPLOAD02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_project_upload": {
+      "api_entities_project_upload_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "existing": {
+    "api_entities_commit": {
+      "API_ENTITIES_COMMIT00": {
+        "author_email": "s96",
+        "author_name": "s97",
+        "authored_date": "s98",
+        "committed_date": "s99",
+        "committer_email": "s9a",
+        "committer_name": "s9b",
+        "created_at": "s9c",
+        "extended_trailer": {},
+        "id": "API_ENTITIES_COMMIT00",
+        "message": "s9f",
+        "parent_id": "PARENT01",
+        "short_id": "SHORT01",
+        "title": "sa2",
+        "trailer": {},
+        "web_url": "sa4",
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01",
+        "sha": "SHA01"
+      },
+      "API_ENTITIES_COMMIT01": {
+        "author_email": "s12c",
+        "author_name": "s12d",
+        "authored_date": "s12e",
+        "committed_date": "s12f",
+        "committer_email": "s130",
+        "committer_name": "s131",
+        "created_at": "s132",
+        "extended_trailer": {},
+        "id": "API_ENTITIES_COMMIT01",
+        "message": "s135",
+        "parent_id": "PARENT01",
+        "short_id": "SHORT01",
+        "title": "s138",
+        "trailer": {},
+        "web_url": "s13a",
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01",
+        "sha": "SHA01"
+      },
+      "API_ENTITIES_COMMIT02": {
+        "author_email": "s1c2",
+        "author_name": "s1c3",
+        "authored_date": "s1c4",
+        "committed_date": "s1c5",
+        "committer_email": "s1c6",
+        "committer_name": "s1c7",
+        "created_at": "s1c8",
+        "extended_trailer": {},
+        "id": "API_ENTITIES_COMMIT02",
+        "message": "s1cb",
+        "parent_id": "PARENT01",
+        "short_id": "SHORT01",
+        "title": "s1ce",
+        "trailer": {},
+        "web_url": "s1d0",
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01",
+        "sha": "SHA01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_commit": {
+      "api_entities_commit_ref01": {
+        "author_email": "s258",
+        "author_name": "s259",
+        "authored_date": "s25a",
+        "committed_date": "s25b",
+        "committer_email": "s25c",
+        "committer_name": "s25d",
+        "created_at": "s25e",
+        "extended_trailer": {},
+        "message": "s261",
+        "parent_id": "PARENT01",
+        "short_id": "SHORT01",
+        "title": "s264",
+        "trailer": {},
+        "web_url": "s266"
+      }
+    }
+  }
+}

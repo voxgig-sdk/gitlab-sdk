@@ -1,0 +1,24 @@
+# BasicWikiFlow
+
+main: kit: flow: BasicWikiFlow:
+{
+  entity: "wiki",
+  kind: "basic",
+  name: "BasicWikiFlow",
+  step: [
+    {
+      input: {
+        ref: "wiki_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "wiki01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicWikiFlow"
+}

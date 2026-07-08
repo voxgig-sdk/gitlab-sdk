@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "composer_package": {
+      "COMPOSER_PACKAGE00": {
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "sha": "SHA01",
+        "id": "COMPOSER_PACKAGE00"
+      },
+      "COMPOSER_PACKAGE01": {
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "sha": "SHA01",
+        "id": "COMPOSER_PACKAGE01"
+      },
+      "COMPOSER_PACKAGE02": {
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "sha": "SHA01",
+        "id": "COMPOSER_PACKAGE02"
+      }
+    }
+  },
+  "new": {
+    "composer_package": {
+      "composer_package_ref01": {}
+    }
+  }
+}

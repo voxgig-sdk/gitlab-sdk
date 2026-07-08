@@ -1,0 +1,28 @@
+# BasicIssuesStatisticFlow
+
+main: kit: flow: BasicIssuesStatisticFlow:
+{
+  entity: "issues_statistic",
+  kind: "basic",
+  name: "BasicIssuesStatisticFlow",
+  step: [
+    {
+      input: {
+        ref: "issues_statistic_ref01",
+        srcdatavar: "issues_statistic_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-issues_statistic_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicIssuesStatisticFlow"
+}

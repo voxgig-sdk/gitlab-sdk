@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "api_entities_ci_pipeline_schedule": {
+      "API_ENTITIES_CI_PIPELINE_SCHEDULE00": {
+        "active": true,
+        "created_at": "s6f",
+        "cron": "s70",
+        "cron_timezone": "s71",
+        "description": "s72",
+        "id": "API_ENTITIES_CI_PIPELINE_SCHEDULE00",
+        "input": {},
+        "next_run_at": "s75",
+        "owner": {},
+        "ref": "s77",
+        "updated_at": "s78",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_CI_PIPELINE_SCHEDULE01": {
+        "active": true,
+        "created_at": "sdd",
+        "cron": "sde",
+        "cron_timezone": "sdf",
+        "description": "se0",
+        "id": "API_ENTITIES_CI_PIPELINE_SCHEDULE01",
+        "input": {},
+        "next_run_at": "se3",
+        "owner": {},
+        "ref": "se5",
+        "updated_at": "se6",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_CI_PIPELINE_SCHEDULE02": {
+        "active": true,
+        "created_at": "s14b",
+        "cron": "s14c",
+        "cron_timezone": "s14d",
+        "description": "s14e",
+        "id": "API_ENTITIES_CI_PIPELINE_SCHEDULE02",
+        "input": {},
+        "next_run_at": "s151",
+        "owner": {},
+        "ref": "s153",
+        "updated_at": "s154",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_ci_pipeline_schedule": {
+      "api_entities_ci_pipeline_schedule_ref01": {
+        "active": true,
+        "created_at": "s1b9",
+        "cron": "s1ba",
+        "cron_timezone": "s1bb",
+        "description": "s1bc",
+        "input": {},
+        "next_run_at": "s1bf",
+        "owner": {},
+        "ref": "s1c1",
+        "updated_at": "s1c2"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "generic_package": {
+      "GENERIC_PACKAGE00": {
+        "file_name": "FILE_NAME01",
+        "generic_id": "GENERIC01",
+        "project_id": "PROJECT01",
+        "id": "GENERIC_PACKAGE00"
+      },
+      "GENERIC_PACKAGE01": {
+        "file_name": "FILE_NAME01",
+        "generic_id": "GENERIC01",
+        "project_id": "PROJECT01",
+        "id": "GENERIC_PACKAGE01"
+      },
+      "GENERIC_PACKAGE02": {
+        "file_name": "FILE_NAME01",
+        "generic_id": "GENERIC01",
+        "project_id": "PROJECT01",
+        "id": "GENERIC_PACKAGE02"
+      }
+    }
+  },
+  "new": {
+    "generic_package": {
+      "generic_package_ref01": {}
+    }
+  }
+}

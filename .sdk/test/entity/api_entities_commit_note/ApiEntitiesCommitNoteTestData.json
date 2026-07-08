@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "api_entities_commit_note": {
+      "API_ENTITIES_COMMIT_NOTE00": {
+        "author": {},
+        "created_at": "s3d",
+        "line": "s3e",
+        "line_type": "s3f",
+        "note": "s40",
+        "path": "s41",
+        "project_id": "PROJECT01",
+        "sha": "SHA01",
+        "id": "API_ENTITIES_COMMIT_NOTE00"
+      },
+      "API_ENTITIES_COMMIT_NOTE01": {
+        "author": {},
+        "created_at": "s79",
+        "line": "s7a",
+        "line_type": "s7b",
+        "note": "s7c",
+        "path": "s7d",
+        "project_id": "PROJECT01",
+        "sha": "SHA01",
+        "id": "API_ENTITIES_COMMIT_NOTE01"
+      },
+      "API_ENTITIES_COMMIT_NOTE02": {
+        "author": {},
+        "created_at": "sb5",
+        "line": "sb6",
+        "line_type": "sb7",
+        "note": "sb8",
+        "path": "sb9",
+        "project_id": "PROJECT01",
+        "sha": "SHA01",
+        "id": "API_ENTITIES_COMMIT_NOTE02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_commit_note": {
+      "api_entities_commit_note_ref01": {
+        "author": {},
+        "created_at": "sf1",
+        "line": "sf2",
+        "line_type": "sf3",
+        "note": "sf4",
+        "path": "sf5"
+      }
+    }
+  }
+}

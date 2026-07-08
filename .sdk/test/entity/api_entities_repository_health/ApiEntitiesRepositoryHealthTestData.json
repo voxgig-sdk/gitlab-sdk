@@ -1,0 +1,68 @@
+{
+  "existing": {
+    "api_entities_repository_health": {
+      "API_ENTITIES_REPOSITORY_HEALTH00": {
+        "alternate": {},
+        "bitmap": {},
+        "commit_graph": {},
+        "is_object_pool": false,
+        "last_full_repack": {},
+        "multi_pack_index": {},
+        "multi_pack_index_bitmap": {},
+        "object": {},
+        "reference": {},
+        "size": "s77",
+        "updated_at": "s78",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_REPOSITORY_HEALTH00"
+      },
+      "API_ENTITIES_REPOSITORY_HEALTH01": {
+        "alternate": {},
+        "bitmap": {},
+        "commit_graph": {},
+        "is_object_pool": false,
+        "last_full_repack": {},
+        "multi_pack_index": {},
+        "multi_pack_index_bitmap": {},
+        "object": {},
+        "reference": {},
+        "size": "se5",
+        "updated_at": "se6",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_REPOSITORY_HEALTH01"
+      },
+      "API_ENTITIES_REPOSITORY_HEALTH02": {
+        "alternate": {},
+        "bitmap": {},
+        "commit_graph": {},
+        "is_object_pool": false,
+        "last_full_repack": {},
+        "multi_pack_index": {},
+        "multi_pack_index_bitmap": {},
+        "object": {},
+        "reference": {},
+        "size": "s153",
+        "updated_at": "s154",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_REPOSITORY_HEALTH02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_repository_health": {
+      "api_entities_repository_health_ref01": {
+        "alternate": {},
+        "bitmap": {},
+        "commit_graph": {},
+        "is_object_pool": false,
+        "last_full_repack": {},
+        "multi_pack_index": {},
+        "multi_pack_index_bitmap": {},
+        "object": {},
+        "reference": {},
+        "size": "s1c1",
+        "updated_at": "s1c2"
+      }
+    }
+  }
+}

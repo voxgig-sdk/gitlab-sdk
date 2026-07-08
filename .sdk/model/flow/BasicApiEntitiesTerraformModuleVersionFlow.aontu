@@ -1,0 +1,52 @@
+# BasicApiEntitiesTerraformModuleVersionFlow
+
+main: kit: flow: BasicApiEntitiesTerraformModuleVersionFlow:
+{
+  entity: "api_entities_terraform_module_version",
+  kind: "basic",
+  name: "BasicApiEntitiesTerraformModuleVersionFlow",
+  step: [
+    {
+      match: {
+        module_name: "module_name01",
+        module_system: "module_system01",
+        v1_id: "v101"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_terraform_module_version_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_terraform_module_version_ref01",
+        srcdatavar: "api_entities_terraform_module_version_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_terraform_module_version01",
+        module_name: "module_name01",
+        module_namespace: "module_namespace01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_terraform_module_version_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesTerraformModuleVersionFlow"
+}

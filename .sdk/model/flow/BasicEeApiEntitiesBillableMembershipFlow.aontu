@@ -1,0 +1,33 @@
+# BasicEeApiEntitiesBillableMembershipFlow
+
+main: kit: flow: BasicEeApiEntitiesBillableMembershipFlow:
+{
+  entity: "ee_api_entities_billable_membership",
+  kind: "basic",
+  name: "BasicEeApiEntitiesBillableMembershipFlow",
+  step: [
+    {
+      input: {
+        ref: "ee_api_entities_billable_membership_ref01",
+        srcdatavar: "ee_api_entities_billable_membership_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        group_id: "group01",
+        id: "ee_api_entities_billable_membership01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ee_api_entities_billable_membership_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEeApiEntitiesBillableMembershipFlow"
+}

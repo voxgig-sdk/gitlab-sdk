@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "project_import_entity": {
+      "PROJECT_IMPORT_ENTITY00": {
+        "forked": true,
+        "full_name": "s83",
+        "full_path": "s84",
+        "human_import_status_name": "s85",
+        "id": "PROJECT_IMPORT_ENTITY00",
+        "import_error": "s87",
+        "import_source": "s88",
+        "import_status": "s89",
+        "import_warning": "s8a",
+        "name": "s8b",
+        "provider_link": "s8c",
+        "refs_url": "s8d",
+        "relation_type": "s8e"
+      },
+      "PROJECT_IMPORT_ENTITY01": {
+        "forked": true,
+        "full_name": "s105",
+        "full_path": "s106",
+        "human_import_status_name": "s107",
+        "id": "PROJECT_IMPORT_ENTITY01",
+        "import_error": "s109",
+        "import_source": "s10a",
+        "import_status": "s10b",
+        "import_warning": "s10c",
+        "name": "s10d",
+        "provider_link": "s10e",
+        "refs_url": "s10f",
+        "relation_type": "s110"
+      },
+      "PROJECT_IMPORT_ENTITY02": {
+        "forked": true,
+        "full_name": "s187",
+        "full_path": "s188",
+        "human_import_status_name": "s189",
+        "id": "PROJECT_IMPORT_ENTITY02",
+        "import_error": "s18b",
+        "import_source": "s18c",
+        "import_status": "s18d",
+        "import_warning": "s18e",
+        "name": "s18f",
+        "provider_link": "s190",
+        "refs_url": "s191",
+        "relation_type": "s192"
+      }
+    }
+  },
+  "new": {
+    "project_import_entity": {
+      "project_import_entity_ref01": {
+        "forked": true,
+        "full_name": "s209",
+        "full_path": "s20a",
+        "human_import_status_name": "s20b",
+        "import_error": "s20d",
+        "import_source": "s20e",
+        "import_status": "s20f",
+        "import_warning": "s210",
+        "name": "s211",
+        "provider_link": "s212",
+        "refs_url": "s213",
+        "relation_type": "s214"
+      }
+    }
+  }
+}

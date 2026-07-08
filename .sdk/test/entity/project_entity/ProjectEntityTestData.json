@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "project_entity": {
+      "PROJECT_ENTITY00": {
+        "id": "PROJECT_ENTITY00"
+      },
+      "PROJECT_ENTITY01": {
+        "id": "PROJECT_ENTITY01"
+      },
+      "PROJECT_ENTITY02": {
+        "id": "PROJECT_ENTITY02"
+      }
+    }
+  },
+  "new": {
+    "project_entity": {
+      "project_entity_ref01": {}
+    }
+  }
+}

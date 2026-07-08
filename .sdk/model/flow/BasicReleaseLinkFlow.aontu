@@ -1,0 +1,25 @@
+# BasicReleaseLinkFlow
+
+main: kit: flow: BasicReleaseLinkFlow:
+{
+  entity: "release_link",
+  kind: "basic",
+  name: "BasicReleaseLinkFlow",
+  step: [
+    {
+      input: {
+        ref: "release_link_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "release_link01",
+        project_id: "project01",
+        release_id: "release01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicReleaseLinkFlow"
+}

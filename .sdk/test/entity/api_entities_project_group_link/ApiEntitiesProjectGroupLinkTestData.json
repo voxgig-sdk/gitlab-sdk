@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "api_entities_project_group_link": {
+      "API_ENTITIES_PROJECT_GROUP_LINK00": {
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PROJECT_GROUP_LINK00"
+      },
+      "API_ENTITIES_PROJECT_GROUP_LINK01": {
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PROJECT_GROUP_LINK01"
+      },
+      "API_ENTITIES_PROJECT_GROUP_LINK02": {
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PROJECT_GROUP_LINK02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_project_group_link": {
+      "api_entities_project_group_link_ref01": {}
+    }
+  }
+}

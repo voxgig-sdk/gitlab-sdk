@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "api_entities_license": {
+      "API_ENTITIES_LICENSE00": {
+        "condition": [],
+        "content": "s6f",
+        "description": "s70",
+        "html_url": "s71",
+        "key": "s72",
+        "limitation": [],
+        "name": "s74",
+        "nickname": "s75",
+        "permission": [],
+        "popular": false,
+        "source_url": "s78",
+        "type": "TYPE01"
+      },
+      "API_ENTITIES_LICENSE01": {
+        "condition": [],
+        "content": "sdd",
+        "description": "sde",
+        "html_url": "sdf",
+        "key": "se0",
+        "limitation": [],
+        "name": "se2",
+        "nickname": "se3",
+        "permission": [],
+        "popular": false,
+        "source_url": "se6",
+        "type": "TYPE01"
+      },
+      "API_ENTITIES_LICENSE02": {
+        "condition": [],
+        "content": "s14b",
+        "description": "s14c",
+        "html_url": "s14d",
+        "key": "s14e",
+        "limitation": [],
+        "name": "s150",
+        "nickname": "s151",
+        "permission": [],
+        "popular": false,
+        "source_url": "s154",
+        "type": "TYPE01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_license": {
+      "api_entities_license_ref01": {
+        "condition": [],
+        "content": "s1b9",
+        "description": "s1ba",
+        "html_url": "s1bb",
+        "key": "s1bc",
+        "limitation": [],
+        "name": "s1be",
+        "nickname": "s1bf",
+        "permission": [],
+        "popular": false,
+        "source_url": "s1c2"
+      }
+    }
+  }
+}

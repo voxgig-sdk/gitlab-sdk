@@ -1,0 +1,83 @@
+{
+  "existing": {
+    "ee_api_entities_merge_request_approval_state": {
+      "EE_API_ENTITIES_MERGE_REQUEST_APPROVAL_STATE00": {
+        "approvals_required": "s96",
+        "approved": false,
+        "approved_by": [],
+        "code_owner": false,
+        "contains_hidden_group": true,
+        "eligible_approver": [],
+        "group": [],
+        "id": "EE_API_ENTITIES_MERGE_REQUEST_APPROVAL_STATE00",
+        "name": "s9e",
+        "overridden": false,
+        "report_type": "sa0",
+        "rule_type": "sa1",
+        "section": "sa2",
+        "source_rule": {},
+        "user": [],
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01"
+      },
+      "EE_API_ENTITIES_MERGE_REQUEST_APPROVAL_STATE01": {
+        "approvals_required": "s12c",
+        "approved": false,
+        "approved_by": [],
+        "code_owner": false,
+        "contains_hidden_group": true,
+        "eligible_approver": [],
+        "group": [],
+        "id": "EE_API_ENTITIES_MERGE_REQUEST_APPROVAL_STATE01",
+        "name": "s134",
+        "overridden": false,
+        "report_type": "s136",
+        "rule_type": "s137",
+        "section": "s138",
+        "source_rule": {},
+        "user": [],
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01"
+      },
+      "EE_API_ENTITIES_MERGE_REQUEST_APPROVAL_STATE02": {
+        "approvals_required": "s1c2",
+        "approved": false,
+        "approved_by": [],
+        "code_owner": false,
+        "contains_hidden_group": true,
+        "eligible_approver": [],
+        "group": [],
+        "id": "EE_API_ENTITIES_MERGE_REQUEST_APPROVAL_STATE02",
+        "name": "s1ca",
+        "overridden": false,
+        "report_type": "s1cc",
+        "rule_type": "s1cd",
+        "section": "s1ce",
+        "source_rule": {},
+        "user": [],
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "ee_api_entities_merge_request_approval_state": {
+      "ee_api_entities_merge_request_approval_state_ref01": {
+        "approvals_required": "s258",
+        "approved": false,
+        "approved_by": [],
+        "code_owner": false,
+        "contains_hidden_group": true,
+        "eligible_approver": [],
+        "group": [],
+        "name": "s260",
+        "overridden": false,
+        "report_type": "s262",
+        "rule_type": "s263",
+        "section": "s264",
+        "source_rule": {},
+        "user": []
+      }
+    }
+  }
+}

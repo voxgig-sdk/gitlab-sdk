@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "deployment": {
+      "DEPLOYMENT00": {
+        "project_id": "PROJECT01",
+        "id": "DEPLOYMENT00"
+      },
+      "DEPLOYMENT01": {
+        "project_id": "PROJECT01",
+        "id": "DEPLOYMENT01"
+      },
+      "DEPLOYMENT02": {
+        "project_id": "PROJECT01",
+        "id": "DEPLOYMENT02"
+      }
+    }
+  },
+  "new": {
+    "deployment": {
+      "deployment_ref01": {}
+    }
+  }
+}

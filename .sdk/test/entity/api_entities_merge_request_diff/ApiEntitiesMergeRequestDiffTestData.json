@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "api_entities_merge_request_diff": {
+      "API_ENTITIES_MERGE_REQUEST_DIFF00": {
+        "base_commit_sha": "s5a",
+        "created_at": "s5b",
+        "head_commit_sha": "s5c",
+        "id": "API_ENTITIES_MERGE_REQUEST_DIFF00",
+        "merge_request_id": "MERGE_REQUEST01",
+        "patch_id_sha": "s5f",
+        "real_size": "s60",
+        "start_commit_sha": "s61",
+        "state": "s62",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_MERGE_REQUEST_DIFF01": {
+        "base_commit_sha": "sb4",
+        "created_at": "sb5",
+        "head_commit_sha": "sb6",
+        "id": "API_ENTITIES_MERGE_REQUEST_DIFF01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "patch_id_sha": "sb9",
+        "real_size": "sba",
+        "start_commit_sha": "sbb",
+        "state": "sbc",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_MERGE_REQUEST_DIFF02": {
+        "base_commit_sha": "s10e",
+        "created_at": "s10f",
+        "head_commit_sha": "s110",
+        "id": "API_ENTITIES_MERGE_REQUEST_DIFF02",
+        "merge_request_id": "MERGE_REQUEST01",
+        "patch_id_sha": "s113",
+        "real_size": "s114",
+        "start_commit_sha": "s115",
+        "state": "s116",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_merge_request_diff": {
+      "api_entities_merge_request_diff_ref01": {
+        "base_commit_sha": "s168",
+        "created_at": "s169",
+        "head_commit_sha": "s16a",
+        "merge_request_id": "MERGE_REQUEST01",
+        "patch_id_sha": "s16d",
+        "real_size": "s16e",
+        "start_commit_sha": "s16f",
+        "state": "s170"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+# BasicApiEntitiesCiJobBasicWithProjectFlow
+
+main: kit: flow: BasicApiEntitiesCiJobBasicWithProjectFlow:
+{
+  entity: "api_entities_ci_job_basic_with_project",
+  kind: "basic",
+  name: "BasicApiEntitiesCiJobBasicWithProjectFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_ci_job_basic_with_project_ref01",
+        srcdatavar: "api_entities_ci_job_basic_with_project_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_ci_job_basic_with_project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_ci_job_basic_with_project_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCiJobBasicWithProjectFlow"
+}

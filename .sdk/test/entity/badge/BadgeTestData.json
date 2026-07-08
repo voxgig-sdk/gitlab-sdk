@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "badge": {
+      "BADGE00": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "BADGE00"
+      },
+      "BADGE01": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "BADGE01"
+      },
+      "BADGE02": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "BADGE02"
+      }
+    }
+  },
+  "new": {
+    "badge": {
+      "badge_ref01": {}
+    }
+  }
+}

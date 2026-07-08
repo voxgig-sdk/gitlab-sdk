@@ -1,0 +1,18 @@
+# BasicApiEntitiesRelationImportTrackerFlow
+
+main: kit: flow: BasicApiEntitiesRelationImportTrackerFlow:
+{
+  entity: "api_entities_relation_import_tracker",
+  kind: "basic",
+  name: "BasicApiEntitiesRelationImportTrackerFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_relation_import_tracker_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesRelationImportTrackerFlow"
+}

@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "api_entities_ci_reset_token_result": {
+      "API_ENTITIES_CI_RESET_TOKEN_RESULT00": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "runner_id": "RUNNER01",
+        "id": "API_ENTITIES_CI_RESET_TOKEN_RESULT00"
+      },
+      "API_ENTITIES_CI_RESET_TOKEN_RESULT01": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "runner_id": "RUNNER01",
+        "id": "API_ENTITIES_CI_RESET_TOKEN_RESULT01"
+      },
+      "API_ENTITIES_CI_RESET_TOKEN_RESULT02": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "runner_id": "RUNNER01",
+        "id": "API_ENTITIES_CI_RESET_TOKEN_RESULT02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_ci_reset_token_result": {
+      "api_entities_ci_reset_token_result_ref01": {}
+    }
+  }
+}

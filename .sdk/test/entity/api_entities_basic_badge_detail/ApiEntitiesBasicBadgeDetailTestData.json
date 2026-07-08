@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "api_entities_basic_badge_detail": {
+      "API_ENTITIES_BASIC_BADGE_DETAIL00": {
+        "image_url": "s32",
+        "link_url": "s33",
+        "name": "s34",
+        "rendered_image_url": "s35",
+        "rendered_link_url": "s36",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_BASIC_BADGE_DETAIL00"
+      },
+      "API_ENTITIES_BASIC_BADGE_DETAIL01": {
+        "image_url": "s64",
+        "link_url": "s65",
+        "name": "s66",
+        "rendered_image_url": "s67",
+        "rendered_link_url": "s68",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_BASIC_BADGE_DETAIL01"
+      },
+      "API_ENTITIES_BASIC_BADGE_DETAIL02": {
+        "image_url": "s96",
+        "link_url": "s97",
+        "name": "s98",
+        "rendered_image_url": "s99",
+        "rendered_link_url": "s9a",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_BASIC_BADGE_DETAIL02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_basic_badge_detail": {
+      "api_entities_basic_badge_detail_ref01": {
+        "image_url": "sc8",
+        "link_url": "sc9",
+        "name": "sca",
+        "rendered_image_url": "scb",
+        "rendered_link_url": "scc"
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+# BasicProjectPackageFlow
+
+main: kit: flow: BasicProjectPackageFlow:
+{
+  entity: "project_package",
+  kind: "basic",
+  name: "BasicProjectPackageFlow",
+  step: [
+    {
+      input: {
+        ref: "project_package_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "project_package01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicProjectPackageFlow"
+}

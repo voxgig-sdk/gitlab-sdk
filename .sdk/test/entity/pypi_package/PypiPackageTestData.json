@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "pypi_package": {
+      "PYPI_PACKAGE00": {
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "sha256": "SHA25601",
+        "id": "PYPI_PACKAGE00"
+      },
+      "PYPI_PACKAGE01": {
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "sha256": "SHA25601",
+        "id": "PYPI_PACKAGE01"
+      },
+      "PYPI_PACKAGE02": {
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "sha256": "SHA25601",
+        "id": "PYPI_PACKAGE02"
+      }
+    }
+  },
+  "new": {
+    "pypi_package": {
+      "pypi_package_ref01": {}
+    }
+  }
+}

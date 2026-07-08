@@ -1,0 +1,71 @@
+# BasicApiEntitiesPersonalSnippetFlow
+
+main: kit: flow: BasicApiEntitiesPersonalSnippetFlow:
+{
+  entity: "api_entities_personal_snippet",
+  kind: "basic",
+  name: "BasicApiEntitiesPersonalSnippetFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_personal_snippet_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_personal_snippet_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_personal_snippet_ref01",
+        srcdatavar: "api_entities_personal_snippet_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_personal_snippet_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_personal_snippet_ref01",
+        srcdatavar: "api_entities_personal_snippet_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_personal_snippet01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_personal_snippet_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPersonalSnippetFlow"
+}

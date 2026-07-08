@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "rubygem_package": {
+      "RUBYGEM_PACKAGE00": {
+        "project_id": "PROJECT01",
+        "file_name": "FILE_NAME01",
+        "id": "RUBYGEM_PACKAGE00"
+      },
+      "RUBYGEM_PACKAGE01": {
+        "project_id": "PROJECT01",
+        "file_name": "FILE_NAME01",
+        "id": "RUBYGEM_PACKAGE01"
+      },
+      "RUBYGEM_PACKAGE02": {
+        "project_id": "PROJECT01",
+        "file_name": "FILE_NAME01",
+        "id": "RUBYGEM_PACKAGE02"
+      }
+    }
+  },
+  "new": {
+    "rubygem_package": {
+      "rubygem_package_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "ci_variable": {
+      "CI_VARIABLE00": {
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "id": "CI_VARIABLE00"
+      },
+      "CI_VARIABLE01": {
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "id": "CI_VARIABLE01"
+      },
+      "CI_VARIABLE02": {
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "id": "CI_VARIABLE02"
+      }
+    }
+  },
+  "new": {
+    "ci_variable": {
+      "ci_variable_ref01": {}
+    }
+  }
+}

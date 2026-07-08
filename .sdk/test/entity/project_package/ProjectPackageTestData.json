@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "project_package": {
+      "PROJECT_PACKAGE00": {
+        "project_id": "PROJECT01",
+        "id": "PROJECT_PACKAGE00"
+      },
+      "PROJECT_PACKAGE01": {
+        "project_id": "PROJECT01",
+        "id": "PROJECT_PACKAGE01"
+      },
+      "PROJECT_PACKAGE02": {
+        "project_id": "PROJECT01",
+        "id": "PROJECT_PACKAGE02"
+      }
+    }
+  },
+  "new": {
+    "project_package": {
+      "project_package_ref01": {}
+    }
+  }
+}

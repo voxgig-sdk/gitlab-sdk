@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "container_registry": {
+      "CONTAINER_REGISTRY00": {
+        "project_id": "PROJECT01",
+        "repository_id": "REPOSITORY01",
+        "tag_name": "TAG_NAME01",
+        "id": "CONTAINER_REGISTRY00"
+      },
+      "CONTAINER_REGISTRY01": {
+        "project_id": "PROJECT01",
+        "repository_id": "REPOSITORY01",
+        "tag_name": "TAG_NAME01",
+        "id": "CONTAINER_REGISTRY01"
+      },
+      "CONTAINER_REGISTRY02": {
+        "project_id": "PROJECT01",
+        "repository_id": "REPOSITORY01",
+        "tag_name": "TAG_NAME01",
+        "id": "CONTAINER_REGISTRY02"
+      }
+    }
+  },
+  "new": {
+    "container_registry": {
+      "container_registry_ref01": {}
+    }
+  }
+}

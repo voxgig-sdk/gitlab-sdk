@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "api_entities_discovered_cluster": {
+      "API_ENTITIES_DISCOVERED_CLUSTER00": {
+        "group": "s14",
+        "project": "s15",
+        "id": "API_ENTITIES_DISCOVERED_CLUSTER00"
+      },
+      "API_ENTITIES_DISCOVERED_CLUSTER01": {
+        "group": "s28",
+        "project": "s29",
+        "id": "API_ENTITIES_DISCOVERED_CLUSTER01"
+      },
+      "API_ENTITIES_DISCOVERED_CLUSTER02": {
+        "group": "s3c",
+        "project": "s3d",
+        "id": "API_ENTITIES_DISCOVERED_CLUSTER02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_discovered_cluster": {
+      "api_entities_discovered_cluster_ref01": {
+        "group": "s50",
+        "project": "s51"
+      }
+    }
+  }
+}

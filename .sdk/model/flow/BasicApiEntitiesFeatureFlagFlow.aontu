@@ -1,0 +1,84 @@
+# BasicApiEntitiesFeatureFlagFlow
+
+main: kit: flow: BasicApiEntitiesFeatureFlagFlow:
+{
+  entity: "api_entities_feature_flag",
+  kind: "basic",
+  name: "BasicApiEntitiesFeatureFlagFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_feature_flag_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_feature_flag_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      data: {
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "api_entities_feature_flag_ref01",
+        srcdatavar: "api_entities_feature_flag_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_feature_flag_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_feature_flag_ref01",
+        srcdatavar: "api_entities_feature_flag_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_feature_flag01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_feature_flag_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesFeatureFlagFlow"
+}

@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "cluster_agent": {
+      "CLUSTER_AGENT00": {
+        "project_id": "PROJECT01",
+        "token_id": "TOKEN01",
+        "id": "CLUSTER_AGENT00"
+      },
+      "CLUSTER_AGENT01": {
+        "project_id": "PROJECT01",
+        "token_id": "TOKEN01",
+        "id": "CLUSTER_AGENT01"
+      },
+      "CLUSTER_AGENT02": {
+        "project_id": "PROJECT01",
+        "token_id": "TOKEN01",
+        "id": "CLUSTER_AGENT02"
+      }
+    }
+  },
+  "new": {
+    "cluster_agent": {
+      "cluster_agent_ref01": {}
+    }
+  }
+}

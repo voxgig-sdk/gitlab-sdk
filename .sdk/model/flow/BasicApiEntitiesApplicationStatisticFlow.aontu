@@ -1,0 +1,28 @@
+# BasicApiEntitiesApplicationStatisticFlow
+
+main: kit: flow: BasicApiEntitiesApplicationStatisticFlow:
+{
+  entity: "api_entities_application_statistic",
+  kind: "basic",
+  name: "BasicApiEntitiesApplicationStatisticFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_application_statistic_ref01",
+        srcdatavar: "api_entities_application_statistic_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_application_statistic_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesApplicationStatisticFlow"
+}

@@ -1,0 +1,61 @@
+# BasicApiEntitiesProjectsPackagesProtectionRuleFlow
+
+main: kit: flow: BasicApiEntitiesProjectsPackagesProtectionRuleFlow:
+{
+  entity: "api_entities_projects_packages_protection_rule",
+  kind: "basic",
+  name: "BasicApiEntitiesProjectsPackagesProtectionRuleFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_projects_packages_protection_rule_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_projects_packages_protection_rule_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      data: {
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "api_entities_projects_packages_protection_rule_ref01",
+        srcdatavar: "api_entities_projects_packages_protection_rule_ref01_data",
+        suffix: "_up0",
+        textfield: "minimum_access_level_for_delete"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_projects_packages_protection_rule_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesProjectsPackagesProtectionRuleFlow"
+}

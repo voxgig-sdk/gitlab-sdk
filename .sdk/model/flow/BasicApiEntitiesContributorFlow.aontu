@@ -1,0 +1,32 @@
+# BasicApiEntitiesContributorFlow
+
+main: kit: flow: BasicApiEntitiesContributorFlow:
+{
+  entity: "api_entities_contributor",
+  kind: "basic",
+  name: "BasicApiEntitiesContributorFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_contributor_ref01",
+        srcdatavar: "api_entities_contributor_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_contributor01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_contributor_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesContributorFlow"
+}

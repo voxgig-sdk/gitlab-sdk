@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "go_proxy": {
+      "GO_PROXY00": {
+        "module_version": "MODULE_VERSION01",
+        "project_id": "PROJECT01",
+        "id": "GO_PROXY00"
+      },
+      "GO_PROXY01": {
+        "module_version": "MODULE_VERSION01",
+        "project_id": "PROJECT01",
+        "id": "GO_PROXY01"
+      },
+      "GO_PROXY02": {
+        "module_version": "MODULE_VERSION01",
+        "project_id": "PROJECT01",
+        "id": "GO_PROXY02"
+      }
+    }
+  },
+  "new": {
+    "go_proxy": {
+      "go_proxy_ref01": {}
+    }
+  }
+}

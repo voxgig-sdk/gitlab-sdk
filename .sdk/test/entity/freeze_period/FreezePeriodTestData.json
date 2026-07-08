@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "freeze_period": {
+      "FREEZE_PERIOD00": {
+        "project_id": "PROJECT01",
+        "id": "FREEZE_PERIOD00"
+      },
+      "FREEZE_PERIOD01": {
+        "project_id": "PROJECT01",
+        "id": "FREEZE_PERIOD01"
+      },
+      "FREEZE_PERIOD02": {
+        "project_id": "PROJECT01",
+        "id": "FREEZE_PERIOD02"
+      }
+    }
+  },
+  "new": {
+    "freeze_period": {
+      "freeze_period_ref01": {}
+    }
+  }
+}

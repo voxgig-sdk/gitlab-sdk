@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "runner": {
+      "RUNNER00": {
+        "project_id": "PROJECT01",
+        "id": "RUNNER00"
+      },
+      "RUNNER01": {
+        "project_id": "PROJECT01",
+        "id": "RUNNER01"
+      },
+      "RUNNER02": {
+        "project_id": "PROJECT01",
+        "id": "RUNNER02"
+      }
+    }
+  },
+  "new": {
+    "runner": {
+      "runner_ref01": {}
+    }
+  }
+}

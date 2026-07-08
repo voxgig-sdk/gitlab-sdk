@@ -1,0 +1,18 @@
+# BasicSlackFlow
+
+main: kit: flow: BasicSlackFlow:
+{
+  entity: "slack",
+  kind: "basic",
+  name: "BasicSlackFlow",
+  step: [
+    {
+      input: {
+        ref: "slack_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSlackFlow"
+}

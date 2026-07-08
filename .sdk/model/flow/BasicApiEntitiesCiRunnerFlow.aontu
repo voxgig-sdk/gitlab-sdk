@@ -1,0 +1,40 @@
+# BasicApiEntitiesCiRunnerFlow
+
+main: kit: flow: BasicApiEntitiesCiRunnerFlow:
+{
+  entity: "api_entities_ci_runner",
+  kind: "basic",
+  name: "BasicApiEntitiesCiRunnerFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_ci_runner_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "api_entities_ci_runner_ref01",
+        srcdatavar: "api_entities_ci_runner_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_ci_runner_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCiRunnerFlow"
+}

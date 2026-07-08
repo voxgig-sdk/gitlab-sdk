@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "api_entities_issuable_time_stat": {
+      "API_ENTITIES_ISSUABLE_TIME_STAT00": {
+        "human_time_estimate": "s28",
+        "human_total_time_spent": "s29",
+        "time_estimate": "s2a",
+        "total_time_spent": "s2b",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "id": "API_ENTITIES_ISSUABLE_TIME_STAT00"
+      },
+      "API_ENTITIES_ISSUABLE_TIME_STAT01": {
+        "human_time_estimate": "s50",
+        "human_total_time_spent": "s51",
+        "time_estimate": "s52",
+        "total_time_spent": "s53",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "id": "API_ENTITIES_ISSUABLE_TIME_STAT01"
+      },
+      "API_ENTITIES_ISSUABLE_TIME_STAT02": {
+        "human_time_estimate": "s78",
+        "human_total_time_spent": "s79",
+        "time_estimate": "s7a",
+        "total_time_spent": "s7b",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "id": "API_ENTITIES_ISSUABLE_TIME_STAT02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_issuable_time_stat": {
+      "api_entities_issuable_time_stat_ref01": {
+        "human_time_estimate": "sa0",
+        "human_total_time_spent": "sa1",
+        "time_estimate": "sa2",
+        "total_time_spent": "sa3"
+      }
+    }
+  }
+}

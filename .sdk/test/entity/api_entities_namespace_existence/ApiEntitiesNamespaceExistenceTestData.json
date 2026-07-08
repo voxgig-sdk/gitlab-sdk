@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "api_entities_namespace_existence": {
+      "API_ENTITIES_NAMESPACE_EXISTENCE00": {
+        "exist": true,
+        "suggest": [],
+        "namespace_id": "NAMESPACE01"
+      },
+      "API_ENTITIES_NAMESPACE_EXISTENCE01": {
+        "exist": true,
+        "suggest": [],
+        "namespace_id": "NAMESPACE01"
+      },
+      "API_ENTITIES_NAMESPACE_EXISTENCE02": {
+        "exist": true,
+        "suggest": [],
+        "namespace_id": "NAMESPACE01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_namespace_existence": {
+      "api_entities_namespace_existence_ref01": {
+        "exist": true,
+        "suggest": []
+      }
+    }
+  }
+}

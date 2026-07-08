@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "participant": {
+      "PARTICIPANT00": {
+        "key": "s14",
+        "value": "s15",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01"
+      },
+      "PARTICIPANT01": {
+        "key": "s28",
+        "value": "s29",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01"
+      },
+      "PARTICIPANT02": {
+        "key": "s3c",
+        "value": "s3d",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01"
+      }
+    }
+  },
+  "new": {
+    "participant": {
+      "participant_ref01": {
+        "key": "s50",
+        "value": "s51"
+      }
+    }
+  }
+}

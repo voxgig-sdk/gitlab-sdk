@@ -1,0 +1,33 @@
+# BasicApiEntitiesMergeRequestReviewerFlow
+
+main: kit: flow: BasicApiEntitiesMergeRequestReviewerFlow:
+{
+  entity: "api_entities_merge_request_reviewer",
+  kind: "basic",
+  name: "BasicApiEntitiesMergeRequestReviewerFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_merge_request_reviewer_ref01",
+        srcdatavar: "api_entities_merge_request_reviewer_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_merge_request_reviewer01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_merge_request_reviewer_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesMergeRequestReviewerFlow"
+}

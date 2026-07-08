@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "api_entities_relation_import_tracker": {
+      "API_ENTITIES_RELATION_IMPORT_TRACKER00": {
+        "id": "API_ENTITIES_RELATION_IMPORT_TRACKER00"
+      },
+      "API_ENTITIES_RELATION_IMPORT_TRACKER01": {
+        "id": "API_ENTITIES_RELATION_IMPORT_TRACKER01"
+      },
+      "API_ENTITIES_RELATION_IMPORT_TRACKER02": {
+        "id": "API_ENTITIES_RELATION_IMPORT_TRACKER02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_relation_import_tracker": {
+      "api_entities_relation_import_tracker_ref01": {}
+    }
+  }
+}

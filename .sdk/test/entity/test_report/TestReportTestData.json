@@ -1,0 +1,60 @@
+{
+  "existing": {
+    "test_report": {
+      "TEST_REPORT00": {
+        "error_count": "s5a",
+        "failed_count": "s5b",
+        "name": "s5c",
+        "skipped_count": "s5d",
+        "success_count": "s5e",
+        "suite_error": "s5f",
+        "test_case": [],
+        "total_count": "s61",
+        "total_time": "s62",
+        "pipeline_id": "PIPELINE01",
+        "project_id": "PROJECT01"
+      },
+      "TEST_REPORT01": {
+        "error_count": "sb4",
+        "failed_count": "sb5",
+        "name": "sb6",
+        "skipped_count": "sb7",
+        "success_count": "sb8",
+        "suite_error": "sb9",
+        "test_case": [],
+        "total_count": "sbb",
+        "total_time": "sbc",
+        "pipeline_id": "PIPELINE01",
+        "project_id": "PROJECT01"
+      },
+      "TEST_REPORT02": {
+        "error_count": "s10e",
+        "failed_count": "s10f",
+        "name": "s110",
+        "skipped_count": "s111",
+        "success_count": "s112",
+        "suite_error": "s113",
+        "test_case": [],
+        "total_count": "s115",
+        "total_time": "s116",
+        "pipeline_id": "PIPELINE01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "test_report": {
+      "test_report_ref01": {
+        "error_count": "s168",
+        "failed_count": "s169",
+        "name": "s16a",
+        "skipped_count": "s16b",
+        "success_count": "s16c",
+        "suite_error": "s16d",
+        "test_case": [],
+        "total_count": "s16f",
+        "total_time": "s170"
+      }
+    }
+  }
+}

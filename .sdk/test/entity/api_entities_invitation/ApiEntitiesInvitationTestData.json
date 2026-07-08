@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "api_entities_invitation": {
+      "API_ENTITIES_INVITATION00": {
+        "access_level": "s46",
+        "created_at": "s47",
+        "created_by_name": "s48",
+        "expires_at": "s49",
+        "invite_email": "s4a",
+        "invite_token": "s4b",
+        "user_name": "s4c",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_INVITATION00"
+      },
+      "API_ENTITIES_INVITATION01": {
+        "access_level": "s8c",
+        "created_at": "s8d",
+        "created_by_name": "s8e",
+        "expires_at": "s8f",
+        "invite_email": "s90",
+        "invite_token": "s91",
+        "user_name": "s92",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_INVITATION01"
+      },
+      "API_ENTITIES_INVITATION02": {
+        "access_level": "sd2",
+        "created_at": "sd3",
+        "created_by_name": "sd4",
+        "expires_at": "sd5",
+        "invite_email": "sd6",
+        "invite_token": "sd7",
+        "user_name": "sd8",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_INVITATION02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_invitation": {
+      "api_entities_invitation_ref01": {
+        "access_level": "s118",
+        "created_at": "s119",
+        "created_by_name": "s11a",
+        "expires_at": "s11b",
+        "invite_email": "s11c",
+        "invite_token": "s11d",
+        "user_name": "s11e"
+      }
+    }
+  }
+}

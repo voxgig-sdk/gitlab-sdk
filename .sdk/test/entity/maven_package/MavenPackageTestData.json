@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "maven_package": {
+      "MAVEN_PACKAGE00": {
+        "file_name": "FILE_NAME01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "MAVEN_PACKAGE00"
+      },
+      "MAVEN_PACKAGE01": {
+        "file_name": "FILE_NAME01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "MAVEN_PACKAGE01"
+      },
+      "MAVEN_PACKAGE02": {
+        "file_name": "FILE_NAME01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "MAVEN_PACKAGE02"
+      }
+    }
+  },
+  "new": {
+    "maven_package": {
+      "maven_package_ref01": {}
+    }
+  }
+}

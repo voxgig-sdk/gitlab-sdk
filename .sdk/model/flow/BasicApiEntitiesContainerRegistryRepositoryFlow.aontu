@@ -1,0 +1,48 @@
+# BasicApiEntitiesContainerRegistryRepositoryFlow
+
+main: kit: flow: BasicApiEntitiesContainerRegistryRepositoryFlow:
+{
+  entity: "api_entities_container_registry_repository",
+  kind: "basic",
+  name: "BasicApiEntitiesContainerRegistryRepositoryFlow",
+  step: [
+    {
+      match: {
+        group_id: "group01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_container_registry_repository_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_container_registry_repository_ref01",
+        srcdatavar: "api_entities_container_registry_repository_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_container_registry_repository01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_container_registry_repository_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesContainerRegistryRepositoryFlow"
+}

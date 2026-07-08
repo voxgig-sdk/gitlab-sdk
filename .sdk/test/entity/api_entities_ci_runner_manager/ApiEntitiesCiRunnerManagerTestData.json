@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "api_entities_ci_runner_manager": {
+      "API_ENTITIES_CI_RUNNER_MANAGER00": {
+        "architecture": "s6e",
+        "contacted_at": "s6f",
+        "created_at": "s70",
+        "id": "API_ENTITIES_CI_RUNNER_MANAGER00",
+        "ip_address": "s72",
+        "job_execution_status": "s73",
+        "platform": "s74",
+        "revision": "s75",
+        "status": "s76",
+        "system_id": "SYSTEM01",
+        "version": "s78",
+        "runner_id": "RUNNER01"
+      },
+      "API_ENTITIES_CI_RUNNER_MANAGER01": {
+        "architecture": "sdc",
+        "contacted_at": "sdd",
+        "created_at": "sde",
+        "id": "API_ENTITIES_CI_RUNNER_MANAGER01",
+        "ip_address": "se0",
+        "job_execution_status": "se1",
+        "platform": "se2",
+        "revision": "se3",
+        "status": "se4",
+        "system_id": "SYSTEM01",
+        "version": "se6",
+        "runner_id": "RUNNER01"
+      },
+      "API_ENTITIES_CI_RUNNER_MANAGER02": {
+        "architecture": "s14a",
+        "contacted_at": "s14b",
+        "created_at": "s14c",
+        "id": "API_ENTITIES_CI_RUNNER_MANAGER02",
+        "ip_address": "s14e",
+        "job_execution_status": "s14f",
+        "platform": "s150",
+        "revision": "s151",
+        "status": "s152",
+        "system_id": "SYSTEM01",
+        "version": "s154",
+        "runner_id": "RUNNER01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_ci_runner_manager": {
+      "api_entities_ci_runner_manager_ref01": {
+        "architecture": "s1b8",
+        "contacted_at": "s1b9",
+        "created_at": "s1ba",
+        "ip_address": "s1bc",
+        "job_execution_status": "s1bd",
+        "platform": "s1be",
+        "revision": "s1bf",
+        "status": "s1c0",
+        "system_id": "SYSTEM01",
+        "version": "s1c2"
+      }
+    }
+  }
+}

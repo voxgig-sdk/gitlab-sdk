@@ -1,0 +1,32 @@
+# BasicApiEntitiesTreeObjectFlow
+
+main: kit: flow: BasicApiEntitiesTreeObjectFlow:
+{
+  entity: "api_entities_tree_object",
+  kind: "basic",
+  name: "BasicApiEntitiesTreeObjectFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_tree_object_ref01",
+        srcdatavar: "api_entities_tree_object_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_tree_object01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_tree_object_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesTreeObjectFlow"
+}

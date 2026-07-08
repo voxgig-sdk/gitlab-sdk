@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "api_entities_system_broadcast_message": {
+      "API_ENTITIES_SYSTEM_BROADCAST_MESSAGE00": {
+        "active": true,
+        "broadcast_type": "s79",
+        "color": "s7a",
+        "dismissable": "s7b",
+        "ends_at": "s7c",
+        "font": "s7d",
+        "id": "API_ENTITIES_SYSTEM_BROADCAST_MESSAGE00",
+        "message": "s7f",
+        "starts_at": "s80",
+        "target_access_level": "s81",
+        "target_path": "s82",
+        "theme": "s83"
+      },
+      "API_ENTITIES_SYSTEM_BROADCAST_MESSAGE01": {
+        "active": true,
+        "broadcast_type": "sf1",
+        "color": "sf2",
+        "dismissable": "sf3",
+        "ends_at": "sf4",
+        "font": "sf5",
+        "id": "API_ENTITIES_SYSTEM_BROADCAST_MESSAGE01",
+        "message": "sf7",
+        "starts_at": "sf8",
+        "target_access_level": "sf9",
+        "target_path": "sfa",
+        "theme": "sfb"
+      },
+      "API_ENTITIES_SYSTEM_BROADCAST_MESSAGE02": {
+        "active": true,
+        "broadcast_type": "s169",
+        "color": "s16a",
+        "dismissable": "s16b",
+        "ends_at": "s16c",
+        "font": "s16d",
+        "id": "API_ENTITIES_SYSTEM_BROADCAST_MESSAGE02",
+        "message": "s16f",
+        "starts_at": "s170",
+        "target_access_level": "s171",
+        "target_path": "s172",
+        "theme": "s173"
+      }
+    }
+  },
+  "new": {
+    "api_entities_system_broadcast_message": {
+      "api_entities_system_broadcast_message_ref01": {
+        "active": true,
+        "broadcast_type": "s1e1",
+        "color": "s1e2",
+        "dismissable": "s1e3",
+        "ends_at": "s1e4",
+        "font": "s1e5",
+        "message": "s1e7",
+        "starts_at": "s1e8",
+        "target_access_level": "s1e9",
+        "target_path": "s1ea",
+        "theme": "s1eb"
+      }
+    }
+  }
+}

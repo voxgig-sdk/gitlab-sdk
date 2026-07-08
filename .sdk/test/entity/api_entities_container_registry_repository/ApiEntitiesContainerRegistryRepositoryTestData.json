@@ -1,0 +1,68 @@
+{
+  "existing": {
+    "api_entities_container_registry_repository": {
+      "API_ENTITIES_CONTAINER_REGISTRY_REPOSITORY00": {
+        "cleanup_policy_started_at": "s78",
+        "created_at": "s79",
+        "delete_api_path": "s7a",
+        "id": "API_ENTITIES_CONTAINER_REGISTRY_REPOSITORY00",
+        "location": "s7c",
+        "name": "s7d",
+        "path": "s7e",
+        "project_id": "PROJECT01",
+        "size": "s80",
+        "status": "s81",
+        "tag": {},
+        "tags_count": "s83",
+        "group_id": "GROUP01"
+      },
+      "API_ENTITIES_CONTAINER_REGISTRY_REPOSITORY01": {
+        "cleanup_policy_started_at": "sf0",
+        "created_at": "sf1",
+        "delete_api_path": "sf2",
+        "id": "API_ENTITIES_CONTAINER_REGISTRY_REPOSITORY01",
+        "location": "sf4",
+        "name": "sf5",
+        "path": "sf6",
+        "project_id": "PROJECT01",
+        "size": "sf8",
+        "status": "sf9",
+        "tag": {},
+        "tags_count": "sfb",
+        "group_id": "GROUP01"
+      },
+      "API_ENTITIES_CONTAINER_REGISTRY_REPOSITORY02": {
+        "cleanup_policy_started_at": "s168",
+        "created_at": "s169",
+        "delete_api_path": "s16a",
+        "id": "API_ENTITIES_CONTAINER_REGISTRY_REPOSITORY02",
+        "location": "s16c",
+        "name": "s16d",
+        "path": "s16e",
+        "project_id": "PROJECT01",
+        "size": "s170",
+        "status": "s171",
+        "tag": {},
+        "tags_count": "s173",
+        "group_id": "GROUP01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_container_registry_repository": {
+      "api_entities_container_registry_repository_ref01": {
+        "cleanup_policy_started_at": "s1e0",
+        "created_at": "s1e1",
+        "delete_api_path": "s1e2",
+        "location": "s1e4",
+        "name": "s1e5",
+        "path": "s1e6",
+        "project_id": "PROJECT01",
+        "size": "s1e8",
+        "status": "s1e9",
+        "tag": {},
+        "tags_count": "s1eb"
+      }
+    }
+  }
+}

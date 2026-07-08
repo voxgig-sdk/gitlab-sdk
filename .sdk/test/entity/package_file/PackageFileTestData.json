@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "package_file": {
+      "PACKAGE_FILE00": {
+        "package_id": "PACKAGE01",
+        "project_id": "PROJECT01",
+        "id": "PACKAGE_FILE00"
+      },
+      "PACKAGE_FILE01": {
+        "package_id": "PACKAGE01",
+        "project_id": "PROJECT01",
+        "id": "PACKAGE_FILE01"
+      },
+      "PACKAGE_FILE02": {
+        "package_id": "PACKAGE01",
+        "project_id": "PROJECT01",
+        "id": "PACKAGE_FILE02"
+      }
+    }
+  },
+  "new": {
+    "package_file": {
+      "package_file_ref01": {}
+    }
+  }
+}

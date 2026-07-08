@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "api_entities_container_registry_tag": {
+      "API_ENTITIES_CONTAINER_REGISTRY_TAG00": {
+        "location": "s1e",
+        "name": "s1f",
+        "path": "s20",
+        "project_id": "PROJECT01",
+        "repository_id": "REPOSITORY01"
+      },
+      "API_ENTITIES_CONTAINER_REGISTRY_TAG01": {
+        "location": "s3c",
+        "name": "s3d",
+        "path": "s3e",
+        "project_id": "PROJECT01",
+        "repository_id": "REPOSITORY01"
+      },
+      "API_ENTITIES_CONTAINER_REGISTRY_TAG02": {
+        "location": "s5a",
+        "name": "s5b",
+        "path": "s5c",
+        "project_id": "PROJECT01",
+        "repository_id": "REPOSITORY01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_container_registry_tag": {
+      "api_entities_container_registry_tag_ref01": {
+        "location": "s78",
+        "name": "s79",
+        "path": "s7a"
+      }
+    }
+  }
+}

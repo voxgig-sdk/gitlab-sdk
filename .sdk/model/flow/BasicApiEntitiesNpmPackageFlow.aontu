@@ -1,0 +1,28 @@
+# BasicApiEntitiesNpmPackageFlow
+
+main: kit: flow: BasicApiEntitiesNpmPackageFlow:
+{
+  entity: "api_entities_npm_package",
+  kind: "basic",
+  name: "BasicApiEntitiesNpmPackageFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_npm_package_ref01",
+        srcdatavar: "api_entities_npm_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_npm_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesNpmPackageFlow"
+}

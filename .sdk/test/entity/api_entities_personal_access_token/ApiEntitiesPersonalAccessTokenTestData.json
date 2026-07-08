@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "api_entities_personal_access_token": {
+      "API_ENTITIES_PERSONAL_ACCESS_TOKEN00": {
+        "active": true,
+        "created_at": "s65",
+        "description": "s66",
+        "expires_at": "s67",
+        "id": "API_ENTITIES_PERSONAL_ACCESS_TOKEN00",
+        "last_used_at": "s69",
+        "name": "s6a",
+        "revoked": false,
+        "scope": [],
+        "user_id": "USER01"
+      },
+      "API_ENTITIES_PERSONAL_ACCESS_TOKEN01": {
+        "active": true,
+        "created_at": "sc9",
+        "description": "sca",
+        "expires_at": "scb",
+        "id": "API_ENTITIES_PERSONAL_ACCESS_TOKEN01",
+        "last_used_at": "scd",
+        "name": "sce",
+        "revoked": false,
+        "scope": [],
+        "user_id": "USER01"
+      },
+      "API_ENTITIES_PERSONAL_ACCESS_TOKEN02": {
+        "active": true,
+        "created_at": "s12d",
+        "description": "s12e",
+        "expires_at": "s12f",
+        "id": "API_ENTITIES_PERSONAL_ACCESS_TOKEN02",
+        "last_used_at": "s131",
+        "name": "s132",
+        "revoked": false,
+        "scope": [],
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_personal_access_token": {
+      "api_entities_personal_access_token_ref01": {
+        "active": true,
+        "created_at": "s191",
+        "description": "s192",
+        "expires_at": "s193",
+        "last_used_at": "s195",
+        "name": "s196",
+        "revoked": false,
+        "scope": [],
+        "user_id": "USER01"
+      }
+    }
+  }
+}

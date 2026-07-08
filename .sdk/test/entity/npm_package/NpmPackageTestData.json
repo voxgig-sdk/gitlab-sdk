@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "npm_package": {
+      "NPM_PACKAGE00": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "tag": "TAG01",
+        "id": "NPM_PACKAGE00"
+      },
+      "NPM_PACKAGE01": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "tag": "TAG01",
+        "id": "NPM_PACKAGE01"
+      },
+      "NPM_PACKAGE02": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "tag": "TAG01",
+        "id": "NPM_PACKAGE02"
+      }
+    }
+  },
+  "new": {
+    "npm_package": {
+      "npm_package_ref01": {}
+    }
+  }
+}

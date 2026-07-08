@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "api_entities_hook": {
+      "API_ENTITIES_HOOK00": {
+        "alert_status": "saa",
+        "branch_filter_strategy": "sab",
+        "created_at": "sac",
+        "custom_header": [],
+        "custom_webhook_template": "sae",
+        "description": "saf",
+        "disabled_until": "sb0",
+        "enable_ssl_verification": false,
+        "id": "API_ENTITIES_HOOK00",
+        "merge_requests_event": false,
+        "name": "sb4",
+        "push_event": false,
+        "push_events_branch_filter": "sb6",
+        "repository_update_event": false,
+        "tag_push_event": true,
+        "url": "sb9",
+        "url_variable": []
+      },
+      "API_ENTITIES_HOOK01": {
+        "alert_status": "s154",
+        "branch_filter_strategy": "s155",
+        "created_at": "s156",
+        "custom_header": [],
+        "custom_webhook_template": "s158",
+        "description": "s159",
+        "disabled_until": "s15a",
+        "enable_ssl_verification": false,
+        "id": "API_ENTITIES_HOOK01",
+        "merge_requests_event": false,
+        "name": "s15e",
+        "push_event": false,
+        "push_events_branch_filter": "s160",
+        "repository_update_event": false,
+        "tag_push_event": true,
+        "url": "s163",
+        "url_variable": []
+      },
+      "API_ENTITIES_HOOK02": {
+        "alert_status": "s1fe",
+        "branch_filter_strategy": "s1ff",
+        "created_at": "s200",
+        "custom_header": [],
+        "custom_webhook_template": "s202",
+        "description": "s203",
+        "disabled_until": "s204",
+        "enable_ssl_verification": false,
+        "id": "API_ENTITIES_HOOK02",
+        "merge_requests_event": false,
+        "name": "s208",
+        "push_event": false,
+        "push_events_branch_filter": "s20a",
+        "repository_update_event": false,
+        "tag_push_event": true,
+        "url": "s20d",
+        "url_variable": []
+      }
+    }
+  },
+  "new": {
+    "api_entities_hook": {
+      "api_entities_hook_ref01": {
+        "alert_status": "s2a8",
+        "branch_filter_strategy": "s2a9",
+        "created_at": "s2aa",
+        "custom_header": [],
+        "custom_webhook_template": "s2ac",
+        "description": "s2ad",
+        "disabled_until": "s2ae",
+        "enable_ssl_verification": false,
+        "merge_requests_event": false,
+        "name": "s2b2",
+        "push_event": false,
+        "push_events_branch_filter": "s2b4",
+        "repository_update_event": false,
+        "tag_push_event": true,
+        "url": "s2b7",
+        "url_variable": []
+      }
+    }
+  }
+}

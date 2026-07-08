@@ -1,0 +1,23 @@
+# BasicNamespaceFlow
+
+main: kit: flow: BasicNamespaceFlow:
+{
+  entity: "namespace",
+  kind: "basic",
+  name: "BasicNamespaceFlow",
+  step: [
+    {
+      input: {
+        ref: "namespace_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "namespace01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicNamespaceFlow"
+}

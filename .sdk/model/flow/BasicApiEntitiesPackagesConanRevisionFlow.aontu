@@ -1,0 +1,36 @@
+# BasicApiEntitiesPackagesConanRevisionFlow
+
+main: kit: flow: BasicApiEntitiesPackagesConanRevisionFlow:
+{
+  entity: "api_entities_packages_conan_revision",
+  kind: "basic",
+  name: "BasicApiEntitiesPackagesConanRevisionFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_packages_conan_revision_ref01",
+        srcdatavar: "api_entities_packages_conan_revision_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        conan_id: "conan01",
+        id: "api_entities_packages_conan_revision01",
+        package_username: "package_username01",
+        package_version: "package_version01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_packages_conan_revision_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPackagesConanRevisionFlow"
+}

@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "api_entities_user_agent_detail": {
+      "API_ENTITIES_USER_AGENT_DETAIL00": {
+        "akismet_submitted": true,
+        "ip_address": "s1f",
+        "user_agent": "s20",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "snippet_id": "SNIPPET01",
+        "id": "API_ENTITIES_USER_AGENT_DETAIL00"
+      },
+      "API_ENTITIES_USER_AGENT_DETAIL01": {
+        "akismet_submitted": true,
+        "ip_address": "s3d",
+        "user_agent": "s3e",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "snippet_id": "SNIPPET01",
+        "id": "API_ENTITIES_USER_AGENT_DETAIL01"
+      },
+      "API_ENTITIES_USER_AGENT_DETAIL02": {
+        "akismet_submitted": true,
+        "ip_address": "s5b",
+        "user_agent": "s5c",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "snippet_id": "SNIPPET01",
+        "id": "API_ENTITIES_USER_AGENT_DETAIL02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_user_agent_detail": {
+      "api_entities_user_agent_detail_ref01": {
+        "akismet_submitted": true,
+        "ip_address": "s79",
+        "user_agent": "s7a"
+      }
+    }
+  }
+}

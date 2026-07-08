@@ -1,0 +1,36 @@
+# BasicApiEntitiesPackagesConanPackageSnapshotFlow
+
+main: kit: flow: BasicApiEntitiesPackagesConanPackageSnapshotFlow:
+{
+  entity: "api_entities_packages_conan_package_snapshot",
+  kind: "basic",
+  name: "BasicApiEntitiesPackagesConanPackageSnapshotFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_packages_conan_package_snapshot_ref01",
+        srcdatavar: "api_entities_packages_conan_package_snapshot_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        conan_id: "conan01",
+        id: "api_entities_packages_conan_package_snapshot01",
+        package_channel: "package_channel01",
+        package_username: "package_username01",
+        package_version: "package_version01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_packages_conan_package_snapshot_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPackagesConanPackageSnapshotFlow"
+}

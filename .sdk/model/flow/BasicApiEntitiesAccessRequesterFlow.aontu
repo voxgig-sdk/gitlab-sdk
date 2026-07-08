@@ -1,0 +1,62 @@
+# BasicApiEntitiesAccessRequesterFlow
+
+main: kit: flow: BasicApiEntitiesAccessRequesterFlow:
+{
+  entity: "api_entities_access_requester",
+  kind: "basic",
+  name: "BasicApiEntitiesAccessRequesterFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_access_requester_ref01"
+      }
+
+      match: {
+        group_id: "group01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_access_requester_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      data: {
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "api_entities_access_requester_ref01",
+        srcdatavar: "api_entities_access_requester_ref01_data",
+        suffix: "_up0",
+        textfield: "avatar_path"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_access_requester_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesAccessRequesterFlow"
+}

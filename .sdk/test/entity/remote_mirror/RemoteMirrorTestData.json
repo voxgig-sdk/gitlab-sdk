@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "remote_mirror": {
+      "REMOTE_MIRROR00": {
+        "project_id": "PROJECT01",
+        "id": "REMOTE_MIRROR00"
+      },
+      "REMOTE_MIRROR01": {
+        "project_id": "PROJECT01",
+        "id": "REMOTE_MIRROR01"
+      },
+      "REMOTE_MIRROR02": {
+        "project_id": "PROJECT01",
+        "id": "REMOTE_MIRROR02"
+      }
+    }
+  },
+  "new": {
+    "remote_mirror": {
+      "remote_mirror_ref01": {}
+    }
+  }
+}

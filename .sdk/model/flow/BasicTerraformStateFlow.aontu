@@ -1,0 +1,61 @@
+# BasicTerraformStateFlow
+
+main: kit: flow: BasicTerraformStateFlow:
+{
+  entity: "terraform_state",
+  kind: "basic",
+  name: "BasicTerraformStateFlow",
+  step: [
+    {
+      input: {
+        ref: "terraform_state_ref01"
+      }
+
+      match: {
+        name: "name01",
+        project_id: "project01",
+        state_id: "state01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "terraform_state_ref01",
+        srcdatavar: "terraform_state_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "terraform_state01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-terraform_state_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "terraform_state_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "terraform_state01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicTerraformStateFlow"
+}

@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "debian_package": {
+      "DEBIAN_PACKAGE00": {
+        "distribution": "DISTRIBUTION01",
+        "file_name": "FILE_NAME01",
+        "letter": "LETTER01",
+        "package_name": "PACKAGE_NAME01",
+        "package_version": "PACKAGE_VERSION01",
+        "project_id": "PROJECT01",
+        "architecture": "ARCHITECTURE01",
+        "distribution_id": "DISTRIBUTION01",
+        "file_sha256": "FILE_SHA25601",
+        "group_id": "GROUP01",
+        "id": "DEBIAN_PACKAGE00"
+      },
+      "DEBIAN_PACKAGE01": {
+        "distribution": "DISTRIBUTION01",
+        "file_name": "FILE_NAME01",
+        "letter": "LETTER01",
+        "package_name": "PACKAGE_NAME01",
+        "package_version": "PACKAGE_VERSION01",
+        "project_id": "PROJECT01",
+        "architecture": "ARCHITECTURE01",
+        "distribution_id": "DISTRIBUTION01",
+        "file_sha256": "FILE_SHA25601",
+        "group_id": "GROUP01",
+        "id": "DEBIAN_PACKAGE01"
+      },
+      "DEBIAN_PACKAGE02": {
+        "distribution": "DISTRIBUTION01",
+        "file_name": "FILE_NAME01",
+        "letter": "LETTER01",
+        "package_name": "PACKAGE_NAME01",
+        "package_version": "PACKAGE_VERSION01",
+        "project_id": "PROJECT01",
+        "architecture": "ARCHITECTURE01",
+        "distribution_id": "DISTRIBUTION01",
+        "file_sha256": "FILE_SHA25601",
+        "group_id": "GROUP01",
+        "id": "DEBIAN_PACKAGE02"
+      }
+    }
+  },
+  "new": {
+    "debian_package": {
+      "debian_package_ref01": {}
+    }
+  }
+}

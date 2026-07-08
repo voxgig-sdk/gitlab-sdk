@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "api_entities_package": {
+      "API_ENTITIES_PACKAGE00": {
+        "conan_package_name": "s82",
+        "created_at": "s83",
+        "id": "API_ENTITIES_PACKAGE00",
+        "last_downloaded_at": "s85",
+        "link": {},
+        "name": "s87",
+        "package_type": "s88",
+        "pipeline": {},
+        "project_id": "PROJECT01",
+        "project_path": "s8b",
+        "status": "s8c",
+        "tag": "s8d",
+        "version": "s8e",
+        "group_id": "GROUP01"
+      },
+      "API_ENTITIES_PACKAGE01": {
+        "conan_package_name": "s104",
+        "created_at": "s105",
+        "id": "API_ENTITIES_PACKAGE01",
+        "last_downloaded_at": "s107",
+        "link": {},
+        "name": "s109",
+        "package_type": "s10a",
+        "pipeline": {},
+        "project_id": "PROJECT01",
+        "project_path": "s10d",
+        "status": "s10e",
+        "tag": "s10f",
+        "version": "s110",
+        "group_id": "GROUP01"
+      },
+      "API_ENTITIES_PACKAGE02": {
+        "conan_package_name": "s186",
+        "created_at": "s187",
+        "id": "API_ENTITIES_PACKAGE02",
+        "last_downloaded_at": "s189",
+        "link": {},
+        "name": "s18b",
+        "package_type": "s18c",
+        "pipeline": {},
+        "project_id": "PROJECT01",
+        "project_path": "s18f",
+        "status": "s190",
+        "tag": "s191",
+        "version": "s192",
+        "group_id": "GROUP01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_package": {
+      "api_entities_package_ref01": {
+        "conan_package_name": "s208",
+        "created_at": "s209",
+        "last_downloaded_at": "s20b",
+        "link": {},
+        "name": "s20d",
+        "package_type": "s20e",
+        "pipeline": {},
+        "project_id": "PROJECT01",
+        "project_path": "s211",
+        "status": "s212",
+        "tag": "s213",
+        "version": "s214"
+      }
+    }
+  }
+}

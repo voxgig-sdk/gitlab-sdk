@@ -1,0 +1,40 @@
+# BasicGroupExportFlow
+
+main: kit: flow: BasicGroupExportFlow:
+{
+  entity: "group_export",
+  kind: "basic",
+  name: "BasicGroupExportFlow",
+  step: [
+    {
+      input: {
+        ref: "group_export_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "group_export_ref01",
+        srcdatavar: "group_export_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "group_export01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-group_export_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGroupExportFlow"
+}

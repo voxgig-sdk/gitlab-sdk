@@ -1,0 +1,64 @@
+# BasicApiEntitiesMetricImageFlow
+
+main: kit: flow: BasicApiEntitiesMetricImageFlow:
+{
+  entity: "api_entities_metric_image",
+  kind: "basic",
+  name: "BasicApiEntitiesMetricImageFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_metric_image_ref01"
+      }
+
+      match: {
+        alert_management_alert_id: "alert_management_alert01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        alert_management_alert_id: "alert_management_alert01",
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_metric_image_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      data: {
+        alert_management_alert_id: "alert_management_alert01",
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "api_entities_metric_image_ref01",
+        srcdatavar: "api_entities_metric_image_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_metric_image_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesMetricImageFlow"
+}

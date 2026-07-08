@@ -1,0 +1,33 @@
+# BasicApiEntitiesPackagePipelineFlow
+
+main: kit: flow: BasicApiEntitiesPackagePipelineFlow:
+{
+  entity: "api_entities_package_pipeline",
+  kind: "basic",
+  name: "BasicApiEntitiesPackagePipelineFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_package_pipeline_ref01",
+        srcdatavar: "api_entities_package_pipeline_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_package_pipeline01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_package_pipeline_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPackagePipelineFlow"
+}

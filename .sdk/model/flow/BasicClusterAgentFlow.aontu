@@ -1,0 +1,24 @@
+# BasicClusterAgentFlow
+
+main: kit: flow: BasicClusterAgentFlow:
+{
+  entity: "cluster_agent",
+  kind: "basic",
+  name: "BasicClusterAgentFlow",
+  step: [
+    {
+      input: {
+        ref: "cluster_agent_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "cluster_agent01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicClusterAgentFlow"
+}

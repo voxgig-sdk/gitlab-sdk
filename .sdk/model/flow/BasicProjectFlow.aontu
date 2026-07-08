@@ -1,0 +1,79 @@
+# BasicProjectFlow
+
+main: kit: flow: BasicProjectFlow:
+{
+  entity: "project",
+  kind: "basic",
+  name: "BasicProjectFlow",
+  step: [
+    {
+      input: {
+        ref: "project_ref01"
+      }
+
+      match: {
+        hook_id: "hook01",
+        merge_request_id: "merge_request01",
+        pipeline_schedule_id: "pipeline_schedule01",
+        secret: "secret01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "project_ref01",
+        srcdatavar: "project_ref01_data",
+        suffix: "_up0",
+        textfield: "before_sha"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "project_ref01",
+        srcdatavar: "project_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "project_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicProjectFlow"
+}

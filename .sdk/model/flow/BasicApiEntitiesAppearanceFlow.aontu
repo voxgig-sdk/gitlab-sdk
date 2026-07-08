@@ -1,0 +1,47 @@
+# BasicApiEntitiesAppearanceFlow
+
+main: kit: flow: BasicApiEntitiesAppearanceFlow:
+{
+  entity: "api_entities_appearance",
+  kind: "basic",
+  name: "BasicApiEntitiesAppearanceFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_appearance_ref01",
+        srcdatavar: "api_entities_appearance_ref01_data",
+        suffix: "_up0",
+        textfield: "description"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_appearance_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_appearance_ref01",
+        srcdatavar: "api_entities_appearance_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_appearance_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesAppearanceFlow"
+}

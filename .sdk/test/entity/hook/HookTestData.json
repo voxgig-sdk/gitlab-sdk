@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "hook": {
+      "HOOK00": {
+        "key": "KEY01",
+        "id": "HOOK00"
+      },
+      "HOOK01": {
+        "key": "KEY01",
+        "id": "HOOK01"
+      },
+      "HOOK02": {
+        "key": "KEY01",
+        "id": "HOOK02"
+      }
+    }
+  },
+  "new": {
+    "hook": {
+      "hook_ref01": {}
+    }
+  }
+}

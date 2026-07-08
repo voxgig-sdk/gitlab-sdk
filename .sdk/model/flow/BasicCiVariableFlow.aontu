@@ -1,0 +1,23 @@
+# BasicCiVariableFlow
+
+main: kit: flow: BasicCiVariableFlow:
+{
+  entity: "ci_variable",
+  kind: "basic",
+  name: "BasicCiVariableFlow",
+  step: [
+    {
+      input: {
+        ref: "ci_variable_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "ci_variable01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicCiVariableFlow"
+}

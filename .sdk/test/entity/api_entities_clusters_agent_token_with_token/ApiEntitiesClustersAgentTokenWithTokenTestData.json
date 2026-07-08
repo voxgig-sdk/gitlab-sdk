@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "api_entities_clusters_agent_token_with_token": {
+      "API_ENTITIES_CLUSTERS_AGENT_TOKEN_WITH_TOKEN00": {
+        "cluster_agent_id": "CLUSTER_AGENT01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CLUSTERS_AGENT_TOKEN_WITH_TOKEN00"
+      },
+      "API_ENTITIES_CLUSTERS_AGENT_TOKEN_WITH_TOKEN01": {
+        "cluster_agent_id": "CLUSTER_AGENT01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CLUSTERS_AGENT_TOKEN_WITH_TOKEN01"
+      },
+      "API_ENTITIES_CLUSTERS_AGENT_TOKEN_WITH_TOKEN02": {
+        "cluster_agent_id": "CLUSTER_AGENT01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CLUSTERS_AGENT_TOKEN_WITH_TOKEN02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_clusters_agent_token_with_token": {
+      "api_entities_clusters_agent_token_with_token_ref01": {}
+    }
+  }
+}

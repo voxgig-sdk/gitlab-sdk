@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "api_entities_packages_debian_distribution": {
+      "API_ENTITIES_PACKAGES_DEBIAN_DISTRIBUTION00": {
+        "architecture": [],
+        "codename": "s65",
+        "component": [],
+        "description": "s67",
+        "id": "API_ENTITIES_PACKAGES_DEBIAN_DISTRIBUTION00",
+        "label": "s69",
+        "origin": "s6a",
+        "suite": "s6b",
+        "valid_time_duration_second": "s6c",
+        "version": "s6d",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PACKAGES_DEBIAN_DISTRIBUTION01": {
+        "architecture": [],
+        "codename": "sc9",
+        "component": [],
+        "description": "scb",
+        "id": "API_ENTITIES_PACKAGES_DEBIAN_DISTRIBUTION01",
+        "label": "scd",
+        "origin": "sce",
+        "suite": "scf",
+        "valid_time_duration_second": "sd0",
+        "version": "sd1",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PACKAGES_DEBIAN_DISTRIBUTION02": {
+        "architecture": [],
+        "codename": "s12d",
+        "component": [],
+        "description": "s12f",
+        "id": "API_ENTITIES_PACKAGES_DEBIAN_DISTRIBUTION02",
+        "label": "s131",
+        "origin": "s132",
+        "suite": "s133",
+        "valid_time_duration_second": "s134",
+        "version": "s135",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_packages_debian_distribution": {
+      "api_entities_packages_debian_distribution_ref01": {
+        "architecture": [],
+        "codename": "s191",
+        "component": [],
+        "description": "s193",
+        "label": "s195",
+        "origin": "s196",
+        "suite": "s197",
+        "valid_time_duration_second": "s198",
+        "version": "s199"
+      }
+    }
+  }
+}

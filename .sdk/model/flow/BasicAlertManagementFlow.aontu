@@ -1,0 +1,38 @@
+# BasicAlertManagementFlow
+
+main: kit: flow: BasicAlertManagementFlow:
+{
+  entity: "alert_management",
+  kind: "basic",
+  name: "BasicAlertManagementFlow",
+  step: [
+    {
+      input: {
+        ref: "alert_management_ref01"
+      }
+
+      match: {
+        alert_management_alert_id: "alert_management_alert01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "alert_management_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        alert_management_alert_id: "alert_management_alert01",
+        id: "alert_management01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicAlertManagementFlow"
+}

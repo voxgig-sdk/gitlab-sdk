@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "access_request": {
+      "ACCESS_REQUEST00": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "ACCESS_REQUEST00"
+      },
+      "ACCESS_REQUEST01": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "ACCESS_REQUEST01"
+      },
+      "ACCESS_REQUEST02": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "ACCESS_REQUEST02"
+      }
+    }
+  },
+  "new": {
+    "access_request": {
+      "access_request_ref01": {}
+    }
+  }
+}

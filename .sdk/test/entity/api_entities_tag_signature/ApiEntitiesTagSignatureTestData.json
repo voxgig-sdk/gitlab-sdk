@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "api_entities_tag_signature": {
+      "API_ENTITIES_TAG_SIGNATURE00": {
+        "signature": "s14",
+        "signature_type": "s15",
+        "project_id": "PROJECT01",
+        "tag_name": "TAG_NAME01",
+        "id": "API_ENTITIES_TAG_SIGNATURE00"
+      },
+      "API_ENTITIES_TAG_SIGNATURE01": {
+        "signature": "s28",
+        "signature_type": "s29",
+        "project_id": "PROJECT01",
+        "tag_name": "TAG_NAME01",
+        "id": "API_ENTITIES_TAG_SIGNATURE01"
+      },
+      "API_ENTITIES_TAG_SIGNATURE02": {
+        "signature": "s3c",
+        "signature_type": "s3d",
+        "project_id": "PROJECT01",
+        "tag_name": "TAG_NAME01",
+        "id": "API_ENTITIES_TAG_SIGNATURE02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_tag_signature": {
+      "api_entities_tag_signature_ref01": {
+        "signature": "s50",
+        "signature_type": "s51"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "project_avatar": {
+      "PROJECT_AVATAR00": {
+        "id": "PROJECT_AVATAR00"
+      },
+      "PROJECT_AVATAR01": {
+        "id": "PROJECT_AVATAR01"
+      },
+      "PROJECT_AVATAR02": {
+        "id": "PROJECT_AVATAR02"
+      }
+    }
+  },
+  "new": {
+    "project_avatar": {
+      "project_avatar_ref01": {}
+    }
+  }
+}

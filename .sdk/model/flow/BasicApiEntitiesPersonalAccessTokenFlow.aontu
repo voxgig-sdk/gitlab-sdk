@@ -1,0 +1,22 @@
+# BasicApiEntitiesPersonalAccessTokenFlow
+
+main: kit: flow: BasicApiEntitiesPersonalAccessTokenFlow:
+{
+  entity: "api_entities_personal_access_token",
+  kind: "basic",
+  name: "BasicApiEntitiesPersonalAccessTokenFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_personal_access_token_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPersonalAccessTokenFlow"
+}

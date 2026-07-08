@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "helm_package": {
+      "HELM_PACKAGE00": {
+        "channel": "CHANNEL01",
+        "project_id": "PROJECT01",
+        "api_id": "API01",
+        "file_name": "FILE_NAME01",
+        "helm_id": "HELM01",
+        "id": "HELM_PACKAGE00"
+      },
+      "HELM_PACKAGE01": {
+        "channel": "CHANNEL01",
+        "project_id": "PROJECT01",
+        "api_id": "API01",
+        "file_name": "FILE_NAME01",
+        "helm_id": "HELM01",
+        "id": "HELM_PACKAGE01"
+      },
+      "HELM_PACKAGE02": {
+        "channel": "CHANNEL01",
+        "project_id": "PROJECT01",
+        "api_id": "API01",
+        "file_name": "FILE_NAME01",
+        "helm_id": "HELM01",
+        "id": "HELM_PACKAGE02"
+      }
+    }
+  },
+  "new": {
+    "helm_package": {
+      "helm_package_ref01": {}
+    }
+  }
+}

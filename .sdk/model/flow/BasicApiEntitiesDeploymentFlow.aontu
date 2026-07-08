@@ -1,0 +1,26 @@
+# BasicApiEntitiesDeploymentFlow
+
+main: kit: flow: BasicApiEntitiesDeploymentFlow:
+{
+  entity: "api_entities_deployment",
+  kind: "basic",
+  name: "BasicApiEntitiesDeploymentFlow",
+  step: [
+    {
+      match: {
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_deployment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesDeploymentFlow"
+}

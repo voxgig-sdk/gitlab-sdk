@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "api_entities_ci_pipeline_basic": {
+      "API_ENTITIES_CI_PIPELINE_BASIC00": {
+        "created_at": "s64",
+        "id": "API_ENTITIES_CI_PIPELINE_BASIC00",
+        "iid": "s66",
+        "project_id": "PROJECT01",
+        "ref": "s68",
+        "sha": "s69",
+        "source": "s6a",
+        "status": "s6b",
+        "updated_at": "s6c",
+        "web_url": "s6d",
+        "pipeline_schedule_id": "PIPELINE_SCHEDULE01",
+        "merge_request_id": "MERGE_REQUEST01"
+      },
+      "API_ENTITIES_CI_PIPELINE_BASIC01": {
+        "created_at": "sc8",
+        "id": "API_ENTITIES_CI_PIPELINE_BASIC01",
+        "iid": "sca",
+        "project_id": "PROJECT01",
+        "ref": "scc",
+        "sha": "scd",
+        "source": "sce",
+        "status": "scf",
+        "updated_at": "sd0",
+        "web_url": "sd1",
+        "pipeline_schedule_id": "PIPELINE_SCHEDULE01",
+        "merge_request_id": "MERGE_REQUEST01"
+      },
+      "API_ENTITIES_CI_PIPELINE_BASIC02": {
+        "created_at": "s12c",
+        "id": "API_ENTITIES_CI_PIPELINE_BASIC02",
+        "iid": "s12e",
+        "project_id": "PROJECT01",
+        "ref": "s130",
+        "sha": "s131",
+        "source": "s132",
+        "status": "s133",
+        "updated_at": "s134",
+        "web_url": "s135",
+        "pipeline_schedule_id": "PIPELINE_SCHEDULE01",
+        "merge_request_id": "MERGE_REQUEST01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_ci_pipeline_basic": {
+      "api_entities_ci_pipeline_basic_ref01": {
+        "created_at": "s190",
+        "iid": "s192",
+        "project_id": "PROJECT01",
+        "ref": "s194",
+        "sha": "s195",
+        "source": "s196",
+        "status": "s197",
+        "updated_at": "s198",
+        "web_url": "s199"
+      }
+    }
+  }
+}

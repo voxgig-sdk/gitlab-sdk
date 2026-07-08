@@ -1,0 +1,87 @@
+{
+  "existing": {
+    "api_entities_cluster_group": {
+      "API_ENTITIES_CLUSTER_GROUP00": {
+        "cluster_type": "sa0",
+        "created_at": "sa1",
+        "domain": "sa2",
+        "enabled": false,
+        "environment_scope": "sa4",
+        "group": {},
+        "id": "API_ENTITIES_CLUSTER_GROUP00",
+        "managed": "sa7",
+        "management_project": {},
+        "name": "sa9",
+        "namespace_per_environment": "saa",
+        "platform_kubernete": {},
+        "platform_type": "sac",
+        "provider_gcp": {},
+        "provider_type": "sae",
+        "user": {},
+        "group_id": "GROUP01",
+        "cluster_id": "CLUSTER01"
+      },
+      "API_ENTITIES_CLUSTER_GROUP01": {
+        "cluster_type": "s140",
+        "created_at": "s141",
+        "domain": "s142",
+        "enabled": false,
+        "environment_scope": "s144",
+        "group": {},
+        "id": "API_ENTITIES_CLUSTER_GROUP01",
+        "managed": "s147",
+        "management_project": {},
+        "name": "s149",
+        "namespace_per_environment": "s14a",
+        "platform_kubernete": {},
+        "platform_type": "s14c",
+        "provider_gcp": {},
+        "provider_type": "s14e",
+        "user": {},
+        "group_id": "GROUP01",
+        "cluster_id": "CLUSTER01"
+      },
+      "API_ENTITIES_CLUSTER_GROUP02": {
+        "cluster_type": "s1e0",
+        "created_at": "s1e1",
+        "domain": "s1e2",
+        "enabled": false,
+        "environment_scope": "s1e4",
+        "group": {},
+        "id": "API_ENTITIES_CLUSTER_GROUP02",
+        "managed": "s1e7",
+        "management_project": {},
+        "name": "s1e9",
+        "namespace_per_environment": "s1ea",
+        "platform_kubernete": {},
+        "platform_type": "s1ec",
+        "provider_gcp": {},
+        "provider_type": "s1ee",
+        "user": {},
+        "group_id": "GROUP01",
+        "cluster_id": "CLUSTER01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_cluster_group": {
+      "api_entities_cluster_group_ref01": {
+        "cluster_type": "s280",
+        "created_at": "s281",
+        "domain": "s282",
+        "enabled": false,
+        "environment_scope": "s284",
+        "group": {},
+        "managed": "s287",
+        "management_project": {},
+        "name": "s289",
+        "namespace_per_environment": "s28a",
+        "platform_kubernete": {},
+        "platform_type": "s28c",
+        "provider_gcp": {},
+        "provider_type": "s28e",
+        "user": {}
+      }
+    }
+  }
+}

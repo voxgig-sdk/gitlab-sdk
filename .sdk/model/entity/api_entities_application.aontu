@@ -1,0 +1,64 @@
+# Entity: api_entities_application
+
+main: kit: entity: api_entities_application: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "application_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "application_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "callback_url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "confidential"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_application"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/v4/applications"
+          parts: [
+            "api"
+            "v4"
+            "applications"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

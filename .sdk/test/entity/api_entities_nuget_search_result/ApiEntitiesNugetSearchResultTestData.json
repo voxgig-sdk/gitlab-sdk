@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "api_entities_nuget_search_result": {
+      "API_ENTITIES_NUGET_SEARCH_RESULT00": {
+        "author": "s82",
+        "description": "s83",
+        "icon_url": "s84",
+        "id": "API_ENTITIES_NUGET_SEARCH_RESULT00",
+        "license_url": "s86",
+        "project_url": "s87",
+        "summary": "s88",
+        "tag": "s89",
+        "title": "s8a",
+        "total_download": "s8b",
+        "type": "s8c",
+        "verified": false,
+        "version": "s8e",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_NUGET_SEARCH_RESULT01": {
+        "author": "s104",
+        "description": "s105",
+        "icon_url": "s106",
+        "id": "API_ENTITIES_NUGET_SEARCH_RESULT01",
+        "license_url": "s108",
+        "project_url": "s109",
+        "summary": "s10a",
+        "tag": "s10b",
+        "title": "s10c",
+        "total_download": "s10d",
+        "type": "s10e",
+        "verified": false,
+        "version": "s110",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_NUGET_SEARCH_RESULT02": {
+        "author": "s186",
+        "description": "s187",
+        "icon_url": "s188",
+        "id": "API_ENTITIES_NUGET_SEARCH_RESULT02",
+        "license_url": "s18a",
+        "project_url": "s18b",
+        "summary": "s18c",
+        "tag": "s18d",
+        "title": "s18e",
+        "total_download": "s18f",
+        "type": "s190",
+        "verified": false,
+        "version": "s192",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_nuget_search_result": {
+      "api_entities_nuget_search_result_ref01": {
+        "author": "s208",
+        "description": "s209",
+        "icon_url": "s20a",
+        "license_url": "s20c",
+        "project_url": "s20d",
+        "summary": "s20e",
+        "tag": "s20f",
+        "title": "s210",
+        "total_download": "s211",
+        "type": "s212",
+        "verified": false,
+        "version": "s214"
+      }
+    }
+  }
+}

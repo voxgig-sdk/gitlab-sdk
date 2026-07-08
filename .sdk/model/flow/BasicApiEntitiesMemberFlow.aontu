@@ -1,0 +1,119 @@
+# BasicApiEntitiesMemberFlow
+
+main: kit: flow: BasicApiEntitiesMemberFlow:
+{
+  entity: "api_entities_member",
+  kind: "basic",
+  name: "BasicApiEntitiesMemberFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_member_ref01"
+      }
+
+      match: {
+        group_id: "group01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        group_id: "group01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_member_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      data: {
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "api_entities_member_ref01",
+        srcdatavar: "api_entities_member_ref01_data",
+        suffix: "_up0",
+        textfield: "access_level"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_member_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_member_ref01",
+        srcdatavar: "api_entities_member_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_member01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_member_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_member_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        group_id: "group01",
+        id: "api_entities_member01"
+      }
+
+      op: "remove"
+    }
+
+    {
+      input: {
+        suffix: "_rt0"
+      }
+
+      match: {
+        group_id: "group01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "api_entities_member_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesMemberFlow"
+}

@@ -1,0 +1,28 @@
+# BasicApiEntitiesDiscoveredClusterFlow
+
+main: kit: flow: BasicApiEntitiesDiscoveredClusterFlow:
+{
+  entity: "api_entities_discovered_cluster",
+  kind: "basic",
+  name: "BasicApiEntitiesDiscoveredClusterFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_discovered_cluster_ref01",
+        srcdatavar: "api_entities_discovered_cluster_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_discovered_cluster_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesDiscoveredClusterFlow"
+}

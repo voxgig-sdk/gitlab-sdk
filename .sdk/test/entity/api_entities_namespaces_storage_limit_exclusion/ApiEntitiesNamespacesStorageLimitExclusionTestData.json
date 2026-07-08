@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "api_entities_namespaces_storage_limit_exclusion": {
+      "API_ENTITIES_NAMESPACES_STORAGE_LIMIT_EXCLUSION00": {
+        "id": "API_ENTITIES_NAMESPACES_STORAGE_LIMIT_EXCLUSION00",
+        "namespace_id": "NAMESPACE01",
+        "namespace_name": "s2a",
+        "reason": "s2b"
+      },
+      "API_ENTITIES_NAMESPACES_STORAGE_LIMIT_EXCLUSION01": {
+        "id": "API_ENTITIES_NAMESPACES_STORAGE_LIMIT_EXCLUSION01",
+        "namespace_id": "NAMESPACE01",
+        "namespace_name": "s52",
+        "reason": "s53"
+      },
+      "API_ENTITIES_NAMESPACES_STORAGE_LIMIT_EXCLUSION02": {
+        "id": "API_ENTITIES_NAMESPACES_STORAGE_LIMIT_EXCLUSION02",
+        "namespace_id": "NAMESPACE01",
+        "namespace_name": "s7a",
+        "reason": "s7b"
+      }
+    }
+  },
+  "new": {
+    "api_entities_namespaces_storage_limit_exclusion": {
+      "api_entities_namespaces_storage_limit_exclusion_ref01": {
+        "namespace_id": "NAMESPACE01",
+        "namespace_name": "sa2",
+        "reason": "sa3"
+      }
+    }
+  }
+}

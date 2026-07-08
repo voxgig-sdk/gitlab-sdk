@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "api_entities_markdown": {
+      "API_ENTITIES_MARKDOWN00": {
+        "id": "API_ENTITIES_MARKDOWN00"
+      },
+      "API_ENTITIES_MARKDOWN01": {
+        "id": "API_ENTITIES_MARKDOWN01"
+      },
+      "API_ENTITIES_MARKDOWN02": {
+        "id": "API_ENTITIES_MARKDOWN02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_markdown": {
+      "api_entities_markdown_ref01": {}
+    }
+  }
+}

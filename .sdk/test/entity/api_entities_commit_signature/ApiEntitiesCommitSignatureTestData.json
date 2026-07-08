@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "api_entities_commit_signature": {
+      "API_ENTITIES_COMMIT_SIGNATURE00": {
+        "commit_source": "s1e",
+        "signature": "s1f",
+        "signature_type": "s20",
+        "project_id": "PROJECT01",
+        "sha": "SHA01",
+        "id": "API_ENTITIES_COMMIT_SIGNATURE00"
+      },
+      "API_ENTITIES_COMMIT_SIGNATURE01": {
+        "commit_source": "s3c",
+        "signature": "s3d",
+        "signature_type": "s3e",
+        "project_id": "PROJECT01",
+        "sha": "SHA01",
+        "id": "API_ENTITIES_COMMIT_SIGNATURE01"
+      },
+      "API_ENTITIES_COMMIT_SIGNATURE02": {
+        "commit_source": "s5a",
+        "signature": "s5b",
+        "signature_type": "s5c",
+        "project_id": "PROJECT01",
+        "sha": "SHA01",
+        "id": "API_ENTITIES_COMMIT_SIGNATURE02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_commit_signature": {
+      "api_entities_commit_signature_ref01": {
+        "commit_source": "s78",
+        "signature": "s79",
+        "signature_type": "s7a"
+      }
+    }
+  }
+}

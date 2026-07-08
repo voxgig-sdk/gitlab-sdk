@@ -1,0 +1,26 @@
+# BasicApiEntitiesCompareFlow
+
+main: kit: flow: BasicApiEntitiesCompareFlow:
+{
+  entity: "api_entities_compare",
+  kind: "basic",
+  name: "BasicApiEntitiesCompareFlow",
+  step: [
+    {
+      match: {
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_compare_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCompareFlow"
+}

@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "api_entities_package_pipeline": {
+      "API_ENTITIES_PACKAGE_PIPELINE00": {
+        "created_at": "s6e",
+        "id": "API_ENTITIES_PACKAGE_PIPELINE00",
+        "iid": "s70",
+        "project_id": "PROJECT01",
+        "ref": "s72",
+        "sha": "s73",
+        "source": "s74",
+        "status": "s75",
+        "updated_at": "s76",
+        "user": {},
+        "web_url": "s78",
+        "package_id": "PACKAGE01"
+      },
+      "API_ENTITIES_PACKAGE_PIPELINE01": {
+        "created_at": "sdc",
+        "id": "API_ENTITIES_PACKAGE_PIPELINE01",
+        "iid": "sde",
+        "project_id": "PROJECT01",
+        "ref": "se0",
+        "sha": "se1",
+        "source": "se2",
+        "status": "se3",
+        "updated_at": "se4",
+        "user": {},
+        "web_url": "se6",
+        "package_id": "PACKAGE01"
+      },
+      "API_ENTITIES_PACKAGE_PIPELINE02": {
+        "created_at": "s14a",
+        "id": "API_ENTITIES_PACKAGE_PIPELINE02",
+        "iid": "s14c",
+        "project_id": "PROJECT01",
+        "ref": "s14e",
+        "sha": "s14f",
+        "source": "s150",
+        "status": "s151",
+        "updated_at": "s152",
+        "user": {},
+        "web_url": "s154",
+        "package_id": "PACKAGE01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_package_pipeline": {
+      "api_entities_package_pipeline_ref01": {
+        "created_at": "s1b8",
+        "iid": "s1ba",
+        "project_id": "PROJECT01",
+        "ref": "s1bc",
+        "sha": "s1bd",
+        "source": "s1be",
+        "status": "s1bf",
+        "updated_at": "s1c0",
+        "user": {},
+        "web_url": "s1c2"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+# BasicApiEntitiesCiRunnerManagerFlow
+
+main: kit: flow: BasicApiEntitiesCiRunnerManagerFlow:
+{
+  entity: "api_entities_ci_runner_manager",
+  kind: "basic",
+  name: "BasicApiEntitiesCiRunnerManagerFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_ci_runner_manager_ref01",
+        srcdatavar: "api_entities_ci_runner_manager_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_ci_runner_manager01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_ci_runner_manager_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCiRunnerManagerFlow"
+}

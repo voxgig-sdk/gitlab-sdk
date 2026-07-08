@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "api_entities_project_export_status": {
+      "API_ENTITIES_PROJECT_EXPORT_STATUS00": {
+        "created_at": "s5a",
+        "description": "s5b",
+        "export_status": "s5c",
+        "id": "API_ENTITIES_PROJECT_EXPORT_STATUS00",
+        "link": {},
+        "name": "s5f",
+        "name_with_namespace": "s60",
+        "path": "s61",
+        "path_with_namespace": "s62",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PROJECT_EXPORT_STATUS01": {
+        "created_at": "sb4",
+        "description": "sb5",
+        "export_status": "sb6",
+        "id": "API_ENTITIES_PROJECT_EXPORT_STATUS01",
+        "link": {},
+        "name": "sb9",
+        "name_with_namespace": "sba",
+        "path": "sbb",
+        "path_with_namespace": "sbc",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PROJECT_EXPORT_STATUS02": {
+        "created_at": "s10e",
+        "description": "s10f",
+        "export_status": "s110",
+        "id": "API_ENTITIES_PROJECT_EXPORT_STATUS02",
+        "link": {},
+        "name": "s113",
+        "name_with_namespace": "s114",
+        "path": "s115",
+        "path_with_namespace": "s116",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_project_export_status": {
+      "api_entities_project_export_status_ref01": {
+        "created_at": "s168",
+        "description": "s169",
+        "export_status": "s16a",
+        "link": {},
+        "name": "s16d",
+        "name_with_namespace": "s16e",
+        "path": "s16f",
+        "path_with_namespace": "s170"
+      }
+    }
+  }
+}

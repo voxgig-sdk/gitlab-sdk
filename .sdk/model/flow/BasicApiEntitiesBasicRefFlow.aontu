@@ -1,0 +1,27 @@
+# BasicApiEntitiesBasicRefFlow
+
+main: kit: flow: BasicApiEntitiesBasicRefFlow:
+{
+  entity: "api_entities_basic_ref",
+  kind: "basic",
+  name: "BasicApiEntitiesBasicRefFlow",
+  step: [
+    {
+      match: {
+        project_id: "project01",
+        sha: "sha01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_basic_ref_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesBasicRefFlow"
+}

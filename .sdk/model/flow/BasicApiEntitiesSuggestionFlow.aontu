@@ -1,0 +1,29 @@
+# BasicApiEntitiesSuggestionFlow
+
+main: kit: flow: BasicApiEntitiesSuggestionFlow:
+{
+  entity: "api_entities_suggestion",
+  kind: "basic",
+  name: "BasicApiEntitiesSuggestionFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_suggestion_ref01",
+        srcdatavar: "api_entities_suggestion_ref01_data",
+        suffix: "_up0",
+        textfield: "appliable"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_suggestion_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesSuggestionFlow"
+}

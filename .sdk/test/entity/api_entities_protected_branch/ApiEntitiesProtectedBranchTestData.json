@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "api_entities_protected_branch": {
+      "API_ENTITIES_PROTECTED_BRANCH00": {
+        "allow_force_push": true,
+        "code_owner_approval_required": false,
+        "id": "API_ENTITIES_PROTECTED_BRANCH00",
+        "inherited": false,
+        "merge_access_level": [],
+        "name": "s55",
+        "push_access_level": [],
+        "unprotect_access_level": [],
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PROTECTED_BRANCH01": {
+        "allow_force_push": true,
+        "code_owner_approval_required": false,
+        "id": "API_ENTITIES_PROTECTED_BRANCH01",
+        "inherited": false,
+        "merge_access_level": [],
+        "name": "sa5",
+        "push_access_level": [],
+        "unprotect_access_level": [],
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PROTECTED_BRANCH02": {
+        "allow_force_push": true,
+        "code_owner_approval_required": false,
+        "id": "API_ENTITIES_PROTECTED_BRANCH02",
+        "inherited": false,
+        "merge_access_level": [],
+        "name": "sf5",
+        "push_access_level": [],
+        "unprotect_access_level": [],
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_protected_branch": {
+      "api_entities_protected_branch_ref01": {
+        "allow_force_push": true,
+        "code_owner_approval_required": false,
+        "inherited": false,
+        "merge_access_level": [],
+        "name": "s145",
+        "push_access_level": [],
+        "unprotect_access_level": []
+      }
+    }
+  }
+}

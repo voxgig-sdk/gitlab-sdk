@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "project_import": {
+      "PROJECT_IMPORT00": {
+        "id": "PROJECT_IMPORT00"
+      },
+      "PROJECT_IMPORT01": {
+        "id": "PROJECT_IMPORT01"
+      },
+      "PROJECT_IMPORT02": {
+        "id": "PROJECT_IMPORT02"
+      }
+    }
+  },
+  "new": {
+    "project_import": {
+      "project_import_ref01": {}
+    }
+  }
+}

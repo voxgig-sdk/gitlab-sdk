@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "api_entities_project_import_status": {
+      "API_ENTITIES_PROJECT_IMPORT_STATUS00": {
+        "created_at": "s46",
+        "exception_class": "s47",
+        "exception_message": "s48",
+        "id": "API_ENTITIES_PROJECT_IMPORT_STATUS00",
+        "line_number": "s4a",
+        "relation_name": "s4b",
+        "source": "s4c",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PROJECT_IMPORT_STATUS01": {
+        "created_at": "s8c",
+        "exception_class": "s8d",
+        "exception_message": "s8e",
+        "id": "API_ENTITIES_PROJECT_IMPORT_STATUS01",
+        "line_number": "s90",
+        "relation_name": "s91",
+        "source": "s92",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PROJECT_IMPORT_STATUS02": {
+        "created_at": "sd2",
+        "exception_class": "sd3",
+        "exception_message": "sd4",
+        "id": "API_ENTITIES_PROJECT_IMPORT_STATUS02",
+        "line_number": "sd6",
+        "relation_name": "sd7",
+        "source": "sd8",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_project_import_status": {
+      "api_entities_project_import_status_ref01": {
+        "created_at": "s118",
+        "exception_class": "s119",
+        "exception_message": "s11a",
+        "line_number": "s11c",
+        "relation_name": "s11d",
+        "source": "s11e"
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+# BasicApiEntitiesMrNoteFlow
+
+main: kit: flow: BasicApiEntitiesMrNoteFlow:
+{
+  entity: "api_entities_mr_note",
+  kind: "basic",
+  name: "BasicApiEntitiesMrNoteFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_mr_note_ref01",
+        srcdatavar: "api_entities_mr_note_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_mr_note01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_mr_note_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesMrNoteFlow"
+}

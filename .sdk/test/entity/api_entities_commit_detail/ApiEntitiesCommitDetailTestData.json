@@ -1,0 +1,99 @@
+{
+  "existing": {
+    "api_entities_commit_detail": {
+      "API_ENTITIES_COMMIT_DETAIL00": {
+        "author_email": "sbe",
+        "author_name": "sbf",
+        "authored_date": "sc0",
+        "committed_date": "sc1",
+        "committer_email": "sc2",
+        "committer_name": "sc3",
+        "created_at": "sc4",
+        "extended_trailer": {},
+        "id": "API_ENTITIES_COMMIT_DETAIL00",
+        "last_pipeline": {},
+        "message": "sc8",
+        "parent_id": "PARENT01",
+        "project_id": "PROJECT01",
+        "short_id": "SHORT01",
+        "stat": {},
+        "status": "scd",
+        "title": "sce",
+        "trailer": {},
+        "web_url": "sd0",
+        "sha": "SHA01",
+        "submodule": "SUBMODULE01"
+      },
+      "API_ENTITIES_COMMIT_DETAIL01": {
+        "author_email": "s17c",
+        "author_name": "s17d",
+        "authored_date": "s17e",
+        "committed_date": "s17f",
+        "committer_email": "s180",
+        "committer_name": "s181",
+        "created_at": "s182",
+        "extended_trailer": {},
+        "id": "API_ENTITIES_COMMIT_DETAIL01",
+        "last_pipeline": {},
+        "message": "s186",
+        "parent_id": "PARENT01",
+        "project_id": "PROJECT01",
+        "short_id": "SHORT01",
+        "stat": {},
+        "status": "s18b",
+        "title": "s18c",
+        "trailer": {},
+        "web_url": "s18e",
+        "sha": "SHA01",
+        "submodule": "SUBMODULE01"
+      },
+      "API_ENTITIES_COMMIT_DETAIL02": {
+        "author_email": "s23a",
+        "author_name": "s23b",
+        "authored_date": "s23c",
+        "committed_date": "s23d",
+        "committer_email": "s23e",
+        "committer_name": "s23f",
+        "created_at": "s240",
+        "extended_trailer": {},
+        "id": "API_ENTITIES_COMMIT_DETAIL02",
+        "last_pipeline": {},
+        "message": "s244",
+        "parent_id": "PARENT01",
+        "project_id": "PROJECT01",
+        "short_id": "SHORT01",
+        "stat": {},
+        "status": "s249",
+        "title": "s24a",
+        "trailer": {},
+        "web_url": "s24c",
+        "sha": "SHA01",
+        "submodule": "SUBMODULE01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_commit_detail": {
+      "api_entities_commit_detail_ref01": {
+        "author_email": "s2f8",
+        "author_name": "s2f9",
+        "authored_date": "s2fa",
+        "committed_date": "s2fb",
+        "committer_email": "s2fc",
+        "committer_name": "s2fd",
+        "created_at": "s2fe",
+        "extended_trailer": {},
+        "last_pipeline": {},
+        "message": "s302",
+        "parent_id": "PARENT01",
+        "project_id": "PROJECT01",
+        "short_id": "SHORT01",
+        "stat": {},
+        "status": "s307",
+        "title": "s308",
+        "trailer": {},
+        "web_url": "s30a"
+      }
+    }
+  }
+}

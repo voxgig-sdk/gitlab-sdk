@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "api_entities_personal_access_token_with_last_used_ip": {
+      "API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_LAST_USED_IP00": {
+        "active": true,
+        "created_at": "s6f",
+        "description": "s70",
+        "expires_at": "s71",
+        "id": "API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_LAST_USED_IP00",
+        "last_used_at": "s73",
+        "last_used_ip": [],
+        "name": "s75",
+        "revoked": true,
+        "scope": [],
+        "user_id": "USER01"
+      },
+      "API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_LAST_USED_IP01": {
+        "active": true,
+        "created_at": "sdd",
+        "description": "sde",
+        "expires_at": "sdf",
+        "id": "API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_LAST_USED_IP01",
+        "last_used_at": "se1",
+        "last_used_ip": [],
+        "name": "se3",
+        "revoked": true,
+        "scope": [],
+        "user_id": "USER01"
+      },
+      "API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_LAST_USED_IP02": {
+        "active": true,
+        "created_at": "s14b",
+        "description": "s14c",
+        "expires_at": "s14d",
+        "id": "API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_LAST_USED_IP02",
+        "last_used_at": "s14f",
+        "last_used_ip": [],
+        "name": "s151",
+        "revoked": true,
+        "scope": [],
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_personal_access_token_with_last_used_ip": {
+      "api_entities_personal_access_token_with_last_used_ip_ref01": {
+        "active": true,
+        "created_at": "s1b9",
+        "description": "s1ba",
+        "expires_at": "s1bb",
+        "last_used_at": "s1bd",
+        "last_used_ip": [],
+        "name": "s1bf",
+        "revoked": true,
+        "scope": [],
+        "user_id": "USER01"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+# BasicApiEntitiesHookFlow
+
+main: kit: flow: BasicApiEntitiesHookFlow:
+{
+  entity: "api_entities_hook",
+  kind: "basic",
+  name: "BasicApiEntitiesHookFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_hook_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_hook_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_hook_ref01",
+        srcdatavar: "api_entities_hook_ref01_data",
+        suffix: "_up0",
+        textfield: "branch_filter_strategy"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_hook_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_hook_ref01",
+        srcdatavar: "api_entities_hook_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_hook01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_hook_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesHookFlow"
+}

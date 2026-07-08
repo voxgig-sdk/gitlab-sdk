@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "api_entities_pages_domain": {
+      "API_ENTITIES_PAGES_DOMAIN00": {
+        "auto_ssl_enabled": "s46",
+        "certificate": {},
+        "domain": "s48",
+        "enabled_until": "s49",
+        "url": "s4a",
+        "verification_code": "s4b",
+        "verified": true,
+        "project_id": "PROJECT01",
+        "domain_id": "DOMAIN01",
+        "id": "API_ENTITIES_PAGES_DOMAIN00"
+      },
+      "API_ENTITIES_PAGES_DOMAIN01": {
+        "auto_ssl_enabled": "s8c",
+        "certificate": {},
+        "domain": "s8e",
+        "enabled_until": "s8f",
+        "url": "s90",
+        "verification_code": "s91",
+        "verified": true,
+        "project_id": "PROJECT01",
+        "domain_id": "DOMAIN01",
+        "id": "API_ENTITIES_PAGES_DOMAIN01"
+      },
+      "API_ENTITIES_PAGES_DOMAIN02": {
+        "auto_ssl_enabled": "sd2",
+        "certificate": {},
+        "domain": "sd4",
+        "enabled_until": "sd5",
+        "url": "sd6",
+        "verification_code": "sd7",
+        "verified": true,
+        "project_id": "PROJECT01",
+        "domain_id": "DOMAIN01",
+        "id": "API_ENTITIES_PAGES_DOMAIN02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_pages_domain": {
+      "api_entities_pages_domain_ref01": {
+        "auto_ssl_enabled": "s118",
+        "certificate": {},
+        "domain": "s11a",
+        "enabled_until": "s11b",
+        "url": "s11c",
+        "verification_code": "s11d",
+        "verified": true
+      }
+    }
+  }
+}

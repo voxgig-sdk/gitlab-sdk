@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "protected_tag": {
+      "PROTECTED_TAG00": {
+        "project_id": "PROJECT01",
+        "id": "PROTECTED_TAG00"
+      },
+      "PROTECTED_TAG01": {
+        "project_id": "PROJECT01",
+        "id": "PROTECTED_TAG01"
+      },
+      "PROTECTED_TAG02": {
+        "project_id": "PROJECT01",
+        "id": "PROTECTED_TAG02"
+      }
+    }
+  },
+  "new": {
+    "protected_tag": {
+      "protected_tag_ref01": {}
+    }
+  }
+}

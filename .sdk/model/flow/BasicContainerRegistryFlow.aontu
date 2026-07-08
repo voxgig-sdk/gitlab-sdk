@@ -1,0 +1,24 @@
+# BasicContainerRegistryFlow
+
+main: kit: flow: BasicContainerRegistryFlow:
+{
+  entity: "container_registry",
+  kind: "basic",
+  name: "BasicContainerRegistryFlow",
+  step: [
+    {
+      input: {
+        ref: "container_registry_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "container_registry01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicContainerRegistryFlow"
+}

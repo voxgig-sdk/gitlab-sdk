@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "migration": {
+      "MIGRATION00": {
+        "timestamp": "TIMESTAMP01",
+        "id": "MIGRATION00"
+      },
+      "MIGRATION01": {
+        "timestamp": "TIMESTAMP01",
+        "id": "MIGRATION01"
+      },
+      "MIGRATION02": {
+        "timestamp": "TIMESTAMP01",
+        "id": "MIGRATION02"
+      }
+    }
+  },
+  "new": {
+    "migration": {
+      "migration_ref01": {}
+    }
+  }
+}

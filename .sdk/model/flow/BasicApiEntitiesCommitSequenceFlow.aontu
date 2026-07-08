@@ -1,0 +1,33 @@
+# BasicApiEntitiesCommitSequenceFlow
+
+main: kit: flow: BasicApiEntitiesCommitSequenceFlow:
+{
+  entity: "api_entities_commit_sequence",
+  kind: "basic",
+  name: "BasicApiEntitiesCommitSequenceFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_commit_sequence_ref01",
+        srcdatavar: "api_entities_commit_sequence_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_commit_sequence01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_commit_sequence_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCommitSequenceFlow"
+}

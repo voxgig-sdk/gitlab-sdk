@@ -1,0 +1,32 @@
+# BasicApiEntitiesGitlabSubscriptionFlow
+
+main: kit: flow: BasicApiEntitiesGitlabSubscriptionFlow:
+{
+  entity: "api_entities_gitlab_subscription",
+  kind: "basic",
+  name: "BasicApiEntitiesGitlabSubscriptionFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_gitlab_subscription_ref01",
+        srcdatavar: "api_entities_gitlab_subscription_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_gitlab_subscription01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_gitlab_subscription_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesGitlabSubscriptionFlow"
+}

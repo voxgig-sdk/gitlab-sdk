@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "api_entities_project_repository_storage": {
+      "API_ENTITIES_PROJECT_REPOSITORY_STORAGE00": {
+        "created_at": "s28",
+        "disk_path": "s29",
+        "project_id": "PROJECT01",
+        "repository_storage": "s2b",
+        "id": "API_ENTITIES_PROJECT_REPOSITORY_STORAGE00"
+      },
+      "API_ENTITIES_PROJECT_REPOSITORY_STORAGE01": {
+        "created_at": "s50",
+        "disk_path": "s51",
+        "project_id": "PROJECT01",
+        "repository_storage": "s53",
+        "id": "API_ENTITIES_PROJECT_REPOSITORY_STORAGE01"
+      },
+      "API_ENTITIES_PROJECT_REPOSITORY_STORAGE02": {
+        "created_at": "s78",
+        "disk_path": "s79",
+        "project_id": "PROJECT01",
+        "repository_storage": "s7b",
+        "id": "API_ENTITIES_PROJECT_REPOSITORY_STORAGE02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_project_repository_storage": {
+      "api_entities_project_repository_storage_ref01": {
+        "created_at": "sa0",
+        "disk_path": "sa1",
+        "project_id": "PROJECT01",
+        "repository_storage": "sa3"
+      }
+    }
+  }
+}

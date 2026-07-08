@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "ee_api_entities_audit_event": {
+      "EE_API_ENTITIES_AUDIT_EVENT00": {
+        "author_id": "AUTHOR01",
+        "created_at": "s47",
+        "detail": "s48",
+        "entity_id": "ENTITY01",
+        "entity_type": "s4a",
+        "event_name": "s4b",
+        "id": "EE_API_ENTITIES_AUDIT_EVENT00",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "EE_API_ENTITIES_AUDIT_EVENT01": {
+        "author_id": "AUTHOR01",
+        "created_at": "s8d",
+        "detail": "s8e",
+        "entity_id": "ENTITY01",
+        "entity_type": "s90",
+        "event_name": "s91",
+        "id": "EE_API_ENTITIES_AUDIT_EVENT01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "EE_API_ENTITIES_AUDIT_EVENT02": {
+        "author_id": "AUTHOR01",
+        "created_at": "sd3",
+        "detail": "sd4",
+        "entity_id": "ENTITY01",
+        "entity_type": "sd6",
+        "event_name": "sd7",
+        "id": "EE_API_ENTITIES_AUDIT_EVENT02",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "ee_api_entities_audit_event": {
+      "ee_api_entities_audit_event_ref01": {
+        "author_id": "AUTHOR01",
+        "created_at": "s119",
+        "detail": "s11a",
+        "entity_id": "ENTITY01",
+        "entity_type": "s11c",
+        "event_name": "s11d"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "api_entities_ci_resource_group": {
+      "API_ENTITIES_CI_RESOURCE_GROUP00": {
+        "created_at": "s32",
+        "id": "API_ENTITIES_CI_RESOURCE_GROUP00",
+        "key": "s34",
+        "process_mode": "s35",
+        "updated_at": "s36",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_CI_RESOURCE_GROUP01": {
+        "created_at": "s64",
+        "id": "API_ENTITIES_CI_RESOURCE_GROUP01",
+        "key": "s66",
+        "process_mode": "s67",
+        "updated_at": "s68",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_CI_RESOURCE_GROUP02": {
+        "created_at": "s96",
+        "id": "API_ENTITIES_CI_RESOURCE_GROUP02",
+        "key": "s98",
+        "process_mode": "s99",
+        "updated_at": "s9a",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_ci_resource_group": {
+      "api_entities_ci_resource_group_ref01": {
+        "created_at": "sc8",
+        "key": "sca",
+        "process_mode": "scb",
+        "updated_at": "scc"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+# BasicNpmFlow
+
+main: kit: flow: BasicNpmFlow:
+{
+  entity: "npm",
+  kind: "basic",
+  name: "BasicNpmFlow",
+  step: [
+    {
+      data: {
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "npm_ref01",
+        srcdatavar: "npm_ref01_data",
+        suffix: "_up0"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-npm_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNpmFlow"
+}

@@ -1,0 +1,49 @@
+# BasicApiEntitiesPackageFlow
+
+main: kit: flow: BasicApiEntitiesPackageFlow:
+{
+  entity: "api_entities_package",
+  kind: "basic",
+  name: "BasicApiEntitiesPackageFlow",
+  step: [
+    {
+      match: {
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_package_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_package_ref01",
+        srcdatavar: "api_entities_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_package01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPackageFlow"
+}

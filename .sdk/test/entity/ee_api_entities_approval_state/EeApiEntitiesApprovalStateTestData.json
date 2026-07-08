@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "ee_api_entities_approval_state": {
+      "EE_API_ENTITIES_APPROVAL_STATE00": {
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01",
+        "id": "EE_API_ENTITIES_APPROVAL_STATE00"
+      },
+      "EE_API_ENTITIES_APPROVAL_STATE01": {
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01",
+        "id": "EE_API_ENTITIES_APPROVAL_STATE01"
+      },
+      "EE_API_ENTITIES_APPROVAL_STATE02": {
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01",
+        "id": "EE_API_ENTITIES_APPROVAL_STATE02"
+      }
+    }
+  },
+  "new": {
+    "ee_api_entities_approval_state": {
+      "ee_api_entities_approval_state_ref01": {}
+    }
+  }
+}

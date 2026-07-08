@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "conan_package": {
+      "CONAN_PACKAGE00": {
+        "conan_package_reference": "CONAN_PACKAGE_REFERENCE01",
+        "file_name": "FILE_NAME01",
+        "package_channel": "PACKAGE_CHANNEL01",
+        "package_name": "PACKAGE_NAME01",
+        "package_revision": "PACKAGE_REVISION01",
+        "package_username": "PACKAGE_USERNAME01",
+        "package_version": "PACKAGE_VERSION01",
+        "recipe_revision": "RECIPE_REVISION01",
+        "conan_id": "CONAN01",
+        "package_id": "PACKAGE01",
+        "project_id": "PROJECT01",
+        "revision_id": "REVISION01",
+        "file_id": "FILE01",
+        "id": "CONAN_PACKAGE00"
+      },
+      "CONAN_PACKAGE01": {
+        "conan_package_reference": "CONAN_PACKAGE_REFERENCE01",
+        "file_name": "FILE_NAME01",
+        "package_channel": "PACKAGE_CHANNEL01",
+        "package_name": "PACKAGE_NAME01",
+        "package_revision": "PACKAGE_REVISION01",
+        "package_username": "PACKAGE_USERNAME01",
+        "package_version": "PACKAGE_VERSION01",
+        "recipe_revision": "RECIPE_REVISION01",
+        "conan_id": "CONAN01",
+        "package_id": "PACKAGE01",
+        "project_id": "PROJECT01",
+        "revision_id": "REVISION01",
+        "file_id": "FILE01",
+        "id": "CONAN_PACKAGE01"
+      },
+      "CONAN_PACKAGE02": {
+        "conan_package_reference": "CONAN_PACKAGE_REFERENCE01",
+        "file_name": "FILE_NAME01",
+        "package_channel": "PACKAGE_CHANNEL01",
+        "package_name": "PACKAGE_NAME01",
+        "package_revision": "PACKAGE_REVISION01",
+        "package_username": "PACKAGE_USERNAME01",
+        "package_version": "PACKAGE_VERSION01",
+        "recipe_revision": "RECIPE_REVISION01",
+        "conan_id": "CONAN01",
+        "package_id": "PACKAGE01",
+        "project_id": "PROJECT01",
+        "revision_id": "REVISION01",
+        "file_id": "FILE01",
+        "id": "CONAN_PACKAGE02"
+      }
+    }
+  },
+  "new": {
+    "conan_package": {
+      "conan_package_ref01": {}
+    }
+  }
+}

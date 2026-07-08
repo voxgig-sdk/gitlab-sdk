@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "terraform_state": {
+      "TERRAFORM_STATE00": {
+        "name": "NAME01",
+        "project_id": "PROJECT01",
+        "serial": "SERIAL01",
+        "state_id": "STATE01",
+        "id": "TERRAFORM_STATE00"
+      },
+      "TERRAFORM_STATE01": {
+        "name": "NAME01",
+        "project_id": "PROJECT01",
+        "serial": "SERIAL01",
+        "state_id": "STATE01",
+        "id": "TERRAFORM_STATE01"
+      },
+      "TERRAFORM_STATE02": {
+        "name": "NAME01",
+        "project_id": "PROJECT01",
+        "serial": "SERIAL01",
+        "state_id": "STATE01",
+        "id": "TERRAFORM_STATE02"
+      }
+    }
+  },
+  "new": {
+    "terraform_state": {
+      "terraform_state_ref01": {}
+    }
+  }
+}

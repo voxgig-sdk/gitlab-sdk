@@ -1,0 +1,32 @@
+# BasicComposerPackageFlow
+
+main: kit: flow: BasicComposerPackageFlow:
+{
+  entity: "composer_package",
+  kind: "basic",
+  name: "BasicComposerPackageFlow",
+  step: [
+    {
+      input: {
+        ref: "composer_package_ref01",
+        srcdatavar: "composer_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "composer_package01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-composer_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicComposerPackageFlow"
+}

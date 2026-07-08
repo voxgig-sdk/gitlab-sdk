@@ -1,0 +1,89 @@
+{
+  "existing": {
+    "api_entities_appearance": {
+      "API_ENTITIES_APPEARANCE00": {
+        "description": "saa",
+        "email_header_and_footer_enabled": "sab",
+        "favicon": "sac",
+        "footer_message": "sad",
+        "header_logo": "sae",
+        "header_message": "saf",
+        "logo": "sb0",
+        "member_guideline": "sb1",
+        "message_background_color": "sb2",
+        "message_font_color": "sb3",
+        "new_project_guideline": "sb4",
+        "profile_image_guideline": "sb5",
+        "pwa_description": "sb6",
+        "pwa_icon": "sb7",
+        "pwa_name": "sb8",
+        "pwa_short_name": "sb9",
+        "title": "sba",
+        "id": "API_ENTITIES_APPEARANCE00"
+      },
+      "API_ENTITIES_APPEARANCE01": {
+        "description": "s154",
+        "email_header_and_footer_enabled": "s155",
+        "favicon": "s156",
+        "footer_message": "s157",
+        "header_logo": "s158",
+        "header_message": "s159",
+        "logo": "s15a",
+        "member_guideline": "s15b",
+        "message_background_color": "s15c",
+        "message_font_color": "s15d",
+        "new_project_guideline": "s15e",
+        "profile_image_guideline": "s15f",
+        "pwa_description": "s160",
+        "pwa_icon": "s161",
+        "pwa_name": "s162",
+        "pwa_short_name": "s163",
+        "title": "s164",
+        "id": "API_ENTITIES_APPEARANCE01"
+      },
+      "API_ENTITIES_APPEARANCE02": {
+        "description": "s1fe",
+        "email_header_and_footer_enabled": "s1ff",
+        "favicon": "s200",
+        "footer_message": "s201",
+        "header_logo": "s202",
+        "header_message": "s203",
+        "logo": "s204",
+        "member_guideline": "s205",
+        "message_background_color": "s206",
+        "message_font_color": "s207",
+        "new_project_guideline": "s208",
+        "profile_image_guideline": "s209",
+        "pwa_description": "s20a",
+        "pwa_icon": "s20b",
+        "pwa_name": "s20c",
+        "pwa_short_name": "s20d",
+        "title": "s20e",
+        "id": "API_ENTITIES_APPEARANCE02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_appearance": {
+      "api_entities_appearance_ref01": {
+        "description": "s2a8",
+        "email_header_and_footer_enabled": "s2a9",
+        "favicon": "s2aa",
+        "footer_message": "s2ab",
+        "header_logo": "s2ac",
+        "header_message": "s2ad",
+        "logo": "s2ae",
+        "member_guideline": "s2af",
+        "message_background_color": "s2b0",
+        "message_font_color": "s2b1",
+        "new_project_guideline": "s2b2",
+        "profile_image_guideline": "s2b3",
+        "pwa_description": "s2b4",
+        "pwa_icon": "s2b5",
+        "pwa_name": "s2b6",
+        "pwa_short_name": "s2b7",
+        "title": "s2b8"
+      }
+    }
+  }
+}

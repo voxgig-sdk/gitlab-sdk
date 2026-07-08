@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "personal_access_token": {
+      "PERSONAL_ACCESS_TOKEN00": {
+        "id": "PERSONAL_ACCESS_TOKEN00"
+      },
+      "PERSONAL_ACCESS_TOKEN01": {
+        "id": "PERSONAL_ACCESS_TOKEN01"
+      },
+      "PERSONAL_ACCESS_TOKEN02": {
+        "id": "PERSONAL_ACCESS_TOKEN02"
+      }
+    }
+  },
+  "new": {
+    "personal_access_token": {
+      "personal_access_token_ref01": {}
+    }
+  }
+}

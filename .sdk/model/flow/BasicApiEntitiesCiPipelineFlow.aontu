@@ -1,0 +1,22 @@
+# BasicApiEntitiesCiPipelineFlow
+
+main: kit: flow: BasicApiEntitiesCiPipelineFlow:
+{
+  entity: "api_entities_ci_pipeline",
+  kind: "basic",
+  name: "BasicApiEntitiesCiPipelineFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_ci_pipeline_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesCiPipelineFlow"
+}

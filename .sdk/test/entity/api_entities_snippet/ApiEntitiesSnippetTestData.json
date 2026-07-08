@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "api_entities_snippet": {
+      "API_ENTITIES_SNIPPET00": {
+        "author": {},
+        "created_at": "sab",
+        "description": "sac",
+        "file": [],
+        "file_name": "sae",
+        "http_url_to_repo": "saf",
+        "id": "API_ENTITIES_SNIPPET00",
+        "imported": false,
+        "imported_from": "sb2",
+        "project_id": "PROJECT01",
+        "raw_url": "sb4",
+        "repository_storage": "sb5",
+        "ssh_url_to_repo": "sb6",
+        "title": "sb7",
+        "updated_at": "sb8",
+        "visibility": "sb9",
+        "web_url": "sba"
+      },
+      "API_ENTITIES_SNIPPET01": {
+        "author": {},
+        "created_at": "s155",
+        "description": "s156",
+        "file": [],
+        "file_name": "s158",
+        "http_url_to_repo": "s159",
+        "id": "API_ENTITIES_SNIPPET01",
+        "imported": false,
+        "imported_from": "s15c",
+        "project_id": "PROJECT01",
+        "raw_url": "s15e",
+        "repository_storage": "s15f",
+        "ssh_url_to_repo": "s160",
+        "title": "s161",
+        "updated_at": "s162",
+        "visibility": "s163",
+        "web_url": "s164"
+      },
+      "API_ENTITIES_SNIPPET02": {
+        "author": {},
+        "created_at": "s1ff",
+        "description": "s200",
+        "file": [],
+        "file_name": "s202",
+        "http_url_to_repo": "s203",
+        "id": "API_ENTITIES_SNIPPET02",
+        "imported": false,
+        "imported_from": "s206",
+        "project_id": "PROJECT01",
+        "raw_url": "s208",
+        "repository_storage": "s209",
+        "ssh_url_to_repo": "s20a",
+        "title": "s20b",
+        "updated_at": "s20c",
+        "visibility": "s20d",
+        "web_url": "s20e"
+      }
+    }
+  },
+  "new": {
+    "api_entities_snippet": {
+      "api_entities_snippet_ref01": {
+        "author": {},
+        "created_at": "s2a9",
+        "description": "s2aa",
+        "file": [],
+        "file_name": "s2ac",
+        "http_url_to_repo": "s2ad",
+        "imported": false,
+        "imported_from": "s2b0",
+        "project_id": "PROJECT01",
+        "raw_url": "s2b2",
+        "repository_storage": "s2b3",
+        "ssh_url_to_repo": "s2b4",
+        "title": "s2b5",
+        "updated_at": "s2b6",
+        "visibility": "s2b7",
+        "web_url": "s2b8"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "error_tracking_client_key": {
+      "ERROR_TRACKING_CLIENT_KEY00": {
+        "project_id": "PROJECT01",
+        "id": "ERROR_TRACKING_CLIENT_KEY00"
+      },
+      "ERROR_TRACKING_CLIENT_KEY01": {
+        "project_id": "PROJECT01",
+        "id": "ERROR_TRACKING_CLIENT_KEY01"
+      },
+      "ERROR_TRACKING_CLIENT_KEY02": {
+        "project_id": "PROJECT01",
+        "id": "ERROR_TRACKING_CLIENT_KEY02"
+      }
+    }
+  },
+  "new": {
+    "error_tracking_client_key": {
+      "error_tracking_client_key_ref01": {}
+    }
+  }
+}

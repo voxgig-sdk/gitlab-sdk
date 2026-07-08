@@ -1,0 +1,32 @@
+# BasicCargoPackageFlow
+
+main: kit: flow: BasicCargoPackageFlow:
+{
+  entity: "cargo_package",
+  kind: "basic",
+  name: "BasicCargoPackageFlow",
+  step: [
+    {
+      input: {
+        ref: "cargo_package_ref01",
+        srcdatavar: "cargo_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "cargo_package01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cargo_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCargoPackageFlow"
+}

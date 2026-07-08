@@ -1,0 +1,100 @@
+{
+  "existing": {
+    "api_entities_ci_job_basic_with_project": {
+      "API_ENTITIES_CI_JOB_BASIC_WITH_PROJECT00": {
+        "allow_failure": true,
+        "commit": {},
+        "coverage": 202,
+        "created_at": "scb",
+        "duration": 204,
+        "erased_at": "scd",
+        "failure_reason": "sce",
+        "finished_at": "scf",
+        "id": "API_ENTITIES_CI_JOB_BASIC_WITH_PROJECT00",
+        "name": "sd1",
+        "pipeline": {},
+        "project": {},
+        "queued_duration": 212,
+        "ref": "sd5",
+        "stage": "sd6",
+        "started_at": "sd7",
+        "status": "sd8",
+        "tag": false,
+        "user": {},
+        "web_url": "sdb",
+        "runner_id": "RUNNER01"
+      },
+      "API_ENTITIES_CI_JOB_BASIC_WITH_PROJECT01": {
+        "allow_failure": true,
+        "commit": {},
+        "coverage": 402,
+        "created_at": "s193",
+        "duration": 404,
+        "erased_at": "s195",
+        "failure_reason": "s196",
+        "finished_at": "s197",
+        "id": "API_ENTITIES_CI_JOB_BASIC_WITH_PROJECT01",
+        "name": "s199",
+        "pipeline": {},
+        "project": {},
+        "queued_duration": 412,
+        "ref": "s19d",
+        "stage": "s19e",
+        "started_at": "s19f",
+        "status": "s1a0",
+        "tag": false,
+        "user": {},
+        "web_url": "s1a3",
+        "runner_id": "RUNNER01"
+      },
+      "API_ENTITIES_CI_JOB_BASIC_WITH_PROJECT02": {
+        "allow_failure": true,
+        "commit": {},
+        "coverage": 602,
+        "created_at": "s25b",
+        "duration": 604,
+        "erased_at": "s25d",
+        "failure_reason": "s25e",
+        "finished_at": "s25f",
+        "id": "API_ENTITIES_CI_JOB_BASIC_WITH_PROJECT02",
+        "name": "s261",
+        "pipeline": {},
+        "project": {},
+        "queued_duration": 612,
+        "ref": "s265",
+        "stage": "s266",
+        "started_at": "s267",
+        "status": "s268",
+        "tag": false,
+        "user": {},
+        "web_url": "s26b",
+        "runner_id": "RUNNER01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_ci_job_basic_with_project": {
+      "api_entities_ci_job_basic_with_project_ref01": {
+        "allow_failure": true,
+        "commit": {},
+        "coverage": 802,
+        "created_at": "s323",
+        "duration": 804,
+        "erased_at": "s325",
+        "failure_reason": "s326",
+        "finished_at": "s327",
+        "name": "s329",
+        "pipeline": {},
+        "project": {},
+        "queued_duration": 812,
+        "ref": "s32d",
+        "stage": "s32e",
+        "started_at": "s32f",
+        "status": "s330",
+        "tag": false,
+        "user": {},
+        "web_url": "s333"
+      }
+    }
+  }
+}

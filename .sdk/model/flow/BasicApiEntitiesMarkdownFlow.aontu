@@ -1,0 +1,18 @@
+# BasicApiEntitiesMarkdownFlow
+
+main: kit: flow: BasicApiEntitiesMarkdownFlow:
+{
+  entity: "api_entities_markdown",
+  kind: "basic",
+  name: "BasicApiEntitiesMarkdownFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_markdown_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesMarkdownFlow"
+}

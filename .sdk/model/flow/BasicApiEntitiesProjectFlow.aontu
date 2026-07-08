@@ -1,0 +1,58 @@
+# BasicApiEntitiesProjectFlow
+
+main: kit: flow: BasicApiEntitiesProjectFlow:
+{
+  entity: "api_entities_project",
+  kind: "basic",
+  name: "BasicApiEntitiesProjectFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_project_ref01"
+      }
+
+      match: {
+        group_id: "group01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        group_id: "group01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_project_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_project_ref01",
+        srcdatavar: "api_entities_project_ref01_data",
+        suffix: "_up0",
+        textfield: "analytics_access_level"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_project_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesProjectFlow"
+}

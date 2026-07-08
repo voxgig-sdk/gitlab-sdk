@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "api_entities_deployments_approval": {
+      "API_ENTITIES_DEPLOYMENTS_APPROVAL00": {
+        "deployment_id": "DEPLOYMENT01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_DEPLOYMENTS_APPROVAL00"
+      },
+      "API_ENTITIES_DEPLOYMENTS_APPROVAL01": {
+        "deployment_id": "DEPLOYMENT01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_DEPLOYMENTS_APPROVAL01"
+      },
+      "API_ENTITIES_DEPLOYMENTS_APPROVAL02": {
+        "deployment_id": "DEPLOYMENT01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_DEPLOYMENTS_APPROVAL02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_deployments_approval": {
+      "api_entities_deployments_approval_ref01": {}
+    }
+  }
+}

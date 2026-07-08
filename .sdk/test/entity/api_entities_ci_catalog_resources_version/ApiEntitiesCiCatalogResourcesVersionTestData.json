@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "api_entities_ci_catalog_resources_version": {
+      "API_ENTITIES_CI_CATALOG_RESOURCES_VERSION00": {
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CI_CATALOG_RESOURCES_VERSION00"
+      },
+      "API_ENTITIES_CI_CATALOG_RESOURCES_VERSION01": {
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CI_CATALOG_RESOURCES_VERSION01"
+      },
+      "API_ENTITIES_CI_CATALOG_RESOURCES_VERSION02": {
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CI_CATALOG_RESOURCES_VERSION02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_ci_catalog_resources_version": {
+      "api_entities_ci_catalog_resources_version_ref01": {}
+    }
+  }
+}

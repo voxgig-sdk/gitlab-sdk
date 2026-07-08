@@ -1,0 +1,62 @@
+# BasicEeApiEntitiesIssuableMetricImageFlow
+
+main: kit: flow: BasicEeApiEntitiesIssuableMetricImageFlow:
+{
+  entity: "ee_api_entities_issuable_metric_image",
+  kind: "basic",
+  name: "BasicEeApiEntitiesIssuableMetricImageFlow",
+  step: [
+    {
+      input: {
+        ref: "ee_api_entities_issuable_metric_image_ref01"
+      }
+
+      match: {
+        issue_id: "issue01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      data: {
+        issue_id: "issue01",
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "ee_api_entities_issuable_metric_image_ref01",
+        srcdatavar: "ee_api_entities_issuable_metric_image_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ee_api_entities_issuable_metric_image_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "ee_api_entities_issuable_metric_image_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "ee_api_entities_issuable_metric_image01",
+        issue_id: "issue01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicEeApiEntitiesIssuableMetricImageFlow"
+}

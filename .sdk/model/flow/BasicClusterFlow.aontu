@@ -1,0 +1,23 @@
+# BasicClusterFlow
+
+main: kit: flow: BasicClusterFlow:
+{
+  entity: "cluster",
+  kind: "basic",
+  name: "BasicClusterFlow",
+  step: [
+    {
+      input: {
+        ref: "cluster_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "cluster01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicClusterFlow"
+}

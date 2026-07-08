@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      security: {
+        in: "header"
+        name: "PRIVATE-TOKEN"
+        prefix: ""
+        scheme: "access_token_header"
+        type: "apiKey"
+      }
+      servers: [
+        {
+          url: "https://gitlab.com"
+        }
+      ]
+      title: "GitLab API"
+      version: "v4"
+    }
+  }
+}
+

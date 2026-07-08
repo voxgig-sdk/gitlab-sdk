@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "api_entities_protected_tag": {
+      "API_ENTITIES_PROTECTED_TAG00": {
+        "create_access_level": {},
+        "name": "s15",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PROTECTED_TAG00"
+      },
+      "API_ENTITIES_PROTECTED_TAG01": {
+        "create_access_level": {},
+        "name": "s29",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PROTECTED_TAG01"
+      },
+      "API_ENTITIES_PROTECTED_TAG02": {
+        "create_access_level": {},
+        "name": "s3d",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PROTECTED_TAG02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_protected_tag": {
+      "api_entities_protected_tag_ref01": {
+        "create_access_level": {},
+        "name": "s51"
+      }
+    }
+  }
+}

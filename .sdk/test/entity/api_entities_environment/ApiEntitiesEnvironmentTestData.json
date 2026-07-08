@@ -1,0 +1,87 @@
+{
+  "existing": {
+    "api_entities_environment": {
+      "API_ENTITIES_ENVIRONMENT00": {
+        "auto_stop_at": "sa0",
+        "auto_stop_setting": "sa1",
+        "cluster_agent": {},
+        "created_at": "sa3",
+        "description": "sa4",
+        "external_url": "sa5",
+        "flux_resource_path": "sa6",
+        "id": "API_ENTITIES_ENVIRONMENT00",
+        "kubernetes_namespace": "sa8",
+        "last_deployment": {},
+        "name": "saa",
+        "project": {},
+        "slug": "sac",
+        "state": "sad",
+        "tier": "sae",
+        "updated_at": "saf",
+        "environment_id": "ENVIRONMENT01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_ENVIRONMENT01": {
+        "auto_stop_at": "s140",
+        "auto_stop_setting": "s141",
+        "cluster_agent": {},
+        "created_at": "s143",
+        "description": "s144",
+        "external_url": "s145",
+        "flux_resource_path": "s146",
+        "id": "API_ENTITIES_ENVIRONMENT01",
+        "kubernetes_namespace": "s148",
+        "last_deployment": {},
+        "name": "s14a",
+        "project": {},
+        "slug": "s14c",
+        "state": "s14d",
+        "tier": "s14e",
+        "updated_at": "s14f",
+        "environment_id": "ENVIRONMENT01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_ENVIRONMENT02": {
+        "auto_stop_at": "s1e0",
+        "auto_stop_setting": "s1e1",
+        "cluster_agent": {},
+        "created_at": "s1e3",
+        "description": "s1e4",
+        "external_url": "s1e5",
+        "flux_resource_path": "s1e6",
+        "id": "API_ENTITIES_ENVIRONMENT02",
+        "kubernetes_namespace": "s1e8",
+        "last_deployment": {},
+        "name": "s1ea",
+        "project": {},
+        "slug": "s1ec",
+        "state": "s1ed",
+        "tier": "s1ee",
+        "updated_at": "s1ef",
+        "environment_id": "ENVIRONMENT01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_environment": {
+      "api_entities_environment_ref01": {
+        "auto_stop_at": "s280",
+        "auto_stop_setting": "s281",
+        "cluster_agent": {},
+        "created_at": "s283",
+        "description": "s284",
+        "external_url": "s285",
+        "flux_resource_path": "s286",
+        "kubernetes_namespace": "s288",
+        "last_deployment": {},
+        "name": "s28a",
+        "project": {},
+        "slug": "s28c",
+        "state": "s28d",
+        "tier": "s28e",
+        "updated_at": "s28f"
+      }
+    }
+  }
+}

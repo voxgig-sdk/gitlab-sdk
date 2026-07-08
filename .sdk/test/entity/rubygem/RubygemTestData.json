@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "rubygem": {
+      "RUBYGEM00": {
+        "project_id": "PROJECT01",
+        "id": "RUBYGEM00"
+      },
+      "RUBYGEM01": {
+        "project_id": "PROJECT01",
+        "id": "RUBYGEM01"
+      },
+      "RUBYGEM02": {
+        "project_id": "PROJECT01",
+        "id": "RUBYGEM02"
+      }
+    }
+  },
+  "new": {
+    "rubygem": {
+      "rubygem_ref01": {}
+    }
+  }
+}

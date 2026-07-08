@@ -1,0 +1,18 @@
+# BasicImportFlow
+
+main: kit: flow: BasicImportFlow:
+{
+  entity: "import",
+  kind: "basic",
+  name: "BasicImportFlow",
+  step: [
+    {
+      input: {
+        ref: "import_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicImportFlow"
+}

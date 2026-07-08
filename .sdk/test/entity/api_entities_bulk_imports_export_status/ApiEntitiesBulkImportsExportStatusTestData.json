@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "api_entities_bulk_imports_export_status": {
+      "API_ENTITIES_BULK_IMPORTS_EXPORT_STATUS00": {
+        "batch": {},
+        "batched": false,
+        "batches_count": "s52",
+        "error": "s53",
+        "relation": "s54",
+        "status": "s55",
+        "total_objects_count": "s56",
+        "updated_at": "s57",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_BULK_IMPORTS_EXPORT_STATUS01": {
+        "batch": {},
+        "batched": false,
+        "batches_count": "sa2",
+        "error": "sa3",
+        "relation": "sa4",
+        "status": "sa5",
+        "total_objects_count": "sa6",
+        "updated_at": "sa7",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_BULK_IMPORTS_EXPORT_STATUS02": {
+        "batch": {},
+        "batched": false,
+        "batches_count": "sf2",
+        "error": "sf3",
+        "relation": "sf4",
+        "status": "sf5",
+        "total_objects_count": "sf6",
+        "updated_at": "sf7",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_bulk_imports_export_status": {
+      "api_entities_bulk_imports_export_status_ref01": {
+        "batch": {},
+        "batched": false,
+        "batches_count": "s142",
+        "error": "s143",
+        "relation": "s144",
+        "status": "s145",
+        "total_objects_count": "s146",
+        "updated_at": "s147"
+      }
+    }
+  }
+}

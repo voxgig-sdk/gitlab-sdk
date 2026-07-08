@@ -1,0 +1,76 @@
+# BasicNpmPackageFlow
+
+main: kit: flow: BasicNpmPackageFlow:
+{
+  entity: "npm_package",
+  kind: "basic",
+  name: "BasicNpmPackageFlow",
+  step: [
+    {
+      input: {
+        ref: "npm_package_ref01"
+      }
+
+      match: {
+        group_id: "group01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "npm_package_ref01",
+        srcdatavar: "npm_package_ref01_data",
+        suffix: "_up0"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-npm_package_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "npm_package_ref01",
+        srcdatavar: "npm_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "npm_package01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-npm_package_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "npm_package_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "npm_package01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicNpmPackageFlow"
+}

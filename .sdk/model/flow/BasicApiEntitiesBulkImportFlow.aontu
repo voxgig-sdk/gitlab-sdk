@@ -1,0 +1,56 @@
+# BasicApiEntitiesBulkImportFlow
+
+main: kit: flow: BasicApiEntitiesBulkImportFlow:
+{
+  entity: "api_entities_bulk_import",
+  kind: "basic",
+  name: "BasicApiEntitiesBulkImportFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_bulk_import_ref01"
+      }
+
+      match: {
+        bulk_import_id: "bulk_import01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_bulk_import_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_bulk_import_ref01",
+        srcdatavar: "api_entities_bulk_import_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_bulk_import01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_bulk_import_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesBulkImportFlow"
+}

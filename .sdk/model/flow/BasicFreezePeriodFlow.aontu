@@ -1,0 +1,24 @@
+# BasicFreezePeriodFlow
+
+main: kit: flow: BasicFreezePeriodFlow:
+{
+  entity: "freeze_period",
+  kind: "basic",
+  name: "BasicFreezePeriodFlow",
+  step: [
+    {
+      input: {
+        ref: "freeze_period_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "freeze_period01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicFreezePeriodFlow"
+}

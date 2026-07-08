@@ -1,0 +1,23 @@
+# BasicApiEntitiesClustersAgentTokenWithTokenFlow
+
+main: kit: flow: BasicApiEntitiesClustersAgentTokenWithTokenFlow:
+{
+  entity: "api_entities_clusters_agent_token_with_token",
+  kind: "basic",
+  name: "BasicApiEntitiesClustersAgentTokenWithTokenFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_clusters_agent_token_with_token_ref01"
+      }
+
+      match: {
+        cluster_agent_id: "cluster_agent01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesClustersAgentTokenWithTokenFlow"
+}

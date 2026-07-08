@@ -1,0 +1,28 @@
+{
+  "existing": {
+    "api_entities_changelog": {
+      "API_ENTITIES_CHANGELOG00": {
+        "note": "sa",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CHANGELOG00"
+      },
+      "API_ENTITIES_CHANGELOG01": {
+        "note": "s14",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CHANGELOG01"
+      },
+      "API_ENTITIES_CHANGELOG02": {
+        "note": "s1e",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CHANGELOG02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_changelog": {
+      "api_entities_changelog_ref01": {
+        "note": "s28"
+      }
+    }
+  }
+}

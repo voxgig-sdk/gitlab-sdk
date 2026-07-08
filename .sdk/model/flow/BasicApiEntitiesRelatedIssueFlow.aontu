@@ -1,0 +1,27 @@
+# BasicApiEntitiesRelatedIssueFlow
+
+main: kit: flow: BasicApiEntitiesRelatedIssueFlow:
+{
+  entity: "api_entities_related_issue",
+  kind: "basic",
+  name: "BasicApiEntitiesRelatedIssueFlow",
+  step: [
+    {
+      match: {
+        issue_id: "issue01",
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_related_issue_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesRelatedIssueFlow"
+}

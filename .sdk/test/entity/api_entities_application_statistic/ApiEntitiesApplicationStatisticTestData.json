@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "api_entities_application_statistic": {
+      "API_ENTITIES_APPLICATION_STATISTIC00": {
+        "active_user": "s6e",
+        "fork": "s6f",
+        "group": "s70",
+        "issue": "s71",
+        "merge_request": "s72",
+        "milestone": "s73",
+        "note": "s74",
+        "project": "s75",
+        "snippet": "s76",
+        "ssh_key": "s77",
+        "user": "s78",
+        "id": "API_ENTITIES_APPLICATION_STATISTIC00"
+      },
+      "API_ENTITIES_APPLICATION_STATISTIC01": {
+        "active_user": "sdc",
+        "fork": "sdd",
+        "group": "sde",
+        "issue": "sdf",
+        "merge_request": "se0",
+        "milestone": "se1",
+        "note": "se2",
+        "project": "se3",
+        "snippet": "se4",
+        "ssh_key": "se5",
+        "user": "se6",
+        "id": "API_ENTITIES_APPLICATION_STATISTIC01"
+      },
+      "API_ENTITIES_APPLICATION_STATISTIC02": {
+        "active_user": "s14a",
+        "fork": "s14b",
+        "group": "s14c",
+        "issue": "s14d",
+        "merge_request": "s14e",
+        "milestone": "s14f",
+        "note": "s150",
+        "project": "s151",
+        "snippet": "s152",
+        "ssh_key": "s153",
+        "user": "s154",
+        "id": "API_ENTITIES_APPLICATION_STATISTIC02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_application_statistic": {
+      "api_entities_application_statistic_ref01": {
+        "active_user": "s1b8",
+        "fork": "s1b9",
+        "group": "s1ba",
+        "issue": "s1bb",
+        "merge_request": "s1bc",
+        "milestone": "s1bd",
+        "note": "s1be",
+        "project": "s1bf",
+        "snippet": "s1c0",
+        "ssh_key": "s1c1",
+        "user": "s1c2"
+      }
+    }
+  }
+}

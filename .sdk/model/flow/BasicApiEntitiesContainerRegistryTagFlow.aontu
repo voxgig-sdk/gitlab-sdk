@@ -1,0 +1,27 @@
+# BasicApiEntitiesContainerRegistryTagFlow
+
+main: kit: flow: BasicApiEntitiesContainerRegistryTagFlow:
+{
+  entity: "api_entities_container_registry_tag",
+  kind: "basic",
+  name: "BasicApiEntitiesContainerRegistryTagFlow",
+  step: [
+    {
+      match: {
+        project_id: "project01",
+        repository_id: "repository01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_container_registry_tag_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesContainerRegistryTagFlow"
+}

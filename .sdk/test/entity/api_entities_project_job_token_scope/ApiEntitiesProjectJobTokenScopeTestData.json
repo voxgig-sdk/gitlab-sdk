@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "api_entities_project_job_token_scope": {
+      "API_ENTITIES_PROJECT_JOB_TOKEN_SCOPE00": {
+        "inbound_enabled": true,
+        "outbound_enabled": false,
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PROJECT_JOB_TOKEN_SCOPE00"
+      },
+      "API_ENTITIES_PROJECT_JOB_TOKEN_SCOPE01": {
+        "inbound_enabled": true,
+        "outbound_enabled": false,
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PROJECT_JOB_TOKEN_SCOPE01"
+      },
+      "API_ENTITIES_PROJECT_JOB_TOKEN_SCOPE02": {
+        "inbound_enabled": true,
+        "outbound_enabled": false,
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_PROJECT_JOB_TOKEN_SCOPE02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_project_job_token_scope": {
+      "api_entities_project_job_token_scope_ref01": {
+        "inbound_enabled": true,
+        "outbound_enabled": false
+      }
+    }
+  }
+}

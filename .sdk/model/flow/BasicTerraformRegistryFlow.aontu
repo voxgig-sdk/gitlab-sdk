@@ -1,0 +1,57 @@
+# BasicTerraformRegistryFlow
+
+main: kit: flow: BasicTerraformRegistryFlow:
+{
+  entity: "terraform_registry",
+  kind: "basic",
+  name: "BasicTerraformRegistryFlow",
+  step: [
+    {
+      data: {
+        module_id: "module01",
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "terraform_registry_ref01",
+        srcdatavar: "terraform_registry_ref01_data",
+        suffix: "_up0"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-terraform_registry_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "terraform_registry_ref01",
+        srcdatavar: "terraform_registry_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "terraform_registry01",
+        module_name: "module_name01",
+        v1_id: "v101"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-terraform_registry_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTerraformRegistryFlow"
+}

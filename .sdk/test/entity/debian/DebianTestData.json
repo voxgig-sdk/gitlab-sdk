@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "debian": {
+      "DEBIAN00": {
+        "project_id": "PROJECT01",
+        "id": "DEBIAN00"
+      },
+      "DEBIAN01": {
+        "project_id": "PROJECT01",
+        "id": "DEBIAN01"
+      },
+      "DEBIAN02": {
+        "project_id": "PROJECT01",
+        "id": "DEBIAN02"
+      }
+    }
+  },
+  "new": {
+    "debian": {
+      "debian_ref01": {}
+    }
+  }
+}

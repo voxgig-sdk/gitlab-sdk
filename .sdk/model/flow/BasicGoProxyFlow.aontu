@@ -1,0 +1,32 @@
+# BasicGoProxyFlow
+
+main: kit: flow: BasicGoProxyFlow:
+{
+  entity: "go_proxy",
+  kind: "basic",
+  name: "BasicGoProxyFlow",
+  step: [
+    {
+      input: {
+        ref: "go_proxy_ref01",
+        srcdatavar: "go_proxy_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "go_proxy01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-go_proxy_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGoProxyFlow"
+}

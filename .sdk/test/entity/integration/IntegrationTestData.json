@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "integration": {
+      "INTEGRATION00": {
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "slug": "SLUG01",
+        "id": "INTEGRATION00"
+      },
+      "INTEGRATION01": {
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "slug": "SLUG01",
+        "id": "INTEGRATION01"
+      },
+      "INTEGRATION02": {
+        "project_id": "PROJECT01",
+        "group_id": "GROUP01",
+        "slug": "SLUG01",
+        "id": "INTEGRATION02"
+      }
+    }
+  },
+  "new": {
+    "integration": {
+      "integration_ref01": {}
+    }
+  }
+}

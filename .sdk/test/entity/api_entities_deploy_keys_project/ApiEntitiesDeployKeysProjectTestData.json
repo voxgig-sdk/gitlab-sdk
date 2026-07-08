@@ -1,0 +1,71 @@
+{
+  "existing": {
+    "api_entities_deploy_keys_project": {
+      "API_ENTITIES_DEPLOY_KEYS_PROJECT00": {
+        "can_push": true,
+        "created_at": "s79",
+        "expires_at": "s7a",
+        "fingerprint": "s7b",
+        "fingerprint_sha256": "s7c",
+        "id": "API_ENTITIES_DEPLOY_KEYS_PROJECT00",
+        "key": "s7e",
+        "last_used_at": "s7f",
+        "projects_with_readonly_access": {},
+        "projects_with_write_access": {},
+        "title": "s82",
+        "usage_type": "s83",
+        "project_id": "PROJECT01",
+        "key_id": "KEY01"
+      },
+      "API_ENTITIES_DEPLOY_KEYS_PROJECT01": {
+        "can_push": true,
+        "created_at": "sf1",
+        "expires_at": "sf2",
+        "fingerprint": "sf3",
+        "fingerprint_sha256": "sf4",
+        "id": "API_ENTITIES_DEPLOY_KEYS_PROJECT01",
+        "key": "sf6",
+        "last_used_at": "sf7",
+        "projects_with_readonly_access": {},
+        "projects_with_write_access": {},
+        "title": "sfa",
+        "usage_type": "sfb",
+        "project_id": "PROJECT01",
+        "key_id": "KEY01"
+      },
+      "API_ENTITIES_DEPLOY_KEYS_PROJECT02": {
+        "can_push": true,
+        "created_at": "s169",
+        "expires_at": "s16a",
+        "fingerprint": "s16b",
+        "fingerprint_sha256": "s16c",
+        "id": "API_ENTITIES_DEPLOY_KEYS_PROJECT02",
+        "key": "s16e",
+        "last_used_at": "s16f",
+        "projects_with_readonly_access": {},
+        "projects_with_write_access": {},
+        "title": "s172",
+        "usage_type": "s173",
+        "project_id": "PROJECT01",
+        "key_id": "KEY01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_deploy_keys_project": {
+      "api_entities_deploy_keys_project_ref01": {
+        "can_push": true,
+        "created_at": "s1e1",
+        "expires_at": "s1e2",
+        "fingerprint": "s1e3",
+        "fingerprint_sha256": "s1e4",
+        "key": "s1e6",
+        "last_used_at": "s1e7",
+        "projects_with_readonly_access": {},
+        "projects_with_write_access": {},
+        "title": "s1ea",
+        "usage_type": "s1eb"
+      }
+    }
+  }
+}

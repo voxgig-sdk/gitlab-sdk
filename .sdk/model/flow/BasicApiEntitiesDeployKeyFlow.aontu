@@ -1,0 +1,57 @@
+# BasicApiEntitiesDeployKeyFlow
+
+main: kit: flow: BasicApiEntitiesDeployKeyFlow:
+{
+  entity: "api_entities_deploy_key",
+  kind: "basic",
+  name: "BasicApiEntitiesDeployKeyFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_deploy_key_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_deploy_key_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      data: {
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "api_entities_deploy_key_ref01",
+        srcdatavar: "api_entities_deploy_key_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_deploy_key_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesDeployKeyFlow"
+}

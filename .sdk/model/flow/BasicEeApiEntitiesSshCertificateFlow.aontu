@@ -1,0 +1,38 @@
+# BasicEeApiEntitiesSshCertificateFlow
+
+main: kit: flow: BasicEeApiEntitiesSshCertificateFlow:
+{
+  entity: "ee_api_entities_ssh_certificate",
+  kind: "basic",
+  name: "BasicEeApiEntitiesSshCertificateFlow",
+  step: [
+    {
+      input: {
+        ref: "ee_api_entities_ssh_certificate_ref01"
+      }
+
+      match: {
+        group_id: "group01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        group_id: "group01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "ee_api_entities_ssh_certificate_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEeApiEntitiesSshCertificateFlow"
+}

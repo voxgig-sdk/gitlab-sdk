@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "ml_model_registry": {
+      "ML_MODEL_REGISTRY00": {
+        "file_name": "FILE_NAME01",
+        "ml_model_id": "ML_MODEL01",
+        "project_id": "PROJECT01",
+        "id": "ML_MODEL_REGISTRY00"
+      },
+      "ML_MODEL_REGISTRY01": {
+        "file_name": "FILE_NAME01",
+        "ml_model_id": "ML_MODEL01",
+        "project_id": "PROJECT01",
+        "id": "ML_MODEL_REGISTRY01"
+      },
+      "ML_MODEL_REGISTRY02": {
+        "file_name": "FILE_NAME01",
+        "ml_model_id": "ML_MODEL01",
+        "project_id": "PROJECT01",
+        "id": "ML_MODEL_REGISTRY02"
+      }
+    }
+  },
+  "new": {
+    "ml_model_registry": {
+      "ml_model_registry_ref01": {}
+    }
+  }
+}

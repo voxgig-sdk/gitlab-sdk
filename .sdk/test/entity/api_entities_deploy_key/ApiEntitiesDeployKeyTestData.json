@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "api_entities_deploy_key": {
+      "API_ENTITIES_DEPLOY_KEY00": {
+        "created_at": "s6e",
+        "expires_at": "s6f",
+        "fingerprint": "s70",
+        "fingerprint_sha256": "s71",
+        "id": "API_ENTITIES_DEPLOY_KEY00",
+        "key": "s73",
+        "last_used_at": "s74",
+        "projects_with_readonly_access": {},
+        "projects_with_write_access": {},
+        "title": "s77",
+        "usage_type": "s78",
+        "deploy_key_id": "DEPLOY_KEY01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_DEPLOY_KEY01": {
+        "created_at": "sdc",
+        "expires_at": "sdd",
+        "fingerprint": "sde",
+        "fingerprint_sha256": "sdf",
+        "id": "API_ENTITIES_DEPLOY_KEY01",
+        "key": "se1",
+        "last_used_at": "se2",
+        "projects_with_readonly_access": {},
+        "projects_with_write_access": {},
+        "title": "se5",
+        "usage_type": "se6",
+        "deploy_key_id": "DEPLOY_KEY01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_DEPLOY_KEY02": {
+        "created_at": "s14a",
+        "expires_at": "s14b",
+        "fingerprint": "s14c",
+        "fingerprint_sha256": "s14d",
+        "id": "API_ENTITIES_DEPLOY_KEY02",
+        "key": "s14f",
+        "last_used_at": "s150",
+        "projects_with_readonly_access": {},
+        "projects_with_write_access": {},
+        "title": "s153",
+        "usage_type": "s154",
+        "deploy_key_id": "DEPLOY_KEY01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_deploy_key": {
+      "api_entities_deploy_key_ref01": {
+        "created_at": "s1b8",
+        "expires_at": "s1b9",
+        "fingerprint": "s1ba",
+        "fingerprint_sha256": "s1bb",
+        "key": "s1bd",
+        "last_used_at": "s1be",
+        "projects_with_readonly_access": {},
+        "projects_with_write_access": {},
+        "title": "s1c1",
+        "usage_type": "s1c2"
+      }
+    }
+  }
+}

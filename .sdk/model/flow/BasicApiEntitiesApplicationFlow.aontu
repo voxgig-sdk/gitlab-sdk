@@ -1,0 +1,22 @@
+# BasicApiEntitiesApplicationFlow
+
+main: kit: flow: BasicApiEntitiesApplicationFlow:
+{
+  entity: "api_entities_application",
+  kind: "basic",
+  name: "BasicApiEntitiesApplicationFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_application_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesApplicationFlow"
+}

@@ -1,0 +1,36 @@
+# BasicEnvironmentFlow
+
+main: kit: flow: BasicEnvironmentFlow:
+{
+  entity: "environment",
+  kind: "basic",
+  name: "BasicEnvironmentFlow",
+  step: [
+    {
+      input: {
+        ref: "environment_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "environment_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "environment01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicEnvironmentFlow"
+}

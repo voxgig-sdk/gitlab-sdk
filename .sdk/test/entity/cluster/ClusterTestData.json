@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "cluster": {
+      "CLUSTER00": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "CLUSTER00"
+      },
+      "CLUSTER01": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "CLUSTER01"
+      },
+      "CLUSTER02": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "CLUSTER02"
+      }
+    }
+  },
+  "new": {
+    "cluster": {
+      "cluster_ref01": {}
+    }
+  }
+}

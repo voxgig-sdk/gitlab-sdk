@@ -1,0 +1,36 @@
+# BasicUsageDataFlow
+
+main: kit: flow: BasicUsageDataFlow:
+{
+  entity: "usage_data",
+  kind: "basic",
+  name: "BasicUsageDataFlow",
+  step: [
+    {
+      input: {
+        ref: "usage_data_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "usage_data_ref01",
+        srcdatavar: "usage_data_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-usage_data_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUsageDataFlow"
+}

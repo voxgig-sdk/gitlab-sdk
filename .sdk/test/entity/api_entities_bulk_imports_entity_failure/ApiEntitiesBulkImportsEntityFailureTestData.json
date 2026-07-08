@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "api_entities_bulk_imports_entity_failure": {
+      "API_ENTITIES_BULK_IMPORTS_ENTITY_FAILURE00": {
+        "correlation_id_value": "s3c",
+        "exception_class": "s3d",
+        "exception_message": "s3e",
+        "relation": "s3f",
+        "source_title": "s40",
+        "source_url": "s41",
+        "bulk_import_id": "BULK_IMPORT01",
+        "entity_id": "ENTITY01",
+        "id": "API_ENTITIES_BULK_IMPORTS_ENTITY_FAILURE00"
+      },
+      "API_ENTITIES_BULK_IMPORTS_ENTITY_FAILURE01": {
+        "correlation_id_value": "s78",
+        "exception_class": "s79",
+        "exception_message": "s7a",
+        "relation": "s7b",
+        "source_title": "s7c",
+        "source_url": "s7d",
+        "bulk_import_id": "BULK_IMPORT01",
+        "entity_id": "ENTITY01",
+        "id": "API_ENTITIES_BULK_IMPORTS_ENTITY_FAILURE01"
+      },
+      "API_ENTITIES_BULK_IMPORTS_ENTITY_FAILURE02": {
+        "correlation_id_value": "sb4",
+        "exception_class": "sb5",
+        "exception_message": "sb6",
+        "relation": "sb7",
+        "source_title": "sb8",
+        "source_url": "sb9",
+        "bulk_import_id": "BULK_IMPORT01",
+        "entity_id": "ENTITY01",
+        "id": "API_ENTITIES_BULK_IMPORTS_ENTITY_FAILURE02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_bulk_imports_entity_failure": {
+      "api_entities_bulk_imports_entity_failure_ref01": {
+        "correlation_id_value": "sf0",
+        "exception_class": "sf1",
+        "exception_message": "sf2",
+        "relation": "sf3",
+        "source_title": "sf4",
+        "source_url": "sf5"
+      }
+    }
+  }
+}

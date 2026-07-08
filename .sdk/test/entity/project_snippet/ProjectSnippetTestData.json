@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "project_snippet": {
+      "PROJECT_SNIPPET00": {
+        "project_id": "PROJECT01",
+        "id": "PROJECT_SNIPPET00"
+      },
+      "PROJECT_SNIPPET01": {
+        "project_id": "PROJECT01",
+        "id": "PROJECT_SNIPPET01"
+      },
+      "PROJECT_SNIPPET02": {
+        "project_id": "PROJECT01",
+        "id": "PROJECT_SNIPPET02"
+      }
+    }
+  },
+  "new": {
+    "project_snippet": {
+      "project_snippet_ref01": {}
+    }
+  }
+}

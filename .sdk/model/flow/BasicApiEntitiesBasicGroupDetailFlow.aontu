@@ -1,0 +1,22 @@
+# BasicApiEntitiesBasicGroupDetailFlow
+
+main: kit: flow: BasicApiEntitiesBasicGroupDetailFlow:
+{
+  entity: "api_entities_basic_group_detail",
+  kind: "basic",
+  name: "BasicApiEntitiesBasicGroupDetailFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_basic_group_detail_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesBasicGroupDetailFlow"
+}

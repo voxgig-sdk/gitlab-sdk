@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "geo": {
+      "GEO00": {
+        "node_proxy_id": "NODE_PROXY01",
+        "replicable_id": "REPLICABLE01",
+        "replicable_name": "REPLICABLE_NAME01",
+        "id": "GEO00"
+      },
+      "GEO01": {
+        "node_proxy_id": "NODE_PROXY01",
+        "replicable_id": "REPLICABLE01",
+        "replicable_name": "REPLICABLE_NAME01",
+        "id": "GEO01"
+      },
+      "GEO02": {
+        "node_proxy_id": "NODE_PROXY01",
+        "replicable_id": "REPLICABLE01",
+        "replicable_name": "REPLICABLE_NAME01",
+        "id": "GEO02"
+      }
+    }
+  },
+  "new": {
+    "geo": {
+      "geo_ref01": {}
+    }
+  }
+}

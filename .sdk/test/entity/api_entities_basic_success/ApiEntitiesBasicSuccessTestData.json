@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "api_entities_basic_success": {
+      "API_ENTITIES_BASIC_SUCCESS00": {
+        "id": "API_ENTITIES_BASIC_SUCCESS00"
+      },
+      "API_ENTITIES_BASIC_SUCCESS01": {
+        "id": "API_ENTITIES_BASIC_SUCCESS01"
+      },
+      "API_ENTITIES_BASIC_SUCCESS02": {
+        "id": "API_ENTITIES_BASIC_SUCCESS02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_basic_success": {
+      "api_entities_basic_success_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "group_avatar": {
+      "GROUP_AVATAR00": {
+        "id": "GROUP_AVATAR00"
+      },
+      "GROUP_AVATAR01": {
+        "id": "GROUP_AVATAR01"
+      },
+      "GROUP_AVATAR02": {
+        "id": "GROUP_AVATAR02"
+      }
+    }
+  },
+  "new": {
+    "group_avatar": {
+      "group_avatar_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "api_entities_personal_access_token_with_token": {
+      "API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_TOKEN00": {
+        "active": true,
+        "created_at": "s6f",
+        "description": "s70",
+        "expires_at": "s71",
+        "id": "API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_TOKEN00",
+        "last_used_at": "s73",
+        "name": "s74",
+        "revoked": false,
+        "scope": [],
+        "token": "s77",
+        "user_id": "USER01",
+        "personal_access_token_id": "PERSONAL_ACCESS_TOKEN01"
+      },
+      "API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_TOKEN01": {
+        "active": true,
+        "created_at": "sdd",
+        "description": "sde",
+        "expires_at": "sdf",
+        "id": "API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_TOKEN01",
+        "last_used_at": "se1",
+        "name": "se2",
+        "revoked": false,
+        "scope": [],
+        "token": "se5",
+        "user_id": "USER01",
+        "personal_access_token_id": "PERSONAL_ACCESS_TOKEN01"
+      },
+      "API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_TOKEN02": {
+        "active": true,
+        "created_at": "s14b",
+        "description": "s14c",
+        "expires_at": "s14d",
+        "id": "API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_TOKEN02",
+        "last_used_at": "s14f",
+        "name": "s150",
+        "revoked": false,
+        "scope": [],
+        "token": "s153",
+        "user_id": "USER01",
+        "personal_access_token_id": "PERSONAL_ACCESS_TOKEN01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_personal_access_token_with_token": {
+      "api_entities_personal_access_token_with_token_ref01": {
+        "active": true,
+        "created_at": "s1b9",
+        "description": "s1ba",
+        "expires_at": "s1bb",
+        "last_used_at": "s1bd",
+        "name": "s1be",
+        "revoked": false,
+        "scope": [],
+        "token": "s1c1",
+        "user_id": "USER01"
+      }
+    }
+  }
+}

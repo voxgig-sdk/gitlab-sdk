@@ -1,0 +1,88 @@
+# BasicApiEntitiesDraftNoteFlow
+
+main: kit: flow: BasicApiEntitiesDraftNoteFlow:
+{
+  entity: "api_entities_draft_note",
+  kind: "basic",
+  name: "BasicApiEntitiesDraftNoteFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_draft_note_ref01"
+      }
+
+      match: {
+        merge_request_id: "merge_request01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        merge_request_id: "merge_request01",
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_draft_note_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      data: {
+        merge_request_id: "merge_request01",
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "api_entities_draft_note_ref01",
+        srcdatavar: "api_entities_draft_note_ref01_data",
+        suffix: "_up0",
+        textfield: "line_code"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_draft_note_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_draft_note_ref01",
+        srcdatavar: "api_entities_draft_note_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_draft_note01",
+        merge_request_id: "merge_request01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_draft_note_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesDraftNoteFlow"
+}

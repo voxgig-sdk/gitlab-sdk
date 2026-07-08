@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "deploy_token": {
+      "DEPLOY_TOKEN00": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "DEPLOY_TOKEN00"
+      },
+      "DEPLOY_TOKEN01": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "DEPLOY_TOKEN01"
+      },
+      "DEPLOY_TOKEN02": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "DEPLOY_TOKEN02"
+      }
+    }
+  },
+  "new": {
+    "deploy_token": {
+      "deploy_token_ref01": {}
+    }
+  }
+}

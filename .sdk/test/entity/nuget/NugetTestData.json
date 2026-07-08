@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "nuget": {
+      "NUGET00": {
+        "project_id": "PROJECT01",
+        "id": "NUGET00"
+      },
+      "NUGET01": {
+        "project_id": "PROJECT01",
+        "id": "NUGET01"
+      },
+      "NUGET02": {
+        "project_id": "PROJECT01",
+        "id": "NUGET02"
+      }
+    }
+  },
+  "new": {
+    "nuget": {
+      "nuget_ref01": {}
+    }
+  }
+}

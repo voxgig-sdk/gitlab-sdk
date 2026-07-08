@@ -1,0 +1,25 @@
+{
+  "existing": {
+    "api_entities_nuget_packages_version": {
+      "API_ENTITIES_NUGET_PACKAGES_VERSION00": {
+        "version": [],
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_NUGET_PACKAGES_VERSION01": {
+        "version": [],
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_NUGET_PACKAGES_VERSION02": {
+        "version": [],
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_nuget_packages_version": {
+      "api_entities_nuget_packages_version_ref01": {
+        "version": []
+      }
+    }
+  }
+}

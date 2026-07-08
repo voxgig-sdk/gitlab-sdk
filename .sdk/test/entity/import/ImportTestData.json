@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "import": {
+      "IMPORT00": {
+        "id": "IMPORT00"
+      },
+      "IMPORT01": {
+        "id": "IMPORT01"
+      },
+      "IMPORT02": {
+        "id": "IMPORT02"
+      }
+    }
+  },
+  "new": {
+    "import": {
+      "import_ref01": {}
+    }
+  }
+}

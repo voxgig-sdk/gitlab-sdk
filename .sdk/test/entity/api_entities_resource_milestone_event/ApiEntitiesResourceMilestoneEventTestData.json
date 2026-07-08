@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "api_entities_resource_milestone_event": {
+      "API_ENTITIES_RESOURCE_MILESTONE_EVENT00": {
+        "action": "s50",
+        "created_at": "s51",
+        "id": "API_ENTITIES_RESOURCE_MILESTONE_EVENT00",
+        "milestone": {},
+        "resource_id": "RESOURCE01",
+        "resource_type": "s55",
+        "state": "s56",
+        "user": {},
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01"
+      },
+      "API_ENTITIES_RESOURCE_MILESTONE_EVENT01": {
+        "action": "sa0",
+        "created_at": "sa1",
+        "id": "API_ENTITIES_RESOURCE_MILESTONE_EVENT01",
+        "milestone": {},
+        "resource_id": "RESOURCE01",
+        "resource_type": "sa5",
+        "state": "sa6",
+        "user": {},
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01"
+      },
+      "API_ENTITIES_RESOURCE_MILESTONE_EVENT02": {
+        "action": "sf0",
+        "created_at": "sf1",
+        "id": "API_ENTITIES_RESOURCE_MILESTONE_EVENT02",
+        "milestone": {},
+        "resource_id": "RESOURCE01",
+        "resource_type": "sf5",
+        "state": "sf6",
+        "user": {},
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_resource_milestone_event": {
+      "api_entities_resource_milestone_event_ref01": {
+        "action": "s140",
+        "created_at": "s141",
+        "milestone": {},
+        "resource_id": "RESOURCE01",
+        "resource_type": "s145",
+        "state": "s146",
+        "user": {}
+      }
+    }
+  }
+}

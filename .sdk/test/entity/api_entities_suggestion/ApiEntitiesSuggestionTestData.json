@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "api_entities_suggestion": {
+      "API_ENTITIES_SUGGESTION00": {
+        "appliable": "s46",
+        "applied": "s47",
+        "from_content": "s48",
+        "from_line": "s49",
+        "id": "API_ENTITIES_SUGGESTION00",
+        "to_content": "s4b",
+        "to_line": "s4c",
+        "suggestion_id": "SUGGESTION01"
+      },
+      "API_ENTITIES_SUGGESTION01": {
+        "appliable": "s8c",
+        "applied": "s8d",
+        "from_content": "s8e",
+        "from_line": "s8f",
+        "id": "API_ENTITIES_SUGGESTION01",
+        "to_content": "s91",
+        "to_line": "s92",
+        "suggestion_id": "SUGGESTION01"
+      },
+      "API_ENTITIES_SUGGESTION02": {
+        "appliable": "sd2",
+        "applied": "sd3",
+        "from_content": "sd4",
+        "from_line": "sd5",
+        "id": "API_ENTITIES_SUGGESTION02",
+        "to_content": "sd7",
+        "to_line": "sd8",
+        "suggestion_id": "SUGGESTION01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_suggestion": {
+      "api_entities_suggestion_ref01": {
+        "appliable": "s118",
+        "applied": "s119",
+        "from_content": "s11a",
+        "from_line": "s11b",
+        "to_content": "s11d",
+        "to_line": "s11e"
+      }
+    }
+  }
+}

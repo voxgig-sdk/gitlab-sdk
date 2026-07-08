@@ -1,0 +1,23 @@
+# BasicApiEntitiesDeploymentsApprovalFlow
+
+main: kit: flow: BasicApiEntitiesDeploymentsApprovalFlow:
+{
+  entity: "api_entities_deployments_approval",
+  kind: "basic",
+  name: "BasicApiEntitiesDeploymentsApprovalFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_deployments_approval_ref01"
+      }
+
+      match: {
+        deployment_id: "deployment01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesDeploymentsApprovalFlow"
+}

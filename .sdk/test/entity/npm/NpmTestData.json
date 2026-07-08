@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "npm": {
+      "NPM00": {
+        "project_id": "PROJECT01",
+        "id": "NPM00"
+      },
+      "NPM01": {
+        "project_id": "PROJECT01",
+        "id": "NPM01"
+      },
+      "NPM02": {
+        "project_id": "PROJECT01",
+        "id": "NPM02"
+      }
+    }
+  },
+  "new": {
+    "npm": {
+      "npm_ref01": {}
+    }
+  }
+}

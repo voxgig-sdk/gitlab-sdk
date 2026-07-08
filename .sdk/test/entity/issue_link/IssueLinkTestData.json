@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "issue_link": {
+      "ISSUE_LINK00": {
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "id": "ISSUE_LINK00"
+      },
+      "ISSUE_LINK01": {
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "id": "ISSUE_LINK01"
+      },
+      "ISSUE_LINK02": {
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "id": "ISSUE_LINK02"
+      }
+    }
+  },
+  "new": {
+    "issue_link": {
+      "issue_link_ref01": {}
+    }
+  }
+}

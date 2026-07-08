@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "environment": {
+      "ENVIRONMENT00": {
+        "project_id": "PROJECT01",
+        "id": "ENVIRONMENT00"
+      },
+      "ENVIRONMENT01": {
+        "project_id": "PROJECT01",
+        "id": "ENVIRONMENT01"
+      },
+      "ENVIRONMENT02": {
+        "project_id": "PROJECT01",
+        "id": "ENVIRONMENT02"
+      }
+    }
+  },
+  "new": {
+    "environment": {
+      "environment_ref01": {}
+    }
+  }
+}

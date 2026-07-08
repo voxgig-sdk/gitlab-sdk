@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "debian_distribution": {
+      "DEBIAN_DISTRIBUTION00": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "DEBIAN_DISTRIBUTION00"
+      },
+      "DEBIAN_DISTRIBUTION01": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "DEBIAN_DISTRIBUTION01"
+      },
+      "DEBIAN_DISTRIBUTION02": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "DEBIAN_DISTRIBUTION02"
+      }
+    }
+  },
+  "new": {
+    "debian_distribution": {
+      "debian_distribution_ref01": {}
+    }
+  }
+}

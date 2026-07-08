@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "api_entities_basic_group_detail": {
+      "API_ENTITIES_BASIC_GROUP_DETAIL00": {
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_BASIC_GROUP_DETAIL00"
+      },
+      "API_ENTITIES_BASIC_GROUP_DETAIL01": {
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_BASIC_GROUP_DETAIL01"
+      },
+      "API_ENTITIES_BASIC_GROUP_DETAIL02": {
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_BASIC_GROUP_DETAIL02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_basic_group_detail": {
+      "api_entities_basic_group_detail_ref01": {}
+    }
+  }
+}

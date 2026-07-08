@@ -1,0 +1,25 @@
+{
+  "existing": {
+    "api_entities_avatar": {
+      "API_ENTITIES_AVATAR00": {
+        "avatar_url": "sa",
+        "id": "API_ENTITIES_AVATAR00"
+      },
+      "API_ENTITIES_AVATAR01": {
+        "avatar_url": "s14",
+        "id": "API_ENTITIES_AVATAR01"
+      },
+      "API_ENTITIES_AVATAR02": {
+        "avatar_url": "s1e",
+        "id": "API_ENTITIES_AVATAR02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_avatar": {
+      "api_entities_avatar_ref01": {
+        "avatar_url": "s28"
+      }
+    }
+  }
+}

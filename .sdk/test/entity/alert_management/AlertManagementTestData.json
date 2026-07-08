@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "alert_management": {
+      "ALERT_MANAGEMENT00": {
+        "alert_management_alert_id": "ALERT_MANAGEMENT_ALERT01",
+        "project_id": "PROJECT01",
+        "metric_image_id": "METRIC_IMAGE01",
+        "id": "ALERT_MANAGEMENT00"
+      },
+      "ALERT_MANAGEMENT01": {
+        "alert_management_alert_id": "ALERT_MANAGEMENT_ALERT01",
+        "project_id": "PROJECT01",
+        "metric_image_id": "METRIC_IMAGE01",
+        "id": "ALERT_MANAGEMENT01"
+      },
+      "ALERT_MANAGEMENT02": {
+        "alert_management_alert_id": "ALERT_MANAGEMENT_ALERT01",
+        "project_id": "PROJECT01",
+        "metric_image_id": "METRIC_IMAGE01",
+        "id": "ALERT_MANAGEMENT02"
+      }
+    }
+  },
+  "new": {
+    "alert_management": {
+      "alert_management_ref01": {}
+    }
+  }
+}

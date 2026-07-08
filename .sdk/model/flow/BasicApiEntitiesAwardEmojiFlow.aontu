@@ -1,0 +1,69 @@
+# BasicApiEntitiesAwardEmojiFlow
+
+main: kit: flow: BasicApiEntitiesAwardEmojiFlow:
+{
+  entity: "api_entities_award_emoji",
+  kind: "basic",
+  name: "BasicApiEntitiesAwardEmojiFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_award_emoji_ref01"
+      }
+
+      match: {
+        epic_id: "epic01",
+        group_id: "group01",
+        issue_id: "issue01",
+        merge_request_id: "merge_request01",
+        note_id: "note01",
+        project_id: "project01",
+        snippet_id: "snippet01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        project_id: "project01",
+        snippet_id: "snippet01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_award_emoji_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_award_emoji_ref01",
+        srcdatavar: "api_entities_award_emoji_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_award_emoji01",
+        project_id: "project01",
+        snippet_id: "snippet01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_award_emoji_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesAwardEmojiFlow"
+}

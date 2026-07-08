@@ -1,0 +1,46 @@
+# BasicApiEntitiesIssuableTimeStatFlow
+
+main: kit: flow: BasicApiEntitiesIssuableTimeStatFlow:
+{
+  entity: "api_entities_issuable_time_stat",
+  kind: "basic",
+  name: "BasicApiEntitiesIssuableTimeStatFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_issuable_time_stat_ref01"
+      }
+
+      match: {
+        merge_request_id: "merge_request01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "api_entities_issuable_time_stat_ref01",
+        srcdatavar: "api_entities_issuable_time_stat_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_issuable_time_stat01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_issuable_time_stat_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesIssuableTimeStatFlow"
+}

@@ -1,0 +1,22 @@
+# BasicApiEntitiesProjectUploadFlow
+
+main: kit: flow: BasicApiEntitiesProjectUploadFlow:
+{
+  entity: "api_entities_project_upload",
+  kind: "basic",
+  name: "BasicApiEntitiesProjectUploadFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_project_upload_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesProjectUploadFlow"
+}

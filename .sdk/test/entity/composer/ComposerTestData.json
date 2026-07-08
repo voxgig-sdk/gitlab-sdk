@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "composer": {
+      "COMPOSER00": {
+        "project_id": "PROJECT01",
+        "id": "COMPOSER00"
+      },
+      "COMPOSER01": {
+        "project_id": "PROJECT01",
+        "id": "COMPOSER01"
+      },
+      "COMPOSER02": {
+        "project_id": "PROJECT01",
+        "id": "COMPOSER02"
+      }
+    }
+  },
+  "new": {
+    "composer": {
+      "composer_ref01": {}
+    }
+  }
+}

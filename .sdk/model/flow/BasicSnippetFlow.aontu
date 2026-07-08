@@ -1,0 +1,45 @@
+# BasicSnippetFlow
+
+main: kit: flow: BasicSnippetFlow:
+{
+  entity: "snippet",
+  kind: "basic",
+  name: "BasicSnippetFlow",
+  step: [
+    {
+      input: {
+        ref: "snippet_ref01",
+        srcdatavar: "snippet_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "snippet01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-snippet_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "snippet_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "snippet01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicSnippetFlow"
+}

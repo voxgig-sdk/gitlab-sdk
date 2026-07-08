@@ -1,0 +1,40 @@
+# BasicApiEntitiesCommitNoteFlow
+
+main: kit: flow: BasicApiEntitiesCommitNoteFlow:
+{
+  entity: "api_entities_commit_note",
+  kind: "basic",
+  name: "BasicApiEntitiesCommitNoteFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_commit_note_ref01"
+      }
+
+      match: {
+        project_id: "project01",
+        sha: "sha01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        project_id: "project01",
+        sha: "sha01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_commit_note_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCommitNoteFlow"
+}

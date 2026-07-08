@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "api_entities_tree_object": {
+      "API_ENTITIES_TREE_OBJECT00": {
+        "id": "API_ENTITIES_TREE_OBJECT00",
+        "mode": "s33",
+        "name": "s34",
+        "path": "s35",
+        "type": "s36",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_TREE_OBJECT01": {
+        "id": "API_ENTITIES_TREE_OBJECT01",
+        "mode": "s65",
+        "name": "s66",
+        "path": "s67",
+        "type": "s68",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_TREE_OBJECT02": {
+        "id": "API_ENTITIES_TREE_OBJECT02",
+        "mode": "s97",
+        "name": "s98",
+        "path": "s99",
+        "type": "s9a",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_tree_object": {
+      "api_entities_tree_object_ref01": {
+        "mode": "sc9",
+        "name": "sca",
+        "path": "scb",
+        "type": "scc"
+      }
+    }
+  }
+}

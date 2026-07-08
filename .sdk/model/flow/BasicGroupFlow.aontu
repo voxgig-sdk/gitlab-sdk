@@ -1,0 +1,75 @@
+# BasicGroupFlow
+
+main: kit: flow: BasicGroupFlow:
+{
+  entity: "group",
+  kind: "basic",
+  name: "BasicGroupFlow",
+  step: [
+    {
+      input: {
+        ref: "group_ref01"
+      }
+
+      match: {
+        secret: "secret01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "group_ref01",
+        srcdatavar: "group_ref01_data",
+        suffix: "_up0"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-group_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "group_ref01",
+        srcdatavar: "group_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "group01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-group_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "group_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "group01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicGroupFlow"
+}

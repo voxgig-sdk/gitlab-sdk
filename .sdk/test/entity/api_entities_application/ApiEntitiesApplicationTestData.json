@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "api_entities_application": {
+      "API_ENTITIES_APPLICATION00": {
+        "application_id": "APPLICATION01",
+        "application_name": "s33",
+        "callback_url": "s34",
+        "confidential": false,
+        "id": "API_ENTITIES_APPLICATION00"
+      },
+      "API_ENTITIES_APPLICATION01": {
+        "application_id": "APPLICATION01",
+        "application_name": "s65",
+        "callback_url": "s66",
+        "confidential": false,
+        "id": "API_ENTITIES_APPLICATION01"
+      },
+      "API_ENTITIES_APPLICATION02": {
+        "application_id": "APPLICATION01",
+        "application_name": "s97",
+        "callback_url": "s98",
+        "confidential": false,
+        "id": "API_ENTITIES_APPLICATION02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_application": {
+      "api_entities_application_ref01": {
+        "application_id": "APPLICATION01",
+        "application_name": "sc9",
+        "callback_url": "sca",
+        "confidential": false
+      }
+    }
+  }
+}

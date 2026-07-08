@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "api_entities_deploy_token": {
+      "API_ENTITIES_DEPLOY_TOKEN00": {
+        "expired": true,
+        "expires_at": "s47",
+        "id": "API_ENTITIES_DEPLOY_TOKEN00",
+        "name": "s49",
+        "revoked": true,
+        "scope": [],
+        "username": "s4c",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_DEPLOY_TOKEN01": {
+        "expired": true,
+        "expires_at": "s8d",
+        "id": "API_ENTITIES_DEPLOY_TOKEN01",
+        "name": "s8f",
+        "revoked": true,
+        "scope": [],
+        "username": "s92",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_DEPLOY_TOKEN02": {
+        "expired": true,
+        "expires_at": "sd3",
+        "id": "API_ENTITIES_DEPLOY_TOKEN02",
+        "name": "sd5",
+        "revoked": true,
+        "scope": [],
+        "username": "sd8",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_deploy_token": {
+      "api_entities_deploy_token_ref01": {
+        "expired": true,
+        "expires_at": "s119",
+        "name": "s11b",
+        "revoked": true,
+        "scope": [],
+        "username": "s11e"
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+# BasicApiEntitiesWikiPageFlow
+
+main: kit: flow: BasicApiEntitiesWikiPageFlow:
+{
+  entity: "api_entities_wiki_page",
+  kind: "basic",
+  name: "BasicApiEntitiesWikiPageFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_wiki_page_ref01"
+      }
+
+      match: {
+        group_id: "group01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      data: {
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "api_entities_wiki_page_ref01",
+        srcdatavar: "api_entities_wiki_page_ref01_data",
+        suffix: "_up0",
+        textfield: "content"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_wiki_page_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_wiki_page_ref01",
+        srcdatavar: "api_entities_wiki_page_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_wiki_page01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_wiki_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesWikiPageFlow"
+}

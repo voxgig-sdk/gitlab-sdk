@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "api_entities_package_file": {
+      "API_ENTITIES_PACKAGE_FILE00": {
+        "created_at": "s5a",
+        "file_md5": "s5b",
+        "file_name": "s5c",
+        "file_sha1": "s5d",
+        "file_sha256": "s5e",
+        "id": "API_ENTITIES_PACKAGE_FILE00",
+        "package_id": "PACKAGE01",
+        "pipeline": {},
+        "size": "s62",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PACKAGE_FILE01": {
+        "created_at": "sb4",
+        "file_md5": "sb5",
+        "file_name": "sb6",
+        "file_sha1": "sb7",
+        "file_sha256": "sb8",
+        "id": "API_ENTITIES_PACKAGE_FILE01",
+        "package_id": "PACKAGE01",
+        "pipeline": {},
+        "size": "sbc",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PACKAGE_FILE02": {
+        "created_at": "s10e",
+        "file_md5": "s10f",
+        "file_name": "s110",
+        "file_sha1": "s111",
+        "file_sha256": "s112",
+        "id": "API_ENTITIES_PACKAGE_FILE02",
+        "package_id": "PACKAGE01",
+        "pipeline": {},
+        "size": "s116",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_package_file": {
+      "api_entities_package_file_ref01": {
+        "created_at": "s168",
+        "file_md5": "s169",
+        "file_name": "s16a",
+        "file_sha1": "s16b",
+        "file_sha256": "s16c",
+        "package_id": "PACKAGE01",
+        "pipeline": {},
+        "size": "s170"
+      }
+    }
+  }
+}

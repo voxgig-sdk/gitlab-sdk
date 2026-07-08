@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "api_entities_batched_background_migration": {
+      "API_ENTITIES_BATCHED_BACKGROUND_MIGRATION00": {
+        "column_name": "s46",
+        "created_at": "s47",
+        "id": "API_ENTITIES_BATCHED_BACKGROUND_MIGRATION00",
+        "job_class_name": "s49",
+        "progress": 74,
+        "status": "s4b",
+        "table_name": "s4c",
+        "batched_background_migration_id": "BATCHED_BACKGROUND_MIGRATION01"
+      },
+      "API_ENTITIES_BATCHED_BACKGROUND_MIGRATION01": {
+        "column_name": "s8c",
+        "created_at": "s8d",
+        "id": "API_ENTITIES_BATCHED_BACKGROUND_MIGRATION01",
+        "job_class_name": "s8f",
+        "progress": 144,
+        "status": "s91",
+        "table_name": "s92",
+        "batched_background_migration_id": "BATCHED_BACKGROUND_MIGRATION01"
+      },
+      "API_ENTITIES_BATCHED_BACKGROUND_MIGRATION02": {
+        "column_name": "sd2",
+        "created_at": "sd3",
+        "id": "API_ENTITIES_BATCHED_BACKGROUND_MIGRATION02",
+        "job_class_name": "sd5",
+        "progress": 214,
+        "status": "sd7",
+        "table_name": "sd8",
+        "batched_background_migration_id": "BATCHED_BACKGROUND_MIGRATION01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_batched_background_migration": {
+      "api_entities_batched_background_migration_ref01": {
+        "column_name": "s118",
+        "created_at": "s119",
+        "job_class_name": "s11b",
+        "progress": 284,
+        "status": "s11d",
+        "table_name": "s11e"
+      }
+    }
+  }
+}

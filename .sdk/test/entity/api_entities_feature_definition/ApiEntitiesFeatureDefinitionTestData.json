@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "api_entities_feature_definition": {
+      "API_ENTITIES_FEATURE_DEFINITION00": {
+        "default_enabled": "s64",
+        "feature_issue_url": "s65",
+        "group": "s66",
+        "intended_to_rollout_by": "s67",
+        "introduced_by_url": "s68",
+        "log_state_change": "s69",
+        "milestone": "s6a",
+        "name": "s6b",
+        "rollout_issue_url": "s6c",
+        "type": "s6d"
+      },
+      "API_ENTITIES_FEATURE_DEFINITION01": {
+        "default_enabled": "sc8",
+        "feature_issue_url": "sc9",
+        "group": "sca",
+        "intended_to_rollout_by": "scb",
+        "introduced_by_url": "scc",
+        "log_state_change": "scd",
+        "milestone": "sce",
+        "name": "scf",
+        "rollout_issue_url": "sd0",
+        "type": "sd1"
+      },
+      "API_ENTITIES_FEATURE_DEFINITION02": {
+        "default_enabled": "s12c",
+        "feature_issue_url": "s12d",
+        "group": "s12e",
+        "intended_to_rollout_by": "s12f",
+        "introduced_by_url": "s130",
+        "log_state_change": "s131",
+        "milestone": "s132",
+        "name": "s133",
+        "rollout_issue_url": "s134",
+        "type": "s135"
+      }
+    }
+  },
+  "new": {
+    "api_entities_feature_definition": {
+      "api_entities_feature_definition_ref01": {
+        "default_enabled": "s190",
+        "feature_issue_url": "s191",
+        "group": "s192",
+        "intended_to_rollout_by": "s193",
+        "introduced_by_url": "s194",
+        "log_state_change": "s195",
+        "milestone": "s196",
+        "name": "s197",
+        "rollout_issue_url": "s198",
+        "type": "s199"
+      }
+    }
+  }
+}

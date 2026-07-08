@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "tag": {
+      "TAG00": {
+        "project_id": "PROJECT01",
+        "id": "TAG00"
+      },
+      "TAG01": {
+        "project_id": "PROJECT01",
+        "id": "TAG01"
+      },
+      "TAG02": {
+        "project_id": "PROJECT01",
+        "id": "TAG02"
+      }
+    }
+  },
+  "new": {
+    "tag": {
+      "tag_ref01": {}
+    }
+  }
+}

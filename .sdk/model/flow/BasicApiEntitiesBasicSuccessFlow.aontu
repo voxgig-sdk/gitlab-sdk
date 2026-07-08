@@ -1,0 +1,18 @@
+# BasicApiEntitiesBasicSuccessFlow
+
+main: kit: flow: BasicApiEntitiesBasicSuccessFlow:
+{
+  entity: "api_entities_basic_success",
+  kind: "basic",
+  name: "BasicApiEntitiesBasicSuccessFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_basic_success_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesBasicSuccessFlow"
+}

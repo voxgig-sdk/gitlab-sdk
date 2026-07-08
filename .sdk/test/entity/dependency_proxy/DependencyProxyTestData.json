@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "dependency_proxy": {
+      "DEPENDENCY_PROXY00": {
+        "group_id": "GROUP01",
+        "id": "DEPENDENCY_PROXY00"
+      },
+      "DEPENDENCY_PROXY01": {
+        "group_id": "GROUP01",
+        "id": "DEPENDENCY_PROXY01"
+      },
+      "DEPENDENCY_PROXY02": {
+        "group_id": "GROUP01",
+        "id": "DEPENDENCY_PROXY02"
+      }
+    }
+  },
+  "new": {
+    "dependency_proxy": {
+      "dependency_proxy_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,26 @@
+# BasicApiEntitiesWikiPageBasicFlow
+
+main: kit: flow: BasicApiEntitiesWikiPageBasicFlow:
+{
+  entity: "api_entities_wiki_page_basic",
+  kind: "basic",
+  name: "BasicApiEntitiesWikiPageBasicFlow",
+  step: [
+    {
+      match: {
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_wiki_page_basic_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesWikiPageBasicFlow"
+}

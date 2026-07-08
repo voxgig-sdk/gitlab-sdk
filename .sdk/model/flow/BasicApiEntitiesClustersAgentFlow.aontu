@@ -1,0 +1,45 @@
+# BasicApiEntitiesClustersAgentFlow
+
+main: kit: flow: BasicApiEntitiesClustersAgentFlow:
+{
+  entity: "api_entities_clusters_agent",
+  kind: "basic",
+  name: "BasicApiEntitiesClustersAgentFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_clusters_agent_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "api_entities_clusters_agent_ref01",
+        srcdatavar: "api_entities_clusters_agent_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_clusters_agent01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_clusters_agent_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesClustersAgentFlow"
+}

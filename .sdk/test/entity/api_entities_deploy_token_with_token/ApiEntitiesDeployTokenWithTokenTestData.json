@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "api_entities_deploy_token_with_token": {
+      "API_ENTITIES_DEPLOY_TOKEN_WITH_TOKEN00": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_DEPLOY_TOKEN_WITH_TOKEN00"
+      },
+      "API_ENTITIES_DEPLOY_TOKEN_WITH_TOKEN01": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_DEPLOY_TOKEN_WITH_TOKEN01"
+      },
+      "API_ENTITIES_DEPLOY_TOKEN_WITH_TOKEN02": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_DEPLOY_TOKEN_WITH_TOKEN02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_deploy_token_with_token": {
+      "api_entities_deploy_token_with_token_ref01": {}
+    }
+  }
+}

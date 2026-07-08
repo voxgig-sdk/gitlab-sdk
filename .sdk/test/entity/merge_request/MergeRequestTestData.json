@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "merge_request": {
+      "MERGE_REQUEST00": {
+        "project_id": "PROJECT01",
+        "id": "MERGE_REQUEST00"
+      },
+      "MERGE_REQUEST01": {
+        "project_id": "PROJECT01",
+        "id": "MERGE_REQUEST01"
+      },
+      "MERGE_REQUEST02": {
+        "project_id": "PROJECT01",
+        "id": "MERGE_REQUEST02"
+      }
+    }
+  },
+  "new": {
+    "merge_request": {
+      "merge_request_ref01": {}
+    }
+  }
+}

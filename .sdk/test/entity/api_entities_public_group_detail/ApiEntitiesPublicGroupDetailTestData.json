@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "api_entities_public_group_detail": {
+      "API_ENTITIES_PUBLIC_GROUP_DETAIL00": {
+        "avatar_url": "s3c",
+        "full_name": "s3d",
+        "full_path": "s3e",
+        "id": "API_ENTITIES_PUBLIC_GROUP_DETAIL00",
+        "name": "s40",
+        "web_url": "s41",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PUBLIC_GROUP_DETAIL01": {
+        "avatar_url": "s78",
+        "full_name": "s79",
+        "full_path": "s7a",
+        "id": "API_ENTITIES_PUBLIC_GROUP_DETAIL01",
+        "name": "s7c",
+        "web_url": "s7d",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PUBLIC_GROUP_DETAIL02": {
+        "avatar_url": "sb4",
+        "full_name": "sb5",
+        "full_path": "sb6",
+        "id": "API_ENTITIES_PUBLIC_GROUP_DETAIL02",
+        "name": "sb8",
+        "web_url": "sb9",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_public_group_detail": {
+      "api_entities_public_group_detail_ref01": {
+        "avatar_url": "sf0",
+        "full_name": "sf1",
+        "full_path": "sf2",
+        "name": "sf4",
+        "web_url": "sf5"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "metadata": {
+      "METADATA00": {
+        "enterprise": true,
+        "kas": {},
+        "revision": "s2a",
+        "version": "s2b",
+        "id": "METADATA00"
+      },
+      "METADATA01": {
+        "enterprise": true,
+        "kas": {},
+        "revision": "s52",
+        "version": "s53",
+        "id": "METADATA01"
+      },
+      "METADATA02": {
+        "enterprise": true,
+        "kas": {},
+        "revision": "s7a",
+        "version": "s7b",
+        "id": "METADATA02"
+      }
+    }
+  },
+  "new": {
+    "metadata": {
+      "metadata_ref01": {
+        "enterprise": true,
+        "kas": {},
+        "revision": "sa2",
+        "version": "sa3"
+      }
+    }
+  }
+}

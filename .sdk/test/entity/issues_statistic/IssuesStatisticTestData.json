@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "issues_statistic": {
+      "ISSUES_STATISTIC00": {
+        "id": "ISSUES_STATISTIC00"
+      },
+      "ISSUES_STATISTIC01": {
+        "id": "ISSUES_STATISTIC01"
+      },
+      "ISSUES_STATISTIC02": {
+        "id": "ISSUES_STATISTIC02"
+      }
+    }
+  },
+  "new": {
+    "issues_statistic": {
+      "issues_statistic_ref01": {}
+    }
+  }
+}

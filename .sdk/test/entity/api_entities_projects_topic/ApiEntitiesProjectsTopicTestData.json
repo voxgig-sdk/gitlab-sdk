@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "api_entities_projects_topic": {
+      "API_ENTITIES_PROJECTS_TOPIC00": {
+        "avatar_url": "s46",
+        "description": "s47",
+        "id": "API_ENTITIES_PROJECTS_TOPIC00",
+        "name": "s49",
+        "organization_id": "ORGANIZATION01",
+        "title": "s4b",
+        "total_projects_count": "s4c"
+      },
+      "API_ENTITIES_PROJECTS_TOPIC01": {
+        "avatar_url": "s8c",
+        "description": "s8d",
+        "id": "API_ENTITIES_PROJECTS_TOPIC01",
+        "name": "s8f",
+        "organization_id": "ORGANIZATION01",
+        "title": "s91",
+        "total_projects_count": "s92"
+      },
+      "API_ENTITIES_PROJECTS_TOPIC02": {
+        "avatar_url": "sd2",
+        "description": "sd3",
+        "id": "API_ENTITIES_PROJECTS_TOPIC02",
+        "name": "sd5",
+        "organization_id": "ORGANIZATION01",
+        "title": "sd7",
+        "total_projects_count": "sd8"
+      }
+    }
+  },
+  "new": {
+    "api_entities_projects_topic": {
+      "api_entities_projects_topic_ref01": {
+        "avatar_url": "s118",
+        "description": "s119",
+        "name": "s11b",
+        "organization_id": "ORGANIZATION01",
+        "title": "s11d",
+        "total_projects_count": "s11e"
+      }
+    }
+  }
+}

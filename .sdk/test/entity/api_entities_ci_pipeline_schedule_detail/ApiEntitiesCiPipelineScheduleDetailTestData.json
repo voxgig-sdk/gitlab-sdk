@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "api_entities_ci_pipeline_schedule_detail": {
+      "API_ENTITIES_CI_PIPELINE_SCHEDULE_DETAIL00": {
+        "active": true,
+        "created_at": "s83",
+        "cron": "s84",
+        "cron_timezone": "s85",
+        "description": "s86",
+        "id": "API_ENTITIES_CI_PIPELINE_SCHEDULE_DETAIL00",
+        "input": {},
+        "last_pipeline": {},
+        "next_run_at": "s8a",
+        "owner": {},
+        "ref": "s8c",
+        "updated_at": "s8d",
+        "variable": {},
+        "pipeline_schedule_id": "PIPELINE_SCHEDULE01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_CI_PIPELINE_SCHEDULE_DETAIL01": {
+        "active": true,
+        "created_at": "s105",
+        "cron": "s106",
+        "cron_timezone": "s107",
+        "description": "s108",
+        "id": "API_ENTITIES_CI_PIPELINE_SCHEDULE_DETAIL01",
+        "input": {},
+        "last_pipeline": {},
+        "next_run_at": "s10c",
+        "owner": {},
+        "ref": "s10e",
+        "updated_at": "s10f",
+        "variable": {},
+        "pipeline_schedule_id": "PIPELINE_SCHEDULE01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_CI_PIPELINE_SCHEDULE_DETAIL02": {
+        "active": true,
+        "created_at": "s187",
+        "cron": "s188",
+        "cron_timezone": "s189",
+        "description": "s18a",
+        "id": "API_ENTITIES_CI_PIPELINE_SCHEDULE_DETAIL02",
+        "input": {},
+        "last_pipeline": {},
+        "next_run_at": "s18e",
+        "owner": {},
+        "ref": "s190",
+        "updated_at": "s191",
+        "variable": {},
+        "pipeline_schedule_id": "PIPELINE_SCHEDULE01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_ci_pipeline_schedule_detail": {
+      "api_entities_ci_pipeline_schedule_detail_ref01": {
+        "active": true,
+        "created_at": "s209",
+        "cron": "s20a",
+        "cron_timezone": "s20b",
+        "description": "s20c",
+        "input": {},
+        "last_pipeline": {},
+        "next_run_at": "s210",
+        "owner": {},
+        "ref": "s212",
+        "updated_at": "s213",
+        "variable": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "api_entities_wiki_attachment": {
+      "API_ENTITIES_WIKI_ATTACHMENT00": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_WIKI_ATTACHMENT00"
+      },
+      "API_ENTITIES_WIKI_ATTACHMENT01": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_WIKI_ATTACHMENT01"
+      },
+      "API_ENTITIES_WIKI_ATTACHMENT02": {
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_WIKI_ATTACHMENT02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_wiki_attachment": {
+      "api_entities_wiki_attachment_ref01": {}
+    }
+  }
+}

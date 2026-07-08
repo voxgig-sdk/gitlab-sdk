@@ -1,0 +1,45 @@
+# BasicApiEntitiesCiSecureFileFlow
+
+main: kit: flow: BasicApiEntitiesCiSecureFileFlow:
+{
+  entity: "api_entities_ci_secure_file",
+  kind: "basic",
+  name: "BasicApiEntitiesCiSecureFileFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_ci_secure_file_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "api_entities_ci_secure_file_ref01",
+        srcdatavar: "api_entities_ci_secure_file_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_ci_secure_file01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_ci_secure_file_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCiSecureFileFlow"
+}

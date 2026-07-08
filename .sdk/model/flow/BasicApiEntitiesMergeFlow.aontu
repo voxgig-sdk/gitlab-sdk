@@ -1,0 +1,68 @@
+# BasicApiEntitiesMergeFlow
+
+main: kit: flow: BasicApiEntitiesMergeFlow:
+{
+  entity: "api_entities_merge",
+  kind: "basic",
+  name: "BasicApiEntitiesMergeFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_merge_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      data: {
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "api_entities_merge_ref01",
+        srcdatavar: "api_entities_merge_ref01_data",
+        suffix: "_up0",
+        textfield: "approvals_before_merge"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_merge_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "api_entities_merge_ref01",
+        srcdatavar: "api_entities_merge_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_merge01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_merge_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesMergeFlow"
+}

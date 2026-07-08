@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "api_entities_ssh_key_with_user": {
+      "API_ENTITIES_SSH_KEY_WITH_USER00": {
+        "created_at": "s50",
+        "expires_at": "s51",
+        "id": "API_ENTITIES_SSH_KEY_WITH_USER00",
+        "key": "s53",
+        "last_used_at": "s54",
+        "title": "s55",
+        "usage_type": "s56",
+        "user": {}
+      },
+      "API_ENTITIES_SSH_KEY_WITH_USER01": {
+        "created_at": "sa0",
+        "expires_at": "sa1",
+        "id": "API_ENTITIES_SSH_KEY_WITH_USER01",
+        "key": "sa3",
+        "last_used_at": "sa4",
+        "title": "sa5",
+        "usage_type": "sa6",
+        "user": {}
+      },
+      "API_ENTITIES_SSH_KEY_WITH_USER02": {
+        "created_at": "sf0",
+        "expires_at": "sf1",
+        "id": "API_ENTITIES_SSH_KEY_WITH_USER02",
+        "key": "sf3",
+        "last_used_at": "sf4",
+        "title": "sf5",
+        "usage_type": "sf6",
+        "user": {}
+      }
+    }
+  },
+  "new": {
+    "api_entities_ssh_key_with_user": {
+      "api_entities_ssh_key_with_user_ref01": {
+        "created_at": "s140",
+        "expires_at": "s141",
+        "key": "s143",
+        "last_used_at": "s144",
+        "title": "s145",
+        "usage_type": "s146",
+        "user": {}
+      }
+    }
+  }
+}

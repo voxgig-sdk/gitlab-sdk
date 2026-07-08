@@ -1,0 +1,57 @@
+# BasicGenericPackageFlow
+
+main: kit: flow: BasicGenericPackageFlow:
+{
+  entity: "generic_package",
+  kind: "basic",
+  name: "BasicGenericPackageFlow",
+  step: [
+    {
+      data: {
+        file_name: "file_name01",
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "generic_package_ref01",
+        srcdatavar: "generic_package_ref01_data",
+        suffix: "_up0"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-generic_package_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "generic_package_ref01",
+        srcdatavar: "generic_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        file_name: "file_name01",
+        id: "generic_package01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-generic_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGenericPackageFlow"
+}

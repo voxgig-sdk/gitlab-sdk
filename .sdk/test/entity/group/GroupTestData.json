@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "group": {
+      "GROUP00": {
+        "filename": "FILENAME01",
+        "secret": "SECRET01",
+        "upload_id": "UPLOAD01",
+        "group_id": "GROUP01",
+        "key": "KEY01",
+        "ssh_certificates_id": "SSH_CERTIFICATES01",
+        "user_id": "USER01",
+        "member_id": "MEMBER01",
+        "id": "GROUP00"
+      },
+      "GROUP01": {
+        "filename": "FILENAME01",
+        "secret": "SECRET01",
+        "upload_id": "UPLOAD01",
+        "group_id": "GROUP01",
+        "key": "KEY01",
+        "ssh_certificates_id": "SSH_CERTIFICATES01",
+        "user_id": "USER01",
+        "member_id": "MEMBER01",
+        "id": "GROUP01"
+      },
+      "GROUP02": {
+        "filename": "FILENAME01",
+        "secret": "SECRET01",
+        "upload_id": "UPLOAD01",
+        "group_id": "GROUP01",
+        "key": "KEY01",
+        "ssh_certificates_id": "SSH_CERTIFICATES01",
+        "user_id": "USER01",
+        "member_id": "MEMBER01",
+        "id": "GROUP02"
+      }
+    }
+  },
+  "new": {
+    "group": {
+      "group_ref01": {}
+    }
+  }
+}

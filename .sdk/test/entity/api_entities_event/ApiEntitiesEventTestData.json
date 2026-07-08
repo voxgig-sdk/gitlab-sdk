@@ -1,0 +1,84 @@
+{
+  "existing": {
+    "api_entities_event": {
+      "API_ENTITIES_EVENT00": {
+        "action_name": "sa0",
+        "author": {},
+        "author_id": "AUTHOR01",
+        "author_username": "sa3",
+        "created_at": "sa4",
+        "id": "API_ENTITIES_EVENT00",
+        "imported": true,
+        "imported_from": "sa7",
+        "note": {},
+        "project_id": "PROJECT01",
+        "push_data": {},
+        "target_id": "TARGET01",
+        "target_iid": "sac",
+        "target_title": "sad",
+        "target_type": "sae",
+        "wiki_page": {},
+        "user_id": "USER01"
+      },
+      "API_ENTITIES_EVENT01": {
+        "action_name": "s140",
+        "author": {},
+        "author_id": "AUTHOR01",
+        "author_username": "s143",
+        "created_at": "s144",
+        "id": "API_ENTITIES_EVENT01",
+        "imported": true,
+        "imported_from": "s147",
+        "note": {},
+        "project_id": "PROJECT01",
+        "push_data": {},
+        "target_id": "TARGET01",
+        "target_iid": "s14c",
+        "target_title": "s14d",
+        "target_type": "s14e",
+        "wiki_page": {},
+        "user_id": "USER01"
+      },
+      "API_ENTITIES_EVENT02": {
+        "action_name": "s1e0",
+        "author": {},
+        "author_id": "AUTHOR01",
+        "author_username": "s1e3",
+        "created_at": "s1e4",
+        "id": "API_ENTITIES_EVENT02",
+        "imported": true,
+        "imported_from": "s1e7",
+        "note": {},
+        "project_id": "PROJECT01",
+        "push_data": {},
+        "target_id": "TARGET01",
+        "target_iid": "s1ec",
+        "target_title": "s1ed",
+        "target_type": "s1ee",
+        "wiki_page": {},
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_event": {
+      "api_entities_event_ref01": {
+        "action_name": "s280",
+        "author": {},
+        "author_id": "AUTHOR01",
+        "author_username": "s283",
+        "created_at": "s284",
+        "imported": true,
+        "imported_from": "s287",
+        "note": {},
+        "project_id": "PROJECT01",
+        "push_data": {},
+        "target_id": "TARGET01",
+        "target_iid": "s28c",
+        "target_title": "s28d",
+        "target_type": "s28e",
+        "wiki_page": {}
+      }
+    }
+  }
+}

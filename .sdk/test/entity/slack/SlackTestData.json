@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "slack": {
+      "SLACK00": {
+        "id": "SLACK00"
+      },
+      "SLACK01": {
+        "id": "SLACK01"
+      },
+      "SLACK02": {
+        "id": "SLACK02"
+      }
+    }
+  },
+  "new": {
+    "slack": {
+      "slack_ref01": {}
+    }
+  }
+}

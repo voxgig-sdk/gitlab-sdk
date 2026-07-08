@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "api_entities_freeze_period": {
+      "API_ENTITIES_FREEZE_PERIOD00": {
+        "created_at": "s3c",
+        "cron_timezone": "s3d",
+        "freeze_end": "s3e",
+        "freeze_start": "s3f",
+        "id": "API_ENTITIES_FREEZE_PERIOD00",
+        "updated_at": "s41",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_FREEZE_PERIOD01": {
+        "created_at": "s78",
+        "cron_timezone": "s79",
+        "freeze_end": "s7a",
+        "freeze_start": "s7b",
+        "id": "API_ENTITIES_FREEZE_PERIOD01",
+        "updated_at": "s7d",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_FREEZE_PERIOD02": {
+        "created_at": "sb4",
+        "cron_timezone": "sb5",
+        "freeze_end": "sb6",
+        "freeze_start": "sb7",
+        "id": "API_ENTITIES_FREEZE_PERIOD02",
+        "updated_at": "sb9",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_freeze_period": {
+      "api_entities_freeze_period_ref01": {
+        "created_at": "sf0",
+        "cron_timezone": "sf1",
+        "freeze_end": "sf2",
+        "freeze_start": "sf3",
+        "updated_at": "sf5"
+      }
+    }
+  }
+}

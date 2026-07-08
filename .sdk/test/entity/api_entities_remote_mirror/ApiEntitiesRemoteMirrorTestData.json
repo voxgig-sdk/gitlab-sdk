@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "api_entities_remote_mirror": {
+      "API_ENTITIES_REMOTE_MIRROR00": {
+        "auth_method": "s82",
+        "enabled": false,
+        "host_key": [],
+        "id": "API_ENTITIES_REMOTE_MIRROR00",
+        "keep_divergent_ref": true,
+        "last_error": "s87",
+        "last_successful_update_at": "s88",
+        "last_update_at": "s89",
+        "last_update_started_at": "s8a",
+        "mirror_branch_regex": "s8b",
+        "only_protected_branch": true,
+        "update_status": "s8d",
+        "url": "s8e",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_REMOTE_MIRROR01": {
+        "auth_method": "s104",
+        "enabled": false,
+        "host_key": [],
+        "id": "API_ENTITIES_REMOTE_MIRROR01",
+        "keep_divergent_ref": true,
+        "last_error": "s109",
+        "last_successful_update_at": "s10a",
+        "last_update_at": "s10b",
+        "last_update_started_at": "s10c",
+        "mirror_branch_regex": "s10d",
+        "only_protected_branch": true,
+        "update_status": "s10f",
+        "url": "s110",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_REMOTE_MIRROR02": {
+        "auth_method": "s186",
+        "enabled": false,
+        "host_key": [],
+        "id": "API_ENTITIES_REMOTE_MIRROR02",
+        "keep_divergent_ref": true,
+        "last_error": "s18b",
+        "last_successful_update_at": "s18c",
+        "last_update_at": "s18d",
+        "last_update_started_at": "s18e",
+        "mirror_branch_regex": "s18f",
+        "only_protected_branch": true,
+        "update_status": "s191",
+        "url": "s192",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_remote_mirror": {
+      "api_entities_remote_mirror_ref01": {
+        "auth_method": "s208",
+        "enabled": false,
+        "host_key": [],
+        "keep_divergent_ref": true,
+        "last_error": "s20d",
+        "last_successful_update_at": "s20e",
+        "last_update_at": "s20f",
+        "last_update_started_at": "s210",
+        "mirror_branch_regex": "s211",
+        "only_protected_branch": true,
+        "update_status": "s213",
+        "url": "s214"
+      }
+    }
+  }
+}

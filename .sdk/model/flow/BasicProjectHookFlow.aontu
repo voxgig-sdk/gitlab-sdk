@@ -1,0 +1,24 @@
+# BasicProjectHookFlow
+
+main: kit: flow: BasicProjectHookFlow:
+{
+  entity: "project_hook",
+  kind: "basic",
+  name: "BasicProjectHookFlow",
+  step: [
+    {
+      input: {
+        ref: "project_hook_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "project_hook01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicProjectHookFlow"
+}

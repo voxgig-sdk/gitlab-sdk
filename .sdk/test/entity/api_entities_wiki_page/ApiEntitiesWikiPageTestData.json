@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "api_entities_wiki_page": {
+      "API_ENTITIES_WIKI_PAGE00": {
+        "content": "s46",
+        "encoding": "s47",
+        "format": "s48",
+        "front_matter": {},
+        "slug": "s4a",
+        "title": "s4b",
+        "wiki_page_meta_id": "WIKI_PAGE_META01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_WIKI_PAGE00"
+      },
+      "API_ENTITIES_WIKI_PAGE01": {
+        "content": "s8c",
+        "encoding": "s8d",
+        "format": "s8e",
+        "front_matter": {},
+        "slug": "s90",
+        "title": "s91",
+        "wiki_page_meta_id": "WIKI_PAGE_META01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_WIKI_PAGE01"
+      },
+      "API_ENTITIES_WIKI_PAGE02": {
+        "content": "sd2",
+        "encoding": "sd3",
+        "format": "sd4",
+        "front_matter": {},
+        "slug": "sd6",
+        "title": "sd7",
+        "wiki_page_meta_id": "WIKI_PAGE_META01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_WIKI_PAGE02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_wiki_page": {
+      "api_entities_wiki_page_ref01": {
+        "content": "s118",
+        "encoding": "s119",
+        "format": "s11a",
+        "front_matter": {},
+        "slug": "s11c",
+        "title": "s11d",
+        "wiki_page_meta_id": "WIKI_PAGE_META01"
+      }
+    }
+  }
+}

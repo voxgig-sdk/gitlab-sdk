@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "api_entities_wiki_page_basic": {
+      "API_ENTITIES_WIKI_PAGE_BASIC00": {
+        "format": "s28",
+        "slug": "s29",
+        "title": "s2a",
+        "wiki_page_meta_id": "WIKI_PAGE_META01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_WIKI_PAGE_BASIC01": {
+        "format": "s50",
+        "slug": "s51",
+        "title": "s52",
+        "wiki_page_meta_id": "WIKI_PAGE_META01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_WIKI_PAGE_BASIC02": {
+        "format": "s78",
+        "slug": "s79",
+        "title": "s7a",
+        "wiki_page_meta_id": "WIKI_PAGE_META01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_wiki_page_basic": {
+      "api_entities_wiki_page_basic_ref01": {
+        "format": "sa0",
+        "slug": "sa1",
+        "title": "sa2",
+        "wiki_page_meta_id": "WIKI_PAGE_META01"
+      }
+    }
+  }
+}

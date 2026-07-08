@@ -1,0 +1,49 @@
+# BasicPackageFileFlow
+
+main: kit: flow: BasicPackageFileFlow:
+{
+  entity: "package_file",
+  kind: "basic",
+  name: "BasicPackageFileFlow",
+  step: [
+    {
+      input: {
+        ref: "package_file_ref01",
+        srcdatavar: "package_file_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "package_file01",
+        package_id: "package01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-package_file_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "package_file_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "package_file01",
+        package_id: "package01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicPackageFileFlow"
+}

@@ -1,0 +1,24 @@
+# BasicMemberFlow
+
+main: kit: flow: BasicMemberFlow:
+{
+  entity: "member",
+  kind: "basic",
+  name: "BasicMemberFlow",
+  step: [
+    {
+      input: {
+        ref: "member_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "member01",
+        project_id: "project01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicMemberFlow"
+}

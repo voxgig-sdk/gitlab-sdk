@@ -1,0 +1,70 @@
+{
+  "existing": {
+    "api_entities_award_emoji": {
+      "API_ENTITIES_AWARD_EMOJI00": {
+        "awardable_id": "AWARDABLE01",
+        "awardable_type": "s51",
+        "created_at": "s52",
+        "id": "API_ENTITIES_AWARD_EMOJI00",
+        "name": "s54",
+        "updated_at": "s55",
+        "url": "s56",
+        "user": {},
+        "epic_id": "EPIC01",
+        "group_id": "GROUP01",
+        "note_id": "NOTE01",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "snippet_id": "SNIPPET01"
+      },
+      "API_ENTITIES_AWARD_EMOJI01": {
+        "awardable_id": "AWARDABLE01",
+        "awardable_type": "sa1",
+        "created_at": "sa2",
+        "id": "API_ENTITIES_AWARD_EMOJI01",
+        "name": "sa4",
+        "updated_at": "sa5",
+        "url": "sa6",
+        "user": {},
+        "epic_id": "EPIC01",
+        "group_id": "GROUP01",
+        "note_id": "NOTE01",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "snippet_id": "SNIPPET01"
+      },
+      "API_ENTITIES_AWARD_EMOJI02": {
+        "awardable_id": "AWARDABLE01",
+        "awardable_type": "sf1",
+        "created_at": "sf2",
+        "id": "API_ENTITIES_AWARD_EMOJI02",
+        "name": "sf4",
+        "updated_at": "sf5",
+        "url": "sf6",
+        "user": {},
+        "epic_id": "EPIC01",
+        "group_id": "GROUP01",
+        "note_id": "NOTE01",
+        "issue_id": "ISSUE01",
+        "project_id": "PROJECT01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "snippet_id": "SNIPPET01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_award_emoji": {
+      "api_entities_award_emoji_ref01": {
+        "awardable_id": "AWARDABLE01",
+        "awardable_type": "s141",
+        "created_at": "s142",
+        "name": "s144",
+        "updated_at": "s145",
+        "url": "s146",
+        "user": {}
+      }
+    }
+  }
+}

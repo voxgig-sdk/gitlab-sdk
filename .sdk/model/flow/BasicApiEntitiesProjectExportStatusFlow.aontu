@@ -1,0 +1,32 @@
+# BasicApiEntitiesProjectExportStatusFlow
+
+main: kit: flow: BasicApiEntitiesProjectExportStatusFlow:
+{
+  entity: "api_entities_project_export_status",
+  kind: "basic",
+  name: "BasicApiEntitiesProjectExportStatusFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_project_export_status_ref01",
+        srcdatavar: "api_entities_project_export_status_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_project_export_status01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_project_export_status_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesProjectExportStatusFlow"
+}

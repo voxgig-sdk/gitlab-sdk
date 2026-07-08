@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "api_entities_branch": {
+      "API_ENTITIES_BRANCH00": {
+        "can_push": true,
+        "commit": {},
+        "default": true,
+        "developers_can_merge": false,
+        "developers_can_push": true,
+        "merged": false,
+        "name": "s60",
+        "protected": false,
+        "web_url": "s62",
+        "project_id": "PROJECT01",
+        "branch_id": "BRANCH01",
+        "id": "API_ENTITIES_BRANCH00"
+      },
+      "API_ENTITIES_BRANCH01": {
+        "can_push": true,
+        "commit": {},
+        "default": true,
+        "developers_can_merge": false,
+        "developers_can_push": true,
+        "merged": false,
+        "name": "sba",
+        "protected": false,
+        "web_url": "sbc",
+        "project_id": "PROJECT01",
+        "branch_id": "BRANCH01",
+        "id": "API_ENTITIES_BRANCH01"
+      },
+      "API_ENTITIES_BRANCH02": {
+        "can_push": true,
+        "commit": {},
+        "default": true,
+        "developers_can_merge": false,
+        "developers_can_push": true,
+        "merged": false,
+        "name": "s114",
+        "protected": false,
+        "web_url": "s116",
+        "project_id": "PROJECT01",
+        "branch_id": "BRANCH01",
+        "id": "API_ENTITIES_BRANCH02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_branch": {
+      "api_entities_branch_ref01": {
+        "can_push": true,
+        "commit": {},
+        "default": true,
+        "developers_can_merge": false,
+        "developers_can_push": true,
+        "merged": false,
+        "name": "s16e",
+        "protected": false,
+        "web_url": "s170"
+      }
+    }
+  }
+}

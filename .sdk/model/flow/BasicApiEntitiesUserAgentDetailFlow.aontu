@@ -1,0 +1,32 @@
+# BasicApiEntitiesUserAgentDetailFlow
+
+main: kit: flow: BasicApiEntitiesUserAgentDetailFlow:
+{
+  entity: "api_entities_user_agent_detail",
+  kind: "basic",
+  name: "BasicApiEntitiesUserAgentDetailFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_user_agent_detail_ref01",
+        srcdatavar: "api_entities_user_agent_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_user_agent_detail01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_user_agent_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesUserAgentDetailFlow"
+}

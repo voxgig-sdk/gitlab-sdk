@@ -1,0 +1,32 @@
+# BasicGroupAvatarFlow
+
+main: kit: flow: BasicGroupAvatarFlow:
+{
+  entity: "group_avatar",
+  kind: "basic",
+  name: "BasicGroupAvatarFlow",
+  step: [
+    {
+      input: {
+        ref: "group_avatar_ref01",
+        srcdatavar: "group_avatar_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "group_avatar01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-group_avatar_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGroupAvatarFlow"
+}

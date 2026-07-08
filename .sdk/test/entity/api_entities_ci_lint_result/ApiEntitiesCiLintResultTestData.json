@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "api_entities_ci_lint_result": {
+      "API_ENTITIES_CI_LINT_RESULT00": {
+        "blob": "s82",
+        "context_project": "s83",
+        "context_sha": "s84",
+        "error": [],
+        "extra": {},
+        "include": [],
+        "job": [],
+        "location": "s89",
+        "merged_yaml": "s8a",
+        "raw": "s8b",
+        "type": "s8c",
+        "valid": false,
+        "warning": [],
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CI_LINT_RESULT00"
+      },
+      "API_ENTITIES_CI_LINT_RESULT01": {
+        "blob": "s104",
+        "context_project": "s105",
+        "context_sha": "s106",
+        "error": [],
+        "extra": {},
+        "include": [],
+        "job": [],
+        "location": "s10b",
+        "merged_yaml": "s10c",
+        "raw": "s10d",
+        "type": "s10e",
+        "valid": false,
+        "warning": [],
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CI_LINT_RESULT01"
+      },
+      "API_ENTITIES_CI_LINT_RESULT02": {
+        "blob": "s186",
+        "context_project": "s187",
+        "context_sha": "s188",
+        "error": [],
+        "extra": {},
+        "include": [],
+        "job": [],
+        "location": "s18d",
+        "merged_yaml": "s18e",
+        "raw": "s18f",
+        "type": "s190",
+        "valid": false,
+        "warning": [],
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_CI_LINT_RESULT02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_ci_lint_result": {
+      "api_entities_ci_lint_result_ref01": {
+        "blob": "s208",
+        "context_project": "s209",
+        "context_sha": "s20a",
+        "error": [],
+        "extra": {},
+        "include": [],
+        "job": [],
+        "location": "s20f",
+        "merged_yaml": "s210",
+        "raw": "s211",
+        "type": "s212",
+        "valid": false,
+        "warning": []
+      }
+    }
+  }
+}

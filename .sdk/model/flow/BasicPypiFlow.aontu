@@ -1,0 +1,22 @@
+# BasicPypiFlow
+
+main: kit: flow: BasicPypiFlow:
+{
+  entity: "pypi",
+  kind: "basic",
+  name: "BasicPypiFlow",
+  step: [
+    {
+      input: {
+        ref: "pypi_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicPypiFlow"
+}

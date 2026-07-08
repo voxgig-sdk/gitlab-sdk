@@ -1,0 +1,26 @@
+# BasicEeApiEntitiesGeoPipelineRefFlow
+
+main: kit: flow: BasicEeApiEntitiesGeoPipelineRefFlow:
+{
+  entity: "ee_api_entities_geo_pipeline_ref",
+  kind: "basic",
+  name: "BasicEeApiEntitiesGeoPipelineRefFlow",
+  step: [
+    {
+      match: {
+        gl_repository: "gl_repository01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "ee_api_entities_geo_pipeline_ref_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEeApiEntitiesGeoPipelineRefFlow"
+}

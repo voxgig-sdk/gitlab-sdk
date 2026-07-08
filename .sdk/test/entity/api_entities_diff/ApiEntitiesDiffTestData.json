@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "api_entities_diff": {
+      "API_ENTITIES_DIFF00": {
+        "a_mode": "s6e",
+        "b_mode": "s6f",
+        "collapsed": true,
+        "deleted_file": false,
+        "diff": "s72",
+        "generated_file": false,
+        "new_file": true,
+        "new_path": "s75",
+        "old_path": "s76",
+        "renamed_file": false,
+        "too_large": true,
+        "project_id": "PROJECT01",
+        "sha": "SHA01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "id": "API_ENTITIES_DIFF00"
+      },
+      "API_ENTITIES_DIFF01": {
+        "a_mode": "sdc",
+        "b_mode": "sdd",
+        "collapsed": true,
+        "deleted_file": false,
+        "diff": "se0",
+        "generated_file": false,
+        "new_file": true,
+        "new_path": "se3",
+        "old_path": "se4",
+        "renamed_file": false,
+        "too_large": true,
+        "project_id": "PROJECT01",
+        "sha": "SHA01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "id": "API_ENTITIES_DIFF01"
+      },
+      "API_ENTITIES_DIFF02": {
+        "a_mode": "s14a",
+        "b_mode": "s14b",
+        "collapsed": true,
+        "deleted_file": false,
+        "diff": "s14e",
+        "generated_file": false,
+        "new_file": true,
+        "new_path": "s151",
+        "old_path": "s152",
+        "renamed_file": false,
+        "too_large": true,
+        "project_id": "PROJECT01",
+        "sha": "SHA01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "id": "API_ENTITIES_DIFF02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_diff": {
+      "api_entities_diff_ref01": {
+        "a_mode": "s1b8",
+        "b_mode": "s1b9",
+        "collapsed": true,
+        "deleted_file": false,
+        "diff": "s1bc",
+        "generated_file": false,
+        "new_file": true,
+        "new_path": "s1bf",
+        "old_path": "s1c0",
+        "renamed_file": false,
+        "too_large": true
+      }
+    }
+  }
+}

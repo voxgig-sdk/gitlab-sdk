@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "projects_job_token_scope": {
+      "PROJECTS_JOB_TOKEN_SCOPE00": {
+        "project_id": "PROJECT01",
+        "target_group_id": "TARGET_GROUP01",
+        "target_project_id": "TARGET_PROJECT01",
+        "id": "PROJECTS_JOB_TOKEN_SCOPE00"
+      },
+      "PROJECTS_JOB_TOKEN_SCOPE01": {
+        "project_id": "PROJECT01",
+        "target_group_id": "TARGET_GROUP01",
+        "target_project_id": "TARGET_PROJECT01",
+        "id": "PROJECTS_JOB_TOKEN_SCOPE01"
+      },
+      "PROJECTS_JOB_TOKEN_SCOPE02": {
+        "project_id": "PROJECT01",
+        "target_group_id": "TARGET_GROUP01",
+        "target_project_id": "TARGET_PROJECT01",
+        "id": "PROJECTS_JOB_TOKEN_SCOPE02"
+      }
+    }
+  },
+  "new": {
+    "projects_job_token_scope": {
+      "projects_job_token_scope_ref01": {}
+    }
+  }
+}

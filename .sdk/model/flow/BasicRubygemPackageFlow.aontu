@@ -1,0 +1,44 @@
+# BasicRubygemPackageFlow
+
+main: kit: flow: BasicRubygemPackageFlow:
+{
+  entity: "rubygem_package",
+  kind: "basic",
+  name: "BasicRubygemPackageFlow",
+  step: [
+    {
+      input: {
+        ref: "rubygem_package_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "rubygem_package_ref01",
+        srcdatavar: "rubygem_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "rubygem_package01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-rubygem_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRubygemPackageFlow"
+}

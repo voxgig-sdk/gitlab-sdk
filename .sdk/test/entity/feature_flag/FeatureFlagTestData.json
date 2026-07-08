@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "feature_flag": {
+      "FEATURE_FLAG00": {
+        "unleash_id": "UNLEASH01",
+        "project_id": "PROJECT01",
+        "id": "FEATURE_FLAG00"
+      },
+      "FEATURE_FLAG01": {
+        "unleash_id": "UNLEASH01",
+        "project_id": "PROJECT01",
+        "id": "FEATURE_FLAG01"
+      },
+      "FEATURE_FLAG02": {
+        "unleash_id": "UNLEASH01",
+        "project_id": "PROJECT01",
+        "id": "FEATURE_FLAG02"
+      }
+    }
+  },
+  "new": {
+    "feature_flag": {
+      "feature_flag_ref01": {}
+    }
+  }
+}

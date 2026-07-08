@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "feature_flags_user_list": {
+      "FEATURE_FLAGS_USER_LIST00": {
+        "project_id": "PROJECT01",
+        "id": "FEATURE_FLAGS_USER_LIST00"
+      },
+      "FEATURE_FLAGS_USER_LIST01": {
+        "project_id": "PROJECT01",
+        "id": "FEATURE_FLAGS_USER_LIST01"
+      },
+      "FEATURE_FLAGS_USER_LIST02": {
+        "project_id": "PROJECT01",
+        "id": "FEATURE_FLAGS_USER_LIST02"
+      }
+    }
+  },
+  "new": {
+    "feature_flags_user_list": {
+      "feature_flags_user_list_ref01": {}
+    }
+  }
+}

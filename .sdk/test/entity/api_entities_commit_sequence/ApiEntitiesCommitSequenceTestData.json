@@ -1,0 +1,31 @@
+{
+  "existing": {
+    "api_entities_commit_sequence": {
+      "API_ENTITIES_COMMIT_SEQUENCE00": {
+        "count": "sa",
+        "project_id": "PROJECT01",
+        "sha": "SHA01",
+        "id": "API_ENTITIES_COMMIT_SEQUENCE00"
+      },
+      "API_ENTITIES_COMMIT_SEQUENCE01": {
+        "count": "s14",
+        "project_id": "PROJECT01",
+        "sha": "SHA01",
+        "id": "API_ENTITIES_COMMIT_SEQUENCE01"
+      },
+      "API_ENTITIES_COMMIT_SEQUENCE02": {
+        "count": "s1e",
+        "project_id": "PROJECT01",
+        "sha": "SHA01",
+        "id": "API_ENTITIES_COMMIT_SEQUENCE02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_commit_sequence": {
+      "api_entities_commit_sequence_ref01": {
+        "count": "s28"
+      }
+    }
+  }
+}

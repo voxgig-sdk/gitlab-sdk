@@ -1,0 +1,33 @@
+# BasicApiEntitiesIntegrationFlow
+
+main: kit: flow: BasicApiEntitiesIntegrationFlow:
+{
+  entity: "api_entities_integration",
+  kind: "basic",
+  name: "BasicApiEntitiesIntegrationFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_integration_ref01",
+        srcdatavar: "api_entities_integration_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_integration01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_integration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesIntegrationFlow"
+}

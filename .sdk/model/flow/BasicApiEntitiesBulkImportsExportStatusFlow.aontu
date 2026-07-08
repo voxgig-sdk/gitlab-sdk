@@ -1,0 +1,26 @@
+# BasicApiEntitiesBulkImportsExportStatusFlow
+
+main: kit: flow: BasicApiEntitiesBulkImportsExportStatusFlow:
+{
+  entity: "api_entities_bulk_imports_export_status",
+  kind: "basic",
+  name: "BasicApiEntitiesBulkImportsExportStatusFlow",
+  step: [
+    {
+      match: {
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_bulk_imports_export_status_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesBulkImportsExportStatusFlow"
+}

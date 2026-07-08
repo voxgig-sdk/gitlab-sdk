@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "api_entities_projects_packages_protection_rule": {
+      "API_ENTITIES_PROJECTS_PACKAGES_PROTECTION_RULE00": {
+        "id": "API_ENTITIES_PROJECTS_PACKAGES_PROTECTION_RULE00",
+        "minimum_access_level_for_delete": "s3d",
+        "minimum_access_level_for_push": "s3e",
+        "package_name_pattern": "s3f",
+        "package_type": "s40",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PROJECTS_PACKAGES_PROTECTION_RULE01": {
+        "id": "API_ENTITIES_PROJECTS_PACKAGES_PROTECTION_RULE01",
+        "minimum_access_level_for_delete": "s79",
+        "minimum_access_level_for_push": "s7a",
+        "package_name_pattern": "s7b",
+        "package_type": "s7c",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_PROJECTS_PACKAGES_PROTECTION_RULE02": {
+        "id": "API_ENTITIES_PROJECTS_PACKAGES_PROTECTION_RULE02",
+        "minimum_access_level_for_delete": "sb5",
+        "minimum_access_level_for_push": "sb6",
+        "package_name_pattern": "sb7",
+        "package_type": "sb8",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_projects_packages_protection_rule": {
+      "api_entities_projects_packages_protection_rule_ref01": {
+        "minimum_access_level_for_delete": "sf1",
+        "minimum_access_level_for_push": "sf2",
+        "package_name_pattern": "sf3",
+        "package_type": "sf4",
+        "project_id": "PROJECT01"
+      }
+    }
+  }
+}

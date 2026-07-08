@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "api_entities_merge_request_diff_full": {
+      "API_ENTITIES_MERGE_REQUEST_DIFF_FULL00": {
+        "base_commit_sha": "s6e",
+        "commit": {},
+        "created_at": "s70",
+        "diff": {},
+        "head_commit_sha": "s72",
+        "id": "API_ENTITIES_MERGE_REQUEST_DIFF_FULL00",
+        "merge_request_id": "MERGE_REQUEST01",
+        "patch_id_sha": "s75",
+        "real_size": "s76",
+        "start_commit_sha": "s77",
+        "state": "s78",
+        "project_id": "PROJECT01",
+        "version_id": "VERSION01"
+      },
+      "API_ENTITIES_MERGE_REQUEST_DIFF_FULL01": {
+        "base_commit_sha": "sdc",
+        "commit": {},
+        "created_at": "sde",
+        "diff": {},
+        "head_commit_sha": "se0",
+        "id": "API_ENTITIES_MERGE_REQUEST_DIFF_FULL01",
+        "merge_request_id": "MERGE_REQUEST01",
+        "patch_id_sha": "se3",
+        "real_size": "se4",
+        "start_commit_sha": "se5",
+        "state": "se6",
+        "project_id": "PROJECT01",
+        "version_id": "VERSION01"
+      },
+      "API_ENTITIES_MERGE_REQUEST_DIFF_FULL02": {
+        "base_commit_sha": "s14a",
+        "commit": {},
+        "created_at": "s14c",
+        "diff": {},
+        "head_commit_sha": "s14e",
+        "id": "API_ENTITIES_MERGE_REQUEST_DIFF_FULL02",
+        "merge_request_id": "MERGE_REQUEST01",
+        "patch_id_sha": "s151",
+        "real_size": "s152",
+        "start_commit_sha": "s153",
+        "state": "s154",
+        "project_id": "PROJECT01",
+        "version_id": "VERSION01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_merge_request_diff_full": {
+      "api_entities_merge_request_diff_full_ref01": {
+        "base_commit_sha": "s1b8",
+        "commit": {},
+        "created_at": "s1ba",
+        "diff": {},
+        "head_commit_sha": "s1bc",
+        "merge_request_id": "MERGE_REQUEST01",
+        "patch_id_sha": "s1bf",
+        "real_size": "s1c0",
+        "start_commit_sha": "s1c1",
+        "state": "s1c2"
+      }
+    }
+  }
+}

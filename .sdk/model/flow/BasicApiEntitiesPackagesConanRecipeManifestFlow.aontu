@@ -1,0 +1,35 @@
+# BasicApiEntitiesPackagesConanRecipeManifestFlow
+
+main: kit: flow: BasicApiEntitiesPackagesConanRecipeManifestFlow:
+{
+  entity: "api_entities_packages_conan_recipe_manifest",
+  kind: "basic",
+  name: "BasicApiEntitiesPackagesConanRecipeManifestFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_packages_conan_recipe_manifest_ref01",
+        srcdatavar: "api_entities_packages_conan_recipe_manifest_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        conan_id: "conan01",
+        id: "api_entities_packages_conan_recipe_manifest01",
+        package_username: "package_username01",
+        package_version: "package_version01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_packages_conan_recipe_manifest_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPackagesConanRecipeManifestFlow"
+}

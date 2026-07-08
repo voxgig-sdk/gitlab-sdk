@@ -1,0 +1,47 @@
+# BasicApiEntitiesIssueLinkFlow
+
+main: kit: flow: BasicApiEntitiesIssueLinkFlow:
+{
+  entity: "api_entities_issue_link",
+  kind: "basic",
+  name: "BasicApiEntitiesIssueLinkFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_issue_link_ref01"
+      }
+
+      match: {
+        issue_id: "issue01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "api_entities_issue_link_ref01",
+        srcdatavar: "api_entities_issue_link_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_issue_link01",
+        issue_id: "issue01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_issue_link_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesIssueLinkFlow"
+}

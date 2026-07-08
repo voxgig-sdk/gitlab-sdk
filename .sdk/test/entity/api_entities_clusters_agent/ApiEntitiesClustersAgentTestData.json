@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "api_entities_clusters_agent": {
+      "API_ENTITIES_CLUSTERS_AGENT00": {
+        "config_project": {},
+        "created_at": "s3d",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "id": "API_ENTITIES_CLUSTERS_AGENT00",
+        "is_receptive": true,
+        "name": "s41",
+        "project_id": "PROJECT01",
+        "agent_id": "AGENT01"
+      },
+      "API_ENTITIES_CLUSTERS_AGENT01": {
+        "config_project": {},
+        "created_at": "s79",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "id": "API_ENTITIES_CLUSTERS_AGENT01",
+        "is_receptive": true,
+        "name": "s7d",
+        "project_id": "PROJECT01",
+        "agent_id": "AGENT01"
+      },
+      "API_ENTITIES_CLUSTERS_AGENT02": {
+        "config_project": {},
+        "created_at": "sb5",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "id": "API_ENTITIES_CLUSTERS_AGENT02",
+        "is_receptive": true,
+        "name": "sb9",
+        "project_id": "PROJECT01",
+        "agent_id": "AGENT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_clusters_agent": {
+      "api_entities_clusters_agent_ref01": {
+        "config_project": {},
+        "created_at": "sf1",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "is_receptive": true,
+        "name": "sf5"
+      }
+    }
+  }
+}

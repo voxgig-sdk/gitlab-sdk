@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "terraform_registry": {
+      "TERRAFORM_REGISTRY00": {
+        "module_id": "MODULE01",
+        "module_system": "MODULE_SYSTEM01",
+        "project_id": "PROJECT01",
+        "module_name": "MODULE_NAME01",
+        "v1_id": "V101",
+        "id": "TERRAFORM_REGISTRY00"
+      },
+      "TERRAFORM_REGISTRY01": {
+        "module_id": "MODULE01",
+        "module_system": "MODULE_SYSTEM01",
+        "project_id": "PROJECT01",
+        "module_name": "MODULE_NAME01",
+        "v1_id": "V101",
+        "id": "TERRAFORM_REGISTRY01"
+      },
+      "TERRAFORM_REGISTRY02": {
+        "module_id": "MODULE01",
+        "module_system": "MODULE_SYSTEM01",
+        "project_id": "PROJECT01",
+        "module_name": "MODULE_NAME01",
+        "v1_id": "V101",
+        "id": "TERRAFORM_REGISTRY02"
+      }
+    }
+  },
+  "new": {
+    "terraform_registry": {
+      "terraform_registry_ref01": {}
+    }
+  }
+}

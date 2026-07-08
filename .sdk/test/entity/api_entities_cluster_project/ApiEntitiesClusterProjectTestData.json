@@ -1,0 +1,87 @@
+{
+  "existing": {
+    "api_entities_cluster_project": {
+      "API_ENTITIES_CLUSTER_PROJECT00": {
+        "cluster_type": "sa0",
+        "created_at": "sa1",
+        "domain": "sa2",
+        "enabled": false,
+        "environment_scope": "sa4",
+        "id": "API_ENTITIES_CLUSTER_PROJECT00",
+        "managed": "sa6",
+        "management_project": {},
+        "name": "sa8",
+        "namespace_per_environment": "sa9",
+        "platform_kubernete": {},
+        "platform_type": "sab",
+        "project": {},
+        "provider_gcp": {},
+        "provider_type": "sae",
+        "user": {},
+        "project_id": "PROJECT01",
+        "cluster_id": "CLUSTER01"
+      },
+      "API_ENTITIES_CLUSTER_PROJECT01": {
+        "cluster_type": "s140",
+        "created_at": "s141",
+        "domain": "s142",
+        "enabled": false,
+        "environment_scope": "s144",
+        "id": "API_ENTITIES_CLUSTER_PROJECT01",
+        "managed": "s146",
+        "management_project": {},
+        "name": "s148",
+        "namespace_per_environment": "s149",
+        "platform_kubernete": {},
+        "platform_type": "s14b",
+        "project": {},
+        "provider_gcp": {},
+        "provider_type": "s14e",
+        "user": {},
+        "project_id": "PROJECT01",
+        "cluster_id": "CLUSTER01"
+      },
+      "API_ENTITIES_CLUSTER_PROJECT02": {
+        "cluster_type": "s1e0",
+        "created_at": "s1e1",
+        "domain": "s1e2",
+        "enabled": false,
+        "environment_scope": "s1e4",
+        "id": "API_ENTITIES_CLUSTER_PROJECT02",
+        "managed": "s1e6",
+        "management_project": {},
+        "name": "s1e8",
+        "namespace_per_environment": "s1e9",
+        "platform_kubernete": {},
+        "platform_type": "s1eb",
+        "project": {},
+        "provider_gcp": {},
+        "provider_type": "s1ee",
+        "user": {},
+        "project_id": "PROJECT01",
+        "cluster_id": "CLUSTER01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_cluster_project": {
+      "api_entities_cluster_project_ref01": {
+        "cluster_type": "s280",
+        "created_at": "s281",
+        "domain": "s282",
+        "enabled": false,
+        "environment_scope": "s284",
+        "managed": "s286",
+        "management_project": {},
+        "name": "s288",
+        "namespace_per_environment": "s289",
+        "platform_kubernete": {},
+        "platform_type": "s28b",
+        "project": {},
+        "provider_gcp": {},
+        "provider_type": "s28e",
+        "user": {}
+      }
+    }
+  }
+}

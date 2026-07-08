@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "rpm_package": {
+      "RPM_PACKAGE00": {
+        "project_id": "PROJECT01",
+        "id": "RPM_PACKAGE00"
+      },
+      "RPM_PACKAGE01": {
+        "project_id": "PROJECT01",
+        "id": "RPM_PACKAGE01"
+      },
+      "RPM_PACKAGE02": {
+        "project_id": "PROJECT01",
+        "id": "RPM_PACKAGE02"
+      }
+    }
+  },
+  "new": {
+    "rpm_package": {
+      "rpm_package_ref01": {}
+    }
+  }
+}

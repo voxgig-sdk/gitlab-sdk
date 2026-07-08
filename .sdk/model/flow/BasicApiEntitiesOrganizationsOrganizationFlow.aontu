@@ -1,0 +1,18 @@
+# BasicApiEntitiesOrganizationsOrganizationFlow
+
+main: kit: flow: BasicApiEntitiesOrganizationsOrganizationFlow:
+{
+  entity: "api_entities_organizations_organization",
+  kind: "basic",
+  name: "BasicApiEntitiesOrganizationsOrganizationFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_organizations_organization_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesOrganizationsOrganizationFlow"
+}

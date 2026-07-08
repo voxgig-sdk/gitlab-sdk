@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "test_report_summary": {
+      "TEST_REPORT_SUMMARY00": {
+        "test_suite": {},
+        "total": {},
+        "pipeline_id": "PIPELINE01",
+        "project_id": "PROJECT01",
+        "id": "TEST_REPORT_SUMMARY00"
+      },
+      "TEST_REPORT_SUMMARY01": {
+        "test_suite": {},
+        "total": {},
+        "pipeline_id": "PIPELINE01",
+        "project_id": "PROJECT01",
+        "id": "TEST_REPORT_SUMMARY01"
+      },
+      "TEST_REPORT_SUMMARY02": {
+        "test_suite": {},
+        "total": {},
+        "pipeline_id": "PIPELINE01",
+        "project_id": "PROJECT01",
+        "id": "TEST_REPORT_SUMMARY02"
+      }
+    }
+  },
+  "new": {
+    "test_report_summary": {
+      "test_report_summary_ref01": {
+        "test_suite": {},
+        "total": {}
+      }
+    }
+  }
+}

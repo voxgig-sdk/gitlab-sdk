@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "pypi": {
+      "PYPI00": {
+        "project_id": "PROJECT01",
+        "id": "PYPI00"
+      },
+      "PYPI01": {
+        "project_id": "PROJECT01",
+        "id": "PYPI01"
+      },
+      "PYPI02": {
+        "project_id": "PROJECT01",
+        "id": "PYPI02"
+      }
+    }
+  },
+  "new": {
+    "pypi": {
+      "pypi_ref01": {}
+    }
+  }
+}

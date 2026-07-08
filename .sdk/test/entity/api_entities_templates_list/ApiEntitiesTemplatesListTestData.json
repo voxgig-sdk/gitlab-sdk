@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "api_entities_templates_list": {
+      "API_ENTITIES_TEMPLATES_LIST00": {
+        "key": "s14",
+        "name": "s15",
+        "project_id": "PROJECT01",
+        "type": "TYPE01",
+        "id": "API_ENTITIES_TEMPLATES_LIST00"
+      },
+      "API_ENTITIES_TEMPLATES_LIST01": {
+        "key": "s28",
+        "name": "s29",
+        "project_id": "PROJECT01",
+        "type": "TYPE01",
+        "id": "API_ENTITIES_TEMPLATES_LIST01"
+      },
+      "API_ENTITIES_TEMPLATES_LIST02": {
+        "key": "s3c",
+        "name": "s3d",
+        "project_id": "PROJECT01",
+        "type": "TYPE01",
+        "id": "API_ENTITIES_TEMPLATES_LIST02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_templates_list": {
+      "api_entities_templates_list_ref01": {
+        "key": "s50",
+        "name": "s51"
+      }
+    }
+  }
+}

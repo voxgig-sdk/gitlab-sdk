@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "api_entities_mr_note": {
+      "API_ENTITIES_MR_NOTE00": {
+        "author": {},
+        "note": "s15",
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_MR_NOTE00"
+      },
+      "API_ENTITIES_MR_NOTE01": {
+        "author": {},
+        "note": "s29",
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_MR_NOTE01"
+      },
+      "API_ENTITIES_MR_NOTE02": {
+        "author": {},
+        "note": "s3d",
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_MR_NOTE02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_mr_note": {
+      "api_entities_mr_note_ref01": {
+        "author": {},
+        "note": "s51"
+      }
+    }
+  }
+}

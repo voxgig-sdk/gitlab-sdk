@@ -1,0 +1,45 @@
+# BasicPypiPackageFlow
+
+main: kit: flow: BasicPypiPackageFlow:
+{
+  entity: "pypi_package",
+  kind: "basic",
+  name: "BasicPypiPackageFlow",
+  step: [
+    {
+      input: {
+        ref: "pypi_package_ref01"
+      }
+
+      match: {
+        group_id: "group01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "pypi_package_ref01",
+        srcdatavar: "pypi_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "pypi_package01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pypi_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPypiPackageFlow"
+}

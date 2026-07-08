@@ -1,0 +1,28 @@
+# BasicWebCommitFlow
+
+main: kit: flow: BasicWebCommitFlow:
+{
+  entity: "web_commit",
+  kind: "basic",
+  name: "BasicWebCommitFlow",
+  step: [
+    {
+      input: {
+        ref: "web_commit_ref01",
+        srcdatavar: "web_commit_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-web_commit_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWebCommitFlow"
+}

@@ -1,0 +1,22 @@
+# BasicApiEntitiesWikiAttachmentFlow
+
+main: kit: flow: BasicApiEntitiesWikiAttachmentFlow:
+{
+  entity: "api_entities_wiki_attachment",
+  kind: "basic",
+  name: "BasicApiEntitiesWikiAttachmentFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_wiki_attachment_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesWikiAttachmentFlow"
+}

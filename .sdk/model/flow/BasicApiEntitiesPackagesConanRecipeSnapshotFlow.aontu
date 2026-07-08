@@ -1,0 +1,35 @@
+# BasicApiEntitiesPackagesConanRecipeSnapshotFlow
+
+main: kit: flow: BasicApiEntitiesPackagesConanRecipeSnapshotFlow:
+{
+  entity: "api_entities_packages_conan_recipe_snapshot",
+  kind: "basic",
+  name: "BasicApiEntitiesPackagesConanRecipeSnapshotFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_packages_conan_recipe_snapshot_ref01",
+        srcdatavar: "api_entities_packages_conan_recipe_snapshot_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_packages_conan_recipe_snapshot01",
+        package_name: "package_name01",
+        package_username: "package_username01",
+        package_version: "package_version01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_packages_conan_recipe_snapshot_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPackagesConanRecipeSnapshotFlow"
+}

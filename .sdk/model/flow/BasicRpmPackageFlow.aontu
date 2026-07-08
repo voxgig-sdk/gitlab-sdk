@@ -1,0 +1,44 @@
+# BasicRpmPackageFlow
+
+main: kit: flow: BasicRpmPackageFlow:
+{
+  entity: "rpm_package",
+  kind: "basic",
+  name: "BasicRpmPackageFlow",
+  step: [
+    {
+      input: {
+        ref: "rpm_package_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "rpm_package_ref01",
+        srcdatavar: "rpm_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "rpm_package01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-rpm_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRpmPackageFlow"
+}

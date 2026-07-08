@@ -1,0 +1,33 @@
+# BasicApiEntitiesClustersAgentTokenBasicFlow
+
+main: kit: flow: BasicApiEntitiesClustersAgentTokenBasicFlow:
+{
+  entity: "api_entities_clusters_agent_token_basic",
+  kind: "basic",
+  name: "BasicApiEntitiesClustersAgentTokenBasicFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_clusters_agent_token_basic_ref01",
+        srcdatavar: "api_entities_clusters_agent_token_basic_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_clusters_agent_token_basic01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_clusters_agent_token_basic_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesClustersAgentTokenBasicFlow"
+}

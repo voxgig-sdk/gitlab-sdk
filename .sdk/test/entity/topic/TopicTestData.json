@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "topic": {
+      "TOPIC00": {
+        "id": "TOPIC00"
+      },
+      "TOPIC01": {
+        "id": "TOPIC01"
+      },
+      "TOPIC02": {
+        "id": "TOPIC02"
+      }
+    }
+  },
+  "new": {
+    "topic": {
+      "topic_ref01": {}
+    }
+  }
+}

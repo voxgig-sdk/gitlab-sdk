@@ -1,0 +1,22 @@
+# BasicApiEntitiesFeatureDefinitionFlow
+
+main: kit: flow: BasicApiEntitiesFeatureDefinitionFlow:
+{
+  entity: "api_entities_feature_definition",
+  kind: "basic",
+  name: "BasicApiEntitiesFeatureDefinitionFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_feature_definition_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesFeatureDefinitionFlow"
+}

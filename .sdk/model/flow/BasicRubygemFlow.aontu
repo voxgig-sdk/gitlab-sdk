@@ -1,0 +1,33 @@
+# BasicRubygemFlow
+
+main: kit: flow: BasicRubygemFlow:
+{
+  entity: "rubygem",
+  kind: "basic",
+  name: "BasicRubygemFlow",
+  step: [
+    {
+      input: {
+        ref: "rubygem_ref01",
+        srcdatavar: "rubygem_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "rubygem01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-rubygem_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRubygemFlow"
+}

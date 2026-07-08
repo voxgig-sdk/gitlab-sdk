@@ -1,0 +1,45 @@
+# BasicApiEntitiesGroupDetailFlow
+
+main: kit: flow: BasicApiEntitiesGroupDetailFlow:
+{
+  entity: "api_entities_group_detail",
+  kind: "basic",
+  name: "BasicApiEntitiesGroupDetailFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_group_detail_ref01"
+      }
+
+      match: {
+        group_id: "group01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "api_entities_group_detail_ref01",
+        srcdatavar: "api_entities_group_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_group_detail01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_group_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesGroupDetailFlow"
+}

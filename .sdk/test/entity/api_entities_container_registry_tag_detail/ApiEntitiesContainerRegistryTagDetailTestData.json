@@ -1,0 +1,62 @@
+{
+  "existing": {
+    "api_entities_container_registry_tag_detail": {
+      "API_ENTITIES_CONTAINER_REGISTRY_TAG_DETAIL00": {
+        "created_at": "s50",
+        "digest": "s51",
+        "location": "s52",
+        "name": "s53",
+        "path": "s54",
+        "revision": "s55",
+        "short_revision": "s56",
+        "total_size": "s57",
+        "project_id": "PROJECT01",
+        "repository_id": "REPOSITORY01",
+        "tag_name": "TAG_NAME01",
+        "id": "API_ENTITIES_CONTAINER_REGISTRY_TAG_DETAIL00"
+      },
+      "API_ENTITIES_CONTAINER_REGISTRY_TAG_DETAIL01": {
+        "created_at": "sa0",
+        "digest": "sa1",
+        "location": "sa2",
+        "name": "sa3",
+        "path": "sa4",
+        "revision": "sa5",
+        "short_revision": "sa6",
+        "total_size": "sa7",
+        "project_id": "PROJECT01",
+        "repository_id": "REPOSITORY01",
+        "tag_name": "TAG_NAME01",
+        "id": "API_ENTITIES_CONTAINER_REGISTRY_TAG_DETAIL01"
+      },
+      "API_ENTITIES_CONTAINER_REGISTRY_TAG_DETAIL02": {
+        "created_at": "sf0",
+        "digest": "sf1",
+        "location": "sf2",
+        "name": "sf3",
+        "path": "sf4",
+        "revision": "sf5",
+        "short_revision": "sf6",
+        "total_size": "sf7",
+        "project_id": "PROJECT01",
+        "repository_id": "REPOSITORY01",
+        "tag_name": "TAG_NAME01",
+        "id": "API_ENTITIES_CONTAINER_REGISTRY_TAG_DETAIL02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_container_registry_tag_detail": {
+      "api_entities_container_registry_tag_detail_ref01": {
+        "created_at": "s140",
+        "digest": "s141",
+        "location": "s142",
+        "name": "s143",
+        "path": "s144",
+        "revision": "s145",
+        "short_revision": "s146",
+        "total_size": "s147"
+      }
+    }
+  }
+}

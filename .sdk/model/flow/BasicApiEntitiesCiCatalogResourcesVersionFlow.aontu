@@ -1,0 +1,22 @@
+# BasicApiEntitiesCiCatalogResourcesVersionFlow
+
+main: kit: flow: BasicApiEntitiesCiCatalogResourcesVersionFlow:
+{
+  entity: "api_entities_ci_catalog_resources_version",
+  kind: "basic",
+  name: "BasicApiEntitiesCiCatalogResourcesVersionFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_ci_catalog_resources_version_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesCiCatalogResourcesVersionFlow"
+}

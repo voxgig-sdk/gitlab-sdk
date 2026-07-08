@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "feature": {
+      "FEATURE00": {
+        "id": "FEATURE00"
+      },
+      "FEATURE01": {
+        "id": "FEATURE01"
+      },
+      "FEATURE02": {
+        "id": "FEATURE02"
+      }
+    }
+  },
+  "new": {
+    "feature": {
+      "feature_ref01": {}
+    }
+  }
+}

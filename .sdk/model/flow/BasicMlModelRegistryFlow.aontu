@@ -1,0 +1,57 @@
+# BasicMlModelRegistryFlow
+
+main: kit: flow: BasicMlModelRegistryFlow:
+{
+  entity: "ml_model_registry",
+  kind: "basic",
+  name: "BasicMlModelRegistryFlow",
+  step: [
+    {
+      data: {
+        file_name: "file_name01",
+        project_id: "project01"
+      }
+
+      input: {
+        ref: "ml_model_registry_ref01",
+        srcdatavar: "ml_model_registry_ref01_data",
+        suffix: "_up0"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ml_model_registry_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "ml_model_registry_ref01",
+        srcdatavar: "ml_model_registry_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        file_name: "file_name01",
+        id: "ml_model_registry01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ml_model_registry_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMlModelRegistryFlow"
+}

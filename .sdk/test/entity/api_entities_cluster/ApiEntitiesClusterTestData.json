@@ -1,0 +1,83 @@
+{
+  "existing": {
+    "api_entities_cluster": {
+      "API_ENTITIES_CLUSTER00": {
+        "cluster_type": "s96",
+        "created_at": "s97",
+        "domain": "s98",
+        "enabled": false,
+        "environment_scope": "s9a",
+        "id": "API_ENTITIES_CLUSTER00",
+        "managed": "s9c",
+        "management_project": {},
+        "name": "s9e",
+        "namespace_per_environment": "s9f",
+        "platform_kubernete": {},
+        "platform_type": "sa1",
+        "provider_gcp": {},
+        "provider_type": "sa3",
+        "user": {},
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_CLUSTER01": {
+        "cluster_type": "s12c",
+        "created_at": "s12d",
+        "domain": "s12e",
+        "enabled": false,
+        "environment_scope": "s130",
+        "id": "API_ENTITIES_CLUSTER01",
+        "managed": "s132",
+        "management_project": {},
+        "name": "s134",
+        "namespace_per_environment": "s135",
+        "platform_kubernete": {},
+        "platform_type": "s137",
+        "provider_gcp": {},
+        "provider_type": "s139",
+        "user": {},
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_CLUSTER02": {
+        "cluster_type": "s1c2",
+        "created_at": "s1c3",
+        "domain": "s1c4",
+        "enabled": false,
+        "environment_scope": "s1c6",
+        "id": "API_ENTITIES_CLUSTER02",
+        "managed": "s1c8",
+        "management_project": {},
+        "name": "s1ca",
+        "namespace_per_environment": "s1cb",
+        "platform_kubernete": {},
+        "platform_type": "s1cd",
+        "provider_gcp": {},
+        "provider_type": "s1cf",
+        "user": {},
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_cluster": {
+      "api_entities_cluster_ref01": {
+        "cluster_type": "s258",
+        "created_at": "s259",
+        "domain": "s25a",
+        "enabled": false,
+        "environment_scope": "s25c",
+        "managed": "s25e",
+        "management_project": {},
+        "name": "s260",
+        "namespace_per_environment": "s261",
+        "platform_kubernete": {},
+        "platform_type": "s263",
+        "provider_gcp": {},
+        "provider_type": "s265",
+        "user": {}
+      }
+    }
+  }
+}

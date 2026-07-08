@@ -1,0 +1,33 @@
+# BasicApiEntitiesTemplatesListFlow
+
+main: kit: flow: BasicApiEntitiesTemplatesListFlow:
+{
+  entity: "api_entities_templates_list",
+  kind: "basic",
+  name: "BasicApiEntitiesTemplatesListFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_templates_list_ref01",
+        srcdatavar: "api_entities_templates_list_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "api_entities_templates_list01",
+        project_id: "project01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_templates_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesTemplatesListFlow"
+}

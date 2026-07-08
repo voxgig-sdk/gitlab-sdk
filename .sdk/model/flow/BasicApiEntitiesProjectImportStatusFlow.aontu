@@ -1,0 +1,38 @@
+# BasicApiEntitiesProjectImportStatusFlow
+
+main: kit: flow: BasicApiEntitiesProjectImportStatusFlow:
+{
+  entity: "api_entities_project_import_status",
+  kind: "basic",
+  name: "BasicApiEntitiesProjectImportStatusFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_project_import_status_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        project_id: "project01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_project_import_status_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesProjectImportStatusFlow"
+}

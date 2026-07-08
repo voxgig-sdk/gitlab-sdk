@@ -1,0 +1,23 @@
+# BasicEeApiEntitiesApprovalStateFlow
+
+main: kit: flow: BasicEeApiEntitiesApprovalStateFlow:
+{
+  entity: "ee_api_entities_approval_state",
+  kind: "basic",
+  name: "BasicEeApiEntitiesApprovalStateFlow",
+  step: [
+    {
+      input: {
+        ref: "ee_api_entities_approval_state_ref01"
+      }
+
+      match: {
+        merge_request_id: "merge_request01",
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicEeApiEntitiesApprovalStateFlow"
+}

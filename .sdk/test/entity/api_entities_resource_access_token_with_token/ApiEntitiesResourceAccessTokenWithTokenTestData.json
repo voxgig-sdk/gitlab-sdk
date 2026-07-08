@@ -1,0 +1,79 @@
+{
+  "existing": {
+    "api_entities_resource_access_token_with_token": {
+      "API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN00": {
+        "access_level": "s8c",
+        "active": false,
+        "created_at": "s8e",
+        "description": "s8f",
+        "expires_at": "s90",
+        "id": "API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN00",
+        "last_used_at": "s92",
+        "name": "s93",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s95",
+        "revoked": true,
+        "scope": [],
+        "token": "s98",
+        "user_id": "USER01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN01": {
+        "access_level": "s118",
+        "active": false,
+        "created_at": "s11a",
+        "description": "s11b",
+        "expires_at": "s11c",
+        "id": "API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN01",
+        "last_used_at": "s11e",
+        "name": "s11f",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s121",
+        "revoked": true,
+        "scope": [],
+        "token": "s124",
+        "user_id": "USER01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN02": {
+        "access_level": "s1a4",
+        "active": false,
+        "created_at": "s1a6",
+        "description": "s1a7",
+        "expires_at": "s1a8",
+        "id": "API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN02",
+        "last_used_at": "s1aa",
+        "name": "s1ab",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s1ad",
+        "revoked": true,
+        "scope": [],
+        "token": "s1b0",
+        "user_id": "USER01",
+        "group_id": "GROUP01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_resource_access_token_with_token": {
+      "api_entities_resource_access_token_with_token_ref01": {
+        "access_level": "s230",
+        "active": false,
+        "created_at": "s232",
+        "description": "s233",
+        "expires_at": "s234",
+        "last_used_at": "s236",
+        "name": "s237",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s239",
+        "revoked": true,
+        "scope": [],
+        "token": "s23c",
+        "user_id": "USER01"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+# BasicApiEntitiesPackagesConanUploadUrlFlow
+
+main: kit: flow: BasicApiEntitiesPackagesConanUploadUrlFlow:
+{
+  entity: "api_entities_packages_conan_upload_url",
+  kind: "basic",
+  name: "BasicApiEntitiesPackagesConanUploadUrlFlow",
+  step: [
+    {
+      input: {
+        ref: "api_entities_packages_conan_upload_url_ref01"
+      }
+
+      match: {
+        conan_id: "conan01",
+        package_channel: "package_channel01",
+        package_username: "package_username01",
+        package_version: "package_version01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesPackagesConanUploadUrlFlow"
+}

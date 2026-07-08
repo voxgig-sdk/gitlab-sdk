@@ -1,0 +1,40 @@
+# BasicProjectExportFlow
+
+main: kit: flow: BasicProjectExportFlow:
+{
+  entity: "project_export",
+  kind: "basic",
+  name: "BasicProjectExportFlow",
+  step: [
+    {
+      input: {
+        ref: "project_export_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "project_export_ref01",
+        srcdatavar: "project_export_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "project_export01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_export_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectExportFlow"
+}

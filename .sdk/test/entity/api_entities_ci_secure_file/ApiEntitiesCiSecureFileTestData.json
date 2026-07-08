@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "api_entities_ci_secure_file": {
+      "API_ENTITIES_CI_SECURE_FILE00": {
+        "checksum": "s50",
+        "checksum_algorithm": "s51",
+        "created_at": "s52",
+        "expires_at": "s53",
+        "file_extension": "s54",
+        "id": "API_ENTITIES_CI_SECURE_FILE00",
+        "metadata": {},
+        "name": "s57",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_CI_SECURE_FILE01": {
+        "checksum": "sa0",
+        "checksum_algorithm": "sa1",
+        "created_at": "sa2",
+        "expires_at": "sa3",
+        "file_extension": "sa4",
+        "id": "API_ENTITIES_CI_SECURE_FILE01",
+        "metadata": {},
+        "name": "sa7",
+        "project_id": "PROJECT01"
+      },
+      "API_ENTITIES_CI_SECURE_FILE02": {
+        "checksum": "sf0",
+        "checksum_algorithm": "sf1",
+        "created_at": "sf2",
+        "expires_at": "sf3",
+        "file_extension": "sf4",
+        "id": "API_ENTITIES_CI_SECURE_FILE02",
+        "metadata": {},
+        "name": "sf7",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "api_entities_ci_secure_file": {
+      "api_entities_ci_secure_file_ref01": {
+        "checksum": "s140",
+        "checksum_algorithm": "s141",
+        "created_at": "s142",
+        "expires_at": "s143",
+        "file_extension": "s144",
+        "metadata": {},
+        "name": "s147"
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "api_entities_merge_request_approval": {
+      "API_ENTITIES_MERGE_REQUEST_APPROVAL00": {
+        "approved": true,
+        "approved_by": {},
+        "user_can_approve": true,
+        "user_has_approved": false,
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_MERGE_REQUEST_APPROVAL00"
+      },
+      "API_ENTITIES_MERGE_REQUEST_APPROVAL01": {
+        "approved": true,
+        "approved_by": {},
+        "user_can_approve": true,
+        "user_has_approved": false,
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_MERGE_REQUEST_APPROVAL01"
+      },
+      "API_ENTITIES_MERGE_REQUEST_APPROVAL02": {
+        "approved": true,
+        "approved_by": {},
+        "user_can_approve": true,
+        "user_has_approved": false,
+        "merge_request_id": "MERGE_REQUEST01",
+        "project_id": "PROJECT01",
+        "id": "API_ENTITIES_MERGE_REQUEST_APPROVAL02"
+      }
+    }
+  },
+  "new": {
+    "api_entities_merge_request_approval": {
+      "api_entities_merge_request_approval_ref01": {
+        "approved": true,
+        "approved_by": {},
+        "user_can_approve": true,
+        "user_has_approved": false
+      }
+    }
+  }
+}
