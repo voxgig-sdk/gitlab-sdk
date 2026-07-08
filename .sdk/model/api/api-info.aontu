@@ -18,6 +18,7 @@ main: {
       ]
       title: "GitLab API"
       version: "v4"
+      website: "https://gitlab.com"
     }
   }
 }

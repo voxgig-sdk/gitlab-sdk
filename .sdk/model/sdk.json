@@ -105043,7 +105043,8 @@
           }
         ],
         "title": "GitLab API",
-        "version": "v4"
+        "version": "v4",
+        "website": "https://gitlab.com"
       },
       "option": {},
       "target": {
