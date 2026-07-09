@@ -399,24 +399,24 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = GitlabSDK.test()
-const accessrequest = await client.AccessRequest().remove({ id: 'example_id' })
-// accessrequest is a bare AccessRequest populated with mock data
-console.log(accessrequest)
+const apientitiesaccessrequesters = await client.ApiEntitiesAccessRequester().list()
+// apientitiesaccessrequesters is an array of bare ApiEntitiesAccessRequester records populated with mock data
+console.log(apientitiesaccessrequesters)
 ```
 
 ### Python
 
 ```python
 client = GitlabSDK.test()
-accessrequest = client.AccessRequest().remove({"id": "example"})
-print(accessrequest)
+apientitiesaccessrequesters = client.ApiEntitiesAccessRequester().list()
+print(apientitiesaccessrequesters)
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.AccessRequest(nil).Remove(
+result, err := client.ApiEntitiesAccessRequester(nil).List(
     nil, nil,
 )
 ```
@@ -426,9 +426,9 @@ result, err := client.AccessRequest(nil).Remove(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = GitlabSDK.test({
-  "entity" => { "accessrequest" => { "test01" => {} } },
+  "entity" => { "apientitiesaccessrequester" => { "test01" => {} } },
 })
-accessrequest = client.AccessRequest.remove({ "id" => "example" })
+apientitiesaccessrequesters = client.ApiEntitiesAccessRequester.list()
 ```
 
 ## Direct and prepare

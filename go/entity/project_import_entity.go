@@ -6,7 +6,7 @@ import (
 	vs "github.com/voxgig-sdk/gitlab-sdk/go/utility/struct"
 )
 
-type ProjectImportEntity struct {
+type ProjectImportEntityClient struct {
 	name    string
 	client  *core.GitlabSDK
 	utility *core.Utility
@@ -16,7 +16,7 @@ type ProjectImportEntity struct {
 	entctx  *core.Context
 }
 
-func NewProjectImportEntity(client *core.GitlabSDK, entopts map[string]any) *ProjectImportEntity {
+func NewProjectImportEntityClient(client *core.GitlabSDK, entopts map[string]any) *ProjectImportEntityClient {
 	if entopts == nil {
 		entopts = map[string]any{}
 	}
@@ -28,7 +28,7 @@ func NewProjectImportEntity(client *core.GitlabSDK, entopts map[string]any) *Pro
 		entopts["active"] = true
 	}
 
-	e := &ProjectImportEntity{
+	e := &ProjectImportEntityClient{
 		name:    "project_import",
 		client:  client,
 		utility: client.GetUtility(),
@@ -47,17 +47,17 @@ func NewProjectImportEntity(client *core.GitlabSDK, entopts map[string]any) *Pro
 	return e
 }
 
-func (e *ProjectImportEntity) GetName() string { return e.name }
+func (e *ProjectImportEntityClient) GetName() string { return e.name }
 
-func (e *ProjectImportEntity) Make() core.Entity {
+func (e *ProjectImportEntityClient) Make() core.Entity {
 	opts := map[string]any{}
 	for k, v := range e.entopts {
 		opts[k] = v
 	}
-	return NewProjectImportEntity(e.client, opts)
+	return NewProjectImportEntityClient(e.client, opts)
 }
 
-func (e *ProjectImportEntity) Data(args ...any) any {
+func (e *ProjectImportEntityClient) Data(args ...any) any {
 	if len(args) > 0 && args[0] != nil {
 		e.data = core.ToMapAny(vs.Clone(args[0]))
 		if e.data == nil {
@@ -71,7 +71,7 @@ func (e *ProjectImportEntity) Data(args ...any) any {
 	return out
 }
 
-func (e *ProjectImportEntity) Match(args ...any) any {
+func (e *ProjectImportEntityClient) Match(args ...any) any {
 	if len(args) > 0 && args[0] != nil {
 		e.match = core.ToMapAny(vs.Clone(args[0]))
 		if e.match == nil {
@@ -89,7 +89,7 @@ func (e *ProjectImportEntity) Match(args ...any) any {
 // argument it returns the current data as an ProjectImport; with an argument it
 // sets the data and returns the stored value. It delegates to the untyped Data
 // (identical runtime) and converts at the typed boundary.
-func (e *ProjectImportEntity) DataTyped(data ...ProjectImport) ProjectImport {
+func (e *ProjectImportEntityClient) DataTyped(data ...ProjectImport) ProjectImport {
 	if len(data) > 0 {
 		return typedFrom[ProjectImport](e.Data(asMap(data[0])))
 	}
@@ -99,25 +99,25 @@ func (e *ProjectImportEntity) DataTyped(data ...ProjectImport) ProjectImport {
 // MatchTyped mirrors DataTyped for the entity's match filter. The match is a
 // partial of the entity, so it round-trips through ProjectImport (all fields
 // optional at the wire level).
-func (e *ProjectImportEntity) MatchTyped(match ...ProjectImport) ProjectImport {
+func (e *ProjectImportEntityClient) MatchTyped(match ...ProjectImport) ProjectImport {
 	if len(match) > 0 {
 		return typedFrom[ProjectImport](e.Match(asMap(match[0])))
 	}
 	return typedFrom[ProjectImport](e.Match())
 }
 
-func (e *ProjectImportEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
+func (e *ProjectImportEntityClient) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
 
 
-func (e *ProjectImportEntity) List(_ map[string]any, _ map[string]any) (any, error) {
+func (e *ProjectImportEntityClient) List(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("list", e.name)
 }
 
 
 
-func (e *ProjectImportEntity) Create(reqdata map[string]any, ctrl map[string]any) (any, error) {
+func (e *ProjectImportEntityClient) Create(reqdata map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
 		"opname":  "create",
@@ -142,7 +142,7 @@ func (e *ProjectImportEntity) Create(reqdata map[string]any, ctrl map[string]any
 // CreateTyped is the statically-typed variant of Create: it takes an
 // ProjectImportCreateData and returns an ProjectImport. It delegates to the untyped
 // Create (identical runtime) and converts at the typed boundary.
-func (e *ProjectImportEntity) CreateTyped(reqdata ProjectImportCreateData, ctrl map[string]any) (ProjectImport, error) {
+func (e *ProjectImportEntityClient) CreateTyped(reqdata ProjectImportCreateData, ctrl map[string]any) (ProjectImport, error) {
 	res, err := e.Create(asMap(reqdata), ctrl)
 	if err != nil {
 		return ProjectImport{}, err
@@ -152,17 +152,17 @@ func (e *ProjectImportEntity) CreateTyped(reqdata ProjectImportCreateData, ctrl 
 
 
 
-func (e *ProjectImportEntity) Update(_ map[string]any, _ map[string]any) (any, error) {
+func (e *ProjectImportEntityClient) Update(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("update", e.name)
 }
 
 
-func (e *ProjectImportEntity) Remove(_ map[string]any, _ map[string]any) (any, error) {
+func (e *ProjectImportEntityClient) Remove(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("remove", e.name)
 }
 
 
-func (e *ProjectImportEntity) runOp(ctx *core.Context, postDone func()) (any, error) {
+func (e *ProjectImportEntityClient) runOp(ctx *core.Context, postDone func()) (any, error) {
 	utility := e.utility
 
 	utility.FeatureHook(ctx, "PrePoint")

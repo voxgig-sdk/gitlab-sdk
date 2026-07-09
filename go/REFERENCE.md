@@ -1248,8 +1248,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.AlertManagement(nil).Create(map[string]any{
-    "alert_management_alert_id": /* string */,
-    "project_id": /* string */,
+    "alert_management_alert_id": "example_alert_management_alert_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -1939,7 +1939,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesBasicGroupDetail(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -2027,7 +2027,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesBasicProjectDetail(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -2294,7 +2294,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesBranch(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -2689,7 +2689,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCiCatalogResourcesVersion(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -2796,8 +2796,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCiJob(nil).Create(map[string]any{
-    "job_id": /* string */,
-    "project_id": /* string */,
+    "job_id": "example_job_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -2881,8 +2881,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCiJobBasic(nil).Create(map[string]any{
-    "job_id": /* string */,
-    "project_id": /* string */,
+    "job_id": "example_job_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -3029,7 +3029,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCiLintResult(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -3076,7 +3076,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCiPipeline(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -3286,7 +3286,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCiPipelineScheduleDetail(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -3508,7 +3508,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCiRunner(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -3778,7 +3778,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCiSecureFile(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -4062,7 +4062,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesClusterGroup(nil).Create(map[string]any{
-    "group_id": /* string */,
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -4158,7 +4158,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesClusterProject(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -4244,7 +4244,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesClustersAgent(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -4406,8 +4406,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesClustersAgentTokenWithToken(nil).Create(map[string]any{
-    "cluster_agent_id": /* string */,
-    "project_id": /* string */,
+    "cluster_agent_id": "example_cluster_agent_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -4486,7 +4486,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCommit(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -4569,7 +4569,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCommitDetail(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -4655,8 +4655,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCommitNote(nil).Create(map[string]any{
-    "project_id": /* string */,
-    "sha": /* any */,
+    "project_id": "example_project_id",
+    "sha": "example_sha",
 }, nil)
 if err != nil {
     panic(err)
@@ -4838,8 +4838,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCommitStatus(nil).Create(map[string]any{
-    "id": /* string */,
-    "project_id": /* string */,
+    "id": "example_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -5312,7 +5312,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesDeployKeysProject(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -5564,7 +5564,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesDeploymentExtended(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -5627,8 +5627,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesDeploymentsApproval(nil).Create(map[string]any{
-    "deployment_id": /* string */,
-    "project_id": /* string */,
+    "deployment_id": "example_deployment_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -5890,8 +5890,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesDraftNote(nil).Create(map[string]any{
-    "merge_request_id": /* string */,
-    "project_id": /* string */,
+    "merge_request_id": "example_merge_request_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -6000,7 +6000,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesEnvironment(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -6084,7 +6084,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesErrorTrackingClientKey(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -6300,7 +6300,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesFeature(nil).Create(map[string]any{
-    "id": /* string */,
+    "id": "example_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -6444,7 +6444,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesFeatureFlag(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -6545,7 +6545,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesFeatureFlagUserList(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -6643,7 +6643,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesFreezePeriod(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -7032,7 +7032,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesGroupDetail(nil).Create(map[string]any{
-    "group_id": /* string */,
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -7453,7 +7453,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesIssuableTimeStat(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -7571,7 +7571,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesIssue(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -7654,8 +7654,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesIssueLink(nil).Create(map[string]any{
-    "issue_id": /* string */,
-    "project_id": /* string */,
+    "issue_id": "example_issue_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -8072,7 +8072,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesMerge(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -8155,8 +8155,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesMergeRequestApproval(nil).Create(map[string]any{
-    "merge_request_id": /* string */,
-    "project_id": /* string */,
+    "merge_request_id": "example_merge_request_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -8632,8 +8632,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesMetricImage(nil).Create(map[string]any{
-    "alert_management_alert_id": /* string */,
-    "project_id": /* string */,
+    "alert_management_alert_id": "example_alert_management_alert_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -8922,7 +8922,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesNamespacesStorageLimitExclusion(nil).Create(map[string]any{
-    "namespace_id": /* string */,
+    "namespace_id": "example_namespace_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -9897,10 +9897,10 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesPackagesConanUploadUrl(nil).Create(map[string]any{
-    "conan_id": /* string */,
-    "package_channel": /* any */,
-    "package_username": /* any */,
-    "package_version": /* any */,
+    "conan_id": "example_conan_id",
+    "package_channel": "example_package_channel",
+    "package_username": "example_package_username",
+    "package_version": "example_package_version",
 }, nil)
 if err != nil {
     panic(err)
@@ -10083,7 +10083,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesPagesDomain(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -10927,7 +10927,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesProjectGroupLink(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -11035,7 +11035,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesProjectHook(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -11320,7 +11320,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesProjectSnippet(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -11383,7 +11383,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesProjectUpload(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -11650,7 +11650,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesProjectsContainerRegistryProtectionRule(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -11736,7 +11736,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesProjectsPackagesProtectionRule(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -11921,7 +11921,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesProtectedBranch(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -12015,7 +12015,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesProtectedTag(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -12304,7 +12304,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesRelease(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -12401,8 +12401,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesReleasesLink(nil).Create(map[string]any{
-    "project_id": /* string */,
-    "release_id": /* string */,
+    "project_id": "example_project_id",
+    "release_id": "example_release_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -12508,7 +12508,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesRemoteMirror(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -13089,7 +13089,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesTag(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -13401,7 +13401,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesTrigger(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -14267,7 +14267,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Composer(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -14958,8 +14958,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.EeApiEntitiesApprovalState(nil).Create(map[string]any{
-    "merge_request_id": /* string */,
-    "project_id": /* string */,
+    "merge_request_id": "example_merge_request_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -15482,8 +15482,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.EeApiEntitiesIssuableMetricImage(nil).Create(map[string]any{
-    "issue_id": /* string */,
-    "project_id": /* string */,
+    "issue_id": "example_issue_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -15645,7 +15645,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.EeApiEntitiesSshCertificate(nil).Create(map[string]any{
-    "group_id": /* string */,
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -15692,7 +15692,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Environment(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -15853,7 +15853,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.FeatureFlag(nil).Create(map[string]any{
-    "unleash_id": /* string */,
+    "unleash_id": "example_unleash_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -16179,7 +16179,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Group(nil).Create(map[string]any{
-    "id": /* string */,
+    "id": "example_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -16310,7 +16310,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.GroupExport(nil).Create(map[string]any{
-    "id": /* string */,
+    "id": "example_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -16415,7 +16415,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.HelmPackage(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -16462,7 +16462,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Hook(nil).Create(map[string]any{
-    "id": /* string */,
+    "id": "example_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -17082,7 +17082,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Migration(nil).Create(map[string]any{
-    "timestamp": /* any */,
+    "timestamp": "example_timestamp",
 }, nil)
 if err != nil {
     panic(err)
@@ -17779,7 +17779,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Project(nil).Create(map[string]any{
-    "id": /* string */,
+    "id": "example_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -17956,7 +17956,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ProjectExport(nil).Create(map[string]any{
-    "id": /* string */,
+    "id": "example_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -18353,7 +18353,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Pypi(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -18412,7 +18412,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.PypiPackage(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -18573,8 +18573,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.RemoteMirror(nil).Create(map[string]any{
-    "id": /* string */,
-    "project_id": /* string */,
+    "id": "example_id",
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -18633,7 +18633,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Rpm(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -18692,7 +18692,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.RpmPackage(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -18796,7 +18796,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.RubygemPackage(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -19330,7 +19330,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.TerraformState(nil).Create(map[string]any{
-    "project_id": /* string */,
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)

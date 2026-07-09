@@ -747,7 +747,7 @@ func init() {
 		return entity.NewPersonalAccessTokenEntity(client, entopts)
 	}
 	core.NewProjectEntityFunc = func(client *core.GitlabSDK, entopts map[string]any) core.GitlabEntity {
-		return entity.NewProjectEntity(client, entopts)
+		return entity.NewProjectEntityClient(client, entopts)
 	}
 	core.NewProjectAvatarEntityFunc = func(client *core.GitlabSDK, entopts map[string]any) core.GitlabEntity {
 		return entity.NewProjectAvatarEntity(client, entopts)
@@ -762,7 +762,7 @@ func init() {
 		return entity.NewProjectHookEntity(client, entopts)
 	}
 	core.NewProjectImportEntityFunc = func(client *core.GitlabSDK, entopts map[string]any) core.GitlabEntity {
-		return entity.NewProjectImportEntity(client, entopts)
+		return entity.NewProjectImportEntityClient(client, entopts)
 	}
 	core.NewProjectImportEntityEntityFunc = func(client *core.GitlabSDK, entopts map[string]any) core.GitlabEntity {
 		return entity.NewProjectImportEntityEntity(client, entopts)

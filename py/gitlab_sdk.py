@@ -1648,10 +1648,10 @@ class GitlabSDK:
         return PersonalAccessTokenEntity(self, data)
 
 
-    def Project(self, data=None) -> "ProjectEntity":
+    def Project(self, data=None) -> "ProjectEntityClient":
         """Entity factory: client.Project().list() / client.Project().load({"id": ...})."""
-        from entity.project_entity import ProjectEntity
-        return ProjectEntity(self, data)
+        from entity.project_entity import ProjectEntityClient
+        return ProjectEntityClient(self, data)
 
 
     def ProjectAvatar(self, data=None) -> "ProjectAvatarEntity":
@@ -1678,10 +1678,10 @@ class GitlabSDK:
         return ProjectHookEntity(self, data)
 
 
-    def ProjectImport(self, data=None) -> "ProjectImportEntity":
+    def ProjectImport(self, data=None) -> "ProjectImportEntityClient":
         """Entity factory: client.ProjectImport().list() / client.ProjectImport().load({"id": ...})."""
-        from entity.project_import_entity import ProjectImportEntity
-        return ProjectImportEntity(self, data)
+        from entity.project_import_entity import ProjectImportEntityClient
+        return ProjectImportEntityClient(self, data)
 
 
     def ProjectImportEntity(self, data=None) -> "ProjectImportEntityEntity":
@@ -2141,12 +2141,12 @@ if TYPE_CHECKING:
     from entity.page_entity import PageEntity
     from entity.participant_entity import ParticipantEntity
     from entity.personal_access_token_entity import PersonalAccessTokenEntity
-    from entity.project_entity import ProjectEntity
+    from entity.project_entity import ProjectEntityClient
     from entity.project_avatar_entity import ProjectAvatarEntity
     from entity.project_entity_entity import ProjectEntityEntity
     from entity.project_export_entity import ProjectExportEntity
     from entity.project_hook_entity import ProjectHookEntity
-    from entity.project_import_entity import ProjectImportEntity
+    from entity.project_import_entity import ProjectImportEntityClient
     from entity.project_import_entity_entity import ProjectImportEntityEntity
     from entity.project_package_entity import ProjectPackageEntity
     from entity.project_snippet_entity import ProjectSnippetEntity

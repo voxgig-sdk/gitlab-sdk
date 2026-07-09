@@ -13,7 +13,7 @@ from gitlab_types import (
 )
 
 
-class ProjectEntity:
+class ProjectEntityClient:
 
     def __init__(self, client, entopts=None):
         if entopts is None:
@@ -46,7 +46,7 @@ class ProjectEntity:
         opts = {}
         for k, v in self._entopts.items():
             opts[k] = v
-        return ProjectEntity(self._client, opts)
+        return ProjectEntityClient(self._client, opts)
 
     def data_set(self, args=None):
         if args is not None:
