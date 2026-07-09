@@ -69,12 +69,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-accessrequest, err := client.AccessRequest(nil).Remove(nil, nil)
+apientitiesaccessrequesters, err := client.ApiEntitiesAccessRequester(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = accessrequest
+_ = apientitiesaccessrequesters
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -15771,15 +15771,15 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Remove`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-accessrequest := client.AccessRequest(nil)
-accessrequest.Remove(nil, nil)
+apientitiesaccessrequester := client.ApiEntitiesAccessRequester(nil)
+apientitiesaccessrequester.List(nil, nil)
 
-// accessrequest.Data() now returns the accessrequest data from the last remove
-// accessrequest.Match() returns the last match criteria
+// apientitiesaccessrequester.Data() now returns the apientitiesaccessrequester data from the last list
+// apientitiesaccessrequester.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration
