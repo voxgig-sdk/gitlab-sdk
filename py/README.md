@@ -66,10 +66,10 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    accessrequest = client.AccessRequest().remove()
-    print(accessrequest)
+    apientitiesaccessrequesters = client.ApiEntitiesAccessRequester().list()
+    print(apientitiesaccessrequesters)
 except Exception as err:
-    print(f"remove failed: {err}")
+    print(f"list failed: {err}")
 ```
 
 `direct()` does **not** raise — it returns the result envelope. Branch
@@ -134,8 +134,8 @@ Create a mock client for unit testing — no server required:
 client = GitlabSDK.test()
 
 # Entity ops return the bare record and raise on error.
-accessrequest = client.AccessRequest().remove()
-# accessrequest contains the mock response record
+apientitiesaccessrequester = client.ApiEntitiesAccessRequester().list()
+# apientitiesaccessrequester contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -14322,15 +14322,15 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `remove`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-accessrequest = client.AccessRequest()
-accessrequest.remove()
+apientitiesaccessrequester = client.ApiEntitiesAccessRequester()
+apientitiesaccessrequester.list()
 
-# accessrequest.data_get() now returns the accessrequest data from the last remove
-# accessrequest.match_get() returns the last match criteria
+# apientitiesaccessrequester.data_get() now returns the apientitiesaccessrequester data from the last list
+# apientitiesaccessrequester.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

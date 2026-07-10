@@ -81797,6 +81797,7 @@ def make_config():
                       "orig": "id",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [

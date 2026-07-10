@@ -1,6 +1,6 @@
 {
   "name": "@voxgig-sdk/gitlab",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the GitLab public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [
     "voxgig",

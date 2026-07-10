@@ -1884,7 +1884,7 @@ class GitlabSDK
   # Canonical facade: client.Project.list / client.Project.load({ "id" => ... })
   def Project(data = nil)
     require_relative 'entity/project_entity'
-    ProjectEntity.new(self, data)
+    ProjectEntityClient.new(self, data)
   end
 
 
@@ -1919,7 +1919,7 @@ class GitlabSDK
   # Canonical facade: client.ProjectImport.list / client.ProjectImport.load({ "id" => ... })
   def ProjectImport(data = nil)
     require_relative 'entity/project_import_entity'
-    ProjectImportEntity.new(self, data)
+    ProjectImportEntityClient.new(self, data)
   end
 
 

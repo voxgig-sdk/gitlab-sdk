@@ -3,7 +3,7 @@
 require_relative '../utility/struct/voxgig_struct'
 require_relative '../core/helpers'
 
-class ProjectImportEntity
+class ProjectImportEntityClient
   def initialize(client, entopts = nil)
     entopts ||= {}
     if entopts["active"].nil?
@@ -35,7 +35,7 @@ class ProjectImportEntity
 
   def make
     opts = @_entopts.dup
-    ProjectImportEntity.new(@_client, opts)
+    ProjectImportEntityClient.new(@_client, opts)
   end
 
   def data_set(args)

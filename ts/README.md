@@ -68,10 +68,10 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const accessrequest = await client.AccessRequest().remove()
-  console.log(accessrequest)
+  const apientitiesaccessrequesters = await client.ApiEntitiesAccessRequester().list()
+  console.log(apientitiesaccessrequesters)
 } catch (err) {
-  console.error('remove failed:', err)
+  console.error('list failed:', err)
 }
 ```
 
@@ -135,9 +135,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = GitlabSDK.test()
 
-const accessrequest = await client.AccessRequest().remove()
-// accessrequest is a bare entity populated with mock response data
-console.log(accessrequest)
+const apientitiesaccessrequester = await client.ApiEntitiesAccessRequester().list()
+// apientitiesaccessrequester is a bare entity populated with mock response data
+console.log(apientitiesaccessrequester)
 ```
 
 You can also use the instance method:
@@ -152,14 +152,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.AccessRequest()
+const entity = client.ApiEntitiesAccessRequester()
 
 // First call runs the operation and stores its result
-await entity.remove()
+await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -5478,8 +5478,8 @@ Create an instance: `const alert_management = client.AlertManagement()`
 
 ```ts
 const alert_management = await client.AlertManagement().create({
-  alert_management_alert_id: /* string */,
-  project_id: /* string */,
+  alert_management_alert_id: 'example_alert_management_alert_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -5811,7 +5811,7 @@ Create an instance: `const api_entities_basic_group_detail = client.ApiEntitiesB
 
 ```ts
 const api_entities_basic_group_detail = await client.ApiEntitiesBasicGroupDetail().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -5866,7 +5866,7 @@ const api_entities_basic_project_details = await client.ApiEntitiesBasicProjectD
 
 ```ts
 const api_entities_basic_project_detail = await client.ApiEntitiesBasicProjectDetail().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -5993,7 +5993,7 @@ const api_entities_branchs = await client.ApiEntitiesBranch().list()
 
 ```ts
 const api_entities_branch = await client.ApiEntitiesBranch().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6194,7 +6194,7 @@ Create an instance: `const api_entities_ci_catalog_resources_version = client.Ap
 
 ```ts
 const api_entities_ci_catalog_resources_version = await client.ApiEntitiesCiCatalogResourcesVersion().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6263,8 +6263,8 @@ const api_entities_ci_jobs = await client.ApiEntitiesCiJob().list()
 
 ```ts
 const api_entities_ci_job = await client.ApiEntitiesCiJob().create({
-  job_id: /* string */,
-  project_id: /* string */,
+  job_id: 'example_job_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6315,8 +6315,8 @@ const api_entities_ci_job_basics = await client.ApiEntitiesCiJobBasic().list()
 
 ```ts
 const api_entities_ci_job_basic = await client.ApiEntitiesCiJobBasic().create({
-  job_id: /* string */,
-  project_id: /* string */,
+  job_id: 'example_job_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6402,7 +6402,7 @@ const api_entities_ci_lint_results = await client.ApiEntitiesCiLintResult().list
 
 ```ts
 const api_entities_ci_lint_result = await client.ApiEntitiesCiLintResult().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6421,7 +6421,7 @@ Create an instance: `const api_entities_ci_pipeline = client.ApiEntitiesCiPipeli
 
 ```ts
 const api_entities_ci_pipeline = await client.ApiEntitiesCiPipeline().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6538,7 +6538,7 @@ const api_entities_ci_pipeline_schedule_detail = await client.ApiEntitiesCiPipel
 
 ```ts
 const api_entities_ci_pipeline_schedule_detail = await client.ApiEntitiesCiPipelineScheduleDetail().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6635,7 +6635,7 @@ const api_entities_ci_runner = await client.ApiEntitiesCiRunner().load()
 
 ```ts
 const api_entities_ci_runner = await client.ApiEntitiesCiRunner().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6774,7 +6774,7 @@ const api_entities_ci_secure_file = await client.ApiEntitiesCiSecureFile().load(
 
 ```ts
 const api_entities_ci_secure_file = await client.ApiEntitiesCiSecureFile().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6922,7 +6922,7 @@ const api_entities_cluster_group = await client.ApiEntitiesClusterGroup().load({
 
 ```ts
 const api_entities_cluster_group = await client.ApiEntitiesClusterGroup().create({
-  group_id: /* string */,
+  group_id: 'example_group_id',
 })
 ```
 
@@ -6970,7 +6970,7 @@ const api_entities_cluster_project = await client.ApiEntitiesClusterProject().lo
 
 ```ts
 const api_entities_cluster_project = await client.ApiEntitiesClusterProject().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7007,7 +7007,7 @@ const api_entities_clusters_agent = await client.ApiEntitiesClustersAgent().load
 
 ```ts
 const api_entities_clusters_agent = await client.ApiEntitiesClustersAgent().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7085,8 +7085,8 @@ Create an instance: `const api_entities_clusters_agent_token_with_token = client
 
 ```ts
 const api_entities_clusters_agent_token_with_token = await client.ApiEntitiesClustersAgentTokenWithToken().create({
-  cluster_agent_id: /* string */,
-  project_id: /* string */,
+  cluster_agent_id: 'example_cluster_agent_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7132,7 +7132,7 @@ const api_entities_commits = await client.ApiEntitiesCommit().list()
 
 ```ts
 const api_entities_commit = await client.ApiEntitiesCommit().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7183,7 +7183,7 @@ const api_entities_commit_detail = await client.ApiEntitiesCommitDetail().load({
 
 ```ts
 const api_entities_commit_detail = await client.ApiEntitiesCommitDetail().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7220,8 +7220,8 @@ const api_entities_commit_notes = await client.ApiEntitiesCommitNote().list()
 
 ```ts
 const api_entities_commit_note = await client.ApiEntitiesCommitNote().create({
-  project_id: /* string */,
-  sha: /* any */,
+  project_id: 'example_project_id',
+  sha: 'example_sha',
 })
 ```
 
@@ -7314,8 +7314,8 @@ const api_entities_commit_statuss = await client.ApiEntitiesCommitStatus().list(
 
 ```ts
 const api_entities_commit_status = await client.ApiEntitiesCommitStatus().create({
-  id: /* string */,
-  project_id: /* string */,
+  id: 'example_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7557,7 +7557,7 @@ const api_entities_deploy_keys_projects = await client.ApiEntitiesDeployKeysProj
 
 ```ts
 const api_entities_deploy_keys_project = await client.ApiEntitiesDeployKeysProject().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7688,7 +7688,7 @@ const api_entities_deployment_extended = await client.ApiEntitiesDeploymentExten
 
 ```ts
 const api_entities_deployment_extended = await client.ApiEntitiesDeploymentExtended().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7707,8 +7707,8 @@ Create an instance: `const api_entities_deployments_approval = client.ApiEntitie
 
 ```ts
 const api_entities_deployments_approval = await client.ApiEntitiesDeploymentsApproval().create({
-  deployment_id: /* string */,
-  project_id: /* string */,
+  deployment_id: 'example_deployment_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7844,8 +7844,8 @@ const api_entities_draft_notes = await client.ApiEntitiesDraftNote().list()
 
 ```ts
 const api_entities_draft_note = await client.ApiEntitiesDraftNote().create({
-  merge_request_id: /* string */,
-  project_id: /* string */,
+  merge_request_id: 'example_merge_request_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7900,7 +7900,7 @@ const api_entities_environments = await client.ApiEntitiesEnvironment().list()
 
 ```ts
 const api_entities_environment = await client.ApiEntitiesEnvironment().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7935,7 +7935,7 @@ const api_entities_error_tracking_client_keys = await client.ApiEntitiesErrorTra
 
 ```ts
 const api_entities_error_tracking_client_key = await client.ApiEntitiesErrorTrackingClientKey().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -8043,7 +8043,7 @@ const api_entities_features = await client.ApiEntitiesFeature().list()
 
 ```ts
 const api_entities_feature = await client.ApiEntitiesFeature().create({
-  id: /* string */,
+  id: 'example_id',
 })
 ```
 
@@ -8122,7 +8122,7 @@ const api_entities_feature_flags = await client.ApiEntitiesFeatureFlag().list()
 
 ```ts
 const api_entities_feature_flag = await client.ApiEntitiesFeatureFlag().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -8170,7 +8170,7 @@ const api_entities_feature_flag_user_lists = await client.ApiEntitiesFeatureFlag
 
 ```ts
 const api_entities_feature_flag_user_list = await client.ApiEntitiesFeatureFlagUserList().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -8215,7 +8215,7 @@ const api_entities_freeze_periods = await client.ApiEntitiesFreezePeriod().list(
 
 ```ts
 const api_entities_freeze_period = await client.ApiEntitiesFreezePeriod().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -8447,7 +8447,7 @@ const api_entities_group_detail = await client.ApiEntitiesGroupDetail().load({ i
 
 ```ts
 const api_entities_group_detail = await client.ApiEntitiesGroupDetail().create({
-  group_id: /* string */,
+  group_id: 'example_group_id',
 })
 ```
 
@@ -8667,7 +8667,7 @@ const api_entities_issuable_time_stat = await client.ApiEntitiesIssuableTimeStat
 
 ```ts
 const api_entities_issuable_time_stat = await client.ApiEntitiesIssuableTimeStat().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -8748,7 +8748,7 @@ const api_entities_issues = await client.ApiEntitiesIssue().list()
 
 ```ts
 const api_entities_issue = await client.ApiEntitiesIssue().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -8782,8 +8782,8 @@ const api_entities_issue_link = await client.ApiEntitiesIssueLink().load({ id: '
 
 ```ts
 const api_entities_issue_link = await client.ApiEntitiesIssueLink().create({
-  issue_id: /* string */,
-  project_id: /* string */,
+  issue_id: 'example_issue_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -9021,7 +9021,7 @@ const api_entities_merge = await client.ApiEntitiesMerge().load({ merge_request_
 
 ```ts
 const api_entities_merge = await client.ApiEntitiesMerge().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -9056,8 +9056,8 @@ const api_entities_merge_request_approval = await client.ApiEntitiesMergeRequest
 
 ```ts
 const api_entities_merge_request_approval = await client.ApiEntitiesMergeRequestApproval().create({
-  merge_request_id: /* string */,
-  project_id: /* string */,
+  merge_request_id: 'example_merge_request_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -9356,8 +9356,8 @@ const api_entities_metric_images = await client.ApiEntitiesMetricImage().list()
 
 ```ts
 const api_entities_metric_image = await client.ApiEntitiesMetricImage().create({
-  alert_management_alert_id: /* string */,
-  project_id: /* string */,
+  alert_management_alert_id: 'example_alert_management_alert_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -9493,7 +9493,7 @@ const api_entities_namespaces_storage_limit_exclusion = await client.ApiEntities
 
 ```ts
 const api_entities_namespaces_storage_limit_exclusion = await client.ApiEntitiesNamespacesStorageLimitExclusion().create({
-  namespace_id: /* string */,
+  namespace_id: 'example_namespace_id',
 })
 ```
 
@@ -9959,10 +9959,10 @@ Create an instance: `const api_entities_packages_conan_upload_url = client.ApiEn
 
 ```ts
 const api_entities_packages_conan_upload_url = await client.ApiEntitiesPackagesConanUploadUrl().create({
-  conan_id: /* string */,
-  package_channel: /* any */,
-  package_username: /* any */,
-  package_version: /* any */,
+  conan_id: 'example_conan_id',
+  package_channel: 'example_package_channel',
+  package_username: 'example_package_username',
+  package_version: 'example_package_version',
 })
 ```
 
@@ -10056,7 +10056,7 @@ const api_entities_pages_domains = await client.ApiEntitiesPagesDomain().list()
 
 ```ts
 const api_entities_pages_domain = await client.ApiEntitiesPagesDomain().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -10544,7 +10544,7 @@ Create an instance: `const api_entities_project_group_link = client.ApiEntitiesP
 
 ```ts
 const api_entities_project_group_link = await client.ApiEntitiesProjectGroupLink().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -10615,7 +10615,7 @@ const api_entities_project_hooks = await client.ApiEntitiesProjectHook().list()
 
 ```ts
 const api_entities_project_hook = await client.ApiEntitiesProjectHook().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -10758,7 +10758,7 @@ const api_entities_project_snippets = await client.ApiEntitiesProjectSnippet().l
 
 ```ts
 const api_entities_project_snippet = await client.ApiEntitiesProjectSnippet().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -10777,7 +10777,7 @@ Create an instance: `const api_entities_project_upload = client.ApiEntitiesProje
 
 ```ts
 const api_entities_project_upload = await client.ApiEntitiesProjectUpload().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -10984,7 +10984,7 @@ const api_entities_projects_container_registry_protection_rules = await client.A
 
 ```ts
 const api_entities_projects_container_registry_protection_rule = await client.ApiEntitiesProjectsContainerRegistryProtectionRule().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -11022,7 +11022,7 @@ const api_entities_projects_packages_protection_rules = await client.ApiEntities
 
 ```ts
 const api_entities_projects_packages_protection_rule = await client.ApiEntitiesProjectsPackagesProtectionRule().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -11107,7 +11107,7 @@ const api_entities_protected_branchs = await client.ApiEntitiesProtectedBranch()
 
 ```ts
 const api_entities_protected_branch = await client.ApiEntitiesProtectedBranch().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -11147,7 +11147,7 @@ const api_entities_protected_tags = await client.ApiEntitiesProtectedTag().list(
 
 ```ts
 const api_entities_protected_tag = await client.ApiEntitiesProtectedTag().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -11315,7 +11315,7 @@ const api_entities_releases = await client.ApiEntitiesRelease().list()
 
 ```ts
 const api_entities_release = await client.ApiEntitiesRelease().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -11359,8 +11359,8 @@ const api_entities_releases_links = await client.ApiEntitiesReleasesLink().list(
 
 ```ts
 const api_entities_releases_link = await client.ApiEntitiesReleasesLink().create({
-  project_id: /* string */,
-  release_id: /* string */,
+  project_id: 'example_project_id',
+  release_id: 'example_release_id',
 })
 ```
 
@@ -11412,7 +11412,7 @@ const api_entities_remote_mirrors = await client.ApiEntitiesRemoteMirror().list(
 
 ```ts
 const api_entities_remote_mirror = await client.ApiEntitiesRemoteMirror().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -11700,7 +11700,7 @@ const api_entities_tags = await client.ApiEntitiesTag().list()
 
 ```ts
 const api_entities_tag = await client.ApiEntitiesTag().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -11858,7 +11858,7 @@ const api_entities_triggers = await client.ApiEntitiesTrigger().list()
 
 ```ts
 const api_entities_trigger = await client.ApiEntitiesTrigger().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -12199,7 +12199,7 @@ Create an instance: `const composer = client.Composer()`
 
 ```ts
 const composer = await client.Composer().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -12402,8 +12402,8 @@ Create an instance: `const ee_api_entities_approval_state = client.EeApiEntities
 
 ```ts
 const ee_api_entities_approval_state = await client.EeApiEntitiesApprovalState().create({
-  merge_request_id: /* string */,
-  project_id: /* string */,
+  merge_request_id: 'example_merge_request_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -12783,8 +12783,8 @@ Create an instance: `const ee_api_entities_issuable_metric_image = client.EeApiE
 
 ```ts
 const ee_api_entities_issuable_metric_image = await client.EeApiEntitiesIssuableMetricImage().create({
-  issue_id: /* string */,
-  project_id: /* string */,
+  issue_id: 'example_issue_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -12856,7 +12856,7 @@ const ee_api_entities_ssh_certificates = await client.EeApiEntitiesSshCertificat
 
 ```ts
 const ee_api_entities_ssh_certificate = await client.EeApiEntitiesSshCertificate().create({
-  group_id: /* string */,
+  group_id: 'example_group_id',
 })
 ```
 
@@ -12876,7 +12876,7 @@ Create an instance: `const environment = client.Environment()`
 
 ```ts
 const environment = await client.Environment().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -12925,7 +12925,7 @@ const feature_flag = await client.FeatureFlag().load({ project_id: 'project_id' 
 
 ```ts
 const feature_flag = await client.FeatureFlag().create({
-  unleash_id: /* string */,
+  unleash_id: 'example_unleash_id',
 })
 ```
 
@@ -13035,7 +13035,7 @@ const group = await client.Group().load({ id: 'group_id' })
 
 ```ts
 const group = await client.Group().create({
-  id: /* string */,
+  id: 'example_id',
 })
 ```
 
@@ -13078,7 +13078,7 @@ const group_export = await client.GroupExport().load({ group_id: 'group_id' })
 
 ```ts
 const group_export = await client.GroupExport().create({
-  id: /* string */,
+  id: 'example_id',
 })
 ```
 
@@ -13122,7 +13122,7 @@ const helm_package = await client.HelmPackage().load({ project_id: 'project_id' 
 
 ```ts
 const helm_package = await client.HelmPackage().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -13143,7 +13143,7 @@ Create an instance: `const hook = client.Hook()`
 
 ```ts
 const hook = await client.Hook().create({
-  id: /* string */,
+  id: 'example_id',
 })
 ```
 
@@ -13338,7 +13338,7 @@ Create an instance: `const migration = client.Migration()`
 
 ```ts
 const migration = await client.Migration().create({
-  timestamp: /* any */,
+  timestamp: 'example_timestamp',
 })
 ```
 
@@ -13581,7 +13581,7 @@ const project = await client.Project().load({ id: 'project_id' })
 
 ```ts
 const project = await client.Project().create({
-  id: /* string */,
+  id: 'example_id',
 })
 ```
 
@@ -13642,7 +13642,7 @@ const project_export = await client.ProjectExport().load({ project_id: 'project_
 
 ```ts
 const project_export = await client.ProjectExport().create({
-  id: /* string */,
+  id: 'example_id',
 })
 ```
 
@@ -13771,7 +13771,7 @@ Create an instance: `const pypi = client.Pypi()`
 
 ```ts
 const pypi = await client.Pypi().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -13797,7 +13797,7 @@ const pypi_package = await client.PypiPackage().load()
 
 ```ts
 const pypi_package = await client.PypiPackage().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -13853,8 +13853,8 @@ const remote_mirror = await client.RemoteMirror().load({ id: 'remote_mirror_id',
 
 ```ts
 const remote_mirror = await client.RemoteMirror().create({
-  id: /* string */,
-  project_id: /* string */,
+  id: 'example_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -13873,7 +13873,7 @@ Create an instance: `const rpm = client.Rpm()`
 
 ```ts
 const rpm = await client.Rpm().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -13899,7 +13899,7 @@ const rpm_package = await client.RpmPackage().load({ project_id: 'project_id' })
 
 ```ts
 const rpm_package = await client.RpmPackage().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -13942,7 +13942,7 @@ const rubygem_package = await client.RubygemPackage().load({ project_id: 'projec
 
 ```ts
 const rubygem_package = await client.RubygemPackage().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -14131,7 +14131,7 @@ const terraform_state = await client.TerraformState().load({ id: 'terraform_stat
 
 ```ts
 const terraform_state = await client.TerraformState().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -14368,16 +14368,16 @@ import { GitlabSDK } from '@voxgig-sdk/gitlab'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `remove`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const accessrequest = client.AccessRequest()
-await accessrequest.remove()
+const apientitiesaccessrequester = client.ApiEntitiesAccessRequester()
+await apientitiesaccessrequester.list()
 
-// accessrequest.data() now returns the accessrequest data from the last `remove`
-// accessrequest.match() returns the last match criteria
+// apientitiesaccessrequester.data() now returns the apientitiesaccessrequester data from the last `list`
+// apientitiesaccessrequester.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

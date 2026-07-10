@@ -3465,8 +3465,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.AlertManagement().create({
-  alert_management_alert_id: /* string */,
-  project_id: /* string */,
+  alert_management_alert_id: 'example_alert_management_alert_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -4110,7 +4110,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesBasicGroupDetail().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -4185,7 +4185,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesBasicProjectDetail().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -4424,7 +4424,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesBranch().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -4817,7 +4817,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCiCatalogResourcesVersion().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -4899,8 +4899,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCiJob().create({
-  job_id: /* string */,
-  project_id: /* string */,
+  job_id: 'example_job_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -4987,8 +4987,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCiJobBasic().create({
-  job_id: /* string */,
-  project_id: /* string */,
+  job_id: 'example_job_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -5129,7 +5129,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCiLintResult().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -5183,7 +5183,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCiPipeline().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -5374,7 +5374,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCiPipelineScheduleDetail().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -5577,7 +5577,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCiRunner().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -5835,7 +5835,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCiSecureFile().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6088,7 +6088,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesClusterGroup().create({
-  group_id: /* string */,
+  group_id: 'example_group_id',
 })
 ```
 
@@ -6175,7 +6175,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesClusterProject().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6252,7 +6252,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesClustersAgent().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6419,8 +6419,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesClustersAgentTokenWithToken().create({
-  cluster_agent_id: /* string */,
-  project_id: /* string */,
+  cluster_agent_id: 'example_cluster_agent_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6486,7 +6486,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCommit().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6564,7 +6564,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCommitDetail().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -6641,8 +6641,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCommitNote().create({
-  project_id: /* string */,
-  sha: /* any */,
+  project_id: 'example_project_id',
+  sha: 'example_sha',
 })
 ```
 
@@ -6817,8 +6817,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCommitStatus().create({
-  id: /* string */,
-  project_id: /* string */,
+  id: 'example_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7256,7 +7256,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesDeployKeysProject().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7504,7 +7504,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesDeploymentExtended().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7570,8 +7570,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesDeploymentsApproval().create({
-  deployment_id: /* string */,
-  project_id: /* string */,
+  deployment_id: 'example_deployment_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7801,8 +7801,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesDraftNote().create({
-  merge_request_id: /* string */,
-  project_id: /* string */,
+  merge_request_id: 'example_merge_request_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7898,7 +7898,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesEnvironment().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -7981,7 +7981,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesErrorTrackingClientKey().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -8182,7 +8182,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesFeature().create({
-  id: /* string */,
+  id: 'example_id',
 })
 ```
 
@@ -8308,7 +8308,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesFeatureFlag().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -8396,7 +8396,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesFeatureFlagUserList().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -8481,7 +8481,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesFreezePeriod().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -8854,7 +8854,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesGroupDetail().create({
-  group_id: /* string */,
+  group_id: 'example_group_id',
 })
 ```
 
@@ -9242,7 +9242,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesIssuableTimeStat().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -9343,7 +9343,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesIssue().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -9425,8 +9425,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesIssueLink().create({
-  issue_id: /* string */,
-  project_id: /* string */,
+  issue_id: 'example_issue_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -9818,7 +9818,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesMerge().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -9892,8 +9892,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesMergeRequestApproval().create({
-  merge_request_id: /* string */,
-  project_id: /* string */,
+  merge_request_id: 'example_merge_request_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -10355,8 +10355,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesMetricImage().create({
-  alert_management_alert_id: /* string */,
-  project_id: /* string */,
+  alert_management_alert_id: 'example_alert_management_alert_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -10625,7 +10625,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesNamespacesStorageLimitExclusion().create({
-  namespace_id: /* string */,
+  namespace_id: 'example_namespace_id',
 })
 ```
 
@@ -11586,10 +11586,10 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesPackagesConanUploadUrl().create({
-  conan_id: /* string */,
-  package_channel: /* any */,
-  package_username: /* any */,
-  package_version: /* any */,
+  conan_id: 'example_conan_id',
+  package_channel: 'example_package_channel',
+  package_username: 'example_package_username',
+  package_version: 'example_package_version',
 })
 ```
 
@@ -11734,7 +11734,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesPagesDomain().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -12552,7 +12552,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesProjectGroupLink().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -12635,7 +12635,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesProjectHook().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -12900,7 +12900,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesProjectSnippet().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -12974,7 +12974,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesProjectUpload().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -13227,7 +13227,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesProjectsContainerRegistryProtectionRule().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -13304,7 +13304,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesProjectsPackagesProtectionRule().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -13459,7 +13459,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesProtectedBranch().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -13540,7 +13540,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesProtectedTag().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -13817,7 +13817,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesRelease().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -13901,8 +13901,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesReleasesLink().create({
-  project_id: /* string */,
-  release_id: /* string */,
+  project_id: 'example_project_id',
+  release_id: 'example_release_id',
 })
 ```
 
@@ -13995,7 +13995,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesRemoteMirror().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -14540,7 +14540,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesTag().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -14835,7 +14835,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesTrigger().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -15689,7 +15689,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Composer().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -16354,8 +16354,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.EeApiEntitiesApprovalState().create({
-  merge_request_id: /* string */,
-  project_id: /* string */,
+  merge_request_id: 'example_merge_request_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -16869,8 +16869,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.EeApiEntitiesIssuableMetricImage().create({
-  issue_id: /* string */,
-  project_id: /* string */,
+  issue_id: 'example_issue_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -17010,7 +17010,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.EeApiEntitiesSshCertificate().create({
-  group_id: /* string */,
+  group_id: 'example_group_id',
 })
 ```
 
@@ -17064,7 +17064,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Environment().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -17206,7 +17206,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.FeatureFlag().create({
-  unleash_id: /* string */,
+  unleash_id: 'example_unleash_id',
 })
 ```
 
@@ -17510,7 +17510,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Group().create({
-  id: /* string */,
+  id: 'example_id',
 })
 ```
 
@@ -17627,7 +17627,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.GroupExport().create({
-  id: /* string */,
+  id: 'example_id',
 })
 ```
 
@@ -17726,7 +17726,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.HelmPackage().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -17780,7 +17780,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Hook().create({
-  id: /* string */,
+  id: 'example_id',
 })
 ```
 
@@ -18357,7 +18357,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Migration().create({
-  timestamp: /* any */,
+  timestamp: 'example_timestamp',
 })
 ```
 
@@ -18991,7 +18991,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Project().create({
-  id: /* string */,
+  id: 'example_id',
 })
 ```
 
@@ -19153,7 +19153,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ProjectExport().create({
-  id: /* string */,
+  id: 'example_id',
 })
 ```
 
@@ -19546,7 +19546,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Pypi().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -19592,7 +19592,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.PypiPackage().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -19742,8 +19742,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.RemoteMirror().create({
-  id: /* string */,
-  project_id: /* string */,
+  id: 'example_id',
+  project_id: 'example_project_id',
 })
 ```
 
@@ -19805,7 +19805,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Rpm().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -19851,7 +19851,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.RpmPackage().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -19949,7 +19949,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.RubygemPackage().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 
@@ -20453,7 +20453,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.TerraformState().create({
-  project_id: /* string */,
+  project_id: 'example_project_id',
 })
 ```
 

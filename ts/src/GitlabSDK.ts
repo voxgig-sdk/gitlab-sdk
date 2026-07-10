@@ -238,12 +238,12 @@ import { PackageFileEntity } from './entity/PackageFileEntity'
 import { PageEntity } from './entity/PageEntity'
 import { ParticipantEntity } from './entity/ParticipantEntity'
 import { PersonalAccessTokenEntity } from './entity/PersonalAccessTokenEntity'
-import { ProjectEntity } from './entity/ProjectEntity'
+import { ProjectEntityClient } from './entity/ProjectEntityClient'
 import { ProjectAvatarEntity } from './entity/ProjectAvatarEntity'
 import { ProjectEntityEntity } from './entity/ProjectEntityEntity'
 import { ProjectExportEntity } from './entity/ProjectExportEntity'
 import { ProjectHookEntity } from './entity/ProjectHookEntity'
-import { ProjectImportEntity } from './entity/ProjectImportEntity'
+import { ProjectImportEntityClient } from './entity/ProjectImportEntityClient'
 import { ProjectImportEntityEntity } from './entity/ProjectImportEntityEntity'
 import { ProjectPackageEntity } from './entity/ProjectPackageEntity'
 import { ProjectSnippetEntity } from './entity/ProjectSnippetEntity'
@@ -2148,7 +2148,7 @@ class GitlabSDK {
   // Entity access: `client.Project().list()` / `client.Project().load({ id })`.
   Project(data?: any) {
     const self = this
-    return new ProjectEntity(self,data)
+    return new ProjectEntityClient(self,data)
   }
 
 
@@ -2183,7 +2183,7 @@ class GitlabSDK {
   // Entity access: `client.ProjectImport().list()` / `client.ProjectImport().load({ id })`.
   ProjectImport(data?: any) {
     const self = this
-    return new ProjectImportEntity(self,data)
+    return new ProjectImportEntityClient(self,data)
   }
 
 
