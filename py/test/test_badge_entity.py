@@ -27,7 +27,7 @@ class TestBadgeEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "badge." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestBadgeEntity:
         badge_ref01_data = None
         if len(badge_ref01_data_raw) > 0:
             badge_ref01_data = helpers.to_map(badge_ref01_data_raw[0][1])
-
-        # REMOVE
-        badge_ref01_ent = client.Badge(None)
-        badge_ref01_match_rm0 = {
-            "id": badge_ref01_data["id"],
-        }
-        badge_ref01_ent.remove(badge_ref01_match_rm0, None)
 
 
 

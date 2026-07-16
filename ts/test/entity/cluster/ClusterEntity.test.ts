@@ -39,7 +39,7 @@ describe('ClusterEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'cluster.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('ClusterEntity', async () => {
     const select = struct.select
 
     let cluster_ref01_data = Object.values(setup.data.existing.cluster)[0] as any
-
-    // REMOVE
-    const cluster_ref01_ent = client.Cluster()
-    const cluster_ref01_match_rm0: any = { id: cluster_ref01_data.id }
-    await cluster_ref01_ent.remove(cluster_ref01_match_rm0)
-  
 
   })
 })

@@ -23,7 +23,7 @@ class NamespaceEntityTest extends TestCase
         $setup = namespace_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "namespace." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class NamespaceEntityTest extends TestCase
         if (count($namespace_ref01_data_raw) > 0) {
             $namespace_ref01_data = Helpers::to_map($namespace_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $namespace_ref01_ent = $client->Namespace(null);
-        $namespace_ref01_match_rm0 = [
-            "id" => $namespace_ref01_data["id"],
-        ];
-        $namespace_ref01_ent->remove($namespace_ref01_match_rm0, null);
 
     }
 }

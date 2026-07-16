@@ -23,7 +23,7 @@ class InvitationEntityTest extends TestCase
         $setup = invitation_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "invitation." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class InvitationEntityTest extends TestCase
         if (count($invitation_ref01_data_raw) > 0) {
             $invitation_ref01_data = Helpers::to_map($invitation_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $invitation_ref01_ent = $client->Invitation(null);
-        $invitation_ref01_match_rm0 = [
-            "id" => $invitation_ref01_data["id"],
-        ];
-        $invitation_ref01_ent->remove($invitation_ref01_match_rm0, null);
 
     }
 }

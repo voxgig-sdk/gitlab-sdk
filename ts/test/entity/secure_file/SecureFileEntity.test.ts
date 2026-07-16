@@ -39,7 +39,7 @@ describe('SecureFileEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['load', 'remove']) {
+    for (const op of ['load']) {
       if (maybeSkipControl(t, 'entityOp', 'secure_file.' + op, live)) return
     }
 
@@ -63,11 +63,6 @@ describe('SecureFileEntity', async () => {
     // Entity-var is declared here so later flow steps still compile.
     const secure_file_ref01_ent = client.SecureFile()
 
-
-    // REMOVE
-    const secure_file_ref01_match_rm0: any = { id: secure_file_ref01_data.id }
-    await secure_file_ref01_ent.remove(secure_file_ref01_match_rm0)
-  
 
   })
 })

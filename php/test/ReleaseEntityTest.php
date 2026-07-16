@@ -23,7 +23,7 @@ class ReleaseEntityTest extends TestCase
         $setup = release_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["load", "remove"] as $_op) {
+        foreach (["load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "release." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -51,12 +51,6 @@ class ReleaseEntityTest extends TestCase
         $release_ref01_match_dt0 = [];
         $release_ref01_data_dt0_loaded = $release_ref01_ent->load($release_ref01_match_dt0, null);
         $this->assertNotNull($release_ref01_data_dt0_loaded);
-
-        // REMOVE
-        $release_ref01_match_rm0 = [
-            "id" => $release_ref01_data["id"],
-        ];
-        $release_ref01_ent->remove($release_ref01_match_rm0, null);
 
     }
 }

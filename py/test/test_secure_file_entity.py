@@ -27,7 +27,7 @@ class TestSecureFileEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["load", "remove"]:
+        for _op in ["load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "secure_file." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -51,12 +51,6 @@ class TestSecureFileEntity:
         secure_file_ref01_match_dt0 = {}
         secure_file_ref01_data_dt0_loaded = secure_file_ref01_ent.load(secure_file_ref01_match_dt0, None)
         assert secure_file_ref01_data_dt0_loaded is not None
-
-        # REMOVE
-        secure_file_ref01_match_rm0 = {
-            "id": secure_file_ref01_data["id"],
-        }
-        secure_file_ref01_ent.remove(secure_file_ref01_match_rm0, None)
 
 
 

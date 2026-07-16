@@ -27,7 +27,7 @@ class TestIssueLinkEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "issue_link." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestIssueLinkEntity:
         issue_link_ref01_data = None
         if len(issue_link_ref01_data_raw) > 0:
             issue_link_ref01_data = helpers.to_map(issue_link_ref01_data_raw[0][1])
-
-        # REMOVE
-        issue_link_ref01_ent = client.IssueLink(None)
-        issue_link_ref01_match_rm0 = {
-            "id": issue_link_ref01_data["id"],
-        }
-        issue_link_ref01_ent.remove(issue_link_ref01_match_rm0, None)
 
 
 

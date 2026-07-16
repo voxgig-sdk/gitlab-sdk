@@ -23,7 +23,7 @@ class ConanEntityTest extends TestCase
         $setup = conan_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "conan." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -46,13 +46,6 @@ class ConanEntityTest extends TestCase
             $conan_ref01_data = Helpers::to_map($conan_ref01_data_raw[0][1]);
         }
 
-        // REMOVE
-        $conan_ref01_ent = $client->Conan(null);
-        $conan_ref01_match_rm0 = [
-            "id" => $conan_ref01_data["id"],
-        ];
-        $conan_ref01_ent->remove($conan_ref01_match_rm0, null);
-
     }
 }
 
@@ -71,7 +64,7 @@ function conan_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["conan01", "conan02", "conan03", "package_name01", "package_username01", "package_version01"] as $k) {
+    foreach (["conan01", "conan02", "conan03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

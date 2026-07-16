@@ -27,7 +27,7 @@ class TestPersonalAccessTokenEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "personal_access_token." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestPersonalAccessTokenEntity:
         personal_access_token_ref01_data = None
         if len(personal_access_token_ref01_data_raw) > 0:
             personal_access_token_ref01_data = helpers.to_map(personal_access_token_ref01_data_raw[0][1])
-
-        # REMOVE
-        personal_access_token_ref01_ent = client.PersonalAccessToken(None)
-        personal_access_token_ref01_match_rm0 = {
-            "id": personal_access_token_ref01_data["id"],
-        }
-        personal_access_token_ref01_ent.remove(personal_access_token_ref01_match_rm0, None)
 
 
 

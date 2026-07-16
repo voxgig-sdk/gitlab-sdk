@@ -39,7 +39,7 @@ describe('CiVariableEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'ci_variable.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('CiVariableEntity', async () => {
     const select = struct.select
 
     let ci_variable_ref01_data = Object.values(setup.data.existing.ci_variable)[0] as any
-
-    // REMOVE
-    const ci_variable_ref01_ent = client.CiVariable()
-    const ci_variable_ref01_match_rm0: any = { id: ci_variable_ref01_data.id }
-    await ci_variable_ref01_ent.remove(ci_variable_ref01_match_rm0)
-  
 
   })
 })

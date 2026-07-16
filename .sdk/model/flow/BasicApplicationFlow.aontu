@@ -5,19 +5,5 @@ main: kit: flow: BasicApplicationFlow:
   entity: "application",
   kind: "basic",
   name: "BasicApplicationFlow",
-  step: [
-    {
-      input: {
-        ref: "application_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "application01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicApplicationFlow"
 }

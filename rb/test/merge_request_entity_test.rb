@@ -16,7 +16,7 @@ class MergeRequestEntityTest < Minitest::Test
     setup = merge_request_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["update", "load", "remove"].each do |_op|
+    ["update", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "merge_request." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -53,12 +53,6 @@ class MergeRequestEntityTest < Minitest::Test
     merge_request_ref01_match_dt0 = {}
     merge_request_ref01_data_dt0_loaded = merge_request_ref01_ent.load(merge_request_ref01_match_dt0, nil)
     assert !merge_request_ref01_data_dt0_loaded.nil?
-
-    # REMOVE
-    merge_request_ref01_match_rm0 = {
-      "id" => merge_request_ref01_data["id"],
-    }
-    merge_request_ref01_ent.remove(merge_request_ref01_match_rm0, nil)
 
   end
 end

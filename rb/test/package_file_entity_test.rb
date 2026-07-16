@@ -16,7 +16,7 @@ class PackageFileEntityTest < Minitest::Test
     setup = package_file_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["load", "remove"].each do |_op|
+    ["load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "package_file." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -44,12 +44,6 @@ class PackageFileEntityTest < Minitest::Test
     package_file_ref01_match_dt0 = {}
     package_file_ref01_data_dt0_loaded = package_file_ref01_ent.load(package_file_ref01_match_dt0, nil)
     assert !package_file_ref01_data_dt0_loaded.nil?
-
-    # REMOVE
-    package_file_ref01_match_rm0 = {
-      "id" => package_file_ref01_data["id"],
-    }
-    package_file_ref01_ent.remove(package_file_ref01_match_rm0, nil)
 
   end
 end

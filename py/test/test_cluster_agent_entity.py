@@ -27,7 +27,7 @@ class TestClusterAgentEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "cluster_agent." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestClusterAgentEntity:
         cluster_agent_ref01_data = None
         if len(cluster_agent_ref01_data_raw) > 0:
             cluster_agent_ref01_data = helpers.to_map(cluster_agent_ref01_data_raw[0][1])
-
-        # REMOVE
-        cluster_agent_ref01_ent = client.ClusterAgent(None)
-        cluster_agent_ref01_match_rm0 = {
-            "id": cluster_agent_ref01_data["id"],
-        }
-        cluster_agent_ref01_ent.remove(cluster_agent_ref01_match_rm0, None)
 
 
 

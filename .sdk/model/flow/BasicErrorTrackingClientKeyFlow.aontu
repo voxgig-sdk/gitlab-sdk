@@ -5,20 +5,5 @@ main: kit: flow: BasicErrorTrackingClientKeyFlow:
   entity: "error_tracking_client_key",
   kind: "basic",
   name: "BasicErrorTrackingClientKeyFlow",
-  step: [
-    {
-      input: {
-        ref: "error_tracking_client_key_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "error_tracking_client_key01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicErrorTrackingClientKeyFlow"
 }

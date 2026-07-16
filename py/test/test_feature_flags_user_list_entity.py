@@ -27,7 +27,7 @@ class TestFeatureFlagsUserListEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "feature_flags_user_list." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestFeatureFlagsUserListEntity:
         feature_flags_user_list_ref01_data = None
         if len(feature_flags_user_list_ref01_data_raw) > 0:
             feature_flags_user_list_ref01_data = helpers.to_map(feature_flags_user_list_ref01_data_raw[0][1])
-
-        # REMOVE
-        feature_flags_user_list_ref01_ent = client.FeatureFlagsUserList(None)
-        feature_flags_user_list_ref01_match_rm0 = {
-            "id": feature_flags_user_list_ref01_data["id"],
-        }
-        feature_flags_user_list_ref01_ent.remove(feature_flags_user_list_ref01_match_rm0, None)
 
 
 

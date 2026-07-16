@@ -19,7 +19,7 @@ describe("ProjectHookEntity", function()
     local setup = project_hook_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"remove"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "project_hook." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -41,14 +41,6 @@ describe("ProjectHookEntity", function()
     if #project_hook_ref01_data_raw > 0 then
       project_hook_ref01_data = helpers.to_map(project_hook_ref01_data_raw[1][2])
     end
-
-    -- REMOVE
-    local project_hook_ref01_ent = client:ProjectHook(nil)
-    local project_hook_ref01_match_rm0 = {
-      id = project_hook_ref01_data["id"],
-    }
-    local _, err = project_hook_ref01_ent:remove(project_hook_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

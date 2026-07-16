@@ -32,7 +32,7 @@ func TestReleaseEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"load", "remove"} {
+		for _, _op := range []string{"load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "release." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -68,15 +68,6 @@ func TestReleaseEntity(t *testing.T) {
 		}
 		if releaseRef01DataDt0Loaded == nil {
 			t.Fatal("expected load result to be non-nil")
-		}
-
-		// REMOVE
-		releaseRef01MatchRm0 := map[string]any{
-			"id": releaseRef01Data["id"],
-		}
-		_, err = releaseRef01Ent.Remove(releaseRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
 		}
 
 	})

@@ -19,7 +19,7 @@ describe("PageEntity", function()
     local setup = page_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"update", "load", "remove"}) do
+    for _, _op in ipairs({"update", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "page." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -57,13 +57,6 @@ describe("PageEntity", function()
     local page_ref01_data_dt0_loaded, err = page_ref01_ent:load(page_ref01_match_dt0, nil)
     assert.is_nil(err)
     assert.is_not_nil(page_ref01_data_dt0_loaded)
-
-    -- REMOVE
-    local page_ref01_match_rm0 = {
-      id = page_ref01_data["id"],
-    }
-    local _, err = page_ref01_ent:remove(page_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

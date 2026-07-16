@@ -32,7 +32,7 @@ func TestDebianDistributionEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"remove"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "debian_distribution." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -47,8 +47,6 @@ func TestDebianDistributionEntity(t *testing.T) {
 			t.Skip("live entity test uses synthetic IDs from fixture — set GITLAB_TEST_DEBIAN_DISTRIBUTION_ENTID JSON to run live")
 			return
 		}
-		client := setup.client
-
 		// Bootstrap entity data from existing test data (no create step in flow).
 		debianDistributionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.debian_distribution", setup.data)))
 		var debianDistributionRef01Data map[string]any
@@ -58,16 +56,6 @@ func TestDebianDistributionEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = debianDistributionRef01Data
-
-		// REMOVE
-		debianDistributionRef01Ent := client.DebianDistribution(nil)
-		debianDistributionRef01MatchRm0 := map[string]any{
-			"id": debianDistributionRef01Data["id"],
-		}
-		_, err := debianDistributionRef01Ent.Remove(debianDistributionRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

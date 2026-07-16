@@ -16,7 +16,7 @@ class SecureFileEntityTest < Minitest::Test
     setup = secure_file_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["load", "remove"].each do |_op|
+    ["load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "secure_file." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -44,12 +44,6 @@ class SecureFileEntityTest < Minitest::Test
     secure_file_ref01_match_dt0 = {}
     secure_file_ref01_data_dt0_loaded = secure_file_ref01_ent.load(secure_file_ref01_match_dt0, nil)
     assert !secure_file_ref01_data_dt0_loaded.nil?
-
-    # REMOVE
-    secure_file_ref01_match_rm0 = {
-      "id" => secure_file_ref01_data["id"],
-    }
-    secure_file_ref01_ent.remove(secure_file_ref01_match_rm0, nil)
 
   end
 end

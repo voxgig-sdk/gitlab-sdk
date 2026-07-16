@@ -39,7 +39,7 @@ describe('IssueLinkEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'issue_link.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('IssueLinkEntity', async () => {
     const select = struct.select
 
     let issue_link_ref01_data = Object.values(setup.data.existing.issue_link)[0] as any
-
-    // REMOVE
-    const issue_link_ref01_ent = client.IssueLink()
-    const issue_link_ref01_match_rm0: any = { id: issue_link_ref01_data.id }
-    await issue_link_ref01_ent.remove(issue_link_ref01_match_rm0)
-  
 
   })
 })

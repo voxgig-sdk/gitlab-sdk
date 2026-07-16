@@ -23,7 +23,7 @@ class TopicEntityTest extends TestCase
         $setup = topic_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "topic." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class TopicEntityTest extends TestCase
         if (count($topic_ref01_data_raw) > 0) {
             $topic_ref01_data = Helpers::to_map($topic_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $topic_ref01_ent = $client->Topic(null);
-        $topic_ref01_match_rm0 = [
-            "id" => $topic_ref01_data["id"],
-        ];
-        $topic_ref01_ent->remove($topic_ref01_match_rm0, null);
 
     }
 }

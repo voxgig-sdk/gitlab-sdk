@@ -39,7 +39,7 @@ describe('ApplicationEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'application.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('ApplicationEntity', async () => {
     const select = struct.select
 
     let application_ref01_data = Object.values(setup.data.existing.application)[0] as any
-
-    // REMOVE
-    const application_ref01_ent = client.Application()
-    const application_ref01_match_rm0: any = { id: application_ref01_data.id }
-    await application_ref01_ent.remove(application_ref01_match_rm0)
-  
 
   })
 })

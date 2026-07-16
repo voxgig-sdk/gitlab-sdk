@@ -13097,7 +13097,7 @@ hook = client.Hook().create({
 
 ### Import
 
-Create an instance: `import = client.Import()`
+Create an instance: `import_ = client.Import()`
 
 #### Operations
 
@@ -13108,7 +13108,7 @@ Create an instance: `import = client.Import()`
 #### Example: Create
 
 ```python
-import = client.Import().create({
+import_ = client.Import().create({
 })
 ```
 

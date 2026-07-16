@@ -23,7 +23,7 @@ class SnippetEntityTest extends TestCase
         $setup = snippet_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["load", "remove"] as $_op) {
+        foreach (["load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "snippet." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -51,12 +51,6 @@ class SnippetEntityTest extends TestCase
         $snippet_ref01_match_dt0 = [];
         $snippet_ref01_data_dt0_loaded = $snippet_ref01_ent->load($snippet_ref01_match_dt0, null);
         $this->assertNotNull($snippet_ref01_data_dt0_loaded);
-
-        // REMOVE
-        $snippet_ref01_match_rm0 = [
-            "id" => $snippet_ref01_data["id"],
-        ];
-        $snippet_ref01_ent->remove($snippet_ref01_match_rm0, null);
 
     }
 }

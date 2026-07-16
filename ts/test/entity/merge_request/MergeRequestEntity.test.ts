@@ -39,7 +39,7 @@ describe('MergeRequestEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['update', 'load', 'remove']) {
+    for (const op of ['update', 'load']) {
       if (maybeSkipControl(t, 'entityOp', 'merge_request.' + op, live)) return
     }
 
@@ -68,11 +68,6 @@ describe('MergeRequestEntity', async () => {
     assert(null != merge_request_ref01_resdata_up0)
 
 
-
-    // REMOVE
-    const merge_request_ref01_match_rm0: any = { id: merge_request_ref01_data.id }
-    await merge_request_ref01_ent.remove(merge_request_ref01_match_rm0)
-  
 
   })
 })

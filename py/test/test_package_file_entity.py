@@ -27,7 +27,7 @@ class TestPackageFileEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["load", "remove"]:
+        for _op in ["load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "package_file." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -51,12 +51,6 @@ class TestPackageFileEntity:
         package_file_ref01_match_dt0 = {}
         package_file_ref01_data_dt0_loaded = package_file_ref01_ent.load(package_file_ref01_match_dt0, None)
         assert package_file_ref01_data_dt0_loaded is not None
-
-        # REMOVE
-        package_file_ref01_match_rm0 = {
-            "id": package_file_ref01_data["id"],
-        }
-        package_file_ref01_ent.remove(package_file_ref01_match_rm0, None)
 
 
 

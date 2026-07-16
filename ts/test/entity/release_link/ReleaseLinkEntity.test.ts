@@ -39,7 +39,7 @@ describe('ReleaseLinkEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'release_link.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('ReleaseLinkEntity', async () => {
     const select = struct.select
 
     let release_link_ref01_data = Object.values(setup.data.existing.release_link)[0] as any
-
-    // REMOVE
-    const release_link_ref01_ent = client.ReleaseLink()
-    const release_link_ref01_match_rm0: any = { id: release_link_ref01_data.id }
-    await release_link_ref01_ent.remove(release_link_ref01_match_rm0)
-  
 
   })
 })

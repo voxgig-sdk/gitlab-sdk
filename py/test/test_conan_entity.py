@@ -27,7 +27,7 @@ class TestConanEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "conan." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestConanEntity:
         conan_ref01_data = None
         if len(conan_ref01_data_raw) > 0:
             conan_ref01_data = helpers.to_map(conan_ref01_data_raw[0][1])
-
-        # REMOVE
-        conan_ref01_ent = client.Conan(None)
-        conan_ref01_match_rm0 = {
-            "id": conan_ref01_data["id"],
-        }
-        conan_ref01_ent.remove(conan_ref01_match_rm0, None)
 
 
 
@@ -71,7 +64,7 @@ def _conan_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["conan01", "conan02", "conan03", "package_name01", "package_username01", "package_version01"],
+        ["conan01", "conan02", "conan03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

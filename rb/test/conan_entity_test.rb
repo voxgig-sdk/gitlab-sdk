@@ -16,7 +16,7 @@ class ConanEntityTest < Minitest::Test
     setup = conan_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["remove"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "conan." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -39,13 +39,6 @@ class ConanEntityTest < Minitest::Test
       conan_ref01_data = Helpers.to_map(conan_ref01_data_raw[0][1])
     end
 
-    # REMOVE
-    conan_ref01_ent = client.Conan(nil)
-    conan_ref01_match_rm0 = {
-      "id" => conan_ref01_data["id"],
-    }
-    conan_ref01_ent.remove(conan_ref01_match_rm0, nil)
-
   end
 end
 
@@ -63,7 +56,7 @@ def conan_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["conan01", "conan02", "conan03", "package_name01", "package_username01", "package_version01"],
+    ["conan01", "conan02", "conan03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

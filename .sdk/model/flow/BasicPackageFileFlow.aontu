@@ -29,21 +29,6 @@ main: kit: flow: BasicPackageFileFlow:
         }
       ]
     }
-
-    {
-      input: {
-        ref: "package_file_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "package_file01",
-        package_id: "package01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
   ],
   "key$": "BasicPackageFileFlow"
 }

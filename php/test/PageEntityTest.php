@@ -23,7 +23,7 @@ class PageEntityTest extends TestCase
         $setup = page_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["update", "load", "remove"] as $_op) {
+        foreach (["update", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "page." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -59,12 +59,6 @@ class PageEntityTest extends TestCase
         $page_ref01_match_dt0 = [];
         $page_ref01_data_dt0_loaded = $page_ref01_ent->load($page_ref01_match_dt0, null);
         $this->assertNotNull($page_ref01_data_dt0_loaded);
-
-        // REMOVE
-        $page_ref01_match_rm0 = [
-            "id" => $page_ref01_data["id"],
-        ];
-        $page_ref01_ent->remove($page_ref01_match_rm0, null);
 
     }
 }

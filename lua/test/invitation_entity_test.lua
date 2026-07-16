@@ -19,7 +19,7 @@ describe("InvitationEntity", function()
     local setup = invitation_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"remove"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "invitation." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -41,14 +41,6 @@ describe("InvitationEntity", function()
     if #invitation_ref01_data_raw > 0 then
       invitation_ref01_data = helpers.to_map(invitation_ref01_data_raw[1][2])
     end
-
-    -- REMOVE
-    local invitation_ref01_ent = client:Invitation(nil)
-    local invitation_ref01_match_rm0 = {
-      id = invitation_ref01_data["id"],
-    }
-    local _, err = invitation_ref01_ent:remove(invitation_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

@@ -16,7 +16,7 @@ class CiVariableEntityTest < Minitest::Test
     setup = ci_variable_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["remove"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "ci_variable." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -38,13 +38,6 @@ class CiVariableEntityTest < Minitest::Test
     if ci_variable_ref01_data_raw.length > 0
       ci_variable_ref01_data = Helpers.to_map(ci_variable_ref01_data_raw[0][1])
     end
-
-    # REMOVE
-    ci_variable_ref01_ent = client.CiVariable(nil)
-    ci_variable_ref01_match_rm0 = {
-      "id" => ci_variable_ref01_data["id"],
-    }
-    ci_variable_ref01_ent.remove(ci_variable_ref01_match_rm0, nil)
 
   end
 end

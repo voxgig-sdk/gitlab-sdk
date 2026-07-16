@@ -19,7 +19,7 @@ describe("FeatureFlagsUserListEntity", function()
     local setup = feature_flags_user_list_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"remove"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "feature_flags_user_list." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -41,14 +41,6 @@ describe("FeatureFlagsUserListEntity", function()
     if #feature_flags_user_list_ref01_data_raw > 0 then
       feature_flags_user_list_ref01_data = helpers.to_map(feature_flags_user_list_ref01_data_raw[1][2])
     end
-
-    -- REMOVE
-    local feature_flags_user_list_ref01_ent = client:FeatureFlagsUserList(nil)
-    local feature_flags_user_list_ref01_match_rm0 = {
-      id = feature_flags_user_list_ref01_data["id"],
-    }
-    local _, err = feature_flags_user_list_ref01_ent:remove(feature_flags_user_list_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

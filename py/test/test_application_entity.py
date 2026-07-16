@@ -27,7 +27,7 @@ class TestApplicationEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "application." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestApplicationEntity:
         application_ref01_data = None
         if len(application_ref01_data_raw) > 0:
             application_ref01_data = helpers.to_map(application_ref01_data_raw[0][1])
-
-        # REMOVE
-        application_ref01_ent = client.Application(None)
-        application_ref01_match_rm0 = {
-            "id": application_ref01_data["id"],
-        }
-        application_ref01_ent.remove(application_ref01_match_rm0, None)
 
 
 

@@ -12,6 +12,42 @@ class ApiEntitiesMetricImageEntityTest < Minitest::Test
     assert !ent.nil?
   end
 
+  # Feature #4: the entity stream(action, ...) method runs the op pipeline and
+  # returns an Enumerator over result items. With the streaming feature active
+  # it yields the feature's incremental output; otherwise it falls back to the
+  # materialised list so stream always yields.
+  def test_stream
+    seed = {
+      "entity" => {
+        "api_entities_metric_image" => {
+          "s1" => { "id" => "s1" },
+          "s2" => { "id" => "s2" },
+          "s3" => { "id" => "s3" },
+        },
+      },
+    }
+
+    # Fallback: streaming inactive -> yields the materialised list items.
+    base = GitlabSDK.test(seed, nil)
+    seen = base.ApiEntitiesMetricImage(nil).stream("list", nil, nil).to_a
+    assert_equal 3, seen.length
+
+    # Inbound: streaming active -> yields each item from the feature.
+    cfg = GitlabConfig.make_config
+    if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
+      sdk = GitlabSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
+      got = []
+      sdk.ApiEntitiesMetricImage(nil).stream("list", nil, nil).each do |item|
+        if item.is_a?(Array)
+          got.concat(item)
+        else
+          got << item
+        end
+      end
+      assert_equal 3, got.length
+    end
+  end
+
   def test_basic_flow
     setup = api_entities_metric_image_basic_setup(nil)
     # Per-op sdk-test-control.json skip.

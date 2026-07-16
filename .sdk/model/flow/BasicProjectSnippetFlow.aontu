@@ -5,20 +5,5 @@ main: kit: flow: BasicProjectSnippetFlow:
   entity: "project_snippet",
   kind: "basic",
   name: "BasicProjectSnippetFlow",
-  step: [
-    {
-      input: {
-        ref: "project_snippet_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "project_snippet01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicProjectSnippetFlow"
 }

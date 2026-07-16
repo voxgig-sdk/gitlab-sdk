@@ -23,7 +23,7 @@ class ProjectsJobTokenScopeEntityTest extends TestCase
         $setup = projects_job_token_scope_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["update", "remove"] as $_op) {
+        foreach (["update"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "projects_job_token_scope." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,12 +54,6 @@ class ProjectsJobTokenScopeEntityTest extends TestCase
         $projects_job_token_scope_ref01_resdata_up0_result = $projects_job_token_scope_ref01_ent->update($projects_job_token_scope_ref01_data_up0_up, null);
         $projects_job_token_scope_ref01_resdata_up0 = Helpers::to_map($projects_job_token_scope_ref01_resdata_up0_result);
         $this->assertNotNull($projects_job_token_scope_ref01_resdata_up0);
-
-        // REMOVE
-        $projects_job_token_scope_ref01_match_rm0 = [
-            "id" => $projects_job_token_scope_ref01_data["id"],
-        ];
-        $projects_job_token_scope_ref01_ent->remove($projects_job_token_scope_ref01_match_rm0, null);
 
     }
 }

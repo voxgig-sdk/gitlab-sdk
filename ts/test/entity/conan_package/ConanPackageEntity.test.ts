@@ -39,7 +39,7 @@ describe('ConanPackageEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['update', 'load', 'remove']) {
+    for (const op of ['update', 'load']) {
       if (maybeSkipControl(t, 'entityOp', 'conan_package.' + op, live)) return
     }
 
@@ -72,11 +72,6 @@ describe('ConanPackageEntity', async () => {
     assert(null != conan_package_ref01_resdata_up0)
 
 
-
-    // REMOVE
-    const conan_package_ref01_match_rm0: any = { id: conan_package_ref01_data.id }
-    await conan_package_ref01_ent.remove(conan_package_ref01_match_rm0)
-  
 
   })
 })

@@ -32,7 +32,7 @@ func TestMergeRequestEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"update", "load", "remove"} {
+		for _, _op := range []string{"update", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "merge_request." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -82,15 +82,6 @@ func TestMergeRequestEntity(t *testing.T) {
 		}
 		if mergeRequestRef01DataDt0Loaded == nil {
 			t.Fatal("expected load result to be non-nil")
-		}
-
-		// REMOVE
-		mergeRequestRef01MatchRm0 := map[string]any{
-			"id": mergeRequestRef01Data["id"],
-		}
-		_, err = mergeRequestRef01Ent.Remove(mergeRequestRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
 		}
 
 	})

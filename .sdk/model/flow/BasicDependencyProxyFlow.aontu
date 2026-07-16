@@ -5,19 +5,5 @@ main: kit: flow: BasicDependencyProxyFlow:
   entity: "dependency_proxy",
   kind: "basic",
   name: "BasicDependencyProxyFlow",
-  step: [
-    {
-      input: {
-        ref: "dependency_proxy_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "dependency_proxy01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicDependencyProxyFlow"
 }

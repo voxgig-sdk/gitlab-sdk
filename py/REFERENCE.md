@@ -16001,7 +16001,7 @@ Return the entity name.
 ## ImportEntity
 
 ```python
-import = client.Import()
+import_ = client.Import()
 ```
 
 ### Operations

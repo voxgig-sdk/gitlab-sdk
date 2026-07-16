@@ -23,7 +23,7 @@ class AwardEmojiEntityTest extends TestCase
         $setup = award_emoji_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "award_emoji." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class AwardEmojiEntityTest extends TestCase
         if (count($award_emoji_ref01_data_raw) > 0) {
             $award_emoji_ref01_data = Helpers::to_map($award_emoji_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $award_emoji_ref01_ent = $client->AwardEmoji(null);
-        $award_emoji_ref01_match_rm0 = [
-            "id" => $award_emoji_ref01_data["id"],
-        ];
-        $award_emoji_ref01_ent->remove($award_emoji_ref01_match_rm0, null);
 
     }
 }

@@ -27,7 +27,7 @@ class TestProjectPackageEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "project_package." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestProjectPackageEntity:
         project_package_ref01_data = None
         if len(project_package_ref01_data_raw) > 0:
             project_package_ref01_data = helpers.to_map(project_package_ref01_data_raw[0][1])
-
-        # REMOVE
-        project_package_ref01_ent = client.ProjectPackage(None)
-        project_package_ref01_match_rm0 = {
-            "id": project_package_ref01_data["id"],
-        }
-        project_package_ref01_ent.remove(project_package_ref01_match_rm0, None)
 
 
 

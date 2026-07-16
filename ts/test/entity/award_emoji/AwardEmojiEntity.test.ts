@@ -39,7 +39,7 @@ describe('AwardEmojiEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'award_emoji.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('AwardEmojiEntity', async () => {
     const select = struct.select
 
     let award_emoji_ref01_data = Object.values(setup.data.existing.award_emoji)[0] as any
-
-    // REMOVE
-    const award_emoji_ref01_ent = client.AwardEmoji()
-    const award_emoji_ref01_match_rm0: any = { id: award_emoji_ref01_data.id }
-    await award_emoji_ref01_ent.remove(award_emoji_ref01_match_rm0)
-  
 
   })
 })

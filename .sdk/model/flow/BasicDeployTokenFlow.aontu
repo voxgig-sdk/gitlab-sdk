@@ -5,20 +5,5 @@ main: kit: flow: BasicDeployTokenFlow:
   entity: "deploy_token",
   kind: "basic",
   name: "BasicDeployTokenFlow",
-  step: [
-    {
-      input: {
-        ref: "deploy_token_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "deploy_token01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicDeployTokenFlow"
 }

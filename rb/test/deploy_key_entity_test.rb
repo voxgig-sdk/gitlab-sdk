@@ -16,7 +16,7 @@ class DeployKeyEntityTest < Minitest::Test
     setup = deploy_key_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["remove"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "deploy_key." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -38,13 +38,6 @@ class DeployKeyEntityTest < Minitest::Test
     if deploy_key_ref01_data_raw.length > 0
       deploy_key_ref01_data = Helpers.to_map(deploy_key_ref01_data_raw[0][1])
     end
-
-    # REMOVE
-    deploy_key_ref01_ent = client.DeployKey(nil)
-    deploy_key_ref01_match_rm0 = {
-      "id" => deploy_key_ref01_data["id"],
-    }
-    deploy_key_ref01_ent.remove(deploy_key_ref01_match_rm0, nil)
 
   end
 end

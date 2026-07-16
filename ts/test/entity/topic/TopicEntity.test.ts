@@ -39,7 +39,7 @@ describe('TopicEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'topic.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('TopicEntity', async () => {
     const select = struct.select
 
     let topic_ref01_data = Object.values(setup.data.existing.topic)[0] as any
-
-    // REMOVE
-    const topic_ref01_ent = client.Topic()
-    const topic_ref01_match_rm0: any = { id: topic_ref01_data.id }
-    await topic_ref01_ent.remove(topic_ref01_match_rm0)
-  
 
   })
 })

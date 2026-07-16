@@ -32,7 +32,7 @@ func TestSnippetEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"load", "remove"} {
+		for _, _op := range []string{"load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "snippet." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -68,15 +68,6 @@ func TestSnippetEntity(t *testing.T) {
 		}
 		if snippetRef01DataDt0Loaded == nil {
 			t.Fatal("expected load result to be non-nil")
-		}
-
-		// REMOVE
-		snippetRef01MatchRm0 := map[string]any{
-			"id": snippetRef01Data["id"],
-		}
-		_, err = snippetRef01Ent.Remove(snippetRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
 		}
 
 	})

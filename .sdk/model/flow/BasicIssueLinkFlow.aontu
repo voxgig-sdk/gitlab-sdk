@@ -5,21 +5,5 @@ main: kit: flow: BasicIssueLinkFlow:
   entity: "issue_link",
   kind: "basic",
   name: "BasicIssueLinkFlow",
-  step: [
-    {
-      input: {
-        ref: "issue_link_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "issue_link01",
-        issue_id: "issue01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicIssueLinkFlow"
 }

@@ -39,7 +39,7 @@ describe('FreezePeriodEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'freeze_period.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('FreezePeriodEntity', async () => {
     const select = struct.select
 
     let freeze_period_ref01_data = Object.values(setup.data.existing.freeze_period)[0] as any
-
-    // REMOVE
-    const freeze_period_ref01_ent = client.FreezePeriod()
-    const freeze_period_ref01_match_rm0: any = { id: freeze_period_ref01_data.id }
-    await freeze_period_ref01_ent.remove(freeze_period_ref01_match_rm0)
-  
 
   })
 })

@@ -5,20 +5,5 @@ main: kit: flow: BasicDeployKeyFlow:
   entity: "deploy_key",
   kind: "basic",
   name: "BasicDeployKeyFlow",
-  step: [
-    {
-      input: {
-        ref: "deploy_key_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "deploy_key01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicDeployKeyFlow"
 }

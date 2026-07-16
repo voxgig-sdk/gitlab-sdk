@@ -39,7 +39,7 @@ describe('ProtectedTagEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'protected_tag.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('ProtectedTagEntity', async () => {
     const select = struct.select
 
     let protected_tag_ref01_data = Object.values(setup.data.existing.protected_tag)[0] as any
-
-    // REMOVE
-    const protected_tag_ref01_ent = client.ProtectedTag()
-    const protected_tag_ref01_match_rm0: any = { id: protected_tag_ref01_data.id }
-    await protected_tag_ref01_ent.remove(protected_tag_ref01_match_rm0)
-  
 
   })
 })

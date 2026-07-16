@@ -23,7 +23,7 @@ class ConanPackageEntityTest extends TestCase
         $setup = conan_package_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["update", "load", "remove"] as $_op) {
+        foreach (["update", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "conan_package." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -64,12 +64,6 @@ class ConanPackageEntityTest extends TestCase
         $conan_package_ref01_match_dt0 = [];
         $conan_package_ref01_data_dt0_loaded = $conan_package_ref01_ent->load($conan_package_ref01_match_dt0, null);
         $this->assertNotNull($conan_package_ref01_data_dt0_loaded);
-
-        // REMOVE
-        $conan_package_ref01_match_rm0 = [
-            "id" => $conan_package_ref01_data["id"],
-        ];
-        $conan_package_ref01_ent->remove($conan_package_ref01_match_rm0, null);
 
     }
 }

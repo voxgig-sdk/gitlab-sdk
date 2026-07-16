@@ -23,7 +23,7 @@ class ApplicationEntityTest extends TestCase
         $setup = application_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "application." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class ApplicationEntityTest extends TestCase
         if (count($application_ref01_data_raw) > 0) {
             $application_ref01_data = Helpers::to_map($application_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $application_ref01_ent = $client->Application(null);
-        $application_ref01_match_rm0 = [
-            "id" => $application_ref01_data["id"],
-        ];
-        $application_ref01_ent->remove($application_ref01_match_rm0, null);
 
     }
 }

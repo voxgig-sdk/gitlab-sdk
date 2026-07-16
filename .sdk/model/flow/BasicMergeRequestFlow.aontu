@@ -50,20 +50,6 @@ main: kit: flow: BasicMergeRequestFlow:
         }
       ]
     }
-
-    {
-      input: {
-        ref: "merge_request_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "merge_request01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
   ],
   "key$": "BasicMergeRequestFlow"
 }

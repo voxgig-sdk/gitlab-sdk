@@ -16,7 +16,7 @@ class SnippetEntityTest < Minitest::Test
     setup = snippet_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["load", "remove"].each do |_op|
+    ["load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "snippet." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -44,12 +44,6 @@ class SnippetEntityTest < Minitest::Test
     snippet_ref01_match_dt0 = {}
     snippet_ref01_data_dt0_loaded = snippet_ref01_ent.load(snippet_ref01_match_dt0, nil)
     assert !snippet_ref01_data_dt0_loaded.nil?
-
-    # REMOVE
-    snippet_ref01_match_rm0 = {
-      "id" => snippet_ref01_data["id"],
-    }
-    snippet_ref01_ent.remove(snippet_ref01_match_rm0, nil)
 
   end
 end

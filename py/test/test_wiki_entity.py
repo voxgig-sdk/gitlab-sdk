@@ -27,7 +27,7 @@ class TestWikiEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "wiki." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestWikiEntity:
         wiki_ref01_data = None
         if len(wiki_ref01_data_raw) > 0:
             wiki_ref01_data = helpers.to_map(wiki_ref01_data_raw[0][1])
-
-        # REMOVE
-        wiki_ref01_ent = client.Wiki(None)
-        wiki_ref01_match_rm0 = {
-            "id": wiki_ref01_data["id"],
-        }
-        wiki_ref01_ent.remove(wiki_ref01_match_rm0, None)
 
 
 

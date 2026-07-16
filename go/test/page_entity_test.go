@@ -32,7 +32,7 @@ func TestPageEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"update", "load", "remove"} {
+		for _, _op := range []string{"update", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "page." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -81,15 +81,6 @@ func TestPageEntity(t *testing.T) {
 		}
 		if pageRef01DataDt0Loaded == nil {
 			t.Fatal("expected load result to be non-nil")
-		}
-
-		// REMOVE
-		pageRef01MatchRm0 := map[string]any{
-			"id": pageRef01Data["id"],
-		}
-		_, err = pageRef01Ent.Remove(pageRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
 		}
 
 	})

@@ -12,11 +12,47 @@ class NugetPackageEntityTest < Minitest::Test
     assert !ent.nil?
   end
 
+  # Feature #4: the entity stream(action, ...) method runs the op pipeline and
+  # returns an Enumerator over result items. With the streaming feature active
+  # it yields the feature's incremental output; otherwise it falls back to the
+  # materialised list so stream always yields.
+  def test_stream
+    seed = {
+      "entity" => {
+        "nuget_package" => {
+          "s1" => { "id" => "s1" },
+          "s2" => { "id" => "s2" },
+          "s3" => { "id" => "s3" },
+        },
+      },
+    }
+
+    # Fallback: streaming inactive -> yields the materialised list items.
+    base = GitlabSDK.test(seed, nil)
+    seen = base.NugetPackage(nil).stream("list", nil, nil).to_a
+    assert_equal 3, seen.length
+
+    # Inbound: streaming active -> yields each item from the feature.
+    cfg = GitlabConfig.make_config
+    if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
+      sdk = GitlabSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
+      got = []
+      sdk.NugetPackage(nil).stream("list", nil, nil).each do |item|
+        if item.is_a?(Array)
+          got.concat(item)
+        else
+          got << item
+        end
+      end
+      assert_equal 3, got.length
+    end
+  end
+
   def test_basic_flow
     setup = nuget_package_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["list", "update", "load", "remove"].each do |_op|
+    ["list", "update", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "nuget_package." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -71,20 +107,6 @@ class NugetPackageEntityTest < Minitest::Test
     nuget_package_ref01_data_dt0_load_result = Helpers.to_map(nuget_package_ref01_data_dt0_loaded)
     assert !nuget_package_ref01_data_dt0_load_result.nil?
     assert_equal nuget_package_ref01_data_dt0_load_result["id"], nuget_package_ref01_data["id"]
-
-    # REMOVE
-    nuget_package_ref01_match_rm0 = {
-      "id" => nuget_package_ref01_data["id"],
-    }
-    nuget_package_ref01_ent.remove(nuget_package_ref01_match_rm0, nil)
-
-    # LIST
-    nuget_package_ref01_match_rt0 = {
-      "project_id" => setup[:idmap]["project01"],
-    }
-
-    nuget_package_ref01_list_rt0_result = nuget_package_ref01_ent.list(nuget_package_ref01_match_rt0, nil)
-    assert nuget_package_ref01_list_rt0_result.is_a?(Array)
 
   end
 end

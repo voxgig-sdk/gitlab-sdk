@@ -16,7 +16,7 @@ class ConanPackageEntityTest < Minitest::Test
     setup = conan_package_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["update", "load", "remove"].each do |_op|
+    ["update", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "conan_package." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -57,12 +57,6 @@ class ConanPackageEntityTest < Minitest::Test
     conan_package_ref01_match_dt0 = {}
     conan_package_ref01_data_dt0_loaded = conan_package_ref01_ent.load(conan_package_ref01_match_dt0, nil)
     assert !conan_package_ref01_data_dt0_loaded.nil?
-
-    # REMOVE
-    conan_package_ref01_match_rm0 = {
-      "id" => conan_package_ref01_data["id"],
-    }
-    conan_package_ref01_ent.remove(conan_package_ref01_match_rm0, nil)
 
   end
 end

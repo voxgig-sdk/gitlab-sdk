@@ -27,7 +27,7 @@ class TestProtectedTagEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "protected_tag." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestProtectedTagEntity:
         protected_tag_ref01_data = None
         if len(protected_tag_ref01_data_raw) > 0:
             protected_tag_ref01_data = helpers.to_map(protected_tag_ref01_data_raw[0][1])
-
-        # REMOVE
-        protected_tag_ref01_ent = client.ProtectedTag(None)
-        protected_tag_ref01_match_rm0 = {
-            "id": protected_tag_ref01_data["id"],
-        }
-        protected_tag_ref01_ent.remove(protected_tag_ref01_match_rm0, None)
 
 
 

@@ -19,7 +19,7 @@ describe("PackageFileEntity", function()
     local setup = package_file_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"load", "remove"}) do
+    for _, _op in ipairs({"load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "package_file." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -48,13 +48,6 @@ describe("PackageFileEntity", function()
     local package_file_ref01_data_dt0_loaded, err = package_file_ref01_ent:load(package_file_ref01_match_dt0, nil)
     assert.is_nil(err)
     assert.is_not_nil(package_file_ref01_data_dt0_loaded)
-
-    -- REMOVE
-    local package_file_ref01_match_rm0 = {
-      id = package_file_ref01_data["id"],
-    }
-    local _, err = package_file_ref01_ent:remove(package_file_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

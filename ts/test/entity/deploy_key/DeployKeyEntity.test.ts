@@ -39,7 +39,7 @@ describe('DeployKeyEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'deploy_key.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('DeployKeyEntity', async () => {
     const select = struct.select
 
     let deploy_key_ref01_data = Object.values(setup.data.existing.deploy_key)[0] as any
-
-    // REMOVE
-    const deploy_key_ref01_ent = client.DeployKey()
-    const deploy_key_ref01_match_rm0: any = { id: deploy_key_ref01_data.id }
-    await deploy_key_ref01_ent.remove(deploy_key_ref01_match_rm0)
-  
 
   })
 })

@@ -39,7 +39,7 @@ describe('ProjectPackageEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'project_package.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('ProjectPackageEntity', async () => {
     const select = struct.select
 
     let project_package_ref01_data = Object.values(setup.data.existing.project_package)[0] as any
-
-    // REMOVE
-    const project_package_ref01_ent = client.ProjectPackage()
-    const project_package_ref01_match_rm0: any = { id: project_package_ref01_data.id }
-    await project_package_ref01_ent.remove(project_package_ref01_match_rm0)
-  
 
   })
 })

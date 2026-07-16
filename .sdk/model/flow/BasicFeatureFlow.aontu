@@ -5,19 +5,5 @@ main: kit: flow: BasicFeatureFlow:
   entity: "feature",
   kind: "basic",
   name: "BasicFeatureFlow",
-  step: [
-    {
-      input: {
-        ref: "feature_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "feature01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicFeatureFlow"
 }

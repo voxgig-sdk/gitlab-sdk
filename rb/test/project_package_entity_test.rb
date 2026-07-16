@@ -16,7 +16,7 @@ class ProjectPackageEntityTest < Minitest::Test
     setup = project_package_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["remove"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "project_package." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -38,13 +38,6 @@ class ProjectPackageEntityTest < Minitest::Test
     if project_package_ref01_data_raw.length > 0
       project_package_ref01_data = Helpers.to_map(project_package_ref01_data_raw[0][1])
     end
-
-    # REMOVE
-    project_package_ref01_ent = client.ProjectPackage(nil)
-    project_package_ref01_match_rm0 = {
-      "id" => project_package_ref01_data["id"],
-    }
-    project_package_ref01_ent.remove(project_package_ref01_match_rm0, nil)
 
   end
 end

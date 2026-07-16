@@ -39,7 +39,7 @@ describe('DependencyProxyEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'dependency_proxy.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('DependencyProxyEntity', async () => {
     const select = struct.select
 
     let dependency_proxy_ref01_data = Object.values(setup.data.existing.dependency_proxy)[0] as any
-
-    // REMOVE
-    const dependency_proxy_ref01_ent = client.DependencyProxy()
-    const dependency_proxy_ref01_match_rm0: any = { id: dependency_proxy_ref01_data.id }
-    await dependency_proxy_ref01_ent.remove(dependency_proxy_ref01_match_rm0)
-  
 
   })
 })

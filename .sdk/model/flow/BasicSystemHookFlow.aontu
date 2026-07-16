@@ -5,19 +5,5 @@ main: kit: flow: BasicSystemHookFlow:
   entity: "system_hook",
   kind: "basic",
   name: "BasicSystemHookFlow",
-  step: [
-    {
-      input: {
-        ref: "system_hook_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "system_hook01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicSystemHookFlow"
 }

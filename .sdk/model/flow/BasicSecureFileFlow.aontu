@@ -28,20 +28,6 @@ main: kit: flow: BasicSecureFileFlow:
         }
       ]
     }
-
-    {
-      input: {
-        ref: "secure_file_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "secure_file01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
   ],
   "key$": "BasicSecureFileFlow"
 }

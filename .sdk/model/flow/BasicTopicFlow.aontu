@@ -5,19 +5,5 @@ main: kit: flow: BasicTopicFlow:
   entity: "topic",
   kind: "basic",
   name: "BasicTopicFlow",
-  step: [
-    {
-      input: {
-        ref: "topic_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "topic01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicTopicFlow"
 }

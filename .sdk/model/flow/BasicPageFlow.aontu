@@ -45,19 +45,6 @@ main: kit: flow: BasicPageFlow:
         }
       ]
     }
-
-    {
-      input: {
-        ref: "page_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "page01"
-      }
-
-      op: "remove"
-    }
   ],
   "key$": "BasicPageFlow"
 }

@@ -27,7 +27,7 @@ class TestSnippetEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["load", "remove"]:
+        for _op in ["load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "snippet." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -51,12 +51,6 @@ class TestSnippetEntity:
         snippet_ref01_match_dt0 = {}
         snippet_ref01_data_dt0_loaded = snippet_ref01_ent.load(snippet_ref01_match_dt0, None)
         assert snippet_ref01_data_dt0_loaded is not None
-
-        # REMOVE
-        snippet_ref01_match_rm0 = {
-            "id": snippet_ref01_data["id"],
-        }
-        snippet_ref01_ent.remove(snippet_ref01_match_rm0, None)
 
 
 

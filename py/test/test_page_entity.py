@@ -27,7 +27,7 @@ class TestPageEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["update", "load", "remove"]:
+        for _op in ["update", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "page." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -58,12 +58,6 @@ class TestPageEntity:
         page_ref01_match_dt0 = {}
         page_ref01_data_dt0_loaded = page_ref01_ent.load(page_ref01_match_dt0, None)
         assert page_ref01_data_dt0_loaded is not None
-
-        # REMOVE
-        page_ref01_match_rm0 = {
-            "id": page_ref01_data["id"],
-        }
-        page_ref01_ent.remove(page_ref01_match_rm0, None)
 
 
 

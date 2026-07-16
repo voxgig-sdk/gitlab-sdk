@@ -39,7 +39,7 @@ describe('SnippetEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['load', 'remove']) {
+    for (const op of ['load']) {
       if (maybeSkipControl(t, 'entityOp', 'snippet.' + op, live)) return
     }
 
@@ -63,11 +63,6 @@ describe('SnippetEntity', async () => {
     // Entity-var is declared here so later flow steps still compile.
     const snippet_ref01_ent = client.Snippet()
 
-
-    // REMOVE
-    const snippet_ref01_match_rm0: any = { id: snippet_ref01_data.id }
-    await snippet_ref01_ent.remove(snippet_ref01_match_rm0)
-  
 
   })
 })

@@ -5,22 +5,5 @@ main: kit: flow: BasicConanFlow:
   entity: "conan",
   kind: "basic",
   name: "BasicConanFlow",
-  step: [
-    {
-      input: {
-        ref: "conan_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "conan01",
-        package_name: "package_name01",
-        package_username: "package_username01",
-        package_version: "package_version01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicConanFlow"
 }

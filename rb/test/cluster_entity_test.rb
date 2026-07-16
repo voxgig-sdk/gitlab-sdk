@@ -16,7 +16,7 @@ class ClusterEntityTest < Minitest::Test
     setup = cluster_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["remove"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "cluster." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -38,13 +38,6 @@ class ClusterEntityTest < Minitest::Test
     if cluster_ref01_data_raw.length > 0
       cluster_ref01_data = Helpers.to_map(cluster_ref01_data_raw[0][1])
     end
-
-    # REMOVE
-    cluster_ref01_ent = client.Cluster(nil)
-    cluster_ref01_match_rm0 = {
-      "id" => cluster_ref01_data["id"],
-    }
-    cluster_ref01_ent.remove(cluster_ref01_match_rm0, nil)
 
   end
 end

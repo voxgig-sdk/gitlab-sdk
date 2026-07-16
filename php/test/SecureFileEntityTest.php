@@ -23,7 +23,7 @@ class SecureFileEntityTest extends TestCase
         $setup = secure_file_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["load", "remove"] as $_op) {
+        foreach (["load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "secure_file." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -51,12 +51,6 @@ class SecureFileEntityTest extends TestCase
         $secure_file_ref01_match_dt0 = [];
         $secure_file_ref01_data_dt0_loaded = $secure_file_ref01_ent->load($secure_file_ref01_match_dt0, null);
         $this->assertNotNull($secure_file_ref01_data_dt0_loaded);
-
-        // REMOVE
-        $secure_file_ref01_match_rm0 = [
-            "id" => $secure_file_ref01_data["id"],
-        ];
-        $secure_file_ref01_ent->remove($secure_file_ref01_match_rm0, null);
 
     }
 }

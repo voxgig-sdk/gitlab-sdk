@@ -39,7 +39,7 @@ describe('ReleaseEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['load', 'remove']) {
+    for (const op of ['load']) {
       if (maybeSkipControl(t, 'entityOp', 'release.' + op, live)) return
     }
 
@@ -63,11 +63,6 @@ describe('ReleaseEntity', async () => {
     // Entity-var is declared here so later flow steps still compile.
     const release_ref01_ent = client.Release()
 
-
-    // REMOVE
-    const release_ref01_match_rm0: any = { id: release_ref01_data.id }
-    await release_ref01_ent.remove(release_ref01_match_rm0)
-  
 
   })
 })

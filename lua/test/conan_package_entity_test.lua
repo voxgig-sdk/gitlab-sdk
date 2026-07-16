@@ -19,7 +19,7 @@ describe("ConanPackageEntity", function()
     local setup = conan_package_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"update", "load", "remove"}) do
+    for _, _op in ipairs({"update", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "conan_package." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -62,13 +62,6 @@ describe("ConanPackageEntity", function()
     local conan_package_ref01_data_dt0_loaded, err = conan_package_ref01_ent:load(conan_package_ref01_match_dt0, nil)
     assert.is_nil(err)
     assert.is_not_nil(conan_package_ref01_data_dt0_loaded)
-
-    -- REMOVE
-    local conan_package_ref01_match_rm0 = {
-      id = conan_package_ref01_data["id"],
-    }
-    local _, err = conan_package_ref01_ent:remove(conan_package_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

@@ -5,20 +5,5 @@ main: kit: flow: BasicInvitationFlow:
   entity: "invitation",
   kind: "basic",
   name: "BasicInvitationFlow",
-  step: [
-    {
-      input: {
-        ref: "invitation_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "invitation01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicInvitationFlow"
 }

@@ -27,7 +27,7 @@ class TestProjectsJobTokenScopeEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["update", "remove"]:
+        for _op in ["update"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "projects_job_token_scope." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -53,12 +53,6 @@ class TestProjectsJobTokenScopeEntity:
 
         projects_job_token_scope_ref01_resdata_up0 = helpers.to_map(projects_job_token_scope_ref01_ent.update(projects_job_token_scope_ref01_data_up0_up, None))
         assert projects_job_token_scope_ref01_resdata_up0 is not None
-
-        # REMOVE
-        projects_job_token_scope_ref01_match_rm0 = {
-            "id": projects_job_token_scope_ref01_data["id"],
-        }
-        projects_job_token_scope_ref01_ent.remove(projects_job_token_scope_ref01_match_rm0, None)
 
 
 

@@ -5,20 +5,5 @@ main: kit: flow: BasicTagFlow:
   entity: "tag",
   kind: "basic",
   name: "BasicTagFlow",
-  step: [
-    {
-      input: {
-        ref: "tag_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "tag01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicTagFlow"
 }

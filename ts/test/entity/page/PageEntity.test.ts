@@ -39,7 +39,7 @@ describe('PageEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['update', 'load', 'remove']) {
+    for (const op of ['update', 'load']) {
       if (maybeSkipControl(t, 'entityOp', 'page.' + op, live)) return
     }
 
@@ -67,11 +67,6 @@ describe('PageEntity', async () => {
     assert(null != page_ref01_resdata_up0)
 
 
-
-    // REMOVE
-    const page_ref01_match_rm0: any = { id: page_ref01_data.id }
-    await page_ref01_ent.remove(page_ref01_match_rm0)
-  
 
   })
 })

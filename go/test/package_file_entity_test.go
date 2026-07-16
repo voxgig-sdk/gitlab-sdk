@@ -32,7 +32,7 @@ func TestPackageFileEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"load", "remove"} {
+		for _, _op := range []string{"load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "package_file." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -68,15 +68,6 @@ func TestPackageFileEntity(t *testing.T) {
 		}
 		if packageFileRef01DataDt0Loaded == nil {
 			t.Fatal("expected load result to be non-nil")
-		}
-
-		// REMOVE
-		packageFileRef01MatchRm0 := map[string]any{
-			"id": packageFileRef01Data["id"],
-		}
-		_, err = packageFileRef01Ent.Remove(packageFileRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
 		}
 
 	})

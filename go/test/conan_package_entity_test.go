@@ -32,7 +32,7 @@ func TestConanPackageEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"update", "load", "remove"} {
+		for _, _op := range []string{"update", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "conan_package." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -86,15 +86,6 @@ func TestConanPackageEntity(t *testing.T) {
 		}
 		if conanPackageRef01DataDt0Loaded == nil {
 			t.Fatal("expected load result to be non-nil")
-		}
-
-		// REMOVE
-		conanPackageRef01MatchRm0 := map[string]any{
-			"id": conanPackageRef01Data["id"],
-		}
-		_, err = conanPackageRef01Ent.Remove(conanPackageRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
 		}
 
 	})

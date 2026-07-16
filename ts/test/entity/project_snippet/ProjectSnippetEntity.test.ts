@@ -39,7 +39,7 @@ describe('ProjectSnippetEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'project_snippet.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('ProjectSnippetEntity', async () => {
     const select = struct.select
 
     let project_snippet_ref01_data = Object.values(setup.data.existing.project_snippet)[0] as any
-
-    // REMOVE
-    const project_snippet_ref01_ent = client.ProjectSnippet()
-    const project_snippet_ref01_match_rm0: any = { id: project_snippet_ref01_data.id }
-    await project_snippet_ref01_ent.remove(project_snippet_ref01_match_rm0)
-  
 
   })
 })

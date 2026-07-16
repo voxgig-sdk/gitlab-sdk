@@ -19,7 +19,7 @@ describe("ProtectedTagEntity", function()
     local setup = protected_tag_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"remove"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "protected_tag." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -41,14 +41,6 @@ describe("ProtectedTagEntity", function()
     if #protected_tag_ref01_data_raw > 0 then
       protected_tag_ref01_data = helpers.to_map(protected_tag_ref01_data_raw[1][2])
     end
-
-    -- REMOVE
-    local protected_tag_ref01_ent = client:ProtectedTag(nil)
-    local protected_tag_ref01_match_rm0 = {
-      id = protected_tag_ref01_data["id"],
-    }
-    local _, err = protected_tag_ref01_ent:remove(protected_tag_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

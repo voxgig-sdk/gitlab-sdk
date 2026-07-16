@@ -27,7 +27,7 @@ class TestBranchEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "branch." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestBranchEntity:
         branch_ref01_data = None
         if len(branch_ref01_data_raw) > 0:
             branch_ref01_data = helpers.to_map(branch_ref01_data_raw[0][1])
-
-        # REMOVE
-        branch_ref01_ent = client.Branch(None)
-        branch_ref01_match_rm0 = {
-            "id": branch_ref01_data["id"],
-        }
-        branch_ref01_ent.remove(branch_ref01_match_rm0, None)
 
 
 

@@ -32,7 +32,7 @@ func TestProjectsJobTokenScopeEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"update", "remove"} {
+		for _, _op := range []string{"update"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "projects_job_token_scope." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -71,15 +71,6 @@ func TestProjectsJobTokenScopeEntity(t *testing.T) {
 		projectsJobTokenScopeRef01ResdataUp0 := core.ToMapAny(projectsJobTokenScopeRef01ResdataUp0Result)
 		if projectsJobTokenScopeRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
-		}
-
-		// REMOVE
-		projectsJobTokenScopeRef01MatchRm0 := map[string]any{
-			"id": projectsJobTokenScopeRef01Data["id"],
-		}
-		_, err = projectsJobTokenScopeRef01Ent.Remove(projectsJobTokenScopeRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
 		}
 
 	})

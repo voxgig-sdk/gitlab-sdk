@@ -5,21 +5,5 @@ main: kit: flow: BasicAwardEmojiFlow:
   entity: "award_emoji",
   kind: "basic",
   name: "BasicAwardEmojiFlow",
-  step: [
-    {
-      input: {
-        ref: "award_emoji_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "award_emoji01",
-        project_id: "project01",
-        snippet_id: "snippet01"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicAwardEmojiFlow"
 }

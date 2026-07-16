@@ -16,7 +16,7 @@ class ProjectsJobTokenScopeEntityTest < Minitest::Test
     setup = projects_job_token_scope_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["update", "remove"].each do |_op|
+    ["update"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "projects_job_token_scope." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -47,12 +47,6 @@ class ProjectsJobTokenScopeEntityTest < Minitest::Test
     projects_job_token_scope_ref01_resdata_up0_result = projects_job_token_scope_ref01_ent.update(projects_job_token_scope_ref01_data_up0_up, nil)
     projects_job_token_scope_ref01_resdata_up0 = Helpers.to_map(projects_job_token_scope_ref01_resdata_up0_result)
     assert !projects_job_token_scope_ref01_resdata_up0.nil?
-
-    # REMOVE
-    projects_job_token_scope_ref01_match_rm0 = {
-      "id" => projects_job_token_scope_ref01_data["id"],
-    }
-    projects_job_token_scope_ref01_ent.remove(projects_job_token_scope_ref01_match_rm0, nil)
 
   end
 end

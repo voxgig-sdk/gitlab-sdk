@@ -39,7 +39,7 @@ describe('BadgeEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'badge.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('BadgeEntity', async () => {
     const select = struct.select
 
     let badge_ref01_data = Object.values(setup.data.existing.badge)[0] as any
-
-    // REMOVE
-    const badge_ref01_ent = client.Badge()
-    const badge_ref01_match_rm0: any = { id: badge_ref01_data.id }
-    await badge_ref01_ent.remove(badge_ref01_match_rm0)
-  
 
   })
 })

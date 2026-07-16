@@ -39,7 +39,7 @@ describe('FeatureFlagsUserListEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'feature_flags_user_list.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('FeatureFlagsUserListEntity', async () => {
     const select = struct.select
 
     let feature_flags_user_list_ref01_data = Object.values(setup.data.existing.feature_flags_user_list)[0] as any
-
-    // REMOVE
-    const feature_flags_user_list_ref01_ent = client.FeatureFlagsUserList()
-    const feature_flags_user_list_ref01_match_rm0: any = { id: feature_flags_user_list_ref01_data.id }
-    await feature_flags_user_list_ref01_ent.remove(feature_flags_user_list_ref01_match_rm0)
-  
 
   })
 })

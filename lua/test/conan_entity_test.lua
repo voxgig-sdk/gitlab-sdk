@@ -19,7 +19,7 @@ describe("ConanEntity", function()
     local setup = conan_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"remove"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "conan." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -41,14 +41,6 @@ describe("ConanEntity", function()
     if #conan_ref01_data_raw > 0 then
       conan_ref01_data = helpers.to_map(conan_ref01_data_raw[1][2])
     end
-
-    -- REMOVE
-    local conan_ref01_ent = client:Conan(nil)
-    local conan_ref01_match_rm0 = {
-      id = conan_ref01_data["id"],
-    }
-    local _, err = conan_ref01_ent:remove(conan_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)
@@ -73,7 +65,7 @@ function conan_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "conan01", "conan02", "conan03", "package_name01", "package_username01", "package_version01" },
+    { "conan01", "conan02", "conan03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

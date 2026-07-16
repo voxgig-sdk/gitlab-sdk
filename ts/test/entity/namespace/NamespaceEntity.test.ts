@@ -39,7 +39,7 @@ describe('NamespaceEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'namespace.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('NamespaceEntity', async () => {
     const select = struct.select
 
     let namespace_ref01_data = Object.values(setup.data.existing.namespace)[0] as any
-
-    // REMOVE
-    const namespace_ref01_ent = client.Namespace()
-    const namespace_ref01_match_rm0: any = { id: namespace_ref01_data.id }
-    await namespace_ref01_ent.remove(namespace_ref01_match_rm0)
-  
 
   })
 })

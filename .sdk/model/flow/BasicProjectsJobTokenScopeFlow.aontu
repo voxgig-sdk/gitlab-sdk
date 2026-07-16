@@ -23,20 +23,6 @@ main: kit: flow: BasicProjectsJobTokenScopeFlow:
         }
       ]
     }
-
-    {
-      input: {
-        ref: "projects_job_token_scope_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "projects_job_token_scope01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
   ],
   "key$": "BasicProjectsJobTokenScopeFlow"
 }

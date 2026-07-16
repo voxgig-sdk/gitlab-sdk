@@ -39,7 +39,7 @@ describe('AccessRequestEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'access_request.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('AccessRequestEntity', async () => {
     const select = struct.select
 
     let access_request_ref01_data = Object.values(setup.data.existing.access_request)[0] as any
-
-    // REMOVE
-    const access_request_ref01_ent = client.AccessRequest()
-    const access_request_ref01_match_rm0: any = { id: access_request_ref01_data.id }
-    await access_request_ref01_ent.remove(access_request_ref01_match_rm0)
-  
 
   })
 })

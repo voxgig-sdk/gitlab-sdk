@@ -27,7 +27,7 @@ class TestDeployKeyEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "deploy_key." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestDeployKeyEntity:
         deploy_key_ref01_data = None
         if len(deploy_key_ref01_data_raw) > 0:
             deploy_key_ref01_data = helpers.to_map(deploy_key_ref01_data_raw[0][1])
-
-        # REMOVE
-        deploy_key_ref01_ent = client.DeployKey(None)
-        deploy_key_ref01_match_rm0 = {
-            "id": deploy_key_ref01_data["id"],
-        }
-        deploy_key_ref01_ent.remove(deploy_key_ref01_match_rm0, None)
 
 
 

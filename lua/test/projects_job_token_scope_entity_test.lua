@@ -19,7 +19,7 @@ describe("ProjectsJobTokenScopeEntity", function()
     local setup = projects_job_token_scope_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"update", "remove"}) do
+    for _, _op in ipairs({"update"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "projects_job_token_scope." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -51,13 +51,6 @@ describe("ProjectsJobTokenScopeEntity", function()
     assert.is_nil(err)
     local projects_job_token_scope_ref01_resdata_up0 = helpers.to_map(projects_job_token_scope_ref01_resdata_up0_result)
     assert.is_not_nil(projects_job_token_scope_ref01_resdata_up0)
-
-    -- REMOVE
-    local projects_job_token_scope_ref01_match_rm0 = {
-      id = projects_job_token_scope_ref01_data["id"],
-    }
-    local _, err = projects_job_token_scope_ref01_ent:remove(projects_job_token_scope_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

@@ -49,24 +49,6 @@ main: kit: flow: BasicConanPackageFlow:
         }
       ]
     }
-
-    {
-      input: {
-        ref: "conan_package_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        conan_id: "conan01",
-        id: "conan_package01",
-        package_channel: "package_channel01",
-        package_username: "package_username01",
-        package_version: "package_version01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
   ],
   "key$": "BasicConanPackageFlow"
 }

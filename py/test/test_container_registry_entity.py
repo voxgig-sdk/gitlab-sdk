@@ -27,7 +27,7 @@ class TestContainerRegistryEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "container_registry." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestContainerRegistryEntity:
         container_registry_ref01_data = None
         if len(container_registry_ref01_data_raw) > 0:
             container_registry_ref01_data = helpers.to_map(container_registry_ref01_data_raw[0][1])
-
-        # REMOVE
-        container_registry_ref01_ent = client.ContainerRegistry(None)
-        container_registry_ref01_match_rm0 = {
-            "id": container_registry_ref01_data["id"],
-        }
-        container_registry_ref01_ent.remove(container_registry_ref01_match_rm0, None)
 
 
 

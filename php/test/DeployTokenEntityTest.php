@@ -23,7 +23,7 @@ class DeployTokenEntityTest extends TestCase
         $setup = deploy_token_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "deploy_token." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class DeployTokenEntityTest extends TestCase
         if (count($deploy_token_ref01_data_raw) > 0) {
             $deploy_token_ref01_data = Helpers::to_map($deploy_token_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $deploy_token_ref01_ent = $client->DeployToken(null);
-        $deploy_token_ref01_match_rm0 = [
-            "id" => $deploy_token_ref01_data["id"],
-        ];
-        $deploy_token_ref01_ent->remove($deploy_token_ref01_match_rm0, null);
 
     }
 }

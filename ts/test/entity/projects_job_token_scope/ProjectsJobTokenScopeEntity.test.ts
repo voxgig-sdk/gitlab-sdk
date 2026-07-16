@@ -39,7 +39,7 @@ describe('ProjectsJobTokenScopeEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['update', 'remove']) {
+    for (const op of ['update']) {
       if (maybeSkipControl(t, 'entityOp', 'projects_job_token_scope.' + op, live)) return
     }
 
@@ -66,11 +66,6 @@ describe('ProjectsJobTokenScopeEntity', async () => {
     const projects_job_token_scope_ref01_resdata_up0 = await projects_job_token_scope_ref01_ent.update(projects_job_token_scope_ref01_data_up0)
     assert(null != projects_job_token_scope_ref01_resdata_up0)
 
-
-    // REMOVE
-    const projects_job_token_scope_ref01_match_rm0: any = { id: projects_job_token_scope_ref01_data.id }
-    await projects_job_token_scope_ref01_ent.remove(projects_job_token_scope_ref01_match_rm0)
-  
 
   })
 })

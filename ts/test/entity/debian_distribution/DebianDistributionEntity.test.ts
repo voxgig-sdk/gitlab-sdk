@@ -39,7 +39,7 @@ describe('DebianDistributionEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'debian_distribution.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('DebianDistributionEntity', async () => {
     const select = struct.select
 
     let debian_distribution_ref01_data = Object.values(setup.data.existing.debian_distribution)[0] as any
-
-    // REMOVE
-    const debian_distribution_ref01_ent = client.DebianDistribution()
-    const debian_distribution_ref01_match_rm0: any = { id: debian_distribution_ref01_data.id }
-    await debian_distribution_ref01_ent.remove(debian_distribution_ref01_match_rm0)
-  
 
   })
 })

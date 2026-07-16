@@ -32,7 +32,7 @@ func TestDependencyProxyEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"remove"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "dependency_proxy." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -47,8 +47,6 @@ func TestDependencyProxyEntity(t *testing.T) {
 			t.Skip("live entity test uses synthetic IDs from fixture — set GITLAB_TEST_DEPENDENCY_PROXY_ENTID JSON to run live")
 			return
 		}
-		client := setup.client
-
 		// Bootstrap entity data from existing test data (no create step in flow).
 		dependencyProxyRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.dependency_proxy", setup.data)))
 		var dependencyProxyRef01Data map[string]any
@@ -58,16 +56,6 @@ func TestDependencyProxyEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = dependencyProxyRef01Data
-
-		// REMOVE
-		dependencyProxyRef01Ent := client.DependencyProxy(nil)
-		dependencyProxyRef01MatchRm0 := map[string]any{
-			"id": dependencyProxyRef01Data["id"],
-		}
-		_, err := dependencyProxyRef01Ent.Remove(dependencyProxyRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

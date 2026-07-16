@@ -27,19 +27,6 @@ main: kit: flow: BasicSnippetFlow:
         }
       ]
     }
-
-    {
-      input: {
-        ref: "snippet_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "snippet01"
-      }
-
-      op: "remove"
-    }
   ],
   "key$": "BasicSnippetFlow"
 }

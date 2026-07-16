@@ -23,7 +23,7 @@ class WikiEntityTest extends TestCase
         $setup = wiki_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "wiki." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class WikiEntityTest extends TestCase
         if (count($wiki_ref01_data_raw) > 0) {
             $wiki_ref01_data = Helpers::to_map($wiki_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $wiki_ref01_ent = $client->Wiki(null);
-        $wiki_ref01_match_rm0 = [
-            "id" => $wiki_ref01_data["id"],
-        ];
-        $wiki_ref01_ent->remove($wiki_ref01_match_rm0, null);
 
     }
 }

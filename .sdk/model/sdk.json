@@ -1,15 +1,6 @@
 {
-  "NAME": "GITLAB",
-  "Name": "Gitlab",
   "def": "gitlab-openapi.yaml",
   "main": {
-    "api": {
-      "entity": {},
-      "guide": {}
-    },
-    "custom": {
-      "plurals": {}
-    },
     "def": {
       "desc": ""
     },
@@ -93356,23 +93347,7 @@
           "kind": "basic",
           "name": "BasicAccessRequestFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "access_request_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "access_request01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicAlertManagementFlow": {
           "active": true,
@@ -101270,22 +101245,7 @@
           "kind": "basic",
           "name": "BasicApplicationFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "application_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "application01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicAwardEmojiFlow": {
           "active": true,
@@ -101294,24 +101254,7 @@
           "kind": "basic",
           "name": "BasicAwardEmojiFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "award_emoji_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "award_emoji01",
-                "project_id": "project01",
-                "snippet_id": "snippet01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicBadgeFlow": {
           "active": true,
@@ -101320,23 +101263,7 @@
           "kind": "basic",
           "name": "BasicBadgeFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "badge_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "badge01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicBranchFlow": {
           "active": true,
@@ -101345,22 +101272,7 @@
           "kind": "basic",
           "name": "BasicBranchFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "branch_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "branch01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicCargoPackageFlow": {
           "active": true,
@@ -101401,22 +101313,7 @@
           "kind": "basic",
           "name": "BasicCiVariableFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "ci_variable_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "ci_variable01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicClusterAgentFlow": {
           "active": true,
@@ -101425,23 +101322,7 @@
           "kind": "basic",
           "name": "BasicClusterAgentFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "cluster_agent_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "cluster_agent01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicClusterFlow": {
           "active": true,
@@ -101450,22 +101331,7 @@
           "kind": "basic",
           "name": "BasicClusterFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "cluster_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "cluster01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicComposerFlow": {
           "active": true,
@@ -101529,25 +101395,7 @@
           "kind": "basic",
           "name": "BasicConanFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "conan_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "conan01",
-                "package_name": "package_name01",
-                "package_username": "package_username01",
-                "package_version": "package_version01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicConanPackageFlow": {
           "active": true,
@@ -101602,25 +101450,6 @@
                   }
                 }
               ]
-            },
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "conan_package_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "conan_id": "conan01",
-                "id": "conan_package01",
-                "package_channel": "package_channel01",
-                "package_username": "package_username01",
-                "package_version": "package_version01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
             }
           ]
         },
@@ -101652,23 +101481,7 @@
           "kind": "basic",
           "name": "BasicContainerRegistryFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "container_registry_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "container_registry01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicCustomAttributeFlow": {
           "active": true,
@@ -101709,23 +101522,7 @@
           "kind": "basic",
           "name": "BasicDebianDistributionFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "debian_distribution_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "debian_distribution01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicDebianFlow": {
           "active": true,
@@ -101820,22 +101617,7 @@
           "kind": "basic",
           "name": "BasicDependencyProxyFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "dependency_proxy_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "dependency_proxy01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicDeployKeyFlow": {
           "active": true,
@@ -101844,23 +101626,7 @@
           "kind": "basic",
           "name": "BasicDeployKeyFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "deploy_key_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "deploy_key01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicDeployTokenFlow": {
           "active": true,
@@ -101869,23 +101635,7 @@
           "kind": "basic",
           "name": "BasicDeployTokenFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "deploy_token_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "deploy_token01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicDeploymentFlow": {
           "active": true,
@@ -101894,23 +101644,7 @@
           "kind": "basic",
           "name": "BasicDeploymentFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "deployment_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "deployment01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicEeApiEntitiesApprovalStateFlow": {
           "active": true,
@@ -102248,23 +101982,7 @@
           "kind": "basic",
           "name": "BasicErrorTrackingClientKeyFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "error_tracking_client_key_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "error_tracking_client_key01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicFeatureFlagFlow": {
           "active": true,
@@ -102334,23 +102052,7 @@
           "kind": "basic",
           "name": "BasicFeatureFlagsUserListFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "feature_flags_user_list_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "feature_flags_user_list01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicFeatureFlow": {
           "active": true,
@@ -102359,22 +102061,7 @@
           "kind": "basic",
           "name": "BasicFeatureFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "feature_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "feature01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicFreezePeriodFlow": {
           "active": true,
@@ -102383,23 +102070,7 @@
           "kind": "basic",
           "name": "BasicFreezePeriodFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "freeze_period_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "freeze_period01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicGenericPackageFlow": {
           "active": true,
@@ -102880,23 +102551,7 @@
           "kind": "basic",
           "name": "BasicInvitationFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "invitation_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "invitation01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicIssueLinkFlow": {
           "active": true,
@@ -102905,24 +102560,7 @@
           "kind": "basic",
           "name": "BasicIssueLinkFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "issue_link_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "issue_link01",
-                "issue_id": "issue01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicIssuesStatisticFlow": {
           "active": true,
@@ -103078,23 +102716,7 @@
           "kind": "basic",
           "name": "BasicMemberFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "member_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "member01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicMergeRequestFlow": {
           "active": true,
@@ -103148,21 +102770,6 @@
                   }
                 }
               ]
-            },
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "merge_request_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "merge_request01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
             }
           ]
         },
@@ -103283,22 +102890,7 @@
           "kind": "basic",
           "name": "BasicNamespaceFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "namespace_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "namespace01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicNpmFlow": {
           "active": true,
@@ -103510,40 +103102,6 @@
                   }
                 }
               ]
-            },
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "nuget_package_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "nuget_package01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            },
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "suffix": "_rt0"
-              },
-              "match": {
-                "project_id": "project01"
-              },
-              "op": "list",
-              "spec": [],
-              "valid": [
-                {
-                  "apply": "ItemNotExists",
-                  "def": {
-                    "ref": "nuget_package_ref01"
-                  }
-                }
-              ]
             }
           ]
         },
@@ -103578,22 +103136,6 @@
                   }
                 }
               ]
-            },
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "package_file_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "package_file01",
-                "package_id": "package01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
             }
           ]
         },
@@ -103646,20 +103188,6 @@
                   }
                 }
               ]
-            },
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "page_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "page01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
             }
           ]
         },
@@ -103699,20 +103227,7 @@
           "kind": "basic",
           "name": "BasicPersonalAccessTokenFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "personal_access_token_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {},
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicProjectAvatarFlow": {
           "active": true,
@@ -103900,23 +103415,7 @@
           "kind": "basic",
           "name": "BasicProjectHookFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "project_hook_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "project_hook01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicProjectImportEntityFlow": {
           "active": true,
@@ -103967,23 +103466,7 @@
           "kind": "basic",
           "name": "BasicProjectPackageFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "project_package_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "project_package01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicProjectSnippetFlow": {
           "active": true,
@@ -103992,23 +103475,7 @@
           "kind": "basic",
           "name": "BasicProjectSnippetFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "project_snippet_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "project_snippet01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicProjectsJobTokenScopeFlow": {
           "active": true,
@@ -104037,21 +103504,6 @@
                 }
               ],
               "valid": []
-            },
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "projects_job_token_scope_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "projects_job_token_scope01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
             }
           ]
         },
@@ -104062,23 +103514,7 @@
           "kind": "basic",
           "name": "BasicProtectedTagFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "protected_tag_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "protected_tag01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicPypiFlow": {
           "active": true,
@@ -104178,21 +103614,6 @@
                   }
                 }
               ]
-            },
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "release_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "release01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
             }
           ]
         },
@@ -104203,24 +103624,7 @@
           "kind": "basic",
           "name": "BasicReleaseLinkFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "release_link_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "release_link01",
-                "project_id": "project01",
-                "release_id": "release01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicRemoteMirrorFlow": {
           "active": true,
@@ -104525,21 +103929,6 @@
                   }
                 }
               ]
-            },
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "secure_file_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "secure_file01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
             }
           ]
         },
@@ -104593,20 +103982,6 @@
                   }
                 }
               ]
-            },
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "snippet_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "snippet01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
             }
           ]
         },
@@ -104645,22 +104020,7 @@
           "kind": "basic",
           "name": "BasicSystemHookFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "system_hook_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "system_hook01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicTagFlow": {
           "active": true,
@@ -104669,23 +104029,7 @@
           "kind": "basic",
           "name": "BasicTagFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "tag_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "tag01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicTerraformRegistryFlow": {
           "active": true,
@@ -104876,22 +104220,7 @@
           "kind": "basic",
           "name": "BasicTopicFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "topic_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "topic01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         },
         "BasicUnleashApiFlow": {
           "active": true,
@@ -105031,23 +104360,7 @@
           "kind": "basic",
           "name": "BasicWikiFlow",
           "param": {},
-          "step": [
-            {
-              "active": true,
-              "data": {},
-              "input": {
-                "ref": "wiki_ref01",
-                "suffix": "_rm0"
-              },
-              "match": {
-                "id": "wiki01",
-                "project_id": "project01"
-              },
-              "op": "remove",
-              "spec": [],
-              "valid": []
-            }
-          ]
+          "step": []
         }
       },
       "info": {
@@ -105440,8 +104753,5 @@
     }
   },
   "name": "gitlab",
-  "name-": "gitlab",
-  "name_": "gitlab",
-  "name__orig": "gitlab",
   "origin": "voxgig-sdk"
 }

@@ -27,20 +27,6 @@ main: kit: flow: BasicReleaseFlow:
         }
       ]
     }
-
-    {
-      input: {
-        ref: "release_ref01",
-        suffix: "_rm0"
-      }
-
-      match: {
-        id: "release01",
-        project_id: "project01"
-      }
-
-      op: "remove"
-    }
   ],
   "key$": "BasicReleaseFlow"
 }

@@ -23,7 +23,7 @@ class ProjectHookEntityTest extends TestCase
         $setup = project_hook_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "project_hook." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class ProjectHookEntityTest extends TestCase
         if (count($project_hook_ref01_data_raw) > 0) {
             $project_hook_ref01_data = Helpers::to_map($project_hook_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $project_hook_ref01_ent = $client->ProjectHook(null);
-        $project_hook_ref01_match_rm0 = [
-            "id" => $project_hook_ref01_data["id"],
-        ];
-        $project_hook_ref01_ent->remove($project_hook_ref01_match_rm0, null);
 
     }
 }

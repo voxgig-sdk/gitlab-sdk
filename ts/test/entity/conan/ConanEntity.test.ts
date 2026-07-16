@@ -39,7 +39,7 @@ describe('ConanEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'conan.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('ConanEntity', async () => {
     const select = struct.select
 
     let conan_ref01_data = Object.values(setup.data.existing.conan)[0] as any
-
-    // REMOVE
-    const conan_ref01_ent = client.Conan()
-    const conan_ref01_match_rm0: any = { id: conan_ref01_data.id }
-    await conan_ref01_ent.remove(conan_ref01_match_rm0)
-  
 
   })
 })

@@ -23,7 +23,7 @@ class ContainerRegistryEntityTest extends TestCase
         $setup = container_registry_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "container_registry." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class ContainerRegistryEntityTest extends TestCase
         if (count($container_registry_ref01_data_raw) > 0) {
             $container_registry_ref01_data = Helpers::to_map($container_registry_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $container_registry_ref01_ent = $client->ContainerRegistry(null);
-        $container_registry_ref01_match_rm0 = [
-            "id" => $container_registry_ref01_data["id"],
-        ];
-        $container_registry_ref01_ent->remove($container_registry_ref01_match_rm0, null);
 
     }
 }

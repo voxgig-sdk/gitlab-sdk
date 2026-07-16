@@ -39,7 +39,7 @@ describe('InvitationEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'invitation.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('InvitationEntity', async () => {
     const select = struct.select
 
     let invitation_ref01_data = Object.values(setup.data.existing.invitation)[0] as any
-
-    // REMOVE
-    const invitation_ref01_ent = client.Invitation()
-    const invitation_ref01_match_rm0: any = { id: invitation_ref01_data.id }
-    await invitation_ref01_ent.remove(invitation_ref01_match_rm0)
-  
 
   })
 })

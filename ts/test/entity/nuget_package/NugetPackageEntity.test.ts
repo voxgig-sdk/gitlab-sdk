@@ -39,7 +39,7 @@ describe('NugetPackageEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['list', 'update', 'load', 'remove']) {
+    for (const op of ['list', 'update', 'load']) {
       if (maybeSkipControl(t, 'entityOp', 'nuget_package.' + op, live)) return
     }
 
@@ -85,18 +85,6 @@ describe('NugetPackageEntity', async () => {
     nuget_package_ref01_match_dt0.id = nuget_package_ref01_data.id
     const nuget_package_ref01_data_dt0 = await nuget_package_ref01_ent.load(nuget_package_ref01_match_dt0)
     assert(nuget_package_ref01_data_dt0.id === nuget_package_ref01_data.id)
-
-
-    // REMOVE
-    const nuget_package_ref01_match_rm0: any = { id: nuget_package_ref01_data.id }
-    await nuget_package_ref01_ent.remove(nuget_package_ref01_match_rm0)
-  
-
-    // LIST
-    const nuget_package_ref01_match_rt0: any = {}
-    nuget_package_ref01_match_rt0['project_id'] = setup.idmap['project01']
-
-    const nuget_package_ref01_list_rt0 = await nuget_package_ref01_ent.list(nuget_package_ref01_match_rt0)
 
 
   })

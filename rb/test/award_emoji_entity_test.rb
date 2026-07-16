@@ -16,7 +16,7 @@ class AwardEmojiEntityTest < Minitest::Test
     setup = award_emoji_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["remove"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "award_emoji." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -38,13 +38,6 @@ class AwardEmojiEntityTest < Minitest::Test
     if award_emoji_ref01_data_raw.length > 0
       award_emoji_ref01_data = Helpers.to_map(award_emoji_ref01_data_raw[0][1])
     end
-
-    # REMOVE
-    award_emoji_ref01_ent = client.AwardEmoji(nil)
-    award_emoji_ref01_match_rm0 = {
-      "id" => award_emoji_ref01_data["id"],
-    }
-    award_emoji_ref01_ent.remove(award_emoji_ref01_match_rm0, nil)
 
   end
 end

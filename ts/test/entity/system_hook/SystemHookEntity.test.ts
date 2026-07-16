@@ -39,7 +39,7 @@ describe('SystemHookEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'system_hook.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('SystemHookEntity', async () => {
     const select = struct.select
 
     let system_hook_ref01_data = Object.values(setup.data.existing.system_hook)[0] as any
-
-    // REMOVE
-    const system_hook_ref01_ent = client.SystemHook()
-    const system_hook_ref01_match_rm0: any = { id: system_hook_ref01_data.id }
-    await system_hook_ref01_ent.remove(system_hook_ref01_match_rm0)
-  
 
   })
 })

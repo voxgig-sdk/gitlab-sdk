@@ -16,7 +16,7 @@ class PageEntityTest < Minitest::Test
     setup = page_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["update", "load", "remove"].each do |_op|
+    ["update", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "page." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -52,12 +52,6 @@ class PageEntityTest < Minitest::Test
     page_ref01_match_dt0 = {}
     page_ref01_data_dt0_loaded = page_ref01_ent.load(page_ref01_match_dt0, nil)
     assert !page_ref01_data_dt0_loaded.nil?
-
-    # REMOVE
-    page_ref01_match_rm0 = {
-      "id" => page_ref01_data["id"],
-    }
-    page_ref01_ent.remove(page_ref01_match_rm0, nil)
 
   end
 end

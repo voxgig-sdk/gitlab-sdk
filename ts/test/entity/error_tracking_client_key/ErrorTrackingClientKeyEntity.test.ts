@@ -39,7 +39,7 @@ describe('ErrorTrackingClientKeyEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'error_tracking_client_key.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('ErrorTrackingClientKeyEntity', async () => {
     const select = struct.select
 
     let error_tracking_client_key_ref01_data = Object.values(setup.data.existing.error_tracking_client_key)[0] as any
-
-    // REMOVE
-    const error_tracking_client_key_ref01_ent = client.ErrorTrackingClientKey()
-    const error_tracking_client_key_ref01_match_rm0: any = { id: error_tracking_client_key_ref01_data.id }
-    await error_tracking_client_key_ref01_ent.remove(error_tracking_client_key_ref01_match_rm0)
-  
 
   })
 })

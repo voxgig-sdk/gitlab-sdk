@@ -19,7 +19,7 @@ describe("FreezePeriodEntity", function()
     local setup = freeze_period_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"remove"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "freeze_period." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -41,14 +41,6 @@ describe("FreezePeriodEntity", function()
     if #freeze_period_ref01_data_raw > 0 then
       freeze_period_ref01_data = helpers.to_map(freeze_period_ref01_data_raw[1][2])
     end
-
-    -- REMOVE
-    local freeze_period_ref01_ent = client:FreezePeriod(nil)
-    local freeze_period_ref01_match_rm0 = {
-      id = freeze_period_ref01_data["id"],
-    }
-    local _, err = freeze_period_ref01_ent:remove(freeze_period_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

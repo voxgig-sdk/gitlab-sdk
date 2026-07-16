@@ -32,7 +32,7 @@ func TestContainerRegistryEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"remove"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "container_registry." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -47,8 +47,6 @@ func TestContainerRegistryEntity(t *testing.T) {
 			t.Skip("live entity test uses synthetic IDs from fixture — set GITLAB_TEST_CONTAINER_REGISTRY_ENTID JSON to run live")
 			return
 		}
-		client := setup.client
-
 		// Bootstrap entity data from existing test data (no create step in flow).
 		containerRegistryRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.container_registry", setup.data)))
 		var containerRegistryRef01Data map[string]any
@@ -58,16 +56,6 @@ func TestContainerRegistryEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = containerRegistryRef01Data
-
-		// REMOVE
-		containerRegistryRef01Ent := client.ContainerRegistry(nil)
-		containerRegistryRef01MatchRm0 := map[string]any{
-			"id": containerRegistryRef01Data["id"],
-		}
-		_, err := containerRegistryRef01Ent.Remove(containerRegistryRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

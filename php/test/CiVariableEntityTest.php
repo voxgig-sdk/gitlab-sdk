@@ -23,7 +23,7 @@ class CiVariableEntityTest extends TestCase
         $setup = ci_variable_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "ci_variable." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class CiVariableEntityTest extends TestCase
         if (count($ci_variable_ref01_data_raw) > 0) {
             $ci_variable_ref01_data = Helpers::to_map($ci_variable_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $ci_variable_ref01_ent = $client->CiVariable(null);
-        $ci_variable_ref01_match_rm0 = [
-            "id" => $ci_variable_ref01_data["id"],
-        ];
-        $ci_variable_ref01_ent->remove($ci_variable_ref01_match_rm0, null);
 
     }
 }

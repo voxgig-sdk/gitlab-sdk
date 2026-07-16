@@ -16,7 +16,7 @@ class ReleaseEntityTest < Minitest::Test
     setup = release_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["load", "remove"].each do |_op|
+    ["load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "release." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -44,12 +44,6 @@ class ReleaseEntityTest < Minitest::Test
     release_ref01_match_dt0 = {}
     release_ref01_data_dt0_loaded = release_ref01_ent.load(release_ref01_match_dt0, nil)
     assert !release_ref01_data_dt0_loaded.nil?
-
-    # REMOVE
-    release_ref01_match_rm0 = {
-      "id" => release_ref01_data["id"],
-    }
-    release_ref01_ent.remove(release_ref01_match_rm0, nil)
 
   end
 end

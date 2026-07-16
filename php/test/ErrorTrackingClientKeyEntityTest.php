@@ -23,7 +23,7 @@ class ErrorTrackingClientKeyEntityTest extends TestCase
         $setup = error_tracking_client_key_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "error_tracking_client_key." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class ErrorTrackingClientKeyEntityTest extends TestCase
         if (count($error_tracking_client_key_ref01_data_raw) > 0) {
             $error_tracking_client_key_ref01_data = Helpers::to_map($error_tracking_client_key_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $error_tracking_client_key_ref01_ent = $client->ErrorTrackingClientKey(null);
-        $error_tracking_client_key_ref01_match_rm0 = [
-            "id" => $error_tracking_client_key_ref01_data["id"],
-        ];
-        $error_tracking_client_key_ref01_ent->remove($error_tracking_client_key_ref01_match_rm0, null);
 
     }
 }

@@ -23,7 +23,7 @@ class PackageFileEntityTest extends TestCase
         $setup = package_file_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["load", "remove"] as $_op) {
+        foreach (["load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "package_file." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -51,12 +51,6 @@ class PackageFileEntityTest extends TestCase
         $package_file_ref01_match_dt0 = [];
         $package_file_ref01_data_dt0_loaded = $package_file_ref01_ent->load($package_file_ref01_match_dt0, null);
         $this->assertNotNull($package_file_ref01_data_dt0_loaded);
-
-        // REMOVE
-        $package_file_ref01_match_rm0 = [
-            "id" => $package_file_ref01_data["id"],
-        ];
-        $package_file_ref01_ent->remove($package_file_ref01_match_rm0, null);
 
     }
 }

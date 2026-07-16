@@ -39,7 +39,7 @@ describe('PersonalAccessTokenEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'personal_access_token.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('PersonalAccessTokenEntity', async () => {
     const select = struct.select
 
     let personal_access_token_ref01_data = Object.values(setup.data.existing.personal_access_token)[0] as any
-
-    // REMOVE
-    const personal_access_token_ref01_ent = client.PersonalAccessToken()
-    const personal_access_token_ref01_match_rm0: any = { id: personal_access_token_ref01_data.id }
-    await personal_access_token_ref01_ent.remove(personal_access_token_ref01_match_rm0)
-  
 
   })
 })

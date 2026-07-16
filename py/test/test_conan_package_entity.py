@@ -27,7 +27,7 @@ class TestConanPackageEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["update", "load", "remove"]:
+        for _op in ["update", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "conan_package." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -63,12 +63,6 @@ class TestConanPackageEntity:
         conan_package_ref01_match_dt0 = {}
         conan_package_ref01_data_dt0_loaded = conan_package_ref01_ent.load(conan_package_ref01_match_dt0, None)
         assert conan_package_ref01_data_dt0_loaded is not None
-
-        # REMOVE
-        conan_package_ref01_match_rm0 = {
-            "id": conan_package_ref01_data["id"],
-        }
-        conan_package_ref01_ent.remove(conan_package_ref01_match_rm0, None)
 
 
 

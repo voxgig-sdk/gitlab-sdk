@@ -32,7 +32,7 @@ func TestDeployTokenEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"remove"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "deploy_token." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -47,8 +47,6 @@ func TestDeployTokenEntity(t *testing.T) {
 			t.Skip("live entity test uses synthetic IDs from fixture — set GITLAB_TEST_DEPLOY_TOKEN_ENTID JSON to run live")
 			return
 		}
-		client := setup.client
-
 		// Bootstrap entity data from existing test data (no create step in flow).
 		deployTokenRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.deploy_token", setup.data)))
 		var deployTokenRef01Data map[string]any
@@ -58,16 +56,6 @@ func TestDeployTokenEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = deployTokenRef01Data
-
-		// REMOVE
-		deployTokenRef01Ent := client.DeployToken(nil)
-		deployTokenRef01MatchRm0 := map[string]any{
-			"id": deployTokenRef01Data["id"],
-		}
-		_, err := deployTokenRef01Ent.Remove(deployTokenRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

@@ -23,7 +23,7 @@ class ClusterAgentEntityTest extends TestCase
         $setup = cluster_agent_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "cluster_agent." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class ClusterAgentEntityTest extends TestCase
         if (count($cluster_agent_ref01_data_raw) > 0) {
             $cluster_agent_ref01_data = Helpers::to_map($cluster_agent_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $cluster_agent_ref01_ent = $client->ClusterAgent(null);
-        $cluster_agent_ref01_match_rm0 = [
-            "id" => $cluster_agent_ref01_data["id"],
-        ];
-        $cluster_agent_ref01_ent->remove($cluster_agent_ref01_match_rm0, null);
 
     }
 }

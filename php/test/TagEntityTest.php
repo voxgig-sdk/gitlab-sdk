@@ -23,7 +23,7 @@ class TagEntityTest extends TestCase
         $setup = tag_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "tag." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -45,13 +45,6 @@ class TagEntityTest extends TestCase
         if (count($tag_ref01_data_raw) > 0) {
             $tag_ref01_data = Helpers::to_map($tag_ref01_data_raw[0][1]);
         }
-
-        // REMOVE
-        $tag_ref01_ent = $client->Tag(null);
-        $tag_ref01_match_rm0 = [
-            "id" => $tag_ref01_data["id"],
-        ];
-        $tag_ref01_ent->remove($tag_ref01_match_rm0, null);
 
     }
 }

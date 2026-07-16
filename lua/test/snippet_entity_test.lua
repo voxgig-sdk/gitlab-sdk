@@ -19,7 +19,7 @@ describe("SnippetEntity", function()
     local setup = snippet_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"load", "remove"}) do
+    for _, _op in ipairs({"load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "snippet." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -48,13 +48,6 @@ describe("SnippetEntity", function()
     local snippet_ref01_data_dt0_loaded, err = snippet_ref01_ent:load(snippet_ref01_match_dt0, nil)
     assert.is_nil(err)
     assert.is_not_nil(snippet_ref01_data_dt0_loaded)
-
-    -- REMOVE
-    local snippet_ref01_match_rm0 = {
-      id = snippet_ref01_data["id"],
-    }
-    local _, err = snippet_ref01_ent:remove(snippet_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

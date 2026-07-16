@@ -32,7 +32,7 @@ func TestProjectHookEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"remove"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "project_hook." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -47,8 +47,6 @@ func TestProjectHookEntity(t *testing.T) {
 			t.Skip("live entity test uses synthetic IDs from fixture — set GITLAB_TEST_PROJECT_HOOK_ENTID JSON to run live")
 			return
 		}
-		client := setup.client
-
 		// Bootstrap entity data from existing test data (no create step in flow).
 		projectHookRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.project_hook", setup.data)))
 		var projectHookRef01Data map[string]any
@@ -58,16 +56,6 @@ func TestProjectHookEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = projectHookRef01Data
-
-		// REMOVE
-		projectHookRef01Ent := client.ProjectHook(nil)
-		projectHookRef01MatchRm0 := map[string]any{
-			"id": projectHookRef01Data["id"],
-		}
-		_, err := projectHookRef01Ent.Remove(projectHookRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

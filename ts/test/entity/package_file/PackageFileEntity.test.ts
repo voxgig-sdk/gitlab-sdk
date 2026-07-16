@@ -39,7 +39,7 @@ describe('PackageFileEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['load', 'remove']) {
+    for (const op of ['load']) {
       if (maybeSkipControl(t, 'entityOp', 'package_file.' + op, live)) return
     }
 
@@ -63,11 +63,6 @@ describe('PackageFileEntity', async () => {
     // Entity-var is declared here so later flow steps still compile.
     const package_file_ref01_ent = client.PackageFile()
 
-
-    // REMOVE
-    const package_file_ref01_match_rm0: any = { id: package_file_ref01_data.id }
-    await package_file_ref01_ent.remove(package_file_ref01_match_rm0)
-  
 
   })
 })

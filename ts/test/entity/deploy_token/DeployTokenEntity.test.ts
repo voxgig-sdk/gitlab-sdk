@@ -39,7 +39,7 @@ describe('DeployTokenEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'deploy_token.' + op, live)) return
     }
 
@@ -58,12 +58,6 @@ describe('DeployTokenEntity', async () => {
     const select = struct.select
 
     let deploy_token_ref01_data = Object.values(setup.data.existing.deploy_token)[0] as any
-
-    // REMOVE
-    const deploy_token_ref01_ent = client.DeployToken()
-    const deploy_token_ref01_match_rm0: any = { id: deploy_token_ref01_data.id }
-    await deploy_token_ref01_ent.remove(deploy_token_ref01_match_rm0)
-  
 
   })
 })

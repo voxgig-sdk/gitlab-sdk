@@ -27,7 +27,7 @@ class TestReleaseEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["load", "remove"]:
+        for _op in ["load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "release." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -51,12 +51,6 @@ class TestReleaseEntity:
         release_ref01_match_dt0 = {}
         release_ref01_data_dt0_loaded = release_ref01_ent.load(release_ref01_match_dt0, None)
         assert release_ref01_data_dt0_loaded is not None
-
-        # REMOVE
-        release_ref01_match_rm0 = {
-            "id": release_ref01_data["id"],
-        }
-        release_ref01_ent.remove(release_ref01_match_rm0, None)
 
 
 

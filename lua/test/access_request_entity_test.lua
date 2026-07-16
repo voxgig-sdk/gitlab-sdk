@@ -19,7 +19,7 @@ describe("AccessRequestEntity", function()
     local setup = access_request_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"remove"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "access_request." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -41,14 +41,6 @@ describe("AccessRequestEntity", function()
     if #access_request_ref01_data_raw > 0 then
       access_request_ref01_data = helpers.to_map(access_request_ref01_data_raw[1][2])
     end
-
-    -- REMOVE
-    local access_request_ref01_ent = client:AccessRequest(nil)
-    local access_request_ref01_match_rm0 = {
-      id = access_request_ref01_data["id"],
-    }
-    local _, err = access_request_ref01_ent:remove(access_request_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

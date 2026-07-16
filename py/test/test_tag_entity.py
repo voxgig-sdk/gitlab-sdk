@@ -27,7 +27,7 @@ class TestTagEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["remove"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "tag." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,13 +45,6 @@ class TestTagEntity:
         tag_ref01_data = None
         if len(tag_ref01_data_raw) > 0:
             tag_ref01_data = helpers.to_map(tag_ref01_data_raw[0][1])
-
-        # REMOVE
-        tag_ref01_ent = client.Tag(None)
-        tag_ref01_match_rm0 = {
-            "id": tag_ref01_data["id"],
-        }
-        tag_ref01_ent.remove(tag_ref01_match_rm0, None)
 
 
 

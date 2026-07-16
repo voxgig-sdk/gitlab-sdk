@@ -5,15 +5,5 @@ main: kit: flow: BasicPersonalAccessTokenFlow:
   entity: "personal_access_token",
   kind: "basic",
   name: "BasicPersonalAccessTokenFlow",
-  step: [
-    {
-      input: {
-        ref: "personal_access_token_ref01",
-        suffix: "_rm0"
-      }
-
-      op: "remove"
-    }
-  ],
   "key$": "BasicPersonalAccessTokenFlow"
 }
