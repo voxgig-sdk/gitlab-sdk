@@ -19,14 +19,36 @@ import (
 // prompt is the REPL prompt prefix (matches the SDK slug).
 const prompt = "gitlab"
 
-// entitiesHelp is the space-separated entity list shown by :help.
+// entitiesHelp is the space-separated entity list shown by /help.
 const entitiesHelp = "access_request alert_management api_entities_access_requester api_entities_appearance api_entities_application api_entities_application_statistic api_entities_application_with_secret api_entities_avatar api_entities_award_emoji api_entities_badge api_entities_basic_badge_detail api_entities_basic_group_detail api_entities_basic_project_detail api_entities_basic_ref api_entities_basic_success api_entities_batched_background_migration api_entities_branch api_entities_bulk_import api_entities_bulk_imports_entity_failure api_entities_bulk_imports_export_status api_entities_changelog api_entities_ci_bridge api_entities_ci_catalog_resources_version api_entities_ci_job api_entities_ci_job_basic api_entities_ci_job_basic_with_project api_entities_ci_lint_result api_entities_ci_pipeline api_entities_ci_pipeline_basic api_entities_ci_pipeline_schedule api_entities_ci_pipeline_schedule_detail api_entities_ci_reset_token_result api_entities_ci_resource_group api_entities_ci_runner api_entities_ci_runner_detail api_entities_ci_runner_manager api_entities_ci_runner_registration_detail api_entities_ci_secure_file api_entities_ci_variable api_entities_cluster api_entities_cluster_group api_entities_cluster_project api_entities_clusters_agent api_entities_clusters_agent_token api_entities_clusters_agent_token_basic api_entities_clusters_agent_token_with_token api_entities_commit api_entities_commit_detail api_entities_commit_note api_entities_commit_sequence api_entities_commit_signature api_entities_commit_status api_entities_compare api_entities_container_registry_repository api_entities_container_registry_tag api_entities_container_registry_tag_detail api_entities_contributor api_entities_deploy_key api_entities_deploy_keys_project api_entities_deploy_token api_entities_deploy_token_with_token api_entities_deployment api_entities_deployment_extended api_entities_deployments_approval api_entities_dictionary_table api_entities_diff api_entities_discovered_cluster api_entities_draft_note api_entities_environment api_entities_error_tracking_client_key api_entities_error_tracking_project_setting api_entities_event api_entities_feature api_entities_feature_definition api_entities_feature_flag api_entities_feature_flag_user_list api_entities_freeze_period api_entities_gitlab_subscription api_entities_go_module_version api_entities_group api_entities_group_detail api_entities_hook api_entities_integration api_entities_integration_basic api_entities_invitation api_entities_issuable_time_stat api_entities_issue api_entities_issue_link api_entities_license api_entities_markdown api_entities_markdown_upload_admin api_entities_member api_entities_merge api_entities_merge_request_approval api_entities_merge_request_basic api_entities_merge_request_change api_entities_merge_request_diff api_entities_merge_request_diff_full api_entities_merge_request_reviewer api_entities_metric_image api_entities_mr_note api_entities_namespace api_entities_namespace_existence api_entities_namespaces_storage_limit_exclusion api_entities_npm_package api_entities_npm_package_tag api_entities_nuget_packages_version api_entities_nuget_search_result api_entities_nuget_service_index api_entities_organizations_organization api_entities_package api_entities_package_file api_entities_package_pipeline api_entities_packages_conan_files_list api_entities_packages_conan_package_manifest api_entities_packages_conan_package_revision api_entities_packages_conan_package_snapshot api_entities_packages_conan_recipe_manifest api_entities_packages_conan_recipe_revision api_entities_packages_conan_recipe_snapshot api_entities_packages_conan_revision api_entities_packages_conan_upload_url api_entities_packages_debian_distribution api_entities_pages_domain api_entities_pages_domain_basic api_entities_personal_access_token api_entities_personal_access_token_with_last_used_ip api_entities_personal_access_token_with_token api_entities_personal_snippet api_entities_plan_limit api_entities_project api_entities_project_daily_statistic api_entities_project_export_status api_entities_project_group_link api_entities_project_hook api_entities_project_import_status api_entities_project_job_token_scope api_entities_project_repository_storage api_entities_project_snippet api_entities_project_upload api_entities_project_with_access api_entities_projects_container_registry_protection_rule api_entities_projects_packages_protection_rule api_entities_projects_topic api_entities_protected_branch api_entities_protected_tag api_entities_public_group_detail api_entities_related_issue api_entities_relation_import_tracker api_entities_release api_entities_releases_link api_entities_remote_mirror api_entities_repository_health api_entities_resource_access_token_with_token api_entities_resource_milestone_event api_entities_snippet api_entities_ssh_key_with_user api_entities_suggestion api_entities_system_broadcast_message api_entities_tag api_entities_tag_signature api_entities_templates_list api_entities_terraform_module_version api_entities_tree_object api_entities_trigger api_entities_user_agent_detail api_entities_user_count api_entities_user_public api_entities_user_with_admin api_entities_wiki_attachment api_entities_wiki_page api_entities_wiki_page_basic application award_emoji badge branch cargo_package ci_variable cluster cluster_agent composer composer_package conan conan_package container_registry container_registry_event custom_attribute debian debian_distribution debian_package dependency_proxy deploy_key deploy_token deployment ee_api_entities_approval_state ee_api_entities_audit_event ee_api_entities_billable_membership ee_api_entities_geo_node_status ee_api_entities_geo_pipeline_ref ee_api_entities_issuable_metric_image ee_api_entities_merge_request_approval_state ee_api_entities_ssh_certificate environment error_tracking_client_key feature feature_flag feature_flags_user_list freeze_period generic_package geo go_proxy group group_avatar group_export group_import helm_package hook import integration invitation issue_link issues_statistic job maven_package member merge_request metadata migration ml_model_registry namespace npm npm_package nuget nuget_package package_file page participant personal_access_token project project_avatar project_entity project_export project_hook project_import project_import_entity project_package project_snippet projects_job_token_scope protected_tag pypi pypi_package release release_link remote_mirror rpm rpm_package rubygem rubygem_package runner search secure_file slack snippet starrer system_hook tag terraform_registry terraform_state test_report test_report_summary topic unleash_api usage_data user web_commit wiki"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))
 }
 
+// usage prints the CLI help (for --help / -h). No client or network setup.
+func usage(out io.Writer) {
+	fmt.Fprintf(out, "%s-cli — AQL-driven CLI + REPL for the %s SDK\n\n", prompt, prompt)
+	fmt.Fprintln(out, "Usage:")
+	fmt.Fprintf(out, "  %s-cli [--help] [<AQL expression>]\n\n", prompt)
+	fmt.Fprintln(out, "With arguments, they are joined into a single AQL expression and")
+	fmt.Fprintln(out, "evaluated against the API. With no arguments, starts an interactive REPL.")
+	fmt.Fprintln(out)
+	fmt.Fprintln(out, "Words:    list / load / update <query?> <entity>")
+	fmt.Fprintln(out, "Entities:", entitiesHelp)
+	fmt.Fprintln(out, "Env:      GITLAB_APIKEY (api key), GITLAB_BASE (base url override)")
+	fmt.Fprintln(out, "REPL:     /help  /quit")
+}
+
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
+	// --help / -h: print usage and exit before any config or network setup.
+	for _, a := range args {
+		if a == "--help" || a == "-h" {
+			usage(out)
+			return 0
+		}
+	}
+
 	// Configure from the environment: GITLAB_APIKEY carries the API key and
 	// GITLAB_BASE optionally overrides the API base URL (e.g. production).
 	// Both injectable by a secrets vault. Unset -> nil config defaults.
@@ -94,12 +116,12 @@ func repl(r *eng.Registry, in io.Reader, out io.Writer) {
 			continue
 		}
 		switch line {
-		case ":quit", ":q", ":exit":
+		case "/quit", "/q", "/exit":
 			return
-		case ":help", ":h", ":?":
-			fmt.Fprintln(out, "commands: list / load / update <query?> <entity>")
+		case "/help", "/h", "/?":
+			fmt.Fprintln(out, "words:    list / load / update <query?> <entity>")
 			fmt.Fprintln(out, "entities:", entitiesHelp)
-			fmt.Fprintln(out, "meta:     :quit :help")
+			fmt.Fprintln(out, "meta:     /help  /quit")
 			continue
 		}
 		values, err := parser.Parse(line)
