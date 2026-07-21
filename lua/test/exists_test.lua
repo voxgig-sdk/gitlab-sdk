@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Gitlab SDK exists test
 
 local sdk = require("gitlab_sdk")
 
