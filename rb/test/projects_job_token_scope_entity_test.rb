@@ -45,7 +45,7 @@ class ProjectsJobTokenScopeEntityTest < Minitest::Test
     }
 
     projects_job_token_scope_ref01_resdata_up0_result = projects_job_token_scope_ref01_ent.update(projects_job_token_scope_ref01_data_up0_up, nil)
-    projects_job_token_scope_ref01_resdata_up0 = Helpers.to_map(projects_job_token_scope_ref01_resdata_up0_result)
+    projects_job_token_scope_ref01_resdata_up0 = Helpers.to_map(projects_job_token_scope_ref01_resdata_up0_result.respond_to?(:data_get) ? projects_job_token_scope_ref01_resdata_up0_result.data_get : projects_job_token_scope_ref01_resdata_up0_result)
     assert !projects_job_token_scope_ref01_resdata_up0.nil?
 
   end

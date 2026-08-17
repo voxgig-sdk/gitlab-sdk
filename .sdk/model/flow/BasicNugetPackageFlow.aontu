@@ -27,7 +27,7 @@ main: kit: flow: BasicNugetPackageFlow:
         ref: "nuget_package_ref01",
         srcdatavar: "nuget_package_ref01_data",
         suffix: "_up0",
-        textfield: "lower"
+        textfield: "authors"
       }
 
       op: "update",

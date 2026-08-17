@@ -63,14 +63,10 @@ describe('RunnerEntity', async () => {
     let runner_ref01_data = setup.data.new.runner['runner_ref01']
     runner_ref01_data['project_id'] = setup.idmap['project01']
 
-    runner_ref01_data = await runner_ref01_ent.create(runner_ref01_data)
+    runner_ref01_data = (await runner_ref01_ent.create(runner_ref01_data)).data()
     assert(null != runner_ref01_data)
 
 
-    // REMOVE
-    const runner_ref01_match_rm0: any = { id: runner_ref01_data.id }
-    await runner_ref01_ent.remove(runner_ref01_match_rm0)
-  
 
   })
 })

@@ -44,7 +44,7 @@ class ProjectImportEntityEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.project_import_entity"), "project_import_entity_ref01"));
 
         $project_import_entity_ref01_data_result = $project_import_entity_ref01_ent->create($project_import_entity_ref01_data, null);
-        $project_import_entity_ref01_data = Helpers::to_map($project_import_entity_ref01_data_result);
+        $project_import_entity_ref01_data = Helpers::to_map(is_object($project_import_entity_ref01_data_result) && method_exists($project_import_entity_ref01_data_result, 'data_get') ? $project_import_entity_ref01_data_result->data_get() : $project_import_entity_ref01_data_result);
         $this->assertNotNull($project_import_entity_ref01_data);
         $this->assertNotNull($project_import_entity_ref01_data["id"]);
 

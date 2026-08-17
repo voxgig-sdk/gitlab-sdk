@@ -62,7 +62,7 @@ describe('MetadataEntity', async () => {
     // LOAD
     const metadata_ref01_ent = client.Metadata()
     const metadata_ref01_match_dt0: any = {}
-    const metadata_ref01_data_dt0 = await metadata_ref01_ent.load(metadata_ref01_match_dt0)
+    const metadata_ref01_data_dt0 = (await metadata_ref01_ent.load(metadata_ref01_match_dt0)).data()
     assert(null != metadata_ref01_data_dt0)
 
 

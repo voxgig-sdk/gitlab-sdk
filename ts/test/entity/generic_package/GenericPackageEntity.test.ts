@@ -65,7 +65,7 @@ describe('GenericPackageEntity', async () => {
     generic_package_ref01_data_up0 ['file_name'] = setup.idmap['file_name']
     generic_package_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
 
-    const generic_package_ref01_resdata_up0 = await generic_package_ref01_ent.update(generic_package_ref01_data_up0)
+    const generic_package_ref01_resdata_up0 = (await generic_package_ref01_ent.update(generic_package_ref01_data_up0)).data()
     assert(null != generic_package_ref01_resdata_up0)
 
 

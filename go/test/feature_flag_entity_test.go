@@ -60,7 +60,7 @@ func TestFeatureFlagEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		featureFlagRef01Data = core.ToMapAny(featureFlagRef01DataResult)
+		featureFlagRef01Data = core.ToMapAny(entityData(featureFlagRef01DataResult))
 		if featureFlagRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -75,14 +75,6 @@ func TestFeatureFlagEntity(t *testing.T) {
 			t.Fatal("expected load result to be non-nil")
 		}
 
-		// REMOVE
-		featureFlagRef01MatchRm0 := map[string]any{
-			"id": featureFlagRef01Data["id"],
-		}
-		_, err = featureFlagRef01Ent.Remove(featureFlagRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

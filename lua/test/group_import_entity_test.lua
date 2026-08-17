@@ -41,7 +41,7 @@ describe("GroupImportEntity", function()
 
     local group_import_ref01_data_result, err = group_import_ref01_ent:create(group_import_ref01_data, nil)
     assert.is_nil(err)
-    group_import_ref01_data = helpers.to_map(group_import_ref01_data_result)
+    group_import_ref01_data = helpers.to_map(type(group_import_ref01_data_result) == 'table' and group_import_ref01_data_result.data_get and group_import_ref01_data_result:data_get() or group_import_ref01_data_result)
     assert.is_not_nil(group_import_ref01_data)
 
   end)

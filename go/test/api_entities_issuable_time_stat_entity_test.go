@@ -60,7 +60,7 @@ func TestApiEntitiesIssuableTimeStatEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesIssuableTimeStatRef01Data = core.ToMapAny(apiEntitiesIssuableTimeStatRef01DataResult)
+		apiEntitiesIssuableTimeStatRef01Data = core.ToMapAny(entityData(apiEntitiesIssuableTimeStatRef01DataResult))
 		if apiEntitiesIssuableTimeStatRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

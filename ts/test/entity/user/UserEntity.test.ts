@@ -64,7 +64,7 @@ describe('UserEntity', async () => {
     const user_ref01_match: any = {}
     user_ref01_match['project_id'] = setup.idmap['project01']
 
-    const user_ref01_list = await user_ref01_ent.list(user_ref01_match)
+    const user_ref01_list = (await user_ref01_ent.list(user_ref01_match)).map((e: any) => e.data())
 
 
   })

@@ -59,7 +59,7 @@ func TestPypiEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		pypiRef01Data = core.ToMapAny(pypiRef01DataResult)
+		pypiRef01Data = core.ToMapAny(entityData(pypiRef01DataResult))
 		if pypiRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

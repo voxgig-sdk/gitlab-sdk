@@ -54,7 +54,7 @@ describe("ConanPackageEntity", function()
 
     local conan_package_ref01_resdata_up0_result, err = conan_package_ref01_ent:update(conan_package_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local conan_package_ref01_resdata_up0 = helpers.to_map(conan_package_ref01_resdata_up0_result)
+    local conan_package_ref01_resdata_up0 = helpers.to_map(type(conan_package_ref01_resdata_up0_result) == 'table' and conan_package_ref01_resdata_up0_result.data_get and conan_package_ref01_resdata_up0_result:data_get() or conan_package_ref01_resdata_up0_result)
     assert.is_not_nil(conan_package_ref01_resdata_up0)
 
     -- LOAD

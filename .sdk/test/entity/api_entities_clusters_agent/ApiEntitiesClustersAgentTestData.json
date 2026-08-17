@@ -2,32 +2,35 @@
   "existing": {
     "api_entities_clusters_agent": {
       "API_ENTITIES_CLUSTERS_AGENT00": {
-        "config_project": {},
-        "created_at": "s3d",
-        "created_by_user_id": "CREATED_BY_USER01",
+        "created_at": "s46",
+        "description": "s47",
         "id": "API_ENTITIES_CLUSTERS_AGENT00",
-        "is_receptive": true,
-        "name": "s41",
+        "name": "s49",
+        "name_with_namespace": "s4a",
+        "path": "s4b",
+        "path_with_namespace": "s4c",
         "project_id": "PROJECT01",
         "agent_id": "AGENT01"
       },
       "API_ENTITIES_CLUSTERS_AGENT01": {
-        "config_project": {},
-        "created_at": "s79",
-        "created_by_user_id": "CREATED_BY_USER01",
+        "created_at": "s8c",
+        "description": "s8d",
         "id": "API_ENTITIES_CLUSTERS_AGENT01",
-        "is_receptive": true,
-        "name": "s7d",
+        "name": "s8f",
+        "name_with_namespace": "s90",
+        "path": "s91",
+        "path_with_namespace": "s92",
         "project_id": "PROJECT01",
         "agent_id": "AGENT01"
       },
       "API_ENTITIES_CLUSTERS_AGENT02": {
-        "config_project": {},
-        "created_at": "sb5",
-        "created_by_user_id": "CREATED_BY_USER01",
+        "created_at": "sd2",
+        "description": "sd3",
         "id": "API_ENTITIES_CLUSTERS_AGENT02",
-        "is_receptive": true,
-        "name": "sb9",
+        "name": "sd5",
+        "name_with_namespace": "sd6",
+        "path": "sd7",
+        "path_with_namespace": "sd8",
         "project_id": "PROJECT01",
         "agent_id": "AGENT01"
       }
@@ -36,11 +39,12 @@
   "new": {
     "api_entities_clusters_agent": {
       "api_entities_clusters_agent_ref01": {
-        "config_project": {},
-        "created_at": "sf1",
-        "created_by_user_id": "CREATED_BY_USER01",
-        "is_receptive": true,
-        "name": "sf5"
+        "created_at": "s118",
+        "description": "s119",
+        "name": "s11b",
+        "name_with_namespace": "s11c",
+        "path": "s11d",
+        "path_with_namespace": "s11e"
       }
     }
   }

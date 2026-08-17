@@ -50,7 +50,7 @@ describe("MavenPackageEntity", function()
 
     local maven_package_ref01_resdata_up0_result, err = maven_package_ref01_ent:update(maven_package_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local maven_package_ref01_resdata_up0 = helpers.to_map(maven_package_ref01_resdata_up0_result)
+    local maven_package_ref01_resdata_up0 = helpers.to_map(type(maven_package_ref01_resdata_up0_result) == 'table' and maven_package_ref01_resdata_up0_result.data_get and maven_package_ref01_resdata_up0_result:data_get() or maven_package_ref01_resdata_up0_result)
     assert.is_not_nil(maven_package_ref01_resdata_up0)
 
     -- LOAD

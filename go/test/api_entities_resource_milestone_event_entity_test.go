@@ -51,7 +51,7 @@ func TestApiEntitiesResourceMilestoneEventEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -131,7 +131,7 @@ func TestApiEntitiesResourceMilestoneEventEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesResourceMilestoneEventRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesResourceMilestoneEventRef01DataDt0Loaded)
+		apiEntitiesResourceMilestoneEventRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesResourceMilestoneEventRef01DataDt0Loaded))
 		if apiEntitiesResourceMilestoneEventRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

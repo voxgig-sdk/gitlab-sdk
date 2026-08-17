@@ -66,7 +66,7 @@ describe('ApiEntitiesPackagesConanUploadUrlEntity', async () => {
     api_entities_packages_conan_upload_url_ref01_data['package_username'] = setup.idmap['package_username01']
     api_entities_packages_conan_upload_url_ref01_data['package_version'] = setup.idmap['package_version01']
 
-    api_entities_packages_conan_upload_url_ref01_data = await api_entities_packages_conan_upload_url_ref01_ent.create(api_entities_packages_conan_upload_url_ref01_data)
+    api_entities_packages_conan_upload_url_ref01_data = (await api_entities_packages_conan_upload_url_ref01_ent.create(api_entities_packages_conan_upload_url_ref01_data)).data()
     assert(null != api_entities_packages_conan_upload_url_ref01_data)
 
 

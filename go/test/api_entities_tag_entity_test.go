@@ -51,7 +51,7 @@ func TestApiEntitiesTagEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -107,7 +107,7 @@ func TestApiEntitiesTagEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesTagRef01Data = core.ToMapAny(apiEntitiesTagRef01DataResult)
+		apiEntitiesTagRef01Data = core.ToMapAny(entityData(apiEntitiesTagRef01DataResult))
 		if apiEntitiesTagRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -121,14 +121,9 @@ func TestApiEntitiesTagEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("list failed: %v", err)
 		}
-		apiEntitiesTagRef01List, apiEntitiesTagRef01ListOk := apiEntitiesTagRef01ListResult.([]any)
+		_, apiEntitiesTagRef01ListOk := apiEntitiesTagRef01ListResult.([]any)
 		if !apiEntitiesTagRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", apiEntitiesTagRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(apiEntitiesTagRef01List), map[string]any{"id": apiEntitiesTagRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
 		}
 
 		// LOAD

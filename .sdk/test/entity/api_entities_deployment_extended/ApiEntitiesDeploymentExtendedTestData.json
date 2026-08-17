@@ -2,8 +2,8 @@
   "existing": {
     "api_entities_deployment_extended": {
       "API_ENTITIES_DEPLOYMENT_EXTENDED00": {
-        "approval": {},
         "approval_summary": {},
+        "approvals": {},
         "created_at": "s84",
         "deployable": {},
         "environment": {},
@@ -19,8 +19,8 @@
         "deployment_id": "DEPLOYMENT01"
       },
       "API_ENTITIES_DEPLOYMENT_EXTENDED01": {
-        "approval": {},
         "approval_summary": {},
+        "approvals": {},
         "created_at": "s106",
         "deployable": {},
         "environment": {},
@@ -36,8 +36,8 @@
         "deployment_id": "DEPLOYMENT01"
       },
       "API_ENTITIES_DEPLOYMENT_EXTENDED02": {
-        "approval": {},
         "approval_summary": {},
+        "approvals": {},
         "created_at": "s188",
         "deployable": {},
         "environment": {},
@@ -57,8 +57,8 @@
   "new": {
     "api_entities_deployment_extended": {
       "api_entities_deployment_extended_ref01": {
-        "approval": {},
         "approval_summary": {},
+        "approvals": {},
         "created_at": "s20a",
         "deployable": {},
         "environment": {},

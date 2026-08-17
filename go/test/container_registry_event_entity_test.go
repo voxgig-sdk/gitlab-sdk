@@ -58,7 +58,7 @@ func TestContainerRegistryEventEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		containerRegistryEventRef01Data = core.ToMapAny(containerRegistryEventRef01DataResult)
+		containerRegistryEventRef01Data = core.ToMapAny(entityData(containerRegistryEventRef01DataResult))
 		if containerRegistryEventRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

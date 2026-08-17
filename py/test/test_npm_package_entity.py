@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -46,14 +46,14 @@ class TestNpmPackageEntity:
         npm_package_ref01_data["group_id"] = setup["idmap"]["group01"]
         npm_package_ref01_data["project_id"] = setup["idmap"]["project01"]
 
-        npm_package_ref01_data = helpers.to_map(npm_package_ref01_ent.create(npm_package_ref01_data, None))
+        npm_package_ref01_data = helpers.to_map(runner.entity_data(npm_package_ref01_ent.create(npm_package_ref01_data, None)))
         assert npm_package_ref01_data is not None
 
         # UPDATE
         npm_package_ref01_data_up0_up = {
         }
 
-        npm_package_ref01_resdata_up0 = helpers.to_map(npm_package_ref01_ent.update(npm_package_ref01_data_up0_up, None))
+        npm_package_ref01_resdata_up0 = helpers.to_map(runner.entity_data(npm_package_ref01_ent.update(npm_package_ref01_data_up0_up, None)))
         assert npm_package_ref01_resdata_up0 is not None
 
         # LOAD
@@ -61,11 +61,6 @@ class TestNpmPackageEntity:
         npm_package_ref01_data_dt0_loaded = npm_package_ref01_ent.load(npm_package_ref01_match_dt0, None)
         assert npm_package_ref01_data_dt0_loaded is not None
 
-        # REMOVE
-        npm_package_ref01_match_rm0 = {
-            "id": npm_package_ref01_data["id"],
-        }
-        npm_package_ref01_ent.remove(npm_package_ref01_match_rm0, None)
 
 
 

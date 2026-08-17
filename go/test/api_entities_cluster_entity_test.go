@@ -52,7 +52,7 @@ func TestApiEntitiesClusterEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -109,7 +109,7 @@ func TestApiEntitiesClusterEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesClusterRef01Data = core.ToMapAny(apiEntitiesClusterRef01DataResult)
+		apiEntitiesClusterRef01Data = core.ToMapAny(entityData(apiEntitiesClusterRef01DataResult))
 		if apiEntitiesClusterRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -147,7 +147,7 @@ func TestApiEntitiesClusterEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesClusterRef01ResdataUp0 := core.ToMapAny(apiEntitiesClusterRef01ResdataUp0Result)
+		apiEntitiesClusterRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesClusterRef01ResdataUp0Result))
 		if apiEntitiesClusterRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -166,7 +166,7 @@ func TestApiEntitiesClusterEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesClusterRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesClusterRef01DataDt0Loaded)
+		apiEntitiesClusterRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesClusterRef01DataDt0Loaded))
 		if apiEntitiesClusterRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

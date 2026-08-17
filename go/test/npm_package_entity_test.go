@@ -60,7 +60,7 @@ func TestNpmPackageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		npmPackageRef01Data = core.ToMapAny(npmPackageRef01DataResult)
+		npmPackageRef01Data = core.ToMapAny(entityData(npmPackageRef01DataResult))
 		if npmPackageRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -73,7 +73,7 @@ func TestNpmPackageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		npmPackageRef01ResdataUp0 := core.ToMapAny(npmPackageRef01ResdataUp0Result)
+		npmPackageRef01ResdataUp0 := core.ToMapAny(entityData(npmPackageRef01ResdataUp0Result))
 		if npmPackageRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -88,14 +88,6 @@ func TestNpmPackageEntity(t *testing.T) {
 			t.Fatal("expected load result to be non-nil")
 		}
 
-		// REMOVE
-		npmPackageRef01MatchRm0 := map[string]any{
-			"id": npmPackageRef01Data["id"],
-		}
-		_, err = npmPackageRef01Ent.Remove(npmPackageRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

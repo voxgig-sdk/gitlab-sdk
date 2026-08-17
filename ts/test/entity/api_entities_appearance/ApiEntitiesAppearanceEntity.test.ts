@@ -66,7 +66,7 @@ describe('ApiEntitiesAppearanceEntity', async () => {
     const api_entities_appearance_ref01_markdef_up0 = { name: 'description', value: 'Mark01-api_entities_appearance_ref01_' + setup.now }
     ;(api_entities_appearance_ref01_data_up0 as any)[api_entities_appearance_ref01_markdef_up0.name] = api_entities_appearance_ref01_markdef_up0.value
 
-    const api_entities_appearance_ref01_resdata_up0 = await api_entities_appearance_ref01_ent.update(api_entities_appearance_ref01_data_up0)
+    const api_entities_appearance_ref01_resdata_up0 = (await api_entities_appearance_ref01_ent.update(api_entities_appearance_ref01_data_up0)).data()
     assert(null != api_entities_appearance_ref01_resdata_up0)
 
     assert((api_entities_appearance_ref01_resdata_up0 as any)[api_entities_appearance_ref01_markdef_up0.name] === api_entities_appearance_ref01_markdef_up0.value)
@@ -74,7 +74,7 @@ describe('ApiEntitiesAppearanceEntity', async () => {
 
     // LOAD
     const api_entities_appearance_ref01_match_dt0: any = {}
-    const api_entities_appearance_ref01_data_dt0 = await api_entities_appearance_ref01_ent.load(api_entities_appearance_ref01_match_dt0)
+    const api_entities_appearance_ref01_data_dt0 = (await api_entities_appearance_ref01_ent.load(api_entities_appearance_ref01_match_dt0)).data()
     assert(null != api_entities_appearance_ref01_data_dt0)
 
 

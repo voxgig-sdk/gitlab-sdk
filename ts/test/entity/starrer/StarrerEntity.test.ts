@@ -64,7 +64,7 @@ describe('StarrerEntity', async () => {
     const starrer_ref01_match: any = {}
     starrer_ref01_match['project_id'] = setup.idmap['project01']
 
-    const starrer_ref01_list = await starrer_ref01_ent.list(starrer_ref01_match)
+    const starrer_ref01_list = (await starrer_ref01_ent.list(starrer_ref01_match)).map((e: any) => e.data())
 
 
   })

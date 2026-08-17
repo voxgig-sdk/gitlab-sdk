@@ -65,7 +65,7 @@ describe('ApiEntitiesLicenseEntity', async () => {
     api_entities_license_ref01_match['name'] = setup.idmap['name01']
     api_entities_license_ref01_match['type'] = setup.idmap['type01']
 
-    const api_entities_license_ref01_list = await api_entities_license_ref01_ent.list(api_entities_license_ref01_match)
+    const api_entities_license_ref01_list = (await api_entities_license_ref01_ent.list(api_entities_license_ref01_match)).map((e: any) => e.data())
 
 
   })

@@ -58,7 +58,7 @@ func TestApiEntitiesPersonalAccessTokenWithTokenEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesPersonalAccessTokenWithTokenRef01Data = core.ToMapAny(apiEntitiesPersonalAccessTokenWithTokenRef01DataResult)
+		apiEntitiesPersonalAccessTokenWithTokenRef01Data = core.ToMapAny(entityData(apiEntitiesPersonalAccessTokenWithTokenRef01DataResult))
 		if apiEntitiesPersonalAccessTokenWithTokenRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

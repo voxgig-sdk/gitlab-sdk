@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -53,7 +53,7 @@ class TestMlModelRegistryEntity:
             "project_id": setup["idmap"]["project_id"],
         }
 
-        ml_model_registry_ref01_resdata_up0 = helpers.to_map(ml_model_registry_ref01_ent.update(ml_model_registry_ref01_data_up0_up, None))
+        ml_model_registry_ref01_resdata_up0 = helpers.to_map(runner.entity_data(ml_model_registry_ref01_ent.update(ml_model_registry_ref01_data_up0_up, None)))
         assert ml_model_registry_ref01_resdata_up0 is not None
 
         # LOAD

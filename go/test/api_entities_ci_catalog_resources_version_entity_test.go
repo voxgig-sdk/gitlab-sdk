@@ -59,7 +59,7 @@ func TestApiEntitiesCiCatalogResourcesVersionEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesCiCatalogResourcesVersionRef01Data = core.ToMapAny(apiEntitiesCiCatalogResourcesVersionRef01DataResult)
+		apiEntitiesCiCatalogResourcesVersionRef01Data = core.ToMapAny(entityData(apiEntitiesCiCatalogResourcesVersionRef01DataResult))
 		if apiEntitiesCiCatalogResourcesVersionRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

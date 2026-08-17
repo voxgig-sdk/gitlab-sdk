@@ -74,7 +74,7 @@ func TestApiEntitiesCiRunnerDetailEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesCiRunnerDetailRef01ResdataUp0 := core.ToMapAny(apiEntitiesCiRunnerDetailRef01ResdataUp0Result)
+		apiEntitiesCiRunnerDetailRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesCiRunnerDetailRef01ResdataUp0Result))
 		if apiEntitiesCiRunnerDetailRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -93,7 +93,7 @@ func TestApiEntitiesCiRunnerDetailEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesCiRunnerDetailRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesCiRunnerDetailRef01DataDt0Loaded)
+		apiEntitiesCiRunnerDetailRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesCiRunnerDetailRef01DataDt0Loaded))
 		if apiEntitiesCiRunnerDetailRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

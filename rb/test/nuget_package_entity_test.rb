@@ -33,7 +33,7 @@ class NugetPackageEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = GitlabConfig.make_config
+    cfg = GitlabConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = GitlabSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
@@ -89,12 +89,12 @@ class NugetPackageEntityTest < Minitest::Test
       "id" => nuget_package_ref01_data["id"],
     }
 
-    nuget_package_ref01_markdef_up0_name = "lower"
+    nuget_package_ref01_markdef_up0_name = "authors"
     nuget_package_ref01_markdef_up0_value = "Mark01-nuget_package_ref01_#{setup[:now]}"
     nuget_package_ref01_data_up0_up[nuget_package_ref01_markdef_up0_name] = nuget_package_ref01_markdef_up0_value
 
     nuget_package_ref01_resdata_up0_result = nuget_package_ref01_ent.update(nuget_package_ref01_data_up0_up, nil)
-    nuget_package_ref01_resdata_up0 = Helpers.to_map(nuget_package_ref01_resdata_up0_result)
+    nuget_package_ref01_resdata_up0 = Helpers.to_map(nuget_package_ref01_resdata_up0_result.respond_to?(:data_get) ? nuget_package_ref01_resdata_up0_result.data_get : nuget_package_ref01_resdata_up0_result)
     assert !nuget_package_ref01_resdata_up0.nil?
     assert_equal nuget_package_ref01_resdata_up0["id"], nuget_package_ref01_data_up0_up["id"]
     assert_equal nuget_package_ref01_resdata_up0[nuget_package_ref01_markdef_up0_name], nuget_package_ref01_markdef_up0_value
@@ -104,7 +104,7 @@ class NugetPackageEntityTest < Minitest::Test
       "id" => nuget_package_ref01_data["id"],
     }
     nuget_package_ref01_data_dt0_loaded = nuget_package_ref01_ent.load(nuget_package_ref01_match_dt0, nil)
-    nuget_package_ref01_data_dt0_load_result = Helpers.to_map(nuget_package_ref01_data_dt0_loaded)
+    nuget_package_ref01_data_dt0_load_result = Helpers.to_map(nuget_package_ref01_data_dt0_loaded.respond_to?(:data_get) ? nuget_package_ref01_data_dt0_loaded.data_get : nuget_package_ref01_data_dt0_loaded)
     assert !nuget_package_ref01_data_dt0_load_result.nil?
     assert_equal nuget_package_ref01_data_dt0_load_result["id"], nuget_package_ref01_data["id"]
 

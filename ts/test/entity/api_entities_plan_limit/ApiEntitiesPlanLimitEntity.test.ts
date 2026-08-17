@@ -63,13 +63,13 @@ describe('ApiEntitiesPlanLimitEntity', async () => {
     const api_entities_plan_limit_ref01_ent = client.ApiEntitiesPlanLimit()
     const api_entities_plan_limit_ref01_data_up0: any = {}
 
-    const api_entities_plan_limit_ref01_resdata_up0 = await api_entities_plan_limit_ref01_ent.update(api_entities_plan_limit_ref01_data_up0)
+    const api_entities_plan_limit_ref01_resdata_up0 = (await api_entities_plan_limit_ref01_ent.update(api_entities_plan_limit_ref01_data_up0)).data()
     assert(null != api_entities_plan_limit_ref01_resdata_up0)
 
 
     // LOAD
     const api_entities_plan_limit_ref01_match_dt0: any = {}
-    const api_entities_plan_limit_ref01_data_dt0 = await api_entities_plan_limit_ref01_ent.load(api_entities_plan_limit_ref01_match_dt0)
+    const api_entities_plan_limit_ref01_data_dt0 = (await api_entities_plan_limit_ref01_ent.load(api_entities_plan_limit_ref01_match_dt0)).data()
     assert(null != api_entities_plan_limit_ref01_data_dt0)
 
 

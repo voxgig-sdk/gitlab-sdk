@@ -43,7 +43,7 @@ main: kit: flow: BasicApiEntitiesBranchFlow:
         ref: "api_entities_branch_ref01",
         srcdatavar: "api_entities_branch_ref01_data",
         suffix: "_up0",
-        textfield: "name"
+        textfield: "author_email"
       }
 
       op: "update",

@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -45,7 +45,7 @@ class TestMigrationEntity:
             vs.getpath(setup["data"], "new.migration"), "migration_ref01"))
         migration_ref01_data["timestamp"] = setup["idmap"]["timestamp01"]
 
-        migration_ref01_data = helpers.to_map(migration_ref01_ent.create(migration_ref01_data, None))
+        migration_ref01_data = helpers.to_map(runner.entity_data(migration_ref01_ent.create(migration_ref01_data, None)))
         assert migration_ref01_data is not None
 
 

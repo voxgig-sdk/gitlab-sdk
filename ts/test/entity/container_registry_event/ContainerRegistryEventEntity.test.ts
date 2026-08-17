@@ -62,7 +62,7 @@ describe('ContainerRegistryEventEntity', async () => {
     const container_registry_event_ref01_ent = client.ContainerRegistryEvent()
     let container_registry_event_ref01_data = setup.data.new.container_registry_event['container_registry_event_ref01']
 
-    container_registry_event_ref01_data = await container_registry_event_ref01_ent.create(container_registry_event_ref01_data)
+    container_registry_event_ref01_data = (await container_registry_event_ref01_ent.create(container_registry_event_ref01_data)).data()
     assert(null != container_registry_event_ref01_data)
 
 

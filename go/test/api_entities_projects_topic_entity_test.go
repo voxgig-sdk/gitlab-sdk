@@ -59,7 +59,7 @@ func TestApiEntitiesProjectsTopicEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesProjectsTopicRef01Data = core.ToMapAny(apiEntitiesProjectsTopicRef01DataResult)
+		apiEntitiesProjectsTopicRef01Data = core.ToMapAny(entityData(apiEntitiesProjectsTopicRef01DataResult))
 		if apiEntitiesProjectsTopicRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -80,7 +80,7 @@ func TestApiEntitiesProjectsTopicEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesProjectsTopicRef01ResdataUp0 := core.ToMapAny(apiEntitiesProjectsTopicRef01ResdataUp0Result)
+		apiEntitiesProjectsTopicRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesProjectsTopicRef01ResdataUp0Result))
 		if apiEntitiesProjectsTopicRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -99,7 +99,7 @@ func TestApiEntitiesProjectsTopicEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesProjectsTopicRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesProjectsTopicRef01DataDt0Loaded)
+		apiEntitiesProjectsTopicRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesProjectsTopicRef01DataDt0Loaded))
 		if apiEntitiesProjectsTopicRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

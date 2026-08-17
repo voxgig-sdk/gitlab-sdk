@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ GitlabUtility::setRegistrar(function (GitlabUtility $u): void {
     $u->prepare_params = [GitlabPrepareParams::class, 'call'];
     $u->prepare_path = [GitlabPreparePath::class, 'call'];
     $u->prepare_query = [GitlabPrepareQuery::class, 'call'];
+    $u->graphql_body = [GitlabGraphql::class, 'body'];
+    $u->graphql_errors = [GitlabGraphql::class, 'errors'];
     $u->result_basic = [GitlabResultBasic::class, 'call'];
     $u->result_body = [GitlabResultBody::class, 'call'];
     $u->result_headers = [GitlabResultHeaders::class, 'call'];

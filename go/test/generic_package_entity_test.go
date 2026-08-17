@@ -70,7 +70,7 @@ func TestGenericPackageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		genericPackageRef01ResdataUp0 := core.ToMapAny(genericPackageRef01ResdataUp0Result)
+		genericPackageRef01ResdataUp0 := core.ToMapAny(entityData(genericPackageRef01ResdataUp0Result))
 		if genericPackageRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

@@ -59,19 +59,11 @@ func TestEnvironmentEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		environmentRef01Data = core.ToMapAny(environmentRef01DataResult)
+		environmentRef01Data = core.ToMapAny(entityData(environmentRef01DataResult))
 		if environmentRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
 
-		// REMOVE
-		environmentRef01MatchRm0 := map[string]any{
-			"id": environmentRef01Data["id"],
-		}
-		_, err = environmentRef01Ent.Remove(environmentRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

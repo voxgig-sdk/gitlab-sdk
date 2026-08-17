@@ -33,7 +33,7 @@ class ApiEntitiesPersonalAccessTokenWithLastUsedIpEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = GitlabConfig.make_config
+    cfg = GitlabConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = GitlabSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
@@ -87,7 +87,7 @@ class ApiEntitiesPersonalAccessTokenWithLastUsedIpEntityTest < Minitest::Test
       "id" => api_entities_personal_access_token_with_last_used_ip_ref01_data["id"],
     }
     api_entities_personal_access_token_with_last_used_ip_ref01_data_dt0_loaded = api_entities_personal_access_token_with_last_used_ip_ref01_ent.load(api_entities_personal_access_token_with_last_used_ip_ref01_match_dt0, nil)
-    api_entities_personal_access_token_with_last_used_ip_ref01_data_dt0_load_result = Helpers.to_map(api_entities_personal_access_token_with_last_used_ip_ref01_data_dt0_loaded)
+    api_entities_personal_access_token_with_last_used_ip_ref01_data_dt0_load_result = Helpers.to_map(api_entities_personal_access_token_with_last_used_ip_ref01_data_dt0_loaded.respond_to?(:data_get) ? api_entities_personal_access_token_with_last_used_ip_ref01_data_dt0_loaded.data_get : api_entities_personal_access_token_with_last_used_ip_ref01_data_dt0_loaded)
     assert !api_entities_personal_access_token_with_last_used_ip_ref01_data_dt0_load_result.nil?
     assert_equal api_entities_personal_access_token_with_last_used_ip_ref01_data_dt0_load_result["id"], api_entities_personal_access_token_with_last_used_ip_ref01_data["id"]
 

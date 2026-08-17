@@ -52,7 +52,7 @@ func TestApiEntitiesMetricImageEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -109,7 +109,7 @@ func TestApiEntitiesMetricImageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesMetricImageRef01Data = core.ToMapAny(apiEntitiesMetricImageRef01DataResult)
+		apiEntitiesMetricImageRef01Data = core.ToMapAny(entityData(apiEntitiesMetricImageRef01DataResult))
 		if apiEntitiesMetricImageRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -152,7 +152,7 @@ func TestApiEntitiesMetricImageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesMetricImageRef01ResdataUp0 := core.ToMapAny(apiEntitiesMetricImageRef01ResdataUp0Result)
+		apiEntitiesMetricImageRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesMetricImageRef01ResdataUp0Result))
 		if apiEntitiesMetricImageRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

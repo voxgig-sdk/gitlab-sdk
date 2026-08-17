@@ -42,7 +42,7 @@ describe("PypiEntity", function()
 
     local pypi_ref01_data_result, err = pypi_ref01_ent:create(pypi_ref01_data, nil)
     assert.is_nil(err)
-    pypi_ref01_data = helpers.to_map(pypi_ref01_data_result)
+    pypi_ref01_data = helpers.to_map(type(pypi_ref01_data_result) == 'table' and pypi_ref01_data_result.data_get and pypi_ref01_data_result:data_get() or pypi_ref01_data_result)
     assert.is_not_nil(pypi_ref01_data)
 
   end)

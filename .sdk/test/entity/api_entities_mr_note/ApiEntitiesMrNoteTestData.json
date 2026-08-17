@@ -2,33 +2,61 @@
   "existing": {
     "api_entities_mr_note": {
       "API_ENTITIES_MR_NOTE00": {
-        "author": {},
-        "note": "s15",
+        "avatar_path": "s64",
+        "avatar_url": "s65",
+        "custom_attributes": [],
+        "id": "API_ENTITIES_MR_NOTE00",
+        "locked": true,
+        "name": "s69",
+        "public_email": "s6a",
+        "state": "s6b",
+        "username": "s6c",
+        "web_url": "s6d",
         "merge_request_id": "MERGE_REQUEST01",
-        "project_id": "PROJECT01",
-        "id": "API_ENTITIES_MR_NOTE00"
+        "project_id": "PROJECT01"
       },
       "API_ENTITIES_MR_NOTE01": {
-        "author": {},
-        "note": "s29",
+        "avatar_path": "sc8",
+        "avatar_url": "sc9",
+        "custom_attributes": [],
+        "id": "API_ENTITIES_MR_NOTE01",
+        "locked": true,
+        "name": "scd",
+        "public_email": "sce",
+        "state": "scf",
+        "username": "sd0",
+        "web_url": "sd1",
         "merge_request_id": "MERGE_REQUEST01",
-        "project_id": "PROJECT01",
-        "id": "API_ENTITIES_MR_NOTE01"
+        "project_id": "PROJECT01"
       },
       "API_ENTITIES_MR_NOTE02": {
-        "author": {},
-        "note": "s3d",
+        "avatar_path": "s12c",
+        "avatar_url": "s12d",
+        "custom_attributes": [],
+        "id": "API_ENTITIES_MR_NOTE02",
+        "locked": true,
+        "name": "s131",
+        "public_email": "s132",
+        "state": "s133",
+        "username": "s134",
+        "web_url": "s135",
         "merge_request_id": "MERGE_REQUEST01",
-        "project_id": "PROJECT01",
-        "id": "API_ENTITIES_MR_NOTE02"
+        "project_id": "PROJECT01"
       }
     }
   },
   "new": {
     "api_entities_mr_note": {
       "api_entities_mr_note_ref01": {
-        "author": {},
-        "note": "s51"
+        "avatar_path": "s190",
+        "avatar_url": "s191",
+        "custom_attributes": [],
+        "locked": true,
+        "name": "s195",
+        "public_email": "s196",
+        "state": "s197",
+        "username": "s198",
+        "web_url": "s199"
       }
     }
   }

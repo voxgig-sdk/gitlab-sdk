@@ -37,7 +37,7 @@ class GroupExportEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.group_export"), "group_export_ref01"))
 
     group_export_ref01_data_result = group_export_ref01_ent.create(group_export_ref01_data, nil)
-    group_export_ref01_data = Helpers.to_map(group_export_ref01_data_result)
+    group_export_ref01_data = Helpers.to_map(group_export_ref01_data_result.respond_to?(:data_get) ? group_export_ref01_data_result.data_get : group_export_ref01_data_result)
     assert !group_export_ref01_data.nil?
 
     # LOAD

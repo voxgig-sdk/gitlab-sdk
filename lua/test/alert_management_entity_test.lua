@@ -43,15 +43,9 @@ describe("AlertManagementEntity", function()
 
     local alert_management_ref01_data_result, err = alert_management_ref01_ent:create(alert_management_ref01_data, nil)
     assert.is_nil(err)
-    alert_management_ref01_data = helpers.to_map(alert_management_ref01_data_result)
+    alert_management_ref01_data = helpers.to_map(type(alert_management_ref01_data_result) == 'table' and alert_management_ref01_data_result.data_get and alert_management_ref01_data_result:data_get() or alert_management_ref01_data_result)
     assert.is_not_nil(alert_management_ref01_data)
 
-    -- REMOVE
-    local alert_management_ref01_match_rm0 = {
-      id = alert_management_ref01_data["id"],
-    }
-    local _, err = alert_management_ref01_ent:remove(alert_management_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

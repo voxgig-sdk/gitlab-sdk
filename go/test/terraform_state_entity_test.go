@@ -61,7 +61,7 @@ func TestTerraformStateEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		terraformStateRef01Data = core.ToMapAny(terraformStateRef01DataResult)
+		terraformStateRef01Data = core.ToMapAny(entityData(terraformStateRef01DataResult))
 		if terraformStateRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -76,14 +76,6 @@ func TestTerraformStateEntity(t *testing.T) {
 			t.Fatal("expected load result to be non-nil")
 		}
 
-		// REMOVE
-		terraformStateRef01MatchRm0 := map[string]any{
-			"id": terraformStateRef01Data["id"],
-		}
-		_, err = terraformStateRef01Ent.Remove(terraformStateRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

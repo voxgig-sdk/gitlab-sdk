@@ -64,22 +64,18 @@ describe('NpmPackageEntity', async () => {
     npm_package_ref01_data['group_id'] = setup.idmap['group01']
     npm_package_ref01_data['project_id'] = setup.idmap['project01']
 
-    npm_package_ref01_data = await npm_package_ref01_ent.create(npm_package_ref01_data)
+    npm_package_ref01_data = (await npm_package_ref01_ent.create(npm_package_ref01_data)).data()
     assert(null != npm_package_ref01_data)
 
 
     // UPDATE
     const npm_package_ref01_data_up0: any = {}
 
-    const npm_package_ref01_resdata_up0 = await npm_package_ref01_ent.update(npm_package_ref01_data_up0)
+    const npm_package_ref01_resdata_up0 = (await npm_package_ref01_ent.update(npm_package_ref01_data_up0)).data()
     assert(null != npm_package_ref01_resdata_up0)
 
 
 
-    // REMOVE
-    const npm_package_ref01_match_rm0: any = { id: npm_package_ref01_data.id }
-    await npm_package_ref01_ent.remove(npm_package_ref01_match_rm0)
-  
 
   })
 })

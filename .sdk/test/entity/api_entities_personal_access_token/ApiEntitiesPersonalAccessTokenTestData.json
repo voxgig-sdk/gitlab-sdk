@@ -10,7 +10,7 @@
         "last_used_at": "s69",
         "name": "s6a",
         "revoked": false,
-        "scope": [],
+        "scopes": [],
         "user_id": "USER01"
       },
       "API_ENTITIES_PERSONAL_ACCESS_TOKEN01": {
@@ -22,7 +22,7 @@
         "last_used_at": "scd",
         "name": "sce",
         "revoked": false,
-        "scope": [],
+        "scopes": [],
         "user_id": "USER01"
       },
       "API_ENTITIES_PERSONAL_ACCESS_TOKEN02": {
@@ -34,7 +34,7 @@
         "last_used_at": "s131",
         "name": "s132",
         "revoked": false,
-        "scope": [],
+        "scopes": [],
         "user_id": "USER01"
       }
     }
@@ -49,7 +49,7 @@
         "last_used_at": "s195",
         "name": "s196",
         "revoked": false,
-        "scope": [],
+        "scopes": [],
         "user_id": "USER01"
       }
     }

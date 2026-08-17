@@ -52,7 +52,7 @@ class ProjectsJobTokenScopeEntityTest extends TestCase
         ];
 
         $projects_job_token_scope_ref01_resdata_up0_result = $projects_job_token_scope_ref01_ent->update($projects_job_token_scope_ref01_data_up0_up, null);
-        $projects_job_token_scope_ref01_resdata_up0 = Helpers::to_map($projects_job_token_scope_ref01_resdata_up0_result);
+        $projects_job_token_scope_ref01_resdata_up0 = Helpers::to_map(is_object($projects_job_token_scope_ref01_resdata_up0_result) && method_exists($projects_job_token_scope_ref01_resdata_up0_result, 'data_get') ? $projects_job_token_scope_ref01_resdata_up0_result->data_get() : $projects_job_token_scope_ref01_resdata_up0_result);
         $this->assertNotNull($projects_job_token_scope_ref01_resdata_up0);
 
     }

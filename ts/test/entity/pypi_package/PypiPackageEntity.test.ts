@@ -64,7 +64,7 @@ describe('PypiPackageEntity', async () => {
     pypi_package_ref01_data['group_id'] = setup.idmap['group01']
     pypi_package_ref01_data['project_id'] = setup.idmap['project01']
 
-    pypi_package_ref01_data = await pypi_package_ref01_ent.create(pypi_package_ref01_data)
+    pypi_package_ref01_data = (await pypi_package_ref01_ent.create(pypi_package_ref01_data)).data()
     assert(null != pypi_package_ref01_data)
 
 

@@ -62,7 +62,7 @@ describe('ApiEntitiesPagesDomainBasicEntity', async () => {
     // LOAD
     const api_entities_pages_domain_basic_ref01_ent = client.ApiEntitiesPagesDomainBasic()
     const api_entities_pages_domain_basic_ref01_match_dt0: any = {}
-    const api_entities_pages_domain_basic_ref01_data_dt0 = await api_entities_pages_domain_basic_ref01_ent.load(api_entities_pages_domain_basic_ref01_match_dt0)
+    const api_entities_pages_domain_basic_ref01_data_dt0 = (await api_entities_pages_domain_basic_ref01_ent.load(api_entities_pages_domain_basic_ref01_match_dt0)).data()
     assert(null != api_entities_pages_domain_basic_ref01_data_dt0)
 
 

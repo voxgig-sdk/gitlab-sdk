@@ -68,7 +68,7 @@ func TestNugetEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		nugetRef01ResdataUp0 := core.ToMapAny(nugetRef01ResdataUp0Result)
+		nugetRef01ResdataUp0 := core.ToMapAny(entityData(nugetRef01ResdataUp0Result))
 		if nugetRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

@@ -64,7 +64,7 @@ describe('EeApiEntitiesGeoPipelineRefEntity', async () => {
     const ee_api_entities_geo_pipeline_ref_ref01_match: any = {}
     ee_api_entities_geo_pipeline_ref_ref01_match['gl_repository'] = setup.idmap['gl_repository01']
 
-    const ee_api_entities_geo_pipeline_ref_ref01_list = await ee_api_entities_geo_pipeline_ref_ref01_ent.list(ee_api_entities_geo_pipeline_ref_ref01_match)
+    const ee_api_entities_geo_pipeline_ref_ref01_list = (await ee_api_entities_geo_pipeline_ref_ref01_ent.list(ee_api_entities_geo_pipeline_ref_ref01_match)).map((e: any) => e.data())
 
 
   })

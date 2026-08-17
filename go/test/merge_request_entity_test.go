@@ -69,7 +69,7 @@ func TestMergeRequestEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		mergeRequestRef01ResdataUp0 := core.ToMapAny(mergeRequestRef01ResdataUp0Result)
+		mergeRequestRef01ResdataUp0 := core.ToMapAny(entityData(mergeRequestRef01ResdataUp0Result))
 		if mergeRequestRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

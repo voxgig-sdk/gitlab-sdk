@@ -37,7 +37,7 @@ class ApiEntitiesUserWithAdminEntity extends GitlabEntityBase<ApiEntitiesUserWit
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesUserWithAdminListMatch, ctrl?: Control): Promise<ApiEntitiesUserWithAdmin[]> {
+  async list(this: any, reqmatch?: ApiEntitiesUserWithAdminListMatch, ctrl?: Control): Promise<ApiEntitiesUserWithAdminEntity[]> {
 
     const utility = this._utility
 

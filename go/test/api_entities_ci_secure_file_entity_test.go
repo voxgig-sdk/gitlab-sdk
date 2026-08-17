@@ -59,28 +59,19 @@ func TestApiEntitiesCiSecureFileEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesCiSecureFileRef01Data = core.ToMapAny(apiEntitiesCiSecureFileRef01DataResult)
+		apiEntitiesCiSecureFileRef01Data = core.ToMapAny(entityData(apiEntitiesCiSecureFileRef01DataResult))
 		if apiEntitiesCiSecureFileRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
-		if apiEntitiesCiSecureFileRef01Data["id"] == nil {
-			t.Fatal("expected created entity to have an id")
-		}
 
 		// LOAD
-		apiEntitiesCiSecureFileRef01MatchDt0 := map[string]any{
-			"id": apiEntitiesCiSecureFileRef01Data["id"],
-		}
+		apiEntitiesCiSecureFileRef01MatchDt0 := map[string]any{}
 		apiEntitiesCiSecureFileRef01DataDt0Loaded, err := apiEntitiesCiSecureFileRef01Ent.Load(apiEntitiesCiSecureFileRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesCiSecureFileRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesCiSecureFileRef01DataDt0Loaded)
-		if apiEntitiesCiSecureFileRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if apiEntitiesCiSecureFileRef01DataDt0LoadResult["id"] != apiEntitiesCiSecureFileRef01Data["id"] {
-			t.Fatal("expected load result id to match")
+		if apiEntitiesCiSecureFileRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

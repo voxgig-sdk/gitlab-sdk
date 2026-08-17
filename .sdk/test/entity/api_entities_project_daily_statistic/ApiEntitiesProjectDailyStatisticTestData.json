@@ -2,17 +2,20 @@
   "existing": {
     "api_entities_project_daily_statistic": {
       "API_ENTITIES_PROJECT_DAILY_STATISTIC00": {
-        "fetch": {},
+        "days": [],
+        "total": "s15",
         "project_id": "PROJECT01",
         "id": "API_ENTITIES_PROJECT_DAILY_STATISTIC00"
       },
       "API_ENTITIES_PROJECT_DAILY_STATISTIC01": {
-        "fetch": {},
+        "days": [],
+        "total": "s29",
         "project_id": "PROJECT01",
         "id": "API_ENTITIES_PROJECT_DAILY_STATISTIC01"
       },
       "API_ENTITIES_PROJECT_DAILY_STATISTIC02": {
-        "fetch": {},
+        "days": [],
+        "total": "s3d",
         "project_id": "PROJECT01",
         "id": "API_ENTITIES_PROJECT_DAILY_STATISTIC02"
       }
@@ -21,7 +24,8 @@
   "new": {
     "api_entities_project_daily_statistic": {
       "api_entities_project_daily_statistic_ref01": {
-        "fetch": {}
+        "days": [],
+        "total": "s51"
       }
     }
   }

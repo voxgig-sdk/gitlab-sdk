@@ -49,7 +49,7 @@ describe("NugetEntity", function()
 
     local nuget_ref01_resdata_up0_result, err = nuget_ref01_ent:update(nuget_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local nuget_ref01_resdata_up0 = helpers.to_map(nuget_ref01_resdata_up0_result)
+    local nuget_ref01_resdata_up0 = helpers.to_map(type(nuget_ref01_resdata_up0_result) == 'table' and nuget_ref01_resdata_up0_result.data_get and nuget_ref01_resdata_up0_result:data_get() or nuget_ref01_resdata_up0_result)
     assert.is_not_nil(nuget_ref01_resdata_up0)
 
   end)

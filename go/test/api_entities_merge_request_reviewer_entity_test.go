@@ -61,13 +61,19 @@ func TestApiEntitiesMergeRequestReviewerEntity(t *testing.T) {
 
 		// LOAD
 		apiEntitiesMergeRequestReviewerRef01Ent := client.ApiEntitiesMergeRequestReviewer(nil)
-		apiEntitiesMergeRequestReviewerRef01MatchDt0 := map[string]any{}
+		apiEntitiesMergeRequestReviewerRef01MatchDt0 := map[string]any{
+			"id": apiEntitiesMergeRequestReviewerRef01Data["id"],
+		}
 		apiEntitiesMergeRequestReviewerRef01DataDt0Loaded, err := apiEntitiesMergeRequestReviewerRef01Ent.Load(apiEntitiesMergeRequestReviewerRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if apiEntitiesMergeRequestReviewerRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		apiEntitiesMergeRequestReviewerRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesMergeRequestReviewerRef01DataDt0Loaded))
+		if apiEntitiesMergeRequestReviewerRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if apiEntitiesMergeRequestReviewerRef01DataDt0LoadResult["id"] != apiEntitiesMergeRequestReviewerRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

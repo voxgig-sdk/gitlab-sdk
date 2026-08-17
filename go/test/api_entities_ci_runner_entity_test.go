@@ -59,7 +59,7 @@ func TestApiEntitiesCiRunnerEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesCiRunnerRef01Data = core.ToMapAny(apiEntitiesCiRunnerRef01DataResult)
+		apiEntitiesCiRunnerRef01Data = core.ToMapAny(entityData(apiEntitiesCiRunnerRef01DataResult))
 		if apiEntitiesCiRunnerRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -75,7 +75,7 @@ func TestApiEntitiesCiRunnerEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesCiRunnerRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesCiRunnerRef01DataDt0Loaded)
+		apiEntitiesCiRunnerRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesCiRunnerRef01DataDt0Loaded))
 		if apiEntitiesCiRunnerRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

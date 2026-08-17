@@ -64,17 +64,17 @@ describe('NugetPackageEntity', async () => {
     const nuget_package_ref01_match: any = {}
     nuget_package_ref01_match['project_id'] = setup.idmap['project01']
 
-    const nuget_package_ref01_list = await nuget_package_ref01_ent.list(nuget_package_ref01_match)
+    const nuget_package_ref01_list = (await nuget_package_ref01_ent.list(nuget_package_ref01_match)).map((e: any) => e.data())
 
 
     // UPDATE
     const nuget_package_ref01_data_up0: any = {}
     nuget_package_ref01_data_up0.id = nuget_package_ref01_data.id
 
-    const nuget_package_ref01_markdef_up0 = { name: 'lower', value: 'Mark01-nuget_package_ref01_' + setup.now }
+    const nuget_package_ref01_markdef_up0 = { name: 'authors', value: 'Mark01-nuget_package_ref01_' + setup.now }
     ;(nuget_package_ref01_data_up0 as any)[nuget_package_ref01_markdef_up0.name] = nuget_package_ref01_markdef_up0.value
 
-    const nuget_package_ref01_resdata_up0 = await nuget_package_ref01_ent.update(nuget_package_ref01_data_up0)
+    const nuget_package_ref01_resdata_up0 = (await nuget_package_ref01_ent.update(nuget_package_ref01_data_up0)).data()
     assert(nuget_package_ref01_resdata_up0.id === nuget_package_ref01_data_up0.id)
 
     assert((nuget_package_ref01_resdata_up0 as any)[nuget_package_ref01_markdef_up0.name] === nuget_package_ref01_markdef_up0.value)
@@ -83,7 +83,7 @@ describe('NugetPackageEntity', async () => {
     // LOAD
     const nuget_package_ref01_match_dt0: any = {}
     nuget_package_ref01_match_dt0.id = nuget_package_ref01_data.id
-    const nuget_package_ref01_data_dt0 = await nuget_package_ref01_ent.load(nuget_package_ref01_match_dt0)
+    const nuget_package_ref01_data_dt0 = (await nuget_package_ref01_ent.load(nuget_package_ref01_match_dt0)).data()
     assert(nuget_package_ref01_data_dt0.id === nuget_package_ref01_data.id)
 
 

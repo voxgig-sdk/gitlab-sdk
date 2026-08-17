@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -45,21 +45,16 @@ class TestHookEntity:
             vs.getpath(setup["data"], "new.hook"), "hook_ref01"))
         hook_ref01_data["hook_id"] = setup["idmap"]["hook01"]
 
-        hook_ref01_data = helpers.to_map(hook_ref01_ent.create(hook_ref01_data, None))
+        hook_ref01_data = helpers.to_map(runner.entity_data(hook_ref01_ent.create(hook_ref01_data, None)))
         assert hook_ref01_data is not None
 
         # UPDATE
         hook_ref01_data_up0_up = {
         }
 
-        hook_ref01_resdata_up0 = helpers.to_map(hook_ref01_ent.update(hook_ref01_data_up0_up, None))
+        hook_ref01_resdata_up0 = helpers.to_map(runner.entity_data(hook_ref01_ent.update(hook_ref01_data_up0_up, None)))
         assert hook_ref01_resdata_up0 is not None
 
-        # REMOVE
-        hook_ref01_match_rm0 = {
-            "id": hook_ref01_data["id"],
-        }
-        hook_ref01_ent.remove(hook_ref01_match_rm0, None)
 
 
 

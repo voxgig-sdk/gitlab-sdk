@@ -52,7 +52,7 @@ func TestApiEntitiesPersonalSnippetEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -107,7 +107,7 @@ func TestApiEntitiesPersonalSnippetEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesPersonalSnippetRef01Data = core.ToMapAny(apiEntitiesPersonalSnippetRef01DataResult)
+		apiEntitiesPersonalSnippetRef01Data = core.ToMapAny(entityData(apiEntitiesPersonalSnippetRef01DataResult))
 		if apiEntitiesPersonalSnippetRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -145,7 +145,7 @@ func TestApiEntitiesPersonalSnippetEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesPersonalSnippetRef01ResdataUp0 := core.ToMapAny(apiEntitiesPersonalSnippetRef01ResdataUp0Result)
+		apiEntitiesPersonalSnippetRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesPersonalSnippetRef01ResdataUp0Result))
 		if apiEntitiesPersonalSnippetRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -164,7 +164,7 @@ func TestApiEntitiesPersonalSnippetEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesPersonalSnippetRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesPersonalSnippetRef01DataDt0Loaded)
+		apiEntitiesPersonalSnippetRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesPersonalSnippetRef01DataDt0Loaded))
 		if apiEntitiesPersonalSnippetRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

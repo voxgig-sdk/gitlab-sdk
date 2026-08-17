@@ -39,7 +39,7 @@ describe("EeApiEntitiesAuditEventEntity", function()
     assert.are.equal(3, #seen)
 
     -- Inbound: streaming active -> yields each item from the feature.
-    local config = require("config")()
+    local config = require("config_shared")()
     if type(config.feature) == "table" and config.feature.streaming ~= nil then
       local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
       local got = {}
@@ -99,7 +99,7 @@ describe("EeApiEntitiesAuditEventEntity", function()
     }
     local ee_api_entities_audit_event_ref01_data_dt0_loaded, err = ee_api_entities_audit_event_ref01_ent:load(ee_api_entities_audit_event_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local ee_api_entities_audit_event_ref01_data_dt0_load_result = helpers.to_map(ee_api_entities_audit_event_ref01_data_dt0_loaded)
+    local ee_api_entities_audit_event_ref01_data_dt0_load_result = helpers.to_map(type(ee_api_entities_audit_event_ref01_data_dt0_loaded) == 'table' and ee_api_entities_audit_event_ref01_data_dt0_loaded.data_get and ee_api_entities_audit_event_ref01_data_dt0_loaded:data_get() or ee_api_entities_audit_event_ref01_data_dt0_loaded)
     assert.is_not_nil(ee_api_entities_audit_event_ref01_data_dt0_load_result)
     assert.are.equal(ee_api_entities_audit_event_ref01_data_dt0_load_result["id"], ee_api_entities_audit_event_ref01_data["id"])
 

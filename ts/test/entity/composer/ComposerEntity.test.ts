@@ -63,7 +63,7 @@ describe('ComposerEntity', async () => {
     let composer_ref01_data = setup.data.new.composer['composer_ref01']
     composer_ref01_data['project_id'] = setup.idmap['project01']
 
-    composer_ref01_data = await composer_ref01_ent.create(composer_ref01_data)
+    composer_ref01_data = (await composer_ref01_ent.create(composer_ref01_data)).data()
     assert(null != composer_ref01_data)
 
 

@@ -59,7 +59,7 @@ func TestApiEntitiesBasicGroupDetailEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesBasicGroupDetailRef01Data = core.ToMapAny(apiEntitiesBasicGroupDetailRef01DataResult)
+		apiEntitiesBasicGroupDetailRef01Data = core.ToMapAny(entityData(apiEntitiesBasicGroupDetailRef01DataResult))
 		if apiEntitiesBasicGroupDetailRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

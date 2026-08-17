@@ -51,7 +51,7 @@ describe("GenericPackageEntity", function()
 
     local generic_package_ref01_resdata_up0_result, err = generic_package_ref01_ent:update(generic_package_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local generic_package_ref01_resdata_up0 = helpers.to_map(generic_package_ref01_resdata_up0_result)
+    local generic_package_ref01_resdata_up0 = helpers.to_map(type(generic_package_ref01_resdata_up0_result) == 'table' and generic_package_ref01_resdata_up0_result.data_get and generic_package_ref01_resdata_up0_result:data_get() or generic_package_ref01_resdata_up0_result)
     assert.is_not_nil(generic_package_ref01_resdata_up0)
 
     -- LOAD

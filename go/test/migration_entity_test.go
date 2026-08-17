@@ -59,7 +59,7 @@ func TestMigrationEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		migrationRef01Data = core.ToMapAny(migrationRef01DataResult)
+		migrationRef01Data = core.ToMapAny(entityData(migrationRef01DataResult))
 		if migrationRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

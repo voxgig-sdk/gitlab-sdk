@@ -63,7 +63,7 @@ describe('MigrationEntity', async () => {
     let migration_ref01_data = setup.data.new.migration['migration_ref01']
     migration_ref01_data['timestamp'] = setup.idmap['timestamp01']
 
-    migration_ref01_data = await migration_ref01_ent.create(migration_ref01_data)
+    migration_ref01_data = (await migration_ref01_ent.create(migration_ref01_data)).data()
     assert(null != migration_ref01_data)
 
 

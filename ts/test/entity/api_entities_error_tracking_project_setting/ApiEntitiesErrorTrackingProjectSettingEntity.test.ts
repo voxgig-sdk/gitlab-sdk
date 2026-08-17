@@ -66,7 +66,7 @@ describe('ApiEntitiesErrorTrackingProjectSettingEntity', async () => {
     const api_entities_error_tracking_project_setting_ref01_markdef_up0 = { name: 'api_url', value: 'Mark01-api_entities_error_tracking_project_setting_ref01_' + setup.now }
     ;(api_entities_error_tracking_project_setting_ref01_data_up0 as any)[api_entities_error_tracking_project_setting_ref01_markdef_up0.name] = api_entities_error_tracking_project_setting_ref01_markdef_up0.value
 
-    const api_entities_error_tracking_project_setting_ref01_resdata_up0 = await api_entities_error_tracking_project_setting_ref01_ent.update(api_entities_error_tracking_project_setting_ref01_data_up0)
+    const api_entities_error_tracking_project_setting_ref01_resdata_up0 = (await api_entities_error_tracking_project_setting_ref01_ent.update(api_entities_error_tracking_project_setting_ref01_data_up0)).data()
     assert(null != api_entities_error_tracking_project_setting_ref01_resdata_up0)
 
     assert((api_entities_error_tracking_project_setting_ref01_resdata_up0 as any)[api_entities_error_tracking_project_setting_ref01_markdef_up0.name] === api_entities_error_tracking_project_setting_ref01_markdef_up0.value)

@@ -58,7 +58,7 @@ func TestSlackEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		slackRef01Data = core.ToMapAny(slackRef01DataResult)
+		slackRef01Data = core.ToMapAny(entityData(slackRef01DataResult))
 		if slackRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

@@ -40,7 +40,7 @@ class ApiEntitiesCiResourceGroupEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = GitlabConfig::make_config();
+        $cfg = GitlabConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = GitlabSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
@@ -105,7 +105,7 @@ class ApiEntitiesCiResourceGroupEntityTest extends TestCase
         $api_entities_ci_resource_group_ref01_data_up0_up[$api_entities_ci_resource_group_ref01_markdef_up0_name] = $api_entities_ci_resource_group_ref01_markdef_up0_value;
 
         $api_entities_ci_resource_group_ref01_resdata_up0_result = $api_entities_ci_resource_group_ref01_ent->update($api_entities_ci_resource_group_ref01_data_up0_up, null);
-        $api_entities_ci_resource_group_ref01_resdata_up0 = Helpers::to_map($api_entities_ci_resource_group_ref01_resdata_up0_result);
+        $api_entities_ci_resource_group_ref01_resdata_up0 = Helpers::to_map(is_object($api_entities_ci_resource_group_ref01_resdata_up0_result) && method_exists($api_entities_ci_resource_group_ref01_resdata_up0_result, 'data_get') ? $api_entities_ci_resource_group_ref01_resdata_up0_result->data_get() : $api_entities_ci_resource_group_ref01_resdata_up0_result);
         $this->assertNotNull($api_entities_ci_resource_group_ref01_resdata_up0);
         $this->assertEquals($api_entities_ci_resource_group_ref01_resdata_up0["id"], $api_entities_ci_resource_group_ref01_data_up0_up["id"]);
         $this->assertEquals($api_entities_ci_resource_group_ref01_resdata_up0[$api_entities_ci_resource_group_ref01_markdef_up0_name], $api_entities_ci_resource_group_ref01_markdef_up0_value);
@@ -115,7 +115,7 @@ class ApiEntitiesCiResourceGroupEntityTest extends TestCase
             "id" => $api_entities_ci_resource_group_ref01_data["id"],
         ];
         $api_entities_ci_resource_group_ref01_data_dt0_loaded = $api_entities_ci_resource_group_ref01_ent->load($api_entities_ci_resource_group_ref01_match_dt0, null);
-        $api_entities_ci_resource_group_ref01_data_dt0_load_result = Helpers::to_map($api_entities_ci_resource_group_ref01_data_dt0_loaded);
+        $api_entities_ci_resource_group_ref01_data_dt0_load_result = Helpers::to_map(is_object($api_entities_ci_resource_group_ref01_data_dt0_loaded) && method_exists($api_entities_ci_resource_group_ref01_data_dt0_loaded, 'data_get') ? $api_entities_ci_resource_group_ref01_data_dt0_loaded->data_get() : $api_entities_ci_resource_group_ref01_data_dt0_loaded);
         $this->assertNotNull($api_entities_ci_resource_group_ref01_data_dt0_load_result);
         $this->assertEquals($api_entities_ci_resource_group_ref01_data_dt0_load_result["id"], $api_entities_ci_resource_group_ref01_data["id"]);
 

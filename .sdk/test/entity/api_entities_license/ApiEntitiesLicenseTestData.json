@@ -2,43 +2,43 @@
   "existing": {
     "api_entities_license": {
       "API_ENTITIES_LICENSE00": {
-        "condition": [],
+        "conditions": [],
         "content": "s6f",
         "description": "s70",
         "html_url": "s71",
         "key": "s72",
-        "limitation": [],
+        "limitations": [],
         "name": "s74",
         "nickname": "s75",
-        "permission": [],
+        "permissions": [],
         "popular": false,
         "source_url": "s78",
         "type": "TYPE01"
       },
       "API_ENTITIES_LICENSE01": {
-        "condition": [],
+        "conditions": [],
         "content": "sdd",
         "description": "sde",
         "html_url": "sdf",
         "key": "se0",
-        "limitation": [],
+        "limitations": [],
         "name": "se2",
         "nickname": "se3",
-        "permission": [],
+        "permissions": [],
         "popular": false,
         "source_url": "se6",
         "type": "TYPE01"
       },
       "API_ENTITIES_LICENSE02": {
-        "condition": [],
+        "conditions": [],
         "content": "s14b",
         "description": "s14c",
         "html_url": "s14d",
         "key": "s14e",
-        "limitation": [],
+        "limitations": [],
         "name": "s150",
         "nickname": "s151",
-        "permission": [],
+        "permissions": [],
         "popular": false,
         "source_url": "s154",
         "type": "TYPE01"
@@ -48,15 +48,15 @@
   "new": {
     "api_entities_license": {
       "api_entities_license_ref01": {
-        "condition": [],
+        "conditions": [],
         "content": "s1b9",
         "description": "s1ba",
         "html_url": "s1bb",
         "key": "s1bc",
-        "limitation": [],
+        "limitations": [],
         "name": "s1be",
         "nickname": "s1bf",
-        "permission": [],
+        "permissions": [],
         "popular": false,
         "source_url": "s1c2"
       }

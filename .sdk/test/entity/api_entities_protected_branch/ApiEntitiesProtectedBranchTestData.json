@@ -6,10 +6,10 @@
         "code_owner_approval_required": false,
         "id": "API_ENTITIES_PROTECTED_BRANCH00",
         "inherited": false,
-        "merge_access_level": [],
+        "merge_access_levels": [],
         "name": "s55",
-        "push_access_level": [],
-        "unprotect_access_level": [],
+        "push_access_levels": [],
+        "unprotect_access_levels": [],
         "project_id": "PROJECT01"
       },
       "API_ENTITIES_PROTECTED_BRANCH01": {
@@ -17,10 +17,10 @@
         "code_owner_approval_required": false,
         "id": "API_ENTITIES_PROTECTED_BRANCH01",
         "inherited": false,
-        "merge_access_level": [],
+        "merge_access_levels": [],
         "name": "sa5",
-        "push_access_level": [],
-        "unprotect_access_level": [],
+        "push_access_levels": [],
+        "unprotect_access_levels": [],
         "project_id": "PROJECT01"
       },
       "API_ENTITIES_PROTECTED_BRANCH02": {
@@ -28,10 +28,10 @@
         "code_owner_approval_required": false,
         "id": "API_ENTITIES_PROTECTED_BRANCH02",
         "inherited": false,
-        "merge_access_level": [],
+        "merge_access_levels": [],
         "name": "sf5",
-        "push_access_level": [],
-        "unprotect_access_level": [],
+        "push_access_levels": [],
+        "unprotect_access_levels": [],
         "project_id": "PROJECT01"
       }
     }
@@ -42,10 +42,10 @@
         "allow_force_push": true,
         "code_owner_approval_required": false,
         "inherited": false,
-        "merge_access_level": [],
+        "merge_access_levels": [],
         "name": "s145",
-        "push_access_level": [],
-        "unprotect_access_level": []
+        "push_access_levels": [],
+        "unprotect_access_levels": []
       }
     }
   }

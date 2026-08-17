@@ -58,7 +58,7 @@ func TestApiEntitiesMarkdownEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesMarkdownRef01Data = core.ToMapAny(apiEntitiesMarkdownRef01DataResult)
+		apiEntitiesMarkdownRef01Data = core.ToMapAny(entityData(apiEntitiesMarkdownRef01DataResult))
 		if apiEntitiesMarkdownRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

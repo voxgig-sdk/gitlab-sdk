@@ -37,7 +37,7 @@ class EeApiEntitiesGeoNodeStatusEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.ee_api_entities_geo_node_status"), "ee_api_entities_geo_node_status_ref01"))
 
     ee_api_entities_geo_node_status_ref01_data_result = ee_api_entities_geo_node_status_ref01_ent.create(ee_api_entities_geo_node_status_ref01_data, nil)
-    ee_api_entities_geo_node_status_ref01_data = Helpers.to_map(ee_api_entities_geo_node_status_ref01_data_result)
+    ee_api_entities_geo_node_status_ref01_data = Helpers.to_map(ee_api_entities_geo_node_status_ref01_data_result.respond_to?(:data_get) ? ee_api_entities_geo_node_status_ref01_data_result.data_get : ee_api_entities_geo_node_status_ref01_data_result)
     assert !ee_api_entities_geo_node_status_ref01_data.nil?
 
   end

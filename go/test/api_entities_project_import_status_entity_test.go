@@ -51,7 +51,7 @@ func TestApiEntitiesProjectImportStatusEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -107,7 +107,7 @@ func TestApiEntitiesProjectImportStatusEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesProjectImportStatusRef01Data = core.ToMapAny(apiEntitiesProjectImportStatusRef01DataResult)
+		apiEntitiesProjectImportStatusRef01Data = core.ToMapAny(entityData(apiEntitiesProjectImportStatusRef01DataResult))
 		if apiEntitiesProjectImportStatusRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

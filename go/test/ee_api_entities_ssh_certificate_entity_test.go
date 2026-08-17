@@ -51,7 +51,7 @@ func TestEeApiEntitiesSshCertificateEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -107,7 +107,7 @@ func TestEeApiEntitiesSshCertificateEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		eeApiEntitiesSshCertificateRef01Data = core.ToMapAny(eeApiEntitiesSshCertificateRef01DataResult)
+		eeApiEntitiesSshCertificateRef01Data = core.ToMapAny(entityData(eeApiEntitiesSshCertificateRef01DataResult))
 		if eeApiEntitiesSshCertificateRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

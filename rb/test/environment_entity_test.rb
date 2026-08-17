@@ -38,14 +38,9 @@ class EnvironmentEntityTest < Minitest::Test
     environment_ref01_data["project_id"] = setup[:idmap]["project01"]
 
     environment_ref01_data_result = environment_ref01_ent.create(environment_ref01_data, nil)
-    environment_ref01_data = Helpers.to_map(environment_ref01_data_result)
+    environment_ref01_data = Helpers.to_map(environment_ref01_data_result.respond_to?(:data_get) ? environment_ref01_data_result.data_get : environment_ref01_data_result)
     assert !environment_ref01_data.nil?
 
-    # REMOVE
-    environment_ref01_match_rm0 = {
-      "id" => environment_ref01_data["id"],
-    }
-    environment_ref01_ent.remove(environment_ref01_match_rm0, nil)
 
   end
 end

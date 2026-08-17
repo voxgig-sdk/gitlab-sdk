@@ -54,7 +54,7 @@ class MlModelRegistryEntityTest extends TestCase
         ];
 
         $ml_model_registry_ref01_resdata_up0_result = $ml_model_registry_ref01_ent->update($ml_model_registry_ref01_data_up0_up, null);
-        $ml_model_registry_ref01_resdata_up0 = Helpers::to_map($ml_model_registry_ref01_resdata_up0_result);
+        $ml_model_registry_ref01_resdata_up0 = Helpers::to_map(is_object($ml_model_registry_ref01_resdata_up0_result) && method_exists($ml_model_registry_ref01_resdata_up0_result, 'data_get') ? $ml_model_registry_ref01_resdata_up0_result->data_get() : $ml_model_registry_ref01_resdata_up0_result);
         $this->assertNotNull($ml_model_registry_ref01_resdata_up0);
 
         // LOAD

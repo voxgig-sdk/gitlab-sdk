@@ -68,7 +68,7 @@ func TestApiEntitiesSshKeyWithUserEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesSshKeyWithUserRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesSshKeyWithUserRef01DataDt0Loaded)
+		apiEntitiesSshKeyWithUserRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesSshKeyWithUserRef01DataDt0Loaded))
 		if apiEntitiesSshKeyWithUserRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

@@ -37,7 +37,7 @@ class TestReportEntity extends GitlabEntityBase<TestReport> {
 
 
 
-  async list(this: any, reqmatch?: TestReportListMatch, ctrl?: Control): Promise<TestReport[]> {
+  async list(this: any, reqmatch?: TestReportListMatch, ctrl?: Control): Promise<TestReportEntity[]> {
 
     const utility = this._utility
 

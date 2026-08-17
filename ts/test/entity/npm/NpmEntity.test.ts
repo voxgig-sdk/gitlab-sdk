@@ -64,7 +64,7 @@ describe('NpmEntity', async () => {
     const npm_ref01_data_up0: any = {}
     npm_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
 
-    const npm_ref01_resdata_up0 = await npm_ref01_ent.update(npm_ref01_data_up0)
+    const npm_ref01_resdata_up0 = (await npm_ref01_ent.update(npm_ref01_data_up0)).data()
     assert(null != npm_ref01_resdata_up0)
 
 

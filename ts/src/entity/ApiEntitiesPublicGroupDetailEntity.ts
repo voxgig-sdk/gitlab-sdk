@@ -37,7 +37,7 @@ class ApiEntitiesPublicGroupDetailEntity extends GitlabEntityBase<ApiEntitiesPub
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesPublicGroupDetailListMatch, ctrl?: Control): Promise<ApiEntitiesPublicGroupDetail[]> {
+  async list(this: any, reqmatch?: ApiEntitiesPublicGroupDetailListMatch, ctrl?: Control): Promise<ApiEntitiesPublicGroupDetailEntity[]> {
 
     const utility = this._utility
 

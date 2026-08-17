@@ -63,14 +63,14 @@ describe('ApiEntitiesBulkImportEntity', async () => {
     let api_entities_bulk_import_ref01_data = setup.data.new.api_entities_bulk_import['api_entities_bulk_import_ref01']
     api_entities_bulk_import_ref01_data['bulk_import_id'] = setup.idmap['bulk_import01']
 
-    api_entities_bulk_import_ref01_data = await api_entities_bulk_import_ref01_ent.create(api_entities_bulk_import_ref01_data)
+    api_entities_bulk_import_ref01_data = (await api_entities_bulk_import_ref01_ent.create(api_entities_bulk_import_ref01_data)).data()
     assert(null != api_entities_bulk_import_ref01_data.id)
 
 
     // LIST
     const api_entities_bulk_import_ref01_match: any = {}
 
-    const api_entities_bulk_import_ref01_list = await api_entities_bulk_import_ref01_ent.list(api_entities_bulk_import_ref01_match)
+    const api_entities_bulk_import_ref01_list = (await api_entities_bulk_import_ref01_ent.list(api_entities_bulk_import_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(api_entities_bulk_import_ref01_list, { id: api_entities_bulk_import_ref01_data.id })))
 
@@ -78,7 +78,7 @@ describe('ApiEntitiesBulkImportEntity', async () => {
     // LOAD
     const api_entities_bulk_import_ref01_match_dt0: any = {}
     api_entities_bulk_import_ref01_match_dt0.id = api_entities_bulk_import_ref01_data.id
-    const api_entities_bulk_import_ref01_data_dt0 = await api_entities_bulk_import_ref01_ent.load(api_entities_bulk_import_ref01_match_dt0)
+    const api_entities_bulk_import_ref01_data_dt0 = (await api_entities_bulk_import_ref01_ent.load(api_entities_bulk_import_ref01_match_dt0)).data()
     assert(api_entities_bulk_import_ref01_data_dt0.id === api_entities_bulk_import_ref01_data.id)
 
 

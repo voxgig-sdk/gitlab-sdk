@@ -61,7 +61,7 @@ func TestHelmPackageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		helmPackageRef01Data = core.ToMapAny(helmPackageRef01DataResult)
+		helmPackageRef01Data = core.ToMapAny(entityData(helmPackageRef01DataResult))
 		if helmPackageRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

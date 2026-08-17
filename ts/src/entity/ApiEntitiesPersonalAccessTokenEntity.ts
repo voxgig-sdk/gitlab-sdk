@@ -37,7 +37,7 @@ class ApiEntitiesPersonalAccessTokenEntity extends GitlabEntityBase<ApiEntitiesP
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesPersonalAccessTokenListMatch, ctrl?: Control): Promise<ApiEntitiesPersonalAccessToken[]> {
+  async list(this: any, reqmatch?: ApiEntitiesPersonalAccessTokenListMatch, ctrl?: Control): Promise<ApiEntitiesPersonalAccessTokenEntity[]> {
 
     const utility = this._utility
 

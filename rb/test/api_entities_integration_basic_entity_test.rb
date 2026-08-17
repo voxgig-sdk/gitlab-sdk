@@ -33,7 +33,7 @@ class ApiEntitiesIntegrationBasicEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = GitlabConfig.make_config
+    cfg = GitlabConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = GitlabSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
@@ -94,7 +94,7 @@ class ApiEntitiesIntegrationBasicEntityTest < Minitest::Test
     api_entities_integration_basic_ref01_data_up0_up[api_entities_integration_basic_ref01_markdef_up0_name] = api_entities_integration_basic_ref01_markdef_up0_value
 
     api_entities_integration_basic_ref01_resdata_up0_result = api_entities_integration_basic_ref01_ent.update(api_entities_integration_basic_ref01_data_up0_up, nil)
-    api_entities_integration_basic_ref01_resdata_up0 = Helpers.to_map(api_entities_integration_basic_ref01_resdata_up0_result)
+    api_entities_integration_basic_ref01_resdata_up0 = Helpers.to_map(api_entities_integration_basic_ref01_resdata_up0_result.respond_to?(:data_get) ? api_entities_integration_basic_ref01_resdata_up0_result.data_get : api_entities_integration_basic_ref01_resdata_up0_result)
     assert !api_entities_integration_basic_ref01_resdata_up0.nil?
     assert_equal api_entities_integration_basic_ref01_resdata_up0["id"], api_entities_integration_basic_ref01_data_up0_up["id"]
     assert_equal api_entities_integration_basic_ref01_resdata_up0[api_entities_integration_basic_ref01_markdef_up0_name], api_entities_integration_basic_ref01_markdef_up0_value

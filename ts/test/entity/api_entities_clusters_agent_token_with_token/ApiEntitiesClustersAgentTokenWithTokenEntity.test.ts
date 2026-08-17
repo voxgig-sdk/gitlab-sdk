@@ -64,7 +64,7 @@ describe('ApiEntitiesClustersAgentTokenWithTokenEntity', async () => {
     api_entities_clusters_agent_token_with_token_ref01_data['cluster_agent_id'] = setup.idmap['cluster_agent01']
     api_entities_clusters_agent_token_with_token_ref01_data['project_id'] = setup.idmap['project01']
 
-    api_entities_clusters_agent_token_with_token_ref01_data = await api_entities_clusters_agent_token_with_token_ref01_ent.create(api_entities_clusters_agent_token_with_token_ref01_data)
+    api_entities_clusters_agent_token_with_token_ref01_data = (await api_entities_clusters_agent_token_with_token_ref01_ent.create(api_entities_clusters_agent_token_with_token_ref01_data)).data()
     assert(null != api_entities_clusters_agent_token_with_token_ref01_data)
 
 

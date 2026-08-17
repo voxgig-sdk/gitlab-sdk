@@ -51,7 +51,7 @@ func TestApiEntitiesContainerRegistryRepositoryEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -130,7 +130,7 @@ func TestApiEntitiesContainerRegistryRepositoryEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesContainerRegistryRepositoryRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesContainerRegistryRepositoryRef01DataDt0Loaded)
+		apiEntitiesContainerRegistryRepositoryRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesContainerRegistryRepositoryRef01DataDt0Loaded))
 		if apiEntitiesContainerRegistryRepositoryRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

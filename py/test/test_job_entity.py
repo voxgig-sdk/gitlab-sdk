@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -44,14 +44,14 @@ class TestJobEntity:
         job_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.job"), "job_ref01"))
 
-        job_ref01_data = helpers.to_map(job_ref01_ent.create(job_ref01_data, None))
+        job_ref01_data = helpers.to_map(runner.entity_data(job_ref01_ent.create(job_ref01_data, None)))
         assert job_ref01_data is not None
 
         # UPDATE
         job_ref01_data_up0_up = {
         }
 
-        job_ref01_resdata_up0 = helpers.to_map(job_ref01_ent.update(job_ref01_data_up0_up, None))
+        job_ref01_resdata_up0 = helpers.to_map(runner.entity_data(job_ref01_ent.update(job_ref01_data_up0_up, None)))
         assert job_ref01_resdata_up0 is not None
 
         # LOAD

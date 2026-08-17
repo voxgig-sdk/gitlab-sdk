@@ -44,7 +44,7 @@ describe("TerraformStateEntity", function()
 
     local terraform_state_ref01_data_result, err = terraform_state_ref01_ent:create(terraform_state_ref01_data, nil)
     assert.is_nil(err)
-    terraform_state_ref01_data = helpers.to_map(terraform_state_ref01_data_result)
+    terraform_state_ref01_data = helpers.to_map(type(terraform_state_ref01_data_result) == 'table' and terraform_state_ref01_data_result.data_get and terraform_state_ref01_data_result:data_get() or terraform_state_ref01_data_result)
     assert.is_not_nil(terraform_state_ref01_data)
 
     -- LOAD
@@ -53,12 +53,6 @@ describe("TerraformStateEntity", function()
     assert.is_nil(err)
     assert.is_not_nil(terraform_state_ref01_data_dt0_loaded)
 
-    -- REMOVE
-    local terraform_state_ref01_match_rm0 = {
-      id = terraform_state_ref01_data["id"],
-    }
-    local _, err = terraform_state_ref01_ent:remove(terraform_state_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

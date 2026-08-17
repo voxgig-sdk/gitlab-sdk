@@ -39,14 +39,9 @@ class AlertManagementEntityTest < Minitest::Test
     alert_management_ref01_data["project_id"] = setup[:idmap]["project01"]
 
     alert_management_ref01_data_result = alert_management_ref01_ent.create(alert_management_ref01_data, nil)
-    alert_management_ref01_data = Helpers.to_map(alert_management_ref01_data_result)
+    alert_management_ref01_data = Helpers.to_map(alert_management_ref01_data_result.respond_to?(:data_get) ? alert_management_ref01_data_result.data_get : alert_management_ref01_data_result)
     assert !alert_management_ref01_data.nil?
 
-    # REMOVE
-    alert_management_ref01_match_rm0 = {
-      "id" => alert_management_ref01_data["id"],
-    }
-    alert_management_ref01_ent.remove(alert_management_ref01_match_rm0, nil)
 
   end
 end

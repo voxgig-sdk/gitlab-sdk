@@ -15,7 +15,7 @@ require_relative "../Gitlab_sdk"
 module GitlabFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = GitlabConfig.make_config["feature"]
+    f = GitlabConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

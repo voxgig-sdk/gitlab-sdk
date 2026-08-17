@@ -52,7 +52,7 @@ func TestApiEntitiesBranchEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -108,9 +108,12 @@ func TestApiEntitiesBranchEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesBranchRef01Data = core.ToMapAny(apiEntitiesBranchRef01DataResult)
+		apiEntitiesBranchRef01Data = core.ToMapAny(entityData(apiEntitiesBranchRef01DataResult))
 		if apiEntitiesBranchRef01Data == nil {
 			t.Fatal("expected create result to be a map")
+		}
+		if apiEntitiesBranchRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
 		}
 
 		// LIST
@@ -134,10 +137,11 @@ func TestApiEntitiesBranchEntity(t *testing.T) {
 
 		// UPDATE
 		apiEntitiesBranchRef01DataUp0Up := map[string]any{
+			"id": apiEntitiesBranchRef01Data["id"],
 			"project_id": setup.idmap["project_id"],
 		}
 
-		apiEntitiesBranchRef01MarkdefUp0Name := "name"
+		apiEntitiesBranchRef01MarkdefUp0Name := "author_email"
 		apiEntitiesBranchRef01MarkdefUp0Value := fmt.Sprintf("Mark01-api_entities_branch_ref01_%d", setup.now)
 		apiEntitiesBranchRef01DataUp0Up[apiEntitiesBranchRef01MarkdefUp0Name] = apiEntitiesBranchRef01MarkdefUp0Value
 
@@ -145,22 +149,31 @@ func TestApiEntitiesBranchEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesBranchRef01ResdataUp0 := core.ToMapAny(apiEntitiesBranchRef01ResdataUp0Result)
+		apiEntitiesBranchRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesBranchRef01ResdataUp0Result))
 		if apiEntitiesBranchRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
+		}
+		if apiEntitiesBranchRef01ResdataUp0["id"] != apiEntitiesBranchRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
 		}
 		if apiEntitiesBranchRef01ResdataUp0[apiEntitiesBranchRef01MarkdefUp0Name] != apiEntitiesBranchRef01MarkdefUp0Value {
 			t.Fatalf("expected %s to be updated, got %v", apiEntitiesBranchRef01MarkdefUp0Name, apiEntitiesBranchRef01ResdataUp0[apiEntitiesBranchRef01MarkdefUp0Name])
 		}
 
 		// LOAD
-		apiEntitiesBranchRef01MatchDt0 := map[string]any{}
+		apiEntitiesBranchRef01MatchDt0 := map[string]any{
+			"id": apiEntitiesBranchRef01Data["id"],
+		}
 		apiEntitiesBranchRef01DataDt0Loaded, err := apiEntitiesBranchRef01Ent.Load(apiEntitiesBranchRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if apiEntitiesBranchRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		apiEntitiesBranchRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesBranchRef01DataDt0Loaded))
+		if apiEntitiesBranchRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if apiEntitiesBranchRef01DataDt0LoadResult["id"] != apiEntitiesBranchRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

@@ -60,7 +60,7 @@ func TestApiEntitiesGroupDetailEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesGroupDetailRef01Data = core.ToMapAny(apiEntitiesGroupDetailRef01DataResult)
+		apiEntitiesGroupDetailRef01Data = core.ToMapAny(entityData(apiEntitiesGroupDetailRef01DataResult))
 		if apiEntitiesGroupDetailRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -76,7 +76,7 @@ func TestApiEntitiesGroupDetailEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesGroupDetailRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesGroupDetailRef01DataDt0Loaded)
+		apiEntitiesGroupDetailRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesGroupDetailRef01DataDt0Loaded))
 		if apiEntitiesGroupDetailRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

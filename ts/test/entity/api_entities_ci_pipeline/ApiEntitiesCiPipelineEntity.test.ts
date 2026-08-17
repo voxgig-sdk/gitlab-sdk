@@ -63,7 +63,7 @@ describe('ApiEntitiesCiPipelineEntity', async () => {
     let api_entities_ci_pipeline_ref01_data = setup.data.new.api_entities_ci_pipeline['api_entities_ci_pipeline_ref01']
     api_entities_ci_pipeline_ref01_data['project_id'] = setup.idmap['project01']
 
-    api_entities_ci_pipeline_ref01_data = await api_entities_ci_pipeline_ref01_ent.create(api_entities_ci_pipeline_ref01_data)
+    api_entities_ci_pipeline_ref01_data = (await api_entities_ci_pipeline_ref01_ent.create(api_entities_ci_pipeline_ref01_data)).data()
     assert(null != api_entities_ci_pipeline_ref01_data)
 
 

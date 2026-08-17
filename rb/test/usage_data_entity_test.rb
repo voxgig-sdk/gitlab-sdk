@@ -37,7 +37,7 @@ class UsageDataEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.usage_data"), "usage_data_ref01"))
 
     usage_data_ref01_data_result = usage_data_ref01_ent.create(usage_data_ref01_data, nil)
-    usage_data_ref01_data = Helpers.to_map(usage_data_ref01_data_result)
+    usage_data_ref01_data = Helpers.to_map(usage_data_ref01_data_result.respond_to?(:data_get) ? usage_data_ref01_data_result.data_get : usage_data_ref01_data_result)
     assert !usage_data_ref01_data.nil?
 
     # LOAD

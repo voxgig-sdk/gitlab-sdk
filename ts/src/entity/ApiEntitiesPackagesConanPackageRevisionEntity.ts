@@ -37,7 +37,7 @@ class ApiEntitiesPackagesConanPackageRevisionEntity extends GitlabEntityBase<Api
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesPackagesConanPackageRevisionListMatch, ctrl?: Control): Promise<ApiEntitiesPackagesConanPackageRevision[]> {
+  async list(this: any, reqmatch?: ApiEntitiesPackagesConanPackageRevisionListMatch, ctrl?: Control): Promise<ApiEntitiesPackagesConanPackageRevisionEntity[]> {
 
     const utility = this._utility
 

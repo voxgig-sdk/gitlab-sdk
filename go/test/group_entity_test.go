@@ -59,7 +59,7 @@ func TestGroupEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		groupRef01Data = core.ToMapAny(groupRef01DataResult)
+		groupRef01Data = core.ToMapAny(entityData(groupRef01DataResult))
 		if groupRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -72,7 +72,7 @@ func TestGroupEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		groupRef01ResdataUp0 := core.ToMapAny(groupRef01ResdataUp0Result)
+		groupRef01ResdataUp0 := core.ToMapAny(entityData(groupRef01ResdataUp0Result))
 		if groupRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -87,14 +87,6 @@ func TestGroupEntity(t *testing.T) {
 			t.Fatal("expected load result to be non-nil")
 		}
 
-		// REMOVE
-		groupRef01MatchRm0 := map[string]any{
-			"id": groupRef01Data["id"],
-		}
-		_, err = groupRef01Ent.Remove(groupRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

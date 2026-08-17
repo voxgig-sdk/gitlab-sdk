@@ -68,7 +68,7 @@ func TestApiEntitiesClustersAgentTokenBasicEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesClustersAgentTokenBasicRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesClustersAgentTokenBasicRef01DataDt0Loaded)
+		apiEntitiesClustersAgentTokenBasicRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesClustersAgentTokenBasicRef01DataDt0Loaded))
 		if apiEntitiesClustersAgentTokenBasicRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

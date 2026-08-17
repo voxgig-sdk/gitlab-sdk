@@ -39,7 +39,7 @@ describe("ApiEntitiesCommitNoteEntity", function()
     assert.are.equal(3, #seen)
 
     -- Inbound: streaming active -> yields each item from the feature.
-    local config = require("config")()
+    local config = require("config_shared")()
     if type(config.feature) == "table" and config.feature.streaming ~= nil then
       local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
       local got = {}
@@ -84,8 +84,9 @@ describe("ApiEntitiesCommitNoteEntity", function()
 
     local api_entities_commit_note_ref01_data_result, err = api_entities_commit_note_ref01_ent:create(api_entities_commit_note_ref01_data, nil)
     assert.is_nil(err)
-    api_entities_commit_note_ref01_data = helpers.to_map(api_entities_commit_note_ref01_data_result)
+    api_entities_commit_note_ref01_data = helpers.to_map(type(api_entities_commit_note_ref01_data_result) == 'table' and api_entities_commit_note_ref01_data_result.data_get and api_entities_commit_note_ref01_data_result:data_get() or api_entities_commit_note_ref01_data_result)
     assert.is_not_nil(api_entities_commit_note_ref01_data)
+    assert.is_not_nil(api_entities_commit_note_ref01_data["id"])
 
     -- LIST
     local api_entities_commit_note_ref01_match = {

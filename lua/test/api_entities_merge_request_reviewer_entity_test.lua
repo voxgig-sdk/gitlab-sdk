@@ -44,10 +44,14 @@ describe("ApiEntitiesMergeRequestReviewerEntity", function()
 
     -- LOAD
     local api_entities_merge_request_reviewer_ref01_ent = client:ApiEntitiesMergeRequestReviewer(nil)
-    local api_entities_merge_request_reviewer_ref01_match_dt0 = {}
+    local api_entities_merge_request_reviewer_ref01_match_dt0 = {
+      id = api_entities_merge_request_reviewer_ref01_data["id"],
+    }
     local api_entities_merge_request_reviewer_ref01_data_dt0_loaded, err = api_entities_merge_request_reviewer_ref01_ent:load(api_entities_merge_request_reviewer_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(api_entities_merge_request_reviewer_ref01_data_dt0_loaded)
+    local api_entities_merge_request_reviewer_ref01_data_dt0_load_result = helpers.to_map(type(api_entities_merge_request_reviewer_ref01_data_dt0_loaded) == 'table' and api_entities_merge_request_reviewer_ref01_data_dt0_loaded.data_get and api_entities_merge_request_reviewer_ref01_data_dt0_loaded:data_get() or api_entities_merge_request_reviewer_ref01_data_dt0_loaded)
+    assert.is_not_nil(api_entities_merge_request_reviewer_ref01_data_dt0_load_result)
+    assert.are.equal(api_entities_merge_request_reviewer_ref01_data_dt0_load_result["id"], api_entities_merge_request_reviewer_ref01_data["id"])
 
   end)
 end)

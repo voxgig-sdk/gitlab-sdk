@@ -1306,7 +1306,7 @@ fmt.Println(apiEntitiesAccessRequester.GetName()) // "api_entities_access_reques
 | --- | --- | --- | --- |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
-| `custom_attribute` | `[]any` | No |  |
+| `custom_attributes` | `[]any` | No |  |
 | `id` | `int` | No |  |
 | `key` | `string` | No |  |
 | `locked` | `bool` | No |  |
@@ -1402,11 +1402,11 @@ fmt.Println(apiEntitiesAppearance.GetName()) // "api_entities_appearance"
 | `header_logo` | `string` | No |  |
 | `header_message` | `string` | No |  |
 | `logo` | `string` | No |  |
-| `member_guideline` | `string` | No |  |
+| `member_guidelines` | `string` | No |  |
 | `message_background_color` | `string` | No |  |
 | `message_font_color` | `string` | No |  |
-| `new_project_guideline` | `string` | No |  |
-| `profile_image_guideline` | `string` | No |  |
+| `new_project_guidelines` | `string` | No |  |
+| `profile_image_guidelines` | `string` | No |  |
 | `pwa_description` | `string` | No |  |
 | `pwa_icon` | `string` | No |  |
 | `pwa_name` | `string` | No |  |
@@ -1531,17 +1531,17 @@ fmt.Println(apiEntitiesApplicationStatistic.GetName()) // "api_entities_applicat
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_user` | `int` | No |  |
-| `fork` | `int` | No |  |
-| `group` | `int` | No |  |
-| `issue` | `int` | No |  |
-| `merge_request` | `int` | No |  |
-| `milestone` | `int` | No |  |
-| `note` | `int` | No |  |
-| `project` | `int` | No |  |
-| `snippet` | `int` | No |  |
-| `ssh_key` | `int` | No |  |
-| `user` | `int` | No |  |
+| `active_users` | `int` | No |  |
+| `forks` | `int` | No |  |
+| `groups` | `int` | No |  |
+| `issues` | `int` | No |  |
+| `merge_requests` | `int` | No |  |
+| `milestones` | `int` | No |  |
+| `notes` | `int` | No |  |
+| `projects` | `int` | No |  |
+| `snippets` | `int` | No |  |
+| `ssh_keys` | `int` | No |  |
+| `users` | `int` | No |  |
 
 ### Operations
 
@@ -1700,14 +1700,22 @@ fmt.Println(apiEntitiesAwardEmoji.GetName()) // "api_entities_award_emoji"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
 | `awardable_id` | `int` | No |  |
 | `awardable_type` | `string` | No |  |
 | `created_at` | `string` | No |  |
+| `custom_attributes` | `[]any` | No |  |
 | `id` | `int` | No |  |
+| `locked` | `bool` | No |  |
 | `name` | `string` | No |  |
+| `public_email` | `string` | No |  |
+| `state` | `string` | No |  |
 | `updated_at` | `string` | No |  |
 | `url` | `string` | No |  |
 | `user` | `map[string]any` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -1984,7 +1992,7 @@ fmt.Println(apiEntitiesBasicProjectDetail.GetName()) // "api_entities_basic_proj
 | --- | --- | --- | --- |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attribute` | `map[string]any` | No |  |
+| `custom_attributes` | `map[string]any` | No |  |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `forks_count` | `int` | No |  |
@@ -2003,7 +2011,7 @@ fmt.Println(apiEntitiesBasicProjectDetail.GetName()) // "api_entities_basic_proj
 | `ssh_url_to_repo` | `string` | No |  |
 | `star_count` | `int` | No |  |
 | `tag_list` | `[]any` | No |  |
-| `topic` | `[]any` | No |  |
+| `topics` | `[]any` | No |  |
 | `visibility` | `string` | No |  |
 | `web_url` | `string` | No |  |
 
@@ -2208,6 +2216,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.ApiEntitiesBatchedBackgroundMigration(nil).Update(map[string]any{
+    "id": "api_entities_batched_background_migration_id",
     "batched_background_migration_id": "batched_background_migration_id",
     // Fields to update
 }, nil)
@@ -2252,14 +2261,28 @@ fmt.Println(apiEntitiesBranch.GetName()) // "api_entities_branch"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `author_email` | `string` | No |  |
+| `author_name` | `string` | No |  |
+| `authored_date` | `string` | No |  |
 | `can_push` | `bool` | No |  |
 | `commit` | `map[string]any` | No |  |
+| `committed_date` | `string` | No |  |
+| `committer_email` | `string` | No |  |
+| `committer_name` | `string` | No |  |
+| `created_at` | `string` | No |  |
 | `default` | `bool` | No |  |
 | `developers_can_merge` | `bool` | No |  |
 | `developers_can_push` | `bool` | No |  |
+| `extended_trailers` | `map[string]any` | No |  |
+| `id` | `string` | No |  |
 | `merged` | `bool` | No |  |
+| `message` | `string` | No |  |
 | `name` | `string` | No |  |
+| `parent_ids` | `[]any` | No |  |
 | `protected` | `bool` | No |  |
+| `short_id` | `string` | No |  |
+| `title` | `string` | No |  |
+| `trailers` | `map[string]any` | No |  |
 | `web_url` | `string` | No |  |
 
 ### Operations
@@ -2308,6 +2331,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.ApiEntitiesBranch(nil).Update(map[string]any{
+    "id": "api_entities_branch_id",
     "branch_id": "branch_id",
     "project_id": "project_id",
     // Fields to update
@@ -2360,18 +2384,18 @@ fmt.Println(apiEntitiesBulkImport.GetName()) // "api_entities_bulk_import"
 | `destination_namespace` | `string` | No |  |
 | `destination_slug` | `string` | No |  |
 | `entity_type` | `string` | No |  |
-| `failure` | `[]any` | No |  |
-| `has_failure` | `bool` | No |  |
+| `failures` | `[]any` | No |  |
+| `has_failures` | `bool` | No |  |
 | `id` | `int` | No |  |
-| `migrate_membership` | `bool` | No |  |
-| `migrate_project` | `bool` | No |  |
+| `migrate_memberships` | `bool` | No |  |
+| `migrate_projects` | `bool` | No |  |
 | `namespace_id` | `int` | No |  |
 | `parent_id` | `int` | No |  |
 | `project_id` | `int` | No |  |
 | `source_full_path` | `string` | No |  |
 | `source_type` | `string` | No |  |
 | `source_url` | `string` | No |  |
-| `stat` | `map[string]any` | No |  |
+| `stats` | `map[string]any` | No |  |
 | `status` | `string` | No |  |
 | `updated_at` | `string` | No |  |
 
@@ -2505,8 +2529,8 @@ fmt.Println(apiEntitiesBulkImportsExportStatus.GetName()) // "api_entities_bulk_
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `batch` | `map[string]any` | No |  |
 | `batched` | `bool` | No |  |
+| `batches` | `map[string]any` | No |  |
 | `batches_count` | `int` | No |  |
 | `error` | `string` | No |  |
 | `relation` | `string` | No |  |
@@ -2563,7 +2587,7 @@ fmt.Println(apiEntitiesChangelog.GetName()) // "api_entities_changelog"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `note` | `string` | No |  |
+| `notes` | `string` | No |  |
 
 ### Operations
 
@@ -2734,7 +2758,7 @@ fmt.Println(apiEntitiesCiJob.GetName()) // "api_entities_ci_job"
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
 | `archived` | `bool` | No |  |
-| `artifact` | `[]any` | No |  |
+| `artifacts` | `[]any` | No |  |
 | `artifacts_expire_at` | `string` | No |  |
 | `artifacts_file` | `map[string]any` | No |  |
 | `commit` | `map[string]any` | No |  |
@@ -2998,16 +3022,16 @@ fmt.Println(apiEntitiesCiLintResult.GetName()) // "api_entities_ci_lint_result"
 | `blob` | `string` | No |  |
 | `context_project` | `string` | No |  |
 | `context_sha` | `string` | No |  |
-| `error` | `[]any` | No |  |
+| `errors` | `[]any` | No |  |
 | `extra` | `map[string]any` | No |  |
-| `include` | `[]any` | No |  |
-| `job` | `[]any` | No |  |
+| `includes` | `[]any` | No |  |
+| `jobs` | `[]any` | No |  |
 | `location` | `string` | No |  |
 | `merged_yaml` | `string` | No |  |
 | `raw` | `string` | No |  |
 | `type` | `string` | No |  |
 | `valid` | `bool` | No |  |
-| `warning` | `[]any` | No |  |
+| `warnings` | `[]any` | No |  |
 
 ### Operations
 
@@ -3197,7 +3221,7 @@ fmt.Println(apiEntitiesCiPipelineSchedule.GetName()) // "api_entities_ci_pipelin
 | `cron_timezone` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `input` | `map[string]any` | No |  |
+| `inputs` | `map[string]any` | No |  |
 | `next_run_at` | `string` | No |  |
 | `owner` | `map[string]any` | No |  |
 | `ref` | `string` | No |  |
@@ -3258,13 +3282,13 @@ fmt.Println(apiEntitiesCiPipelineScheduleDetail.GetName()) // "api_entities_ci_p
 | `cron_timezone` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `input` | `map[string]any` | No |  |
+| `inputs` | `map[string]any` | No |  |
 | `last_pipeline` | `map[string]any` | No |  |
 | `next_run_at` | `string` | No |  |
 | `owner` | `map[string]any` | No |  |
 | `ref` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `variable` | `map[string]any` | No |  |
+| `variables` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -3474,19 +3498,16 @@ fmt.Println(apiEntitiesCiRunner.GetName()) // "api_entities_ci_runner"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active` | `bool` | No |  |
-| `created_at` | `string` | No |  |
-| `created_by` | `map[string]any` | No |  |
-| `description` | `string` | No |  |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
+| `custom_attributes` | `[]any` | No |  |
 | `id` | `int` | No |  |
-| `ip_address` | `string` | No |  |
-| `is_shared` | `bool` | No |  |
-| `job_execution_status` | `string` | No |  |
+| `locked` | `bool` | No |  |
 | `name` | `string` | No |  |
-| `online` | `bool` | No |  |
-| `paused` | `bool` | No |  |
-| `runner_type` | `string` | No |  |
-| `status` | `string` | No |  |
+| `public_email` | `string` | No |  |
+| `state` | `string` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -3558,7 +3579,7 @@ fmt.Println(apiEntitiesCiRunnerDetail.GetName()) // "api_entities_ci_runner_deta
 | `created_at` | `string` | No |  |
 | `created_by` | `map[string]any` | No |  |
 | `description` | `string` | No |  |
-| `group` | `map[string]any` | No |  |
+| `groups` | `map[string]any` | No |  |
 | `id` | `int` | No |  |
 | `ip_address` | `string` | No |  |
 | `is_shared` | `bool` | No |  |
@@ -3570,7 +3591,7 @@ fmt.Println(apiEntitiesCiRunnerDetail.GetName()) // "api_entities_ci_runner_deta
 | `online` | `bool` | No |  |
 | `paused` | `bool` | No |  |
 | `platform` | `string` | No |  |
-| `project` | `map[string]any` | No |  |
+| `projects` | `map[string]any` | No |  |
 | `revision` | `string` | No |  |
 | `run_untagged` | `string` | No |  |
 | `runner_type` | `string` | No |  |
@@ -3745,19 +3766,6 @@ apiEntitiesCiSecureFile := client.ApiEntitiesCiSecureFile(nil)
 fmt.Println(apiEntitiesCiSecureFile.GetName()) // "api_entities_ci_secure_file"
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `checksum` | `string` | No |  |
-| `checksum_algorithm` | `string` | No |  |
-| `created_at` | `string` | No |  |
-| `expires_at` | `string` | No |  |
-| `file_extension` | `string` | No |  |
-| `id` | `int` | No |  |
-| `metadata` | `map[string]any` | No |  |
-| `name` | `string` | No |  |
-
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -3930,7 +3938,7 @@ fmt.Println(apiEntitiesCluster.GetName()) // "api_entities_cluster"
 | `management_project` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
 | `namespace_per_environment` | `string` | No |  |
-| `platform_kubernete` | `map[string]any` | No |  |
+| `platform_kubernetes` | `map[string]any` | No |  |
 | `platform_type` | `string` | No |  |
 | `provider_gcp` | `map[string]any` | No |  |
 | `provider_type` | `string` | No |  |
@@ -4036,7 +4044,7 @@ fmt.Println(apiEntitiesClusterGroup.GetName()) // "api_entities_cluster_group"
 | `management_project` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
 | `namespace_per_environment` | `string` | No |  |
-| `platform_kubernete` | `map[string]any` | No |  |
+| `platform_kubernetes` | `map[string]any` | No |  |
 | `platform_type` | `string` | No |  |
 | `provider_gcp` | `map[string]any` | No |  |
 | `provider_type` | `string` | No |  |
@@ -4131,7 +4139,7 @@ fmt.Println(apiEntitiesClusterProject.GetName()) // "api_entities_cluster_projec
 | `management_project` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
 | `namespace_per_environment` | `string` | No |  |
-| `platform_kubernete` | `map[string]any` | No |  |
+| `platform_kubernetes` | `map[string]any` | No |  |
 | `platform_type` | `string` | No |  |
 | `project` | `map[string]any` | No |  |
 | `provider_gcp` | `map[string]any` | No |  |
@@ -4217,12 +4225,13 @@ fmt.Println(apiEntitiesClustersAgent.GetName()) // "api_entities_clusters_agent"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `config_project` | `map[string]any` | No |  |
 | `created_at` | `string` | No |  |
-| `created_by_user_id` | `string` | No |  |
-| `id` | `string` | No |  |
-| `is_receptive` | `bool` | No |  |
+| `description` | `string` | No |  |
+| `id` | `int` | No |  |
 | `name` | `string` | No |  |
+| `name_with_namespace` | `string` | No |  |
+| `path` | `string` | No |  |
+| `path_with_namespace` | `string` | No |  |
 
 ### Operations
 
@@ -4457,13 +4466,13 @@ fmt.Println(apiEntitiesCommit.GetName()) // "api_entities_commit"
 | `committer_email` | `string` | No |  |
 | `committer_name` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `extended_trailer` | `map[string]any` | No |  |
+| `extended_trailers` | `map[string]any` | No |  |
 | `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `parent_id` | `[]any` | No |  |
+| `parent_ids` | `[]any` | No |  |
 | `short_id` | `string` | No |  |
 | `title` | `string` | No |  |
-| `trailer` | `map[string]any` | No |  |
+| `trailers` | `map[string]any` | No |  |
 | `web_url` | `string` | No |  |
 
 ### Operations
@@ -4536,17 +4545,17 @@ fmt.Println(apiEntitiesCommitDetail.GetName()) // "api_entities_commit_detail"
 | `committer_email` | `string` | No |  |
 | `committer_name` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `extended_trailer` | `map[string]any` | No |  |
+| `extended_trailers` | `map[string]any` | No |  |
 | `id` | `string` | No |  |
 | `last_pipeline` | `map[string]any` | No |  |
 | `message` | `string` | No |  |
-| `parent_id` | `[]any` | No |  |
+| `parent_ids` | `[]any` | No |  |
 | `project_id` | `int` | No |  |
 | `short_id` | `string` | No |  |
-| `stat` | `map[string]any` | No |  |
+| `stats` | `map[string]any` | No |  |
 | `status` | `string` | No |  |
 | `title` | `string` | No |  |
-| `trailer` | `map[string]any` | No |  |
+| `trailers` | `map[string]any` | No |  |
 | `web_url` | `string` | No |  |
 
 ### Operations
@@ -4629,11 +4638,21 @@ fmt.Println(apiEntitiesCommitNote.GetName()) // "api_entities_commit_note"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `author` | `map[string]any` | No |  |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
+| `custom_attributes` | `[]any` | No |  |
+| `id` | `int` | No |  |
 | `line` | `int` | No |  |
 | `line_type` | `string` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `string` | No |  |
 | `note` | `string` | No |  |
 | `path` | `string` | No |  |
+| `public_email` | `string` | No |  |
+| `state` | `string` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -4805,18 +4824,26 @@ fmt.Println(apiEntitiesCommitStatus.GetName()) // "api_entities_commit_status"
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
 | `author` | `map[string]any` | No |  |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
 | `coverage` | `float64` | No |  |
 | `created_at` | `string` | No |  |
+| `custom_attributes` | `[]any` | No |  |
 | `description` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `int` | No |  |
+| `locked` | `bool` | No |  |
 | `name` | `string` | No |  |
 | `pipeline_id` | `int` | No |  |
+| `public_email` | `string` | No |  |
 | `ref` | `string` | No |  |
 | `sha` | `string` | No |  |
 | `started_at` | `string` | No |  |
+| `state` | `string` | No |  |
 | `status` | `string` | No |  |
 | `target_url` | `string` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -4883,9 +4910,10 @@ fmt.Println(apiEntitiesCompare.GetName()) // "api_entities_compare"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `commit` | `map[string]any` | No |  |
+| `commits` | `[]any` | No |  |
 | `compare_same_ref` | `bool` | No |  |
 | `compare_timeout` | `bool` | No |  |
-| `diff` | `[]any` | No |  |
+| `diffs` | `[]any` | No |  |
 | `web_url` | `string` | No |  |
 
 ### Operations
@@ -4947,7 +4975,7 @@ fmt.Println(apiEntitiesContainerRegistryRepository.GetName()) // "api_entities_c
 | `project_id` | `int` | No |  |
 | `size` | `int` | No |  |
 | `status` | `string` | No |  |
-| `tag` | `map[string]any` | No |  |
+| `tags` | `map[string]any` | No |  |
 | `tags_count` | `int` | No |  |
 
 ### Operations
@@ -5122,9 +5150,9 @@ fmt.Println(apiEntitiesContributor.GetName()) // "api_entities_contributor"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addition` | `int` | No |  |
-| `commit` | `int` | No |  |
-| `deletion` | `int` | No |  |
+| `additions` | `int` | No |  |
+| `commits` | `int` | No |  |
+| `deletions` | `int` | No |  |
 | `email` | `string` | No |  |
 | `name` | `string` | No |  |
 
@@ -5360,7 +5388,7 @@ fmt.Println(apiEntitiesDeployToken.GetName()) // "api_entities_deploy_token"
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `[]any` | No |  |
+| `scopes` | `[]any` | No |  |
 | `username` | `string` | No |  |
 
 ### Operations
@@ -5530,8 +5558,8 @@ fmt.Println(apiEntitiesDeploymentExtended.GetName()) // "api_entities_deployment
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `approval` | `map[string]any` | No |  |
 | `approval_summary` | `map[string]any` | No |  |
+| `approvals` | `map[string]any` | No |  |
 | `created_at` | `string` | No |  |
 | `deployable` | `map[string]any` | No |  |
 | `environment` | `map[string]any` | No |  |
@@ -5671,7 +5699,7 @@ fmt.Println(apiEntitiesDictionaryTable.GetName()) // "api_entities_dictionary_ta
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `feature_category` | `[]any` | No |  |
+| `feature_categories` | `[]any` | No |  |
 | `table_name` | `string` | No |  |
 
 ### Operations
@@ -5796,8 +5824,8 @@ fmt.Println(apiEntitiesDiscoveredCluster.GetName()) // "api_entities_discovered_
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `group` | `string` | No |  |
-| `project` | `string` | No |  |
+| `groups` | `string` | No |  |
+| `projects` | `string` | No |  |
 
 ### Operations
 
@@ -6276,7 +6304,7 @@ fmt.Println(apiEntitiesFeature.GetName()) // "api_entities_feature"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `definition` | `map[string]any` | No |  |
-| `gate` | `map[string]any` | No |  |
+| `gates` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
 | `state` | `string` | No |  |
 
@@ -6348,7 +6376,7 @@ fmt.Println(apiEntitiesFeatureDefinition.GetName()) // "api_entities_feature_def
 | `group` | `string` | No |  |
 | `intended_to_rollout_by` | `string` | No |  |
 | `introduced_by_url` | `string` | No |  |
-| `log_state_change` | `string` | No |  |
+| `log_state_changes` | `string` | No |  |
 | `milestone` | `string` | No |  |
 | `name` | `string` | No |  |
 | `rollout_issue_url` | `string` | No |  |
@@ -6406,10 +6434,13 @@ fmt.Println(apiEntitiesFeatureFlag.GetName()) // "api_entities_feature_flag"
 | `active` | `bool` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
+| `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `scope` | `string` | No |  |
-| `strategy` | `map[string]any` | No |  |
+| `parameters` | `string` | No |  |
+| `scopes` | `map[string]any` | No |  |
+| `strategies` | `map[string]any` | No |  |
 | `updated_at` | `string` | No |  |
+| `user_list` | `map[string]any` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations
@@ -6511,7 +6542,7 @@ fmt.Println(apiEntitiesFeatureFlagUserList.GetName()) // "api_entities_feature_f
 | `path` | `string` | No |  |
 | `project_id` | `int` | No |  |
 | `updated_at` | `string` | No |  |
-| `user_xid` | `string` | No |  |
+| `user_xids` | `string` | No |  |
 
 ### Operations
 
@@ -6755,8 +6786,8 @@ fmt.Println(apiEntitiesGoModuleVersion.GetName()) // "api_entities_go_module_ver
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `time` | `string` | No |  |
-| `version` | `string` | No |  |
+| `Time` | `string` | No |  |
+| `Version` | `string` | No |  |
 
 ### Operations
 
@@ -6812,10 +6843,10 @@ fmt.Println(apiEntitiesGroup.GetName()) // "api_entities_group"
 | `auto_duo_code_review_enabled` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attribute` | `map[string]any` | No |  |
+| `custom_attributes` | `map[string]any` | No |  |
 | `default_branch` | `string` | No |  |
 | `default_branch_protection` | `string` | No |  |
-| `default_branch_protection_default` | `string` | No |  |
+| `default_branch_protection_defaults` | `string` | No |  |
 | `description` | `string` | No |  |
 | `duo_core_features_enabled` | `bool` | No |  |
 | `duo_features_enabled` | `string` | No |  |
@@ -6827,7 +6858,7 @@ fmt.Println(apiEntitiesGroup.GetName()) // "api_entities_group"
 | `id` | `string` | No |  |
 | `ldap_access` | `string` | No |  |
 | `ldap_cn` | `string` | No |  |
-| `ldap_group_link` | `map[string]any` | No |  |
+| `ldap_group_links` | `map[string]any` | No |  |
 | `lfs_enabled` | `string` | No |  |
 | `lock_duo_features_enabled` | `string` | No |  |
 | `lock_math_rendering_limits_enabled` | `bool` | No |  |
@@ -6843,12 +6874,12 @@ fmt.Println(apiEntitiesGroup.GetName()) // "api_entities_group"
 | `repository_storage` | `string` | No |  |
 | `request_access_enabled` | `string` | No |  |
 | `require_two_factor_authentication` | `string` | No |  |
-| `root_storage_statistic` | `map[string]any` | No |  |
-| `saml_group_link` | `map[string]any` | No |  |
+| `root_storage_statistics` | `map[string]any` | No |  |
+| `saml_group_links` | `map[string]any` | No |  |
 | `share_with_group_lock` | `string` | No |  |
 | `shared_runners_setting` | `string` | No |  |
 | `show_diff_preview_in_email` | `bool` | No |  |
-| `statistic` | `map[string]any` | No |  |
+| `statistics` | `map[string]any` | No |  |
 | `subgroup_creation_level` | `string` | No |  |
 | `two_factor_grace_period` | `string` | No |  |
 | `visibility` | `string` | No |  |
@@ -6952,10 +6983,10 @@ fmt.Println(apiEntitiesGroupDetail.GetName()) // "api_entities_group_detail"
 | `auto_duo_code_review_enabled` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attribute` | `map[string]any` | No |  |
+| `custom_attributes` | `map[string]any` | No |  |
 | `default_branch` | `string` | No |  |
 | `default_branch_protection` | `string` | No |  |
-| `default_branch_protection_default` | `string` | No |  |
+| `default_branch_protection_defaults` | `string` | No |  |
 | `description` | `string` | No |  |
 | `duo_core_features_enabled` | `bool` | No |  |
 | `duo_features_enabled` | `string` | No |  |
@@ -6967,10 +6998,10 @@ fmt.Println(apiEntitiesGroupDetail.GetName()) // "api_entities_group_detail"
 | `full_name` | `string` | No |  |
 | `full_path` | `string` | No |  |
 | `id` | `string` | No |  |
-| `ip_restriction_range` | `string` | No |  |
+| `ip_restriction_ranges` | `string` | No |  |
 | `ldap_access` | `string` | No |  |
 | `ldap_cn` | `string` | No |  |
-| `ldap_group_link` | `map[string]any` | No |  |
+| `ldap_group_links` | `map[string]any` | No |  |
 | `lfs_enabled` | `string` | No |  |
 | `lock_duo_features_enabled` | `string` | No |  |
 | `lock_math_rendering_limits_enabled` | `bool` | No |  |
@@ -6985,28 +7016,28 @@ fmt.Println(apiEntitiesGroupDetail.GetName()) // "api_entities_group_detail"
 | `path` | `string` | No |  |
 | `prevent_forking_outside_group` | `string` | No |  |
 | `prevent_sharing_groups_outside_hierarchy` | `string` | No |  |
-| `project` | `map[string]any` | No |  |
 | `project_creation_level` | `string` | No |  |
+| `projects` | `map[string]any` | No |  |
 | `repository_storage` | `string` | No |  |
 | `request_access_enabled` | `string` | No |  |
 | `require_two_factor_authentication` | `string` | No |  |
-| `root_storage_statistic` | `map[string]any` | No |  |
+| `root_storage_statistics` | `map[string]any` | No |  |
 | `runners_token` | `string` | No |  |
-| `saml_group_link` | `map[string]any` | No |  |
+| `saml_group_links` | `map[string]any` | No |  |
 | `service_access_tokens_expiration_enforced` | `string` | No |  |
 | `share_with_group_lock` | `string` | No |  |
-| `shared_project` | `map[string]any` | No |  |
+| `shared_projects` | `map[string]any` | No |  |
 | `shared_runners_minutes_limit` | `string` | No |  |
 | `shared_runners_setting` | `string` | No |  |
-| `shared_with_group` | `string` | No |  |
+| `shared_with_groups` | `string` | No |  |
 | `show_diff_preview_in_email` | `bool` | No |  |
-| `statistic` | `map[string]any` | No |  |
+| `statistics` | `map[string]any` | No |  |
 | `subgroup_creation_level` | `string` | No |  |
 | `two_factor_grace_period` | `string` | No |  |
 | `unique_project_download_limit` | `string` | No |  |
 | `unique_project_download_limit_alertlist` | `string` | No |  |
 | `unique_project_download_limit_allowlist` | `string` | No |  |
-| `unique_project_download_limit_interval_in_second` | `string` | No |  |
+| `unique_project_download_limit_interval_in_seconds` | `string` | No |  |
 | `visibility` | `string` | No |  |
 | `web_based_commit_signing_enabled` | `string` | No |  |
 | `web_url` | `string` | No |  |
@@ -7078,20 +7109,20 @@ fmt.Println(apiEntitiesHook.GetName()) // "api_entities_hook"
 | `alert_status` | `any` | No |  |
 | `branch_filter_strategy` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_header` | `[]any` | No |  |
+| `custom_headers` | `[]any` | No |  |
 | `custom_webhook_template` | `string` | No |  |
 | `description` | `string` | No |  |
 | `disabled_until` | `string` | No |  |
 | `enable_ssl_verification` | `bool` | No |  |
 | `id` | `string` | No |  |
-| `merge_requests_event` | `bool` | No |  |
+| `merge_requests_events` | `bool` | No |  |
 | `name` | `string` | No |  |
-| `push_event` | `bool` | No |  |
+| `push_events` | `bool` | No |  |
 | `push_events_branch_filter` | `string` | No |  |
-| `repository_update_event` | `bool` | No |  |
-| `tag_push_event` | `bool` | No |  |
+| `repository_update_events` | `bool` | No |  |
+| `tag_push_events` | `bool` | No |  |
 | `url` | `string` | No |  |
-| `url_variable` | `[]any` | No |  |
+| `url_variables` | `[]any` | No |  |
 
 ### Operations
 
@@ -7178,35 +7209,6 @@ apiEntitiesIntegration := client.ApiEntitiesIntegration(nil)
 fmt.Println(apiEntitiesIntegration.GetName()) // "api_entities_integration"
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `active` | `bool` | No |  |
-| `alert_event` | `bool` | No |  |
-| `comment_on_event_enabled` | `bool` | No |  |
-| `commit_event` | `bool` | No |  |
-| `confidential_issues_event` | `bool` | No |  |
-| `confidential_note_event` | `bool` | No |  |
-| `created_at` | `string` | No |  |
-| `deployment_event` | `bool` | No |  |
-| `id` | `int` | No |  |
-| `incident_event` | `bool` | No |  |
-| `inherited` | `bool` | No |  |
-| `issues_event` | `bool` | No |  |
-| `job_event` | `bool` | No |  |
-| `merge_requests_event` | `bool` | No |  |
-| `note_event` | `bool` | No |  |
-| `pipeline_event` | `bool` | No |  |
-| `property` | `map[string]any` | No |  |
-| `push_event` | `bool` | No |  |
-| `slug` | `int` | No |  |
-| `tag_push_event` | `bool` | No |  |
-| `title` | `string` | No |  |
-| `updated_at` | `string` | No |  |
-| `vulnerability_event` | `bool` | No |  |
-| `wiki_page_event` | `bool` | No |  |
-
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -7257,28 +7259,28 @@ fmt.Println(apiEntitiesIntegrationBasic.GetName()) // "api_entities_integration_
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `active` | `bool` | No |  |
-| `alert_event` | `bool` | No |  |
+| `alert_events` | `bool` | No |  |
 | `comment_on_event_enabled` | `bool` | No |  |
-| `commit_event` | `bool` | No |  |
-| `confidential_issues_event` | `bool` | No |  |
-| `confidential_note_event` | `bool` | No |  |
+| `commit_events` | `bool` | No |  |
+| `confidential_issues_events` | `bool` | No |  |
+| `confidential_note_events` | `bool` | No |  |
 | `created_at` | `string` | No |  |
-| `deployment_event` | `bool` | No |  |
+| `deployment_events` | `bool` | No |  |
 | `id` | `int` | No |  |
-| `incident_event` | `bool` | No |  |
+| `incident_events` | `bool` | No |  |
 | `inherited` | `bool` | No |  |
-| `issues_event` | `bool` | No |  |
-| `job_event` | `bool` | No |  |
-| `merge_requests_event` | `bool` | No |  |
-| `note_event` | `bool` | No |  |
-| `pipeline_event` | `bool` | No |  |
-| `push_event` | `bool` | No |  |
+| `issues_events` | `bool` | No |  |
+| `job_events` | `bool` | No |  |
+| `merge_requests_events` | `bool` | No |  |
+| `note_events` | `bool` | No |  |
+| `pipeline_events` | `bool` | No |  |
+| `push_events` | `bool` | No |  |
 | `slug` | `int` | No |  |
-| `tag_push_event` | `bool` | No |  |
+| `tag_push_events` | `bool` | No |  |
 | `title` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `vulnerability_event` | `bool` | No |  |
-| `wiki_page_event` | `bool` | No |  |
+| `vulnerability_events` | `bool` | No |  |
+| `wiki_page_events` | `bool` | No |  |
 
 ### Operations
 
@@ -7497,6 +7499,7 @@ fmt.Println(apiEntitiesIssue.GetName()) // "api_entities_issue"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `assignee` | `map[string]any` | No |  |
+| `assignees` | `map[string]any` | No |  |
 | `author` | `map[string]any` | No |  |
 | `blocking_issues_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
@@ -7505,11 +7508,11 @@ fmt.Println(apiEntitiesIssue.GetName()) // "api_entities_issue"
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `discussion_locked` | `bool` | No |  |
-| `downvote` | `string` | No |  |
+| `downvotes` | `string` | No |  |
 | `due_date` | `string` | No |  |
 | `epic` | `map[string]any` | No |  |
 | `epic_iid` | `string` | No |  |
-| `has_task` | `bool` | No |  |
+| `has_tasks` | `bool` | No |  |
 | `health_status` | `string` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
@@ -7517,24 +7520,24 @@ fmt.Println(apiEntitiesIssue.GetName()) // "api_entities_issue"
 | `imported_from` | `string` | No |  |
 | `issue_type` | `string` | No |  |
 | `iteration` | `map[string]any` | No |  |
-| `label` | `[]any` | No |  |
-| `link` | `map[string]any` | No |  |
+| `labels` | `[]any` | No |  |
+| `links` | `map[string]any` | No |  |
 | `merge_requests_count` | `string` | No |  |
 | `milestone` | `map[string]any` | No |  |
 | `moved_to_id` | `string` | No |  |
 | `project_id` | `int` | No |  |
-| `reference` | `map[string]any` | No |  |
+| `references` | `map[string]any` | No |  |
 | `service_desk_reply_to` | `string` | No |  |
 | `severity` | `string` | No |  |
 | `state` | `string` | No |  |
 | `subscribed` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
 | `task_status` | `string` | No |  |
-| `time_stat` | `map[string]any` | No |  |
+| `time_stats` | `map[string]any` | No |  |
 | `title` | `string` | No |  |
 | `type` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `upvote` | `string` | No |  |
+| `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
 | `web_url` | `string` | No |  |
 | `weight` | `string` | No |  |
@@ -7698,15 +7701,15 @@ fmt.Println(apiEntitiesLicense.GetName()) // "api_entities_license"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condition` | `[]any` | No |  |
+| `conditions` | `[]any` | No |  |
 | `content` | `string` | No |  |
 | `description` | `string` | No |  |
 | `html_url` | `string` | No |  |
 | `key` | `string` | No |  |
-| `limitation` | `[]any` | No |  |
+| `limitations` | `[]any` | No |  |
 | `name` | `string` | No |  |
 | `nickname` | `string` | No |  |
-| `permission` | `[]any` | No |  |
+| `permissions` | `[]any` | No |  |
 | `popular` | `bool` | No |  |
 | `source_url` | `string` | No |  |
 
@@ -7865,7 +7868,7 @@ fmt.Println(apiEntitiesMember.GetName()) // "api_entities_member"
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `created_by` | `map[string]any` | No |  |
-| `custom_attribute` | `[]any` | No |  |
+| `custom_attributes` | `[]any` | No |  |
 | `email` | `string` | No |  |
 | `expires_at` | `string` | No |  |
 | `group_saml_identity` | `map[string]any` | No |  |
@@ -7989,6 +7992,7 @@ fmt.Println(apiEntitiesMerge.GetName()) // "api_entities_merge"
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `string` | No |  |
 | `assignee` | `map[string]any` | No |  |
+| `assignees` | `map[string]any` | No |  |
 | `author` | `map[string]any` | No |  |
 | `blocking_discussions_resolved` | `string` | No |  |
 | `changes_count` | `string` | No |  |
@@ -7998,21 +8002,21 @@ fmt.Println(apiEntitiesMerge.GetName()) // "api_entities_merge"
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
 | `detailed_merge_status` | `string` | No |  |
-| `diff_ref` | `map[string]any` | No |  |
+| `diff_refs` | `map[string]any` | No |  |
 | `discussion_locked` | `string` | No |  |
 | `diverged_commits_count` | `string` | No |  |
-| `downvote` | `string` | No |  |
+| `downvotes` | `string` | No |  |
 | `draft` | `string` | No |  |
 | `first_contribution` | `string` | No |  |
 | `first_deployed_to_production_at` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
-| `has_conflict` | `bool` | No |  |
+| `has_conflicts` | `bool` | No |  |
 | `head_pipeline` | `map[string]any` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `string` | No |  |
 | `imported_from` | `string` | No |  |
-| `label` | `string` | No |  |
+| `labels` | `string` | No |  |
 | `latest_build_finished_at` | `string` | No |  |
 | `latest_build_started_at` | `string` | No |  |
 | `merge_after` | `string` | No |  |
@@ -8020,7 +8024,7 @@ fmt.Println(apiEntitiesMerge.GetName()) // "api_entities_merge"
 | `merge_error` | `string` | No |  |
 | `merge_status` | `string` | No |  |
 | `merge_user` | `map[string]any` | No |  |
-| `merge_when_pipeline_succeed` | `string` | No |  |
+| `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
 | `merged_by` | `map[string]any` | No |  |
 | `milestone` | `map[string]any` | No |  |
@@ -8029,7 +8033,8 @@ fmt.Println(apiEntitiesMerge.GetName()) // "api_entities_merge"
 | `project_id` | `int` | No |  |
 | `rebase_in_progress` | `string` | No |  |
 | `reference` | `string` | No |  |
-| `reviewer` | `map[string]any` | No |  |
+| `references` | `map[string]any` | No |  |
+| `reviewers` | `map[string]any` | No |  |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `string` | No |  |
@@ -8042,11 +8047,11 @@ fmt.Println(apiEntitiesMerge.GetName()) // "api_entities_merge"
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stat` | `map[string]any` | No |  |
+| `time_stats` | `map[string]any` | No |  |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `upvote` | `string` | No |  |
+| `upvotes` | `string` | No |  |
 | `user` | `map[string]any` | No |  |
 | `user_notes_count` | `string` | No |  |
 | `web_url` | `string` | No |  |
@@ -8130,10 +8135,8 @@ fmt.Println(apiEntitiesMergeRequestApproval.GetName()) // "api_entities_merge_re
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `approved` | `bool` | No |  |
-| `approved_by` | `map[string]any` | No |  |
-| `user_can_approve` | `bool` | No |  |
-| `user_has_approved` | `bool` | No |  |
+| `approved_at` | `string` | No |  |
+| `user` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -8203,6 +8206,7 @@ fmt.Println(apiEntitiesMergeRequestBasic.GetName()) // "api_entities_merge_reque
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `string` | No |  |
 | `assignee` | `map[string]any` | No |  |
+| `assignees` | `map[string]any` | No |  |
 | `author` | `map[string]any` | No |  |
 | `blocking_discussions_resolved` | `string` | No |  |
 | `closed_at` | `string` | No |  |
@@ -8212,27 +8216,28 @@ fmt.Println(apiEntitiesMergeRequestBasic.GetName()) // "api_entities_merge_reque
 | `description_html` | `string` | No |  |
 | `detailed_merge_status` | `string` | No |  |
 | `discussion_locked` | `string` | No |  |
-| `downvote` | `string` | No |  |
+| `downvotes` | `string` | No |  |
 | `draft` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
-| `has_conflict` | `bool` | No |  |
+| `has_conflicts` | `bool` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `string` | No |  |
 | `imported_from` | `string` | No |  |
-| `label` | `string` | No |  |
+| `labels` | `string` | No |  |
 | `merge_after` | `string` | No |  |
 | `merge_commit_sha` | `string` | No |  |
 | `merge_status` | `string` | No |  |
 | `merge_user` | `map[string]any` | No |  |
-| `merge_when_pipeline_succeed` | `string` | No |  |
+| `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
 | `merged_by` | `map[string]any` | No |  |
 | `milestone` | `map[string]any` | No |  |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `int` | No |  |
 | `reference` | `string` | No |  |
-| `reviewer` | `map[string]any` | No |  |
+| `references` | `map[string]any` | No |  |
+| `reviewers` | `map[string]any` | No |  |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `string` | No |  |
@@ -8244,11 +8249,11 @@ fmt.Println(apiEntitiesMergeRequestBasic.GetName()) // "api_entities_merge_reque
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stat` | `map[string]any` | No |  |
+| `time_stats` | `map[string]any` | No |  |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `upvote` | `string` | No |  |
+| `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
 | `web_url` | `string` | No |  |
 | `work_in_progress` | `string` | No |  |
@@ -8318,9 +8323,10 @@ fmt.Println(apiEntitiesMergeRequestChange.GetName()) // "api_entities_merge_requ
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `string` | No |  |
 | `assignee` | `map[string]any` | No |  |
+| `assignees` | `map[string]any` | No |  |
 | `author` | `map[string]any` | No |  |
 | `blocking_discussions_resolved` | `string` | No |  |
-| `change` | `map[string]any` | No |  |
+| `changes` | `map[string]any` | No |  |
 | `changes_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
 | `closed_by` | `map[string]any` | No |  |
@@ -8328,21 +8334,21 @@ fmt.Println(apiEntitiesMergeRequestChange.GetName()) // "api_entities_merge_requ
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
 | `detailed_merge_status` | `string` | No |  |
-| `diff_ref` | `map[string]any` | No |  |
+| `diff_refs` | `map[string]any` | No |  |
 | `discussion_locked` | `string` | No |  |
 | `diverged_commits_count` | `string` | No |  |
-| `downvote` | `string` | No |  |
+| `downvotes` | `string` | No |  |
 | `draft` | `string` | No |  |
 | `first_contribution` | `string` | No |  |
 | `first_deployed_to_production_at` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
-| `has_conflict` | `bool` | No |  |
+| `has_conflicts` | `bool` | No |  |
 | `head_pipeline` | `map[string]any` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `string` | No |  |
 | `imported_from` | `string` | No |  |
-| `label` | `string` | No |  |
+| `labels` | `string` | No |  |
 | `latest_build_finished_at` | `string` | No |  |
 | `latest_build_started_at` | `string` | No |  |
 | `merge_after` | `string` | No |  |
@@ -8350,7 +8356,7 @@ fmt.Println(apiEntitiesMergeRequestChange.GetName()) // "api_entities_merge_requ
 | `merge_error` | `string` | No |  |
 | `merge_status` | `string` | No |  |
 | `merge_user` | `map[string]any` | No |  |
-| `merge_when_pipeline_succeed` | `string` | No |  |
+| `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
 | `merged_by` | `map[string]any` | No |  |
 | `milestone` | `map[string]any` | No |  |
@@ -8360,7 +8366,8 @@ fmt.Println(apiEntitiesMergeRequestChange.GetName()) // "api_entities_merge_requ
 | `project_id` | `int` | No |  |
 | `rebase_in_progress` | `string` | No |  |
 | `reference` | `string` | No |  |
-| `reviewer` | `map[string]any` | No |  |
+| `references` | `map[string]any` | No |  |
+| `reviewers` | `map[string]any` | No |  |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `string` | No |  |
@@ -8373,11 +8380,11 @@ fmt.Println(apiEntitiesMergeRequestChange.GetName()) // "api_entities_merge_requ
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stat` | `map[string]any` | No |  |
+| `time_stats` | `map[string]any` | No |  |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `upvote` | `string` | No |  |
+| `upvotes` | `string` | No |  |
 | `user` | `map[string]any` | No |  |
 | `user_notes_count` | `string` | No |  |
 | `web_url` | `string` | No |  |
@@ -8492,9 +8499,9 @@ fmt.Println(apiEntitiesMergeRequestDiffFull.GetName()) // "api_entities_merge_re
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `base_commit_sha` | `string` | No |  |
-| `commit` | `map[string]any` | No |  |
+| `commits` | `map[string]any` | No |  |
 | `created_at` | `string` | No |  |
-| `diff` | `map[string]any` | No |  |
+| `diffs` | `map[string]any` | No |  |
 | `head_commit_sha` | `string` | No |  |
 | `id` | `string` | No |  |
 | `merge_request_id` | `string` | No |  |
@@ -8552,9 +8559,16 @@ fmt.Println(apiEntitiesMergeRequestReviewer.GetName()) // "api_entities_merge_re
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created_at` | `string` | No |  |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
+| `custom_attributes` | `[]any` | No |  |
+| `id` | `int` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `string` | No |  |
+| `public_email` | `string` | No |  |
 | `state` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -8693,8 +8707,16 @@ fmt.Println(apiEntitiesMrNote.GetName()) // "api_entities_mr_note"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `map[string]any` | No |  |
-| `note` | `string` | No |  |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
+| `custom_attributes` | `[]any` | No |  |
+| `id` | `int` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `string` | No |  |
+| `public_email` | `string` | No |  |
+| `state` | `string` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -8756,7 +8778,7 @@ fmt.Println(apiEntitiesNamespace.GetName()) // "api_entities_namespace"
 | `kind` | `string` | No |  |
 | `max_seats_used` | `int` | No |  |
 | `max_seats_used_changed_at` | `string` | No |  |
-| `members_count_with_descendant` | `int` | No |  |
+| `members_count_with_descendants` | `int` | No |  |
 | `name` | `string` | No |  |
 | `parent_id` | `int` | No |  |
 | `path` | `string` | No |  |
@@ -8845,8 +8867,8 @@ fmt.Println(apiEntitiesNamespaceExistence.GetName()) // "api_entities_namespace_
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `exist` | `bool` | No |  |
-| `suggest` | `[]any` | No |  |
+| `exists` | `bool` | No |  |
+| `suggests` | `[]any` | No |  |
 
 ### Operations
 
@@ -8965,9 +8987,9 @@ fmt.Println(apiEntitiesNpmPackage.GetName()) // "api_entities_npm_package"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dist_tag` | `map[string]any` | No |  |
+| `disttags` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
-| `version` | `map[string]any` | No |  |
+| `versions` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -9013,12 +9035,6 @@ Return the entity name.
 apiEntitiesNpmPackageTag := client.ApiEntitiesNpmPackageTag(nil)
 fmt.Println(apiEntitiesNpmPackageTag.GetName()) // "api_entities_npm_package_tag"
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `dist_tag` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -9069,7 +9085,7 @@ fmt.Println(apiEntitiesNugetPackagesVersion.GetName()) // "api_entities_nuget_pa
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `version` | `[]any` | No |  |
+| `versions` | `[]any` | No |  |
 
 ### Operations
 
@@ -9120,19 +9136,20 @@ fmt.Println(apiEntitiesNugetSearchResult.GetName()) // "api_entities_nuget_searc
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `string` | No |  |
+| `authors` | `string` | No |  |
 | `description` | `string` | No |  |
-| `icon_url` | `string` | No |  |
+| `iconUrl` | `string` | No |  |
 | `id` | `string` | No |  |
-| `license_url` | `string` | No |  |
-| `project_url` | `string` | No |  |
+| `licenseUrl` | `string` | No |  |
+| `projectUrl` | `string` | No |  |
 | `summary` | `string` | No |  |
-| `tag` | `string` | No |  |
+| `tags` | `string` | No |  |
 | `title` | `string` | No |  |
-| `total_download` | `int` | No |  |
+| `totalDownloads` | `int` | No |  |
 | `type` | `string` | No |  |
 | `verified` | `bool` | No |  |
 | `version` | `string` | No |  |
+| `versions` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -9183,7 +9200,7 @@ fmt.Println(apiEntitiesNugetServiceIndex.GetName()) // "api_entities_nuget_servi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `resource` | `[]any` | No |  |
+| `resources` | `[]any` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations
@@ -9285,15 +9302,17 @@ fmt.Println(apiEntitiesPackage.GetName()) // "api_entities_package"
 | `created_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `last_downloaded_at` | `string` | No |  |
-| `link` | `map[string]any` | No |  |
+| `links` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
 | `package_type` | `string` | No |  |
 | `pipeline` | `map[string]any` | No |  |
+| `pipelines` | `map[string]any` | No |  |
 | `project_id` | `int` | No |  |
 | `project_path` | `string` | No |  |
 | `status` | `string` | No |  |
-| `tag` | `string` | No |  |
+| `tags` | `string` | No |  |
 | `version` | `string` | No |  |
+| `versions` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -9363,7 +9382,7 @@ fmt.Println(apiEntitiesPackageFile.GetName()) // "api_entities_package_file"
 | `file_sha256` | `string` | No |  |
 | `id` | `int` | No |  |
 | `package_id` | `int` | No |  |
-| `pipeline` | `map[string]any` | No |  |
+| `pipelines` | `map[string]any` | No |  |
 | `size` | `int` | No |  |
 
 ### Operations
@@ -9415,16 +9434,15 @@ fmt.Println(apiEntitiesPackagePipeline.GetName()) // "api_entities_package_pipel
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created_at` | `string` | No |  |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
+| `custom_attributes` | `[]any` | No |  |
 | `id` | `int` | No |  |
-| `iid` | `int` | No |  |
-| `project_id` | `int` | No |  |
-| `ref` | `string` | No |  |
-| `sha` | `string` | No |  |
-| `source` | `string` | No |  |
-| `status` | `string` | No |  |
-| `updated_at` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `string` | No |  |
+| `public_email` | `string` | No |  |
+| `state` | `string` | No |  |
+| `username` | `string` | No |  |
 | `web_url` | `string` | No |  |
 
 ### Operations
@@ -9472,12 +9490,6 @@ apiEntitiesPackagesConanFilesList := client.ApiEntitiesPackagesConanFilesList(ni
 fmt.Println(apiEntitiesPackagesConanFilesList.GetName()) // "api_entities_packages_conan_files_list"
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `file` | `map[string]any` | No |  |
-
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -9522,12 +9534,6 @@ Return the entity name.
 apiEntitiesPackagesConanPackageManifest := client.ApiEntitiesPackagesConanPackageManifest(nil)
 fmt.Println(apiEntitiesPackagesConanPackageManifest.GetName()) // "api_entities_packages_conan_package_manifest"
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `package_url` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -9626,12 +9632,6 @@ apiEntitiesPackagesConanPackageSnapshot := client.ApiEntitiesPackagesConanPackag
 fmt.Println(apiEntitiesPackagesConanPackageSnapshot.GetName()) // "api_entities_packages_conan_package_snapshot"
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `package_snapshot` | `map[string]any` | No |  |
-
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -9676,12 +9676,6 @@ Return the entity name.
 apiEntitiesPackagesConanRecipeManifest := client.ApiEntitiesPackagesConanRecipeManifest(nil)
 fmt.Println(apiEntitiesPackagesConanRecipeManifest.GetName()) // "api_entities_packages_conan_recipe_manifest"
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `recipe_url` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -9780,12 +9774,6 @@ apiEntitiesPackagesConanRecipeSnapshot := client.ApiEntitiesPackagesConanRecipeS
 fmt.Println(apiEntitiesPackagesConanRecipeSnapshot.GetName()) // "api_entities_packages_conan_recipe_snapshot"
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `recipe_snapshot` | `map[string]any` | No |  |
-
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -9883,12 +9871,6 @@ apiEntitiesPackagesConanUploadUrl := client.ApiEntitiesPackagesConanUploadUrl(ni
 fmt.Println(apiEntitiesPackagesConanUploadUrl.GetName()) // "api_entities_packages_conan_upload_url"
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `upload_url` | `map[string]any` | No |  |
-
 ### Operations
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -9943,15 +9925,15 @@ fmt.Println(apiEntitiesPackagesDebianDistribution.GetName()) // "api_entities_pa
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `architecture` | `[]any` | No |  |
+| `architectures` | `[]any` | No |  |
 | `codename` | `string` | No |  |
-| `component` | `[]any` | No |  |
+| `components` | `[]any` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `label` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `suite` | `string` | No |  |
-| `valid_time_duration_second` | `int` | No |  |
+| `valid_time_duration_seconds` | `int` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations
@@ -10044,9 +10026,12 @@ fmt.Println(apiEntitiesPagesDomain.GetName()) // "api_entities_pages_domain"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `auto_ssl_enabled` | `string` | No |  |
-| `certificate` | `map[string]any` | No |  |
+| `certificate` | `string` | No |  |
+| `certificate_text` | `string` | No |  |
 | `domain` | `string` | No |  |
 | `enabled_until` | `string` | No |  |
+| `expired` | `string` | No |  |
+| `subject` | `string` | No |  |
 | `url` | `string` | No |  |
 | `verification_code` | `string` | No |  |
 | `verified` | `bool` | No |  |
@@ -10142,14 +10127,8 @@ fmt.Println(apiEntitiesPagesDomainBasic.GetName()) // "api_entities_pages_domain
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `auto_ssl_enabled` | `string` | No |  |
-| `certificate_expiration` | `map[string]any` | No |  |
-| `domain` | `string` | No |  |
-| `enabled_until` | `string` | No |  |
-| `project_id` | `string` | No |  |
-| `url` | `string` | No |  |
-| `verification_code` | `string` | No |  |
-| `verified` | `bool` | No |  |
+| `expiration` | `string` | No |  |
+| `expired` | `string` | No |  |
 
 ### Operations
 
@@ -10208,7 +10187,7 @@ fmt.Println(apiEntitiesPersonalAccessToken.GetName()) // "api_entities_personal_
 | `last_used_at` | `string` | No |  |
 | `name` | `string` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `[]any` | No |  |
+| `scopes` | `[]any` | No |  |
 | `user_id` | `int` | No |  |
 
 ### Operations
@@ -10266,10 +10245,10 @@ fmt.Println(apiEntitiesPersonalAccessTokenWithLastUsedIp.GetName()) // "api_enti
 | `expires_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `last_used_at` | `string` | No |  |
-| `last_used_ip` | `[]any` | No |  |
+| `last_used_ips` | `[]any` | No |  |
 | `name` | `string` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `[]any` | No |  |
+| `scopes` | `[]any` | No |  |
 | `user_id` | `int` | No |  |
 
 ### Operations
@@ -10341,7 +10320,7 @@ fmt.Println(apiEntitiesPersonalAccessTokenWithToken.GetName()) // "api_entities_
 | `last_used_at` | `string` | No |  |
 | `name` | `string` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `[]any` | No |  |
+| `scopes` | `[]any` | No |  |
 | `token` | `string` | No |  |
 | `user_id` | `int` | No |  |
 
@@ -10398,8 +10377,8 @@ fmt.Println(apiEntitiesPersonalSnippet.GetName()) // "api_entities_personal_snip
 | `author` | `map[string]any` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
-| `file` | `[]any` | No |  |
 | `file_name` | `string` | No |  |
+| `files` | `[]any` | No |  |
 | `http_url_to_repo` | `string` | No |  |
 | `id` | `int` | No |  |
 | `imported` | `bool` | No |  |
@@ -10498,34 +10477,6 @@ apiEntitiesPlanLimit := client.ApiEntitiesPlanLimit(nil)
 fmt.Println(apiEntitiesPlanLimit.GetName()) // "api_entities_plan_limit"
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `ci_active_job` | `int` | No |  |
-| `ci_instance_level_variable` | `int` | No |  |
-| `ci_needs_size_limit` | `int` | No |  |
-| `ci_pipeline_schedule` | `int` | No |  |
-| `ci_pipeline_size` | `int` | No |  |
-| `ci_project_subscription` | `int` | No |  |
-| `ci_registered_group_runner` | `int` | No |  |
-| `ci_registered_project_runner` | `int` | No |  |
-| `conan_max_file_size` | `int` | No |  |
-| `dotenv_size` | `int` | No |  |
-| `dotenv_variable` | `int` | No |  |
-| `enforcement_limit` | `int` | No |  |
-| `generic_packages_max_file_size` | `int` | No |  |
-| `helm_max_file_size` | `int` | No |  |
-| `limits_history` | `map[string]any` | No |  |
-| `maven_max_file_size` | `int` | No |  |
-| `notification_limit` | `int` | No |  |
-| `npm_max_file_size` | `int` | No |  |
-| `nuget_max_file_size` | `int` | No |  |
-| `pipeline_hierarchy_size` | `int` | No |  |
-| `pypi_max_file_size` | `int` | No |  |
-| `storage_size_limit` | `int` | No |  |
-| `terraform_module_max_file_size` | `int` | No |  |
-
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -10594,11 +10545,11 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `analytics_access_level` | `string` | No |  |
 | `approvals_before_merge` | `string` | No |  |
 | `archived` | `bool` | No |  |
-| `auto_cancel_pending_pipeline` | `string` | No |  |
+| `auto_cancel_pending_pipelines` | `string` | No |  |
 | `auto_devops_deploy_strategy` | `string` | No |  |
 | `auto_devops_enabled` | `bool` | No |  |
 | `auto_duo_code_review_enabled` | `string` | No |  |
-| `autoclose_referenced_issue` | `bool` | No |  |
+| `autoclose_referenced_issues` | `bool` | No |  |
 | `avatar_url` | `string` | No |  |
 | `build_git_strategy` | `string` | No |  |
 | `build_timeout` | `int` | No |  |
@@ -10607,23 +10558,23 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `bool` | No |  |
 | `ci_config_path` | `string` | No |  |
 | `ci_default_git_depth` | `int` | No |  |
-| `ci_delete_pipelines_in_second` | `int` | No |  |
+| `ci_delete_pipelines_in_seconds` | `int` | No |  |
 | `ci_forward_deployment_enabled` | `bool` | No |  |
 | `ci_forward_deployment_rollback_allowed` | `bool` | No |  |
-| `ci_id_token_sub_claim_component` | `[]any` | No |  |
+| `ci_id_token_sub_claim_components` | `[]any` | No |  |
 | `ci_job_token_scope_enabled` | `bool` | No |  |
 | `ci_pipeline_variables_minimum_override_role` | `string` | No |  |
 | `ci_push_repository_for_job_token_allowed` | `bool` | No |  |
 | `ci_restrict_pipeline_cancellation_role` | `string` | No |  |
-| `ci_separated_cache` | `bool` | No |  |
-| `compliance_framework` | `string` | No |  |
+| `ci_separated_caches` | `bool` | No |  |
+| `compliance_frameworks` | `string` | No |  |
 | `container_expiration_policy` | `map[string]any` | No |  |
 | `container_registry_access_level` | `string` | No |  |
 | `container_registry_enabled` | `bool` | No |  |
 | `container_registry_image_prefix` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `creator_id` | `int` | No |  |
-| `custom_attribute` | `map[string]any` | No |  |
+| `custom_attributes` | `map[string]any` | No |  |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -10631,7 +10582,7 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `emails_disabled` | `bool` | No |  |
 | `emails_enabled` | `bool` | No |  |
 | `empty_repo` | `bool` | No |  |
-| `enforce_auth_checks_on_upload` | `bool` | No |  |
+| `enforce_auth_checks_on_uploads` | `bool` | No |  |
 | `environments_access_level` | `string` | No |  |
 | `external_authorization_classification_label` | `string` | No |  |
 | `feature_flags_access_level` | `string` | No |  |
@@ -10656,7 +10607,7 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `lfs_enabled` | `bool` | No |  |
 | `license` | `map[string]any` | No |  |
 | `license_url` | `string` | No |  |
-| `link` | `map[string]any` | No |  |
+| `links` | `map[string]any` | No |  |
 | `marked_for_deletion_at` | `string` | No |  |
 | `marked_for_deletion_on` | `string` | No |  |
 | `max_artifacts_size` | `int` | No |  |
@@ -10671,8 +10622,8 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `merge_trains_enabled` | `string` | No |  |
 | `merge_trains_skip_train_allowed` | `string` | No |  |
 | `mirror` | `string` | No |  |
-| `mirror_overwrites_diverged_branch` | `string` | No |  |
-| `mirror_trigger_build` | `string` | No |  |
+| `mirror_overwrites_diverged_branches` | `string` | No |  |
+| `mirror_trigger_builds` | `string` | No |  |
 | `mirror_user_id` | `string` | No |  |
 | `model_experiments_access_level` | `string` | No |  |
 | `model_registry_access_level` | `string` | No |  |
@@ -10683,8 +10634,8 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `namespace` | `map[string]any` | No |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `bool` | No |  |
 | `only_allow_merge_if_all_status_checks_passed` | `string` | No |  |
-| `only_allow_merge_if_pipeline_succeed` | `bool` | No |  |
-| `only_mirror_protected_branch` | `string` | No |  |
+| `only_allow_merge_if_pipeline_succeeds` | `bool` | No |  |
+| `only_mirror_protected_branches` | `string` | No |  |
 | `open_issues_count` | `int` | No |  |
 | `owner` | `map[string]any` | No |  |
 | `package_registry_access_level` | `string` | No |  |
@@ -10695,7 +10646,7 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `pre_receive_secret_detection_enabled` | `bool` | No |  |
 | `prevent_merge_without_jira_issue` | `string` | No |  |
 | `printing_merge_request_link_enabled` | `bool` | No |  |
-| `public_job` | `bool` | No |  |
+| `public_jobs` | `bool` | No |  |
 | `readme_url` | `string` | No |  |
 | `releases_access_level` | `string` | No |  |
 | `remove_source_branch_after_merge` | `bool` | No |  |
@@ -10705,9 +10656,9 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `request_access_enabled` | `bool` | No |  |
 | `requirements_access_level` | `string` | No |  |
 | `requirements_enabled` | `string` | No |  |
-| `resolve_outdated_diff_discussion` | `bool` | No |  |
+| `resolve_outdated_diff_discussions` | `bool` | No |  |
 | `resource_group_default_process_mode` | `string` | No |  |
-| `restrict_user_defined_variable` | `bool` | No |  |
+| `restrict_user_defined_variables` | `bool` | No |  |
 | `runner_token_expiration_interval` | `int` | No |  |
 | `runners_token` | `string` | No |  |
 | `secret_push_protection_enabled` | `bool` | No |  |
@@ -10716,7 +10667,7 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `service_desk_address` | `string` | No |  |
 | `service_desk_enabled` | `bool` | No |  |
 | `shared_runners_enabled` | `bool` | No |  |
-| `shared_with_group` | `[]any` | No |  |
+| `shared_with_groups` | `[]any` | No |  |
 | `show_diff_preview_in_email` | `bool` | No |  |
 | `snippets_access_level` | `string` | No |  |
 | `snippets_enabled` | `bool` | No |  |
@@ -10725,13 +10676,13 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `squash_option` | `string` | No |  |
 | `ssh_url_to_repo` | `string` | No |  |
 | `star_count` | `int` | No |  |
-| `statistic` | `map[string]any` | No |  |
+| `statistics` | `map[string]any` | No |  |
 | `suggestion_commit_message` | `string` | No |  |
 | `tag_list` | `[]any` | No |  |
-| `topic` | `[]any` | No |  |
+| `topics` | `[]any` | No |  |
 | `updated_at` | `string` | No |  |
 | `visibility` | `string` | No |  |
-| `warn_about_potentially_unwanted_character` | `bool` | No |  |
+| `warn_about_potentially_unwanted_characters` | `bool` | No |  |
 | `web_based_commit_signing_enabled` | `string` | No |  |
 | `web_url` | `string` | No |  |
 | `wiki_access_level` | `string` | No |  |
@@ -10813,7 +10764,8 @@ fmt.Println(apiEntitiesProjectDailyStatistic.GetName()) // "api_entities_project
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fetch` | `map[string]any` | No |  |
+| `days` | `[]any` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 
@@ -10864,15 +10816,8 @@ fmt.Println(apiEntitiesProjectExportStatus.GetName()) // "api_entities_project_e
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created_at` | `string` | No |  |
-| `description` | `string` | No |  |
-| `export_status` | `string` | No |  |
-| `id` | `int` | No |  |
-| `link` | `map[string]any` | No |  |
-| `name` | `string` | No |  |
-| `name_with_namespace` | `string` | No |  |
-| `path` | `string` | No |  |
-| `path_with_namespace` | `string` | No |  |
+| `api_url` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -10972,36 +10917,36 @@ fmt.Println(apiEntitiesProjectHook.GetName()) // "api_entities_project_hook"
 | --- | --- | --- | --- |
 | `alert_status` | `any` | No |  |
 | `branch_filter_strategy` | `string` | No |  |
-| `confidential_issues_event` | `bool` | No |  |
-| `confidential_note_event` | `bool` | No |  |
+| `confidential_issues_events` | `bool` | No |  |
+| `confidential_note_events` | `bool` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_header` | `[]any` | No |  |
+| `custom_headers` | `[]any` | No |  |
 | `custom_webhook_template` | `string` | No |  |
-| `deployment_event` | `bool` | No |  |
+| `deployment_events` | `bool` | No |  |
 | `description` | `string` | No |  |
 | `disabled_until` | `string` | No |  |
-| `emoji_event` | `bool` | No |  |
+| `emoji_events` | `bool` | No |  |
 | `enable_ssl_verification` | `bool` | No |  |
-| `feature_flag_event` | `bool` | No |  |
+| `feature_flag_events` | `bool` | No |  |
 | `id` | `string` | No |  |
-| `issues_event` | `bool` | No |  |
-| `job_event` | `bool` | No |  |
-| `merge_requests_event` | `bool` | No |  |
-| `milestone_event` | `bool` | No |  |
+| `issues_events` | `bool` | No |  |
+| `job_events` | `bool` | No |  |
+| `merge_requests_events` | `bool` | No |  |
+| `milestone_events` | `bool` | No |  |
 | `name` | `string` | No |  |
-| `note_event` | `bool` | No |  |
-| `pipeline_event` | `bool` | No |  |
+| `note_events` | `bool` | No |  |
+| `pipeline_events` | `bool` | No |  |
 | `project_id` | `string` | No |  |
-| `push_event` | `bool` | No |  |
+| `push_events` | `bool` | No |  |
 | `push_events_branch_filter` | `string` | No |  |
-| `releases_event` | `bool` | No |  |
-| `repository_update_event` | `bool` | No |  |
-| `resource_access_token_event` | `bool` | No |  |
-| `tag_push_event` | `bool` | No |  |
+| `releases_events` | `bool` | No |  |
+| `repository_update_events` | `bool` | No |  |
+| `resource_access_token_events` | `bool` | No |  |
+| `tag_push_events` | `bool` | No |  |
 | `url` | `string` | No |  |
-| `url_variable` | `[]any` | No |  |
-| `vulnerability_event` | `bool` | No |  |
-| `wiki_page_event` | `bool` | No |  |
+| `url_variables` | `[]any` | No |  |
+| `vulnerability_events` | `bool` | No |  |
+| `wiki_page_events` | `bool` | No |  |
 
 ### Operations
 
@@ -11273,8 +11218,8 @@ fmt.Println(apiEntitiesProjectSnippet.GetName()) // "api_entities_project_snippe
 | `author` | `map[string]any` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
-| `file` | `[]any` | No |  |
 | `file_name` | `string` | No |  |
+| `files` | `[]any` | No |  |
 | `http_url_to_repo` | `string` | No |  |
 | `id` | `int` | No |  |
 | `imported` | `bool` | No |  |
@@ -11431,11 +11376,11 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `analytics_access_level` | `string` | No |  |
 | `approvals_before_merge` | `string` | No |  |
 | `archived` | `bool` | No |  |
-| `auto_cancel_pending_pipeline` | `string` | No |  |
+| `auto_cancel_pending_pipelines` | `string` | No |  |
 | `auto_devops_deploy_strategy` | `string` | No |  |
 | `auto_devops_enabled` | `bool` | No |  |
 | `auto_duo_code_review_enabled` | `string` | No |  |
-| `autoclose_referenced_issue` | `bool` | No |  |
+| `autoclose_referenced_issues` | `bool` | No |  |
 | `avatar_url` | `string` | No |  |
 | `build_git_strategy` | `string` | No |  |
 | `build_timeout` | `int` | No |  |
@@ -11444,23 +11389,23 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `bool` | No |  |
 | `ci_config_path` | `string` | No |  |
 | `ci_default_git_depth` | `int` | No |  |
-| `ci_delete_pipelines_in_second` | `int` | No |  |
+| `ci_delete_pipelines_in_seconds` | `int` | No |  |
 | `ci_forward_deployment_enabled` | `bool` | No |  |
 | `ci_forward_deployment_rollback_allowed` | `bool` | No |  |
-| `ci_id_token_sub_claim_component` | `[]any` | No |  |
+| `ci_id_token_sub_claim_components` | `[]any` | No |  |
 | `ci_job_token_scope_enabled` | `bool` | No |  |
 | `ci_pipeline_variables_minimum_override_role` | `string` | No |  |
 | `ci_push_repository_for_job_token_allowed` | `bool` | No |  |
 | `ci_restrict_pipeline_cancellation_role` | `string` | No |  |
-| `ci_separated_cache` | `bool` | No |  |
-| `compliance_framework` | `string` | No |  |
+| `ci_separated_caches` | `bool` | No |  |
+| `compliance_frameworks` | `string` | No |  |
 | `container_expiration_policy` | `map[string]any` | No |  |
 | `container_registry_access_level` | `string` | No |  |
 | `container_registry_enabled` | `bool` | No |  |
 | `container_registry_image_prefix` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `creator_id` | `int` | No |  |
-| `custom_attribute` | `map[string]any` | No |  |
+| `custom_attributes` | `map[string]any` | No |  |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -11468,7 +11413,7 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `emails_disabled` | `bool` | No |  |
 | `emails_enabled` | `bool` | No |  |
 | `empty_repo` | `bool` | No |  |
-| `enforce_auth_checks_on_upload` | `bool` | No |  |
+| `enforce_auth_checks_on_uploads` | `bool` | No |  |
 | `environments_access_level` | `string` | No |  |
 | `external_authorization_classification_label` | `string` | No |  |
 | `feature_flags_access_level` | `string` | No |  |
@@ -11493,7 +11438,7 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `lfs_enabled` | `bool` | No |  |
 | `license` | `map[string]any` | No |  |
 | `license_url` | `string` | No |  |
-| `link` | `map[string]any` | No |  |
+| `links` | `map[string]any` | No |  |
 | `marked_for_deletion_at` | `string` | No |  |
 | `marked_for_deletion_on` | `string` | No |  |
 | `max_artifacts_size` | `int` | No |  |
@@ -11508,8 +11453,8 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `merge_trains_enabled` | `string` | No |  |
 | `merge_trains_skip_train_allowed` | `string` | No |  |
 | `mirror` | `string` | No |  |
-| `mirror_overwrites_diverged_branch` | `string` | No |  |
-| `mirror_trigger_build` | `string` | No |  |
+| `mirror_overwrites_diverged_branches` | `string` | No |  |
+| `mirror_trigger_builds` | `string` | No |  |
 | `mirror_user_id` | `string` | No |  |
 | `model_experiments_access_level` | `string` | No |  |
 | `model_registry_access_level` | `string` | No |  |
@@ -11520,8 +11465,8 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `namespace` | `map[string]any` | No |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `bool` | No |  |
 | `only_allow_merge_if_all_status_checks_passed` | `string` | No |  |
-| `only_allow_merge_if_pipeline_succeed` | `bool` | No |  |
-| `only_mirror_protected_branch` | `string` | No |  |
+| `only_allow_merge_if_pipeline_succeeds` | `bool` | No |  |
+| `only_mirror_protected_branches` | `string` | No |  |
 | `open_issues_count` | `int` | No |  |
 | `owner` | `map[string]any` | No |  |
 | `package_registry_access_level` | `string` | No |  |
@@ -11529,11 +11474,11 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `pages_access_level` | `string` | No |  |
 | `path` | `string` | No |  |
 | `path_with_namespace` | `string` | No |  |
-| `permission` | `map[string]any` | No |  |
+| `permissions` | `map[string]any` | No |  |
 | `pre_receive_secret_detection_enabled` | `bool` | No |  |
 | `prevent_merge_without_jira_issue` | `string` | No |  |
 | `printing_merge_request_link_enabled` | `bool` | No |  |
-| `public_job` | `bool` | No |  |
+| `public_jobs` | `bool` | No |  |
 | `readme_url` | `string` | No |  |
 | `releases_access_level` | `string` | No |  |
 | `remove_source_branch_after_merge` | `bool` | No |  |
@@ -11543,9 +11488,9 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `request_access_enabled` | `bool` | No |  |
 | `requirements_access_level` | `string` | No |  |
 | `requirements_enabled` | `string` | No |  |
-| `resolve_outdated_diff_discussion` | `bool` | No |  |
+| `resolve_outdated_diff_discussions` | `bool` | No |  |
 | `resource_group_default_process_mode` | `string` | No |  |
-| `restrict_user_defined_variable` | `bool` | No |  |
+| `restrict_user_defined_variables` | `bool` | No |  |
 | `runner_token_expiration_interval` | `int` | No |  |
 | `runners_token` | `string` | No |  |
 | `secret_push_protection_enabled` | `bool` | No |  |
@@ -11554,7 +11499,7 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `service_desk_address` | `string` | No |  |
 | `service_desk_enabled` | `bool` | No |  |
 | `shared_runners_enabled` | `bool` | No |  |
-| `shared_with_group` | `[]any` | No |  |
+| `shared_with_groups` | `[]any` | No |  |
 | `show_diff_preview_in_email` | `bool` | No |  |
 | `snippets_access_level` | `string` | No |  |
 | `snippets_enabled` | `bool` | No |  |
@@ -11563,13 +11508,13 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `squash_option` | `string` | No |  |
 | `ssh_url_to_repo` | `string` | No |  |
 | `star_count` | `int` | No |  |
-| `statistic` | `map[string]any` | No |  |
+| `statistics` | `map[string]any` | No |  |
 | `suggestion_commit_message` | `string` | No |  |
 | `tag_list` | `[]any` | No |  |
-| `topic` | `[]any` | No |  |
+| `topics` | `[]any` | No |  |
 | `updated_at` | `string` | No |  |
 | `visibility` | `string` | No |  |
-| `warn_about_potentially_unwanted_character` | `bool` | No |  |
+| `warn_about_potentially_unwanted_characters` | `bool` | No |  |
 | `web_based_commit_signing_enabled` | `string` | No |  |
 | `web_url` | `string` | No |  |
 | `wiki_access_level` | `string` | No |  |
@@ -11884,10 +11829,10 @@ fmt.Println(apiEntitiesProtectedBranch.GetName()) // "api_entities_protected_bra
 | `code_owner_approval_required` | `bool` | No |  |
 | `id` | `int` | No |  |
 | `inherited` | `bool` | No |  |
-| `merge_access_level` | `[]any` | No |  |
+| `merge_access_levels` | `[]any` | No |  |
 | `name` | `string` | No |  |
-| `push_access_level` | `[]any` | No |  |
-| `unprotect_access_level` | `[]any` | No |  |
+| `push_access_levels` | `[]any` | No |  |
+| `unprotect_access_levels` | `[]any` | No |  |
 
 ### Operations
 
@@ -11980,8 +11925,14 @@ fmt.Println(apiEntitiesProtectedTag.GetName()) // "api_entities_protected_tag"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `create_access_level` | `map[string]any` | No |  |
+| `access_level` | `int` | No |  |
+| `access_level_description` | `string` | No |  |
+| `create_access_levels` | `map[string]any` | No |  |
+| `deploy_key_id` | `int` | No |  |
+| `group_id` | `int` | No |  |
+| `id` | `int` | No |  |
 | `name` | `string` | No |  |
+| `user_id` | `int` | No |  |
 
 ### Operations
 
@@ -12115,6 +12066,7 @@ fmt.Println(apiEntitiesRelatedIssue.GetName()) // "api_entities_related_issue"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `assignee` | `map[string]any` | No |  |
+| `assignees` | `map[string]any` | No |  |
 | `author` | `map[string]any` | No |  |
 | `blocking_issues_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
@@ -12123,11 +12075,11 @@ fmt.Println(apiEntitiesRelatedIssue.GetName()) // "api_entities_related_issue"
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `discussion_locked` | `bool` | No |  |
-| `downvote` | `string` | No |  |
+| `downvotes` | `string` | No |  |
 | `due_date` | `string` | No |  |
 | `epic` | `map[string]any` | No |  |
 | `epic_iid` | `string` | No |  |
-| `has_task` | `bool` | No |  |
+| `has_tasks` | `bool` | No |  |
 | `health_status` | `string` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
@@ -12136,27 +12088,27 @@ fmt.Println(apiEntitiesRelatedIssue.GetName()) // "api_entities_related_issue"
 | `issue_link_id` | `string` | No |  |
 | `issue_type` | `string` | No |  |
 | `iteration` | `map[string]any` | No |  |
-| `label` | `[]any` | No |  |
-| `link` | `map[string]any` | No |  |
+| `labels` | `[]any` | No |  |
 | `link_created_at` | `string` | No |  |
 | `link_type` | `string` | No |  |
 | `link_updated_at` | `string` | No |  |
+| `links` | `map[string]any` | No |  |
 | `merge_requests_count` | `string` | No |  |
 | `milestone` | `map[string]any` | No |  |
 | `moved_to_id` | `string` | No |  |
 | `project_id` | `int` | No |  |
-| `reference` | `map[string]any` | No |  |
+| `references` | `map[string]any` | No |  |
 | `service_desk_reply_to` | `string` | No |  |
 | `severity` | `string` | No |  |
 | `state` | `string` | No |  |
 | `subscribed` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
 | `task_status` | `string` | No |  |
-| `time_stat` | `map[string]any` | No |  |
+| `time_stats` | `map[string]any` | No |  |
 | `title` | `string` | No |  |
 | `type` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `upvote` | `string` | No |  |
+| `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
 | `web_url` | `string` | No |  |
 | `weight` | `string` | No |  |
@@ -12256,16 +12208,16 @@ fmt.Println(apiEntitiesRelease.GetName()) // "api_entities_release"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `map[string]any` | No |  |
+| `assets` | `map[string]any` | No |  |
 | `author` | `map[string]any` | No |  |
 | `commit` | `map[string]any` | No |  |
 | `commit_path` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
-| `evidence` | `map[string]any` | No |  |
-| `link` | `map[string]any` | No |  |
-| `milestone` | `map[string]any` | No |  |
+| `evidences` | `map[string]any` | No |  |
+| `links` | `map[string]any` | No |  |
+| `milestones` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
 | `released_at` | `string` | No |  |
 | `tag_name` | `string` | No |  |
@@ -12464,15 +12416,15 @@ fmt.Println(apiEntitiesRemoteMirror.GetName()) // "api_entities_remote_mirror"
 | --- | --- | --- | --- |
 | `auth_method` | `string` | No |  |
 | `enabled` | `bool` | No |  |
-| `host_key` | `[]any` | No |  |
+| `host_keys` | `[]any` | No |  |
 | `id` | `int` | No |  |
-| `keep_divergent_ref` | `bool` | No |  |
+| `keep_divergent_refs` | `bool` | No |  |
 | `last_error` | `int` | No |  |
 | `last_successful_update_at` | `string` | No |  |
 | `last_update_at` | `string` | No |  |
 | `last_update_started_at` | `string` | No |  |
 | `mirror_branch_regex` | `string` | No |  |
-| `only_protected_branch` | `bool` | No |  |
+| `only_protected_branches` | `bool` | No |  |
 | `update_status` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -12567,15 +12519,15 @@ fmt.Println(apiEntitiesRepositoryHealth.GetName()) // "api_entities_repository_h
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `alternate` | `map[string]any` | No |  |
+| `alternates` | `map[string]any` | No |  |
 | `bitmap` | `map[string]any` | No |  |
 | `commit_graph` | `map[string]any` | No |  |
 | `is_object_pool` | `bool` | No |  |
 | `last_full_repack` | `map[string]any` | No |  |
 | `multi_pack_index` | `map[string]any` | No |  |
 | `multi_pack_index_bitmap` | `map[string]any` | No |  |
-| `object` | `map[string]any` | No |  |
-| `reference` | `map[string]any` | No |  |
+| `objects` | `map[string]any` | No |  |
+| `references` | `map[string]any` | No |  |
 | `size` | `int` | No |  |
 | `updated_at` | `string` | No |  |
 
@@ -12639,7 +12591,7 @@ fmt.Println(apiEntitiesResourceAccessTokenWithToken.GetName()) // "api_entities_
 | `resource_id` | `int` | No |  |
 | `resource_type` | `string` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `[]any` | No |  |
+| `scopes` | `[]any` | No |  |
 | `token` | `string` | No |  |
 | `user_id` | `int` | No |  |
 
@@ -12766,8 +12718,8 @@ fmt.Println(apiEntitiesSnippet.GetName()) // "api_entities_snippet"
 | `author` | `map[string]any` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
-| `file` | `[]any` | No |  |
 | `file_name` | `string` | No |  |
+| `files` | `[]any` | No |  |
 | `http_url_to_repo` | `string` | No |  |
 | `id` | `int` | No |  |
 | `imported` | `bool` | No |  |
@@ -12830,14 +12782,52 @@ fmt.Println(apiEntitiesSshKeyWithUser.GetName()) // "api_entities_ssh_key_with_u
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
+| `bio` | `string` | No |  |
+| `bot` | `string` | No |  |
+| `can_create_group` | `bool` | No |  |
+| `can_create_project` | `bool` | No |  |
+| `color_scheme_id` | `int` | No |  |
+| `commit_email` | `string` | No |  |
+| `confirmed_at` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `expires_at` | `string` | No |  |
+| `current_sign_in_at` | `string` | No |  |
+| `custom_attributes` | `[]any` | No |  |
+| `discord` | `string` | No |  |
+| `email` | `string` | No |  |
+| `external` | `string` | No |  |
+| `extra_shared_runners_minutes_limit` | `string` | No |  |
+| `followers` | `string` | No |  |
+| `following` | `string` | No |  |
+| `github` | `string` | No |  |
 | `id` | `int` | No |  |
-| `key` | `string` | No |  |
-| `last_used_at` | `string` | No |  |
-| `title` | `string` | No |  |
-| `usage_type` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
+| `identities` | `map[string]any` | No |  |
+| `is_followed` | `bool` | No |  |
+| `job_title` | `string` | No |  |
+| `last_activity_on` | `string` | No |  |
+| `last_sign_in_at` | `string` | No |  |
+| `linkedin` | `string` | No |  |
+| `local_time` | `string` | No |  |
+| `location` | `string` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `string` | No |  |
+| `organization` | `string` | No |  |
+| `preferred_language` | `string` | No |  |
+| `private_profile` | `bool` | No |  |
+| `projects_limit` | `int` | No |  |
+| `pronouns` | `string` | No |  |
+| `public_email` | `string` | No |  |
+| `scim_identities` | `map[string]any` | No |  |
+| `shared_runners_minutes_limit` | `string` | No |  |
+| `state` | `string` | No |  |
+| `theme_id` | `int` | No |  |
+| `twitter` | `string` | No |  |
+| `two_factor_enabled` | `bool` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
+| `website_url` | `string` | No |  |
+| `work_information` | `string` | No |  |
 
 ### Operations
 
@@ -12956,7 +12946,7 @@ fmt.Println(apiEntitiesSystemBroadcastMessage.GetName()) // "api_entities_system
 | `id` | `string` | No |  |
 | `message` | `string` | No |  |
 | `starts_at` | `string` | No |  |
-| `target_access_level` | `string` | No |  |
+| `target_access_levels` | `string` | No |  |
 | `target_path` | `string` | No |  |
 | `theme` | `string` | No |  |
 
@@ -13236,13 +13226,15 @@ fmt.Println(apiEntitiesTerraformModuleVersion.GetName()) // "api_entities_terraf
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `module` | `string` | No |  |
+| `modules` | `string` | No |  |
 | `name` | `string` | No |  |
 | `provider` | `string` | No |  |
+| `providers` | `string` | No |  |
 | `root` | `string` | No |  |
 | `source` | `string` | No |  |
-| `submodule` | `string` | No |  |
+| `submodules` | `string` | No |  |
 | `version` | `string` | No |  |
+| `versions` | `string` | No |  |
 
 ### Operations
 
@@ -13360,14 +13352,23 @@ fmt.Println(apiEntitiesTrigger.GetName()) // "api_entities_trigger"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
+| `custom_attributes` | `[]any` | No |  |
 | `description` | `string` | No |  |
 | `expires_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `last_used` | `string` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `string` | No |  |
 | `owner` | `map[string]any` | No |  |
+| `public_email` | `string` | No |  |
+| `state` | `string` | No |  |
 | `token` | `string` | No |  |
 | `updated_at` | `string` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -13513,11 +13514,11 @@ fmt.Println(apiEntitiesUserCount.GetName()) // "api_entities_user_count"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assigned_issue` | `int` | No |  |
-| `assigned_merge_request` | `int` | No |  |
-| `merge_request` | `int` | No |  |
-| `review_requested_merge_request` | `int` | No |  |
-| `todo` | `int` | No |  |
+| `assigned_issues` | `int` | No |  |
+| `assigned_merge_requests` | `int` | No |  |
+| `merge_requests` | `int` | No |  |
+| `review_requested_merge_requests` | `int` | No |  |
+| `todos` | `int` | No |  |
 
 ### Operations
 
@@ -13579,16 +13580,16 @@ fmt.Println(apiEntitiesUserPublic.GetName()) // "api_entities_user_public"
 | `confirmed_at` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `current_sign_in_at` | `string` | No |  |
-| `custom_attribute` | `[]any` | No |  |
+| `custom_attributes` | `[]any` | No |  |
 | `discord` | `string` | No |  |
 | `email` | `string` | No |  |
 | `external` | `string` | No |  |
 | `extra_shared_runners_minutes_limit` | `string` | No |  |
-| `follower` | `string` | No |  |
+| `followers` | `string` | No |  |
 | `following` | `string` | No |  |
 | `github` | `string` | No |  |
 | `id` | `int` | No |  |
-| `identity` | `map[string]any` | No |  |
+| `identities` | `map[string]any` | No |  |
 | `is_followed` | `bool` | No |  |
 | `job_title` | `string` | No |  |
 | `key` | `string` | No |  |
@@ -13603,9 +13604,9 @@ fmt.Println(apiEntitiesUserPublic.GetName()) // "api_entities_user_public"
 | `preferred_language` | `string` | No |  |
 | `private_profile` | `bool` | No |  |
 | `projects_limit` | `int` | No |  |
-| `pronoun` | `string` | No |  |
+| `pronouns` | `string` | No |  |
 | `public_email` | `string` | No |  |
-| `scim_identity` | `map[string]any` | No |  |
+| `scim_identities` | `map[string]any` | No |  |
 | `shared_runners_minutes_limit` | `string` | No |  |
 | `state` | `string` | No |  |
 | `theme_id` | `int` | No |  |
@@ -13759,18 +13760,6 @@ Return the entity name.
 apiEntitiesWikiPage := client.ApiEntitiesWikiPage(nil)
 fmt.Println(apiEntitiesWikiPage.GetName()) // "api_entities_wiki_page"
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `content` | `string` | No |  |
-| `encoding` | `string` | No |  |
-| `format` | `string` | No |  |
-| `front_matter` | `map[string]any` | No |  |
-| `slug` | `string` | No |  |
-| `title` | `string` | No |  |
-| `wiki_page_meta_id` | `int` | No |  |
 
 ### Operations
 
@@ -15004,7 +14993,7 @@ fmt.Println(eeApiEntitiesAuditEvent.GetName()) // "ee_api_entities_audit_event"
 | --- | --- | --- | --- |
 | `author_id` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `detail` | `string` | No |  |
+| `details` | `string` | No |  |
 | `entity_id` | `string` | No |  |
 | `entity_type` | `string` | No |  |
 | `event_name` | `string` | No |  |
@@ -15071,13 +15060,9 @@ fmt.Println(eeApiEntitiesBillableMembership.GetName()) // "ee_api_entities_billa
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_level` | `map[string]any` | No |  |
-| `created_at` | `string` | No |  |
-| `expires_at` | `string` | No |  |
-| `id` | `string` | No |  |
-| `source_full_name` | `string` | No |  |
-| `source_id` | `string` | No |  |
-| `source_members_url` | `string` | No |  |
+| `custom_role` | `string` | No |  |
+| `integer_value` | `string` | No |  |
+| `string_value` | `string` | No |  |
 
 ### Operations
 
@@ -15155,7 +15140,7 @@ fmt.Println(eeApiEntitiesGeoNodeStatus.GetName()) // "ee_api_entities_geo_node_s
 | `container_repositories_verified_in_percentage` | `string` | No |  |
 | `cursor_last_event_id` | `string` | No |  |
 | `cursor_last_event_timestamp` | `string` | No |  |
-| `db_replication_lag_second` | `string` | No |  |
+| `db_replication_lag_seconds` | `string` | No |  |
 | `dependency_proxy_blobs_checksum_failed_count` | `string` | No |  |
 | `dependency_proxy_blobs_checksum_total_count` | `string` | No |  |
 | `dependency_proxy_blobs_checksummed_count` | `string` | No |  |
@@ -15237,7 +15222,7 @@ fmt.Println(eeApiEntitiesGeoNodeStatus.GetName()) // "ee_api_entities_geo_node_s
 | `lfs_objects_verification_total_count` | `string` | No |  |
 | `lfs_objects_verified_count` | `string` | No |  |
 | `lfs_objects_verified_in_percentage` | `string` | No |  |
-| `link` | `map[string]any` | No |  |
+| `links` | `map[string]any` | No |  |
 | `merge_request_diffs_checksum_failed_count` | `string` | No |  |
 | `merge_request_diffs_checksum_total_count` | `string` | No |  |
 | `merge_request_diffs_checksummed_count` | `string` | No |  |
@@ -15251,7 +15236,7 @@ fmt.Println(eeApiEntitiesGeoNodeStatus.GetName()) // "ee_api_entities_geo_node_s
 | `merge_request_diffs_verified_count` | `string` | No |  |
 | `merge_request_diffs_verified_in_percentage` | `string` | No |  |
 | `missing_oauth_application` | `string` | No |  |
-| `namespace` | `map[string]any` | No |  |
+| `namespaces` | `map[string]any` | No |  |
 | `package_files_checksum_failed_count` | `string` | No |  |
 | `package_files_checksum_total_count` | `string` | No |  |
 | `package_files_checksummed_count` | `string` | No |  |
@@ -15316,7 +15301,7 @@ fmt.Println(eeApiEntitiesGeoNodeStatus.GetName()) // "ee_api_entities_geo_node_s
 | `proxy_local_requests_event_count_weekly` | `string` | No |  |
 | `proxy_remote_requests_event_count_weekly` | `string` | No |  |
 | `replication_slots_count` | `string` | No |  |
-| `replication_slots_max_retained_wal_byte` | `string` | No |  |
+| `replication_slots_max_retained_wal_bytes` | `string` | No |  |
 | `replication_slots_used_count` | `string` | No |  |
 | `replication_slots_used_in_percentage` | `string` | No |  |
 | `repositories_checked_count` | `string` | No |  |
@@ -15337,7 +15322,7 @@ fmt.Println(eeApiEntitiesGeoNodeStatus.GetName()) // "ee_api_entities_geo_node_s
 | `snippet_repositories_verification_total_count` | `string` | No |  |
 | `snippet_repositories_verified_count` | `string` | No |  |
 | `snippet_repositories_verified_in_percentage` | `string` | No |  |
-| `storage_shard` | `map[string]any` | No |  |
+| `storage_shards` | `map[string]any` | No |  |
 | `storage_shards_match` | `string` | No |  |
 | `terraform_state_versions_checksum_failed_count` | `string` | No |  |
 | `terraform_state_versions_checksum_total_count` | `string` | No |  |
@@ -15416,7 +15401,7 @@ fmt.Println(eeApiEntitiesGeoPipelineRef.GetName()) // "ee_api_entities_geo_pipel
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `pipeline_ref` | `[]any` | No |  |
+| `pipeline_refs` | `[]any` | No |  |
 
 ### Operations
 
@@ -15559,9 +15544,9 @@ fmt.Println(eeApiEntitiesMergeRequestApprovalState.GetName()) // "ee_api_entitie
 | `approved` | `bool` | No |  |
 | `approved_by` | `[]any` | No |  |
 | `code_owner` | `bool` | No |  |
-| `contains_hidden_group` | `bool` | No |  |
-| `eligible_approver` | `[]any` | No |  |
-| `group` | `[]any` | No |  |
+| `contains_hidden_groups` | `bool` | No |  |
+| `eligible_approvers` | `[]any` | No |  |
+| `groups` | `[]any` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `overridden` | `bool` | No |  |
@@ -15569,7 +15554,7 @@ fmt.Println(eeApiEntitiesMergeRequestApprovalState.GetName()) // "ee_api_entitie
 | `rule_type` | `string` | No |  |
 | `section` | `string` | No |  |
 | `source_rule` | `map[string]any` | No |  |
-| `user` | `[]any` | No |  |
+| `users` | `[]any` | No |  |
 
 ### Operations
 
@@ -17024,9 +17009,9 @@ fmt.Println(metadata.GetName()) // "metadata"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enterprise` | `bool` | No |  |
-| `kas` | `map[string]any` | No |  |
-| `revision` | `string` | No |  |
+| `enabled` | `bool` | No |  |
+| `externalK8sProxyUrl` | `string` | No |  |
+| `externalUrl` | `string` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations
@@ -17414,13 +17399,22 @@ fmt.Println(nugetPackage.GetName()) // "nuget_package"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `catalog_entry` | `map[string]any` | No |  |
+| `authors` | `string` | No |  |
 | `count` | `int` | No |  |
+| `dependencyGroups` | `[]any` | No |  |
+| `description` | `string` | No |  |
+| `iconUrl` | `string` | No |  |
 | `id` | `string` | No |  |
-| `item` | `[]any` | No |  |
+| `items` | `[]any` | No |  |
+| `licenseUrl` | `string` | No |  |
 | `lower` | `string` | No |  |
-| `package_content` | `string` | No |  |
+| `packageContent` | `string` | No |  |
+| `projectUrl` | `string` | No |  |
+| `published` | `string` | No |  |
+| `summary` | `string` | No |  |
+| `tags` | `string` | No |  |
 | `upper` | `string` | No |  |
+| `version` | `string` | No |  |
 
 ### Operations
 
@@ -17757,7 +17751,7 @@ fmt.Println(project.GetName()) // "project"
 | `updated_at` | `string` | No |  |
 | `user` | `map[string]any` | No |  |
 | `web_url` | `string` | No |  |
-| `yaml_error` | `string` | No |  |
+| `yaml_errors` | `string` | No |  |
 
 ### Operations
 
@@ -19104,7 +19098,7 @@ fmt.Println(starrer.GetName()) // "starrer"
 | --- | --- | --- | --- |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
-| `custom_attribute` | `[]any` | No |  |
+| `custom_attributes` | `[]any` | No |  |
 | `id` | `int` | No |  |
 | `locked` | `bool` | No |  |
 | `name` | `string` | No |  |
@@ -19391,7 +19385,7 @@ fmt.Println(testReport.GetName()) // "test_report"
 | `skipped_count` | `int` | No |  |
 | `success_count` | `int` | No |  |
 | `suite_error` | `string` | No |  |
-| `test_case` | `[]any` | No |  |
+| `test_cases` | `[]any` | No |  |
 | `total_count` | `int` | No |  |
 | `total_time` | `int` | No |  |
 
@@ -19444,7 +19438,7 @@ fmt.Println(testReportSummary.GetName()) // "test_report_summary"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `test_suite` | `map[string]any` | No |  |
+| `test_suites` | `map[string]any` | No |  |
 | `total` | `map[string]any` | No |  |
 
 ### Operations
@@ -19646,7 +19640,7 @@ fmt.Println(user.GetName()) // "user"
 | --- | --- | --- | --- |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
-| `custom_attribute` | `[]any` | No |  |
+| `custom_attributes` | `[]any` | No |  |
 | `id` | `int` | No |  |
 | `locked` | `bool` | No |  |
 | `name` | `string` | No |  |

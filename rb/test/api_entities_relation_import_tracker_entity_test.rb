@@ -37,7 +37,7 @@ class ApiEntitiesRelationImportTrackerEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.api_entities_relation_import_tracker"), "api_entities_relation_import_tracker_ref01"))
 
     api_entities_relation_import_tracker_ref01_data_result = api_entities_relation_import_tracker_ref01_ent.create(api_entities_relation_import_tracker_ref01_data, nil)
-    api_entities_relation_import_tracker_ref01_data = Helpers.to_map(api_entities_relation_import_tracker_ref01_data_result)
+    api_entities_relation_import_tracker_ref01_data = Helpers.to_map(api_entities_relation_import_tracker_ref01_data_result.respond_to?(:data_get) ? api_entities_relation_import_tracker_ref01_data_result.data_get : api_entities_relation_import_tracker_ref01_data_result)
     assert !api_entities_relation_import_tracker_ref01_data.nil?
 
   end

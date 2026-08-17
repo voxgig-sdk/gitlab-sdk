@@ -52,7 +52,7 @@ func TestApiEntitiesFeatureFlagEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -108,9 +108,12 @@ func TestApiEntitiesFeatureFlagEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesFeatureFlagRef01Data = core.ToMapAny(apiEntitiesFeatureFlagRef01DataResult)
+		apiEntitiesFeatureFlagRef01Data = core.ToMapAny(entityData(apiEntitiesFeatureFlagRef01DataResult))
 		if apiEntitiesFeatureFlagRef01Data == nil {
 			t.Fatal("expected create result to be a map")
+		}
+		if apiEntitiesFeatureFlagRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
 		}
 
 		// LIST
@@ -134,6 +137,7 @@ func TestApiEntitiesFeatureFlagEntity(t *testing.T) {
 
 		// UPDATE
 		apiEntitiesFeatureFlagRef01DataUp0Up := map[string]any{
+			"id": apiEntitiesFeatureFlagRef01Data["id"],
 			"project_id": setup.idmap["project_id"],
 		}
 
@@ -145,22 +149,31 @@ func TestApiEntitiesFeatureFlagEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesFeatureFlagRef01ResdataUp0 := core.ToMapAny(apiEntitiesFeatureFlagRef01ResdataUp0Result)
+		apiEntitiesFeatureFlagRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesFeatureFlagRef01ResdataUp0Result))
 		if apiEntitiesFeatureFlagRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
+		}
+		if apiEntitiesFeatureFlagRef01ResdataUp0["id"] != apiEntitiesFeatureFlagRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
 		}
 		if apiEntitiesFeatureFlagRef01ResdataUp0[apiEntitiesFeatureFlagRef01MarkdefUp0Name] != apiEntitiesFeatureFlagRef01MarkdefUp0Value {
 			t.Fatalf("expected %s to be updated, got %v", apiEntitiesFeatureFlagRef01MarkdefUp0Name, apiEntitiesFeatureFlagRef01ResdataUp0[apiEntitiesFeatureFlagRef01MarkdefUp0Name])
 		}
 
 		// LOAD
-		apiEntitiesFeatureFlagRef01MatchDt0 := map[string]any{}
+		apiEntitiesFeatureFlagRef01MatchDt0 := map[string]any{
+			"id": apiEntitiesFeatureFlagRef01Data["id"],
+		}
 		apiEntitiesFeatureFlagRef01DataDt0Loaded, err := apiEntitiesFeatureFlagRef01Ent.Load(apiEntitiesFeatureFlagRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if apiEntitiesFeatureFlagRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		apiEntitiesFeatureFlagRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesFeatureFlagRef01DataDt0Loaded))
+		if apiEntitiesFeatureFlagRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if apiEntitiesFeatureFlagRef01DataDt0LoadResult["id"] != apiEntitiesFeatureFlagRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

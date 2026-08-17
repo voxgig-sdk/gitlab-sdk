@@ -58,7 +58,7 @@ func TestApiEntitiesCiResetTokenResultEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesCiResetTokenResultRef01Data = core.ToMapAny(apiEntitiesCiResetTokenResultRef01DataResult)
+		apiEntitiesCiResetTokenResultRef01Data = core.ToMapAny(entityData(apiEntitiesCiResetTokenResultRef01DataResult))
 		if apiEntitiesCiResetTokenResultRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

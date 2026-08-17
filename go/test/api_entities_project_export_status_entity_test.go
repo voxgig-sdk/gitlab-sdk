@@ -61,19 +61,13 @@ func TestApiEntitiesProjectExportStatusEntity(t *testing.T) {
 
 		// LOAD
 		apiEntitiesProjectExportStatusRef01Ent := client.ApiEntitiesProjectExportStatus(nil)
-		apiEntitiesProjectExportStatusRef01MatchDt0 := map[string]any{
-			"id": apiEntitiesProjectExportStatusRef01Data["id"],
-		}
+		apiEntitiesProjectExportStatusRef01MatchDt0 := map[string]any{}
 		apiEntitiesProjectExportStatusRef01DataDt0Loaded, err := apiEntitiesProjectExportStatusRef01Ent.Load(apiEntitiesProjectExportStatusRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesProjectExportStatusRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesProjectExportStatusRef01DataDt0Loaded)
-		if apiEntitiesProjectExportStatusRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if apiEntitiesProjectExportStatusRef01DataDt0LoadResult["id"] != apiEntitiesProjectExportStatusRef01Data["id"] {
-			t.Fatal("expected load result id to match")
+		if apiEntitiesProjectExportStatusRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

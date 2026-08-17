@@ -37,7 +37,7 @@ class ApiEntitiesBasicRefEntity extends GitlabEntityBase<ApiEntitiesBasicRef> {
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesBasicRefListMatch, ctrl?: Control): Promise<ApiEntitiesBasicRef[]> {
+  async list(this: any, reqmatch?: ApiEntitiesBasicRefListMatch, ctrl?: Control): Promise<ApiEntitiesBasicRefEntity[]> {
 
     const utility = this._utility
 

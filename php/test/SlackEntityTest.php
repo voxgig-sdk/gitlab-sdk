@@ -44,7 +44,7 @@ class SlackEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.slack"), "slack_ref01"));
 
         $slack_ref01_data_result = $slack_ref01_ent->create($slack_ref01_data, null);
-        $slack_ref01_data = Helpers::to_map($slack_ref01_data_result);
+        $slack_ref01_data = Helpers::to_map(is_object($slack_ref01_data_result) && method_exists($slack_ref01_data_result, 'data_get') ? $slack_ref01_data_result->data_get() : $slack_ref01_data_result);
         $this->assertNotNull($slack_ref01_data);
 
     }

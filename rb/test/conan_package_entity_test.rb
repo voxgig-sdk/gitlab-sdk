@@ -50,7 +50,7 @@ class ConanPackageEntityTest < Minitest::Test
     }
 
     conan_package_ref01_resdata_up0_result = conan_package_ref01_ent.update(conan_package_ref01_data_up0_up, nil)
-    conan_package_ref01_resdata_up0 = Helpers.to_map(conan_package_ref01_resdata_up0_result)
+    conan_package_ref01_resdata_up0 = Helpers.to_map(conan_package_ref01_resdata_up0_result.respond_to?(:data_get) ? conan_package_ref01_resdata_up0_result.data_get : conan_package_ref01_resdata_up0_result)
     assert !conan_package_ref01_resdata_up0.nil?
 
     # LOAD

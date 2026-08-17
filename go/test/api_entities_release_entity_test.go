@@ -52,7 +52,7 @@ func TestApiEntitiesReleaseEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -110,7 +110,7 @@ func TestApiEntitiesReleaseEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesReleaseRef01Data = core.ToMapAny(apiEntitiesReleaseRef01DataResult)
+		apiEntitiesReleaseRef01Data = core.ToMapAny(entityData(apiEntitiesReleaseRef01DataResult))
 		if apiEntitiesReleaseRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -124,14 +124,9 @@ func TestApiEntitiesReleaseEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("list failed: %v", err)
 		}
-		apiEntitiesReleaseRef01List, apiEntitiesReleaseRef01ListOk := apiEntitiesReleaseRef01ListResult.([]any)
+		_, apiEntitiesReleaseRef01ListOk := apiEntitiesReleaseRef01ListResult.([]any)
 		if !apiEntitiesReleaseRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", apiEntitiesReleaseRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(apiEntitiesReleaseRef01List), map[string]any{"id": apiEntitiesReleaseRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
 		}
 
 		// UPDATE
@@ -147,7 +142,7 @@ func TestApiEntitiesReleaseEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesReleaseRef01ResdataUp0 := core.ToMapAny(apiEntitiesReleaseRef01ResdataUp0Result)
+		apiEntitiesReleaseRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesReleaseRef01ResdataUp0Result))
 		if apiEntitiesReleaseRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

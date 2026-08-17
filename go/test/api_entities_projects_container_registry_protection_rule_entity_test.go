@@ -52,7 +52,7 @@ func TestApiEntitiesProjectsContainerRegistryProtectionRuleEntity(t *testing.T) 
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -108,7 +108,7 @@ func TestApiEntitiesProjectsContainerRegistryProtectionRuleEntity(t *testing.T) 
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesProjectsContainerRegistryProtectionRuleRef01Data = core.ToMapAny(apiEntitiesProjectsContainerRegistryProtectionRuleRef01DataResult)
+		apiEntitiesProjectsContainerRegistryProtectionRuleRef01Data = core.ToMapAny(entityData(apiEntitiesProjectsContainerRegistryProtectionRuleRef01DataResult))
 		if apiEntitiesProjectsContainerRegistryProtectionRuleRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -149,7 +149,7 @@ func TestApiEntitiesProjectsContainerRegistryProtectionRuleEntity(t *testing.T) 
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesProjectsContainerRegistryProtectionRuleRef01ResdataUp0 := core.ToMapAny(apiEntitiesProjectsContainerRegistryProtectionRuleRef01ResdataUp0Result)
+		apiEntitiesProjectsContainerRegistryProtectionRuleRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesProjectsContainerRegistryProtectionRuleRef01ResdataUp0Result))
 		if apiEntitiesProjectsContainerRegistryProtectionRuleRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

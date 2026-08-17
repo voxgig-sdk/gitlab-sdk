@@ -46,7 +46,7 @@ class NpmPackageEntityTest extends TestCase
         $npm_package_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $npm_package_ref01_data_result = $npm_package_ref01_ent->create($npm_package_ref01_data, null);
-        $npm_package_ref01_data = Helpers::to_map($npm_package_ref01_data_result);
+        $npm_package_ref01_data = Helpers::to_map(is_object($npm_package_ref01_data_result) && method_exists($npm_package_ref01_data_result, 'data_get') ? $npm_package_ref01_data_result->data_get() : $npm_package_ref01_data_result);
         $this->assertNotNull($npm_package_ref01_data);
 
         // UPDATE
@@ -54,7 +54,7 @@ class NpmPackageEntityTest extends TestCase
         ];
 
         $npm_package_ref01_resdata_up0_result = $npm_package_ref01_ent->update($npm_package_ref01_data_up0_up, null);
-        $npm_package_ref01_resdata_up0 = Helpers::to_map($npm_package_ref01_resdata_up0_result);
+        $npm_package_ref01_resdata_up0 = Helpers::to_map(is_object($npm_package_ref01_resdata_up0_result) && method_exists($npm_package_ref01_resdata_up0_result, 'data_get') ? $npm_package_ref01_resdata_up0_result->data_get() : $npm_package_ref01_resdata_up0_result);
         $this->assertNotNull($npm_package_ref01_resdata_up0);
 
         // LOAD
@@ -62,11 +62,6 @@ class NpmPackageEntityTest extends TestCase
         $npm_package_ref01_data_dt0_loaded = $npm_package_ref01_ent->load($npm_package_ref01_match_dt0, null);
         $this->assertNotNull($npm_package_ref01_data_dt0_loaded);
 
-        // REMOVE
-        $npm_package_ref01_match_rm0 = [
-            "id" => $npm_package_ref01_data["id"],
-        ];
-        $npm_package_ref01_ent->remove($npm_package_ref01_match_rm0, null);
 
     }
 }

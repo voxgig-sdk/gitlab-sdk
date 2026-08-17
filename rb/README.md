@@ -38,7 +38,7 @@ ApiEntitiesBranch is nested under project, so provide the `project_id`.
 
 ```ruby
 begin
-  # load returns the bare ApiEntitiesBranch record (raises on error).
+  # load returns the ENTITY — call data_get for the ApiEntitiesBranch record (raises on error).
   apientitiesbranch = client.ApiEntitiesBranch.load({ "project_id" => "example_project_id", "id" => "example_id" })
   puts apientitiesbranch
 rescue => err
@@ -60,7 +60,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  apientitiesaccessrequesters = client.ApiEntitiesAccessRequester.list()
+  apientitiesmetricimages = client.ApiEntitiesMetricImage.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -128,9 +128,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = GitlabSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-apientitiesaccessrequester = client.ApiEntitiesAccessRequester.list()
-puts apientitiesaccessrequester
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+apientitiesmetricimage = client.ApiEntitiesMetricImage.list()
+puts apientitiesmetricimage
 ```
 
 ### Use a custom fetch function
@@ -546,7 +547,7 @@ API path: `/api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_imag
 | --- | --- |
 | `avatar_path` |  |
 | `avatar_url` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `id` |  |
 | `key` |  |
 | `locked` |  |
@@ -573,11 +574,11 @@ API path: `/api/v4/groups/{id}/access_requests`
 | `header_logo` |  |
 | `header_message` |  |
 | `logo` |  |
-| `member_guideline` |  |
+| `member_guidelines` |  |
 | `message_background_color` |  |
 | `message_font_color` |  |
-| `new_project_guideline` |  |
-| `profile_image_guideline` |  |
+| `new_project_guidelines` |  |
+| `profile_image_guidelines` |  |
 | `pwa_description` |  |
 | `pwa_icon` |  |
 | `pwa_name` |  |
@@ -606,17 +607,17 @@ API path: `/api/v4/applications`
 
 | Field | Description |
 | --- | --- |
-| `active_user` |  |
-| `fork` |  |
-| `group` |  |
-| `issue` |  |
-| `merge_request` |  |
-| `milestone` |  |
-| `note` |  |
-| `project` |  |
-| `snippet` |  |
-| `ssh_key` |  |
-| `user` |  |
+| `active_users` |  |
+| `forks` |  |
+| `groups` |  |
+| `issues` |  |
+| `merge_requests` |  |
+| `milestones` |  |
+| `notes` |  |
+| `projects` |  |
+| `snippets` |  |
+| `ssh_keys` |  |
+| `users` |  |
 
 Operations: Load.
 
@@ -651,14 +652,22 @@ API path: `/api/v4/avatar`
 
 | Field | Description |
 | --- | --- |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `awardable_id` |  |
 | `awardable_type` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
 | `id` |  |
+| `locked` |  |
 | `name` |  |
+| `public_email` |  |
+| `state` |  |
 | `updated_at` |  |
 | `url` |  |
 | `user` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, List, Load.
 
@@ -709,7 +718,7 @@ API path: `/api/v4/projects/{id}/job_token_scope/groups_allowlist`
 | --- | --- |
 | `avatar_url` |  |
 | `created_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `description` |  |
 | `forks_count` |  |
@@ -728,7 +737,7 @@ API path: `/api/v4/projects/{id}/job_token_scope/groups_allowlist`
 | `ssh_url_to_repo` |  |
 | `star_count` |  |
 | `tag_list` |  |
-| `topic` |  |
+| `topics` |  |
 | `visibility` |  |
 | `web_url` |  |
 
@@ -776,14 +785,28 @@ API path: `/api/v4/admin/batched_background_migrations`
 
 | Field | Description |
 | --- | --- |
+| `author_email` |  |
+| `author_name` |  |
+| `authored_date` |  |
 | `can_push` |  |
 | `commit` |  |
+| `committed_date` |  |
+| `committer_email` |  |
+| `committer_name` |  |
+| `created_at` |  |
 | `default` |  |
 | `developers_can_merge` |  |
 | `developers_can_push` |  |
+| `extended_trailers` |  |
+| `id` |  |
 | `merged` |  |
+| `message` |  |
 | `name` |  |
+| `parent_ids` |  |
 | `protected` |  |
+| `short_id` |  |
+| `title` |  |
+| `trailers` |  |
 | `web_url` |  |
 
 Operations: Create, List, Load, Update.
@@ -801,18 +824,18 @@ API path: `/api/v4/projects/{id}/repository/branches`
 | `destination_namespace` |  |
 | `destination_slug` |  |
 | `entity_type` |  |
-| `failure` |  |
-| `has_failure` |  |
+| `failures` |  |
+| `has_failures` |  |
 | `id` |  |
-| `migrate_membership` |  |
-| `migrate_project` |  |
+| `migrate_memberships` |  |
+| `migrate_projects` |  |
 | `namespace_id` |  |
 | `parent_id` |  |
 | `project_id` |  |
 | `source_full_path` |  |
 | `source_type` |  |
 | `source_url` |  |
-| `stat` |  |
+| `stats` |  |
 | `status` |  |
 | `updated_at` |  |
 
@@ -839,8 +862,8 @@ API path: `/api/v4/bulk_imports/{import_id}/entities/{entity_id}/failures`
 
 | Field | Description |
 | --- | --- |
-| `batch` |  |
 | `batched` |  |
+| `batches` |  |
 | `batches_count` |  |
 | `error` |  |
 | `relation` |  |
@@ -856,7 +879,7 @@ API path: `/api/v4/groups/{id}/export_relations/status`
 
 | Field | Description |
 | --- | --- |
-| `note` |  |
+| `notes` |  |
 
 Operations: Load.
 
@@ -907,7 +930,7 @@ API path: `/api/v4/projects/{id}/catalog/publish`
 | --- | --- |
 | `allow_failure` |  |
 | `archived` |  |
-| `artifact` |  |
+| `artifacts` |  |
 | `artifacts_expire_at` |  |
 | `artifacts_file` |  |
 | `commit` |  |
@@ -1006,16 +1029,16 @@ API path: `/api/v4/runners/{id}/jobs`
 | `blob` |  |
 | `context_project` |  |
 | `context_sha` |  |
-| `error` |  |
+| `errors` |  |
 | `extra` |  |
-| `include` |  |
-| `job` |  |
+| `includes` |  |
+| `jobs` |  |
 | `location` |  |
 | `merged_yaml` |  |
 | `raw` |  |
 | `type` |  |
 | `valid` |  |
-| `warning` |  |
+| `warnings` |  |
 
 Operations: Create, List.
 
@@ -1059,7 +1082,7 @@ API path: `/api/v4/projects/{id}/pipelines`
 | `cron_timezone` |  |
 | `description` |  |
 | `id` |  |
-| `input` |  |
+| `inputs` |  |
 | `next_run_at` |  |
 | `owner` |  |
 | `ref` |  |
@@ -1079,13 +1102,13 @@ API path: `/api/v4/projects/{id}/pipeline_schedules`
 | `cron_timezone` |  |
 | `description` |  |
 | `id` |  |
-| `input` |  |
+| `inputs` |  |
 | `last_pipeline` |  |
 | `next_run_at` |  |
 | `owner` |  |
 | `ref` |  |
 | `updated_at` |  |
-| `variable` |  |
+| `variables` |  |
 
 Operations: Create, Load, Update.
 
@@ -1118,19 +1141,16 @@ API path: `/api/v4/projects/{id}/resource_groups`
 
 | Field | Description |
 | --- | --- |
-| `active` |  |
-| `created_at` |  |
-| `created_by` |  |
-| `description` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
 | `id` |  |
-| `ip_address` |  |
-| `is_shared` |  |
-| `job_execution_status` |  |
+| `locked` |  |
 | `name` |  |
-| `online` |  |
-| `paused` |  |
-| `runner_type` |  |
-| `status` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, Load.
 
@@ -1147,7 +1167,7 @@ API path: `/api/v4/projects/{id}/runners`
 | `created_at` |  |
 | `created_by` |  |
 | `description` |  |
-| `group` |  |
+| `groups` |  |
 | `id` |  |
 | `ip_address` |  |
 | `is_shared` |  |
@@ -1159,7 +1179,7 @@ API path: `/api/v4/projects/{id}/runners`
 | `online` |  |
 | `paused` |  |
 | `platform` |  |
-| `project` |  |
+| `projects` |  |
 | `revision` |  |
 | `run_untagged` |  |
 | `runner_type` |  |
@@ -1204,14 +1224,6 @@ API path: `/api/v4/runners`
 
 | Field | Description |
 | --- | --- |
-| `checksum` |  |
-| `checksum_algorithm` |  |
-| `created_at` |  |
-| `expires_at` |  |
-| `file_extension` |  |
-| `id` |  |
-| `metadata` |  |
-| `name` |  |
 
 Operations: Create, Load.
 
@@ -1249,7 +1261,7 @@ API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/varia
 | `management_project` |  |
 | `name` |  |
 | `namespace_per_environment` |  |
-| `platform_kubernete` |  |
+| `platform_kubernetes` |  |
 | `platform_type` |  |
 | `provider_gcp` |  |
 | `provider_type` |  |
@@ -1274,7 +1286,7 @@ API path: `/api/v4/admin/clusters/add`
 | `management_project` |  |
 | `name` |  |
 | `namespace_per_environment` |  |
-| `platform_kubernete` |  |
+| `platform_kubernetes` |  |
 | `platform_type` |  |
 | `provider_gcp` |  |
 | `provider_type` |  |
@@ -1298,7 +1310,7 @@ API path: `/api/v4/groups/{id}/clusters/user`
 | `management_project` |  |
 | `name` |  |
 | `namespace_per_environment` |  |
-| `platform_kubernete` |  |
+| `platform_kubernetes` |  |
 | `platform_type` |  |
 | `project` |  |
 | `provider_gcp` |  |
@@ -1313,12 +1325,13 @@ API path: `/api/v4/projects/{id}/clusters/user`
 
 | Field | Description |
 | --- | --- |
-| `config_project` |  |
 | `created_at` |  |
-| `created_by_user_id` |  |
+| `description` |  |
 | `id` |  |
-| `is_receptive` |  |
 | `name` |  |
+| `name_with_namespace` |  |
+| `path` |  |
+| `path_with_namespace` |  |
 
 Operations: Create, Load.
 
@@ -1377,13 +1390,13 @@ API path: `/api/v4/projects/{id}/cluster_agents/{agent_id}/tokens`
 | `committer_email` |  |
 | `committer_name` |  |
 | `created_at` |  |
-| `extended_trailer` |  |
+| `extended_trailers` |  |
 | `id` |  |
 | `message` |  |
-| `parent_id` |  |
+| `parent_ids` |  |
 | `short_id` |  |
 | `title` |  |
-| `trailer` |  |
+| `trailers` |  |
 | `web_url` |  |
 
 Operations: Create, List.
@@ -1401,17 +1414,17 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/context_comm
 | `committer_email` |  |
 | `committer_name` |  |
 | `created_at` |  |
-| `extended_trailer` |  |
+| `extended_trailers` |  |
 | `id` |  |
 | `last_pipeline` |  |
 | `message` |  |
-| `parent_id` |  |
+| `parent_ids` |  |
 | `project_id` |  |
 | `short_id` |  |
-| `stat` |  |
+| `stats` |  |
 | `status` |  |
 | `title` |  |
-| `trailer` |  |
+| `trailers` |  |
 | `web_url` |  |
 
 Operations: Create, Load, Update.
@@ -1423,11 +1436,21 @@ API path: `/api/v4/projects/{id}/repository/commits`
 | Field | Description |
 | --- | --- |
 | `author` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
+| `id` |  |
 | `line` |  |
 | `line_type` |  |
+| `locked` |  |
+| `name` |  |
 | `note` |  |
 | `path` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, List.
 
@@ -1461,18 +1484,26 @@ API path: `/api/v4/projects/{id}/repository/commits/{sha}/signature`
 | --- | --- |
 | `allow_failure` |  |
 | `author` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `coverage` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
 | `description` |  |
 | `finished_at` |  |
 | `id` |  |
+| `locked` |  |
 | `name` |  |
 | `pipeline_id` |  |
+| `public_email` |  |
 | `ref` |  |
 | `sha` |  |
 | `started_at` |  |
+| `state` |  |
 | `status` |  |
 | `target_url` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, List.
 
@@ -1483,9 +1514,10 @@ API path: `/api/v4/projects/{id}/statuses/{sha}`
 | Field | Description |
 | --- | --- |
 | `commit` |  |
+| `commits` |  |
 | `compare_same_ref` |  |
 | `compare_timeout` |  |
-| `diff` |  |
+| `diffs` |  |
 | `web_url` |  |
 
 Operations: List.
@@ -1506,7 +1538,7 @@ API path: `/api/v4/projects/{id}/repository/compare`
 | `project_id` |  |
 | `size` |  |
 | `status` |  |
-| `tag` |  |
+| `tags` |  |
 | `tags_count` |  |
 
 Operations: List, Load.
@@ -1546,9 +1578,9 @@ API path: `/api/v4/projects/{id}/registry/repositories/{repository_id}/tags/{tag
 
 | Field | Description |
 | --- | --- |
-| `addition` |  |
-| `commit` |  |
-| `deletion` |  |
+| `additions` |  |
+| `commits` |  |
+| `deletions` |  |
 | `email` |  |
 | `name` |  |
 
@@ -1606,7 +1638,7 @@ API path: `/api/v4/projects/{id}/deploy_keys`
 | `id` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `username` |  |
 
 Operations: List, Load.
@@ -1645,8 +1677,8 @@ API path: `/api/v4/projects/{id}/deployments`
 
 | Field | Description |
 | --- | --- |
-| `approval` |  |
 | `approval_summary` |  |
+| `approvals` |  |
 | `created_at` |  |
 | `deployable` |  |
 | `environment` |  |
@@ -1676,7 +1708,7 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/approval`
 
 | Field | Description |
 | --- | --- |
-| `feature_category` |  |
+| `feature_categories` |  |
 | `table_name` |  |
 
 Operations: Load.
@@ -1707,8 +1739,8 @@ API path: `/api/v4/projects/{id}/repository/commits/{sha}/diff`
 
 | Field | Description |
 | --- | --- |
-| `group` |  |
-| `project` |  |
+| `groups` |  |
+| `projects` |  |
 
 Operations: Load.
 
@@ -1814,7 +1846,7 @@ API path: `/api/v4/events`
 | Field | Description |
 | --- | --- |
 | `definition` |  |
-| `gate` |  |
+| `gates` |  |
 | `name` |  |
 | `state` |  |
 
@@ -1831,7 +1863,7 @@ API path: `/api/v4/features/{name}`
 | `group` |  |
 | `intended_to_rollout_by` |  |
 | `introduced_by_url` |  |
-| `log_state_change` |  |
+| `log_state_changes` |  |
 | `milestone` |  |
 | `name` |  |
 | `rollout_issue_url` |  |
@@ -1848,10 +1880,13 @@ API path: `/api/v4/features/definitions`
 | `active` |  |
 | `created_at` |  |
 | `description` |  |
+| `id` |  |
 | `name` |  |
-| `scope` |  |
-| `strategy` |  |
+| `parameters` |  |
+| `scopes` |  |
+| `strategies` |  |
 | `updated_at` |  |
+| `user_list` |  |
 | `version` |  |
 
 Operations: Create, List, Load, Update.
@@ -1870,7 +1905,7 @@ API path: `/api/v4/projects/{id}/feature_flags`
 | `path` |  |
 | `project_id` |  |
 | `updated_at` |  |
-| `user_xid` |  |
+| `user_xids` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -1907,8 +1942,8 @@ API path: `/api/v4/namespaces/{id}/gitlab_subscription`
 
 | Field | Description |
 | --- | --- |
-| `time` |  |
-| `version` |  |
+| `Time` |  |
+| `Version` |  |
 
 Operations: Load.
 
@@ -1923,10 +1958,10 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.in
 | `auto_duo_code_review_enabled` |  |
 | `avatar_url` |  |
 | `created_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `default_branch_protection` |  |
-| `default_branch_protection_default` |  |
+| `default_branch_protection_defaults` |  |
 | `description` |  |
 | `duo_core_features_enabled` |  |
 | `duo_features_enabled` |  |
@@ -1938,7 +1973,7 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.in
 | `id` |  |
 | `ldap_access` |  |
 | `ldap_cn` |  |
-| `ldap_group_link` |  |
+| `ldap_group_links` |  |
 | `lfs_enabled` |  |
 | `lock_duo_features_enabled` |  |
 | `lock_math_rendering_limits_enabled` |  |
@@ -1954,12 +1989,12 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.in
 | `repository_storage` |  |
 | `request_access_enabled` |  |
 | `require_two_factor_authentication` |  |
-| `root_storage_statistic` |  |
-| `saml_group_link` |  |
+| `root_storage_statistics` |  |
+| `saml_group_links` |  |
 | `share_with_group_lock` |  |
 | `shared_runners_setting` |  |
 | `show_diff_preview_in_email` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `subgroup_creation_level` |  |
 | `two_factor_grace_period` |  |
 | `visibility` |  |
@@ -1982,10 +2017,10 @@ API path: `/api/v4/groups/{id}/archive`
 | `auto_duo_code_review_enabled` |  |
 | `avatar_url` |  |
 | `created_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `default_branch_protection` |  |
-| `default_branch_protection_default` |  |
+| `default_branch_protection_defaults` |  |
 | `description` |  |
 | `duo_core_features_enabled` |  |
 | `duo_features_enabled` |  |
@@ -1997,10 +2032,10 @@ API path: `/api/v4/groups/{id}/archive`
 | `full_name` |  |
 | `full_path` |  |
 | `id` |  |
-| `ip_restriction_range` |  |
+| `ip_restriction_ranges` |  |
 | `ldap_access` |  |
 | `ldap_cn` |  |
-| `ldap_group_link` |  |
+| `ldap_group_links` |  |
 | `lfs_enabled` |  |
 | `lock_duo_features_enabled` |  |
 | `lock_math_rendering_limits_enabled` |  |
@@ -2015,28 +2050,28 @@ API path: `/api/v4/groups/{id}/archive`
 | `path` |  |
 | `prevent_forking_outside_group` |  |
 | `prevent_sharing_groups_outside_hierarchy` |  |
-| `project` |  |
 | `project_creation_level` |  |
+| `projects` |  |
 | `repository_storage` |  |
 | `request_access_enabled` |  |
 | `require_two_factor_authentication` |  |
-| `root_storage_statistic` |  |
+| `root_storage_statistics` |  |
 | `runners_token` |  |
-| `saml_group_link` |  |
+| `saml_group_links` |  |
 | `service_access_tokens_expiration_enforced` |  |
 | `share_with_group_lock` |  |
-| `shared_project` |  |
+| `shared_projects` |  |
 | `shared_runners_minutes_limit` |  |
 | `shared_runners_setting` |  |
-| `shared_with_group` |  |
+| `shared_with_groups` |  |
 | `show_diff_preview_in_email` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `subgroup_creation_level` |  |
 | `two_factor_grace_period` |  |
 | `unique_project_download_limit` |  |
 | `unique_project_download_limit_alertlist` |  |
 | `unique_project_download_limit_allowlist` |  |
-| `unique_project_download_limit_interval_in_second` |  |
+| `unique_project_download_limit_interval_in_seconds` |  |
 | `visibility` |  |
 | `web_based_commit_signing_enabled` |  |
 | `web_url` |  |
@@ -2053,20 +2088,20 @@ API path: `/api/v4/groups/{id}/share`
 | `alert_status` |  |
 | `branch_filter_strategy` |  |
 | `created_at` |  |
-| `custom_header` |  |
+| `custom_headers` |  |
 | `custom_webhook_template` |  |
 | `description` |  |
 | `disabled_until` |  |
 | `enable_ssl_verification` |  |
 | `id` |  |
-| `merge_requests_event` |  |
+| `merge_requests_events` |  |
 | `name` |  |
-| `push_event` |  |
+| `push_events` |  |
 | `push_events_branch_filter` |  |
-| `repository_update_event` |  |
-| `tag_push_event` |  |
+| `repository_update_events` |  |
+| `tag_push_events` |  |
 | `url` |  |
-| `url_variable` |  |
+| `url_variables` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -2076,30 +2111,6 @@ API path: `/api/v4/hooks`
 
 | Field | Description |
 | --- | --- |
-| `active` |  |
-| `alert_event` |  |
-| `comment_on_event_enabled` |  |
-| `commit_event` |  |
-| `confidential_issues_event` |  |
-| `confidential_note_event` |  |
-| `created_at` |  |
-| `deployment_event` |  |
-| `id` |  |
-| `incident_event` |  |
-| `inherited` |  |
-| `issues_event` |  |
-| `job_event` |  |
-| `merge_requests_event` |  |
-| `note_event` |  |
-| `pipeline_event` |  |
-| `property` |  |
-| `push_event` |  |
-| `slug` |  |
-| `tag_push_event` |  |
-| `title` |  |
-| `updated_at` |  |
-| `vulnerability_event` |  |
-| `wiki_page_event` |  |
 
 Operations: Load.
 
@@ -2110,28 +2121,28 @@ API path: `/api/v4/groups/{id}/integrations/{slug}`
 | Field | Description |
 | --- | --- |
 | `active` |  |
-| `alert_event` |  |
+| `alert_events` |  |
 | `comment_on_event_enabled` |  |
-| `commit_event` |  |
-| `confidential_issues_event` |  |
-| `confidential_note_event` |  |
+| `commit_events` |  |
+| `confidential_issues_events` |  |
+| `confidential_note_events` |  |
 | `created_at` |  |
-| `deployment_event` |  |
+| `deployment_events` |  |
 | `id` |  |
-| `incident_event` |  |
+| `incident_events` |  |
 | `inherited` |  |
-| `issues_event` |  |
-| `job_event` |  |
-| `merge_requests_event` |  |
-| `note_event` |  |
-| `pipeline_event` |  |
-| `push_event` |  |
+| `issues_events` |  |
+| `job_events` |  |
+| `merge_requests_events` |  |
+| `note_events` |  |
+| `pipeline_events` |  |
+| `push_events` |  |
 | `slug` |  |
-| `tag_push_event` |  |
+| `tag_push_events` |  |
 | `title` |  |
 | `updated_at` |  |
-| `vulnerability_event` |  |
-| `wiki_page_event` |  |
+| `vulnerability_events` |  |
+| `wiki_page_events` |  |
 
 Operations: List, Update.
 
@@ -2171,6 +2182,7 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time`
 | Field | Description |
 | --- | --- |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_issues_count` |  |
 | `closed_at` |  |
@@ -2179,11 +2191,11 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time`
 | `created_at` |  |
 | `description` |  |
 | `discussion_locked` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `due_date` |  |
 | `epic` |  |
 | `epic_iid` |  |
-| `has_task` |  |
+| `has_tasks` |  |
 | `health_status` |  |
 | `id` |  |
 | `iid` |  |
@@ -2191,24 +2203,24 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time`
 | `imported_from` |  |
 | `issue_type` |  |
 | `iteration` |  |
-| `label` |  |
-| `link` |  |
+| `labels` |  |
+| `links` |  |
 | `merge_requests_count` |  |
 | `milestone` |  |
 | `moved_to_id` |  |
 | `project_id` |  |
-| `reference` |  |
+| `references` |  |
 | `service_desk_reply_to` |  |
 | `severity` |  |
 | `state` |  |
 | `subscribed` |  |
 | `task_completion_status` |  |
 | `task_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `type` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
 | `weight` |  |
@@ -2233,15 +2245,15 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/links`
 
 | Field | Description |
 | --- | --- |
-| `condition` |  |
+| `conditions` |  |
 | `content` |  |
 | `description` |  |
 | `html_url` |  |
 | `key` |  |
-| `limitation` |  |
+| `limitations` |  |
 | `name` |  |
 | `nickname` |  |
-| `permission` |  |
+| `permissions` |  |
 | `popular` |  |
 | `source_url` |  |
 
@@ -2281,7 +2293,7 @@ API path: `/api/v4/groups/{id}/uploads`
 | `avatar_url` |  |
 | `created_at` |  |
 | `created_by` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `email` |  |
 | `expires_at` |  |
 | `group_saml_identity` |  |
@@ -2312,6 +2324,7 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `allow_maintainer_to_push` |  |
 | `approvals_before_merge` |  |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_discussions_resolved` |  |
 | `changes_count` |  |
@@ -2321,21 +2334,21 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `description` |  |
 | `description_html` |  |
 | `detailed_merge_status` |  |
-| `diff_ref` |  |
+| `diff_refs` |  |
 | `discussion_locked` |  |
 | `diverged_commits_count` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `draft` |  |
 | `first_contribution` |  |
 | `first_deployed_to_production_at` |  |
 | `force_remove_source_branch` |  |
-| `has_conflict` |  |
+| `has_conflicts` |  |
 | `head_pipeline` |  |
 | `id` |  |
 | `iid` |  |
 | `imported` |  |
 | `imported_from` |  |
-| `label` |  |
+| `labels` |  |
 | `latest_build_finished_at` |  |
 | `latest_build_started_at` |  |
 | `merge_after` |  |
@@ -2343,7 +2356,7 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `merge_error` |  |
 | `merge_status` |  |
 | `merge_user` |  |
-| `merge_when_pipeline_succeed` |  |
+| `merge_when_pipeline_succeeds` |  |
 | `merged_at` |  |
 | `merged_by` |  |
 | `milestone` |  |
@@ -2352,7 +2365,8 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `project_id` |  |
 | `rebase_in_progress` |  |
 | `reference` |  |
-| `reviewer` |  |
+| `references` |  |
+| `reviewers` |  |
 | `sha` |  |
 | `should_remove_source_branch` |  |
 | `source_branch` |  |
@@ -2365,11 +2379,11 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `target_branch` |  |
 | `target_project_id` |  |
 | `task_completion_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `title_html` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
@@ -2383,10 +2397,8 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/cancel_merge
 
 | Field | Description |
 | --- | --- |
-| `approved` |  |
-| `approved_by` |  |
-| `user_can_approve` |  |
-| `user_has_approved` |  |
+| `approved_at` |  |
+| `user` |  |
 
 Operations: Create, Load.
 
@@ -2400,6 +2412,7 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve`
 | `allow_maintainer_to_push` |  |
 | `approvals_before_merge` |  |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_discussions_resolved` |  |
 | `closed_at` |  |
@@ -2409,27 +2422,28 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve`
 | `description_html` |  |
 | `detailed_merge_status` |  |
 | `discussion_locked` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `draft` |  |
 | `force_remove_source_branch` |  |
-| `has_conflict` |  |
+| `has_conflicts` |  |
 | `id` |  |
 | `iid` |  |
 | `imported` |  |
 | `imported_from` |  |
-| `label` |  |
+| `labels` |  |
 | `merge_after` |  |
 | `merge_commit_sha` |  |
 | `merge_status` |  |
 | `merge_user` |  |
-| `merge_when_pipeline_succeed` |  |
+| `merge_when_pipeline_succeeds` |  |
 | `merged_at` |  |
 | `merged_by` |  |
 | `milestone` |  |
 | `prepared_at` |  |
 | `project_id` |  |
 | `reference` |  |
-| `reviewer` |  |
+| `references` |  |
+| `reviewers` |  |
 | `sha` |  |
 | `should_remove_source_branch` |  |
 | `source_branch` |  |
@@ -2441,11 +2455,11 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve`
 | `target_branch` |  |
 | `target_project_id` |  |
 | `task_completion_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `title_html` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
 | `work_in_progress` |  |
@@ -2462,9 +2476,10 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `allow_maintainer_to_push` |  |
 | `approvals_before_merge` |  |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_discussions_resolved` |  |
-| `change` |  |
+| `changes` |  |
 | `changes_count` |  |
 | `closed_at` |  |
 | `closed_by` |  |
@@ -2472,21 +2487,21 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `description` |  |
 | `description_html` |  |
 | `detailed_merge_status` |  |
-| `diff_ref` |  |
+| `diff_refs` |  |
 | `discussion_locked` |  |
 | `diverged_commits_count` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `draft` |  |
 | `first_contribution` |  |
 | `first_deployed_to_production_at` |  |
 | `force_remove_source_branch` |  |
-| `has_conflict` |  |
+| `has_conflicts` |  |
 | `head_pipeline` |  |
 | `id` |  |
 | `iid` |  |
 | `imported` |  |
 | `imported_from` |  |
-| `label` |  |
+| `labels` |  |
 | `latest_build_finished_at` |  |
 | `latest_build_started_at` |  |
 | `merge_after` |  |
@@ -2494,7 +2509,7 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `merge_error` |  |
 | `merge_status` |  |
 | `merge_user` |  |
-| `merge_when_pipeline_succeed` |  |
+| `merge_when_pipeline_succeeds` |  |
 | `merged_at` |  |
 | `merged_by` |  |
 | `milestone` |  |
@@ -2504,7 +2519,8 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `project_id` |  |
 | `rebase_in_progress` |  |
 | `reference` |  |
-| `reviewer` |  |
+| `references` |  |
+| `reviewers` |  |
 | `sha` |  |
 | `should_remove_source_branch` |  |
 | `source_branch` |  |
@@ -2517,11 +2533,11 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `target_branch` |  |
 | `target_project_id` |  |
 | `task_completion_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `title_html` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
@@ -2554,9 +2570,9 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/versions`
 | Field | Description |
 | --- | --- |
 | `base_commit_sha` |  |
-| `commit` |  |
+| `commits` |  |
 | `created_at` |  |
-| `diff` |  |
+| `diffs` |  |
 | `head_commit_sha` |  |
 | `id` |  |
 | `merge_request_id` |  |
@@ -2573,9 +2589,16 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/versions/{ve
 
 | Field | Description |
 | --- | --- |
-| `created_at` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
+| `id` |  |
+| `locked` |  |
+| `name` |  |
+| `public_email` |  |
 | `state` |  |
-| `user` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Load.
 
@@ -2600,8 +2623,16 @@ API path: `/api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_imag
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `note` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
+| `id` |  |
+| `locked` |  |
+| `name` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Load.
 
@@ -2622,7 +2653,7 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/closes_issue
 | `kind` |  |
 | `max_seats_used` |  |
 | `max_seats_used_changed_at` |  |
-| `members_count_with_descendant` |  |
+| `members_count_with_descendants` |  |
 | `name` |  |
 | `parent_id` |  |
 | `path` |  |
@@ -2643,8 +2674,8 @@ API path: `/api/v4/namespaces`
 
 | Field | Description |
 | --- | --- |
-| `exist` |  |
-| `suggest` |  |
+| `exists` |  |
+| `suggests` |  |
 
 Operations: List.
 
@@ -2667,9 +2698,9 @@ API path: `/api/v4/namespaces/{id}/storage/limit_exclusion`
 
 | Field | Description |
 | --- | --- |
-| `dist_tag` |  |
+| `disttags` |  |
 | `name` |  |
-| `version` |  |
+| `versions` |  |
 
 Operations: Load.
 
@@ -2679,7 +2710,6 @@ API path: `/api/v4/groups/{id}/-/packages/npm/*package_name`
 
 | Field | Description |
 | --- | --- |
-| `dist_tag` |  |
 
 Operations: Load.
 
@@ -2689,7 +2719,7 @@ API path: `/api/v4/groups/{id}/-/packages/npm/-/package/*package_name/dist-tags`
 
 | Field | Description |
 | --- | --- |
-| `version` |  |
+| `versions` |  |
 
 Operations: List.
 
@@ -2699,19 +2729,20 @@ API path: `/api/v4/projects/{id}/packages/nuget/download/*package_name/index`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
+| `authors` |  |
 | `description` |  |
-| `icon_url` |  |
+| `iconUrl` |  |
 | `id` |  |
-| `license_url` |  |
-| `project_url` |  |
+| `licenseUrl` |  |
+| `projectUrl` |  |
 | `summary` |  |
-| `tag` |  |
+| `tags` |  |
 | `title` |  |
-| `total_download` |  |
+| `totalDownloads` |  |
 | `type` |  |
 | `verified` |  |
 | `version` |  |
+| `versions` |  |
 
 Operations: List.
 
@@ -2721,7 +2752,7 @@ API path: `/api/v4/groups/{id}/-/packages/nuget/query`
 
 | Field | Description |
 | --- | --- |
-| `resource` |  |
+| `resources` |  |
 | `version` |  |
 
 Operations: List.
@@ -2745,15 +2776,17 @@ API path: `/api/v4/organizations`
 | `created_at` |  |
 | `id` |  |
 | `last_downloaded_at` |  |
-| `link` |  |
+| `links` |  |
 | `name` |  |
 | `package_type` |  |
 | `pipeline` |  |
+| `pipelines` |  |
 | `project_id` |  |
 | `project_path` |  |
 | `status` |  |
-| `tag` |  |
+| `tags` |  |
 | `version` |  |
+| `versions` |  |
 
 Operations: List, Load.
 
@@ -2770,7 +2803,7 @@ API path: `/api/v4/groups/{id}/packages`
 | `file_sha256` |  |
 | `id` |  |
 | `package_id` |  |
-| `pipeline` |  |
+| `pipelines` |  |
 | `size` |  |
 
 Operations: List.
@@ -2781,16 +2814,15 @@ API path: `/api/v4/projects/{id}/packages/{package_id}/package_files`
 
 | Field | Description |
 | --- | --- |
-| `created_at` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
 | `id` |  |
-| `iid` |  |
-| `project_id` |  |
-| `ref` |  |
-| `sha` |  |
-| `source` |  |
-| `status` |  |
-| `updated_at` |  |
-| `user` |  |
+| `locked` |  |
+| `name` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
 | `web_url` |  |
 
 Operations: Load.
@@ -2801,7 +2833,6 @@ API path: `/api/v4/projects/{id}/packages/{package_id}/pipelines`
 
 | Field | Description |
 | --- | --- |
-| `file` |  |
 
 Operations: Load.
 
@@ -2811,7 +2842,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `package_url` |  |
 
 Operations: Load.
 
@@ -2832,7 +2862,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `package_snapshot` |  |
 
 Operations: Load.
 
@@ -2842,7 +2871,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `recipe_url` |  |
 
 Operations: Load.
 
@@ -2863,7 +2891,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `recipe_snapshot` |  |
 
 Operations: Load.
 
@@ -2884,7 +2911,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `upload_url` |  |
 
 Operations: Create.
 
@@ -2894,15 +2920,15 @@ API path: `/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `architecture` |  |
+| `architectures` |  |
 | `codename` |  |
-| `component` |  |
+| `components` |  |
 | `description` |  |
 | `id` |  |
 | `label` |  |
 | `origin` |  |
 | `suite` |  |
-| `valid_time_duration_second` |  |
+| `valid_time_duration_seconds` |  |
 | `version` |  |
 
 Operations: Create, List, Load, Update.
@@ -2915,8 +2941,11 @@ API path: `/api/v4/groups/{id}/-/debian_distributions`
 | --- | --- |
 | `auto_ssl_enabled` |  |
 | `certificate` |  |
+| `certificate_text` |  |
 | `domain` |  |
 | `enabled_until` |  |
+| `expired` |  |
+| `subject` |  |
 | `url` |  |
 | `verification_code` |  |
 | `verified` |  |
@@ -2929,14 +2958,8 @@ API path: `/api/v4/projects/{id}/pages/domains`
 
 | Field | Description |
 | --- | --- |
-| `auto_ssl_enabled` |  |
-| `certificate_expiration` |  |
-| `domain` |  |
-| `enabled_until` |  |
-| `project_id` |  |
-| `url` |  |
-| `verification_code` |  |
-| `verified` |  |
+| `expiration` |  |
+| `expired` |  |
 
 Operations: Load.
 
@@ -2954,7 +2977,7 @@ API path: `/api/v4/pages/domains`
 | `last_used_at` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `user_id` |  |
 
 Operations: List.
@@ -2971,10 +2994,10 @@ API path: `/api/v4/personal_access_tokens/self/associations`
 | `expires_at` |  |
 | `id` |  |
 | `last_used_at` |  |
-| `last_used_ip` |  |
+| `last_used_ips` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `user_id` |  |
 
 Operations: List, Load.
@@ -2993,7 +3016,7 @@ API path: `/api/v4/personal_access_tokens`
 | `last_used_at` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `token` |  |
 | `user_id` |  |
 
@@ -3008,8 +3031,8 @@ API path: `/api/v4/personal_access_tokens/{id}/rotate`
 | `author` |  |
 | `created_at` |  |
 | `description` |  |
-| `file` |  |
 | `file_name` |  |
+| `files` |  |
 | `http_url_to_repo` |  |
 | `id` |  |
 | `imported` |  |
@@ -3031,29 +3054,6 @@ API path: `/api/v4/snippets`
 
 | Field | Description |
 | --- | --- |
-| `ci_active_job` |  |
-| `ci_instance_level_variable` |  |
-| `ci_needs_size_limit` |  |
-| `ci_pipeline_schedule` |  |
-| `ci_pipeline_size` |  |
-| `ci_project_subscription` |  |
-| `ci_registered_group_runner` |  |
-| `ci_registered_project_runner` |  |
-| `conan_max_file_size` |  |
-| `dotenv_size` |  |
-| `dotenv_variable` |  |
-| `enforcement_limit` |  |
-| `generic_packages_max_file_size` |  |
-| `helm_max_file_size` |  |
-| `limits_history` |  |
-| `maven_max_file_size` |  |
-| `notification_limit` |  |
-| `npm_max_file_size` |  |
-| `nuget_max_file_size` |  |
-| `pipeline_hierarchy_size` |  |
-| `pypi_max_file_size` |  |
-| `storage_size_limit` |  |
-| `terraform_module_max_file_size` |  |
 
 Operations: Load, Update.
 
@@ -3068,11 +3068,11 @@ API path: `/api/v4/application/plan_limits`
 | `analytics_access_level` |  |
 | `approvals_before_merge` |  |
 | `archived` |  |
-| `auto_cancel_pending_pipeline` |  |
+| `auto_cancel_pending_pipelines` |  |
 | `auto_devops_deploy_strategy` |  |
 | `auto_devops_enabled` |  |
 | `auto_duo_code_review_enabled` |  |
-| `autoclose_referenced_issue` |  |
+| `autoclose_referenced_issues` |  |
 | `avatar_url` |  |
 | `build_git_strategy` |  |
 | `build_timeout` |  |
@@ -3081,23 +3081,23 @@ API path: `/api/v4/application/plan_limits`
 | `ci_allow_fork_pipelines_to_run_in_parent_project` |  |
 | `ci_config_path` |  |
 | `ci_default_git_depth` |  |
-| `ci_delete_pipelines_in_second` |  |
+| `ci_delete_pipelines_in_seconds` |  |
 | `ci_forward_deployment_enabled` |  |
 | `ci_forward_deployment_rollback_allowed` |  |
-| `ci_id_token_sub_claim_component` |  |
+| `ci_id_token_sub_claim_components` |  |
 | `ci_job_token_scope_enabled` |  |
 | `ci_pipeline_variables_minimum_override_role` |  |
 | `ci_push_repository_for_job_token_allowed` |  |
 | `ci_restrict_pipeline_cancellation_role` |  |
-| `ci_separated_cache` |  |
-| `compliance_framework` |  |
+| `ci_separated_caches` |  |
+| `compliance_frameworks` |  |
 | `container_expiration_policy` |  |
 | `container_registry_access_level` |  |
 | `container_registry_enabled` |  |
 | `container_registry_image_prefix` |  |
 | `created_at` |  |
 | `creator_id` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `description` |  |
 | `description_html` |  |
@@ -3105,7 +3105,7 @@ API path: `/api/v4/application/plan_limits`
 | `emails_disabled` |  |
 | `emails_enabled` |  |
 | `empty_repo` |  |
-| `enforce_auth_checks_on_upload` |  |
+| `enforce_auth_checks_on_uploads` |  |
 | `environments_access_level` |  |
 | `external_authorization_classification_label` |  |
 | `feature_flags_access_level` |  |
@@ -3130,7 +3130,7 @@ API path: `/api/v4/application/plan_limits`
 | `lfs_enabled` |  |
 | `license` |  |
 | `license_url` |  |
-| `link` |  |
+| `links` |  |
 | `marked_for_deletion_at` |  |
 | `marked_for_deletion_on` |  |
 | `max_artifacts_size` |  |
@@ -3145,8 +3145,8 @@ API path: `/api/v4/application/plan_limits`
 | `merge_trains_enabled` |  |
 | `merge_trains_skip_train_allowed` |  |
 | `mirror` |  |
-| `mirror_overwrites_diverged_branch` |  |
-| `mirror_trigger_build` |  |
+| `mirror_overwrites_diverged_branches` |  |
+| `mirror_trigger_builds` |  |
 | `mirror_user_id` |  |
 | `model_experiments_access_level` |  |
 | `model_registry_access_level` |  |
@@ -3157,8 +3157,8 @@ API path: `/api/v4/application/plan_limits`
 | `namespace` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` |  |
 | `only_allow_merge_if_all_status_checks_passed` |  |
-| `only_allow_merge_if_pipeline_succeed` |  |
-| `only_mirror_protected_branch` |  |
+| `only_allow_merge_if_pipeline_succeeds` |  |
+| `only_mirror_protected_branches` |  |
 | `open_issues_count` |  |
 | `owner` |  |
 | `package_registry_access_level` |  |
@@ -3169,7 +3169,7 @@ API path: `/api/v4/application/plan_limits`
 | `pre_receive_secret_detection_enabled` |  |
 | `prevent_merge_without_jira_issue` |  |
 | `printing_merge_request_link_enabled` |  |
-| `public_job` |  |
+| `public_jobs` |  |
 | `readme_url` |  |
 | `releases_access_level` |  |
 | `remove_source_branch_after_merge` |  |
@@ -3179,9 +3179,9 @@ API path: `/api/v4/application/plan_limits`
 | `request_access_enabled` |  |
 | `requirements_access_level` |  |
 | `requirements_enabled` |  |
-| `resolve_outdated_diff_discussion` |  |
+| `resolve_outdated_diff_discussions` |  |
 | `resource_group_default_process_mode` |  |
-| `restrict_user_defined_variable` |  |
+| `restrict_user_defined_variables` |  |
 | `runner_token_expiration_interval` |  |
 | `runners_token` |  |
 | `secret_push_protection_enabled` |  |
@@ -3190,7 +3190,7 @@ API path: `/api/v4/application/plan_limits`
 | `service_desk_address` |  |
 | `service_desk_enabled` |  |
 | `shared_runners_enabled` |  |
-| `shared_with_group` |  |
+| `shared_with_groups` |  |
 | `show_diff_preview_in_email` |  |
 | `snippets_access_level` |  |
 | `snippets_enabled` |  |
@@ -3199,13 +3199,13 @@ API path: `/api/v4/application/plan_limits`
 | `squash_option` |  |
 | `ssh_url_to_repo` |  |
 | `star_count` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `suggestion_commit_message` |  |
 | `tag_list` |  |
-| `topic` |  |
+| `topics` |  |
 | `updated_at` |  |
 | `visibility` |  |
-| `warn_about_potentially_unwanted_character` |  |
+| `warn_about_potentially_unwanted_characters` |  |
 | `web_based_commit_signing_enabled` |  |
 | `web_url` |  |
 | `wiki_access_level` |  |
@@ -3219,7 +3219,8 @@ API path: `/api/v4/projects/{id}/fork/{forked_from_id}`
 
 | Field | Description |
 | --- | --- |
-| `fetch` |  |
+| `days` |  |
+| `total` |  |
 
 Operations: Load.
 
@@ -3229,15 +3230,8 @@ API path: `/api/v4/projects/{id}/statistics`
 
 | Field | Description |
 | --- | --- |
-| `created_at` |  |
-| `description` |  |
-| `export_status` |  |
-| `id` |  |
-| `link` |  |
-| `name` |  |
-| `name_with_namespace` |  |
-| `path` |  |
-| `path_with_namespace` |  |
+| `api_url` |  |
+| `web_url` |  |
 
 Operations: Load.
 
@@ -3258,36 +3252,36 @@ API path: `/api/v4/projects/{id}/share`
 | --- | --- |
 | `alert_status` |  |
 | `branch_filter_strategy` |  |
-| `confidential_issues_event` |  |
-| `confidential_note_event` |  |
+| `confidential_issues_events` |  |
+| `confidential_note_events` |  |
 | `created_at` |  |
-| `custom_header` |  |
+| `custom_headers` |  |
 | `custom_webhook_template` |  |
-| `deployment_event` |  |
+| `deployment_events` |  |
 | `description` |  |
 | `disabled_until` |  |
-| `emoji_event` |  |
+| `emoji_events` |  |
 | `enable_ssl_verification` |  |
-| `feature_flag_event` |  |
+| `feature_flag_events` |  |
 | `id` |  |
-| `issues_event` |  |
-| `job_event` |  |
-| `merge_requests_event` |  |
-| `milestone_event` |  |
+| `issues_events` |  |
+| `job_events` |  |
+| `merge_requests_events` |  |
+| `milestone_events` |  |
 | `name` |  |
-| `note_event` |  |
-| `pipeline_event` |  |
+| `note_events` |  |
+| `pipeline_events` |  |
 | `project_id` |  |
-| `push_event` |  |
+| `push_events` |  |
 | `push_events_branch_filter` |  |
-| `releases_event` |  |
-| `repository_update_event` |  |
-| `resource_access_token_event` |  |
-| `tag_push_event` |  |
+| `releases_events` |  |
+| `repository_update_events` |  |
+| `resource_access_token_events` |  |
+| `tag_push_events` |  |
 | `url` |  |
-| `url_variable` |  |
-| `vulnerability_event` |  |
-| `wiki_page_event` |  |
+| `url_variables` |  |
+| `vulnerability_events` |  |
+| `wiki_page_events` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -3340,8 +3334,8 @@ API path: `/api/v4/projects/{id}/storage`
 | `author` |  |
 | `created_at` |  |
 | `description` |  |
-| `file` |  |
 | `file_name` |  |
+| `files` |  |
 | `http_url_to_repo` |  |
 | `id` |  |
 | `imported` |  |
@@ -3377,11 +3371,11 @@ API path: `/api/v4/projects/{id}/uploads`
 | `analytics_access_level` |  |
 | `approvals_before_merge` |  |
 | `archived` |  |
-| `auto_cancel_pending_pipeline` |  |
+| `auto_cancel_pending_pipelines` |  |
 | `auto_devops_deploy_strategy` |  |
 | `auto_devops_enabled` |  |
 | `auto_duo_code_review_enabled` |  |
-| `autoclose_referenced_issue` |  |
+| `autoclose_referenced_issues` |  |
 | `avatar_url` |  |
 | `build_git_strategy` |  |
 | `build_timeout` |  |
@@ -3390,23 +3384,23 @@ API path: `/api/v4/projects/{id}/uploads`
 | `ci_allow_fork_pipelines_to_run_in_parent_project` |  |
 | `ci_config_path` |  |
 | `ci_default_git_depth` |  |
-| `ci_delete_pipelines_in_second` |  |
+| `ci_delete_pipelines_in_seconds` |  |
 | `ci_forward_deployment_enabled` |  |
 | `ci_forward_deployment_rollback_allowed` |  |
-| `ci_id_token_sub_claim_component` |  |
+| `ci_id_token_sub_claim_components` |  |
 | `ci_job_token_scope_enabled` |  |
 | `ci_pipeline_variables_minimum_override_role` |  |
 | `ci_push_repository_for_job_token_allowed` |  |
 | `ci_restrict_pipeline_cancellation_role` |  |
-| `ci_separated_cache` |  |
-| `compliance_framework` |  |
+| `ci_separated_caches` |  |
+| `compliance_frameworks` |  |
 | `container_expiration_policy` |  |
 | `container_registry_access_level` |  |
 | `container_registry_enabled` |  |
 | `container_registry_image_prefix` |  |
 | `created_at` |  |
 | `creator_id` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `description` |  |
 | `description_html` |  |
@@ -3414,7 +3408,7 @@ API path: `/api/v4/projects/{id}/uploads`
 | `emails_disabled` |  |
 | `emails_enabled` |  |
 | `empty_repo` |  |
-| `enforce_auth_checks_on_upload` |  |
+| `enforce_auth_checks_on_uploads` |  |
 | `environments_access_level` |  |
 | `external_authorization_classification_label` |  |
 | `feature_flags_access_level` |  |
@@ -3439,7 +3433,7 @@ API path: `/api/v4/projects/{id}/uploads`
 | `lfs_enabled` |  |
 | `license` |  |
 | `license_url` |  |
-| `link` |  |
+| `links` |  |
 | `marked_for_deletion_at` |  |
 | `marked_for_deletion_on` |  |
 | `max_artifacts_size` |  |
@@ -3454,8 +3448,8 @@ API path: `/api/v4/projects/{id}/uploads`
 | `merge_trains_enabled` |  |
 | `merge_trains_skip_train_allowed` |  |
 | `mirror` |  |
-| `mirror_overwrites_diverged_branch` |  |
-| `mirror_trigger_build` |  |
+| `mirror_overwrites_diverged_branches` |  |
+| `mirror_trigger_builds` |  |
 | `mirror_user_id` |  |
 | `model_experiments_access_level` |  |
 | `model_registry_access_level` |  |
@@ -3466,8 +3460,8 @@ API path: `/api/v4/projects/{id}/uploads`
 | `namespace` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` |  |
 | `only_allow_merge_if_all_status_checks_passed` |  |
-| `only_allow_merge_if_pipeline_succeed` |  |
-| `only_mirror_protected_branch` |  |
+| `only_allow_merge_if_pipeline_succeeds` |  |
+| `only_mirror_protected_branches` |  |
 | `open_issues_count` |  |
 | `owner` |  |
 | `package_registry_access_level` |  |
@@ -3475,11 +3469,11 @@ API path: `/api/v4/projects/{id}/uploads`
 | `pages_access_level` |  |
 | `path` |  |
 | `path_with_namespace` |  |
-| `permission` |  |
+| `permissions` |  |
 | `pre_receive_secret_detection_enabled` |  |
 | `prevent_merge_without_jira_issue` |  |
 | `printing_merge_request_link_enabled` |  |
-| `public_job` |  |
+| `public_jobs` |  |
 | `readme_url` |  |
 | `releases_access_level` |  |
 | `remove_source_branch_after_merge` |  |
@@ -3489,9 +3483,9 @@ API path: `/api/v4/projects/{id}/uploads`
 | `request_access_enabled` |  |
 | `requirements_access_level` |  |
 | `requirements_enabled` |  |
-| `resolve_outdated_diff_discussion` |  |
+| `resolve_outdated_diff_discussions` |  |
 | `resource_group_default_process_mode` |  |
-| `restrict_user_defined_variable` |  |
+| `restrict_user_defined_variables` |  |
 | `runner_token_expiration_interval` |  |
 | `runners_token` |  |
 | `secret_push_protection_enabled` |  |
@@ -3500,7 +3494,7 @@ API path: `/api/v4/projects/{id}/uploads`
 | `service_desk_address` |  |
 | `service_desk_enabled` |  |
 | `shared_runners_enabled` |  |
-| `shared_with_group` |  |
+| `shared_with_groups` |  |
 | `show_diff_preview_in_email` |  |
 | `snippets_access_level` |  |
 | `snippets_enabled` |  |
@@ -3509,13 +3503,13 @@ API path: `/api/v4/projects/{id}/uploads`
 | `squash_option` |  |
 | `ssh_url_to_repo` |  |
 | `star_count` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `suggestion_commit_message` |  |
 | `tag_list` |  |
-| `topic` |  |
+| `topics` |  |
 | `updated_at` |  |
 | `visibility` |  |
-| `warn_about_potentially_unwanted_character` |  |
+| `warn_about_potentially_unwanted_characters` |  |
 | `web_based_commit_signing_enabled` |  |
 | `web_url` |  |
 | `wiki_access_level` |  |
@@ -3578,10 +3572,10 @@ API path: `/api/v4/topics`
 | `code_owner_approval_required` |  |
 | `id` |  |
 | `inherited` |  |
-| `merge_access_level` |  |
+| `merge_access_levels` |  |
 | `name` |  |
-| `push_access_level` |  |
-| `unprotect_access_level` |  |
+| `push_access_levels` |  |
+| `unprotect_access_levels` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -3591,8 +3585,14 @@ API path: `/api/v4/projects/{id}/protected_branches`
 
 | Field | Description |
 | --- | --- |
-| `create_access_level` |  |
+| `access_level` |  |
+| `access_level_description` |  |
+| `create_access_levels` |  |
+| `deploy_key_id` |  |
+| `group_id` |  |
+| `id` |  |
 | `name` |  |
+| `user_id` |  |
 
 Operations: Create, List, Load.
 
@@ -3618,6 +3618,7 @@ API path: `/api/v4/projects/{id}/groups`
 | Field | Description |
 | --- | --- |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_issues_count` |  |
 | `closed_at` |  |
@@ -3626,11 +3627,11 @@ API path: `/api/v4/projects/{id}/groups`
 | `created_at` |  |
 | `description` |  |
 | `discussion_locked` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `due_date` |  |
 | `epic` |  |
 | `epic_iid` |  |
-| `has_task` |  |
+| `has_tasks` |  |
 | `health_status` |  |
 | `id` |  |
 | `iid` |  |
@@ -3639,27 +3640,27 @@ API path: `/api/v4/projects/{id}/groups`
 | `issue_link_id` |  |
 | `issue_type` |  |
 | `iteration` |  |
-| `label` |  |
-| `link` |  |
+| `labels` |  |
 | `link_created_at` |  |
 | `link_type` |  |
 | `link_updated_at` |  |
+| `links` |  |
 | `merge_requests_count` |  |
 | `milestone` |  |
 | `moved_to_id` |  |
 | `project_id` |  |
-| `reference` |  |
+| `references` |  |
 | `service_desk_reply_to` |  |
 | `severity` |  |
 | `state` |  |
 | `subscribed` |  |
 | `task_completion_status` |  |
 | `task_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `type` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
 | `weight` |  |
@@ -3681,16 +3682,16 @@ API path: `/api/v4/projects/import-relation`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
+| `assets` |  |
 | `author` |  |
 | `commit` |  |
 | `commit_path` |  |
 | `created_at` |  |
 | `description` |  |
 | `description_html` |  |
-| `evidence` |  |
-| `link` |  |
-| `milestone` |  |
+| `evidences` |  |
+| `links` |  |
+| `milestones` |  |
 | `name` |  |
 | `released_at` |  |
 | `tag_name` |  |
@@ -3721,15 +3722,15 @@ API path: `/api/v4/projects/{id}/releases/{tag_name}/assets/links`
 | --- | --- |
 | `auth_method` |  |
 | `enabled` |  |
-| `host_key` |  |
+| `host_keys` |  |
 | `id` |  |
-| `keep_divergent_ref` |  |
+| `keep_divergent_refs` |  |
 | `last_error` |  |
 | `last_successful_update_at` |  |
 | `last_update_at` |  |
 | `last_update_started_at` |  |
 | `mirror_branch_regex` |  |
-| `only_protected_branch` |  |
+| `only_protected_branches` |  |
 | `update_status` |  |
 | `url` |  |
 
@@ -3741,15 +3742,15 @@ API path: `/api/v4/projects/{id}/remote_mirrors`
 
 | Field | Description |
 | --- | --- |
-| `alternate` |  |
+| `alternates` |  |
 | `bitmap` |  |
 | `commit_graph` |  |
 | `is_object_pool` |  |
 | `last_full_repack` |  |
 | `multi_pack_index` |  |
 | `multi_pack_index_bitmap` |  |
-| `object` |  |
-| `reference` |  |
+| `objects` |  |
+| `references` |  |
 | `size` |  |
 | `updated_at` |  |
 
@@ -3772,7 +3773,7 @@ API path: `/api/v4/projects/{id}/repository/health`
 | `resource_id` |  |
 | `resource_type` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `token` |  |
 | `user_id` |  |
 
@@ -3804,8 +3805,8 @@ API path: `/api/v4/projects/{id}/issues/{eventable_id}/resource_milestone_events
 | `author` |  |
 | `created_at` |  |
 | `description` |  |
-| `file` |  |
 | `file_name` |  |
+| `files` |  |
 | `http_url_to_repo` |  |
 | `id` |  |
 | `imported` |  |
@@ -3827,14 +3828,52 @@ API path: `/api/v4/snippets/all`
 
 | Field | Description |
 | --- | --- |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `bio` |  |
+| `bot` |  |
+| `can_create_group` |  |
+| `can_create_project` |  |
+| `color_scheme_id` |  |
+| `commit_email` |  |
+| `confirmed_at` |  |
 | `created_at` |  |
-| `expires_at` |  |
+| `current_sign_in_at` |  |
+| `custom_attributes` |  |
+| `discord` |  |
+| `email` |  |
+| `external` |  |
+| `extra_shared_runners_minutes_limit` |  |
+| `followers` |  |
+| `following` |  |
+| `github` |  |
 | `id` |  |
-| `key` |  |
-| `last_used_at` |  |
-| `title` |  |
-| `usage_type` |  |
-| `user` |  |
+| `identities` |  |
+| `is_followed` |  |
+| `job_title` |  |
+| `last_activity_on` |  |
+| `last_sign_in_at` |  |
+| `linkedin` |  |
+| `local_time` |  |
+| `location` |  |
+| `locked` |  |
+| `name` |  |
+| `organization` |  |
+| `preferred_language` |  |
+| `private_profile` |  |
+| `projects_limit` |  |
+| `pronouns` |  |
+| `public_email` |  |
+| `scim_identities` |  |
+| `shared_runners_minutes_limit` |  |
+| `state` |  |
+| `theme_id` |  |
+| `twitter` |  |
+| `two_factor_enabled` |  |
+| `username` |  |
+| `web_url` |  |
+| `website_url` |  |
+| `work_information` |  |
 
 Operations: Load.
 
@@ -3869,7 +3908,7 @@ API path: `/api/v4/suggestions/{id}/apply`
 | `id` |  |
 | `message` |  |
 | `starts_at` |  |
-| `target_access_level` |  |
+| `target_access_levels` |  |
 | `target_path` |  |
 | `theme` |  |
 
@@ -3919,13 +3958,15 @@ API path: `/api/v4/projects/{id}/templates/{type}`
 
 | Field | Description |
 | --- | --- |
-| `module` |  |
+| `modules` |  |
 | `name` |  |
 | `provider` |  |
+| `providers` |  |
 | `root` |  |
 | `source` |  |
-| `submodule` |  |
+| `submodules` |  |
 | `version` |  |
+| `versions` |  |
 
 Operations: List, Load.
 
@@ -3949,14 +3990,23 @@ API path: `/api/v4/projects/{id}/repository/tree`
 
 | Field | Description |
 | --- | --- |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
 | `description` |  |
 | `expires_at` |  |
 | `id` |  |
 | `last_used` |  |
+| `locked` |  |
+| `name` |  |
 | `owner` |  |
+| `public_email` |  |
+| `state` |  |
 | `token` |  |
 | `updated_at` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -3978,11 +4028,11 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/user_agent_detail`
 
 | Field | Description |
 | --- | --- |
-| `assigned_issue` |  |
-| `assigned_merge_request` |  |
-| `merge_request` |  |
-| `review_requested_merge_request` |  |
-| `todo` |  |
+| `assigned_issues` |  |
+| `assigned_merge_requests` |  |
+| `merge_requests` |  |
+| `review_requested_merge_requests` |  |
+| `todos` |  |
 
 Operations: Load.
 
@@ -4003,16 +4053,16 @@ API path: `/api/v4/user_counts`
 | `confirmed_at` |  |
 | `created_at` |  |
 | `current_sign_in_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `discord` |  |
 | `email` |  |
 | `external` |  |
 | `extra_shared_runners_minutes_limit` |  |
-| `follower` |  |
+| `followers` |  |
 | `following` |  |
 | `github` |  |
 | `id` |  |
-| `identity` |  |
+| `identities` |  |
 | `is_followed` |  |
 | `job_title` |  |
 | `key` |  |
@@ -4027,9 +4077,9 @@ API path: `/api/v4/user_counts`
 | `preferred_language` |  |
 | `private_profile` |  |
 | `projects_limit` |  |
-| `pronoun` |  |
+| `pronouns` |  |
 | `public_email` |  |
-| `scim_identity` |  |
+| `scim_identities` |  |
 | `shared_runners_minutes_limit` |  |
 | `state` |  |
 | `theme_id` |  |
@@ -4069,13 +4119,6 @@ API path: `/api/v4/groups/{id}/wikis/attachments`
 
 | Field | Description |
 | --- | --- |
-| `content` |  |
-| `encoding` |  |
-| `format` |  |
-| `front_matter` |  |
-| `slug` |  |
-| `title` |  |
-| `wiki_page_meta_id` |  |
 
 Operations: Create, Load, Update.
 
@@ -4309,7 +4352,7 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approvals`
 | --- | --- |
 | `author_id` |  |
 | `created_at` |  |
-| `detail` |  |
+| `details` |  |
 | `entity_id` |  |
 | `entity_type` |  |
 | `event_name` |  |
@@ -4323,13 +4366,9 @@ API path: `/api/v4/groups/{id}/audit_events`
 
 | Field | Description |
 | --- | --- |
-| `access_level` |  |
-| `created_at` |  |
-| `expires_at` |  |
-| `id` |  |
-| `source_full_name` |  |
-| `source_id` |  |
-| `source_members_url` |  |
+| `custom_role` |  |
+| `integer_value` |  |
+| `string_value` |  |
 
 Operations: Load.
 
@@ -4366,7 +4405,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `container_repositories_verified_in_percentage` |  |
 | `cursor_last_event_id` |  |
 | `cursor_last_event_timestamp` |  |
-| `db_replication_lag_second` |  |
+| `db_replication_lag_seconds` |  |
 | `dependency_proxy_blobs_checksum_failed_count` |  |
 | `dependency_proxy_blobs_checksum_total_count` |  |
 | `dependency_proxy_blobs_checksummed_count` |  |
@@ -4448,7 +4487,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `lfs_objects_verification_total_count` |  |
 | `lfs_objects_verified_count` |  |
 | `lfs_objects_verified_in_percentage` |  |
-| `link` |  |
+| `links` |  |
 | `merge_request_diffs_checksum_failed_count` |  |
 | `merge_request_diffs_checksum_total_count` |  |
 | `merge_request_diffs_checksummed_count` |  |
@@ -4462,7 +4501,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `merge_request_diffs_verified_count` |  |
 | `merge_request_diffs_verified_in_percentage` |  |
 | `missing_oauth_application` |  |
-| `namespace` |  |
+| `namespaces` |  |
 | `package_files_checksum_failed_count` |  |
 | `package_files_checksum_total_count` |  |
 | `package_files_checksummed_count` |  |
@@ -4527,7 +4566,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `proxy_local_requests_event_count_weekly` |  |
 | `proxy_remote_requests_event_count_weekly` |  |
 | `replication_slots_count` |  |
-| `replication_slots_max_retained_wal_byte` |  |
+| `replication_slots_max_retained_wal_bytes` |  |
 | `replication_slots_used_count` |  |
 | `replication_slots_used_in_percentage` |  |
 | `repositories_checked_count` |  |
@@ -4548,7 +4587,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `snippet_repositories_verification_total_count` |  |
 | `snippet_repositories_verified_count` |  |
 | `snippet_repositories_verified_in_percentage` |  |
-| `storage_shard` |  |
+| `storage_shards` |  |
 | `storage_shards_match` |  |
 | `terraform_state_versions_checksum_failed_count` |  |
 | `terraform_state_versions_checksum_total_count` |  |
@@ -4585,7 +4624,7 @@ API path: `/api/v4/geo/status`
 
 | Field | Description |
 | --- | --- |
-| `pipeline_ref` |  |
+| `pipeline_refs` |  |
 
 Operations: List.
 
@@ -4614,9 +4653,9 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/metric_images`
 | `approved` |  |
 | `approved_by` |  |
 | `code_owner` |  |
-| `contains_hidden_group` |  |
-| `eligible_approver` |  |
-| `group` |  |
+| `contains_hidden_groups` |  |
+| `eligible_approvers` |  |
+| `groups` |  |
 | `id` |  |
 | `name` |  |
 | `overridden` |  |
@@ -4624,7 +4663,7 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/metric_images`
 | `rule_type` |  |
 | `section` |  |
 | `source_rule` |  |
-| `user` |  |
+| `users` |  |
 
 Operations: List.
 
@@ -4863,9 +4902,9 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/related_issu
 
 | Field | Description |
 | --- | --- |
-| `enterprise` |  |
-| `kas` |  |
-| `revision` |  |
+| `enabled` |  |
+| `externalK8sProxyUrl` |  |
+| `externalUrl` |  |
 | `version` |  |
 
 Operations: Load.
@@ -4930,13 +4969,22 @@ API path: `/api/v4/projects/{id}/packages/nuget`
 
 | Field | Description |
 | --- | --- |
-| `catalog_entry` |  |
+| `authors` |  |
 | `count` |  |
+| `dependencyGroups` |  |
+| `description` |  |
+| `iconUrl` |  |
 | `id` |  |
-| `item` |  |
+| `items` |  |
+| `licenseUrl` |  |
 | `lower` |  |
-| `package_content` |  |
+| `packageContent` |  |
+| `projectUrl` |  |
+| `published` |  |
+| `summary` |  |
+| `tags` |  |
 | `upper` |  |
+| `version` |  |
 
 Operations: List, Load, Remove, Update.
 
@@ -5005,7 +5053,7 @@ API path: `/api/v4/personal_access_tokens/{id}`
 | `updated_at` |  |
 | `user` |  |
 | `web_url` |  |
-| `yaml_error` |  |
+| `yaml_errors` |  |
 
 Operations: Create, Load, Remove, Update.
 
@@ -5246,7 +5294,7 @@ API path: `/api/v4/snippets/{id}/files/{ref}/{file_path}/raw`
 | --- | --- |
 | `avatar_path` |  |
 | `avatar_url` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `id` |  |
 | `locked` |  |
 | `name` |  |
@@ -5305,7 +5353,7 @@ API path: `/api/v4/projects/{id}/terraform/state/{name}/lock`
 | `skipped_count` |  |
 | `success_count` |  |
 | `suite_error` |  |
-| `test_case` |  |
+| `test_cases` |  |
 | `total_count` |  |
 | `total_time` |  |
 
@@ -5317,7 +5365,7 @@ API path: `/api/v4/projects/{id}/pipelines/{pipeline_id}/test_report`
 
 | Field | Description |
 | --- | --- |
-| `test_suite` |  |
+| `test_suites` |  |
 | `total` |  |
 
 Operations: Load.
@@ -5357,7 +5405,7 @@ API path: `/api/v4/usage_data/increment_counter`
 | --- | --- |
 | `avatar_path` |  |
 | `avatar_url` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `id` |  |
 | `locked` |  |
 | `name` |  |
@@ -5443,7 +5491,7 @@ Create an instance: `api_entities_access_requester = client.ApiEntitiesAccessReq
 | --- | --- | --- |
 | `avatar_path` | `String` |  |
 | `avatar_url` | `String` |  |
-| `custom_attribute` | `Array` |  |
+| `custom_attributes` | `Array` |  |
 | `id` | `Integer` |  |
 | `key` | `String` |  |
 | `locked` | `Boolean` |  |
@@ -5492,11 +5540,11 @@ Create an instance: `api_entities_appearance = client.ApiEntitiesAppearance`
 | `header_logo` | `String` |  |
 | `header_message` | `String` |  |
 | `logo` | `String` |  |
-| `member_guideline` | `String` |  |
+| `member_guidelines` | `String` |  |
 | `message_background_color` | `String` |  |
 | `message_font_color` | `String` |  |
-| `new_project_guideline` | `String` |  |
-| `profile_image_guideline` | `String` |  |
+| `new_project_guidelines` | `String` |  |
+| `profile_image_guidelines` | `String` |  |
 | `pwa_description` | `String` |  |
 | `pwa_icon` | `String` |  |
 | `pwa_name` | `String` |  |
@@ -5506,7 +5554,7 @@ Create an instance: `api_entities_appearance = client.ApiEntitiesAppearance`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesAppearance record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesAppearance record (raises on error).
 api_entities_appearance = client.ApiEntitiesAppearance.load()
 ```
 
@@ -5553,22 +5601,22 @@ Create an instance: `api_entities_application_statistic = client.ApiEntitiesAppl
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active_user` | `Integer` |  |
-| `fork` | `Integer` |  |
-| `group` | `Integer` |  |
-| `issue` | `Integer` |  |
-| `merge_request` | `Integer` |  |
-| `milestone` | `Integer` |  |
-| `note` | `Integer` |  |
-| `project` | `Integer` |  |
-| `snippet` | `Integer` |  |
-| `ssh_key` | `Integer` |  |
-| `user` | `Integer` |  |
+| `active_users` | `Integer` |  |
+| `forks` | `Integer` |  |
+| `groups` | `Integer` |  |
+| `issues` | `Integer` |  |
+| `merge_requests` | `Integer` |  |
+| `milestones` | `Integer` |  |
+| `notes` | `Integer` |  |
+| `projects` | `Integer` |  |
+| `snippets` | `Integer` |  |
+| `ssh_keys` | `Integer` |  |
+| `users` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesApplicationStatistic record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesApplicationStatistic record (raises on error).
 api_entities_application_statistic = client.ApiEntitiesApplicationStatistic.load()
 ```
 
@@ -5621,7 +5669,7 @@ Create an instance: `api_entities_avatar = client.ApiEntitiesAvatar`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesAvatar record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesAvatar record (raises on error).
 api_entities_avatar = client.ApiEntitiesAvatar.load()
 ```
 
@@ -5642,19 +5690,27 @@ Create an instance: `api_entities_award_emoji = client.ApiEntitiesAwardEmoji`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `avatar_path` | `String` |  |
+| `avatar_url` | `String` |  |
 | `awardable_id` | `Integer` |  |
 | `awardable_type` | `String` |  |
 | `created_at` | `String` |  |
+| `custom_attributes` | `Array` |  |
 | `id` | `Integer` |  |
+| `locked` | `Boolean` |  |
 | `name` | `String` |  |
+| `public_email` | `String` |  |
+| `state` | `String` |  |
 | `updated_at` | `String` |  |
 | `url` | `String` |  |
 | `user` | `Hash` |  |
+| `username` | `String` |  |
+| `web_url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesAwardEmoji record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesAwardEmoji record (raises on error).
 api_entities_award_emoji = client.ApiEntitiesAwardEmoji.load({ "id" => "api_entities_award_emoji_id" })
 ```
 
@@ -5701,7 +5757,7 @@ Create an instance: `api_entities_badge = client.ApiEntitiesBadge`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesBadge record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesBadge record (raises on error).
 api_entities_badge = client.ApiEntitiesBadge.load({ "id" => "api_entities_badge_id" })
 ```
 
@@ -5743,7 +5799,7 @@ Create an instance: `api_entities_basic_badge_detail = client.ApiEntitiesBasicBa
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesBasicBadgeDetail record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesBasicBadgeDetail record (raises on error).
 api_entities_basic_badge_detail = client.ApiEntitiesBasicBadgeDetail.load()
 ```
 
@@ -5784,7 +5840,7 @@ Create an instance: `api_entities_basic_project_detail = client.ApiEntitiesBasic
 | --- | --- | --- |
 | `avatar_url` | `String` |  |
 | `created_at` | `String` |  |
-| `custom_attribute` | `Hash` |  |
+| `custom_attributes` | `Hash` |  |
 | `default_branch` | `String` |  |
 | `description` | `String` |  |
 | `forks_count` | `Integer` |  |
@@ -5803,7 +5859,7 @@ Create an instance: `api_entities_basic_project_detail = client.ApiEntitiesBasic
 | `ssh_url_to_repo` | `String` |  |
 | `star_count` | `Integer` |  |
 | `tag_list` | `Array` |  |
-| `topic` | `Array` |  |
+| `topics` | `Array` |  |
 | `visibility` | `String` |  |
 | `web_url` | `String` |  |
 
@@ -5893,7 +5949,7 @@ Create an instance: `api_entities_batched_background_migration = client.ApiEntit
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesBatchedBackgroundMigration record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesBatchedBackgroundMigration record (raises on error).
 api_entities_batched_background_migration = client.ApiEntitiesBatchedBackgroundMigration.load({ "id" => "api_entities_batched_background_migration_id" })
 ```
 
@@ -5922,20 +5978,34 @@ Create an instance: `api_entities_branch = client.ApiEntitiesBranch`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `author_email` | `String` |  |
+| `author_name` | `String` |  |
+| `authored_date` | `String` |  |
 | `can_push` | `Boolean` |  |
 | `commit` | `Hash` |  |
+| `committed_date` | `String` |  |
+| `committer_email` | `String` |  |
+| `committer_name` | `String` |  |
+| `created_at` | `String` |  |
 | `default` | `Boolean` |  |
 | `developers_can_merge` | `Boolean` |  |
 | `developers_can_push` | `Boolean` |  |
+| `extended_trailers` | `Hash` |  |
+| `id` | `String` |  |
 | `merged` | `Boolean` |  |
+| `message` | `String` |  |
 | `name` | `String` |  |
+| `parent_ids` | `Array` |  |
 | `protected` | `Boolean` |  |
+| `short_id` | `String` |  |
+| `title` | `String` |  |
+| `trailers` | `Hash` |  |
 | `web_url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesBranch record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesBranch record (raises on error).
 api_entities_branch = client.ApiEntitiesBranch.load({ "id" => "api_entities_branch_id", "project_id" => "project_id" })
 ```
 
@@ -5978,25 +6048,25 @@ Create an instance: `api_entities_bulk_import = client.ApiEntitiesBulkImport`
 | `destination_namespace` | `String` |  |
 | `destination_slug` | `String` |  |
 | `entity_type` | `String` |  |
-| `failure` | `Array` |  |
-| `has_failure` | `Boolean` |  |
+| `failures` | `Array` |  |
+| `has_failures` | `Boolean` |  |
 | `id` | `Integer` |  |
-| `migrate_membership` | `Boolean` |  |
-| `migrate_project` | `Boolean` |  |
+| `migrate_memberships` | `Boolean` |  |
+| `migrate_projects` | `Boolean` |  |
 | `namespace_id` | `Integer` |  |
 | `parent_id` | `Integer` |  |
 | `project_id` | `Integer` |  |
 | `source_full_path` | `String` |  |
 | `source_type` | `String` |  |
 | `source_url` | `String` |  |
-| `stat` | `Hash` |  |
+| `stats` | `Hash` |  |
 | `status` | `String` |  |
 | `updated_at` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesBulkImport record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesBulkImport record (raises on error).
 api_entities_bulk_import = client.ApiEntitiesBulkImport.load({ "id" => "api_entities_bulk_import_id" })
 ```
 
@@ -6039,7 +6109,7 @@ Create an instance: `api_entities_bulk_imports_entity_failure = client.ApiEntiti
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesBulkImportsEntityFailure record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesBulkImportsEntityFailure record (raises on error).
 api_entities_bulk_imports_entity_failure = client.ApiEntitiesBulkImportsEntityFailure.load({ "bulk_import_id" => "bulk_import_id", "entity_id" => "entity_id" })
 ```
 
@@ -6058,8 +6128,8 @@ Create an instance: `api_entities_bulk_imports_export_status = client.ApiEntitie
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `batch` | `Hash` |  |
 | `batched` | `Boolean` |  |
+| `batches` | `Hash` |  |
 | `batches_count` | `Integer` |  |
 | `error` | `String` |  |
 | `relation` | `String` |  |
@@ -6089,12 +6159,12 @@ Create an instance: `api_entities_changelog = client.ApiEntitiesChangelog`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `note` | `String` |  |
+| `notes` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesChangelog record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesChangelog record (raises on error).
 api_entities_changelog = client.ApiEntitiesChangelog.load({ "project_id" => "project_id" })
 ```
 
@@ -6180,7 +6250,7 @@ Create an instance: `api_entities_ci_job = client.ApiEntitiesCiJob`
 | --- | --- | --- |
 | `allow_failure` | `Boolean` |  |
 | `archived` | `Boolean` |  |
-| `artifact` | `Array` |  |
+| `artifacts` | `Array` |  |
 | `artifacts_expire_at` | `String` |  |
 | `artifacts_file` | `Hash` |  |
 | `commit` | `Hash` |  |
@@ -6213,7 +6283,7 @@ Create an instance: `api_entities_ci_job = client.ApiEntitiesCiJob`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCiJob record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCiJob record (raises on error).
 api_entities_ci_job = client.ApiEntitiesCiJob.load({ "id" => "api_entities_ci_job_id", "project_id" => "project_id" })
 ```
 
@@ -6325,7 +6395,7 @@ Create an instance: `api_entities_ci_job_basic_with_project = client.ApiEntities
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCiJobBasicWithProject record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCiJobBasicWithProject record (raises on error).
 api_entities_ci_job_basic_with_project = client.ApiEntitiesCiJobBasicWithProject.load({ "runner_id" => "runner_id" })
 ```
 
@@ -6348,16 +6418,16 @@ Create an instance: `api_entities_ci_lint_result = client.ApiEntitiesCiLintResul
 | `blob` | `String` |  |
 | `context_project` | `String` |  |
 | `context_sha` | `String` |  |
-| `error` | `Array` |  |
+| `errors` | `Array` |  |
 | `extra` | `Hash` |  |
-| `include` | `Array` |  |
-| `job` | `Array` |  |
+| `includes` | `Array` |  |
+| `jobs` | `Array` |  |
 | `location` | `String` |  |
 | `merged_yaml` | `String` |  |
 | `raw` | `String` |  |
 | `type` | `String` |  |
 | `valid` | `Boolean` |  |
-| `warning` | `Array` |  |
+| `warnings` | `Array` |  |
 
 #### Example: List
 
@@ -6423,7 +6493,7 @@ Create an instance: `api_entities_ci_pipeline_basic = client.ApiEntitiesCiPipeli
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCiPipelineBasic record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCiPipelineBasic record (raises on error).
 api_entities_ci_pipeline_basic = client.ApiEntitiesCiPipelineBasic.load({ "merge_request_id" => "merge_request_id", "project_id" => "project_id" })
 ```
 
@@ -6455,7 +6525,7 @@ Create an instance: `api_entities_ci_pipeline_schedule = client.ApiEntitiesCiPip
 | `cron_timezone` | `String` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
-| `input` | `Hash` |  |
+| `inputs` | `Hash` |  |
 | `next_run_at` | `String` |  |
 | `owner` | `Hash` |  |
 | `ref` | `String` |  |
@@ -6491,18 +6561,18 @@ Create an instance: `api_entities_ci_pipeline_schedule_detail = client.ApiEntiti
 | `cron_timezone` | `String` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
-| `input` | `Hash` |  |
+| `inputs` | `Hash` |  |
 | `last_pipeline` | `Hash` |  |
 | `next_run_at` | `String` |  |
 | `owner` | `Hash` |  |
 | `ref` | `String` |  |
 | `updated_at` | `String` |  |
-| `variable` | `Hash` |  |
+| `variables` | `Hash` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCiPipelineScheduleDetail record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCiPipelineScheduleDetail record (raises on error).
 api_entities_ci_pipeline_schedule_detail = client.ApiEntitiesCiPipelineScheduleDetail.load({ "pipeline_schedule_id" => "pipeline_schedule_id", "project_id" => "project_id" })
 ```
 
@@ -6558,7 +6628,7 @@ Create an instance: `api_entities_ci_resource_group = client.ApiEntitiesCiResour
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCiResourceGroup record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCiResourceGroup record (raises on error).
 api_entities_ci_resource_group = client.ApiEntitiesCiResourceGroup.load({ "id" => "api_entities_ci_resource_group_id", "project_id" => "project_id" })
 ```
 
@@ -6585,24 +6655,21 @@ Create an instance: `api_entities_ci_runner = client.ApiEntitiesCiRunner`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active` | `Boolean` |  |
-| `created_at` | `String` |  |
-| `created_by` | `Hash` |  |
-| `description` | `String` |  |
+| `avatar_path` | `String` |  |
+| `avatar_url` | `String` |  |
+| `custom_attributes` | `Array` |  |
 | `id` | `Integer` |  |
-| `ip_address` | `String` |  |
-| `is_shared` | `Boolean` |  |
-| `job_execution_status` | `String` |  |
+| `locked` | `Boolean` |  |
 | `name` | `String` |  |
-| `online` | `Boolean` |  |
-| `paused` | `Boolean` |  |
-| `runner_type` | `String` |  |
-| `status` | `String` |  |
+| `public_email` | `String` |  |
+| `state` | `String` |  |
+| `username` | `String` |  |
+| `web_url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCiRunner record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCiRunner record (raises on error).
 api_entities_ci_runner = client.ApiEntitiesCiRunner.load()
 ```
 
@@ -6637,7 +6704,7 @@ Create an instance: `api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerD
 | `created_at` | `String` |  |
 | `created_by` | `Hash` |  |
 | `description` | `String` |  |
-| `group` | `Hash` |  |
+| `groups` | `Hash` |  |
 | `id` | `Integer` |  |
 | `ip_address` | `String` |  |
 | `is_shared` | `Boolean` |  |
@@ -6649,7 +6716,7 @@ Create an instance: `api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerD
 | `online` | `Boolean` |  |
 | `paused` | `Boolean` |  |
 | `platform` | `String` |  |
-| `project` | `Hash` |  |
+| `projects` | `Hash` |  |
 | `revision` | `String` |  |
 | `run_untagged` | `String` |  |
 | `runner_type` | `String` |  |
@@ -6660,7 +6727,7 @@ Create an instance: `api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerD
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCiRunnerDetail record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCiRunnerDetail record (raises on error).
 api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerDetail.load({ "id" => "api_entities_ci_runner_detail_id" })
 ```
 
@@ -6694,7 +6761,7 @@ Create an instance: `api_entities_ci_runner_manager = client.ApiEntitiesCiRunner
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCiRunnerManager record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCiRunnerManager record (raises on error).
 api_entities_ci_runner_manager = client.ApiEntitiesCiRunnerManager.load({ "runner_id" => "runner_id" })
 ```
 
@@ -6728,23 +6795,10 @@ Create an instance: `api_entities_ci_secure_file = client.ApiEntitiesCiSecureFil
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `checksum` | `String` |  |
-| `checksum_algorithm` | `String` |  |
-| `created_at` | `String` |  |
-| `expires_at` | `String` |  |
-| `file_extension` | `String` |  |
-| `id` | `Integer` |  |
-| `metadata` | `Hash` |  |
-| `name` | `String` |  |
-
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCiSecureFile record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCiSecureFile record (raises on error).
 api_entities_ci_secure_file = client.ApiEntitiesCiSecureFile.load({ "id" => "api_entities_ci_secure_file_id", "project_id" => "project_id" })
 ```
 
@@ -6787,7 +6841,7 @@ Create an instance: `api_entities_ci_variable = client.ApiEntitiesCiVariable`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCiVariable record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCiVariable record (raises on error).
 api_entities_ci_variable = client.ApiEntitiesCiVariable.load({ "id" => "api_entities_ci_variable_id" })
 ```
 
@@ -6833,7 +6887,7 @@ Create an instance: `api_entities_cluster = client.ApiEntitiesCluster`
 | `management_project` | `Hash` |  |
 | `name` | `String` |  |
 | `namespace_per_environment` | `String` |  |
-| `platform_kubernete` | `Hash` |  |
+| `platform_kubernetes` | `Hash` |  |
 | `platform_type` | `String` |  |
 | `provider_gcp` | `Hash` |  |
 | `provider_type` | `String` |  |
@@ -6842,7 +6896,7 @@ Create an instance: `api_entities_cluster = client.ApiEntitiesCluster`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCluster record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCluster record (raises on error).
 api_entities_cluster = client.ApiEntitiesCluster.load({ "id" => "api_entities_cluster_id" })
 ```
 
@@ -6888,7 +6942,7 @@ Create an instance: `api_entities_cluster_group = client.ApiEntitiesClusterGroup
 | `management_project` | `Hash` |  |
 | `name` | `String` |  |
 | `namespace_per_environment` | `String` |  |
-| `platform_kubernete` | `Hash` |  |
+| `platform_kubernetes` | `Hash` |  |
 | `platform_type` | `String` |  |
 | `provider_gcp` | `Hash` |  |
 | `provider_type` | `String` |  |
@@ -6897,7 +6951,7 @@ Create an instance: `api_entities_cluster_group = client.ApiEntitiesClusterGroup
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesClusterGroup record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesClusterGroup record (raises on error).
 api_entities_cluster_group = client.ApiEntitiesClusterGroup.load({ "cluster_id" => "cluster_id", "group_id" => "group_id" })
 ```
 
@@ -6936,7 +6990,7 @@ Create an instance: `api_entities_cluster_project = client.ApiEntitiesClusterPro
 | `management_project` | `Hash` |  |
 | `name` | `String` |  |
 | `namespace_per_environment` | `String` |  |
-| `platform_kubernete` | `Hash` |  |
+| `platform_kubernetes` | `Hash` |  |
 | `platform_type` | `String` |  |
 | `project` | `Hash` |  |
 | `provider_gcp` | `Hash` |  |
@@ -6946,7 +7000,7 @@ Create an instance: `api_entities_cluster_project = client.ApiEntitiesClusterPro
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesClusterProject record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesClusterProject record (raises on error).
 api_entities_cluster_project = client.ApiEntitiesClusterProject.load({ "cluster_id" => "cluster_id", "project_id" => "project_id" })
 ```
 
@@ -6974,17 +7028,18 @@ Create an instance: `api_entities_clusters_agent = client.ApiEntitiesClustersAge
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `config_project` | `Hash` |  |
 | `created_at` | `String` |  |
-| `created_by_user_id` | `String` |  |
-| `id` | `String` |  |
-| `is_receptive` | `Boolean` |  |
+| `description` | `String` |  |
+| `id` | `Integer` |  |
 | `name` | `String` |  |
+| `name_with_namespace` | `String` |  |
+| `path` | `String` |  |
+| `path_with_namespace` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesClustersAgent record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesClustersAgent record (raises on error).
 api_entities_clusters_agent = client.ApiEntitiesClustersAgent.load({ "project_id" => "project_id" })
 ```
 
@@ -7023,7 +7078,7 @@ Create an instance: `api_entities_clusters_agent_token = client.ApiEntitiesClust
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesClustersAgentToken record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesClustersAgentToken record (raises on error).
 api_entities_clusters_agent_token = client.ApiEntitiesClustersAgentToken.load({ "id" => "api_entities_clusters_agent_token_id", "cluster_agent_id" => "cluster_agent_id", "project_id" => "project_id" })
 ```
 
@@ -7053,7 +7108,7 @@ Create an instance: `api_entities_clusters_agent_token_basic = client.ApiEntitie
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesClustersAgentTokenBasic record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesClustersAgentTokenBasic record (raises on error).
 api_entities_clusters_agent_token_basic = client.ApiEntitiesClustersAgentTokenBasic.load({ "cluster_agent_id" => "cluster_agent_id", "project_id" => "project_id" })
 ```
 
@@ -7100,13 +7155,13 @@ Create an instance: `api_entities_commit = client.ApiEntitiesCommit`
 | `committer_email` | `String` |  |
 | `committer_name` | `String` |  |
 | `created_at` | `String` |  |
-| `extended_trailer` | `Hash` |  |
+| `extended_trailers` | `Hash` |  |
 | `id` | `String` |  |
 | `message` | `String` |  |
-| `parent_id` | `Array` |  |
+| `parent_ids` | `Array` |  |
 | `short_id` | `String` |  |
 | `title` | `String` |  |
-| `trailer` | `Hash` |  |
+| `trailers` | `Hash` |  |
 | `web_url` | `String` |  |
 
 #### Example: List
@@ -7148,23 +7203,23 @@ Create an instance: `api_entities_commit_detail = client.ApiEntitiesCommitDetail
 | `committer_email` | `String` |  |
 | `committer_name` | `String` |  |
 | `created_at` | `String` |  |
-| `extended_trailer` | `Hash` |  |
+| `extended_trailers` | `Hash` |  |
 | `id` | `String` |  |
 | `last_pipeline` | `Hash` |  |
 | `message` | `String` |  |
-| `parent_id` | `Array` |  |
+| `parent_ids` | `Array` |  |
 | `project_id` | `Integer` |  |
 | `short_id` | `String` |  |
-| `stat` | `Hash` |  |
+| `stats` | `Hash` |  |
 | `status` | `String` |  |
 | `title` | `String` |  |
-| `trailer` | `Hash` |  |
+| `trailers` | `Hash` |  |
 | `web_url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCommitDetail record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCommitDetail record (raises on error).
 api_entities_commit_detail = client.ApiEntitiesCommitDetail.load({ "project_id" => "project_id", "sha" => "sha" })
 ```
 
@@ -7193,11 +7248,21 @@ Create an instance: `api_entities_commit_note = client.ApiEntitiesCommitNote`
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `Hash` |  |
+| `avatar_path` | `String` |  |
+| `avatar_url` | `String` |  |
 | `created_at` | `String` |  |
+| `custom_attributes` | `Array` |  |
+| `id` | `Integer` |  |
 | `line` | `Integer` |  |
 | `line_type` | `String` |  |
+| `locked` | `Boolean` |  |
+| `name` | `String` |  |
 | `note` | `String` |  |
 | `path` | `String` |  |
+| `public_email` | `String` |  |
+| `state` | `String` |  |
+| `username` | `String` |  |
+| `web_url` | `String` |  |
 
 #### Example: List
 
@@ -7235,7 +7300,7 @@ Create an instance: `api_entities_commit_sequence = client.ApiEntitiesCommitSequ
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCommitSequence record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCommitSequence record (raises on error).
 api_entities_commit_sequence = client.ApiEntitiesCommitSequence.load({ "project_id" => "project_id", "sha" => "sha" })
 ```
 
@@ -7261,7 +7326,7 @@ Create an instance: `api_entities_commit_signature = client.ApiEntitiesCommitSig
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesCommitSignature record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesCommitSignature record (raises on error).
 api_entities_commit_signature = client.ApiEntitiesCommitSignature.load({ "project_id" => "project_id", "sha" => "sha" })
 ```
 
@@ -7283,18 +7348,26 @@ Create an instance: `api_entities_commit_status = client.ApiEntitiesCommitStatus
 | --- | --- | --- |
 | `allow_failure` | `Boolean` |  |
 | `author` | `Hash` |  |
+| `avatar_path` | `String` |  |
+| `avatar_url` | `String` |  |
 | `coverage` | `Float` |  |
 | `created_at` | `String` |  |
+| `custom_attributes` | `Array` |  |
 | `description` | `String` |  |
 | `finished_at` | `String` |  |
 | `id` | `Integer` |  |
+| `locked` | `Boolean` |  |
 | `name` | `String` |  |
 | `pipeline_id` | `Integer` |  |
+| `public_email` | `String` |  |
 | `ref` | `String` |  |
 | `sha` | `String` |  |
 | `started_at` | `String` |  |
+| `state` | `String` |  |
 | `status` | `String` |  |
 | `target_url` | `String` |  |
+| `username` | `String` |  |
+| `web_url` | `String` |  |
 
 #### Example: List
 
@@ -7328,9 +7401,10 @@ Create an instance: `api_entities_compare = client.ApiEntitiesCompare`
 | Field | Type | Description |
 | --- | --- | --- |
 | `commit` | `Hash` |  |
+| `commits` | `Array` |  |
 | `compare_same_ref` | `Boolean` |  |
 | `compare_timeout` | `Boolean` |  |
-| `diff` | `Array` |  |
+| `diffs` | `Array` |  |
 | `web_url` | `String` |  |
 
 #### Example: List
@@ -7366,13 +7440,13 @@ Create an instance: `api_entities_container_registry_repository = client.ApiEnti
 | `project_id` | `Integer` |  |
 | `size` | `Integer` |  |
 | `status` | `String` |  |
-| `tag` | `Hash` |  |
+| `tags` | `Hash` |  |
 | `tags_count` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesContainerRegistryRepository record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesContainerRegistryRepository record (raises on error).
 api_entities_container_registry_repository = client.ApiEntitiesContainerRegistryRepository.load({ "id" => "api_entities_container_registry_repository_id" })
 ```
 
@@ -7436,7 +7510,7 @@ Create an instance: `api_entities_container_registry_tag_detail = client.ApiEnti
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesContainerRegistryTagDetail record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesContainerRegistryTagDetail record (raises on error).
 api_entities_container_registry_tag_detail = client.ApiEntitiesContainerRegistryTagDetail.load({ "project_id" => "project_id", "repository_id" => "repository_id", "tag_name" => "tag_name" })
 ```
 
@@ -7455,16 +7529,16 @@ Create an instance: `api_entities_contributor = client.ApiEntitiesContributor`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addition` | `Integer` |  |
-| `commit` | `Integer` |  |
-| `deletion` | `Integer` |  |
+| `additions` | `Integer` |  |
+| `commits` | `Integer` |  |
+| `deletions` | `Integer` |  |
 | `email` | `String` |  |
 | `name` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesContributor record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesContributor record (raises on error).
 api_entities_contributor = client.ApiEntitiesContributor.load({ "project_id" => "project_id" })
 ```
 
@@ -7544,7 +7618,7 @@ Create an instance: `api_entities_deploy_keys_project = client.ApiEntitiesDeploy
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesDeployKeysProject record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesDeployKeysProject record (raises on error).
 api_entities_deploy_keys_project = client.ApiEntitiesDeployKeysProject.load({ "key_id" => "key_id", "project_id" => "project_id" })
 ```
 
@@ -7584,13 +7658,13 @@ Create an instance: `api_entities_deploy_token = client.ApiEntitiesDeployToken`
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 | `revoked` | `Boolean` |  |
-| `scope` | `Array` |  |
+| `scopes` | `Array` |  |
 | `username` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesDeployToken record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesDeployToken record (raises on error).
 api_entities_deploy_token = client.ApiEntitiesDeployToken.load({ "id" => "api_entities_deploy_token_id" })
 ```
 
@@ -7669,8 +7743,8 @@ Create an instance: `api_entities_deployment_extended = client.ApiEntitiesDeploy
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `approval` | `Hash` |  |
 | `approval_summary` | `Hash` |  |
+| `approvals` | `Hash` |  |
 | `created_at` | `String` |  |
 | `deployable` | `Hash` |  |
 | `environment` | `Hash` |  |
@@ -7686,7 +7760,7 @@ Create an instance: `api_entities_deployment_extended = client.ApiEntitiesDeploy
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesDeploymentExtended record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesDeploymentExtended record (raises on error).
 api_entities_deployment_extended = client.ApiEntitiesDeploymentExtended.load({ "deployment_id" => "deployment_id", "project_id" => "project_id" })
 ```
 
@@ -7733,13 +7807,13 @@ Create an instance: `api_entities_dictionary_table = client.ApiEntitiesDictionar
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `feature_category` | `Array` |  |
+| `feature_categories` | `Array` |  |
 | `table_name` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesDictionaryTable record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesDictionaryTable record (raises on error).
 api_entities_dictionary_table = client.ApiEntitiesDictionaryTable.load({ "id" => "api_entities_dictionary_table_id", "databas_id" => "databas_id" })
 ```
 
@@ -7774,7 +7848,7 @@ Create an instance: `api_entities_diff = client.ApiEntitiesDiff`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesDiff record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesDiff record (raises on error).
 api_entities_diff = client.ApiEntitiesDiff.load({ "merge_request_id" => "merge_request_id", "project_id" => "project_id" })
 ```
 
@@ -7800,13 +7874,13 @@ Create an instance: `api_entities_discovered_cluster = client.ApiEntitiesDiscove
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `group` | `String` |  |
-| `project` | `String` |  |
+| `groups` | `String` |  |
+| `projects` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesDiscoveredCluster record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesDiscoveredCluster record (raises on error).
 api_entities_discovered_cluster = client.ApiEntitiesDiscoveredCluster.load()
 ```
 
@@ -7841,7 +7915,7 @@ Create an instance: `api_entities_draft_note = client.ApiEntitiesDraftNote`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesDraftNote record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesDraftNote record (raises on error).
 api_entities_draft_note = client.ApiEntitiesDraftNote.load({ "id" => "api_entities_draft_note_id", "merge_request_id" => "merge_request_id", "project_id" => "project_id" })
 ```
 
@@ -7899,7 +7973,7 @@ Create an instance: `api_entities_environment = client.ApiEntitiesEnvironment`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesEnvironment record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesEnvironment record (raises on error).
 api_entities_environment = client.ApiEntitiesEnvironment.load({ "id" => "api_entities_environment_id", "project_id" => "project_id" })
 ```
 
@@ -7979,7 +8053,7 @@ Create an instance: `api_entities_error_tracking_project_setting = client.ApiEnt
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesErrorTrackingProjectSetting record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesErrorTrackingProjectSetting record (raises on error).
 api_entities_error_tracking_project_setting = client.ApiEntitiesErrorTrackingProjectSetting.load({ "project_id" => "project_id" })
 ```
 
@@ -8019,7 +8093,7 @@ Create an instance: `api_entities_event = client.ApiEntitiesEvent`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesEvent record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesEvent record (raises on error).
 api_entities_event = client.ApiEntitiesEvent.load({ "project_id" => "project_id" })
 ```
 
@@ -8047,7 +8121,7 @@ Create an instance: `api_entities_feature = client.ApiEntitiesFeature`
 | Field | Type | Description |
 | --- | --- | --- |
 | `definition` | `Hash` |  |
-| `gate` | `Hash` |  |
+| `gates` | `Hash` |  |
 | `name` | `String` |  |
 | `state` | `String` |  |
 
@@ -8086,7 +8160,7 @@ Create an instance: `api_entities_feature_definition = client.ApiEntitiesFeature
 | `group` | `String` |  |
 | `intended_to_rollout_by` | `String` |  |
 | `introduced_by_url` | `String` |  |
-| `log_state_change` | `String` |  |
+| `log_state_changes` | `String` |  |
 | `milestone` | `String` |  |
 | `name` | `String` |  |
 | `rollout_issue_url` | `String` |  |
@@ -8120,16 +8194,19 @@ Create an instance: `api_entities_feature_flag = client.ApiEntitiesFeatureFlag`
 | `active` | `Boolean` |  |
 | `created_at` | `String` |  |
 | `description` | `String` |  |
+| `id` | `Integer` |  |
 | `name` | `String` |  |
-| `scope` | `String` |  |
-| `strategy` | `Hash` |  |
+| `parameters` | `String` |  |
+| `scopes` | `Hash` |  |
+| `strategies` | `Hash` |  |
 | `updated_at` | `String` |  |
+| `user_list` | `Hash` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesFeatureFlag record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesFeatureFlag record (raises on error).
 api_entities_feature_flag = client.ApiEntitiesFeatureFlag.load({ "id" => "api_entities_feature_flag_id", "project_id" => "project_id" })
 ```
 
@@ -8174,12 +8251,12 @@ Create an instance: `api_entities_feature_flag_user_list = client.ApiEntitiesFea
 | `path` | `String` |  |
 | `project_id` | `Integer` |  |
 | `updated_at` | `String` |  |
-| `user_xid` | `String` |  |
+| `user_xids` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesFeatureFlagUserList record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesFeatureFlagUserList record (raises on error).
 api_entities_feature_flag_user_list = client.ApiEntitiesFeatureFlagUserList.load({ "iid" => "iid", "project_id" => "project_id" })
 ```
 
@@ -8226,7 +8303,7 @@ Create an instance: `api_entities_freeze_period = client.ApiEntitiesFreezePeriod
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesFreezePeriod record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesFreezePeriod record (raises on error).
 api_entities_freeze_period = client.ApiEntitiesFreezePeriod.load({ "id" => "api_entities_freeze_period_id", "project_id" => "project_id" })
 ```
 
@@ -8267,7 +8344,7 @@ Create an instance: `api_entities_gitlab_subscription = client.ApiEntitiesGitlab
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesGitlabSubscription record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesGitlabSubscription record (raises on error).
 api_entities_gitlab_subscription = client.ApiEntitiesGitlabSubscription.load({ "namespace_id" => "namespace_id" })
 ```
 
@@ -8286,13 +8363,13 @@ Create an instance: `api_entities_go_module_version = client.ApiEntitiesGoModule
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `time` | `String` |  |
-| `version` | `String` |  |
+| `Time` | `String` |  |
+| `Version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesGoModuleVersion record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesGoModuleVersion record (raises on error).
 api_entities_go_module_version = client.ApiEntitiesGoModuleVersion.load({ "module_version" => "module_version", "project_id" => "project_id" })
 ```
 
@@ -8319,10 +8396,10 @@ Create an instance: `api_entities_group = client.ApiEntitiesGroup`
 | `auto_duo_code_review_enabled` | `String` |  |
 | `avatar_url` | `String` |  |
 | `created_at` | `String` |  |
-| `custom_attribute` | `Hash` |  |
+| `custom_attributes` | `Hash` |  |
 | `default_branch` | `String` |  |
 | `default_branch_protection` | `String` |  |
-| `default_branch_protection_default` | `String` |  |
+| `default_branch_protection_defaults` | `String` |  |
 | `description` | `String` |  |
 | `duo_core_features_enabled` | `Boolean` |  |
 | `duo_features_enabled` | `String` |  |
@@ -8334,7 +8411,7 @@ Create an instance: `api_entities_group = client.ApiEntitiesGroup`
 | `id` | `String` |  |
 | `ldap_access` | `String` |  |
 | `ldap_cn` | `String` |  |
-| `ldap_group_link` | `Hash` |  |
+| `ldap_group_links` | `Hash` |  |
 | `lfs_enabled` | `String` |  |
 | `lock_duo_features_enabled` | `String` |  |
 | `lock_math_rendering_limits_enabled` | `Boolean` |  |
@@ -8350,12 +8427,12 @@ Create an instance: `api_entities_group = client.ApiEntitiesGroup`
 | `repository_storage` | `String` |  |
 | `request_access_enabled` | `String` |  |
 | `require_two_factor_authentication` | `String` |  |
-| `root_storage_statistic` | `Hash` |  |
-| `saml_group_link` | `Hash` |  |
+| `root_storage_statistics` | `Hash` |  |
+| `saml_group_links` | `Hash` |  |
 | `share_with_group_lock` | `String` |  |
 | `shared_runners_setting` | `String` |  |
 | `show_diff_preview_in_email` | `Boolean` |  |
-| `statistic` | `Hash` |  |
+| `statistics` | `Hash` |  |
 | `subgroup_creation_level` | `String` |  |
 | `two_factor_grace_period` | `String` |  |
 | `visibility` | `String` |  |
@@ -8366,7 +8443,7 @@ Create an instance: `api_entities_group = client.ApiEntitiesGroup`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesGroup record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesGroup record (raises on error).
 api_entities_group = client.ApiEntitiesGroup.load({ "project_id" => "project_id" })
 ```
 
@@ -8407,10 +8484,10 @@ Create an instance: `api_entities_group_detail = client.ApiEntitiesGroupDetail`
 | `auto_duo_code_review_enabled` | `String` |  |
 | `avatar_url` | `String` |  |
 | `created_at` | `String` |  |
-| `custom_attribute` | `Hash` |  |
+| `custom_attributes` | `Hash` |  |
 | `default_branch` | `String` |  |
 | `default_branch_protection` | `String` |  |
-| `default_branch_protection_default` | `String` |  |
+| `default_branch_protection_defaults` | `String` |  |
 | `description` | `String` |  |
 | `duo_core_features_enabled` | `Boolean` |  |
 | `duo_features_enabled` | `String` |  |
@@ -8422,10 +8499,10 @@ Create an instance: `api_entities_group_detail = client.ApiEntitiesGroupDetail`
 | `full_name` | `String` |  |
 | `full_path` | `String` |  |
 | `id` | `String` |  |
-| `ip_restriction_range` | `String` |  |
+| `ip_restriction_ranges` | `String` |  |
 | `ldap_access` | `String` |  |
 | `ldap_cn` | `String` |  |
-| `ldap_group_link` | `Hash` |  |
+| `ldap_group_links` | `Hash` |  |
 | `lfs_enabled` | `String` |  |
 | `lock_duo_features_enabled` | `String` |  |
 | `lock_math_rendering_limits_enabled` | `Boolean` |  |
@@ -8440,28 +8517,28 @@ Create an instance: `api_entities_group_detail = client.ApiEntitiesGroupDetail`
 | `path` | `String` |  |
 | `prevent_forking_outside_group` | `String` |  |
 | `prevent_sharing_groups_outside_hierarchy` | `String` |  |
-| `project` | `Hash` |  |
 | `project_creation_level` | `String` |  |
+| `projects` | `Hash` |  |
 | `repository_storage` | `String` |  |
 | `request_access_enabled` | `String` |  |
 | `require_two_factor_authentication` | `String` |  |
-| `root_storage_statistic` | `Hash` |  |
+| `root_storage_statistics` | `Hash` |  |
 | `runners_token` | `String` |  |
-| `saml_group_link` | `Hash` |  |
+| `saml_group_links` | `Hash` |  |
 | `service_access_tokens_expiration_enforced` | `String` |  |
 | `share_with_group_lock` | `String` |  |
-| `shared_project` | `Hash` |  |
+| `shared_projects` | `Hash` |  |
 | `shared_runners_minutes_limit` | `String` |  |
 | `shared_runners_setting` | `String` |  |
-| `shared_with_group` | `String` |  |
+| `shared_with_groups` | `String` |  |
 | `show_diff_preview_in_email` | `Boolean` |  |
-| `statistic` | `Hash` |  |
+| `statistics` | `Hash` |  |
 | `subgroup_creation_level` | `String` |  |
 | `two_factor_grace_period` | `String` |  |
 | `unique_project_download_limit` | `String` |  |
 | `unique_project_download_limit_alertlist` | `String` |  |
 | `unique_project_download_limit_allowlist` | `String` |  |
-| `unique_project_download_limit_interval_in_second` | `String` |  |
+| `unique_project_download_limit_interval_in_seconds` | `String` |  |
 | `visibility` | `String` |  |
 | `web_based_commit_signing_enabled` | `String` |  |
 | `web_url` | `String` |  |
@@ -8470,7 +8547,7 @@ Create an instance: `api_entities_group_detail = client.ApiEntitiesGroupDetail`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesGroupDetail record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesGroupDetail record (raises on error).
 api_entities_group_detail = client.ApiEntitiesGroupDetail.load({ "id" => "api_entities_group_detail_id" })
 ```
 
@@ -8503,25 +8580,25 @@ Create an instance: `api_entities_hook = client.ApiEntitiesHook`
 | `alert_status` | `Object` |  |
 | `branch_filter_strategy` | `String` |  |
 | `created_at` | `String` |  |
-| `custom_header` | `Array` |  |
+| `custom_headers` | `Array` |  |
 | `custom_webhook_template` | `String` |  |
 | `description` | `String` |  |
 | `disabled_until` | `String` |  |
 | `enable_ssl_verification` | `Boolean` |  |
 | `id` | `String` |  |
-| `merge_requests_event` | `Boolean` |  |
+| `merge_requests_events` | `Boolean` |  |
 | `name` | `String` |  |
-| `push_event` | `Boolean` |  |
+| `push_events` | `Boolean` |  |
 | `push_events_branch_filter` | `String` |  |
-| `repository_update_event` | `Boolean` |  |
-| `tag_push_event` | `Boolean` |  |
+| `repository_update_events` | `Boolean` |  |
+| `tag_push_events` | `Boolean` |  |
 | `url` | `String` |  |
-| `url_variable` | `Array` |  |
+| `url_variables` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesHook record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesHook record (raises on error).
 api_entities_hook = client.ApiEntitiesHook.load({ "id" => "api_entities_hook_id" })
 ```
 
@@ -8550,39 +8627,10 @@ Create an instance: `api_entities_integration = client.ApiEntitiesIntegration`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `active` | `Boolean` |  |
-| `alert_event` | `Boolean` |  |
-| `comment_on_event_enabled` | `Boolean` |  |
-| `commit_event` | `Boolean` |  |
-| `confidential_issues_event` | `Boolean` |  |
-| `confidential_note_event` | `Boolean` |  |
-| `created_at` | `String` |  |
-| `deployment_event` | `Boolean` |  |
-| `id` | `Integer` |  |
-| `incident_event` | `Boolean` |  |
-| `inherited` | `Boolean` |  |
-| `issues_event` | `Boolean` |  |
-| `job_event` | `Boolean` |  |
-| `merge_requests_event` | `Boolean` |  |
-| `note_event` | `Boolean` |  |
-| `pipeline_event` | `Boolean` |  |
-| `property` | `Hash` |  |
-| `push_event` | `Boolean` |  |
-| `slug` | `Integer` |  |
-| `tag_push_event` | `Boolean` |  |
-| `title` | `String` |  |
-| `updated_at` | `String` |  |
-| `vulnerability_event` | `Boolean` |  |
-| `wiki_page_event` | `Boolean` |  |
-
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesIntegration record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesIntegration record (raises on error).
 api_entities_integration = client.ApiEntitiesIntegration.load({ "id" => "api_entities_integration_id" })
 ```
 
@@ -8603,28 +8651,28 @@ Create an instance: `api_entities_integration_basic = client.ApiEntitiesIntegrat
 | Field | Type | Description |
 | --- | --- | --- |
 | `active` | `Boolean` |  |
-| `alert_event` | `Boolean` |  |
+| `alert_events` | `Boolean` |  |
 | `comment_on_event_enabled` | `Boolean` |  |
-| `commit_event` | `Boolean` |  |
-| `confidential_issues_event` | `Boolean` |  |
-| `confidential_note_event` | `Boolean` |  |
+| `commit_events` | `Boolean` |  |
+| `confidential_issues_events` | `Boolean` |  |
+| `confidential_note_events` | `Boolean` |  |
 | `created_at` | `String` |  |
-| `deployment_event` | `Boolean` |  |
+| `deployment_events` | `Boolean` |  |
 | `id` | `Integer` |  |
-| `incident_event` | `Boolean` |  |
+| `incident_events` | `Boolean` |  |
 | `inherited` | `Boolean` |  |
-| `issues_event` | `Boolean` |  |
-| `job_event` | `Boolean` |  |
-| `merge_requests_event` | `Boolean` |  |
-| `note_event` | `Boolean` |  |
-| `pipeline_event` | `Boolean` |  |
-| `push_event` | `Boolean` |  |
+| `issues_events` | `Boolean` |  |
+| `job_events` | `Boolean` |  |
+| `merge_requests_events` | `Boolean` |  |
+| `note_events` | `Boolean` |  |
+| `pipeline_events` | `Boolean` |  |
+| `push_events` | `Boolean` |  |
 | `slug` | `Integer` |  |
-| `tag_push_event` | `Boolean` |  |
+| `tag_push_events` | `Boolean` |  |
 | `title` | `String` |  |
 | `updated_at` | `String` |  |
-| `vulnerability_event` | `Boolean` |  |
-| `wiki_page_event` | `Boolean` |  |
+| `vulnerability_events` | `Boolean` |  |
+| `wiki_page_events` | `Boolean` |  |
 
 #### Example: List
 
@@ -8696,7 +8744,7 @@ Create an instance: `api_entities_issuable_time_stat = client.ApiEntitiesIssuabl
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesIssuableTimeStat record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesIssuableTimeStat record (raises on error).
 api_entities_issuable_time_stat = client.ApiEntitiesIssuableTimeStat.load({ "project_id" => "project_id" })
 ```
 
@@ -8727,6 +8775,7 @@ Create an instance: `api_entities_issue = client.ApiEntitiesIssue`
 | Field | Type | Description |
 | --- | --- | --- |
 | `assignee` | `Hash` |  |
+| `assignees` | `Hash` |  |
 | `author` | `Hash` |  |
 | `blocking_issues_count` | `String` |  |
 | `closed_at` | `String` |  |
@@ -8735,11 +8784,11 @@ Create an instance: `api_entities_issue = client.ApiEntitiesIssue`
 | `created_at` | `String` |  |
 | `description` | `String` |  |
 | `discussion_locked` | `Boolean` |  |
-| `downvote` | `String` |  |
+| `downvotes` | `String` |  |
 | `due_date` | `String` |  |
 | `epic` | `Hash` |  |
 | `epic_iid` | `String` |  |
-| `has_task` | `Boolean` |  |
+| `has_tasks` | `Boolean` |  |
 | `health_status` | `String` |  |
 | `id` | `Integer` |  |
 | `iid` | `Integer` |  |
@@ -8747,24 +8796,24 @@ Create an instance: `api_entities_issue = client.ApiEntitiesIssue`
 | `imported_from` | `String` |  |
 | `issue_type` | `String` |  |
 | `iteration` | `Hash` |  |
-| `label` | `Array` |  |
-| `link` | `Hash` |  |
+| `labels` | `Array` |  |
+| `links` | `Hash` |  |
 | `merge_requests_count` | `String` |  |
 | `milestone` | `Hash` |  |
 | `moved_to_id` | `String` |  |
 | `project_id` | `Integer` |  |
-| `reference` | `Hash` |  |
+| `references` | `Hash` |  |
 | `service_desk_reply_to` | `String` |  |
 | `severity` | `String` |  |
 | `state` | `String` |  |
 | `subscribed` | `String` |  |
 | `task_completion_status` | `String` |  |
 | `task_status` | `String` |  |
-| `time_stat` | `Hash` |  |
+| `time_stats` | `Hash` |  |
 | `title` | `String` |  |
 | `type` | `String` |  |
 | `updated_at` | `String` |  |
-| `upvote` | `String` |  |
+| `upvotes` | `String` |  |
 | `user_notes_count` | `String` |  |
 | `web_url` | `String` |  |
 | `weight` | `String` |  |
@@ -8772,7 +8821,7 @@ Create an instance: `api_entities_issue = client.ApiEntitiesIssue`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesIssue record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesIssue record (raises on error).
 api_entities_issue = client.ApiEntitiesIssue.load({ "id" => "api_entities_issue_id" })
 ```
 
@@ -8814,7 +8863,7 @@ Create an instance: `api_entities_issue_link = client.ApiEntitiesIssueLink`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesIssueLink record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesIssueLink record (raises on error).
 api_entities_issue_link = client.ApiEntitiesIssueLink.load({ "id" => "api_entities_issue_link_id", "issue_id" => "issue_id", "project_id" => "project_id" })
 ```
 
@@ -8842,15 +8891,15 @@ Create an instance: `api_entities_license = client.ApiEntitiesLicense`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `condition` | `Array` |  |
+| `conditions` | `Array` |  |
 | `content` | `String` |  |
 | `description` | `String` |  |
 | `html_url` | `String` |  |
 | `key` | `String` |  |
-| `limitation` | `Array` |  |
+| `limitations` | `Array` |  |
 | `name` | `String` |  |
 | `nickname` | `String` |  |
-| `permission` | `Array` |  |
+| `permissions` | `Array` |  |
 | `popular` | `Boolean` |  |
 | `source_url` | `String` |  |
 
@@ -8931,7 +8980,7 @@ Create an instance: `api_entities_member = client.ApiEntitiesMember`
 | `avatar_url` | `String` |  |
 | `created_at` | `String` |  |
 | `created_by` | `Hash` |  |
-| `custom_attribute` | `Array` |  |
+| `custom_attributes` | `Array` |  |
 | `email` | `String` |  |
 | `expires_at` | `String` |  |
 | `group_saml_identity` | `Hash` |  |
@@ -8953,7 +9002,7 @@ Create an instance: `api_entities_member = client.ApiEntitiesMember`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesMember record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesMember record (raises on error).
 api_entities_member = client.ApiEntitiesMember.load({ "id" => "api_entities_member_id" })
 ```
 
@@ -8992,6 +9041,7 @@ Create an instance: `api_entities_merge = client.ApiEntitiesMerge`
 | `allow_maintainer_to_push` | `Boolean` |  |
 | `approvals_before_merge` | `String` |  |
 | `assignee` | `Hash` |  |
+| `assignees` | `Hash` |  |
 | `author` | `Hash` |  |
 | `blocking_discussions_resolved` | `String` |  |
 | `changes_count` | `String` |  |
@@ -9001,21 +9051,21 @@ Create an instance: `api_entities_merge = client.ApiEntitiesMerge`
 | `description` | `String` |  |
 | `description_html` | `String` |  |
 | `detailed_merge_status` | `String` |  |
-| `diff_ref` | `Hash` |  |
+| `diff_refs` | `Hash` |  |
 | `discussion_locked` | `String` |  |
 | `diverged_commits_count` | `String` |  |
-| `downvote` | `String` |  |
+| `downvotes` | `String` |  |
 | `draft` | `String` |  |
 | `first_contribution` | `String` |  |
 | `first_deployed_to_production_at` | `String` |  |
 | `force_remove_source_branch` | `String` |  |
-| `has_conflict` | `Boolean` |  |
+| `has_conflicts` | `Boolean` |  |
 | `head_pipeline` | `Hash` |  |
 | `id` | `Integer` |  |
 | `iid` | `Integer` |  |
 | `imported` | `String` |  |
 | `imported_from` | `String` |  |
-| `label` | `String` |  |
+| `labels` | `String` |  |
 | `latest_build_finished_at` | `String` |  |
 | `latest_build_started_at` | `String` |  |
 | `merge_after` | `String` |  |
@@ -9023,7 +9073,7 @@ Create an instance: `api_entities_merge = client.ApiEntitiesMerge`
 | `merge_error` | `String` |  |
 | `merge_status` | `String` |  |
 | `merge_user` | `Hash` |  |
-| `merge_when_pipeline_succeed` | `String` |  |
+| `merge_when_pipeline_succeeds` | `String` |  |
 | `merged_at` | `String` |  |
 | `merged_by` | `Hash` |  |
 | `milestone` | `Hash` |  |
@@ -9032,7 +9082,8 @@ Create an instance: `api_entities_merge = client.ApiEntitiesMerge`
 | `project_id` | `Integer` |  |
 | `rebase_in_progress` | `String` |  |
 | `reference` | `String` |  |
-| `reviewer` | `Hash` |  |
+| `references` | `Hash` |  |
+| `reviewers` | `Hash` |  |
 | `sha` | `String` |  |
 | `should_remove_source_branch` | `Boolean` |  |
 | `source_branch` | `String` |  |
@@ -9045,11 +9096,11 @@ Create an instance: `api_entities_merge = client.ApiEntitiesMerge`
 | `target_branch` | `String` |  |
 | `target_project_id` | `String` |  |
 | `task_completion_status` | `String` |  |
-| `time_stat` | `Hash` |  |
+| `time_stats` | `Hash` |  |
 | `title` | `String` |  |
 | `title_html` | `String` |  |
 | `updated_at` | `String` |  |
-| `upvote` | `String` |  |
+| `upvotes` | `String` |  |
 | `user` | `Hash` |  |
 | `user_notes_count` | `String` |  |
 | `web_url` | `String` |  |
@@ -9058,7 +9109,7 @@ Create an instance: `api_entities_merge = client.ApiEntitiesMerge`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesMerge record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesMerge record (raises on error).
 api_entities_merge = client.ApiEntitiesMerge.load({ "merge_request_iid" => "merge_request_iid", "project_id" => "project_id" })
 ```
 
@@ -9086,15 +9137,13 @@ Create an instance: `api_entities_merge_request_approval = client.ApiEntitiesMer
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `approved` | `Boolean` |  |
-| `approved_by` | `Hash` |  |
-| `user_can_approve` | `Boolean` |  |
-| `user_has_approved` | `Boolean` |  |
+| `approved_at` | `String` |  |
+| `user` | `Hash` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesMergeRequestApproval record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesMergeRequestApproval record (raises on error).
 api_entities_merge_request_approval = client.ApiEntitiesMergeRequestApproval.load({ "merge_request_id" => "merge_request_id", "project_id" => "project_id" })
 ```
 
@@ -9127,6 +9176,7 @@ Create an instance: `api_entities_merge_request_basic = client.ApiEntitiesMergeR
 | `allow_maintainer_to_push` | `Boolean` |  |
 | `approvals_before_merge` | `String` |  |
 | `assignee` | `Hash` |  |
+| `assignees` | `Hash` |  |
 | `author` | `Hash` |  |
 | `blocking_discussions_resolved` | `String` |  |
 | `closed_at` | `String` |  |
@@ -9136,27 +9186,28 @@ Create an instance: `api_entities_merge_request_basic = client.ApiEntitiesMergeR
 | `description_html` | `String` |  |
 | `detailed_merge_status` | `String` |  |
 | `discussion_locked` | `String` |  |
-| `downvote` | `String` |  |
+| `downvotes` | `String` |  |
 | `draft` | `String` |  |
 | `force_remove_source_branch` | `String` |  |
-| `has_conflict` | `Boolean` |  |
+| `has_conflicts` | `Boolean` |  |
 | `id` | `Integer` |  |
 | `iid` | `Integer` |  |
 | `imported` | `String` |  |
 | `imported_from` | `String` |  |
-| `label` | `String` |  |
+| `labels` | `String` |  |
 | `merge_after` | `String` |  |
 | `merge_commit_sha` | `String` |  |
 | `merge_status` | `String` |  |
 | `merge_user` | `Hash` |  |
-| `merge_when_pipeline_succeed` | `String` |  |
+| `merge_when_pipeline_succeeds` | `String` |  |
 | `merged_at` | `String` |  |
 | `merged_by` | `Hash` |  |
 | `milestone` | `Hash` |  |
 | `prepared_at` | `String` |  |
 | `project_id` | `Integer` |  |
 | `reference` | `String` |  |
-| `reviewer` | `Hash` |  |
+| `references` | `Hash` |  |
+| `reviewers` | `Hash` |  |
 | `sha` | `String` |  |
 | `should_remove_source_branch` | `Boolean` |  |
 | `source_branch` | `String` |  |
@@ -9168,11 +9219,11 @@ Create an instance: `api_entities_merge_request_basic = client.ApiEntitiesMergeR
 | `target_branch` | `String` |  |
 | `target_project_id` | `String` |  |
 | `task_completion_status` | `String` |  |
-| `time_stat` | `Hash` |  |
+| `time_stats` | `Hash` |  |
 | `title` | `String` |  |
 | `title_html` | `String` |  |
 | `updated_at` | `String` |  |
-| `upvote` | `String` |  |
+| `upvotes` | `String` |  |
 | `user_notes_count` | `String` |  |
 | `web_url` | `String` |  |
 | `work_in_progress` | `String` |  |
@@ -9180,7 +9231,7 @@ Create an instance: `api_entities_merge_request_basic = client.ApiEntitiesMergeR
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesMergeRequestBasic record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesMergeRequestBasic record (raises on error).
 api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic.load()
 ```
 
@@ -9210,9 +9261,10 @@ Create an instance: `api_entities_merge_request_change = client.ApiEntitiesMerge
 | `allow_maintainer_to_push` | `Boolean` |  |
 | `approvals_before_merge` | `String` |  |
 | `assignee` | `Hash` |  |
+| `assignees` | `Hash` |  |
 | `author` | `Hash` |  |
 | `blocking_discussions_resolved` | `String` |  |
-| `change` | `Hash` |  |
+| `changes` | `Hash` |  |
 | `changes_count` | `String` |  |
 | `closed_at` | `String` |  |
 | `closed_by` | `Hash` |  |
@@ -9220,21 +9272,21 @@ Create an instance: `api_entities_merge_request_change = client.ApiEntitiesMerge
 | `description` | `String` |  |
 | `description_html` | `String` |  |
 | `detailed_merge_status` | `String` |  |
-| `diff_ref` | `Hash` |  |
+| `diff_refs` | `Hash` |  |
 | `discussion_locked` | `String` |  |
 | `diverged_commits_count` | `String` |  |
-| `downvote` | `String` |  |
+| `downvotes` | `String` |  |
 | `draft` | `String` |  |
 | `first_contribution` | `String` |  |
 | `first_deployed_to_production_at` | `String` |  |
 | `force_remove_source_branch` | `String` |  |
-| `has_conflict` | `Boolean` |  |
+| `has_conflicts` | `Boolean` |  |
 | `head_pipeline` | `Hash` |  |
 | `id` | `Integer` |  |
 | `iid` | `Integer` |  |
 | `imported` | `String` |  |
 | `imported_from` | `String` |  |
-| `label` | `String` |  |
+| `labels` | `String` |  |
 | `latest_build_finished_at` | `String` |  |
 | `latest_build_started_at` | `String` |  |
 | `merge_after` | `String` |  |
@@ -9242,7 +9294,7 @@ Create an instance: `api_entities_merge_request_change = client.ApiEntitiesMerge
 | `merge_error` | `String` |  |
 | `merge_status` | `String` |  |
 | `merge_user` | `Hash` |  |
-| `merge_when_pipeline_succeed` | `String` |  |
+| `merge_when_pipeline_succeeds` | `String` |  |
 | `merged_at` | `String` |  |
 | `merged_by` | `Hash` |  |
 | `milestone` | `Hash` |  |
@@ -9252,7 +9304,8 @@ Create an instance: `api_entities_merge_request_change = client.ApiEntitiesMerge
 | `project_id` | `Integer` |  |
 | `rebase_in_progress` | `String` |  |
 | `reference` | `String` |  |
-| `reviewer` | `Hash` |  |
+| `references` | `Hash` |  |
+| `reviewers` | `Hash` |  |
 | `sha` | `String` |  |
 | `should_remove_source_branch` | `Boolean` |  |
 | `source_branch` | `String` |  |
@@ -9265,11 +9318,11 @@ Create an instance: `api_entities_merge_request_change = client.ApiEntitiesMerge
 | `target_branch` | `String` |  |
 | `target_project_id` | `String` |  |
 | `task_completion_status` | `String` |  |
-| `time_stat` | `Hash` |  |
+| `time_stats` | `Hash` |  |
 | `title` | `String` |  |
 | `title_html` | `String` |  |
 | `updated_at` | `String` |  |
-| `upvote` | `String` |  |
+| `upvotes` | `String` |  |
 | `user` | `Hash` |  |
 | `user_notes_count` | `String` |  |
 | `web_url` | `String` |  |
@@ -9278,7 +9331,7 @@ Create an instance: `api_entities_merge_request_change = client.ApiEntitiesMerge
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesMergeRequestChange record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesMergeRequestChange record (raises on error).
 api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange.load({ "merge_request_id" => "merge_request_id", "project_id" => "project_id" })
 ```
 
@@ -9330,9 +9383,9 @@ Create an instance: `api_entities_merge_request_diff_full = client.ApiEntitiesMe
 | Field | Type | Description |
 | --- | --- | --- |
 | `base_commit_sha` | `String` |  |
-| `commit` | `Hash` |  |
+| `commits` | `Hash` |  |
 | `created_at` | `String` |  |
-| `diff` | `Hash` |  |
+| `diffs` | `Hash` |  |
 | `head_commit_sha` | `String` |  |
 | `id` | `String` |  |
 | `merge_request_id` | `String` |  |
@@ -9344,7 +9397,7 @@ Create an instance: `api_entities_merge_request_diff_full = client.ApiEntitiesMe
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesMergeRequestDiffFull record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesMergeRequestDiffFull record (raises on error).
 api_entities_merge_request_diff_full = client.ApiEntitiesMergeRequestDiffFull.load({ "merge_request_id" => "merge_request_id", "project_id" => "project_id", "version_id" => "version_id" })
 ```
 
@@ -9363,14 +9416,21 @@ Create an instance: `api_entities_merge_request_reviewer = client.ApiEntitiesMer
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created_at` | `String` |  |
+| `avatar_path` | `String` |  |
+| `avatar_url` | `String` |  |
+| `custom_attributes` | `Array` |  |
+| `id` | `Integer` |  |
+| `locked` | `Boolean` |  |
+| `name` | `String` |  |
+| `public_email` | `String` |  |
 | `state` | `String` |  |
-| `user` | `Hash` |  |
+| `username` | `String` |  |
+| `web_url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesMergeRequestReviewer record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesMergeRequestReviewer record (raises on error).
 api_entities_merge_request_reviewer = client.ApiEntitiesMergeRequestReviewer.load({ "merge_request_id" => "merge_request_id", "project_id" => "project_id" })
 ```
 
@@ -9429,13 +9489,21 @@ Create an instance: `api_entities_mr_note = client.ApiEntitiesMrNote`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `Hash` |  |
-| `note` | `String` |  |
+| `avatar_path` | `String` |  |
+| `avatar_url` | `String` |  |
+| `custom_attributes` | `Array` |  |
+| `id` | `Integer` |  |
+| `locked` | `Boolean` |  |
+| `name` | `String` |  |
+| `public_email` | `String` |  |
+| `state` | `String` |  |
+| `username` | `String` |  |
+| `web_url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesMrNote record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesMrNote record (raises on error).
 api_entities_mr_note = client.ApiEntitiesMrNote.load({ "merge_request_id" => "merge_request_id", "project_id" => "project_id" })
 ```
 
@@ -9467,7 +9535,7 @@ Create an instance: `api_entities_namespace = client.ApiEntitiesNamespace`
 | `kind` | `String` |  |
 | `max_seats_used` | `Integer` |  |
 | `max_seats_used_changed_at` | `String` |  |
-| `members_count_with_descendant` | `Integer` |  |
+| `members_count_with_descendants` | `Integer` |  |
 | `name` | `String` |  |
 | `parent_id` | `Integer` |  |
 | `path` | `String` |  |
@@ -9483,7 +9551,7 @@ Create an instance: `api_entities_namespace = client.ApiEntitiesNamespace`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesNamespace record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesNamespace record (raises on error).
 api_entities_namespace = client.ApiEntitiesNamespace.load({ "id" => "api_entities_namespace_id" })
 ```
 
@@ -9509,8 +9577,8 @@ Create an instance: `api_entities_namespace_existence = client.ApiEntitiesNamesp
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `exist` | `Boolean` |  |
-| `suggest` | `Array` |  |
+| `exists` | `Boolean` |  |
+| `suggests` | `Array` |  |
 
 #### Example: List
 
@@ -9543,7 +9611,7 @@ Create an instance: `api_entities_namespaces_storage_limit_exclusion = client.Ap
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesNamespacesStorageLimitExclusion record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesNamespacesStorageLimitExclusion record (raises on error).
 api_entities_namespaces_storage_limit_exclusion = client.ApiEntitiesNamespacesStorageLimitExclusion.load({ "id" => 1 })
 ```
 
@@ -9570,14 +9638,14 @@ Create an instance: `api_entities_npm_package = client.ApiEntitiesNpmPackage`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dist_tag` | `Hash` |  |
+| `disttags` | `Hash` |  |
 | `name` | `String` |  |
-| `version` | `Hash` |  |
+| `versions` | `Hash` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesNpmPackage record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesNpmPackage record (raises on error).
 api_entities_npm_package = client.ApiEntitiesNpmPackage.load()
 ```
 
@@ -9592,16 +9660,10 @@ Create an instance: `api_entities_npm_package_tag = client.ApiEntitiesNpmPackage
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `dist_tag` | `Hash` |  |
-
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesNpmPackageTag record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesNpmPackageTag record (raises on error).
 api_entities_npm_package_tag = client.ApiEntitiesNpmPackageTag.load()
 ```
 
@@ -9620,7 +9682,7 @@ Create an instance: `api_entities_nuget_packages_version = client.ApiEntitiesNug
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `version` | `Array` |  |
+| `versions` | `Array` |  |
 
 #### Example: List
 
@@ -9644,19 +9706,20 @@ Create an instance: `api_entities_nuget_search_result = client.ApiEntitiesNugetS
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `String` |  |
+| `authors` | `String` |  |
 | `description` | `String` |  |
-| `icon_url` | `String` |  |
+| `iconUrl` | `String` |  |
 | `id` | `String` |  |
-| `license_url` | `String` |  |
-| `project_url` | `String` |  |
+| `licenseUrl` | `String` |  |
+| `projectUrl` | `String` |  |
 | `summary` | `String` |  |
-| `tag` | `String` |  |
+| `tags` | `String` |  |
 | `title` | `String` |  |
-| `total_download` | `Integer` |  |
+| `totalDownloads` | `Integer` |  |
 | `type` | `String` |  |
 | `verified` | `Boolean` |  |
 | `version` | `String` |  |
+| `versions` | `Hash` |  |
 
 #### Example: List
 
@@ -9680,7 +9743,7 @@ Create an instance: `api_entities_nuget_service_index = client.ApiEntitiesNugetS
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `resource` | `Array` |  |
+| `resources` | `Array` |  |
 | `version` | `String` |  |
 
 #### Example: List
@@ -9728,20 +9791,22 @@ Create an instance: `api_entities_package = client.ApiEntitiesPackage`
 | `created_at` | `String` |  |
 | `id` | `Integer` |  |
 | `last_downloaded_at` | `String` |  |
-| `link` | `Hash` |  |
+| `links` | `Hash` |  |
 | `name` | `String` |  |
 | `package_type` | `String` |  |
 | `pipeline` | `Hash` |  |
+| `pipelines` | `Hash` |  |
 | `project_id` | `Integer` |  |
 | `project_path` | `String` |  |
 | `status` | `String` |  |
-| `tag` | `String` |  |
+| `tags` | `String` |  |
 | `version` | `String` |  |
+| `versions` | `Hash` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPackage record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPackage record (raises on error).
 api_entities_package = client.ApiEntitiesPackage.load({ "id" => "api_entities_package_id", "project_id" => "project_id" })
 ```
 
@@ -9774,7 +9839,7 @@ Create an instance: `api_entities_package_file = client.ApiEntitiesPackageFile`
 | `file_sha256` | `String` |  |
 | `id` | `Integer` |  |
 | `package_id` | `Integer` |  |
-| `pipeline` | `Hash` |  |
+| `pipelines` | `Hash` |  |
 | `size` | `Integer` |  |
 
 #### Example: List
@@ -9799,22 +9864,21 @@ Create an instance: `api_entities_package_pipeline = client.ApiEntitiesPackagePi
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created_at` | `String` |  |
+| `avatar_path` | `String` |  |
+| `avatar_url` | `String` |  |
+| `custom_attributes` | `Array` |  |
 | `id` | `Integer` |  |
-| `iid` | `Integer` |  |
-| `project_id` | `Integer` |  |
-| `ref` | `String` |  |
-| `sha` | `String` |  |
-| `source` | `String` |  |
-| `status` | `String` |  |
-| `updated_at` | `String` |  |
-| `user` | `Hash` |  |
+| `locked` | `Boolean` |  |
+| `name` | `String` |  |
+| `public_email` | `String` |  |
+| `state` | `String` |  |
+| `username` | `String` |  |
 | `web_url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPackagePipeline record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPackagePipeline record (raises on error).
 api_entities_package_pipeline = client.ApiEntitiesPackagePipeline.load({ "package_id" => "package_id", "project_id" => "project_id" })
 ```
 
@@ -9829,16 +9893,10 @@ Create an instance: `api_entities_packages_conan_files_list = client.ApiEntities
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `file` | `Hash` |  |
-
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPackagesConanFilesList record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPackagesConanFilesList record (raises on error).
 api_entities_packages_conan_files_list = client.ApiEntitiesPackagesConanFilesList.load({ "conan_id" => "conan_id", "package_channel" => "package_channel", "package_username" => "package_username", "package_version" => "package_version", "project_id" => "project_id" })
 ```
 
@@ -9853,16 +9911,10 @@ Create an instance: `api_entities_packages_conan_package_manifest = client.ApiEn
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `package_url` | `Hash` |  |
-
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPackagesConanPackageManifest record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPackagesConanPackageManifest record (raises on error).
 api_entities_packages_conan_package_manifest = client.ApiEntitiesPackagesConanPackageManifest.load({ "conan_id" => "conan_id", "conan_package_reference" => "conan_package_reference", "package_channel" => "package_channel", "package_username" => "package_username", "package_version" => "package_version" })
 ```
 
@@ -9902,16 +9954,10 @@ Create an instance: `api_entities_packages_conan_package_snapshot = client.ApiEn
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `package_snapshot` | `Hash` |  |
-
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPackagesConanPackageSnapshot record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPackagesConanPackageSnapshot record (raises on error).
 api_entities_packages_conan_package_snapshot = client.ApiEntitiesPackagesConanPackageSnapshot.load({ "conan_id" => "conan_id", "conan_package_reference" => "conan_package_reference", "package_channel" => "package_channel", "package_username" => "package_username", "package_version" => "package_version" })
 ```
 
@@ -9926,16 +9972,10 @@ Create an instance: `api_entities_packages_conan_recipe_manifest = client.ApiEnt
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `recipe_url` | `Hash` |  |
-
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPackagesConanRecipeManifest record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPackagesConanRecipeManifest record (raises on error).
 api_entities_packages_conan_recipe_manifest = client.ApiEntitiesPackagesConanRecipeManifest.load({ "conan_id" => "conan_id", "package_channel" => "package_channel", "package_username" => "package_username", "package_version" => "package_version" })
 ```
 
@@ -9975,16 +10015,10 @@ Create an instance: `api_entities_packages_conan_recipe_snapshot = client.ApiEnt
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `recipe_snapshot` | `Hash` |  |
-
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPackagesConanRecipeSnapshot record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPackagesConanRecipeSnapshot record (raises on error).
 api_entities_packages_conan_recipe_snapshot = client.ApiEntitiesPackagesConanRecipeSnapshot.load({ "id" => "api_entities_packages_conan_recipe_snapshot_id", "package_channel" => "package_channel", "package_name" => "package_name", "package_username" => "package_username", "package_version" => "package_version" })
 ```
 
@@ -10009,7 +10043,7 @@ Create an instance: `api_entities_packages_conan_revision = client.ApiEntitiesPa
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPackagesConanRevision record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPackagesConanRevision record (raises on error).
 api_entities_packages_conan_revision = client.ApiEntitiesPackagesConanRevision.load({ "conan_id" => "conan_id", "package_channel" => "package_channel", "package_username" => "package_username", "package_version" => "package_version", "project_id" => "project_id" })
 ```
 
@@ -10023,12 +10057,6 @@ Create an instance: `api_entities_packages_conan_upload_url = client.ApiEntities
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `upload_url` | `Hash` |  |
 
 #### Example: Create
 
@@ -10059,21 +10087,21 @@ Create an instance: `api_entities_packages_debian_distribution = client.ApiEntit
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `architecture` | `Array` |  |
+| `architectures` | `Array` |  |
 | `codename` | `String` |  |
-| `component` | `Array` |  |
+| `components` | `Array` |  |
 | `description` | `String` |  |
 | `id` | `Integer` |  |
 | `label` | `String` |  |
 | `origin` | `String` |  |
 | `suite` | `String` |  |
-| `valid_time_duration_second` | `Integer` |  |
+| `valid_time_duration_seconds` | `Integer` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPackagesDebianDistribution record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPackagesDebianDistribution record (raises on error).
 api_entities_packages_debian_distribution = client.ApiEntitiesPackagesDebianDistribution.load({ "id" => "api_entities_packages_debian_distribution_id" })
 ```
 
@@ -10110,9 +10138,12 @@ Create an instance: `api_entities_pages_domain = client.ApiEntitiesPagesDomain`
 | Field | Type | Description |
 | --- | --- | --- |
 | `auto_ssl_enabled` | `String` |  |
-| `certificate` | `Hash` |  |
+| `certificate` | `String` |  |
+| `certificate_text` | `String` |  |
 | `domain` | `String` |  |
 | `enabled_until` | `String` |  |
+| `expired` | `String` |  |
+| `subject` | `String` |  |
 | `url` | `String` |  |
 | `verification_code` | `String` |  |
 | `verified` | `Boolean` |  |
@@ -10120,7 +10151,7 @@ Create an instance: `api_entities_pages_domain = client.ApiEntitiesPagesDomain`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPagesDomain record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPagesDomain record (raises on error).
 api_entities_pages_domain = client.ApiEntitiesPagesDomain.load({ "id" => "api_entities_pages_domain_id", "project_id" => "project_id" })
 ```
 
@@ -10154,19 +10185,13 @@ Create an instance: `api_entities_pages_domain_basic = client.ApiEntitiesPagesDo
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `auto_ssl_enabled` | `String` |  |
-| `certificate_expiration` | `Hash` |  |
-| `domain` | `String` |  |
-| `enabled_until` | `String` |  |
-| `project_id` | `String` |  |
-| `url` | `String` |  |
-| `verification_code` | `String` |  |
-| `verified` | `Boolean` |  |
+| `expiration` | `String` |  |
+| `expired` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPagesDomainBasic record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPagesDomainBasic record (raises on error).
 api_entities_pages_domain_basic = client.ApiEntitiesPagesDomainBasic.load()
 ```
 
@@ -10193,7 +10218,7 @@ Create an instance: `api_entities_personal_access_token = client.ApiEntitiesPers
 | `last_used_at` | `String` |  |
 | `name` | `String` |  |
 | `revoked` | `Boolean` |  |
-| `scope` | `Array` |  |
+| `scopes` | `Array` |  |
 | `user_id` | `Integer` |  |
 
 #### Example: List
@@ -10225,16 +10250,16 @@ Create an instance: `api_entities_personal_access_token_with_last_used_ip = clie
 | `expires_at` | `String` |  |
 | `id` | `Integer` |  |
 | `last_used_at` | `String` |  |
-| `last_used_ip` | `Array` |  |
+| `last_used_ips` | `Array` |  |
 | `name` | `String` |  |
 | `revoked` | `Boolean` |  |
-| `scope` | `Array` |  |
+| `scopes` | `Array` |  |
 | `user_id` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPersonalAccessTokenWithLastUsedIp record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPersonalAccessTokenWithLastUsedIp record (raises on error).
 api_entities_personal_access_token_with_last_used_ip = client.ApiEntitiesPersonalAccessTokenWithLastUsedIp.load({ "id" => "api_entities_personal_access_token_with_last_used_ip_id" })
 ```
 
@@ -10268,7 +10293,7 @@ Create an instance: `api_entities_personal_access_token_with_token = client.ApiE
 | `last_used_at` | `String` |  |
 | `name` | `String` |  |
 | `revoked` | `Boolean` |  |
-| `scope` | `Array` |  |
+| `scopes` | `Array` |  |
 | `token` | `String` |  |
 | `user_id` | `Integer` |  |
 
@@ -10300,8 +10325,8 @@ Create an instance: `api_entities_personal_snippet = client.ApiEntitiesPersonalS
 | `author` | `Hash` |  |
 | `created_at` | `String` |  |
 | `description` | `String` |  |
-| `file` | `Array` |  |
 | `file_name` | `String` |  |
+| `files` | `Array` |  |
 | `http_url_to_repo` | `String` |  |
 | `id` | `Integer` |  |
 | `imported` | `Boolean` |  |
@@ -10318,7 +10343,7 @@ Create an instance: `api_entities_personal_snippet = client.ApiEntitiesPersonalS
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPersonalSnippet record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPersonalSnippet record (raises on error).
 api_entities_personal_snippet = client.ApiEntitiesPersonalSnippet.load({ "id" => "api_entities_personal_snippet_id" })
 ```
 
@@ -10348,38 +10373,10 @@ Create an instance: `api_entities_plan_limit = client.ApiEntitiesPlanLimit`
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `ci_active_job` | `Integer` |  |
-| `ci_instance_level_variable` | `Integer` |  |
-| `ci_needs_size_limit` | `Integer` |  |
-| `ci_pipeline_schedule` | `Integer` |  |
-| `ci_pipeline_size` | `Integer` |  |
-| `ci_project_subscription` | `Integer` |  |
-| `ci_registered_group_runner` | `Integer` |  |
-| `ci_registered_project_runner` | `Integer` |  |
-| `conan_max_file_size` | `Integer` |  |
-| `dotenv_size` | `Integer` |  |
-| `dotenv_variable` | `Integer` |  |
-| `enforcement_limit` | `Integer` |  |
-| `generic_packages_max_file_size` | `Integer` |  |
-| `helm_max_file_size` | `Integer` |  |
-| `limits_history` | `Hash` |  |
-| `maven_max_file_size` | `Integer` |  |
-| `notification_limit` | `Integer` |  |
-| `npm_max_file_size` | `Integer` |  |
-| `nuget_max_file_size` | `Integer` |  |
-| `pipeline_hierarchy_size` | `Integer` |  |
-| `pypi_max_file_size` | `Integer` |  |
-| `storage_size_limit` | `Integer` |  |
-| `terraform_module_max_file_size` | `Integer` |  |
-
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesPlanLimit record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesPlanLimit record (raises on error).
 api_entities_plan_limit = client.ApiEntitiesPlanLimit.load()
 ```
 
@@ -10405,11 +10402,11 @@ Create an instance: `api_entities_project = client.ApiEntitiesProject`
 | `analytics_access_level` | `String` |  |
 | `approvals_before_merge` | `String` |  |
 | `archived` | `Boolean` |  |
-| `auto_cancel_pending_pipeline` | `String` |  |
+| `auto_cancel_pending_pipelines` | `String` |  |
 | `auto_devops_deploy_strategy` | `String` |  |
 | `auto_devops_enabled` | `Boolean` |  |
 | `auto_duo_code_review_enabled` | `String` |  |
-| `autoclose_referenced_issue` | `Boolean` |  |
+| `autoclose_referenced_issues` | `Boolean` |  |
 | `avatar_url` | `String` |  |
 | `build_git_strategy` | `String` |  |
 | `build_timeout` | `Integer` |  |
@@ -10418,23 +10415,23 @@ Create an instance: `api_entities_project = client.ApiEntitiesProject`
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `Boolean` |  |
 | `ci_config_path` | `String` |  |
 | `ci_default_git_depth` | `Integer` |  |
-| `ci_delete_pipelines_in_second` | `Integer` |  |
+| `ci_delete_pipelines_in_seconds` | `Integer` |  |
 | `ci_forward_deployment_enabled` | `Boolean` |  |
 | `ci_forward_deployment_rollback_allowed` | `Boolean` |  |
-| `ci_id_token_sub_claim_component` | `Array` |  |
+| `ci_id_token_sub_claim_components` | `Array` |  |
 | `ci_job_token_scope_enabled` | `Boolean` |  |
 | `ci_pipeline_variables_minimum_override_role` | `String` |  |
 | `ci_push_repository_for_job_token_allowed` | `Boolean` |  |
 | `ci_restrict_pipeline_cancellation_role` | `String` |  |
-| `ci_separated_cache` | `Boolean` |  |
-| `compliance_framework` | `String` |  |
+| `ci_separated_caches` | `Boolean` |  |
+| `compliance_frameworks` | `String` |  |
 | `container_expiration_policy` | `Hash` |  |
 | `container_registry_access_level` | `String` |  |
 | `container_registry_enabled` | `Boolean` |  |
 | `container_registry_image_prefix` | `String` |  |
 | `created_at` | `String` |  |
 | `creator_id` | `Integer` |  |
-| `custom_attribute` | `Hash` |  |
+| `custom_attributes` | `Hash` |  |
 | `default_branch` | `String` |  |
 | `description` | `String` |  |
 | `description_html` | `String` |  |
@@ -10442,7 +10439,7 @@ Create an instance: `api_entities_project = client.ApiEntitiesProject`
 | `emails_disabled` | `Boolean` |  |
 | `emails_enabled` | `Boolean` |  |
 | `empty_repo` | `Boolean` |  |
-| `enforce_auth_checks_on_upload` | `Boolean` |  |
+| `enforce_auth_checks_on_uploads` | `Boolean` |  |
 | `environments_access_level` | `String` |  |
 | `external_authorization_classification_label` | `String` |  |
 | `feature_flags_access_level` | `String` |  |
@@ -10467,7 +10464,7 @@ Create an instance: `api_entities_project = client.ApiEntitiesProject`
 | `lfs_enabled` | `Boolean` |  |
 | `license` | `Hash` |  |
 | `license_url` | `String` |  |
-| `link` | `Hash` |  |
+| `links` | `Hash` |  |
 | `marked_for_deletion_at` | `String` |  |
 | `marked_for_deletion_on` | `String` |  |
 | `max_artifacts_size` | `Integer` |  |
@@ -10482,8 +10479,8 @@ Create an instance: `api_entities_project = client.ApiEntitiesProject`
 | `merge_trains_enabled` | `String` |  |
 | `merge_trains_skip_train_allowed` | `String` |  |
 | `mirror` | `String` |  |
-| `mirror_overwrites_diverged_branch` | `String` |  |
-| `mirror_trigger_build` | `String` |  |
+| `mirror_overwrites_diverged_branches` | `String` |  |
+| `mirror_trigger_builds` | `String` |  |
 | `mirror_user_id` | `String` |  |
 | `model_experiments_access_level` | `String` |  |
 | `model_registry_access_level` | `String` |  |
@@ -10494,8 +10491,8 @@ Create an instance: `api_entities_project = client.ApiEntitiesProject`
 | `namespace` | `Hash` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `Boolean` |  |
 | `only_allow_merge_if_all_status_checks_passed` | `String` |  |
-| `only_allow_merge_if_pipeline_succeed` | `Boolean` |  |
-| `only_mirror_protected_branch` | `String` |  |
+| `only_allow_merge_if_pipeline_succeeds` | `Boolean` |  |
+| `only_mirror_protected_branches` | `String` |  |
 | `open_issues_count` | `Integer` |  |
 | `owner` | `Hash` |  |
 | `package_registry_access_level` | `String` |  |
@@ -10506,7 +10503,7 @@ Create an instance: `api_entities_project = client.ApiEntitiesProject`
 | `pre_receive_secret_detection_enabled` | `Boolean` |  |
 | `prevent_merge_without_jira_issue` | `String` |  |
 | `printing_merge_request_link_enabled` | `Boolean` |  |
-| `public_job` | `Boolean` |  |
+| `public_jobs` | `Boolean` |  |
 | `readme_url` | `String` |  |
 | `releases_access_level` | `String` |  |
 | `remove_source_branch_after_merge` | `Boolean` |  |
@@ -10516,9 +10513,9 @@ Create an instance: `api_entities_project = client.ApiEntitiesProject`
 | `request_access_enabled` | `Boolean` |  |
 | `requirements_access_level` | `String` |  |
 | `requirements_enabled` | `String` |  |
-| `resolve_outdated_diff_discussion` | `Boolean` |  |
+| `resolve_outdated_diff_discussions` | `Boolean` |  |
 | `resource_group_default_process_mode` | `String` |  |
-| `restrict_user_defined_variable` | `Boolean` |  |
+| `restrict_user_defined_variables` | `Boolean` |  |
 | `runner_token_expiration_interval` | `Integer` |  |
 | `runners_token` | `String` |  |
 | `secret_push_protection_enabled` | `Boolean` |  |
@@ -10527,7 +10524,7 @@ Create an instance: `api_entities_project = client.ApiEntitiesProject`
 | `service_desk_address` | `String` |  |
 | `service_desk_enabled` | `Boolean` |  |
 | `shared_runners_enabled` | `Boolean` |  |
-| `shared_with_group` | `Array` |  |
+| `shared_with_groups` | `Array` |  |
 | `show_diff_preview_in_email` | `Boolean` |  |
 | `snippets_access_level` | `String` |  |
 | `snippets_enabled` | `Boolean` |  |
@@ -10536,13 +10533,13 @@ Create an instance: `api_entities_project = client.ApiEntitiesProject`
 | `squash_option` | `String` |  |
 | `ssh_url_to_repo` | `String` |  |
 | `star_count` | `Integer` |  |
-| `statistic` | `Hash` |  |
+| `statistics` | `Hash` |  |
 | `suggestion_commit_message` | `String` |  |
 | `tag_list` | `Array` |  |
-| `topic` | `Array` |  |
+| `topics` | `Array` |  |
 | `updated_at` | `String` |  |
 | `visibility` | `String` |  |
-| `warn_about_potentially_unwanted_character` | `Boolean` |  |
+| `warn_about_potentially_unwanted_characters` | `Boolean` |  |
 | `web_based_commit_signing_enabled` | `String` |  |
 | `web_url` | `String` |  |
 | `wiki_access_level` | `String` |  |
@@ -10577,12 +10574,13 @@ Create an instance: `api_entities_project_daily_statistic = client.ApiEntitiesPr
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fetch` | `Hash` |  |
+| `days` | `Array` |  |
+| `total` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesProjectDailyStatistic record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesProjectDailyStatistic record (raises on error).
 api_entities_project_daily_statistic = client.ApiEntitiesProjectDailyStatistic.load({ "project_id" => "project_id" })
 ```
 
@@ -10601,20 +10599,13 @@ Create an instance: `api_entities_project_export_status = client.ApiEntitiesProj
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created_at` | `String` |  |
-| `description` | `String` |  |
-| `export_status` | `String` |  |
-| `id` | `Integer` |  |
-| `link` | `Hash` |  |
-| `name` | `String` |  |
-| `name_with_namespace` | `String` |  |
-| `path` | `String` |  |
-| `path_with_namespace` | `String` |  |
+| `api_url` | `String` |  |
+| `web_url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesProjectExportStatus record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesProjectExportStatus record (raises on error).
 api_entities_project_export_status = client.ApiEntitiesProjectExportStatus.load({ "project_id" => "project_id" })
 ```
 
@@ -10657,41 +10648,41 @@ Create an instance: `api_entities_project_hook = client.ApiEntitiesProjectHook`
 | --- | --- | --- |
 | `alert_status` | `Object` |  |
 | `branch_filter_strategy` | `String` |  |
-| `confidential_issues_event` | `Boolean` |  |
-| `confidential_note_event` | `Boolean` |  |
+| `confidential_issues_events` | `Boolean` |  |
+| `confidential_note_events` | `Boolean` |  |
 | `created_at` | `String` |  |
-| `custom_header` | `Array` |  |
+| `custom_headers` | `Array` |  |
 | `custom_webhook_template` | `String` |  |
-| `deployment_event` | `Boolean` |  |
+| `deployment_events` | `Boolean` |  |
 | `description` | `String` |  |
 | `disabled_until` | `String` |  |
-| `emoji_event` | `Boolean` |  |
+| `emoji_events` | `Boolean` |  |
 | `enable_ssl_verification` | `Boolean` |  |
-| `feature_flag_event` | `Boolean` |  |
+| `feature_flag_events` | `Boolean` |  |
 | `id` | `String` |  |
-| `issues_event` | `Boolean` |  |
-| `job_event` | `Boolean` |  |
-| `merge_requests_event` | `Boolean` |  |
-| `milestone_event` | `Boolean` |  |
+| `issues_events` | `Boolean` |  |
+| `job_events` | `Boolean` |  |
+| `merge_requests_events` | `Boolean` |  |
+| `milestone_events` | `Boolean` |  |
 | `name` | `String` |  |
-| `note_event` | `Boolean` |  |
-| `pipeline_event` | `Boolean` |  |
+| `note_events` | `Boolean` |  |
+| `pipeline_events` | `Boolean` |  |
 | `project_id` | `String` |  |
-| `push_event` | `Boolean` |  |
+| `push_events` | `Boolean` |  |
 | `push_events_branch_filter` | `String` |  |
-| `releases_event` | `Boolean` |  |
-| `repository_update_event` | `Boolean` |  |
-| `resource_access_token_event` | `Boolean` |  |
-| `tag_push_event` | `Boolean` |  |
+| `releases_events` | `Boolean` |  |
+| `repository_update_events` | `Boolean` |  |
+| `resource_access_token_events` | `Boolean` |  |
+| `tag_push_events` | `Boolean` |  |
 | `url` | `String` |  |
-| `url_variable` | `Array` |  |
-| `vulnerability_event` | `Boolean` |  |
-| `wiki_page_event` | `Boolean` |  |
+| `url_variables` | `Array` |  |
+| `vulnerability_events` | `Boolean` |  |
+| `wiki_page_events` | `Boolean` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesProjectHook record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesProjectHook record (raises on error).
 api_entities_project_hook = client.ApiEntitiesProjectHook.load({ "id" => "api_entities_project_hook_id", "project_id" => "project_id" })
 ```
 
@@ -10769,7 +10760,7 @@ Create an instance: `api_entities_project_job_token_scope = client.ApiEntitiesPr
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesProjectJobTokenScope record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesProjectJobTokenScope record (raises on error).
 api_entities_project_job_token_scope = client.ApiEntitiesProjectJobTokenScope.load({ "project_id" => "project_id" })
 ```
 
@@ -10796,7 +10787,7 @@ Create an instance: `api_entities_project_repository_storage = client.ApiEntitie
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesProjectRepositoryStorage record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesProjectRepositoryStorage record (raises on error).
 api_entities_project_repository_storage = client.ApiEntitiesProjectRepositoryStorage.load({ "project_id" => "project_id" })
 ```
 
@@ -10821,8 +10812,8 @@ Create an instance: `api_entities_project_snippet = client.ApiEntitiesProjectSni
 | `author` | `Hash` |  |
 | `created_at` | `String` |  |
 | `description` | `String` |  |
-| `file` | `Array` |  |
 | `file_name` | `String` |  |
+| `files` | `Array` |  |
 | `http_url_to_repo` | `String` |  |
 | `id` | `Integer` |  |
 | `imported` | `Boolean` |  |
@@ -10839,7 +10830,7 @@ Create an instance: `api_entities_project_snippet = client.ApiEntitiesProjectSni
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesProjectSnippet record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesProjectSnippet record (raises on error).
 api_entities_project_snippet = client.ApiEntitiesProjectSnippet.load({ "id" => "api_entities_project_snippet_id", "project_id" => "project_id" })
 ```
 
@@ -10897,11 +10888,11 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 | `analytics_access_level` | `String` |  |
 | `approvals_before_merge` | `String` |  |
 | `archived` | `Boolean` |  |
-| `auto_cancel_pending_pipeline` | `String` |  |
+| `auto_cancel_pending_pipelines` | `String` |  |
 | `auto_devops_deploy_strategy` | `String` |  |
 | `auto_devops_enabled` | `Boolean` |  |
 | `auto_duo_code_review_enabled` | `String` |  |
-| `autoclose_referenced_issue` | `Boolean` |  |
+| `autoclose_referenced_issues` | `Boolean` |  |
 | `avatar_url` | `String` |  |
 | `build_git_strategy` | `String` |  |
 | `build_timeout` | `Integer` |  |
@@ -10910,23 +10901,23 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `Boolean` |  |
 | `ci_config_path` | `String` |  |
 | `ci_default_git_depth` | `Integer` |  |
-| `ci_delete_pipelines_in_second` | `Integer` |  |
+| `ci_delete_pipelines_in_seconds` | `Integer` |  |
 | `ci_forward_deployment_enabled` | `Boolean` |  |
 | `ci_forward_deployment_rollback_allowed` | `Boolean` |  |
-| `ci_id_token_sub_claim_component` | `Array` |  |
+| `ci_id_token_sub_claim_components` | `Array` |  |
 | `ci_job_token_scope_enabled` | `Boolean` |  |
 | `ci_pipeline_variables_minimum_override_role` | `String` |  |
 | `ci_push_repository_for_job_token_allowed` | `Boolean` |  |
 | `ci_restrict_pipeline_cancellation_role` | `String` |  |
-| `ci_separated_cache` | `Boolean` |  |
-| `compliance_framework` | `String` |  |
+| `ci_separated_caches` | `Boolean` |  |
+| `compliance_frameworks` | `String` |  |
 | `container_expiration_policy` | `Hash` |  |
 | `container_registry_access_level` | `String` |  |
 | `container_registry_enabled` | `Boolean` |  |
 | `container_registry_image_prefix` | `String` |  |
 | `created_at` | `String` |  |
 | `creator_id` | `Integer` |  |
-| `custom_attribute` | `Hash` |  |
+| `custom_attributes` | `Hash` |  |
 | `default_branch` | `String` |  |
 | `description` | `String` |  |
 | `description_html` | `String` |  |
@@ -10934,7 +10925,7 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 | `emails_disabled` | `Boolean` |  |
 | `emails_enabled` | `Boolean` |  |
 | `empty_repo` | `Boolean` |  |
-| `enforce_auth_checks_on_upload` | `Boolean` |  |
+| `enforce_auth_checks_on_uploads` | `Boolean` |  |
 | `environments_access_level` | `String` |  |
 | `external_authorization_classification_label` | `String` |  |
 | `feature_flags_access_level` | `String` |  |
@@ -10959,7 +10950,7 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 | `lfs_enabled` | `Boolean` |  |
 | `license` | `Hash` |  |
 | `license_url` | `String` |  |
-| `link` | `Hash` |  |
+| `links` | `Hash` |  |
 | `marked_for_deletion_at` | `String` |  |
 | `marked_for_deletion_on` | `String` |  |
 | `max_artifacts_size` | `Integer` |  |
@@ -10974,8 +10965,8 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 | `merge_trains_enabled` | `String` |  |
 | `merge_trains_skip_train_allowed` | `String` |  |
 | `mirror` | `String` |  |
-| `mirror_overwrites_diverged_branch` | `String` |  |
-| `mirror_trigger_build` | `String` |  |
+| `mirror_overwrites_diverged_branches` | `String` |  |
+| `mirror_trigger_builds` | `String` |  |
 | `mirror_user_id` | `String` |  |
 | `model_experiments_access_level` | `String` |  |
 | `model_registry_access_level` | `String` |  |
@@ -10986,8 +10977,8 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 | `namespace` | `Hash` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `Boolean` |  |
 | `only_allow_merge_if_all_status_checks_passed` | `String` |  |
-| `only_allow_merge_if_pipeline_succeed` | `Boolean` |  |
-| `only_mirror_protected_branch` | `String` |  |
+| `only_allow_merge_if_pipeline_succeeds` | `Boolean` |  |
+| `only_mirror_protected_branches` | `String` |  |
 | `open_issues_count` | `Integer` |  |
 | `owner` | `Hash` |  |
 | `package_registry_access_level` | `String` |  |
@@ -10995,11 +10986,11 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 | `pages_access_level` | `String` |  |
 | `path` | `String` |  |
 | `path_with_namespace` | `String` |  |
-| `permission` | `Hash` |  |
+| `permissions` | `Hash` |  |
 | `pre_receive_secret_detection_enabled` | `Boolean` |  |
 | `prevent_merge_without_jira_issue` | `String` |  |
 | `printing_merge_request_link_enabled` | `Boolean` |  |
-| `public_job` | `Boolean` |  |
+| `public_jobs` | `Boolean` |  |
 | `readme_url` | `String` |  |
 | `releases_access_level` | `String` |  |
 | `remove_source_branch_after_merge` | `Boolean` |  |
@@ -11009,9 +11000,9 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 | `request_access_enabled` | `Boolean` |  |
 | `requirements_access_level` | `String` |  |
 | `requirements_enabled` | `String` |  |
-| `resolve_outdated_diff_discussion` | `Boolean` |  |
+| `resolve_outdated_diff_discussions` | `Boolean` |  |
 | `resource_group_default_process_mode` | `String` |  |
-| `restrict_user_defined_variable` | `Boolean` |  |
+| `restrict_user_defined_variables` | `Boolean` |  |
 | `runner_token_expiration_interval` | `Integer` |  |
 | `runners_token` | `String` |  |
 | `secret_push_protection_enabled` | `Boolean` |  |
@@ -11020,7 +11011,7 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 | `service_desk_address` | `String` |  |
 | `service_desk_enabled` | `Boolean` |  |
 | `shared_runners_enabled` | `Boolean` |  |
-| `shared_with_group` | `Array` |  |
+| `shared_with_groups` | `Array` |  |
 | `show_diff_preview_in_email` | `Boolean` |  |
 | `snippets_access_level` | `String` |  |
 | `snippets_enabled` | `Boolean` |  |
@@ -11029,13 +11020,13 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 | `squash_option` | `String` |  |
 | `ssh_url_to_repo` | `String` |  |
 | `star_count` | `Integer` |  |
-| `statistic` | `Hash` |  |
+| `statistics` | `Hash` |  |
 | `suggestion_commit_message` | `String` |  |
 | `tag_list` | `Array` |  |
-| `topic` | `Array` |  |
+| `topics` | `Array` |  |
 | `updated_at` | `String` |  |
 | `visibility` | `String` |  |
-| `warn_about_potentially_unwanted_character` | `Boolean` |  |
+| `warn_about_potentially_unwanted_characters` | `Boolean` |  |
 | `web_based_commit_signing_enabled` | `String` |  |
 | `web_url` | `String` |  |
 | `wiki_access_level` | `String` |  |
@@ -11044,7 +11035,7 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesProjectWithAccess record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesProjectWithAccess record (raises on error).
 api_entities_project_with_access = client.ApiEntitiesProjectWithAccess.load({ "id" => "api_entities_project_with_access_id" })
 ```
 
@@ -11153,7 +11144,7 @@ Create an instance: `api_entities_projects_topic = client.ApiEntitiesProjectsTop
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesProjectsTopic record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesProjectsTopic record (raises on error).
 api_entities_projects_topic = client.ApiEntitiesProjectsTopic.load({ "id" => "api_entities_projects_topic_id" })
 ```
 
@@ -11186,15 +11177,15 @@ Create an instance: `api_entities_protected_branch = client.ApiEntitiesProtected
 | `code_owner_approval_required` | `Boolean` |  |
 | `id` | `Integer` |  |
 | `inherited` | `Boolean` |  |
-| `merge_access_level` | `Array` |  |
+| `merge_access_levels` | `Array` |  |
 | `name` | `String` |  |
-| `push_access_level` | `Array` |  |
-| `unprotect_access_level` | `Array` |  |
+| `push_access_levels` | `Array` |  |
+| `unprotect_access_levels` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesProtectedBranch record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesProtectedBranch record (raises on error).
 api_entities_protected_branch = client.ApiEntitiesProtectedBranch.load({ "id" => "api_entities_protected_branch_id", "project_id" => "project_id" })
 ```
 
@@ -11230,13 +11221,19 @@ Create an instance: `api_entities_protected_tag = client.ApiEntitiesProtectedTag
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `create_access_level` | `Hash` |  |
+| `access_level` | `Integer` |  |
+| `access_level_description` | `String` |  |
+| `create_access_levels` | `Hash` |  |
+| `deploy_key_id` | `Integer` |  |
+| `group_id` | `Integer` |  |
+| `id` | `Integer` |  |
 | `name` | `String` |  |
+| `user_id` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesProtectedTag record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesProtectedTag record (raises on error).
 api_entities_protected_tag = client.ApiEntitiesProtectedTag.load({ "id" => "api_entities_protected_tag_id", "project_id" => "project_id" })
 ```
 
@@ -11300,6 +11297,7 @@ Create an instance: `api_entities_related_issue = client.ApiEntitiesRelatedIssue
 | Field | Type | Description |
 | --- | --- | --- |
 | `assignee` | `Hash` |  |
+| `assignees` | `Hash` |  |
 | `author` | `Hash` |  |
 | `blocking_issues_count` | `String` |  |
 | `closed_at` | `String` |  |
@@ -11308,11 +11306,11 @@ Create an instance: `api_entities_related_issue = client.ApiEntitiesRelatedIssue
 | `created_at` | `String` |  |
 | `description` | `String` |  |
 | `discussion_locked` | `Boolean` |  |
-| `downvote` | `String` |  |
+| `downvotes` | `String` |  |
 | `due_date` | `String` |  |
 | `epic` | `Hash` |  |
 | `epic_iid` | `String` |  |
-| `has_task` | `Boolean` |  |
+| `has_tasks` | `Boolean` |  |
 | `health_status` | `String` |  |
 | `id` | `Integer` |  |
 | `iid` | `Integer` |  |
@@ -11321,27 +11319,27 @@ Create an instance: `api_entities_related_issue = client.ApiEntitiesRelatedIssue
 | `issue_link_id` | `String` |  |
 | `issue_type` | `String` |  |
 | `iteration` | `Hash` |  |
-| `label` | `Array` |  |
-| `link` | `Hash` |  |
+| `labels` | `Array` |  |
 | `link_created_at` | `String` |  |
 | `link_type` | `String` |  |
 | `link_updated_at` | `String` |  |
+| `links` | `Hash` |  |
 | `merge_requests_count` | `String` |  |
 | `milestone` | `Hash` |  |
 | `moved_to_id` | `String` |  |
 | `project_id` | `Integer` |  |
-| `reference` | `Hash` |  |
+| `references` | `Hash` |  |
 | `service_desk_reply_to` | `String` |  |
 | `severity` | `String` |  |
 | `state` | `String` |  |
 | `subscribed` | `String` |  |
 | `task_completion_status` | `String` |  |
 | `task_status` | `String` |  |
-| `time_stat` | `Hash` |  |
+| `time_stats` | `Hash` |  |
 | `title` | `String` |  |
 | `type` | `String` |  |
 | `updated_at` | `String` |  |
-| `upvote` | `String` |  |
+| `upvotes` | `String` |  |
 | `user_notes_count` | `String` |  |
 | `web_url` | `String` |  |
 | `weight` | `String` |  |
@@ -11389,16 +11387,16 @@ Create an instance: `api_entities_release = client.ApiEntitiesRelease`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `Hash` |  |
+| `assets` | `Hash` |  |
 | `author` | `Hash` |  |
 | `commit` | `Hash` |  |
 | `commit_path` | `String` |  |
 | `created_at` | `String` |  |
 | `description` | `String` |  |
 | `description_html` | `String` |  |
-| `evidence` | `Hash` |  |
-| `link` | `Hash` |  |
-| `milestone` | `Hash` |  |
+| `evidences` | `Hash` |  |
+| `links` | `Hash` |  |
+| `milestones` | `Hash` |  |
 | `name` | `String` |  |
 | `released_at` | `String` |  |
 | `tag_name` | `String` |  |
@@ -11408,7 +11406,7 @@ Create an instance: `api_entities_release = client.ApiEntitiesRelease`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesRelease record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesRelease record (raises on error).
 api_entities_release = client.ApiEntitiesRelease.load({ "id" => "api_entities_release_id", "project_id" => "project_id" })
 ```
 
@@ -11454,7 +11452,7 @@ Create an instance: `api_entities_releases_link = client.ApiEntitiesReleasesLink
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesReleasesLink record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesReleasesLink record (raises on error).
 api_entities_releases_link = client.ApiEntitiesReleasesLink.load({ "id" => "api_entities_releases_link_id", "project_id" => "project_id", "release_id" => "release_id" })
 ```
 
@@ -11494,22 +11492,22 @@ Create an instance: `api_entities_remote_mirror = client.ApiEntitiesRemoteMirror
 | --- | --- | --- |
 | `auth_method` | `String` |  |
 | `enabled` | `Boolean` |  |
-| `host_key` | `Array` |  |
+| `host_keys` | `Array` |  |
 | `id` | `Integer` |  |
-| `keep_divergent_ref` | `Boolean` |  |
+| `keep_divergent_refs` | `Boolean` |  |
 | `last_error` | `Integer` |  |
 | `last_successful_update_at` | `String` |  |
 | `last_update_at` | `String` |  |
 | `last_update_started_at` | `String` |  |
 | `mirror_branch_regex` | `String` |  |
-| `only_protected_branch` | `Boolean` |  |
+| `only_protected_branches` | `Boolean` |  |
 | `update_status` | `String` |  |
 | `url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesRemoteMirror record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesRemoteMirror record (raises on error).
 api_entities_remote_mirror = client.ApiEntitiesRemoteMirror.load({ "id" => "api_entities_remote_mirror_id", "project_id" => "project_id" })
 ```
 
@@ -11543,22 +11541,22 @@ Create an instance: `api_entities_repository_health = client.ApiEntitiesReposito
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `alternate` | `Hash` |  |
+| `alternates` | `Hash` |  |
 | `bitmap` | `Hash` |  |
 | `commit_graph` | `Hash` |  |
 | `is_object_pool` | `Boolean` |  |
 | `last_full_repack` | `Hash` |  |
 | `multi_pack_index` | `Hash` |  |
 | `multi_pack_index_bitmap` | `Hash` |  |
-| `object` | `Hash` |  |
-| `reference` | `Hash` |  |
+| `objects` | `Hash` |  |
+| `references` | `Hash` |  |
 | `size` | `Integer` |  |
 | `updated_at` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesRepositoryHealth record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesRepositoryHealth record (raises on error).
 api_entities_repository_health = client.ApiEntitiesRepositoryHealth.load({ "project_id" => "project_id" })
 ```
 
@@ -11588,7 +11586,7 @@ Create an instance: `api_entities_resource_access_token_with_token = client.ApiE
 | `resource_id` | `Integer` |  |
 | `resource_type` | `String` |  |
 | `revoked` | `Boolean` |  |
-| `scope` | `Array` |  |
+| `scopes` | `Array` |  |
 | `token` | `String` |  |
 | `user_id` | `Integer` |  |
 
@@ -11627,7 +11625,7 @@ Create an instance: `api_entities_resource_milestone_event = client.ApiEntitiesR
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesResourceMilestoneEvent record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesResourceMilestoneEvent record (raises on error).
 api_entities_resource_milestone_event = client.ApiEntitiesResourceMilestoneEvent.load({ "id" => "api_entities_resource_milestone_event_id", "project_id" => "project_id" })
 ```
 
@@ -11656,8 +11654,8 @@ Create an instance: `api_entities_snippet = client.ApiEntitiesSnippet`
 | `author` | `Hash` |  |
 | `created_at` | `String` |  |
 | `description` | `String` |  |
-| `file` | `Array` |  |
 | `file_name` | `String` |  |
+| `files` | `Array` |  |
 | `http_url_to_repo` | `String` |  |
 | `id` | `Integer` |  |
 | `imported` | `Boolean` |  |
@@ -11693,19 +11691,57 @@ Create an instance: `api_entities_ssh_key_with_user = client.ApiEntitiesSshKeyWi
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `avatar_path` | `String` |  |
+| `avatar_url` | `String` |  |
+| `bio` | `String` |  |
+| `bot` | `String` |  |
+| `can_create_group` | `Boolean` |  |
+| `can_create_project` | `Boolean` |  |
+| `color_scheme_id` | `Integer` |  |
+| `commit_email` | `String` |  |
+| `confirmed_at` | `String` |  |
 | `created_at` | `String` |  |
-| `expires_at` | `String` |  |
+| `current_sign_in_at` | `String` |  |
+| `custom_attributes` | `Array` |  |
+| `discord` | `String` |  |
+| `email` | `String` |  |
+| `external` | `String` |  |
+| `extra_shared_runners_minutes_limit` | `String` |  |
+| `followers` | `String` |  |
+| `following` | `String` |  |
+| `github` | `String` |  |
 | `id` | `Integer` |  |
-| `key` | `String` |  |
-| `last_used_at` | `String` |  |
-| `title` | `String` |  |
-| `usage_type` | `String` |  |
-| `user` | `Hash` |  |
+| `identities` | `Hash` |  |
+| `is_followed` | `Boolean` |  |
+| `job_title` | `String` |  |
+| `last_activity_on` | `String` |  |
+| `last_sign_in_at` | `String` |  |
+| `linkedin` | `String` |  |
+| `local_time` | `String` |  |
+| `location` | `String` |  |
+| `locked` | `Boolean` |  |
+| `name` | `String` |  |
+| `organization` | `String` |  |
+| `preferred_language` | `String` |  |
+| `private_profile` | `Boolean` |  |
+| `projects_limit` | `Integer` |  |
+| `pronouns` | `String` |  |
+| `public_email` | `String` |  |
+| `scim_identities` | `Hash` |  |
+| `shared_runners_minutes_limit` | `String` |  |
+| `state` | `String` |  |
+| `theme_id` | `Integer` |  |
+| `twitter` | `String` |  |
+| `two_factor_enabled` | `Boolean` |  |
+| `username` | `String` |  |
+| `web_url` | `String` |  |
+| `website_url` | `String` |  |
+| `work_information` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesSshKeyWithUser record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesSshKeyWithUser record (raises on error).
 api_entities_ssh_key_with_user = client.ApiEntitiesSshKeyWithUser.load({ "id" => "api_entities_ssh_key_with_user_id" })
 ```
 
@@ -11759,14 +11795,14 @@ Create an instance: `api_entities_system_broadcast_message = client.ApiEntitiesS
 | `id` | `String` |  |
 | `message` | `String` |  |
 | `starts_at` | `String` |  |
-| `target_access_level` | `String` |  |
+| `target_access_levels` | `String` |  |
 | `target_path` | `String` |  |
 | `theme` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesSystemBroadcastMessage record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesSystemBroadcastMessage record (raises on error).
 api_entities_system_broadcast_message = client.ApiEntitiesSystemBroadcastMessage.load({ "id" => "api_entities_system_broadcast_message_id" })
 ```
 
@@ -11805,7 +11841,7 @@ Create an instance: `api_entities_tag = client.ApiEntitiesTag`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesTag record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesTag record (raises on error).
 api_entities_tag = client.ApiEntitiesTag.load({ "id" => "api_entities_tag_id", "project_id" => "project_id" })
 ```
 
@@ -11845,7 +11881,7 @@ Create an instance: `api_entities_tag_signature = client.ApiEntitiesTagSignature
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesTagSignature record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesTagSignature record (raises on error).
 api_entities_tag_signature = client.ApiEntitiesTagSignature.load({ "project_id" => "project_id", "tag_name" => "tag_name" })
 ```
 
@@ -11870,7 +11906,7 @@ Create an instance: `api_entities_templates_list = client.ApiEntitiesTemplatesLi
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesTemplatesList record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesTemplatesList record (raises on error).
 api_entities_templates_list = client.ApiEntitiesTemplatesList.load({ "project_id" => "project_id", "type" => "type" })
 ```
 
@@ -11890,18 +11926,20 @@ Create an instance: `api_entities_terraform_module_version = client.ApiEntitiesT
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `module` | `String` |  |
+| `modules` | `String` |  |
 | `name` | `String` |  |
 | `provider` | `String` |  |
+| `providers` | `String` |  |
 | `root` | `String` |  |
 | `source` | `String` |  |
-| `submodule` | `String` |  |
+| `submodules` | `String` |  |
 | `version` | `String` |  |
+| `versions` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesTerraformModuleVersion record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesTerraformModuleVersion record (raises on error).
 api_entities_terraform_module_version = client.ApiEntitiesTerraformModuleVersion.load({ "module_name" => "module_name", "module_system" => "module_system" })
 ```
 
@@ -11936,7 +11974,7 @@ Create an instance: `api_entities_tree_object = client.ApiEntitiesTreeObject`
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesTreeObject record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesTreeObject record (raises on error).
 api_entities_tree_object = client.ApiEntitiesTreeObject.load({ "project_id" => "project_id" })
 ```
 
@@ -11958,19 +11996,28 @@ Create an instance: `api_entities_trigger = client.ApiEntitiesTrigger`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `avatar_path` | `String` |  |
+| `avatar_url` | `String` |  |
 | `created_at` | `String` |  |
+| `custom_attributes` | `Array` |  |
 | `description` | `String` |  |
 | `expires_at` | `String` |  |
 | `id` | `Integer` |  |
 | `last_used` | `String` |  |
+| `locked` | `Boolean` |  |
+| `name` | `String` |  |
 | `owner` | `Hash` |  |
+| `public_email` | `String` |  |
+| `state` | `String` |  |
 | `token` | `String` |  |
 | `updated_at` | `String` |  |
+| `username` | `String` |  |
+| `web_url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesTrigger record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesTrigger record (raises on error).
 api_entities_trigger = client.ApiEntitiesTrigger.load({ "id" => "api_entities_trigger_id", "project_id" => "project_id" })
 ```
 
@@ -12011,7 +12058,7 @@ Create an instance: `api_entities_user_agent_detail = client.ApiEntitiesUserAgen
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesUserAgentDetail record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesUserAgentDetail record (raises on error).
 api_entities_user_agent_detail = client.ApiEntitiesUserAgentDetail.load()
 ```
 
@@ -12030,16 +12077,16 @@ Create an instance: `api_entities_user_count = client.ApiEntitiesUserCount`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `assigned_issue` | `Integer` |  |
-| `assigned_merge_request` | `Integer` |  |
-| `merge_request` | `Integer` |  |
-| `review_requested_merge_request` | `Integer` |  |
-| `todo` | `Integer` |  |
+| `assigned_issues` | `Integer` |  |
+| `assigned_merge_requests` | `Integer` |  |
+| `merge_requests` | `Integer` |  |
+| `review_requested_merge_requests` | `Integer` |  |
+| `todos` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesUserCount record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesUserCount record (raises on error).
 api_entities_user_count = client.ApiEntitiesUserCount.load()
 ```
 
@@ -12069,16 +12116,16 @@ Create an instance: `api_entities_user_public = client.ApiEntitiesUserPublic`
 | `confirmed_at` | `String` |  |
 | `created_at` | `String` |  |
 | `current_sign_in_at` | `String` |  |
-| `custom_attribute` | `Array` |  |
+| `custom_attributes` | `Array` |  |
 | `discord` | `String` |  |
 | `email` | `String` |  |
 | `external` | `String` |  |
 | `extra_shared_runners_minutes_limit` | `String` |  |
-| `follower` | `String` |  |
+| `followers` | `String` |  |
 | `following` | `String` |  |
 | `github` | `String` |  |
 | `id` | `Integer` |  |
-| `identity` | `Hash` |  |
+| `identities` | `Hash` |  |
 | `is_followed` | `Boolean` |  |
 | `job_title` | `String` |  |
 | `key` | `String` |  |
@@ -12093,9 +12140,9 @@ Create an instance: `api_entities_user_public = client.ApiEntitiesUserPublic`
 | `preferred_language` | `String` |  |
 | `private_profile` | `Boolean` |  |
 | `projects_limit` | `Integer` |  |
-| `pronoun` | `String` |  |
+| `pronouns` | `String` |  |
 | `public_email` | `String` |  |
-| `scim_identity` | `Hash` |  |
+| `scim_identities` | `Hash` |  |
 | `shared_runners_minutes_limit` | `String` |  |
 | `state` | `String` |  |
 | `theme_id` | `Integer` |  |
@@ -12170,22 +12217,10 @@ Create an instance: `api_entities_wiki_page = client.ApiEntitiesWikiPage`
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `content` | `String` |  |
-| `encoding` | `String` |  |
-| `format` | `String` |  |
-| `front_matter` | `Hash` |  |
-| `slug` | `String` |  |
-| `title` | `String` |  |
-| `wiki_page_meta_id` | `Integer` |  |
-
 #### Example: Load
 
 ```ruby
-# load returns the bare ApiEntitiesWikiPage record (raises on error).
+# load returns the ENTITY — call data_get for the ApiEntitiesWikiPage record (raises on error).
 api_entities_wiki_page = client.ApiEntitiesWikiPage.load({ "slug" => "slug" })
 ```
 
@@ -12281,7 +12316,7 @@ Create an instance: `cargo_package = client.CargoPackage`
 #### Example: Load
 
 ```ruby
-# load returns the bare CargoPackage record (raises on error).
+# load returns the ENTITY — call data_get for the CargoPackage record (raises on error).
 cargo_package = client.CargoPackage.load({ "project_id" => "project_id" })
 ```
 
@@ -12351,7 +12386,7 @@ Create an instance: `composer_package = client.ComposerPackage`
 #### Example: Load
 
 ```ruby
-# load returns the bare ComposerPackage record (raises on error).
+# load returns the ENTITY — call data_get for the ComposerPackage record (raises on error).
 composer_package = client.ComposerPackage.load()
 ```
 
@@ -12382,7 +12417,7 @@ Create an instance: `conan_package = client.ConanPackage`
 #### Example: Load
 
 ```ruby
-# load returns the bare ConanPackage record (raises on error).
+# load returns the ENTITY — call data_get for the ConanPackage record (raises on error).
 conan_package = client.ConanPackage.load({ "id" => "conan_package_id" })
 ```
 
@@ -12436,7 +12471,7 @@ Create an instance: `custom_attribute = client.CustomAttribute`
 #### Example: Load
 
 ```ruby
-# load returns the bare CustomAttribute record (raises on error).
+# load returns the ENTITY — call data_get for the CustomAttribute record (raises on error).
 custom_attribute = client.CustomAttribute.load({ "id" => "custom_attribute_id" })
 ```
 
@@ -12477,7 +12512,7 @@ Create an instance: `debian_package = client.DebianPackage`
 #### Example: Load
 
 ```ruby
-# load returns the bare DebianPackage record (raises on error).
+# load returns the ENTITY — call data_get for the DebianPackage record (raises on error).
 debian_package = client.DebianPackage.load({ "id" => "debian_package_id" })
 ```
 
@@ -12563,7 +12598,7 @@ Create an instance: `ee_api_entities_audit_event = client.EeApiEntitiesAuditEven
 | --- | --- | --- |
 | `author_id` | `String` |  |
 | `created_at` | `String` |  |
-| `detail` | `String` |  |
+| `details` | `String` |  |
 | `entity_id` | `String` |  |
 | `entity_type` | `String` |  |
 | `event_name` | `String` |  |
@@ -12572,7 +12607,7 @@ Create an instance: `ee_api_entities_audit_event = client.EeApiEntitiesAuditEven
 #### Example: Load
 
 ```ruby
-# load returns the bare EeApiEntitiesAuditEvent record (raises on error).
+# load returns the ENTITY — call data_get for the EeApiEntitiesAuditEvent record (raises on error).
 ee_api_entities_audit_event = client.EeApiEntitiesAuditEvent.load({ "id" => "ee_api_entities_audit_event_id" })
 ```
 
@@ -12598,18 +12633,14 @@ Create an instance: `ee_api_entities_billable_membership = client.EeApiEntitiesB
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_level` | `Hash` |  |
-| `created_at` | `String` |  |
-| `expires_at` | `String` |  |
-| `id` | `String` |  |
-| `source_full_name` | `String` |  |
-| `source_id` | `String` |  |
-| `source_members_url` | `String` |  |
+| `custom_role` | `String` |  |
+| `integer_value` | `String` |  |
+| `string_value` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare EeApiEntitiesBillableMembership record (raises on error).
+# load returns the ENTITY — call data_get for the EeApiEntitiesBillableMembership record (raises on error).
 ee_api_entities_billable_membership = client.EeApiEntitiesBillableMembership.load({ "billable_member_id" => "billable_member_id", "group_id" => "group_id" })
 ```
 
@@ -12655,7 +12686,7 @@ Create an instance: `ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNo
 | `container_repositories_verified_in_percentage` | `String` |  |
 | `cursor_last_event_id` | `String` |  |
 | `cursor_last_event_timestamp` | `String` |  |
-| `db_replication_lag_second` | `String` |  |
+| `db_replication_lag_seconds` | `String` |  |
 | `dependency_proxy_blobs_checksum_failed_count` | `String` |  |
 | `dependency_proxy_blobs_checksum_total_count` | `String` |  |
 | `dependency_proxy_blobs_checksummed_count` | `String` |  |
@@ -12737,7 +12768,7 @@ Create an instance: `ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNo
 | `lfs_objects_verification_total_count` | `String` |  |
 | `lfs_objects_verified_count` | `String` |  |
 | `lfs_objects_verified_in_percentage` | `String` |  |
-| `link` | `Hash` |  |
+| `links` | `Hash` |  |
 | `merge_request_diffs_checksum_failed_count` | `String` |  |
 | `merge_request_diffs_checksum_total_count` | `String` |  |
 | `merge_request_diffs_checksummed_count` | `String` |  |
@@ -12751,7 +12782,7 @@ Create an instance: `ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNo
 | `merge_request_diffs_verified_count` | `String` |  |
 | `merge_request_diffs_verified_in_percentage` | `String` |  |
 | `missing_oauth_application` | `String` |  |
-| `namespace` | `Hash` |  |
+| `namespaces` | `Hash` |  |
 | `package_files_checksum_failed_count` | `String` |  |
 | `package_files_checksum_total_count` | `String` |  |
 | `package_files_checksummed_count` | `String` |  |
@@ -12816,7 +12847,7 @@ Create an instance: `ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNo
 | `proxy_local_requests_event_count_weekly` | `String` |  |
 | `proxy_remote_requests_event_count_weekly` | `String` |  |
 | `replication_slots_count` | `String` |  |
-| `replication_slots_max_retained_wal_byte` | `String` |  |
+| `replication_slots_max_retained_wal_bytes` | `String` |  |
 | `replication_slots_used_count` | `String` |  |
 | `replication_slots_used_in_percentage` | `String` |  |
 | `repositories_checked_count` | `String` |  |
@@ -12837,7 +12868,7 @@ Create an instance: `ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNo
 | `snippet_repositories_verification_total_count` | `String` |  |
 | `snippet_repositories_verified_count` | `String` |  |
 | `snippet_repositories_verified_in_percentage` | `String` |  |
-| `storage_shard` | `Hash` |  |
+| `storage_shards` | `Hash` |  |
 | `storage_shards_match` | `String` |  |
 | `terraform_state_versions_checksum_failed_count` | `String` |  |
 | `terraform_state_versions_checksum_total_count` | `String` |  |
@@ -12888,7 +12919,7 @@ Create an instance: `ee_api_entities_geo_pipeline_ref = client.EeApiEntitiesGeoP
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `pipeline_ref` | `Array` |  |
+| `pipeline_refs` | `Array` |  |
 
 #### Example: List
 
@@ -12949,9 +12980,9 @@ Create an instance: `ee_api_entities_merge_request_approval_state = client.EeApi
 | `approved` | `Boolean` |  |
 | `approved_by` | `Array` |  |
 | `code_owner` | `Boolean` |  |
-| `contains_hidden_group` | `Boolean` |  |
-| `eligible_approver` | `Array` |  |
-| `group` | `Array` |  |
+| `contains_hidden_groups` | `Boolean` |  |
+| `eligible_approvers` | `Array` |  |
+| `groups` | `Array` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 | `overridden` | `Boolean` |  |
@@ -12959,7 +12990,7 @@ Create an instance: `ee_api_entities_merge_request_approval_state = client.EeApi
 | `rule_type` | `String` |  |
 | `section` | `String` |  |
 | `source_rule` | `Hash` |  |
-| `user` | `Array` |  |
+| `users` | `Array` |  |
 
 #### Example: List
 
@@ -13062,7 +13093,7 @@ Create an instance: `feature_flag = client.FeatureFlag`
 #### Example: Load
 
 ```ruby
-# load returns the bare FeatureFlag record (raises on error).
+# load returns the ENTITY — call data_get for the FeatureFlag record (raises on error).
 feature_flag = client.FeatureFlag.load({ "project_id" => "project_id" })
 ```
 
@@ -13111,7 +13142,7 @@ Create an instance: `generic_package = client.GenericPackage`
 #### Example: Load
 
 ```ruby
-# load returns the bare GenericPackage record (raises on error).
+# load returns the ENTITY — call data_get for the GenericPackage record (raises on error).
 generic_package = client.GenericPackage.load({ "file_name" => "file_name", "generic_id" => "generic_id", "project_id" => "project_id" })
 ```
 
@@ -13130,7 +13161,7 @@ Create an instance: `geo = client.Geo`
 #### Example: Load
 
 ```ruby
-# load returns the bare Geo record (raises on error).
+# load returns the ENTITY — call data_get for the Geo record (raises on error).
 geo = client.Geo.load({ "replicable_id" => "replicable_id", "replicable_name" => "replicable_name" })
 ```
 
@@ -13155,7 +13186,7 @@ Create an instance: `go_proxy = client.GoProxy`
 #### Example: Load
 
 ```ruby
-# load returns the bare GoProxy record (raises on error).
+# load returns the ENTITY — call data_get for the GoProxy record (raises on error).
 go_proxy = client.GoProxy.load({ "project_id" => "project_id" })
 ```
 
@@ -13176,7 +13207,7 @@ Create an instance: `group = client.Group`
 #### Example: Load
 
 ```ruby
-# load returns the bare Group record (raises on error).
+# load returns the ENTITY — call data_get for the Group record (raises on error).
 group = client.Group.load({ "id" => "group_id" })
 ```
 
@@ -13202,7 +13233,7 @@ Create an instance: `group_avatar = client.GroupAvatar`
 #### Example: Load
 
 ```ruby
-# load returns the bare GroupAvatar record (raises on error).
+# load returns the ENTITY — call data_get for the GroupAvatar record (raises on error).
 group_avatar = client.GroupAvatar.load({ "id" => "group_avatar_id" })
 ```
 
@@ -13221,7 +13252,7 @@ Create an instance: `group_export = client.GroupExport`
 #### Example: Load
 
 ```ruby
-# load returns the bare GroupExport record (raises on error).
+# load returns the ENTITY — call data_get for the GroupExport record (raises on error).
 group_export = client.GroupExport.load({ "group_id" => "group_id" })
 ```
 
@@ -13266,7 +13297,7 @@ Create an instance: `helm_package = client.HelmPackage`
 #### Example: Load
 
 ```ruby
-# load returns the bare HelmPackage record (raises on error).
+# load returns the ENTITY — call data_get for the HelmPackage record (raises on error).
 helm_package = client.HelmPackage.load({ "project_id" => "project_id" })
 ```
 
@@ -13372,7 +13403,7 @@ Create an instance: `issues_statistic = client.IssuesStatistic`
 #### Example: Load
 
 ```ruby
-# load returns the bare IssuesStatistic record (raises on error).
+# load returns the ENTITY — call data_get for the IssuesStatistic record (raises on error).
 issues_statistic = client.IssuesStatistic.load()
 ```
 
@@ -13392,7 +13423,7 @@ Create an instance: `job = client.Job`
 #### Example: Load
 
 ```ruby
-# load returns the bare Job record (raises on error).
+# load returns the ENTITY — call data_get for the Job record (raises on error).
 job = client.Job.load({ "id" => "job_id" })
 ```
 
@@ -13418,7 +13449,7 @@ Create an instance: `maven_package = client.MavenPackage`
 #### Example: Load
 
 ```ruby
-# load returns the bare MavenPackage record (raises on error).
+# load returns the ENTITY — call data_get for the MavenPackage record (raises on error).
 maven_package = client.MavenPackage.load({ "file_name" => "file_name" })
 ```
 
@@ -13449,7 +13480,7 @@ Create an instance: `merge_request = client.MergeRequest`
 #### Example: Load
 
 ```ruby
-# load returns the bare MergeRequest record (raises on error).
+# load returns the ENTITY — call data_get for the MergeRequest record (raises on error).
 merge_request = client.MergeRequest.load({ "id" => "merge_request_id", "project_id" => "project_id" })
 ```
 
@@ -13468,15 +13499,15 @@ Create an instance: `metadata = client.Metadata`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `enterprise` | `Boolean` |  |
-| `kas` | `Hash` |  |
-| `revision` | `String` |  |
+| `enabled` | `Boolean` |  |
+| `externalK8sProxyUrl` | `String` |  |
+| `externalUrl` | `String` |  |
 | `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Metadata record (raises on error).
+# load returns the ENTITY — call data_get for the Metadata record (raises on error).
 metadata = client.Metadata.load()
 ```
 
@@ -13514,7 +13545,7 @@ Create an instance: `ml_model_registry = client.MlModelRegistry`
 #### Example: Load
 
 ```ruby
-# load returns the bare MlModelRegistry record (raises on error).
+# load returns the ENTITY — call data_get for the MlModelRegistry record (raises on error).
 ml_model_registry = client.MlModelRegistry.load({ "file_name" => "file_name", "ml_model_id" => "ml_model_id", "project_id" => "project_id" })
 ```
 
@@ -13557,7 +13588,7 @@ Create an instance: `npm_package = client.NpmPackage`
 #### Example: Load
 
 ```ruby
-# load returns the bare NpmPackage record (raises on error).
+# load returns the ENTITY — call data_get for the NpmPackage record (raises on error).
 npm_package = client.NpmPackage.load({ "project_id" => "project_id" })
 ```
 
@@ -13597,18 +13628,27 @@ Create an instance: `nuget_package = client.NugetPackage`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `catalog_entry` | `Hash` |  |
+| `authors` | `String` |  |
 | `count` | `Integer` |  |
+| `dependencyGroups` | `Array` |  |
+| `description` | `String` |  |
+| `iconUrl` | `String` |  |
 | `id` | `String` |  |
-| `item` | `Array` |  |
+| `items` | `Array` |  |
+| `licenseUrl` | `String` |  |
 | `lower` | `String` |  |
-| `package_content` | `String` |  |
+| `packageContent` | `String` |  |
+| `projectUrl` | `String` |  |
+| `published` | `String` |  |
+| `summary` | `String` |  |
+| `tags` | `String` |  |
 | `upper` | `String` |  |
+| `version` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare NugetPackage record (raises on error).
+# load returns the ENTITY — call data_get for the NugetPackage record (raises on error).
 nuget_package = client.NugetPackage.load()
 ```
 
@@ -13634,7 +13674,7 @@ Create an instance: `package_file = client.PackageFile`
 #### Example: Load
 
 ```ruby
-# load returns the bare PackageFile record (raises on error).
+# load returns the ENTITY — call data_get for the PackageFile record (raises on error).
 package_file = client.PackageFile.load({ "id" => "package_file_id", "package_id" => "package_id", "project_id" => "project_id" })
 ```
 
@@ -13654,7 +13694,7 @@ Create an instance: `page = client.Page`
 #### Example: Load
 
 ```ruby
-# load returns the bare Page record (raises on error).
+# load returns the ENTITY — call data_get for the Page record (raises on error).
 page = client.Page.load({ "project_id" => "project_id" })
 ```
 
@@ -13733,12 +13773,12 @@ Create an instance: `project = client.Project`
 | `updated_at` | `String` |  |
 | `user` | `Hash` |  |
 | `web_url` | `String` |  |
-| `yaml_error` | `String` |  |
+| `yaml_errors` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Project record (raises on error).
+# load returns the ENTITY — call data_get for the Project record (raises on error).
 project = client.Project.load({ "id" => "project_id" })
 ```
 
@@ -13764,7 +13804,7 @@ Create an instance: `project_avatar = client.ProjectAvatar`
 #### Example: Load
 
 ```ruby
-# load returns the bare ProjectAvatar record (raises on error).
+# load returns the ENTITY — call data_get for the ProjectAvatar record (raises on error).
 project_avatar = client.ProjectAvatar.load({ "id" => "project_avatar_id" })
 ```
 
@@ -13801,7 +13841,7 @@ Create an instance: `project_export = client.ProjectExport`
 #### Example: Load
 
 ```ruby
-# load returns the bare ProjectExport record (raises on error).
+# load returns the ENTITY — call data_get for the ProjectExport record (raises on error).
 project_export = client.ProjectExport.load({ "project_id" => "project_id" })
 ```
 
@@ -13957,7 +13997,7 @@ Create an instance: `pypi_package = client.PypiPackage`
 #### Example: Load
 
 ```ruby
-# load returns the bare PypiPackage record (raises on error).
+# load returns the ENTITY — call data_get for the PypiPackage record (raises on error).
 pypi_package = client.PypiPackage.load()
 ```
 
@@ -13984,7 +14024,7 @@ Create an instance: `release = client.Release`
 #### Example: Load
 
 ```ruby
-# load returns the bare Release record (raises on error).
+# load returns the ENTITY — call data_get for the Release record (raises on error).
 release = client.Release.load({ "project_id" => "project_id" })
 ```
 
@@ -14015,7 +14055,7 @@ Create an instance: `remote_mirror = client.RemoteMirror`
 #### Example: Load
 
 ```ruby
-# load returns the bare RemoteMirror record (raises on error).
+# load returns the ENTITY — call data_get for the RemoteMirror record (raises on error).
 remote_mirror = client.RemoteMirror.load({ "id" => "remote_mirror_id", "project_id" => "project_id" })
 ```
 
@@ -14062,7 +14102,7 @@ Create an instance: `rpm_package = client.RpmPackage`
 #### Example: Load
 
 ```ruby
-# load returns the bare RpmPackage record (raises on error).
+# load returns the ENTITY — call data_get for the RpmPackage record (raises on error).
 rpm_package = client.RpmPackage.load({ "project_id" => "project_id" })
 ```
 
@@ -14088,7 +14128,7 @@ Create an instance: `rubygem = client.Rubygem`
 #### Example: Load
 
 ```ruby
-# load returns the bare Rubygem record (raises on error).
+# load returns the ENTITY — call data_get for the Rubygem record (raises on error).
 rubygem = client.Rubygem.load({ "id" => "rubygem_id", "project_id" => "project_id" })
 ```
 
@@ -14107,7 +14147,7 @@ Create an instance: `rubygem_package = client.RubygemPackage`
 #### Example: Load
 
 ```ruby
-# load returns the bare RubygemPackage record (raises on error).
+# load returns the ENTITY — call data_get for the RubygemPackage record (raises on error).
 rubygem_package = client.RubygemPackage.load({ "project_id" => "project_id" })
 ```
 
@@ -14152,7 +14192,7 @@ Create an instance: `search = client.Search`
 #### Example: Load
 
 ```ruby
-# load returns the bare Search record (raises on error).
+# load returns the ENTITY — call data_get for the Search record (raises on error).
 search = client.Search.load()
 ```
 
@@ -14171,7 +14211,7 @@ Create an instance: `secure_file = client.SecureFile`
 #### Example: Load
 
 ```ruby
-# load returns the bare SecureFile record (raises on error).
+# load returns the ENTITY — call data_get for the SecureFile record (raises on error).
 secure_file = client.SecureFile.load({ "id" => "secure_file_id", "project_id" => "project_id" })
 ```
 
@@ -14208,7 +14248,7 @@ Create an instance: `snippet = client.Snippet`
 #### Example: Load
 
 ```ruby
-# load returns the bare Snippet record (raises on error).
+# load returns the ENTITY — call data_get for the Snippet record (raises on error).
 snippet = client.Snippet.load({ "id" => "snippet_id", "file_id" => "file_id", "file_path" => "file_path" })
 ```
 
@@ -14229,7 +14269,7 @@ Create an instance: `starrer = client.Starrer`
 | --- | --- | --- |
 | `avatar_path` | `String` |  |
 | `avatar_url` | `String` |  |
-| `custom_attribute` | `Array` |  |
+| `custom_attributes` | `Array` |  |
 | `id` | `Integer` |  |
 | `locked` | `Boolean` |  |
 | `name` | `String` |  |
@@ -14282,7 +14322,7 @@ Create an instance: `terraform_registry = client.TerraformRegistry`
 #### Example: Load
 
 ```ruby
-# load returns the bare TerraformRegistry record (raises on error).
+# load returns the ENTITY — call data_get for the TerraformRegistry record (raises on error).
 terraform_registry = client.TerraformRegistry.load({ "id" => "terraform_registry_id", "module_system" => "module_system" })
 ```
 
@@ -14302,7 +14342,7 @@ Create an instance: `terraform_state = client.TerraformState`
 #### Example: Load
 
 ```ruby
-# load returns the bare TerraformState record (raises on error).
+# load returns the ENTITY — call data_get for the TerraformState record (raises on error).
 terraform_state = client.TerraformState.load({ "id" => "terraform_state_id", "project_id" => "project_id" })
 ```
 
@@ -14335,7 +14375,7 @@ Create an instance: `test_report = client.TestReport`
 | `skipped_count` | `Integer` |  |
 | `success_count` | `Integer` |  |
 | `suite_error` | `String` |  |
-| `test_case` | `Array` |  |
+| `test_cases` | `Array` |  |
 | `total_count` | `Integer` |  |
 | `total_time` | `Integer` |  |
 
@@ -14361,13 +14401,13 @@ Create an instance: `test_report_summary = client.TestReportSummary`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `test_suite` | `Hash` |  |
+| `test_suites` | `Hash` |  |
 | `total` | `Hash` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare TestReportSummary record (raises on error).
+# load returns the ENTITY — call data_get for the TestReportSummary record (raises on error).
 test_report_summary = client.TestReportSummary.load({ "pipeline_id" => "pipeline_id", "project_id" => "project_id" })
 ```
 
@@ -14396,7 +14436,7 @@ Create an instance: `unleash_api = client.UnleashApi`
 #### Example: Load
 
 ```ruby
-# load returns the bare UnleashApi record (raises on error).
+# load returns the ENTITY — call data_get for the UnleashApi record (raises on error).
 unleash_api = client.UnleashApi.load({ "unleash_id" => "unleash_id" })
 ```
 
@@ -14415,7 +14455,7 @@ Create an instance: `usage_data = client.UsageData`
 #### Example: Load
 
 ```ruby
-# load returns the bare UsageData record (raises on error).
+# load returns the ENTITY — call data_get for the UsageData record (raises on error).
 usage_data = client.UsageData.load()
 ```
 
@@ -14443,7 +14483,7 @@ Create an instance: `user = client.User`
 | --- | --- | --- |
 | `avatar_path` | `String` |  |
 | `avatar_url` | `String` |  |
-| `custom_attribute` | `Array` |  |
+| `custom_attributes` | `Array` |  |
 | `id` | `Integer` |  |
 | `locked` | `Boolean` |  |
 | `name` | `String` |  |
@@ -14473,7 +14513,7 @@ Create an instance: `web_commit = client.WebCommit`
 #### Example: Load
 
 ```ruby
-# load returns the bare WebCommit record (raises on error).
+# load returns the ENTITY — call data_get for the WebCommit record (raises on error).
 web_commit = client.WebCommit.load()
 ```
 
@@ -14565,11 +14605,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-apientitiesaccessrequester = client.ApiEntitiesAccessRequester
-apientitiesaccessrequester.list()
+apientitiesmetricimage = client.ApiEntitiesMetricImage
+apientitiesmetricimage.list()
 
-# apientitiesaccessrequester.data_get now returns the apientitiesaccessrequester data from the last list
-# apientitiesaccessrequester.match_get returns the last match criteria
+# apientitiesmetricimage.data_get now returns the apientitiesmetricimage data from the last list
+# apientitiesmetricimage.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

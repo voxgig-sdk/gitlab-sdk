@@ -68,7 +68,7 @@ func TestApiEntitiesPlanLimitEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesPlanLimitRef01ResdataUp0 := core.ToMapAny(apiEntitiesPlanLimitRef01ResdataUp0Result)
+		apiEntitiesPlanLimitRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesPlanLimitRef01ResdataUp0Result))
 		if apiEntitiesPlanLimitRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

@@ -47,7 +47,7 @@ class GenericPackageEntityTest < Minitest::Test
     }
 
     generic_package_ref01_resdata_up0_result = generic_package_ref01_ent.update(generic_package_ref01_data_up0_up, nil)
-    generic_package_ref01_resdata_up0 = Helpers.to_map(generic_package_ref01_resdata_up0_result)
+    generic_package_ref01_resdata_up0 = Helpers.to_map(generic_package_ref01_resdata_up0_result.respond_to?(:data_get) ? generic_package_ref01_resdata_up0_result.data_get : generic_package_ref01_resdata_up0_result)
     assert !generic_package_ref01_resdata_up0.nil?
 
     # LOAD

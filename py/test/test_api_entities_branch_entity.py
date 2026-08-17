@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -42,8 +42,8 @@ class TestApiEntitiesBranchEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from config import make_config
-        cfg = make_config()
+        from gitlab_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = GitlabSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
@@ -79,8 +79,9 @@ class TestApiEntitiesBranchEntity:
             vs.getpath(setup["data"], "new.api_entities_branch"), "api_entities_branch_ref01"))
         api_entities_branch_ref01_data["project_id"] = setup["idmap"]["project01"]
 
-        api_entities_branch_ref01_data = helpers.to_map(api_entities_branch_ref01_ent.create(api_entities_branch_ref01_data, None))
+        api_entities_branch_ref01_data = helpers.to_map(runner.entity_data(api_entities_branch_ref01_ent.create(api_entities_branch_ref01_data, None)))
         assert api_entities_branch_ref01_data is not None
+        assert api_entities_branch_ref01_data["id"] is not None
 
         # LIST
         api_entities_branch_ref01_match = {
@@ -97,21 +98,27 @@ class TestApiEntitiesBranchEntity:
 
         # UPDATE
         api_entities_branch_ref01_data_up0_up = {
+            "id": api_entities_branch_ref01_data["id"],
             "project_id": setup["idmap"]["project_id"],
         }
 
-        api_entities_branch_ref01_markdef_up0_name = "name"
+        api_entities_branch_ref01_markdef_up0_name = "author_email"
         api_entities_branch_ref01_markdef_up0_value = "Mark01-api_entities_branch_ref01_" + str(setup["now"])
         api_entities_branch_ref01_data_up0_up[api_entities_branch_ref01_markdef_up0_name] = api_entities_branch_ref01_markdef_up0_value
 
-        api_entities_branch_ref01_resdata_up0 = helpers.to_map(api_entities_branch_ref01_ent.update(api_entities_branch_ref01_data_up0_up, None))
+        api_entities_branch_ref01_resdata_up0 = helpers.to_map(runner.entity_data(api_entities_branch_ref01_ent.update(api_entities_branch_ref01_data_up0_up, None)))
         assert api_entities_branch_ref01_resdata_up0 is not None
+        assert api_entities_branch_ref01_resdata_up0["id"] == api_entities_branch_ref01_data_up0_up["id"]
         assert api_entities_branch_ref01_resdata_up0[api_entities_branch_ref01_markdef_up0_name] == api_entities_branch_ref01_markdef_up0_value
 
         # LOAD
-        api_entities_branch_ref01_match_dt0 = {}
+        api_entities_branch_ref01_match_dt0 = {
+            "id": api_entities_branch_ref01_data["id"],
+        }
         api_entities_branch_ref01_data_dt0_loaded = api_entities_branch_ref01_ent.load(api_entities_branch_ref01_match_dt0, None)
-        assert api_entities_branch_ref01_data_dt0_loaded is not None
+        api_entities_branch_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(api_entities_branch_ref01_data_dt0_loaded))
+        assert api_entities_branch_ref01_data_dt0_load_result is not None
+        assert api_entities_branch_ref01_data_dt0_load_result["id"] == api_entities_branch_ref01_data["id"]
 
 
 

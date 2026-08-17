@@ -62,7 +62,7 @@ func TestApiEntitiesPackagesConanUploadUrlEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesPackagesConanUploadUrlRef01Data = core.ToMapAny(apiEntitiesPackagesConanUploadUrlRef01DataResult)
+		apiEntitiesPackagesConanUploadUrlRef01Data = core.ToMapAny(entityData(apiEntitiesPackagesConanUploadUrlRef01DataResult))
 		if apiEntitiesPackagesConanUploadUrlRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

@@ -53,7 +53,7 @@ class DebianPackageEntityTest extends TestCase
         ];
 
         $debian_package_ref01_resdata_up0_result = $debian_package_ref01_ent->update($debian_package_ref01_data_up0_up, null);
-        $debian_package_ref01_resdata_up0 = Helpers::to_map($debian_package_ref01_resdata_up0_result);
+        $debian_package_ref01_resdata_up0 = Helpers::to_map(is_object($debian_package_ref01_resdata_up0_result) && method_exists($debian_package_ref01_resdata_up0_result, 'data_get') ? $debian_package_ref01_resdata_up0_result->data_get() : $debian_package_ref01_resdata_up0_result);
         $this->assertNotNull($debian_package_ref01_resdata_up0);
 
         // LOAD

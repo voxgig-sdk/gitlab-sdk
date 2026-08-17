@@ -68,7 +68,7 @@ func TestApiEntitiesMergeRequestDiffFullEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesMergeRequestDiffFullRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesMergeRequestDiffFullRef01DataDt0Loaded)
+		apiEntitiesMergeRequestDiffFullRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesMergeRequestDiffFullRef01DataDt0Loaded))
 		if apiEntitiesMergeRequestDiffFullRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

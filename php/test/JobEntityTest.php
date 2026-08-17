@@ -44,7 +44,7 @@ class JobEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.job"), "job_ref01"));
 
         $job_ref01_data_result = $job_ref01_ent->create($job_ref01_data, null);
-        $job_ref01_data = Helpers::to_map($job_ref01_data_result);
+        $job_ref01_data = Helpers::to_map(is_object($job_ref01_data_result) && method_exists($job_ref01_data_result, 'data_get') ? $job_ref01_data_result->data_get() : $job_ref01_data_result);
         $this->assertNotNull($job_ref01_data);
 
         // UPDATE
@@ -52,7 +52,7 @@ class JobEntityTest extends TestCase
         ];
 
         $job_ref01_resdata_up0_result = $job_ref01_ent->update($job_ref01_data_up0_up, null);
-        $job_ref01_resdata_up0 = Helpers::to_map($job_ref01_resdata_up0_result);
+        $job_ref01_resdata_up0 = Helpers::to_map(is_object($job_ref01_resdata_up0_result) && method_exists($job_ref01_resdata_up0_result, 'data_get') ? $job_ref01_resdata_up0_result->data_get() : $job_ref01_resdata_up0_result);
         $this->assertNotNull($job_ref01_resdata_up0);
 
         // LOAD

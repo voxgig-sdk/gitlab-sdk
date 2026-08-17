@@ -37,7 +37,7 @@ class ApiEntitiesRelatedIssueEntity extends GitlabEntityBase<ApiEntitiesRelatedI
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesRelatedIssueListMatch, ctrl?: Control): Promise<ApiEntitiesRelatedIssue[]> {
+  async list(this: any, reqmatch?: ApiEntitiesRelatedIssueListMatch, ctrl?: Control): Promise<ApiEntitiesRelatedIssueEntity[]> {
 
     const utility = this._utility
 

@@ -62,7 +62,7 @@ describe('ApiEntitiesProjectsTopicEntity', async () => {
     const api_entities_projects_topic_ref01_ent = client.ApiEntitiesProjectsTopic()
     let api_entities_projects_topic_ref01_data = setup.data.new.api_entities_projects_topic['api_entities_projects_topic_ref01']
 
-    api_entities_projects_topic_ref01_data = await api_entities_projects_topic_ref01_ent.create(api_entities_projects_topic_ref01_data)
+    api_entities_projects_topic_ref01_data = (await api_entities_projects_topic_ref01_ent.create(api_entities_projects_topic_ref01_data)).data()
     assert(null != api_entities_projects_topic_ref01_data.id)
 
 
@@ -73,7 +73,7 @@ describe('ApiEntitiesProjectsTopicEntity', async () => {
     const api_entities_projects_topic_ref01_markdef_up0 = { name: 'avatar_url', value: 'Mark01-api_entities_projects_topic_ref01_' + setup.now }
     ;(api_entities_projects_topic_ref01_data_up0 as any)[api_entities_projects_topic_ref01_markdef_up0.name] = api_entities_projects_topic_ref01_markdef_up0.value
 
-    const api_entities_projects_topic_ref01_resdata_up0 = await api_entities_projects_topic_ref01_ent.update(api_entities_projects_topic_ref01_data_up0)
+    const api_entities_projects_topic_ref01_resdata_up0 = (await api_entities_projects_topic_ref01_ent.update(api_entities_projects_topic_ref01_data_up0)).data()
     assert(api_entities_projects_topic_ref01_resdata_up0.id === api_entities_projects_topic_ref01_data_up0.id)
 
     assert((api_entities_projects_topic_ref01_resdata_up0 as any)[api_entities_projects_topic_ref01_markdef_up0.name] === api_entities_projects_topic_ref01_markdef_up0.value)
@@ -82,7 +82,7 @@ describe('ApiEntitiesProjectsTopicEntity', async () => {
     // LOAD
     const api_entities_projects_topic_ref01_match_dt0: any = {}
     api_entities_projects_topic_ref01_match_dt0.id = api_entities_projects_topic_ref01_data.id
-    const api_entities_projects_topic_ref01_data_dt0 = await api_entities_projects_topic_ref01_ent.load(api_entities_projects_topic_ref01_match_dt0)
+    const api_entities_projects_topic_ref01_data_dt0 = (await api_entities_projects_topic_ref01_ent.load(api_entities_projects_topic_ref01_match_dt0)).data()
     assert(api_entities_projects_topic_ref01_data_dt0.id === api_entities_projects_topic_ref01_data.id)
 
 

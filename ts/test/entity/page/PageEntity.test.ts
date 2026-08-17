@@ -63,7 +63,7 @@ describe('PageEntity', async () => {
     const page_ref01_ent = client.Page()
     const page_ref01_data_up0: any = {}
 
-    const page_ref01_resdata_up0 = await page_ref01_ent.update(page_ref01_data_up0)
+    const page_ref01_resdata_up0 = (await page_ref01_ent.update(page_ref01_data_up0)).data()
     assert(null != page_ref01_resdata_up0)
 
 

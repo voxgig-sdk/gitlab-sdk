@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -52,7 +52,7 @@ class TestDebianPackageEntity:
             "project_id": setup["idmap"]["project_id"],
         }
 
-        debian_package_ref01_resdata_up0 = helpers.to_map(debian_package_ref01_ent.update(debian_package_ref01_data_up0_up, None))
+        debian_package_ref01_resdata_up0 = helpers.to_map(runner.entity_data(debian_package_ref01_ent.update(debian_package_ref01_data_up0_up, None)))
         assert debian_package_ref01_resdata_up0 is not None
 
         # LOAD

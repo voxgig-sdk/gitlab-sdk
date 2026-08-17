@@ -39,7 +39,7 @@ class ApiEntitiesInvitationEntity extends GitlabEntityBase<ApiEntitiesInvitation
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesInvitationListMatch, ctrl?: Control): Promise<ApiEntitiesInvitation[]> {
+  async list(this: any, reqmatch?: ApiEntitiesInvitationListMatch, ctrl?: Control): Promise<ApiEntitiesInvitationEntity[]> {
 
     const utility = this._utility
 
@@ -148,7 +148,7 @@ class ApiEntitiesInvitationEntity extends GitlabEntityBase<ApiEntitiesInvitation
 
 
 
-  async create(this: any, reqdata?: ApiEntitiesInvitationCreateData, ctrl?: Control): Promise<ApiEntitiesInvitation> {
+  async create(this: any, reqdata?: ApiEntitiesInvitationCreateData, ctrl?: Control): Promise<ApiEntitiesInvitationEntity> {
 
     const utility = this._utility
     const {
@@ -234,7 +234,15 @@ class ApiEntitiesInvitationEntity extends GitlabEntityBase<ApiEntitiesInvitation
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 
@@ -256,7 +264,7 @@ class ApiEntitiesInvitationEntity extends GitlabEntityBase<ApiEntitiesInvitation
 
 
 
-  async update(this: any, reqdata?: ApiEntitiesInvitationUpdateData, ctrl?: Control): Promise<ApiEntitiesInvitation> {
+  async update(this: any, reqdata?: ApiEntitiesInvitationUpdateData, ctrl?: Control): Promise<ApiEntitiesInvitationEntity> {
 
     const utility = this._utility
 
@@ -348,7 +356,15 @@ class ApiEntitiesInvitationEntity extends GitlabEntityBase<ApiEntitiesInvitation
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 

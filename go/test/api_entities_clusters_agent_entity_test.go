@@ -59,7 +59,7 @@ func TestApiEntitiesClustersAgentEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesClustersAgentRef01Data = core.ToMapAny(apiEntitiesClustersAgentRef01DataResult)
+		apiEntitiesClustersAgentRef01Data = core.ToMapAny(entityData(apiEntitiesClustersAgentRef01DataResult))
 		if apiEntitiesClustersAgentRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -75,7 +75,7 @@ func TestApiEntitiesClustersAgentEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesClustersAgentRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesClustersAgentRef01DataDt0Loaded)
+		apiEntitiesClustersAgentRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesClustersAgentRef01DataDt0Loaded))
 		if apiEntitiesClustersAgentRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

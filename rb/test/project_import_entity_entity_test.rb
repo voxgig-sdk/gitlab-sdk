@@ -37,7 +37,7 @@ class ProjectImportEntityEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.project_import_entity"), "project_import_entity_ref01"))
 
     project_import_entity_ref01_data_result = project_import_entity_ref01_ent.create(project_import_entity_ref01_data, nil)
-    project_import_entity_ref01_data = Helpers.to_map(project_import_entity_ref01_data_result)
+    project_import_entity_ref01_data = Helpers.to_map(project_import_entity_ref01_data_result.respond_to?(:data_get) ? project_import_entity_ref01_data_result.data_get : project_import_entity_ref01_data_result)
     assert !project_import_entity_ref01_data.nil?
     assert !project_import_entity_ref01_data["id"].nil?
 

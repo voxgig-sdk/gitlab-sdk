@@ -45,7 +45,7 @@ class GeoEntityTest extends TestCase
         $geo_ref01_data["replicable_name"] = $setup["idmap"]["replicable_name01"];
 
         $geo_ref01_data_result = $geo_ref01_ent->create($geo_ref01_data, null);
-        $geo_ref01_data = Helpers::to_map($geo_ref01_data_result);
+        $geo_ref01_data = Helpers::to_map(is_object($geo_ref01_data_result) && method_exists($geo_ref01_data_result, 'data_get') ? $geo_ref01_data_result->data_get() : $geo_ref01_data_result);
         $this->assertNotNull($geo_ref01_data);
 
         // LOAD

@@ -37,7 +37,7 @@ class ApiEntitiesFeatureDefinitionEntity extends GitlabEntityBase<ApiEntitiesFea
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesFeatureDefinitionListMatch, ctrl?: Control): Promise<ApiEntitiesFeatureDefinition[]> {
+  async list(this: any, reqmatch?: ApiEntitiesFeatureDefinitionListMatch, ctrl?: Control): Promise<ApiEntitiesFeatureDefinitionEntity[]> {
 
     const utility = this._utility
 

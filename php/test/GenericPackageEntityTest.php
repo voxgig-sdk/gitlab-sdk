@@ -54,7 +54,7 @@ class GenericPackageEntityTest extends TestCase
         ];
 
         $generic_package_ref01_resdata_up0_result = $generic_package_ref01_ent->update($generic_package_ref01_data_up0_up, null);
-        $generic_package_ref01_resdata_up0 = Helpers::to_map($generic_package_ref01_resdata_up0_result);
+        $generic_package_ref01_resdata_up0 = Helpers::to_map(is_object($generic_package_ref01_resdata_up0_result) && method_exists($generic_package_ref01_resdata_up0_result, 'data_get') ? $generic_package_ref01_resdata_up0_result->data_get() : $generic_package_ref01_resdata_up0_result);
         $this->assertNotNull($generic_package_ref01_resdata_up0);
 
         // LOAD

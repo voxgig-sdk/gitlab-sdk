@@ -49,7 +49,7 @@ describe("PageEntity", function()
 
     local page_ref01_resdata_up0_result, err = page_ref01_ent:update(page_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local page_ref01_resdata_up0 = helpers.to_map(page_ref01_resdata_up0_result)
+    local page_ref01_resdata_up0 = helpers.to_map(type(page_ref01_resdata_up0_result) == 'table' and page_ref01_resdata_up0_result.data_get and page_ref01_resdata_up0_result:data_get() or page_ref01_resdata_up0_result)
     assert.is_not_nil(page_ref01_resdata_up0)
 
     -- LOAD

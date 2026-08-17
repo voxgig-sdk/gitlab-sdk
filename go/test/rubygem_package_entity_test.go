@@ -59,7 +59,7 @@ func TestRubygemPackageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		rubygemPackageRef01Data = core.ToMapAny(rubygemPackageRef01DataResult)
+		rubygemPackageRef01Data = core.ToMapAny(entityData(rubygemPackageRef01DataResult))
 		if rubygemPackageRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

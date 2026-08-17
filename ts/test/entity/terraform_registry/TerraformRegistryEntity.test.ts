@@ -65,7 +65,7 @@ describe('TerraformRegistryEntity', async () => {
     terraform_registry_ref01_data_up0 ['module_id'] = setup.idmap['module_id']
     terraform_registry_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
 
-    const terraform_registry_ref01_resdata_up0 = await terraform_registry_ref01_ent.update(terraform_registry_ref01_data_up0)
+    const terraform_registry_ref01_resdata_up0 = (await terraform_registry_ref01_ent.update(terraform_registry_ref01_data_up0)).data()
     assert(null != terraform_registry_ref01_resdata_up0)
 
 

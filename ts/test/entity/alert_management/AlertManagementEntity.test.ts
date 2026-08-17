@@ -64,14 +64,10 @@ describe('AlertManagementEntity', async () => {
     alert_management_ref01_data['alert_management_alert_id'] = setup.idmap['alert_management_alert01']
     alert_management_ref01_data['project_id'] = setup.idmap['project01']
 
-    alert_management_ref01_data = await alert_management_ref01_ent.create(alert_management_ref01_data)
+    alert_management_ref01_data = (await alert_management_ref01_ent.create(alert_management_ref01_data)).data()
     assert(null != alert_management_ref01_data)
 
 
-    // REMOVE
-    const alert_management_ref01_match_rm0: any = { id: alert_management_ref01_data.id }
-    await alert_management_ref01_ent.remove(alert_management_ref01_match_rm0)
-  
 
   })
 })

@@ -45,7 +45,7 @@ class NugetEntityTest < Minitest::Test
     }
 
     nuget_ref01_resdata_up0_result = nuget_ref01_ent.update(nuget_ref01_data_up0_up, nil)
-    nuget_ref01_resdata_up0 = Helpers.to_map(nuget_ref01_resdata_up0_result)
+    nuget_ref01_resdata_up0 = Helpers.to_map(nuget_ref01_resdata_up0_result.respond_to?(:data_get) ? nuget_ref01_resdata_up0_result.data_get : nuget_ref01_resdata_up0_result)
     assert !nuget_ref01_resdata_up0.nil?
 
   end

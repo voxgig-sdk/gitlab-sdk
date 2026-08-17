@@ -59,7 +59,7 @@ func TestApiEntitiesWikiAttachmentEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesWikiAttachmentRef01Data = core.ToMapAny(apiEntitiesWikiAttachmentRef01DataResult)
+		apiEntitiesWikiAttachmentRef01Data = core.ToMapAny(entityData(apiEntitiesWikiAttachmentRef01DataResult))
 		if apiEntitiesWikiAttachmentRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

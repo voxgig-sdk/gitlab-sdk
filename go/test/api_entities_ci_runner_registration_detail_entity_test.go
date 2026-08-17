@@ -58,7 +58,7 @@ func TestApiEntitiesCiRunnerRegistrationDetailEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesCiRunnerRegistrationDetailRef01Data = core.ToMapAny(apiEntitiesCiRunnerRegistrationDetailRef01DataResult)
+		apiEntitiesCiRunnerRegistrationDetailRef01Data = core.ToMapAny(entityData(apiEntitiesCiRunnerRegistrationDetailRef01DataResult))
 		if apiEntitiesCiRunnerRegistrationDetailRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

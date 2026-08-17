@@ -59,7 +59,7 @@ func TestApiEntitiesProjectUploadEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesProjectUploadRef01Data = core.ToMapAny(apiEntitiesProjectUploadRef01DataResult)
+		apiEntitiesProjectUploadRef01Data = core.ToMapAny(entityData(apiEntitiesProjectUploadRef01DataResult))
 		if apiEntitiesProjectUploadRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

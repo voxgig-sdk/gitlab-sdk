@@ -59,7 +59,7 @@ func TestApiEntitiesSystemBroadcastMessageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesSystemBroadcastMessageRef01Data = core.ToMapAny(apiEntitiesSystemBroadcastMessageRef01DataResult)
+		apiEntitiesSystemBroadcastMessageRef01Data = core.ToMapAny(entityData(apiEntitiesSystemBroadcastMessageRef01DataResult))
 		if apiEntitiesSystemBroadcastMessageRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -80,7 +80,7 @@ func TestApiEntitiesSystemBroadcastMessageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesSystemBroadcastMessageRef01ResdataUp0 := core.ToMapAny(apiEntitiesSystemBroadcastMessageRef01ResdataUp0Result)
+		apiEntitiesSystemBroadcastMessageRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesSystemBroadcastMessageRef01ResdataUp0Result))
 		if apiEntitiesSystemBroadcastMessageRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -99,7 +99,7 @@ func TestApiEntitiesSystemBroadcastMessageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesSystemBroadcastMessageRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesSystemBroadcastMessageRef01DataDt0Loaded)
+		apiEntitiesSystemBroadcastMessageRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesSystemBroadcastMessageRef01DataDt0Loaded))
 		if apiEntitiesSystemBroadcastMessageRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

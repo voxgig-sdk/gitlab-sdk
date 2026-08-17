@@ -4,7 +4,7 @@
       "API_ENTITIES_CI_JOB00": {
         "allow_failure": true,
         "archived": false,
-        "artifact": [],
+        "artifacts": [],
         "artifacts_expire_at": "s139",
         "artifacts_file": {},
         "commit": {},
@@ -40,7 +40,7 @@
       "API_ENTITIES_CI_JOB01": {
         "allow_failure": true,
         "archived": false,
-        "artifact": [],
+        "artifacts": [],
         "artifacts_expire_at": "s26f",
         "artifacts_file": {},
         "commit": {},
@@ -76,7 +76,7 @@
       "API_ENTITIES_CI_JOB02": {
         "allow_failure": true,
         "archived": false,
-        "artifact": [],
+        "artifacts": [],
         "artifacts_expire_at": "s3a5",
         "artifacts_file": {},
         "commit": {},
@@ -116,7 +116,7 @@
       "api_entities_ci_job_ref01": {
         "allow_failure": true,
         "archived": false,
-        "artifact": [],
+        "artifacts": [],
         "artifacts_expire_at": "s4db",
         "artifacts_file": {},
         "commit": {},

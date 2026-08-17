@@ -68,7 +68,7 @@ func TestApiEntitiesTreeObjectEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesTreeObjectRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesTreeObjectRef01DataDt0Loaded)
+		apiEntitiesTreeObjectRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesTreeObjectRef01DataDt0Loaded))
 		if apiEntitiesTreeObjectRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

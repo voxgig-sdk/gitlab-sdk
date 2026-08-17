@@ -52,7 +52,7 @@ func TestApiEntitiesAccessRequesterEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -109,7 +109,7 @@ func TestApiEntitiesAccessRequesterEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesAccessRequesterRef01Data = core.ToMapAny(apiEntitiesAccessRequesterRef01DataResult)
+		apiEntitiesAccessRequesterRef01Data = core.ToMapAny(entityData(apiEntitiesAccessRequesterRef01DataResult))
 		if apiEntitiesAccessRequesterRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -150,7 +150,7 @@ func TestApiEntitiesAccessRequesterEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesAccessRequesterRef01ResdataUp0 := core.ToMapAny(apiEntitiesAccessRequesterRef01ResdataUp0Result)
+		apiEntitiesAccessRequesterRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesAccessRequesterRef01ResdataUp0Result))
 		if apiEntitiesAccessRequesterRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

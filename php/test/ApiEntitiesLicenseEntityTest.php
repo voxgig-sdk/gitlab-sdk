@@ -40,7 +40,7 @@ class ApiEntitiesLicenseEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = GitlabConfig::make_config();
+        $cfg = GitlabConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = GitlabSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];

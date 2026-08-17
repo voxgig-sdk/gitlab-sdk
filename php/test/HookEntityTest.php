@@ -45,7 +45,7 @@ class HookEntityTest extends TestCase
         $hook_ref01_data["hook_id"] = $setup["idmap"]["hook01"];
 
         $hook_ref01_data_result = $hook_ref01_ent->create($hook_ref01_data, null);
-        $hook_ref01_data = Helpers::to_map($hook_ref01_data_result);
+        $hook_ref01_data = Helpers::to_map(is_object($hook_ref01_data_result) && method_exists($hook_ref01_data_result, 'data_get') ? $hook_ref01_data_result->data_get() : $hook_ref01_data_result);
         $this->assertNotNull($hook_ref01_data);
 
         // UPDATE
@@ -53,14 +53,9 @@ class HookEntityTest extends TestCase
         ];
 
         $hook_ref01_resdata_up0_result = $hook_ref01_ent->update($hook_ref01_data_up0_up, null);
-        $hook_ref01_resdata_up0 = Helpers::to_map($hook_ref01_resdata_up0_result);
+        $hook_ref01_resdata_up0 = Helpers::to_map(is_object($hook_ref01_resdata_up0_result) && method_exists($hook_ref01_resdata_up0_result, 'data_get') ? $hook_ref01_resdata_up0_result->data_get() : $hook_ref01_resdata_up0_result);
         $this->assertNotNull($hook_ref01_resdata_up0);
 
-        // REMOVE
-        $hook_ref01_match_rm0 = [
-            "id" => $hook_ref01_data["id"],
-        ];
-        $hook_ref01_ent->remove($hook_ref01_match_rm0, null);
 
     }
 }

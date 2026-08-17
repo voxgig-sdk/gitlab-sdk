@@ -43,7 +43,7 @@ describe("ApiEntitiesIssueLinkEntity", function()
 
     local api_entities_issue_link_ref01_data_result, err = api_entities_issue_link_ref01_ent:create(api_entities_issue_link_ref01_data, nil)
     assert.is_nil(err)
-    api_entities_issue_link_ref01_data = helpers.to_map(api_entities_issue_link_ref01_data_result)
+    api_entities_issue_link_ref01_data = helpers.to_map(type(api_entities_issue_link_ref01_data_result) == 'table' and api_entities_issue_link_ref01_data_result.data_get and api_entities_issue_link_ref01_data_result:data_get() or api_entities_issue_link_ref01_data_result)
     assert.is_not_nil(api_entities_issue_link_ref01_data)
 
     -- LOAD

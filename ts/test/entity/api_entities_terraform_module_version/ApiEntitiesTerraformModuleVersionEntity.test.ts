@@ -66,7 +66,7 @@ describe('ApiEntitiesTerraformModuleVersionEntity', async () => {
     api_entities_terraform_module_version_ref01_match['module_system'] = setup.idmap['module_system01']
     api_entities_terraform_module_version_ref01_match['v1_id'] = setup.idmap['v101']
 
-    const api_entities_terraform_module_version_ref01_list = await api_entities_terraform_module_version_ref01_ent.list(api_entities_terraform_module_version_ref01_match)
+    const api_entities_terraform_module_version_ref01_list = (await api_entities_terraform_module_version_ref01_ent.list(api_entities_terraform_module_version_ref01_match)).map((e: any) => e.data())
 
 
 

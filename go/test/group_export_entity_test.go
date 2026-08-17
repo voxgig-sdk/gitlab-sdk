@@ -58,7 +58,7 @@ func TestGroupExportEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		groupExportRef01Data = core.ToMapAny(groupExportRef01DataResult)
+		groupExportRef01Data = core.ToMapAny(entityData(groupExportRef01DataResult))
 		if groupExportRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

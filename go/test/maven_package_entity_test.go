@@ -69,7 +69,7 @@ func TestMavenPackageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		mavenPackageRef01ResdataUp0 := core.ToMapAny(mavenPackageRef01ResdataUp0Result)
+		mavenPackageRef01ResdataUp0 := core.ToMapAny(entityData(mavenPackageRef01ResdataUp0Result))
 		if mavenPackageRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

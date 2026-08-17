@@ -59,7 +59,7 @@ func TestApiEntitiesNamespacesStorageLimitExclusionEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesNamespacesStorageLimitExclusionRef01Data = core.ToMapAny(apiEntitiesNamespacesStorageLimitExclusionRef01DataResult)
+		apiEntitiesNamespacesStorageLimitExclusionRef01Data = core.ToMapAny(entityData(apiEntitiesNamespacesStorageLimitExclusionRef01DataResult))
 		if apiEntitiesNamespacesStorageLimitExclusionRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -75,7 +75,7 @@ func TestApiEntitiesNamespacesStorageLimitExclusionEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesNamespacesStorageLimitExclusionRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesNamespacesStorageLimitExclusionRef01DataDt0Loaded)
+		apiEntitiesNamespacesStorageLimitExclusionRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesNamespacesStorageLimitExclusionRef01DataDt0Loaded))
 		if apiEntitiesNamespacesStorageLimitExclusionRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

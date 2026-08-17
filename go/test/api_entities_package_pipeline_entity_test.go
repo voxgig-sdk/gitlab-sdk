@@ -68,7 +68,7 @@ func TestApiEntitiesPackagePipelineEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesPackagePipelineRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesPackagePipelineRef01DataDt0Loaded)
+		apiEntitiesPackagePipelineRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesPackagePipelineRef01DataDt0Loaded))
 		if apiEntitiesPackagePipelineRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

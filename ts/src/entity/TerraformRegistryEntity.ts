@@ -37,7 +37,7 @@ class TerraformRegistryEntity extends GitlabEntityBase<TerraformRegistry> {
 
 
 
-  async load(this: any, reqmatch?: TerraformRegistryLoadMatch, ctrl?: Control): Promise<TerraformRegistry> {
+  async load(this: any, reqmatch?: TerraformRegistryLoadMatch, ctrl?: Control): Promise<TerraformRegistryEntity> {
 
     const utility = this._utility
 
@@ -128,7 +128,15 @@ class TerraformRegistryEntity extends GitlabEntityBase<TerraformRegistry> {
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 
@@ -152,7 +160,7 @@ class TerraformRegistryEntity extends GitlabEntityBase<TerraformRegistry> {
 
 
 
-  async update(this: any, reqdata?: TerraformRegistryUpdateData, ctrl?: Control): Promise<TerraformRegistry> {
+  async update(this: any, reqdata?: TerraformRegistryUpdateData, ctrl?: Control): Promise<TerraformRegistryEntity> {
 
     const utility = this._utility
 
@@ -244,7 +252,15 @@ class TerraformRegistryEntity extends GitlabEntityBase<TerraformRegistry> {
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 

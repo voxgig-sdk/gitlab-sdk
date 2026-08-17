@@ -2,27 +2,27 @@
   "existing": {
     "api_entities_user_count": {
       "API_ENTITIES_USER_COUNT00": {
-        "assigned_issue": "s32",
-        "assigned_merge_request": "s33",
-        "merge_request": "s34",
-        "review_requested_merge_request": "s35",
-        "todo": "s36",
+        "assigned_issues": "s32",
+        "assigned_merge_requests": "s33",
+        "merge_requests": "s34",
+        "review_requested_merge_requests": "s35",
+        "todos": "s36",
         "id": "API_ENTITIES_USER_COUNT00"
       },
       "API_ENTITIES_USER_COUNT01": {
-        "assigned_issue": "s64",
-        "assigned_merge_request": "s65",
-        "merge_request": "s66",
-        "review_requested_merge_request": "s67",
-        "todo": "s68",
+        "assigned_issues": "s64",
+        "assigned_merge_requests": "s65",
+        "merge_requests": "s66",
+        "review_requested_merge_requests": "s67",
+        "todos": "s68",
         "id": "API_ENTITIES_USER_COUNT01"
       },
       "API_ENTITIES_USER_COUNT02": {
-        "assigned_issue": "s96",
-        "assigned_merge_request": "s97",
-        "merge_request": "s98",
-        "review_requested_merge_request": "s99",
-        "todo": "s9a",
+        "assigned_issues": "s96",
+        "assigned_merge_requests": "s97",
+        "merge_requests": "s98",
+        "review_requested_merge_requests": "s99",
+        "todos": "s9a",
         "id": "API_ENTITIES_USER_COUNT02"
       }
     }
@@ -30,11 +30,11 @@
   "new": {
     "api_entities_user_count": {
       "api_entities_user_count_ref01": {
-        "assigned_issue": "sc8",
-        "assigned_merge_request": "sc9",
-        "merge_request": "sca",
-        "review_requested_merge_request": "scb",
-        "todo": "scc"
+        "assigned_issues": "sc8",
+        "assigned_merge_requests": "sc9",
+        "merge_requests": "sca",
+        "review_requested_merge_requests": "scb",
+        "todos": "scc"
       }
     }
   }

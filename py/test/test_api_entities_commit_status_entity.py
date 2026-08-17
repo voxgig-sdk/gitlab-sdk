@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -42,8 +42,8 @@ class TestApiEntitiesCommitStatusEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from config import make_config
-        cfg = make_config()
+        from gitlab_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = GitlabSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
@@ -80,7 +80,7 @@ class TestApiEntitiesCommitStatusEntity:
         api_entities_commit_status_ref01_data["project_id"] = setup["idmap"]["project01"]
         api_entities_commit_status_ref01_data["sha"] = setup["idmap"]["sha01"]
 
-        api_entities_commit_status_ref01_data = helpers.to_map(api_entities_commit_status_ref01_ent.create(api_entities_commit_status_ref01_data, None))
+        api_entities_commit_status_ref01_data = helpers.to_map(runner.entity_data(api_entities_commit_status_ref01_ent.create(api_entities_commit_status_ref01_data, None)))
         assert api_entities_commit_status_ref01_data is not None
         assert api_entities_commit_status_ref01_data["id"] is not None
 

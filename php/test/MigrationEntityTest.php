@@ -45,7 +45,7 @@ class MigrationEntityTest extends TestCase
         $migration_ref01_data["timestamp"] = $setup["idmap"]["timestamp01"];
 
         $migration_ref01_data_result = $migration_ref01_ent->create($migration_ref01_data, null);
-        $migration_ref01_data = Helpers::to_map($migration_ref01_data_result);
+        $migration_ref01_data = Helpers::to_map(is_object($migration_ref01_data_result) && method_exists($migration_ref01_data_result, 'data_get') ? $migration_ref01_data_result->data_get() : $migration_ref01_data_result);
         $this->assertNotNull($migration_ref01_data);
 
     }

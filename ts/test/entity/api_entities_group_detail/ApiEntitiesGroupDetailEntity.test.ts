@@ -64,14 +64,14 @@ describe('ApiEntitiesGroupDetailEntity', async () => {
     api_entities_group_detail_ref01_data['group_id'] = setup.idmap['group01']
     api_entities_group_detail_ref01_data['project_id'] = setup.idmap['project01']
 
-    api_entities_group_detail_ref01_data = await api_entities_group_detail_ref01_ent.create(api_entities_group_detail_ref01_data)
+    api_entities_group_detail_ref01_data = (await api_entities_group_detail_ref01_ent.create(api_entities_group_detail_ref01_data)).data()
     assert(null != api_entities_group_detail_ref01_data.id)
 
 
     // LOAD
     const api_entities_group_detail_ref01_match_dt0: any = {}
     api_entities_group_detail_ref01_match_dt0.id = api_entities_group_detail_ref01_data.id
-    const api_entities_group_detail_ref01_data_dt0 = await api_entities_group_detail_ref01_ent.load(api_entities_group_detail_ref01_match_dt0)
+    const api_entities_group_detail_ref01_data_dt0 = (await api_entities_group_detail_ref01_ent.load(api_entities_group_detail_ref01_match_dt0)).data()
     assert(api_entities_group_detail_ref01_data_dt0.id === api_entities_group_detail_ref01_data.id)
 
 

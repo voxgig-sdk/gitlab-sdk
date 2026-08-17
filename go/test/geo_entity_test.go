@@ -59,7 +59,7 @@ func TestGeoEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		geoRef01Data = core.ToMapAny(geoRef01DataResult)
+		geoRef01Data = core.ToMapAny(entityData(geoRef01DataResult))
 		if geoRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

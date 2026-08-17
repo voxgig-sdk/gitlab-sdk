@@ -53,7 +53,7 @@ class NpmEntityTest extends TestCase
         ];
 
         $npm_ref01_resdata_up0_result = $npm_ref01_ent->update($npm_ref01_data_up0_up, null);
-        $npm_ref01_resdata_up0 = Helpers::to_map($npm_ref01_resdata_up0_result);
+        $npm_ref01_resdata_up0 = Helpers::to_map(is_object($npm_ref01_resdata_up0_result) && method_exists($npm_ref01_resdata_up0_result, 'data_get') ? $npm_ref01_resdata_up0_result->data_get() : $npm_ref01_resdata_up0_result);
         $this->assertNotNull($npm_ref01_resdata_up0);
 
     }

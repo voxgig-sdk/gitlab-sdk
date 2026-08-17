@@ -62,7 +62,7 @@ describe('ApiEntitiesRelationImportTrackerEntity', async () => {
     const api_entities_relation_import_tracker_ref01_ent = client.ApiEntitiesRelationImportTracker()
     let api_entities_relation_import_tracker_ref01_data = setup.data.new.api_entities_relation_import_tracker['api_entities_relation_import_tracker_ref01']
 
-    api_entities_relation_import_tracker_ref01_data = await api_entities_relation_import_tracker_ref01_ent.create(api_entities_relation_import_tracker_ref01_data)
+    api_entities_relation_import_tracker_ref01_data = (await api_entities_relation_import_tracker_ref01_ent.create(api_entities_relation_import_tracker_ref01_data)).data()
     assert(null != api_entities_relation_import_tracker_ref01_data)
 
 

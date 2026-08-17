@@ -58,7 +58,7 @@ func TestApiEntitiesOrganizationsOrganizationEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesOrganizationsOrganizationRef01Data = core.ToMapAny(apiEntitiesOrganizationsOrganizationRef01DataResult)
+		apiEntitiesOrganizationsOrganizationRef01Data = core.ToMapAny(entityData(apiEntitiesOrganizationsOrganizationRef01DataResult))
 		if apiEntitiesOrganizationsOrganizationRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

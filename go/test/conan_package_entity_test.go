@@ -73,7 +73,7 @@ func TestConanPackageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		conanPackageRef01ResdataUp0 := core.ToMapAny(conanPackageRef01ResdataUp0Result)
+		conanPackageRef01ResdataUp0 := core.ToMapAny(entityData(conanPackageRef01ResdataUp0Result))
 		if conanPackageRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

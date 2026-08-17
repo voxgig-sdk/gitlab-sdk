@@ -64,7 +64,7 @@ describe('ApiEntitiesIssueLinkEntity', async () => {
     api_entities_issue_link_ref01_data['issue_id'] = setup.idmap['issue01']
     api_entities_issue_link_ref01_data['project_id'] = setup.idmap['project01']
 
-    api_entities_issue_link_ref01_data = await api_entities_issue_link_ref01_ent.create(api_entities_issue_link_ref01_data)
+    api_entities_issue_link_ref01_data = (await api_entities_issue_link_ref01_ent.create(api_entities_issue_link_ref01_data)).data()
     assert(null != api_entities_issue_link_ref01_data)
 
 

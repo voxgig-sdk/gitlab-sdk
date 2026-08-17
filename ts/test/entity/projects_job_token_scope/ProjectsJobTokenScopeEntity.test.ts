@@ -63,7 +63,7 @@ describe('ProjectsJobTokenScopeEntity', async () => {
     const projects_job_token_scope_ref01_ent = client.ProjectsJobTokenScope()
     const projects_job_token_scope_ref01_data_up0: any = {}
 
-    const projects_job_token_scope_ref01_resdata_up0 = await projects_job_token_scope_ref01_ent.update(projects_job_token_scope_ref01_data_up0)
+    const projects_job_token_scope_ref01_resdata_up0 = (await projects_job_token_scope_ref01_ent.update(projects_job_token_scope_ref01_data_up0)).data()
     assert(null != projects_job_token_scope_ref01_resdata_up0)
 
 

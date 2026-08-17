@@ -64,7 +64,7 @@ describe('MavenPackageEntity', async () => {
     const maven_package_ref01_data_up0: any = {}
     maven_package_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
 
-    const maven_package_ref01_resdata_up0 = await maven_package_ref01_ent.update(maven_package_ref01_data_up0)
+    const maven_package_ref01_resdata_up0 = (await maven_package_ref01_ent.update(maven_package_ref01_data_up0)).data()
     assert(null != maven_package_ref01_resdata_up0)
 
 

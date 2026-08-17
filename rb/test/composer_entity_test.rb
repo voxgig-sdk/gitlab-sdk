@@ -38,7 +38,7 @@ class ComposerEntityTest < Minitest::Test
     composer_ref01_data["project_id"] = setup[:idmap]["project01"]
 
     composer_ref01_data_result = composer_ref01_ent.create(composer_ref01_data, nil)
-    composer_ref01_data = Helpers.to_map(composer_ref01_data_result)
+    composer_ref01_data = Helpers.to_map(composer_ref01_data_result.respond_to?(:data_get) ? composer_ref01_data_result.data_get : composer_ref01_data_result)
     assert !composer_ref01_data.nil?
 
   end

@@ -63,7 +63,7 @@ describe('RpmPackageEntity', async () => {
     let rpm_package_ref01_data = setup.data.new.rpm_package['rpm_package_ref01']
     rpm_package_ref01_data['project_id'] = setup.idmap['project01']
 
-    rpm_package_ref01_data = await rpm_package_ref01_ent.create(rpm_package_ref01_data)
+    rpm_package_ref01_data = (await rpm_package_ref01_ent.create(rpm_package_ref01_data)).data()
     assert(null != rpm_package_ref01_data)
 
 

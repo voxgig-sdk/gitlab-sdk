@@ -62,7 +62,7 @@ describe('SlackEntity', async () => {
     const slack_ref01_ent = client.Slack()
     let slack_ref01_data = setup.data.new.slack['slack_ref01']
 
-    slack_ref01_data = await slack_ref01_ent.create(slack_ref01_data)
+    slack_ref01_data = (await slack_ref01_ent.create(slack_ref01_data)).data()
     assert(null != slack_ref01_data)
 
 

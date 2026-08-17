@@ -37,7 +37,7 @@ class ApiEntitiesSnippetEntity extends GitlabEntityBase<ApiEntitiesSnippet> {
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesSnippetListMatch, ctrl?: Control): Promise<ApiEntitiesSnippet[]> {
+  async list(this: any, reqmatch?: ApiEntitiesSnippetListMatch, ctrl?: Control): Promise<ApiEntitiesSnippetEntity[]> {
 
     const utility = this._utility
 

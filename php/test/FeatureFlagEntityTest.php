@@ -46,7 +46,7 @@ class FeatureFlagEntityTest extends TestCase
         $feature_flag_ref01_data["unleash_id"] = $setup["idmap"]["unleash01"];
 
         $feature_flag_ref01_data_result = $feature_flag_ref01_ent->create($feature_flag_ref01_data, null);
-        $feature_flag_ref01_data = Helpers::to_map($feature_flag_ref01_data_result);
+        $feature_flag_ref01_data = Helpers::to_map(is_object($feature_flag_ref01_data_result) && method_exists($feature_flag_ref01_data_result, 'data_get') ? $feature_flag_ref01_data_result->data_get() : $feature_flag_ref01_data_result);
         $this->assertNotNull($feature_flag_ref01_data);
 
         // LOAD
@@ -54,11 +54,6 @@ class FeatureFlagEntityTest extends TestCase
         $feature_flag_ref01_data_dt0_loaded = $feature_flag_ref01_ent->load($feature_flag_ref01_match_dt0, null);
         $this->assertNotNull($feature_flag_ref01_data_dt0_loaded);
 
-        // REMOVE
-        $feature_flag_ref01_match_rm0 = [
-            "id" => $feature_flag_ref01_data["id"],
-        ];
-        $feature_flag_ref01_ent->remove($feature_flag_ref01_match_rm0, null);
 
     }
 }

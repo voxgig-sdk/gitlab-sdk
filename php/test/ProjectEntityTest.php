@@ -48,7 +48,7 @@ class ProjectEntityTest extends TestCase
         $project_ref01_data["secret"] = $setup["idmap"]["secret01"];
 
         $project_ref01_data_result = $project_ref01_ent->create($project_ref01_data, null);
-        $project_ref01_data = Helpers::to_map($project_ref01_data_result);
+        $project_ref01_data = Helpers::to_map(is_object($project_ref01_data_result) && method_exists($project_ref01_data_result, 'data_get') ? $project_ref01_data_result->data_get() : $project_ref01_data_result);
         $this->assertNotNull($project_ref01_data);
         $this->assertNotNull($project_ref01_data["id"]);
 
@@ -62,7 +62,7 @@ class ProjectEntityTest extends TestCase
         $project_ref01_data_up0_up[$project_ref01_markdef_up0_name] = $project_ref01_markdef_up0_value;
 
         $project_ref01_resdata_up0_result = $project_ref01_ent->update($project_ref01_data_up0_up, null);
-        $project_ref01_resdata_up0 = Helpers::to_map($project_ref01_resdata_up0_result);
+        $project_ref01_resdata_up0 = Helpers::to_map(is_object($project_ref01_resdata_up0_result) && method_exists($project_ref01_resdata_up0_result, 'data_get') ? $project_ref01_resdata_up0_result->data_get() : $project_ref01_resdata_up0_result);
         $this->assertNotNull($project_ref01_resdata_up0);
         $this->assertEquals($project_ref01_resdata_up0["id"], $project_ref01_data_up0_up["id"]);
         $this->assertEquals($project_ref01_resdata_up0[$project_ref01_markdef_up0_name], $project_ref01_markdef_up0_value);
@@ -72,7 +72,7 @@ class ProjectEntityTest extends TestCase
             "id" => $project_ref01_data["id"],
         ];
         $project_ref01_data_dt0_loaded = $project_ref01_ent->load($project_ref01_match_dt0, null);
-        $project_ref01_data_dt0_load_result = Helpers::to_map($project_ref01_data_dt0_loaded);
+        $project_ref01_data_dt0_load_result = Helpers::to_map(is_object($project_ref01_data_dt0_loaded) && method_exists($project_ref01_data_dt0_loaded, 'data_get') ? $project_ref01_data_dt0_loaded->data_get() : $project_ref01_data_dt0_loaded);
         $this->assertNotNull($project_ref01_data_dt0_load_result);
         $this->assertEquals($project_ref01_data_dt0_load_result["id"], $project_ref01_data["id"]);
 

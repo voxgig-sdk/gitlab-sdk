@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Gitlab SDK exists test
 
 import pytest
 from gitlab_sdk import GitlabSDK

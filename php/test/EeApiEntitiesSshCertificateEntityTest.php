@@ -40,7 +40,7 @@ class EeApiEntitiesSshCertificateEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = GitlabConfig::make_config();
+        $cfg = GitlabConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = GitlabSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
@@ -84,7 +84,7 @@ class EeApiEntitiesSshCertificateEntityTest extends TestCase
         $ee_api_entities_ssh_certificate_ref01_data["group_id"] = $setup["idmap"]["group01"];
 
         $ee_api_entities_ssh_certificate_ref01_data_result = $ee_api_entities_ssh_certificate_ref01_ent->create($ee_api_entities_ssh_certificate_ref01_data, null);
-        $ee_api_entities_ssh_certificate_ref01_data = Helpers::to_map($ee_api_entities_ssh_certificate_ref01_data_result);
+        $ee_api_entities_ssh_certificate_ref01_data = Helpers::to_map(is_object($ee_api_entities_ssh_certificate_ref01_data_result) && method_exists($ee_api_entities_ssh_certificate_ref01_data_result, 'data_get') ? $ee_api_entities_ssh_certificate_ref01_data_result->data_get() : $ee_api_entities_ssh_certificate_ref01_data_result);
         $this->assertNotNull($ee_api_entities_ssh_certificate_ref01_data);
         $this->assertNotNull($ee_api_entities_ssh_certificate_ref01_data["id"]);
 

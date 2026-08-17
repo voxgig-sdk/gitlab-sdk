@@ -40,7 +40,7 @@ class NugetPackageEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = GitlabConfig::make_config();
+        $cfg = GitlabConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = GitlabSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
@@ -99,12 +99,12 @@ class NugetPackageEntityTest extends TestCase
             "id" => $nuget_package_ref01_data["id"],
         ];
 
-        $nuget_package_ref01_markdef_up0_name = "lower";
+        $nuget_package_ref01_markdef_up0_name = "authors";
         $nuget_package_ref01_markdef_up0_value = "Mark01-nuget_package_ref01_" . $setup["now"];
         $nuget_package_ref01_data_up0_up[$nuget_package_ref01_markdef_up0_name] = $nuget_package_ref01_markdef_up0_value;
 
         $nuget_package_ref01_resdata_up0_result = $nuget_package_ref01_ent->update($nuget_package_ref01_data_up0_up, null);
-        $nuget_package_ref01_resdata_up0 = Helpers::to_map($nuget_package_ref01_resdata_up0_result);
+        $nuget_package_ref01_resdata_up0 = Helpers::to_map(is_object($nuget_package_ref01_resdata_up0_result) && method_exists($nuget_package_ref01_resdata_up0_result, 'data_get') ? $nuget_package_ref01_resdata_up0_result->data_get() : $nuget_package_ref01_resdata_up0_result);
         $this->assertNotNull($nuget_package_ref01_resdata_up0);
         $this->assertEquals($nuget_package_ref01_resdata_up0["id"], $nuget_package_ref01_data_up0_up["id"]);
         $this->assertEquals($nuget_package_ref01_resdata_up0[$nuget_package_ref01_markdef_up0_name], $nuget_package_ref01_markdef_up0_value);
@@ -114,7 +114,7 @@ class NugetPackageEntityTest extends TestCase
             "id" => $nuget_package_ref01_data["id"],
         ];
         $nuget_package_ref01_data_dt0_loaded = $nuget_package_ref01_ent->load($nuget_package_ref01_match_dt0, null);
-        $nuget_package_ref01_data_dt0_load_result = Helpers::to_map($nuget_package_ref01_data_dt0_loaded);
+        $nuget_package_ref01_data_dt0_load_result = Helpers::to_map(is_object($nuget_package_ref01_data_dt0_loaded) && method_exists($nuget_package_ref01_data_dt0_loaded, 'data_get') ? $nuget_package_ref01_data_dt0_loaded->data_get() : $nuget_package_ref01_data_dt0_loaded);
         $this->assertNotNull($nuget_package_ref01_data_dt0_load_result);
         $this->assertEquals($nuget_package_ref01_data_dt0_load_result["id"], $nuget_package_ref01_data["id"]);
 

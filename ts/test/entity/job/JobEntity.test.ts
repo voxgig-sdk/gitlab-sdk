@@ -62,14 +62,14 @@ describe('JobEntity', async () => {
     const job_ref01_ent = client.Job()
     let job_ref01_data = setup.data.new.job['job_ref01']
 
-    job_ref01_data = await job_ref01_ent.create(job_ref01_data)
+    job_ref01_data = (await job_ref01_ent.create(job_ref01_data)).data()
     assert(null != job_ref01_data)
 
 
     // UPDATE
     const job_ref01_data_up0: any = {}
 
-    const job_ref01_resdata_up0 = await job_ref01_ent.update(job_ref01_data_up0)
+    const job_ref01_resdata_up0 = (await job_ref01_ent.update(job_ref01_data_up0)).data()
     assert(null != job_ref01_resdata_up0)
 
 

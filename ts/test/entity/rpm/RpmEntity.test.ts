@@ -63,7 +63,7 @@ describe('RpmEntity', async () => {
     let rpm_ref01_data = setup.data.new.rpm['rpm_ref01']
     rpm_ref01_data['project_id'] = setup.idmap['project01']
 
-    rpm_ref01_data = await rpm_ref01_ent.create(rpm_ref01_data)
+    rpm_ref01_data = (await rpm_ref01_ent.create(rpm_ref01_data)).data()
     assert(null != rpm_ref01_data)
 
 

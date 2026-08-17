@@ -42,7 +42,7 @@ describe("RpmEntity", function()
 
     local rpm_ref01_data_result, err = rpm_ref01_ent:create(rpm_ref01_data, nil)
     assert.is_nil(err)
-    rpm_ref01_data = helpers.to_map(rpm_ref01_data_result)
+    rpm_ref01_data = helpers.to_map(type(rpm_ref01_data_result) == 'table' and rpm_ref01_data_result.data_get and rpm_ref01_data_result:data_get() or rpm_ref01_data_result)
     assert.is_not_nil(rpm_ref01_data)
 
   end)

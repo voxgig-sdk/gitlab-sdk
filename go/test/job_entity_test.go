@@ -58,7 +58,7 @@ func TestJobEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		jobRef01Data = core.ToMapAny(jobRef01DataResult)
+		jobRef01Data = core.ToMapAny(entityData(jobRef01DataResult))
 		if jobRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -71,7 +71,7 @@ func TestJobEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		jobRef01ResdataUp0 := core.ToMapAny(jobRef01ResdataUp0Result)
+		jobRef01ResdataUp0 := core.ToMapAny(entityData(jobRef01ResdataUp0Result))
 		if jobRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

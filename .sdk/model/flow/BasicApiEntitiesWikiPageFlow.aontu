@@ -27,8 +27,7 @@ main: kit: flow: BasicApiEntitiesWikiPageFlow:
       input: {
         ref: "api_entities_wiki_page_ref01",
         srcdatavar: "api_entities_wiki_page_ref01_data",
-        suffix: "_up0",
-        textfield: "content"
+        suffix: "_up0"
       }
 
       op: "update",

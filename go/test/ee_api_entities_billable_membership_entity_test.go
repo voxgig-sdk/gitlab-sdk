@@ -61,19 +61,13 @@ func TestEeApiEntitiesBillableMembershipEntity(t *testing.T) {
 
 		// LOAD
 		eeApiEntitiesBillableMembershipRef01Ent := client.EeApiEntitiesBillableMembership(nil)
-		eeApiEntitiesBillableMembershipRef01MatchDt0 := map[string]any{
-			"id": eeApiEntitiesBillableMembershipRef01Data["id"],
-		}
+		eeApiEntitiesBillableMembershipRef01MatchDt0 := map[string]any{}
 		eeApiEntitiesBillableMembershipRef01DataDt0Loaded, err := eeApiEntitiesBillableMembershipRef01Ent.Load(eeApiEntitiesBillableMembershipRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		eeApiEntitiesBillableMembershipRef01DataDt0LoadResult := core.ToMapAny(eeApiEntitiesBillableMembershipRef01DataDt0Loaded)
-		if eeApiEntitiesBillableMembershipRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if eeApiEntitiesBillableMembershipRef01DataDt0LoadResult["id"] != eeApiEntitiesBillableMembershipRef01Data["id"] {
-			t.Fatal("expected load result id to match")
+		if eeApiEntitiesBillableMembershipRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

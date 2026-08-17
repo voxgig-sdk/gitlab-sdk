@@ -63,7 +63,7 @@ describe('NugetEntity', async () => {
     const nuget_ref01_ent = client.Nuget()
     const nuget_ref01_data_up0: any = {}
 
-    const nuget_ref01_resdata_up0 = await nuget_ref01_ent.update(nuget_ref01_data_up0)
+    const nuget_ref01_resdata_up0 = (await nuget_ref01_ent.update(nuget_ref01_data_up0)).data()
     assert(null != nuget_ref01_resdata_up0)
 
 

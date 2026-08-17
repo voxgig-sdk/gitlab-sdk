@@ -46,7 +46,7 @@ class MergeRequestEntityTest < Minitest::Test
     }
 
     merge_request_ref01_resdata_up0_result = merge_request_ref01_ent.update(merge_request_ref01_data_up0_up, nil)
-    merge_request_ref01_resdata_up0 = Helpers.to_map(merge_request_ref01_resdata_up0_result)
+    merge_request_ref01_resdata_up0 = Helpers.to_map(merge_request_ref01_resdata_up0_result.respond_to?(:data_get) ? merge_request_ref01_resdata_up0_result.data_get : merge_request_ref01_resdata_up0_result)
     assert !merge_request_ref01_resdata_up0.nil?
 
     # LOAD

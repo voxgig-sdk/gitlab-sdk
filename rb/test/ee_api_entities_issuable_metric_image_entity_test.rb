@@ -39,7 +39,7 @@ class EeApiEntitiesIssuableMetricImageEntityTest < Minitest::Test
     ee_api_entities_issuable_metric_image_ref01_data["project_id"] = setup[:idmap]["project01"]
 
     ee_api_entities_issuable_metric_image_ref01_data_result = ee_api_entities_issuable_metric_image_ref01_ent.create(ee_api_entities_issuable_metric_image_ref01_data, nil)
-    ee_api_entities_issuable_metric_image_ref01_data = Helpers.to_map(ee_api_entities_issuable_metric_image_ref01_data_result)
+    ee_api_entities_issuable_metric_image_ref01_data = Helpers.to_map(ee_api_entities_issuable_metric_image_ref01_data_result.respond_to?(:data_get) ? ee_api_entities_issuable_metric_image_ref01_data_result.data_get : ee_api_entities_issuable_metric_image_ref01_data_result)
     assert !ee_api_entities_issuable_metric_image_ref01_data.nil?
     assert !ee_api_entities_issuable_metric_image_ref01_data["id"].nil?
 
@@ -55,7 +55,7 @@ class EeApiEntitiesIssuableMetricImageEntityTest < Minitest::Test
     ee_api_entities_issuable_metric_image_ref01_data_up0_up[ee_api_entities_issuable_metric_image_ref01_markdef_up0_name] = ee_api_entities_issuable_metric_image_ref01_markdef_up0_value
 
     ee_api_entities_issuable_metric_image_ref01_resdata_up0_result = ee_api_entities_issuable_metric_image_ref01_ent.update(ee_api_entities_issuable_metric_image_ref01_data_up0_up, nil)
-    ee_api_entities_issuable_metric_image_ref01_resdata_up0 = Helpers.to_map(ee_api_entities_issuable_metric_image_ref01_resdata_up0_result)
+    ee_api_entities_issuable_metric_image_ref01_resdata_up0 = Helpers.to_map(ee_api_entities_issuable_metric_image_ref01_resdata_up0_result.respond_to?(:data_get) ? ee_api_entities_issuable_metric_image_ref01_resdata_up0_result.data_get : ee_api_entities_issuable_metric_image_ref01_resdata_up0_result)
     assert !ee_api_entities_issuable_metric_image_ref01_resdata_up0.nil?
     assert_equal ee_api_entities_issuable_metric_image_ref01_resdata_up0["id"], ee_api_entities_issuable_metric_image_ref01_data_up0_up["id"]
     assert_equal ee_api_entities_issuable_metric_image_ref01_resdata_up0[ee_api_entities_issuable_metric_image_ref01_markdef_up0_name], ee_api_entities_issuable_metric_image_ref01_markdef_up0_value

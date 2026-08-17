@@ -39,7 +39,7 @@ ApiEntitiesBranch is nested under project, so provide the `project_id`.
 
 ```php
 try {
-    // load() returns the bare ApiEntitiesBranch record (throws on error).
+    // load() returns the ENTITY — call data_get() for the ApiEntitiesBranch record (throws on error).
     $apientitiesbranch = $client->ApiEntitiesBranch()->load(["project_id" => "example_project_id", "id" => "example_id"]);
     print_r($apientitiesbranch);
 } catch (\Throwable $err) {
@@ -62,7 +62,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $apientitiesaccessrequesters = $client->ApiEntitiesAccessRequester()->list();
+    $apientitiesmetricimages = $client->ApiEntitiesMetricImage()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -134,9 +134,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = GitlabSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$apientitiesaccessrequester = $client->ApiEntitiesAccessRequester()->list();
-print_r($apientitiesaccessrequester);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$apientitiesmetricimage = $client->ApiEntitiesMetricImage()->list();
+print_r($apientitiesmetricimage);
 ```
 
 ### Use a custom fetch function
@@ -514,7 +515,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -556,7 +557,7 @@ API path: `/api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_imag
 | --- | --- |
 | `avatar_path` |  |
 | `avatar_url` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `id` |  |
 | `key` |  |
 | `locked` |  |
@@ -583,11 +584,11 @@ API path: `/api/v4/groups/{id}/access_requests`
 | `header_logo` |  |
 | `header_message` |  |
 | `logo` |  |
-| `member_guideline` |  |
+| `member_guidelines` |  |
 | `message_background_color` |  |
 | `message_font_color` |  |
-| `new_project_guideline` |  |
-| `profile_image_guideline` |  |
+| `new_project_guidelines` |  |
+| `profile_image_guidelines` |  |
 | `pwa_description` |  |
 | `pwa_icon` |  |
 | `pwa_name` |  |
@@ -616,17 +617,17 @@ API path: `/api/v4/applications`
 
 | Field | Description |
 | --- | --- |
-| `active_user` |  |
-| `fork` |  |
-| `group` |  |
-| `issue` |  |
-| `merge_request` |  |
-| `milestone` |  |
-| `note` |  |
-| `project` |  |
-| `snippet` |  |
-| `ssh_key` |  |
-| `user` |  |
+| `active_users` |  |
+| `forks` |  |
+| `groups` |  |
+| `issues` |  |
+| `merge_requests` |  |
+| `milestones` |  |
+| `notes` |  |
+| `projects` |  |
+| `snippets` |  |
+| `ssh_keys` |  |
+| `users` |  |
 
 Operations: Load.
 
@@ -661,14 +662,22 @@ API path: `/api/v4/avatar`
 
 | Field | Description |
 | --- | --- |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `awardable_id` |  |
 | `awardable_type` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
 | `id` |  |
+| `locked` |  |
 | `name` |  |
+| `public_email` |  |
+| `state` |  |
 | `updated_at` |  |
 | `url` |  |
 | `user` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, List, Load.
 
@@ -719,7 +728,7 @@ API path: `/api/v4/projects/{id}/job_token_scope/groups_allowlist`
 | --- | --- |
 | `avatar_url` |  |
 | `created_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `description` |  |
 | `forks_count` |  |
@@ -738,7 +747,7 @@ API path: `/api/v4/projects/{id}/job_token_scope/groups_allowlist`
 | `ssh_url_to_repo` |  |
 | `star_count` |  |
 | `tag_list` |  |
-| `topic` |  |
+| `topics` |  |
 | `visibility` |  |
 | `web_url` |  |
 
@@ -786,14 +795,28 @@ API path: `/api/v4/admin/batched_background_migrations`
 
 | Field | Description |
 | --- | --- |
+| `author_email` |  |
+| `author_name` |  |
+| `authored_date` |  |
 | `can_push` |  |
 | `commit` |  |
+| `committed_date` |  |
+| `committer_email` |  |
+| `committer_name` |  |
+| `created_at` |  |
 | `default` |  |
 | `developers_can_merge` |  |
 | `developers_can_push` |  |
+| `extended_trailers` |  |
+| `id` |  |
 | `merged` |  |
+| `message` |  |
 | `name` |  |
+| `parent_ids` |  |
 | `protected` |  |
+| `short_id` |  |
+| `title` |  |
+| `trailers` |  |
 | `web_url` |  |
 
 Operations: Create, List, Load, Update.
@@ -811,18 +834,18 @@ API path: `/api/v4/projects/{id}/repository/branches`
 | `destination_namespace` |  |
 | `destination_slug` |  |
 | `entity_type` |  |
-| `failure` |  |
-| `has_failure` |  |
+| `failures` |  |
+| `has_failures` |  |
 | `id` |  |
-| `migrate_membership` |  |
-| `migrate_project` |  |
+| `migrate_memberships` |  |
+| `migrate_projects` |  |
 | `namespace_id` |  |
 | `parent_id` |  |
 | `project_id` |  |
 | `source_full_path` |  |
 | `source_type` |  |
 | `source_url` |  |
-| `stat` |  |
+| `stats` |  |
 | `status` |  |
 | `updated_at` |  |
 
@@ -849,8 +872,8 @@ API path: `/api/v4/bulk_imports/{import_id}/entities/{entity_id}/failures`
 
 | Field | Description |
 | --- | --- |
-| `batch` |  |
 | `batched` |  |
+| `batches` |  |
 | `batches_count` |  |
 | `error` |  |
 | `relation` |  |
@@ -866,7 +889,7 @@ API path: `/api/v4/groups/{id}/export_relations/status`
 
 | Field | Description |
 | --- | --- |
-| `note` |  |
+| `notes` |  |
 
 Operations: Load.
 
@@ -917,7 +940,7 @@ API path: `/api/v4/projects/{id}/catalog/publish`
 | --- | --- |
 | `allow_failure` |  |
 | `archived` |  |
-| `artifact` |  |
+| `artifacts` |  |
 | `artifacts_expire_at` |  |
 | `artifacts_file` |  |
 | `commit` |  |
@@ -1016,16 +1039,16 @@ API path: `/api/v4/runners/{id}/jobs`
 | `blob` |  |
 | `context_project` |  |
 | `context_sha` |  |
-| `error` |  |
+| `errors` |  |
 | `extra` |  |
-| `include` |  |
-| `job` |  |
+| `includes` |  |
+| `jobs` |  |
 | `location` |  |
 | `merged_yaml` |  |
 | `raw` |  |
 | `type` |  |
 | `valid` |  |
-| `warning` |  |
+| `warnings` |  |
 
 Operations: Create, List.
 
@@ -1069,7 +1092,7 @@ API path: `/api/v4/projects/{id}/pipelines`
 | `cron_timezone` |  |
 | `description` |  |
 | `id` |  |
-| `input` |  |
+| `inputs` |  |
 | `next_run_at` |  |
 | `owner` |  |
 | `ref` |  |
@@ -1089,13 +1112,13 @@ API path: `/api/v4/projects/{id}/pipeline_schedules`
 | `cron_timezone` |  |
 | `description` |  |
 | `id` |  |
-| `input` |  |
+| `inputs` |  |
 | `last_pipeline` |  |
 | `next_run_at` |  |
 | `owner` |  |
 | `ref` |  |
 | `updated_at` |  |
-| `variable` |  |
+| `variables` |  |
 
 Operations: Create, Load, Update.
 
@@ -1128,19 +1151,16 @@ API path: `/api/v4/projects/{id}/resource_groups`
 
 | Field | Description |
 | --- | --- |
-| `active` |  |
-| `created_at` |  |
-| `created_by` |  |
-| `description` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
 | `id` |  |
-| `ip_address` |  |
-| `is_shared` |  |
-| `job_execution_status` |  |
+| `locked` |  |
 | `name` |  |
-| `online` |  |
-| `paused` |  |
-| `runner_type` |  |
-| `status` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, Load.
 
@@ -1157,7 +1177,7 @@ API path: `/api/v4/projects/{id}/runners`
 | `created_at` |  |
 | `created_by` |  |
 | `description` |  |
-| `group` |  |
+| `groups` |  |
 | `id` |  |
 | `ip_address` |  |
 | `is_shared` |  |
@@ -1169,7 +1189,7 @@ API path: `/api/v4/projects/{id}/runners`
 | `online` |  |
 | `paused` |  |
 | `platform` |  |
-| `project` |  |
+| `projects` |  |
 | `revision` |  |
 | `run_untagged` |  |
 | `runner_type` |  |
@@ -1214,14 +1234,6 @@ API path: `/api/v4/runners`
 
 | Field | Description |
 | --- | --- |
-| `checksum` |  |
-| `checksum_algorithm` |  |
-| `created_at` |  |
-| `expires_at` |  |
-| `file_extension` |  |
-| `id` |  |
-| `metadata` |  |
-| `name` |  |
 
 Operations: Create, Load.
 
@@ -1259,7 +1271,7 @@ API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/varia
 | `management_project` |  |
 | `name` |  |
 | `namespace_per_environment` |  |
-| `platform_kubernete` |  |
+| `platform_kubernetes` |  |
 | `platform_type` |  |
 | `provider_gcp` |  |
 | `provider_type` |  |
@@ -1284,7 +1296,7 @@ API path: `/api/v4/admin/clusters/add`
 | `management_project` |  |
 | `name` |  |
 | `namespace_per_environment` |  |
-| `platform_kubernete` |  |
+| `platform_kubernetes` |  |
 | `platform_type` |  |
 | `provider_gcp` |  |
 | `provider_type` |  |
@@ -1308,7 +1320,7 @@ API path: `/api/v4/groups/{id}/clusters/user`
 | `management_project` |  |
 | `name` |  |
 | `namespace_per_environment` |  |
-| `platform_kubernete` |  |
+| `platform_kubernetes` |  |
 | `platform_type` |  |
 | `project` |  |
 | `provider_gcp` |  |
@@ -1323,12 +1335,13 @@ API path: `/api/v4/projects/{id}/clusters/user`
 
 | Field | Description |
 | --- | --- |
-| `config_project` |  |
 | `created_at` |  |
-| `created_by_user_id` |  |
+| `description` |  |
 | `id` |  |
-| `is_receptive` |  |
 | `name` |  |
+| `name_with_namespace` |  |
+| `path` |  |
+| `path_with_namespace` |  |
 
 Operations: Create, Load.
 
@@ -1387,13 +1400,13 @@ API path: `/api/v4/projects/{id}/cluster_agents/{agent_id}/tokens`
 | `committer_email` |  |
 | `committer_name` |  |
 | `created_at` |  |
-| `extended_trailer` |  |
+| `extended_trailers` |  |
 | `id` |  |
 | `message` |  |
-| `parent_id` |  |
+| `parent_ids` |  |
 | `short_id` |  |
 | `title` |  |
-| `trailer` |  |
+| `trailers` |  |
 | `web_url` |  |
 
 Operations: Create, List.
@@ -1411,17 +1424,17 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/context_comm
 | `committer_email` |  |
 | `committer_name` |  |
 | `created_at` |  |
-| `extended_trailer` |  |
+| `extended_trailers` |  |
 | `id` |  |
 | `last_pipeline` |  |
 | `message` |  |
-| `parent_id` |  |
+| `parent_ids` |  |
 | `project_id` |  |
 | `short_id` |  |
-| `stat` |  |
+| `stats` |  |
 | `status` |  |
 | `title` |  |
-| `trailer` |  |
+| `trailers` |  |
 | `web_url` |  |
 
 Operations: Create, Load, Update.
@@ -1433,11 +1446,21 @@ API path: `/api/v4/projects/{id}/repository/commits`
 | Field | Description |
 | --- | --- |
 | `author` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
+| `id` |  |
 | `line` |  |
 | `line_type` |  |
+| `locked` |  |
+| `name` |  |
 | `note` |  |
 | `path` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, List.
 
@@ -1471,18 +1494,26 @@ API path: `/api/v4/projects/{id}/repository/commits/{sha}/signature`
 | --- | --- |
 | `allow_failure` |  |
 | `author` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `coverage` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
 | `description` |  |
 | `finished_at` |  |
 | `id` |  |
+| `locked` |  |
 | `name` |  |
 | `pipeline_id` |  |
+| `public_email` |  |
 | `ref` |  |
 | `sha` |  |
 | `started_at` |  |
+| `state` |  |
 | `status` |  |
 | `target_url` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, List.
 
@@ -1493,9 +1524,10 @@ API path: `/api/v4/projects/{id}/statuses/{sha}`
 | Field | Description |
 | --- | --- |
 | `commit` |  |
+| `commits` |  |
 | `compare_same_ref` |  |
 | `compare_timeout` |  |
-| `diff` |  |
+| `diffs` |  |
 | `web_url` |  |
 
 Operations: List.
@@ -1516,7 +1548,7 @@ API path: `/api/v4/projects/{id}/repository/compare`
 | `project_id` |  |
 | `size` |  |
 | `status` |  |
-| `tag` |  |
+| `tags` |  |
 | `tags_count` |  |
 
 Operations: List, Load.
@@ -1556,9 +1588,9 @@ API path: `/api/v4/projects/{id}/registry/repositories/{repository_id}/tags/{tag
 
 | Field | Description |
 | --- | --- |
-| `addition` |  |
-| `commit` |  |
-| `deletion` |  |
+| `additions` |  |
+| `commits` |  |
+| `deletions` |  |
 | `email` |  |
 | `name` |  |
 
@@ -1616,7 +1648,7 @@ API path: `/api/v4/projects/{id}/deploy_keys`
 | `id` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `username` |  |
 
 Operations: List, Load.
@@ -1655,8 +1687,8 @@ API path: `/api/v4/projects/{id}/deployments`
 
 | Field | Description |
 | --- | --- |
-| `approval` |  |
 | `approval_summary` |  |
+| `approvals` |  |
 | `created_at` |  |
 | `deployable` |  |
 | `environment` |  |
@@ -1686,7 +1718,7 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/approval`
 
 | Field | Description |
 | --- | --- |
-| `feature_category` |  |
+| `feature_categories` |  |
 | `table_name` |  |
 
 Operations: Load.
@@ -1717,8 +1749,8 @@ API path: `/api/v4/projects/{id}/repository/commits/{sha}/diff`
 
 | Field | Description |
 | --- | --- |
-| `group` |  |
-| `project` |  |
+| `groups` |  |
+| `projects` |  |
 
 Operations: Load.
 
@@ -1824,7 +1856,7 @@ API path: `/api/v4/events`
 | Field | Description |
 | --- | --- |
 | `definition` |  |
-| `gate` |  |
+| `gates` |  |
 | `name` |  |
 | `state` |  |
 
@@ -1841,7 +1873,7 @@ API path: `/api/v4/features/{name}`
 | `group` |  |
 | `intended_to_rollout_by` |  |
 | `introduced_by_url` |  |
-| `log_state_change` |  |
+| `log_state_changes` |  |
 | `milestone` |  |
 | `name` |  |
 | `rollout_issue_url` |  |
@@ -1858,10 +1890,13 @@ API path: `/api/v4/features/definitions`
 | `active` |  |
 | `created_at` |  |
 | `description` |  |
+| `id` |  |
 | `name` |  |
-| `scope` |  |
-| `strategy` |  |
+| `parameters` |  |
+| `scopes` |  |
+| `strategies` |  |
 | `updated_at` |  |
+| `user_list` |  |
 | `version` |  |
 
 Operations: Create, List, Load, Update.
@@ -1880,7 +1915,7 @@ API path: `/api/v4/projects/{id}/feature_flags`
 | `path` |  |
 | `project_id` |  |
 | `updated_at` |  |
-| `user_xid` |  |
+| `user_xids` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -1917,8 +1952,8 @@ API path: `/api/v4/namespaces/{id}/gitlab_subscription`
 
 | Field | Description |
 | --- | --- |
-| `time` |  |
-| `version` |  |
+| `Time` |  |
+| `Version` |  |
 
 Operations: Load.
 
@@ -1933,10 +1968,10 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.in
 | `auto_duo_code_review_enabled` |  |
 | `avatar_url` |  |
 | `created_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `default_branch_protection` |  |
-| `default_branch_protection_default` |  |
+| `default_branch_protection_defaults` |  |
 | `description` |  |
 | `duo_core_features_enabled` |  |
 | `duo_features_enabled` |  |
@@ -1948,7 +1983,7 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.in
 | `id` |  |
 | `ldap_access` |  |
 | `ldap_cn` |  |
-| `ldap_group_link` |  |
+| `ldap_group_links` |  |
 | `lfs_enabled` |  |
 | `lock_duo_features_enabled` |  |
 | `lock_math_rendering_limits_enabled` |  |
@@ -1964,12 +1999,12 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.in
 | `repository_storage` |  |
 | `request_access_enabled` |  |
 | `require_two_factor_authentication` |  |
-| `root_storage_statistic` |  |
-| `saml_group_link` |  |
+| `root_storage_statistics` |  |
+| `saml_group_links` |  |
 | `share_with_group_lock` |  |
 | `shared_runners_setting` |  |
 | `show_diff_preview_in_email` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `subgroup_creation_level` |  |
 | `two_factor_grace_period` |  |
 | `visibility` |  |
@@ -1992,10 +2027,10 @@ API path: `/api/v4/groups/{id}/archive`
 | `auto_duo_code_review_enabled` |  |
 | `avatar_url` |  |
 | `created_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `default_branch_protection` |  |
-| `default_branch_protection_default` |  |
+| `default_branch_protection_defaults` |  |
 | `description` |  |
 | `duo_core_features_enabled` |  |
 | `duo_features_enabled` |  |
@@ -2007,10 +2042,10 @@ API path: `/api/v4/groups/{id}/archive`
 | `full_name` |  |
 | `full_path` |  |
 | `id` |  |
-| `ip_restriction_range` |  |
+| `ip_restriction_ranges` |  |
 | `ldap_access` |  |
 | `ldap_cn` |  |
-| `ldap_group_link` |  |
+| `ldap_group_links` |  |
 | `lfs_enabled` |  |
 | `lock_duo_features_enabled` |  |
 | `lock_math_rendering_limits_enabled` |  |
@@ -2025,28 +2060,28 @@ API path: `/api/v4/groups/{id}/archive`
 | `path` |  |
 | `prevent_forking_outside_group` |  |
 | `prevent_sharing_groups_outside_hierarchy` |  |
-| `project` |  |
 | `project_creation_level` |  |
+| `projects` |  |
 | `repository_storage` |  |
 | `request_access_enabled` |  |
 | `require_two_factor_authentication` |  |
-| `root_storage_statistic` |  |
+| `root_storage_statistics` |  |
 | `runners_token` |  |
-| `saml_group_link` |  |
+| `saml_group_links` |  |
 | `service_access_tokens_expiration_enforced` |  |
 | `share_with_group_lock` |  |
-| `shared_project` |  |
+| `shared_projects` |  |
 | `shared_runners_minutes_limit` |  |
 | `shared_runners_setting` |  |
-| `shared_with_group` |  |
+| `shared_with_groups` |  |
 | `show_diff_preview_in_email` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `subgroup_creation_level` |  |
 | `two_factor_grace_period` |  |
 | `unique_project_download_limit` |  |
 | `unique_project_download_limit_alertlist` |  |
 | `unique_project_download_limit_allowlist` |  |
-| `unique_project_download_limit_interval_in_second` |  |
+| `unique_project_download_limit_interval_in_seconds` |  |
 | `visibility` |  |
 | `web_based_commit_signing_enabled` |  |
 | `web_url` |  |
@@ -2063,20 +2098,20 @@ API path: `/api/v4/groups/{id}/share`
 | `alert_status` |  |
 | `branch_filter_strategy` |  |
 | `created_at` |  |
-| `custom_header` |  |
+| `custom_headers` |  |
 | `custom_webhook_template` |  |
 | `description` |  |
 | `disabled_until` |  |
 | `enable_ssl_verification` |  |
 | `id` |  |
-| `merge_requests_event` |  |
+| `merge_requests_events` |  |
 | `name` |  |
-| `push_event` |  |
+| `push_events` |  |
 | `push_events_branch_filter` |  |
-| `repository_update_event` |  |
-| `tag_push_event` |  |
+| `repository_update_events` |  |
+| `tag_push_events` |  |
 | `url` |  |
-| `url_variable` |  |
+| `url_variables` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -2086,30 +2121,6 @@ API path: `/api/v4/hooks`
 
 | Field | Description |
 | --- | --- |
-| `active` |  |
-| `alert_event` |  |
-| `comment_on_event_enabled` |  |
-| `commit_event` |  |
-| `confidential_issues_event` |  |
-| `confidential_note_event` |  |
-| `created_at` |  |
-| `deployment_event` |  |
-| `id` |  |
-| `incident_event` |  |
-| `inherited` |  |
-| `issues_event` |  |
-| `job_event` |  |
-| `merge_requests_event` |  |
-| `note_event` |  |
-| `pipeline_event` |  |
-| `property` |  |
-| `push_event` |  |
-| `slug` |  |
-| `tag_push_event` |  |
-| `title` |  |
-| `updated_at` |  |
-| `vulnerability_event` |  |
-| `wiki_page_event` |  |
 
 Operations: Load.
 
@@ -2120,28 +2131,28 @@ API path: `/api/v4/groups/{id}/integrations/{slug}`
 | Field | Description |
 | --- | --- |
 | `active` |  |
-| `alert_event` |  |
+| `alert_events` |  |
 | `comment_on_event_enabled` |  |
-| `commit_event` |  |
-| `confidential_issues_event` |  |
-| `confidential_note_event` |  |
+| `commit_events` |  |
+| `confidential_issues_events` |  |
+| `confidential_note_events` |  |
 | `created_at` |  |
-| `deployment_event` |  |
+| `deployment_events` |  |
 | `id` |  |
-| `incident_event` |  |
+| `incident_events` |  |
 | `inherited` |  |
-| `issues_event` |  |
-| `job_event` |  |
-| `merge_requests_event` |  |
-| `note_event` |  |
-| `pipeline_event` |  |
-| `push_event` |  |
+| `issues_events` |  |
+| `job_events` |  |
+| `merge_requests_events` |  |
+| `note_events` |  |
+| `pipeline_events` |  |
+| `push_events` |  |
 | `slug` |  |
-| `tag_push_event` |  |
+| `tag_push_events` |  |
 | `title` |  |
 | `updated_at` |  |
-| `vulnerability_event` |  |
-| `wiki_page_event` |  |
+| `vulnerability_events` |  |
+| `wiki_page_events` |  |
 
 Operations: List, Update.
 
@@ -2181,6 +2192,7 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time`
 | Field | Description |
 | --- | --- |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_issues_count` |  |
 | `closed_at` |  |
@@ -2189,11 +2201,11 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time`
 | `created_at` |  |
 | `description` |  |
 | `discussion_locked` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `due_date` |  |
 | `epic` |  |
 | `epic_iid` |  |
-| `has_task` |  |
+| `has_tasks` |  |
 | `health_status` |  |
 | `id` |  |
 | `iid` |  |
@@ -2201,24 +2213,24 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time`
 | `imported_from` |  |
 | `issue_type` |  |
 | `iteration` |  |
-| `label` |  |
-| `link` |  |
+| `labels` |  |
+| `links` |  |
 | `merge_requests_count` |  |
 | `milestone` |  |
 | `moved_to_id` |  |
 | `project_id` |  |
-| `reference` |  |
+| `references` |  |
 | `service_desk_reply_to` |  |
 | `severity` |  |
 | `state` |  |
 | `subscribed` |  |
 | `task_completion_status` |  |
 | `task_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `type` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
 | `weight` |  |
@@ -2243,15 +2255,15 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/links`
 
 | Field | Description |
 | --- | --- |
-| `condition` |  |
+| `conditions` |  |
 | `content` |  |
 | `description` |  |
 | `html_url` |  |
 | `key` |  |
-| `limitation` |  |
+| `limitations` |  |
 | `name` |  |
 | `nickname` |  |
-| `permission` |  |
+| `permissions` |  |
 | `popular` |  |
 | `source_url` |  |
 
@@ -2291,7 +2303,7 @@ API path: `/api/v4/groups/{id}/uploads`
 | `avatar_url` |  |
 | `created_at` |  |
 | `created_by` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `email` |  |
 | `expires_at` |  |
 | `group_saml_identity` |  |
@@ -2322,6 +2334,7 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `allow_maintainer_to_push` |  |
 | `approvals_before_merge` |  |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_discussions_resolved` |  |
 | `changes_count` |  |
@@ -2331,21 +2344,21 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `description` |  |
 | `description_html` |  |
 | `detailed_merge_status` |  |
-| `diff_ref` |  |
+| `diff_refs` |  |
 | `discussion_locked` |  |
 | `diverged_commits_count` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `draft` |  |
 | `first_contribution` |  |
 | `first_deployed_to_production_at` |  |
 | `force_remove_source_branch` |  |
-| `has_conflict` |  |
+| `has_conflicts` |  |
 | `head_pipeline` |  |
 | `id` |  |
 | `iid` |  |
 | `imported` |  |
 | `imported_from` |  |
-| `label` |  |
+| `labels` |  |
 | `latest_build_finished_at` |  |
 | `latest_build_started_at` |  |
 | `merge_after` |  |
@@ -2353,7 +2366,7 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `merge_error` |  |
 | `merge_status` |  |
 | `merge_user` |  |
-| `merge_when_pipeline_succeed` |  |
+| `merge_when_pipeline_succeeds` |  |
 | `merged_at` |  |
 | `merged_by` |  |
 | `milestone` |  |
@@ -2362,7 +2375,8 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `project_id` |  |
 | `rebase_in_progress` |  |
 | `reference` |  |
-| `reviewer` |  |
+| `references` |  |
+| `reviewers` |  |
 | `sha` |  |
 | `should_remove_source_branch` |  |
 | `source_branch` |  |
@@ -2375,11 +2389,11 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `target_branch` |  |
 | `target_project_id` |  |
 | `task_completion_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `title_html` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
@@ -2393,10 +2407,8 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/cancel_merge
 
 | Field | Description |
 | --- | --- |
-| `approved` |  |
-| `approved_by` |  |
-| `user_can_approve` |  |
-| `user_has_approved` |  |
+| `approved_at` |  |
+| `user` |  |
 
 Operations: Create, Load.
 
@@ -2410,6 +2422,7 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve`
 | `allow_maintainer_to_push` |  |
 | `approvals_before_merge` |  |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_discussions_resolved` |  |
 | `closed_at` |  |
@@ -2419,27 +2432,28 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve`
 | `description_html` |  |
 | `detailed_merge_status` |  |
 | `discussion_locked` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `draft` |  |
 | `force_remove_source_branch` |  |
-| `has_conflict` |  |
+| `has_conflicts` |  |
 | `id` |  |
 | `iid` |  |
 | `imported` |  |
 | `imported_from` |  |
-| `label` |  |
+| `labels` |  |
 | `merge_after` |  |
 | `merge_commit_sha` |  |
 | `merge_status` |  |
 | `merge_user` |  |
-| `merge_when_pipeline_succeed` |  |
+| `merge_when_pipeline_succeeds` |  |
 | `merged_at` |  |
 | `merged_by` |  |
 | `milestone` |  |
 | `prepared_at` |  |
 | `project_id` |  |
 | `reference` |  |
-| `reviewer` |  |
+| `references` |  |
+| `reviewers` |  |
 | `sha` |  |
 | `should_remove_source_branch` |  |
 | `source_branch` |  |
@@ -2451,11 +2465,11 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve`
 | `target_branch` |  |
 | `target_project_id` |  |
 | `task_completion_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `title_html` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
 | `work_in_progress` |  |
@@ -2472,9 +2486,10 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `allow_maintainer_to_push` |  |
 | `approvals_before_merge` |  |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_discussions_resolved` |  |
-| `change` |  |
+| `changes` |  |
 | `changes_count` |  |
 | `closed_at` |  |
 | `closed_by` |  |
@@ -2482,21 +2497,21 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `description` |  |
 | `description_html` |  |
 | `detailed_merge_status` |  |
-| `diff_ref` |  |
+| `diff_refs` |  |
 | `discussion_locked` |  |
 | `diverged_commits_count` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `draft` |  |
 | `first_contribution` |  |
 | `first_deployed_to_production_at` |  |
 | `force_remove_source_branch` |  |
-| `has_conflict` |  |
+| `has_conflicts` |  |
 | `head_pipeline` |  |
 | `id` |  |
 | `iid` |  |
 | `imported` |  |
 | `imported_from` |  |
-| `label` |  |
+| `labels` |  |
 | `latest_build_finished_at` |  |
 | `latest_build_started_at` |  |
 | `merge_after` |  |
@@ -2504,7 +2519,7 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `merge_error` |  |
 | `merge_status` |  |
 | `merge_user` |  |
-| `merge_when_pipeline_succeed` |  |
+| `merge_when_pipeline_succeeds` |  |
 | `merged_at` |  |
 | `merged_by` |  |
 | `milestone` |  |
@@ -2514,7 +2529,8 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `project_id` |  |
 | `rebase_in_progress` |  |
 | `reference` |  |
-| `reviewer` |  |
+| `references` |  |
+| `reviewers` |  |
 | `sha` |  |
 | `should_remove_source_branch` |  |
 | `source_branch` |  |
@@ -2527,11 +2543,11 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `target_branch` |  |
 | `target_project_id` |  |
 | `task_completion_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `title_html` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
@@ -2564,9 +2580,9 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/versions`
 | Field | Description |
 | --- | --- |
 | `base_commit_sha` |  |
-| `commit` |  |
+| `commits` |  |
 | `created_at` |  |
-| `diff` |  |
+| `diffs` |  |
 | `head_commit_sha` |  |
 | `id` |  |
 | `merge_request_id` |  |
@@ -2583,9 +2599,16 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/versions/{ve
 
 | Field | Description |
 | --- | --- |
-| `created_at` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
+| `id` |  |
+| `locked` |  |
+| `name` |  |
+| `public_email` |  |
 | `state` |  |
-| `user` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Load.
 
@@ -2610,8 +2633,16 @@ API path: `/api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_imag
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `note` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
+| `id` |  |
+| `locked` |  |
+| `name` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Load.
 
@@ -2632,7 +2663,7 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/closes_issue
 | `kind` |  |
 | `max_seats_used` |  |
 | `max_seats_used_changed_at` |  |
-| `members_count_with_descendant` |  |
+| `members_count_with_descendants` |  |
 | `name` |  |
 | `parent_id` |  |
 | `path` |  |
@@ -2653,8 +2684,8 @@ API path: `/api/v4/namespaces`
 
 | Field | Description |
 | --- | --- |
-| `exist` |  |
-| `suggest` |  |
+| `exists` |  |
+| `suggests` |  |
 
 Operations: List.
 
@@ -2677,9 +2708,9 @@ API path: `/api/v4/namespaces/{id}/storage/limit_exclusion`
 
 | Field | Description |
 | --- | --- |
-| `dist_tag` |  |
+| `disttags` |  |
 | `name` |  |
-| `version` |  |
+| `versions` |  |
 
 Operations: Load.
 
@@ -2689,7 +2720,6 @@ API path: `/api/v4/groups/{id}/-/packages/npm/*package_name`
 
 | Field | Description |
 | --- | --- |
-| `dist_tag` |  |
 
 Operations: Load.
 
@@ -2699,7 +2729,7 @@ API path: `/api/v4/groups/{id}/-/packages/npm/-/package/*package_name/dist-tags`
 
 | Field | Description |
 | --- | --- |
-| `version` |  |
+| `versions` |  |
 
 Operations: List.
 
@@ -2709,19 +2739,20 @@ API path: `/api/v4/projects/{id}/packages/nuget/download/*package_name/index`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
+| `authors` |  |
 | `description` |  |
-| `icon_url` |  |
+| `iconUrl` |  |
 | `id` |  |
-| `license_url` |  |
-| `project_url` |  |
+| `licenseUrl` |  |
+| `projectUrl` |  |
 | `summary` |  |
-| `tag` |  |
+| `tags` |  |
 | `title` |  |
-| `total_download` |  |
+| `totalDownloads` |  |
 | `type` |  |
 | `verified` |  |
 | `version` |  |
+| `versions` |  |
 
 Operations: List.
 
@@ -2731,7 +2762,7 @@ API path: `/api/v4/groups/{id}/-/packages/nuget/query`
 
 | Field | Description |
 | --- | --- |
-| `resource` |  |
+| `resources` |  |
 | `version` |  |
 
 Operations: List.
@@ -2755,15 +2786,17 @@ API path: `/api/v4/organizations`
 | `created_at` |  |
 | `id` |  |
 | `last_downloaded_at` |  |
-| `link` |  |
+| `links` |  |
 | `name` |  |
 | `package_type` |  |
 | `pipeline` |  |
+| `pipelines` |  |
 | `project_id` |  |
 | `project_path` |  |
 | `status` |  |
-| `tag` |  |
+| `tags` |  |
 | `version` |  |
+| `versions` |  |
 
 Operations: List, Load.
 
@@ -2780,7 +2813,7 @@ API path: `/api/v4/groups/{id}/packages`
 | `file_sha256` |  |
 | `id` |  |
 | `package_id` |  |
-| `pipeline` |  |
+| `pipelines` |  |
 | `size` |  |
 
 Operations: List.
@@ -2791,16 +2824,15 @@ API path: `/api/v4/projects/{id}/packages/{package_id}/package_files`
 
 | Field | Description |
 | --- | --- |
-| `created_at` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
 | `id` |  |
-| `iid` |  |
-| `project_id` |  |
-| `ref` |  |
-| `sha` |  |
-| `source` |  |
-| `status` |  |
-| `updated_at` |  |
-| `user` |  |
+| `locked` |  |
+| `name` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
 | `web_url` |  |
 
 Operations: Load.
@@ -2811,7 +2843,6 @@ API path: `/api/v4/projects/{id}/packages/{package_id}/pipelines`
 
 | Field | Description |
 | --- | --- |
-| `file` |  |
 
 Operations: Load.
 
@@ -2821,7 +2852,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `package_url` |  |
 
 Operations: Load.
 
@@ -2842,7 +2872,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `package_snapshot` |  |
 
 Operations: Load.
 
@@ -2852,7 +2881,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `recipe_url` |  |
 
 Operations: Load.
 
@@ -2873,7 +2901,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `recipe_snapshot` |  |
 
 Operations: Load.
 
@@ -2894,7 +2921,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `upload_url` |  |
 
 Operations: Create.
 
@@ -2904,15 +2930,15 @@ API path: `/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `architecture` |  |
+| `architectures` |  |
 | `codename` |  |
-| `component` |  |
+| `components` |  |
 | `description` |  |
 | `id` |  |
 | `label` |  |
 | `origin` |  |
 | `suite` |  |
-| `valid_time_duration_second` |  |
+| `valid_time_duration_seconds` |  |
 | `version` |  |
 
 Operations: Create, List, Load, Update.
@@ -2925,8 +2951,11 @@ API path: `/api/v4/groups/{id}/-/debian_distributions`
 | --- | --- |
 | `auto_ssl_enabled` |  |
 | `certificate` |  |
+| `certificate_text` |  |
 | `domain` |  |
 | `enabled_until` |  |
+| `expired` |  |
+| `subject` |  |
 | `url` |  |
 | `verification_code` |  |
 | `verified` |  |
@@ -2939,14 +2968,8 @@ API path: `/api/v4/projects/{id}/pages/domains`
 
 | Field | Description |
 | --- | --- |
-| `auto_ssl_enabled` |  |
-| `certificate_expiration` |  |
-| `domain` |  |
-| `enabled_until` |  |
-| `project_id` |  |
-| `url` |  |
-| `verification_code` |  |
-| `verified` |  |
+| `expiration` |  |
+| `expired` |  |
 
 Operations: Load.
 
@@ -2964,7 +2987,7 @@ API path: `/api/v4/pages/domains`
 | `last_used_at` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `user_id` |  |
 
 Operations: List.
@@ -2981,10 +3004,10 @@ API path: `/api/v4/personal_access_tokens/self/associations`
 | `expires_at` |  |
 | `id` |  |
 | `last_used_at` |  |
-| `last_used_ip` |  |
+| `last_used_ips` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `user_id` |  |
 
 Operations: List, Load.
@@ -3003,7 +3026,7 @@ API path: `/api/v4/personal_access_tokens`
 | `last_used_at` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `token` |  |
 | `user_id` |  |
 
@@ -3018,8 +3041,8 @@ API path: `/api/v4/personal_access_tokens/{id}/rotate`
 | `author` |  |
 | `created_at` |  |
 | `description` |  |
-| `file` |  |
 | `file_name` |  |
+| `files` |  |
 | `http_url_to_repo` |  |
 | `id` |  |
 | `imported` |  |
@@ -3041,29 +3064,6 @@ API path: `/api/v4/snippets`
 
 | Field | Description |
 | --- | --- |
-| `ci_active_job` |  |
-| `ci_instance_level_variable` |  |
-| `ci_needs_size_limit` |  |
-| `ci_pipeline_schedule` |  |
-| `ci_pipeline_size` |  |
-| `ci_project_subscription` |  |
-| `ci_registered_group_runner` |  |
-| `ci_registered_project_runner` |  |
-| `conan_max_file_size` |  |
-| `dotenv_size` |  |
-| `dotenv_variable` |  |
-| `enforcement_limit` |  |
-| `generic_packages_max_file_size` |  |
-| `helm_max_file_size` |  |
-| `limits_history` |  |
-| `maven_max_file_size` |  |
-| `notification_limit` |  |
-| `npm_max_file_size` |  |
-| `nuget_max_file_size` |  |
-| `pipeline_hierarchy_size` |  |
-| `pypi_max_file_size` |  |
-| `storage_size_limit` |  |
-| `terraform_module_max_file_size` |  |
 
 Operations: Load, Update.
 
@@ -3078,11 +3078,11 @@ API path: `/api/v4/application/plan_limits`
 | `analytics_access_level` |  |
 | `approvals_before_merge` |  |
 | `archived` |  |
-| `auto_cancel_pending_pipeline` |  |
+| `auto_cancel_pending_pipelines` |  |
 | `auto_devops_deploy_strategy` |  |
 | `auto_devops_enabled` |  |
 | `auto_duo_code_review_enabled` |  |
-| `autoclose_referenced_issue` |  |
+| `autoclose_referenced_issues` |  |
 | `avatar_url` |  |
 | `build_git_strategy` |  |
 | `build_timeout` |  |
@@ -3091,23 +3091,23 @@ API path: `/api/v4/application/plan_limits`
 | `ci_allow_fork_pipelines_to_run_in_parent_project` |  |
 | `ci_config_path` |  |
 | `ci_default_git_depth` |  |
-| `ci_delete_pipelines_in_second` |  |
+| `ci_delete_pipelines_in_seconds` |  |
 | `ci_forward_deployment_enabled` |  |
 | `ci_forward_deployment_rollback_allowed` |  |
-| `ci_id_token_sub_claim_component` |  |
+| `ci_id_token_sub_claim_components` |  |
 | `ci_job_token_scope_enabled` |  |
 | `ci_pipeline_variables_minimum_override_role` |  |
 | `ci_push_repository_for_job_token_allowed` |  |
 | `ci_restrict_pipeline_cancellation_role` |  |
-| `ci_separated_cache` |  |
-| `compliance_framework` |  |
+| `ci_separated_caches` |  |
+| `compliance_frameworks` |  |
 | `container_expiration_policy` |  |
 | `container_registry_access_level` |  |
 | `container_registry_enabled` |  |
 | `container_registry_image_prefix` |  |
 | `created_at` |  |
 | `creator_id` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `description` |  |
 | `description_html` |  |
@@ -3115,7 +3115,7 @@ API path: `/api/v4/application/plan_limits`
 | `emails_disabled` |  |
 | `emails_enabled` |  |
 | `empty_repo` |  |
-| `enforce_auth_checks_on_upload` |  |
+| `enforce_auth_checks_on_uploads` |  |
 | `environments_access_level` |  |
 | `external_authorization_classification_label` |  |
 | `feature_flags_access_level` |  |
@@ -3140,7 +3140,7 @@ API path: `/api/v4/application/plan_limits`
 | `lfs_enabled` |  |
 | `license` |  |
 | `license_url` |  |
-| `link` |  |
+| `links` |  |
 | `marked_for_deletion_at` |  |
 | `marked_for_deletion_on` |  |
 | `max_artifacts_size` |  |
@@ -3155,8 +3155,8 @@ API path: `/api/v4/application/plan_limits`
 | `merge_trains_enabled` |  |
 | `merge_trains_skip_train_allowed` |  |
 | `mirror` |  |
-| `mirror_overwrites_diverged_branch` |  |
-| `mirror_trigger_build` |  |
+| `mirror_overwrites_diverged_branches` |  |
+| `mirror_trigger_builds` |  |
 | `mirror_user_id` |  |
 | `model_experiments_access_level` |  |
 | `model_registry_access_level` |  |
@@ -3167,8 +3167,8 @@ API path: `/api/v4/application/plan_limits`
 | `namespace` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` |  |
 | `only_allow_merge_if_all_status_checks_passed` |  |
-| `only_allow_merge_if_pipeline_succeed` |  |
-| `only_mirror_protected_branch` |  |
+| `only_allow_merge_if_pipeline_succeeds` |  |
+| `only_mirror_protected_branches` |  |
 | `open_issues_count` |  |
 | `owner` |  |
 | `package_registry_access_level` |  |
@@ -3179,7 +3179,7 @@ API path: `/api/v4/application/plan_limits`
 | `pre_receive_secret_detection_enabled` |  |
 | `prevent_merge_without_jira_issue` |  |
 | `printing_merge_request_link_enabled` |  |
-| `public_job` |  |
+| `public_jobs` |  |
 | `readme_url` |  |
 | `releases_access_level` |  |
 | `remove_source_branch_after_merge` |  |
@@ -3189,9 +3189,9 @@ API path: `/api/v4/application/plan_limits`
 | `request_access_enabled` |  |
 | `requirements_access_level` |  |
 | `requirements_enabled` |  |
-| `resolve_outdated_diff_discussion` |  |
+| `resolve_outdated_diff_discussions` |  |
 | `resource_group_default_process_mode` |  |
-| `restrict_user_defined_variable` |  |
+| `restrict_user_defined_variables` |  |
 | `runner_token_expiration_interval` |  |
 | `runners_token` |  |
 | `secret_push_protection_enabled` |  |
@@ -3200,7 +3200,7 @@ API path: `/api/v4/application/plan_limits`
 | `service_desk_address` |  |
 | `service_desk_enabled` |  |
 | `shared_runners_enabled` |  |
-| `shared_with_group` |  |
+| `shared_with_groups` |  |
 | `show_diff_preview_in_email` |  |
 | `snippets_access_level` |  |
 | `snippets_enabled` |  |
@@ -3209,13 +3209,13 @@ API path: `/api/v4/application/plan_limits`
 | `squash_option` |  |
 | `ssh_url_to_repo` |  |
 | `star_count` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `suggestion_commit_message` |  |
 | `tag_list` |  |
-| `topic` |  |
+| `topics` |  |
 | `updated_at` |  |
 | `visibility` |  |
-| `warn_about_potentially_unwanted_character` |  |
+| `warn_about_potentially_unwanted_characters` |  |
 | `web_based_commit_signing_enabled` |  |
 | `web_url` |  |
 | `wiki_access_level` |  |
@@ -3229,7 +3229,8 @@ API path: `/api/v4/projects/{id}/fork/{forked_from_id}`
 
 | Field | Description |
 | --- | --- |
-| `fetch` |  |
+| `days` |  |
+| `total` |  |
 
 Operations: Load.
 
@@ -3239,15 +3240,8 @@ API path: `/api/v4/projects/{id}/statistics`
 
 | Field | Description |
 | --- | --- |
-| `created_at` |  |
-| `description` |  |
-| `export_status` |  |
-| `id` |  |
-| `link` |  |
-| `name` |  |
-| `name_with_namespace` |  |
-| `path` |  |
-| `path_with_namespace` |  |
+| `api_url` |  |
+| `web_url` |  |
 
 Operations: Load.
 
@@ -3268,36 +3262,36 @@ API path: `/api/v4/projects/{id}/share`
 | --- | --- |
 | `alert_status` |  |
 | `branch_filter_strategy` |  |
-| `confidential_issues_event` |  |
-| `confidential_note_event` |  |
+| `confidential_issues_events` |  |
+| `confidential_note_events` |  |
 | `created_at` |  |
-| `custom_header` |  |
+| `custom_headers` |  |
 | `custom_webhook_template` |  |
-| `deployment_event` |  |
+| `deployment_events` |  |
 | `description` |  |
 | `disabled_until` |  |
-| `emoji_event` |  |
+| `emoji_events` |  |
 | `enable_ssl_verification` |  |
-| `feature_flag_event` |  |
+| `feature_flag_events` |  |
 | `id` |  |
-| `issues_event` |  |
-| `job_event` |  |
-| `merge_requests_event` |  |
-| `milestone_event` |  |
+| `issues_events` |  |
+| `job_events` |  |
+| `merge_requests_events` |  |
+| `milestone_events` |  |
 | `name` |  |
-| `note_event` |  |
-| `pipeline_event` |  |
+| `note_events` |  |
+| `pipeline_events` |  |
 | `project_id` |  |
-| `push_event` |  |
+| `push_events` |  |
 | `push_events_branch_filter` |  |
-| `releases_event` |  |
-| `repository_update_event` |  |
-| `resource_access_token_event` |  |
-| `tag_push_event` |  |
+| `releases_events` |  |
+| `repository_update_events` |  |
+| `resource_access_token_events` |  |
+| `tag_push_events` |  |
 | `url` |  |
-| `url_variable` |  |
-| `vulnerability_event` |  |
-| `wiki_page_event` |  |
+| `url_variables` |  |
+| `vulnerability_events` |  |
+| `wiki_page_events` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -3350,8 +3344,8 @@ API path: `/api/v4/projects/{id}/storage`
 | `author` |  |
 | `created_at` |  |
 | `description` |  |
-| `file` |  |
 | `file_name` |  |
+| `files` |  |
 | `http_url_to_repo` |  |
 | `id` |  |
 | `imported` |  |
@@ -3387,11 +3381,11 @@ API path: `/api/v4/projects/{id}/uploads`
 | `analytics_access_level` |  |
 | `approvals_before_merge` |  |
 | `archived` |  |
-| `auto_cancel_pending_pipeline` |  |
+| `auto_cancel_pending_pipelines` |  |
 | `auto_devops_deploy_strategy` |  |
 | `auto_devops_enabled` |  |
 | `auto_duo_code_review_enabled` |  |
-| `autoclose_referenced_issue` |  |
+| `autoclose_referenced_issues` |  |
 | `avatar_url` |  |
 | `build_git_strategy` |  |
 | `build_timeout` |  |
@@ -3400,23 +3394,23 @@ API path: `/api/v4/projects/{id}/uploads`
 | `ci_allow_fork_pipelines_to_run_in_parent_project` |  |
 | `ci_config_path` |  |
 | `ci_default_git_depth` |  |
-| `ci_delete_pipelines_in_second` |  |
+| `ci_delete_pipelines_in_seconds` |  |
 | `ci_forward_deployment_enabled` |  |
 | `ci_forward_deployment_rollback_allowed` |  |
-| `ci_id_token_sub_claim_component` |  |
+| `ci_id_token_sub_claim_components` |  |
 | `ci_job_token_scope_enabled` |  |
 | `ci_pipeline_variables_minimum_override_role` |  |
 | `ci_push_repository_for_job_token_allowed` |  |
 | `ci_restrict_pipeline_cancellation_role` |  |
-| `ci_separated_cache` |  |
-| `compliance_framework` |  |
+| `ci_separated_caches` |  |
+| `compliance_frameworks` |  |
 | `container_expiration_policy` |  |
 | `container_registry_access_level` |  |
 | `container_registry_enabled` |  |
 | `container_registry_image_prefix` |  |
 | `created_at` |  |
 | `creator_id` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `description` |  |
 | `description_html` |  |
@@ -3424,7 +3418,7 @@ API path: `/api/v4/projects/{id}/uploads`
 | `emails_disabled` |  |
 | `emails_enabled` |  |
 | `empty_repo` |  |
-| `enforce_auth_checks_on_upload` |  |
+| `enforce_auth_checks_on_uploads` |  |
 | `environments_access_level` |  |
 | `external_authorization_classification_label` |  |
 | `feature_flags_access_level` |  |
@@ -3449,7 +3443,7 @@ API path: `/api/v4/projects/{id}/uploads`
 | `lfs_enabled` |  |
 | `license` |  |
 | `license_url` |  |
-| `link` |  |
+| `links` |  |
 | `marked_for_deletion_at` |  |
 | `marked_for_deletion_on` |  |
 | `max_artifacts_size` |  |
@@ -3464,8 +3458,8 @@ API path: `/api/v4/projects/{id}/uploads`
 | `merge_trains_enabled` |  |
 | `merge_trains_skip_train_allowed` |  |
 | `mirror` |  |
-| `mirror_overwrites_diverged_branch` |  |
-| `mirror_trigger_build` |  |
+| `mirror_overwrites_diverged_branches` |  |
+| `mirror_trigger_builds` |  |
 | `mirror_user_id` |  |
 | `model_experiments_access_level` |  |
 | `model_registry_access_level` |  |
@@ -3476,8 +3470,8 @@ API path: `/api/v4/projects/{id}/uploads`
 | `namespace` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` |  |
 | `only_allow_merge_if_all_status_checks_passed` |  |
-| `only_allow_merge_if_pipeline_succeed` |  |
-| `only_mirror_protected_branch` |  |
+| `only_allow_merge_if_pipeline_succeeds` |  |
+| `only_mirror_protected_branches` |  |
 | `open_issues_count` |  |
 | `owner` |  |
 | `package_registry_access_level` |  |
@@ -3485,11 +3479,11 @@ API path: `/api/v4/projects/{id}/uploads`
 | `pages_access_level` |  |
 | `path` |  |
 | `path_with_namespace` |  |
-| `permission` |  |
+| `permissions` |  |
 | `pre_receive_secret_detection_enabled` |  |
 | `prevent_merge_without_jira_issue` |  |
 | `printing_merge_request_link_enabled` |  |
-| `public_job` |  |
+| `public_jobs` |  |
 | `readme_url` |  |
 | `releases_access_level` |  |
 | `remove_source_branch_after_merge` |  |
@@ -3499,9 +3493,9 @@ API path: `/api/v4/projects/{id}/uploads`
 | `request_access_enabled` |  |
 | `requirements_access_level` |  |
 | `requirements_enabled` |  |
-| `resolve_outdated_diff_discussion` |  |
+| `resolve_outdated_diff_discussions` |  |
 | `resource_group_default_process_mode` |  |
-| `restrict_user_defined_variable` |  |
+| `restrict_user_defined_variables` |  |
 | `runner_token_expiration_interval` |  |
 | `runners_token` |  |
 | `secret_push_protection_enabled` |  |
@@ -3510,7 +3504,7 @@ API path: `/api/v4/projects/{id}/uploads`
 | `service_desk_address` |  |
 | `service_desk_enabled` |  |
 | `shared_runners_enabled` |  |
-| `shared_with_group` |  |
+| `shared_with_groups` |  |
 | `show_diff_preview_in_email` |  |
 | `snippets_access_level` |  |
 | `snippets_enabled` |  |
@@ -3519,13 +3513,13 @@ API path: `/api/v4/projects/{id}/uploads`
 | `squash_option` |  |
 | `ssh_url_to_repo` |  |
 | `star_count` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `suggestion_commit_message` |  |
 | `tag_list` |  |
-| `topic` |  |
+| `topics` |  |
 | `updated_at` |  |
 | `visibility` |  |
-| `warn_about_potentially_unwanted_character` |  |
+| `warn_about_potentially_unwanted_characters` |  |
 | `web_based_commit_signing_enabled` |  |
 | `web_url` |  |
 | `wiki_access_level` |  |
@@ -3588,10 +3582,10 @@ API path: `/api/v4/topics`
 | `code_owner_approval_required` |  |
 | `id` |  |
 | `inherited` |  |
-| `merge_access_level` |  |
+| `merge_access_levels` |  |
 | `name` |  |
-| `push_access_level` |  |
-| `unprotect_access_level` |  |
+| `push_access_levels` |  |
+| `unprotect_access_levels` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -3601,8 +3595,14 @@ API path: `/api/v4/projects/{id}/protected_branches`
 
 | Field | Description |
 | --- | --- |
-| `create_access_level` |  |
+| `access_level` |  |
+| `access_level_description` |  |
+| `create_access_levels` |  |
+| `deploy_key_id` |  |
+| `group_id` |  |
+| `id` |  |
 | `name` |  |
+| `user_id` |  |
 
 Operations: Create, List, Load.
 
@@ -3628,6 +3628,7 @@ API path: `/api/v4/projects/{id}/groups`
 | Field | Description |
 | --- | --- |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_issues_count` |  |
 | `closed_at` |  |
@@ -3636,11 +3637,11 @@ API path: `/api/v4/projects/{id}/groups`
 | `created_at` |  |
 | `description` |  |
 | `discussion_locked` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `due_date` |  |
 | `epic` |  |
 | `epic_iid` |  |
-| `has_task` |  |
+| `has_tasks` |  |
 | `health_status` |  |
 | `id` |  |
 | `iid` |  |
@@ -3649,27 +3650,27 @@ API path: `/api/v4/projects/{id}/groups`
 | `issue_link_id` |  |
 | `issue_type` |  |
 | `iteration` |  |
-| `label` |  |
-| `link` |  |
+| `labels` |  |
 | `link_created_at` |  |
 | `link_type` |  |
 | `link_updated_at` |  |
+| `links` |  |
 | `merge_requests_count` |  |
 | `milestone` |  |
 | `moved_to_id` |  |
 | `project_id` |  |
-| `reference` |  |
+| `references` |  |
 | `service_desk_reply_to` |  |
 | `severity` |  |
 | `state` |  |
 | `subscribed` |  |
 | `task_completion_status` |  |
 | `task_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `type` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
 | `weight` |  |
@@ -3691,16 +3692,16 @@ API path: `/api/v4/projects/import-relation`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
+| `assets` |  |
 | `author` |  |
 | `commit` |  |
 | `commit_path` |  |
 | `created_at` |  |
 | `description` |  |
 | `description_html` |  |
-| `evidence` |  |
-| `link` |  |
-| `milestone` |  |
+| `evidences` |  |
+| `links` |  |
+| `milestones` |  |
 | `name` |  |
 | `released_at` |  |
 | `tag_name` |  |
@@ -3731,15 +3732,15 @@ API path: `/api/v4/projects/{id}/releases/{tag_name}/assets/links`
 | --- | --- |
 | `auth_method` |  |
 | `enabled` |  |
-| `host_key` |  |
+| `host_keys` |  |
 | `id` |  |
-| `keep_divergent_ref` |  |
+| `keep_divergent_refs` |  |
 | `last_error` |  |
 | `last_successful_update_at` |  |
 | `last_update_at` |  |
 | `last_update_started_at` |  |
 | `mirror_branch_regex` |  |
-| `only_protected_branch` |  |
+| `only_protected_branches` |  |
 | `update_status` |  |
 | `url` |  |
 
@@ -3751,15 +3752,15 @@ API path: `/api/v4/projects/{id}/remote_mirrors`
 
 | Field | Description |
 | --- | --- |
-| `alternate` |  |
+| `alternates` |  |
 | `bitmap` |  |
 | `commit_graph` |  |
 | `is_object_pool` |  |
 | `last_full_repack` |  |
 | `multi_pack_index` |  |
 | `multi_pack_index_bitmap` |  |
-| `object` |  |
-| `reference` |  |
+| `objects` |  |
+| `references` |  |
 | `size` |  |
 | `updated_at` |  |
 
@@ -3782,7 +3783,7 @@ API path: `/api/v4/projects/{id}/repository/health`
 | `resource_id` |  |
 | `resource_type` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `token` |  |
 | `user_id` |  |
 
@@ -3814,8 +3815,8 @@ API path: `/api/v4/projects/{id}/issues/{eventable_id}/resource_milestone_events
 | `author` |  |
 | `created_at` |  |
 | `description` |  |
-| `file` |  |
 | `file_name` |  |
+| `files` |  |
 | `http_url_to_repo` |  |
 | `id` |  |
 | `imported` |  |
@@ -3837,14 +3838,52 @@ API path: `/api/v4/snippets/all`
 
 | Field | Description |
 | --- | --- |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `bio` |  |
+| `bot` |  |
+| `can_create_group` |  |
+| `can_create_project` |  |
+| `color_scheme_id` |  |
+| `commit_email` |  |
+| `confirmed_at` |  |
 | `created_at` |  |
-| `expires_at` |  |
+| `current_sign_in_at` |  |
+| `custom_attributes` |  |
+| `discord` |  |
+| `email` |  |
+| `external` |  |
+| `extra_shared_runners_minutes_limit` |  |
+| `followers` |  |
+| `following` |  |
+| `github` |  |
 | `id` |  |
-| `key` |  |
-| `last_used_at` |  |
-| `title` |  |
-| `usage_type` |  |
-| `user` |  |
+| `identities` |  |
+| `is_followed` |  |
+| `job_title` |  |
+| `last_activity_on` |  |
+| `last_sign_in_at` |  |
+| `linkedin` |  |
+| `local_time` |  |
+| `location` |  |
+| `locked` |  |
+| `name` |  |
+| `organization` |  |
+| `preferred_language` |  |
+| `private_profile` |  |
+| `projects_limit` |  |
+| `pronouns` |  |
+| `public_email` |  |
+| `scim_identities` |  |
+| `shared_runners_minutes_limit` |  |
+| `state` |  |
+| `theme_id` |  |
+| `twitter` |  |
+| `two_factor_enabled` |  |
+| `username` |  |
+| `web_url` |  |
+| `website_url` |  |
+| `work_information` |  |
 
 Operations: Load.
 
@@ -3879,7 +3918,7 @@ API path: `/api/v4/suggestions/{id}/apply`
 | `id` |  |
 | `message` |  |
 | `starts_at` |  |
-| `target_access_level` |  |
+| `target_access_levels` |  |
 | `target_path` |  |
 | `theme` |  |
 
@@ -3929,13 +3968,15 @@ API path: `/api/v4/projects/{id}/templates/{type}`
 
 | Field | Description |
 | --- | --- |
-| `module` |  |
+| `modules` |  |
 | `name` |  |
 | `provider` |  |
+| `providers` |  |
 | `root` |  |
 | `source` |  |
-| `submodule` |  |
+| `submodules` |  |
 | `version` |  |
+| `versions` |  |
 
 Operations: List, Load.
 
@@ -3959,14 +4000,23 @@ API path: `/api/v4/projects/{id}/repository/tree`
 
 | Field | Description |
 | --- | --- |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
 | `description` |  |
 | `expires_at` |  |
 | `id` |  |
 | `last_used` |  |
+| `locked` |  |
+| `name` |  |
 | `owner` |  |
+| `public_email` |  |
+| `state` |  |
 | `token` |  |
 | `updated_at` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -3988,11 +4038,11 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/user_agent_detail`
 
 | Field | Description |
 | --- | --- |
-| `assigned_issue` |  |
-| `assigned_merge_request` |  |
-| `merge_request` |  |
-| `review_requested_merge_request` |  |
-| `todo` |  |
+| `assigned_issues` |  |
+| `assigned_merge_requests` |  |
+| `merge_requests` |  |
+| `review_requested_merge_requests` |  |
+| `todos` |  |
 
 Operations: Load.
 
@@ -4013,16 +4063,16 @@ API path: `/api/v4/user_counts`
 | `confirmed_at` |  |
 | `created_at` |  |
 | `current_sign_in_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `discord` |  |
 | `email` |  |
 | `external` |  |
 | `extra_shared_runners_minutes_limit` |  |
-| `follower` |  |
+| `followers` |  |
 | `following` |  |
 | `github` |  |
 | `id` |  |
-| `identity` |  |
+| `identities` |  |
 | `is_followed` |  |
 | `job_title` |  |
 | `key` |  |
@@ -4037,9 +4087,9 @@ API path: `/api/v4/user_counts`
 | `preferred_language` |  |
 | `private_profile` |  |
 | `projects_limit` |  |
-| `pronoun` |  |
+| `pronouns` |  |
 | `public_email` |  |
-| `scim_identity` |  |
+| `scim_identities` |  |
 | `shared_runners_minutes_limit` |  |
 | `state` |  |
 | `theme_id` |  |
@@ -4079,13 +4129,6 @@ API path: `/api/v4/groups/{id}/wikis/attachments`
 
 | Field | Description |
 | --- | --- |
-| `content` |  |
-| `encoding` |  |
-| `format` |  |
-| `front_matter` |  |
-| `slug` |  |
-| `title` |  |
-| `wiki_page_meta_id` |  |
 
 Operations: Create, Load, Update.
 
@@ -4319,7 +4362,7 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approvals`
 | --- | --- |
 | `author_id` |  |
 | `created_at` |  |
-| `detail` |  |
+| `details` |  |
 | `entity_id` |  |
 | `entity_type` |  |
 | `event_name` |  |
@@ -4333,13 +4376,9 @@ API path: `/api/v4/groups/{id}/audit_events`
 
 | Field | Description |
 | --- | --- |
-| `access_level` |  |
-| `created_at` |  |
-| `expires_at` |  |
-| `id` |  |
-| `source_full_name` |  |
-| `source_id` |  |
-| `source_members_url` |  |
+| `custom_role` |  |
+| `integer_value` |  |
+| `string_value` |  |
 
 Operations: Load.
 
@@ -4376,7 +4415,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `container_repositories_verified_in_percentage` |  |
 | `cursor_last_event_id` |  |
 | `cursor_last_event_timestamp` |  |
-| `db_replication_lag_second` |  |
+| `db_replication_lag_seconds` |  |
 | `dependency_proxy_blobs_checksum_failed_count` |  |
 | `dependency_proxy_blobs_checksum_total_count` |  |
 | `dependency_proxy_blobs_checksummed_count` |  |
@@ -4458,7 +4497,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `lfs_objects_verification_total_count` |  |
 | `lfs_objects_verified_count` |  |
 | `lfs_objects_verified_in_percentage` |  |
-| `link` |  |
+| `links` |  |
 | `merge_request_diffs_checksum_failed_count` |  |
 | `merge_request_diffs_checksum_total_count` |  |
 | `merge_request_diffs_checksummed_count` |  |
@@ -4472,7 +4511,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `merge_request_diffs_verified_count` |  |
 | `merge_request_diffs_verified_in_percentage` |  |
 | `missing_oauth_application` |  |
-| `namespace` |  |
+| `namespaces` |  |
 | `package_files_checksum_failed_count` |  |
 | `package_files_checksum_total_count` |  |
 | `package_files_checksummed_count` |  |
@@ -4537,7 +4576,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `proxy_local_requests_event_count_weekly` |  |
 | `proxy_remote_requests_event_count_weekly` |  |
 | `replication_slots_count` |  |
-| `replication_slots_max_retained_wal_byte` |  |
+| `replication_slots_max_retained_wal_bytes` |  |
 | `replication_slots_used_count` |  |
 | `replication_slots_used_in_percentage` |  |
 | `repositories_checked_count` |  |
@@ -4558,7 +4597,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `snippet_repositories_verification_total_count` |  |
 | `snippet_repositories_verified_count` |  |
 | `snippet_repositories_verified_in_percentage` |  |
-| `storage_shard` |  |
+| `storage_shards` |  |
 | `storage_shards_match` |  |
 | `terraform_state_versions_checksum_failed_count` |  |
 | `terraform_state_versions_checksum_total_count` |  |
@@ -4595,7 +4634,7 @@ API path: `/api/v4/geo/status`
 
 | Field | Description |
 | --- | --- |
-| `pipeline_ref` |  |
+| `pipeline_refs` |  |
 
 Operations: List.
 
@@ -4624,9 +4663,9 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/metric_images`
 | `approved` |  |
 | `approved_by` |  |
 | `code_owner` |  |
-| `contains_hidden_group` |  |
-| `eligible_approver` |  |
-| `group` |  |
+| `contains_hidden_groups` |  |
+| `eligible_approvers` |  |
+| `groups` |  |
 | `id` |  |
 | `name` |  |
 | `overridden` |  |
@@ -4634,7 +4673,7 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/metric_images`
 | `rule_type` |  |
 | `section` |  |
 | `source_rule` |  |
-| `user` |  |
+| `users` |  |
 
 Operations: List.
 
@@ -4873,9 +4912,9 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/related_issu
 
 | Field | Description |
 | --- | --- |
-| `enterprise` |  |
-| `kas` |  |
-| `revision` |  |
+| `enabled` |  |
+| `externalK8sProxyUrl` |  |
+| `externalUrl` |  |
 | `version` |  |
 
 Operations: Load.
@@ -4940,13 +4979,22 @@ API path: `/api/v4/projects/{id}/packages/nuget`
 
 | Field | Description |
 | --- | --- |
-| `catalog_entry` |  |
+| `authors` |  |
 | `count` |  |
+| `dependencyGroups` |  |
+| `description` |  |
+| `iconUrl` |  |
 | `id` |  |
-| `item` |  |
+| `items` |  |
+| `licenseUrl` |  |
 | `lower` |  |
-| `package_content` |  |
+| `packageContent` |  |
+| `projectUrl` |  |
+| `published` |  |
+| `summary` |  |
+| `tags` |  |
 | `upper` |  |
+| `version` |  |
 
 Operations: List, Load, Remove, Update.
 
@@ -5015,7 +5063,7 @@ API path: `/api/v4/personal_access_tokens/{id}`
 | `updated_at` |  |
 | `user` |  |
 | `web_url` |  |
-| `yaml_error` |  |
+| `yaml_errors` |  |
 
 Operations: Create, Load, Remove, Update.
 
@@ -5256,7 +5304,7 @@ API path: `/api/v4/snippets/{id}/files/{ref}/{file_path}/raw`
 | --- | --- |
 | `avatar_path` |  |
 | `avatar_url` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `id` |  |
 | `locked` |  |
 | `name` |  |
@@ -5315,7 +5363,7 @@ API path: `/api/v4/projects/{id}/terraform/state/{name}/lock`
 | `skipped_count` |  |
 | `success_count` |  |
 | `suite_error` |  |
-| `test_case` |  |
+| `test_cases` |  |
 | `total_count` |  |
 | `total_time` |  |
 
@@ -5327,7 +5375,7 @@ API path: `/api/v4/projects/{id}/pipelines/{pipeline_id}/test_report`
 
 | Field | Description |
 | --- | --- |
-| `test_suite` |  |
+| `test_suites` |  |
 | `total` |  |
 
 Operations: Load.
@@ -5367,7 +5415,7 @@ API path: `/api/v4/usage_data/increment_counter`
 | --- | --- |
 | `avatar_path` |  |
 | `avatar_url` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `id` |  |
 | `locked` |  |
 | `name` |  |
@@ -5453,7 +5501,7 @@ Create an instance: `$api_entities_access_requester = $client->ApiEntitiesAccess
 | --- | --- | --- |
 | `avatar_path` | `string` |  |
 | `avatar_url` | `string` |  |
-| `custom_attribute` | `array` |  |
+| `custom_attributes` | `array` |  |
 | `id` | `int` |  |
 | `key` | `string` |  |
 | `locked` | `bool` |  |
@@ -5502,11 +5550,11 @@ Create an instance: `$api_entities_appearance = $client->ApiEntitiesAppearance()
 | `header_logo` | `string` |  |
 | `header_message` | `string` |  |
 | `logo` | `string` |  |
-| `member_guideline` | `string` |  |
+| `member_guidelines` | `string` |  |
 | `message_background_color` | `string` |  |
 | `message_font_color` | `string` |  |
-| `new_project_guideline` | `string` |  |
-| `profile_image_guideline` | `string` |  |
+| `new_project_guidelines` | `string` |  |
+| `profile_image_guidelines` | `string` |  |
 | `pwa_description` | `string` |  |
 | `pwa_icon` | `string` |  |
 | `pwa_name` | `string` |  |
@@ -5516,7 +5564,7 @@ Create an instance: `$api_entities_appearance = $client->ApiEntitiesAppearance()
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesAppearance record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesAppearance record (throws on error).
 $api_entities_appearance = $client->ApiEntitiesAppearance()->load();
 ```
 
@@ -5563,22 +5611,22 @@ Create an instance: `$api_entities_application_statistic = $client->ApiEntitiesA
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active_user` | `int` |  |
-| `fork` | `int` |  |
-| `group` | `int` |  |
-| `issue` | `int` |  |
-| `merge_request` | `int` |  |
-| `milestone` | `int` |  |
-| `note` | `int` |  |
-| `project` | `int` |  |
-| `snippet` | `int` |  |
-| `ssh_key` | `int` |  |
-| `user` | `int` |  |
+| `active_users` | `int` |  |
+| `forks` | `int` |  |
+| `groups` | `int` |  |
+| `issues` | `int` |  |
+| `merge_requests` | `int` |  |
+| `milestones` | `int` |  |
+| `notes` | `int` |  |
+| `projects` | `int` |  |
+| `snippets` | `int` |  |
+| `ssh_keys` | `int` |  |
+| `users` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesApplicationStatistic record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesApplicationStatistic record (throws on error).
 $api_entities_application_statistic = $client->ApiEntitiesApplicationStatistic()->load();
 ```
 
@@ -5631,7 +5679,7 @@ Create an instance: `$api_entities_avatar = $client->ApiEntitiesAvatar();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesAvatar record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesAvatar record (throws on error).
 $api_entities_avatar = $client->ApiEntitiesAvatar()->load();
 ```
 
@@ -5652,19 +5700,27 @@ Create an instance: `$api_entities_award_emoji = $client->ApiEntitiesAwardEmoji(
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
 | `awardable_id` | `int` |  |
 | `awardable_type` | `string` |  |
 | `created_at` | `string` |  |
+| `custom_attributes` | `array` |  |
 | `id` | `int` |  |
+| `locked` | `bool` |  |
 | `name` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
 | `updated_at` | `string` |  |
 | `url` | `string` |  |
 | `user` | `array` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesAwardEmoji record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesAwardEmoji record (throws on error).
 $api_entities_award_emoji = $client->ApiEntitiesAwardEmoji()->load(["id" => "api_entities_award_emoji_id"]);
 ```
 
@@ -5711,7 +5767,7 @@ Create an instance: `$api_entities_badge = $client->ApiEntitiesBadge();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesBadge record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesBadge record (throws on error).
 $api_entities_badge = $client->ApiEntitiesBadge()->load(["id" => "api_entities_badge_id"]);
 ```
 
@@ -5753,7 +5809,7 @@ Create an instance: `$api_entities_basic_badge_detail = $client->ApiEntitiesBasi
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesBasicBadgeDetail record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesBasicBadgeDetail record (throws on error).
 $api_entities_basic_badge_detail = $client->ApiEntitiesBasicBadgeDetail()->load();
 ```
 
@@ -5794,7 +5850,7 @@ Create an instance: `$api_entities_basic_project_detail = $client->ApiEntitiesBa
 | --- | --- | --- |
 | `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
-| `custom_attribute` | `array` |  |
+| `custom_attributes` | `array` |  |
 | `default_branch` | `string` |  |
 | `description` | `string` |  |
 | `forks_count` | `int` |  |
@@ -5813,7 +5869,7 @@ Create an instance: `$api_entities_basic_project_detail = $client->ApiEntitiesBa
 | `ssh_url_to_repo` | `string` |  |
 | `star_count` | `int` |  |
 | `tag_list` | `array` |  |
-| `topic` | `array` |  |
+| `topics` | `array` |  |
 | `visibility` | `string` |  |
 | `web_url` | `string` |  |
 
@@ -5903,7 +5959,7 @@ Create an instance: `$api_entities_batched_background_migration = $client->ApiEn
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesBatchedBackgroundMigration record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesBatchedBackgroundMigration record (throws on error).
 $api_entities_batched_background_migration = $client->ApiEntitiesBatchedBackgroundMigration()->load(["id" => "api_entities_batched_background_migration_id"]);
 ```
 
@@ -5932,20 +5988,34 @@ Create an instance: `$api_entities_branch = $client->ApiEntitiesBranch();`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `author_email` | `string` |  |
+| `author_name` | `string` |  |
+| `authored_date` | `string` |  |
 | `can_push` | `bool` |  |
 | `commit` | `array` |  |
+| `committed_date` | `string` |  |
+| `committer_email` | `string` |  |
+| `committer_name` | `string` |  |
+| `created_at` | `string` |  |
 | `default` | `bool` |  |
 | `developers_can_merge` | `bool` |  |
 | `developers_can_push` | `bool` |  |
+| `extended_trailers` | `array` |  |
+| `id` | `string` |  |
 | `merged` | `bool` |  |
+| `message` | `string` |  |
 | `name` | `string` |  |
+| `parent_ids` | `array` |  |
 | `protected` | `bool` |  |
+| `short_id` | `string` |  |
+| `title` | `string` |  |
+| `trailers` | `array` |  |
 | `web_url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesBranch record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesBranch record (throws on error).
 $api_entities_branch = $client->ApiEntitiesBranch()->load(["id" => "api_entities_branch_id", "project_id" => "project_id"]);
 ```
 
@@ -5988,25 +6058,25 @@ Create an instance: `$api_entities_bulk_import = $client->ApiEntitiesBulkImport(
 | `destination_namespace` | `string` |  |
 | `destination_slug` | `string` |  |
 | `entity_type` | `string` |  |
-| `failure` | `array` |  |
-| `has_failure` | `bool` |  |
+| `failures` | `array` |  |
+| `has_failures` | `bool` |  |
 | `id` | `int` |  |
-| `migrate_membership` | `bool` |  |
-| `migrate_project` | `bool` |  |
+| `migrate_memberships` | `bool` |  |
+| `migrate_projects` | `bool` |  |
 | `namespace_id` | `int` |  |
 | `parent_id` | `int` |  |
 | `project_id` | `int` |  |
 | `source_full_path` | `string` |  |
 | `source_type` | `string` |  |
 | `source_url` | `string` |  |
-| `stat` | `array` |  |
+| `stats` | `array` |  |
 | `status` | `string` |  |
 | `updated_at` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesBulkImport record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesBulkImport record (throws on error).
 $api_entities_bulk_import = $client->ApiEntitiesBulkImport()->load(["id" => "api_entities_bulk_import_id"]);
 ```
 
@@ -6049,7 +6119,7 @@ Create an instance: `$api_entities_bulk_imports_entity_failure = $client->ApiEnt
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesBulkImportsEntityFailure record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesBulkImportsEntityFailure record (throws on error).
 $api_entities_bulk_imports_entity_failure = $client->ApiEntitiesBulkImportsEntityFailure()->load(["bulk_import_id" => "bulk_import_id", "entity_id" => "entity_id"]);
 ```
 
@@ -6068,8 +6138,8 @@ Create an instance: `$api_entities_bulk_imports_export_status = $client->ApiEnti
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `batch` | `array` |  |
 | `batched` | `bool` |  |
+| `batches` | `array` |  |
 | `batches_count` | `int` |  |
 | `error` | `string` |  |
 | `relation` | `string` |  |
@@ -6099,12 +6169,12 @@ Create an instance: `$api_entities_changelog = $client->ApiEntitiesChangelog();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `note` | `string` |  |
+| `notes` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesChangelog record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesChangelog record (throws on error).
 $api_entities_changelog = $client->ApiEntitiesChangelog()->load(["project_id" => "project_id"]);
 ```
 
@@ -6190,7 +6260,7 @@ Create an instance: `$api_entities_ci_job = $client->ApiEntitiesCiJob();`
 | --- | --- | --- |
 | `allow_failure` | `bool` |  |
 | `archived` | `bool` |  |
-| `artifact` | `array` |  |
+| `artifacts` | `array` |  |
 | `artifacts_expire_at` | `string` |  |
 | `artifacts_file` | `array` |  |
 | `commit` | `array` |  |
@@ -6223,7 +6293,7 @@ Create an instance: `$api_entities_ci_job = $client->ApiEntitiesCiJob();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCiJob record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCiJob record (throws on error).
 $api_entities_ci_job = $client->ApiEntitiesCiJob()->load(["id" => "api_entities_ci_job_id", "project_id" => "project_id"]);
 ```
 
@@ -6335,7 +6405,7 @@ Create an instance: `$api_entities_ci_job_basic_with_project = $client->ApiEntit
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCiJobBasicWithProject record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCiJobBasicWithProject record (throws on error).
 $api_entities_ci_job_basic_with_project = $client->ApiEntitiesCiJobBasicWithProject()->load(["runner_id" => "runner_id"]);
 ```
 
@@ -6358,16 +6428,16 @@ Create an instance: `$api_entities_ci_lint_result = $client->ApiEntitiesCiLintRe
 | `blob` | `string` |  |
 | `context_project` | `string` |  |
 | `context_sha` | `string` |  |
-| `error` | `array` |  |
+| `errors` | `array` |  |
 | `extra` | `array` |  |
-| `include` | `array` |  |
-| `job` | `array` |  |
+| `includes` | `array` |  |
+| `jobs` | `array` |  |
 | `location` | `string` |  |
 | `merged_yaml` | `string` |  |
 | `raw` | `string` |  |
 | `type` | `string` |  |
 | `valid` | `bool` |  |
-| `warning` | `array` |  |
+| `warnings` | `array` |  |
 
 #### Example: List
 
@@ -6433,7 +6503,7 @@ Create an instance: `$api_entities_ci_pipeline_basic = $client->ApiEntitiesCiPip
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCiPipelineBasic record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCiPipelineBasic record (throws on error).
 $api_entities_ci_pipeline_basic = $client->ApiEntitiesCiPipelineBasic()->load(["merge_request_id" => "merge_request_id", "project_id" => "project_id"]);
 ```
 
@@ -6465,7 +6535,7 @@ Create an instance: `$api_entities_ci_pipeline_schedule = $client->ApiEntitiesCi
 | `cron_timezone` | `string` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `input` | `array` |  |
+| `inputs` | `array` |  |
 | `next_run_at` | `string` |  |
 | `owner` | `array` |  |
 | `ref` | `string` |  |
@@ -6501,18 +6571,18 @@ Create an instance: `$api_entities_ci_pipeline_schedule_detail = $client->ApiEnt
 | `cron_timezone` | `string` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
-| `input` | `array` |  |
+| `inputs` | `array` |  |
 | `last_pipeline` | `array` |  |
 | `next_run_at` | `string` |  |
 | `owner` | `array` |  |
 | `ref` | `string` |  |
 | `updated_at` | `string` |  |
-| `variable` | `array` |  |
+| `variables` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCiPipelineScheduleDetail record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCiPipelineScheduleDetail record (throws on error).
 $api_entities_ci_pipeline_schedule_detail = $client->ApiEntitiesCiPipelineScheduleDetail()->load(["pipeline_schedule_id" => "pipeline_schedule_id", "project_id" => "project_id"]);
 ```
 
@@ -6568,7 +6638,7 @@ Create an instance: `$api_entities_ci_resource_group = $client->ApiEntitiesCiRes
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCiResourceGroup record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCiResourceGroup record (throws on error).
 $api_entities_ci_resource_group = $client->ApiEntitiesCiResourceGroup()->load(["id" => "api_entities_ci_resource_group_id", "project_id" => "project_id"]);
 ```
 
@@ -6595,24 +6665,21 @@ Create an instance: `$api_entities_ci_runner = $client->ApiEntitiesCiRunner();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active` | `bool` |  |
-| `created_at` | `string` |  |
-| `created_by` | `array` |  |
-| `description` | `string` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `custom_attributes` | `array` |  |
 | `id` | `int` |  |
-| `ip_address` | `string` |  |
-| `is_shared` | `bool` |  |
-| `job_execution_status` | `string` |  |
+| `locked` | `bool` |  |
 | `name` | `string` |  |
-| `online` | `bool` |  |
-| `paused` | `bool` |  |
-| `runner_type` | `string` |  |
-| `status` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCiRunner record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCiRunner record (throws on error).
 $api_entities_ci_runner = $client->ApiEntitiesCiRunner()->load();
 ```
 
@@ -6647,7 +6714,7 @@ Create an instance: `$api_entities_ci_runner_detail = $client->ApiEntitiesCiRunn
 | `created_at` | `string` |  |
 | `created_by` | `array` |  |
 | `description` | `string` |  |
-| `group` | `array` |  |
+| `groups` | `array` |  |
 | `id` | `int` |  |
 | `ip_address` | `string` |  |
 | `is_shared` | `bool` |  |
@@ -6659,7 +6726,7 @@ Create an instance: `$api_entities_ci_runner_detail = $client->ApiEntitiesCiRunn
 | `online` | `bool` |  |
 | `paused` | `bool` |  |
 | `platform` | `string` |  |
-| `project` | `array` |  |
+| `projects` | `array` |  |
 | `revision` | `string` |  |
 | `run_untagged` | `string` |  |
 | `runner_type` | `string` |  |
@@ -6670,7 +6737,7 @@ Create an instance: `$api_entities_ci_runner_detail = $client->ApiEntitiesCiRunn
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCiRunnerDetail record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCiRunnerDetail record (throws on error).
 $api_entities_ci_runner_detail = $client->ApiEntitiesCiRunnerDetail()->load(["id" => "api_entities_ci_runner_detail_id"]);
 ```
 
@@ -6704,7 +6771,7 @@ Create an instance: `$api_entities_ci_runner_manager = $client->ApiEntitiesCiRun
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCiRunnerManager record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCiRunnerManager record (throws on error).
 $api_entities_ci_runner_manager = $client->ApiEntitiesCiRunnerManager()->load(["runner_id" => "runner_id"]);
 ```
 
@@ -6738,23 +6805,10 @@ Create an instance: `$api_entities_ci_secure_file = $client->ApiEntitiesCiSecure
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `checksum` | `string` |  |
-| `checksum_algorithm` | `string` |  |
-| `created_at` | `string` |  |
-| `expires_at` | `string` |  |
-| `file_extension` | `string` |  |
-| `id` | `int` |  |
-| `metadata` | `array` |  |
-| `name` | `string` |  |
-
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCiSecureFile record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCiSecureFile record (throws on error).
 $api_entities_ci_secure_file = $client->ApiEntitiesCiSecureFile()->load(["id" => "api_entities_ci_secure_file_id", "project_id" => "project_id"]);
 ```
 
@@ -6797,7 +6851,7 @@ Create an instance: `$api_entities_ci_variable = $client->ApiEntitiesCiVariable(
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCiVariable record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCiVariable record (throws on error).
 $api_entities_ci_variable = $client->ApiEntitiesCiVariable()->load(["id" => "api_entities_ci_variable_id"]);
 ```
 
@@ -6843,7 +6897,7 @@ Create an instance: `$api_entities_cluster = $client->ApiEntitiesCluster();`
 | `management_project` | `array` |  |
 | `name` | `string` |  |
 | `namespace_per_environment` | `string` |  |
-| `platform_kubernete` | `array` |  |
+| `platform_kubernetes` | `array` |  |
 | `platform_type` | `string` |  |
 | `provider_gcp` | `array` |  |
 | `provider_type` | `string` |  |
@@ -6852,7 +6906,7 @@ Create an instance: `$api_entities_cluster = $client->ApiEntitiesCluster();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCluster record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCluster record (throws on error).
 $api_entities_cluster = $client->ApiEntitiesCluster()->load(["id" => "api_entities_cluster_id"]);
 ```
 
@@ -6898,7 +6952,7 @@ Create an instance: `$api_entities_cluster_group = $client->ApiEntitiesClusterGr
 | `management_project` | `array` |  |
 | `name` | `string` |  |
 | `namespace_per_environment` | `string` |  |
-| `platform_kubernete` | `array` |  |
+| `platform_kubernetes` | `array` |  |
 | `platform_type` | `string` |  |
 | `provider_gcp` | `array` |  |
 | `provider_type` | `string` |  |
@@ -6907,7 +6961,7 @@ Create an instance: `$api_entities_cluster_group = $client->ApiEntitiesClusterGr
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesClusterGroup record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesClusterGroup record (throws on error).
 $api_entities_cluster_group = $client->ApiEntitiesClusterGroup()->load(["cluster_id" => "cluster_id", "group_id" => "group_id"]);
 ```
 
@@ -6946,7 +7000,7 @@ Create an instance: `$api_entities_cluster_project = $client->ApiEntitiesCluster
 | `management_project` | `array` |  |
 | `name` | `string` |  |
 | `namespace_per_environment` | `string` |  |
-| `platform_kubernete` | `array` |  |
+| `platform_kubernetes` | `array` |  |
 | `platform_type` | `string` |  |
 | `project` | `array` |  |
 | `provider_gcp` | `array` |  |
@@ -6956,7 +7010,7 @@ Create an instance: `$api_entities_cluster_project = $client->ApiEntitiesCluster
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesClusterProject record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesClusterProject record (throws on error).
 $api_entities_cluster_project = $client->ApiEntitiesClusterProject()->load(["cluster_id" => "cluster_id", "project_id" => "project_id"]);
 ```
 
@@ -6984,17 +7038,18 @@ Create an instance: `$api_entities_clusters_agent = $client->ApiEntitiesClusters
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `config_project` | `array` |  |
 | `created_at` | `string` |  |
-| `created_by_user_id` | `string` |  |
-| `id` | `string` |  |
-| `is_receptive` | `bool` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
 | `name` | `string` |  |
+| `name_with_namespace` | `string` |  |
+| `path` | `string` |  |
+| `path_with_namespace` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesClustersAgent record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesClustersAgent record (throws on error).
 $api_entities_clusters_agent = $client->ApiEntitiesClustersAgent()->load(["project_id" => "project_id"]);
 ```
 
@@ -7033,7 +7088,7 @@ Create an instance: `$api_entities_clusters_agent_token = $client->ApiEntitiesCl
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesClustersAgentToken record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesClustersAgentToken record (throws on error).
 $api_entities_clusters_agent_token = $client->ApiEntitiesClustersAgentToken()->load(["id" => "api_entities_clusters_agent_token_id", "cluster_agent_id" => "cluster_agent_id", "project_id" => "project_id"]);
 ```
 
@@ -7063,7 +7118,7 @@ Create an instance: `$api_entities_clusters_agent_token_basic = $client->ApiEnti
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesClustersAgentTokenBasic record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesClustersAgentTokenBasic record (throws on error).
 $api_entities_clusters_agent_token_basic = $client->ApiEntitiesClustersAgentTokenBasic()->load(["cluster_agent_id" => "cluster_agent_id", "project_id" => "project_id"]);
 ```
 
@@ -7110,13 +7165,13 @@ Create an instance: `$api_entities_commit = $client->ApiEntitiesCommit();`
 | `committer_email` | `string` |  |
 | `committer_name` | `string` |  |
 | `created_at` | `string` |  |
-| `extended_trailer` | `array` |  |
+| `extended_trailers` | `array` |  |
 | `id` | `string` |  |
 | `message` | `string` |  |
-| `parent_id` | `array` |  |
+| `parent_ids` | `array` |  |
 | `short_id` | `string` |  |
 | `title` | `string` |  |
-| `trailer` | `array` |  |
+| `trailers` | `array` |  |
 | `web_url` | `string` |  |
 
 #### Example: List
@@ -7158,23 +7213,23 @@ Create an instance: `$api_entities_commit_detail = $client->ApiEntitiesCommitDet
 | `committer_email` | `string` |  |
 | `committer_name` | `string` |  |
 | `created_at` | `string` |  |
-| `extended_trailer` | `array` |  |
+| `extended_trailers` | `array` |  |
 | `id` | `string` |  |
 | `last_pipeline` | `array` |  |
 | `message` | `string` |  |
-| `parent_id` | `array` |  |
+| `parent_ids` | `array` |  |
 | `project_id` | `int` |  |
 | `short_id` | `string` |  |
-| `stat` | `array` |  |
+| `stats` | `array` |  |
 | `status` | `string` |  |
 | `title` | `string` |  |
-| `trailer` | `array` |  |
+| `trailers` | `array` |  |
 | `web_url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCommitDetail record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCommitDetail record (throws on error).
 $api_entities_commit_detail = $client->ApiEntitiesCommitDetail()->load(["project_id" => "project_id", "sha" => "sha"]);
 ```
 
@@ -7203,11 +7258,21 @@ Create an instance: `$api_entities_commit_note = $client->ApiEntitiesCommitNote(
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `array` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
+| `custom_attributes` | `array` |  |
+| `id` | `int` |  |
 | `line` | `int` |  |
 | `line_type` | `string` |  |
+| `locked` | `bool` |  |
+| `name` | `string` |  |
 | `note` | `string` |  |
 | `path` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: List
 
@@ -7245,7 +7310,7 @@ Create an instance: `$api_entities_commit_sequence = $client->ApiEntitiesCommitS
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCommitSequence record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCommitSequence record (throws on error).
 $api_entities_commit_sequence = $client->ApiEntitiesCommitSequence()->load(["project_id" => "project_id", "sha" => "sha"]);
 ```
 
@@ -7271,7 +7336,7 @@ Create an instance: `$api_entities_commit_signature = $client->ApiEntitiesCommit
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesCommitSignature record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesCommitSignature record (throws on error).
 $api_entities_commit_signature = $client->ApiEntitiesCommitSignature()->load(["project_id" => "project_id", "sha" => "sha"]);
 ```
 
@@ -7293,18 +7358,26 @@ Create an instance: `$api_entities_commit_status = $client->ApiEntitiesCommitSta
 | --- | --- | --- |
 | `allow_failure` | `bool` |  |
 | `author` | `array` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
 | `coverage` | `float` |  |
 | `created_at` | `string` |  |
+| `custom_attributes` | `array` |  |
 | `description` | `string` |  |
 | `finished_at` | `string` |  |
 | `id` | `int` |  |
+| `locked` | `bool` |  |
 | `name` | `string` |  |
 | `pipeline_id` | `int` |  |
+| `public_email` | `string` |  |
 | `ref` | `string` |  |
 | `sha` | `string` |  |
 | `started_at` | `string` |  |
+| `state` | `string` |  |
 | `status` | `string` |  |
 | `target_url` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: List
 
@@ -7338,9 +7411,10 @@ Create an instance: `$api_entities_compare = $client->ApiEntitiesCompare();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `commit` | `array` |  |
+| `commits` | `array` |  |
 | `compare_same_ref` | `bool` |  |
 | `compare_timeout` | `bool` |  |
-| `diff` | `array` |  |
+| `diffs` | `array` |  |
 | `web_url` | `string` |  |
 
 #### Example: List
@@ -7376,13 +7450,13 @@ Create an instance: `$api_entities_container_registry_repository = $client->ApiE
 | `project_id` | `int` |  |
 | `size` | `int` |  |
 | `status` | `string` |  |
-| `tag` | `array` |  |
+| `tags` | `array` |  |
 | `tags_count` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesContainerRegistryRepository record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesContainerRegistryRepository record (throws on error).
 $api_entities_container_registry_repository = $client->ApiEntitiesContainerRegistryRepository()->load(["id" => "api_entities_container_registry_repository_id"]);
 ```
 
@@ -7446,7 +7520,7 @@ Create an instance: `$api_entities_container_registry_tag_detail = $client->ApiE
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesContainerRegistryTagDetail record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesContainerRegistryTagDetail record (throws on error).
 $api_entities_container_registry_tag_detail = $client->ApiEntitiesContainerRegistryTagDetail()->load(["project_id" => "project_id", "repository_id" => "repository_id", "tag_name" => "tag_name"]);
 ```
 
@@ -7465,16 +7539,16 @@ Create an instance: `$api_entities_contributor = $client->ApiEntitiesContributor
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addition` | `int` |  |
-| `commit` | `int` |  |
-| `deletion` | `int` |  |
+| `additions` | `int` |  |
+| `commits` | `int` |  |
+| `deletions` | `int` |  |
 | `email` | `string` |  |
 | `name` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesContributor record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesContributor record (throws on error).
 $api_entities_contributor = $client->ApiEntitiesContributor()->load(["project_id" => "project_id"]);
 ```
 
@@ -7554,7 +7628,7 @@ Create an instance: `$api_entities_deploy_keys_project = $client->ApiEntitiesDep
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesDeployKeysProject record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesDeployKeysProject record (throws on error).
 $api_entities_deploy_keys_project = $client->ApiEntitiesDeployKeysProject()->load(["key_id" => "key_id", "project_id" => "project_id"]);
 ```
 
@@ -7594,13 +7668,13 @@ Create an instance: `$api_entities_deploy_token = $client->ApiEntitiesDeployToke
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `revoked` | `bool` |  |
-| `scope` | `array` |  |
+| `scopes` | `array` |  |
 | `username` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesDeployToken record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesDeployToken record (throws on error).
 $api_entities_deploy_token = $client->ApiEntitiesDeployToken()->load(["id" => "api_entities_deploy_token_id"]);
 ```
 
@@ -7679,8 +7753,8 @@ Create an instance: `$api_entities_deployment_extended = $client->ApiEntitiesDep
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `approval` | `array` |  |
 | `approval_summary` | `array` |  |
+| `approvals` | `array` |  |
 | `created_at` | `string` |  |
 | `deployable` | `array` |  |
 | `environment` | `array` |  |
@@ -7696,7 +7770,7 @@ Create an instance: `$api_entities_deployment_extended = $client->ApiEntitiesDep
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesDeploymentExtended record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesDeploymentExtended record (throws on error).
 $api_entities_deployment_extended = $client->ApiEntitiesDeploymentExtended()->load(["deployment_id" => "deployment_id", "project_id" => "project_id"]);
 ```
 
@@ -7743,13 +7817,13 @@ Create an instance: `$api_entities_dictionary_table = $client->ApiEntitiesDictio
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `feature_category` | `array` |  |
+| `feature_categories` | `array` |  |
 | `table_name` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesDictionaryTable record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesDictionaryTable record (throws on error).
 $api_entities_dictionary_table = $client->ApiEntitiesDictionaryTable()->load(["id" => "api_entities_dictionary_table_id", "databas_id" => "databas_id"]);
 ```
 
@@ -7784,7 +7858,7 @@ Create an instance: `$api_entities_diff = $client->ApiEntitiesDiff();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesDiff record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesDiff record (throws on error).
 $api_entities_diff = $client->ApiEntitiesDiff()->load(["merge_request_id" => "merge_request_id", "project_id" => "project_id"]);
 ```
 
@@ -7810,13 +7884,13 @@ Create an instance: `$api_entities_discovered_cluster = $client->ApiEntitiesDisc
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `group` | `string` |  |
-| `project` | `string` |  |
+| `groups` | `string` |  |
+| `projects` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesDiscoveredCluster record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesDiscoveredCluster record (throws on error).
 $api_entities_discovered_cluster = $client->ApiEntitiesDiscoveredCluster()->load();
 ```
 
@@ -7851,7 +7925,7 @@ Create an instance: `$api_entities_draft_note = $client->ApiEntitiesDraftNote();
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesDraftNote record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesDraftNote record (throws on error).
 $api_entities_draft_note = $client->ApiEntitiesDraftNote()->load(["id" => "api_entities_draft_note_id", "merge_request_id" => "merge_request_id", "project_id" => "project_id"]);
 ```
 
@@ -7909,7 +7983,7 @@ Create an instance: `$api_entities_environment = $client->ApiEntitiesEnvironment
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesEnvironment record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesEnvironment record (throws on error).
 $api_entities_environment = $client->ApiEntitiesEnvironment()->load(["id" => "api_entities_environment_id", "project_id" => "project_id"]);
 ```
 
@@ -7989,7 +8063,7 @@ Create an instance: `$api_entities_error_tracking_project_setting = $client->Api
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesErrorTrackingProjectSetting record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesErrorTrackingProjectSetting record (throws on error).
 $api_entities_error_tracking_project_setting = $client->ApiEntitiesErrorTrackingProjectSetting()->load(["project_id" => "project_id"]);
 ```
 
@@ -8029,7 +8103,7 @@ Create an instance: `$api_entities_event = $client->ApiEntitiesEvent();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesEvent record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesEvent record (throws on error).
 $api_entities_event = $client->ApiEntitiesEvent()->load(["project_id" => "project_id"]);
 ```
 
@@ -8057,7 +8131,7 @@ Create an instance: `$api_entities_feature = $client->ApiEntitiesFeature();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `definition` | `array` |  |
-| `gate` | `array` |  |
+| `gates` | `array` |  |
 | `name` | `string` |  |
 | `state` | `string` |  |
 
@@ -8096,7 +8170,7 @@ Create an instance: `$api_entities_feature_definition = $client->ApiEntitiesFeat
 | `group` | `string` |  |
 | `intended_to_rollout_by` | `string` |  |
 | `introduced_by_url` | `string` |  |
-| `log_state_change` | `string` |  |
+| `log_state_changes` | `string` |  |
 | `milestone` | `string` |  |
 | `name` | `string` |  |
 | `rollout_issue_url` | `string` |  |
@@ -8130,16 +8204,19 @@ Create an instance: `$api_entities_feature_flag = $client->ApiEntitiesFeatureFla
 | `active` | `bool` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
+| `id` | `int` |  |
 | `name` | `string` |  |
-| `scope` | `string` |  |
-| `strategy` | `array` |  |
+| `parameters` | `string` |  |
+| `scopes` | `array` |  |
+| `strategies` | `array` |  |
 | `updated_at` | `string` |  |
+| `user_list` | `array` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesFeatureFlag record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesFeatureFlag record (throws on error).
 $api_entities_feature_flag = $client->ApiEntitiesFeatureFlag()->load(["id" => "api_entities_feature_flag_id", "project_id" => "project_id"]);
 ```
 
@@ -8184,12 +8261,12 @@ Create an instance: `$api_entities_feature_flag_user_list = $client->ApiEntities
 | `path` | `string` |  |
 | `project_id` | `int` |  |
 | `updated_at` | `string` |  |
-| `user_xid` | `string` |  |
+| `user_xids` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesFeatureFlagUserList record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesFeatureFlagUserList record (throws on error).
 $api_entities_feature_flag_user_list = $client->ApiEntitiesFeatureFlagUserList()->load(["iid" => "iid", "project_id" => "project_id"]);
 ```
 
@@ -8236,7 +8313,7 @@ Create an instance: `$api_entities_freeze_period = $client->ApiEntitiesFreezePer
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesFreezePeriod record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesFreezePeriod record (throws on error).
 $api_entities_freeze_period = $client->ApiEntitiesFreezePeriod()->load(["id" => "api_entities_freeze_period_id", "project_id" => "project_id"]);
 ```
 
@@ -8277,7 +8354,7 @@ Create an instance: `$api_entities_gitlab_subscription = $client->ApiEntitiesGit
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesGitlabSubscription record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesGitlabSubscription record (throws on error).
 $api_entities_gitlab_subscription = $client->ApiEntitiesGitlabSubscription()->load(["namespace_id" => "namespace_id"]);
 ```
 
@@ -8296,13 +8373,13 @@ Create an instance: `$api_entities_go_module_version = $client->ApiEntitiesGoMod
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `time` | `string` |  |
-| `version` | `string` |  |
+| `Time` | `string` |  |
+| `Version` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesGoModuleVersion record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesGoModuleVersion record (throws on error).
 $api_entities_go_module_version = $client->ApiEntitiesGoModuleVersion()->load(["module_version" => "module_version", "project_id" => "project_id"]);
 ```
 
@@ -8329,10 +8406,10 @@ Create an instance: `$api_entities_group = $client->ApiEntitiesGroup();`
 | `auto_duo_code_review_enabled` | `string` |  |
 | `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
-| `custom_attribute` | `array` |  |
+| `custom_attributes` | `array` |  |
 | `default_branch` | `string` |  |
 | `default_branch_protection` | `string` |  |
-| `default_branch_protection_default` | `string` |  |
+| `default_branch_protection_defaults` | `string` |  |
 | `description` | `string` |  |
 | `duo_core_features_enabled` | `bool` |  |
 | `duo_features_enabled` | `string` |  |
@@ -8344,7 +8421,7 @@ Create an instance: `$api_entities_group = $client->ApiEntitiesGroup();`
 | `id` | `string` |  |
 | `ldap_access` | `string` |  |
 | `ldap_cn` | `string` |  |
-| `ldap_group_link` | `array` |  |
+| `ldap_group_links` | `array` |  |
 | `lfs_enabled` | `string` |  |
 | `lock_duo_features_enabled` | `string` |  |
 | `lock_math_rendering_limits_enabled` | `bool` |  |
@@ -8360,12 +8437,12 @@ Create an instance: `$api_entities_group = $client->ApiEntitiesGroup();`
 | `repository_storage` | `string` |  |
 | `request_access_enabled` | `string` |  |
 | `require_two_factor_authentication` | `string` |  |
-| `root_storage_statistic` | `array` |  |
-| `saml_group_link` | `array` |  |
+| `root_storage_statistics` | `array` |  |
+| `saml_group_links` | `array` |  |
 | `share_with_group_lock` | `string` |  |
 | `shared_runners_setting` | `string` |  |
 | `show_diff_preview_in_email` | `bool` |  |
-| `statistic` | `array` |  |
+| `statistics` | `array` |  |
 | `subgroup_creation_level` | `string` |  |
 | `two_factor_grace_period` | `string` |  |
 | `visibility` | `string` |  |
@@ -8376,7 +8453,7 @@ Create an instance: `$api_entities_group = $client->ApiEntitiesGroup();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesGroup record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesGroup record (throws on error).
 $api_entities_group = $client->ApiEntitiesGroup()->load(["project_id" => "project_id"]);
 ```
 
@@ -8417,10 +8494,10 @@ Create an instance: `$api_entities_group_detail = $client->ApiEntitiesGroupDetai
 | `auto_duo_code_review_enabled` | `string` |  |
 | `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
-| `custom_attribute` | `array` |  |
+| `custom_attributes` | `array` |  |
 | `default_branch` | `string` |  |
 | `default_branch_protection` | `string` |  |
-| `default_branch_protection_default` | `string` |  |
+| `default_branch_protection_defaults` | `string` |  |
 | `description` | `string` |  |
 | `duo_core_features_enabled` | `bool` |  |
 | `duo_features_enabled` | `string` |  |
@@ -8432,10 +8509,10 @@ Create an instance: `$api_entities_group_detail = $client->ApiEntitiesGroupDetai
 | `full_name` | `string` |  |
 | `full_path` | `string` |  |
 | `id` | `string` |  |
-| `ip_restriction_range` | `string` |  |
+| `ip_restriction_ranges` | `string` |  |
 | `ldap_access` | `string` |  |
 | `ldap_cn` | `string` |  |
-| `ldap_group_link` | `array` |  |
+| `ldap_group_links` | `array` |  |
 | `lfs_enabled` | `string` |  |
 | `lock_duo_features_enabled` | `string` |  |
 | `lock_math_rendering_limits_enabled` | `bool` |  |
@@ -8450,28 +8527,28 @@ Create an instance: `$api_entities_group_detail = $client->ApiEntitiesGroupDetai
 | `path` | `string` |  |
 | `prevent_forking_outside_group` | `string` |  |
 | `prevent_sharing_groups_outside_hierarchy` | `string` |  |
-| `project` | `array` |  |
 | `project_creation_level` | `string` |  |
+| `projects` | `array` |  |
 | `repository_storage` | `string` |  |
 | `request_access_enabled` | `string` |  |
 | `require_two_factor_authentication` | `string` |  |
-| `root_storage_statistic` | `array` |  |
+| `root_storage_statistics` | `array` |  |
 | `runners_token` | `string` |  |
-| `saml_group_link` | `array` |  |
+| `saml_group_links` | `array` |  |
 | `service_access_tokens_expiration_enforced` | `string` |  |
 | `share_with_group_lock` | `string` |  |
-| `shared_project` | `array` |  |
+| `shared_projects` | `array` |  |
 | `shared_runners_minutes_limit` | `string` |  |
 | `shared_runners_setting` | `string` |  |
-| `shared_with_group` | `string` |  |
+| `shared_with_groups` | `string` |  |
 | `show_diff_preview_in_email` | `bool` |  |
-| `statistic` | `array` |  |
+| `statistics` | `array` |  |
 | `subgroup_creation_level` | `string` |  |
 | `two_factor_grace_period` | `string` |  |
 | `unique_project_download_limit` | `string` |  |
 | `unique_project_download_limit_alertlist` | `string` |  |
 | `unique_project_download_limit_allowlist` | `string` |  |
-| `unique_project_download_limit_interval_in_second` | `string` |  |
+| `unique_project_download_limit_interval_in_seconds` | `string` |  |
 | `visibility` | `string` |  |
 | `web_based_commit_signing_enabled` | `string` |  |
 | `web_url` | `string` |  |
@@ -8480,7 +8557,7 @@ Create an instance: `$api_entities_group_detail = $client->ApiEntitiesGroupDetai
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesGroupDetail record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesGroupDetail record (throws on error).
 $api_entities_group_detail = $client->ApiEntitiesGroupDetail()->load(["id" => "api_entities_group_detail_id"]);
 ```
 
@@ -8513,25 +8590,25 @@ Create an instance: `$api_entities_hook = $client->ApiEntitiesHook();`
 | `alert_status` | `mixed` |  |
 | `branch_filter_strategy` | `string` |  |
 | `created_at` | `string` |  |
-| `custom_header` | `array` |  |
+| `custom_headers` | `array` |  |
 | `custom_webhook_template` | `string` |  |
 | `description` | `string` |  |
 | `disabled_until` | `string` |  |
 | `enable_ssl_verification` | `bool` |  |
 | `id` | `string` |  |
-| `merge_requests_event` | `bool` |  |
+| `merge_requests_events` | `bool` |  |
 | `name` | `string` |  |
-| `push_event` | `bool` |  |
+| `push_events` | `bool` |  |
 | `push_events_branch_filter` | `string` |  |
-| `repository_update_event` | `bool` |  |
-| `tag_push_event` | `bool` |  |
+| `repository_update_events` | `bool` |  |
+| `tag_push_events` | `bool` |  |
 | `url` | `string` |  |
-| `url_variable` | `array` |  |
+| `url_variables` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesHook record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesHook record (throws on error).
 $api_entities_hook = $client->ApiEntitiesHook()->load(["id" => "api_entities_hook_id"]);
 ```
 
@@ -8560,39 +8637,10 @@ Create an instance: `$api_entities_integration = $client->ApiEntitiesIntegration
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `active` | `bool` |  |
-| `alert_event` | `bool` |  |
-| `comment_on_event_enabled` | `bool` |  |
-| `commit_event` | `bool` |  |
-| `confidential_issues_event` | `bool` |  |
-| `confidential_note_event` | `bool` |  |
-| `created_at` | `string` |  |
-| `deployment_event` | `bool` |  |
-| `id` | `int` |  |
-| `incident_event` | `bool` |  |
-| `inherited` | `bool` |  |
-| `issues_event` | `bool` |  |
-| `job_event` | `bool` |  |
-| `merge_requests_event` | `bool` |  |
-| `note_event` | `bool` |  |
-| `pipeline_event` | `bool` |  |
-| `property` | `array` |  |
-| `push_event` | `bool` |  |
-| `slug` | `int` |  |
-| `tag_push_event` | `bool` |  |
-| `title` | `string` |  |
-| `updated_at` | `string` |  |
-| `vulnerability_event` | `bool` |  |
-| `wiki_page_event` | `bool` |  |
-
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesIntegration record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesIntegration record (throws on error).
 $api_entities_integration = $client->ApiEntitiesIntegration()->load(["id" => "api_entities_integration_id"]);
 ```
 
@@ -8613,28 +8661,28 @@ Create an instance: `$api_entities_integration_basic = $client->ApiEntitiesInteg
 | Field | Type | Description |
 | --- | --- | --- |
 | `active` | `bool` |  |
-| `alert_event` | `bool` |  |
+| `alert_events` | `bool` |  |
 | `comment_on_event_enabled` | `bool` |  |
-| `commit_event` | `bool` |  |
-| `confidential_issues_event` | `bool` |  |
-| `confidential_note_event` | `bool` |  |
+| `commit_events` | `bool` |  |
+| `confidential_issues_events` | `bool` |  |
+| `confidential_note_events` | `bool` |  |
 | `created_at` | `string` |  |
-| `deployment_event` | `bool` |  |
+| `deployment_events` | `bool` |  |
 | `id` | `int` |  |
-| `incident_event` | `bool` |  |
+| `incident_events` | `bool` |  |
 | `inherited` | `bool` |  |
-| `issues_event` | `bool` |  |
-| `job_event` | `bool` |  |
-| `merge_requests_event` | `bool` |  |
-| `note_event` | `bool` |  |
-| `pipeline_event` | `bool` |  |
-| `push_event` | `bool` |  |
+| `issues_events` | `bool` |  |
+| `job_events` | `bool` |  |
+| `merge_requests_events` | `bool` |  |
+| `note_events` | `bool` |  |
+| `pipeline_events` | `bool` |  |
+| `push_events` | `bool` |  |
 | `slug` | `int` |  |
-| `tag_push_event` | `bool` |  |
+| `tag_push_events` | `bool` |  |
 | `title` | `string` |  |
 | `updated_at` | `string` |  |
-| `vulnerability_event` | `bool` |  |
-| `wiki_page_event` | `bool` |  |
+| `vulnerability_events` | `bool` |  |
+| `wiki_page_events` | `bool` |  |
 
 #### Example: List
 
@@ -8706,7 +8754,7 @@ Create an instance: `$api_entities_issuable_time_stat = $client->ApiEntitiesIssu
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesIssuableTimeStat record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesIssuableTimeStat record (throws on error).
 $api_entities_issuable_time_stat = $client->ApiEntitiesIssuableTimeStat()->load(["project_id" => "project_id"]);
 ```
 
@@ -8737,6 +8785,7 @@ Create an instance: `$api_entities_issue = $client->ApiEntitiesIssue();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `assignee` | `array` |  |
+| `assignees` | `array` |  |
 | `author` | `array` |  |
 | `blocking_issues_count` | `string` |  |
 | `closed_at` | `string` |  |
@@ -8745,11 +8794,11 @@ Create an instance: `$api_entities_issue = $client->ApiEntitiesIssue();`
 | `created_at` | `string` |  |
 | `description` | `string` |  |
 | `discussion_locked` | `bool` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `due_date` | `string` |  |
 | `epic` | `array` |  |
 | `epic_iid` | `string` |  |
-| `has_task` | `bool` |  |
+| `has_tasks` | `bool` |  |
 | `health_status` | `string` |  |
 | `id` | `int` |  |
 | `iid` | `int` |  |
@@ -8757,24 +8806,24 @@ Create an instance: `$api_entities_issue = $client->ApiEntitiesIssue();`
 | `imported_from` | `string` |  |
 | `issue_type` | `string` |  |
 | `iteration` | `array` |  |
-| `label` | `array` |  |
-| `link` | `array` |  |
+| `labels` | `array` |  |
+| `links` | `array` |  |
 | `merge_requests_count` | `string` |  |
 | `milestone` | `array` |  |
 | `moved_to_id` | `string` |  |
 | `project_id` | `int` |  |
-| `reference` | `array` |  |
+| `references` | `array` |  |
 | `service_desk_reply_to` | `string` |  |
 | `severity` | `string` |  |
 | `state` | `string` |  |
 | `subscribed` | `string` |  |
 | `task_completion_status` | `string` |  |
 | `task_status` | `string` |  |
-| `time_stat` | `array` |  |
+| `time_stats` | `array` |  |
 | `title` | `string` |  |
 | `type` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
 | `weight` | `string` |  |
@@ -8782,7 +8831,7 @@ Create an instance: `$api_entities_issue = $client->ApiEntitiesIssue();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesIssue record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesIssue record (throws on error).
 $api_entities_issue = $client->ApiEntitiesIssue()->load(["id" => "api_entities_issue_id"]);
 ```
 
@@ -8824,7 +8873,7 @@ Create an instance: `$api_entities_issue_link = $client->ApiEntitiesIssueLink();
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesIssueLink record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesIssueLink record (throws on error).
 $api_entities_issue_link = $client->ApiEntitiesIssueLink()->load(["id" => "api_entities_issue_link_id", "issue_id" => "issue_id", "project_id" => "project_id"]);
 ```
 
@@ -8852,15 +8901,15 @@ Create an instance: `$api_entities_license = $client->ApiEntitiesLicense();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `condition` | `array` |  |
+| `conditions` | `array` |  |
 | `content` | `string` |  |
 | `description` | `string` |  |
 | `html_url` | `string` |  |
 | `key` | `string` |  |
-| `limitation` | `array` |  |
+| `limitations` | `array` |  |
 | `name` | `string` |  |
 | `nickname` | `string` |  |
-| `permission` | `array` |  |
+| `permissions` | `array` |  |
 | `popular` | `bool` |  |
 | `source_url` | `string` |  |
 
@@ -8941,7 +8990,7 @@ Create an instance: `$api_entities_member = $client->ApiEntitiesMember();`
 | `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
 | `created_by` | `array` |  |
-| `custom_attribute` | `array` |  |
+| `custom_attributes` | `array` |  |
 | `email` | `string` |  |
 | `expires_at` | `string` |  |
 | `group_saml_identity` | `array` |  |
@@ -8963,7 +9012,7 @@ Create an instance: `$api_entities_member = $client->ApiEntitiesMember();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesMember record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesMember record (throws on error).
 $api_entities_member = $client->ApiEntitiesMember()->load(["id" => "api_entities_member_id"]);
 ```
 
@@ -9002,6 +9051,7 @@ Create an instance: `$api_entities_merge = $client->ApiEntitiesMerge();`
 | `allow_maintainer_to_push` | `bool` |  |
 | `approvals_before_merge` | `string` |  |
 | `assignee` | `array` |  |
+| `assignees` | `array` |  |
 | `author` | `array` |  |
 | `blocking_discussions_resolved` | `string` |  |
 | `changes_count` | `string` |  |
@@ -9011,21 +9061,21 @@ Create an instance: `$api_entities_merge = $client->ApiEntitiesMerge();`
 | `description` | `string` |  |
 | `description_html` | `string` |  |
 | `detailed_merge_status` | `string` |  |
-| `diff_ref` | `array` |  |
+| `diff_refs` | `array` |  |
 | `discussion_locked` | `string` |  |
 | `diverged_commits_count` | `string` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `draft` | `string` |  |
 | `first_contribution` | `string` |  |
 | `first_deployed_to_production_at` | `string` |  |
 | `force_remove_source_branch` | `string` |  |
-| `has_conflict` | `bool` |  |
+| `has_conflicts` | `bool` |  |
 | `head_pipeline` | `array` |  |
 | `id` | `int` |  |
 | `iid` | `int` |  |
 | `imported` | `string` |  |
 | `imported_from` | `string` |  |
-| `label` | `string` |  |
+| `labels` | `string` |  |
 | `latest_build_finished_at` | `string` |  |
 | `latest_build_started_at` | `string` |  |
 | `merge_after` | `string` |  |
@@ -9033,7 +9083,7 @@ Create an instance: `$api_entities_merge = $client->ApiEntitiesMerge();`
 | `merge_error` | `string` |  |
 | `merge_status` | `string` |  |
 | `merge_user` | `array` |  |
-| `merge_when_pipeline_succeed` | `string` |  |
+| `merge_when_pipeline_succeeds` | `string` |  |
 | `merged_at` | `string` |  |
 | `merged_by` | `array` |  |
 | `milestone` | `array` |  |
@@ -9042,7 +9092,8 @@ Create an instance: `$api_entities_merge = $client->ApiEntitiesMerge();`
 | `project_id` | `int` |  |
 | `rebase_in_progress` | `string` |  |
 | `reference` | `string` |  |
-| `reviewer` | `array` |  |
+| `references` | `array` |  |
+| `reviewers` | `array` |  |
 | `sha` | `string` |  |
 | `should_remove_source_branch` | `bool` |  |
 | `source_branch` | `string` |  |
@@ -9055,11 +9106,11 @@ Create an instance: `$api_entities_merge = $client->ApiEntitiesMerge();`
 | `target_branch` | `string` |  |
 | `target_project_id` | `string` |  |
 | `task_completion_status` | `string` |  |
-| `time_stat` | `array` |  |
+| `time_stats` | `array` |  |
 | `title` | `string` |  |
 | `title_html` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user` | `array` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
@@ -9068,7 +9119,7 @@ Create an instance: `$api_entities_merge = $client->ApiEntitiesMerge();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesMerge record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesMerge record (throws on error).
 $api_entities_merge = $client->ApiEntitiesMerge()->load(["merge_request_iid" => "merge_request_iid", "project_id" => "project_id"]);
 ```
 
@@ -9096,15 +9147,13 @@ Create an instance: `$api_entities_merge_request_approval = $client->ApiEntities
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `approved` | `bool` |  |
-| `approved_by` | `array` |  |
-| `user_can_approve` | `bool` |  |
-| `user_has_approved` | `bool` |  |
+| `approved_at` | `string` |  |
+| `user` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesMergeRequestApproval record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesMergeRequestApproval record (throws on error).
 $api_entities_merge_request_approval = $client->ApiEntitiesMergeRequestApproval()->load(["merge_request_id" => "merge_request_id", "project_id" => "project_id"]);
 ```
 
@@ -9137,6 +9186,7 @@ Create an instance: `$api_entities_merge_request_basic = $client->ApiEntitiesMer
 | `allow_maintainer_to_push` | `bool` |  |
 | `approvals_before_merge` | `string` |  |
 | `assignee` | `array` |  |
+| `assignees` | `array` |  |
 | `author` | `array` |  |
 | `blocking_discussions_resolved` | `string` |  |
 | `closed_at` | `string` |  |
@@ -9146,27 +9196,28 @@ Create an instance: `$api_entities_merge_request_basic = $client->ApiEntitiesMer
 | `description_html` | `string` |  |
 | `detailed_merge_status` | `string` |  |
 | `discussion_locked` | `string` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `draft` | `string` |  |
 | `force_remove_source_branch` | `string` |  |
-| `has_conflict` | `bool` |  |
+| `has_conflicts` | `bool` |  |
 | `id` | `int` |  |
 | `iid` | `int` |  |
 | `imported` | `string` |  |
 | `imported_from` | `string` |  |
-| `label` | `string` |  |
+| `labels` | `string` |  |
 | `merge_after` | `string` |  |
 | `merge_commit_sha` | `string` |  |
 | `merge_status` | `string` |  |
 | `merge_user` | `array` |  |
-| `merge_when_pipeline_succeed` | `string` |  |
+| `merge_when_pipeline_succeeds` | `string` |  |
 | `merged_at` | `string` |  |
 | `merged_by` | `array` |  |
 | `milestone` | `array` |  |
 | `prepared_at` | `string` |  |
 | `project_id` | `int` |  |
 | `reference` | `string` |  |
-| `reviewer` | `array` |  |
+| `references` | `array` |  |
+| `reviewers` | `array` |  |
 | `sha` | `string` |  |
 | `should_remove_source_branch` | `bool` |  |
 | `source_branch` | `string` |  |
@@ -9178,11 +9229,11 @@ Create an instance: `$api_entities_merge_request_basic = $client->ApiEntitiesMer
 | `target_branch` | `string` |  |
 | `target_project_id` | `string` |  |
 | `task_completion_status` | `string` |  |
-| `time_stat` | `array` |  |
+| `time_stats` | `array` |  |
 | `title` | `string` |  |
 | `title_html` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
 | `work_in_progress` | `string` |  |
@@ -9190,7 +9241,7 @@ Create an instance: `$api_entities_merge_request_basic = $client->ApiEntitiesMer
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesMergeRequestBasic record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesMergeRequestBasic record (throws on error).
 $api_entities_merge_request_basic = $client->ApiEntitiesMergeRequestBasic()->load();
 ```
 
@@ -9220,9 +9271,10 @@ Create an instance: `$api_entities_merge_request_change = $client->ApiEntitiesMe
 | `allow_maintainer_to_push` | `bool` |  |
 | `approvals_before_merge` | `string` |  |
 | `assignee` | `array` |  |
+| `assignees` | `array` |  |
 | `author` | `array` |  |
 | `blocking_discussions_resolved` | `string` |  |
-| `change` | `array` |  |
+| `changes` | `array` |  |
 | `changes_count` | `string` |  |
 | `closed_at` | `string` |  |
 | `closed_by` | `array` |  |
@@ -9230,21 +9282,21 @@ Create an instance: `$api_entities_merge_request_change = $client->ApiEntitiesMe
 | `description` | `string` |  |
 | `description_html` | `string` |  |
 | `detailed_merge_status` | `string` |  |
-| `diff_ref` | `array` |  |
+| `diff_refs` | `array` |  |
 | `discussion_locked` | `string` |  |
 | `diverged_commits_count` | `string` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `draft` | `string` |  |
 | `first_contribution` | `string` |  |
 | `first_deployed_to_production_at` | `string` |  |
 | `force_remove_source_branch` | `string` |  |
-| `has_conflict` | `bool` |  |
+| `has_conflicts` | `bool` |  |
 | `head_pipeline` | `array` |  |
 | `id` | `int` |  |
 | `iid` | `int` |  |
 | `imported` | `string` |  |
 | `imported_from` | `string` |  |
-| `label` | `string` |  |
+| `labels` | `string` |  |
 | `latest_build_finished_at` | `string` |  |
 | `latest_build_started_at` | `string` |  |
 | `merge_after` | `string` |  |
@@ -9252,7 +9304,7 @@ Create an instance: `$api_entities_merge_request_change = $client->ApiEntitiesMe
 | `merge_error` | `string` |  |
 | `merge_status` | `string` |  |
 | `merge_user` | `array` |  |
-| `merge_when_pipeline_succeed` | `string` |  |
+| `merge_when_pipeline_succeeds` | `string` |  |
 | `merged_at` | `string` |  |
 | `merged_by` | `array` |  |
 | `milestone` | `array` |  |
@@ -9262,7 +9314,8 @@ Create an instance: `$api_entities_merge_request_change = $client->ApiEntitiesMe
 | `project_id` | `int` |  |
 | `rebase_in_progress` | `string` |  |
 | `reference` | `string` |  |
-| `reviewer` | `array` |  |
+| `references` | `array` |  |
+| `reviewers` | `array` |  |
 | `sha` | `string` |  |
 | `should_remove_source_branch` | `bool` |  |
 | `source_branch` | `string` |  |
@@ -9275,11 +9328,11 @@ Create an instance: `$api_entities_merge_request_change = $client->ApiEntitiesMe
 | `target_branch` | `string` |  |
 | `target_project_id` | `string` |  |
 | `task_completion_status` | `string` |  |
-| `time_stat` | `array` |  |
+| `time_stats` | `array` |  |
 | `title` | `string` |  |
 | `title_html` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user` | `array` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
@@ -9288,7 +9341,7 @@ Create an instance: `$api_entities_merge_request_change = $client->ApiEntitiesMe
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesMergeRequestChange record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesMergeRequestChange record (throws on error).
 $api_entities_merge_request_change = $client->ApiEntitiesMergeRequestChange()->load(["merge_request_id" => "merge_request_id", "project_id" => "project_id"]);
 ```
 
@@ -9340,9 +9393,9 @@ Create an instance: `$api_entities_merge_request_diff_full = $client->ApiEntitie
 | Field | Type | Description |
 | --- | --- | --- |
 | `base_commit_sha` | `string` |  |
-| `commit` | `array` |  |
+| `commits` | `array` |  |
 | `created_at` | `string` |  |
-| `diff` | `array` |  |
+| `diffs` | `array` |  |
 | `head_commit_sha` | `string` |  |
 | `id` | `string` |  |
 | `merge_request_id` | `string` |  |
@@ -9354,7 +9407,7 @@ Create an instance: `$api_entities_merge_request_diff_full = $client->ApiEntitie
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesMergeRequestDiffFull record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesMergeRequestDiffFull record (throws on error).
 $api_entities_merge_request_diff_full = $client->ApiEntitiesMergeRequestDiffFull()->load(["merge_request_id" => "merge_request_id", "project_id" => "project_id", "version_id" => "version_id"]);
 ```
 
@@ -9373,14 +9426,21 @@ Create an instance: `$api_entities_merge_request_reviewer = $client->ApiEntities
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created_at` | `string` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `custom_attributes` | `array` |  |
+| `id` | `int` |  |
+| `locked` | `bool` |  |
+| `name` | `string` |  |
+| `public_email` | `string` |  |
 | `state` | `string` |  |
-| `user` | `array` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesMergeRequestReviewer record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesMergeRequestReviewer record (throws on error).
 $api_entities_merge_request_reviewer = $client->ApiEntitiesMergeRequestReviewer()->load(["merge_request_id" => "merge_request_id", "project_id" => "project_id"]);
 ```
 
@@ -9439,13 +9499,21 @@ Create an instance: `$api_entities_mr_note = $client->ApiEntitiesMrNote();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `array` |  |
-| `note` | `string` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `custom_attributes` | `array` |  |
+| `id` | `int` |  |
+| `locked` | `bool` |  |
+| `name` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesMrNote record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesMrNote record (throws on error).
 $api_entities_mr_note = $client->ApiEntitiesMrNote()->load(["merge_request_id" => "merge_request_id", "project_id" => "project_id"]);
 ```
 
@@ -9477,7 +9545,7 @@ Create an instance: `$api_entities_namespace = $client->ApiEntitiesNamespace();`
 | `kind` | `string` |  |
 | `max_seats_used` | `int` |  |
 | `max_seats_used_changed_at` | `string` |  |
-| `members_count_with_descendant` | `int` |  |
+| `members_count_with_descendants` | `int` |  |
 | `name` | `string` |  |
 | `parent_id` | `int` |  |
 | `path` | `string` |  |
@@ -9493,7 +9561,7 @@ Create an instance: `$api_entities_namespace = $client->ApiEntitiesNamespace();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesNamespace record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesNamespace record (throws on error).
 $api_entities_namespace = $client->ApiEntitiesNamespace()->load(["id" => "api_entities_namespace_id"]);
 ```
 
@@ -9519,8 +9587,8 @@ Create an instance: `$api_entities_namespace_existence = $client->ApiEntitiesNam
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `exist` | `bool` |  |
-| `suggest` | `array` |  |
+| `exists` | `bool` |  |
+| `suggests` | `array` |  |
 
 #### Example: List
 
@@ -9553,7 +9621,7 @@ Create an instance: `$api_entities_namespaces_storage_limit_exclusion = $client-
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesNamespacesStorageLimitExclusion record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesNamespacesStorageLimitExclusion record (throws on error).
 $api_entities_namespaces_storage_limit_exclusion = $client->ApiEntitiesNamespacesStorageLimitExclusion()->load(["id" => 1]);
 ```
 
@@ -9580,14 +9648,14 @@ Create an instance: `$api_entities_npm_package = $client->ApiEntitiesNpmPackage(
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dist_tag` | `array` |  |
+| `disttags` | `array` |  |
 | `name` | `string` |  |
-| `version` | `array` |  |
+| `versions` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesNpmPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesNpmPackage record (throws on error).
 $api_entities_npm_package = $client->ApiEntitiesNpmPackage()->load();
 ```
 
@@ -9602,16 +9670,10 @@ Create an instance: `$api_entities_npm_package_tag = $client->ApiEntitiesNpmPack
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `dist_tag` | `array` |  |
-
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesNpmPackageTag record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesNpmPackageTag record (throws on error).
 $api_entities_npm_package_tag = $client->ApiEntitiesNpmPackageTag()->load();
 ```
 
@@ -9630,7 +9692,7 @@ Create an instance: `$api_entities_nuget_packages_version = $client->ApiEntities
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `version` | `array` |  |
+| `versions` | `array` |  |
 
 #### Example: List
 
@@ -9654,19 +9716,20 @@ Create an instance: `$api_entities_nuget_search_result = $client->ApiEntitiesNug
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
+| `authors` | `string` |  |
 | `description` | `string` |  |
-| `icon_url` | `string` |  |
+| `iconUrl` | `string` |  |
 | `id` | `string` |  |
-| `license_url` | `string` |  |
-| `project_url` | `string` |  |
+| `licenseUrl` | `string` |  |
+| `projectUrl` | `string` |  |
 | `summary` | `string` |  |
-| `tag` | `string` |  |
+| `tags` | `string` |  |
 | `title` | `string` |  |
-| `total_download` | `int` |  |
+| `totalDownloads` | `int` |  |
 | `type` | `string` |  |
 | `verified` | `bool` |  |
 | `version` | `string` |  |
+| `versions` | `array` |  |
 
 #### Example: List
 
@@ -9690,7 +9753,7 @@ Create an instance: `$api_entities_nuget_service_index = $client->ApiEntitiesNug
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `resource` | `array` |  |
+| `resources` | `array` |  |
 | `version` | `string` |  |
 
 #### Example: List
@@ -9738,20 +9801,22 @@ Create an instance: `$api_entities_package = $client->ApiEntitiesPackage();`
 | `created_at` | `string` |  |
 | `id` | `int` |  |
 | `last_downloaded_at` | `string` |  |
-| `link` | `array` |  |
+| `links` | `array` |  |
 | `name` | `string` |  |
 | `package_type` | `string` |  |
 | `pipeline` | `array` |  |
+| `pipelines` | `array` |  |
 | `project_id` | `int` |  |
 | `project_path` | `string` |  |
 | `status` | `string` |  |
-| `tag` | `string` |  |
+| `tags` | `string` |  |
 | `version` | `string` |  |
+| `versions` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPackage record (throws on error).
 $api_entities_package = $client->ApiEntitiesPackage()->load(["id" => "api_entities_package_id", "project_id" => "project_id"]);
 ```
 
@@ -9784,7 +9849,7 @@ Create an instance: `$api_entities_package_file = $client->ApiEntitiesPackageFil
 | `file_sha256` | `string` |  |
 | `id` | `int` |  |
 | `package_id` | `int` |  |
-| `pipeline` | `array` |  |
+| `pipelines` | `array` |  |
 | `size` | `int` |  |
 
 #### Example: List
@@ -9809,22 +9874,21 @@ Create an instance: `$api_entities_package_pipeline = $client->ApiEntitiesPackag
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created_at` | `string` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `custom_attributes` | `array` |  |
 | `id` | `int` |  |
-| `iid` | `int` |  |
-| `project_id` | `int` |  |
-| `ref` | `string` |  |
-| `sha` | `string` |  |
-| `source` | `string` |  |
-| `status` | `string` |  |
-| `updated_at` | `string` |  |
-| `user` | `array` |  |
+| `locked` | `bool` |  |
+| `name` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
+| `username` | `string` |  |
 | `web_url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPackagePipeline record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPackagePipeline record (throws on error).
 $api_entities_package_pipeline = $client->ApiEntitiesPackagePipeline()->load(["package_id" => "package_id", "project_id" => "project_id"]);
 ```
 
@@ -9839,16 +9903,10 @@ Create an instance: `$api_entities_packages_conan_files_list = $client->ApiEntit
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `file` | `array` |  |
-
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPackagesConanFilesList record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPackagesConanFilesList record (throws on error).
 $api_entities_packages_conan_files_list = $client->ApiEntitiesPackagesConanFilesList()->load(["conan_id" => "conan_id", "package_channel" => "package_channel", "package_username" => "package_username", "package_version" => "package_version", "project_id" => "project_id"]);
 ```
 
@@ -9863,16 +9921,10 @@ Create an instance: `$api_entities_packages_conan_package_manifest = $client->Ap
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `package_url` | `array` |  |
-
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPackagesConanPackageManifest record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPackagesConanPackageManifest record (throws on error).
 $api_entities_packages_conan_package_manifest = $client->ApiEntitiesPackagesConanPackageManifest()->load(["conan_id" => "conan_id", "conan_package_reference" => "conan_package_reference", "package_channel" => "package_channel", "package_username" => "package_username", "package_version" => "package_version"]);
 ```
 
@@ -9912,16 +9964,10 @@ Create an instance: `$api_entities_packages_conan_package_snapshot = $client->Ap
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `package_snapshot` | `array` |  |
-
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPackagesConanPackageSnapshot record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPackagesConanPackageSnapshot record (throws on error).
 $api_entities_packages_conan_package_snapshot = $client->ApiEntitiesPackagesConanPackageSnapshot()->load(["conan_id" => "conan_id", "conan_package_reference" => "conan_package_reference", "package_channel" => "package_channel", "package_username" => "package_username", "package_version" => "package_version"]);
 ```
 
@@ -9936,16 +9982,10 @@ Create an instance: `$api_entities_packages_conan_recipe_manifest = $client->Api
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `recipe_url` | `array` |  |
-
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPackagesConanRecipeManifest record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPackagesConanRecipeManifest record (throws on error).
 $api_entities_packages_conan_recipe_manifest = $client->ApiEntitiesPackagesConanRecipeManifest()->load(["conan_id" => "conan_id", "package_channel" => "package_channel", "package_username" => "package_username", "package_version" => "package_version"]);
 ```
 
@@ -9985,16 +10025,10 @@ Create an instance: `$api_entities_packages_conan_recipe_snapshot = $client->Api
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `recipe_snapshot` | `array` |  |
-
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPackagesConanRecipeSnapshot record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPackagesConanRecipeSnapshot record (throws on error).
 $api_entities_packages_conan_recipe_snapshot = $client->ApiEntitiesPackagesConanRecipeSnapshot()->load(["id" => "api_entities_packages_conan_recipe_snapshot_id", "package_channel" => "package_channel", "package_name" => "package_name", "package_username" => "package_username", "package_version" => "package_version"]);
 ```
 
@@ -10019,7 +10053,7 @@ Create an instance: `$api_entities_packages_conan_revision = $client->ApiEntitie
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPackagesConanRevision record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPackagesConanRevision record (throws on error).
 $api_entities_packages_conan_revision = $client->ApiEntitiesPackagesConanRevision()->load(["conan_id" => "conan_id", "package_channel" => "package_channel", "package_username" => "package_username", "package_version" => "package_version", "project_id" => "project_id"]);
 ```
 
@@ -10033,12 +10067,6 @@ Create an instance: `$api_entities_packages_conan_upload_url = $client->ApiEntit
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `upload_url` | `array` |  |
 
 #### Example: Create
 
@@ -10069,21 +10097,21 @@ Create an instance: `$api_entities_packages_debian_distribution = $client->ApiEn
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `architecture` | `array` |  |
+| `architectures` | `array` |  |
 | `codename` | `string` |  |
-| `component` | `array` |  |
+| `components` | `array` |  |
 | `description` | `string` |  |
 | `id` | `int` |  |
 | `label` | `string` |  |
 | `origin` | `string` |  |
 | `suite` | `string` |  |
-| `valid_time_duration_second` | `int` |  |
+| `valid_time_duration_seconds` | `int` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPackagesDebianDistribution record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPackagesDebianDistribution record (throws on error).
 $api_entities_packages_debian_distribution = $client->ApiEntitiesPackagesDebianDistribution()->load(["id" => "api_entities_packages_debian_distribution_id"]);
 ```
 
@@ -10120,9 +10148,12 @@ Create an instance: `$api_entities_pages_domain = $client->ApiEntitiesPagesDomai
 | Field | Type | Description |
 | --- | --- | --- |
 | `auto_ssl_enabled` | `string` |  |
-| `certificate` | `array` |  |
+| `certificate` | `string` |  |
+| `certificate_text` | `string` |  |
 | `domain` | `string` |  |
 | `enabled_until` | `string` |  |
+| `expired` | `string` |  |
+| `subject` | `string` |  |
 | `url` | `string` |  |
 | `verification_code` | `string` |  |
 | `verified` | `bool` |  |
@@ -10130,7 +10161,7 @@ Create an instance: `$api_entities_pages_domain = $client->ApiEntitiesPagesDomai
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPagesDomain record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPagesDomain record (throws on error).
 $api_entities_pages_domain = $client->ApiEntitiesPagesDomain()->load(["id" => "api_entities_pages_domain_id", "project_id" => "project_id"]);
 ```
 
@@ -10164,19 +10195,13 @@ Create an instance: `$api_entities_pages_domain_basic = $client->ApiEntitiesPage
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `auto_ssl_enabled` | `string` |  |
-| `certificate_expiration` | `array` |  |
-| `domain` | `string` |  |
-| `enabled_until` | `string` |  |
-| `project_id` | `string` |  |
-| `url` | `string` |  |
-| `verification_code` | `string` |  |
-| `verified` | `bool` |  |
+| `expiration` | `string` |  |
+| `expired` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPagesDomainBasic record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPagesDomainBasic record (throws on error).
 $api_entities_pages_domain_basic = $client->ApiEntitiesPagesDomainBasic()->load();
 ```
 
@@ -10203,7 +10228,7 @@ Create an instance: `$api_entities_personal_access_token = $client->ApiEntitiesP
 | `last_used_at` | `string` |  |
 | `name` | `string` |  |
 | `revoked` | `bool` |  |
-| `scope` | `array` |  |
+| `scopes` | `array` |  |
 | `user_id` | `int` |  |
 
 #### Example: List
@@ -10235,16 +10260,16 @@ Create an instance: `$api_entities_personal_access_token_with_last_used_ip = $cl
 | `expires_at` | `string` |  |
 | `id` | `int` |  |
 | `last_used_at` | `string` |  |
-| `last_used_ip` | `array` |  |
+| `last_used_ips` | `array` |  |
 | `name` | `string` |  |
 | `revoked` | `bool` |  |
-| `scope` | `array` |  |
+| `scopes` | `array` |  |
 | `user_id` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPersonalAccessTokenWithLastUsedIp record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPersonalAccessTokenWithLastUsedIp record (throws on error).
 $api_entities_personal_access_token_with_last_used_ip = $client->ApiEntitiesPersonalAccessTokenWithLastUsedIp()->load(["id" => "api_entities_personal_access_token_with_last_used_ip_id"]);
 ```
 
@@ -10278,7 +10303,7 @@ Create an instance: `$api_entities_personal_access_token_with_token = $client->A
 | `last_used_at` | `string` |  |
 | `name` | `string` |  |
 | `revoked` | `bool` |  |
-| `scope` | `array` |  |
+| `scopes` | `array` |  |
 | `token` | `string` |  |
 | `user_id` | `int` |  |
 
@@ -10310,8 +10335,8 @@ Create an instance: `$api_entities_personal_snippet = $client->ApiEntitiesPerson
 | `author` | `array` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
-| `file` | `array` |  |
 | `file_name` | `string` |  |
+| `files` | `array` |  |
 | `http_url_to_repo` | `string` |  |
 | `id` | `int` |  |
 | `imported` | `bool` |  |
@@ -10328,7 +10353,7 @@ Create an instance: `$api_entities_personal_snippet = $client->ApiEntitiesPerson
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPersonalSnippet record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPersonalSnippet record (throws on error).
 $api_entities_personal_snippet = $client->ApiEntitiesPersonalSnippet()->load(["id" => "api_entities_personal_snippet_id"]);
 ```
 
@@ -10358,38 +10383,10 @@ Create an instance: `$api_entities_plan_limit = $client->ApiEntitiesPlanLimit();
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `ci_active_job` | `int` |  |
-| `ci_instance_level_variable` | `int` |  |
-| `ci_needs_size_limit` | `int` |  |
-| `ci_pipeline_schedule` | `int` |  |
-| `ci_pipeline_size` | `int` |  |
-| `ci_project_subscription` | `int` |  |
-| `ci_registered_group_runner` | `int` |  |
-| `ci_registered_project_runner` | `int` |  |
-| `conan_max_file_size` | `int` |  |
-| `dotenv_size` | `int` |  |
-| `dotenv_variable` | `int` |  |
-| `enforcement_limit` | `int` |  |
-| `generic_packages_max_file_size` | `int` |  |
-| `helm_max_file_size` | `int` |  |
-| `limits_history` | `array` |  |
-| `maven_max_file_size` | `int` |  |
-| `notification_limit` | `int` |  |
-| `npm_max_file_size` | `int` |  |
-| `nuget_max_file_size` | `int` |  |
-| `pipeline_hierarchy_size` | `int` |  |
-| `pypi_max_file_size` | `int` |  |
-| `storage_size_limit` | `int` |  |
-| `terraform_module_max_file_size` | `int` |  |
-
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesPlanLimit record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesPlanLimit record (throws on error).
 $api_entities_plan_limit = $client->ApiEntitiesPlanLimit()->load();
 ```
 
@@ -10415,11 +10412,11 @@ Create an instance: `$api_entities_project = $client->ApiEntitiesProject();`
 | `analytics_access_level` | `string` |  |
 | `approvals_before_merge` | `string` |  |
 | `archived` | `bool` |  |
-| `auto_cancel_pending_pipeline` | `string` |  |
+| `auto_cancel_pending_pipelines` | `string` |  |
 | `auto_devops_deploy_strategy` | `string` |  |
 | `auto_devops_enabled` | `bool` |  |
 | `auto_duo_code_review_enabled` | `string` |  |
-| `autoclose_referenced_issue` | `bool` |  |
+| `autoclose_referenced_issues` | `bool` |  |
 | `avatar_url` | `string` |  |
 | `build_git_strategy` | `string` |  |
 | `build_timeout` | `int` |  |
@@ -10428,23 +10425,23 @@ Create an instance: `$api_entities_project = $client->ApiEntitiesProject();`
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `bool` |  |
 | `ci_config_path` | `string` |  |
 | `ci_default_git_depth` | `int` |  |
-| `ci_delete_pipelines_in_second` | `int` |  |
+| `ci_delete_pipelines_in_seconds` | `int` |  |
 | `ci_forward_deployment_enabled` | `bool` |  |
 | `ci_forward_deployment_rollback_allowed` | `bool` |  |
-| `ci_id_token_sub_claim_component` | `array` |  |
+| `ci_id_token_sub_claim_components` | `array` |  |
 | `ci_job_token_scope_enabled` | `bool` |  |
 | `ci_pipeline_variables_minimum_override_role` | `string` |  |
 | `ci_push_repository_for_job_token_allowed` | `bool` |  |
 | `ci_restrict_pipeline_cancellation_role` | `string` |  |
-| `ci_separated_cache` | `bool` |  |
-| `compliance_framework` | `string` |  |
+| `ci_separated_caches` | `bool` |  |
+| `compliance_frameworks` | `string` |  |
 | `container_expiration_policy` | `array` |  |
 | `container_registry_access_level` | `string` |  |
 | `container_registry_enabled` | `bool` |  |
 | `container_registry_image_prefix` | `string` |  |
 | `created_at` | `string` |  |
 | `creator_id` | `int` |  |
-| `custom_attribute` | `array` |  |
+| `custom_attributes` | `array` |  |
 | `default_branch` | `string` |  |
 | `description` | `string` |  |
 | `description_html` | `string` |  |
@@ -10452,7 +10449,7 @@ Create an instance: `$api_entities_project = $client->ApiEntitiesProject();`
 | `emails_disabled` | `bool` |  |
 | `emails_enabled` | `bool` |  |
 | `empty_repo` | `bool` |  |
-| `enforce_auth_checks_on_upload` | `bool` |  |
+| `enforce_auth_checks_on_uploads` | `bool` |  |
 | `environments_access_level` | `string` |  |
 | `external_authorization_classification_label` | `string` |  |
 | `feature_flags_access_level` | `string` |  |
@@ -10477,7 +10474,7 @@ Create an instance: `$api_entities_project = $client->ApiEntitiesProject();`
 | `lfs_enabled` | `bool` |  |
 | `license` | `array` |  |
 | `license_url` | `string` |  |
-| `link` | `array` |  |
+| `links` | `array` |  |
 | `marked_for_deletion_at` | `string` |  |
 | `marked_for_deletion_on` | `string` |  |
 | `max_artifacts_size` | `int` |  |
@@ -10492,8 +10489,8 @@ Create an instance: `$api_entities_project = $client->ApiEntitiesProject();`
 | `merge_trains_enabled` | `string` |  |
 | `merge_trains_skip_train_allowed` | `string` |  |
 | `mirror` | `string` |  |
-| `mirror_overwrites_diverged_branch` | `string` |  |
-| `mirror_trigger_build` | `string` |  |
+| `mirror_overwrites_diverged_branches` | `string` |  |
+| `mirror_trigger_builds` | `string` |  |
 | `mirror_user_id` | `string` |  |
 | `model_experiments_access_level` | `string` |  |
 | `model_registry_access_level` | `string` |  |
@@ -10504,8 +10501,8 @@ Create an instance: `$api_entities_project = $client->ApiEntitiesProject();`
 | `namespace` | `array` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `bool` |  |
 | `only_allow_merge_if_all_status_checks_passed` | `string` |  |
-| `only_allow_merge_if_pipeline_succeed` | `bool` |  |
-| `only_mirror_protected_branch` | `string` |  |
+| `only_allow_merge_if_pipeline_succeeds` | `bool` |  |
+| `only_mirror_protected_branches` | `string` |  |
 | `open_issues_count` | `int` |  |
 | `owner` | `array` |  |
 | `package_registry_access_level` | `string` |  |
@@ -10516,7 +10513,7 @@ Create an instance: `$api_entities_project = $client->ApiEntitiesProject();`
 | `pre_receive_secret_detection_enabled` | `bool` |  |
 | `prevent_merge_without_jira_issue` | `string` |  |
 | `printing_merge_request_link_enabled` | `bool` |  |
-| `public_job` | `bool` |  |
+| `public_jobs` | `bool` |  |
 | `readme_url` | `string` |  |
 | `releases_access_level` | `string` |  |
 | `remove_source_branch_after_merge` | `bool` |  |
@@ -10526,9 +10523,9 @@ Create an instance: `$api_entities_project = $client->ApiEntitiesProject();`
 | `request_access_enabled` | `bool` |  |
 | `requirements_access_level` | `string` |  |
 | `requirements_enabled` | `string` |  |
-| `resolve_outdated_diff_discussion` | `bool` |  |
+| `resolve_outdated_diff_discussions` | `bool` |  |
 | `resource_group_default_process_mode` | `string` |  |
-| `restrict_user_defined_variable` | `bool` |  |
+| `restrict_user_defined_variables` | `bool` |  |
 | `runner_token_expiration_interval` | `int` |  |
 | `runners_token` | `string` |  |
 | `secret_push_protection_enabled` | `bool` |  |
@@ -10537,7 +10534,7 @@ Create an instance: `$api_entities_project = $client->ApiEntitiesProject();`
 | `service_desk_address` | `string` |  |
 | `service_desk_enabled` | `bool` |  |
 | `shared_runners_enabled` | `bool` |  |
-| `shared_with_group` | `array` |  |
+| `shared_with_groups` | `array` |  |
 | `show_diff_preview_in_email` | `bool` |  |
 | `snippets_access_level` | `string` |  |
 | `snippets_enabled` | `bool` |  |
@@ -10546,13 +10543,13 @@ Create an instance: `$api_entities_project = $client->ApiEntitiesProject();`
 | `squash_option` | `string` |  |
 | `ssh_url_to_repo` | `string` |  |
 | `star_count` | `int` |  |
-| `statistic` | `array` |  |
+| `statistics` | `array` |  |
 | `suggestion_commit_message` | `string` |  |
 | `tag_list` | `array` |  |
-| `topic` | `array` |  |
+| `topics` | `array` |  |
 | `updated_at` | `string` |  |
 | `visibility` | `string` |  |
-| `warn_about_potentially_unwanted_character` | `bool` |  |
+| `warn_about_potentially_unwanted_characters` | `bool` |  |
 | `web_based_commit_signing_enabled` | `string` |  |
 | `web_url` | `string` |  |
 | `wiki_access_level` | `string` |  |
@@ -10587,12 +10584,13 @@ Create an instance: `$api_entities_project_daily_statistic = $client->ApiEntitie
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fetch` | `array` |  |
+| `days` | `array` |  |
+| `total` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesProjectDailyStatistic record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesProjectDailyStatistic record (throws on error).
 $api_entities_project_daily_statistic = $client->ApiEntitiesProjectDailyStatistic()->load(["project_id" => "project_id"]);
 ```
 
@@ -10611,20 +10609,13 @@ Create an instance: `$api_entities_project_export_status = $client->ApiEntitiesP
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created_at` | `string` |  |
-| `description` | `string` |  |
-| `export_status` | `string` |  |
-| `id` | `int` |  |
-| `link` | `array` |  |
-| `name` | `string` |  |
-| `name_with_namespace` | `string` |  |
-| `path` | `string` |  |
-| `path_with_namespace` | `string` |  |
+| `api_url` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesProjectExportStatus record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesProjectExportStatus record (throws on error).
 $api_entities_project_export_status = $client->ApiEntitiesProjectExportStatus()->load(["project_id" => "project_id"]);
 ```
 
@@ -10667,41 +10658,41 @@ Create an instance: `$api_entities_project_hook = $client->ApiEntitiesProjectHoo
 | --- | --- | --- |
 | `alert_status` | `mixed` |  |
 | `branch_filter_strategy` | `string` |  |
-| `confidential_issues_event` | `bool` |  |
-| `confidential_note_event` | `bool` |  |
+| `confidential_issues_events` | `bool` |  |
+| `confidential_note_events` | `bool` |  |
 | `created_at` | `string` |  |
-| `custom_header` | `array` |  |
+| `custom_headers` | `array` |  |
 | `custom_webhook_template` | `string` |  |
-| `deployment_event` | `bool` |  |
+| `deployment_events` | `bool` |  |
 | `description` | `string` |  |
 | `disabled_until` | `string` |  |
-| `emoji_event` | `bool` |  |
+| `emoji_events` | `bool` |  |
 | `enable_ssl_verification` | `bool` |  |
-| `feature_flag_event` | `bool` |  |
+| `feature_flag_events` | `bool` |  |
 | `id` | `string` |  |
-| `issues_event` | `bool` |  |
-| `job_event` | `bool` |  |
-| `merge_requests_event` | `bool` |  |
-| `milestone_event` | `bool` |  |
+| `issues_events` | `bool` |  |
+| `job_events` | `bool` |  |
+| `merge_requests_events` | `bool` |  |
+| `milestone_events` | `bool` |  |
 | `name` | `string` |  |
-| `note_event` | `bool` |  |
-| `pipeline_event` | `bool` |  |
+| `note_events` | `bool` |  |
+| `pipeline_events` | `bool` |  |
 | `project_id` | `string` |  |
-| `push_event` | `bool` |  |
+| `push_events` | `bool` |  |
 | `push_events_branch_filter` | `string` |  |
-| `releases_event` | `bool` |  |
-| `repository_update_event` | `bool` |  |
-| `resource_access_token_event` | `bool` |  |
-| `tag_push_event` | `bool` |  |
+| `releases_events` | `bool` |  |
+| `repository_update_events` | `bool` |  |
+| `resource_access_token_events` | `bool` |  |
+| `tag_push_events` | `bool` |  |
 | `url` | `string` |  |
-| `url_variable` | `array` |  |
-| `vulnerability_event` | `bool` |  |
-| `wiki_page_event` | `bool` |  |
+| `url_variables` | `array` |  |
+| `vulnerability_events` | `bool` |  |
+| `wiki_page_events` | `bool` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesProjectHook record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesProjectHook record (throws on error).
 $api_entities_project_hook = $client->ApiEntitiesProjectHook()->load(["id" => "api_entities_project_hook_id", "project_id" => "project_id"]);
 ```
 
@@ -10779,7 +10770,7 @@ Create an instance: `$api_entities_project_job_token_scope = $client->ApiEntitie
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesProjectJobTokenScope record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesProjectJobTokenScope record (throws on error).
 $api_entities_project_job_token_scope = $client->ApiEntitiesProjectJobTokenScope()->load(["project_id" => "project_id"]);
 ```
 
@@ -10806,7 +10797,7 @@ Create an instance: `$api_entities_project_repository_storage = $client->ApiEnti
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesProjectRepositoryStorage record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesProjectRepositoryStorage record (throws on error).
 $api_entities_project_repository_storage = $client->ApiEntitiesProjectRepositoryStorage()->load(["project_id" => "project_id"]);
 ```
 
@@ -10831,8 +10822,8 @@ Create an instance: `$api_entities_project_snippet = $client->ApiEntitiesProject
 | `author` | `array` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
-| `file` | `array` |  |
 | `file_name` | `string` |  |
+| `files` | `array` |  |
 | `http_url_to_repo` | `string` |  |
 | `id` | `int` |  |
 | `imported` | `bool` |  |
@@ -10849,7 +10840,7 @@ Create an instance: `$api_entities_project_snippet = $client->ApiEntitiesProject
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesProjectSnippet record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesProjectSnippet record (throws on error).
 $api_entities_project_snippet = $client->ApiEntitiesProjectSnippet()->load(["id" => "api_entities_project_snippet_id", "project_id" => "project_id"]);
 ```
 
@@ -10907,11 +10898,11 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 | `analytics_access_level` | `string` |  |
 | `approvals_before_merge` | `string` |  |
 | `archived` | `bool` |  |
-| `auto_cancel_pending_pipeline` | `string` |  |
+| `auto_cancel_pending_pipelines` | `string` |  |
 | `auto_devops_deploy_strategy` | `string` |  |
 | `auto_devops_enabled` | `bool` |  |
 | `auto_duo_code_review_enabled` | `string` |  |
-| `autoclose_referenced_issue` | `bool` |  |
+| `autoclose_referenced_issues` | `bool` |  |
 | `avatar_url` | `string` |  |
 | `build_git_strategy` | `string` |  |
 | `build_timeout` | `int` |  |
@@ -10920,23 +10911,23 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `bool` |  |
 | `ci_config_path` | `string` |  |
 | `ci_default_git_depth` | `int` |  |
-| `ci_delete_pipelines_in_second` | `int` |  |
+| `ci_delete_pipelines_in_seconds` | `int` |  |
 | `ci_forward_deployment_enabled` | `bool` |  |
 | `ci_forward_deployment_rollback_allowed` | `bool` |  |
-| `ci_id_token_sub_claim_component` | `array` |  |
+| `ci_id_token_sub_claim_components` | `array` |  |
 | `ci_job_token_scope_enabled` | `bool` |  |
 | `ci_pipeline_variables_minimum_override_role` | `string` |  |
 | `ci_push_repository_for_job_token_allowed` | `bool` |  |
 | `ci_restrict_pipeline_cancellation_role` | `string` |  |
-| `ci_separated_cache` | `bool` |  |
-| `compliance_framework` | `string` |  |
+| `ci_separated_caches` | `bool` |  |
+| `compliance_frameworks` | `string` |  |
 | `container_expiration_policy` | `array` |  |
 | `container_registry_access_level` | `string` |  |
 | `container_registry_enabled` | `bool` |  |
 | `container_registry_image_prefix` | `string` |  |
 | `created_at` | `string` |  |
 | `creator_id` | `int` |  |
-| `custom_attribute` | `array` |  |
+| `custom_attributes` | `array` |  |
 | `default_branch` | `string` |  |
 | `description` | `string` |  |
 | `description_html` | `string` |  |
@@ -10944,7 +10935,7 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 | `emails_disabled` | `bool` |  |
 | `emails_enabled` | `bool` |  |
 | `empty_repo` | `bool` |  |
-| `enforce_auth_checks_on_upload` | `bool` |  |
+| `enforce_auth_checks_on_uploads` | `bool` |  |
 | `environments_access_level` | `string` |  |
 | `external_authorization_classification_label` | `string` |  |
 | `feature_flags_access_level` | `string` |  |
@@ -10969,7 +10960,7 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 | `lfs_enabled` | `bool` |  |
 | `license` | `array` |  |
 | `license_url` | `string` |  |
-| `link` | `array` |  |
+| `links` | `array` |  |
 | `marked_for_deletion_at` | `string` |  |
 | `marked_for_deletion_on` | `string` |  |
 | `max_artifacts_size` | `int` |  |
@@ -10984,8 +10975,8 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 | `merge_trains_enabled` | `string` |  |
 | `merge_trains_skip_train_allowed` | `string` |  |
 | `mirror` | `string` |  |
-| `mirror_overwrites_diverged_branch` | `string` |  |
-| `mirror_trigger_build` | `string` |  |
+| `mirror_overwrites_diverged_branches` | `string` |  |
+| `mirror_trigger_builds` | `string` |  |
 | `mirror_user_id` | `string` |  |
 | `model_experiments_access_level` | `string` |  |
 | `model_registry_access_level` | `string` |  |
@@ -10996,8 +10987,8 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 | `namespace` | `array` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `bool` |  |
 | `only_allow_merge_if_all_status_checks_passed` | `string` |  |
-| `only_allow_merge_if_pipeline_succeed` | `bool` |  |
-| `only_mirror_protected_branch` | `string` |  |
+| `only_allow_merge_if_pipeline_succeeds` | `bool` |  |
+| `only_mirror_protected_branches` | `string` |  |
 | `open_issues_count` | `int` |  |
 | `owner` | `array` |  |
 | `package_registry_access_level` | `string` |  |
@@ -11005,11 +10996,11 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 | `pages_access_level` | `string` |  |
 | `path` | `string` |  |
 | `path_with_namespace` | `string` |  |
-| `permission` | `array` |  |
+| `permissions` | `array` |  |
 | `pre_receive_secret_detection_enabled` | `bool` |  |
 | `prevent_merge_without_jira_issue` | `string` |  |
 | `printing_merge_request_link_enabled` | `bool` |  |
-| `public_job` | `bool` |  |
+| `public_jobs` | `bool` |  |
 | `readme_url` | `string` |  |
 | `releases_access_level` | `string` |  |
 | `remove_source_branch_after_merge` | `bool` |  |
@@ -11019,9 +11010,9 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 | `request_access_enabled` | `bool` |  |
 | `requirements_access_level` | `string` |  |
 | `requirements_enabled` | `string` |  |
-| `resolve_outdated_diff_discussion` | `bool` |  |
+| `resolve_outdated_diff_discussions` | `bool` |  |
 | `resource_group_default_process_mode` | `string` |  |
-| `restrict_user_defined_variable` | `bool` |  |
+| `restrict_user_defined_variables` | `bool` |  |
 | `runner_token_expiration_interval` | `int` |  |
 | `runners_token` | `string` |  |
 | `secret_push_protection_enabled` | `bool` |  |
@@ -11030,7 +11021,7 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 | `service_desk_address` | `string` |  |
 | `service_desk_enabled` | `bool` |  |
 | `shared_runners_enabled` | `bool` |  |
-| `shared_with_group` | `array` |  |
+| `shared_with_groups` | `array` |  |
 | `show_diff_preview_in_email` | `bool` |  |
 | `snippets_access_level` | `string` |  |
 | `snippets_enabled` | `bool` |  |
@@ -11039,13 +11030,13 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 | `squash_option` | `string` |  |
 | `ssh_url_to_repo` | `string` |  |
 | `star_count` | `int` |  |
-| `statistic` | `array` |  |
+| `statistics` | `array` |  |
 | `suggestion_commit_message` | `string` |  |
 | `tag_list` | `array` |  |
-| `topic` | `array` |  |
+| `topics` | `array` |  |
 | `updated_at` | `string` |  |
 | `visibility` | `string` |  |
-| `warn_about_potentially_unwanted_character` | `bool` |  |
+| `warn_about_potentially_unwanted_characters` | `bool` |  |
 | `web_based_commit_signing_enabled` | `string` |  |
 | `web_url` | `string` |  |
 | `wiki_access_level` | `string` |  |
@@ -11054,7 +11045,7 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesProjectWithAccess record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesProjectWithAccess record (throws on error).
 $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess()->load(["id" => "api_entities_project_with_access_id"]);
 ```
 
@@ -11163,7 +11154,7 @@ Create an instance: `$api_entities_projects_topic = $client->ApiEntitiesProjects
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesProjectsTopic record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesProjectsTopic record (throws on error).
 $api_entities_projects_topic = $client->ApiEntitiesProjectsTopic()->load(["id" => "api_entities_projects_topic_id"]);
 ```
 
@@ -11196,15 +11187,15 @@ Create an instance: `$api_entities_protected_branch = $client->ApiEntitiesProtec
 | `code_owner_approval_required` | `bool` |  |
 | `id` | `int` |  |
 | `inherited` | `bool` |  |
-| `merge_access_level` | `array` |  |
+| `merge_access_levels` | `array` |  |
 | `name` | `string` |  |
-| `push_access_level` | `array` |  |
-| `unprotect_access_level` | `array` |  |
+| `push_access_levels` | `array` |  |
+| `unprotect_access_levels` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesProtectedBranch record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesProtectedBranch record (throws on error).
 $api_entities_protected_branch = $client->ApiEntitiesProtectedBranch()->load(["id" => "api_entities_protected_branch_id", "project_id" => "project_id"]);
 ```
 
@@ -11240,13 +11231,19 @@ Create an instance: `$api_entities_protected_tag = $client->ApiEntitiesProtected
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `create_access_level` | `array` |  |
+| `access_level` | `int` |  |
+| `access_level_description` | `string` |  |
+| `create_access_levels` | `array` |  |
+| `deploy_key_id` | `int` |  |
+| `group_id` | `int` |  |
+| `id` | `int` |  |
 | `name` | `string` |  |
+| `user_id` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesProtectedTag record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesProtectedTag record (throws on error).
 $api_entities_protected_tag = $client->ApiEntitiesProtectedTag()->load(["id" => "api_entities_protected_tag_id", "project_id" => "project_id"]);
 ```
 
@@ -11310,6 +11307,7 @@ Create an instance: `$api_entities_related_issue = $client->ApiEntitiesRelatedIs
 | Field | Type | Description |
 | --- | --- | --- |
 | `assignee` | `array` |  |
+| `assignees` | `array` |  |
 | `author` | `array` |  |
 | `blocking_issues_count` | `string` |  |
 | `closed_at` | `string` |  |
@@ -11318,11 +11316,11 @@ Create an instance: `$api_entities_related_issue = $client->ApiEntitiesRelatedIs
 | `created_at` | `string` |  |
 | `description` | `string` |  |
 | `discussion_locked` | `bool` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `due_date` | `string` |  |
 | `epic` | `array` |  |
 | `epic_iid` | `string` |  |
-| `has_task` | `bool` |  |
+| `has_tasks` | `bool` |  |
 | `health_status` | `string` |  |
 | `id` | `int` |  |
 | `iid` | `int` |  |
@@ -11331,27 +11329,27 @@ Create an instance: `$api_entities_related_issue = $client->ApiEntitiesRelatedIs
 | `issue_link_id` | `string` |  |
 | `issue_type` | `string` |  |
 | `iteration` | `array` |  |
-| `label` | `array` |  |
-| `link` | `array` |  |
+| `labels` | `array` |  |
 | `link_created_at` | `string` |  |
 | `link_type` | `string` |  |
 | `link_updated_at` | `string` |  |
+| `links` | `array` |  |
 | `merge_requests_count` | `string` |  |
 | `milestone` | `array` |  |
 | `moved_to_id` | `string` |  |
 | `project_id` | `int` |  |
-| `reference` | `array` |  |
+| `references` | `array` |  |
 | `service_desk_reply_to` | `string` |  |
 | `severity` | `string` |  |
 | `state` | `string` |  |
 | `subscribed` | `string` |  |
 | `task_completion_status` | `string` |  |
 | `task_status` | `string` |  |
-| `time_stat` | `array` |  |
+| `time_stats` | `array` |  |
 | `title` | `string` |  |
 | `type` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
 | `weight` | `string` |  |
@@ -11399,16 +11397,16 @@ Create an instance: `$api_entities_release = $client->ApiEntitiesRelease();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `array` |  |
+| `assets` | `array` |  |
 | `author` | `array` |  |
 | `commit` | `array` |  |
 | `commit_path` | `string` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
 | `description_html` | `string` |  |
-| `evidence` | `array` |  |
-| `link` | `array` |  |
-| `milestone` | `array` |  |
+| `evidences` | `array` |  |
+| `links` | `array` |  |
+| `milestones` | `array` |  |
 | `name` | `string` |  |
 | `released_at` | `string` |  |
 | `tag_name` | `string` |  |
@@ -11418,7 +11416,7 @@ Create an instance: `$api_entities_release = $client->ApiEntitiesRelease();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesRelease record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesRelease record (throws on error).
 $api_entities_release = $client->ApiEntitiesRelease()->load(["id" => "api_entities_release_id", "project_id" => "project_id"]);
 ```
 
@@ -11464,7 +11462,7 @@ Create an instance: `$api_entities_releases_link = $client->ApiEntitiesReleasesL
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesReleasesLink record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesReleasesLink record (throws on error).
 $api_entities_releases_link = $client->ApiEntitiesReleasesLink()->load(["id" => "api_entities_releases_link_id", "project_id" => "project_id", "release_id" => "release_id"]);
 ```
 
@@ -11504,22 +11502,22 @@ Create an instance: `$api_entities_remote_mirror = $client->ApiEntitiesRemoteMir
 | --- | --- | --- |
 | `auth_method` | `string` |  |
 | `enabled` | `bool` |  |
-| `host_key` | `array` |  |
+| `host_keys` | `array` |  |
 | `id` | `int` |  |
-| `keep_divergent_ref` | `bool` |  |
+| `keep_divergent_refs` | `bool` |  |
 | `last_error` | `int` |  |
 | `last_successful_update_at` | `string` |  |
 | `last_update_at` | `string` |  |
 | `last_update_started_at` | `string` |  |
 | `mirror_branch_regex` | `string` |  |
-| `only_protected_branch` | `bool` |  |
+| `only_protected_branches` | `bool` |  |
 | `update_status` | `string` |  |
 | `url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesRemoteMirror record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesRemoteMirror record (throws on error).
 $api_entities_remote_mirror = $client->ApiEntitiesRemoteMirror()->load(["id" => "api_entities_remote_mirror_id", "project_id" => "project_id"]);
 ```
 
@@ -11553,22 +11551,22 @@ Create an instance: `$api_entities_repository_health = $client->ApiEntitiesRepos
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `alternate` | `array` |  |
+| `alternates` | `array` |  |
 | `bitmap` | `array` |  |
 | `commit_graph` | `array` |  |
 | `is_object_pool` | `bool` |  |
 | `last_full_repack` | `array` |  |
 | `multi_pack_index` | `array` |  |
 | `multi_pack_index_bitmap` | `array` |  |
-| `object` | `array` |  |
-| `reference` | `array` |  |
+| `objects` | `array` |  |
+| `references` | `array` |  |
 | `size` | `int` |  |
 | `updated_at` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesRepositoryHealth record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesRepositoryHealth record (throws on error).
 $api_entities_repository_health = $client->ApiEntitiesRepositoryHealth()->load(["project_id" => "project_id"]);
 ```
 
@@ -11598,7 +11596,7 @@ Create an instance: `$api_entities_resource_access_token_with_token = $client->A
 | `resource_id` | `int` |  |
 | `resource_type` | `string` |  |
 | `revoked` | `bool` |  |
-| `scope` | `array` |  |
+| `scopes` | `array` |  |
 | `token` | `string` |  |
 | `user_id` | `int` |  |
 
@@ -11637,7 +11635,7 @@ Create an instance: `$api_entities_resource_milestone_event = $client->ApiEntiti
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesResourceMilestoneEvent record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesResourceMilestoneEvent record (throws on error).
 $api_entities_resource_milestone_event = $client->ApiEntitiesResourceMilestoneEvent()->load(["id" => "api_entities_resource_milestone_event_id", "project_id" => "project_id"]);
 ```
 
@@ -11666,8 +11664,8 @@ Create an instance: `$api_entities_snippet = $client->ApiEntitiesSnippet();`
 | `author` | `array` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
-| `file` | `array` |  |
 | `file_name` | `string` |  |
+| `files` | `array` |  |
 | `http_url_to_repo` | `string` |  |
 | `id` | `int` |  |
 | `imported` | `bool` |  |
@@ -11703,19 +11701,57 @@ Create an instance: `$api_entities_ssh_key_with_user = $client->ApiEntitiesSshKe
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `bio` | `string` |  |
+| `bot` | `string` |  |
+| `can_create_group` | `bool` |  |
+| `can_create_project` | `bool` |  |
+| `color_scheme_id` | `int` |  |
+| `commit_email` | `string` |  |
+| `confirmed_at` | `string` |  |
 | `created_at` | `string` |  |
-| `expires_at` | `string` |  |
+| `current_sign_in_at` | `string` |  |
+| `custom_attributes` | `array` |  |
+| `discord` | `string` |  |
+| `email` | `string` |  |
+| `external` | `string` |  |
+| `extra_shared_runners_minutes_limit` | `string` |  |
+| `followers` | `string` |  |
+| `following` | `string` |  |
+| `github` | `string` |  |
 | `id` | `int` |  |
-| `key` | `string` |  |
-| `last_used_at` | `string` |  |
-| `title` | `string` |  |
-| `usage_type` | `string` |  |
-| `user` | `array` |  |
+| `identities` | `array` |  |
+| `is_followed` | `bool` |  |
+| `job_title` | `string` |  |
+| `last_activity_on` | `string` |  |
+| `last_sign_in_at` | `string` |  |
+| `linkedin` | `string` |  |
+| `local_time` | `string` |  |
+| `location` | `string` |  |
+| `locked` | `bool` |  |
+| `name` | `string` |  |
+| `organization` | `string` |  |
+| `preferred_language` | `string` |  |
+| `private_profile` | `bool` |  |
+| `projects_limit` | `int` |  |
+| `pronouns` | `string` |  |
+| `public_email` | `string` |  |
+| `scim_identities` | `array` |  |
+| `shared_runners_minutes_limit` | `string` |  |
+| `state` | `string` |  |
+| `theme_id` | `int` |  |
+| `twitter` | `string` |  |
+| `two_factor_enabled` | `bool` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
+| `website_url` | `string` |  |
+| `work_information` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesSshKeyWithUser record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesSshKeyWithUser record (throws on error).
 $api_entities_ssh_key_with_user = $client->ApiEntitiesSshKeyWithUser()->load(["id" => "api_entities_ssh_key_with_user_id"]);
 ```
 
@@ -11769,14 +11805,14 @@ Create an instance: `$api_entities_system_broadcast_message = $client->ApiEntiti
 | `id` | `string` |  |
 | `message` | `string` |  |
 | `starts_at` | `string` |  |
-| `target_access_level` | `string` |  |
+| `target_access_levels` | `string` |  |
 | `target_path` | `string` |  |
 | `theme` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesSystemBroadcastMessage record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesSystemBroadcastMessage record (throws on error).
 $api_entities_system_broadcast_message = $client->ApiEntitiesSystemBroadcastMessage()->load(["id" => "api_entities_system_broadcast_message_id"]);
 ```
 
@@ -11815,7 +11851,7 @@ Create an instance: `$api_entities_tag = $client->ApiEntitiesTag();`
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesTag record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesTag record (throws on error).
 $api_entities_tag = $client->ApiEntitiesTag()->load(["id" => "api_entities_tag_id", "project_id" => "project_id"]);
 ```
 
@@ -11855,7 +11891,7 @@ Create an instance: `$api_entities_tag_signature = $client->ApiEntitiesTagSignat
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesTagSignature record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesTagSignature record (throws on error).
 $api_entities_tag_signature = $client->ApiEntitiesTagSignature()->load(["project_id" => "project_id", "tag_name" => "tag_name"]);
 ```
 
@@ -11880,7 +11916,7 @@ Create an instance: `$api_entities_templates_list = $client->ApiEntitiesTemplate
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesTemplatesList record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesTemplatesList record (throws on error).
 $api_entities_templates_list = $client->ApiEntitiesTemplatesList()->load(["project_id" => "project_id", "type" => "type"]);
 ```
 
@@ -11900,18 +11936,20 @@ Create an instance: `$api_entities_terraform_module_version = $client->ApiEntiti
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `module` | `string` |  |
+| `modules` | `string` |  |
 | `name` | `string` |  |
 | `provider` | `string` |  |
+| `providers` | `string` |  |
 | `root` | `string` |  |
 | `source` | `string` |  |
-| `submodule` | `string` |  |
+| `submodules` | `string` |  |
 | `version` | `string` |  |
+| `versions` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesTerraformModuleVersion record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesTerraformModuleVersion record (throws on error).
 $api_entities_terraform_module_version = $client->ApiEntitiesTerraformModuleVersion()->load(["module_name" => "module_name", "module_system" => "module_system"]);
 ```
 
@@ -11946,7 +11984,7 @@ Create an instance: `$api_entities_tree_object = $client->ApiEntitiesTreeObject(
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesTreeObject record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesTreeObject record (throws on error).
 $api_entities_tree_object = $client->ApiEntitiesTreeObject()->load(["project_id" => "project_id"]);
 ```
 
@@ -11968,19 +12006,28 @@ Create an instance: `$api_entities_trigger = $client->ApiEntitiesTrigger();`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
+| `custom_attributes` | `array` |  |
 | `description` | `string` |  |
 | `expires_at` | `string` |  |
 | `id` | `int` |  |
 | `last_used` | `string` |  |
+| `locked` | `bool` |  |
+| `name` | `string` |  |
 | `owner` | `array` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
 | `token` | `string` |  |
 | `updated_at` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesTrigger record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesTrigger record (throws on error).
 $api_entities_trigger = $client->ApiEntitiesTrigger()->load(["id" => "api_entities_trigger_id", "project_id" => "project_id"]);
 ```
 
@@ -12021,7 +12068,7 @@ Create an instance: `$api_entities_user_agent_detail = $client->ApiEntitiesUserA
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesUserAgentDetail record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesUserAgentDetail record (throws on error).
 $api_entities_user_agent_detail = $client->ApiEntitiesUserAgentDetail()->load();
 ```
 
@@ -12040,16 +12087,16 @@ Create an instance: `$api_entities_user_count = $client->ApiEntitiesUserCount();
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `assigned_issue` | `int` |  |
-| `assigned_merge_request` | `int` |  |
-| `merge_request` | `int` |  |
-| `review_requested_merge_request` | `int` |  |
-| `todo` | `int` |  |
+| `assigned_issues` | `int` |  |
+| `assigned_merge_requests` | `int` |  |
+| `merge_requests` | `int` |  |
+| `review_requested_merge_requests` | `int` |  |
+| `todos` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesUserCount record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesUserCount record (throws on error).
 $api_entities_user_count = $client->ApiEntitiesUserCount()->load();
 ```
 
@@ -12079,16 +12126,16 @@ Create an instance: `$api_entities_user_public = $client->ApiEntitiesUserPublic(
 | `confirmed_at` | `string` |  |
 | `created_at` | `string` |  |
 | `current_sign_in_at` | `string` |  |
-| `custom_attribute` | `array` |  |
+| `custom_attributes` | `array` |  |
 | `discord` | `string` |  |
 | `email` | `string` |  |
 | `external` | `string` |  |
 | `extra_shared_runners_minutes_limit` | `string` |  |
-| `follower` | `string` |  |
+| `followers` | `string` |  |
 | `following` | `string` |  |
 | `github` | `string` |  |
 | `id` | `int` |  |
-| `identity` | `array` |  |
+| `identities` | `array` |  |
 | `is_followed` | `bool` |  |
 | `job_title` | `string` |  |
 | `key` | `string` |  |
@@ -12103,9 +12150,9 @@ Create an instance: `$api_entities_user_public = $client->ApiEntitiesUserPublic(
 | `preferred_language` | `string` |  |
 | `private_profile` | `bool` |  |
 | `projects_limit` | `int` |  |
-| `pronoun` | `string` |  |
+| `pronouns` | `string` |  |
 | `public_email` | `string` |  |
-| `scim_identity` | `array` |  |
+| `scim_identities` | `array` |  |
 | `shared_runners_minutes_limit` | `string` |  |
 | `state` | `string` |  |
 | `theme_id` | `int` |  |
@@ -12180,22 +12227,10 @@ Create an instance: `$api_entities_wiki_page = $client->ApiEntitiesWikiPage();`
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `content` | `string` |  |
-| `encoding` | `string` |  |
-| `format` | `string` |  |
-| `front_matter` | `array` |  |
-| `slug` | `string` |  |
-| `title` | `string` |  |
-| `wiki_page_meta_id` | `int` |  |
-
 #### Example: Load
 
 ```php
-// load() returns the bare ApiEntitiesWikiPage record (throws on error).
+// load() returns the ENTITY — call data_get() for the ApiEntitiesWikiPage record (throws on error).
 $api_entities_wiki_page = $client->ApiEntitiesWikiPage()->load(["slug" => "slug"]);
 ```
 
@@ -12291,7 +12326,7 @@ Create an instance: `$cargo_package = $client->CargoPackage();`
 #### Example: Load
 
 ```php
-// load() returns the bare CargoPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the CargoPackage record (throws on error).
 $cargo_package = $client->CargoPackage()->load(["project_id" => "project_id"]);
 ```
 
@@ -12361,7 +12396,7 @@ Create an instance: `$composer_package = $client->ComposerPackage();`
 #### Example: Load
 
 ```php
-// load() returns the bare ComposerPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the ComposerPackage record (throws on error).
 $composer_package = $client->ComposerPackage()->load();
 ```
 
@@ -12392,7 +12427,7 @@ Create an instance: `$conan_package = $client->ConanPackage();`
 #### Example: Load
 
 ```php
-// load() returns the bare ConanPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the ConanPackage record (throws on error).
 $conan_package = $client->ConanPackage()->load(["id" => "conan_package_id"]);
 ```
 
@@ -12446,7 +12481,7 @@ Create an instance: `$custom_attribute = $client->CustomAttribute();`
 #### Example: Load
 
 ```php
-// load() returns the bare CustomAttribute record (throws on error).
+// load() returns the ENTITY — call data_get() for the CustomAttribute record (throws on error).
 $custom_attribute = $client->CustomAttribute()->load(["id" => "custom_attribute_id"]);
 ```
 
@@ -12487,7 +12522,7 @@ Create an instance: `$debian_package = $client->DebianPackage();`
 #### Example: Load
 
 ```php
-// load() returns the bare DebianPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the DebianPackage record (throws on error).
 $debian_package = $client->DebianPackage()->load(["id" => "debian_package_id"]);
 ```
 
@@ -12573,7 +12608,7 @@ Create an instance: `$ee_api_entities_audit_event = $client->EeApiEntitiesAuditE
 | --- | --- | --- |
 | `author_id` | `string` |  |
 | `created_at` | `string` |  |
-| `detail` | `string` |  |
+| `details` | `string` |  |
 | `entity_id` | `string` |  |
 | `entity_type` | `string` |  |
 | `event_name` | `string` |  |
@@ -12582,7 +12617,7 @@ Create an instance: `$ee_api_entities_audit_event = $client->EeApiEntitiesAuditE
 #### Example: Load
 
 ```php
-// load() returns the bare EeApiEntitiesAuditEvent record (throws on error).
+// load() returns the ENTITY — call data_get() for the EeApiEntitiesAuditEvent record (throws on error).
 $ee_api_entities_audit_event = $client->EeApiEntitiesAuditEvent()->load(["id" => "ee_api_entities_audit_event_id"]);
 ```
 
@@ -12608,18 +12643,14 @@ Create an instance: `$ee_api_entities_billable_membership = $client->EeApiEntiti
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_level` | `array` |  |
-| `created_at` | `string` |  |
-| `expires_at` | `string` |  |
-| `id` | `string` |  |
-| `source_full_name` | `string` |  |
-| `source_id` | `string` |  |
-| `source_members_url` | `string` |  |
+| `custom_role` | `string` |  |
+| `integer_value` | `string` |  |
+| `string_value` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare EeApiEntitiesBillableMembership record (throws on error).
+// load() returns the ENTITY — call data_get() for the EeApiEntitiesBillableMembership record (throws on error).
 $ee_api_entities_billable_membership = $client->EeApiEntitiesBillableMembership()->load(["billable_member_id" => "billable_member_id", "group_id" => "group_id"]);
 ```
 
@@ -12665,7 +12696,7 @@ Create an instance: `$ee_api_entities_geo_node_status = $client->EeApiEntitiesGe
 | `container_repositories_verified_in_percentage` | `string` |  |
 | `cursor_last_event_id` | `string` |  |
 | `cursor_last_event_timestamp` | `string` |  |
-| `db_replication_lag_second` | `string` |  |
+| `db_replication_lag_seconds` | `string` |  |
 | `dependency_proxy_blobs_checksum_failed_count` | `string` |  |
 | `dependency_proxy_blobs_checksum_total_count` | `string` |  |
 | `dependency_proxy_blobs_checksummed_count` | `string` |  |
@@ -12747,7 +12778,7 @@ Create an instance: `$ee_api_entities_geo_node_status = $client->EeApiEntitiesGe
 | `lfs_objects_verification_total_count` | `string` |  |
 | `lfs_objects_verified_count` | `string` |  |
 | `lfs_objects_verified_in_percentage` | `string` |  |
-| `link` | `array` |  |
+| `links` | `array` |  |
 | `merge_request_diffs_checksum_failed_count` | `string` |  |
 | `merge_request_diffs_checksum_total_count` | `string` |  |
 | `merge_request_diffs_checksummed_count` | `string` |  |
@@ -12761,7 +12792,7 @@ Create an instance: `$ee_api_entities_geo_node_status = $client->EeApiEntitiesGe
 | `merge_request_diffs_verified_count` | `string` |  |
 | `merge_request_diffs_verified_in_percentage` | `string` |  |
 | `missing_oauth_application` | `string` |  |
-| `namespace` | `array` |  |
+| `namespaces` | `array` |  |
 | `package_files_checksum_failed_count` | `string` |  |
 | `package_files_checksum_total_count` | `string` |  |
 | `package_files_checksummed_count` | `string` |  |
@@ -12826,7 +12857,7 @@ Create an instance: `$ee_api_entities_geo_node_status = $client->EeApiEntitiesGe
 | `proxy_local_requests_event_count_weekly` | `string` |  |
 | `proxy_remote_requests_event_count_weekly` | `string` |  |
 | `replication_slots_count` | `string` |  |
-| `replication_slots_max_retained_wal_byte` | `string` |  |
+| `replication_slots_max_retained_wal_bytes` | `string` |  |
 | `replication_slots_used_count` | `string` |  |
 | `replication_slots_used_in_percentage` | `string` |  |
 | `repositories_checked_count` | `string` |  |
@@ -12847,7 +12878,7 @@ Create an instance: `$ee_api_entities_geo_node_status = $client->EeApiEntitiesGe
 | `snippet_repositories_verification_total_count` | `string` |  |
 | `snippet_repositories_verified_count` | `string` |  |
 | `snippet_repositories_verified_in_percentage` | `string` |  |
-| `storage_shard` | `array` |  |
+| `storage_shards` | `array` |  |
 | `storage_shards_match` | `string` |  |
 | `terraform_state_versions_checksum_failed_count` | `string` |  |
 | `terraform_state_versions_checksum_total_count` | `string` |  |
@@ -12898,7 +12929,7 @@ Create an instance: `$ee_api_entities_geo_pipeline_ref = $client->EeApiEntitiesG
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `pipeline_ref` | `array` |  |
+| `pipeline_refs` | `array` |  |
 
 #### Example: List
 
@@ -12959,9 +12990,9 @@ Create an instance: `$ee_api_entities_merge_request_approval_state = $client->Ee
 | `approved` | `bool` |  |
 | `approved_by` | `array` |  |
 | `code_owner` | `bool` |  |
-| `contains_hidden_group` | `bool` |  |
-| `eligible_approver` | `array` |  |
-| `group` | `array` |  |
+| `contains_hidden_groups` | `bool` |  |
+| `eligible_approvers` | `array` |  |
+| `groups` | `array` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `overridden` | `bool` |  |
@@ -12969,7 +13000,7 @@ Create an instance: `$ee_api_entities_merge_request_approval_state = $client->Ee
 | `rule_type` | `string` |  |
 | `section` | `string` |  |
 | `source_rule` | `array` |  |
-| `user` | `array` |  |
+| `users` | `array` |  |
 
 #### Example: List
 
@@ -13072,7 +13103,7 @@ Create an instance: `$feature_flag = $client->FeatureFlag();`
 #### Example: Load
 
 ```php
-// load() returns the bare FeatureFlag record (throws on error).
+// load() returns the ENTITY — call data_get() for the FeatureFlag record (throws on error).
 $feature_flag = $client->FeatureFlag()->load(["project_id" => "project_id"]);
 ```
 
@@ -13121,7 +13152,7 @@ Create an instance: `$generic_package = $client->GenericPackage();`
 #### Example: Load
 
 ```php
-// load() returns the bare GenericPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the GenericPackage record (throws on error).
 $generic_package = $client->GenericPackage()->load(["file_name" => "file_name", "generic_id" => "generic_id", "project_id" => "project_id"]);
 ```
 
@@ -13140,7 +13171,7 @@ Create an instance: `$geo = $client->Geo();`
 #### Example: Load
 
 ```php
-// load() returns the bare Geo record (throws on error).
+// load() returns the ENTITY — call data_get() for the Geo record (throws on error).
 $geo = $client->Geo()->load(["replicable_id" => "replicable_id", "replicable_name" => "replicable_name"]);
 ```
 
@@ -13165,7 +13196,7 @@ Create an instance: `$go_proxy = $client->GoProxy();`
 #### Example: Load
 
 ```php
-// load() returns the bare GoProxy record (throws on error).
+// load() returns the ENTITY — call data_get() for the GoProxy record (throws on error).
 $go_proxy = $client->GoProxy()->load(["project_id" => "project_id"]);
 ```
 
@@ -13186,7 +13217,7 @@ Create an instance: `$group = $client->Group();`
 #### Example: Load
 
 ```php
-// load() returns the bare Group record (throws on error).
+// load() returns the ENTITY — call data_get() for the Group record (throws on error).
 $group = $client->Group()->load(["id" => "group_id"]);
 ```
 
@@ -13212,7 +13243,7 @@ Create an instance: `$group_avatar = $client->GroupAvatar();`
 #### Example: Load
 
 ```php
-// load() returns the bare GroupAvatar record (throws on error).
+// load() returns the ENTITY — call data_get() for the GroupAvatar record (throws on error).
 $group_avatar = $client->GroupAvatar()->load(["id" => "group_avatar_id"]);
 ```
 
@@ -13231,7 +13262,7 @@ Create an instance: `$group_export = $client->GroupExport();`
 #### Example: Load
 
 ```php
-// load() returns the bare GroupExport record (throws on error).
+// load() returns the ENTITY — call data_get() for the GroupExport record (throws on error).
 $group_export = $client->GroupExport()->load(["group_id" => "group_id"]);
 ```
 
@@ -13276,7 +13307,7 @@ Create an instance: `$helm_package = $client->HelmPackage();`
 #### Example: Load
 
 ```php
-// load() returns the bare HelmPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the HelmPackage record (throws on error).
 $helm_package = $client->HelmPackage()->load(["project_id" => "project_id"]);
 ```
 
@@ -13382,7 +13413,7 @@ Create an instance: `$issues_statistic = $client->IssuesStatistic();`
 #### Example: Load
 
 ```php
-// load() returns the bare IssuesStatistic record (throws on error).
+// load() returns the ENTITY — call data_get() for the IssuesStatistic record (throws on error).
 $issues_statistic = $client->IssuesStatistic()->load();
 ```
 
@@ -13402,7 +13433,7 @@ Create an instance: `$job = $client->Job();`
 #### Example: Load
 
 ```php
-// load() returns the bare Job record (throws on error).
+// load() returns the ENTITY — call data_get() for the Job record (throws on error).
 $job = $client->Job()->load(["id" => "job_id"]);
 ```
 
@@ -13428,7 +13459,7 @@ Create an instance: `$maven_package = $client->MavenPackage();`
 #### Example: Load
 
 ```php
-// load() returns the bare MavenPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the MavenPackage record (throws on error).
 $maven_package = $client->MavenPackage()->load(["file_name" => "file_name"]);
 ```
 
@@ -13459,7 +13490,7 @@ Create an instance: `$merge_request = $client->MergeRequest();`
 #### Example: Load
 
 ```php
-// load() returns the bare MergeRequest record (throws on error).
+// load() returns the ENTITY — call data_get() for the MergeRequest record (throws on error).
 $merge_request = $client->MergeRequest()->load(["id" => "merge_request_id", "project_id" => "project_id"]);
 ```
 
@@ -13478,15 +13509,15 @@ Create an instance: `$metadata = $client->Metadata();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `enterprise` | `bool` |  |
-| `kas` | `array` |  |
-| `revision` | `string` |  |
+| `enabled` | `bool` |  |
+| `externalK8sProxyUrl` | `string` |  |
+| `externalUrl` | `string` |  |
 | `version` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Metadata record (throws on error).
+// load() returns the ENTITY — call data_get() for the Metadata record (throws on error).
 $metadata = $client->Metadata()->load();
 ```
 
@@ -13524,7 +13555,7 @@ Create an instance: `$ml_model_registry = $client->MlModelRegistry();`
 #### Example: Load
 
 ```php
-// load() returns the bare MlModelRegistry record (throws on error).
+// load() returns the ENTITY — call data_get() for the MlModelRegistry record (throws on error).
 $ml_model_registry = $client->MlModelRegistry()->load(["file_name" => "file_name", "ml_model_id" => "ml_model_id", "project_id" => "project_id"]);
 ```
 
@@ -13567,7 +13598,7 @@ Create an instance: `$npm_package = $client->NpmPackage();`
 #### Example: Load
 
 ```php
-// load() returns the bare NpmPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the NpmPackage record (throws on error).
 $npm_package = $client->NpmPackage()->load(["project_id" => "project_id"]);
 ```
 
@@ -13607,18 +13638,27 @@ Create an instance: `$nuget_package = $client->NugetPackage();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `catalog_entry` | `array` |  |
+| `authors` | `string` |  |
 | `count` | `int` |  |
+| `dependencyGroups` | `array` |  |
+| `description` | `string` |  |
+| `iconUrl` | `string` |  |
 | `id` | `string` |  |
-| `item` | `array` |  |
+| `items` | `array` |  |
+| `licenseUrl` | `string` |  |
 | `lower` | `string` |  |
-| `package_content` | `string` |  |
+| `packageContent` | `string` |  |
+| `projectUrl` | `string` |  |
+| `published` | `string` |  |
+| `summary` | `string` |  |
+| `tags` | `string` |  |
 | `upper` | `string` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare NugetPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the NugetPackage record (throws on error).
 $nuget_package = $client->NugetPackage()->load();
 ```
 
@@ -13644,7 +13684,7 @@ Create an instance: `$package_file = $client->PackageFile();`
 #### Example: Load
 
 ```php
-// load() returns the bare PackageFile record (throws on error).
+// load() returns the ENTITY — call data_get() for the PackageFile record (throws on error).
 $package_file = $client->PackageFile()->load(["id" => "package_file_id", "package_id" => "package_id", "project_id" => "project_id"]);
 ```
 
@@ -13664,7 +13704,7 @@ Create an instance: `$page = $client->Page();`
 #### Example: Load
 
 ```php
-// load() returns the bare Page record (throws on error).
+// load() returns the ENTITY — call data_get() for the Page record (throws on error).
 $page = $client->Page()->load(["project_id" => "project_id"]);
 ```
 
@@ -13743,12 +13783,12 @@ Create an instance: `$project = $client->Project();`
 | `updated_at` | `string` |  |
 | `user` | `array` |  |
 | `web_url` | `string` |  |
-| `yaml_error` | `string` |  |
+| `yaml_errors` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Project record (throws on error).
+// load() returns the ENTITY — call data_get() for the Project record (throws on error).
 $project = $client->Project()->load(["id" => "project_id"]);
 ```
 
@@ -13774,7 +13814,7 @@ Create an instance: `$project_avatar = $client->ProjectAvatar();`
 #### Example: Load
 
 ```php
-// load() returns the bare ProjectAvatar record (throws on error).
+// load() returns the ENTITY — call data_get() for the ProjectAvatar record (throws on error).
 $project_avatar = $client->ProjectAvatar()->load(["id" => "project_avatar_id"]);
 ```
 
@@ -13811,7 +13851,7 @@ Create an instance: `$project_export = $client->ProjectExport();`
 #### Example: Load
 
 ```php
-// load() returns the bare ProjectExport record (throws on error).
+// load() returns the ENTITY — call data_get() for the ProjectExport record (throws on error).
 $project_export = $client->ProjectExport()->load(["project_id" => "project_id"]);
 ```
 
@@ -13967,7 +14007,7 @@ Create an instance: `$pypi_package = $client->PypiPackage();`
 #### Example: Load
 
 ```php
-// load() returns the bare PypiPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the PypiPackage record (throws on error).
 $pypi_package = $client->PypiPackage()->load();
 ```
 
@@ -13994,7 +14034,7 @@ Create an instance: `$release = $client->Release();`
 #### Example: Load
 
 ```php
-// load() returns the bare Release record (throws on error).
+// load() returns the ENTITY — call data_get() for the Release record (throws on error).
 $release = $client->Release()->load(["project_id" => "project_id"]);
 ```
 
@@ -14025,7 +14065,7 @@ Create an instance: `$remote_mirror = $client->RemoteMirror();`
 #### Example: Load
 
 ```php
-// load() returns the bare RemoteMirror record (throws on error).
+// load() returns the ENTITY — call data_get() for the RemoteMirror record (throws on error).
 $remote_mirror = $client->RemoteMirror()->load(["id" => "remote_mirror_id", "project_id" => "project_id"]);
 ```
 
@@ -14072,7 +14112,7 @@ Create an instance: `$rpm_package = $client->RpmPackage();`
 #### Example: Load
 
 ```php
-// load() returns the bare RpmPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the RpmPackage record (throws on error).
 $rpm_package = $client->RpmPackage()->load(["project_id" => "project_id"]);
 ```
 
@@ -14098,7 +14138,7 @@ Create an instance: `$rubygem = $client->Rubygem();`
 #### Example: Load
 
 ```php
-// load() returns the bare Rubygem record (throws on error).
+// load() returns the ENTITY — call data_get() for the Rubygem record (throws on error).
 $rubygem = $client->Rubygem()->load(["id" => "rubygem_id", "project_id" => "project_id"]);
 ```
 
@@ -14117,7 +14157,7 @@ Create an instance: `$rubygem_package = $client->RubygemPackage();`
 #### Example: Load
 
 ```php
-// load() returns the bare RubygemPackage record (throws on error).
+// load() returns the ENTITY — call data_get() for the RubygemPackage record (throws on error).
 $rubygem_package = $client->RubygemPackage()->load(["project_id" => "project_id"]);
 ```
 
@@ -14162,7 +14202,7 @@ Create an instance: `$search = $client->Search();`
 #### Example: Load
 
 ```php
-// load() returns the bare Search record (throws on error).
+// load() returns the ENTITY — call data_get() for the Search record (throws on error).
 $search = $client->Search()->load();
 ```
 
@@ -14181,7 +14221,7 @@ Create an instance: `$secure_file = $client->SecureFile();`
 #### Example: Load
 
 ```php
-// load() returns the bare SecureFile record (throws on error).
+// load() returns the ENTITY — call data_get() for the SecureFile record (throws on error).
 $secure_file = $client->SecureFile()->load(["id" => "secure_file_id", "project_id" => "project_id"]);
 ```
 
@@ -14218,7 +14258,7 @@ Create an instance: `$snippet = $client->Snippet();`
 #### Example: Load
 
 ```php
-// load() returns the bare Snippet record (throws on error).
+// load() returns the ENTITY — call data_get() for the Snippet record (throws on error).
 $snippet = $client->Snippet()->load(["id" => "snippet_id", "file_id" => "file_id", "file_path" => "file_path"]);
 ```
 
@@ -14239,7 +14279,7 @@ Create an instance: `$starrer = $client->Starrer();`
 | --- | --- | --- |
 | `avatar_path` | `string` |  |
 | `avatar_url` | `string` |  |
-| `custom_attribute` | `array` |  |
+| `custom_attributes` | `array` |  |
 | `id` | `int` |  |
 | `locked` | `bool` |  |
 | `name` | `string` |  |
@@ -14292,7 +14332,7 @@ Create an instance: `$terraform_registry = $client->TerraformRegistry();`
 #### Example: Load
 
 ```php
-// load() returns the bare TerraformRegistry record (throws on error).
+// load() returns the ENTITY — call data_get() for the TerraformRegistry record (throws on error).
 $terraform_registry = $client->TerraformRegistry()->load(["id" => "terraform_registry_id", "module_system" => "module_system"]);
 ```
 
@@ -14312,7 +14352,7 @@ Create an instance: `$terraform_state = $client->TerraformState();`
 #### Example: Load
 
 ```php
-// load() returns the bare TerraformState record (throws on error).
+// load() returns the ENTITY — call data_get() for the TerraformState record (throws on error).
 $terraform_state = $client->TerraformState()->load(["id" => "terraform_state_id", "project_id" => "project_id"]);
 ```
 
@@ -14345,7 +14385,7 @@ Create an instance: `$test_report = $client->TestReport();`
 | `skipped_count` | `int` |  |
 | `success_count` | `int` |  |
 | `suite_error` | `string` |  |
-| `test_case` | `array` |  |
+| `test_cases` | `array` |  |
 | `total_count` | `int` |  |
 | `total_time` | `int` |  |
 
@@ -14371,13 +14411,13 @@ Create an instance: `$test_report_summary = $client->TestReportSummary();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `test_suite` | `array` |  |
+| `test_suites` | `array` |  |
 | `total` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare TestReportSummary record (throws on error).
+// load() returns the ENTITY — call data_get() for the TestReportSummary record (throws on error).
 $test_report_summary = $client->TestReportSummary()->load(["pipeline_id" => "pipeline_id", "project_id" => "project_id"]);
 ```
 
@@ -14406,7 +14446,7 @@ Create an instance: `$unleash_api = $client->UnleashApi();`
 #### Example: Load
 
 ```php
-// load() returns the bare UnleashApi record (throws on error).
+// load() returns the ENTITY — call data_get() for the UnleashApi record (throws on error).
 $unleash_api = $client->UnleashApi()->load(["unleash_id" => "unleash_id"]);
 ```
 
@@ -14425,7 +14465,7 @@ Create an instance: `$usage_data = $client->UsageData();`
 #### Example: Load
 
 ```php
-// load() returns the bare UsageData record (throws on error).
+// load() returns the ENTITY — call data_get() for the UsageData record (throws on error).
 $usage_data = $client->UsageData()->load();
 ```
 
@@ -14453,7 +14493,7 @@ Create an instance: `$user = $client->User();`
 | --- | --- | --- |
 | `avatar_path` | `string` |  |
 | `avatar_url` | `string` |  |
-| `custom_attribute` | `array` |  |
+| `custom_attributes` | `array` |  |
 | `id` | `int` |  |
 | `locked` | `bool` |  |
 | `name` | `string` |  |
@@ -14483,7 +14523,7 @@ Create an instance: `$web_commit = $client->WebCommit();`
 #### Example: Load
 
 ```php
-// load() returns the bare WebCommit record (throws on error).
+// load() returns the ENTITY — call data_get() for the WebCommit record (throws on error).
 $web_commit = $client->WebCommit()->load();
 ```
 
@@ -14575,11 +14615,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$apientitiesaccessrequester = $client->ApiEntitiesAccessRequester();
-$apientitiesaccessrequester->list();
+$apientitiesmetricimage = $client->ApiEntitiesMetricImage();
+$apientitiesmetricimage->list();
 
-// $apientitiesaccessrequester->data_get() now returns the apientitiesaccessrequester data from the last list
-// $apientitiesaccessrequester->match_get() returns the last match criteria
+// $apientitiesmetricimage->data_get() now returns the apientitiesmetricimage data from the last list
+// $apientitiesmetricimage->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

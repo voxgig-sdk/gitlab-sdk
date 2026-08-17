@@ -58,7 +58,7 @@ func TestApiEntitiesApplicationWithSecretEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesApplicationWithSecretRef01Data = core.ToMapAny(apiEntitiesApplicationWithSecretRef01DataResult)
+		apiEntitiesApplicationWithSecretRef01Data = core.ToMapAny(entityData(apiEntitiesApplicationWithSecretRef01DataResult))
 		if apiEntitiesApplicationWithSecretRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

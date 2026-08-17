@@ -62,7 +62,7 @@ describe('GroupExportEntity', async () => {
     const group_export_ref01_ent = client.GroupExport()
     let group_export_ref01_data = setup.data.new.group_export['group_export_ref01']
 
-    group_export_ref01_data = await group_export_ref01_ent.create(group_export_ref01_data)
+    group_export_ref01_data = (await group_export_ref01_ent.create(group_export_ref01_data)).data()
     assert(null != group_export_ref01_data)
 
 

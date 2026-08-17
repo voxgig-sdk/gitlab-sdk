@@ -64,13 +64,13 @@ describe('EeApiEntitiesAuditEventEntity', async () => {
     const ee_api_entities_audit_event_ref01_match: any = {}
     ee_api_entities_audit_event_ref01_match['project_id'] = setup.idmap['project01']
 
-    const ee_api_entities_audit_event_ref01_list = await ee_api_entities_audit_event_ref01_ent.list(ee_api_entities_audit_event_ref01_match)
+    const ee_api_entities_audit_event_ref01_list = (await ee_api_entities_audit_event_ref01_ent.list(ee_api_entities_audit_event_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const ee_api_entities_audit_event_ref01_match_dt0: any = {}
     ee_api_entities_audit_event_ref01_match_dt0.id = ee_api_entities_audit_event_ref01_data.id
-    const ee_api_entities_audit_event_ref01_data_dt0 = await ee_api_entities_audit_event_ref01_ent.load(ee_api_entities_audit_event_ref01_match_dt0)
+    const ee_api_entities_audit_event_ref01_data_dt0 = (await ee_api_entities_audit_event_ref01_ent.load(ee_api_entities_audit_event_ref01_match_dt0)).data()
     assert(ee_api_entities_audit_event_ref01_data_dt0.id === ee_api_entities_audit_event_ref01_data.id)
 
 

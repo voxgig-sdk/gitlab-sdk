@@ -63,7 +63,7 @@ describe('ApiEntitiesCiRunnerManagerEntity', async () => {
     const api_entities_ci_runner_manager_ref01_ent = client.ApiEntitiesCiRunnerManager()
     const api_entities_ci_runner_manager_ref01_match_dt0: any = {}
     api_entities_ci_runner_manager_ref01_match_dt0.id = api_entities_ci_runner_manager_ref01_data.id
-    const api_entities_ci_runner_manager_ref01_data_dt0 = await api_entities_ci_runner_manager_ref01_ent.load(api_entities_ci_runner_manager_ref01_match_dt0)
+    const api_entities_ci_runner_manager_ref01_data_dt0 = (await api_entities_ci_runner_manager_ref01_ent.load(api_entities_ci_runner_manager_ref01_match_dt0)).data()
     assert(api_entities_ci_runner_manager_ref01_data_dt0.id === api_entities_ci_runner_manager_ref01_data.id)
 
 

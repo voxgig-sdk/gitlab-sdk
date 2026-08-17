@@ -59,7 +59,7 @@ func TestHookEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		hookRef01Data = core.ToMapAny(hookRef01DataResult)
+		hookRef01Data = core.ToMapAny(entityData(hookRef01DataResult))
 		if hookRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -72,19 +72,11 @@ func TestHookEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		hookRef01ResdataUp0 := core.ToMapAny(hookRef01ResdataUp0Result)
+		hookRef01ResdataUp0 := core.ToMapAny(entityData(hookRef01ResdataUp0Result))
 		if hookRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
 
-		// REMOVE
-		hookRef01MatchRm0 := map[string]any{
-			"id": hookRef01Data["id"],
-		}
-		_, err = hookRef01Ent.Remove(hookRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

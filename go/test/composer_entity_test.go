@@ -59,7 +59,7 @@ func TestComposerEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		composerRef01Data = core.ToMapAny(composerRef01DataResult)
+		composerRef01Data = core.ToMapAny(entityData(composerRef01DataResult))
 		if composerRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

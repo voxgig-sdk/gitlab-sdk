@@ -31,7 +31,7 @@ export interface AlertManagementRemoveMatch {
 export interface ApiEntitiesAccessRequester {
   avatar_path?: string
   avatar_url?: string
-  custom_attribute?: any[]
+  custom_attributes?: any[]
   id?: number
   key?: string
   locked?: boolean
@@ -52,12 +52,38 @@ export interface ApiEntitiesAccessRequesterListMatch {
 export interface ApiEntitiesAccessRequesterCreateData {
   group_id?: string
   project_id?: string
+  avatar_path?: string
+  avatar_url?: string
+  custom_attributes?: any[]
+  id?: number
+  key?: string
+  locked?: boolean
+  name?: string
+  public_email?: string
+  requested_at?: string
+  state?: string
+  username?: string
+  value?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesAccessRequesterUpdateData {
   access_request_id: string
   group_id?: string
   project_id?: string
+  avatar_path?: string
+  avatar_url?: string
+  custom_attributes?: any[]
+  id?: number
+  key?: string
+  locked?: boolean
+  name?: string
+  public_email?: string
+  requested_at?: string
+  state?: string
+  username?: string
+  value?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesAppearance {
@@ -68,11 +94,11 @@ export interface ApiEntitiesAppearance {
   header_logo?: string
   header_message?: string
   logo?: string
-  member_guideline?: string
+  member_guidelines?: string
   message_background_color?: string
   message_font_color?: string
-  new_project_guideline?: string
-  profile_image_guideline?: string
+  new_project_guidelines?: string
+  profile_image_guidelines?: string
   pwa_description?: string
   pwa_icon?: string
   pwa_name?: string
@@ -88,11 +114,11 @@ export interface ApiEntitiesAppearanceLoadMatch {
   header_logo?: string
   header_message?: string
   logo?: string
-  member_guideline?: string
+  member_guidelines?: string
   message_background_color?: string
   message_font_color?: string
-  new_project_guideline?: string
-  profile_image_guideline?: string
+  new_project_guidelines?: string
+  profile_image_guidelines?: string
   pwa_description?: string
   pwa_icon?: string
   pwa_name?: string
@@ -108,11 +134,11 @@ export interface ApiEntitiesAppearanceUpdateData {
   header_logo?: string
   header_message?: string
   logo?: string
-  member_guideline?: string
+  member_guidelines?: string
   message_background_color?: string
   message_font_color?: string
-  new_project_guideline?: string
-  profile_image_guideline?: string
+  new_project_guidelines?: string
+  profile_image_guidelines?: string
   pwa_description?: string
   pwa_icon?: string
   pwa_name?: string
@@ -137,31 +163,31 @@ export interface ApiEntitiesApplicationListMatch {
 }
 
 export interface ApiEntitiesApplicationStatistic {
-  active_user?: number
-  fork?: number
-  group?: number
-  issue?: number
-  merge_request?: number
-  milestone?: number
-  note?: number
-  project?: number
-  snippet?: number
-  ssh_key?: number
-  user?: number
+  active_users?: number
+  forks?: number
+  groups?: number
+  issues?: number
+  merge_requests?: number
+  milestones?: number
+  notes?: number
+  projects?: number
+  snippets?: number
+  ssh_keys?: number
+  users?: number
 }
 
 export interface ApiEntitiesApplicationStatisticLoadMatch {
-  active_user?: number
-  fork?: number
-  group?: number
-  issue?: number
-  merge_request?: number
-  milestone?: number
-  note?: number
-  project?: number
-  snippet?: number
-  ssh_key?: number
-  user?: number
+  active_users?: number
+  forks?: number
+  groups?: number
+  issues?: number
+  merge_requests?: number
+  milestones?: number
+  notes?: number
+  projects?: number
+  snippets?: number
+  ssh_keys?: number
+  users?: number
 }
 
 export interface ApiEntitiesApplicationWithSecret {
@@ -175,6 +201,11 @@ export interface ApiEntitiesApplicationWithSecret {
 
 export interface ApiEntitiesApplicationWithSecretCreateData {
   application_id?: string
+  application_name?: string
+  callback_url?: string
+  confidential?: boolean
+  id?: string
+  secret?: string
 }
 
 export interface ApiEntitiesAvatar {
@@ -186,14 +217,22 @@ export interface ApiEntitiesAvatarLoadMatch {
 }
 
 export interface ApiEntitiesAwardEmoji {
+  avatar_path?: string
+  avatar_url?: string
   awardable_id?: number
   awardable_type?: string
   created_at?: string
+  custom_attributes?: any[]
   id?: number
+  locked?: boolean
   name?: string
+  public_email?: string
+  state?: string
   updated_at?: string
   url?: string
   user?: Record<string, any>
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesAwardEmojiLoadMatch {
@@ -225,6 +264,22 @@ export interface ApiEntitiesAwardEmojiCreateData {
   project_id?: string
   merge_request_id?: string
   snippet_id?: string
+  avatar_path?: string
+  avatar_url?: string
+  awardable_id?: number
+  awardable_type?: string
+  created_at?: string
+  custom_attributes?: any[]
+  id?: number
+  locked?: boolean
+  name?: string
+  public_email?: string
+  state?: string
+  updated_at?: string
+  url?: string
+  user?: Record<string, any>
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesBadge {
@@ -251,12 +306,25 @@ export interface ApiEntitiesBadgeListMatch {
 export interface ApiEntitiesBadgeCreateData {
   group_id?: string
   project_id?: string
+  id?: string
+  image_url?: string
+  kind?: string
+  link_url?: string
+  name?: string
+  rendered_image_url?: string
+  rendered_link_url?: string
 }
 
 export interface ApiEntitiesBadgeUpdateData {
   group_id?: string
   id: string
   project_id?: string
+  image_url?: string
+  kind?: string
+  link_url?: string
+  name?: string
+  rendered_image_url?: string
+  rendered_link_url?: string
 }
 
 export interface ApiEntitiesBasicBadgeDetail {
@@ -282,7 +350,7 @@ export interface ApiEntitiesBasicGroupDetailCreateData {
 export interface ApiEntitiesBasicProjectDetail {
   avatar_url?: string
   created_at?: string
-  custom_attribute?: Record<string, any>
+  custom_attributes?: Record<string, any>
   default_branch?: string
   description?: string
   forks_count?: number
@@ -301,7 +369,7 @@ export interface ApiEntitiesBasicProjectDetail {
   ssh_url_to_repo?: string
   star_count?: number
   tag_list?: any[]
-  topic?: any[]
+  topics?: any[]
   visibility?: string
   web_url?: string
 }
@@ -313,6 +381,30 @@ export interface ApiEntitiesBasicProjectDetailListMatch {
 
 export interface ApiEntitiesBasicProjectDetailCreateData {
   project_id: string
+  avatar_url?: string
+  created_at?: string
+  custom_attributes?: Record<string, any>
+  default_branch?: string
+  description?: string
+  forks_count?: number
+  http_url_to_repo?: string
+  id?: number
+  last_activity_at?: string
+  license?: Record<string, any>
+  license_url?: string
+  name?: string
+  name_with_namespace?: string
+  namespace?: Record<string, any>
+  path?: string
+  path_with_namespace?: string
+  readme_url?: string
+  repository_storage?: string
+  ssh_url_to_repo?: string
+  star_count?: number
+  tag_list?: any[]
+  topics?: any[]
+  visibility?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesBasicRef {
@@ -357,17 +449,38 @@ export interface ApiEntitiesBatchedBackgroundMigrationListMatch {
 
 export interface ApiEntitiesBatchedBackgroundMigrationUpdateData {
   batched_background_migration_id: string
+  column_name?: string
+  created_at?: string
+  id?: string
+  job_class_name?: string
+  progress?: number
+  status?: string
+  table_name?: string
 }
 
 export interface ApiEntitiesBranch {
+  author_email?: string
+  author_name?: string
+  authored_date?: string
   can_push?: boolean
   commit?: Record<string, any>
+  committed_date?: string
+  committer_email?: string
+  committer_name?: string
+  created_at?: string
   default?: boolean
   developers_can_merge?: boolean
   developers_can_push?: boolean
+  extended_trailers?: Record<string, any>
+  id?: string
   merged?: boolean
+  message?: string
   name?: string
+  parent_ids?: any[]
   protected?: boolean
+  short_id?: string
+  title?: string
+  trailers?: Record<string, any>
   web_url?: string
 }
 
@@ -382,11 +495,57 @@ export interface ApiEntitiesBranchListMatch {
 
 export interface ApiEntitiesBranchCreateData {
   project_id: string
+  author_email?: string
+  author_name?: string
+  authored_date?: string
+  can_push?: boolean
+  commit?: Record<string, any>
+  committed_date?: string
+  committer_email?: string
+  committer_name?: string
+  created_at?: string
+  default?: boolean
+  developers_can_merge?: boolean
+  developers_can_push?: boolean
+  extended_trailers?: Record<string, any>
+  id?: string
+  merged?: boolean
+  message?: string
+  name?: string
+  parent_ids?: any[]
+  protected?: boolean
+  short_id?: string
+  title?: string
+  trailers?: Record<string, any>
+  web_url?: string
 }
 
 export interface ApiEntitiesBranchUpdateData {
   branch_id: string
   project_id: string
+  author_email?: string
+  author_name?: string
+  authored_date?: string
+  can_push?: boolean
+  commit?: Record<string, any>
+  committed_date?: string
+  committer_email?: string
+  committer_name?: string
+  created_at?: string
+  default?: boolean
+  developers_can_merge?: boolean
+  developers_can_push?: boolean
+  extended_trailers?: Record<string, any>
+  id?: string
+  merged?: boolean
+  message?: string
+  name?: string
+  parent_ids?: any[]
+  protected?: boolean
+  short_id?: string
+  title?: string
+  trailers?: Record<string, any>
+  web_url?: string
 }
 
 export interface ApiEntitiesBulkImport {
@@ -397,18 +556,18 @@ export interface ApiEntitiesBulkImport {
   destination_namespace?: string
   destination_slug?: string
   entity_type?: string
-  failure?: any[]
-  has_failure?: boolean
+  failures?: any[]
+  has_failures?: boolean
   id?: number
-  migrate_membership?: boolean
-  migrate_project?: boolean
+  migrate_memberships?: boolean
+  migrate_projects?: boolean
   namespace_id?: number
   parent_id?: number
   project_id?: number
   source_full_path?: string
   source_type?: string
   source_url?: string
-  stat?: Record<string, any>
+  stats?: Record<string, any>
   status?: string
   updated_at?: string
 }
@@ -425,6 +584,26 @@ export interface ApiEntitiesBulkImportListMatch {
 
 export interface ApiEntitiesBulkImportCreateData {
   bulk_import_id?: string
+  created_at?: string
+  destination_full_path?: string
+  destination_name?: string
+  destination_namespace?: string
+  destination_slug?: string
+  entity_type?: string
+  failures?: any[]
+  has_failures?: boolean
+  id?: number
+  migrate_memberships?: boolean
+  migrate_projects?: boolean
+  namespace_id?: number
+  parent_id?: number
+  project_id?: number
+  source_full_path?: string
+  source_type?: string
+  source_url?: string
+  stats?: Record<string, any>
+  status?: string
+  updated_at?: string
 }
 
 export interface ApiEntitiesBulkImportsEntityFailure {
@@ -442,8 +621,8 @@ export interface ApiEntitiesBulkImportsEntityFailureLoadMatch {
 }
 
 export interface ApiEntitiesBulkImportsExportStatus {
-  batch?: Record<string, any>
   batched?: boolean
+  batches?: Record<string, any>
   batches_count?: number
   error?: string
   relation?: string
@@ -458,7 +637,7 @@ export interface ApiEntitiesBulkImportsExportStatusListMatch {
 }
 
 export interface ApiEntitiesChangelog {
-  note?: string
+  notes?: string
 }
 
 export interface ApiEntitiesChangelogLoadMatch {
@@ -504,7 +683,7 @@ export interface ApiEntitiesCiCatalogResourcesVersionCreateData {
 export interface ApiEntitiesCiJob {
   allow_failure?: boolean
   archived?: boolean
-  artifact?: any[]
+  artifacts?: any[]
   artifacts_expire_at?: string
   artifacts_file?: Record<string, any>
   commit?: Record<string, any>
@@ -549,6 +728,37 @@ export interface ApiEntitiesCiJobListMatch {
 export interface ApiEntitiesCiJobCreateData {
   job_id: string
   project_id: string
+  allow_failure?: boolean
+  archived?: boolean
+  artifacts?: any[]
+  artifacts_expire_at?: string
+  artifacts_file?: Record<string, any>
+  commit?: Record<string, any>
+  coverage?: number
+  created_at?: string
+  duration?: number
+  erased_at?: string
+  failure_reason?: string
+  file_format?: string
+  file_type?: string
+  filename?: string
+  finished_at?: string
+  id?: number
+  name?: string
+  pipeline?: Record<string, any>
+  project?: Record<string, any>
+  queued_duration?: number
+  ref?: string
+  runner?: Record<string, any>
+  runner_manager?: Record<string, any>
+  size?: number
+  stage?: string
+  started_at?: string
+  status?: string
+  tag?: boolean
+  tag_list?: any[]
+  user?: Record<string, any>
+  web_url?: string
 }
 
 export interface ApiEntitiesCiJobBasic {
@@ -582,6 +792,26 @@ export interface ApiEntitiesCiJobBasicListMatch {
 export interface ApiEntitiesCiJobBasicCreateData {
   job_id: string
   project_id: string
+  allow_failure?: boolean
+  commit?: Record<string, any>
+  coverage?: number
+  created_at?: string
+  duration?: number
+  erased_at?: string
+  failure_reason?: string
+  finished_at?: string
+  id?: number
+  name?: string
+  pipeline?: Record<string, any>
+  project?: Record<string, any>
+  queued_duration?: number
+  ref?: string
+  stage?: string
+  started_at?: string
+  status?: string
+  tag?: boolean
+  user?: Record<string, any>
+  web_url?: string
 }
 
 export interface ApiEntitiesCiJobBasicWithProject {
@@ -615,16 +845,16 @@ export interface ApiEntitiesCiLintResult {
   blob?: string
   context_project?: string
   context_sha?: string
-  error?: any[]
+  errors?: any[]
   extra?: Record<string, any>
-  include?: any[]
-  job?: any[]
+  includes?: any[]
+  jobs?: any[]
   location?: string
   merged_yaml?: string
   raw?: string
   type?: string
   valid?: boolean
-  warning?: any[]
+  warnings?: any[]
 }
 
 export interface ApiEntitiesCiLintResultListMatch {
@@ -633,6 +863,19 @@ export interface ApiEntitiesCiLintResultListMatch {
 
 export interface ApiEntitiesCiLintResultCreateData {
   project_id: string
+  blob?: string
+  context_project?: string
+  context_sha?: string
+  errors?: any[]
+  extra?: Record<string, any>
+  includes?: any[]
+  jobs?: any[]
+  location?: string
+  merged_yaml?: string
+  raw?: string
+  type?: string
+  valid?: boolean
+  warnings?: any[]
 }
 
 export interface ApiEntitiesCiPipeline {
@@ -675,7 +918,7 @@ export interface ApiEntitiesCiPipelineSchedule {
   cron_timezone?: string
   description?: string
   id?: number
-  input?: Record<string, any>
+  inputs?: Record<string, any>
   next_run_at?: string
   owner?: Record<string, any>
   ref?: string
@@ -693,13 +936,13 @@ export interface ApiEntitiesCiPipelineScheduleDetail {
   cron_timezone?: string
   description?: string
   id?: number
-  input?: Record<string, any>
+  inputs?: Record<string, any>
   last_pipeline?: Record<string, any>
   next_run_at?: string
   owner?: Record<string, any>
   ref?: string
   updated_at?: string
-  variable?: Record<string, any>
+  variables?: Record<string, any>
 }
 
 export interface ApiEntitiesCiPipelineScheduleDetailLoadMatch {
@@ -710,11 +953,37 @@ export interface ApiEntitiesCiPipelineScheduleDetailLoadMatch {
 export interface ApiEntitiesCiPipelineScheduleDetailCreateData {
   pipeline_schedule_id?: string
   project_id: string
+  active?: boolean
+  created_at?: string
+  cron?: string
+  cron_timezone?: string
+  description?: string
+  id?: number
+  inputs?: Record<string, any>
+  last_pipeline?: Record<string, any>
+  next_run_at?: string
+  owner?: Record<string, any>
+  ref?: string
+  updated_at?: string
+  variables?: Record<string, any>
 }
 
 export interface ApiEntitiesCiPipelineScheduleDetailUpdateData {
   pipeline_schedule_id: string
   project_id: string
+  active?: boolean
+  created_at?: string
+  cron?: string
+  cron_timezone?: string
+  description?: string
+  id?: number
+  inputs?: Record<string, any>
+  last_pipeline?: Record<string, any>
+  next_run_at?: string
+  owner?: Record<string, any>
+  ref?: string
+  updated_at?: string
+  variables?: Record<string, any>
 }
 
 export interface ApiEntitiesCiResetTokenResult {
@@ -746,22 +1015,23 @@ export interface ApiEntitiesCiResourceGroupListMatch {
 export interface ApiEntitiesCiResourceGroupUpdateData {
   id: string
   project_id: string
+  created_at?: string
+  key?: string
+  process_mode?: string
+  updated_at?: string
 }
 
 export interface ApiEntitiesCiRunner {
-  active?: boolean
-  created_at?: string
-  created_by?: Record<string, any>
-  description?: string
+  avatar_path?: string
+  avatar_url?: string
+  custom_attributes?: any[]
   id?: number
-  ip_address?: string
-  is_shared?: boolean
-  job_execution_status?: string
+  locked?: boolean
   name?: string
-  online?: boolean
-  paused?: boolean
-  runner_type?: string
-  status?: string
+  public_email?: string
+  state?: string
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesCiRunnerLoadMatch {
@@ -771,6 +1041,16 @@ export interface ApiEntitiesCiRunnerLoadMatch {
 
 export interface ApiEntitiesCiRunnerCreateData {
   project_id: string
+  avatar_path?: string
+  avatar_url?: string
+  custom_attributes?: any[]
+  id?: number
+  locked?: boolean
+  name?: string
+  public_email?: string
+  state?: string
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesCiRunnerDetail {
@@ -781,7 +1061,7 @@ export interface ApiEntitiesCiRunnerDetail {
   created_at?: string
   created_by?: Record<string, any>
   description?: string
-  group?: Record<string, any>
+  groups?: Record<string, any>
   id?: number
   ip_address?: string
   is_shared?: boolean
@@ -793,7 +1073,7 @@ export interface ApiEntitiesCiRunnerDetail {
   online?: boolean
   paused?: boolean
   platform?: string
-  project?: Record<string, any>
+  projects?: Record<string, any>
   revision?: string
   run_untagged?: string
   runner_type?: string
@@ -808,6 +1088,31 @@ export interface ApiEntitiesCiRunnerDetailLoadMatch {
 
 export interface ApiEntitiesCiRunnerDetailUpdateData {
   id: string
+  access_level?: string
+  active?: boolean
+  architecture?: string
+  contacted_at?: string
+  created_at?: string
+  created_by?: Record<string, any>
+  description?: string
+  groups?: Record<string, any>
+  ip_address?: string
+  is_shared?: boolean
+  job_execution_status?: string
+  locked?: boolean
+  maintenance_note?: string
+  maximum_timeout?: string
+  name?: string
+  online?: boolean
+  paused?: boolean
+  platform?: string
+  projects?: Record<string, any>
+  revision?: string
+  run_untagged?: string
+  runner_type?: string
+  status?: string
+  tag_list?: string
+  version?: string
 }
 
 export interface ApiEntitiesCiRunnerManager {
@@ -835,14 +1140,6 @@ export interface ApiEntitiesCiRunnerRegistrationDetailCreateData {
 }
 
 export interface ApiEntitiesCiSecureFile {
-  checksum?: string
-  checksum_algorithm?: string
-  created_at?: string
-  expires_at?: string
-  file_extension?: string
-  id?: number
-  metadata?: Record<string, any>
-  name?: string
 }
 
 export interface ApiEntitiesCiSecureFileLoadMatch {
@@ -881,6 +1178,15 @@ export interface ApiEntitiesCiVariableCreateData {
   pipeline_schedule_id?: string
   project_id?: string
   group_id?: string
+  description?: string
+  environment_scope?: string
+  hidden?: boolean
+  key?: string
+  masked?: boolean
+  protected?: boolean
+  raw?: boolean
+  value?: string
+  variable_type?: string
 }
 
 export interface ApiEntitiesCiVariableUpdateData {
@@ -888,6 +1194,15 @@ export interface ApiEntitiesCiVariableUpdateData {
   pipeline_schedule_id?: string
   project_id?: string
   group_id?: string
+  description?: string
+  environment_scope?: string
+  hidden?: boolean
+  key?: string
+  masked?: boolean
+  protected?: boolean
+  raw?: boolean
+  value?: string
+  variable_type?: string
 }
 
 export interface ApiEntitiesCluster {
@@ -901,7 +1216,7 @@ export interface ApiEntitiesCluster {
   management_project?: Record<string, any>
   name?: string
   namespace_per_environment?: string
-  platform_kubernete?: Record<string, any>
+  platform_kubernetes?: Record<string, any>
   platform_type?: string
   provider_gcp?: Record<string, any>
   provider_type?: string
@@ -928,7 +1243,7 @@ export interface ApiEntitiesClusterCreateData {
   management_project?: Record<string, any>
   name?: string
   namespace_per_environment?: string
-  platform_kubernete?: Record<string, any>
+  platform_kubernetes?: Record<string, any>
   platform_type?: string
   provider_gcp?: Record<string, any>
   provider_type?: string
@@ -937,6 +1252,20 @@ export interface ApiEntitiesClusterCreateData {
 
 export interface ApiEntitiesClusterUpdateData {
   id: string
+  cluster_type?: string
+  created_at?: string
+  domain?: string
+  enabled?: boolean
+  environment_scope?: string
+  managed?: string
+  management_project?: Record<string, any>
+  name?: string
+  namespace_per_environment?: string
+  platform_kubernetes?: Record<string, any>
+  platform_type?: string
+  provider_gcp?: Record<string, any>
+  provider_type?: string
+  user?: Record<string, any>
 }
 
 export interface ApiEntitiesClusterGroup {
@@ -951,7 +1280,7 @@ export interface ApiEntitiesClusterGroup {
   management_project?: Record<string, any>
   name?: string
   namespace_per_environment?: string
-  platform_kubernete?: Record<string, any>
+  platform_kubernetes?: Record<string, any>
   platform_type?: string
   provider_gcp?: Record<string, any>
   provider_type?: string
@@ -965,11 +1294,43 @@ export interface ApiEntitiesClusterGroupLoadMatch {
 
 export interface ApiEntitiesClusterGroupCreateData {
   group_id: string
+  cluster_type?: string
+  created_at?: string
+  domain?: string
+  enabled?: boolean
+  environment_scope?: string
+  group?: Record<string, any>
+  id?: string
+  managed?: string
+  management_project?: Record<string, any>
+  name?: string
+  namespace_per_environment?: string
+  platform_kubernetes?: Record<string, any>
+  platform_type?: string
+  provider_gcp?: Record<string, any>
+  provider_type?: string
+  user?: Record<string, any>
 }
 
 export interface ApiEntitiesClusterGroupUpdateData {
   cluster_id: string
   group_id: string
+  cluster_type?: string
+  created_at?: string
+  domain?: string
+  enabled?: boolean
+  environment_scope?: string
+  group?: Record<string, any>
+  id?: string
+  managed?: string
+  management_project?: Record<string, any>
+  name?: string
+  namespace_per_environment?: string
+  platform_kubernetes?: Record<string, any>
+  platform_type?: string
+  provider_gcp?: Record<string, any>
+  provider_type?: string
+  user?: Record<string, any>
 }
 
 export interface ApiEntitiesClusterProject {
@@ -983,7 +1344,7 @@ export interface ApiEntitiesClusterProject {
   management_project?: Record<string, any>
   name?: string
   namespace_per_environment?: string
-  platform_kubernete?: Record<string, any>
+  platform_kubernetes?: Record<string, any>
   platform_type?: string
   project?: Record<string, any>
   provider_gcp?: Record<string, any>
@@ -998,20 +1359,53 @@ export interface ApiEntitiesClusterProjectLoadMatch {
 
 export interface ApiEntitiesClusterProjectCreateData {
   project_id: string
+  cluster_type?: string
+  created_at?: string
+  domain?: string
+  enabled?: boolean
+  environment_scope?: string
+  id?: string
+  managed?: string
+  management_project?: Record<string, any>
+  name?: string
+  namespace_per_environment?: string
+  platform_kubernetes?: Record<string, any>
+  platform_type?: string
+  project?: Record<string, any>
+  provider_gcp?: Record<string, any>
+  provider_type?: string
+  user?: Record<string, any>
 }
 
 export interface ApiEntitiesClusterProjectUpdateData {
   cluster_id: string
   project_id: string
+  cluster_type?: string
+  created_at?: string
+  domain?: string
+  enabled?: boolean
+  environment_scope?: string
+  id?: string
+  managed?: string
+  management_project?: Record<string, any>
+  name?: string
+  namespace_per_environment?: string
+  platform_kubernetes?: Record<string, any>
+  platform_type?: string
+  project?: Record<string, any>
+  provider_gcp?: Record<string, any>
+  provider_type?: string
+  user?: Record<string, any>
 }
 
 export interface ApiEntitiesClustersAgent {
-  config_project?: Record<string, any>
   created_at?: string
-  created_by_user_id?: string
-  id?: string
-  is_receptive?: boolean
+  description?: string
+  id?: number
   name?: string
+  name_with_namespace?: string
+  path?: string
+  path_with_namespace?: string
 }
 
 export interface ApiEntitiesClustersAgentLoadMatch {
@@ -1021,6 +1415,13 @@ export interface ApiEntitiesClustersAgentLoadMatch {
 
 export interface ApiEntitiesClustersAgentCreateData {
   project_id: string
+  created_at?: string
+  description?: string
+  id?: number
+  name?: string
+  name_with_namespace?: string
+  path?: string
+  path_with_namespace?: string
 }
 
 export interface ApiEntitiesClustersAgentToken {
@@ -1071,13 +1472,13 @@ export interface ApiEntitiesCommit {
   committer_email?: string
   committer_name?: string
   created_at?: string
-  extended_trailer?: Record<string, any>
+  extended_trailers?: Record<string, any>
   id?: string
   message?: string
-  parent_id?: any[]
+  parent_ids?: any[]
   short_id?: string
   title?: string
-  trailer?: Record<string, any>
+  trailers?: Record<string, any>
   web_url?: string
 }
 
@@ -1090,6 +1491,21 @@ export interface ApiEntitiesCommitCreateData {
   merge_request_id?: string
   project_id: string
   sha?: any
+  author_email?: string
+  author_name?: string
+  authored_date?: string
+  committed_date?: string
+  committer_email?: string
+  committer_name?: string
+  created_at?: string
+  extended_trailers?: Record<string, any>
+  id?: string
+  message?: string
+  parent_ids?: any[]
+  short_id?: string
+  title?: string
+  trailers?: Record<string, any>
+  web_url?: string
 }
 
 export interface ApiEntitiesCommitDetail {
@@ -1100,17 +1516,17 @@ export interface ApiEntitiesCommitDetail {
   committer_email?: string
   committer_name?: string
   created_at?: string
-  extended_trailer?: Record<string, any>
+  extended_trailers?: Record<string, any>
   id?: string
   last_pipeline?: Record<string, any>
   message?: string
-  parent_id?: any[]
+  parent_ids?: any[]
   project_id?: number
   short_id?: string
-  stat?: Record<string, any>
+  stats?: Record<string, any>
   status?: string
   title?: string
-  trailer?: Record<string, any>
+  trailers?: Record<string, any>
   web_url?: string
 }
 
@@ -1121,20 +1537,66 @@ export interface ApiEntitiesCommitDetailLoadMatch {
 
 export interface ApiEntitiesCommitDetailCreateData {
   project_id: string
+  author_email?: string
+  author_name?: string
+  authored_date?: string
+  committed_date?: string
+  committer_email?: string
+  committer_name?: string
+  created_at?: string
+  extended_trailers?: Record<string, any>
+  id?: string
+  last_pipeline?: Record<string, any>
+  message?: string
+  parent_ids?: any[]
+  short_id?: string
+  stats?: Record<string, any>
+  status?: string
+  title?: string
+  trailers?: Record<string, any>
+  web_url?: string
 }
 
 export interface ApiEntitiesCommitDetailUpdateData {
   project_id: string
   submodule: any
+  author_email?: string
+  author_name?: string
+  authored_date?: string
+  committed_date?: string
+  committer_email?: string
+  committer_name?: string
+  created_at?: string
+  extended_trailers?: Record<string, any>
+  id?: string
+  last_pipeline?: Record<string, any>
+  message?: string
+  parent_ids?: any[]
+  short_id?: string
+  stats?: Record<string, any>
+  status?: string
+  title?: string
+  trailers?: Record<string, any>
+  web_url?: string
 }
 
 export interface ApiEntitiesCommitNote {
   author?: Record<string, any>
+  avatar_path?: string
+  avatar_url?: string
   created_at?: string
+  custom_attributes?: any[]
+  id?: number
   line?: number
   line_type?: string
+  locked?: boolean
+  name?: string
   note?: string
   path?: string
+  public_email?: string
+  state?: string
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesCommitNoteListMatch {
@@ -1145,6 +1607,22 @@ export interface ApiEntitiesCommitNoteListMatch {
 export interface ApiEntitiesCommitNoteCreateData {
   project_id: string
   sha: any
+  author?: Record<string, any>
+  avatar_path?: string
+  avatar_url?: string
+  created_at?: string
+  custom_attributes?: any[]
+  id?: number
+  line?: number
+  line_type?: string
+  locked?: boolean
+  name?: string
+  note?: string
+  path?: string
+  public_email?: string
+  state?: string
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesCommitSequence {
@@ -1170,18 +1648,26 @@ export interface ApiEntitiesCommitSignatureLoadMatch {
 export interface ApiEntitiesCommitStatus {
   allow_failure?: boolean
   author?: Record<string, any>
+  avatar_path?: string
+  avatar_url?: string
   coverage?: number
   created_at?: string
+  custom_attributes?: any[]
   description?: string
   finished_at?: string
   id?: number
+  locked?: boolean
   name?: string
   pipeline_id?: number
+  public_email?: string
   ref?: string
   sha?: string
   started_at?: string
+  state?: string
   status?: string
   target_url?: string
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesCommitStatusListMatch {
@@ -1192,13 +1678,35 @@ export interface ApiEntitiesCommitStatusListMatch {
 export interface ApiEntitiesCommitStatusCreateData {
   id: string
   project_id: string
+  allow_failure?: boolean
+  author?: Record<string, any>
+  avatar_path?: string
+  avatar_url?: string
+  coverage?: number
+  created_at?: string
+  custom_attributes?: any[]
+  description?: string
+  finished_at?: string
+  locked?: boolean
+  name?: string
+  pipeline_id?: number
+  public_email?: string
+  ref?: string
+  sha?: string
+  started_at?: string
+  state?: string
+  status?: string
+  target_url?: string
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesCompare {
   commit?: Record<string, any>
+  commits?: any[]
   compare_same_ref?: boolean
   compare_timeout?: boolean
-  diff?: any[]
+  diffs?: any[]
   web_url?: string
 }
 
@@ -1217,7 +1725,7 @@ export interface ApiEntitiesContainerRegistryRepository {
   project_id?: number
   size?: number
   status?: string
-  tag?: Record<string, any>
+  tags?: Record<string, any>
   tags_count?: number
 }
 
@@ -1259,9 +1767,9 @@ export interface ApiEntitiesContainerRegistryTagDetailLoadMatch {
 }
 
 export interface ApiEntitiesContributor {
-  addition?: number
-  commit?: number
-  deletion?: number
+  additions?: number
+  commits?: number
+  deletions?: number
   email?: string
   name?: string
 }
@@ -1301,11 +1809,32 @@ export interface ApiEntitiesDeployKeyListMatch {
 export interface ApiEntitiesDeployKeyCreateData {
   deploy_key_id?: string
   project_id?: string
+  created_at?: string
+  expires_at?: string
+  fingerprint?: string
+  fingerprint_sha256?: string
+  id?: number
+  key?: string
+  last_used_at?: string
+  projects_with_readonly_access?: Record<string, any>
+  projects_with_write_access?: Record<string, any>
+  title?: string
+  usage_type?: string
 }
 
 export interface ApiEntitiesDeployKeyUpdateData {
   id: string
   project_id: string
+  created_at?: string
+  expires_at?: string
+  fingerprint?: string
+  fingerprint_sha256?: string
+  key?: string
+  last_used_at?: string
+  projects_with_readonly_access?: Record<string, any>
+  projects_with_write_access?: Record<string, any>
+  title?: string
+  usage_type?: string
 }
 
 export interface ApiEntitiesDeployKeysProject {
@@ -1334,6 +1863,18 @@ export interface ApiEntitiesDeployKeysProjectListMatch {
 
 export interface ApiEntitiesDeployKeysProjectCreateData {
   project_id: string
+  can_push?: boolean
+  created_at?: string
+  expires_at?: string
+  fingerprint?: string
+  fingerprint_sha256?: string
+  id?: number
+  key?: string
+  last_used_at?: string
+  projects_with_readonly_access?: Record<string, any>
+  projects_with_write_access?: Record<string, any>
+  title?: string
+  usage_type?: string
 }
 
 export interface ApiEntitiesDeployToken {
@@ -1342,7 +1883,7 @@ export interface ApiEntitiesDeployToken {
   id?: number
   name?: string
   revoked?: boolean
-  scope?: any[]
+  scopes?: any[]
   username?: string
 }
 
@@ -1383,8 +1924,8 @@ export interface ApiEntitiesDeploymentListMatch {
 }
 
 export interface ApiEntitiesDeploymentExtended {
-  approval?: Record<string, any>
   approval_summary?: Record<string, any>
+  approvals?: Record<string, any>
   created_at?: string
   deployable?: Record<string, any>
   environment?: Record<string, any>
@@ -1405,11 +1946,37 @@ export interface ApiEntitiesDeploymentExtendedLoadMatch {
 
 export interface ApiEntitiesDeploymentExtendedCreateData {
   project_id: string
+  approval_summary?: Record<string, any>
+  approvals?: Record<string, any>
+  created_at?: string
+  deployable?: Record<string, any>
+  environment?: Record<string, any>
+  id?: number
+  iid?: number
+  pending_approval_count?: number
+  ref?: string
+  sha?: string
+  status?: string
+  updated_at?: string
+  user?: Record<string, any>
 }
 
 export interface ApiEntitiesDeploymentExtendedUpdateData {
   deployment_id: string
   project_id: string
+  approval_summary?: Record<string, any>
+  approvals?: Record<string, any>
+  created_at?: string
+  deployable?: Record<string, any>
+  environment?: Record<string, any>
+  id?: number
+  iid?: number
+  pending_approval_count?: number
+  ref?: string
+  sha?: string
+  status?: string
+  updated_at?: string
+  user?: Record<string, any>
 }
 
 export interface ApiEntitiesDeploymentsApproval {
@@ -1421,7 +1988,7 @@ export interface ApiEntitiesDeploymentsApprovalCreateData {
 }
 
 export interface ApiEntitiesDictionaryTable {
-  feature_category?: any[]
+  feature_categories?: any[]
   table_name?: string
 }
 
@@ -1455,13 +2022,13 @@ export interface ApiEntitiesDiffListMatch {
 }
 
 export interface ApiEntitiesDiscoveredCluster {
-  group?: string
-  project?: string
+  groups?: string
+  projects?: string
 }
 
 export interface ApiEntitiesDiscoveredClusterLoadMatch {
-  group?: string
-  project?: string
+  groups?: string
+  projects?: string
 }
 
 export interface ApiEntitiesDraftNote {
@@ -1490,12 +2057,27 @@ export interface ApiEntitiesDraftNoteListMatch {
 export interface ApiEntitiesDraftNoteCreateData {
   merge_request_id: string
   project_id: string
+  author_id?: number
+  commit_id?: number
+  discussion_id?: number
+  id?: number
+  line_code?: string
+  note?: string
+  position?: Record<string, any>
+  resolve_discussion?: boolean
 }
 
 export interface ApiEntitiesDraftNoteUpdateData {
   id: string
   merge_request_id: string
   project_id: string
+  author_id?: number
+  commit_id?: number
+  discussion_id?: number
+  line_code?: string
+  note?: string
+  position?: Record<string, any>
+  resolve_discussion?: boolean
 }
 
 export interface ApiEntitiesEnvironment {
@@ -1529,11 +2111,42 @@ export interface ApiEntitiesEnvironmentListMatch {
 export interface ApiEntitiesEnvironmentCreateData {
   environment_id?: string
   project_id: string
+  auto_stop_at?: string
+  auto_stop_setting?: string
+  cluster_agent?: Record<string, any>
+  created_at?: string
+  description?: string
+  external_url?: string
+  flux_resource_path?: string
+  id?: number
+  kubernetes_namespace?: string
+  last_deployment?: Record<string, any>
+  name?: string
+  project?: Record<string, any>
+  slug?: string
+  state?: string
+  tier?: string
+  updated_at?: string
 }
 
 export interface ApiEntitiesEnvironmentUpdateData {
   id: string
   project_id: string
+  auto_stop_at?: string
+  auto_stop_setting?: string
+  cluster_agent?: Record<string, any>
+  created_at?: string
+  description?: string
+  external_url?: string
+  flux_resource_path?: string
+  kubernetes_namespace?: string
+  last_deployment?: Record<string, any>
+  name?: string
+  project?: Record<string, any>
+  slug?: string
+  state?: string
+  tier?: string
+  updated_at?: string
 }
 
 export interface ApiEntitiesErrorTrackingClientKey {
@@ -1549,6 +2162,10 @@ export interface ApiEntitiesErrorTrackingClientKeyListMatch {
 
 export interface ApiEntitiesErrorTrackingClientKeyCreateData {
   project_id: string
+  active?: boolean
+  id?: number
+  public_key?: string
+  sentry_dsn?: string
 }
 
 export interface ApiEntitiesErrorTrackingProjectSetting {
@@ -1565,6 +2182,11 @@ export interface ApiEntitiesErrorTrackingProjectSettingLoadMatch {
 
 export interface ApiEntitiesErrorTrackingProjectSettingUpdateData {
   project_id: string
+  active?: boolean
+  api_url?: string
+  integrated?: boolean
+  project_name?: string
+  sentry_external_url?: string
 }
 
 export interface ApiEntitiesEvent {
@@ -1596,20 +2218,24 @@ export interface ApiEntitiesEventListMatch {
 
 export interface ApiEntitiesFeature {
   definition?: Record<string, any>
-  gate?: Record<string, any>
+  gates?: Record<string, any>
   name?: string
   state?: string
 }
 
 export interface ApiEntitiesFeatureListMatch {
   definition?: Record<string, any>
-  gate?: Record<string, any>
+  gates?: Record<string, any>
   name?: string
   state?: string
 }
 
 export interface ApiEntitiesFeatureCreateData {
   id: string
+  definition?: Record<string, any>
+  gates?: Record<string, any>
+  name?: string
+  state?: string
 }
 
 export interface ApiEntitiesFeatureDefinition {
@@ -1618,7 +2244,7 @@ export interface ApiEntitiesFeatureDefinition {
   group?: string
   intended_to_rollout_by?: string
   introduced_by_url?: string
-  log_state_change?: string
+  log_state_changes?: string
   milestone?: string
   name?: string
   rollout_issue_url?: string
@@ -1631,7 +2257,7 @@ export interface ApiEntitiesFeatureDefinitionListMatch {
   group?: string
   intended_to_rollout_by?: string
   introduced_by_url?: string
-  log_state_change?: string
+  log_state_changes?: string
   milestone?: string
   name?: string
   rollout_issue_url?: string
@@ -1642,10 +2268,13 @@ export interface ApiEntitiesFeatureFlag {
   active?: boolean
   created_at?: string
   description?: string
+  id?: number
   name?: string
-  scope?: string
-  strategy?: Record<string, any>
+  parameters?: string
+  scopes?: Record<string, any>
+  strategies?: Record<string, any>
   updated_at?: string
+  user_list?: Record<string, any>
   version?: string
 }
 
@@ -1660,11 +2289,32 @@ export interface ApiEntitiesFeatureFlagListMatch {
 
 export interface ApiEntitiesFeatureFlagCreateData {
   project_id: string
+  active?: boolean
+  created_at?: string
+  description?: string
+  id?: number
+  name?: string
+  parameters?: string
+  scopes?: Record<string, any>
+  strategies?: Record<string, any>
+  updated_at?: string
+  user_list?: Record<string, any>
+  version?: string
 }
 
 export interface ApiEntitiesFeatureFlagUpdateData {
   id: string
   project_id: string
+  active?: boolean
+  created_at?: string
+  description?: string
+  name?: string
+  parameters?: string
+  scopes?: Record<string, any>
+  strategies?: Record<string, any>
+  updated_at?: string
+  user_list?: Record<string, any>
+  version?: string
 }
 
 export interface ApiEntitiesFeatureFlagUserList {
@@ -1676,7 +2326,7 @@ export interface ApiEntitiesFeatureFlagUserList {
   path?: string
   project_id?: number
   updated_at?: string
-  user_xid?: string
+  user_xids?: string
 }
 
 export interface ApiEntitiesFeatureFlagUserListLoadMatch {
@@ -1690,11 +2340,26 @@ export interface ApiEntitiesFeatureFlagUserListListMatch {
 
 export interface ApiEntitiesFeatureFlagUserListCreateData {
   project_id: string
+  created_at?: string
+  edit_path?: string
+  id?: number
+  iid?: number
+  name?: string
+  path?: string
+  updated_at?: string
+  user_xids?: string
 }
 
 export interface ApiEntitiesFeatureFlagUserListUpdateData {
   iid: any
   project_id: string
+  created_at?: string
+  edit_path?: string
+  id?: number
+  name?: string
+  path?: string
+  updated_at?: string
+  user_xids?: string
 }
 
 export interface ApiEntitiesFreezePeriod {
@@ -1717,11 +2382,22 @@ export interface ApiEntitiesFreezePeriodListMatch {
 
 export interface ApiEntitiesFreezePeriodCreateData {
   project_id: string
+  created_at?: string
+  cron_timezone?: string
+  freeze_end?: string
+  freeze_start?: string
+  id?: number
+  updated_at?: string
 }
 
 export interface ApiEntitiesFreezePeriodUpdateData {
   id: string
   project_id: string
+  created_at?: string
+  cron_timezone?: string
+  freeze_end?: string
+  freeze_start?: string
+  updated_at?: string
 }
 
 export interface ApiEntitiesGitlabSubscription {
@@ -1735,8 +2411,8 @@ export interface ApiEntitiesGitlabSubscriptionLoadMatch {
 }
 
 export interface ApiEntitiesGoModuleVersion {
-  time?: string
-  version?: string
+  Time?: string
+  Version?: string
 }
 
 export interface ApiEntitiesGoModuleVersionLoadMatch {
@@ -1750,10 +2426,10 @@ export interface ApiEntitiesGroup {
   auto_duo_code_review_enabled?: string
   avatar_url?: string
   created_at?: string
-  custom_attribute?: Record<string, any>
+  custom_attributes?: Record<string, any>
   default_branch?: string
   default_branch_protection?: string
-  default_branch_protection_default?: string
+  default_branch_protection_defaults?: string
   description?: string
   duo_core_features_enabled?: boolean
   duo_features_enabled?: string
@@ -1765,7 +2441,7 @@ export interface ApiEntitiesGroup {
   id?: string
   ldap_access?: string
   ldap_cn?: string
-  ldap_group_link?: Record<string, any>
+  ldap_group_links?: Record<string, any>
   lfs_enabled?: string
   lock_duo_features_enabled?: string
   lock_math_rendering_limits_enabled?: boolean
@@ -1781,12 +2457,12 @@ export interface ApiEntitiesGroup {
   repository_storage?: string
   request_access_enabled?: string
   require_two_factor_authentication?: string
-  root_storage_statistic?: Record<string, any>
-  saml_group_link?: Record<string, any>
+  root_storage_statistics?: Record<string, any>
+  saml_group_links?: Record<string, any>
   share_with_group_lock?: string
   shared_runners_setting?: string
   show_diff_preview_in_email?: boolean
-  statistic?: Record<string, any>
+  statistics?: Record<string, any>
   subgroup_creation_level?: string
   two_factor_grace_period?: string
   visibility?: string
@@ -1806,10 +2482,105 @@ export interface ApiEntitiesGroupListMatch {
 
 export interface ApiEntitiesGroupCreateData {
   group_id?: string
+  archived?: boolean
+  auto_devops_enabled?: string
+  auto_duo_code_review_enabled?: string
+  avatar_url?: string
+  created_at?: string
+  custom_attributes?: Record<string, any>
+  default_branch?: string
+  default_branch_protection?: string
+  default_branch_protection_defaults?: string
+  description?: string
+  duo_core_features_enabled?: boolean
+  duo_features_enabled?: string
+  emails_disabled?: boolean
+  emails_enabled?: boolean
+  file_template_project_id?: string
+  full_name?: string
+  full_path?: string
+  id?: string
+  ldap_access?: string
+  ldap_cn?: string
+  ldap_group_links?: Record<string, any>
+  lfs_enabled?: string
+  lock_duo_features_enabled?: string
+  lock_math_rendering_limits_enabled?: boolean
+  marked_for_deletion_on?: string
+  math_rendering_limits_enabled?: boolean
+  max_artifacts_size?: number
+  mentions_disabled?: string
+  name?: string
+  organization_id?: string
+  parent_id?: string
+  path?: string
+  project_creation_level?: string
+  repository_storage?: string
+  request_access_enabled?: string
+  require_two_factor_authentication?: string
+  root_storage_statistics?: Record<string, any>
+  saml_group_links?: Record<string, any>
+  share_with_group_lock?: string
+  shared_runners_setting?: string
+  show_diff_preview_in_email?: boolean
+  statistics?: Record<string, any>
+  subgroup_creation_level?: string
+  two_factor_grace_period?: string
+  visibility?: string
+  web_based_commit_signing_enabled?: string
+  web_url?: string
+  wiki_access_level?: string
 }
 
 export interface ApiEntitiesGroupUpdateData {
   id: string
+  archived?: boolean
+  auto_devops_enabled?: string
+  auto_duo_code_review_enabled?: string
+  avatar_url?: string
+  created_at?: string
+  custom_attributes?: Record<string, any>
+  default_branch?: string
+  default_branch_protection?: string
+  default_branch_protection_defaults?: string
+  description?: string
+  duo_core_features_enabled?: boolean
+  duo_features_enabled?: string
+  emails_disabled?: boolean
+  emails_enabled?: boolean
+  file_template_project_id?: string
+  full_name?: string
+  full_path?: string
+  ldap_access?: string
+  ldap_cn?: string
+  ldap_group_links?: Record<string, any>
+  lfs_enabled?: string
+  lock_duo_features_enabled?: string
+  lock_math_rendering_limits_enabled?: boolean
+  marked_for_deletion_on?: string
+  math_rendering_limits_enabled?: boolean
+  max_artifacts_size?: number
+  mentions_disabled?: string
+  name?: string
+  organization_id?: string
+  parent_id?: string
+  path?: string
+  project_creation_level?: string
+  repository_storage?: string
+  request_access_enabled?: string
+  require_two_factor_authentication?: string
+  root_storage_statistics?: Record<string, any>
+  saml_group_links?: Record<string, any>
+  share_with_group_lock?: string
+  shared_runners_setting?: string
+  show_diff_preview_in_email?: boolean
+  statistics?: Record<string, any>
+  subgroup_creation_level?: string
+  two_factor_grace_period?: string
+  visibility?: string
+  web_based_commit_signing_enabled?: string
+  web_url?: string
+  wiki_access_level?: string
 }
 
 export interface ApiEntitiesGroupDetail {
@@ -1820,10 +2591,10 @@ export interface ApiEntitiesGroupDetail {
   auto_duo_code_review_enabled?: string
   avatar_url?: string
   created_at?: string
-  custom_attribute?: Record<string, any>
+  custom_attributes?: Record<string, any>
   default_branch?: string
   default_branch_protection?: string
-  default_branch_protection_default?: string
+  default_branch_protection_defaults?: string
   description?: string
   duo_core_features_enabled?: boolean
   duo_features_enabled?: string
@@ -1835,10 +2606,10 @@ export interface ApiEntitiesGroupDetail {
   full_name?: string
   full_path?: string
   id?: string
-  ip_restriction_range?: string
+  ip_restriction_ranges?: string
   ldap_access?: string
   ldap_cn?: string
-  ldap_group_link?: Record<string, any>
+  ldap_group_links?: Record<string, any>
   lfs_enabled?: string
   lock_duo_features_enabled?: string
   lock_math_rendering_limits_enabled?: boolean
@@ -1853,28 +2624,28 @@ export interface ApiEntitiesGroupDetail {
   path?: string
   prevent_forking_outside_group?: string
   prevent_sharing_groups_outside_hierarchy?: string
-  project?: Record<string, any>
   project_creation_level?: string
+  projects?: Record<string, any>
   repository_storage?: string
   request_access_enabled?: string
   require_two_factor_authentication?: string
-  root_storage_statistic?: Record<string, any>
+  root_storage_statistics?: Record<string, any>
   runners_token?: string
-  saml_group_link?: Record<string, any>
+  saml_group_links?: Record<string, any>
   service_access_tokens_expiration_enforced?: string
   share_with_group_lock?: string
-  shared_project?: Record<string, any>
+  shared_projects?: Record<string, any>
   shared_runners_minutes_limit?: string
   shared_runners_setting?: string
-  shared_with_group?: string
+  shared_with_groups?: string
   show_diff_preview_in_email?: boolean
-  statistic?: Record<string, any>
+  statistics?: Record<string, any>
   subgroup_creation_level?: string
   two_factor_grace_period?: string
   unique_project_download_limit?: string
   unique_project_download_limit_alertlist?: string
   unique_project_download_limit_allowlist?: string
-  unique_project_download_limit_interval_in_second?: string
+  unique_project_download_limit_interval_in_seconds?: string
   visibility?: string
   web_based_commit_signing_enabled?: string
   web_url?: string
@@ -1888,26 +2659,92 @@ export interface ApiEntitiesGroupDetailLoadMatch {
 export interface ApiEntitiesGroupDetailCreateData {
   group_id: string
   project_id?: string
+  allowed_email_domains_list?: string
+  archived?: boolean
+  auto_ban_user_on_excessive_projects_download?: string
+  auto_devops_enabled?: string
+  auto_duo_code_review_enabled?: string
+  avatar_url?: string
+  created_at?: string
+  custom_attributes?: Record<string, any>
+  default_branch?: string
+  default_branch_protection?: string
+  default_branch_protection_defaults?: string
+  description?: string
+  duo_core_features_enabled?: boolean
+  duo_features_enabled?: string
+  emails_disabled?: boolean
+  emails_enabled?: boolean
+  enabled_git_access_protocol?: string
+  extra_shared_runners_minutes_limit?: string
+  file_template_project_id?: string
+  full_name?: string
+  full_path?: string
+  id?: string
+  ip_restriction_ranges?: string
+  ldap_access?: string
+  ldap_cn?: string
+  ldap_group_links?: Record<string, any>
+  lfs_enabled?: string
+  lock_duo_features_enabled?: string
+  lock_math_rendering_limits_enabled?: boolean
+  marked_for_deletion_on?: string
+  math_rendering_limits_enabled?: boolean
+  max_artifacts_size?: number
+  membership_lock?: string
+  mentions_disabled?: string
+  name?: string
+  organization_id?: string
+  parent_id?: string
+  path?: string
+  prevent_forking_outside_group?: string
+  prevent_sharing_groups_outside_hierarchy?: string
+  project_creation_level?: string
+  projects?: Record<string, any>
+  repository_storage?: string
+  request_access_enabled?: string
+  require_two_factor_authentication?: string
+  root_storage_statistics?: Record<string, any>
+  runners_token?: string
+  saml_group_links?: Record<string, any>
+  service_access_tokens_expiration_enforced?: string
+  share_with_group_lock?: string
+  shared_projects?: Record<string, any>
+  shared_runners_minutes_limit?: string
+  shared_runners_setting?: string
+  shared_with_groups?: string
+  show_diff_preview_in_email?: boolean
+  statistics?: Record<string, any>
+  subgroup_creation_level?: string
+  two_factor_grace_period?: string
+  unique_project_download_limit?: string
+  unique_project_download_limit_alertlist?: string
+  unique_project_download_limit_allowlist?: string
+  unique_project_download_limit_interval_in_seconds?: string
+  visibility?: string
+  web_based_commit_signing_enabled?: string
+  web_url?: string
+  wiki_access_level?: string
 }
 
 export interface ApiEntitiesHook {
   alert_status?: any
   branch_filter_strategy?: string
   created_at?: string
-  custom_header?: any[]
+  custom_headers?: any[]
   custom_webhook_template?: string
   description?: string
   disabled_until?: string
   enable_ssl_verification?: boolean
   id?: string
-  merge_requests_event?: boolean
+  merge_requests_events?: boolean
   name?: string
-  push_event?: boolean
+  push_events?: boolean
   push_events_branch_filter?: string
-  repository_update_event?: boolean
-  tag_push_event?: boolean
+  repository_update_events?: boolean
+  tag_push_events?: boolean
   url?: string
-  url_variable?: any[]
+  url_variables?: any[]
 }
 
 export interface ApiEntitiesHookLoadMatch {
@@ -1918,71 +2755,63 @@ export interface ApiEntitiesHookListMatch {
   alert_status?: any
   branch_filter_strategy?: string
   created_at?: string
-  custom_header?: any[]
+  custom_headers?: any[]
   custom_webhook_template?: string
   description?: string
   disabled_until?: string
   enable_ssl_verification?: boolean
   id?: string
-  merge_requests_event?: boolean
+  merge_requests_events?: boolean
   name?: string
-  push_event?: boolean
+  push_events?: boolean
   push_events_branch_filter?: string
-  repository_update_event?: boolean
-  tag_push_event?: boolean
+  repository_update_events?: boolean
+  tag_push_events?: boolean
   url?: string
-  url_variable?: any[]
+  url_variables?: any[]
 }
 
 export interface ApiEntitiesHookCreateData {
   alert_status?: any
   branch_filter_strategy?: string
   created_at?: string
-  custom_header?: any[]
+  custom_headers?: any[]
   custom_webhook_template?: string
   description?: string
   disabled_until?: string
   enable_ssl_verification?: boolean
   id?: string
-  merge_requests_event?: boolean
+  merge_requests_events?: boolean
   name?: string
-  push_event?: boolean
+  push_events?: boolean
   push_events_branch_filter?: string
-  repository_update_event?: boolean
-  tag_push_event?: boolean
+  repository_update_events?: boolean
+  tag_push_events?: boolean
   url?: string
-  url_variable?: any[]
+  url_variables?: any[]
 }
 
 export interface ApiEntitiesHookUpdateData {
   id: string
+  alert_status?: any
+  branch_filter_strategy?: string
+  created_at?: string
+  custom_headers?: any[]
+  custom_webhook_template?: string
+  description?: string
+  disabled_until?: string
+  enable_ssl_verification?: boolean
+  merge_requests_events?: boolean
+  name?: string
+  push_events?: boolean
+  push_events_branch_filter?: string
+  repository_update_events?: boolean
+  tag_push_events?: boolean
+  url?: string
+  url_variables?: any[]
 }
 
 export interface ApiEntitiesIntegration {
-  active?: boolean
-  alert_event?: boolean
-  comment_on_event_enabled?: boolean
-  commit_event?: boolean
-  confidential_issues_event?: boolean
-  confidential_note_event?: boolean
-  created_at?: string
-  deployment_event?: boolean
-  id?: number
-  incident_event?: boolean
-  inherited?: boolean
-  issues_event?: boolean
-  job_event?: boolean
-  merge_requests_event?: boolean
-  note_event?: boolean
-  pipeline_event?: boolean
-  property?: Record<string, any>
-  push_event?: boolean
-  slug?: number
-  tag_push_event?: boolean
-  title?: string
-  updated_at?: string
-  vulnerability_event?: boolean
-  wiki_page_event?: boolean
 }
 
 export interface ApiEntitiesIntegrationLoadMatch {
@@ -1994,28 +2823,28 @@ export interface ApiEntitiesIntegrationLoadMatch {
 
 export interface ApiEntitiesIntegrationBasic {
   active?: boolean
-  alert_event?: boolean
+  alert_events?: boolean
   comment_on_event_enabled?: boolean
-  commit_event?: boolean
-  confidential_issues_event?: boolean
-  confidential_note_event?: boolean
+  commit_events?: boolean
+  confidential_issues_events?: boolean
+  confidential_note_events?: boolean
   created_at?: string
-  deployment_event?: boolean
+  deployment_events?: boolean
   id?: number
-  incident_event?: boolean
+  incident_events?: boolean
   inherited?: boolean
-  issues_event?: boolean
-  job_event?: boolean
-  merge_requests_event?: boolean
-  note_event?: boolean
-  pipeline_event?: boolean
-  push_event?: boolean
+  issues_events?: boolean
+  job_events?: boolean
+  merge_requests_events?: boolean
+  note_events?: boolean
+  pipeline_events?: boolean
+  push_events?: boolean
   slug?: number
-  tag_push_event?: boolean
+  tag_push_events?: boolean
   title?: string
   updated_at?: string
-  vulnerability_event?: boolean
-  wiki_page_event?: boolean
+  vulnerability_events?: boolean
+  wiki_page_events?: boolean
 }
 
 export interface ApiEntitiesIntegrationBasicListMatch {
@@ -2026,6 +2855,29 @@ export interface ApiEntitiesIntegrationBasicListMatch {
 export interface ApiEntitiesIntegrationBasicUpdateData {
   group_id?: string
   project_id?: string
+  active?: boolean
+  alert_events?: boolean
+  comment_on_event_enabled?: boolean
+  commit_events?: boolean
+  confidential_issues_events?: boolean
+  confidential_note_events?: boolean
+  created_at?: string
+  deployment_events?: boolean
+  id?: number
+  incident_events?: boolean
+  inherited?: boolean
+  issues_events?: boolean
+  job_events?: boolean
+  merge_requests_events?: boolean
+  note_events?: boolean
+  pipeline_events?: boolean
+  push_events?: boolean
+  slug?: number
+  tag_push_events?: boolean
+  title?: string
+  updated_at?: string
+  vulnerability_events?: boolean
+  wiki_page_events?: boolean
 }
 
 export interface ApiEntitiesInvitation {
@@ -2046,12 +2898,26 @@ export interface ApiEntitiesInvitationListMatch {
 export interface ApiEntitiesInvitationCreateData {
   group_id?: string
   project_id?: string
+  access_level?: string
+  created_at?: string
+  created_by_name?: string
+  expires_at?: string
+  invite_email?: string
+  invite_token?: string
+  user_name?: string
 }
 
 export interface ApiEntitiesInvitationUpdateData {
   group_id?: string
   id: string
   project_id?: string
+  access_level?: string
+  created_at?: string
+  created_by_name?: string
+  expires_at?: string
+  invite_email?: string
+  invite_token?: string
+  user_name?: string
 }
 
 export interface ApiEntitiesIssuableTimeStat {
@@ -2071,10 +2937,15 @@ export interface ApiEntitiesIssuableTimeStatCreateData {
   issue_id?: string
   project_id: string
   merge_request_id?: string
+  human_time_estimate?: string
+  human_total_time_spent?: string
+  time_estimate?: number
+  total_time_spent?: number
 }
 
 export interface ApiEntitiesIssue {
   assignee?: Record<string, any>
+  assignees?: Record<string, any>
   author?: Record<string, any>
   blocking_issues_count?: string
   closed_at?: string
@@ -2083,11 +2954,11 @@ export interface ApiEntitiesIssue {
   created_at?: string
   description?: string
   discussion_locked?: boolean
-  downvote?: string
+  downvotes?: string
   due_date?: string
   epic?: Record<string, any>
   epic_iid?: string
-  has_task?: boolean
+  has_tasks?: boolean
   health_status?: string
   id?: number
   iid?: number
@@ -2095,24 +2966,24 @@ export interface ApiEntitiesIssue {
   imported_from?: string
   issue_type?: string
   iteration?: Record<string, any>
-  label?: any[]
-  link?: Record<string, any>
+  labels?: any[]
+  links?: Record<string, any>
   merge_requests_count?: string
   milestone?: Record<string, any>
   moved_to_id?: string
   project_id?: number
-  reference?: Record<string, any>
+  references?: Record<string, any>
   service_desk_reply_to?: string
   severity?: string
   state?: string
   subscribed?: string
   task_completion_status?: string
   task_status?: string
-  time_stat?: Record<string, any>
+  time_stats?: Record<string, any>
   title?: string
   type?: string
   updated_at?: string
-  upvote?: string
+  upvotes?: string
   user_notes_count?: string
   web_url?: string
   weight?: string
@@ -2131,12 +3002,95 @@ export interface ApiEntitiesIssueListMatch {
 export interface ApiEntitiesIssueCreateData {
   issue_id?: string
   project_id: string
+  assignee?: Record<string, any>
+  assignees?: Record<string, any>
+  author?: Record<string, any>
+  blocking_issues_count?: string
+  closed_at?: string
+  closed_by?: Record<string, any>
+  confidential?: boolean
+  created_at?: string
+  description?: string
+  discussion_locked?: boolean
+  downvotes?: string
+  due_date?: string
+  epic?: Record<string, any>
+  epic_iid?: string
+  has_tasks?: boolean
+  health_status?: string
+  id?: number
+  iid?: number
+  imported?: string
+  imported_from?: string
+  issue_type?: string
+  iteration?: Record<string, any>
+  labels?: any[]
+  links?: Record<string, any>
+  merge_requests_count?: string
+  milestone?: Record<string, any>
+  moved_to_id?: string
+  references?: Record<string, any>
+  service_desk_reply_to?: string
+  severity?: string
+  state?: string
+  subscribed?: string
+  task_completion_status?: string
+  task_status?: string
+  time_stats?: Record<string, any>
+  title?: string
+  type?: string
+  updated_at?: string
+  upvotes?: string
+  user_notes_count?: string
+  web_url?: string
+  weight?: string
 }
 
 export interface ApiEntitiesIssueUpdateData {
   id?: string
   project_id: string
   issue_id?: string
+  assignee?: Record<string, any>
+  assignees?: Record<string, any>
+  author?: Record<string, any>
+  blocking_issues_count?: string
+  closed_at?: string
+  closed_by?: Record<string, any>
+  confidential?: boolean
+  created_at?: string
+  description?: string
+  discussion_locked?: boolean
+  downvotes?: string
+  due_date?: string
+  epic?: Record<string, any>
+  epic_iid?: string
+  has_tasks?: boolean
+  health_status?: string
+  iid?: number
+  imported?: string
+  imported_from?: string
+  issue_type?: string
+  iteration?: Record<string, any>
+  labels?: any[]
+  links?: Record<string, any>
+  merge_requests_count?: string
+  milestone?: Record<string, any>
+  moved_to_id?: string
+  references?: Record<string, any>
+  service_desk_reply_to?: string
+  severity?: string
+  state?: string
+  subscribed?: string
+  task_completion_status?: string
+  task_status?: string
+  time_stats?: Record<string, any>
+  title?: string
+  type?: string
+  updated_at?: string
+  upvotes?: string
+  user_notes_count?: string
+  web_url?: string
+  weight?: string
 }
 
 export interface ApiEntitiesIssueLink {
@@ -2154,18 +3108,21 @@ export interface ApiEntitiesIssueLinkLoadMatch {
 export interface ApiEntitiesIssueLinkCreateData {
   issue_id: string
   project_id: string
+  link_type?: string
+  source_issue?: Record<string, any>
+  target_issue?: Record<string, any>
 }
 
 export interface ApiEntitiesLicense {
-  condition?: any[]
+  conditions?: any[]
   content?: string
   description?: string
   html_url?: string
   key?: string
-  limitation?: any[]
+  limitations?: any[]
   name?: string
   nickname?: string
-  permission?: any[]
+  permissions?: any[]
   popular?: boolean
   source_url?: string
 }
@@ -2201,7 +3158,7 @@ export interface ApiEntitiesMember {
   avatar_url?: string
   created_at?: string
   created_by?: Record<string, any>
-  custom_attribute?: any[]
+  custom_attributes?: any[]
   email?: string
   expires_at?: string
   group_saml_identity?: Record<string, any>
@@ -2237,12 +3194,57 @@ export interface ApiEntitiesMemberCreateData {
   group_id?: string
   member_id?: string
   project_id?: string
+  access_level?: string
+  avatar_path?: string
+  avatar_url?: string
+  created_at?: string
+  created_by?: Record<string, any>
+  custom_attributes?: any[]
+  email?: string
+  expires_at?: string
+  group_saml_identity?: Record<string, any>
+  group_scim_identity?: Record<string, any>
+  id?: number
+  is_using_seat?: boolean
+  key?: string
+  locked?: boolean
+  member_role?: Record<string, any>
+  membership_state?: string
+  name?: string
+  override?: string
+  public_email?: string
+  state?: string
+  username?: string
+  value?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesMemberUpdateData {
   group_id?: string
   id: string
   project_id?: string
+  access_level?: string
+  avatar_path?: string
+  avatar_url?: string
+  created_at?: string
+  created_by?: Record<string, any>
+  custom_attributes?: any[]
+  email?: string
+  expires_at?: string
+  group_saml_identity?: Record<string, any>
+  group_scim_identity?: Record<string, any>
+  is_using_seat?: boolean
+  key?: string
+  locked?: boolean
+  member_role?: Record<string, any>
+  membership_state?: string
+  name?: string
+  override?: string
+  public_email?: string
+  state?: string
+  username?: string
+  value?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesMemberRemoveMatch {
@@ -2255,6 +3257,7 @@ export interface ApiEntitiesMerge {
   allow_maintainer_to_push?: boolean
   approvals_before_merge?: string
   assignee?: Record<string, any>
+  assignees?: Record<string, any>
   author?: Record<string, any>
   blocking_discussions_resolved?: string
   changes_count?: string
@@ -2264,21 +3267,21 @@ export interface ApiEntitiesMerge {
   description?: string
   description_html?: string
   detailed_merge_status?: string
-  diff_ref?: Record<string, any>
+  diff_refs?: Record<string, any>
   discussion_locked?: string
   diverged_commits_count?: string
-  downvote?: string
+  downvotes?: string
   draft?: string
   first_contribution?: string
   first_deployed_to_production_at?: string
   force_remove_source_branch?: string
-  has_conflict?: boolean
+  has_conflicts?: boolean
   head_pipeline?: Record<string, any>
   id?: number
   iid?: number
   imported?: string
   imported_from?: string
-  label?: string
+  labels?: string
   latest_build_finished_at?: string
   latest_build_started_at?: string
   merge_after?: string
@@ -2286,7 +3289,7 @@ export interface ApiEntitiesMerge {
   merge_error?: string
   merge_status?: string
   merge_user?: Record<string, any>
-  merge_when_pipeline_succeed?: string
+  merge_when_pipeline_succeeds?: string
   merged_at?: string
   merged_by?: Record<string, any>
   milestone?: Record<string, any>
@@ -2295,7 +3298,8 @@ export interface ApiEntitiesMerge {
   project_id?: number
   rebase_in_progress?: string
   reference?: string
-  reviewer?: Record<string, any>
+  references?: Record<string, any>
+  reviewers?: Record<string, any>
   sha?: string
   should_remove_source_branch?: boolean
   source_branch?: string
@@ -2308,11 +3312,11 @@ export interface ApiEntitiesMerge {
   target_branch?: string
   target_project_id?: string
   task_completion_status?: string
-  time_stat?: Record<string, any>
+  time_stats?: Record<string, any>
   title?: string
   title_html?: string
   updated_at?: string
-  upvote?: string
+  upvotes?: string
   user?: Record<string, any>
   user_notes_count?: string
   web_url?: string
@@ -2327,19 +3331,151 @@ export interface ApiEntitiesMergeLoadMatch {
 export interface ApiEntitiesMergeCreateData {
   merge_request_id?: string
   project_id: string
+  allow_collaboration?: boolean
+  allow_maintainer_to_push?: boolean
+  approvals_before_merge?: string
+  assignee?: Record<string, any>
+  assignees?: Record<string, any>
+  author?: Record<string, any>
+  blocking_discussions_resolved?: string
+  changes_count?: string
+  closed_at?: string
+  closed_by?: Record<string, any>
+  created_at?: string
+  description?: string
+  description_html?: string
+  detailed_merge_status?: string
+  diff_refs?: Record<string, any>
+  discussion_locked?: string
+  diverged_commits_count?: string
+  downvotes?: string
+  draft?: string
+  first_contribution?: string
+  first_deployed_to_production_at?: string
+  force_remove_source_branch?: string
+  has_conflicts?: boolean
+  head_pipeline?: Record<string, any>
+  id?: number
+  iid?: number
+  imported?: string
+  imported_from?: string
+  labels?: string
+  latest_build_finished_at?: string
+  latest_build_started_at?: string
+  merge_after?: string
+  merge_commit_sha?: string
+  merge_error?: string
+  merge_status?: string
+  merge_user?: Record<string, any>
+  merge_when_pipeline_succeeds?: string
+  merged_at?: string
+  merged_by?: Record<string, any>
+  milestone?: Record<string, any>
+  pipeline?: Record<string, any>
+  prepared_at?: string
+  rebase_in_progress?: string
+  reference?: string
+  references?: Record<string, any>
+  reviewers?: Record<string, any>
+  sha?: string
+  should_remove_source_branch?: boolean
+  source_branch?: string
+  source_project_id?: string
+  squash?: string
+  squash_commit_sha?: string
+  squash_on_merge?: string
+  state?: string
+  subscribed?: string
+  target_branch?: string
+  target_project_id?: string
+  task_completion_status?: string
+  time_stats?: Record<string, any>
+  title?: string
+  title_html?: string
+  updated_at?: string
+  upvotes?: string
+  user?: Record<string, any>
+  user_notes_count?: string
+  web_url?: string
+  work_in_progress?: string
 }
 
 export interface ApiEntitiesMergeUpdateData {
   merge_request_id?: string
   project_id: string
   merge_request_iid?: any
+  allow_collaboration?: boolean
+  allow_maintainer_to_push?: boolean
+  approvals_before_merge?: string
+  assignee?: Record<string, any>
+  assignees?: Record<string, any>
+  author?: Record<string, any>
+  blocking_discussions_resolved?: string
+  changes_count?: string
+  closed_at?: string
+  closed_by?: Record<string, any>
+  created_at?: string
+  description?: string
+  description_html?: string
+  detailed_merge_status?: string
+  diff_refs?: Record<string, any>
+  discussion_locked?: string
+  diverged_commits_count?: string
+  downvotes?: string
+  draft?: string
+  first_contribution?: string
+  first_deployed_to_production_at?: string
+  force_remove_source_branch?: string
+  has_conflicts?: boolean
+  head_pipeline?: Record<string, any>
+  id?: number
+  iid?: number
+  imported?: string
+  imported_from?: string
+  labels?: string
+  latest_build_finished_at?: string
+  latest_build_started_at?: string
+  merge_after?: string
+  merge_commit_sha?: string
+  merge_error?: string
+  merge_status?: string
+  merge_user?: Record<string, any>
+  merge_when_pipeline_succeeds?: string
+  merged_at?: string
+  merged_by?: Record<string, any>
+  milestone?: Record<string, any>
+  pipeline?: Record<string, any>
+  prepared_at?: string
+  rebase_in_progress?: string
+  reference?: string
+  references?: Record<string, any>
+  reviewers?: Record<string, any>
+  sha?: string
+  should_remove_source_branch?: boolean
+  source_branch?: string
+  source_project_id?: string
+  squash?: string
+  squash_commit_sha?: string
+  squash_on_merge?: string
+  state?: string
+  subscribed?: string
+  target_branch?: string
+  target_project_id?: string
+  task_completion_status?: string
+  time_stats?: Record<string, any>
+  title?: string
+  title_html?: string
+  updated_at?: string
+  upvotes?: string
+  user?: Record<string, any>
+  user_notes_count?: string
+  web_url?: string
+  work_in_progress?: string
 }
 
 export interface ApiEntitiesMergeRequestApproval {
-  approved?: boolean
-  approved_by?: Record<string, any>
-  user_can_approve?: boolean
-  user_has_approved?: boolean
+  approved_at?: string
+  user?: Record<string, any>
 }
 
 export interface ApiEntitiesMergeRequestApprovalLoadMatch {
@@ -2350,6 +3486,8 @@ export interface ApiEntitiesMergeRequestApprovalLoadMatch {
 export interface ApiEntitiesMergeRequestApprovalCreateData {
   merge_request_id: string
   project_id: string
+  approved_at?: string
+  user?: Record<string, any>
 }
 
 export interface ApiEntitiesMergeRequestBasic {
@@ -2357,6 +3495,7 @@ export interface ApiEntitiesMergeRequestBasic {
   allow_maintainer_to_push?: boolean
   approvals_before_merge?: string
   assignee?: Record<string, any>
+  assignees?: Record<string, any>
   author?: Record<string, any>
   blocking_discussions_resolved?: string
   closed_at?: string
@@ -2366,27 +3505,28 @@ export interface ApiEntitiesMergeRequestBasic {
   description_html?: string
   detailed_merge_status?: string
   discussion_locked?: string
-  downvote?: string
+  downvotes?: string
   draft?: string
   force_remove_source_branch?: string
-  has_conflict?: boolean
+  has_conflicts?: boolean
   id?: number
   iid?: number
   imported?: string
   imported_from?: string
-  label?: string
+  labels?: string
   merge_after?: string
   merge_commit_sha?: string
   merge_status?: string
   merge_user?: Record<string, any>
-  merge_when_pipeline_succeed?: string
+  merge_when_pipeline_succeeds?: string
   merged_at?: string
   merged_by?: Record<string, any>
   milestone?: Record<string, any>
   prepared_at?: string
   project_id?: number
   reference?: string
-  reviewer?: Record<string, any>
+  references?: Record<string, any>
+  reviewers?: Record<string, any>
   sha?: string
   should_remove_source_branch?: boolean
   source_branch?: string
@@ -2398,11 +3538,11 @@ export interface ApiEntitiesMergeRequestBasic {
   target_branch?: string
   target_project_id?: string
   task_completion_status?: string
-  time_stat?: Record<string, any>
+  time_stats?: Record<string, any>
   title?: string
   title_html?: string
   updated_at?: string
-  upvote?: string
+  upvotes?: string
   user_notes_count?: string
   web_url?: string
   work_in_progress?: string
@@ -2425,9 +3565,10 @@ export interface ApiEntitiesMergeRequestChange {
   allow_maintainer_to_push?: boolean
   approvals_before_merge?: string
   assignee?: Record<string, any>
+  assignees?: Record<string, any>
   author?: Record<string, any>
   blocking_discussions_resolved?: string
-  change?: Record<string, any>
+  changes?: Record<string, any>
   changes_count?: string
   closed_at?: string
   closed_by?: Record<string, any>
@@ -2435,21 +3576,21 @@ export interface ApiEntitiesMergeRequestChange {
   description?: string
   description_html?: string
   detailed_merge_status?: string
-  diff_ref?: Record<string, any>
+  diff_refs?: Record<string, any>
   discussion_locked?: string
   diverged_commits_count?: string
-  downvote?: string
+  downvotes?: string
   draft?: string
   first_contribution?: string
   first_deployed_to_production_at?: string
   force_remove_source_branch?: string
-  has_conflict?: boolean
+  has_conflicts?: boolean
   head_pipeline?: Record<string, any>
   id?: number
   iid?: number
   imported?: string
   imported_from?: string
-  label?: string
+  labels?: string
   latest_build_finished_at?: string
   latest_build_started_at?: string
   merge_after?: string
@@ -2457,7 +3598,7 @@ export interface ApiEntitiesMergeRequestChange {
   merge_error?: string
   merge_status?: string
   merge_user?: Record<string, any>
-  merge_when_pipeline_succeed?: string
+  merge_when_pipeline_succeeds?: string
   merged_at?: string
   merged_by?: Record<string, any>
   milestone?: Record<string, any>
@@ -2467,7 +3608,8 @@ export interface ApiEntitiesMergeRequestChange {
   project_id?: number
   rebase_in_progress?: string
   reference?: string
-  reviewer?: Record<string, any>
+  references?: Record<string, any>
+  reviewers?: Record<string, any>
   sha?: string
   should_remove_source_branch?: boolean
   source_branch?: string
@@ -2480,11 +3622,11 @@ export interface ApiEntitiesMergeRequestChange {
   target_branch?: string
   target_project_id?: string
   task_completion_status?: string
-  time_stat?: Record<string, any>
+  time_stats?: Record<string, any>
   title?: string
   title_html?: string
   updated_at?: string
-  upvote?: string
+  upvotes?: string
   user?: Record<string, any>
   user_notes_count?: string
   web_url?: string
@@ -2515,9 +3657,9 @@ export interface ApiEntitiesMergeRequestDiffListMatch {
 
 export interface ApiEntitiesMergeRequestDiffFull {
   base_commit_sha?: string
-  commit?: Record<string, any>
+  commits?: Record<string, any>
   created_at?: string
-  diff?: Record<string, any>
+  diffs?: Record<string, any>
   head_commit_sha?: string
   id?: string
   merge_request_id?: string
@@ -2534,9 +3676,16 @@ export interface ApiEntitiesMergeRequestDiffFullLoadMatch {
 }
 
 export interface ApiEntitiesMergeRequestReviewer {
-  created_at?: string
+  avatar_path?: string
+  avatar_url?: string
+  custom_attributes?: any[]
+  id?: number
+  locked?: boolean
+  name?: string
+  public_email?: string
   state?: string
-  user?: Record<string, any>
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesMergeRequestReviewerLoadMatch {
@@ -2561,17 +3710,36 @@ export interface ApiEntitiesMetricImageListMatch {
 export interface ApiEntitiesMetricImageCreateData {
   alert_management_alert_id: string
   project_id: string
+  created_at?: string
+  file_path?: string
+  filename?: string
+  id?: number
+  url?: string
+  url_text?: string
 }
 
 export interface ApiEntitiesMetricImageUpdateData {
   alert_management_alert_id: string
   id: string
   project_id: string
+  created_at?: string
+  file_path?: string
+  filename?: string
+  url?: string
+  url_text?: string
 }
 
 export interface ApiEntitiesMrNote {
-  author?: Record<string, any>
-  note?: string
+  avatar_path?: string
+  avatar_url?: string
+  custom_attributes?: any[]
+  id?: number
+  locked?: boolean
+  name?: string
+  public_email?: string
+  state?: string
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesMrNoteLoadMatch {
@@ -2591,7 +3759,7 @@ export interface ApiEntitiesNamespace {
   kind?: string
   max_seats_used?: number
   max_seats_used_changed_at?: string
-  members_count_with_descendant?: number
+  members_count_with_descendants?: number
   name?: string
   parent_id?: number
   path?: string
@@ -2621,7 +3789,7 @@ export interface ApiEntitiesNamespaceListMatch {
   kind?: string
   max_seats_used?: number
   max_seats_used_changed_at?: string
-  members_count_with_descendant?: number
+  members_count_with_descendants?: number
   name?: string
   parent_id?: number
   path?: string
@@ -2637,11 +3805,33 @@ export interface ApiEntitiesNamespaceListMatch {
 
 export interface ApiEntitiesNamespaceUpdateData {
   id: string
+  additional_purchased_storage_ends_on?: string
+  additional_purchased_storage_size?: number
+  avatar_url?: string
+  billable_members_count?: number
+  end_date?: string
+  extra_shared_runners_minutes_limit?: number
+  full_path?: string
+  kind?: string
+  max_seats_used?: number
+  max_seats_used_changed_at?: string
+  members_count_with_descendants?: number
+  name?: string
+  parent_id?: number
+  path?: string
+  plan?: string
+  projects_count?: number
+  root_repository_size?: number
+  seats_in_use?: number
+  shared_runners_minutes_limit?: number
+  trial?: boolean
+  trial_ends_on?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesNamespaceExistence {
-  exist?: boolean
-  suggest?: any[]
+  exists?: boolean
+  suggests?: any[]
 }
 
 export interface ApiEntitiesNamespaceExistenceListMatch {
@@ -2664,12 +3854,15 @@ export interface ApiEntitiesNamespacesStorageLimitExclusionLoadMatch {
 
 export interface ApiEntitiesNamespacesStorageLimitExclusionCreateData {
   namespace_id: string
+  id?: number
+  namespace_name?: string
+  reason?: string
 }
 
 export interface ApiEntitiesNpmPackage {
-  dist_tag?: Record<string, any>
+  disttags?: Record<string, any>
   name?: string
-  version?: Record<string, any>
+  versions?: Record<string, any>
 }
 
 export interface ApiEntitiesNpmPackageLoadMatch {
@@ -2678,7 +3871,6 @@ export interface ApiEntitiesNpmPackageLoadMatch {
 }
 
 export interface ApiEntitiesNpmPackageTag {
-  dist_tag?: Record<string, any>
 }
 
 export interface ApiEntitiesNpmPackageTagLoadMatch {
@@ -2687,7 +3879,7 @@ export interface ApiEntitiesNpmPackageTagLoadMatch {
 }
 
 export interface ApiEntitiesNugetPackagesVersion {
-  version?: any[]
+  versions?: any[]
 }
 
 export interface ApiEntitiesNugetPackagesVersionListMatch {
@@ -2695,19 +3887,20 @@ export interface ApiEntitiesNugetPackagesVersionListMatch {
 }
 
 export interface ApiEntitiesNugetSearchResult {
-  author?: string
+  authors?: string
   description?: string
-  icon_url?: string
+  iconUrl?: string
   id?: string
-  license_url?: string
-  project_url?: string
+  licenseUrl?: string
+  projectUrl?: string
   summary?: string
-  tag?: string
+  tags?: string
   title?: string
-  total_download?: number
+  totalDownloads?: number
   type?: string
   verified?: boolean
   version?: string
+  versions?: Record<string, any>
 }
 
 export interface ApiEntitiesNugetSearchResultListMatch {
@@ -2716,7 +3909,7 @@ export interface ApiEntitiesNugetSearchResultListMatch {
 }
 
 export interface ApiEntitiesNugetServiceIndex {
-  resource?: any[]
+  resources?: any[]
   version?: string
 }
 
@@ -2736,15 +3929,17 @@ export interface ApiEntitiesPackage {
   created_at?: string
   id?: number
   last_downloaded_at?: string
-  link?: Record<string, any>
+  links?: Record<string, any>
   name?: string
   package_type?: string
   pipeline?: Record<string, any>
+  pipelines?: Record<string, any>
   project_id?: number
   project_path?: string
   status?: string
-  tag?: string
+  tags?: string
   version?: string
+  versions?: Record<string, any>
 }
 
 export interface ApiEntitiesPackageLoadMatch {
@@ -2765,7 +3960,7 @@ export interface ApiEntitiesPackageFile {
   file_sha256?: string
   id?: number
   package_id?: number
-  pipeline?: Record<string, any>
+  pipelines?: Record<string, any>
   size?: number
 }
 
@@ -2775,16 +3970,15 @@ export interface ApiEntitiesPackageFileListMatch {
 }
 
 export interface ApiEntitiesPackagePipeline {
-  created_at?: string
+  avatar_path?: string
+  avatar_url?: string
+  custom_attributes?: any[]
   id?: number
-  iid?: number
-  project_id?: number
-  ref?: string
-  sha?: string
-  source?: string
-  status?: string
-  updated_at?: string
-  user?: Record<string, any>
+  locked?: boolean
+  name?: string
+  public_email?: string
+  state?: string
+  username?: string
   web_url?: string
 }
 
@@ -2794,7 +3988,6 @@ export interface ApiEntitiesPackagePipelineLoadMatch {
 }
 
 export interface ApiEntitiesPackagesConanFilesList {
-  file?: Record<string, any>
 }
 
 export interface ApiEntitiesPackagesConanFilesListLoadMatch {
@@ -2810,7 +4003,6 @@ export interface ApiEntitiesPackagesConanFilesListLoadMatch {
 }
 
 export interface ApiEntitiesPackagesConanPackageManifest {
-  package_url?: Record<string, any>
 }
 
 export interface ApiEntitiesPackagesConanPackageManifestLoadMatch {
@@ -2838,7 +4030,6 @@ export interface ApiEntitiesPackagesConanPackageRevisionListMatch {
 }
 
 export interface ApiEntitiesPackagesConanPackageSnapshot {
-  package_snapshot?: Record<string, any>
 }
 
 export interface ApiEntitiesPackagesConanPackageSnapshotLoadMatch {
@@ -2851,7 +4042,6 @@ export interface ApiEntitiesPackagesConanPackageSnapshotLoadMatch {
 }
 
 export interface ApiEntitiesPackagesConanRecipeManifest {
-  recipe_url?: Record<string, any>
 }
 
 export interface ApiEntitiesPackagesConanRecipeManifestLoadMatch {
@@ -2876,7 +4066,6 @@ export interface ApiEntitiesPackagesConanRecipeRevisionListMatch {
 }
 
 export interface ApiEntitiesPackagesConanRecipeSnapshot {
-  recipe_snapshot?: Record<string, any>
 }
 
 export interface ApiEntitiesPackagesConanRecipeSnapshotLoadMatch {
@@ -2903,7 +4092,6 @@ export interface ApiEntitiesPackagesConanRevisionLoadMatch {
 }
 
 export interface ApiEntitiesPackagesConanUploadUrl {
-  upload_url?: Record<string, any>
 }
 
 export interface ApiEntitiesPackagesConanUploadUrlCreateData {
@@ -2916,15 +4104,15 @@ export interface ApiEntitiesPackagesConanUploadUrlCreateData {
 }
 
 export interface ApiEntitiesPackagesDebianDistribution {
-  architecture?: any[]
+  architectures?: any[]
   codename?: string
-  component?: any[]
+  components?: any[]
   description?: string
   id?: number
   label?: string
   origin?: string
   suite?: string
-  valid_time_duration_second?: number
+  valid_time_duration_seconds?: number
   version?: string
 }
 
@@ -2943,19 +4131,41 @@ export interface ApiEntitiesPackagesDebianDistributionListMatch {
 export interface ApiEntitiesPackagesDebianDistributionCreateData {
   group_id?: string
   project_id?: string
+  architectures?: any[]
+  codename?: string
+  components?: any[]
+  description?: string
+  id?: number
+  label?: string
+  origin?: string
+  suite?: string
+  valid_time_duration_seconds?: number
+  version?: string
 }
 
 export interface ApiEntitiesPackagesDebianDistributionUpdateData {
   group_id?: string
   id: string
   project_id?: string
+  architectures?: any[]
+  codename?: string
+  components?: any[]
+  description?: string
+  label?: string
+  origin?: string
+  suite?: string
+  valid_time_duration_seconds?: number
+  version?: string
 }
 
 export interface ApiEntitiesPagesDomain {
   auto_ssl_enabled?: string
-  certificate?: Record<string, any>
+  certificate?: string
+  certificate_text?: string
   domain?: string
   enabled_until?: string
+  expired?: string
+  subject?: string
   url?: string
   verification_code?: string
   verified?: boolean
@@ -2972,33 +4182,41 @@ export interface ApiEntitiesPagesDomainListMatch {
 
 export interface ApiEntitiesPagesDomainCreateData {
   project_id: string
+  auto_ssl_enabled?: string
+  certificate?: string
+  certificate_text?: string
+  domain?: string
+  enabled_until?: string
+  expired?: string
+  subject?: string
+  url?: string
+  verification_code?: string
+  verified?: boolean
 }
 
 export interface ApiEntitiesPagesDomainUpdateData {
   domain_id: string
   project_id: string
+  auto_ssl_enabled?: string
+  certificate?: string
+  certificate_text?: string
+  domain?: string
+  enabled_until?: string
+  expired?: string
+  subject?: string
+  url?: string
+  verification_code?: string
+  verified?: boolean
 }
 
 export interface ApiEntitiesPagesDomainBasic {
-  auto_ssl_enabled?: string
-  certificate_expiration?: Record<string, any>
-  domain?: string
-  enabled_until?: string
-  project_id?: string
-  url?: string
-  verification_code?: string
-  verified?: boolean
+  expiration?: string
+  expired?: string
 }
 
 export interface ApiEntitiesPagesDomainBasicLoadMatch {
-  auto_ssl_enabled?: string
-  certificate_expiration?: Record<string, any>
-  domain?: string
-  enabled_until?: string
-  project_id?: string
-  url?: string
-  verification_code?: string
-  verified?: boolean
+  expiration?: string
+  expired?: string
 }
 
 export interface ApiEntitiesPersonalAccessToken {
@@ -3010,7 +4228,7 @@ export interface ApiEntitiesPersonalAccessToken {
   last_used_at?: string
   name?: string
   revoked?: boolean
-  scope?: any[]
+  scopes?: any[]
   user_id?: number
 }
 
@@ -3023,7 +4241,7 @@ export interface ApiEntitiesPersonalAccessTokenListMatch {
   last_used_at?: string
   name?: string
   revoked?: boolean
-  scope?: any[]
+  scopes?: any[]
   user_id?: number
 }
 
@@ -3034,10 +4252,10 @@ export interface ApiEntitiesPersonalAccessTokenWithLastUsedIp {
   expires_at?: string
   id?: number
   last_used_at?: string
-  last_used_ip?: any[]
+  last_used_ips?: any[]
   name?: string
   revoked?: boolean
-  scope?: any[]
+  scopes?: any[]
   user_id?: number
 }
 
@@ -3052,10 +4270,10 @@ export interface ApiEntitiesPersonalAccessTokenWithLastUsedIpListMatch {
   expires_at?: string
   id?: number
   last_used_at?: string
-  last_used_ip?: any[]
+  last_used_ips?: any[]
   name?: string
   revoked?: boolean
-  scope?: any[]
+  scopes?: any[]
   user_id?: number
 }
 
@@ -3068,21 +4286,32 @@ export interface ApiEntitiesPersonalAccessTokenWithToken {
   last_used_at?: string
   name?: string
   revoked?: boolean
-  scope?: any[]
+  scopes?: any[]
   token?: string
   user_id?: number
 }
 
 export interface ApiEntitiesPersonalAccessTokenWithTokenCreateData {
   personal_access_token_id?: string
+  active?: boolean
+  created_at?: string
+  description?: string
+  expires_at?: string
+  id?: number
+  last_used_at?: string
+  name?: string
+  revoked?: boolean
+  scopes?: any[]
+  token?: string
+  user_id?: number
 }
 
 export interface ApiEntitiesPersonalSnippet {
   author?: Record<string, any>
   created_at?: string
   description?: string
-  file?: any[]
   file_name?: string
+  files?: any[]
   http_url_to_repo?: string
   id?: number
   imported?: boolean
@@ -3105,8 +4334,8 @@ export interface ApiEntitiesPersonalSnippetListMatch {
   author?: Record<string, any>
   created_at?: string
   description?: string
-  file?: any[]
   file_name?: string
+  files?: any[]
   http_url_to_repo?: string
   id?: number
   imported?: boolean
@@ -3125,8 +4354,8 @@ export interface ApiEntitiesPersonalSnippetCreateData {
   author?: Record<string, any>
   created_at?: string
   description?: string
-  file?: any[]
   file_name?: string
+  files?: any[]
   http_url_to_repo?: string
   id?: number
   imported?: boolean
@@ -3143,84 +4372,31 @@ export interface ApiEntitiesPersonalSnippetCreateData {
 
 export interface ApiEntitiesPersonalSnippetUpdateData {
   id: string
+  author?: Record<string, any>
+  created_at?: string
+  description?: string
+  file_name?: string
+  files?: any[]
+  http_url_to_repo?: string
+  imported?: boolean
+  imported_from?: string
+  project_id?: number
+  raw_url?: string
+  repository_storage?: string
+  ssh_url_to_repo?: string
+  title?: string
+  updated_at?: string
+  visibility?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesPlanLimit {
-  ci_active_job?: number
-  ci_instance_level_variable?: number
-  ci_needs_size_limit?: number
-  ci_pipeline_schedule?: number
-  ci_pipeline_size?: number
-  ci_project_subscription?: number
-  ci_registered_group_runner?: number
-  ci_registered_project_runner?: number
-  conan_max_file_size?: number
-  dotenv_size?: number
-  dotenv_variable?: number
-  enforcement_limit?: number
-  generic_packages_max_file_size?: number
-  helm_max_file_size?: number
-  limits_history?: Record<string, any>
-  maven_max_file_size?: number
-  notification_limit?: number
-  npm_max_file_size?: number
-  nuget_max_file_size?: number
-  pipeline_hierarchy_size?: number
-  pypi_max_file_size?: number
-  storage_size_limit?: number
-  terraform_module_max_file_size?: number
 }
 
 export interface ApiEntitiesPlanLimitLoadMatch {
-  ci_active_job?: number
-  ci_instance_level_variable?: number
-  ci_needs_size_limit?: number
-  ci_pipeline_schedule?: number
-  ci_pipeline_size?: number
-  ci_project_subscription?: number
-  ci_registered_group_runner?: number
-  ci_registered_project_runner?: number
-  conan_max_file_size?: number
-  dotenv_size?: number
-  dotenv_variable?: number
-  enforcement_limit?: number
-  generic_packages_max_file_size?: number
-  helm_max_file_size?: number
-  limits_history?: Record<string, any>
-  maven_max_file_size?: number
-  notification_limit?: number
-  npm_max_file_size?: number
-  nuget_max_file_size?: number
-  pipeline_hierarchy_size?: number
-  pypi_max_file_size?: number
-  storage_size_limit?: number
-  terraform_module_max_file_size?: number
 }
 
 export interface ApiEntitiesPlanLimitUpdateData {
-  ci_active_job?: number
-  ci_instance_level_variable?: number
-  ci_needs_size_limit?: number
-  ci_pipeline_schedule?: number
-  ci_pipeline_size?: number
-  ci_project_subscription?: number
-  ci_registered_group_runner?: number
-  ci_registered_project_runner?: number
-  conan_max_file_size?: number
-  dotenv_size?: number
-  dotenv_variable?: number
-  enforcement_limit?: number
-  generic_packages_max_file_size?: number
-  helm_max_file_size?: number
-  limits_history?: Record<string, any>
-  maven_max_file_size?: number
-  notification_limit?: number
-  npm_max_file_size?: number
-  nuget_max_file_size?: number
-  pipeline_hierarchy_size?: number
-  pypi_max_file_size?: number
-  storage_size_limit?: number
-  terraform_module_max_file_size?: number
 }
 
 export interface ApiEntitiesProject {
@@ -3229,11 +4405,11 @@ export interface ApiEntitiesProject {
   analytics_access_level?: string
   approvals_before_merge?: string
   archived?: boolean
-  auto_cancel_pending_pipeline?: string
+  auto_cancel_pending_pipelines?: string
   auto_devops_deploy_strategy?: string
   auto_devops_enabled?: boolean
   auto_duo_code_review_enabled?: string
-  autoclose_referenced_issue?: boolean
+  autoclose_referenced_issues?: boolean
   avatar_url?: string
   build_git_strategy?: string
   build_timeout?: number
@@ -3242,23 +4418,23 @@ export interface ApiEntitiesProject {
   ci_allow_fork_pipelines_to_run_in_parent_project?: boolean
   ci_config_path?: string
   ci_default_git_depth?: number
-  ci_delete_pipelines_in_second?: number
+  ci_delete_pipelines_in_seconds?: number
   ci_forward_deployment_enabled?: boolean
   ci_forward_deployment_rollback_allowed?: boolean
-  ci_id_token_sub_claim_component?: any[]
+  ci_id_token_sub_claim_components?: any[]
   ci_job_token_scope_enabled?: boolean
   ci_pipeline_variables_minimum_override_role?: string
   ci_push_repository_for_job_token_allowed?: boolean
   ci_restrict_pipeline_cancellation_role?: string
-  ci_separated_cache?: boolean
-  compliance_framework?: string
+  ci_separated_caches?: boolean
+  compliance_frameworks?: string
   container_expiration_policy?: Record<string, any>
   container_registry_access_level?: string
   container_registry_enabled?: boolean
   container_registry_image_prefix?: string
   created_at?: string
   creator_id?: number
-  custom_attribute?: Record<string, any>
+  custom_attributes?: Record<string, any>
   default_branch?: string
   description?: string
   description_html?: string
@@ -3266,7 +4442,7 @@ export interface ApiEntitiesProject {
   emails_disabled?: boolean
   emails_enabled?: boolean
   empty_repo?: boolean
-  enforce_auth_checks_on_upload?: boolean
+  enforce_auth_checks_on_uploads?: boolean
   environments_access_level?: string
   external_authorization_classification_label?: string
   feature_flags_access_level?: string
@@ -3291,7 +4467,7 @@ export interface ApiEntitiesProject {
   lfs_enabled?: boolean
   license?: Record<string, any>
   license_url?: string
-  link?: Record<string, any>
+  links?: Record<string, any>
   marked_for_deletion_at?: string
   marked_for_deletion_on?: string
   max_artifacts_size?: number
@@ -3306,8 +4482,8 @@ export interface ApiEntitiesProject {
   merge_trains_enabled?: string
   merge_trains_skip_train_allowed?: string
   mirror?: string
-  mirror_overwrites_diverged_branch?: string
-  mirror_trigger_build?: string
+  mirror_overwrites_diverged_branches?: string
+  mirror_trigger_builds?: string
   mirror_user_id?: string
   model_experiments_access_level?: string
   model_registry_access_level?: string
@@ -3318,8 +4494,8 @@ export interface ApiEntitiesProject {
   namespace?: Record<string, any>
   only_allow_merge_if_all_discussions_are_resolved?: boolean
   only_allow_merge_if_all_status_checks_passed?: string
-  only_allow_merge_if_pipeline_succeed?: boolean
-  only_mirror_protected_branch?: string
+  only_allow_merge_if_pipeline_succeeds?: boolean
+  only_mirror_protected_branches?: string
   open_issues_count?: number
   owner?: Record<string, any>
   package_registry_access_level?: string
@@ -3330,7 +4506,7 @@ export interface ApiEntitiesProject {
   pre_receive_secret_detection_enabled?: boolean
   prevent_merge_without_jira_issue?: string
   printing_merge_request_link_enabled?: boolean
-  public_job?: boolean
+  public_jobs?: boolean
   readme_url?: string
   releases_access_level?: string
   remove_source_branch_after_merge?: boolean
@@ -3340,9 +4516,9 @@ export interface ApiEntitiesProject {
   request_access_enabled?: boolean
   requirements_access_level?: string
   requirements_enabled?: string
-  resolve_outdated_diff_discussion?: boolean
+  resolve_outdated_diff_discussions?: boolean
   resource_group_default_process_mode?: string
-  restrict_user_defined_variable?: boolean
+  restrict_user_defined_variables?: boolean
   runner_token_expiration_interval?: number
   runners_token?: string
   secret_push_protection_enabled?: boolean
@@ -3351,7 +4527,7 @@ export interface ApiEntitiesProject {
   service_desk_address?: string
   service_desk_enabled?: boolean
   shared_runners_enabled?: boolean
-  shared_with_group?: any[]
+  shared_with_groups?: any[]
   show_diff_preview_in_email?: boolean
   snippets_access_level?: string
   snippets_enabled?: boolean
@@ -3360,13 +4536,13 @@ export interface ApiEntitiesProject {
   squash_option?: string
   ssh_url_to_repo?: string
   star_count?: number
-  statistic?: Record<string, any>
+  statistics?: Record<string, any>
   suggestion_commit_message?: string
   tag_list?: any[]
-  topic?: any[]
+  topics?: any[]
   updated_at?: string
   visibility?: string
-  warn_about_potentially_unwanted_character?: boolean
+  warn_about_potentially_unwanted_characters?: boolean
   web_based_commit_signing_enabled?: string
   web_url?: string
   wiki_access_level?: string
@@ -3382,15 +4558,309 @@ export interface ApiEntitiesProjectCreateData {
   forked_from_id?: string
   project_id?: string
   user_id?: string
+  allow_merge_on_skipped_pipeline?: boolean
+  allow_pipeline_trigger_approve_deployment?: boolean
+  analytics_access_level?: string
+  approvals_before_merge?: string
+  archived?: boolean
+  auto_cancel_pending_pipelines?: string
+  auto_devops_deploy_strategy?: string
+  auto_devops_enabled?: boolean
+  auto_duo_code_review_enabled?: string
+  autoclose_referenced_issues?: boolean
+  avatar_url?: string
+  build_git_strategy?: string
+  build_timeout?: number
+  builds_access_level?: string
+  can_create_merge_request_in?: boolean
+  ci_allow_fork_pipelines_to_run_in_parent_project?: boolean
+  ci_config_path?: string
+  ci_default_git_depth?: number
+  ci_delete_pipelines_in_seconds?: number
+  ci_forward_deployment_enabled?: boolean
+  ci_forward_deployment_rollback_allowed?: boolean
+  ci_id_token_sub_claim_components?: any[]
+  ci_job_token_scope_enabled?: boolean
+  ci_pipeline_variables_minimum_override_role?: string
+  ci_push_repository_for_job_token_allowed?: boolean
+  ci_restrict_pipeline_cancellation_role?: string
+  ci_separated_caches?: boolean
+  compliance_frameworks?: string
+  container_expiration_policy?: Record<string, any>
+  container_registry_access_level?: string
+  container_registry_enabled?: boolean
+  container_registry_image_prefix?: string
+  created_at?: string
+  creator_id?: number
+  custom_attributes?: Record<string, any>
+  default_branch?: string
+  description?: string
+  description_html?: string
+  duo_remote_flows_enabled?: string
+  emails_disabled?: boolean
+  emails_enabled?: boolean
+  empty_repo?: boolean
+  enforce_auth_checks_on_uploads?: boolean
+  environments_access_level?: string
+  external_authorization_classification_label?: string
+  feature_flags_access_level?: string
+  forked_from_project?: Record<string, any>
+  forking_access_level?: string
+  forks_count?: number
+  group_runners_enabled?: boolean
+  http_url_to_repo?: string
+  id?: number
+  import_error?: string
+  import_status?: string
+  import_type?: string
+  import_url?: string
+  infrastructure_access_level?: string
+  issue_branch_template?: string
+  issues_access_level?: string
+  issues_enabled?: boolean
+  issues_template?: string
+  jobs_enabled?: boolean
+  keep_latest_artifact?: boolean
+  last_activity_at?: string
+  lfs_enabled?: boolean
+  license?: Record<string, any>
+  license_url?: string
+  links?: Record<string, any>
+  marked_for_deletion_at?: string
+  marked_for_deletion_on?: string
+  max_artifacts_size?: number
+  merge_commit_template?: string
+  merge_method?: string
+  merge_pipelines_enabled?: string
+  merge_request_title_regex?: string
+  merge_request_title_regex_description?: string
+  merge_requests_access_level?: string
+  merge_requests_enabled?: boolean
+  merge_requests_template?: string
+  merge_trains_enabled?: string
+  merge_trains_skip_train_allowed?: string
+  mirror?: string
+  mirror_overwrites_diverged_branches?: string
+  mirror_trigger_builds?: string
+  mirror_user_id?: string
+  model_experiments_access_level?: string
+  model_registry_access_level?: string
+  monitor_access_level?: string
+  mr_default_target_self?: boolean
+  name?: string
+  name_with_namespace?: string
+  namespace?: Record<string, any>
+  only_allow_merge_if_all_discussions_are_resolved?: boolean
+  only_allow_merge_if_all_status_checks_passed?: string
+  only_allow_merge_if_pipeline_succeeds?: boolean
+  only_mirror_protected_branches?: string
+  open_issues_count?: number
+  owner?: Record<string, any>
+  package_registry_access_level?: string
+  packages_enabled?: boolean
+  pages_access_level?: string
+  path?: string
+  path_with_namespace?: string
+  pre_receive_secret_detection_enabled?: boolean
+  prevent_merge_without_jira_issue?: string
+  printing_merge_request_link_enabled?: boolean
+  public_jobs?: boolean
+  readme_url?: string
+  releases_access_level?: string
+  remove_source_branch_after_merge?: boolean
+  repository_access_level?: string
+  repository_object_format?: string
+  repository_storage?: string
+  request_access_enabled?: boolean
+  requirements_access_level?: string
+  requirements_enabled?: string
+  resolve_outdated_diff_discussions?: boolean
+  resource_group_default_process_mode?: string
+  restrict_user_defined_variables?: boolean
+  runner_token_expiration_interval?: number
+  runners_token?: string
+  secret_push_protection_enabled?: boolean
+  security_and_compliance_access_level?: string
+  security_and_compliance_enabled?: string
+  service_desk_address?: string
+  service_desk_enabled?: boolean
+  shared_runners_enabled?: boolean
+  shared_with_groups?: any[]
+  show_diff_preview_in_email?: boolean
+  snippets_access_level?: string
+  snippets_enabled?: boolean
+  spp_repository_pipeline_access?: boolean
+  squash_commit_template?: string
+  squash_option?: string
+  ssh_url_to_repo?: string
+  star_count?: number
+  statistics?: Record<string, any>
+  suggestion_commit_message?: string
+  tag_list?: any[]
+  topics?: any[]
+  updated_at?: string
+  visibility?: string
+  warn_about_potentially_unwanted_characters?: boolean
+  web_based_commit_signing_enabled?: string
+  web_url?: string
+  wiki_access_level?: string
+  wiki_enabled?: boolean
 }
 
 export interface ApiEntitiesProjectUpdateData {
   id?: string
   project_id?: string
+  allow_merge_on_skipped_pipeline?: boolean
+  allow_pipeline_trigger_approve_deployment?: boolean
+  analytics_access_level?: string
+  approvals_before_merge?: string
+  archived?: boolean
+  auto_cancel_pending_pipelines?: string
+  auto_devops_deploy_strategy?: string
+  auto_devops_enabled?: boolean
+  auto_duo_code_review_enabled?: string
+  autoclose_referenced_issues?: boolean
+  avatar_url?: string
+  build_git_strategy?: string
+  build_timeout?: number
+  builds_access_level?: string
+  can_create_merge_request_in?: boolean
+  ci_allow_fork_pipelines_to_run_in_parent_project?: boolean
+  ci_config_path?: string
+  ci_default_git_depth?: number
+  ci_delete_pipelines_in_seconds?: number
+  ci_forward_deployment_enabled?: boolean
+  ci_forward_deployment_rollback_allowed?: boolean
+  ci_id_token_sub_claim_components?: any[]
+  ci_job_token_scope_enabled?: boolean
+  ci_pipeline_variables_minimum_override_role?: string
+  ci_push_repository_for_job_token_allowed?: boolean
+  ci_restrict_pipeline_cancellation_role?: string
+  ci_separated_caches?: boolean
+  compliance_frameworks?: string
+  container_expiration_policy?: Record<string, any>
+  container_registry_access_level?: string
+  container_registry_enabled?: boolean
+  container_registry_image_prefix?: string
+  created_at?: string
+  creator_id?: number
+  custom_attributes?: Record<string, any>
+  default_branch?: string
+  description?: string
+  description_html?: string
+  duo_remote_flows_enabled?: string
+  emails_disabled?: boolean
+  emails_enabled?: boolean
+  empty_repo?: boolean
+  enforce_auth_checks_on_uploads?: boolean
+  environments_access_level?: string
+  external_authorization_classification_label?: string
+  feature_flags_access_level?: string
+  forked_from_project?: Record<string, any>
+  forking_access_level?: string
+  forks_count?: number
+  group_runners_enabled?: boolean
+  http_url_to_repo?: string
+  import_error?: string
+  import_status?: string
+  import_type?: string
+  import_url?: string
+  infrastructure_access_level?: string
+  issue_branch_template?: string
+  issues_access_level?: string
+  issues_enabled?: boolean
+  issues_template?: string
+  jobs_enabled?: boolean
+  keep_latest_artifact?: boolean
+  last_activity_at?: string
+  lfs_enabled?: boolean
+  license?: Record<string, any>
+  license_url?: string
+  links?: Record<string, any>
+  marked_for_deletion_at?: string
+  marked_for_deletion_on?: string
+  max_artifacts_size?: number
+  merge_commit_template?: string
+  merge_method?: string
+  merge_pipelines_enabled?: string
+  merge_request_title_regex?: string
+  merge_request_title_regex_description?: string
+  merge_requests_access_level?: string
+  merge_requests_enabled?: boolean
+  merge_requests_template?: string
+  merge_trains_enabled?: string
+  merge_trains_skip_train_allowed?: string
+  mirror?: string
+  mirror_overwrites_diverged_branches?: string
+  mirror_trigger_builds?: string
+  mirror_user_id?: string
+  model_experiments_access_level?: string
+  model_registry_access_level?: string
+  monitor_access_level?: string
+  mr_default_target_self?: boolean
+  name?: string
+  name_with_namespace?: string
+  namespace?: Record<string, any>
+  only_allow_merge_if_all_discussions_are_resolved?: boolean
+  only_allow_merge_if_all_status_checks_passed?: string
+  only_allow_merge_if_pipeline_succeeds?: boolean
+  only_mirror_protected_branches?: string
+  open_issues_count?: number
+  owner?: Record<string, any>
+  package_registry_access_level?: string
+  packages_enabled?: boolean
+  pages_access_level?: string
+  path?: string
+  path_with_namespace?: string
+  pre_receive_secret_detection_enabled?: boolean
+  prevent_merge_without_jira_issue?: string
+  printing_merge_request_link_enabled?: boolean
+  public_jobs?: boolean
+  readme_url?: string
+  releases_access_level?: string
+  remove_source_branch_after_merge?: boolean
+  repository_access_level?: string
+  repository_object_format?: string
+  repository_storage?: string
+  request_access_enabled?: boolean
+  requirements_access_level?: string
+  requirements_enabled?: string
+  resolve_outdated_diff_discussions?: boolean
+  resource_group_default_process_mode?: string
+  restrict_user_defined_variables?: boolean
+  runner_token_expiration_interval?: number
+  runners_token?: string
+  secret_push_protection_enabled?: boolean
+  security_and_compliance_access_level?: string
+  security_and_compliance_enabled?: string
+  service_desk_address?: string
+  service_desk_enabled?: boolean
+  shared_runners_enabled?: boolean
+  shared_with_groups?: any[]
+  show_diff_preview_in_email?: boolean
+  snippets_access_level?: string
+  snippets_enabled?: boolean
+  spp_repository_pipeline_access?: boolean
+  squash_commit_template?: string
+  squash_option?: string
+  ssh_url_to_repo?: string
+  star_count?: number
+  statistics?: Record<string, any>
+  suggestion_commit_message?: string
+  tag_list?: any[]
+  topics?: any[]
+  updated_at?: string
+  visibility?: string
+  warn_about_potentially_unwanted_characters?: boolean
+  web_based_commit_signing_enabled?: string
+  web_url?: string
+  wiki_access_level?: string
+  wiki_enabled?: boolean
 }
 
 export interface ApiEntitiesProjectDailyStatistic {
-  fetch?: Record<string, any>
+  days?: any[]
+  total?: number
 }
 
 export interface ApiEntitiesProjectDailyStatisticLoadMatch {
@@ -3398,15 +4868,8 @@ export interface ApiEntitiesProjectDailyStatisticLoadMatch {
 }
 
 export interface ApiEntitiesProjectExportStatus {
-  created_at?: string
-  description?: string
-  export_status?: string
-  id?: number
-  link?: Record<string, any>
-  name?: string
-  name_with_namespace?: string
-  path?: string
-  path_with_namespace?: string
+  api_url?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesProjectExportStatusLoadMatch {
@@ -3423,36 +4886,36 @@ export interface ApiEntitiesProjectGroupLinkCreateData {
 export interface ApiEntitiesProjectHook {
   alert_status?: any
   branch_filter_strategy?: string
-  confidential_issues_event?: boolean
-  confidential_note_event?: boolean
+  confidential_issues_events?: boolean
+  confidential_note_events?: boolean
   created_at?: string
-  custom_header?: any[]
+  custom_headers?: any[]
   custom_webhook_template?: string
-  deployment_event?: boolean
+  deployment_events?: boolean
   description?: string
   disabled_until?: string
-  emoji_event?: boolean
+  emoji_events?: boolean
   enable_ssl_verification?: boolean
-  feature_flag_event?: boolean
+  feature_flag_events?: boolean
   id?: string
-  issues_event?: boolean
-  job_event?: boolean
-  merge_requests_event?: boolean
-  milestone_event?: boolean
+  issues_events?: boolean
+  job_events?: boolean
+  merge_requests_events?: boolean
+  milestone_events?: boolean
   name?: string
-  note_event?: boolean
-  pipeline_event?: boolean
+  note_events?: boolean
+  pipeline_events?: boolean
   project_id?: string
-  push_event?: boolean
+  push_events?: boolean
   push_events_branch_filter?: string
-  releases_event?: boolean
-  repository_update_event?: boolean
-  resource_access_token_event?: boolean
-  tag_push_event?: boolean
+  releases_events?: boolean
+  repository_update_events?: boolean
+  resource_access_token_events?: boolean
+  tag_push_events?: boolean
   url?: string
-  url_variable?: any[]
-  vulnerability_event?: boolean
-  wiki_page_event?: boolean
+  url_variables?: any[]
+  vulnerability_events?: boolean
+  wiki_page_events?: boolean
 }
 
 export interface ApiEntitiesProjectHookLoadMatch {
@@ -3466,11 +4929,72 @@ export interface ApiEntitiesProjectHookListMatch {
 
 export interface ApiEntitiesProjectHookCreateData {
   project_id: string
+  alert_status?: any
+  branch_filter_strategy?: string
+  confidential_issues_events?: boolean
+  confidential_note_events?: boolean
+  created_at?: string
+  custom_headers?: any[]
+  custom_webhook_template?: string
+  deployment_events?: boolean
+  description?: string
+  disabled_until?: string
+  emoji_events?: boolean
+  enable_ssl_verification?: boolean
+  feature_flag_events?: boolean
+  id?: string
+  issues_events?: boolean
+  job_events?: boolean
+  merge_requests_events?: boolean
+  milestone_events?: boolean
+  name?: string
+  note_events?: boolean
+  pipeline_events?: boolean
+  push_events?: boolean
+  push_events_branch_filter?: string
+  releases_events?: boolean
+  repository_update_events?: boolean
+  resource_access_token_events?: boolean
+  tag_push_events?: boolean
+  url?: string
+  url_variables?: any[]
+  vulnerability_events?: boolean
+  wiki_page_events?: boolean
 }
 
 export interface ApiEntitiesProjectHookUpdateData {
   id: string
   project_id: string
+  alert_status?: any
+  branch_filter_strategy?: string
+  confidential_issues_events?: boolean
+  confidential_note_events?: boolean
+  created_at?: string
+  custom_headers?: any[]
+  custom_webhook_template?: string
+  deployment_events?: boolean
+  description?: string
+  disabled_until?: string
+  emoji_events?: boolean
+  enable_ssl_verification?: boolean
+  feature_flag_events?: boolean
+  issues_events?: boolean
+  job_events?: boolean
+  merge_requests_events?: boolean
+  milestone_events?: boolean
+  name?: string
+  note_events?: boolean
+  pipeline_events?: boolean
+  push_events?: boolean
+  push_events_branch_filter?: string
+  releases_events?: boolean
+  repository_update_events?: boolean
+  resource_access_token_events?: boolean
+  tag_push_events?: boolean
+  url?: string
+  url_variables?: any[]
+  vulnerability_events?: boolean
+  wiki_page_events?: boolean
 }
 
 export interface ApiEntitiesProjectImportStatus {
@@ -3521,8 +5045,8 @@ export interface ApiEntitiesProjectSnippet {
   author?: Record<string, any>
   created_at?: string
   description?: string
-  file?: any[]
   file_name?: string
+  files?: any[]
   http_url_to_repo?: string
   id?: number
   imported?: boolean
@@ -3551,11 +5075,42 @@ export interface ApiEntitiesProjectSnippetListMatch {
 
 export interface ApiEntitiesProjectSnippetCreateData {
   project_id: string
+  author?: Record<string, any>
+  created_at?: string
+  description?: string
+  file_name?: string
+  files?: any[]
+  http_url_to_repo?: string
+  id?: number
+  imported?: boolean
+  imported_from?: string
+  raw_url?: string
+  repository_storage?: string
+  ssh_url_to_repo?: string
+  title?: string
+  updated_at?: string
+  visibility?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesProjectSnippetUpdateData {
   id: string
   project_id: string
+  author?: Record<string, any>
+  created_at?: string
+  description?: string
+  file_name?: string
+  files?: any[]
+  http_url_to_repo?: string
+  imported?: boolean
+  imported_from?: string
+  raw_url?: string
+  repository_storage?: string
+  ssh_url_to_repo?: string
+  title?: string
+  updated_at?: string
+  visibility?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesProjectUpload {
@@ -3571,11 +5126,11 @@ export interface ApiEntitiesProjectWithAccess {
   analytics_access_level?: string
   approvals_before_merge?: string
   archived?: boolean
-  auto_cancel_pending_pipeline?: string
+  auto_cancel_pending_pipelines?: string
   auto_devops_deploy_strategy?: string
   auto_devops_enabled?: boolean
   auto_duo_code_review_enabled?: string
-  autoclose_referenced_issue?: boolean
+  autoclose_referenced_issues?: boolean
   avatar_url?: string
   build_git_strategy?: string
   build_timeout?: number
@@ -3584,23 +5139,23 @@ export interface ApiEntitiesProjectWithAccess {
   ci_allow_fork_pipelines_to_run_in_parent_project?: boolean
   ci_config_path?: string
   ci_default_git_depth?: number
-  ci_delete_pipelines_in_second?: number
+  ci_delete_pipelines_in_seconds?: number
   ci_forward_deployment_enabled?: boolean
   ci_forward_deployment_rollback_allowed?: boolean
-  ci_id_token_sub_claim_component?: any[]
+  ci_id_token_sub_claim_components?: any[]
   ci_job_token_scope_enabled?: boolean
   ci_pipeline_variables_minimum_override_role?: string
   ci_push_repository_for_job_token_allowed?: boolean
   ci_restrict_pipeline_cancellation_role?: string
-  ci_separated_cache?: boolean
-  compliance_framework?: string
+  ci_separated_caches?: boolean
+  compliance_frameworks?: string
   container_expiration_policy?: Record<string, any>
   container_registry_access_level?: string
   container_registry_enabled?: boolean
   container_registry_image_prefix?: string
   created_at?: string
   creator_id?: number
-  custom_attribute?: Record<string, any>
+  custom_attributes?: Record<string, any>
   default_branch?: string
   description?: string
   description_html?: string
@@ -3608,7 +5163,7 @@ export interface ApiEntitiesProjectWithAccess {
   emails_disabled?: boolean
   emails_enabled?: boolean
   empty_repo?: boolean
-  enforce_auth_checks_on_upload?: boolean
+  enforce_auth_checks_on_uploads?: boolean
   environments_access_level?: string
   external_authorization_classification_label?: string
   feature_flags_access_level?: string
@@ -3633,7 +5188,7 @@ export interface ApiEntitiesProjectWithAccess {
   lfs_enabled?: boolean
   license?: Record<string, any>
   license_url?: string
-  link?: Record<string, any>
+  links?: Record<string, any>
   marked_for_deletion_at?: string
   marked_for_deletion_on?: string
   max_artifacts_size?: number
@@ -3648,8 +5203,8 @@ export interface ApiEntitiesProjectWithAccess {
   merge_trains_enabled?: string
   merge_trains_skip_train_allowed?: string
   mirror?: string
-  mirror_overwrites_diverged_branch?: string
-  mirror_trigger_build?: string
+  mirror_overwrites_diverged_branches?: string
+  mirror_trigger_builds?: string
   mirror_user_id?: string
   model_experiments_access_level?: string
   model_registry_access_level?: string
@@ -3660,8 +5215,8 @@ export interface ApiEntitiesProjectWithAccess {
   namespace?: Record<string, any>
   only_allow_merge_if_all_discussions_are_resolved?: boolean
   only_allow_merge_if_all_status_checks_passed?: string
-  only_allow_merge_if_pipeline_succeed?: boolean
-  only_mirror_protected_branch?: string
+  only_allow_merge_if_pipeline_succeeds?: boolean
+  only_mirror_protected_branches?: string
   open_issues_count?: number
   owner?: Record<string, any>
   package_registry_access_level?: string
@@ -3669,11 +5224,11 @@ export interface ApiEntitiesProjectWithAccess {
   pages_access_level?: string
   path?: string
   path_with_namespace?: string
-  permission?: Record<string, any>
+  permissions?: Record<string, any>
   pre_receive_secret_detection_enabled?: boolean
   prevent_merge_without_jira_issue?: string
   printing_merge_request_link_enabled?: boolean
-  public_job?: boolean
+  public_jobs?: boolean
   readme_url?: string
   releases_access_level?: string
   remove_source_branch_after_merge?: boolean
@@ -3683,9 +5238,9 @@ export interface ApiEntitiesProjectWithAccess {
   request_access_enabled?: boolean
   requirements_access_level?: string
   requirements_enabled?: string
-  resolve_outdated_diff_discussion?: boolean
+  resolve_outdated_diff_discussions?: boolean
   resource_group_default_process_mode?: string
-  restrict_user_defined_variable?: boolean
+  restrict_user_defined_variables?: boolean
   runner_token_expiration_interval?: number
   runners_token?: string
   secret_push_protection_enabled?: boolean
@@ -3694,7 +5249,7 @@ export interface ApiEntitiesProjectWithAccess {
   service_desk_address?: string
   service_desk_enabled?: boolean
   shared_runners_enabled?: boolean
-  shared_with_group?: any[]
+  shared_with_groups?: any[]
   show_diff_preview_in_email?: boolean
   snippets_access_level?: string
   snippets_enabled?: boolean
@@ -3703,13 +5258,13 @@ export interface ApiEntitiesProjectWithAccess {
   squash_option?: string
   ssh_url_to_repo?: string
   star_count?: number
-  statistic?: Record<string, any>
+  statistics?: Record<string, any>
   suggestion_commit_message?: string
   tag_list?: any[]
-  topic?: any[]
+  topics?: any[]
   updated_at?: string
   visibility?: string
-  warn_about_potentially_unwanted_character?: boolean
+  warn_about_potentially_unwanted_characters?: boolean
   web_based_commit_signing_enabled?: string
   web_url?: string
   wiki_access_level?: string
@@ -3734,11 +5289,18 @@ export interface ApiEntitiesProjectsContainerRegistryProtectionRuleListMatch {
 
 export interface ApiEntitiesProjectsContainerRegistryProtectionRuleCreateData {
   project_id: string
+  id?: number
+  minimum_access_level_for_delete?: string
+  minimum_access_level_for_push?: string
+  repository_path_pattern?: string
 }
 
 export interface ApiEntitiesProjectsContainerRegistryProtectionRuleUpdateData {
   id: string
   project_id: string
+  minimum_access_level_for_delete?: string
+  minimum_access_level_for_push?: string
+  repository_path_pattern?: string
 }
 
 export interface ApiEntitiesProjectsPackagesProtectionRule {
@@ -3756,11 +5318,20 @@ export interface ApiEntitiesProjectsPackagesProtectionRuleListMatch {
 
 export interface ApiEntitiesProjectsPackagesProtectionRuleCreateData {
   project_id: string
+  id?: number
+  minimum_access_level_for_delete?: string
+  minimum_access_level_for_push?: string
+  package_name_pattern?: string
+  package_type?: string
 }
 
 export interface ApiEntitiesProjectsPackagesProtectionRuleUpdateData {
   id: string
   project_id: string
+  minimum_access_level_for_delete?: string
+  minimum_access_level_for_push?: string
+  package_name_pattern?: string
+  package_type?: string
 }
 
 export interface ApiEntitiesProjectsTopic {
@@ -3789,6 +5360,12 @@ export interface ApiEntitiesProjectsTopicCreateData {
 
 export interface ApiEntitiesProjectsTopicUpdateData {
   id: string
+  avatar_url?: string
+  description?: string
+  name?: string
+  organization_id?: string
+  title?: string
+  total_projects_count?: string
 }
 
 export interface ApiEntitiesProtectedBranch {
@@ -3796,10 +5373,10 @@ export interface ApiEntitiesProtectedBranch {
   code_owner_approval_required?: boolean
   id?: number
   inherited?: boolean
-  merge_access_level?: any[]
+  merge_access_levels?: any[]
   name?: string
-  push_access_level?: any[]
-  unprotect_access_level?: any[]
+  push_access_levels?: any[]
+  unprotect_access_levels?: any[]
 }
 
 export interface ApiEntitiesProtectedBranchLoadMatch {
@@ -3813,16 +5390,37 @@ export interface ApiEntitiesProtectedBranchListMatch {
 
 export interface ApiEntitiesProtectedBranchCreateData {
   project_id: string
+  allow_force_push?: boolean
+  code_owner_approval_required?: boolean
+  id?: number
+  inherited?: boolean
+  merge_access_levels?: any[]
+  name?: string
+  push_access_levels?: any[]
+  unprotect_access_levels?: any[]
 }
 
 export interface ApiEntitiesProtectedBranchUpdateData {
   id: string
   project_id: string
+  allow_force_push?: boolean
+  code_owner_approval_required?: boolean
+  inherited?: boolean
+  merge_access_levels?: any[]
+  name?: string
+  push_access_levels?: any[]
+  unprotect_access_levels?: any[]
 }
 
 export interface ApiEntitiesProtectedTag {
-  create_access_level?: Record<string, any>
+  access_level?: number
+  access_level_description?: string
+  create_access_levels?: Record<string, any>
+  deploy_key_id?: number
+  group_id?: number
+  id?: number
   name?: string
+  user_id?: number
 }
 
 export interface ApiEntitiesProtectedTagLoadMatch {
@@ -3836,6 +5434,14 @@ export interface ApiEntitiesProtectedTagListMatch {
 
 export interface ApiEntitiesProtectedTagCreateData {
   project_id: string
+  access_level?: number
+  access_level_description?: string
+  create_access_levels?: Record<string, any>
+  deploy_key_id?: number
+  group_id?: number
+  id?: number
+  name?: string
+  user_id?: number
 }
 
 export interface ApiEntitiesPublicGroupDetail {
@@ -3853,6 +5459,7 @@ export interface ApiEntitiesPublicGroupDetailListMatch {
 
 export interface ApiEntitiesRelatedIssue {
   assignee?: Record<string, any>
+  assignees?: Record<string, any>
   author?: Record<string, any>
   blocking_issues_count?: string
   closed_at?: string
@@ -3861,11 +5468,11 @@ export interface ApiEntitiesRelatedIssue {
   created_at?: string
   description?: string
   discussion_locked?: boolean
-  downvote?: string
+  downvotes?: string
   due_date?: string
   epic?: Record<string, any>
   epic_iid?: string
-  has_task?: boolean
+  has_tasks?: boolean
   health_status?: string
   id?: number
   iid?: number
@@ -3874,27 +5481,27 @@ export interface ApiEntitiesRelatedIssue {
   issue_link_id?: string
   issue_type?: string
   iteration?: Record<string, any>
-  label?: any[]
-  link?: Record<string, any>
+  labels?: any[]
   link_created_at?: string
   link_type?: string
   link_updated_at?: string
+  links?: Record<string, any>
   merge_requests_count?: string
   milestone?: Record<string, any>
   moved_to_id?: string
   project_id?: number
-  reference?: Record<string, any>
+  references?: Record<string, any>
   service_desk_reply_to?: string
   severity?: string
   state?: string
   subscribed?: string
   task_completion_status?: string
   task_status?: string
-  time_stat?: Record<string, any>
+  time_stats?: Record<string, any>
   title?: string
   type?: string
   updated_at?: string
-  upvote?: string
+  upvotes?: string
   user_notes_count?: string
   web_url?: string
   weight?: string
@@ -3912,16 +5519,16 @@ export interface ApiEntitiesRelationImportTrackerCreateData {
 }
 
 export interface ApiEntitiesRelease {
-  asset?: Record<string, any>
+  assets?: Record<string, any>
   author?: Record<string, any>
   commit?: Record<string, any>
   commit_path?: string
   created_at?: string
   description?: string
   description_html?: string
-  evidence?: Record<string, any>
-  link?: Record<string, any>
-  milestone?: Record<string, any>
+  evidences?: Record<string, any>
+  links?: Record<string, any>
+  milestones?: Record<string, any>
   name?: string
   released_at?: string
   tag_name?: string
@@ -3942,11 +5549,40 @@ export interface ApiEntitiesReleaseListMatch {
 export interface ApiEntitiesReleaseCreateData {
   project_id: string
   tag_name?: any
+  assets?: Record<string, any>
+  author?: Record<string, any>
+  commit?: Record<string, any>
+  commit_path?: string
+  created_at?: string
+  description?: string
+  description_html?: string
+  evidences?: Record<string, any>
+  links?: Record<string, any>
+  milestones?: Record<string, any>
+  name?: string
+  released_at?: string
+  tag_path?: string
+  upcoming_release?: boolean
 }
 
 export interface ApiEntitiesReleaseUpdateData {
   id: string
   project_id: string
+  assets?: Record<string, any>
+  author?: Record<string, any>
+  commit?: Record<string, any>
+  commit_path?: string
+  created_at?: string
+  description?: string
+  description_html?: string
+  evidences?: Record<string, any>
+  links?: Record<string, any>
+  milestones?: Record<string, any>
+  name?: string
+  released_at?: string
+  tag_name?: string
+  tag_path?: string
+  upcoming_release?: boolean
 }
 
 export interface ApiEntitiesReleasesLink {
@@ -3971,26 +5607,35 @@ export interface ApiEntitiesReleasesLinkListMatch {
 export interface ApiEntitiesReleasesLinkCreateData {
   project_id: string
   release_id: string
+  direct_asset_url?: string
+  id?: number
+  link_type?: string
+  name?: string
+  url?: string
 }
 
 export interface ApiEntitiesReleasesLinkUpdateData {
   id: string
   project_id: string
   release_id: string
+  direct_asset_url?: string
+  link_type?: string
+  name?: string
+  url?: string
 }
 
 export interface ApiEntitiesRemoteMirror {
   auth_method?: string
   enabled?: boolean
-  host_key?: any[]
+  host_keys?: any[]
   id?: number
-  keep_divergent_ref?: boolean
+  keep_divergent_refs?: boolean
   last_error?: number
   last_successful_update_at?: string
   last_update_at?: string
   last_update_started_at?: string
   mirror_branch_regex?: string
-  only_protected_branch?: boolean
+  only_protected_branches?: boolean
   update_status?: string
   url?: string
 }
@@ -4006,23 +5651,48 @@ export interface ApiEntitiesRemoteMirrorListMatch {
 
 export interface ApiEntitiesRemoteMirrorCreateData {
   project_id: string
+  auth_method?: string
+  enabled?: boolean
+  host_keys?: any[]
+  id?: number
+  keep_divergent_refs?: boolean
+  last_error?: number
+  last_successful_update_at?: string
+  last_update_at?: string
+  last_update_started_at?: string
+  mirror_branch_regex?: string
+  only_protected_branches?: boolean
+  update_status?: string
+  url?: string
 }
 
 export interface ApiEntitiesRemoteMirrorUpdateData {
   id: string
   project_id: string
+  auth_method?: string
+  enabled?: boolean
+  host_keys?: any[]
+  keep_divergent_refs?: boolean
+  last_error?: number
+  last_successful_update_at?: string
+  last_update_at?: string
+  last_update_started_at?: string
+  mirror_branch_regex?: string
+  only_protected_branches?: boolean
+  update_status?: string
+  url?: string
 }
 
 export interface ApiEntitiesRepositoryHealth {
-  alternate?: Record<string, any>
+  alternates?: Record<string, any>
   bitmap?: Record<string, any>
   commit_graph?: Record<string, any>
   is_object_pool?: boolean
   last_full_repack?: Record<string, any>
   multi_pack_index?: Record<string, any>
   multi_pack_index_bitmap?: Record<string, any>
-  object?: Record<string, any>
-  reference?: Record<string, any>
+  objects?: Record<string, any>
+  references?: Record<string, any>
   size?: number
   updated_at?: string
 }
@@ -4043,7 +5713,7 @@ export interface ApiEntitiesResourceAccessTokenWithToken {
   resource_id?: number
   resource_type?: string
   revoked?: boolean
-  scope?: any[]
+  scopes?: any[]
   token?: string
   user_id?: number
 }
@@ -4051,6 +5721,20 @@ export interface ApiEntitiesResourceAccessTokenWithToken {
 export interface ApiEntitiesResourceAccessTokenWithTokenCreateData {
   group_id?: string
   project_id?: string
+  access_level?: number
+  active?: boolean
+  created_at?: string
+  description?: string
+  expires_at?: string
+  id?: number
+  last_used_at?: string
+  name?: string
+  resource_id?: number
+  resource_type?: string
+  revoked?: boolean
+  scopes?: any[]
+  token?: string
+  user_id?: number
 }
 
 export interface ApiEntitiesResourceMilestoneEvent {
@@ -4081,8 +5765,8 @@ export interface ApiEntitiesSnippet {
   author?: Record<string, any>
   created_at?: string
   description?: string
-  file?: any[]
   file_name?: string
+  files?: any[]
   http_url_to_repo?: string
   id?: number
   imported?: boolean
@@ -4101,8 +5785,8 @@ export interface ApiEntitiesSnippetListMatch {
   author?: Record<string, any>
   created_at?: string
   description?: string
-  file?: any[]
   file_name?: string
+  files?: any[]
   http_url_to_repo?: string
   id?: number
   imported?: boolean
@@ -4118,14 +5802,52 @@ export interface ApiEntitiesSnippetListMatch {
 }
 
 export interface ApiEntitiesSshKeyWithUser {
+  avatar_path?: string
+  avatar_url?: string
+  bio?: string
+  bot?: string
+  can_create_group?: boolean
+  can_create_project?: boolean
+  color_scheme_id?: number
+  commit_email?: string
+  confirmed_at?: string
   created_at?: string
-  expires_at?: string
+  current_sign_in_at?: string
+  custom_attributes?: any[]
+  discord?: string
+  email?: string
+  external?: string
+  extra_shared_runners_minutes_limit?: string
+  followers?: string
+  following?: string
+  github?: string
   id?: number
-  key?: string
-  last_used_at?: string
-  title?: string
-  usage_type?: string
-  user?: Record<string, any>
+  identities?: Record<string, any>
+  is_followed?: boolean
+  job_title?: string
+  last_activity_on?: string
+  last_sign_in_at?: string
+  linkedin?: string
+  local_time?: string
+  location?: string
+  locked?: boolean
+  name?: string
+  organization?: string
+  preferred_language?: string
+  private_profile?: boolean
+  projects_limit?: number
+  pronouns?: string
+  public_email?: string
+  scim_identities?: Record<string, any>
+  shared_runners_minutes_limit?: string
+  state?: string
+  theme_id?: number
+  twitter?: string
+  two_factor_enabled?: boolean
+  username?: string
+  web_url?: string
+  website_url?: string
+  work_information?: string
 }
 
 export interface ApiEntitiesSshKeyWithUserLoadMatch {
@@ -4144,6 +5866,13 @@ export interface ApiEntitiesSuggestion {
 
 export interface ApiEntitiesSuggestionUpdateData {
   suggestion_id?: string
+  appliable?: string
+  applied?: string
+  from_content?: string
+  from_line?: string
+  id?: string
+  to_content?: string
+  to_line?: string
 }
 
 export interface ApiEntitiesSystemBroadcastMessage {
@@ -4156,7 +5885,7 @@ export interface ApiEntitiesSystemBroadcastMessage {
   id?: string
   message?: string
   starts_at?: string
-  target_access_level?: string
+  target_access_levels?: string
   target_path?: string
   theme?: string
 }
@@ -4175,13 +5904,24 @@ export interface ApiEntitiesSystemBroadcastMessageCreateData {
   id?: string
   message?: string
   starts_at?: string
-  target_access_level?: string
+  target_access_levels?: string
   target_path?: string
   theme?: string
 }
 
 export interface ApiEntitiesSystemBroadcastMessageUpdateData {
   id: string
+  active?: boolean
+  broadcast_type?: string
+  color?: string
+  dismissable?: string
+  ends_at?: string
+  font?: string
+  message?: string
+  starts_at?: string
+  target_access_levels?: string
+  target_path?: string
+  theme?: string
 }
 
 export interface ApiEntitiesSystemBroadcastMessageRemoveMatch {
@@ -4209,6 +5949,13 @@ export interface ApiEntitiesTagListMatch {
 
 export interface ApiEntitiesTagCreateData {
   project_id: string
+  commit?: Record<string, any>
+  created_at?: string
+  message?: string
+  name?: string
+  protected?: boolean
+  release?: Record<string, any>
+  target?: string
 }
 
 export interface ApiEntitiesTagSignature {
@@ -4232,13 +5979,15 @@ export interface ApiEntitiesTemplatesListLoadMatch {
 }
 
 export interface ApiEntitiesTerraformModuleVersion {
-  module?: string
+  modules?: string
   name?: string
   provider?: string
+  providers?: string
   root?: string
   source?: string
-  submodule?: string
+  submodules?: string
   version?: string
+  versions?: string
 }
 
 export interface ApiEntitiesTerraformModuleVersionLoadMatch {
@@ -4267,14 +6016,23 @@ export interface ApiEntitiesTreeObjectLoadMatch {
 }
 
 export interface ApiEntitiesTrigger {
+  avatar_path?: string
+  avatar_url?: string
   created_at?: string
+  custom_attributes?: any[]
   description?: string
   expires_at?: string
   id?: number
   last_used?: string
+  locked?: boolean
+  name?: string
   owner?: Record<string, any>
+  public_email?: string
+  state?: string
   token?: string
   updated_at?: string
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesTriggerLoadMatch {
@@ -4288,11 +6046,44 @@ export interface ApiEntitiesTriggerListMatch {
 
 export interface ApiEntitiesTriggerCreateData {
   project_id: string
+  avatar_path?: string
+  avatar_url?: string
+  created_at?: string
+  custom_attributes?: any[]
+  description?: string
+  expires_at?: string
+  id?: number
+  last_used?: string
+  locked?: boolean
+  name?: string
+  owner?: Record<string, any>
+  public_email?: string
+  state?: string
+  token?: string
+  updated_at?: string
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesTriggerUpdateData {
   id: string
   project_id: string
+  avatar_path?: string
+  avatar_url?: string
+  created_at?: string
+  custom_attributes?: any[]
+  description?: string
+  expires_at?: string
+  last_used?: string
+  locked?: boolean
+  name?: string
+  owner?: Record<string, any>
+  public_email?: string
+  state?: string
+  token?: string
+  updated_at?: string
+  username?: string
+  web_url?: string
 }
 
 export interface ApiEntitiesUserAgentDetail {
@@ -4308,19 +6099,19 @@ export interface ApiEntitiesUserAgentDetailLoadMatch {
 }
 
 export interface ApiEntitiesUserCount {
-  assigned_issue?: number
-  assigned_merge_request?: number
-  merge_request?: number
-  review_requested_merge_request?: number
-  todo?: number
+  assigned_issues?: number
+  assigned_merge_requests?: number
+  merge_requests?: number
+  review_requested_merge_requests?: number
+  todos?: number
 }
 
 export interface ApiEntitiesUserCountLoadMatch {
-  assigned_issue?: number
-  assigned_merge_request?: number
-  merge_request?: number
-  review_requested_merge_request?: number
-  todo?: number
+  assigned_issues?: number
+  assigned_merge_requests?: number
+  merge_requests?: number
+  review_requested_merge_requests?: number
+  todos?: number
 }
 
 export interface ApiEntitiesUserPublic {
@@ -4335,16 +6126,16 @@ export interface ApiEntitiesUserPublic {
   confirmed_at?: string
   created_at?: string
   current_sign_in_at?: string
-  custom_attribute?: any[]
+  custom_attributes?: any[]
   discord?: string
   email?: string
   external?: string
   extra_shared_runners_minutes_limit?: string
-  follower?: string
+  followers?: string
   following?: string
   github?: string
   id?: number
-  identity?: Record<string, any>
+  identities?: Record<string, any>
   is_followed?: boolean
   job_title?: string
   key?: string
@@ -4359,9 +6150,9 @@ export interface ApiEntitiesUserPublic {
   preferred_language?: string
   private_profile?: boolean
   projects_limit?: number
-  pronoun?: string
+  pronouns?: string
   public_email?: string
-  scim_identity?: Record<string, any>
+  scim_identities?: Record<string, any>
   shared_runners_minutes_limit?: string
   state?: string
   theme_id?: number
@@ -4397,13 +6188,6 @@ export interface ApiEntitiesWikiAttachmentCreateData {
 }
 
 export interface ApiEntitiesWikiPage {
-  content?: string
-  encoding?: string
-  format?: string
-  front_matter?: Record<string, any>
-  slug?: string
-  title?: string
-  wiki_page_meta_id?: number
 }
 
 export interface ApiEntitiesWikiPageLoadMatch {
@@ -4653,6 +6437,12 @@ export interface DependencyProxy {
 
 export interface DependencyProxyRemoveMatch {
   group_id: string
+
+  // Selects a custom action instead of the plain remove:
+  //   'cache'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface DeployKey {
@@ -4691,7 +6481,7 @@ export interface EeApiEntitiesApprovalStateCreateData {
 export interface EeApiEntitiesAuditEvent {
   author_id?: string
   created_at?: string
-  detail?: string
+  details?: string
   entity_id?: string
   entity_type?: string
   event_name?: string
@@ -4710,13 +6500,9 @@ export interface EeApiEntitiesAuditEventListMatch {
 }
 
 export interface EeApiEntitiesBillableMembership {
-  access_level?: Record<string, any>
-  created_at?: string
-  expires_at?: string
-  id?: string
-  source_full_name?: string
-  source_id?: string
-  source_members_url?: string
+  custom_role?: string
+  integer_value?: string
+  string_value?: string
 }
 
 export interface EeApiEntitiesBillableMembershipLoadMatch {
@@ -4752,7 +6538,7 @@ export interface EeApiEntitiesGeoNodeStatus {
   container_repositories_verified_in_percentage?: string
   cursor_last_event_id?: string
   cursor_last_event_timestamp?: string
-  db_replication_lag_second?: string
+  db_replication_lag_seconds?: string
   dependency_proxy_blobs_checksum_failed_count?: string
   dependency_proxy_blobs_checksum_total_count?: string
   dependency_proxy_blobs_checksummed_count?: string
@@ -4834,7 +6620,7 @@ export interface EeApiEntitiesGeoNodeStatus {
   lfs_objects_verification_total_count?: string
   lfs_objects_verified_count?: string
   lfs_objects_verified_in_percentage?: string
-  link?: Record<string, any>
+  links?: Record<string, any>
   merge_request_diffs_checksum_failed_count?: string
   merge_request_diffs_checksum_total_count?: string
   merge_request_diffs_checksummed_count?: string
@@ -4848,7 +6634,7 @@ export interface EeApiEntitiesGeoNodeStatus {
   merge_request_diffs_verified_count?: string
   merge_request_diffs_verified_in_percentage?: string
   missing_oauth_application?: string
-  namespace?: Record<string, any>
+  namespaces?: Record<string, any>
   package_files_checksum_failed_count?: string
   package_files_checksum_total_count?: string
   package_files_checksummed_count?: string
@@ -4913,7 +6699,7 @@ export interface EeApiEntitiesGeoNodeStatus {
   proxy_local_requests_event_count_weekly?: string
   proxy_remote_requests_event_count_weekly?: string
   replication_slots_count?: string
-  replication_slots_max_retained_wal_byte?: string
+  replication_slots_max_retained_wal_bytes?: string
   replication_slots_used_count?: string
   replication_slots_used_in_percentage?: string
   repositories_checked_count?: string
@@ -4934,7 +6720,7 @@ export interface EeApiEntitiesGeoNodeStatus {
   snippet_repositories_verification_total_count?: string
   snippet_repositories_verified_count?: string
   snippet_repositories_verified_in_percentage?: string
-  storage_shard?: Record<string, any>
+  storage_shards?: Record<string, any>
   storage_shards_match?: string
   terraform_state_versions_checksum_failed_count?: string
   terraform_state_versions_checksum_total_count?: string
@@ -4992,7 +6778,7 @@ export interface EeApiEntitiesGeoNodeStatusCreateData {
   container_repositories_verified_in_percentage?: string
   cursor_last_event_id?: string
   cursor_last_event_timestamp?: string
-  db_replication_lag_second?: string
+  db_replication_lag_seconds?: string
   dependency_proxy_blobs_checksum_failed_count?: string
   dependency_proxy_blobs_checksum_total_count?: string
   dependency_proxy_blobs_checksummed_count?: string
@@ -5074,7 +6860,7 @@ export interface EeApiEntitiesGeoNodeStatusCreateData {
   lfs_objects_verification_total_count?: string
   lfs_objects_verified_count?: string
   lfs_objects_verified_in_percentage?: string
-  link?: Record<string, any>
+  links?: Record<string, any>
   merge_request_diffs_checksum_failed_count?: string
   merge_request_diffs_checksum_total_count?: string
   merge_request_diffs_checksummed_count?: string
@@ -5088,7 +6874,7 @@ export interface EeApiEntitiesGeoNodeStatusCreateData {
   merge_request_diffs_verified_count?: string
   merge_request_diffs_verified_in_percentage?: string
   missing_oauth_application?: string
-  namespace?: Record<string, any>
+  namespaces?: Record<string, any>
   package_files_checksum_failed_count?: string
   package_files_checksum_total_count?: string
   package_files_checksummed_count?: string
@@ -5153,7 +6939,7 @@ export interface EeApiEntitiesGeoNodeStatusCreateData {
   proxy_local_requests_event_count_weekly?: string
   proxy_remote_requests_event_count_weekly?: string
   replication_slots_count?: string
-  replication_slots_max_retained_wal_byte?: string
+  replication_slots_max_retained_wal_bytes?: string
   replication_slots_used_count?: string
   replication_slots_used_in_percentage?: string
   repositories_checked_count?: string
@@ -5174,7 +6960,7 @@ export interface EeApiEntitiesGeoNodeStatusCreateData {
   snippet_repositories_verification_total_count?: string
   snippet_repositories_verified_count?: string
   snippet_repositories_verified_in_percentage?: string
-  storage_shard?: Record<string, any>
+  storage_shards?: Record<string, any>
   storage_shards_match?: string
   terraform_state_versions_checksum_failed_count?: string
   terraform_state_versions_checksum_total_count?: string
@@ -5205,7 +6991,7 @@ export interface EeApiEntitiesGeoNodeStatusCreateData {
 }
 
 export interface EeApiEntitiesGeoPipelineRef {
-  pipeline_ref?: any[]
+  pipeline_refs?: any[]
 }
 
 export interface EeApiEntitiesGeoPipelineRefListMatch {
@@ -5224,12 +7010,23 @@ export interface EeApiEntitiesIssuableMetricImage {
 export interface EeApiEntitiesIssuableMetricImageCreateData {
   issue_id: string
   project_id: string
+  created_at?: string
+  file_path?: string
+  filename?: string
+  id?: string
+  url?: string
+  url_text?: string
 }
 
 export interface EeApiEntitiesIssuableMetricImageUpdateData {
   id: string
   issue_id: string
   project_id: string
+  created_at?: string
+  file_path?: string
+  filename?: string
+  url?: string
+  url_text?: string
 }
 
 export interface EeApiEntitiesIssuableMetricImageRemoveMatch {
@@ -5243,9 +7040,9 @@ export interface EeApiEntitiesMergeRequestApprovalState {
   approved?: boolean
   approved_by?: any[]
   code_owner?: boolean
-  contains_hidden_group?: boolean
-  eligible_approver?: any[]
-  group?: any[]
+  contains_hidden_groups?: boolean
+  eligible_approvers?: any[]
+  groups?: any[]
   id?: number
   name?: string
   overridden?: boolean
@@ -5253,7 +7050,7 @@ export interface EeApiEntitiesMergeRequestApprovalState {
   rule_type?: string
   section?: string
   source_rule?: Record<string, any>
-  user?: any[]
+  users?: any[]
 }
 
 export interface EeApiEntitiesMergeRequestApprovalStateListMatch {
@@ -5274,6 +7071,10 @@ export interface EeApiEntitiesSshCertificateListMatch {
 
 export interface EeApiEntitiesSshCertificateCreateData {
   group_id: string
+  created_at?: string
+  id?: number
+  key?: string
+  title?: string
 }
 
 export interface Environment {
@@ -5281,11 +7082,23 @@ export interface Environment {
 
 export interface EnvironmentCreateData {
   project_id: string
+
+  // Selects a custom action instead of the plain create:
+  //   'stop_stale'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface EnvironmentRemoveMatch {
   id: string
   project_id: string
+
+  // Selects a custom action instead of the plain remove:
+  //   'review_app'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface ErrorTrackingClientKey {
@@ -5356,6 +7169,12 @@ export interface Geo {
 export interface GeoLoadMatch {
   replicable_id: string
   replicable_name: any
+
+  // Selects a custom action instead of the plain load:
+  //   'proxy'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface GeoCreateData {
@@ -5378,10 +7197,22 @@ export interface GroupLoadMatch {
   id: string
   secret?: any
   upload_id?: string
+
+  // Selects a custom action instead of the plain load:
+  //   '_search' | 'issues_statistic' | 'pending_member' | 'placeholder_reassignment'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface GroupCreateData {
   id: string
+
+  // Selects a custom action instead of the plain create:
+  //   'ldap_sync' | 'member_approve_all' | 'placeholder_reassignment' | 'placeholder_reassignment_authorize' | 'restore' | 'token_revoke' | 'transfer'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface GroupUpdateData {
@@ -5417,6 +7248,12 @@ export interface GroupExportLoadMatch {
 
 export interface GroupExportCreateData {
   id: string
+
+  // Selects a custom action instead of the plain create:
+  //   'export_relations'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface GroupImport {
@@ -5507,10 +7344,22 @@ export interface Job {
 
 export interface JobLoadMatch {
   id: string
+
+  // Selects a custom action instead of the plain load:
+  //   'artifact'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface JobCreateData {
   id?: string
+
+  // Selects a custom action instead of the plain create:
+  //   'artifact' | 'artifact_authorize' | 'request'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface JobUpdateData {
@@ -5546,29 +7395,47 @@ export interface MergeRequest {
 export interface MergeRequestLoadMatch {
   id: string
   project_id: string
+
+  // Selects a custom action instead of the plain load:
+  //   'merge_ref' | 'raw_diff' | 'related_issue'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface MergeRequestUpdateData {
   id: string
   project_id: string
+
+  // Selects a custom action instead of the plain update:
+  //   'rebase' | 'reset_approval'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface MergeRequestRemoveMatch {
   id: string
   project_id: string
+
+  // Selects a custom action instead of the plain remove:
+  //   'context_commit'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Metadata {
-  enterprise?: boolean
-  kas?: Record<string, any>
-  revision?: string
+  enabled?: boolean
+  externalK8sProxyUrl?: string
+  externalUrl?: string
   version?: string
 }
 
 export interface MetadataLoadMatch {
-  enterprise?: boolean
-  kas?: Record<string, any>
-  revision?: string
+  enabled?: boolean
+  externalK8sProxyUrl?: string
+  externalUrl?: string
   version?: string
 }
 
@@ -5577,6 +7444,12 @@ export interface Migration {
 
 export interface MigrationCreateData {
   timestamp: any
+
+  // Selects a custom action instead of the plain create:
+  //   'mark'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface MlModelRegistry {
@@ -5599,6 +7472,12 @@ export interface Namespace {
 
 export interface NamespaceRemoveMatch {
   id: string
+
+  // Selects a custom action instead of the plain remove:
+  //   'storage_limit_exclusion'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Npm {
@@ -5641,13 +7520,22 @@ export interface NugetUpdateData {
 }
 
 export interface NugetPackage {
-  catalog_entry?: Record<string, any>
+  authors?: string
   count?: number
+  dependencyGroups?: any[]
+  description?: string
+  iconUrl?: string
   id?: string
-  item?: any[]
+  items?: any[]
+  licenseUrl?: string
   lower?: string
-  package_content?: string
+  packageContent?: string
+  projectUrl?: string
+  published?: string
+  summary?: string
+  tags?: string
   upper?: string
+  version?: string
 }
 
 export interface NugetPackageLoadMatch {
@@ -5662,6 +7550,22 @@ export interface NugetPackageListMatch {
 
 export interface NugetPackageUpdateData {
   project_id: string
+  authors?: string
+  count?: number
+  dependencyGroups?: any[]
+  description?: string
+  iconUrl?: string
+  id?: string
+  items?: any[]
+  licenseUrl?: string
+  lower?: string
+  packageContent?: string
+  projectUrl?: string
+  published?: string
+  summary?: string
+  tags?: string
+  upper?: string
+  version?: string
 }
 
 export interface NugetPackageRemoveMatch {
@@ -5675,6 +7579,12 @@ export interface PackageFileLoadMatch {
   id: string
   package_id: string
   project_id: string
+
+  // Selects a custom action instead of the plain load:
+  //   'download'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface PackageFileRemoveMatch {
@@ -5714,6 +7624,12 @@ export interface PersonalAccessToken {
 
 export interface PersonalAccessTokenRemoveMatch {
   id: string
+
+  // Selects a custom action instead of the plain remove:
+  //   'self'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Project {
@@ -5738,7 +7654,7 @@ export interface Project {
   updated_at?: string
   user?: Record<string, any>
   web_url?: string
-  yaml_error?: string
+  yaml_errors?: string
 }
 
 export interface ProjectLoadMatch {
@@ -5754,6 +7670,12 @@ export interface ProjectLoadMatch {
   pipeline_id?: string
   sha?: any
   upload_id?: string
+
+  // Selects a custom action instead of the plain load:
+  //   '_search' | 'issues_statistic' | 'language' | 'pages_access' | 'pipeline_latest' | 'repository_archive' | 'snapshot'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface ProjectCreateData {
@@ -5766,6 +7688,32 @@ export interface ProjectCreateData {
   merge_request_id?: string
   pipeline_schedule_id?: string
   project_id?: string
+  before_sha?: string
+  committed_at?: string
+  coverage?: number
+  created_at?: string
+  detailed_status?: Record<string, any>
+  duration?: number
+  finished_at?: string
+  iid?: number
+  name?: string
+  queued_duration?: number
+  ref?: string
+  sha?: string
+  source?: string
+  started_at?: string
+  status?: string
+  tag?: boolean
+  updated_at?: string
+  user?: Record<string, any>
+  web_url?: string
+  yaml_errors?: string
+
+  // Selects a custom action instead of the plain create:
+  //   'create_ci_config' | 'housekeeping' | 'repository_changelog' | 'repository_size' | 'upload_authorize'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface ProjectUpdateData {
@@ -5777,6 +7725,27 @@ export interface ProjectUpdateData {
   merge_request_id?: string
   file_path?: any
   pipeline_id?: string
+  before_sha?: string
+  committed_at?: string
+  coverage?: number
+  created_at?: string
+  detailed_status?: Record<string, any>
+  duration?: number
+  finished_at?: string
+  iid?: number
+  name?: string
+  project_id?: number
+  queued_duration?: number
+  ref?: string
+  sha?: string
+  source?: string
+  started_at?: string
+  status?: string
+  tag?: boolean
+  updated_at?: string
+  user?: Record<string, any>
+  web_url?: string
+  yaml_errors?: string
 }
 
 export interface ProjectRemoveMatch {
@@ -5799,6 +7768,12 @@ export interface ProjectRemoveMatch {
   protection_rule_id?: string
   trigger_id?: string
   upload_id?: string
+
+  // Selects a custom action instead of the plain remove:
+  //   'artifact' | 'fork'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface ProjectAvatar {
@@ -5823,6 +7798,12 @@ export interface ProjectExportLoadMatch {
 
 export interface ProjectExportCreateData {
   id: string
+
+  // Selects a custom action instead of the plain create:
+  //   'export_relations'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface ProjectHook {
@@ -5933,6 +7914,12 @@ export interface Release {
 
 export interface ReleaseLoadMatch {
   project_id: string
+
+  // Selects a custom action instead of the plain load:
+  //   'download_direct_asset_path'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface ReleaseRemoveMatch {
@@ -5955,11 +7942,23 @@ export interface RemoteMirror {
 export interface RemoteMirrorLoadMatch {
   id: string
   project_id: string
+
+  // Selects a custom action instead of the plain load:
+  //   'public_key'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface RemoteMirrorCreateData {
   id: string
   project_id: string
+
+  // Selects a custom action instead of the plain create:
+  //   'sync'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface RemoteMirrorRemoveMatch {
@@ -6009,11 +8008,23 @@ export interface Runner {
 }
 
 export interface RunnerCreateData {
+
+  // Selects a custom action instead of the plain create:
+  //   'verify'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface RunnerRemoveMatch {
   id?: string
   project_id?: string
+
+  // Selects a custom action instead of the plain remove:
+  //   'manager'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Search {
@@ -6028,6 +8039,12 @@ export interface SecureFile {
 export interface SecureFileLoadMatch {
   id: string
   project_id: string
+
+  // Selects a custom action instead of the plain load:
+  //   'download'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface SecureFileRemoveMatch {
@@ -6039,6 +8056,12 @@ export interface Slack {
 }
 
 export interface SlackCreateData {
+
+  // Selects a custom action instead of the plain create:
+  //   'trigger'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Snippet {
@@ -6048,6 +8071,12 @@ export interface SnippetLoadMatch {
   file_id: string
   file_path: any
   id: string
+
+  // Selects a custom action instead of the plain load:
+  //   'raw'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface SnippetRemoveMatch {
@@ -6057,7 +8086,7 @@ export interface SnippetRemoveMatch {
 export interface Starrer {
   avatar_path?: string
   avatar_url?: string
-  custom_attribute?: any[]
+  custom_attributes?: any[]
   id?: number
   locked?: boolean
   name?: string
@@ -6135,7 +8164,7 @@ export interface TestReport {
   skipped_count?: number
   success_count?: number
   suite_error?: string
-  test_case?: any[]
+  test_cases?: any[]
   total_count?: number
   total_time?: number
 }
@@ -6146,7 +8175,7 @@ export interface TestReportListMatch {
 }
 
 export interface TestReportSummary {
-  test_suite?: Record<string, any>
+  test_suites?: Record<string, any>
   total?: Record<string, any>
 }
 
@@ -6167,21 +8196,39 @@ export interface UnleashApi {
 
 export interface UnleashApiLoadMatch {
   unleash_id: string
+
+  // Selects a custom action instead of the plain load:
+  //   'features'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface UsageData {
 }
 
 export interface UsageDataLoadMatch {
+
+  // Selects a custom action instead of the plain load:
+  //   'metric_definition' | 'non_sql_metric' | 'query' | 'service_ping'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface UsageDataCreateData {
+
+  // Selects a custom action instead of the plain create:
+  //   'increment_counter' | 'increment_unique_user' | 'track_event' | 'track_event'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface User {
   avatar_path?: string
   avatar_url?: string
-  custom_attribute?: any[]
+  custom_attributes?: any[]
   id?: number
   locked?: boolean
   name?: string
@@ -6199,6 +8246,12 @@ export interface WebCommit {
 }
 
 export interface WebCommitLoadMatch {
+
+  // Selects a custom action instead of the plain load:
+  //   'public_key'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Wiki {

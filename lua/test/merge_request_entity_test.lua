@@ -50,7 +50,7 @@ describe("MergeRequestEntity", function()
 
     local merge_request_ref01_resdata_up0_result, err = merge_request_ref01_ent:update(merge_request_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local merge_request_ref01_resdata_up0 = helpers.to_map(merge_request_ref01_resdata_up0_result)
+    local merge_request_ref01_resdata_up0 = helpers.to_map(type(merge_request_ref01_resdata_up0_result) == 'table' and merge_request_ref01_resdata_up0_result.data_get and merge_request_ref01_resdata_up0_result:data_get() or merge_request_ref01_resdata_up0_result)
     assert.is_not_nil(merge_request_ref01_resdata_up0)
 
     -- LOAD

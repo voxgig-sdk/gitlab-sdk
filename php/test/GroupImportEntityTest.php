@@ -44,7 +44,7 @@ class GroupImportEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.group_import"), "group_import_ref01"));
 
         $group_import_ref01_data_result = $group_import_ref01_ent->create($group_import_ref01_data, null);
-        $group_import_ref01_data = Helpers::to_map($group_import_ref01_data_result);
+        $group_import_ref01_data = Helpers::to_map(is_object($group_import_ref01_data_result) && method_exists($group_import_ref01_data_result, 'data_get') ? $group_import_ref01_data_result->data_get() : $group_import_ref01_data_result);
         $this->assertNotNull($group_import_ref01_data);
 
     }

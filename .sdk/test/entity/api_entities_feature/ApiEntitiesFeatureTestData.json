@@ -3,21 +3,21 @@
     "api_entities_feature": {
       "API_ENTITIES_FEATURE00": {
         "definition": {},
-        "gate": {},
+        "gates": {},
         "name": "s2a",
         "state": "s2b",
         "id": "API_ENTITIES_FEATURE00"
       },
       "API_ENTITIES_FEATURE01": {
         "definition": {},
-        "gate": {},
+        "gates": {},
         "name": "s52",
         "state": "s53",
         "id": "API_ENTITIES_FEATURE01"
       },
       "API_ENTITIES_FEATURE02": {
         "definition": {},
-        "gate": {},
+        "gates": {},
         "name": "s7a",
         "state": "s7b",
         "id": "API_ENTITIES_FEATURE02"
@@ -28,7 +28,7 @@
     "api_entities_feature": {
       "api_entities_feature_ref01": {
         "definition": {},
-        "gate": {},
+        "gates": {},
         "name": "sa2",
         "state": "sa3"
       }

@@ -37,7 +37,7 @@ class ApiEntitiesLicenseEntity extends GitlabEntityBase<ApiEntitiesLicense> {
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesLicenseListMatch, ctrl?: Control): Promise<ApiEntitiesLicense[]> {
+  async list(this: any, reqmatch?: ApiEntitiesLicenseListMatch, ctrl?: Control): Promise<ApiEntitiesLicenseEntity[]> {
 
     const utility = this._utility
 

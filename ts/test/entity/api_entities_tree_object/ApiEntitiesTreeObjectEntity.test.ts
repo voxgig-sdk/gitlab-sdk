@@ -63,7 +63,7 @@ describe('ApiEntitiesTreeObjectEntity', async () => {
     const api_entities_tree_object_ref01_ent = client.ApiEntitiesTreeObject()
     const api_entities_tree_object_ref01_match_dt0: any = {}
     api_entities_tree_object_ref01_match_dt0.id = api_entities_tree_object_ref01_data.id
-    const api_entities_tree_object_ref01_data_dt0 = await api_entities_tree_object_ref01_ent.load(api_entities_tree_object_ref01_match_dt0)
+    const api_entities_tree_object_ref01_data_dt0 = (await api_entities_tree_object_ref01_ent.load(api_entities_tree_object_ref01_match_dt0)).data()
     assert(api_entities_tree_object_ref01_data_dt0.id === api_entities_tree_object_ref01_data.id)
 
 

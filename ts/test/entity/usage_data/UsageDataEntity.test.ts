@@ -62,13 +62,13 @@ describe('UsageDataEntity', async () => {
     const usage_data_ref01_ent = client.UsageData()
     let usage_data_ref01_data = setup.data.new.usage_data['usage_data_ref01']
 
-    usage_data_ref01_data = await usage_data_ref01_ent.create(usage_data_ref01_data)
+    usage_data_ref01_data = (await usage_data_ref01_ent.create(usage_data_ref01_data)).data()
     assert(null != usage_data_ref01_data)
 
 
     // LOAD
     const usage_data_ref01_match_dt0: any = {}
-    const usage_data_ref01_data_dt0 = await usage_data_ref01_ent.load(usage_data_ref01_match_dt0)
+    const usage_data_ref01_data_dt0 = (await usage_data_ref01_ent.load(usage_data_ref01_match_dt0)).data()
     assert(null != usage_data_ref01_data_dt0)
 
 

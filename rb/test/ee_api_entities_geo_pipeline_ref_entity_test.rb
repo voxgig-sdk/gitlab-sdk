@@ -33,7 +33,7 @@ class EeApiEntitiesGeoPipelineRefEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = GitlabConfig.make_config
+    cfg = GitlabConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = GitlabSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []

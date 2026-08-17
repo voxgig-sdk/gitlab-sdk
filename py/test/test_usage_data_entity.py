@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -44,7 +44,7 @@ class TestUsageDataEntity:
         usage_data_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.usage_data"), "usage_data_ref01"))
 
-        usage_data_ref01_data = helpers.to_map(usage_data_ref01_ent.create(usage_data_ref01_data, None))
+        usage_data_ref01_data = helpers.to_map(runner.entity_data(usage_data_ref01_ent.create(usage_data_ref01_data, None)))
         assert usage_data_ref01_data is not None
 
         # LOAD

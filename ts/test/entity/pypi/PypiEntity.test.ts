@@ -63,7 +63,7 @@ describe('PypiEntity', async () => {
     let pypi_ref01_data = setup.data.new.pypi['pypi_ref01']
     pypi_ref01_data['project_id'] = setup.idmap['project01']
 
-    pypi_ref01_data = await pypi_ref01_ent.create(pypi_ref01_data)
+    pypi_ref01_data = (await pypi_ref01_ent.create(pypi_ref01_data)).data()
     assert(null != pypi_ref01_data)
 
 

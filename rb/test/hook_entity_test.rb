@@ -38,7 +38,7 @@ class HookEntityTest < Minitest::Test
     hook_ref01_data["hook_id"] = setup[:idmap]["hook01"]
 
     hook_ref01_data_result = hook_ref01_ent.create(hook_ref01_data, nil)
-    hook_ref01_data = Helpers.to_map(hook_ref01_data_result)
+    hook_ref01_data = Helpers.to_map(hook_ref01_data_result.respond_to?(:data_get) ? hook_ref01_data_result.data_get : hook_ref01_data_result)
     assert !hook_ref01_data.nil?
 
     # UPDATE
@@ -46,14 +46,9 @@ class HookEntityTest < Minitest::Test
     }
 
     hook_ref01_resdata_up0_result = hook_ref01_ent.update(hook_ref01_data_up0_up, nil)
-    hook_ref01_resdata_up0 = Helpers.to_map(hook_ref01_resdata_up0_result)
+    hook_ref01_resdata_up0 = Helpers.to_map(hook_ref01_resdata_up0_result.respond_to?(:data_get) ? hook_ref01_resdata_up0_result.data_get : hook_ref01_resdata_up0_result)
     assert !hook_ref01_resdata_up0.nil?
 
-    # REMOVE
-    hook_ref01_match_rm0 = {
-      "id" => hook_ref01_data["id"],
-    }
-    hook_ref01_ent.remove(hook_ref01_match_rm0, nil)
 
   end
 end

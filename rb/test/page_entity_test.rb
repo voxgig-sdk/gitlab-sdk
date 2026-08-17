@@ -45,7 +45,7 @@ class PageEntityTest < Minitest::Test
     }
 
     page_ref01_resdata_up0_result = page_ref01_ent.update(page_ref01_data_up0_up, nil)
-    page_ref01_resdata_up0 = Helpers.to_map(page_ref01_resdata_up0_result)
+    page_ref01_resdata_up0 = Helpers.to_map(page_ref01_resdata_up0_result.respond_to?(:data_get) ? page_ref01_resdata_up0_result.data_get : page_ref01_resdata_up0_result)
     assert !page_ref01_resdata_up0.nil?
 
     # LOAD

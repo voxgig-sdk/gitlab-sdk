@@ -44,7 +44,7 @@ class ImportEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.import"), "import_ref01"));
 
         $import_ref01_data_result = $import_ref01_ent->create($import_ref01_data, null);
-        $import_ref01_data = Helpers::to_map($import_ref01_data_result);
+        $import_ref01_data = Helpers::to_map(is_object($import_ref01_data_result) && method_exists($import_ref01_data_result, 'data_get') ? $import_ref01_data_result->data_get() : $import_ref01_data_result);
         $this->assertNotNull($import_ref01_data);
 
     }

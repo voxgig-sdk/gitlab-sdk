@@ -59,7 +59,7 @@ func TestApiEntitiesProjectGroupLinkEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesProjectGroupLinkRef01Data = core.ToMapAny(apiEntitiesProjectGroupLinkRef01DataResult)
+		apiEntitiesProjectGroupLinkRef01Data = core.ToMapAny(entityData(apiEntitiesProjectGroupLinkRef01DataResult))
 		if apiEntitiesProjectGroupLinkRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

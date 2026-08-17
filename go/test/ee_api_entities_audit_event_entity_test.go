@@ -51,7 +51,7 @@ func TestEeApiEntitiesAuditEventEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -130,7 +130,7 @@ func TestEeApiEntitiesAuditEventEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		eeApiEntitiesAuditEventRef01DataDt0LoadResult := core.ToMapAny(eeApiEntitiesAuditEventRef01DataDt0Loaded)
+		eeApiEntitiesAuditEventRef01DataDt0LoadResult := core.ToMapAny(entityData(eeApiEntitiesAuditEventRef01DataDt0Loaded))
 		if eeApiEntitiesAuditEventRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

@@ -64,7 +64,7 @@ describe('ApiEntitiesMarkdownUploadAdminEntity', async () => {
     const api_entities_markdown_upload_admin_ref01_match: any = {}
     api_entities_markdown_upload_admin_ref01_match['project_id'] = setup.idmap['project01']
 
-    const api_entities_markdown_upload_admin_ref01_list = await api_entities_markdown_upload_admin_ref01_ent.list(api_entities_markdown_upload_admin_ref01_match)
+    const api_entities_markdown_upload_admin_ref01_list = (await api_entities_markdown_upload_admin_ref01_ent.list(api_entities_markdown_upload_admin_ref01_match)).map((e: any) => e.data())
 
 
   })

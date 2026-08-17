@@ -44,7 +44,7 @@ class GroupExportEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.group_export"), "group_export_ref01"));
 
         $group_export_ref01_data_result = $group_export_ref01_ent->create($group_export_ref01_data, null);
-        $group_export_ref01_data = Helpers::to_map($group_export_ref01_data_result);
+        $group_export_ref01_data = Helpers::to_map(is_object($group_export_ref01_data_result) && method_exists($group_export_ref01_data_result, 'data_get') ? $group_export_ref01_data_result->data_get() : $group_export_ref01_data_result);
         $this->assertNotNull($group_export_ref01_data);
 
         // LOAD

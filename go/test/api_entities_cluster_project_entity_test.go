@@ -60,7 +60,7 @@ func TestApiEntitiesClusterProjectEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesClusterProjectRef01Data = core.ToMapAny(apiEntitiesClusterProjectRef01DataResult)
+		apiEntitiesClusterProjectRef01Data = core.ToMapAny(entityData(apiEntitiesClusterProjectRef01DataResult))
 		if apiEntitiesClusterProjectRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -82,7 +82,7 @@ func TestApiEntitiesClusterProjectEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesClusterProjectRef01ResdataUp0 := core.ToMapAny(apiEntitiesClusterProjectRef01ResdataUp0Result)
+		apiEntitiesClusterProjectRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesClusterProjectRef01ResdataUp0Result))
 		if apiEntitiesClusterProjectRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -101,7 +101,7 @@ func TestApiEntitiesClusterProjectEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesClusterProjectRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesClusterProjectRef01DataDt0Loaded)
+		apiEntitiesClusterProjectRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesClusterProjectRef01DataDt0Loaded))
 		if apiEntitiesClusterProjectRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

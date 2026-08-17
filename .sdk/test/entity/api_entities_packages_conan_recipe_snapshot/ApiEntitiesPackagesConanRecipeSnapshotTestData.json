@@ -2,7 +2,6 @@
   "existing": {
     "api_entities_packages_conan_recipe_snapshot": {
       "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT00": {
-        "recipe_snapshot": {},
         "package_channel": "PACKAGE_CHANNEL01",
         "package_name": "PACKAGE_NAME01",
         "package_username": "PACKAGE_USERNAME01",
@@ -10,7 +9,6 @@
         "id": "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT00"
       },
       "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT01": {
-        "recipe_snapshot": {},
         "package_channel": "PACKAGE_CHANNEL01",
         "package_name": "PACKAGE_NAME01",
         "package_username": "PACKAGE_USERNAME01",
@@ -18,7 +16,6 @@
         "id": "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT01"
       },
       "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT02": {
-        "recipe_snapshot": {},
         "package_channel": "PACKAGE_CHANNEL01",
         "package_name": "PACKAGE_NAME01",
         "package_username": "PACKAGE_USERNAME01",
@@ -29,9 +26,7 @@
   },
   "new": {
     "api_entities_packages_conan_recipe_snapshot": {
-      "api_entities_packages_conan_recipe_snapshot_ref01": {
-        "recipe_snapshot": {}
-      }
+      "api_entities_packages_conan_recipe_snapshot_ref01": {}
     }
   }
 }

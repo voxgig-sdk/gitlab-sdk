@@ -39,7 +39,7 @@ describe("NugetPackageEntity", function()
     assert.are.equal(3, #seen)
 
     -- Inbound: streaming active -> yields each item from the feature.
-    local config = require("config")()
+    local config = require("config_shared")()
     if type(config.feature) == "table" and config.feature.streaming ~= nil then
       local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
       local got = {}
@@ -98,13 +98,13 @@ describe("NugetPackageEntity", function()
       id = nuget_package_ref01_data["id"],
     }
 
-    local nuget_package_ref01_markdef_up0_name = "lower"
+    local nuget_package_ref01_markdef_up0_name = "authors"
     local nuget_package_ref01_markdef_up0_value = "Mark01-nuget_package_ref01_" .. tostring(setup.now)
     nuget_package_ref01_data_up0_up[nuget_package_ref01_markdef_up0_name] = nuget_package_ref01_markdef_up0_value
 
     local nuget_package_ref01_resdata_up0_result, err = nuget_package_ref01_ent:update(nuget_package_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local nuget_package_ref01_resdata_up0 = helpers.to_map(nuget_package_ref01_resdata_up0_result)
+    local nuget_package_ref01_resdata_up0 = helpers.to_map(type(nuget_package_ref01_resdata_up0_result) == 'table' and nuget_package_ref01_resdata_up0_result.data_get and nuget_package_ref01_resdata_up0_result:data_get() or nuget_package_ref01_resdata_up0_result)
     assert.is_not_nil(nuget_package_ref01_resdata_up0)
     assert.are.equal(nuget_package_ref01_resdata_up0["id"], nuget_package_ref01_data_up0_up["id"])
     assert.are.equal(nuget_package_ref01_resdata_up0[nuget_package_ref01_markdef_up0_name], nuget_package_ref01_markdef_up0_value)
@@ -115,7 +115,7 @@ describe("NugetPackageEntity", function()
     }
     local nuget_package_ref01_data_dt0_loaded, err = nuget_package_ref01_ent:load(nuget_package_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local nuget_package_ref01_data_dt0_load_result = helpers.to_map(nuget_package_ref01_data_dt0_loaded)
+    local nuget_package_ref01_data_dt0_load_result = helpers.to_map(type(nuget_package_ref01_data_dt0_loaded) == 'table' and nuget_package_ref01_data_dt0_loaded.data_get and nuget_package_ref01_data_dt0_loaded:data_get() or nuget_package_ref01_data_dt0_loaded)
     assert.is_not_nil(nuget_package_ref01_data_dt0_load_result)
     assert.are.equal(nuget_package_ref01_data_dt0_load_result["id"], nuget_package_ref01_data["id"])
 

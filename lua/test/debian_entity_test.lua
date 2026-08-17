@@ -50,7 +50,7 @@ describe("DebianEntity", function()
 
     local debian_ref01_resdata_up0_result, err = debian_ref01_ent:update(debian_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local debian_ref01_resdata_up0 = helpers.to_map(debian_ref01_resdata_up0_result)
+    local debian_ref01_resdata_up0 = helpers.to_map(type(debian_ref01_resdata_up0_result) == 'table' and debian_ref01_resdata_up0_result.data_get and debian_ref01_resdata_up0_result:data_get() or debian_ref01_resdata_up0_result)
     assert.is_not_nil(debian_ref01_resdata_up0)
 
   end)

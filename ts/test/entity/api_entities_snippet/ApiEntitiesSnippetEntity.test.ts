@@ -63,7 +63,7 @@ describe('ApiEntitiesSnippetEntity', async () => {
     const api_entities_snippet_ref01_ent = client.ApiEntitiesSnippet()
     const api_entities_snippet_ref01_match: any = {}
 
-    const api_entities_snippet_ref01_list = await api_entities_snippet_ref01_ent.list(api_entities_snippet_ref01_match)
+    const api_entities_snippet_ref01_list = (await api_entities_snippet_ref01_ent.list(api_entities_snippet_ref01_match)).map((e: any) => e.data())
 
 
   })

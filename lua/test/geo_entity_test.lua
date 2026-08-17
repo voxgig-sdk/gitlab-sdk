@@ -42,7 +42,7 @@ describe("GeoEntity", function()
 
     local geo_ref01_data_result, err = geo_ref01_ent:create(geo_ref01_data, nil)
     assert.is_nil(err)
-    geo_ref01_data = helpers.to_map(geo_ref01_data_result)
+    geo_ref01_data = helpers.to_map(type(geo_ref01_data_result) == 'table' and geo_ref01_data_result.data_get and geo_ref01_data_result:data_get() or geo_ref01_data_result)
     assert.is_not_nil(geo_ref01_data)
 
     -- LOAD

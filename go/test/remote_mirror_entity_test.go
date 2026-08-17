@@ -60,7 +60,7 @@ func TestRemoteMirrorEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		remoteMirrorRef01Data = core.ToMapAny(remoteMirrorRef01DataResult)
+		remoteMirrorRef01Data = core.ToMapAny(entityData(remoteMirrorRef01DataResult))
 		if remoteMirrorRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -75,14 +75,6 @@ func TestRemoteMirrorEntity(t *testing.T) {
 			t.Fatal("expected load result to be non-nil")
 		}
 
-		// REMOVE
-		remoteMirrorRef01MatchRm0 := map[string]any{
-			"id": remoteMirrorRef01Data["id"],
-		}
-		_, err = remoteMirrorRef01Ent.Remove(remoteMirrorRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

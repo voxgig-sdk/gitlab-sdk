@@ -37,7 +37,7 @@ class ContainerRegistryEventEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.container_registry_event"), "container_registry_event_ref01"))
 
     container_registry_event_ref01_data_result = container_registry_event_ref01_ent.create(container_registry_event_ref01_data, nil)
-    container_registry_event_ref01_data = Helpers.to_map(container_registry_event_ref01_data_result)
+    container_registry_event_ref01_data = Helpers.to_map(container_registry_event_ref01_data_result.respond_to?(:data_get) ? container_registry_event_ref01_data_result.data_get : container_registry_event_ref01_data_result)
     assert !container_registry_event_ref01_data.nil?
 
   end

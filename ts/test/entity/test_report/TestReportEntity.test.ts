@@ -65,7 +65,7 @@ describe('TestReportEntity', async () => {
     test_report_ref01_match['pipeline_id'] = setup.idmap['pipeline01']
     test_report_ref01_match['project_id'] = setup.idmap['project01']
 
-    const test_report_ref01_list = await test_report_ref01_ent.list(test_report_ref01_match)
+    const test_report_ref01_list = (await test_report_ref01_ent.list(test_report_ref01_match)).map((e: any) => e.data())
 
 
   })

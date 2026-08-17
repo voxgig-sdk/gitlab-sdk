@@ -37,7 +37,7 @@ class ApiEntitiesCiBridgeEntity extends GitlabEntityBase<ApiEntitiesCiBridge> {
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesCiBridgeListMatch, ctrl?: Control): Promise<ApiEntitiesCiBridge[]> {
+  async list(this: any, reqmatch?: ApiEntitiesCiBridgeListMatch, ctrl?: Control): Promise<ApiEntitiesCiBridgeEntity[]> {
 
     const utility = this._utility
 

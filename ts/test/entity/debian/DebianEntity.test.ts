@@ -64,7 +64,7 @@ describe('DebianEntity', async () => {
     const debian_ref01_data_up0: any = {}
     debian_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
 
-    const debian_ref01_resdata_up0 = await debian_ref01_ent.update(debian_ref01_data_up0)
+    const debian_ref01_resdata_up0 = (await debian_ref01_ent.update(debian_ref01_data_up0)).data()
     assert(null != debian_ref01_resdata_up0)
 
 

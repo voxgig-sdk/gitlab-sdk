@@ -57,7 +57,7 @@ class ConanPackageEntityTest extends TestCase
         ];
 
         $conan_package_ref01_resdata_up0_result = $conan_package_ref01_ent->update($conan_package_ref01_data_up0_up, null);
-        $conan_package_ref01_resdata_up0 = Helpers::to_map($conan_package_ref01_resdata_up0_result);
+        $conan_package_ref01_resdata_up0 = Helpers::to_map(is_object($conan_package_ref01_resdata_up0_result) && method_exists($conan_package_ref01_resdata_up0_result, 'data_get') ? $conan_package_ref01_resdata_up0_result->data_get() : $conan_package_ref01_resdata_up0_result);
         $this->assertNotNull($conan_package_ref01_resdata_up0);
 
         // LOAD

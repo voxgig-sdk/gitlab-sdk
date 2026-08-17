@@ -43,7 +43,7 @@ main: kit: flow: BasicApiEntitiesTriggerFlow:
         ref: "api_entities_trigger_ref01",
         srcdatavar: "api_entities_trigger_ref01_data",
         suffix: "_up0",
-        textfield: "created_at"
+        textfield: "avatar_path"
       }
 
       op: "update",

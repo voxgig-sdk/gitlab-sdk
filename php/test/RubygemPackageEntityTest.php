@@ -45,7 +45,7 @@ class RubygemPackageEntityTest extends TestCase
         $rubygem_package_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $rubygem_package_ref01_data_result = $rubygem_package_ref01_ent->create($rubygem_package_ref01_data, null);
-        $rubygem_package_ref01_data = Helpers::to_map($rubygem_package_ref01_data_result);
+        $rubygem_package_ref01_data = Helpers::to_map(is_object($rubygem_package_ref01_data_result) && method_exists($rubygem_package_ref01_data_result, 'data_get') ? $rubygem_package_ref01_data_result->data_get() : $rubygem_package_ref01_data_result);
         $this->assertNotNull($rubygem_package_ref01_data);
 
         // LOAD

@@ -60,7 +60,7 @@ func TestApiEntitiesIssueLinkEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesIssueLinkRef01Data = core.ToMapAny(apiEntitiesIssueLinkRef01DataResult)
+		apiEntitiesIssueLinkRef01Data = core.ToMapAny(entityData(apiEntitiesIssueLinkRef01DataResult))
 		if apiEntitiesIssueLinkRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

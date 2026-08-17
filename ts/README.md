@@ -68,8 +68,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const apientitiesaccessrequesters = await client.ApiEntitiesAccessRequester().list()
-  console.log(apientitiesaccessrequesters)
+  const apientitiesmetricimages = await client.ApiEntitiesMetricImage().list()
+  console.log(apientitiesmetricimages)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -135,9 +135,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = GitlabSDK.test()
 
-const apientitiesaccessrequester = await client.ApiEntitiesAccessRequester().list()
-// apientitiesaccessrequester is a bare entity populated with mock response data
-console.log(apientitiesaccessrequester)
+const apientitiesmetricimage = await client.ApiEntitiesMetricImage().list()
+// apientitiesmetricimage is the entity, populated with mock response data
+// — call apientitiesmetricimage.data() for the record itself
+console.log(apientitiesmetricimage)
 ```
 
 You can also use the instance method:
@@ -152,7 +153,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.ApiEntitiesAccessRequester()
+const entity = client.ApiEntitiesMetricImage()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -605,7 +606,7 @@ API path: `/api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_imag
 | --- | --- |
 | `avatar_path` |  |
 | `avatar_url` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `id` |  |
 | `key` |  |
 | `locked` |  |
@@ -632,11 +633,11 @@ API path: `/api/v4/groups/{id}/access_requests`
 | `header_logo` |  |
 | `header_message` |  |
 | `logo` |  |
-| `member_guideline` |  |
+| `member_guidelines` |  |
 | `message_background_color` |  |
 | `message_font_color` |  |
-| `new_project_guideline` |  |
-| `profile_image_guideline` |  |
+| `new_project_guidelines` |  |
+| `profile_image_guidelines` |  |
 | `pwa_description` |  |
 | `pwa_icon` |  |
 | `pwa_name` |  |
@@ -665,17 +666,17 @@ API path: `/api/v4/applications`
 
 | Field | Description |
 | --- | --- |
-| `active_user` |  |
-| `fork` |  |
-| `group` |  |
-| `issue` |  |
-| `merge_request` |  |
-| `milestone` |  |
-| `note` |  |
-| `project` |  |
-| `snippet` |  |
-| `ssh_key` |  |
-| `user` |  |
+| `active_users` |  |
+| `forks` |  |
+| `groups` |  |
+| `issues` |  |
+| `merge_requests` |  |
+| `milestones` |  |
+| `notes` |  |
+| `projects` |  |
+| `snippets` |  |
+| `ssh_keys` |  |
+| `users` |  |
 
 Operations: load.
 
@@ -710,14 +711,22 @@ API path: `/api/v4/avatar`
 
 | Field | Description |
 | --- | --- |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `awardable_id` |  |
 | `awardable_type` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
 | `id` |  |
+| `locked` |  |
 | `name` |  |
+| `public_email` |  |
+| `state` |  |
 | `updated_at` |  |
 | `url` |  |
 | `user` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: create, list, load.
 
@@ -768,7 +777,7 @@ API path: `/api/v4/projects/{id}/job_token_scope/groups_allowlist`
 | --- | --- |
 | `avatar_url` |  |
 | `created_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `description` |  |
 | `forks_count` |  |
@@ -787,7 +796,7 @@ API path: `/api/v4/projects/{id}/job_token_scope/groups_allowlist`
 | `ssh_url_to_repo` |  |
 | `star_count` |  |
 | `tag_list` |  |
-| `topic` |  |
+| `topics` |  |
 | `visibility` |  |
 | `web_url` |  |
 
@@ -835,14 +844,28 @@ API path: `/api/v4/admin/batched_background_migrations`
 
 | Field | Description |
 | --- | --- |
+| `author_email` |  |
+| `author_name` |  |
+| `authored_date` |  |
 | `can_push` |  |
 | `commit` |  |
+| `committed_date` |  |
+| `committer_email` |  |
+| `committer_name` |  |
+| `created_at` |  |
 | `default` |  |
 | `developers_can_merge` |  |
 | `developers_can_push` |  |
+| `extended_trailers` |  |
+| `id` |  |
 | `merged` |  |
+| `message` |  |
 | `name` |  |
+| `parent_ids` |  |
 | `protected` |  |
+| `short_id` |  |
+| `title` |  |
+| `trailers` |  |
 | `web_url` |  |
 
 Operations: create, list, load, update.
@@ -860,18 +883,18 @@ API path: `/api/v4/projects/{id}/repository/branches`
 | `destination_namespace` |  |
 | `destination_slug` |  |
 | `entity_type` |  |
-| `failure` |  |
-| `has_failure` |  |
+| `failures` |  |
+| `has_failures` |  |
 | `id` |  |
-| `migrate_membership` |  |
-| `migrate_project` |  |
+| `migrate_memberships` |  |
+| `migrate_projects` |  |
 | `namespace_id` |  |
 | `parent_id` |  |
 | `project_id` |  |
 | `source_full_path` |  |
 | `source_type` |  |
 | `source_url` |  |
-| `stat` |  |
+| `stats` |  |
 | `status` |  |
 | `updated_at` |  |
 
@@ -898,8 +921,8 @@ API path: `/api/v4/bulk_imports/{import_id}/entities/{entity_id}/failures`
 
 | Field | Description |
 | --- | --- |
-| `batch` |  |
 | `batched` |  |
+| `batches` |  |
 | `batches_count` |  |
 | `error` |  |
 | `relation` |  |
@@ -915,7 +938,7 @@ API path: `/api/v4/groups/{id}/export_relations/status`
 
 | Field | Description |
 | --- | --- |
-| `note` |  |
+| `notes` |  |
 
 Operations: load.
 
@@ -966,7 +989,7 @@ API path: `/api/v4/projects/{id}/catalog/publish`
 | --- | --- |
 | `allow_failure` |  |
 | `archived` |  |
-| `artifact` |  |
+| `artifacts` |  |
 | `artifacts_expire_at` |  |
 | `artifacts_file` |  |
 | `commit` |  |
@@ -1065,16 +1088,16 @@ API path: `/api/v4/runners/{id}/jobs`
 | `blob` |  |
 | `context_project` |  |
 | `context_sha` |  |
-| `error` |  |
+| `errors` |  |
 | `extra` |  |
-| `include` |  |
-| `job` |  |
+| `includes` |  |
+| `jobs` |  |
 | `location` |  |
 | `merged_yaml` |  |
 | `raw` |  |
 | `type` |  |
 | `valid` |  |
-| `warning` |  |
+| `warnings` |  |
 
 Operations: create, list.
 
@@ -1118,7 +1141,7 @@ API path: `/api/v4/projects/{id}/pipelines`
 | `cron_timezone` |  |
 | `description` |  |
 | `id` |  |
-| `input` |  |
+| `inputs` |  |
 | `next_run_at` |  |
 | `owner` |  |
 | `ref` |  |
@@ -1138,13 +1161,13 @@ API path: `/api/v4/projects/{id}/pipeline_schedules`
 | `cron_timezone` |  |
 | `description` |  |
 | `id` |  |
-| `input` |  |
+| `inputs` |  |
 | `last_pipeline` |  |
 | `next_run_at` |  |
 | `owner` |  |
 | `ref` |  |
 | `updated_at` |  |
-| `variable` |  |
+| `variables` |  |
 
 Operations: create, load, update.
 
@@ -1177,19 +1200,16 @@ API path: `/api/v4/projects/{id}/resource_groups`
 
 | Field | Description |
 | --- | --- |
-| `active` |  |
-| `created_at` |  |
-| `created_by` |  |
-| `description` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
 | `id` |  |
-| `ip_address` |  |
-| `is_shared` |  |
-| `job_execution_status` |  |
+| `locked` |  |
 | `name` |  |
-| `online` |  |
-| `paused` |  |
-| `runner_type` |  |
-| `status` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: create, load.
 
@@ -1206,7 +1226,7 @@ API path: `/api/v4/projects/{id}/runners`
 | `created_at` |  |
 | `created_by` |  |
 | `description` |  |
-| `group` |  |
+| `groups` |  |
 | `id` |  |
 | `ip_address` |  |
 | `is_shared` |  |
@@ -1218,7 +1238,7 @@ API path: `/api/v4/projects/{id}/runners`
 | `online` |  |
 | `paused` |  |
 | `platform` |  |
-| `project` |  |
+| `projects` |  |
 | `revision` |  |
 | `run_untagged` |  |
 | `runner_type` |  |
@@ -1263,14 +1283,6 @@ API path: `/api/v4/runners`
 
 | Field | Description |
 | --- | --- |
-| `checksum` |  |
-| `checksum_algorithm` |  |
-| `created_at` |  |
-| `expires_at` |  |
-| `file_extension` |  |
-| `id` |  |
-| `metadata` |  |
-| `name` |  |
 
 Operations: create, load.
 
@@ -1308,7 +1320,7 @@ API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/varia
 | `management_project` |  |
 | `name` |  |
 | `namespace_per_environment` |  |
-| `platform_kubernete` |  |
+| `platform_kubernetes` |  |
 | `platform_type` |  |
 | `provider_gcp` |  |
 | `provider_type` |  |
@@ -1333,7 +1345,7 @@ API path: `/api/v4/admin/clusters/add`
 | `management_project` |  |
 | `name` |  |
 | `namespace_per_environment` |  |
-| `platform_kubernete` |  |
+| `platform_kubernetes` |  |
 | `platform_type` |  |
 | `provider_gcp` |  |
 | `provider_type` |  |
@@ -1357,7 +1369,7 @@ API path: `/api/v4/groups/{id}/clusters/user`
 | `management_project` |  |
 | `name` |  |
 | `namespace_per_environment` |  |
-| `platform_kubernete` |  |
+| `platform_kubernetes` |  |
 | `platform_type` |  |
 | `project` |  |
 | `provider_gcp` |  |
@@ -1372,12 +1384,13 @@ API path: `/api/v4/projects/{id}/clusters/user`
 
 | Field | Description |
 | --- | --- |
-| `config_project` |  |
 | `created_at` |  |
-| `created_by_user_id` |  |
+| `description` |  |
 | `id` |  |
-| `is_receptive` |  |
 | `name` |  |
+| `name_with_namespace` |  |
+| `path` |  |
+| `path_with_namespace` |  |
 
 Operations: create, load.
 
@@ -1436,13 +1449,13 @@ API path: `/api/v4/projects/{id}/cluster_agents/{agent_id}/tokens`
 | `committer_email` |  |
 | `committer_name` |  |
 | `created_at` |  |
-| `extended_trailer` |  |
+| `extended_trailers` |  |
 | `id` |  |
 | `message` |  |
-| `parent_id` |  |
+| `parent_ids` |  |
 | `short_id` |  |
 | `title` |  |
-| `trailer` |  |
+| `trailers` |  |
 | `web_url` |  |
 
 Operations: create, list.
@@ -1460,17 +1473,17 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/context_comm
 | `committer_email` |  |
 | `committer_name` |  |
 | `created_at` |  |
-| `extended_trailer` |  |
+| `extended_trailers` |  |
 | `id` |  |
 | `last_pipeline` |  |
 | `message` |  |
-| `parent_id` |  |
+| `parent_ids` |  |
 | `project_id` |  |
 | `short_id` |  |
-| `stat` |  |
+| `stats` |  |
 | `status` |  |
 | `title` |  |
-| `trailer` |  |
+| `trailers` |  |
 | `web_url` |  |
 
 Operations: create, load, update.
@@ -1482,11 +1495,21 @@ API path: `/api/v4/projects/{id}/repository/commits`
 | Field | Description |
 | --- | --- |
 | `author` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
+| `id` |  |
 | `line` |  |
 | `line_type` |  |
+| `locked` |  |
+| `name` |  |
 | `note` |  |
 | `path` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: create, list.
 
@@ -1520,18 +1543,26 @@ API path: `/api/v4/projects/{id}/repository/commits/{sha}/signature`
 | --- | --- |
 | `allow_failure` |  |
 | `author` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `coverage` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
 | `description` |  |
 | `finished_at` |  |
 | `id` |  |
+| `locked` |  |
 | `name` |  |
 | `pipeline_id` |  |
+| `public_email` |  |
 | `ref` |  |
 | `sha` |  |
 | `started_at` |  |
+| `state` |  |
 | `status` |  |
 | `target_url` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: create, list.
 
@@ -1542,9 +1573,10 @@ API path: `/api/v4/projects/{id}/statuses/{sha}`
 | Field | Description |
 | --- | --- |
 | `commit` |  |
+| `commits` |  |
 | `compare_same_ref` |  |
 | `compare_timeout` |  |
-| `diff` |  |
+| `diffs` |  |
 | `web_url` |  |
 
 Operations: list.
@@ -1565,7 +1597,7 @@ API path: `/api/v4/projects/{id}/repository/compare`
 | `project_id` |  |
 | `size` |  |
 | `status` |  |
-| `tag` |  |
+| `tags` |  |
 | `tags_count` |  |
 
 Operations: list, load.
@@ -1605,9 +1637,9 @@ API path: `/api/v4/projects/{id}/registry/repositories/{repository_id}/tags/{tag
 
 | Field | Description |
 | --- | --- |
-| `addition` |  |
-| `commit` |  |
-| `deletion` |  |
+| `additions` |  |
+| `commits` |  |
+| `deletions` |  |
 | `email` |  |
 | `name` |  |
 
@@ -1665,7 +1697,7 @@ API path: `/api/v4/projects/{id}/deploy_keys`
 | `id` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `username` |  |
 
 Operations: list, load.
@@ -1704,8 +1736,8 @@ API path: `/api/v4/projects/{id}/deployments`
 
 | Field | Description |
 | --- | --- |
-| `approval` |  |
 | `approval_summary` |  |
+| `approvals` |  |
 | `created_at` |  |
 | `deployable` |  |
 | `environment` |  |
@@ -1735,7 +1767,7 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/approval`
 
 | Field | Description |
 | --- | --- |
-| `feature_category` |  |
+| `feature_categories` |  |
 | `table_name` |  |
 
 Operations: load.
@@ -1766,8 +1798,8 @@ API path: `/api/v4/projects/{id}/repository/commits/{sha}/diff`
 
 | Field | Description |
 | --- | --- |
-| `group` |  |
-| `project` |  |
+| `groups` |  |
+| `projects` |  |
 
 Operations: load.
 
@@ -1873,7 +1905,7 @@ API path: `/api/v4/events`
 | Field | Description |
 | --- | --- |
 | `definition` |  |
-| `gate` |  |
+| `gates` |  |
 | `name` |  |
 | `state` |  |
 
@@ -1890,7 +1922,7 @@ API path: `/api/v4/features/{name}`
 | `group` |  |
 | `intended_to_rollout_by` |  |
 | `introduced_by_url` |  |
-| `log_state_change` |  |
+| `log_state_changes` |  |
 | `milestone` |  |
 | `name` |  |
 | `rollout_issue_url` |  |
@@ -1907,10 +1939,13 @@ API path: `/api/v4/features/definitions`
 | `active` |  |
 | `created_at` |  |
 | `description` |  |
+| `id` |  |
 | `name` |  |
-| `scope` |  |
-| `strategy` |  |
+| `parameters` |  |
+| `scopes` |  |
+| `strategies` |  |
 | `updated_at` |  |
+| `user_list` |  |
 | `version` |  |
 
 Operations: create, list, load, update.
@@ -1929,7 +1964,7 @@ API path: `/api/v4/projects/{id}/feature_flags`
 | `path` |  |
 | `project_id` |  |
 | `updated_at` |  |
-| `user_xid` |  |
+| `user_xids` |  |
 
 Operations: create, list, load, update.
 
@@ -1966,8 +2001,8 @@ API path: `/api/v4/namespaces/{id}/gitlab_subscription`
 
 | Field | Description |
 | --- | --- |
-| `time` |  |
-| `version` |  |
+| `Time` |  |
+| `Version` |  |
 
 Operations: load.
 
@@ -1982,10 +2017,10 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.in
 | `auto_duo_code_review_enabled` |  |
 | `avatar_url` |  |
 | `created_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `default_branch_protection` |  |
-| `default_branch_protection_default` |  |
+| `default_branch_protection_defaults` |  |
 | `description` |  |
 | `duo_core_features_enabled` |  |
 | `duo_features_enabled` |  |
@@ -1997,7 +2032,7 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.in
 | `id` |  |
 | `ldap_access` |  |
 | `ldap_cn` |  |
-| `ldap_group_link` |  |
+| `ldap_group_links` |  |
 | `lfs_enabled` |  |
 | `lock_duo_features_enabled` |  |
 | `lock_math_rendering_limits_enabled` |  |
@@ -2013,12 +2048,12 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.in
 | `repository_storage` |  |
 | `request_access_enabled` |  |
 | `require_two_factor_authentication` |  |
-| `root_storage_statistic` |  |
-| `saml_group_link` |  |
+| `root_storage_statistics` |  |
+| `saml_group_links` |  |
 | `share_with_group_lock` |  |
 | `shared_runners_setting` |  |
 | `show_diff_preview_in_email` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `subgroup_creation_level` |  |
 | `two_factor_grace_period` |  |
 | `visibility` |  |
@@ -2041,10 +2076,10 @@ API path: `/api/v4/groups/{id}/archive`
 | `auto_duo_code_review_enabled` |  |
 | `avatar_url` |  |
 | `created_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `default_branch_protection` |  |
-| `default_branch_protection_default` |  |
+| `default_branch_protection_defaults` |  |
 | `description` |  |
 | `duo_core_features_enabled` |  |
 | `duo_features_enabled` |  |
@@ -2056,10 +2091,10 @@ API path: `/api/v4/groups/{id}/archive`
 | `full_name` |  |
 | `full_path` |  |
 | `id` |  |
-| `ip_restriction_range` |  |
+| `ip_restriction_ranges` |  |
 | `ldap_access` |  |
 | `ldap_cn` |  |
-| `ldap_group_link` |  |
+| `ldap_group_links` |  |
 | `lfs_enabled` |  |
 | `lock_duo_features_enabled` |  |
 | `lock_math_rendering_limits_enabled` |  |
@@ -2074,28 +2109,28 @@ API path: `/api/v4/groups/{id}/archive`
 | `path` |  |
 | `prevent_forking_outside_group` |  |
 | `prevent_sharing_groups_outside_hierarchy` |  |
-| `project` |  |
 | `project_creation_level` |  |
+| `projects` |  |
 | `repository_storage` |  |
 | `request_access_enabled` |  |
 | `require_two_factor_authentication` |  |
-| `root_storage_statistic` |  |
+| `root_storage_statistics` |  |
 | `runners_token` |  |
-| `saml_group_link` |  |
+| `saml_group_links` |  |
 | `service_access_tokens_expiration_enforced` |  |
 | `share_with_group_lock` |  |
-| `shared_project` |  |
+| `shared_projects` |  |
 | `shared_runners_minutes_limit` |  |
 | `shared_runners_setting` |  |
-| `shared_with_group` |  |
+| `shared_with_groups` |  |
 | `show_diff_preview_in_email` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `subgroup_creation_level` |  |
 | `two_factor_grace_period` |  |
 | `unique_project_download_limit` |  |
 | `unique_project_download_limit_alertlist` |  |
 | `unique_project_download_limit_allowlist` |  |
-| `unique_project_download_limit_interval_in_second` |  |
+| `unique_project_download_limit_interval_in_seconds` |  |
 | `visibility` |  |
 | `web_based_commit_signing_enabled` |  |
 | `web_url` |  |
@@ -2112,20 +2147,20 @@ API path: `/api/v4/groups/{id}/share`
 | `alert_status` |  |
 | `branch_filter_strategy` |  |
 | `created_at` |  |
-| `custom_header` |  |
+| `custom_headers` |  |
 | `custom_webhook_template` |  |
 | `description` |  |
 | `disabled_until` |  |
 | `enable_ssl_verification` |  |
 | `id` |  |
-| `merge_requests_event` |  |
+| `merge_requests_events` |  |
 | `name` |  |
-| `push_event` |  |
+| `push_events` |  |
 | `push_events_branch_filter` |  |
-| `repository_update_event` |  |
-| `tag_push_event` |  |
+| `repository_update_events` |  |
+| `tag_push_events` |  |
 | `url` |  |
-| `url_variable` |  |
+| `url_variables` |  |
 
 Operations: create, list, load, update.
 
@@ -2135,30 +2170,6 @@ API path: `/api/v4/hooks`
 
 | Field | Description |
 | --- | --- |
-| `active` |  |
-| `alert_event` |  |
-| `comment_on_event_enabled` |  |
-| `commit_event` |  |
-| `confidential_issues_event` |  |
-| `confidential_note_event` |  |
-| `created_at` |  |
-| `deployment_event` |  |
-| `id` |  |
-| `incident_event` |  |
-| `inherited` |  |
-| `issues_event` |  |
-| `job_event` |  |
-| `merge_requests_event` |  |
-| `note_event` |  |
-| `pipeline_event` |  |
-| `property` |  |
-| `push_event` |  |
-| `slug` |  |
-| `tag_push_event` |  |
-| `title` |  |
-| `updated_at` |  |
-| `vulnerability_event` |  |
-| `wiki_page_event` |  |
 
 Operations: load.
 
@@ -2169,28 +2180,28 @@ API path: `/api/v4/groups/{id}/integrations/{slug}`
 | Field | Description |
 | --- | --- |
 | `active` |  |
-| `alert_event` |  |
+| `alert_events` |  |
 | `comment_on_event_enabled` |  |
-| `commit_event` |  |
-| `confidential_issues_event` |  |
-| `confidential_note_event` |  |
+| `commit_events` |  |
+| `confidential_issues_events` |  |
+| `confidential_note_events` |  |
 | `created_at` |  |
-| `deployment_event` |  |
+| `deployment_events` |  |
 | `id` |  |
-| `incident_event` |  |
+| `incident_events` |  |
 | `inherited` |  |
-| `issues_event` |  |
-| `job_event` |  |
-| `merge_requests_event` |  |
-| `note_event` |  |
-| `pipeline_event` |  |
-| `push_event` |  |
+| `issues_events` |  |
+| `job_events` |  |
+| `merge_requests_events` |  |
+| `note_events` |  |
+| `pipeline_events` |  |
+| `push_events` |  |
 | `slug` |  |
-| `tag_push_event` |  |
+| `tag_push_events` |  |
 | `title` |  |
 | `updated_at` |  |
-| `vulnerability_event` |  |
-| `wiki_page_event` |  |
+| `vulnerability_events` |  |
+| `wiki_page_events` |  |
 
 Operations: list, update.
 
@@ -2230,6 +2241,7 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time`
 | Field | Description |
 | --- | --- |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_issues_count` |  |
 | `closed_at` |  |
@@ -2238,11 +2250,11 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time`
 | `created_at` |  |
 | `description` |  |
 | `discussion_locked` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `due_date` |  |
 | `epic` |  |
 | `epic_iid` |  |
-| `has_task` |  |
+| `has_tasks` |  |
 | `health_status` |  |
 | `id` |  |
 | `iid` |  |
@@ -2250,24 +2262,24 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time`
 | `imported_from` |  |
 | `issue_type` |  |
 | `iteration` |  |
-| `label` |  |
-| `link` |  |
+| `labels` |  |
+| `links` |  |
 | `merge_requests_count` |  |
 | `milestone` |  |
 | `moved_to_id` |  |
 | `project_id` |  |
-| `reference` |  |
+| `references` |  |
 | `service_desk_reply_to` |  |
 | `severity` |  |
 | `state` |  |
 | `subscribed` |  |
 | `task_completion_status` |  |
 | `task_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `type` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
 | `weight` |  |
@@ -2292,15 +2304,15 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/links`
 
 | Field | Description |
 | --- | --- |
-| `condition` |  |
+| `conditions` |  |
 | `content` |  |
 | `description` |  |
 | `html_url` |  |
 | `key` |  |
-| `limitation` |  |
+| `limitations` |  |
 | `name` |  |
 | `nickname` |  |
-| `permission` |  |
+| `permissions` |  |
 | `popular` |  |
 | `source_url` |  |
 
@@ -2340,7 +2352,7 @@ API path: `/api/v4/groups/{id}/uploads`
 | `avatar_url` |  |
 | `created_at` |  |
 | `created_by` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `email` |  |
 | `expires_at` |  |
 | `group_saml_identity` |  |
@@ -2371,6 +2383,7 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `allow_maintainer_to_push` |  |
 | `approvals_before_merge` |  |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_discussions_resolved` |  |
 | `changes_count` |  |
@@ -2380,21 +2393,21 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `description` |  |
 | `description_html` |  |
 | `detailed_merge_status` |  |
-| `diff_ref` |  |
+| `diff_refs` |  |
 | `discussion_locked` |  |
 | `diverged_commits_count` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `draft` |  |
 | `first_contribution` |  |
 | `first_deployed_to_production_at` |  |
 | `force_remove_source_branch` |  |
-| `has_conflict` |  |
+| `has_conflicts` |  |
 | `head_pipeline` |  |
 | `id` |  |
 | `iid` |  |
 | `imported` |  |
 | `imported_from` |  |
-| `label` |  |
+| `labels` |  |
 | `latest_build_finished_at` |  |
 | `latest_build_started_at` |  |
 | `merge_after` |  |
@@ -2402,7 +2415,7 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `merge_error` |  |
 | `merge_status` |  |
 | `merge_user` |  |
-| `merge_when_pipeline_succeed` |  |
+| `merge_when_pipeline_succeeds` |  |
 | `merged_at` |  |
 | `merged_by` |  |
 | `milestone` |  |
@@ -2411,7 +2424,8 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `project_id` |  |
 | `rebase_in_progress` |  |
 | `reference` |  |
-| `reviewer` |  |
+| `references` |  |
+| `reviewers` |  |
 | `sha` |  |
 | `should_remove_source_branch` |  |
 | `source_branch` |  |
@@ -2424,11 +2438,11 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `target_branch` |  |
 | `target_project_id` |  |
 | `task_completion_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `title_html` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
@@ -2442,10 +2456,8 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/cancel_merge
 
 | Field | Description |
 | --- | --- |
-| `approved` |  |
-| `approved_by` |  |
-| `user_can_approve` |  |
-| `user_has_approved` |  |
+| `approved_at` |  |
+| `user` |  |
 
 Operations: create, load.
 
@@ -2459,6 +2471,7 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve`
 | `allow_maintainer_to_push` |  |
 | `approvals_before_merge` |  |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_discussions_resolved` |  |
 | `closed_at` |  |
@@ -2468,27 +2481,28 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve`
 | `description_html` |  |
 | `detailed_merge_status` |  |
 | `discussion_locked` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `draft` |  |
 | `force_remove_source_branch` |  |
-| `has_conflict` |  |
+| `has_conflicts` |  |
 | `id` |  |
 | `iid` |  |
 | `imported` |  |
 | `imported_from` |  |
-| `label` |  |
+| `labels` |  |
 | `merge_after` |  |
 | `merge_commit_sha` |  |
 | `merge_status` |  |
 | `merge_user` |  |
-| `merge_when_pipeline_succeed` |  |
+| `merge_when_pipeline_succeeds` |  |
 | `merged_at` |  |
 | `merged_by` |  |
 | `milestone` |  |
 | `prepared_at` |  |
 | `project_id` |  |
 | `reference` |  |
-| `reviewer` |  |
+| `references` |  |
+| `reviewers` |  |
 | `sha` |  |
 | `should_remove_source_branch` |  |
 | `source_branch` |  |
@@ -2500,11 +2514,11 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve`
 | `target_branch` |  |
 | `target_project_id` |  |
 | `task_completion_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `title_html` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
 | `work_in_progress` |  |
@@ -2521,9 +2535,10 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `allow_maintainer_to_push` |  |
 | `approvals_before_merge` |  |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_discussions_resolved` |  |
-| `change` |  |
+| `changes` |  |
 | `changes_count` |  |
 | `closed_at` |  |
 | `closed_by` |  |
@@ -2531,21 +2546,21 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `description` |  |
 | `description_html` |  |
 | `detailed_merge_status` |  |
-| `diff_ref` |  |
+| `diff_refs` |  |
 | `discussion_locked` |  |
 | `diverged_commits_count` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `draft` |  |
 | `first_contribution` |  |
 | `first_deployed_to_production_at` |  |
 | `force_remove_source_branch` |  |
-| `has_conflict` |  |
+| `has_conflicts` |  |
 | `head_pipeline` |  |
 | `id` |  |
 | `iid` |  |
 | `imported` |  |
 | `imported_from` |  |
-| `label` |  |
+| `labels` |  |
 | `latest_build_finished_at` |  |
 | `latest_build_started_at` |  |
 | `merge_after` |  |
@@ -2553,7 +2568,7 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `merge_error` |  |
 | `merge_status` |  |
 | `merge_user` |  |
-| `merge_when_pipeline_succeed` |  |
+| `merge_when_pipeline_succeeds` |  |
 | `merged_at` |  |
 | `merged_by` |  |
 | `milestone` |  |
@@ -2563,7 +2578,8 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `project_id` |  |
 | `rebase_in_progress` |  |
 | `reference` |  |
-| `reviewer` |  |
+| `references` |  |
+| `reviewers` |  |
 | `sha` |  |
 | `should_remove_source_branch` |  |
 | `source_branch` |  |
@@ -2576,11 +2592,11 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `target_branch` |  |
 | `target_project_id` |  |
 | `task_completion_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `title_html` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
@@ -2613,9 +2629,9 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/versions`
 | Field | Description |
 | --- | --- |
 | `base_commit_sha` |  |
-| `commit` |  |
+| `commits` |  |
 | `created_at` |  |
-| `diff` |  |
+| `diffs` |  |
 | `head_commit_sha` |  |
 | `id` |  |
 | `merge_request_id` |  |
@@ -2632,9 +2648,16 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/versions/{ve
 
 | Field | Description |
 | --- | --- |
-| `created_at` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
+| `id` |  |
+| `locked` |  |
+| `name` |  |
+| `public_email` |  |
 | `state` |  |
-| `user` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: load.
 
@@ -2659,8 +2682,16 @@ API path: `/api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_imag
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `note` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
+| `id` |  |
+| `locked` |  |
+| `name` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: load.
 
@@ -2681,7 +2712,7 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/closes_issue
 | `kind` |  |
 | `max_seats_used` |  |
 | `max_seats_used_changed_at` |  |
-| `members_count_with_descendant` |  |
+| `members_count_with_descendants` |  |
 | `name` |  |
 | `parent_id` |  |
 | `path` |  |
@@ -2702,8 +2733,8 @@ API path: `/api/v4/namespaces`
 
 | Field | Description |
 | --- | --- |
-| `exist` |  |
-| `suggest` |  |
+| `exists` |  |
+| `suggests` |  |
 
 Operations: list.
 
@@ -2726,9 +2757,9 @@ API path: `/api/v4/namespaces/{id}/storage/limit_exclusion`
 
 | Field | Description |
 | --- | --- |
-| `dist_tag` |  |
+| `disttags` |  |
 | `name` |  |
-| `version` |  |
+| `versions` |  |
 
 Operations: load.
 
@@ -2738,7 +2769,6 @@ API path: `/api/v4/groups/{id}/-/packages/npm/*package_name`
 
 | Field | Description |
 | --- | --- |
-| `dist_tag` |  |
 
 Operations: load.
 
@@ -2748,7 +2778,7 @@ API path: `/api/v4/groups/{id}/-/packages/npm/-/package/*package_name/dist-tags`
 
 | Field | Description |
 | --- | --- |
-| `version` |  |
+| `versions` |  |
 
 Operations: list.
 
@@ -2758,19 +2788,20 @@ API path: `/api/v4/projects/{id}/packages/nuget/download/*package_name/index`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
+| `authors` |  |
 | `description` |  |
-| `icon_url` |  |
+| `iconUrl` |  |
 | `id` |  |
-| `license_url` |  |
-| `project_url` |  |
+| `licenseUrl` |  |
+| `projectUrl` |  |
 | `summary` |  |
-| `tag` |  |
+| `tags` |  |
 | `title` |  |
-| `total_download` |  |
+| `totalDownloads` |  |
 | `type` |  |
 | `verified` |  |
 | `version` |  |
+| `versions` |  |
 
 Operations: list.
 
@@ -2780,7 +2811,7 @@ API path: `/api/v4/groups/{id}/-/packages/nuget/query`
 
 | Field | Description |
 | --- | --- |
-| `resource` |  |
+| `resources` |  |
 | `version` |  |
 
 Operations: list.
@@ -2804,15 +2835,17 @@ API path: `/api/v4/organizations`
 | `created_at` |  |
 | `id` |  |
 | `last_downloaded_at` |  |
-| `link` |  |
+| `links` |  |
 | `name` |  |
 | `package_type` |  |
 | `pipeline` |  |
+| `pipelines` |  |
 | `project_id` |  |
 | `project_path` |  |
 | `status` |  |
-| `tag` |  |
+| `tags` |  |
 | `version` |  |
+| `versions` |  |
 
 Operations: list, load.
 
@@ -2829,7 +2862,7 @@ API path: `/api/v4/groups/{id}/packages`
 | `file_sha256` |  |
 | `id` |  |
 | `package_id` |  |
-| `pipeline` |  |
+| `pipelines` |  |
 | `size` |  |
 
 Operations: list.
@@ -2840,16 +2873,15 @@ API path: `/api/v4/projects/{id}/packages/{package_id}/package_files`
 
 | Field | Description |
 | --- | --- |
-| `created_at` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
 | `id` |  |
-| `iid` |  |
-| `project_id` |  |
-| `ref` |  |
-| `sha` |  |
-| `source` |  |
-| `status` |  |
-| `updated_at` |  |
-| `user` |  |
+| `locked` |  |
+| `name` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
 | `web_url` |  |
 
 Operations: load.
@@ -2860,7 +2892,6 @@ API path: `/api/v4/projects/{id}/packages/{package_id}/pipelines`
 
 | Field | Description |
 | --- | --- |
-| `file` |  |
 
 Operations: load.
 
@@ -2870,7 +2901,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `package_url` |  |
 
 Operations: load.
 
@@ -2891,7 +2921,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `package_snapshot` |  |
 
 Operations: load.
 
@@ -2901,7 +2930,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `recipe_url` |  |
 
 Operations: load.
 
@@ -2922,7 +2950,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `recipe_snapshot` |  |
 
 Operations: load.
 
@@ -2943,7 +2970,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `upload_url` |  |
 
 Operations: create.
 
@@ -2953,15 +2979,15 @@ API path: `/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `architecture` |  |
+| `architectures` |  |
 | `codename` |  |
-| `component` |  |
+| `components` |  |
 | `description` |  |
 | `id` |  |
 | `label` |  |
 | `origin` |  |
 | `suite` |  |
-| `valid_time_duration_second` |  |
+| `valid_time_duration_seconds` |  |
 | `version` |  |
 
 Operations: create, list, load, update.
@@ -2974,8 +3000,11 @@ API path: `/api/v4/groups/{id}/-/debian_distributions`
 | --- | --- |
 | `auto_ssl_enabled` |  |
 | `certificate` |  |
+| `certificate_text` |  |
 | `domain` |  |
 | `enabled_until` |  |
+| `expired` |  |
+| `subject` |  |
 | `url` |  |
 | `verification_code` |  |
 | `verified` |  |
@@ -2988,14 +3017,8 @@ API path: `/api/v4/projects/{id}/pages/domains`
 
 | Field | Description |
 | --- | --- |
-| `auto_ssl_enabled` |  |
-| `certificate_expiration` |  |
-| `domain` |  |
-| `enabled_until` |  |
-| `project_id` |  |
-| `url` |  |
-| `verification_code` |  |
-| `verified` |  |
+| `expiration` |  |
+| `expired` |  |
 
 Operations: load.
 
@@ -3013,7 +3036,7 @@ API path: `/api/v4/pages/domains`
 | `last_used_at` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `user_id` |  |
 
 Operations: list.
@@ -3030,10 +3053,10 @@ API path: `/api/v4/personal_access_tokens/self/associations`
 | `expires_at` |  |
 | `id` |  |
 | `last_used_at` |  |
-| `last_used_ip` |  |
+| `last_used_ips` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `user_id` |  |
 
 Operations: list, load.
@@ -3052,7 +3075,7 @@ API path: `/api/v4/personal_access_tokens`
 | `last_used_at` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `token` |  |
 | `user_id` |  |
 
@@ -3067,8 +3090,8 @@ API path: `/api/v4/personal_access_tokens/{id}/rotate`
 | `author` |  |
 | `created_at` |  |
 | `description` |  |
-| `file` |  |
 | `file_name` |  |
+| `files` |  |
 | `http_url_to_repo` |  |
 | `id` |  |
 | `imported` |  |
@@ -3090,29 +3113,6 @@ API path: `/api/v4/snippets`
 
 | Field | Description |
 | --- | --- |
-| `ci_active_job` |  |
-| `ci_instance_level_variable` |  |
-| `ci_needs_size_limit` |  |
-| `ci_pipeline_schedule` |  |
-| `ci_pipeline_size` |  |
-| `ci_project_subscription` |  |
-| `ci_registered_group_runner` |  |
-| `ci_registered_project_runner` |  |
-| `conan_max_file_size` |  |
-| `dotenv_size` |  |
-| `dotenv_variable` |  |
-| `enforcement_limit` |  |
-| `generic_packages_max_file_size` |  |
-| `helm_max_file_size` |  |
-| `limits_history` |  |
-| `maven_max_file_size` |  |
-| `notification_limit` |  |
-| `npm_max_file_size` |  |
-| `nuget_max_file_size` |  |
-| `pipeline_hierarchy_size` |  |
-| `pypi_max_file_size` |  |
-| `storage_size_limit` |  |
-| `terraform_module_max_file_size` |  |
 
 Operations: load, update.
 
@@ -3127,11 +3127,11 @@ API path: `/api/v4/application/plan_limits`
 | `analytics_access_level` |  |
 | `approvals_before_merge` |  |
 | `archived` |  |
-| `auto_cancel_pending_pipeline` |  |
+| `auto_cancel_pending_pipelines` |  |
 | `auto_devops_deploy_strategy` |  |
 | `auto_devops_enabled` |  |
 | `auto_duo_code_review_enabled` |  |
-| `autoclose_referenced_issue` |  |
+| `autoclose_referenced_issues` |  |
 | `avatar_url` |  |
 | `build_git_strategy` |  |
 | `build_timeout` |  |
@@ -3140,23 +3140,23 @@ API path: `/api/v4/application/plan_limits`
 | `ci_allow_fork_pipelines_to_run_in_parent_project` |  |
 | `ci_config_path` |  |
 | `ci_default_git_depth` |  |
-| `ci_delete_pipelines_in_second` |  |
+| `ci_delete_pipelines_in_seconds` |  |
 | `ci_forward_deployment_enabled` |  |
 | `ci_forward_deployment_rollback_allowed` |  |
-| `ci_id_token_sub_claim_component` |  |
+| `ci_id_token_sub_claim_components` |  |
 | `ci_job_token_scope_enabled` |  |
 | `ci_pipeline_variables_minimum_override_role` |  |
 | `ci_push_repository_for_job_token_allowed` |  |
 | `ci_restrict_pipeline_cancellation_role` |  |
-| `ci_separated_cache` |  |
-| `compliance_framework` |  |
+| `ci_separated_caches` |  |
+| `compliance_frameworks` |  |
 | `container_expiration_policy` |  |
 | `container_registry_access_level` |  |
 | `container_registry_enabled` |  |
 | `container_registry_image_prefix` |  |
 | `created_at` |  |
 | `creator_id` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `description` |  |
 | `description_html` |  |
@@ -3164,7 +3164,7 @@ API path: `/api/v4/application/plan_limits`
 | `emails_disabled` |  |
 | `emails_enabled` |  |
 | `empty_repo` |  |
-| `enforce_auth_checks_on_upload` |  |
+| `enforce_auth_checks_on_uploads` |  |
 | `environments_access_level` |  |
 | `external_authorization_classification_label` |  |
 | `feature_flags_access_level` |  |
@@ -3189,7 +3189,7 @@ API path: `/api/v4/application/plan_limits`
 | `lfs_enabled` |  |
 | `license` |  |
 | `license_url` |  |
-| `link` |  |
+| `links` |  |
 | `marked_for_deletion_at` |  |
 | `marked_for_deletion_on` |  |
 | `max_artifacts_size` |  |
@@ -3204,8 +3204,8 @@ API path: `/api/v4/application/plan_limits`
 | `merge_trains_enabled` |  |
 | `merge_trains_skip_train_allowed` |  |
 | `mirror` |  |
-| `mirror_overwrites_diverged_branch` |  |
-| `mirror_trigger_build` |  |
+| `mirror_overwrites_diverged_branches` |  |
+| `mirror_trigger_builds` |  |
 | `mirror_user_id` |  |
 | `model_experiments_access_level` |  |
 | `model_registry_access_level` |  |
@@ -3216,8 +3216,8 @@ API path: `/api/v4/application/plan_limits`
 | `namespace` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` |  |
 | `only_allow_merge_if_all_status_checks_passed` |  |
-| `only_allow_merge_if_pipeline_succeed` |  |
-| `only_mirror_protected_branch` |  |
+| `only_allow_merge_if_pipeline_succeeds` |  |
+| `only_mirror_protected_branches` |  |
 | `open_issues_count` |  |
 | `owner` |  |
 | `package_registry_access_level` |  |
@@ -3228,7 +3228,7 @@ API path: `/api/v4/application/plan_limits`
 | `pre_receive_secret_detection_enabled` |  |
 | `prevent_merge_without_jira_issue` |  |
 | `printing_merge_request_link_enabled` |  |
-| `public_job` |  |
+| `public_jobs` |  |
 | `readme_url` |  |
 | `releases_access_level` |  |
 | `remove_source_branch_after_merge` |  |
@@ -3238,9 +3238,9 @@ API path: `/api/v4/application/plan_limits`
 | `request_access_enabled` |  |
 | `requirements_access_level` |  |
 | `requirements_enabled` |  |
-| `resolve_outdated_diff_discussion` |  |
+| `resolve_outdated_diff_discussions` |  |
 | `resource_group_default_process_mode` |  |
-| `restrict_user_defined_variable` |  |
+| `restrict_user_defined_variables` |  |
 | `runner_token_expiration_interval` |  |
 | `runners_token` |  |
 | `secret_push_protection_enabled` |  |
@@ -3249,7 +3249,7 @@ API path: `/api/v4/application/plan_limits`
 | `service_desk_address` |  |
 | `service_desk_enabled` |  |
 | `shared_runners_enabled` |  |
-| `shared_with_group` |  |
+| `shared_with_groups` |  |
 | `show_diff_preview_in_email` |  |
 | `snippets_access_level` |  |
 | `snippets_enabled` |  |
@@ -3258,13 +3258,13 @@ API path: `/api/v4/application/plan_limits`
 | `squash_option` |  |
 | `ssh_url_to_repo` |  |
 | `star_count` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `suggestion_commit_message` |  |
 | `tag_list` |  |
-| `topic` |  |
+| `topics` |  |
 | `updated_at` |  |
 | `visibility` |  |
-| `warn_about_potentially_unwanted_character` |  |
+| `warn_about_potentially_unwanted_characters` |  |
 | `web_based_commit_signing_enabled` |  |
 | `web_url` |  |
 | `wiki_access_level` |  |
@@ -3278,7 +3278,8 @@ API path: `/api/v4/projects/{id}/fork/{forked_from_id}`
 
 | Field | Description |
 | --- | --- |
-| `fetch` |  |
+| `days` |  |
+| `total` |  |
 
 Operations: load.
 
@@ -3288,15 +3289,8 @@ API path: `/api/v4/projects/{id}/statistics`
 
 | Field | Description |
 | --- | --- |
-| `created_at` |  |
-| `description` |  |
-| `export_status` |  |
-| `id` |  |
-| `link` |  |
-| `name` |  |
-| `name_with_namespace` |  |
-| `path` |  |
-| `path_with_namespace` |  |
+| `api_url` |  |
+| `web_url` |  |
 
 Operations: load.
 
@@ -3317,36 +3311,36 @@ API path: `/api/v4/projects/{id}/share`
 | --- | --- |
 | `alert_status` |  |
 | `branch_filter_strategy` |  |
-| `confidential_issues_event` |  |
-| `confidential_note_event` |  |
+| `confidential_issues_events` |  |
+| `confidential_note_events` |  |
 | `created_at` |  |
-| `custom_header` |  |
+| `custom_headers` |  |
 | `custom_webhook_template` |  |
-| `deployment_event` |  |
+| `deployment_events` |  |
 | `description` |  |
 | `disabled_until` |  |
-| `emoji_event` |  |
+| `emoji_events` |  |
 | `enable_ssl_verification` |  |
-| `feature_flag_event` |  |
+| `feature_flag_events` |  |
 | `id` |  |
-| `issues_event` |  |
-| `job_event` |  |
-| `merge_requests_event` |  |
-| `milestone_event` |  |
+| `issues_events` |  |
+| `job_events` |  |
+| `merge_requests_events` |  |
+| `milestone_events` |  |
 | `name` |  |
-| `note_event` |  |
-| `pipeline_event` |  |
+| `note_events` |  |
+| `pipeline_events` |  |
 | `project_id` |  |
-| `push_event` |  |
+| `push_events` |  |
 | `push_events_branch_filter` |  |
-| `releases_event` |  |
-| `repository_update_event` |  |
-| `resource_access_token_event` |  |
-| `tag_push_event` |  |
+| `releases_events` |  |
+| `repository_update_events` |  |
+| `resource_access_token_events` |  |
+| `tag_push_events` |  |
 | `url` |  |
-| `url_variable` |  |
-| `vulnerability_event` |  |
-| `wiki_page_event` |  |
+| `url_variables` |  |
+| `vulnerability_events` |  |
+| `wiki_page_events` |  |
 
 Operations: create, list, load, update.
 
@@ -3399,8 +3393,8 @@ API path: `/api/v4/projects/{id}/storage`
 | `author` |  |
 | `created_at` |  |
 | `description` |  |
-| `file` |  |
 | `file_name` |  |
+| `files` |  |
 | `http_url_to_repo` |  |
 | `id` |  |
 | `imported` |  |
@@ -3436,11 +3430,11 @@ API path: `/api/v4/projects/{id}/uploads`
 | `analytics_access_level` |  |
 | `approvals_before_merge` |  |
 | `archived` |  |
-| `auto_cancel_pending_pipeline` |  |
+| `auto_cancel_pending_pipelines` |  |
 | `auto_devops_deploy_strategy` |  |
 | `auto_devops_enabled` |  |
 | `auto_duo_code_review_enabled` |  |
-| `autoclose_referenced_issue` |  |
+| `autoclose_referenced_issues` |  |
 | `avatar_url` |  |
 | `build_git_strategy` |  |
 | `build_timeout` |  |
@@ -3449,23 +3443,23 @@ API path: `/api/v4/projects/{id}/uploads`
 | `ci_allow_fork_pipelines_to_run_in_parent_project` |  |
 | `ci_config_path` |  |
 | `ci_default_git_depth` |  |
-| `ci_delete_pipelines_in_second` |  |
+| `ci_delete_pipelines_in_seconds` |  |
 | `ci_forward_deployment_enabled` |  |
 | `ci_forward_deployment_rollback_allowed` |  |
-| `ci_id_token_sub_claim_component` |  |
+| `ci_id_token_sub_claim_components` |  |
 | `ci_job_token_scope_enabled` |  |
 | `ci_pipeline_variables_minimum_override_role` |  |
 | `ci_push_repository_for_job_token_allowed` |  |
 | `ci_restrict_pipeline_cancellation_role` |  |
-| `ci_separated_cache` |  |
-| `compliance_framework` |  |
+| `ci_separated_caches` |  |
+| `compliance_frameworks` |  |
 | `container_expiration_policy` |  |
 | `container_registry_access_level` |  |
 | `container_registry_enabled` |  |
 | `container_registry_image_prefix` |  |
 | `created_at` |  |
 | `creator_id` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `description` |  |
 | `description_html` |  |
@@ -3473,7 +3467,7 @@ API path: `/api/v4/projects/{id}/uploads`
 | `emails_disabled` |  |
 | `emails_enabled` |  |
 | `empty_repo` |  |
-| `enforce_auth_checks_on_upload` |  |
+| `enforce_auth_checks_on_uploads` |  |
 | `environments_access_level` |  |
 | `external_authorization_classification_label` |  |
 | `feature_flags_access_level` |  |
@@ -3498,7 +3492,7 @@ API path: `/api/v4/projects/{id}/uploads`
 | `lfs_enabled` |  |
 | `license` |  |
 | `license_url` |  |
-| `link` |  |
+| `links` |  |
 | `marked_for_deletion_at` |  |
 | `marked_for_deletion_on` |  |
 | `max_artifacts_size` |  |
@@ -3513,8 +3507,8 @@ API path: `/api/v4/projects/{id}/uploads`
 | `merge_trains_enabled` |  |
 | `merge_trains_skip_train_allowed` |  |
 | `mirror` |  |
-| `mirror_overwrites_diverged_branch` |  |
-| `mirror_trigger_build` |  |
+| `mirror_overwrites_diverged_branches` |  |
+| `mirror_trigger_builds` |  |
 | `mirror_user_id` |  |
 | `model_experiments_access_level` |  |
 | `model_registry_access_level` |  |
@@ -3525,8 +3519,8 @@ API path: `/api/v4/projects/{id}/uploads`
 | `namespace` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` |  |
 | `only_allow_merge_if_all_status_checks_passed` |  |
-| `only_allow_merge_if_pipeline_succeed` |  |
-| `only_mirror_protected_branch` |  |
+| `only_allow_merge_if_pipeline_succeeds` |  |
+| `only_mirror_protected_branches` |  |
 | `open_issues_count` |  |
 | `owner` |  |
 | `package_registry_access_level` |  |
@@ -3534,11 +3528,11 @@ API path: `/api/v4/projects/{id}/uploads`
 | `pages_access_level` |  |
 | `path` |  |
 | `path_with_namespace` |  |
-| `permission` |  |
+| `permissions` |  |
 | `pre_receive_secret_detection_enabled` |  |
 | `prevent_merge_without_jira_issue` |  |
 | `printing_merge_request_link_enabled` |  |
-| `public_job` |  |
+| `public_jobs` |  |
 | `readme_url` |  |
 | `releases_access_level` |  |
 | `remove_source_branch_after_merge` |  |
@@ -3548,9 +3542,9 @@ API path: `/api/v4/projects/{id}/uploads`
 | `request_access_enabled` |  |
 | `requirements_access_level` |  |
 | `requirements_enabled` |  |
-| `resolve_outdated_diff_discussion` |  |
+| `resolve_outdated_diff_discussions` |  |
 | `resource_group_default_process_mode` |  |
-| `restrict_user_defined_variable` |  |
+| `restrict_user_defined_variables` |  |
 | `runner_token_expiration_interval` |  |
 | `runners_token` |  |
 | `secret_push_protection_enabled` |  |
@@ -3559,7 +3553,7 @@ API path: `/api/v4/projects/{id}/uploads`
 | `service_desk_address` |  |
 | `service_desk_enabled` |  |
 | `shared_runners_enabled` |  |
-| `shared_with_group` |  |
+| `shared_with_groups` |  |
 | `show_diff_preview_in_email` |  |
 | `snippets_access_level` |  |
 | `snippets_enabled` |  |
@@ -3568,13 +3562,13 @@ API path: `/api/v4/projects/{id}/uploads`
 | `squash_option` |  |
 | `ssh_url_to_repo` |  |
 | `star_count` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `suggestion_commit_message` |  |
 | `tag_list` |  |
-| `topic` |  |
+| `topics` |  |
 | `updated_at` |  |
 | `visibility` |  |
-| `warn_about_potentially_unwanted_character` |  |
+| `warn_about_potentially_unwanted_characters` |  |
 | `web_based_commit_signing_enabled` |  |
 | `web_url` |  |
 | `wiki_access_level` |  |
@@ -3637,10 +3631,10 @@ API path: `/api/v4/topics`
 | `code_owner_approval_required` |  |
 | `id` |  |
 | `inherited` |  |
-| `merge_access_level` |  |
+| `merge_access_levels` |  |
 | `name` |  |
-| `push_access_level` |  |
-| `unprotect_access_level` |  |
+| `push_access_levels` |  |
+| `unprotect_access_levels` |  |
 
 Operations: create, list, load, update.
 
@@ -3650,8 +3644,14 @@ API path: `/api/v4/projects/{id}/protected_branches`
 
 | Field | Description |
 | --- | --- |
-| `create_access_level` |  |
+| `access_level` |  |
+| `access_level_description` |  |
+| `create_access_levels` |  |
+| `deploy_key_id` |  |
+| `group_id` |  |
+| `id` |  |
 | `name` |  |
+| `user_id` |  |
 
 Operations: create, list, load.
 
@@ -3677,6 +3677,7 @@ API path: `/api/v4/projects/{id}/groups`
 | Field | Description |
 | --- | --- |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_issues_count` |  |
 | `closed_at` |  |
@@ -3685,11 +3686,11 @@ API path: `/api/v4/projects/{id}/groups`
 | `created_at` |  |
 | `description` |  |
 | `discussion_locked` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `due_date` |  |
 | `epic` |  |
 | `epic_iid` |  |
-| `has_task` |  |
+| `has_tasks` |  |
 | `health_status` |  |
 | `id` |  |
 | `iid` |  |
@@ -3698,27 +3699,27 @@ API path: `/api/v4/projects/{id}/groups`
 | `issue_link_id` |  |
 | `issue_type` |  |
 | `iteration` |  |
-| `label` |  |
-| `link` |  |
+| `labels` |  |
 | `link_created_at` |  |
 | `link_type` |  |
 | `link_updated_at` |  |
+| `links` |  |
 | `merge_requests_count` |  |
 | `milestone` |  |
 | `moved_to_id` |  |
 | `project_id` |  |
-| `reference` |  |
+| `references` |  |
 | `service_desk_reply_to` |  |
 | `severity` |  |
 | `state` |  |
 | `subscribed` |  |
 | `task_completion_status` |  |
 | `task_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `type` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
 | `weight` |  |
@@ -3740,16 +3741,16 @@ API path: `/api/v4/projects/import-relation`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
+| `assets` |  |
 | `author` |  |
 | `commit` |  |
 | `commit_path` |  |
 | `created_at` |  |
 | `description` |  |
 | `description_html` |  |
-| `evidence` |  |
-| `link` |  |
-| `milestone` |  |
+| `evidences` |  |
+| `links` |  |
+| `milestones` |  |
 | `name` |  |
 | `released_at` |  |
 | `tag_name` |  |
@@ -3780,15 +3781,15 @@ API path: `/api/v4/projects/{id}/releases/{tag_name}/assets/links`
 | --- | --- |
 | `auth_method` |  |
 | `enabled` |  |
-| `host_key` |  |
+| `host_keys` |  |
 | `id` |  |
-| `keep_divergent_ref` |  |
+| `keep_divergent_refs` |  |
 | `last_error` |  |
 | `last_successful_update_at` |  |
 | `last_update_at` |  |
 | `last_update_started_at` |  |
 | `mirror_branch_regex` |  |
-| `only_protected_branch` |  |
+| `only_protected_branches` |  |
 | `update_status` |  |
 | `url` |  |
 
@@ -3800,15 +3801,15 @@ API path: `/api/v4/projects/{id}/remote_mirrors`
 
 | Field | Description |
 | --- | --- |
-| `alternate` |  |
+| `alternates` |  |
 | `bitmap` |  |
 | `commit_graph` |  |
 | `is_object_pool` |  |
 | `last_full_repack` |  |
 | `multi_pack_index` |  |
 | `multi_pack_index_bitmap` |  |
-| `object` |  |
-| `reference` |  |
+| `objects` |  |
+| `references` |  |
 | `size` |  |
 | `updated_at` |  |
 
@@ -3831,7 +3832,7 @@ API path: `/api/v4/projects/{id}/repository/health`
 | `resource_id` |  |
 | `resource_type` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `token` |  |
 | `user_id` |  |
 
@@ -3863,8 +3864,8 @@ API path: `/api/v4/projects/{id}/issues/{eventable_id}/resource_milestone_events
 | `author` |  |
 | `created_at` |  |
 | `description` |  |
-| `file` |  |
 | `file_name` |  |
+| `files` |  |
 | `http_url_to_repo` |  |
 | `id` |  |
 | `imported` |  |
@@ -3886,14 +3887,52 @@ API path: `/api/v4/snippets/all`
 
 | Field | Description |
 | --- | --- |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `bio` |  |
+| `bot` |  |
+| `can_create_group` |  |
+| `can_create_project` |  |
+| `color_scheme_id` |  |
+| `commit_email` |  |
+| `confirmed_at` |  |
 | `created_at` |  |
-| `expires_at` |  |
+| `current_sign_in_at` |  |
+| `custom_attributes` |  |
+| `discord` |  |
+| `email` |  |
+| `external` |  |
+| `extra_shared_runners_minutes_limit` |  |
+| `followers` |  |
+| `following` |  |
+| `github` |  |
 | `id` |  |
-| `key` |  |
-| `last_used_at` |  |
-| `title` |  |
-| `usage_type` |  |
-| `user` |  |
+| `identities` |  |
+| `is_followed` |  |
+| `job_title` |  |
+| `last_activity_on` |  |
+| `last_sign_in_at` |  |
+| `linkedin` |  |
+| `local_time` |  |
+| `location` |  |
+| `locked` |  |
+| `name` |  |
+| `organization` |  |
+| `preferred_language` |  |
+| `private_profile` |  |
+| `projects_limit` |  |
+| `pronouns` |  |
+| `public_email` |  |
+| `scim_identities` |  |
+| `shared_runners_minutes_limit` |  |
+| `state` |  |
+| `theme_id` |  |
+| `twitter` |  |
+| `two_factor_enabled` |  |
+| `username` |  |
+| `web_url` |  |
+| `website_url` |  |
+| `work_information` |  |
 
 Operations: load.
 
@@ -3928,7 +3967,7 @@ API path: `/api/v4/suggestions/{id}/apply`
 | `id` |  |
 | `message` |  |
 | `starts_at` |  |
-| `target_access_level` |  |
+| `target_access_levels` |  |
 | `target_path` |  |
 | `theme` |  |
 
@@ -3978,13 +4017,15 @@ API path: `/api/v4/projects/{id}/templates/{type}`
 
 | Field | Description |
 | --- | --- |
-| `module` |  |
+| `modules` |  |
 | `name` |  |
 | `provider` |  |
+| `providers` |  |
 | `root` |  |
 | `source` |  |
-| `submodule` |  |
+| `submodules` |  |
 | `version` |  |
+| `versions` |  |
 
 Operations: list, load.
 
@@ -4008,14 +4049,23 @@ API path: `/api/v4/projects/{id}/repository/tree`
 
 | Field | Description |
 | --- | --- |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
 | `description` |  |
 | `expires_at` |  |
 | `id` |  |
 | `last_used` |  |
+| `locked` |  |
+| `name` |  |
 | `owner` |  |
+| `public_email` |  |
+| `state` |  |
 | `token` |  |
 | `updated_at` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: create, list, load, update.
 
@@ -4037,11 +4087,11 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/user_agent_detail`
 
 | Field | Description |
 | --- | --- |
-| `assigned_issue` |  |
-| `assigned_merge_request` |  |
-| `merge_request` |  |
-| `review_requested_merge_request` |  |
-| `todo` |  |
+| `assigned_issues` |  |
+| `assigned_merge_requests` |  |
+| `merge_requests` |  |
+| `review_requested_merge_requests` |  |
+| `todos` |  |
 
 Operations: load.
 
@@ -4062,16 +4112,16 @@ API path: `/api/v4/user_counts`
 | `confirmed_at` |  |
 | `created_at` |  |
 | `current_sign_in_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `discord` |  |
 | `email` |  |
 | `external` |  |
 | `extra_shared_runners_minutes_limit` |  |
-| `follower` |  |
+| `followers` |  |
 | `following` |  |
 | `github` |  |
 | `id` |  |
-| `identity` |  |
+| `identities` |  |
 | `is_followed` |  |
 | `job_title` |  |
 | `key` |  |
@@ -4086,9 +4136,9 @@ API path: `/api/v4/user_counts`
 | `preferred_language` |  |
 | `private_profile` |  |
 | `projects_limit` |  |
-| `pronoun` |  |
+| `pronouns` |  |
 | `public_email` |  |
-| `scim_identity` |  |
+| `scim_identities` |  |
 | `shared_runners_minutes_limit` |  |
 | `state` |  |
 | `theme_id` |  |
@@ -4128,13 +4178,6 @@ API path: `/api/v4/groups/{id}/wikis/attachments`
 
 | Field | Description |
 | --- | --- |
-| `content` |  |
-| `encoding` |  |
-| `format` |  |
-| `front_matter` |  |
-| `slug` |  |
-| `title` |  |
-| `wiki_page_meta_id` |  |
 
 Operations: create, load, update.
 
@@ -4368,7 +4411,7 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approvals`
 | --- | --- |
 | `author_id` |  |
 | `created_at` |  |
-| `detail` |  |
+| `details` |  |
 | `entity_id` |  |
 | `entity_type` |  |
 | `event_name` |  |
@@ -4382,13 +4425,9 @@ API path: `/api/v4/groups/{id}/audit_events`
 
 | Field | Description |
 | --- | --- |
-| `access_level` |  |
-| `created_at` |  |
-| `expires_at` |  |
-| `id` |  |
-| `source_full_name` |  |
-| `source_id` |  |
-| `source_members_url` |  |
+| `custom_role` |  |
+| `integer_value` |  |
+| `string_value` |  |
 
 Operations: load.
 
@@ -4425,7 +4464,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `container_repositories_verified_in_percentage` |  |
 | `cursor_last_event_id` |  |
 | `cursor_last_event_timestamp` |  |
-| `db_replication_lag_second` |  |
+| `db_replication_lag_seconds` |  |
 | `dependency_proxy_blobs_checksum_failed_count` |  |
 | `dependency_proxy_blobs_checksum_total_count` |  |
 | `dependency_proxy_blobs_checksummed_count` |  |
@@ -4507,7 +4546,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `lfs_objects_verification_total_count` |  |
 | `lfs_objects_verified_count` |  |
 | `lfs_objects_verified_in_percentage` |  |
-| `link` |  |
+| `links` |  |
 | `merge_request_diffs_checksum_failed_count` |  |
 | `merge_request_diffs_checksum_total_count` |  |
 | `merge_request_diffs_checksummed_count` |  |
@@ -4521,7 +4560,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `merge_request_diffs_verified_count` |  |
 | `merge_request_diffs_verified_in_percentage` |  |
 | `missing_oauth_application` |  |
-| `namespace` |  |
+| `namespaces` |  |
 | `package_files_checksum_failed_count` |  |
 | `package_files_checksum_total_count` |  |
 | `package_files_checksummed_count` |  |
@@ -4586,7 +4625,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `proxy_local_requests_event_count_weekly` |  |
 | `proxy_remote_requests_event_count_weekly` |  |
 | `replication_slots_count` |  |
-| `replication_slots_max_retained_wal_byte` |  |
+| `replication_slots_max_retained_wal_bytes` |  |
 | `replication_slots_used_count` |  |
 | `replication_slots_used_in_percentage` |  |
 | `repositories_checked_count` |  |
@@ -4607,7 +4646,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `snippet_repositories_verification_total_count` |  |
 | `snippet_repositories_verified_count` |  |
 | `snippet_repositories_verified_in_percentage` |  |
-| `storage_shard` |  |
+| `storage_shards` |  |
 | `storage_shards_match` |  |
 | `terraform_state_versions_checksum_failed_count` |  |
 | `terraform_state_versions_checksum_total_count` |  |
@@ -4644,7 +4683,7 @@ API path: `/api/v4/geo/status`
 
 | Field | Description |
 | --- | --- |
-| `pipeline_ref` |  |
+| `pipeline_refs` |  |
 
 Operations: list.
 
@@ -4673,9 +4712,9 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/metric_images`
 | `approved` |  |
 | `approved_by` |  |
 | `code_owner` |  |
-| `contains_hidden_group` |  |
-| `eligible_approver` |  |
-| `group` |  |
+| `contains_hidden_groups` |  |
+| `eligible_approvers` |  |
+| `groups` |  |
 | `id` |  |
 | `name` |  |
 | `overridden` |  |
@@ -4683,7 +4722,7 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/metric_images`
 | `rule_type` |  |
 | `section` |  |
 | `source_rule` |  |
-| `user` |  |
+| `users` |  |
 
 Operations: list.
 
@@ -4922,9 +4961,9 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/related_issu
 
 | Field | Description |
 | --- | --- |
-| `enterprise` |  |
-| `kas` |  |
-| `revision` |  |
+| `enabled` |  |
+| `externalK8sProxyUrl` |  |
+| `externalUrl` |  |
 | `version` |  |
 
 Operations: load.
@@ -4989,13 +5028,22 @@ API path: `/api/v4/projects/{id}/packages/nuget`
 
 | Field | Description |
 | --- | --- |
-| `catalog_entry` |  |
+| `authors` |  |
 | `count` |  |
+| `dependencyGroups` |  |
+| `description` |  |
+| `iconUrl` |  |
 | `id` |  |
-| `item` |  |
+| `items` |  |
+| `licenseUrl` |  |
 | `lower` |  |
-| `package_content` |  |
+| `packageContent` |  |
+| `projectUrl` |  |
+| `published` |  |
+| `summary` |  |
+| `tags` |  |
 | `upper` |  |
+| `version` |  |
 
 Operations: list, load, remove, update.
 
@@ -5064,7 +5112,7 @@ API path: `/api/v4/personal_access_tokens/{id}`
 | `updated_at` |  |
 | `user` |  |
 | `web_url` |  |
-| `yaml_error` |  |
+| `yaml_errors` |  |
 
 Operations: create, load, remove, update.
 
@@ -5305,7 +5353,7 @@ API path: `/api/v4/snippets/{id}/files/{ref}/{file_path}/raw`
 | --- | --- |
 | `avatar_path` |  |
 | `avatar_url` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `id` |  |
 | `locked` |  |
 | `name` |  |
@@ -5364,7 +5412,7 @@ API path: `/api/v4/projects/{id}/terraform/state/{name}/lock`
 | `skipped_count` |  |
 | `success_count` |  |
 | `suite_error` |  |
-| `test_case` |  |
+| `test_cases` |  |
 | `total_count` |  |
 | `total_time` |  |
 
@@ -5376,7 +5424,7 @@ API path: `/api/v4/projects/{id}/pipelines/{pipeline_id}/test_report`
 
 | Field | Description |
 | --- | --- |
-| `test_suite` |  |
+| `test_suites` |  |
 | `total` |  |
 
 Operations: load.
@@ -5416,7 +5464,7 @@ API path: `/api/v4/usage_data/increment_counter`
 | --- | --- |
 | `avatar_path` |  |
 | `avatar_url` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `id` |  |
 | `locked` |  |
 | `name` |  |
@@ -5502,7 +5550,7 @@ Create an instance: `const api_entities_access_requester = client.ApiEntitiesAcc
 | --- | --- | --- |
 | `avatar_path` | `string` |  |
 | `avatar_url` | `string` |  |
-| `custom_attribute` | `any[]` |  |
+| `custom_attributes` | `any[]` |  |
 | `id` | `number` |  |
 | `key` | `string` |  |
 | `locked` | `boolean` |  |
@@ -5550,11 +5598,11 @@ Create an instance: `const api_entities_appearance = client.ApiEntitiesAppearanc
 | `header_logo` | `string` |  |
 | `header_message` | `string` |  |
 | `logo` | `string` |  |
-| `member_guideline` | `string` |  |
+| `member_guidelines` | `string` |  |
 | `message_background_color` | `string` |  |
 | `message_font_color` | `string` |  |
-| `new_project_guideline` | `string` |  |
-| `profile_image_guideline` | `string` |  |
+| `new_project_guidelines` | `string` |  |
+| `profile_image_guidelines` | `string` |  |
 | `pwa_description` | `string` |  |
 | `pwa_icon` | `string` |  |
 | `pwa_name` | `string` |  |
@@ -5609,17 +5657,17 @@ Create an instance: `const api_entities_application_statistic = client.ApiEntiti
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active_user` | `number` |  |
-| `fork` | `number` |  |
-| `group` | `number` |  |
-| `issue` | `number` |  |
-| `merge_request` | `number` |  |
-| `milestone` | `number` |  |
-| `note` | `number` |  |
-| `project` | `number` |  |
-| `snippet` | `number` |  |
-| `ssh_key` | `number` |  |
-| `user` | `number` |  |
+| `active_users` | `number` |  |
+| `forks` | `number` |  |
+| `groups` | `number` |  |
+| `issues` | `number` |  |
+| `merge_requests` | `number` |  |
+| `milestones` | `number` |  |
+| `notes` | `number` |  |
+| `projects` | `number` |  |
+| `snippets` | `number` |  |
+| `ssh_keys` | `number` |  |
+| `users` | `number` |  |
 
 #### Example: Load
 
@@ -5696,14 +5744,22 @@ Create an instance: `const api_entities_award_emoji = client.ApiEntitiesAwardEmo
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
 | `awardable_id` | `number` |  |
 | `awardable_type` | `string` |  |
 | `created_at` | `string` |  |
+| `custom_attributes` | `any[]` |  |
 | `id` | `number` |  |
+| `locked` | `boolean` |  |
 | `name` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
 | `updated_at` | `string` |  |
 | `url` | `string` |  |
 | `user` | `Record<string, any>` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
@@ -5833,7 +5889,7 @@ Create an instance: `const api_entities_basic_project_detail = client.ApiEntitie
 | --- | --- | --- |
 | `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
-| `custom_attribute` | `Record<string, any>` |  |
+| `custom_attributes` | `Record<string, any>` |  |
 | `default_branch` | `string` |  |
 | `description` | `string` |  |
 | `forks_count` | `number` |  |
@@ -5852,7 +5908,7 @@ Create an instance: `const api_entities_basic_project_detail = client.ApiEntitie
 | `ssh_url_to_repo` | `string` |  |
 | `star_count` | `number` |  |
 | `tag_list` | `any[]` |  |
-| `topic` | `any[]` |  |
+| `topics` | `any[]` |  |
 | `visibility` | `string` |  |
 | `web_url` | `string` |  |
 
@@ -5891,7 +5947,7 @@ Create an instance: `const api_entities_basic_ref = client.ApiEntitiesBasicRef()
 #### Example: List
 
 ```ts
-const api_entities_basic_refs = await client.ApiEntitiesBasicRef().list()
+const api_entities_basic_refs = await client.ApiEntitiesBasicRef().list({ project_id: "example", sha: "example" })
 ```
 
 
@@ -5967,14 +6023,28 @@ Create an instance: `const api_entities_branch = client.ApiEntitiesBranch()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `author_email` | `string` |  |
+| `author_name` | `string` |  |
+| `authored_date` | `string` |  |
 | `can_push` | `boolean` |  |
 | `commit` | `Record<string, any>` |  |
+| `committed_date` | `string` |  |
+| `committer_email` | `string` |  |
+| `committer_name` | `string` |  |
+| `created_at` | `string` |  |
 | `default` | `boolean` |  |
 | `developers_can_merge` | `boolean` |  |
 | `developers_can_push` | `boolean` |  |
+| `extended_trailers` | `Record<string, any>` |  |
+| `id` | `string` |  |
 | `merged` | `boolean` |  |
+| `message` | `string` |  |
 | `name` | `string` |  |
+| `parent_ids` | `any[]` |  |
 | `protected` | `boolean` |  |
+| `short_id` | `string` |  |
+| `title` | `string` |  |
+| `trailers` | `Record<string, any>` |  |
 | `web_url` | `string` |  |
 
 #### Example: Load
@@ -5986,7 +6056,7 @@ const api_entities_branch = await client.ApiEntitiesBranch().load({ id: 'api_ent
 #### Example: List
 
 ```ts
-const api_entities_branchs = await client.ApiEntitiesBranch().list()
+const api_entities_branchs = await client.ApiEntitiesBranch().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -6021,18 +6091,18 @@ Create an instance: `const api_entities_bulk_import = client.ApiEntitiesBulkImpo
 | `destination_namespace` | `string` |  |
 | `destination_slug` | `string` |  |
 | `entity_type` | `string` |  |
-| `failure` | `any[]` |  |
-| `has_failure` | `boolean` |  |
+| `failures` | `any[]` |  |
+| `has_failures` | `boolean` |  |
 | `id` | `number` |  |
-| `migrate_membership` | `boolean` |  |
-| `migrate_project` | `boolean` |  |
+| `migrate_memberships` | `boolean` |  |
+| `migrate_projects` | `boolean` |  |
 | `namespace_id` | `number` |  |
 | `parent_id` | `number` |  |
 | `project_id` | `number` |  |
 | `source_full_path` | `string` |  |
 | `source_type` | `string` |  |
 | `source_url` | `string` |  |
-| `stat` | `Record<string, any>` |  |
+| `stats` | `Record<string, any>` |  |
 | `status` | `string` |  |
 | `updated_at` | `string` |  |
 
@@ -6098,8 +6168,8 @@ Create an instance: `const api_entities_bulk_imports_export_status = client.ApiE
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `batch` | `Record<string, any>` |  |
 | `batched` | `boolean` |  |
+| `batches` | `Record<string, any>` |  |
 | `batches_count` | `number` |  |
 | `error` | `string` |  |
 | `relation` | `string` |  |
@@ -6128,7 +6198,7 @@ Create an instance: `const api_entities_changelog = client.ApiEntitiesChangelog(
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `note` | `string` |  |
+| `notes` | `string` |  |
 
 #### Example: Load
 
@@ -6176,7 +6246,7 @@ Create an instance: `const api_entities_ci_bridge = client.ApiEntitiesCiBridge()
 #### Example: List
 
 ```ts
-const api_entities_ci_bridges = await client.ApiEntitiesCiBridge().list()
+const api_entities_ci_bridges = await client.ApiEntitiesCiBridge().list({ pipeline_id: "example", project_id: "example" })
 ```
 
 
@@ -6217,7 +6287,7 @@ Create an instance: `const api_entities_ci_job = client.ApiEntitiesCiJob()`
 | --- | --- | --- |
 | `allow_failure` | `boolean` |  |
 | `archived` | `boolean` |  |
-| `artifact` | `any[]` |  |
+| `artifacts` | `any[]` |  |
 | `artifacts_expire_at` | `string` |  |
 | `artifacts_file` | `Record<string, any>` |  |
 | `commit` | `Record<string, any>` |  |
@@ -6308,7 +6378,7 @@ Create an instance: `const api_entities_ci_job_basic = client.ApiEntitiesCiJobBa
 #### Example: List
 
 ```ts
-const api_entities_ci_job_basics = await client.ApiEntitiesCiJobBasic().list()
+const api_entities_ci_job_basics = await client.ApiEntitiesCiJobBasic().list({ key: "example", project_id: "example" })
 ```
 
 #### Example: Create
@@ -6381,21 +6451,21 @@ Create an instance: `const api_entities_ci_lint_result = client.ApiEntitiesCiLin
 | `blob` | `string` |  |
 | `context_project` | `string` |  |
 | `context_sha` | `string` |  |
-| `error` | `any[]` |  |
+| `errors` | `any[]` |  |
 | `extra` | `Record<string, any>` |  |
-| `include` | `any[]` |  |
-| `job` | `any[]` |  |
+| `includes` | `any[]` |  |
+| `jobs` | `any[]` |  |
 | `location` | `string` |  |
 | `merged_yaml` | `string` |  |
 | `raw` | `string` |  |
 | `type` | `string` |  |
 | `valid` | `boolean` |  |
-| `warning` | `any[]` |  |
+| `warnings` | `any[]` |  |
 
 #### Example: List
 
 ```ts
-const api_entities_ci_lint_results = await client.ApiEntitiesCiLintResult().list()
+const api_entities_ci_lint_results = await client.ApiEntitiesCiLintResult().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -6461,7 +6531,7 @@ const api_entities_ci_pipeline_basic = await client.ApiEntitiesCiPipelineBasic()
 #### Example: List
 
 ```ts
-const api_entities_ci_pipeline_basics = await client.ApiEntitiesCiPipelineBasic().list()
+const api_entities_ci_pipeline_basics = await client.ApiEntitiesCiPipelineBasic().list({ project_id: "example" })
 ```
 
 
@@ -6485,7 +6555,7 @@ Create an instance: `const api_entities_ci_pipeline_schedule = client.ApiEntitie
 | `cron_timezone` | `string` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `input` | `Record<string, any>` |  |
+| `inputs` | `Record<string, any>` |  |
 | `next_run_at` | `string` |  |
 | `owner` | `Record<string, any>` |  |
 | `ref` | `string` |  |
@@ -6494,7 +6564,7 @@ Create an instance: `const api_entities_ci_pipeline_schedule = client.ApiEntitie
 #### Example: List
 
 ```ts
-const api_entities_ci_pipeline_schedules = await client.ApiEntitiesCiPipelineSchedule().list()
+const api_entities_ci_pipeline_schedules = await client.ApiEntitiesCiPipelineSchedule().list({ project_id: "example" })
 ```
 
 
@@ -6520,13 +6590,13 @@ Create an instance: `const api_entities_ci_pipeline_schedule_detail = client.Api
 | `cron_timezone` | `string` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `input` | `Record<string, any>` |  |
+| `inputs` | `Record<string, any>` |  |
 | `last_pipeline` | `Record<string, any>` |  |
 | `next_run_at` | `string` |  |
 | `owner` | `Record<string, any>` |  |
 | `ref` | `string` |  |
 | `updated_at` | `string` |  |
-| `variable` | `Record<string, any>` |  |
+| `variables` | `Record<string, any>` |  |
 
 #### Example: Load
 
@@ -6592,7 +6662,7 @@ const api_entities_ci_resource_group = await client.ApiEntitiesCiResourceGroup()
 #### Example: List
 
 ```ts
-const api_entities_ci_resource_groups = await client.ApiEntitiesCiResourceGroup().list()
+const api_entities_ci_resource_groups = await client.ApiEntitiesCiResourceGroup().list({ project_id: "example" })
 ```
 
 
@@ -6611,19 +6681,16 @@ Create an instance: `const api_entities_ci_runner = client.ApiEntitiesCiRunner()
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active` | `boolean` |  |
-| `created_at` | `string` |  |
-| `created_by` | `Record<string, any>` |  |
-| `description` | `string` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `custom_attributes` | `any[]` |  |
 | `id` | `number` |  |
-| `ip_address` | `string` |  |
-| `is_shared` | `boolean` |  |
-| `job_execution_status` | `string` |  |
+| `locked` | `boolean` |  |
 | `name` | `string` |  |
-| `online` | `boolean` |  |
-| `paused` | `boolean` |  |
-| `runner_type` | `string` |  |
-| `status` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
@@ -6662,7 +6729,7 @@ Create an instance: `const api_entities_ci_runner_detail = client.ApiEntitiesCiR
 | `created_at` | `string` |  |
 | `created_by` | `Record<string, any>` |  |
 | `description` | `string` |  |
-| `group` | `Record<string, any>` |  |
+| `groups` | `Record<string, any>` |  |
 | `id` | `number` |  |
 | `ip_address` | `string` |  |
 | `is_shared` | `boolean` |  |
@@ -6674,7 +6741,7 @@ Create an instance: `const api_entities_ci_runner_detail = client.ApiEntitiesCiR
 | `online` | `boolean` |  |
 | `paused` | `boolean` |  |
 | `platform` | `string` |  |
-| `project` | `Record<string, any>` |  |
+| `projects` | `Record<string, any>` |  |
 | `revision` | `string` |  |
 | `run_untagged` | `string` |  |
 | `runner_type` | `string` |  |
@@ -6751,19 +6818,6 @@ Create an instance: `const api_entities_ci_secure_file = client.ApiEntitiesCiSec
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `checksum` | `string` |  |
-| `checksum_algorithm` | `string` |  |
-| `created_at` | `string` |  |
-| `expires_at` | `string` |  |
-| `file_extension` | `string` |  |
-| `id` | `number` |  |
-| `metadata` | `Record<string, any>` |  |
-| `name` | `string` |  |
-
 #### Example: Load
 
 ```ts
@@ -6815,7 +6869,7 @@ const api_entities_ci_variable = await client.ApiEntitiesCiVariable().load({ id:
 #### Example: List
 
 ```ts
-const api_entities_ci_variables = await client.ApiEntitiesCiVariable().list()
+const api_entities_ci_variables = await client.ApiEntitiesCiVariable().list({ pipeline_id: "example", project_id: "example" })
 ```
 
 #### Example: Create
@@ -6853,7 +6907,7 @@ Create an instance: `const api_entities_cluster = client.ApiEntitiesCluster()`
 | `management_project` | `Record<string, any>` |  |
 | `name` | `string` |  |
 | `namespace_per_environment` | `string` |  |
-| `platform_kubernete` | `Record<string, any>` |  |
+| `platform_kubernetes` | `Record<string, any>` |  |
 | `platform_type` | `string` |  |
 | `provider_gcp` | `Record<string, any>` |  |
 | `provider_type` | `string` |  |
@@ -6906,7 +6960,7 @@ Create an instance: `const api_entities_cluster_group = client.ApiEntitiesCluste
 | `management_project` | `Record<string, any>` |  |
 | `name` | `string` |  |
 | `namespace_per_environment` | `string` |  |
-| `platform_kubernete` | `Record<string, any>` |  |
+| `platform_kubernetes` | `Record<string, any>` |  |
 | `platform_type` | `string` |  |
 | `provider_gcp` | `Record<string, any>` |  |
 | `provider_type` | `string` |  |
@@ -6953,7 +7007,7 @@ Create an instance: `const api_entities_cluster_project = client.ApiEntitiesClus
 | `management_project` | `Record<string, any>` |  |
 | `name` | `string` |  |
 | `namespace_per_environment` | `string` |  |
-| `platform_kubernete` | `Record<string, any>` |  |
+| `platform_kubernetes` | `Record<string, any>` |  |
 | `platform_type` | `string` |  |
 | `project` | `Record<string, any>` |  |
 | `provider_gcp` | `Record<string, any>` |  |
@@ -6990,12 +7044,13 @@ Create an instance: `const api_entities_clusters_agent = client.ApiEntitiesClust
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `config_project` | `Record<string, any>` |  |
 | `created_at` | `string` |  |
-| `created_by_user_id` | `string` |  |
-| `id` | `string` |  |
-| `is_receptive` | `boolean` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
 | `name` | `string` |  |
+| `name_with_namespace` | `string` |  |
+| `path` | `string` |  |
+| `path_with_namespace` | `string` |  |
 
 #### Example: Load
 
@@ -7113,19 +7168,19 @@ Create an instance: `const api_entities_commit = client.ApiEntitiesCommit()`
 | `committer_email` | `string` |  |
 | `committer_name` | `string` |  |
 | `created_at` | `string` |  |
-| `extended_trailer` | `Record<string, any>` |  |
+| `extended_trailers` | `Record<string, any>` |  |
 | `id` | `string` |  |
 | `message` | `string` |  |
-| `parent_id` | `any[]` |  |
+| `parent_ids` | `any[]` |  |
 | `short_id` | `string` |  |
 | `title` | `string` |  |
-| `trailer` | `Record<string, any>` |  |
+| `trailers` | `Record<string, any>` |  |
 | `web_url` | `string` |  |
 
 #### Example: List
 
 ```ts
-const api_entities_commits = await client.ApiEntitiesCommit().list()
+const api_entities_commits = await client.ApiEntitiesCommit().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -7160,17 +7215,17 @@ Create an instance: `const api_entities_commit_detail = client.ApiEntitiesCommit
 | `committer_email` | `string` |  |
 | `committer_name` | `string` |  |
 | `created_at` | `string` |  |
-| `extended_trailer` | `Record<string, any>` |  |
+| `extended_trailers` | `Record<string, any>` |  |
 | `id` | `string` |  |
 | `last_pipeline` | `Record<string, any>` |  |
 | `message` | `string` |  |
-| `parent_id` | `any[]` |  |
+| `parent_ids` | `any[]` |  |
 | `project_id` | `number` |  |
 | `short_id` | `string` |  |
-| `stat` | `Record<string, any>` |  |
+| `stats` | `Record<string, any>` |  |
 | `status` | `string` |  |
 | `title` | `string` |  |
-| `trailer` | `Record<string, any>` |  |
+| `trailers` | `Record<string, any>` |  |
 | `web_url` | `string` |  |
 
 #### Example: Load
@@ -7204,16 +7259,26 @@ Create an instance: `const api_entities_commit_note = client.ApiEntitiesCommitNo
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `Record<string, any>` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
+| `custom_attributes` | `any[]` |  |
+| `id` | `number` |  |
 | `line` | `number` |  |
 | `line_type` | `string` |  |
+| `locked` | `boolean` |  |
+| `name` | `string` |  |
 | `note` | `string` |  |
 | `path` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: List
 
 ```ts
-const api_entities_commit_notes = await client.ApiEntitiesCommitNote().list()
+const api_entities_commit_notes = await client.ApiEntitiesCommitNote().list({ project_id: "example", sha: "example" })
 ```
 
 #### Example: Create
@@ -7291,23 +7356,31 @@ Create an instance: `const api_entities_commit_status = client.ApiEntitiesCommit
 | --- | --- | --- |
 | `allow_failure` | `boolean` |  |
 | `author` | `Record<string, any>` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
 | `coverage` | `number` |  |
 | `created_at` | `string` |  |
+| `custom_attributes` | `any[]` |  |
 | `description` | `string` |  |
 | `finished_at` | `string` |  |
 | `id` | `number` |  |
+| `locked` | `boolean` |  |
 | `name` | `string` |  |
 | `pipeline_id` | `number` |  |
+| `public_email` | `string` |  |
 | `ref` | `string` |  |
 | `sha` | `string` |  |
 | `started_at` | `string` |  |
+| `state` | `string` |  |
 | `status` | `string` |  |
 | `target_url` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: List
 
 ```ts
-const api_entities_commit_statuss = await client.ApiEntitiesCommitStatus().list()
+const api_entities_commit_statuss = await client.ApiEntitiesCommitStatus().list({ project_id: "example", sha: "example" })
 ```
 
 #### Example: Create
@@ -7335,15 +7408,16 @@ Create an instance: `const api_entities_compare = client.ApiEntitiesCompare()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `commit` | `Record<string, any>` |  |
+| `commits` | `any[]` |  |
 | `compare_same_ref` | `boolean` |  |
 | `compare_timeout` | `boolean` |  |
-| `diff` | `any[]` |  |
+| `diffs` | `any[]` |  |
 | `web_url` | `string` |  |
 
 #### Example: List
 
 ```ts
-const api_entities_compares = await client.ApiEntitiesCompare().list()
+const api_entities_compares = await client.ApiEntitiesCompare().list({ project_id: "example" })
 ```
 
 
@@ -7372,7 +7446,7 @@ Create an instance: `const api_entities_container_registry_repository = client.A
 | `project_id` | `number` |  |
 | `size` | `number` |  |
 | `status` | `string` |  |
-| `tag` | `Record<string, any>` |  |
+| `tags` | `Record<string, any>` |  |
 | `tags_count` | `number` |  |
 
 #### Example: Load
@@ -7409,7 +7483,7 @@ Create an instance: `const api_entities_container_registry_tag = client.ApiEntit
 #### Example: List
 
 ```ts
-const api_entities_container_registry_tags = await client.ApiEntitiesContainerRegistryTag().list()
+const api_entities_container_registry_tags = await client.ApiEntitiesContainerRegistryTag().list({ project_id: "example", repository_id: "example" })
 ```
 
 
@@ -7457,9 +7531,9 @@ Create an instance: `const api_entities_contributor = client.ApiEntitiesContribu
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addition` | `number` |  |
-| `commit` | `number` |  |
-| `deletion` | `number` |  |
+| `additions` | `number` |  |
+| `commits` | `number` |  |
+| `deletions` | `number` |  |
 | `email` | `string` |  |
 | `name` | `string` |  |
 
@@ -7550,7 +7624,7 @@ const api_entities_deploy_keys_project = await client.ApiEntitiesDeployKeysProje
 #### Example: List
 
 ```ts
-const api_entities_deploy_keys_projects = await client.ApiEntitiesDeployKeysProject().list()
+const api_entities_deploy_keys_projects = await client.ApiEntitiesDeployKeysProject().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -7582,7 +7656,7 @@ Create an instance: `const api_entities_deploy_token = client.ApiEntitiesDeployT
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `revoked` | `boolean` |  |
-| `scope` | `any[]` |  |
+| `scopes` | `any[]` |  |
 | `username` | `string` |  |
 
 #### Example: Load
@@ -7644,7 +7718,7 @@ Create an instance: `const api_entities_deployment = client.ApiEntitiesDeploymen
 #### Example: List
 
 ```ts
-const api_entities_deployments = await client.ApiEntitiesDeployment().list()
+const api_entities_deployments = await client.ApiEntitiesDeployment().list({ project_id: "example" })
 ```
 
 
@@ -7664,8 +7738,8 @@ Create an instance: `const api_entities_deployment_extended = client.ApiEntities
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `approval` | `Record<string, any>` |  |
 | `approval_summary` | `Record<string, any>` |  |
+| `approvals` | `Record<string, any>` |  |
 | `created_at` | `string` |  |
 | `deployable` | `Record<string, any>` |  |
 | `environment` | `Record<string, any>` |  |
@@ -7727,7 +7801,7 @@ Create an instance: `const api_entities_dictionary_table = client.ApiEntitiesDic
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `feature_category` | `any[]` |  |
+| `feature_categories` | `any[]` |  |
 | `table_name` | `string` |  |
 
 #### Example: Load
@@ -7773,7 +7847,7 @@ const api_entities_diff = await client.ApiEntitiesDiff().load({ merge_request_id
 #### Example: List
 
 ```ts
-const api_entities_diffs = await client.ApiEntitiesDiff().list()
+const api_entities_diffs = await client.ApiEntitiesDiff().list({ project_id: "example", sha: "example" })
 ```
 
 
@@ -7791,8 +7865,8 @@ Create an instance: `const api_entities_discovered_cluster = client.ApiEntitiesD
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `group` | `string` |  |
-| `project` | `string` |  |
+| `groups` | `string` |  |
+| `projects` | `string` |  |
 
 #### Example: Load
 
@@ -7837,7 +7911,7 @@ const api_entities_draft_note = await client.ApiEntitiesDraftNote().load({ id: '
 #### Example: List
 
 ```ts
-const api_entities_draft_notes = await client.ApiEntitiesDraftNote().list()
+const api_entities_draft_notes = await client.ApiEntitiesDraftNote().list({ merge_request_id: "example", project_id: "example" })
 ```
 
 #### Example: Create
@@ -7893,7 +7967,7 @@ const api_entities_environment = await client.ApiEntitiesEnvironment().load({ id
 #### Example: List
 
 ```ts
-const api_entities_environments = await client.ApiEntitiesEnvironment().list()
+const api_entities_environments = await client.ApiEntitiesEnvironment().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -7928,7 +8002,7 @@ Create an instance: `const api_entities_error_tracking_client_key = client.ApiEn
 #### Example: List
 
 ```ts
-const api_entities_error_tracking_client_keys = await client.ApiEntitiesErrorTrackingClientKey().list()
+const api_entities_error_tracking_client_keys = await client.ApiEntitiesErrorTrackingClientKey().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -8029,7 +8103,7 @@ Create an instance: `const api_entities_feature = client.ApiEntitiesFeature()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `definition` | `Record<string, any>` |  |
-| `gate` | `Record<string, any>` |  |
+| `gates` | `Record<string, any>` |  |
 | `name` | `string` |  |
 | `state` | `string` |  |
 
@@ -8067,7 +8141,7 @@ Create an instance: `const api_entities_feature_definition = client.ApiEntitiesF
 | `group` | `string` |  |
 | `intended_to_rollout_by` | `string` |  |
 | `introduced_by_url` | `string` |  |
-| `log_state_change` | `string` |  |
+| `log_state_changes` | `string` |  |
 | `milestone` | `string` |  |
 | `name` | `string` |  |
 | `rollout_issue_url` | `string` |  |
@@ -8100,10 +8174,13 @@ Create an instance: `const api_entities_feature_flag = client.ApiEntitiesFeature
 | `active` | `boolean` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
+| `id` | `number` |  |
 | `name` | `string` |  |
-| `scope` | `string` |  |
-| `strategy` | `Record<string, any>` |  |
+| `parameters` | `string` |  |
+| `scopes` | `Record<string, any>` |  |
+| `strategies` | `Record<string, any>` |  |
 | `updated_at` | `string` |  |
+| `user_list` | `Record<string, any>` |  |
 | `version` | `string` |  |
 
 #### Example: Load
@@ -8115,7 +8192,7 @@ const api_entities_feature_flag = await client.ApiEntitiesFeatureFlag().load({ i
 #### Example: List
 
 ```ts
-const api_entities_feature_flags = await client.ApiEntitiesFeatureFlag().list()
+const api_entities_feature_flags = await client.ApiEntitiesFeatureFlag().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -8152,7 +8229,7 @@ Create an instance: `const api_entities_feature_flag_user_list = client.ApiEntit
 | `path` | `string` |  |
 | `project_id` | `number` |  |
 | `updated_at` | `string` |  |
-| `user_xid` | `string` |  |
+| `user_xids` | `string` |  |
 
 #### Example: Load
 
@@ -8163,7 +8240,7 @@ const api_entities_feature_flag_user_list = await client.ApiEntitiesFeatureFlagU
 #### Example: List
 
 ```ts
-const api_entities_feature_flag_user_lists = await client.ApiEntitiesFeatureFlagUserList().list()
+const api_entities_feature_flag_user_lists = await client.ApiEntitiesFeatureFlagUserList().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -8208,7 +8285,7 @@ const api_entities_freeze_period = await client.ApiEntitiesFreezePeriod().load({
 #### Example: List
 
 ```ts
-const api_entities_freeze_periods = await client.ApiEntitiesFreezePeriod().list()
+const api_entities_freeze_periods = await client.ApiEntitiesFreezePeriod().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -8259,8 +8336,8 @@ Create an instance: `const api_entities_go_module_version = client.ApiEntitiesGo
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `time` | `string` |  |
-| `version` | `string` |  |
+| `Time` | `string` |  |
+| `Version` | `string` |  |
 
 #### Example: Load
 
@@ -8291,10 +8368,10 @@ Create an instance: `const api_entities_group = client.ApiEntitiesGroup()`
 | `auto_duo_code_review_enabled` | `string` |  |
 | `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
-| `custom_attribute` | `Record<string, any>` |  |
+| `custom_attributes` | `Record<string, any>` |  |
 | `default_branch` | `string` |  |
 | `default_branch_protection` | `string` |  |
-| `default_branch_protection_default` | `string` |  |
+| `default_branch_protection_defaults` | `string` |  |
 | `description` | `string` |  |
 | `duo_core_features_enabled` | `boolean` |  |
 | `duo_features_enabled` | `string` |  |
@@ -8306,7 +8383,7 @@ Create an instance: `const api_entities_group = client.ApiEntitiesGroup()`
 | `id` | `string` |  |
 | `ldap_access` | `string` |  |
 | `ldap_cn` | `string` |  |
-| `ldap_group_link` | `Record<string, any>` |  |
+| `ldap_group_links` | `Record<string, any>` |  |
 | `lfs_enabled` | `string` |  |
 | `lock_duo_features_enabled` | `string` |  |
 | `lock_math_rendering_limits_enabled` | `boolean` |  |
@@ -8322,12 +8399,12 @@ Create an instance: `const api_entities_group = client.ApiEntitiesGroup()`
 | `repository_storage` | `string` |  |
 | `request_access_enabled` | `string` |  |
 | `require_two_factor_authentication` | `string` |  |
-| `root_storage_statistic` | `Record<string, any>` |  |
-| `saml_group_link` | `Record<string, any>` |  |
+| `root_storage_statistics` | `Record<string, any>` |  |
+| `saml_group_links` | `Record<string, any>` |  |
 | `share_with_group_lock` | `string` |  |
 | `shared_runners_setting` | `string` |  |
 | `show_diff_preview_in_email` | `boolean` |  |
-| `statistic` | `Record<string, any>` |  |
+| `statistics` | `Record<string, any>` |  |
 | `subgroup_creation_level` | `string` |  |
 | `two_factor_grace_period` | `string` |  |
 | `visibility` | `string` |  |
@@ -8377,10 +8454,10 @@ Create an instance: `const api_entities_group_detail = client.ApiEntitiesGroupDe
 | `auto_duo_code_review_enabled` | `string` |  |
 | `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
-| `custom_attribute` | `Record<string, any>` |  |
+| `custom_attributes` | `Record<string, any>` |  |
 | `default_branch` | `string` |  |
 | `default_branch_protection` | `string` |  |
-| `default_branch_protection_default` | `string` |  |
+| `default_branch_protection_defaults` | `string` |  |
 | `description` | `string` |  |
 | `duo_core_features_enabled` | `boolean` |  |
 | `duo_features_enabled` | `string` |  |
@@ -8392,10 +8469,10 @@ Create an instance: `const api_entities_group_detail = client.ApiEntitiesGroupDe
 | `full_name` | `string` |  |
 | `full_path` | `string` |  |
 | `id` | `string` |  |
-| `ip_restriction_range` | `string` |  |
+| `ip_restriction_ranges` | `string` |  |
 | `ldap_access` | `string` |  |
 | `ldap_cn` | `string` |  |
-| `ldap_group_link` | `Record<string, any>` |  |
+| `ldap_group_links` | `Record<string, any>` |  |
 | `lfs_enabled` | `string` |  |
 | `lock_duo_features_enabled` | `string` |  |
 | `lock_math_rendering_limits_enabled` | `boolean` |  |
@@ -8410,28 +8487,28 @@ Create an instance: `const api_entities_group_detail = client.ApiEntitiesGroupDe
 | `path` | `string` |  |
 | `prevent_forking_outside_group` | `string` |  |
 | `prevent_sharing_groups_outside_hierarchy` | `string` |  |
-| `project` | `Record<string, any>` |  |
 | `project_creation_level` | `string` |  |
+| `projects` | `Record<string, any>` |  |
 | `repository_storage` | `string` |  |
 | `request_access_enabled` | `string` |  |
 | `require_two_factor_authentication` | `string` |  |
-| `root_storage_statistic` | `Record<string, any>` |  |
+| `root_storage_statistics` | `Record<string, any>` |  |
 | `runners_token` | `string` |  |
-| `saml_group_link` | `Record<string, any>` |  |
+| `saml_group_links` | `Record<string, any>` |  |
 | `service_access_tokens_expiration_enforced` | `string` |  |
 | `share_with_group_lock` | `string` |  |
-| `shared_project` | `Record<string, any>` |  |
+| `shared_projects` | `Record<string, any>` |  |
 | `shared_runners_minutes_limit` | `string` |  |
 | `shared_runners_setting` | `string` |  |
-| `shared_with_group` | `string` |  |
+| `shared_with_groups` | `string` |  |
 | `show_diff_preview_in_email` | `boolean` |  |
-| `statistic` | `Record<string, any>` |  |
+| `statistics` | `Record<string, any>` |  |
 | `subgroup_creation_level` | `string` |  |
 | `two_factor_grace_period` | `string` |  |
 | `unique_project_download_limit` | `string` |  |
 | `unique_project_download_limit_alertlist` | `string` |  |
 | `unique_project_download_limit_allowlist` | `string` |  |
-| `unique_project_download_limit_interval_in_second` | `string` |  |
+| `unique_project_download_limit_interval_in_seconds` | `string` |  |
 | `visibility` | `string` |  |
 | `web_based_commit_signing_enabled` | `string` |  |
 | `web_url` | `string` |  |
@@ -8472,20 +8549,20 @@ Create an instance: `const api_entities_hook = client.ApiEntitiesHook()`
 | `alert_status` | `any` |  |
 | `branch_filter_strategy` | `string` |  |
 | `created_at` | `string` |  |
-| `custom_header` | `any[]` |  |
+| `custom_headers` | `any[]` |  |
 | `custom_webhook_template` | `string` |  |
 | `description` | `string` |  |
 | `disabled_until` | `string` |  |
 | `enable_ssl_verification` | `boolean` |  |
 | `id` | `string` |  |
-| `merge_requests_event` | `boolean` |  |
+| `merge_requests_events` | `boolean` |  |
 | `name` | `string` |  |
-| `push_event` | `boolean` |  |
+| `push_events` | `boolean` |  |
 | `push_events_branch_filter` | `string` |  |
-| `repository_update_event` | `boolean` |  |
-| `tag_push_event` | `boolean` |  |
+| `repository_update_events` | `boolean` |  |
+| `tag_push_events` | `boolean` |  |
 | `url` | `string` |  |
-| `url_variable` | `any[]` |  |
+| `url_variables` | `any[]` |  |
 
 #### Example: Load
 
@@ -8517,35 +8594,6 @@ Create an instance: `const api_entities_integration = client.ApiEntitiesIntegrat
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `active` | `boolean` |  |
-| `alert_event` | `boolean` |  |
-| `comment_on_event_enabled` | `boolean` |  |
-| `commit_event` | `boolean` |  |
-| `confidential_issues_event` | `boolean` |  |
-| `confidential_note_event` | `boolean` |  |
-| `created_at` | `string` |  |
-| `deployment_event` | `boolean` |  |
-| `id` | `number` |  |
-| `incident_event` | `boolean` |  |
-| `inherited` | `boolean` |  |
-| `issues_event` | `boolean` |  |
-| `job_event` | `boolean` |  |
-| `merge_requests_event` | `boolean` |  |
-| `note_event` | `boolean` |  |
-| `pipeline_event` | `boolean` |  |
-| `property` | `Record<string, any>` |  |
-| `push_event` | `boolean` |  |
-| `slug` | `number` |  |
-| `tag_push_event` | `boolean` |  |
-| `title` | `string` |  |
-| `updated_at` | `string` |  |
-| `vulnerability_event` | `boolean` |  |
-| `wiki_page_event` | `boolean` |  |
-
 #### Example: Load
 
 ```ts
@@ -8569,28 +8617,28 @@ Create an instance: `const api_entities_integration_basic = client.ApiEntitiesIn
 | Field | Type | Description |
 | --- | --- | --- |
 | `active` | `boolean` |  |
-| `alert_event` | `boolean` |  |
+| `alert_events` | `boolean` |  |
 | `comment_on_event_enabled` | `boolean` |  |
-| `commit_event` | `boolean` |  |
-| `confidential_issues_event` | `boolean` |  |
-| `confidential_note_event` | `boolean` |  |
+| `commit_events` | `boolean` |  |
+| `confidential_issues_events` | `boolean` |  |
+| `confidential_note_events` | `boolean` |  |
 | `created_at` | `string` |  |
-| `deployment_event` | `boolean` |  |
+| `deployment_events` | `boolean` |  |
 | `id` | `number` |  |
-| `incident_event` | `boolean` |  |
+| `incident_events` | `boolean` |  |
 | `inherited` | `boolean` |  |
-| `issues_event` | `boolean` |  |
-| `job_event` | `boolean` |  |
-| `merge_requests_event` | `boolean` |  |
-| `note_event` | `boolean` |  |
-| `pipeline_event` | `boolean` |  |
-| `push_event` | `boolean` |  |
+| `issues_events` | `boolean` |  |
+| `job_events` | `boolean` |  |
+| `merge_requests_events` | `boolean` |  |
+| `note_events` | `boolean` |  |
+| `pipeline_events` | `boolean` |  |
+| `push_events` | `boolean` |  |
 | `slug` | `number` |  |
-| `tag_push_event` | `boolean` |  |
+| `tag_push_events` | `boolean` |  |
 | `title` | `string` |  |
 | `updated_at` | `string` |  |
-| `vulnerability_event` | `boolean` |  |
-| `wiki_page_event` | `boolean` |  |
+| `vulnerability_events` | `boolean` |  |
+| `wiki_page_events` | `boolean` |  |
 
 #### Example: List
 
@@ -8690,6 +8738,7 @@ Create an instance: `const api_entities_issue = client.ApiEntitiesIssue()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `assignee` | `Record<string, any>` |  |
+| `assignees` | `Record<string, any>` |  |
 | `author` | `Record<string, any>` |  |
 | `blocking_issues_count` | `string` |  |
 | `closed_at` | `string` |  |
@@ -8698,11 +8747,11 @@ Create an instance: `const api_entities_issue = client.ApiEntitiesIssue()`
 | `created_at` | `string` |  |
 | `description` | `string` |  |
 | `discussion_locked` | `boolean` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `due_date` | `string` |  |
 | `epic` | `Record<string, any>` |  |
 | `epic_iid` | `string` |  |
-| `has_task` | `boolean` |  |
+| `has_tasks` | `boolean` |  |
 | `health_status` | `string` |  |
 | `id` | `number` |  |
 | `iid` | `number` |  |
@@ -8710,24 +8759,24 @@ Create an instance: `const api_entities_issue = client.ApiEntitiesIssue()`
 | `imported_from` | `string` |  |
 | `issue_type` | `string` |  |
 | `iteration` | `Record<string, any>` |  |
-| `label` | `any[]` |  |
-| `link` | `Record<string, any>` |  |
+| `labels` | `any[]` |  |
+| `links` | `Record<string, any>` |  |
 | `merge_requests_count` | `string` |  |
 | `milestone` | `Record<string, any>` |  |
 | `moved_to_id` | `string` |  |
 | `project_id` | `number` |  |
-| `reference` | `Record<string, any>` |  |
+| `references` | `Record<string, any>` |  |
 | `service_desk_reply_to` | `string` |  |
 | `severity` | `string` |  |
 | `state` | `string` |  |
 | `subscribed` | `string` |  |
 | `task_completion_status` | `string` |  |
 | `task_status` | `string` |  |
-| `time_stat` | `Record<string, any>` |  |
+| `time_stats` | `Record<string, any>` |  |
 | `title` | `string` |  |
 | `type` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
 | `weight` | `string` |  |
@@ -8802,22 +8851,22 @@ Create an instance: `const api_entities_license = client.ApiEntitiesLicense()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `condition` | `any[]` |  |
+| `conditions` | `any[]` |  |
 | `content` | `string` |  |
 | `description` | `string` |  |
 | `html_url` | `string` |  |
 | `key` | `string` |  |
-| `limitation` | `any[]` |  |
+| `limitations` | `any[]` |  |
 | `name` | `string` |  |
 | `nickname` | `string` |  |
-| `permission` | `any[]` |  |
+| `permissions` | `any[]` |  |
 | `popular` | `boolean` |  |
 | `source_url` | `string` |  |
 
 #### Example: List
 
 ```ts
-const api_entities_licenses = await client.ApiEntitiesLicense().list()
+const api_entities_licenses = await client.ApiEntitiesLicense().list({ id: "example", name: "example", type: "example" })
 ```
 
 
@@ -8889,7 +8938,7 @@ Create an instance: `const api_entities_member = client.ApiEntitiesMember()`
 | `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
 | `created_by` | `Record<string, any>` |  |
-| `custom_attribute` | `any[]` |  |
+| `custom_attributes` | `any[]` |  |
 | `email` | `string` |  |
 | `expires_at` | `string` |  |
 | `group_saml_identity` | `Record<string, any>` |  |
@@ -8948,6 +8997,7 @@ Create an instance: `const api_entities_merge = client.ApiEntitiesMerge()`
 | `allow_maintainer_to_push` | `boolean` |  |
 | `approvals_before_merge` | `string` |  |
 | `assignee` | `Record<string, any>` |  |
+| `assignees` | `Record<string, any>` |  |
 | `author` | `Record<string, any>` |  |
 | `blocking_discussions_resolved` | `string` |  |
 | `changes_count` | `string` |  |
@@ -8957,21 +9007,21 @@ Create an instance: `const api_entities_merge = client.ApiEntitiesMerge()`
 | `description` | `string` |  |
 | `description_html` | `string` |  |
 | `detailed_merge_status` | `string` |  |
-| `diff_ref` | `Record<string, any>` |  |
+| `diff_refs` | `Record<string, any>` |  |
 | `discussion_locked` | `string` |  |
 | `diverged_commits_count` | `string` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `draft` | `string` |  |
 | `first_contribution` | `string` |  |
 | `first_deployed_to_production_at` | `string` |  |
 | `force_remove_source_branch` | `string` |  |
-| `has_conflict` | `boolean` |  |
+| `has_conflicts` | `boolean` |  |
 | `head_pipeline` | `Record<string, any>` |  |
 | `id` | `number` |  |
 | `iid` | `number` |  |
 | `imported` | `string` |  |
 | `imported_from` | `string` |  |
-| `label` | `string` |  |
+| `labels` | `string` |  |
 | `latest_build_finished_at` | `string` |  |
 | `latest_build_started_at` | `string` |  |
 | `merge_after` | `string` |  |
@@ -8979,7 +9029,7 @@ Create an instance: `const api_entities_merge = client.ApiEntitiesMerge()`
 | `merge_error` | `string` |  |
 | `merge_status` | `string` |  |
 | `merge_user` | `Record<string, any>` |  |
-| `merge_when_pipeline_succeed` | `string` |  |
+| `merge_when_pipeline_succeeds` | `string` |  |
 | `merged_at` | `string` |  |
 | `merged_by` | `Record<string, any>` |  |
 | `milestone` | `Record<string, any>` |  |
@@ -8988,7 +9038,8 @@ Create an instance: `const api_entities_merge = client.ApiEntitiesMerge()`
 | `project_id` | `number` |  |
 | `rebase_in_progress` | `string` |  |
 | `reference` | `string` |  |
-| `reviewer` | `Record<string, any>` |  |
+| `references` | `Record<string, any>` |  |
+| `reviewers` | `Record<string, any>` |  |
 | `sha` | `string` |  |
 | `should_remove_source_branch` | `boolean` |  |
 | `source_branch` | `string` |  |
@@ -9001,11 +9052,11 @@ Create an instance: `const api_entities_merge = client.ApiEntitiesMerge()`
 | `target_branch` | `string` |  |
 | `target_project_id` | `string` |  |
 | `task_completion_status` | `string` |  |
-| `time_stat` | `Record<string, any>` |  |
+| `time_stats` | `Record<string, any>` |  |
 | `title` | `string` |  |
 | `title_html` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user` | `Record<string, any>` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
@@ -9041,10 +9092,8 @@ Create an instance: `const api_entities_merge_request_approval = client.ApiEntit
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `approved` | `boolean` |  |
-| `approved_by` | `Record<string, any>` |  |
-| `user_can_approve` | `boolean` |  |
-| `user_has_approved` | `boolean` |  |
+| `approved_at` | `string` |  |
+| `user` | `Record<string, any>` |  |
 
 #### Example: Load
 
@@ -9081,6 +9130,7 @@ Create an instance: `const api_entities_merge_request_basic = client.ApiEntities
 | `allow_maintainer_to_push` | `boolean` |  |
 | `approvals_before_merge` | `string` |  |
 | `assignee` | `Record<string, any>` |  |
+| `assignees` | `Record<string, any>` |  |
 | `author` | `Record<string, any>` |  |
 | `blocking_discussions_resolved` | `string` |  |
 | `closed_at` | `string` |  |
@@ -9090,27 +9140,28 @@ Create an instance: `const api_entities_merge_request_basic = client.ApiEntities
 | `description_html` | `string` |  |
 | `detailed_merge_status` | `string` |  |
 | `discussion_locked` | `string` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `draft` | `string` |  |
 | `force_remove_source_branch` | `string` |  |
-| `has_conflict` | `boolean` |  |
+| `has_conflicts` | `boolean` |  |
 | `id` | `number` |  |
 | `iid` | `number` |  |
 | `imported` | `string` |  |
 | `imported_from` | `string` |  |
-| `label` | `string` |  |
+| `labels` | `string` |  |
 | `merge_after` | `string` |  |
 | `merge_commit_sha` | `string` |  |
 | `merge_status` | `string` |  |
 | `merge_user` | `Record<string, any>` |  |
-| `merge_when_pipeline_succeed` | `string` |  |
+| `merge_when_pipeline_succeeds` | `string` |  |
 | `merged_at` | `string` |  |
 | `merged_by` | `Record<string, any>` |  |
 | `milestone` | `Record<string, any>` |  |
 | `prepared_at` | `string` |  |
 | `project_id` | `number` |  |
 | `reference` | `string` |  |
-| `reviewer` | `Record<string, any>` |  |
+| `references` | `Record<string, any>` |  |
+| `reviewers` | `Record<string, any>` |  |
 | `sha` | `string` |  |
 | `should_remove_source_branch` | `boolean` |  |
 | `source_branch` | `string` |  |
@@ -9122,11 +9173,11 @@ Create an instance: `const api_entities_merge_request_basic = client.ApiEntities
 | `target_branch` | `string` |  |
 | `target_project_id` | `string` |  |
 | `task_completion_status` | `string` |  |
-| `time_stat` | `Record<string, any>` |  |
+| `time_stats` | `Record<string, any>` |  |
 | `title` | `string` |  |
 | `title_html` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
 | `work_in_progress` | `string` |  |
@@ -9140,7 +9191,7 @@ const api_entities_merge_request_basic = await client.ApiEntitiesMergeRequestBas
 #### Example: List
 
 ```ts
-const api_entities_merge_request_basics = await client.ApiEntitiesMergeRequestBasic().list()
+const api_entities_merge_request_basics = await client.ApiEntitiesMergeRequestBasic().list({ project_id: "example" })
 ```
 
 
@@ -9162,9 +9213,10 @@ Create an instance: `const api_entities_merge_request_change = client.ApiEntitie
 | `allow_maintainer_to_push` | `boolean` |  |
 | `approvals_before_merge` | `string` |  |
 | `assignee` | `Record<string, any>` |  |
+| `assignees` | `Record<string, any>` |  |
 | `author` | `Record<string, any>` |  |
 | `blocking_discussions_resolved` | `string` |  |
-| `change` | `Record<string, any>` |  |
+| `changes` | `Record<string, any>` |  |
 | `changes_count` | `string` |  |
 | `closed_at` | `string` |  |
 | `closed_by` | `Record<string, any>` |  |
@@ -9172,21 +9224,21 @@ Create an instance: `const api_entities_merge_request_change = client.ApiEntitie
 | `description` | `string` |  |
 | `description_html` | `string` |  |
 | `detailed_merge_status` | `string` |  |
-| `diff_ref` | `Record<string, any>` |  |
+| `diff_refs` | `Record<string, any>` |  |
 | `discussion_locked` | `string` |  |
 | `diverged_commits_count` | `string` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `draft` | `string` |  |
 | `first_contribution` | `string` |  |
 | `first_deployed_to_production_at` | `string` |  |
 | `force_remove_source_branch` | `string` |  |
-| `has_conflict` | `boolean` |  |
+| `has_conflicts` | `boolean` |  |
 | `head_pipeline` | `Record<string, any>` |  |
 | `id` | `number` |  |
 | `iid` | `number` |  |
 | `imported` | `string` |  |
 | `imported_from` | `string` |  |
-| `label` | `string` |  |
+| `labels` | `string` |  |
 | `latest_build_finished_at` | `string` |  |
 | `latest_build_started_at` | `string` |  |
 | `merge_after` | `string` |  |
@@ -9194,7 +9246,7 @@ Create an instance: `const api_entities_merge_request_change = client.ApiEntitie
 | `merge_error` | `string` |  |
 | `merge_status` | `string` |  |
 | `merge_user` | `Record<string, any>` |  |
-| `merge_when_pipeline_succeed` | `string` |  |
+| `merge_when_pipeline_succeeds` | `string` |  |
 | `merged_at` | `string` |  |
 | `merged_by` | `Record<string, any>` |  |
 | `milestone` | `Record<string, any>` |  |
@@ -9204,7 +9256,8 @@ Create an instance: `const api_entities_merge_request_change = client.ApiEntitie
 | `project_id` | `number` |  |
 | `rebase_in_progress` | `string` |  |
 | `reference` | `string` |  |
-| `reviewer` | `Record<string, any>` |  |
+| `references` | `Record<string, any>` |  |
+| `reviewers` | `Record<string, any>` |  |
 | `sha` | `string` |  |
 | `should_remove_source_branch` | `boolean` |  |
 | `source_branch` | `string` |  |
@@ -9217,11 +9270,11 @@ Create an instance: `const api_entities_merge_request_change = client.ApiEntitie
 | `target_branch` | `string` |  |
 | `target_project_id` | `string` |  |
 | `task_completion_status` | `string` |  |
-| `time_stat` | `Record<string, any>` |  |
+| `time_stats` | `Record<string, any>` |  |
 | `title` | `string` |  |
 | `title_html` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user` | `Record<string, any>` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
@@ -9261,7 +9314,7 @@ Create an instance: `const api_entities_merge_request_diff = client.ApiEntitiesM
 #### Example: List
 
 ```ts
-const api_entities_merge_request_diffs = await client.ApiEntitiesMergeRequestDiff().list()
+const api_entities_merge_request_diffs = await client.ApiEntitiesMergeRequestDiff().list({ merge_request_id: "example", project_id: "example" })
 ```
 
 
@@ -9280,9 +9333,9 @@ Create an instance: `const api_entities_merge_request_diff_full = client.ApiEnti
 | Field | Type | Description |
 | --- | --- | --- |
 | `base_commit_sha` | `string` |  |
-| `commit` | `Record<string, any>` |  |
+| `commits` | `Record<string, any>` |  |
 | `created_at` | `string` |  |
-| `diff` | `Record<string, any>` |  |
+| `diffs` | `Record<string, any>` |  |
 | `head_commit_sha` | `string` |  |
 | `id` | `string` |  |
 | `merge_request_id` | `string` |  |
@@ -9312,9 +9365,16 @@ Create an instance: `const api_entities_merge_request_reviewer = client.ApiEntit
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created_at` | `string` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `custom_attributes` | `any[]` |  |
+| `id` | `number` |  |
+| `locked` | `boolean` |  |
+| `name` | `string` |  |
+| `public_email` | `string` |  |
 | `state` | `string` |  |
-| `user` | `Record<string, any>` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
@@ -9349,7 +9409,7 @@ Create an instance: `const api_entities_metric_image = client.ApiEntitiesMetricI
 #### Example: List
 
 ```ts
-const api_entities_metric_images = await client.ApiEntitiesMetricImage().list()
+const api_entities_metric_images = await client.ApiEntitiesMetricImage().list({ alert_management_alert_id: "example", project_id: "example" })
 ```
 
 #### Example: Create
@@ -9376,8 +9436,16 @@ Create an instance: `const api_entities_mr_note = client.ApiEntitiesMrNote()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `Record<string, any>` |  |
-| `note` | `string` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `custom_attributes` | `any[]` |  |
+| `id` | `number` |  |
+| `locked` | `boolean` |  |
+| `name` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
@@ -9413,7 +9481,7 @@ Create an instance: `const api_entities_namespace = client.ApiEntitiesNamespace(
 | `kind` | `string` |  |
 | `max_seats_used` | `number` |  |
 | `max_seats_used_changed_at` | `string` |  |
-| `members_count_with_descendant` | `number` |  |
+| `members_count_with_descendants` | `number` |  |
 | `name` | `string` |  |
 | `parent_id` | `number` |  |
 | `path` | `string` |  |
@@ -9453,13 +9521,13 @@ Create an instance: `const api_entities_namespace_existence = client.ApiEntities
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `exist` | `boolean` |  |
-| `suggest` | `any[]` |  |
+| `exists` | `boolean` |  |
+| `suggests` | `any[]` |  |
 
 #### Example: List
 
 ```ts
-const api_entities_namespace_existences = await client.ApiEntitiesNamespaceExistence().list()
+const api_entities_namespace_existences = await client.ApiEntitiesNamespaceExistence().list({ namespace_id: "example" })
 ```
 
 
@@ -9512,9 +9580,9 @@ Create an instance: `const api_entities_npm_package = client.ApiEntitiesNpmPacka
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dist_tag` | `Record<string, any>` |  |
+| `disttags` | `Record<string, any>` |  |
 | `name` | `string` |  |
-| `version` | `Record<string, any>` |  |
+| `versions` | `Record<string, any>` |  |
 
 #### Example: Load
 
@@ -9532,12 +9600,6 @@ Create an instance: `const api_entities_npm_package_tag = client.ApiEntitiesNpmP
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `dist_tag` | `Record<string, any>` |  |
 
 #### Example: Load
 
@@ -9560,12 +9622,12 @@ Create an instance: `const api_entities_nuget_packages_version = client.ApiEntit
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `version` | `any[]` |  |
+| `versions` | `any[]` |  |
 
 #### Example: List
 
 ```ts
-const api_entities_nuget_packages_versions = await client.ApiEntitiesNugetPackagesVersion().list()
+const api_entities_nuget_packages_versions = await client.ApiEntitiesNugetPackagesVersion().list({ project_id: "example" })
 ```
 
 
@@ -9583,19 +9645,20 @@ Create an instance: `const api_entities_nuget_search_result = client.ApiEntities
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
+| `authors` | `string` |  |
 | `description` | `string` |  |
-| `icon_url` | `string` |  |
+| `iconUrl` | `string` |  |
 | `id` | `string` |  |
-| `license_url` | `string` |  |
-| `project_url` | `string` |  |
+| `licenseUrl` | `string` |  |
+| `projectUrl` | `string` |  |
 | `summary` | `string` |  |
-| `tag` | `string` |  |
+| `tags` | `string` |  |
 | `title` | `string` |  |
-| `total_download` | `number` |  |
+| `totalDownloads` | `number` |  |
 | `type` | `string` |  |
 | `verified` | `boolean` |  |
 | `version` | `string` |  |
+| `versions` | `Record<string, any>` |  |
 
 #### Example: List
 
@@ -9618,7 +9681,7 @@ Create an instance: `const api_entities_nuget_service_index = client.ApiEntities
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `resource` | `any[]` |  |
+| `resources` | `any[]` |  |
 | `version` | `string` |  |
 
 #### Example: List
@@ -9665,15 +9728,17 @@ Create an instance: `const api_entities_package = client.ApiEntitiesPackage()`
 | `created_at` | `string` |  |
 | `id` | `number` |  |
 | `last_downloaded_at` | `string` |  |
-| `link` | `Record<string, any>` |  |
+| `links` | `Record<string, any>` |  |
 | `name` | `string` |  |
 | `package_type` | `string` |  |
 | `pipeline` | `Record<string, any>` |  |
+| `pipelines` | `Record<string, any>` |  |
 | `project_id` | `number` |  |
 | `project_path` | `string` |  |
 | `status` | `string` |  |
-| `tag` | `string` |  |
+| `tags` | `string` |  |
 | `version` | `string` |  |
+| `versions` | `Record<string, any>` |  |
 
 #### Example: Load
 
@@ -9709,13 +9774,13 @@ Create an instance: `const api_entities_package_file = client.ApiEntitiesPackage
 | `file_sha256` | `string` |  |
 | `id` | `number` |  |
 | `package_id` | `number` |  |
-| `pipeline` | `Record<string, any>` |  |
+| `pipelines` | `Record<string, any>` |  |
 | `size` | `number` |  |
 
 #### Example: List
 
 ```ts
-const api_entities_package_files = await client.ApiEntitiesPackageFile().list()
+const api_entities_package_files = await client.ApiEntitiesPackageFile().list({ package_id: "example", project_id: "example" })
 ```
 
 
@@ -9733,16 +9798,15 @@ Create an instance: `const api_entities_package_pipeline = client.ApiEntitiesPac
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created_at` | `string` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `custom_attributes` | `any[]` |  |
 | `id` | `number` |  |
-| `iid` | `number` |  |
-| `project_id` | `number` |  |
-| `ref` | `string` |  |
-| `sha` | `string` |  |
-| `source` | `string` |  |
-| `status` | `string` |  |
-| `updated_at` | `string` |  |
-| `user` | `Record<string, any>` |  |
+| `locked` | `boolean` |  |
+| `name` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
+| `username` | `string` |  |
 | `web_url` | `string` |  |
 
 #### Example: Load
@@ -9762,12 +9826,6 @@ Create an instance: `const api_entities_packages_conan_files_list = client.ApiEn
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `file` | `Record<string, any>` |  |
-
 #### Example: Load
 
 ```ts
@@ -9784,12 +9842,6 @@ Create an instance: `const api_entities_packages_conan_package_manifest = client
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `package_url` | `Record<string, any>` |  |
 
 #### Example: Load
 
@@ -9818,7 +9870,7 @@ Create an instance: `const api_entities_packages_conan_package_revision = client
 #### Example: List
 
 ```ts
-const api_entities_packages_conan_package_revisions = await client.ApiEntitiesPackagesConanPackageRevision().list()
+const api_entities_packages_conan_package_revisions = await client.ApiEntitiesPackagesConanPackageRevision().list({ conan_id: "example", conan_package_reference: "example", package_channel: "example", package_username: "example", package_version: "example", project_id: "example", revision_id: "example" })
 ```
 
 
@@ -9831,12 +9883,6 @@ Create an instance: `const api_entities_packages_conan_package_snapshot = client
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `package_snapshot` | `Record<string, any>` |  |
 
 #### Example: Load
 
@@ -9854,12 +9900,6 @@ Create an instance: `const api_entities_packages_conan_recipe_manifest = client.
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `recipe_url` | `Record<string, any>` |  |
 
 #### Example: Load
 
@@ -9888,7 +9928,7 @@ Create an instance: `const api_entities_packages_conan_recipe_revision = client.
 #### Example: List
 
 ```ts
-const api_entities_packages_conan_recipe_revisions = await client.ApiEntitiesPackagesConanRecipeRevision().list()
+const api_entities_packages_conan_recipe_revisions = await client.ApiEntitiesPackagesConanRecipeRevision().list({ conan_id: "example", package_channel: "example", package_username: "example", package_version: "example", project_id: "example" })
 ```
 
 
@@ -9901,12 +9941,6 @@ Create an instance: `const api_entities_packages_conan_recipe_snapshot = client.
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `recipe_snapshot` | `Record<string, any>` |  |
 
 #### Example: Load
 
@@ -9949,12 +9983,6 @@ Create an instance: `const api_entities_packages_conan_upload_url = client.ApiEn
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `upload_url` | `Record<string, any>` |  |
-
 #### Example: Create
 
 ```ts
@@ -9984,15 +10012,15 @@ Create an instance: `const api_entities_packages_debian_distribution = client.Ap
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `architecture` | `any[]` |  |
+| `architectures` | `any[]` |  |
 | `codename` | `string` |  |
-| `component` | `any[]` |  |
+| `components` | `any[]` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `label` | `string` |  |
 | `origin` | `string` |  |
 | `suite` | `string` |  |
-| `valid_time_duration_second` | `number` |  |
+| `valid_time_duration_seconds` | `number` |  |
 | `version` | `string` |  |
 
 #### Example: Load
@@ -10033,9 +10061,12 @@ Create an instance: `const api_entities_pages_domain = client.ApiEntitiesPagesDo
 | Field | Type | Description |
 | --- | --- | --- |
 | `auto_ssl_enabled` | `string` |  |
-| `certificate` | `Record<string, any>` |  |
+| `certificate` | `string` |  |
+| `certificate_text` | `string` |  |
 | `domain` | `string` |  |
 | `enabled_until` | `string` |  |
+| `expired` | `string` |  |
+| `subject` | `string` |  |
 | `url` | `string` |  |
 | `verification_code` | `string` |  |
 | `verified` | `boolean` |  |
@@ -10049,7 +10080,7 @@ const api_entities_pages_domain = await client.ApiEntitiesPagesDomain().load({ i
 #### Example: List
 
 ```ts
-const api_entities_pages_domains = await client.ApiEntitiesPagesDomain().list()
+const api_entities_pages_domains = await client.ApiEntitiesPagesDomain().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -10075,14 +10106,8 @@ Create an instance: `const api_entities_pages_domain_basic = client.ApiEntitiesP
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `auto_ssl_enabled` | `string` |  |
-| `certificate_expiration` | `Record<string, any>` |  |
-| `domain` | `string` |  |
-| `enabled_until` | `string` |  |
-| `project_id` | `string` |  |
-| `url` | `string` |  |
-| `verification_code` | `string` |  |
-| `verified` | `boolean` |  |
+| `expiration` | `string` |  |
+| `expired` | `string` |  |
 
 #### Example: Load
 
@@ -10113,7 +10138,7 @@ Create an instance: `const api_entities_personal_access_token = client.ApiEntiti
 | `last_used_at` | `string` |  |
 | `name` | `string` |  |
 | `revoked` | `boolean` |  |
-| `scope` | `any[]` |  |
+| `scopes` | `any[]` |  |
 | `user_id` | `number` |  |
 
 #### Example: List
@@ -10144,10 +10169,10 @@ Create an instance: `const api_entities_personal_access_token_with_last_used_ip 
 | `expires_at` | `string` |  |
 | `id` | `number` |  |
 | `last_used_at` | `string` |  |
-| `last_used_ip` | `any[]` |  |
+| `last_used_ips` | `any[]` |  |
 | `name` | `string` |  |
 | `revoked` | `boolean` |  |
-| `scope` | `any[]` |  |
+| `scopes` | `any[]` |  |
 | `user_id` | `number` |  |
 
 #### Example: Load
@@ -10185,7 +10210,7 @@ Create an instance: `const api_entities_personal_access_token_with_token = clien
 | `last_used_at` | `string` |  |
 | `name` | `string` |  |
 | `revoked` | `boolean` |  |
-| `scope` | `any[]` |  |
+| `scopes` | `any[]` |  |
 | `token` | `string` |  |
 | `user_id` | `number` |  |
 
@@ -10217,8 +10242,8 @@ Create an instance: `const api_entities_personal_snippet = client.ApiEntitiesPer
 | `author` | `Record<string, any>` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
-| `file` | `any[]` |  |
 | `file_name` | `string` |  |
+| `files` | `any[]` |  |
 | `http_url_to_repo` | `string` |  |
 | `id` | `number` |  |
 | `imported` | `boolean` |  |
@@ -10263,34 +10288,6 @@ Create an instance: `const api_entities_plan_limit = client.ApiEntitiesPlanLimit
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `ci_active_job` | `number` |  |
-| `ci_instance_level_variable` | `number` |  |
-| `ci_needs_size_limit` | `number` |  |
-| `ci_pipeline_schedule` | `number` |  |
-| `ci_pipeline_size` | `number` |  |
-| `ci_project_subscription` | `number` |  |
-| `ci_registered_group_runner` | `number` |  |
-| `ci_registered_project_runner` | `number` |  |
-| `conan_max_file_size` | `number` |  |
-| `dotenv_size` | `number` |  |
-| `dotenv_variable` | `number` |  |
-| `enforcement_limit` | `number` |  |
-| `generic_packages_max_file_size` | `number` |  |
-| `helm_max_file_size` | `number` |  |
-| `limits_history` | `Record<string, any>` |  |
-| `maven_max_file_size` | `number` |  |
-| `notification_limit` | `number` |  |
-| `npm_max_file_size` | `number` |  |
-| `nuget_max_file_size` | `number` |  |
-| `pipeline_hierarchy_size` | `number` |  |
-| `pypi_max_file_size` | `number` |  |
-| `storage_size_limit` | `number` |  |
-| `terraform_module_max_file_size` | `number` |  |
-
 #### Example: Load
 
 ```ts
@@ -10319,11 +10316,11 @@ Create an instance: `const api_entities_project = client.ApiEntitiesProject()`
 | `analytics_access_level` | `string` |  |
 | `approvals_before_merge` | `string` |  |
 | `archived` | `boolean` |  |
-| `auto_cancel_pending_pipeline` | `string` |  |
+| `auto_cancel_pending_pipelines` | `string` |  |
 | `auto_devops_deploy_strategy` | `string` |  |
 | `auto_devops_enabled` | `boolean` |  |
 | `auto_duo_code_review_enabled` | `string` |  |
-| `autoclose_referenced_issue` | `boolean` |  |
+| `autoclose_referenced_issues` | `boolean` |  |
 | `avatar_url` | `string` |  |
 | `build_git_strategy` | `string` |  |
 | `build_timeout` | `number` |  |
@@ -10332,23 +10329,23 @@ Create an instance: `const api_entities_project = client.ApiEntitiesProject()`
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `boolean` |  |
 | `ci_config_path` | `string` |  |
 | `ci_default_git_depth` | `number` |  |
-| `ci_delete_pipelines_in_second` | `number` |  |
+| `ci_delete_pipelines_in_seconds` | `number` |  |
 | `ci_forward_deployment_enabled` | `boolean` |  |
 | `ci_forward_deployment_rollback_allowed` | `boolean` |  |
-| `ci_id_token_sub_claim_component` | `any[]` |  |
+| `ci_id_token_sub_claim_components` | `any[]` |  |
 | `ci_job_token_scope_enabled` | `boolean` |  |
 | `ci_pipeline_variables_minimum_override_role` | `string` |  |
 | `ci_push_repository_for_job_token_allowed` | `boolean` |  |
 | `ci_restrict_pipeline_cancellation_role` | `string` |  |
-| `ci_separated_cache` | `boolean` |  |
-| `compliance_framework` | `string` |  |
+| `ci_separated_caches` | `boolean` |  |
+| `compliance_frameworks` | `string` |  |
 | `container_expiration_policy` | `Record<string, any>` |  |
 | `container_registry_access_level` | `string` |  |
 | `container_registry_enabled` | `boolean` |  |
 | `container_registry_image_prefix` | `string` |  |
 | `created_at` | `string` |  |
 | `creator_id` | `number` |  |
-| `custom_attribute` | `Record<string, any>` |  |
+| `custom_attributes` | `Record<string, any>` |  |
 | `default_branch` | `string` |  |
 | `description` | `string` |  |
 | `description_html` | `string` |  |
@@ -10356,7 +10353,7 @@ Create an instance: `const api_entities_project = client.ApiEntitiesProject()`
 | `emails_disabled` | `boolean` |  |
 | `emails_enabled` | `boolean` |  |
 | `empty_repo` | `boolean` |  |
-| `enforce_auth_checks_on_upload` | `boolean` |  |
+| `enforce_auth_checks_on_uploads` | `boolean` |  |
 | `environments_access_level` | `string` |  |
 | `external_authorization_classification_label` | `string` |  |
 | `feature_flags_access_level` | `string` |  |
@@ -10381,7 +10378,7 @@ Create an instance: `const api_entities_project = client.ApiEntitiesProject()`
 | `lfs_enabled` | `boolean` |  |
 | `license` | `Record<string, any>` |  |
 | `license_url` | `string` |  |
-| `link` | `Record<string, any>` |  |
+| `links` | `Record<string, any>` |  |
 | `marked_for_deletion_at` | `string` |  |
 | `marked_for_deletion_on` | `string` |  |
 | `max_artifacts_size` | `number` |  |
@@ -10396,8 +10393,8 @@ Create an instance: `const api_entities_project = client.ApiEntitiesProject()`
 | `merge_trains_enabled` | `string` |  |
 | `merge_trains_skip_train_allowed` | `string` |  |
 | `mirror` | `string` |  |
-| `mirror_overwrites_diverged_branch` | `string` |  |
-| `mirror_trigger_build` | `string` |  |
+| `mirror_overwrites_diverged_branches` | `string` |  |
+| `mirror_trigger_builds` | `string` |  |
 | `mirror_user_id` | `string` |  |
 | `model_experiments_access_level` | `string` |  |
 | `model_registry_access_level` | `string` |  |
@@ -10408,8 +10405,8 @@ Create an instance: `const api_entities_project = client.ApiEntitiesProject()`
 | `namespace` | `Record<string, any>` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `boolean` |  |
 | `only_allow_merge_if_all_status_checks_passed` | `string` |  |
-| `only_allow_merge_if_pipeline_succeed` | `boolean` |  |
-| `only_mirror_protected_branch` | `string` |  |
+| `only_allow_merge_if_pipeline_succeeds` | `boolean` |  |
+| `only_mirror_protected_branches` | `string` |  |
 | `open_issues_count` | `number` |  |
 | `owner` | `Record<string, any>` |  |
 | `package_registry_access_level` | `string` |  |
@@ -10420,7 +10417,7 @@ Create an instance: `const api_entities_project = client.ApiEntitiesProject()`
 | `pre_receive_secret_detection_enabled` | `boolean` |  |
 | `prevent_merge_without_jira_issue` | `string` |  |
 | `printing_merge_request_link_enabled` | `boolean` |  |
-| `public_job` | `boolean` |  |
+| `public_jobs` | `boolean` |  |
 | `readme_url` | `string` |  |
 | `releases_access_level` | `string` |  |
 | `remove_source_branch_after_merge` | `boolean` |  |
@@ -10430,9 +10427,9 @@ Create an instance: `const api_entities_project = client.ApiEntitiesProject()`
 | `request_access_enabled` | `boolean` |  |
 | `requirements_access_level` | `string` |  |
 | `requirements_enabled` | `string` |  |
-| `resolve_outdated_diff_discussion` | `boolean` |  |
+| `resolve_outdated_diff_discussions` | `boolean` |  |
 | `resource_group_default_process_mode` | `string` |  |
-| `restrict_user_defined_variable` | `boolean` |  |
+| `restrict_user_defined_variables` | `boolean` |  |
 | `runner_token_expiration_interval` | `number` |  |
 | `runners_token` | `string` |  |
 | `secret_push_protection_enabled` | `boolean` |  |
@@ -10441,7 +10438,7 @@ Create an instance: `const api_entities_project = client.ApiEntitiesProject()`
 | `service_desk_address` | `string` |  |
 | `service_desk_enabled` | `boolean` |  |
 | `shared_runners_enabled` | `boolean` |  |
-| `shared_with_group` | `any[]` |  |
+| `shared_with_groups` | `any[]` |  |
 | `show_diff_preview_in_email` | `boolean` |  |
 | `snippets_access_level` | `string` |  |
 | `snippets_enabled` | `boolean` |  |
@@ -10450,13 +10447,13 @@ Create an instance: `const api_entities_project = client.ApiEntitiesProject()`
 | `squash_option` | `string` |  |
 | `ssh_url_to_repo` | `string` |  |
 | `star_count` | `number` |  |
-| `statistic` | `Record<string, any>` |  |
+| `statistics` | `Record<string, any>` |  |
 | `suggestion_commit_message` | `string` |  |
 | `tag_list` | `any[]` |  |
-| `topic` | `any[]` |  |
+| `topics` | `any[]` |  |
 | `updated_at` | `string` |  |
 | `visibility` | `string` |  |
-| `warn_about_potentially_unwanted_character` | `boolean` |  |
+| `warn_about_potentially_unwanted_characters` | `boolean` |  |
 | `web_based_commit_signing_enabled` | `string` |  |
 | `web_url` | `string` |  |
 | `wiki_access_level` | `string` |  |
@@ -10490,7 +10487,8 @@ Create an instance: `const api_entities_project_daily_statistic = client.ApiEnti
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fetch` | `Record<string, any>` |  |
+| `days` | `any[]` |  |
+| `total` | `number` |  |
 
 #### Example: Load
 
@@ -10513,15 +10511,8 @@ Create an instance: `const api_entities_project_export_status = client.ApiEntiti
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created_at` | `string` |  |
-| `description` | `string` |  |
-| `export_status` | `string` |  |
-| `id` | `number` |  |
-| `link` | `Record<string, any>` |  |
-| `name` | `string` |  |
-| `name_with_namespace` | `string` |  |
-| `path` | `string` |  |
-| `path_with_namespace` | `string` |  |
+| `api_url` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
@@ -10568,36 +10559,36 @@ Create an instance: `const api_entities_project_hook = client.ApiEntitiesProject
 | --- | --- | --- |
 | `alert_status` | `any` |  |
 | `branch_filter_strategy` | `string` |  |
-| `confidential_issues_event` | `boolean` |  |
-| `confidential_note_event` | `boolean` |  |
+| `confidential_issues_events` | `boolean` |  |
+| `confidential_note_events` | `boolean` |  |
 | `created_at` | `string` |  |
-| `custom_header` | `any[]` |  |
+| `custom_headers` | `any[]` |  |
 | `custom_webhook_template` | `string` |  |
-| `deployment_event` | `boolean` |  |
+| `deployment_events` | `boolean` |  |
 | `description` | `string` |  |
 | `disabled_until` | `string` |  |
-| `emoji_event` | `boolean` |  |
+| `emoji_events` | `boolean` |  |
 | `enable_ssl_verification` | `boolean` |  |
-| `feature_flag_event` | `boolean` |  |
+| `feature_flag_events` | `boolean` |  |
 | `id` | `string` |  |
-| `issues_event` | `boolean` |  |
-| `job_event` | `boolean` |  |
-| `merge_requests_event` | `boolean` |  |
-| `milestone_event` | `boolean` |  |
+| `issues_events` | `boolean` |  |
+| `job_events` | `boolean` |  |
+| `merge_requests_events` | `boolean` |  |
+| `milestone_events` | `boolean` |  |
 | `name` | `string` |  |
-| `note_event` | `boolean` |  |
-| `pipeline_event` | `boolean` |  |
+| `note_events` | `boolean` |  |
+| `pipeline_events` | `boolean` |  |
 | `project_id` | `string` |  |
-| `push_event` | `boolean` |  |
+| `push_events` | `boolean` |  |
 | `push_events_branch_filter` | `string` |  |
-| `releases_event` | `boolean` |  |
-| `repository_update_event` | `boolean` |  |
-| `resource_access_token_event` | `boolean` |  |
-| `tag_push_event` | `boolean` |  |
+| `releases_events` | `boolean` |  |
+| `repository_update_events` | `boolean` |  |
+| `resource_access_token_events` | `boolean` |  |
+| `tag_push_events` | `boolean` |  |
 | `url` | `string` |  |
-| `url_variable` | `any[]` |  |
-| `vulnerability_event` | `boolean` |  |
-| `wiki_page_event` | `boolean` |  |
+| `url_variables` | `any[]` |  |
+| `vulnerability_events` | `boolean` |  |
+| `wiki_page_events` | `boolean` |  |
 
 #### Example: Load
 
@@ -10608,7 +10599,7 @@ const api_entities_project_hook = await client.ApiEntitiesProjectHook().load({ i
 #### Example: List
 
 ```ts
-const api_entities_project_hooks = await client.ApiEntitiesProjectHook().list()
+const api_entities_project_hooks = await client.ApiEntitiesProjectHook().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -10646,7 +10637,7 @@ Create an instance: `const api_entities_project_import_status = client.ApiEntiti
 #### Example: List
 
 ```ts
-const api_entities_project_import_statuss = await client.ApiEntitiesProjectImportStatus().list()
+const api_entities_project_import_statuss = await client.ApiEntitiesProjectImportStatus().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -10727,8 +10718,8 @@ Create an instance: `const api_entities_project_snippet = client.ApiEntitiesProj
 | `author` | `Record<string, any>` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
-| `file` | `any[]` |  |
 | `file_name` | `string` |  |
+| `files` | `any[]` |  |
 | `http_url_to_repo` | `string` |  |
 | `id` | `number` |  |
 | `imported` | `boolean` |  |
@@ -10751,7 +10742,7 @@ const api_entities_project_snippet = await client.ApiEntitiesProjectSnippet().lo
 #### Example: List
 
 ```ts
-const api_entities_project_snippets = await client.ApiEntitiesProjectSnippet().list()
+const api_entities_project_snippets = await client.ApiEntitiesProjectSnippet().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -10801,11 +10792,11 @@ Create an instance: `const api_entities_project_with_access = client.ApiEntities
 | `analytics_access_level` | `string` |  |
 | `approvals_before_merge` | `string` |  |
 | `archived` | `boolean` |  |
-| `auto_cancel_pending_pipeline` | `string` |  |
+| `auto_cancel_pending_pipelines` | `string` |  |
 | `auto_devops_deploy_strategy` | `string` |  |
 | `auto_devops_enabled` | `boolean` |  |
 | `auto_duo_code_review_enabled` | `string` |  |
-| `autoclose_referenced_issue` | `boolean` |  |
+| `autoclose_referenced_issues` | `boolean` |  |
 | `avatar_url` | `string` |  |
 | `build_git_strategy` | `string` |  |
 | `build_timeout` | `number` |  |
@@ -10814,23 +10805,23 @@ Create an instance: `const api_entities_project_with_access = client.ApiEntities
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `boolean` |  |
 | `ci_config_path` | `string` |  |
 | `ci_default_git_depth` | `number` |  |
-| `ci_delete_pipelines_in_second` | `number` |  |
+| `ci_delete_pipelines_in_seconds` | `number` |  |
 | `ci_forward_deployment_enabled` | `boolean` |  |
 | `ci_forward_deployment_rollback_allowed` | `boolean` |  |
-| `ci_id_token_sub_claim_component` | `any[]` |  |
+| `ci_id_token_sub_claim_components` | `any[]` |  |
 | `ci_job_token_scope_enabled` | `boolean` |  |
 | `ci_pipeline_variables_minimum_override_role` | `string` |  |
 | `ci_push_repository_for_job_token_allowed` | `boolean` |  |
 | `ci_restrict_pipeline_cancellation_role` | `string` |  |
-| `ci_separated_cache` | `boolean` |  |
-| `compliance_framework` | `string` |  |
+| `ci_separated_caches` | `boolean` |  |
+| `compliance_frameworks` | `string` |  |
 | `container_expiration_policy` | `Record<string, any>` |  |
 | `container_registry_access_level` | `string` |  |
 | `container_registry_enabled` | `boolean` |  |
 | `container_registry_image_prefix` | `string` |  |
 | `created_at` | `string` |  |
 | `creator_id` | `number` |  |
-| `custom_attribute` | `Record<string, any>` |  |
+| `custom_attributes` | `Record<string, any>` |  |
 | `default_branch` | `string` |  |
 | `description` | `string` |  |
 | `description_html` | `string` |  |
@@ -10838,7 +10829,7 @@ Create an instance: `const api_entities_project_with_access = client.ApiEntities
 | `emails_disabled` | `boolean` |  |
 | `emails_enabled` | `boolean` |  |
 | `empty_repo` | `boolean` |  |
-| `enforce_auth_checks_on_upload` | `boolean` |  |
+| `enforce_auth_checks_on_uploads` | `boolean` |  |
 | `environments_access_level` | `string` |  |
 | `external_authorization_classification_label` | `string` |  |
 | `feature_flags_access_level` | `string` |  |
@@ -10863,7 +10854,7 @@ Create an instance: `const api_entities_project_with_access = client.ApiEntities
 | `lfs_enabled` | `boolean` |  |
 | `license` | `Record<string, any>` |  |
 | `license_url` | `string` |  |
-| `link` | `Record<string, any>` |  |
+| `links` | `Record<string, any>` |  |
 | `marked_for_deletion_at` | `string` |  |
 | `marked_for_deletion_on` | `string` |  |
 | `max_artifacts_size` | `number` |  |
@@ -10878,8 +10869,8 @@ Create an instance: `const api_entities_project_with_access = client.ApiEntities
 | `merge_trains_enabled` | `string` |  |
 | `merge_trains_skip_train_allowed` | `string` |  |
 | `mirror` | `string` |  |
-| `mirror_overwrites_diverged_branch` | `string` |  |
-| `mirror_trigger_build` | `string` |  |
+| `mirror_overwrites_diverged_branches` | `string` |  |
+| `mirror_trigger_builds` | `string` |  |
 | `mirror_user_id` | `string` |  |
 | `model_experiments_access_level` | `string` |  |
 | `model_registry_access_level` | `string` |  |
@@ -10890,8 +10881,8 @@ Create an instance: `const api_entities_project_with_access = client.ApiEntities
 | `namespace` | `Record<string, any>` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `boolean` |  |
 | `only_allow_merge_if_all_status_checks_passed` | `string` |  |
-| `only_allow_merge_if_pipeline_succeed` | `boolean` |  |
-| `only_mirror_protected_branch` | `string` |  |
+| `only_allow_merge_if_pipeline_succeeds` | `boolean` |  |
+| `only_mirror_protected_branches` | `string` |  |
 | `open_issues_count` | `number` |  |
 | `owner` | `Record<string, any>` |  |
 | `package_registry_access_level` | `string` |  |
@@ -10899,11 +10890,11 @@ Create an instance: `const api_entities_project_with_access = client.ApiEntities
 | `pages_access_level` | `string` |  |
 | `path` | `string` |  |
 | `path_with_namespace` | `string` |  |
-| `permission` | `Record<string, any>` |  |
+| `permissions` | `Record<string, any>` |  |
 | `pre_receive_secret_detection_enabled` | `boolean` |  |
 | `prevent_merge_without_jira_issue` | `string` |  |
 | `printing_merge_request_link_enabled` | `boolean` |  |
-| `public_job` | `boolean` |  |
+| `public_jobs` | `boolean` |  |
 | `readme_url` | `string` |  |
 | `releases_access_level` | `string` |  |
 | `remove_source_branch_after_merge` | `boolean` |  |
@@ -10913,9 +10904,9 @@ Create an instance: `const api_entities_project_with_access = client.ApiEntities
 | `request_access_enabled` | `boolean` |  |
 | `requirements_access_level` | `string` |  |
 | `requirements_enabled` | `string` |  |
-| `resolve_outdated_diff_discussion` | `boolean` |  |
+| `resolve_outdated_diff_discussions` | `boolean` |  |
 | `resource_group_default_process_mode` | `string` |  |
-| `restrict_user_defined_variable` | `boolean` |  |
+| `restrict_user_defined_variables` | `boolean` |  |
 | `runner_token_expiration_interval` | `number` |  |
 | `runners_token` | `string` |  |
 | `secret_push_protection_enabled` | `boolean` |  |
@@ -10924,7 +10915,7 @@ Create an instance: `const api_entities_project_with_access = client.ApiEntities
 | `service_desk_address` | `string` |  |
 | `service_desk_enabled` | `boolean` |  |
 | `shared_runners_enabled` | `boolean` |  |
-| `shared_with_group` | `any[]` |  |
+| `shared_with_groups` | `any[]` |  |
 | `show_diff_preview_in_email` | `boolean` |  |
 | `snippets_access_level` | `string` |  |
 | `snippets_enabled` | `boolean` |  |
@@ -10933,13 +10924,13 @@ Create an instance: `const api_entities_project_with_access = client.ApiEntities
 | `squash_option` | `string` |  |
 | `ssh_url_to_repo` | `string` |  |
 | `star_count` | `number` |  |
-| `statistic` | `Record<string, any>` |  |
+| `statistics` | `Record<string, any>` |  |
 | `suggestion_commit_message` | `string` |  |
 | `tag_list` | `any[]` |  |
-| `topic` | `any[]` |  |
+| `topics` | `any[]` |  |
 | `updated_at` | `string` |  |
 | `visibility` | `string` |  |
-| `warn_about_potentially_unwanted_character` | `boolean` |  |
+| `warn_about_potentially_unwanted_characters` | `boolean` |  |
 | `web_based_commit_signing_enabled` | `string` |  |
 | `web_url` | `string` |  |
 | `wiki_access_level` | `string` |  |
@@ -10977,7 +10968,7 @@ Create an instance: `const api_entities_projects_container_registry_protection_r
 #### Example: List
 
 ```ts
-const api_entities_projects_container_registry_protection_rules = await client.ApiEntitiesProjectsContainerRegistryProtectionRule().list()
+const api_entities_projects_container_registry_protection_rules = await client.ApiEntitiesProjectsContainerRegistryProtectionRule().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -11015,7 +11006,7 @@ Create an instance: `const api_entities_projects_packages_protection_rule = clie
 #### Example: List
 
 ```ts
-const api_entities_projects_packages_protection_rules = await client.ApiEntitiesProjectsPackagesProtectionRule().list()
+const api_entities_projects_packages_protection_rules = await client.ApiEntitiesProjectsPackagesProtectionRule().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -11086,10 +11077,10 @@ Create an instance: `const api_entities_protected_branch = client.ApiEntitiesPro
 | `code_owner_approval_required` | `boolean` |  |
 | `id` | `number` |  |
 | `inherited` | `boolean` |  |
-| `merge_access_level` | `any[]` |  |
+| `merge_access_levels` | `any[]` |  |
 | `name` | `string` |  |
-| `push_access_level` | `any[]` |  |
-| `unprotect_access_level` | `any[]` |  |
+| `push_access_levels` | `any[]` |  |
+| `unprotect_access_levels` | `any[]` |  |
 
 #### Example: Load
 
@@ -11100,7 +11091,7 @@ const api_entities_protected_branch = await client.ApiEntitiesProtectedBranch().
 #### Example: List
 
 ```ts
-const api_entities_protected_branchs = await client.ApiEntitiesProtectedBranch().list()
+const api_entities_protected_branchs = await client.ApiEntitiesProtectedBranch().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -11128,8 +11119,14 @@ Create an instance: `const api_entities_protected_tag = client.ApiEntitiesProtec
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `create_access_level` | `Record<string, any>` |  |
+| `access_level` | `number` |  |
+| `access_level_description` | `string` |  |
+| `create_access_levels` | `Record<string, any>` |  |
+| `deploy_key_id` | `number` |  |
+| `group_id` | `number` |  |
+| `id` | `number` |  |
 | `name` | `string` |  |
+| `user_id` | `number` |  |
 
 #### Example: Load
 
@@ -11140,7 +11137,7 @@ const api_entities_protected_tag = await client.ApiEntitiesProtectedTag().load({
 #### Example: List
 
 ```ts
-const api_entities_protected_tags = await client.ApiEntitiesProtectedTag().list()
+const api_entities_protected_tags = await client.ApiEntitiesProtectedTag().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -11176,7 +11173,7 @@ Create an instance: `const api_entities_public_group_detail = client.ApiEntities
 #### Example: List
 
 ```ts
-const api_entities_public_group_details = await client.ApiEntitiesPublicGroupDetail().list()
+const api_entities_public_group_details = await client.ApiEntitiesPublicGroupDetail().list({ project_id: "example" })
 ```
 
 
@@ -11195,6 +11192,7 @@ Create an instance: `const api_entities_related_issue = client.ApiEntitiesRelate
 | Field | Type | Description |
 | --- | --- | --- |
 | `assignee` | `Record<string, any>` |  |
+| `assignees` | `Record<string, any>` |  |
 | `author` | `Record<string, any>` |  |
 | `blocking_issues_count` | `string` |  |
 | `closed_at` | `string` |  |
@@ -11203,11 +11201,11 @@ Create an instance: `const api_entities_related_issue = client.ApiEntitiesRelate
 | `created_at` | `string` |  |
 | `description` | `string` |  |
 | `discussion_locked` | `boolean` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `due_date` | `string` |  |
 | `epic` | `Record<string, any>` |  |
 | `epic_iid` | `string` |  |
-| `has_task` | `boolean` |  |
+| `has_tasks` | `boolean` |  |
 | `health_status` | `string` |  |
 | `id` | `number` |  |
 | `iid` | `number` |  |
@@ -11216,27 +11214,27 @@ Create an instance: `const api_entities_related_issue = client.ApiEntitiesRelate
 | `issue_link_id` | `string` |  |
 | `issue_type` | `string` |  |
 | `iteration` | `Record<string, any>` |  |
-| `label` | `any[]` |  |
-| `link` | `Record<string, any>` |  |
+| `labels` | `any[]` |  |
 | `link_created_at` | `string` |  |
 | `link_type` | `string` |  |
 | `link_updated_at` | `string` |  |
+| `links` | `Record<string, any>` |  |
 | `merge_requests_count` | `string` |  |
 | `milestone` | `Record<string, any>` |  |
 | `moved_to_id` | `string` |  |
 | `project_id` | `number` |  |
-| `reference` | `Record<string, any>` |  |
+| `references` | `Record<string, any>` |  |
 | `service_desk_reply_to` | `string` |  |
 | `severity` | `string` |  |
 | `state` | `string` |  |
 | `subscribed` | `string` |  |
 | `task_completion_status` | `string` |  |
 | `task_status` | `string` |  |
-| `time_stat` | `Record<string, any>` |  |
+| `time_stats` | `Record<string, any>` |  |
 | `title` | `string` |  |
 | `type` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
 | `weight` | `string` |  |
@@ -11244,7 +11242,7 @@ Create an instance: `const api_entities_related_issue = client.ApiEntitiesRelate
 #### Example: List
 
 ```ts
-const api_entities_related_issues = await client.ApiEntitiesRelatedIssue().list()
+const api_entities_related_issues = await client.ApiEntitiesRelatedIssue().list({ issue_id: "example", project_id: "example" })
 ```
 
 
@@ -11283,16 +11281,16 @@ Create an instance: `const api_entities_release = client.ApiEntitiesRelease()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `Record<string, any>` |  |
+| `assets` | `Record<string, any>` |  |
 | `author` | `Record<string, any>` |  |
 | `commit` | `Record<string, any>` |  |
 | `commit_path` | `string` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
 | `description_html` | `string` |  |
-| `evidence` | `Record<string, any>` |  |
-| `link` | `Record<string, any>` |  |
-| `milestone` | `Record<string, any>` |  |
+| `evidences` | `Record<string, any>` |  |
+| `links` | `Record<string, any>` |  |
+| `milestones` | `Record<string, any>` |  |
 | `name` | `string` |  |
 | `released_at` | `string` |  |
 | `tag_name` | `string` |  |
@@ -11352,7 +11350,7 @@ const api_entities_releases_link = await client.ApiEntitiesReleasesLink().load({
 #### Example: List
 
 ```ts
-const api_entities_releases_links = await client.ApiEntitiesReleasesLink().list()
+const api_entities_releases_links = await client.ApiEntitiesReleasesLink().list({ project_id: "example", release_id: "example" })
 ```
 
 #### Example: Create
@@ -11384,15 +11382,15 @@ Create an instance: `const api_entities_remote_mirror = client.ApiEntitiesRemote
 | --- | --- | --- |
 | `auth_method` | `string` |  |
 | `enabled` | `boolean` |  |
-| `host_key` | `any[]` |  |
+| `host_keys` | `any[]` |  |
 | `id` | `number` |  |
-| `keep_divergent_ref` | `boolean` |  |
+| `keep_divergent_refs` | `boolean` |  |
 | `last_error` | `number` |  |
 | `last_successful_update_at` | `string` |  |
 | `last_update_at` | `string` |  |
 | `last_update_started_at` | `string` |  |
 | `mirror_branch_regex` | `string` |  |
-| `only_protected_branch` | `boolean` |  |
+| `only_protected_branches` | `boolean` |  |
 | `update_status` | `string` |  |
 | `url` | `string` |  |
 
@@ -11405,7 +11403,7 @@ const api_entities_remote_mirror = await client.ApiEntitiesRemoteMirror().load({
 #### Example: List
 
 ```ts
-const api_entities_remote_mirrors = await client.ApiEntitiesRemoteMirror().list()
+const api_entities_remote_mirrors = await client.ApiEntitiesRemoteMirror().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -11431,15 +11429,15 @@ Create an instance: `const api_entities_repository_health = client.ApiEntitiesRe
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `alternate` | `Record<string, any>` |  |
+| `alternates` | `Record<string, any>` |  |
 | `bitmap` | `Record<string, any>` |  |
 | `commit_graph` | `Record<string, any>` |  |
 | `is_object_pool` | `boolean` |  |
 | `last_full_repack` | `Record<string, any>` |  |
 | `multi_pack_index` | `Record<string, any>` |  |
 | `multi_pack_index_bitmap` | `Record<string, any>` |  |
-| `object` | `Record<string, any>` |  |
-| `reference` | `Record<string, any>` |  |
+| `objects` | `Record<string, any>` |  |
+| `references` | `Record<string, any>` |  |
 | `size` | `number` |  |
 | `updated_at` | `string` |  |
 
@@ -11475,7 +11473,7 @@ Create an instance: `const api_entities_resource_access_token_with_token = clien
 | `resource_id` | `number` |  |
 | `resource_type` | `string` |  |
 | `revoked` | `boolean` |  |
-| `scope` | `any[]` |  |
+| `scopes` | `any[]` |  |
 | `token` | `string` |  |
 | `user_id` | `number` |  |
 
@@ -11520,7 +11518,7 @@ const api_entities_resource_milestone_event = await client.ApiEntitiesResourceMi
 #### Example: List
 
 ```ts
-const api_entities_resource_milestone_events = await client.ApiEntitiesResourceMilestoneEvent().list()
+const api_entities_resource_milestone_events = await client.ApiEntitiesResourceMilestoneEvent().list({ project_id: "example" })
 ```
 
 
@@ -11541,8 +11539,8 @@ Create an instance: `const api_entities_snippet = client.ApiEntitiesSnippet()`
 | `author` | `Record<string, any>` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
-| `file` | `any[]` |  |
 | `file_name` | `string` |  |
+| `files` | `any[]` |  |
 | `http_url_to_repo` | `string` |  |
 | `id` | `number` |  |
 | `imported` | `boolean` |  |
@@ -11577,14 +11575,52 @@ Create an instance: `const api_entities_ssh_key_with_user = client.ApiEntitiesSs
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `bio` | `string` |  |
+| `bot` | `string` |  |
+| `can_create_group` | `boolean` |  |
+| `can_create_project` | `boolean` |  |
+| `color_scheme_id` | `number` |  |
+| `commit_email` | `string` |  |
+| `confirmed_at` | `string` |  |
 | `created_at` | `string` |  |
-| `expires_at` | `string` |  |
+| `current_sign_in_at` | `string` |  |
+| `custom_attributes` | `any[]` |  |
+| `discord` | `string` |  |
+| `email` | `string` |  |
+| `external` | `string` |  |
+| `extra_shared_runners_minutes_limit` | `string` |  |
+| `followers` | `string` |  |
+| `following` | `string` |  |
+| `github` | `string` |  |
 | `id` | `number` |  |
-| `key` | `string` |  |
-| `last_used_at` | `string` |  |
-| `title` | `string` |  |
-| `usage_type` | `string` |  |
-| `user` | `Record<string, any>` |  |
+| `identities` | `Record<string, any>` |  |
+| `is_followed` | `boolean` |  |
+| `job_title` | `string` |  |
+| `last_activity_on` | `string` |  |
+| `last_sign_in_at` | `string` |  |
+| `linkedin` | `string` |  |
+| `local_time` | `string` |  |
+| `location` | `string` |  |
+| `locked` | `boolean` |  |
+| `name` | `string` |  |
+| `organization` | `string` |  |
+| `preferred_language` | `string` |  |
+| `private_profile` | `boolean` |  |
+| `projects_limit` | `number` |  |
+| `pronouns` | `string` |  |
+| `public_email` | `string` |  |
+| `scim_identities` | `Record<string, any>` |  |
+| `shared_runners_minutes_limit` | `string` |  |
+| `state` | `string` |  |
+| `theme_id` | `number` |  |
+| `twitter` | `string` |  |
+| `two_factor_enabled` | `boolean` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
+| `website_url` | `string` |  |
+| `work_information` | `string` |  |
 
 #### Example: Load
 
@@ -11642,7 +11678,7 @@ Create an instance: `const api_entities_system_broadcast_message = client.ApiEnt
 | `id` | `string` |  |
 | `message` | `string` |  |
 | `starts_at` | `string` |  |
-| `target_access_level` | `string` |  |
+| `target_access_levels` | `string` |  |
 | `target_path` | `string` |  |
 | `theme` | `string` |  |
 
@@ -11693,7 +11729,7 @@ const api_entities_tag = await client.ApiEntitiesTag().load({ id: 'api_entities_
 #### Example: List
 
 ```ts
-const api_entities_tags = await client.ApiEntitiesTag().list()
+const api_entities_tags = await client.ApiEntitiesTag().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -11768,13 +11804,15 @@ Create an instance: `const api_entities_terraform_module_version = client.ApiEnt
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `module` | `string` |  |
+| `modules` | `string` |  |
 | `name` | `string` |  |
 | `provider` | `string` |  |
+| `providers` | `string` |  |
 | `root` | `string` |  |
 | `source` | `string` |  |
-| `submodule` | `string` |  |
+| `submodules` | `string` |  |
 | `version` | `string` |  |
+| `versions` | `string` |  |
 
 #### Example: Load
 
@@ -11785,7 +11823,7 @@ const api_entities_terraform_module_version = await client.ApiEntitiesTerraformM
 #### Example: List
 
 ```ts
-const api_entities_terraform_module_versions = await client.ApiEntitiesTerraformModuleVersion().list()
+const api_entities_terraform_module_versions = await client.ApiEntitiesTerraformModuleVersion().list({ module_name: "example", module_system: "example", v1_id: "example" })
 ```
 
 
@@ -11833,14 +11871,23 @@ Create an instance: `const api_entities_trigger = client.ApiEntitiesTrigger()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
+| `custom_attributes` | `any[]` |  |
 | `description` | `string` |  |
 | `expires_at` | `string` |  |
 | `id` | `number` |  |
 | `last_used` | `string` |  |
+| `locked` | `boolean` |  |
+| `name` | `string` |  |
 | `owner` | `Record<string, any>` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
 | `token` | `string` |  |
 | `updated_at` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
@@ -11851,7 +11898,7 @@ const api_entities_trigger = await client.ApiEntitiesTrigger().load({ id: 'api_e
 #### Example: List
 
 ```ts
-const api_entities_triggers = await client.ApiEntitiesTrigger().list()
+const api_entities_triggers = await client.ApiEntitiesTrigger().list({ project_id: "example" })
 ```
 
 #### Example: Create
@@ -11902,11 +11949,11 @@ Create an instance: `const api_entities_user_count = client.ApiEntitiesUserCount
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `assigned_issue` | `number` |  |
-| `assigned_merge_request` | `number` |  |
-| `merge_request` | `number` |  |
-| `review_requested_merge_request` | `number` |  |
-| `todo` | `number` |  |
+| `assigned_issues` | `number` |  |
+| `assigned_merge_requests` | `number` |  |
+| `merge_requests` | `number` |  |
+| `review_requested_merge_requests` | `number` |  |
+| `todos` | `number` |  |
 
 #### Example: Load
 
@@ -11940,16 +11987,16 @@ Create an instance: `const api_entities_user_public = client.ApiEntitiesUserPubl
 | `confirmed_at` | `string` |  |
 | `created_at` | `string` |  |
 | `current_sign_in_at` | `string` |  |
-| `custom_attribute` | `any[]` |  |
+| `custom_attributes` | `any[]` |  |
 | `discord` | `string` |  |
 | `email` | `string` |  |
 | `external` | `string` |  |
 | `extra_shared_runners_minutes_limit` | `string` |  |
-| `follower` | `string` |  |
+| `followers` | `string` |  |
 | `following` | `string` |  |
 | `github` | `string` |  |
 | `id` | `number` |  |
-| `identity` | `Record<string, any>` |  |
+| `identities` | `Record<string, any>` |  |
 | `is_followed` | `boolean` |  |
 | `job_title` | `string` |  |
 | `key` | `string` |  |
@@ -11964,9 +12011,9 @@ Create an instance: `const api_entities_user_public = client.ApiEntitiesUserPubl
 | `preferred_language` | `string` |  |
 | `private_profile` | `boolean` |  |
 | `projects_limit` | `number` |  |
-| `pronoun` | `string` |  |
+| `pronouns` | `string` |  |
 | `public_email` | `string` |  |
-| `scim_identity` | `Record<string, any>` |  |
+| `scim_identities` | `Record<string, any>` |  |
 | `shared_runners_minutes_limit` | `string` |  |
 | `state` | `string` |  |
 | `theme_id` | `number` |  |
@@ -11981,7 +12028,7 @@ Create an instance: `const api_entities_user_public = client.ApiEntitiesUserPubl
 #### Example: List
 
 ```ts
-const api_entities_user_publics = await client.ApiEntitiesUserPublic().list()
+const api_entities_user_publics = await client.ApiEntitiesUserPublic().list({ group_id: "example" })
 ```
 
 
@@ -12038,18 +12085,6 @@ Create an instance: `const api_entities_wiki_page = client.ApiEntitiesWikiPage()
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `content` | `string` |  |
-| `encoding` | `string` |  |
-| `format` | `string` |  |
-| `front_matter` | `Record<string, any>` |  |
-| `slug` | `string` |  |
-| `title` | `string` |  |
-| `wiki_page_meta_id` | `number` |  |
 
 #### Example: Load
 
@@ -12425,7 +12460,7 @@ Create an instance: `const ee_api_entities_audit_event = client.EeApiEntitiesAud
 | --- | --- | --- |
 | `author_id` | `string` |  |
 | `created_at` | `string` |  |
-| `detail` | `string` |  |
+| `details` | `string` |  |
 | `entity_id` | `string` |  |
 | `entity_type` | `string` |  |
 | `event_name` | `string` |  |
@@ -12458,13 +12493,9 @@ Create an instance: `const ee_api_entities_billable_membership = client.EeApiEnt
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_level` | `Record<string, any>` |  |
-| `created_at` | `string` |  |
-| `expires_at` | `string` |  |
-| `id` | `string` |  |
-| `source_full_name` | `string` |  |
-| `source_id` | `string` |  |
-| `source_members_url` | `string` |  |
+| `custom_role` | `string` |  |
+| `integer_value` | `string` |  |
+| `string_value` | `string` |  |
 
 #### Example: Load
 
@@ -12514,7 +12545,7 @@ Create an instance: `const ee_api_entities_geo_node_status = client.EeApiEntitie
 | `container_repositories_verified_in_percentage` | `string` |  |
 | `cursor_last_event_id` | `string` |  |
 | `cursor_last_event_timestamp` | `string` |  |
-| `db_replication_lag_second` | `string` |  |
+| `db_replication_lag_seconds` | `string` |  |
 | `dependency_proxy_blobs_checksum_failed_count` | `string` |  |
 | `dependency_proxy_blobs_checksum_total_count` | `string` |  |
 | `dependency_proxy_blobs_checksummed_count` | `string` |  |
@@ -12596,7 +12627,7 @@ Create an instance: `const ee_api_entities_geo_node_status = client.EeApiEntitie
 | `lfs_objects_verification_total_count` | `string` |  |
 | `lfs_objects_verified_count` | `string` |  |
 | `lfs_objects_verified_in_percentage` | `string` |  |
-| `link` | `Record<string, any>` |  |
+| `links` | `Record<string, any>` |  |
 | `merge_request_diffs_checksum_failed_count` | `string` |  |
 | `merge_request_diffs_checksum_total_count` | `string` |  |
 | `merge_request_diffs_checksummed_count` | `string` |  |
@@ -12610,7 +12641,7 @@ Create an instance: `const ee_api_entities_geo_node_status = client.EeApiEntitie
 | `merge_request_diffs_verified_count` | `string` |  |
 | `merge_request_diffs_verified_in_percentage` | `string` |  |
 | `missing_oauth_application` | `string` |  |
-| `namespace` | `Record<string, any>` |  |
+| `namespaces` | `Record<string, any>` |  |
 | `package_files_checksum_failed_count` | `string` |  |
 | `package_files_checksum_total_count` | `string` |  |
 | `package_files_checksummed_count` | `string` |  |
@@ -12675,7 +12706,7 @@ Create an instance: `const ee_api_entities_geo_node_status = client.EeApiEntitie
 | `proxy_local_requests_event_count_weekly` | `string` |  |
 | `proxy_remote_requests_event_count_weekly` | `string` |  |
 | `replication_slots_count` | `string` |  |
-| `replication_slots_max_retained_wal_byte` | `string` |  |
+| `replication_slots_max_retained_wal_bytes` | `string` |  |
 | `replication_slots_used_count` | `string` |  |
 | `replication_slots_used_in_percentage` | `string` |  |
 | `repositories_checked_count` | `string` |  |
@@ -12696,7 +12727,7 @@ Create an instance: `const ee_api_entities_geo_node_status = client.EeApiEntitie
 | `snippet_repositories_verification_total_count` | `string` |  |
 | `snippet_repositories_verified_count` | `string` |  |
 | `snippet_repositories_verified_in_percentage` | `string` |  |
-| `storage_shard` | `Record<string, any>` |  |
+| `storage_shards` | `Record<string, any>` |  |
 | `storage_shards_match` | `string` |  |
 | `terraform_state_versions_checksum_failed_count` | `string` |  |
 | `terraform_state_versions_checksum_total_count` | `string` |  |
@@ -12747,12 +12778,12 @@ Create an instance: `const ee_api_entities_geo_pipeline_ref = client.EeApiEntiti
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `pipeline_ref` | `any[]` |  |
+| `pipeline_refs` | `any[]` |  |
 
 #### Example: List
 
 ```ts
-const ee_api_entities_geo_pipeline_refs = await client.EeApiEntitiesGeoPipelineRef().list()
+const ee_api_entities_geo_pipeline_refs = await client.EeApiEntitiesGeoPipelineRef().list({ gl_repository: "example" })
 ```
 
 
@@ -12807,9 +12838,9 @@ Create an instance: `const ee_api_entities_merge_request_approval_state = client
 | `approved` | `boolean` |  |
 | `approved_by` | `any[]` |  |
 | `code_owner` | `boolean` |  |
-| `contains_hidden_group` | `boolean` |  |
-| `eligible_approver` | `any[]` |  |
-| `group` | `any[]` |  |
+| `contains_hidden_groups` | `boolean` |  |
+| `eligible_approvers` | `any[]` |  |
+| `groups` | `any[]` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `overridden` | `boolean` |  |
@@ -12817,12 +12848,12 @@ Create an instance: `const ee_api_entities_merge_request_approval_state = client
 | `rule_type` | `string` |  |
 | `section` | `string` |  |
 | `source_rule` | `Record<string, any>` |  |
-| `user` | `any[]` |  |
+| `users` | `any[]` |  |
 
 #### Example: List
 
 ```ts
-const ee_api_entities_merge_request_approval_states = await client.EeApiEntitiesMergeRequestApprovalState().list()
+const ee_api_entities_merge_request_approval_states = await client.EeApiEntitiesMergeRequestApprovalState().list({ merge_request_id: "example", project_id: "example" })
 ```
 
 
@@ -12849,7 +12880,7 @@ Create an instance: `const ee_api_entities_ssh_certificate = client.EeApiEntitie
 #### Example: List
 
 ```ts
-const ee_api_entities_ssh_certificates = await client.EeApiEntitiesSshCertificate().list()
+const ee_api_entities_ssh_certificates = await client.EeApiEntitiesSshCertificate().list({ group_id: "example" })
 ```
 
 #### Example: Create
@@ -13312,9 +13343,9 @@ Create an instance: `const metadata = client.Metadata()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `enterprise` | `boolean` |  |
-| `kas` | `Record<string, any>` |  |
-| `revision` | `string` |  |
+| `enabled` | `boolean` |  |
+| `externalK8sProxyUrl` | `string` |  |
+| `externalUrl` | `string` |  |
 | `version` | `string` |  |
 
 #### Example: Load
@@ -13438,13 +13469,22 @@ Create an instance: `const nuget_package = client.NugetPackage()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `catalog_entry` | `Record<string, any>` |  |
+| `authors` | `string` |  |
 | `count` | `number` |  |
+| `dependencyGroups` | `any[]` |  |
+| `description` | `string` |  |
+| `iconUrl` | `string` |  |
 | `id` | `string` |  |
-| `item` | `any[]` |  |
+| `items` | `any[]` |  |
+| `licenseUrl` | `string` |  |
 | `lower` | `string` |  |
-| `package_content` | `string` |  |
+| `packageContent` | `string` |  |
+| `projectUrl` | `string` |  |
+| `published` | `string` |  |
+| `summary` | `string` |  |
+| `tags` | `string` |  |
 | `upper` | `string` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
@@ -13516,7 +13556,7 @@ Create an instance: `const participant = client.Participant()`
 #### Example: List
 
 ```ts
-const participants = await client.Participant().list()
+const participants = await client.Participant().list({ project_id: "example" })
 ```
 
 
@@ -13569,7 +13609,7 @@ Create an instance: `const project = client.Project()`
 | `updated_at` | `string` |  |
 | `user` | `Record<string, any>` |  |
 | `web_url` | `string` |  |
-| `yaml_error` | `string` |  |
+| `yaml_errors` | `string` |  |
 
 #### Example: Load
 
@@ -14053,7 +14093,7 @@ Create an instance: `const starrer = client.Starrer()`
 | --- | --- | --- |
 | `avatar_path` | `string` |  |
 | `avatar_url` | `string` |  |
-| `custom_attribute` | `any[]` |  |
+| `custom_attributes` | `any[]` |  |
 | `id` | `number` |  |
 | `locked` | `boolean` |  |
 | `name` | `string` |  |
@@ -14065,7 +14105,7 @@ Create an instance: `const starrer = client.Starrer()`
 #### Example: List
 
 ```ts
-const starrers = await client.Starrer().list()
+const starrers = await client.Starrer().list({ project_id: "example" })
 ```
 
 
@@ -14156,14 +14196,14 @@ Create an instance: `const test_report = client.TestReport()`
 | `skipped_count` | `number` |  |
 | `success_count` | `number` |  |
 | `suite_error` | `string` |  |
-| `test_case` | `any[]` |  |
+| `test_cases` | `any[]` |  |
 | `total_count` | `number` |  |
 | `total_time` | `number` |  |
 
 #### Example: List
 
 ```ts
-const test_reports = await client.TestReport().list()
+const test_reports = await client.TestReport().list({ pipeline_id: "example", project_id: "example" })
 ```
 
 
@@ -14181,7 +14221,7 @@ Create an instance: `const test_report_summary = client.TestReportSummary()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `test_suite` | `Record<string, any>` |  |
+| `test_suites` | `Record<string, any>` |  |
 | `total` | `Record<string, any>` |  |
 
 #### Example: Load
@@ -14260,7 +14300,7 @@ Create an instance: `const user = client.User()`
 | --- | --- | --- |
 | `avatar_path` | `string` |  |
 | `avatar_url` | `string` |  |
-| `custom_attribute` | `any[]` |  |
+| `custom_attributes` | `any[]` |  |
 | `id` | `number` |  |
 | `locked` | `boolean` |  |
 | `name` | `string` |  |
@@ -14272,7 +14312,7 @@ Create an instance: `const user = client.User()`
 #### Example: List
 
 ```ts
-const users = await client.User().list()
+const users = await client.User().list({ project_id: "example" })
 ```
 
 
@@ -14373,11 +14413,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const apientitiesaccessrequester = client.ApiEntitiesAccessRequester()
-await apientitiesaccessrequester.list()
+const apientitiesmetricimage = client.ApiEntitiesMetricImage()
+await apientitiesmetricimage.list()
 
-// apientitiesaccessrequester.data() now returns the apientitiesaccessrequester data from the last `list`
-// apientitiesaccessrequester.match() returns the last match criteria
+// apientitiesmetricimage.data() now returns the apientitiesmetricimage data from the last `list`
+// apientitiesmetricimage.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -64,7 +64,7 @@ describe('MergeRequestEntity', async () => {
     const merge_request_ref01_data_up0: any = {}
     merge_request_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
 
-    const merge_request_ref01_resdata_up0 = await merge_request_ref01_ent.update(merge_request_ref01_data_up0)
+    const merge_request_ref01_resdata_up0 = (await merge_request_ref01_ent.update(merge_request_ref01_data_up0)).data()
     assert(null != merge_request_ref01_resdata_up0)
 
 

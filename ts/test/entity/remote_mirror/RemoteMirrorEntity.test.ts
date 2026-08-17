@@ -64,15 +64,11 @@ describe('RemoteMirrorEntity', async () => {
     remote_mirror_ref01_data['mirror_id'] = setup.idmap['mirror01']
     remote_mirror_ref01_data['project_id'] = setup.idmap['project01']
 
-    remote_mirror_ref01_data = await remote_mirror_ref01_ent.create(remote_mirror_ref01_data)
+    remote_mirror_ref01_data = (await remote_mirror_ref01_ent.create(remote_mirror_ref01_data)).data()
     assert(null != remote_mirror_ref01_data)
 
 
 
-    // REMOVE
-    const remote_mirror_ref01_match_rm0: any = { id: remote_mirror_ref01_data.id }
-    await remote_mirror_ref01_ent.remove(remote_mirror_ref01_match_rm0)
-  
 
   })
 })

@@ -59,7 +59,7 @@ func TestApiEntitiesCiPipelineEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesCiPipelineRef01Data = core.ToMapAny(apiEntitiesCiPipelineRef01DataResult)
+		apiEntitiesCiPipelineRef01Data = core.ToMapAny(entityData(apiEntitiesCiPipelineRef01DataResult))
 		if apiEntitiesCiPipelineRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
