@@ -23,7 +23,7 @@
         "updated_at": "see",
         "user": {},
         "web_url": "sf0",
-        "yaml_error": "sf1",
+        "yaml_errors": "sf1",
         "event_id": "EVENT01",
         "hook_id": "HOOK01",
         "file_path": "FILE_PATH01",
@@ -69,7 +69,7 @@
         "updated_at": "s1ca",
         "user": {},
         "web_url": "s1cc",
-        "yaml_error": "s1cd",
+        "yaml_errors": "s1cd",
         "event_id": "EVENT01",
         "hook_id": "HOOK01",
         "file_path": "FILE_PATH01",
@@ -115,7 +115,7 @@
         "updated_at": "s2a6",
         "user": {},
         "web_url": "s2a8",
-        "yaml_error": "s2a9",
+        "yaml_errors": "s2a9",
         "event_id": "EVENT01",
         "hook_id": "HOOK01",
         "file_path": "FILE_PATH01",
@@ -164,7 +164,7 @@
         "updated_at": "s382",
         "user": {},
         "web_url": "s384",
-        "yaml_error": "s385"
+        "yaml_errors": "s385"
       }
     }
   }

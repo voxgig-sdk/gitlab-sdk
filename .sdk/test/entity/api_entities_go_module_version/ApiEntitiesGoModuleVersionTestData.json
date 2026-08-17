@@ -2,22 +2,22 @@
   "existing": {
     "api_entities_go_module_version": {
       "API_ENTITIES_GO_MODULE_VERSION00": {
-        "time": "s14",
-        "version": "s15",
+        "Time": "s14",
+        "Version": "s15",
         "module_version": "MODULE_VERSION01",
         "project_id": "PROJECT01",
         "id": "API_ENTITIES_GO_MODULE_VERSION00"
       },
       "API_ENTITIES_GO_MODULE_VERSION01": {
-        "time": "s28",
-        "version": "s29",
+        "Time": "s28",
+        "Version": "s29",
         "module_version": "MODULE_VERSION01",
         "project_id": "PROJECT01",
         "id": "API_ENTITIES_GO_MODULE_VERSION01"
       },
       "API_ENTITIES_GO_MODULE_VERSION02": {
-        "time": "s3c",
-        "version": "s3d",
+        "Time": "s3c",
+        "Version": "s3d",
         "module_version": "MODULE_VERSION01",
         "project_id": "PROJECT01",
         "id": "API_ENTITIES_GO_MODULE_VERSION02"
@@ -27,8 +27,8 @@
   "new": {
     "api_entities_go_module_version": {
       "api_entities_go_module_version_ref01": {
-        "time": "s50",
-        "version": "s51"
+        "Time": "s50",
+        "Version": "s51"
       }
     }
   }

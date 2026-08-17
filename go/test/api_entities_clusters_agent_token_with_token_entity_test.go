@@ -60,7 +60,7 @@ func TestApiEntitiesClustersAgentTokenWithTokenEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesClustersAgentTokenWithTokenRef01Data = core.ToMapAny(apiEntitiesClustersAgentTokenWithTokenRef01DataResult)
+		apiEntitiesClustersAgentTokenWithTokenRef01Data = core.ToMapAny(entityData(apiEntitiesClustersAgentTokenWithTokenRef01DataResult))
 		if apiEntitiesClustersAgentTokenWithTokenRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

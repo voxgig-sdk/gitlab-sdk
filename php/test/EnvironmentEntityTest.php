@@ -45,14 +45,9 @@ class EnvironmentEntityTest extends TestCase
         $environment_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $environment_ref01_data_result = $environment_ref01_ent->create($environment_ref01_data, null);
-        $environment_ref01_data = Helpers::to_map($environment_ref01_data_result);
+        $environment_ref01_data = Helpers::to_map(is_object($environment_ref01_data_result) && method_exists($environment_ref01_data_result, 'data_get') ? $environment_ref01_data_result->data_get() : $environment_ref01_data_result);
         $this->assertNotNull($environment_ref01_data);
 
-        // REMOVE
-        $environment_ref01_match_rm0 = [
-            "id" => $environment_ref01_data["id"],
-        ];
-        $environment_ref01_ent->remove($environment_ref01_match_rm0, null);
 
     }
 }

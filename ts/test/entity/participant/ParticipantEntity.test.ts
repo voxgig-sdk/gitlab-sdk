@@ -65,7 +65,7 @@ describe('ParticipantEntity', async () => {
     participant_ref01_match['merge_request_id'] = setup.idmap['merge_request01']
     participant_ref01_match['project_id'] = setup.idmap['project01']
 
-    const participant_ref01_list = await participant_ref01_ent.list(participant_ref01_match)
+    const participant_ref01_list = (await participant_ref01_ent.list(participant_ref01_match)).map((e: any) => e.data())
 
 
   })

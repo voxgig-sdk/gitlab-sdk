@@ -62,7 +62,7 @@ describe('IssuesStatisticEntity', async () => {
     // LOAD
     const issues_statistic_ref01_ent = client.IssuesStatistic()
     const issues_statistic_ref01_match_dt0: any = {}
-    const issues_statistic_ref01_data_dt0 = await issues_statistic_ref01_ent.load(issues_statistic_ref01_match_dt0)
+    const issues_statistic_ref01_data_dt0 = (await issues_statistic_ref01_ent.load(issues_statistic_ref01_match_dt0)).data()
     assert(null != issues_statistic_ref01_data_dt0)
 
 

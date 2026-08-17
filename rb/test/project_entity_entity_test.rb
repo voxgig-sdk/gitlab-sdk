@@ -37,7 +37,7 @@ class ProjectEntityEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.project_entity"), "project_entity_ref01"))
 
     project_entity_ref01_data_result = project_entity_ref01_ent.create(project_entity_ref01_data, nil)
-    project_entity_ref01_data = Helpers.to_map(project_entity_ref01_data_result)
+    project_entity_ref01_data = Helpers.to_map(project_entity_ref01_data_result.respond_to?(:data_get) ? project_entity_ref01_data_result.data_get : project_entity_ref01_data_result)
     assert !project_entity_ref01_data.nil?
 
   end

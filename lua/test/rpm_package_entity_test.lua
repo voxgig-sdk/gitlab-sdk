@@ -42,7 +42,7 @@ describe("RpmPackageEntity", function()
 
     local rpm_package_ref01_data_result, err = rpm_package_ref01_ent:create(rpm_package_ref01_data, nil)
     assert.is_nil(err)
-    rpm_package_ref01_data = helpers.to_map(rpm_package_ref01_data_result)
+    rpm_package_ref01_data = helpers.to_map(type(rpm_package_ref01_data_result) == 'table' and rpm_package_ref01_data_result.data_get and rpm_package_ref01_data_result:data_get() or rpm_package_ref01_data_result)
     assert.is_not_nil(rpm_package_ref01_data)
 
     -- LOAD

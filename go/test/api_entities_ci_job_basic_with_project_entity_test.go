@@ -68,7 +68,7 @@ func TestApiEntitiesCiJobBasicWithProjectEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesCiJobBasicWithProjectRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesCiJobBasicWithProjectRef01DataDt0Loaded)
+		apiEntitiesCiJobBasicWithProjectRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesCiJobBasicWithProjectRef01DataDt0Loaded))
 		if apiEntitiesCiJobBasicWithProjectRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

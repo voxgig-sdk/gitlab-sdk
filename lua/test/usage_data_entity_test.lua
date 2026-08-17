@@ -41,7 +41,7 @@ describe("UsageDataEntity", function()
 
     local usage_data_ref01_data_result, err = usage_data_ref01_ent:create(usage_data_ref01_data, nil)
     assert.is_nil(err)
-    usage_data_ref01_data = helpers.to_map(usage_data_ref01_data_result)
+    usage_data_ref01_data = helpers.to_map(type(usage_data_ref01_data_result) == 'table' and usage_data_ref01_data_result.data_get and usage_data_ref01_data_result:data_get() or usage_data_ref01_data_result)
     assert.is_not_nil(usage_data_ref01_data)
 
     -- LOAD

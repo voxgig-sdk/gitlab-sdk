@@ -8,13 +8,13 @@
         "cron_timezone": "s85",
         "description": "s86",
         "id": "API_ENTITIES_CI_PIPELINE_SCHEDULE_DETAIL00",
-        "input": {},
+        "inputs": {},
         "last_pipeline": {},
         "next_run_at": "s8a",
         "owner": {},
         "ref": "s8c",
         "updated_at": "s8d",
-        "variable": {},
+        "variables": {},
         "pipeline_schedule_id": "PIPELINE_SCHEDULE01",
         "project_id": "PROJECT01"
       },
@@ -25,13 +25,13 @@
         "cron_timezone": "s107",
         "description": "s108",
         "id": "API_ENTITIES_CI_PIPELINE_SCHEDULE_DETAIL01",
-        "input": {},
+        "inputs": {},
         "last_pipeline": {},
         "next_run_at": "s10c",
         "owner": {},
         "ref": "s10e",
         "updated_at": "s10f",
-        "variable": {},
+        "variables": {},
         "pipeline_schedule_id": "PIPELINE_SCHEDULE01",
         "project_id": "PROJECT01"
       },
@@ -42,13 +42,13 @@
         "cron_timezone": "s189",
         "description": "s18a",
         "id": "API_ENTITIES_CI_PIPELINE_SCHEDULE_DETAIL02",
-        "input": {},
+        "inputs": {},
         "last_pipeline": {},
         "next_run_at": "s18e",
         "owner": {},
         "ref": "s190",
         "updated_at": "s191",
-        "variable": {},
+        "variables": {},
         "pipeline_schedule_id": "PIPELINE_SCHEDULE01",
         "project_id": "PROJECT01"
       }
@@ -62,13 +62,13 @@
         "cron": "s20a",
         "cron_timezone": "s20b",
         "description": "s20c",
-        "input": {},
+        "inputs": {},
         "last_pipeline": {},
         "next_run_at": "s210",
         "owner": {},
         "ref": "s212",
         "updated_at": "s213",
-        "variable": {}
+        "variables": {}
       }
     }
   }

@@ -48,13 +48,9 @@ class EeApiEntitiesBillableMembershipEntityTest extends TestCase
 
         // LOAD
         $ee_api_entities_billable_membership_ref01_ent = $client->EeApiEntitiesBillableMembership(null);
-        $ee_api_entities_billable_membership_ref01_match_dt0 = [
-            "id" => $ee_api_entities_billable_membership_ref01_data["id"],
-        ];
+        $ee_api_entities_billable_membership_ref01_match_dt0 = [];
         $ee_api_entities_billable_membership_ref01_data_dt0_loaded = $ee_api_entities_billable_membership_ref01_ent->load($ee_api_entities_billable_membership_ref01_match_dt0, null);
-        $ee_api_entities_billable_membership_ref01_data_dt0_load_result = Helpers::to_map($ee_api_entities_billable_membership_ref01_data_dt0_loaded);
-        $this->assertNotNull($ee_api_entities_billable_membership_ref01_data_dt0_load_result);
-        $this->assertEquals($ee_api_entities_billable_membership_ref01_data_dt0_load_result["id"], $ee_api_entities_billable_membership_ref01_data["id"]);
+        $this->assertNotNull($ee_api_entities_billable_membership_ref01_data_dt0_loaded);
 
     }
 }

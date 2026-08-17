@@ -37,7 +37,7 @@ class ApiEntitiesApplicationEntity extends GitlabEntityBase<ApiEntitiesApplicati
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesApplicationListMatch, ctrl?: Control): Promise<ApiEntitiesApplication[]> {
+  async list(this: any, reqmatch?: ApiEntitiesApplicationListMatch, ctrl?: Control): Promise<ApiEntitiesApplicationEntity[]> {
 
     const utility = this._utility
 

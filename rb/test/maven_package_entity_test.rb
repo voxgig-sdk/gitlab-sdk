@@ -46,7 +46,7 @@ class MavenPackageEntityTest < Minitest::Test
     }
 
     maven_package_ref01_resdata_up0_result = maven_package_ref01_ent.update(maven_package_ref01_data_up0_up, nil)
-    maven_package_ref01_resdata_up0 = Helpers.to_map(maven_package_ref01_resdata_up0_result)
+    maven_package_ref01_resdata_up0 = Helpers.to_map(maven_package_ref01_resdata_up0_result.respond_to?(:data_get) ? maven_package_ref01_resdata_up0_result.data_get : maven_package_ref01_resdata_up0_result)
     assert !maven_package_ref01_resdata_up0.nil?
 
     # LOAD

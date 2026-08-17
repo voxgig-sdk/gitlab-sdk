@@ -60,7 +60,7 @@ func TestApiEntitiesMergeRequestApprovalEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesMergeRequestApprovalRef01Data = core.ToMapAny(apiEntitiesMergeRequestApprovalRef01DataResult)
+		apiEntitiesMergeRequestApprovalRef01Data = core.ToMapAny(entityData(apiEntitiesMergeRequestApprovalRef01DataResult))
 		if apiEntitiesMergeRequestApprovalRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

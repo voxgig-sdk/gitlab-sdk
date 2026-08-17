@@ -52,7 +52,7 @@ func TestApiEntitiesMemberEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -109,7 +109,7 @@ func TestApiEntitiesMemberEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesMemberRef01Data = core.ToMapAny(apiEntitiesMemberRef01DataResult)
+		apiEntitiesMemberRef01Data = core.ToMapAny(entityData(apiEntitiesMemberRef01DataResult))
 		if apiEntitiesMemberRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -150,7 +150,7 @@ func TestApiEntitiesMemberEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesMemberRef01ResdataUp0 := core.ToMapAny(apiEntitiesMemberRef01ResdataUp0Result)
+		apiEntitiesMemberRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesMemberRef01ResdataUp0Result))
 		if apiEntitiesMemberRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -169,7 +169,7 @@ func TestApiEntitiesMemberEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesMemberRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesMemberRef01DataDt0Loaded)
+		apiEntitiesMemberRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesMemberRef01DataDt0Loaded))
 		if apiEntitiesMemberRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

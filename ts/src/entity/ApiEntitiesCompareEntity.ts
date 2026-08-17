@@ -37,7 +37,7 @@ class ApiEntitiesCompareEntity extends GitlabEntityBase<ApiEntitiesCompare> {
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesCompareListMatch, ctrl?: Control): Promise<ApiEntitiesCompare[]> {
+  async list(this: any, reqmatch?: ApiEntitiesCompareListMatch, ctrl?: Control): Promise<ApiEntitiesCompareEntity[]> {
 
     const utility = this._utility
 

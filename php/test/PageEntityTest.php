@@ -52,7 +52,7 @@ class PageEntityTest extends TestCase
         ];
 
         $page_ref01_resdata_up0_result = $page_ref01_ent->update($page_ref01_data_up0_up, null);
-        $page_ref01_resdata_up0 = Helpers::to_map($page_ref01_resdata_up0_result);
+        $page_ref01_resdata_up0 = Helpers::to_map(is_object($page_ref01_resdata_up0_result) && method_exists($page_ref01_resdata_up0_result, 'data_get') ? $page_ref01_resdata_up0_result->data_get() : $page_ref01_resdata_up0_result);
         $this->assertNotNull($page_ref01_resdata_up0);
 
         // LOAD

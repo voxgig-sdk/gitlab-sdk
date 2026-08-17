@@ -51,7 +51,7 @@ func TestApiEntitiesProtectedTagEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -107,9 +107,12 @@ func TestApiEntitiesProtectedTagEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesProtectedTagRef01Data = core.ToMapAny(apiEntitiesProtectedTagRef01DataResult)
+		apiEntitiesProtectedTagRef01Data = core.ToMapAny(entityData(apiEntitiesProtectedTagRef01DataResult))
 		if apiEntitiesProtectedTagRef01Data == nil {
 			t.Fatal("expected create result to be a map")
+		}
+		if apiEntitiesProtectedTagRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
 		}
 
 		// LIST
@@ -132,13 +135,19 @@ func TestApiEntitiesProtectedTagEntity(t *testing.T) {
 		}
 
 		// LOAD
-		apiEntitiesProtectedTagRef01MatchDt0 := map[string]any{}
+		apiEntitiesProtectedTagRef01MatchDt0 := map[string]any{
+			"id": apiEntitiesProtectedTagRef01Data["id"],
+		}
 		apiEntitiesProtectedTagRef01DataDt0Loaded, err := apiEntitiesProtectedTagRef01Ent.Load(apiEntitiesProtectedTagRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if apiEntitiesProtectedTagRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		apiEntitiesProtectedTagRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesProtectedTagRef01DataDt0Loaded))
+		if apiEntitiesProtectedTagRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if apiEntitiesProtectedTagRef01DataDt0LoadResult["id"] != apiEntitiesProtectedTagRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

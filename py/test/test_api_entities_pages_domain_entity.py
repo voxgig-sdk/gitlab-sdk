@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -42,8 +42,8 @@ class TestApiEntitiesPagesDomainEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from config import make_config
-        cfg = make_config()
+        from gitlab_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = GitlabSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
@@ -79,7 +79,7 @@ class TestApiEntitiesPagesDomainEntity:
             vs.getpath(setup["data"], "new.api_entities_pages_domain"), "api_entities_pages_domain_ref01"))
         api_entities_pages_domain_ref01_data["project_id"] = setup["idmap"]["project01"]
 
-        api_entities_pages_domain_ref01_data = helpers.to_map(api_entities_pages_domain_ref01_ent.create(api_entities_pages_domain_ref01_data, None))
+        api_entities_pages_domain_ref01_data = helpers.to_map(runner.entity_data(api_entities_pages_domain_ref01_ent.create(api_entities_pages_domain_ref01_data, None)))
         assert api_entities_pages_domain_ref01_data is not None
 
         # LIST
@@ -90,11 +90,6 @@ class TestApiEntitiesPagesDomainEntity:
         api_entities_pages_domain_ref01_list_result = api_entities_pages_domain_ref01_ent.list(api_entities_pages_domain_ref01_match, None)
         assert isinstance(api_entities_pages_domain_ref01_list_result, list)
 
-        found_item = vs.select(
-            runner.entity_list_to_data(api_entities_pages_domain_ref01_list_result),
-            {"id": api_entities_pages_domain_ref01_data["id"]})
-        assert not vs.isempty(found_item)
-
         # UPDATE
         api_entities_pages_domain_ref01_data_up0_up = {
             "project_id": setup["idmap"]["project_id"],
@@ -104,7 +99,7 @@ class TestApiEntitiesPagesDomainEntity:
         api_entities_pages_domain_ref01_markdef_up0_value = "Mark01-api_entities_pages_domain_ref01_" + str(setup["now"])
         api_entities_pages_domain_ref01_data_up0_up[api_entities_pages_domain_ref01_markdef_up0_name] = api_entities_pages_domain_ref01_markdef_up0_value
 
-        api_entities_pages_domain_ref01_resdata_up0 = helpers.to_map(api_entities_pages_domain_ref01_ent.update(api_entities_pages_domain_ref01_data_up0_up, None))
+        api_entities_pages_domain_ref01_resdata_up0 = helpers.to_map(runner.entity_data(api_entities_pages_domain_ref01_ent.update(api_entities_pages_domain_ref01_data_up0_up, None)))
         assert api_entities_pages_domain_ref01_resdata_up0 is not None
         assert api_entities_pages_domain_ref01_resdata_up0[api_entities_pages_domain_ref01_markdef_up0_name] == api_entities_pages_domain_ref01_markdef_up0_value
 

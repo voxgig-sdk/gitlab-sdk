@@ -37,7 +37,7 @@ class ImportEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.import"), "import_ref01"))
 
     import_ref01_data_result = import_ref01_ent.create(import_ref01_data, nil)
-    import_ref01_data = Helpers.to_map(import_ref01_data_result)
+    import_ref01_data = Helpers.to_map(import_ref01_data_result.respond_to?(:data_get) ? import_ref01_data_result.data_get : import_ref01_data_result)
     assert !import_ref01_data.nil?
 
   end

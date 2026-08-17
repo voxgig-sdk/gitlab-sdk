@@ -37,7 +37,7 @@ class ApiEntitiesNugetPackagesVersionEntity extends GitlabEntityBase<ApiEntities
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesNugetPackagesVersionListMatch, ctrl?: Control): Promise<ApiEntitiesNugetPackagesVersion[]> {
+  async list(this: any, reqmatch?: ApiEntitiesNugetPackagesVersionListMatch, ctrl?: Control): Promise<ApiEntitiesNugetPackagesVersionEntity[]> {
 
     const utility = this._utility
 

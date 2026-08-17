@@ -38,7 +38,7 @@ class MigrationEntityTest < Minitest::Test
     migration_ref01_data["timestamp"] = setup[:idmap]["timestamp01"]
 
     migration_ref01_data_result = migration_ref01_ent.create(migration_ref01_data, nil)
-    migration_ref01_data = Helpers.to_map(migration_ref01_data_result)
+    migration_ref01_data = Helpers.to_map(migration_ref01_data_result.respond_to?(:data_get) ? migration_ref01_data_result.data_get : migration_ref01_data_result)
     assert !migration_ref01_data.nil?
 
   end

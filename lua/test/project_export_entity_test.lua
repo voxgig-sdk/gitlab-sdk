@@ -41,7 +41,7 @@ describe("ProjectExportEntity", function()
 
     local project_export_ref01_data_result, err = project_export_ref01_ent:create(project_export_ref01_data, nil)
     assert.is_nil(err)
-    project_export_ref01_data = helpers.to_map(project_export_ref01_data_result)
+    project_export_ref01_data = helpers.to_map(type(project_export_ref01_data_result) == 'table' and project_export_ref01_data_result.data_get and project_export_ref01_data_result:data_get() or project_export_ref01_data_result)
     assert.is_not_nil(project_export_ref01_data)
 
     -- LOAD

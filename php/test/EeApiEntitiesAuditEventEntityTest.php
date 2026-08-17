@@ -40,7 +40,7 @@ class EeApiEntitiesAuditEventEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = GitlabConfig::make_config();
+        $cfg = GitlabConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = GitlabSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
@@ -99,7 +99,7 @@ class EeApiEntitiesAuditEventEntityTest extends TestCase
             "id" => $ee_api_entities_audit_event_ref01_data["id"],
         ];
         $ee_api_entities_audit_event_ref01_data_dt0_loaded = $ee_api_entities_audit_event_ref01_ent->load($ee_api_entities_audit_event_ref01_match_dt0, null);
-        $ee_api_entities_audit_event_ref01_data_dt0_load_result = Helpers::to_map($ee_api_entities_audit_event_ref01_data_dt0_loaded);
+        $ee_api_entities_audit_event_ref01_data_dt0_load_result = Helpers::to_map(is_object($ee_api_entities_audit_event_ref01_data_dt0_loaded) && method_exists($ee_api_entities_audit_event_ref01_data_dt0_loaded, 'data_get') ? $ee_api_entities_audit_event_ref01_data_dt0_loaded->data_get() : $ee_api_entities_audit_event_ref01_data_dt0_loaded);
         $this->assertNotNull($ee_api_entities_audit_event_ref01_data_dt0_load_result);
         $this->assertEquals($ee_api_entities_audit_event_ref01_data_dt0_load_result["id"], $ee_api_entities_audit_event_ref01_data["id"]);
 

@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -44,7 +44,7 @@ class TestContainerRegistryEventEntity:
         container_registry_event_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.container_registry_event"), "container_registry_event_ref01"))
 
-        container_registry_event_ref01_data = helpers.to_map(container_registry_event_ref01_ent.create(container_registry_event_ref01_data, None))
+        container_registry_event_ref01_data = helpers.to_map(runner.entity_data(container_registry_event_ref01_ent.create(container_registry_event_ref01_data, None)))
         assert container_registry_event_ref01_data is not None
 
 

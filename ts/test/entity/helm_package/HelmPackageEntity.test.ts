@@ -65,7 +65,7 @@ describe('HelmPackageEntity', async () => {
     helm_package_ref01_data['file_name'] = setup.idmap['file_name01']
     helm_package_ref01_data['project_id'] = setup.idmap['project01']
 
-    helm_package_ref01_data = await helm_package_ref01_ent.create(helm_package_ref01_data)
+    helm_package_ref01_data = (await helm_package_ref01_ent.create(helm_package_ref01_data)).data()
     assert(null != helm_package_ref01_data)
 
 

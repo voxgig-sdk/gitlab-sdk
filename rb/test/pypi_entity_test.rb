@@ -38,7 +38,7 @@ class PypiEntityTest < Minitest::Test
     pypi_ref01_data["project_id"] = setup[:idmap]["project01"]
 
     pypi_ref01_data_result = pypi_ref01_ent.create(pypi_ref01_data, nil)
-    pypi_ref01_data = Helpers.to_map(pypi_ref01_data_result)
+    pypi_ref01_data = Helpers.to_map(pypi_ref01_data_result.respond_to?(:data_get) ? pypi_ref01_data_result.data_get : pypi_ref01_data_result)
     assert !pypi_ref01_data.nil?
 
   end

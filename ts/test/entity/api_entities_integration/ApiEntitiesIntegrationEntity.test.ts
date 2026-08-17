@@ -59,12 +59,9 @@ describe('ApiEntitiesIntegrationEntity', async () => {
 
     let api_entities_integration_ref01_data = Object.values(setup.data.existing.api_entities_integration)[0] as any
 
-    // LOAD
+    // LOAD: skipped — no entity id field and load requires path params.
+    // Entity-var is declared here so later flow steps still compile.
     const api_entities_integration_ref01_ent = client.ApiEntitiesIntegration()
-    const api_entities_integration_ref01_match_dt0: any = {}
-    api_entities_integration_ref01_match_dt0.id = api_entities_integration_ref01_data.id
-    const api_entities_integration_ref01_data_dt0 = await api_entities_integration_ref01_ent.load(api_entities_integration_ref01_match_dt0)
-    assert(api_entities_integration_ref01_data_dt0.id === api_entities_integration_ref01_data.id)
 
 
   })

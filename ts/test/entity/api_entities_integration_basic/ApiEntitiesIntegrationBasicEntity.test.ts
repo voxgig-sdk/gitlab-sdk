@@ -64,7 +64,7 @@ describe('ApiEntitiesIntegrationBasicEntity', async () => {
     const api_entities_integration_basic_ref01_match: any = {}
     api_entities_integration_basic_ref01_match['project_id'] = setup.idmap['project01']
 
-    const api_entities_integration_basic_ref01_list = await api_entities_integration_basic_ref01_ent.list(api_entities_integration_basic_ref01_match)
+    const api_entities_integration_basic_ref01_list = (await api_entities_integration_basic_ref01_ent.list(api_entities_integration_basic_ref01_match)).map((e: any) => e.data())
 
 
     // UPDATE
@@ -74,7 +74,7 @@ describe('ApiEntitiesIntegrationBasicEntity', async () => {
     const api_entities_integration_basic_ref01_markdef_up0 = { name: 'created_at', value: 'Mark01-api_entities_integration_basic_ref01_' + setup.now }
     ;(api_entities_integration_basic_ref01_data_up0 as any)[api_entities_integration_basic_ref01_markdef_up0.name] = api_entities_integration_basic_ref01_markdef_up0.value
 
-    const api_entities_integration_basic_ref01_resdata_up0 = await api_entities_integration_basic_ref01_ent.update(api_entities_integration_basic_ref01_data_up0)
+    const api_entities_integration_basic_ref01_resdata_up0 = (await api_entities_integration_basic_ref01_ent.update(api_entities_integration_basic_ref01_data_up0)).data()
     assert(api_entities_integration_basic_ref01_resdata_up0.id === api_entities_integration_basic_ref01_data_up0.id)
 
     assert((api_entities_integration_basic_ref01_resdata_up0 as any)[api_entities_integration_basic_ref01_markdef_up0.name] === api_entities_integration_basic_ref01_markdef_up0.value)

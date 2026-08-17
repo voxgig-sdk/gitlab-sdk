@@ -59,7 +59,7 @@ func TestRpmPackageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		rpmPackageRef01Data = core.ToMapAny(rpmPackageRef01DataResult)
+		rpmPackageRef01Data = core.ToMapAny(entityData(rpmPackageRef01DataResult))
 		if rpmPackageRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

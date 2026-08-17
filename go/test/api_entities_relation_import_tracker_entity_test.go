@@ -58,7 +58,7 @@ func TestApiEntitiesRelationImportTrackerEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesRelationImportTrackerRef01Data = core.ToMapAny(apiEntitiesRelationImportTrackerRef01DataResult)
+		apiEntitiesRelationImportTrackerRef01Data = core.ToMapAny(entityData(apiEntitiesRelationImportTrackerRef01DataResult))
 		if apiEntitiesRelationImportTrackerRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

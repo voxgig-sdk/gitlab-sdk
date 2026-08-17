@@ -51,7 +51,7 @@ func TestApiEntitiesCiJobBasicEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -109,7 +109,7 @@ func TestApiEntitiesCiJobBasicEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesCiJobBasicRef01Data = core.ToMapAny(apiEntitiesCiJobBasicRef01DataResult)
+		apiEntitiesCiJobBasicRef01Data = core.ToMapAny(entityData(apiEntitiesCiJobBasicRef01DataResult))
 		if apiEntitiesCiJobBasicRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

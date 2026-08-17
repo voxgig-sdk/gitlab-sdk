@@ -41,7 +41,7 @@ describe("ContainerRegistryEventEntity", function()
 
     local container_registry_event_ref01_data_result, err = container_registry_event_ref01_ent:create(container_registry_event_ref01_data, nil)
     assert.is_nil(err)
-    container_registry_event_ref01_data = helpers.to_map(container_registry_event_ref01_data_result)
+    container_registry_event_ref01_data = helpers.to_map(type(container_registry_event_ref01_data_result) == 'table' and container_registry_event_ref01_data_result.data_get and container_registry_event_ref01_data_result:data_get() or container_registry_event_ref01_data_result)
     assert.is_not_nil(container_registry_event_ref01_data)
 
   end)

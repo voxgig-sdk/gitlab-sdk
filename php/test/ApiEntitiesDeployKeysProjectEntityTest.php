@@ -40,7 +40,7 @@ class ApiEntitiesDeployKeysProjectEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = GitlabConfig::make_config();
+        $cfg = GitlabConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = GitlabSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];
@@ -84,7 +84,7 @@ class ApiEntitiesDeployKeysProjectEntityTest extends TestCase
         $api_entities_deploy_keys_project_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $api_entities_deploy_keys_project_ref01_data_result = $api_entities_deploy_keys_project_ref01_ent->create($api_entities_deploy_keys_project_ref01_data, null);
-        $api_entities_deploy_keys_project_ref01_data = Helpers::to_map($api_entities_deploy_keys_project_ref01_data_result);
+        $api_entities_deploy_keys_project_ref01_data = Helpers::to_map(is_object($api_entities_deploy_keys_project_ref01_data_result) && method_exists($api_entities_deploy_keys_project_ref01_data_result, 'data_get') ? $api_entities_deploy_keys_project_ref01_data_result->data_get() : $api_entities_deploy_keys_project_ref01_data_result);
         $this->assertNotNull($api_entities_deploy_keys_project_ref01_data);
         $this->assertNotNull($api_entities_deploy_keys_project_ref01_data["id"]);
 
@@ -106,7 +106,7 @@ class ApiEntitiesDeployKeysProjectEntityTest extends TestCase
             "id" => $api_entities_deploy_keys_project_ref01_data["id"],
         ];
         $api_entities_deploy_keys_project_ref01_data_dt0_loaded = $api_entities_deploy_keys_project_ref01_ent->load($api_entities_deploy_keys_project_ref01_match_dt0, null);
-        $api_entities_deploy_keys_project_ref01_data_dt0_load_result = Helpers::to_map($api_entities_deploy_keys_project_ref01_data_dt0_loaded);
+        $api_entities_deploy_keys_project_ref01_data_dt0_load_result = Helpers::to_map(is_object($api_entities_deploy_keys_project_ref01_data_dt0_loaded) && method_exists($api_entities_deploy_keys_project_ref01_data_dt0_loaded, 'data_get') ? $api_entities_deploy_keys_project_ref01_data_dt0_loaded->data_get() : $api_entities_deploy_keys_project_ref01_data_dt0_loaded);
         $this->assertNotNull($api_entities_deploy_keys_project_ref01_data_dt0_load_result);
         $this->assertEquals($api_entities_deploy_keys_project_ref01_data_dt0_load_result["id"], $api_entities_deploy_keys_project_ref01_data["id"]);
 

@@ -68,7 +68,7 @@ func TestApiEntitiesCiRunnerManagerEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesCiRunnerManagerRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesCiRunnerManagerRef01DataDt0Loaded)
+		apiEntitiesCiRunnerManagerRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesCiRunnerManagerRef01DataDt0Loaded))
 		if apiEntitiesCiRunnerManagerRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

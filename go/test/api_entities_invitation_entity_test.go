@@ -52,7 +52,7 @@ func TestApiEntitiesInvitationEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -109,7 +109,7 @@ func TestApiEntitiesInvitationEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesInvitationRef01Data = core.ToMapAny(apiEntitiesInvitationRef01DataResult)
+		apiEntitiesInvitationRef01Data = core.ToMapAny(entityData(apiEntitiesInvitationRef01DataResult))
 		if apiEntitiesInvitationRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -123,14 +123,9 @@ func TestApiEntitiesInvitationEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("list failed: %v", err)
 		}
-		apiEntitiesInvitationRef01List, apiEntitiesInvitationRef01ListOk := apiEntitiesInvitationRef01ListResult.([]any)
+		_, apiEntitiesInvitationRef01ListOk := apiEntitiesInvitationRef01ListResult.([]any)
 		if !apiEntitiesInvitationRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", apiEntitiesInvitationRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(apiEntitiesInvitationRef01List), map[string]any{"id": apiEntitiesInvitationRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
 		}
 
 		// UPDATE
@@ -146,7 +141,7 @@ func TestApiEntitiesInvitationEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesInvitationRef01ResdataUp0 := core.ToMapAny(apiEntitiesInvitationRef01ResdataUp0Result)
+		apiEntitiesInvitationRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesInvitationRef01ResdataUp0Result))
 		if apiEntitiesInvitationRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

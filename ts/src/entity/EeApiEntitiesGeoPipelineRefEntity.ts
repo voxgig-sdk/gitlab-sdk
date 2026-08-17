@@ -37,7 +37,7 @@ class EeApiEntitiesGeoPipelineRefEntity extends GitlabEntityBase<EeApiEntitiesGe
 
 
 
-  async list(this: any, reqmatch?: EeApiEntitiesGeoPipelineRefListMatch, ctrl?: Control): Promise<EeApiEntitiesGeoPipelineRef[]> {
+  async list(this: any, reqmatch?: EeApiEntitiesGeoPipelineRefListMatch, ctrl?: Control): Promise<EeApiEntitiesGeoPipelineRefEntity[]> {
 
     const utility = this._utility
 

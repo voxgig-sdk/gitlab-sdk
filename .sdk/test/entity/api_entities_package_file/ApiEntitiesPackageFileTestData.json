@@ -9,7 +9,7 @@
         "file_sha256": "s5e",
         "id": "API_ENTITIES_PACKAGE_FILE00",
         "package_id": "PACKAGE01",
-        "pipeline": {},
+        "pipelines": {},
         "size": "s62",
         "project_id": "PROJECT01"
       },
@@ -21,7 +21,7 @@
         "file_sha256": "sb8",
         "id": "API_ENTITIES_PACKAGE_FILE01",
         "package_id": "PACKAGE01",
-        "pipeline": {},
+        "pipelines": {},
         "size": "sbc",
         "project_id": "PROJECT01"
       },
@@ -33,7 +33,7 @@
         "file_sha256": "s112",
         "id": "API_ENTITIES_PACKAGE_FILE02",
         "package_id": "PACKAGE01",
-        "pipeline": {},
+        "pipelines": {},
         "size": "s116",
         "project_id": "PROJECT01"
       }
@@ -48,7 +48,7 @@
         "file_sha1": "s16b",
         "file_sha256": "s16c",
         "package_id": "PACKAGE01",
-        "pipeline": {},
+        "pipelines": {},
         "size": "s170"
       }
     }

@@ -37,7 +37,7 @@ class JobEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.job"), "job_ref01"))
 
     job_ref01_data_result = job_ref01_ent.create(job_ref01_data, nil)
-    job_ref01_data = Helpers.to_map(job_ref01_data_result)
+    job_ref01_data = Helpers.to_map(job_ref01_data_result.respond_to?(:data_get) ? job_ref01_data_result.data_get : job_ref01_data_result)
     assert !job_ref01_data.nil?
 
     # UPDATE
@@ -45,7 +45,7 @@ class JobEntityTest < Minitest::Test
     }
 
     job_ref01_resdata_up0_result = job_ref01_ent.update(job_ref01_data_up0_up, nil)
-    job_ref01_resdata_up0 = Helpers.to_map(job_ref01_resdata_up0_result)
+    job_ref01_resdata_up0 = Helpers.to_map(job_ref01_resdata_up0_result.respond_to?(:data_get) ? job_ref01_resdata_up0_result.data_get : job_ref01_resdata_up0_result)
     assert !job_ref01_resdata_up0.nil?
 
     # LOAD

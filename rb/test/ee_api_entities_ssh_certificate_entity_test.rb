@@ -33,7 +33,7 @@ class EeApiEntitiesSshCertificateEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = GitlabConfig.make_config
+    cfg = GitlabConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = GitlabSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []
@@ -74,7 +74,7 @@ class EeApiEntitiesSshCertificateEntityTest < Minitest::Test
     ee_api_entities_ssh_certificate_ref01_data["group_id"] = setup[:idmap]["group01"]
 
     ee_api_entities_ssh_certificate_ref01_data_result = ee_api_entities_ssh_certificate_ref01_ent.create(ee_api_entities_ssh_certificate_ref01_data, nil)
-    ee_api_entities_ssh_certificate_ref01_data = Helpers.to_map(ee_api_entities_ssh_certificate_ref01_data_result)
+    ee_api_entities_ssh_certificate_ref01_data = Helpers.to_map(ee_api_entities_ssh_certificate_ref01_data_result.respond_to?(:data_get) ? ee_api_entities_ssh_certificate_ref01_data_result.data_get : ee_api_entities_ssh_certificate_ref01_data_result)
     assert !ee_api_entities_ssh_certificate_ref01_data.nil?
     assert !ee_api_entities_ssh_certificate_ref01_data["id"].nil?
 

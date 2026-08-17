@@ -52,7 +52,7 @@ func TestNugetPackageEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -128,7 +128,7 @@ func TestNugetPackageEntity(t *testing.T) {
 			"id": nugetPackageRef01Data["id"],
 		}
 
-		nugetPackageRef01MarkdefUp0Name := "lower"
+		nugetPackageRef01MarkdefUp0Name := "authors"
 		nugetPackageRef01MarkdefUp0Value := fmt.Sprintf("Mark01-nuget_package_ref01_%d", setup.now)
 		nugetPackageRef01DataUp0Up[nugetPackageRef01MarkdefUp0Name] = nugetPackageRef01MarkdefUp0Value
 
@@ -136,7 +136,7 @@ func TestNugetPackageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		nugetPackageRef01ResdataUp0 := core.ToMapAny(nugetPackageRef01ResdataUp0Result)
+		nugetPackageRef01ResdataUp0 := core.ToMapAny(entityData(nugetPackageRef01ResdataUp0Result))
 		if nugetPackageRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -155,7 +155,7 @@ func TestNugetPackageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		nugetPackageRef01DataDt0LoadResult := core.ToMapAny(nugetPackageRef01DataDt0Loaded)
+		nugetPackageRef01DataDt0LoadResult := core.ToMapAny(entityData(nugetPackageRef01DataDt0Loaded))
 		if nugetPackageRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

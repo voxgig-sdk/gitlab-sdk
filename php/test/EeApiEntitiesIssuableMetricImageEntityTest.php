@@ -46,7 +46,7 @@ class EeApiEntitiesIssuableMetricImageEntityTest extends TestCase
         $ee_api_entities_issuable_metric_image_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $ee_api_entities_issuable_metric_image_ref01_data_result = $ee_api_entities_issuable_metric_image_ref01_ent->create($ee_api_entities_issuable_metric_image_ref01_data, null);
-        $ee_api_entities_issuable_metric_image_ref01_data = Helpers::to_map($ee_api_entities_issuable_metric_image_ref01_data_result);
+        $ee_api_entities_issuable_metric_image_ref01_data = Helpers::to_map(is_object($ee_api_entities_issuable_metric_image_ref01_data_result) && method_exists($ee_api_entities_issuable_metric_image_ref01_data_result, 'data_get') ? $ee_api_entities_issuable_metric_image_ref01_data_result->data_get() : $ee_api_entities_issuable_metric_image_ref01_data_result);
         $this->assertNotNull($ee_api_entities_issuable_metric_image_ref01_data);
         $this->assertNotNull($ee_api_entities_issuable_metric_image_ref01_data["id"]);
 
@@ -62,7 +62,7 @@ class EeApiEntitiesIssuableMetricImageEntityTest extends TestCase
         $ee_api_entities_issuable_metric_image_ref01_data_up0_up[$ee_api_entities_issuable_metric_image_ref01_markdef_up0_name] = $ee_api_entities_issuable_metric_image_ref01_markdef_up0_value;
 
         $ee_api_entities_issuable_metric_image_ref01_resdata_up0_result = $ee_api_entities_issuable_metric_image_ref01_ent->update($ee_api_entities_issuable_metric_image_ref01_data_up0_up, null);
-        $ee_api_entities_issuable_metric_image_ref01_resdata_up0 = Helpers::to_map($ee_api_entities_issuable_metric_image_ref01_resdata_up0_result);
+        $ee_api_entities_issuable_metric_image_ref01_resdata_up0 = Helpers::to_map(is_object($ee_api_entities_issuable_metric_image_ref01_resdata_up0_result) && method_exists($ee_api_entities_issuable_metric_image_ref01_resdata_up0_result, 'data_get') ? $ee_api_entities_issuable_metric_image_ref01_resdata_up0_result->data_get() : $ee_api_entities_issuable_metric_image_ref01_resdata_up0_result);
         $this->assertNotNull($ee_api_entities_issuable_metric_image_ref01_resdata_up0);
         $this->assertEquals($ee_api_entities_issuable_metric_image_ref01_resdata_up0["id"], $ee_api_entities_issuable_metric_image_ref01_data_up0_up["id"]);
         $this->assertEquals($ee_api_entities_issuable_metric_image_ref01_resdata_up0[$ee_api_entities_issuable_metric_image_ref01_markdef_up0_name], $ee_api_entities_issuable_metric_image_ref01_markdef_up0_value);

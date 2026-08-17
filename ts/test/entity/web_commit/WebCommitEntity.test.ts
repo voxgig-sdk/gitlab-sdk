@@ -62,7 +62,7 @@ describe('WebCommitEntity', async () => {
     // LOAD
     const web_commit_ref01_ent = client.WebCommit()
     const web_commit_ref01_match_dt0: any = {}
-    const web_commit_ref01_data_dt0 = await web_commit_ref01_ent.load(web_commit_ref01_match_dt0)
+    const web_commit_ref01_data_dt0 = (await web_commit_ref01_ent.load(web_commit_ref01_match_dt0)).data()
     assert(null != web_commit_ref01_data_dt0)
 
 

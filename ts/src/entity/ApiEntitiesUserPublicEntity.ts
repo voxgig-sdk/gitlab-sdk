@@ -37,7 +37,7 @@ class ApiEntitiesUserPublicEntity extends GitlabEntityBase<ApiEntitiesUserPublic
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesUserPublicListMatch, ctrl?: Control): Promise<ApiEntitiesUserPublic[]> {
+  async list(this: any, reqmatch?: ApiEntitiesUserPublicListMatch, ctrl?: Control): Promise<ApiEntitiesUserPublicEntity[]> {
 
     const utility = this._utility
 

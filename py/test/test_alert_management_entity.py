@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -46,14 +46,9 @@ class TestAlertManagementEntity:
         alert_management_ref01_data["alert_management_alert_id"] = setup["idmap"]["alert_management_alert01"]
         alert_management_ref01_data["project_id"] = setup["idmap"]["project01"]
 
-        alert_management_ref01_data = helpers.to_map(alert_management_ref01_ent.create(alert_management_ref01_data, None))
+        alert_management_ref01_data = helpers.to_map(runner.entity_data(alert_management_ref01_ent.create(alert_management_ref01_data, None)))
         assert alert_management_ref01_data is not None
 
-        # REMOVE
-        alert_management_ref01_match_rm0 = {
-            "id": alert_management_ref01_data["id"],
-        }
-        alert_management_ref01_ent.remove(alert_management_ref01_match_rm0, None)
 
 
 

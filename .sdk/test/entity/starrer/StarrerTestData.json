@@ -4,7 +4,7 @@
       "STARRER00": {
         "avatar_path": "s64",
         "avatar_url": "s65",
-        "custom_attribute": [],
+        "custom_attributes": [],
         "id": "STARRER00",
         "locked": true,
         "name": "s69",
@@ -17,7 +17,7 @@
       "STARRER01": {
         "avatar_path": "sc8",
         "avatar_url": "sc9",
-        "custom_attribute": [],
+        "custom_attributes": [],
         "id": "STARRER01",
         "locked": true,
         "name": "scd",
@@ -30,7 +30,7 @@
       "STARRER02": {
         "avatar_path": "s12c",
         "avatar_url": "s12d",
-        "custom_attribute": [],
+        "custom_attributes": [],
         "id": "STARRER02",
         "locked": true,
         "name": "s131",
@@ -47,7 +47,7 @@
       "starrer_ref01": {
         "avatar_path": "s190",
         "avatar_url": "s191",
-        "custom_attribute": [],
+        "custom_attributes": [],
         "locked": true,
         "name": "s195",
         "public_email": "s196",

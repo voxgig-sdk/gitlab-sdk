@@ -45,7 +45,7 @@ class GroupEntityTest extends TestCase
         $group_ref01_data["secret"] = $setup["idmap"]["secret01"];
 
         $group_ref01_data_result = $group_ref01_ent->create($group_ref01_data, null);
-        $group_ref01_data = Helpers::to_map($group_ref01_data_result);
+        $group_ref01_data = Helpers::to_map(is_object($group_ref01_data_result) && method_exists($group_ref01_data_result, 'data_get') ? $group_ref01_data_result->data_get() : $group_ref01_data_result);
         $this->assertNotNull($group_ref01_data);
 
         // UPDATE
@@ -53,7 +53,7 @@ class GroupEntityTest extends TestCase
         ];
 
         $group_ref01_resdata_up0_result = $group_ref01_ent->update($group_ref01_data_up0_up, null);
-        $group_ref01_resdata_up0 = Helpers::to_map($group_ref01_resdata_up0_result);
+        $group_ref01_resdata_up0 = Helpers::to_map(is_object($group_ref01_resdata_up0_result) && method_exists($group_ref01_resdata_up0_result, 'data_get') ? $group_ref01_resdata_up0_result->data_get() : $group_ref01_resdata_up0_result);
         $this->assertNotNull($group_ref01_resdata_up0);
 
         // LOAD
@@ -61,11 +61,6 @@ class GroupEntityTest extends TestCase
         $group_ref01_data_dt0_loaded = $group_ref01_ent->load($group_ref01_match_dt0, null);
         $this->assertNotNull($group_ref01_data_dt0_loaded);
 
-        // REMOVE
-        $group_ref01_match_rm0 = [
-            "id" => $group_ref01_data["id"],
-        ];
-        $group_ref01_ent->remove($group_ref01_match_rm0, null);
 
     }
 }

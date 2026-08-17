@@ -41,7 +41,7 @@ describe("SlackEntity", function()
 
     local slack_ref01_data_result, err = slack_ref01_ent:create(slack_ref01_data, nil)
     assert.is_nil(err)
-    slack_ref01_data = helpers.to_map(slack_ref01_data_result)
+    slack_ref01_data = helpers.to_map(type(slack_ref01_data_result) == 'table' and slack_ref01_data_result.data_get and slack_ref01_data_result:data_get() or slack_ref01_data_result)
     assert.is_not_nil(slack_ref01_data)
 
   end)

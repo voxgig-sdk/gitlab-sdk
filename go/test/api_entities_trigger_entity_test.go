@@ -52,7 +52,7 @@ func TestApiEntitiesTriggerEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -108,7 +108,7 @@ func TestApiEntitiesTriggerEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesTriggerRef01Data = core.ToMapAny(apiEntitiesTriggerRef01DataResult)
+		apiEntitiesTriggerRef01Data = core.ToMapAny(entityData(apiEntitiesTriggerRef01DataResult))
 		if apiEntitiesTriggerRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -141,7 +141,7 @@ func TestApiEntitiesTriggerEntity(t *testing.T) {
 			"project_id": setup.idmap["project_id"],
 		}
 
-		apiEntitiesTriggerRef01MarkdefUp0Name := "created_at"
+		apiEntitiesTriggerRef01MarkdefUp0Name := "avatar_path"
 		apiEntitiesTriggerRef01MarkdefUp0Value := fmt.Sprintf("Mark01-api_entities_trigger_ref01_%d", setup.now)
 		apiEntitiesTriggerRef01DataUp0Up[apiEntitiesTriggerRef01MarkdefUp0Name] = apiEntitiesTriggerRef01MarkdefUp0Value
 
@@ -149,7 +149,7 @@ func TestApiEntitiesTriggerEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesTriggerRef01ResdataUp0 := core.ToMapAny(apiEntitiesTriggerRef01ResdataUp0Result)
+		apiEntitiesTriggerRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesTriggerRef01ResdataUp0Result))
 		if apiEntitiesTriggerRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -168,7 +168,7 @@ func TestApiEntitiesTriggerEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesTriggerRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesTriggerRef01DataDt0Loaded)
+		apiEntitiesTriggerRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesTriggerRef01DataDt0Loaded))
 		if apiEntitiesTriggerRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

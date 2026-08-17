@@ -52,7 +52,7 @@ func TestApiEntitiesIntegrationBasicEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -136,7 +136,7 @@ func TestApiEntitiesIntegrationBasicEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesIntegrationBasicRef01ResdataUp0 := core.ToMapAny(apiEntitiesIntegrationBasicRef01ResdataUp0Result)
+		apiEntitiesIntegrationBasicRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesIntegrationBasicRef01ResdataUp0Result))
 		if apiEntitiesIntegrationBasicRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

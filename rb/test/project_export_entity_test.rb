@@ -37,7 +37,7 @@ class ProjectExportEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.project_export"), "project_export_ref01"))
 
     project_export_ref01_data_result = project_export_ref01_ent.create(project_export_ref01_data, nil)
-    project_export_ref01_data = Helpers.to_map(project_export_ref01_data_result)
+    project_export_ref01_data = Helpers.to_map(project_export_ref01_data_result.respond_to?(:data_get) ? project_export_ref01_data_result.data_get : project_export_ref01_data_result)
     assert !project_export_ref01_data.nil?
 
     # LOAD

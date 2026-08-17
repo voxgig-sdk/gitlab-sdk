@@ -51,7 +51,7 @@ describe("MlModelRegistryEntity", function()
 
     local ml_model_registry_ref01_resdata_up0_result, err = ml_model_registry_ref01_ent:update(ml_model_registry_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local ml_model_registry_ref01_resdata_up0 = helpers.to_map(ml_model_registry_ref01_resdata_up0_result)
+    local ml_model_registry_ref01_resdata_up0 = helpers.to_map(type(ml_model_registry_ref01_resdata_up0_result) == 'table' and ml_model_registry_ref01_resdata_up0_result.data_get and ml_model_registry_ref01_resdata_up0_result:data_get() or ml_model_registry_ref01_resdata_up0_result)
     assert.is_not_nil(ml_model_registry_ref01_resdata_up0)
 
     -- LOAD

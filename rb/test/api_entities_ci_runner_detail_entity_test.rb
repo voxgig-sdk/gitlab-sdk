@@ -50,7 +50,7 @@ class ApiEntitiesCiRunnerDetailEntityTest < Minitest::Test
     api_entities_ci_runner_detail_ref01_data_up0_up[api_entities_ci_runner_detail_ref01_markdef_up0_name] = api_entities_ci_runner_detail_ref01_markdef_up0_value
 
     api_entities_ci_runner_detail_ref01_resdata_up0_result = api_entities_ci_runner_detail_ref01_ent.update(api_entities_ci_runner_detail_ref01_data_up0_up, nil)
-    api_entities_ci_runner_detail_ref01_resdata_up0 = Helpers.to_map(api_entities_ci_runner_detail_ref01_resdata_up0_result)
+    api_entities_ci_runner_detail_ref01_resdata_up0 = Helpers.to_map(api_entities_ci_runner_detail_ref01_resdata_up0_result.respond_to?(:data_get) ? api_entities_ci_runner_detail_ref01_resdata_up0_result.data_get : api_entities_ci_runner_detail_ref01_resdata_up0_result)
     assert !api_entities_ci_runner_detail_ref01_resdata_up0.nil?
     assert_equal api_entities_ci_runner_detail_ref01_resdata_up0["id"], api_entities_ci_runner_detail_ref01_data_up0_up["id"]
     assert_equal api_entities_ci_runner_detail_ref01_resdata_up0[api_entities_ci_runner_detail_ref01_markdef_up0_name], api_entities_ci_runner_detail_ref01_markdef_up0_value
@@ -60,7 +60,7 @@ class ApiEntitiesCiRunnerDetailEntityTest < Minitest::Test
       "id" => api_entities_ci_runner_detail_ref01_data["id"],
     }
     api_entities_ci_runner_detail_ref01_data_dt0_loaded = api_entities_ci_runner_detail_ref01_ent.load(api_entities_ci_runner_detail_ref01_match_dt0, nil)
-    api_entities_ci_runner_detail_ref01_data_dt0_load_result = Helpers.to_map(api_entities_ci_runner_detail_ref01_data_dt0_loaded)
+    api_entities_ci_runner_detail_ref01_data_dt0_load_result = Helpers.to_map(api_entities_ci_runner_detail_ref01_data_dt0_loaded.respond_to?(:data_get) ? api_entities_ci_runner_detail_ref01_data_dt0_loaded.data_get : api_entities_ci_runner_detail_ref01_data_dt0_loaded)
     assert !api_entities_ci_runner_detail_ref01_data_dt0_load_result.nil?
     assert_equal api_entities_ci_runner_detail_ref01_data_dt0_load_result["id"], api_entities_ci_runner_detail_ref01_data["id"]
 

@@ -58,7 +58,7 @@ func TestEeApiEntitiesGeoNodeStatusEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		eeApiEntitiesGeoNodeStatusRef01Data = core.ToMapAny(eeApiEntitiesGeoNodeStatusRef01DataResult)
+		eeApiEntitiesGeoNodeStatusRef01Data = core.ToMapAny(entityData(eeApiEntitiesGeoNodeStatusRef01DataResult))
 		if eeApiEntitiesGeoNodeStatusRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

@@ -59,7 +59,7 @@ func TestApiEntitiesDeployTokenWithTokenEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesDeployTokenWithTokenRef01Data = core.ToMapAny(apiEntitiesDeployTokenWithTokenRef01DataResult)
+		apiEntitiesDeployTokenWithTokenRef01Data = core.ToMapAny(entityData(apiEntitiesDeployTokenWithTokenRef01DataResult))
 		if apiEntitiesDeployTokenWithTokenRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

@@ -63,7 +63,7 @@ describe('EeApiEntitiesSshCertificateEntity', async () => {
     let ee_api_entities_ssh_certificate_ref01_data = setup.data.new.ee_api_entities_ssh_certificate['ee_api_entities_ssh_certificate_ref01']
     ee_api_entities_ssh_certificate_ref01_data['group_id'] = setup.idmap['group01']
 
-    ee_api_entities_ssh_certificate_ref01_data = await ee_api_entities_ssh_certificate_ref01_ent.create(ee_api_entities_ssh_certificate_ref01_data)
+    ee_api_entities_ssh_certificate_ref01_data = (await ee_api_entities_ssh_certificate_ref01_ent.create(ee_api_entities_ssh_certificate_ref01_data)).data()
     assert(null != ee_api_entities_ssh_certificate_ref01_data.id)
 
 
@@ -71,7 +71,7 @@ describe('EeApiEntitiesSshCertificateEntity', async () => {
     const ee_api_entities_ssh_certificate_ref01_match: any = {}
     ee_api_entities_ssh_certificate_ref01_match['group_id'] = setup.idmap['group01']
 
-    const ee_api_entities_ssh_certificate_ref01_list = await ee_api_entities_ssh_certificate_ref01_ent.list(ee_api_entities_ssh_certificate_ref01_match)
+    const ee_api_entities_ssh_certificate_ref01_list = (await ee_api_entities_ssh_certificate_ref01_ent.list(ee_api_entities_ssh_certificate_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(ee_api_entities_ssh_certificate_ref01_list, { id: ee_api_entities_ssh_certificate_ref01_data.id })))
 

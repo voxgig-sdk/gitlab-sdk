@@ -40,7 +40,7 @@ class EeApiEntitiesIssuableMetricImageEntity extends GitlabEntityBase<EeApiEntit
 
 
 
-  async create(this: any, reqdata?: EeApiEntitiesIssuableMetricImageCreateData, ctrl?: Control): Promise<EeApiEntitiesIssuableMetricImage> {
+  async create(this: any, reqdata?: EeApiEntitiesIssuableMetricImageCreateData, ctrl?: Control): Promise<EeApiEntitiesIssuableMetricImageEntity> {
 
     const utility = this._utility
     const {
@@ -126,7 +126,15 @@ class EeApiEntitiesIssuableMetricImageEntity extends GitlabEntityBase<EeApiEntit
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 
@@ -148,7 +156,7 @@ class EeApiEntitiesIssuableMetricImageEntity extends GitlabEntityBase<EeApiEntit
 
 
 
-  async update(this: any, reqdata?: EeApiEntitiesIssuableMetricImageUpdateData, ctrl?: Control): Promise<EeApiEntitiesIssuableMetricImage> {
+  async update(this: any, reqdata?: EeApiEntitiesIssuableMetricImageUpdateData, ctrl?: Control): Promise<EeApiEntitiesIssuableMetricImageEntity> {
 
     const utility = this._utility
 
@@ -240,7 +248,15 @@ class EeApiEntitiesIssuableMetricImageEntity extends GitlabEntityBase<EeApiEntit
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 
@@ -262,7 +278,17 @@ class EeApiEntitiesIssuableMetricImageEntity extends GitlabEntityBase<EeApiEntit
 
 
 
-  async remove(this: any, reqmatch?: EeApiEntitiesIssuableMetricImageRemoveMatch, ctrl?: Control): Promise<EeApiEntitiesIssuableMetricImage> {
+  // Resolves to THIS entity, marked as deleted — like every other operation,
+  // which resolve to the entity too (see AGENTS.md). The instance keeps the
+  // data it held, so a caller can still read what was removed; `deleted()`
+  // reports that it is no longer a live record.
+  //
+  // A DELETE that answers 204 No Content therefore still resolves to
+  // something useful, where returning the raw body resolved to `undefined`
+  // against a signature that promised a record.
+  async remove(
+    this: any, reqmatch?: EeApiEntitiesIssuableMetricImageRemoveMatch, ctrl?: Control,
+  ): Promise<EeApiEntitiesIssuableMetricImageEntity> {
 
     const utility = this._utility
 
@@ -354,7 +380,21 @@ class EeApiEntitiesIssuableMetricImageEntity extends GitlabEntityBase<EeApiEntit
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      if (ctx.result && ctx.result.ok) {
+        // A removed entity keeps its data but is no longer a live record.
+        this.markDeleted()
+        return this
+      }
+
+      return out
     }
     catch (err: any) {
 
@@ -368,7 +408,7 @@ class EeApiEntitiesIssuableMetricImageEntity extends GitlabEntityBase<EeApiEntit
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<EeApiEntitiesIssuableMetricImage> return stays clean under strict null checks.
+        // Promise<EeApiEntitiesIssuableMetricImageEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }

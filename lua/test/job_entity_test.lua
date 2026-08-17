@@ -41,7 +41,7 @@ describe("JobEntity", function()
 
     local job_ref01_data_result, err = job_ref01_ent:create(job_ref01_data, nil)
     assert.is_nil(err)
-    job_ref01_data = helpers.to_map(job_ref01_data_result)
+    job_ref01_data = helpers.to_map(type(job_ref01_data_result) == 'table' and job_ref01_data_result.data_get and job_ref01_data_result:data_get() or job_ref01_data_result)
     assert.is_not_nil(job_ref01_data)
 
     -- UPDATE
@@ -50,7 +50,7 @@ describe("JobEntity", function()
 
     local job_ref01_resdata_up0_result, err = job_ref01_ent:update(job_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local job_ref01_resdata_up0 = helpers.to_map(job_ref01_resdata_up0_result)
+    local job_ref01_resdata_up0 = helpers.to_map(type(job_ref01_resdata_up0_result) == 'table' and job_ref01_resdata_up0_result.data_get and job_ref01_resdata_up0_result:data_get() or job_ref01_resdata_up0_result)
     assert.is_not_nil(job_ref01_resdata_up0)
 
     -- LOAD

@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -42,8 +42,8 @@ class TestApiEntitiesAwardEmojiEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from config import make_config
-        cfg = make_config()
+        from gitlab_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = GitlabSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
@@ -85,7 +85,7 @@ class TestApiEntitiesAwardEmojiEntity:
         api_entities_award_emoji_ref01_data["project_id"] = setup["idmap"]["project01"]
         api_entities_award_emoji_ref01_data["snippet_id"] = setup["idmap"]["snippet01"]
 
-        api_entities_award_emoji_ref01_data = helpers.to_map(api_entities_award_emoji_ref01_ent.create(api_entities_award_emoji_ref01_data, None))
+        api_entities_award_emoji_ref01_data = helpers.to_map(runner.entity_data(api_entities_award_emoji_ref01_ent.create(api_entities_award_emoji_ref01_data, None)))
         assert api_entities_award_emoji_ref01_data is not None
         assert api_entities_award_emoji_ref01_data["id"] is not None
 
@@ -108,7 +108,7 @@ class TestApiEntitiesAwardEmojiEntity:
             "id": api_entities_award_emoji_ref01_data["id"],
         }
         api_entities_award_emoji_ref01_data_dt0_loaded = api_entities_award_emoji_ref01_ent.load(api_entities_award_emoji_ref01_match_dt0, None)
-        api_entities_award_emoji_ref01_data_dt0_load_result = helpers.to_map(api_entities_award_emoji_ref01_data_dt0_loaded)
+        api_entities_award_emoji_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(api_entities_award_emoji_ref01_data_dt0_loaded))
         assert api_entities_award_emoji_ref01_data_dt0_load_result is not None
         assert api_entities_award_emoji_ref01_data_dt0_load_result["id"] == api_entities_award_emoji_ref01_data["id"]
 

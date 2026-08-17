@@ -62,7 +62,7 @@ describe('ProjectImportEntity', async () => {
     const project_import_ref01_ent = client.ProjectImport()
     let project_import_ref01_data = setup.data.new.project_import['project_import_ref01']
 
-    project_import_ref01_data = await project_import_ref01_ent.create(project_import_ref01_data)
+    project_import_ref01_data = (await project_import_ref01_ent.create(project_import_ref01_data)).data()
     assert(null != project_import_ref01_data)
 
 

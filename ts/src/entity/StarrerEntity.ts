@@ -37,7 +37,7 @@ class StarrerEntity extends GitlabEntityBase<Starrer> {
 
 
 
-  async list(this: any, reqmatch?: StarrerListMatch, ctrl?: Control): Promise<Starrer[]> {
+  async list(this: any, reqmatch?: StarrerListMatch, ctrl?: Control): Promise<StarrerEntity[]> {
 
     const utility = this._utility
 

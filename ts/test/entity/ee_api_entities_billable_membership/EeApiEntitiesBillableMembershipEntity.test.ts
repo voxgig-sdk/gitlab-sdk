@@ -59,12 +59,9 @@ describe('EeApiEntitiesBillableMembershipEntity', async () => {
 
     let ee_api_entities_billable_membership_ref01_data = Object.values(setup.data.existing.ee_api_entities_billable_membership)[0] as any
 
-    // LOAD
+    // LOAD: skipped — no entity id field and load requires path params.
+    // Entity-var is declared here so later flow steps still compile.
     const ee_api_entities_billable_membership_ref01_ent = client.EeApiEntitiesBillableMembership()
-    const ee_api_entities_billable_membership_ref01_match_dt0: any = {}
-    ee_api_entities_billable_membership_ref01_match_dt0.id = ee_api_entities_billable_membership_ref01_data.id
-    const ee_api_entities_billable_membership_ref01_data_dt0 = await ee_api_entities_billable_membership_ref01_ent.load(ee_api_entities_billable_membership_ref01_match_dt0)
-    assert(ee_api_entities_billable_membership_ref01_data_dt0.id === ee_api_entities_billable_membership_ref01_data.id)
 
 
   })

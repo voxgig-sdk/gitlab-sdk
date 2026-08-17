@@ -63,14 +63,14 @@ describe('ApiEntitiesNamespacesStorageLimitExclusionEntity', async () => {
     let api_entities_namespaces_storage_limit_exclusion_ref01_data = setup.data.new.api_entities_namespaces_storage_limit_exclusion['api_entities_namespaces_storage_limit_exclusion_ref01']
     api_entities_namespaces_storage_limit_exclusion_ref01_data['namespace_id'] = setup.idmap['namespace01']
 
-    api_entities_namespaces_storage_limit_exclusion_ref01_data = await api_entities_namespaces_storage_limit_exclusion_ref01_ent.create(api_entities_namespaces_storage_limit_exclusion_ref01_data)
+    api_entities_namespaces_storage_limit_exclusion_ref01_data = (await api_entities_namespaces_storage_limit_exclusion_ref01_ent.create(api_entities_namespaces_storage_limit_exclusion_ref01_data)).data()
     assert(null != api_entities_namespaces_storage_limit_exclusion_ref01_data.id)
 
 
     // LOAD
     const api_entities_namespaces_storage_limit_exclusion_ref01_match_dt0: any = {}
     api_entities_namespaces_storage_limit_exclusion_ref01_match_dt0.id = api_entities_namespaces_storage_limit_exclusion_ref01_data.id
-    const api_entities_namespaces_storage_limit_exclusion_ref01_data_dt0 = await api_entities_namespaces_storage_limit_exclusion_ref01_ent.load(api_entities_namespaces_storage_limit_exclusion_ref01_match_dt0)
+    const api_entities_namespaces_storage_limit_exclusion_ref01_data_dt0 = (await api_entities_namespaces_storage_limit_exclusion_ref01_ent.load(api_entities_namespaces_storage_limit_exclusion_ref01_match_dt0)).data()
     assert(api_entities_namespaces_storage_limit_exclusion_ref01_data_dt0.id === api_entities_namespaces_storage_limit_exclusion_ref01_data.id)
 
 

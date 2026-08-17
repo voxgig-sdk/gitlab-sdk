@@ -65,7 +65,7 @@ describe('ApiEntitiesPackageFileEntity', async () => {
     api_entities_package_file_ref01_match['package_id'] = setup.idmap['package01']
     api_entities_package_file_ref01_match['project_id'] = setup.idmap['project01']
 
-    const api_entities_package_file_ref01_list = await api_entities_package_file_ref01_ent.list(api_entities_package_file_ref01_match)
+    const api_entities_package_file_ref01_list = (await api_entities_package_file_ref01_ent.list(api_entities_package_file_ref01_match)).map((e: any) => e.data())
 
 
   })

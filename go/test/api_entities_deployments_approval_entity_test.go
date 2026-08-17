@@ -60,7 +60,7 @@ func TestApiEntitiesDeploymentsApprovalEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesDeploymentsApprovalRef01Data = core.ToMapAny(apiEntitiesDeploymentsApprovalRef01DataResult)
+		apiEntitiesDeploymentsApprovalRef01Data = core.ToMapAny(entityData(apiEntitiesDeploymentsApprovalRef01DataResult))
 		if apiEntitiesDeploymentsApprovalRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

@@ -48,9 +48,13 @@ class ApiEntitiesMergeRequestReviewerEntityTest extends TestCase
 
         // LOAD
         $api_entities_merge_request_reviewer_ref01_ent = $client->ApiEntitiesMergeRequestReviewer(null);
-        $api_entities_merge_request_reviewer_ref01_match_dt0 = [];
+        $api_entities_merge_request_reviewer_ref01_match_dt0 = [
+            "id" => $api_entities_merge_request_reviewer_ref01_data["id"],
+        ];
         $api_entities_merge_request_reviewer_ref01_data_dt0_loaded = $api_entities_merge_request_reviewer_ref01_ent->load($api_entities_merge_request_reviewer_ref01_match_dt0, null);
-        $this->assertNotNull($api_entities_merge_request_reviewer_ref01_data_dt0_loaded);
+        $api_entities_merge_request_reviewer_ref01_data_dt0_load_result = Helpers::to_map(is_object($api_entities_merge_request_reviewer_ref01_data_dt0_loaded) && method_exists($api_entities_merge_request_reviewer_ref01_data_dt0_loaded, 'data_get') ? $api_entities_merge_request_reviewer_ref01_data_dt0_loaded->data_get() : $api_entities_merge_request_reviewer_ref01_data_dt0_loaded);
+        $this->assertNotNull($api_entities_merge_request_reviewer_ref01_data_dt0_load_result);
+        $this->assertEquals($api_entities_merge_request_reviewer_ref01_data_dt0_load_result["id"], $api_entities_merge_request_reviewer_ref01_data["id"]);
 
     }
 }

@@ -2,23 +2,23 @@
   "existing": {
     "metadata": {
       "METADATA00": {
-        "enterprise": true,
-        "kas": {},
-        "revision": "s2a",
+        "enabled": true,
+        "externalK8sProxyUrl": "s29",
+        "externalUrl": "s2a",
         "version": "s2b",
         "id": "METADATA00"
       },
       "METADATA01": {
-        "enterprise": true,
-        "kas": {},
-        "revision": "s52",
+        "enabled": true,
+        "externalK8sProxyUrl": "s51",
+        "externalUrl": "s52",
         "version": "s53",
         "id": "METADATA01"
       },
       "METADATA02": {
-        "enterprise": true,
-        "kas": {},
-        "revision": "s7a",
+        "enabled": true,
+        "externalK8sProxyUrl": "s79",
+        "externalUrl": "s7a",
         "version": "s7b",
         "id": "METADATA02"
       }
@@ -27,9 +27,9 @@
   "new": {
     "metadata": {
       "metadata_ref01": {
-        "enterprise": true,
-        "kas": {},
-        "revision": "sa2",
+        "enabled": true,
+        "externalK8sProxyUrl": "sa1",
+        "externalUrl": "sa2",
         "version": "sa3"
       }
     }

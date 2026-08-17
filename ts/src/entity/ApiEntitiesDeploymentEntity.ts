@@ -37,7 +37,7 @@ class ApiEntitiesDeploymentEntity extends GitlabEntityBase<ApiEntitiesDeployment
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesDeploymentListMatch, ctrl?: Control): Promise<ApiEntitiesDeployment[]> {
+  async list(this: any, reqmatch?: ApiEntitiesDeploymentListMatch, ctrl?: Control): Promise<ApiEntitiesDeploymentEntity[]> {
 
     const utility = this._utility
 

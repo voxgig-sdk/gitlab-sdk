@@ -38,7 +38,7 @@ class RpmPackageEntityTest < Minitest::Test
     rpm_package_ref01_data["project_id"] = setup[:idmap]["project01"]
 
     rpm_package_ref01_data_result = rpm_package_ref01_ent.create(rpm_package_ref01_data, nil)
-    rpm_package_ref01_data = Helpers.to_map(rpm_package_ref01_data_result)
+    rpm_package_ref01_data = Helpers.to_map(rpm_package_ref01_data_result.respond_to?(:data_get) ? rpm_package_ref01_data_result.data_get : rpm_package_ref01_data_result)
     assert !rpm_package_ref01_data.nil?
 
     # LOAD

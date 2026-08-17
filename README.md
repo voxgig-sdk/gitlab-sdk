@@ -33,18 +33,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = GitlabSDK.test()
-const apientitiesaccessrequesters = await client.ApiEntitiesAccessRequester().list()
-// apientitiesaccessrequesters is an array of bare ApiEntitiesAccessRequester records populated with mock data
-console.log(apientitiesaccessrequesters)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = GitlabSDK.test({
+  entity: {
+    api_entities_metric_image: {
+      test01: { id: 'test01', alert_management_alert_id: 'example_alert_management_alert_id', project_id: 'example_project_id' },
+    },
+  },
+})
+const apientitiesmetricimages = await client.ApiEntitiesMetricImage().list()
+// apientitiesmetricimages is an array of ApiEntitiesMetricImage entities, populated with mock data
+// — call apientitiesmetricimages[0].data() for the record itself
+console.log(apientitiesmetricimages)
 ```
 
 ### Python
 
 ```python
 client = GitlabSDK.test()
-apientitiesaccessrequesters = client.ApiEntitiesAccessRequester().list()
-print(apientitiesaccessrequesters)
+apientitiesmetricimages = client.ApiEntitiesMetricImage().list()
+print(apientitiesmetricimages)
 ```
 
 ### PHP
@@ -52,16 +61,16 @@ print(apientitiesaccessrequesters)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = GitlabSDK::test([
-    "entity" => ["apientitiesaccessrequester" => ["test01" => []]],
+    "entity" => ["apientitiesmetricimage" => ["test01" => []]],
 ]);
-$apientitiesaccessrequesters = $client->ApiEntitiesAccessRequester()->list();
+$apientitiesmetricimages = $client->ApiEntitiesMetricImage()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.ApiEntitiesAccessRequester(nil).List(
+result, err := client.ApiEntitiesMetricImage(nil).List(
     nil, nil,
 )
 ```
@@ -71,16 +80,16 @@ result, err := client.ApiEntitiesAccessRequester(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = GitlabSDK.test({
-  "entity" => { "apientitiesaccessrequester" => { "test01" => {} } },
+  "entity" => { "apientitiesmetricimage" => { "test01" => {} } },
 })
-apientitiesaccessrequesters = client.ApiEntitiesAccessRequester.list()
+apientitiesmetricimages = client.ApiEntitiesMetricImage.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:ApiEntitiesAccessRequester():list()
+local results, err = client:ApiEntitiesMetricImage():list()
 ```
 
 ## Packages
@@ -166,25 +175,25 @@ The API exposes 276 entities:
 | **ApiEntitiesBadge** | The ApiEntitiesBadge entity (create, list, load, update). | `/api/v4/groups/{id}/badges` |
 | **ApiEntitiesBasicBadgeDetail** | The ApiEntitiesBasicBadgeDetail entity (load). | `/api/v4/groups/{id}/badges/render` |
 | **ApiEntitiesBasicGroupDetail** | The ApiEntitiesBasicGroupDetail entity (create). | `/api/v4/projects/{id}/job_token_scope/groups_allowlist` |
-| **ApiEntitiesBasicProjectDetail** | The ApiEntitiesBasicProjectDetail entity (create, list). | `/api/v4/projects/{id}/job_token_scope/allowlist` |
+| **ApiEntitiesBasicProjectDetail** | The ApiEntitiesBasicProjectDetail entity (create, list). | `/api/v4/users/{user_id}/projects` |
 | **ApiEntitiesBasicRef** | The ApiEntitiesBasicRef entity (list). | `/api/v4/projects/{id}/repository/commits/{sha}/refs` |
 | **ApiEntitiesBasicSuccess** | The ApiEntitiesBasicSuccess entity (create). | `/api/v4/integrations/jira_connect/subscriptions` |
 | **ApiEntitiesBatchedBackgroundMigration** | The ApiEntitiesBatchedBackgroundMigration entity (list, load, update). | `/api/v4/admin/batched_background_migrations` |
 | **ApiEntitiesBranch** | The ApiEntitiesBranch entity (create, list, load, update). | `/api/v4/projects/{id}/repository/branches` |
-| **ApiEntitiesBulkImport** | The ApiEntitiesBulkImport entity (create, list, load). | `/api/v4/bulk_imports` |
+| **ApiEntitiesBulkImport** | The ApiEntitiesBulkImport entity (create, list, load). | `/api/v4/bulk_imports/{import_id}/entities` |
 | **ApiEntitiesBulkImportsEntityFailure** | The ApiEntitiesBulkImportsEntityFailure entity (load). | `/api/v4/bulk_imports/{import_id}/entities/{entity_id}/failures` |
 | **ApiEntitiesBulkImportsExportStatus** | The ApiEntitiesBulkImportsExportStatus entity (list). | `/api/v4/groups/{id}/export_relations/status` |
 | **ApiEntitiesChangelog** | The ApiEntitiesChangelog entity (load). | `/api/v4/projects/{id}/repository/changelog` |
 | **ApiEntitiesCiBridge** | The ApiEntitiesCiBridge entity (list). | `/api/v4/projects/{id}/pipelines/{pipeline_id}/bridges` |
 | **ApiEntitiesCiCatalogResourcesVersion** | The ApiEntitiesCiCatalogResourcesVersion entity (create). | `/api/v4/projects/{id}/catalog/publish` |
-| **ApiEntitiesCiJob** | The ApiEntitiesCiJob entity (create, list, load). | `/api/v4/projects/{id}/jobs/{job_id}/cancel` |
-| **ApiEntitiesCiJobBasic** | The ApiEntitiesCiJobBasic entity (create, list). | `/api/v4/projects/{id}/jobs/{job_id}/play` |
+| **ApiEntitiesCiJob** | The ApiEntitiesCiJob entity (create, list, load). | `/api/v4/projects/{id}/pipelines/{pipeline_id}/jobs` |
+| **ApiEntitiesCiJobBasic** | The ApiEntitiesCiJobBasic entity (create, list). | `/api/v4/projects/{id}/resource_groups/{key}/upcoming_jobs` |
 | **ApiEntitiesCiJobBasicWithProject** | The ApiEntitiesCiJobBasicWithProject entity (load). | `/api/v4/runners/{id}/jobs` |
 | **ApiEntitiesCiLintResult** | The ApiEntitiesCiLintResult entity (create, list). | `/api/v4/projects/{id}/ci/lint` |
 | **ApiEntitiesCiPipeline** | The ApiEntitiesCiPipeline entity (create). | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/pipelines` |
 | **ApiEntitiesCiPipelineBasic** | The ApiEntitiesCiPipelineBasic entity (list, load). | `/api/v4/projects/{id}/pipelines` |
 | **ApiEntitiesCiPipelineSchedule** | The ApiEntitiesCiPipelineSchedule entity (list). | `/api/v4/projects/{id}/pipeline_schedules` |
-| **ApiEntitiesCiPipelineScheduleDetail** | The ApiEntitiesCiPipelineScheduleDetail entity (create, load, update). | `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership` |
+| **ApiEntitiesCiPipelineScheduleDetail** | The ApiEntitiesCiPipelineScheduleDetail entity (create, load, update). | `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}` |
 | **ApiEntitiesCiResetTokenResult** | The ApiEntitiesCiResetTokenResult entity (create). | `/api/v4/groups/{id}/runners/reset_registration_token` |
 | **ApiEntitiesCiResourceGroup** | The ApiEntitiesCiResourceGroup entity (list, load, update). | `/api/v4/projects/{id}/resource_groups` |
 | **ApiEntitiesCiRunner** | The ApiEntitiesCiRunner entity (create, load). | `/api/v4/projects/{id}/runners` |
@@ -192,62 +201,62 @@ The API exposes 276 entities:
 | **ApiEntitiesCiRunnerManager** | The ApiEntitiesCiRunnerManager entity (load). | `/api/v4/runners/{id}/managers` |
 | **ApiEntitiesCiRunnerRegistrationDetail** | The ApiEntitiesCiRunnerRegistrationDetail entity (create). | `/api/v4/runners` |
 | **ApiEntitiesCiSecureFile** | The ApiEntitiesCiSecureFile entity (create, load). | `/api/v4/projects/{id}/secure_files` |
-| **ApiEntitiesCiVariable** | The ApiEntitiesCiVariable entity (create, list, load, update). | `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/variables` |
-| **ApiEntitiesCluster** | The ApiEntitiesCluster entity (create, list, load, update). | `/api/v4/admin/clusters/add` |
-| **ApiEntitiesClusterGroup** | The ApiEntitiesClusterGroup entity (create, load, update). | `/api/v4/groups/{id}/clusters/user` |
-| **ApiEntitiesClusterProject** | The ApiEntitiesClusterProject entity (create, load, update). | `/api/v4/projects/{id}/clusters/user` |
+| **ApiEntitiesCiVariable** | The ApiEntitiesCiVariable entity (create, list, load, update). | `/api/v4/projects/{id}/pipelines/{pipeline_id}/variables` |
+| **ApiEntitiesCluster** | The ApiEntitiesCluster entity (create, list, load, update). | `/api/v4/groups/{id}/clusters` |
+| **ApiEntitiesClusterGroup** | The ApiEntitiesClusterGroup entity (create, load, update). | `/api/v4/groups/{id}/clusters/{cluster_id}` |
+| **ApiEntitiesClusterProject** | The ApiEntitiesClusterProject entity (create, load, update). | `/api/v4/projects/{id}/clusters/{cluster_id}` |
 | **ApiEntitiesClustersAgent** | The ApiEntitiesClustersAgent entity (create, load). | `/api/v4/projects/{id}/cluster_agents` |
 | **ApiEntitiesClustersAgentToken** | The ApiEntitiesClustersAgentToken entity (load). | `/api/v4/projects/{id}/cluster_agents/{agent_id}/tokens/{token_id}` |
 | **ApiEntitiesClustersAgentTokenBasic** | The ApiEntitiesClustersAgentTokenBasic entity (load). | `/api/v4/projects/{id}/cluster_agents/{agent_id}/tokens` |
 | **ApiEntitiesClustersAgentTokenWithToken** | The ApiEntitiesClustersAgentTokenWithToken entity (create). | `/api/v4/projects/{id}/cluster_agents/{agent_id}/tokens` |
-| **ApiEntitiesCommit** | The ApiEntitiesCommit entity (create, list). | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/context_commits` |
-| **ApiEntitiesCommitDetail** | The ApiEntitiesCommitDetail entity (create, load, update). | `/api/v4/projects/{id}/repository/commits` |
+| **ApiEntitiesCommit** | The ApiEntitiesCommit entity (create, list). | `/api/v4/projects/{id}/repository/commits` |
+| **ApiEntitiesCommitDetail** | The ApiEntitiesCommitDetail entity (create, load, update). | `/api/v4/projects/{id}/repository/commits/{sha}` |
 | **ApiEntitiesCommitNote** | The ApiEntitiesCommitNote entity (create, list). | `/api/v4/projects/{id}/repository/commits/{sha}/comments` |
 | **ApiEntitiesCommitSequence** | The ApiEntitiesCommitSequence entity (load). | `/api/v4/projects/{id}/repository/commits/{sha}/sequence` |
 | **ApiEntitiesCommitSignature** | The ApiEntitiesCommitSignature entity (load). | `/api/v4/projects/{id}/repository/commits/{sha}/signature` |
-| **ApiEntitiesCommitStatus** | The ApiEntitiesCommitStatus entity (create, list). | `/api/v4/projects/{id}/statuses/{sha}` |
+| **ApiEntitiesCommitStatus** | The ApiEntitiesCommitStatus entity (create, list). | `/api/v4/projects/{id}/repository/commits/{sha}/statuses` |
 | **ApiEntitiesCompare** | The ApiEntitiesCompare entity (list). | `/api/v4/projects/{id}/repository/compare` |
 | **ApiEntitiesContainerRegistryRepository** | The ApiEntitiesContainerRegistryRepository entity (list, load). | `/api/v4/projects/{id}/registry/repositories` |
 | **ApiEntitiesContainerRegistryTag** | The ApiEntitiesContainerRegistryTag entity (list). | `/api/v4/projects/{id}/registry/repositories/{repository_id}/tags` |
 | **ApiEntitiesContainerRegistryTagDetail** | The ApiEntitiesContainerRegistryTagDetail entity (load). | `/api/v4/projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}` |
 | **ApiEntitiesContributor** | The ApiEntitiesContributor entity (load). | `/api/v4/projects/{id}/repository/contributors` |
-| **ApiEntitiesDeployKey** | The ApiEntitiesDeployKey entity (create, list, update). | `/api/v4/projects/{id}/deploy_keys/{key_id}/enable` |
+| **ApiEntitiesDeployKey** | The ApiEntitiesDeployKey entity (create, list, update). | `/api/v4/deploy_keys` |
 | **ApiEntitiesDeployKeysProject** | The ApiEntitiesDeployKeysProject entity (create, list, load). | `/api/v4/projects/{id}/deploy_keys` |
 | **ApiEntitiesDeployToken** | The ApiEntitiesDeployToken entity (list, load). | `/api/v4/groups/{id}/deploy_tokens` |
 | **ApiEntitiesDeployTokenWithToken** | The ApiEntitiesDeployTokenWithToken entity (create). | `/api/v4/groups/{id}/deploy_tokens` |
 | **ApiEntitiesDeployment** | The ApiEntitiesDeployment entity (list). | `/api/v4/projects/{id}/deployments` |
-| **ApiEntitiesDeploymentExtended** | The ApiEntitiesDeploymentExtended entity (create, load, update). | `/api/v4/projects/{id}/deployments` |
+| **ApiEntitiesDeploymentExtended** | The ApiEntitiesDeploymentExtended entity (create, load, update). | `/api/v4/projects/{id}/deployments/{deployment_id}` |
 | **ApiEntitiesDeploymentsApproval** | The ApiEntitiesDeploymentsApproval entity (create). | `/api/v4/projects/{id}/deployments/{deployment_id}/approval` |
 | **ApiEntitiesDictionaryTable** | The ApiEntitiesDictionaryTable entity (load). | `/api/v4/admin/databases/{database_name}/dictionary/tables/{table_name}` |
 | **ApiEntitiesDiff** | The ApiEntitiesDiff entity (list, load). | `/api/v4/projects/{id}/repository/commits/{sha}/diff` |
 | **ApiEntitiesDiscoveredCluster** | The ApiEntitiesDiscoveredCluster entity (load). | `/api/v4/discover-cert-based-clusters` |
 | **ApiEntitiesDraftNote** | The ApiEntitiesDraftNote entity (create, list, load, update). | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes` |
-| **ApiEntitiesEnvironment** | The ApiEntitiesEnvironment entity (create, list, load, update). | `/api/v4/projects/{id}/environments/{environment_id}/stop` |
+| **ApiEntitiesEnvironment** | The ApiEntitiesEnvironment entity (create, list, load, update). | `/api/v4/projects/{id}/environments` |
 | **ApiEntitiesErrorTrackingClientKey** | The ApiEntitiesErrorTrackingClientKey entity (create, list). | `/api/v4/projects/{id}/error_tracking/client_keys` |
 | **ApiEntitiesErrorTrackingProjectSetting** | The ApiEntitiesErrorTrackingProjectSetting entity (load, patch, update). | `/api/v4/projects/{id}/error_tracking/settings` |
 | **ApiEntitiesEvent** | The ApiEntitiesEvent entity (list, load). | `/api/v4/events` |
-| **ApiEntitiesFeature** | The ApiEntitiesFeature entity (create, list). | `/api/v4/features/{name}` |
+| **ApiEntitiesFeature** | The ApiEntitiesFeature entity (create, list). | `/api/v4/features` |
 | **ApiEntitiesFeatureDefinition** | The ApiEntitiesFeatureDefinition entity (list). | `/api/v4/features/definitions` |
 | **ApiEntitiesFeatureFlag** | The ApiEntitiesFeatureFlag entity (create, list, load, update). | `/api/v4/projects/{id}/feature_flags` |
 | **ApiEntitiesFeatureFlagUserList** | The ApiEntitiesFeatureFlagUserList entity (create, list, load, update). | `/api/v4/projects/{id}/feature_flags_user_lists` |
 | **ApiEntitiesFreezePeriod** | The ApiEntitiesFreezePeriod entity (create, list, load, update). | `/api/v4/projects/{id}/freeze_periods` |
 | **ApiEntitiesGitlabSubscription** | The ApiEntitiesGitlabSubscription entity (load). | `/api/v4/namespaces/{id}/gitlab_subscription` |
 | **ApiEntitiesGoModuleVersion** | The ApiEntitiesGoModuleVersion entity (load). | `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.info` |
-| **ApiEntitiesGroup** | The ApiEntitiesGroup entity (create, list, load, update). | `/api/v4/groups/{id}/archive` |
-| **ApiEntitiesGroupDetail** | The ApiEntitiesGroupDetail entity (create, load). | `/api/v4/groups/{id}/share` |
+| **ApiEntitiesGroup** | The ApiEntitiesGroup entity (create, list, load, update). | `/api/v4/groups/{id}/descendant_groups` |
+| **ApiEntitiesGroupDetail** | The ApiEntitiesGroupDetail entity (create, load). | `/api/v4/groups/{id}` |
 | **ApiEntitiesHook** | The ApiEntitiesHook entity (create, list, load, update). | `/api/v4/hooks` |
 | **ApiEntitiesIntegration** | The ApiEntitiesIntegration entity (load). | `/api/v4/groups/{id}/integrations/{slug}` |
 | **ApiEntitiesIntegrationBasic** | The ApiEntitiesIntegrationBasic entity (list, update). | `/api/v4/groups/{id}/integrations` |
 | **ApiEntitiesInvitation** | The ApiEntitiesInvitation entity (create, list, update). | `/api/v4/groups/{id}/invitations` |
-| **ApiEntitiesIssuableTimeStat** | The ApiEntitiesIssuableTimeStat entity (create, load). | `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time` |
-| **ApiEntitiesIssue** | The ApiEntitiesIssue entity (create, list, load, update). | `/api/v4/projects/{id}/issues/{issue_iid}/clone` |
-| **ApiEntitiesIssueLink** | The ApiEntitiesIssueLink entity (create, load). | `/api/v4/projects/{id}/issues/{issue_iid}/links` |
+| **ApiEntitiesIssuableTimeStat** | The ApiEntitiesIssuableTimeStat entity (create, load). | `/api/v4/projects/{id}/issues/{issue_iid}/time_stats` |
+| **ApiEntitiesIssue** | The ApiEntitiesIssue entity (create, list, load, update). | `/api/v4/projects/{id}/issues` |
+| **ApiEntitiesIssueLink** | The ApiEntitiesIssueLink entity (create, load). | `/api/v4/projects/{id}/issues/{issue_iid}/links/{issue_link_id}` |
 | **ApiEntitiesLicense** | The ApiEntitiesLicense entity (list). | `/api/v4/projects/{id}/templates/{type}/{name}` |
 | **ApiEntitiesMarkdown** | The ApiEntitiesMarkdown entity (create). | `/api/v4/markdown` |
 | **ApiEntitiesMarkdownUploadAdmin** | The ApiEntitiesMarkdownUploadAdmin entity (list). | `/api/v4/groups/{id}/uploads` |
-| **ApiEntitiesMember** | The ApiEntitiesMember entity (create, list, load, remove, update). | `/api/v4/groups/{id}/members/{user_id}/override` |
-| **ApiEntitiesMerge** | The ApiEntitiesMerge entity (create, load, update). | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/cancel_merge_when_pipeline_succeeds` |
-| **ApiEntitiesMergeRequestApproval** | The ApiEntitiesMergeRequestApproval entity (create, load). | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve` |
+| **ApiEntitiesMember** | The ApiEntitiesMember entity (create, list, load, remove, update). | `/api/v4/groups/{id}/members` |
+| **ApiEntitiesMerge** | The ApiEntitiesMerge entity (create, load, update). | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}` |
+| **ApiEntitiesMergeRequestApproval** | The ApiEntitiesMergeRequestApproval entity (create, load). | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approvals` |
 | **ApiEntitiesMergeRequestBasic** | The ApiEntitiesMergeRequestBasic entity (list, load). | `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests` |
 | **ApiEntitiesMergeRequestChange** | The ApiEntitiesMergeRequestChange entity (load). | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/changes` |
 | **ApiEntitiesMergeRequestDiff** | The ApiEntitiesMergeRequestDiff entity (list). | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/versions` |
@@ -257,7 +266,7 @@ The API exposes 276 entities:
 | **ApiEntitiesMrNote** | The ApiEntitiesMrNote entity (load). | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/closes_issues` |
 | **ApiEntitiesNamespace** | The ApiEntitiesNamespace entity (list, load, update). | `/api/v4/namespaces` |
 | **ApiEntitiesNamespaceExistence** | The ApiEntitiesNamespaceExistence entity (list). | `/api/v4/namespaces/{id}/exists` |
-| **ApiEntitiesNamespacesStorageLimitExclusion** | The ApiEntitiesNamespacesStorageLimitExclusion entity (create, load). | `/api/v4/namespaces/{id}/storage/limit_exclusion` |
+| **ApiEntitiesNamespacesStorageLimitExclusion** | The ApiEntitiesNamespacesStorageLimitExclusion entity (create, load). | `/api/v4/namespaces/storage/limit_exclusions` |
 | **ApiEntitiesNpmPackage** | The ApiEntitiesNpmPackage entity (load). | `/api/v4/groups/{id}/-/packages/npm/*package_name` |
 | **ApiEntitiesNpmPackageTag** | The ApiEntitiesNpmPackageTag entity (load). | `/api/v4/groups/{id}/-/packages/npm/-/package/*package_name/dist-tags` |
 | **ApiEntitiesNugetPackagesVersion** | The ApiEntitiesNugetPackagesVersion entity (list). | `/api/v4/projects/{id}/packages/nuget/download/*package_name/index` |
@@ -282,17 +291,17 @@ The API exposes 276 entities:
 | **ApiEntitiesPersonalAccessToken** | The ApiEntitiesPersonalAccessToken entity (list). | `/api/v4/personal_access_tokens/self/associations` |
 | **ApiEntitiesPersonalAccessTokenWithLastUsedIp** | The ApiEntitiesPersonalAccessTokenWithLastUsedIp entity (list, load). | `/api/v4/personal_access_tokens` |
 | **ApiEntitiesPersonalAccessTokenWithToken** | The ApiEntitiesPersonalAccessTokenWithToken entity (create). | `/api/v4/personal_access_tokens/{id}/rotate` |
-| **ApiEntitiesPersonalSnippet** | The ApiEntitiesPersonalSnippet entity (create, list, load, update). | `/api/v4/snippets` |
+| **ApiEntitiesPersonalSnippet** | The ApiEntitiesPersonalSnippet entity (create, list, load, update). | `/api/v4/snippets/public` |
 | **ApiEntitiesPlanLimit** | The ApiEntitiesPlanLimit entity (load, update). | `/api/v4/application/plan_limits` |
-| **ApiEntitiesProject** | The ApiEntitiesProject entity (create, list, update). | `/api/v4/projects/{id}/fork/{forked_from_id}` |
+| **ApiEntitiesProject** | The ApiEntitiesProject entity (create, list, update). | `/api/v4/projects/{id}/forks` |
 | **ApiEntitiesProjectDailyStatistic** | The ApiEntitiesProjectDailyStatistic entity (load). | `/api/v4/projects/{id}/statistics` |
 | **ApiEntitiesProjectExportStatus** | The ApiEntitiesProjectExportStatus entity (load). | `/api/v4/projects/{id}/export` |
 | **ApiEntitiesProjectGroupLink** | The ApiEntitiesProjectGroupLink entity (create). | `/api/v4/projects/{id}/share` |
 | **ApiEntitiesProjectHook** | The ApiEntitiesProjectHook entity (create, list, load, update). | `/api/v4/projects/{id}/hooks` |
-| **ApiEntitiesProjectImportStatus** | The ApiEntitiesProjectImportStatus entity (create, list). | `/api/v4/projects/import` |
+| **ApiEntitiesProjectImportStatus** | The ApiEntitiesProjectImportStatus entity (create, list). | `/api/v4/projects/{id}/import` |
 | **ApiEntitiesProjectJobTokenScope** | The ApiEntitiesProjectJobTokenScope entity (load). | `/api/v4/projects/{id}/job_token_scope` |
 | **ApiEntitiesProjectRepositoryStorage** | The ApiEntitiesProjectRepositoryStorage entity (load). | `/api/v4/projects/{id}/storage` |
-| **ApiEntitiesProjectSnippet** | The ApiEntitiesProjectSnippet entity (create, list, load, update). | `/api/v4/projects/{id}/snippets` |
+| **ApiEntitiesProjectSnippet** | The ApiEntitiesProjectSnippet entity (create, list, load, update). | `/api/v4/projects/{id}/snippets/{snippet_id}/files/{ref}/{file_path}/raw` |
 | **ApiEntitiesProjectUpload** | The ApiEntitiesProjectUpload entity (create). | `/api/v4/projects/{id}/uploads` |
 | **ApiEntitiesProjectWithAccess** | The ApiEntitiesProjectWithAccess entity (load). | `/api/v4/projects/{id}` |
 | **ApiEntitiesProjectsContainerRegistryProtectionRule** | The ApiEntitiesProjectsContainerRegistryProtectionRule entity (create, list, update). | `/api/v4/projects/{id}/registry/protection/repository/rules` |
@@ -324,7 +333,7 @@ The API exposes 276 entities:
 | **ApiEntitiesUserPublic** | The ApiEntitiesUserPublic entity (list). | `/api/v4/groups/{id}/provisioned_users` |
 | **ApiEntitiesUserWithAdmin** | The ApiEntitiesUserWithAdmin entity (list). | `/api/v4/keys` |
 | **ApiEntitiesWikiAttachment** | The ApiEntitiesWikiAttachment entity (create). | `/api/v4/groups/{id}/wikis/attachments` |
-| **ApiEntitiesWikiPage** | The ApiEntitiesWikiPage entity (create, load, update). | `/api/v4/groups/{id}/wikis` |
+| **ApiEntitiesWikiPage** | The ApiEntitiesWikiPage entity (create, load, update). | `/api/v4/groups/{id}/wikis/{slug}` |
 | **ApiEntitiesWikiPageBasic** | The ApiEntitiesWikiPageBasic entity (list). | `/api/v4/groups/{id}/wikis` |
 | **Application** | The Application entity (remove). | `/api/v4/applications/{id}` |
 | **AwardEmoji** | The AwardEmoji entity (remove). | `/api/v4/groups/{id}/epics/{epic_iid}/notes/{note_id}/award_emoji/{award_id}` |
@@ -359,17 +368,17 @@ The API exposes 276 entities:
 | **Environment** | The Environment entity (create, remove). | `/api/v4/projects/{id}/environments/stop_stale` |
 | **ErrorTrackingClientKey** | The ErrorTrackingClientKey entity (remove). | `/api/v4/projects/{id}/error_tracking/client_keys/{key_id}` |
 | **Feature** | The Feature entity (remove). | `/api/v4/features/{name}` |
-| **FeatureFlag** | The FeatureFlag entity (create, load, remove). | `/api/v4/feature_flags/unleash/{project_id}/client/metrics` |
+| **FeatureFlag** | The FeatureFlag entity (create, load, remove). | `/api/v4/feature_flags/unleash/{project_id}` |
 | **FeatureFlagsUserList** | The FeatureFlagsUserList entity (remove). | `/api/v4/projects/{id}/feature_flags_user_lists/{iid}` |
 | **FreezePeriod** | The FreezePeriod entity (remove). | `/api/v4/projects/{id}/freeze_periods/{freeze_period_id}` |
 | **GenericPackage** | The GenericPackage entity (load, update). | `/api/v4/projects/{id}/packages/generic/{package_name}/*package_version/(*path/){file_name}` |
-| **Geo** | The Geo entity (create, load). | `/api/v4/geo/node_proxy/{id}/graphql` |
+| **Geo** | The Geo entity (create, load). | `/api/v4/geo/retrieve/{replicable_name}/{replicable_id}` |
 | **GoProxy** | The GoProxy entity (load). | `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.mod` |
-| **Group** | The Group entity (create, load, remove, update). | `/api/v4/groups/{id}/placeholder_reassignments` |
+| **Group** | The Group entity (create, load, remove, update). | `/api/v4/groups/{id}/uploads/{secret}/{filename}` |
 | **GroupAvatar** | The GroupAvatar entity (load). | `/api/v4/groups/{id}/avatar` |
-| **GroupExport** | The GroupExport entity (create, load). | `/api/v4/groups/{id}/export_relations` |
+| **GroupExport** | The GroupExport entity (create, load). | `/api/v4/groups/{id}/export_relations/download` |
 | **GroupImport** | The GroupImport entity (create). | `/api/v4/groups/import` |
-| **HelmPackage** | The HelmPackage entity (create, load). | `/api/v4/projects/{id}/packages/helm/api/{channel}/charts` |
+| **HelmPackage** | The HelmPackage entity (create, load). | `/api/v4/projects/{id}/packages/helm/{channel}/charts/{file_name}.tgz` |
 | **Hook** | The Hook entity (create, remove, update). | `/api/v4/hooks/{hook_id}` |
 | **Import** | The Import entity (create). | `/api/v4/import/github/gists` |
 | **Integration** | The Integration entity (create, remove). | `/api/v4/projects/{id}/integrations/mattermost_slash_commands/trigger` |
@@ -385,33 +394,33 @@ The API exposes 276 entities:
 | **MlModelRegistry** | The MlModelRegistry entity (load, update). | `/api/v4/projects/{id}/packages/ml_models/{model_version_id}/files/(*path/){file_name}` |
 | **Namespace** | The Namespace entity (remove). | `/api/v4/namespaces/{id}/storage/limit_exclusion` |
 | **Npm** | The Npm entity (update). | `/api/v4/projects/{id}/packages/npm/{package_name}` |
-| **NpmPackage** | The NpmPackage entity (create, load, remove, update). | `/api/v4/groups/{id}/-/packages/npm/-/npm/v1/security/advisories/bulk` |
+| **NpmPackage** | The NpmPackage entity (create, load, remove, update). | `/api/v4/projects/{id}/packages/npm/*package_name/-/*file_name` |
 | **Nuget** | The Nuget entity (update). | `/api/v4/projects/{id}/packages/nuget` |
 | **NugetPackage** | The NugetPackage entity (list, load, remove, update). | `/api/v4/groups/{id}/-/packages/nuget/metadata/*package_name/index` |
 | **PackageFile** | The PackageFile entity (load, remove). | `/api/v4/projects/{id}/packages/{package_id}/package_files/{package_file_id}/download` |
 | **Page** | The Page entity (load, remove, update). | `/api/v4/projects/{id}/pages` |
 | **Participant** | The Participant entity (list). | `/api/v4/projects/{id}/issues/{issue_iid}/participants` |
 | **PersonalAccessToken** | The PersonalAccessToken entity (remove). | `/api/v4/personal_access_tokens/{id}` |
-| **Project** | The Project entity (create, load, remove, update). | `/api/v4/projects/{id}/hooks/{hook_id}/events/{hook_log_id}/resend` |
+| **Project** | The Project entity (create, load, remove, update). | `/api/v4/projects/{id}/jobs/artifacts/{ref_name}/raw/*artifact_path` |
 | **ProjectAvatar** | The ProjectAvatar entity (load). | `/api/v4/projects/{id}/avatar` |
 | **ProjectEntity** | The ProjectEntity entity (create). | `/api/v4/import/bitbucket_server` |
-| **ProjectExport** | The ProjectExport entity (create, load). | `/api/v4/projects/{id}/export` |
+| **ProjectExport** | The ProjectExport entity (create, load). | `/api/v4/projects/{id}/export_relations/download` |
 | **ProjectHook** | The ProjectHook entity (remove). | `/api/v4/projects/{id}/hooks/{hook_id}` |
 | **ProjectImport** | The ProjectImport entity (create). | `/api/v4/projects/import-relation/authorize` |
 | **ProjectImportEntity** | The ProjectImportEntity entity (create). | `/api/v4/import/bitbucket` |
 | **ProjectPackage** | The ProjectPackage entity (remove). | `/api/v4/projects/{id}/packages/{package_id}` |
 | **ProjectSnippet** | The ProjectSnippet entity (remove). | `/api/v4/projects/{id}/snippets/{snippet_id}` |
-| **ProjectsJobTokenScope** | The ProjectsJobTokenScope entity (remove, update). | `/api/v4/projects/{id}/job_token_scope/groups_allowlist/{target_group_id}` |
+| **ProjectsJobTokenScope** | The ProjectsJobTokenScope entity (remove, update). | `/api/v4/projects/{id}/job_token_scope` |
 | **ProtectedTag** | The ProtectedTag entity (remove). | `/api/v4/projects/{id}/protected_tags/{name}` |
 | **Pypi** | The Pypi entity (create). | `/api/v4/projects/{id}/packages/pypi` |
-| **PypiPackage** | The PypiPackage entity (create, load). | `/api/v4/projects/{id}/packages/pypi/authorize` |
-| **Release** | The Release entity (load, remove). | `/api/v4/projects/{id}/releases/{tag_name}/downloads/*direct_asset_path` |
+| **PypiPackage** | The PypiPackage entity (create, load). | `/api/v4/groups/{id}/-/packages/pypi/files/{sha256}/*file_identifier` |
+| **Release** | The Release entity (load, remove). | `/api/v4/projects/{id}/releases/permalink/latest(/)(*suffix_path)` |
 | **ReleaseLink** | The ReleaseLink entity (remove). | `/api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}` |
-| **RemoteMirror** | The RemoteMirror entity (create, load, remove). | `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync` |
+| **RemoteMirror** | The RemoteMirror entity (create, load, remove). | `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/public_key` |
 | **Rpm** | The Rpm entity (create). | `/api/v4/projects/{id}/packages/rpm` |
-| **RpmPackage** | The RpmPackage entity (create, load). | `/api/v4/projects/{id}/packages/rpm/authorize` |
+| **RpmPackage** | The RpmPackage entity (create, load). | `/api/v4/projects/{id}/packages/rpm/*package_file_id/*file_name` |
 | **Rubygem** | The Rubygem entity (load). | `/api/v4/projects/{id}/packages/rubygems/{file_name}` |
-| **RubygemPackage** | The RubygemPackage entity (create, load). | `/api/v4/projects/{id}/packages/rubygems/api/v1/gems` |
+| **RubygemPackage** | The RubygemPackage entity (create, load). | `/api/v4/projects/{id}/packages/rubygems/gems/{file_name}` |
 | **Runner** | The Runner entity (create, remove). | `/api/v4/runners/verify` |
 | **Search** | The Search entity (load). | `/api/v4/search` |
 | **SecureFile** | The SecureFile entity (load, remove). | `/api/v4/projects/{id}/secure_files/{secure_file_id}/download` |
@@ -421,12 +430,12 @@ The API exposes 276 entities:
 | **SystemHook** | The SystemHook entity (remove). | `/api/v4/hooks/{hook_id}` |
 | **Tag** | The Tag entity (remove). | `/api/v4/projects/{id}/repository/tags/{tag_name}` |
 | **TerraformRegistry** | The TerraformRegistry entity (load, update). | `/api/v4/projects/{id}/packages/terraform/modules/{module_name}/{module_system}/*module_version` |
-| **TerraformState** | The TerraformState entity (create, load, remove). | `/api/v4/projects/{id}/terraform/state/{name}/lock` |
+| **TerraformState** | The TerraformState entity (create, load, remove). | `/api/v4/projects/{id}/terraform/state/{name}/versions/{serial}` |
 | **TestReport** | The TestReport entity (list). | `/api/v4/projects/{id}/pipelines/{pipeline_id}/test_report` |
 | **TestReportSummary** | The TestReportSummary entity (load). | `/api/v4/projects/{id}/pipelines/{pipeline_id}/test_report_summary` |
 | **Topic** | The Topic entity (remove). | `/api/v4/topics/{id}` |
-| **UnleashApi** | The UnleashApi entity (load). | `/api/v4/feature_flags/unleash/{project_id}/features` |
-| **UsageData** | The UsageData entity (create, load). | `/api/v4/usage_data/increment_counter` |
+| **UnleashApi** | The UnleashApi entity (load). | `/api/v4/feature_flags/unleash/{project_id}/client/features` |
+| **UsageData** | The UsageData entity (create, load). | `/api/v4/usage_data/metric_definitions` |
 | **User** | The User entity (list). | `/api/v4/projects/{id}/users` |
 | **WebCommit** | The WebCommit entity (load). | `/api/v4/web_commits/public_key` |
 | **Wiki** | The Wiki entity (remove). | `/api/v4/groups/{id}/wikis/{slug}` |
@@ -618,6 +627,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://gitlab.com](https://gitlab.com)
 

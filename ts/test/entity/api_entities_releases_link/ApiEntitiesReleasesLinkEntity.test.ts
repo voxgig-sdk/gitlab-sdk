@@ -64,7 +64,7 @@ describe('ApiEntitiesReleasesLinkEntity', async () => {
     api_entities_releases_link_ref01_data['project_id'] = setup.idmap['project01']
     api_entities_releases_link_ref01_data['release_id'] = setup.idmap['release01']
 
-    api_entities_releases_link_ref01_data = await api_entities_releases_link_ref01_ent.create(api_entities_releases_link_ref01_data)
+    api_entities_releases_link_ref01_data = (await api_entities_releases_link_ref01_ent.create(api_entities_releases_link_ref01_data)).data()
     assert(null != api_entities_releases_link_ref01_data.id)
 
 
@@ -73,7 +73,7 @@ describe('ApiEntitiesReleasesLinkEntity', async () => {
     api_entities_releases_link_ref01_match['project_id'] = setup.idmap['project01']
     api_entities_releases_link_ref01_match['release_id'] = setup.idmap['release01']
 
-    const api_entities_releases_link_ref01_list = await api_entities_releases_link_ref01_ent.list(api_entities_releases_link_ref01_match)
+    const api_entities_releases_link_ref01_list = (await api_entities_releases_link_ref01_ent.list(api_entities_releases_link_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(api_entities_releases_link_ref01_list, { id: api_entities_releases_link_ref01_data.id })))
 
@@ -87,7 +87,7 @@ describe('ApiEntitiesReleasesLinkEntity', async () => {
     const api_entities_releases_link_ref01_markdef_up0 = { name: 'direct_asset_url', value: 'Mark01-api_entities_releases_link_ref01_' + setup.now }
     ;(api_entities_releases_link_ref01_data_up0 as any)[api_entities_releases_link_ref01_markdef_up0.name] = api_entities_releases_link_ref01_markdef_up0.value
 
-    const api_entities_releases_link_ref01_resdata_up0 = await api_entities_releases_link_ref01_ent.update(api_entities_releases_link_ref01_data_up0)
+    const api_entities_releases_link_ref01_resdata_up0 = (await api_entities_releases_link_ref01_ent.update(api_entities_releases_link_ref01_data_up0)).data()
     assert(api_entities_releases_link_ref01_resdata_up0.id === api_entities_releases_link_ref01_data_up0.id)
 
     assert((api_entities_releases_link_ref01_resdata_up0 as any)[api_entities_releases_link_ref01_markdef_up0.name] === api_entities_releases_link_ref01_markdef_up0.value)
@@ -96,7 +96,7 @@ describe('ApiEntitiesReleasesLinkEntity', async () => {
     // LOAD
     const api_entities_releases_link_ref01_match_dt0: any = {}
     api_entities_releases_link_ref01_match_dt0.id = api_entities_releases_link_ref01_data.id
-    const api_entities_releases_link_ref01_data_dt0 = await api_entities_releases_link_ref01_ent.load(api_entities_releases_link_ref01_match_dt0)
+    const api_entities_releases_link_ref01_data_dt0 = (await api_entities_releases_link_ref01_ent.load(api_entities_releases_link_ref01_match_dt0)).data()
     assert(api_entities_releases_link_ref01_data_dt0.id === api_entities_releases_link_ref01_data.id)
 
 

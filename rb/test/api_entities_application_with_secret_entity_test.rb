@@ -37,7 +37,7 @@ class ApiEntitiesApplicationWithSecretEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.api_entities_application_with_secret"), "api_entities_application_with_secret_ref01"))
 
     api_entities_application_with_secret_ref01_data_result = api_entities_application_with_secret_ref01_ent.create(api_entities_application_with_secret_ref01_data, nil)
-    api_entities_application_with_secret_ref01_data = Helpers.to_map(api_entities_application_with_secret_ref01_data_result)
+    api_entities_application_with_secret_ref01_data = Helpers.to_map(api_entities_application_with_secret_ref01_data_result.respond_to?(:data_get) ? api_entities_application_with_secret_ref01_data_result.data_get : api_entities_application_with_secret_ref01_data_result)
     assert !api_entities_application_with_secret_ref01_data.nil?
     assert !api_entities_application_with_secret_ref01_data["id"].nil?
 

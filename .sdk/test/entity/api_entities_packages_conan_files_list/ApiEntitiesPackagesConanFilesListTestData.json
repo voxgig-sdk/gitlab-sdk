@@ -2,7 +2,6 @@
   "existing": {
     "api_entities_packages_conan_files_list": {
       "API_ENTITIES_PACKAGES_CONAN_FILES_LIST00": {
-        "file": {},
         "conan_id": "CONAN01",
         "package_channel": "PACKAGE_CHANNEL01",
         "package_id": "PACKAGE01",
@@ -15,7 +14,6 @@
         "id": "API_ENTITIES_PACKAGES_CONAN_FILES_LIST00"
       },
       "API_ENTITIES_PACKAGES_CONAN_FILES_LIST01": {
-        "file": {},
         "conan_id": "CONAN01",
         "package_channel": "PACKAGE_CHANNEL01",
         "package_id": "PACKAGE01",
@@ -28,7 +26,6 @@
         "id": "API_ENTITIES_PACKAGES_CONAN_FILES_LIST01"
       },
       "API_ENTITIES_PACKAGES_CONAN_FILES_LIST02": {
-        "file": {},
         "conan_id": "CONAN01",
         "package_channel": "PACKAGE_CHANNEL01",
         "package_id": "PACKAGE01",
@@ -44,9 +41,7 @@
   },
   "new": {
     "api_entities_packages_conan_files_list": {
-      "api_entities_packages_conan_files_list_ref01": {
-        "file": {}
-      }
+      "api_entities_packages_conan_files_list_ref01": {}
     }
   }
 }

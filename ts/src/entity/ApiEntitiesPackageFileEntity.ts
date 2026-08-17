@@ -37,7 +37,7 @@ class ApiEntitiesPackageFileEntity extends GitlabEntityBase<ApiEntitiesPackageFi
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesPackageFileListMatch, ctrl?: Control): Promise<ApiEntitiesPackageFile[]> {
+  async list(this: any, reqmatch?: ApiEntitiesPackageFileListMatch, ctrl?: Control): Promise<ApiEntitiesPackageFileEntity[]> {
 
     const utility = this._utility
 

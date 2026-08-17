@@ -63,7 +63,7 @@ describe('RubygemPackageEntity', async () => {
     let rubygem_package_ref01_data = setup.data.new.rubygem_package['rubygem_package_ref01']
     rubygem_package_ref01_data['project_id'] = setup.idmap['project01']
 
-    rubygem_package_ref01_data = await rubygem_package_ref01_ent.create(rubygem_package_ref01_data)
+    rubygem_package_ref01_data = (await rubygem_package_ref01_ent.create(rubygem_package_ref01_data)).data()
     assert(null != rubygem_package_ref01_data)
 
 

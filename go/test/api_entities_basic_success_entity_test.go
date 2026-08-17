@@ -58,7 +58,7 @@ func TestApiEntitiesBasicSuccessEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesBasicSuccessRef01Data = core.ToMapAny(apiEntitiesBasicSuccessRef01DataResult)
+		apiEntitiesBasicSuccessRef01Data = core.ToMapAny(entityData(apiEntitiesBasicSuccessRef01DataResult))
 		if apiEntitiesBasicSuccessRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

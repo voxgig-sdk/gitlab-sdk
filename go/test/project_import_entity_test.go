@@ -58,7 +58,7 @@ func TestProjectImportEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		projectImportRef01Data = core.ToMapAny(projectImportRef01DataResult)
+		projectImportRef01Data = core.ToMapAny(entityData(projectImportRef01DataResult))
 		if projectImportRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

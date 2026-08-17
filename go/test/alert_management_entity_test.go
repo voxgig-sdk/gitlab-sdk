@@ -60,19 +60,11 @@ func TestAlertManagementEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		alertManagementRef01Data = core.ToMapAny(alertManagementRef01DataResult)
+		alertManagementRef01Data = core.ToMapAny(entityData(alertManagementRef01DataResult))
 		if alertManagementRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
 
-		// REMOVE
-		alertManagementRef01MatchRm0 := map[string]any{
-			"id": alertManagementRef01Data["id"],
-		}
-		_, err = alertManagementRef01Ent.Remove(alertManagementRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

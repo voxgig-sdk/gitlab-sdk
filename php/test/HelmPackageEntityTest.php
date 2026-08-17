@@ -47,7 +47,7 @@ class HelmPackageEntityTest extends TestCase
         $helm_package_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $helm_package_ref01_data_result = $helm_package_ref01_ent->create($helm_package_ref01_data, null);
-        $helm_package_ref01_data = Helpers::to_map($helm_package_ref01_data_result);
+        $helm_package_ref01_data = Helpers::to_map(is_object($helm_package_ref01_data_result) && method_exists($helm_package_ref01_data_result, 'data_get') ? $helm_package_ref01_data_result->data_get() : $helm_package_ref01_data_result);
         $this->assertNotNull($helm_package_ref01_data);
 
         // LOAD

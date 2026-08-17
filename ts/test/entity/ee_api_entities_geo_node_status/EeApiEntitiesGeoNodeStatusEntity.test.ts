@@ -62,7 +62,7 @@ describe('EeApiEntitiesGeoNodeStatusEntity', async () => {
     const ee_api_entities_geo_node_status_ref01_ent = client.EeApiEntitiesGeoNodeStatus()
     let ee_api_entities_geo_node_status_ref01_data = setup.data.new.ee_api_entities_geo_node_status['ee_api_entities_geo_node_status_ref01']
 
-    ee_api_entities_geo_node_status_ref01_data = await ee_api_entities_geo_node_status_ref01_ent.create(ee_api_entities_geo_node_status_ref01_data)
+    ee_api_entities_geo_node_status_ref01_data = (await ee_api_entities_geo_node_status_ref01_ent.create(ee_api_entities_geo_node_status_ref01_data)).data()
     assert(null != ee_api_entities_geo_node_status_ref01_data)
 
 

@@ -44,7 +44,7 @@ describe("HelmPackageEntity", function()
 
     local helm_package_ref01_data_result, err = helm_package_ref01_ent:create(helm_package_ref01_data, nil)
     assert.is_nil(err)
-    helm_package_ref01_data = helpers.to_map(helm_package_ref01_data_result)
+    helm_package_ref01_data = helpers.to_map(type(helm_package_ref01_data_result) == 'table' and helm_package_ref01_data_result.data_get and helm_package_ref01_data_result:data_get() or helm_package_ref01_data_result)
     assert.is_not_nil(helm_package_ref01_data)
 
     -- LOAD

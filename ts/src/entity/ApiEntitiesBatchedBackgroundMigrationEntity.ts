@@ -38,7 +38,7 @@ class ApiEntitiesBatchedBackgroundMigrationEntity extends GitlabEntityBase<ApiEn
 
 
 
-  async load(this: any, reqmatch?: ApiEntitiesBatchedBackgroundMigrationLoadMatch, ctrl?: Control): Promise<ApiEntitiesBatchedBackgroundMigration> {
+  async load(this: any, reqmatch?: ApiEntitiesBatchedBackgroundMigrationLoadMatch, ctrl?: Control): Promise<ApiEntitiesBatchedBackgroundMigrationEntity> {
 
     const utility = this._utility
 
@@ -129,7 +129,15 @@ class ApiEntitiesBatchedBackgroundMigrationEntity extends GitlabEntityBase<ApiEn
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 
@@ -151,7 +159,7 @@ class ApiEntitiesBatchedBackgroundMigrationEntity extends GitlabEntityBase<ApiEn
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesBatchedBackgroundMigrationListMatch, ctrl?: Control): Promise<ApiEntitiesBatchedBackgroundMigration[]> {
+  async list(this: any, reqmatch?: ApiEntitiesBatchedBackgroundMigrationListMatch, ctrl?: Control): Promise<ApiEntitiesBatchedBackgroundMigrationEntity[]> {
 
     const utility = this._utility
 
@@ -261,7 +269,7 @@ class ApiEntitiesBatchedBackgroundMigrationEntity extends GitlabEntityBase<ApiEn
 
 
 
-  async update(this: any, reqdata?: ApiEntitiesBatchedBackgroundMigrationUpdateData, ctrl?: Control): Promise<ApiEntitiesBatchedBackgroundMigration> {
+  async update(this: any, reqdata?: ApiEntitiesBatchedBackgroundMigrationUpdateData, ctrl?: Control): Promise<ApiEntitiesBatchedBackgroundMigrationEntity> {
 
     const utility = this._utility
 
@@ -353,7 +361,15 @@ class ApiEntitiesBatchedBackgroundMigrationEntity extends GitlabEntityBase<ApiEn
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 

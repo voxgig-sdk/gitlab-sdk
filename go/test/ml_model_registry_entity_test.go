@@ -70,7 +70,7 @@ func TestMlModelRegistryEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		mlModelRegistryRef01ResdataUp0 := core.ToMapAny(mlModelRegistryRef01ResdataUp0Result)
+		mlModelRegistryRef01ResdataUp0 := core.ToMapAny(entityData(mlModelRegistryRef01ResdataUp0Result))
 		if mlModelRegistryRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

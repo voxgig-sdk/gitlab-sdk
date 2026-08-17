@@ -39,7 +39,7 @@ describe("ApiEntitiesProtectedTagEntity", function()
     assert.are.equal(3, #seen)
 
     -- Inbound: streaming active -> yields each item from the feature.
-    local config = require("config")()
+    local config = require("config_shared")()
     if type(config.feature) == "table" and config.feature.streaming ~= nil then
       local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
       local got = {}
@@ -83,8 +83,9 @@ describe("ApiEntitiesProtectedTagEntity", function()
 
     local api_entities_protected_tag_ref01_data_result, err = api_entities_protected_tag_ref01_ent:create(api_entities_protected_tag_ref01_data, nil)
     assert.is_nil(err)
-    api_entities_protected_tag_ref01_data = helpers.to_map(api_entities_protected_tag_ref01_data_result)
+    api_entities_protected_tag_ref01_data = helpers.to_map(type(api_entities_protected_tag_ref01_data_result) == 'table' and api_entities_protected_tag_ref01_data_result.data_get and api_entities_protected_tag_ref01_data_result:data_get() or api_entities_protected_tag_ref01_data_result)
     assert.is_not_nil(api_entities_protected_tag_ref01_data)
+    assert.is_not_nil(api_entities_protected_tag_ref01_data["id"])
 
     -- LIST
     local api_entities_protected_tag_ref01_match = {
@@ -101,10 +102,14 @@ describe("ApiEntitiesProtectedTagEntity", function()
     assert.is_false(vs.isempty(found_item))
 
     -- LOAD
-    local api_entities_protected_tag_ref01_match_dt0 = {}
+    local api_entities_protected_tag_ref01_match_dt0 = {
+      id = api_entities_protected_tag_ref01_data["id"],
+    }
     local api_entities_protected_tag_ref01_data_dt0_loaded, err = api_entities_protected_tag_ref01_ent:load(api_entities_protected_tag_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(api_entities_protected_tag_ref01_data_dt0_loaded)
+    local api_entities_protected_tag_ref01_data_dt0_load_result = helpers.to_map(type(api_entities_protected_tag_ref01_data_dt0_loaded) == 'table' and api_entities_protected_tag_ref01_data_dt0_loaded.data_get and api_entities_protected_tag_ref01_data_dt0_loaded:data_get() or api_entities_protected_tag_ref01_data_dt0_loaded)
+    assert.is_not_nil(api_entities_protected_tag_ref01_data_dt0_load_result)
+    assert.are.equal(api_entities_protected_tag_ref01_data_dt0_load_result["id"], api_entities_protected_tag_ref01_data["id"])
 
   end)
 end)

@@ -421,8 +421,29 @@ class GitlabSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('GitlabSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -483,1935 +504,2541 @@ class GitlabSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('GitlabSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('GitlabSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.AccessRequest().list()` / `client.AccessRequest().load({ id })`.
-  AccessRequest(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  AccessRequest(entopts?: Record<string, any>) {
     const self = this
-    return new AccessRequestEntity(self,data)
+    return new AccessRequestEntity(self, entopts)
   }
 
 
   // Entity access: `client.AlertManagement().list()` / `client.AlertManagement().load({ id })`.
-  AlertManagement(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  AlertManagement(entopts?: Record<string, any>) {
     const self = this
-    return new AlertManagementEntity(self,data)
+    return new AlertManagementEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesAccessRequester().list()` / `client.ApiEntitiesAccessRequester().load({ id })`.
-  ApiEntitiesAccessRequester(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesAccessRequester(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesAccessRequesterEntity(self,data)
+    return new ApiEntitiesAccessRequesterEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesAppearance().list()` / `client.ApiEntitiesAppearance().load({ id })`.
-  ApiEntitiesAppearance(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesAppearance(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesAppearanceEntity(self,data)
+    return new ApiEntitiesAppearanceEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesApplication().list()` / `client.ApiEntitiesApplication().load({ id })`.
-  ApiEntitiesApplication(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesApplication(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesApplicationEntity(self,data)
+    return new ApiEntitiesApplicationEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesApplicationStatistic().list()` / `client.ApiEntitiesApplicationStatistic().load({ id })`.
-  ApiEntitiesApplicationStatistic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesApplicationStatistic(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesApplicationStatisticEntity(self,data)
+    return new ApiEntitiesApplicationStatisticEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesApplicationWithSecret().list()` / `client.ApiEntitiesApplicationWithSecret().load({ id })`.
-  ApiEntitiesApplicationWithSecret(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesApplicationWithSecret(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesApplicationWithSecretEntity(self,data)
+    return new ApiEntitiesApplicationWithSecretEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesAvatar().list()` / `client.ApiEntitiesAvatar().load({ id })`.
-  ApiEntitiesAvatar(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesAvatar(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesAvatarEntity(self,data)
+    return new ApiEntitiesAvatarEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesAwardEmoji().list()` / `client.ApiEntitiesAwardEmoji().load({ id })`.
-  ApiEntitiesAwardEmoji(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesAwardEmoji(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesAwardEmojiEntity(self,data)
+    return new ApiEntitiesAwardEmojiEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesBadge().list()` / `client.ApiEntitiesBadge().load({ id })`.
-  ApiEntitiesBadge(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesBadge(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesBadgeEntity(self,data)
+    return new ApiEntitiesBadgeEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesBasicBadgeDetail().list()` / `client.ApiEntitiesBasicBadgeDetail().load({ id })`.
-  ApiEntitiesBasicBadgeDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesBasicBadgeDetail(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesBasicBadgeDetailEntity(self,data)
+    return new ApiEntitiesBasicBadgeDetailEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesBasicGroupDetail().list()` / `client.ApiEntitiesBasicGroupDetail().load({ id })`.
-  ApiEntitiesBasicGroupDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesBasicGroupDetail(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesBasicGroupDetailEntity(self,data)
+    return new ApiEntitiesBasicGroupDetailEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesBasicProjectDetail().list()` / `client.ApiEntitiesBasicProjectDetail().load({ id })`.
-  ApiEntitiesBasicProjectDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesBasicProjectDetail(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesBasicProjectDetailEntity(self,data)
+    return new ApiEntitiesBasicProjectDetailEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesBasicRef().list()` / `client.ApiEntitiesBasicRef().load({ id })`.
-  ApiEntitiesBasicRef(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesBasicRef(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesBasicRefEntity(self,data)
+    return new ApiEntitiesBasicRefEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesBasicSuccess().list()` / `client.ApiEntitiesBasicSuccess().load({ id })`.
-  ApiEntitiesBasicSuccess(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesBasicSuccess(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesBasicSuccessEntity(self,data)
+    return new ApiEntitiesBasicSuccessEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesBatchedBackgroundMigration().list()` / `client.ApiEntitiesBatchedBackgroundMigration().load({ id })`.
-  ApiEntitiesBatchedBackgroundMigration(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesBatchedBackgroundMigration(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesBatchedBackgroundMigrationEntity(self,data)
+    return new ApiEntitiesBatchedBackgroundMigrationEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesBranch().list()` / `client.ApiEntitiesBranch().load({ id })`.
-  ApiEntitiesBranch(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesBranch(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesBranchEntity(self,data)
+    return new ApiEntitiesBranchEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesBulkImport().list()` / `client.ApiEntitiesBulkImport().load({ id })`.
-  ApiEntitiesBulkImport(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesBulkImport(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesBulkImportEntity(self,data)
+    return new ApiEntitiesBulkImportEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesBulkImportsEntityFailure().list()` / `client.ApiEntitiesBulkImportsEntityFailure().load({ id })`.
-  ApiEntitiesBulkImportsEntityFailure(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesBulkImportsEntityFailure(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesBulkImportsEntityFailureEntity(self,data)
+    return new ApiEntitiesBulkImportsEntityFailureEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesBulkImportsExportStatus().list()` / `client.ApiEntitiesBulkImportsExportStatus().load({ id })`.
-  ApiEntitiesBulkImportsExportStatus(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesBulkImportsExportStatus(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesBulkImportsExportStatusEntity(self,data)
+    return new ApiEntitiesBulkImportsExportStatusEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesChangelog().list()` / `client.ApiEntitiesChangelog().load({ id })`.
-  ApiEntitiesChangelog(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesChangelog(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesChangelogEntity(self,data)
+    return new ApiEntitiesChangelogEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiBridge().list()` / `client.ApiEntitiesCiBridge().load({ id })`.
-  ApiEntitiesCiBridge(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiBridge(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiBridgeEntity(self,data)
+    return new ApiEntitiesCiBridgeEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiCatalogResourcesVersion().list()` / `client.ApiEntitiesCiCatalogResourcesVersion().load({ id })`.
-  ApiEntitiesCiCatalogResourcesVersion(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiCatalogResourcesVersion(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiCatalogResourcesVersionEntity(self,data)
+    return new ApiEntitiesCiCatalogResourcesVersionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiJob().list()` / `client.ApiEntitiesCiJob().load({ id })`.
-  ApiEntitiesCiJob(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiJob(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiJobEntity(self,data)
+    return new ApiEntitiesCiJobEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiJobBasic().list()` / `client.ApiEntitiesCiJobBasic().load({ id })`.
-  ApiEntitiesCiJobBasic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiJobBasic(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiJobBasicEntity(self,data)
+    return new ApiEntitiesCiJobBasicEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiJobBasicWithProject().list()` / `client.ApiEntitiesCiJobBasicWithProject().load({ id })`.
-  ApiEntitiesCiJobBasicWithProject(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiJobBasicWithProject(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiJobBasicWithProjectEntity(self,data)
+    return new ApiEntitiesCiJobBasicWithProjectEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiLintResult().list()` / `client.ApiEntitiesCiLintResult().load({ id })`.
-  ApiEntitiesCiLintResult(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiLintResult(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiLintResultEntity(self,data)
+    return new ApiEntitiesCiLintResultEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiPipeline().list()` / `client.ApiEntitiesCiPipeline().load({ id })`.
-  ApiEntitiesCiPipeline(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiPipeline(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiPipelineEntity(self,data)
+    return new ApiEntitiesCiPipelineEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiPipelineBasic().list()` / `client.ApiEntitiesCiPipelineBasic().load({ id })`.
-  ApiEntitiesCiPipelineBasic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiPipelineBasic(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiPipelineBasicEntity(self,data)
+    return new ApiEntitiesCiPipelineBasicEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiPipelineSchedule().list()` / `client.ApiEntitiesCiPipelineSchedule().load({ id })`.
-  ApiEntitiesCiPipelineSchedule(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiPipelineSchedule(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiPipelineScheduleEntity(self,data)
+    return new ApiEntitiesCiPipelineScheduleEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiPipelineScheduleDetail().list()` / `client.ApiEntitiesCiPipelineScheduleDetail().load({ id })`.
-  ApiEntitiesCiPipelineScheduleDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiPipelineScheduleDetail(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiPipelineScheduleDetailEntity(self,data)
+    return new ApiEntitiesCiPipelineScheduleDetailEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiResetTokenResult().list()` / `client.ApiEntitiesCiResetTokenResult().load({ id })`.
-  ApiEntitiesCiResetTokenResult(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiResetTokenResult(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiResetTokenResultEntity(self,data)
+    return new ApiEntitiesCiResetTokenResultEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiResourceGroup().list()` / `client.ApiEntitiesCiResourceGroup().load({ id })`.
-  ApiEntitiesCiResourceGroup(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiResourceGroup(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiResourceGroupEntity(self,data)
+    return new ApiEntitiesCiResourceGroupEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiRunner().list()` / `client.ApiEntitiesCiRunner().load({ id })`.
-  ApiEntitiesCiRunner(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiRunner(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiRunnerEntity(self,data)
+    return new ApiEntitiesCiRunnerEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiRunnerDetail().list()` / `client.ApiEntitiesCiRunnerDetail().load({ id })`.
-  ApiEntitiesCiRunnerDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiRunnerDetail(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiRunnerDetailEntity(self,data)
+    return new ApiEntitiesCiRunnerDetailEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiRunnerManager().list()` / `client.ApiEntitiesCiRunnerManager().load({ id })`.
-  ApiEntitiesCiRunnerManager(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiRunnerManager(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiRunnerManagerEntity(self,data)
+    return new ApiEntitiesCiRunnerManagerEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiRunnerRegistrationDetail().list()` / `client.ApiEntitiesCiRunnerRegistrationDetail().load({ id })`.
-  ApiEntitiesCiRunnerRegistrationDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiRunnerRegistrationDetail(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiRunnerRegistrationDetailEntity(self,data)
+    return new ApiEntitiesCiRunnerRegistrationDetailEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiSecureFile().list()` / `client.ApiEntitiesCiSecureFile().load({ id })`.
-  ApiEntitiesCiSecureFile(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiSecureFile(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiSecureFileEntity(self,data)
+    return new ApiEntitiesCiSecureFileEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCiVariable().list()` / `client.ApiEntitiesCiVariable().load({ id })`.
-  ApiEntitiesCiVariable(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCiVariable(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCiVariableEntity(self,data)
+    return new ApiEntitiesCiVariableEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCluster().list()` / `client.ApiEntitiesCluster().load({ id })`.
-  ApiEntitiesCluster(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCluster(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesClusterEntity(self,data)
+    return new ApiEntitiesClusterEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesClusterGroup().list()` / `client.ApiEntitiesClusterGroup().load({ id })`.
-  ApiEntitiesClusterGroup(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesClusterGroup(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesClusterGroupEntity(self,data)
+    return new ApiEntitiesClusterGroupEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesClusterProject().list()` / `client.ApiEntitiesClusterProject().load({ id })`.
-  ApiEntitiesClusterProject(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesClusterProject(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesClusterProjectEntity(self,data)
+    return new ApiEntitiesClusterProjectEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesClustersAgent().list()` / `client.ApiEntitiesClustersAgent().load({ id })`.
-  ApiEntitiesClustersAgent(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesClustersAgent(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesClustersAgentEntity(self,data)
+    return new ApiEntitiesClustersAgentEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesClustersAgentToken().list()` / `client.ApiEntitiesClustersAgentToken().load({ id })`.
-  ApiEntitiesClustersAgentToken(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesClustersAgentToken(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesClustersAgentTokenEntity(self,data)
+    return new ApiEntitiesClustersAgentTokenEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesClustersAgentTokenBasic().list()` / `client.ApiEntitiesClustersAgentTokenBasic().load({ id })`.
-  ApiEntitiesClustersAgentTokenBasic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesClustersAgentTokenBasic(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesClustersAgentTokenBasicEntity(self,data)
+    return new ApiEntitiesClustersAgentTokenBasicEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesClustersAgentTokenWithToken().list()` / `client.ApiEntitiesClustersAgentTokenWithToken().load({ id })`.
-  ApiEntitiesClustersAgentTokenWithToken(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesClustersAgentTokenWithToken(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesClustersAgentTokenWithTokenEntity(self,data)
+    return new ApiEntitiesClustersAgentTokenWithTokenEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCommit().list()` / `client.ApiEntitiesCommit().load({ id })`.
-  ApiEntitiesCommit(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCommit(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCommitEntity(self,data)
+    return new ApiEntitiesCommitEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCommitDetail().list()` / `client.ApiEntitiesCommitDetail().load({ id })`.
-  ApiEntitiesCommitDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCommitDetail(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCommitDetailEntity(self,data)
+    return new ApiEntitiesCommitDetailEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCommitNote().list()` / `client.ApiEntitiesCommitNote().load({ id })`.
-  ApiEntitiesCommitNote(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCommitNote(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCommitNoteEntity(self,data)
+    return new ApiEntitiesCommitNoteEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCommitSequence().list()` / `client.ApiEntitiesCommitSequence().load({ id })`.
-  ApiEntitiesCommitSequence(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCommitSequence(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCommitSequenceEntity(self,data)
+    return new ApiEntitiesCommitSequenceEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCommitSignature().list()` / `client.ApiEntitiesCommitSignature().load({ id })`.
-  ApiEntitiesCommitSignature(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCommitSignature(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCommitSignatureEntity(self,data)
+    return new ApiEntitiesCommitSignatureEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCommitStatus().list()` / `client.ApiEntitiesCommitStatus().load({ id })`.
-  ApiEntitiesCommitStatus(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCommitStatus(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCommitStatusEntity(self,data)
+    return new ApiEntitiesCommitStatusEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesCompare().list()` / `client.ApiEntitiesCompare().load({ id })`.
-  ApiEntitiesCompare(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesCompare(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesCompareEntity(self,data)
+    return new ApiEntitiesCompareEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesContainerRegistryRepository().list()` / `client.ApiEntitiesContainerRegistryRepository().load({ id })`.
-  ApiEntitiesContainerRegistryRepository(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesContainerRegistryRepository(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesContainerRegistryRepositoryEntity(self,data)
+    return new ApiEntitiesContainerRegistryRepositoryEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesContainerRegistryTag().list()` / `client.ApiEntitiesContainerRegistryTag().load({ id })`.
-  ApiEntitiesContainerRegistryTag(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesContainerRegistryTag(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesContainerRegistryTagEntity(self,data)
+    return new ApiEntitiesContainerRegistryTagEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesContainerRegistryTagDetail().list()` / `client.ApiEntitiesContainerRegistryTagDetail().load({ id })`.
-  ApiEntitiesContainerRegistryTagDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesContainerRegistryTagDetail(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesContainerRegistryTagDetailEntity(self,data)
+    return new ApiEntitiesContainerRegistryTagDetailEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesContributor().list()` / `client.ApiEntitiesContributor().load({ id })`.
-  ApiEntitiesContributor(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesContributor(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesContributorEntity(self,data)
+    return new ApiEntitiesContributorEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesDeployKey().list()` / `client.ApiEntitiesDeployKey().load({ id })`.
-  ApiEntitiesDeployKey(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesDeployKey(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesDeployKeyEntity(self,data)
+    return new ApiEntitiesDeployKeyEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesDeployKeysProject().list()` / `client.ApiEntitiesDeployKeysProject().load({ id })`.
-  ApiEntitiesDeployKeysProject(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesDeployKeysProject(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesDeployKeysProjectEntity(self,data)
+    return new ApiEntitiesDeployKeysProjectEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesDeployToken().list()` / `client.ApiEntitiesDeployToken().load({ id })`.
-  ApiEntitiesDeployToken(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesDeployToken(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesDeployTokenEntity(self,data)
+    return new ApiEntitiesDeployTokenEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesDeployTokenWithToken().list()` / `client.ApiEntitiesDeployTokenWithToken().load({ id })`.
-  ApiEntitiesDeployTokenWithToken(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesDeployTokenWithToken(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesDeployTokenWithTokenEntity(self,data)
+    return new ApiEntitiesDeployTokenWithTokenEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesDeployment().list()` / `client.ApiEntitiesDeployment().load({ id })`.
-  ApiEntitiesDeployment(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesDeployment(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesDeploymentEntity(self,data)
+    return new ApiEntitiesDeploymentEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesDeploymentExtended().list()` / `client.ApiEntitiesDeploymentExtended().load({ id })`.
-  ApiEntitiesDeploymentExtended(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesDeploymentExtended(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesDeploymentExtendedEntity(self,data)
+    return new ApiEntitiesDeploymentExtendedEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesDeploymentsApproval().list()` / `client.ApiEntitiesDeploymentsApproval().load({ id })`.
-  ApiEntitiesDeploymentsApproval(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesDeploymentsApproval(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesDeploymentsApprovalEntity(self,data)
+    return new ApiEntitiesDeploymentsApprovalEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesDictionaryTable().list()` / `client.ApiEntitiesDictionaryTable().load({ id })`.
-  ApiEntitiesDictionaryTable(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesDictionaryTable(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesDictionaryTableEntity(self,data)
+    return new ApiEntitiesDictionaryTableEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesDiff().list()` / `client.ApiEntitiesDiff().load({ id })`.
-  ApiEntitiesDiff(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesDiff(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesDiffEntity(self,data)
+    return new ApiEntitiesDiffEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesDiscoveredCluster().list()` / `client.ApiEntitiesDiscoveredCluster().load({ id })`.
-  ApiEntitiesDiscoveredCluster(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesDiscoveredCluster(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesDiscoveredClusterEntity(self,data)
+    return new ApiEntitiesDiscoveredClusterEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesDraftNote().list()` / `client.ApiEntitiesDraftNote().load({ id })`.
-  ApiEntitiesDraftNote(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesDraftNote(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesDraftNoteEntity(self,data)
+    return new ApiEntitiesDraftNoteEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesEnvironment().list()` / `client.ApiEntitiesEnvironment().load({ id })`.
-  ApiEntitiesEnvironment(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesEnvironment(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesEnvironmentEntity(self,data)
+    return new ApiEntitiesEnvironmentEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesErrorTrackingClientKey().list()` / `client.ApiEntitiesErrorTrackingClientKey().load({ id })`.
-  ApiEntitiesErrorTrackingClientKey(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesErrorTrackingClientKey(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesErrorTrackingClientKeyEntity(self,data)
+    return new ApiEntitiesErrorTrackingClientKeyEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesErrorTrackingProjectSetting().list()` / `client.ApiEntitiesErrorTrackingProjectSetting().load({ id })`.
-  ApiEntitiesErrorTrackingProjectSetting(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesErrorTrackingProjectSetting(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesErrorTrackingProjectSettingEntity(self,data)
+    return new ApiEntitiesErrorTrackingProjectSettingEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesEvent().list()` / `client.ApiEntitiesEvent().load({ id })`.
-  ApiEntitiesEvent(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesEvent(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesEventEntity(self,data)
+    return new ApiEntitiesEventEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesFeature().list()` / `client.ApiEntitiesFeature().load({ id })`.
-  ApiEntitiesFeature(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesFeature(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesFeatureEntity(self,data)
+    return new ApiEntitiesFeatureEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesFeatureDefinition().list()` / `client.ApiEntitiesFeatureDefinition().load({ id })`.
-  ApiEntitiesFeatureDefinition(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesFeatureDefinition(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesFeatureDefinitionEntity(self,data)
+    return new ApiEntitiesFeatureDefinitionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesFeatureFlag().list()` / `client.ApiEntitiesFeatureFlag().load({ id })`.
-  ApiEntitiesFeatureFlag(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesFeatureFlag(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesFeatureFlagEntity(self,data)
+    return new ApiEntitiesFeatureFlagEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesFeatureFlagUserList().list()` / `client.ApiEntitiesFeatureFlagUserList().load({ id })`.
-  ApiEntitiesFeatureFlagUserList(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesFeatureFlagUserList(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesFeatureFlagUserListEntity(self,data)
+    return new ApiEntitiesFeatureFlagUserListEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesFreezePeriod().list()` / `client.ApiEntitiesFreezePeriod().load({ id })`.
-  ApiEntitiesFreezePeriod(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesFreezePeriod(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesFreezePeriodEntity(self,data)
+    return new ApiEntitiesFreezePeriodEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesGitlabSubscription().list()` / `client.ApiEntitiesGitlabSubscription().load({ id })`.
-  ApiEntitiesGitlabSubscription(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesGitlabSubscription(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesGitlabSubscriptionEntity(self,data)
+    return new ApiEntitiesGitlabSubscriptionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesGoModuleVersion().list()` / `client.ApiEntitiesGoModuleVersion().load({ id })`.
-  ApiEntitiesGoModuleVersion(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesGoModuleVersion(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesGoModuleVersionEntity(self,data)
+    return new ApiEntitiesGoModuleVersionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesGroup().list()` / `client.ApiEntitiesGroup().load({ id })`.
-  ApiEntitiesGroup(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesGroup(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesGroupEntity(self,data)
+    return new ApiEntitiesGroupEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesGroupDetail().list()` / `client.ApiEntitiesGroupDetail().load({ id })`.
-  ApiEntitiesGroupDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesGroupDetail(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesGroupDetailEntity(self,data)
+    return new ApiEntitiesGroupDetailEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesHook().list()` / `client.ApiEntitiesHook().load({ id })`.
-  ApiEntitiesHook(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesHook(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesHookEntity(self,data)
+    return new ApiEntitiesHookEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesIntegration().list()` / `client.ApiEntitiesIntegration().load({ id })`.
-  ApiEntitiesIntegration(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesIntegration(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesIntegrationEntity(self,data)
+    return new ApiEntitiesIntegrationEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesIntegrationBasic().list()` / `client.ApiEntitiesIntegrationBasic().load({ id })`.
-  ApiEntitiesIntegrationBasic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesIntegrationBasic(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesIntegrationBasicEntity(self,data)
+    return new ApiEntitiesIntegrationBasicEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesInvitation().list()` / `client.ApiEntitiesInvitation().load({ id })`.
-  ApiEntitiesInvitation(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesInvitation(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesInvitationEntity(self,data)
+    return new ApiEntitiesInvitationEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesIssuableTimeStat().list()` / `client.ApiEntitiesIssuableTimeStat().load({ id })`.
-  ApiEntitiesIssuableTimeStat(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesIssuableTimeStat(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesIssuableTimeStatEntity(self,data)
+    return new ApiEntitiesIssuableTimeStatEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesIssue().list()` / `client.ApiEntitiesIssue().load({ id })`.
-  ApiEntitiesIssue(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesIssue(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesIssueEntity(self,data)
+    return new ApiEntitiesIssueEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesIssueLink().list()` / `client.ApiEntitiesIssueLink().load({ id })`.
-  ApiEntitiesIssueLink(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesIssueLink(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesIssueLinkEntity(self,data)
+    return new ApiEntitiesIssueLinkEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesLicense().list()` / `client.ApiEntitiesLicense().load({ id })`.
-  ApiEntitiesLicense(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesLicense(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesLicenseEntity(self,data)
+    return new ApiEntitiesLicenseEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesMarkdown().list()` / `client.ApiEntitiesMarkdown().load({ id })`.
-  ApiEntitiesMarkdown(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesMarkdown(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesMarkdownEntity(self,data)
+    return new ApiEntitiesMarkdownEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesMarkdownUploadAdmin().list()` / `client.ApiEntitiesMarkdownUploadAdmin().load({ id })`.
-  ApiEntitiesMarkdownUploadAdmin(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesMarkdownUploadAdmin(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesMarkdownUploadAdminEntity(self,data)
+    return new ApiEntitiesMarkdownUploadAdminEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesMember().list()` / `client.ApiEntitiesMember().load({ id })`.
-  ApiEntitiesMember(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesMember(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesMemberEntity(self,data)
+    return new ApiEntitiesMemberEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesMerge().list()` / `client.ApiEntitiesMerge().load({ id })`.
-  ApiEntitiesMerge(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesMerge(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesMergeEntity(self,data)
+    return new ApiEntitiesMergeEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesMergeRequestApproval().list()` / `client.ApiEntitiesMergeRequestApproval().load({ id })`.
-  ApiEntitiesMergeRequestApproval(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesMergeRequestApproval(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesMergeRequestApprovalEntity(self,data)
+    return new ApiEntitiesMergeRequestApprovalEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesMergeRequestBasic().list()` / `client.ApiEntitiesMergeRequestBasic().load({ id })`.
-  ApiEntitiesMergeRequestBasic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesMergeRequestBasic(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesMergeRequestBasicEntity(self,data)
+    return new ApiEntitiesMergeRequestBasicEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesMergeRequestChange().list()` / `client.ApiEntitiesMergeRequestChange().load({ id })`.
-  ApiEntitiesMergeRequestChange(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesMergeRequestChange(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesMergeRequestChangeEntity(self,data)
+    return new ApiEntitiesMergeRequestChangeEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesMergeRequestDiff().list()` / `client.ApiEntitiesMergeRequestDiff().load({ id })`.
-  ApiEntitiesMergeRequestDiff(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesMergeRequestDiff(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesMergeRequestDiffEntity(self,data)
+    return new ApiEntitiesMergeRequestDiffEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesMergeRequestDiffFull().list()` / `client.ApiEntitiesMergeRequestDiffFull().load({ id })`.
-  ApiEntitiesMergeRequestDiffFull(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesMergeRequestDiffFull(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesMergeRequestDiffFullEntity(self,data)
+    return new ApiEntitiesMergeRequestDiffFullEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesMergeRequestReviewer().list()` / `client.ApiEntitiesMergeRequestReviewer().load({ id })`.
-  ApiEntitiesMergeRequestReviewer(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesMergeRequestReviewer(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesMergeRequestReviewerEntity(self,data)
+    return new ApiEntitiesMergeRequestReviewerEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesMetricImage().list()` / `client.ApiEntitiesMetricImage().load({ id })`.
-  ApiEntitiesMetricImage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesMetricImage(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesMetricImageEntity(self,data)
+    return new ApiEntitiesMetricImageEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesMrNote().list()` / `client.ApiEntitiesMrNote().load({ id })`.
-  ApiEntitiesMrNote(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesMrNote(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesMrNoteEntity(self,data)
+    return new ApiEntitiesMrNoteEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesNamespace().list()` / `client.ApiEntitiesNamespace().load({ id })`.
-  ApiEntitiesNamespace(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesNamespace(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesNamespaceEntity(self,data)
+    return new ApiEntitiesNamespaceEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesNamespaceExistence().list()` / `client.ApiEntitiesNamespaceExistence().load({ id })`.
-  ApiEntitiesNamespaceExistence(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesNamespaceExistence(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesNamespaceExistenceEntity(self,data)
+    return new ApiEntitiesNamespaceExistenceEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesNamespacesStorageLimitExclusion().list()` / `client.ApiEntitiesNamespacesStorageLimitExclusion().load({ id })`.
-  ApiEntitiesNamespacesStorageLimitExclusion(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesNamespacesStorageLimitExclusion(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesNamespacesStorageLimitExclusionEntity(self,data)
+    return new ApiEntitiesNamespacesStorageLimitExclusionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesNpmPackage().list()` / `client.ApiEntitiesNpmPackage().load({ id })`.
-  ApiEntitiesNpmPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesNpmPackage(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesNpmPackageEntity(self,data)
+    return new ApiEntitiesNpmPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesNpmPackageTag().list()` / `client.ApiEntitiesNpmPackageTag().load({ id })`.
-  ApiEntitiesNpmPackageTag(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesNpmPackageTag(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesNpmPackageTagEntity(self,data)
+    return new ApiEntitiesNpmPackageTagEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesNugetPackagesVersion().list()` / `client.ApiEntitiesNugetPackagesVersion().load({ id })`.
-  ApiEntitiesNugetPackagesVersion(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesNugetPackagesVersion(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesNugetPackagesVersionEntity(self,data)
+    return new ApiEntitiesNugetPackagesVersionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesNugetSearchResult().list()` / `client.ApiEntitiesNugetSearchResult().load({ id })`.
-  ApiEntitiesNugetSearchResult(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesNugetSearchResult(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesNugetSearchResultEntity(self,data)
+    return new ApiEntitiesNugetSearchResultEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesNugetServiceIndex().list()` / `client.ApiEntitiesNugetServiceIndex().load({ id })`.
-  ApiEntitiesNugetServiceIndex(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesNugetServiceIndex(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesNugetServiceIndexEntity(self,data)
+    return new ApiEntitiesNugetServiceIndexEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesOrganizationsOrganization().list()` / `client.ApiEntitiesOrganizationsOrganization().load({ id })`.
-  ApiEntitiesOrganizationsOrganization(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesOrganizationsOrganization(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesOrganizationsOrganizationEntity(self,data)
+    return new ApiEntitiesOrganizationsOrganizationEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackage().list()` / `client.ApiEntitiesPackage().load({ id })`.
-  ApiEntitiesPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackage(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackageEntity(self,data)
+    return new ApiEntitiesPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackageFile().list()` / `client.ApiEntitiesPackageFile().load({ id })`.
-  ApiEntitiesPackageFile(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackageFile(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackageFileEntity(self,data)
+    return new ApiEntitiesPackageFileEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackagePipeline().list()` / `client.ApiEntitiesPackagePipeline().load({ id })`.
-  ApiEntitiesPackagePipeline(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackagePipeline(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackagePipelineEntity(self,data)
+    return new ApiEntitiesPackagePipelineEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackagesConanFilesList().list()` / `client.ApiEntitiesPackagesConanFilesList().load({ id })`.
-  ApiEntitiesPackagesConanFilesList(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackagesConanFilesList(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackagesConanFilesListEntity(self,data)
+    return new ApiEntitiesPackagesConanFilesListEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackagesConanPackageManifest().list()` / `client.ApiEntitiesPackagesConanPackageManifest().load({ id })`.
-  ApiEntitiesPackagesConanPackageManifest(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackagesConanPackageManifest(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackagesConanPackageManifestEntity(self,data)
+    return new ApiEntitiesPackagesConanPackageManifestEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackagesConanPackageRevision().list()` / `client.ApiEntitiesPackagesConanPackageRevision().load({ id })`.
-  ApiEntitiesPackagesConanPackageRevision(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackagesConanPackageRevision(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackagesConanPackageRevisionEntity(self,data)
+    return new ApiEntitiesPackagesConanPackageRevisionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackagesConanPackageSnapshot().list()` / `client.ApiEntitiesPackagesConanPackageSnapshot().load({ id })`.
-  ApiEntitiesPackagesConanPackageSnapshot(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackagesConanPackageSnapshot(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackagesConanPackageSnapshotEntity(self,data)
+    return new ApiEntitiesPackagesConanPackageSnapshotEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackagesConanRecipeManifest().list()` / `client.ApiEntitiesPackagesConanRecipeManifest().load({ id })`.
-  ApiEntitiesPackagesConanRecipeManifest(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackagesConanRecipeManifest(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackagesConanRecipeManifestEntity(self,data)
+    return new ApiEntitiesPackagesConanRecipeManifestEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackagesConanRecipeRevision().list()` / `client.ApiEntitiesPackagesConanRecipeRevision().load({ id })`.
-  ApiEntitiesPackagesConanRecipeRevision(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackagesConanRecipeRevision(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackagesConanRecipeRevisionEntity(self,data)
+    return new ApiEntitiesPackagesConanRecipeRevisionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackagesConanRecipeSnapshot().list()` / `client.ApiEntitiesPackagesConanRecipeSnapshot().load({ id })`.
-  ApiEntitiesPackagesConanRecipeSnapshot(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackagesConanRecipeSnapshot(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackagesConanRecipeSnapshotEntity(self,data)
+    return new ApiEntitiesPackagesConanRecipeSnapshotEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackagesConanRevision().list()` / `client.ApiEntitiesPackagesConanRevision().load({ id })`.
-  ApiEntitiesPackagesConanRevision(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackagesConanRevision(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackagesConanRevisionEntity(self,data)
+    return new ApiEntitiesPackagesConanRevisionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackagesConanUploadUrl().list()` / `client.ApiEntitiesPackagesConanUploadUrl().load({ id })`.
-  ApiEntitiesPackagesConanUploadUrl(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackagesConanUploadUrl(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackagesConanUploadUrlEntity(self,data)
+    return new ApiEntitiesPackagesConanUploadUrlEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPackagesDebianDistribution().list()` / `client.ApiEntitiesPackagesDebianDistribution().load({ id })`.
-  ApiEntitiesPackagesDebianDistribution(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPackagesDebianDistribution(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPackagesDebianDistributionEntity(self,data)
+    return new ApiEntitiesPackagesDebianDistributionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPagesDomain().list()` / `client.ApiEntitiesPagesDomain().load({ id })`.
-  ApiEntitiesPagesDomain(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPagesDomain(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPagesDomainEntity(self,data)
+    return new ApiEntitiesPagesDomainEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPagesDomainBasic().list()` / `client.ApiEntitiesPagesDomainBasic().load({ id })`.
-  ApiEntitiesPagesDomainBasic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPagesDomainBasic(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPagesDomainBasicEntity(self,data)
+    return new ApiEntitiesPagesDomainBasicEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPersonalAccessToken().list()` / `client.ApiEntitiesPersonalAccessToken().load({ id })`.
-  ApiEntitiesPersonalAccessToken(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPersonalAccessToken(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPersonalAccessTokenEntity(self,data)
+    return new ApiEntitiesPersonalAccessTokenEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPersonalAccessTokenWithLastUsedIp().list()` / `client.ApiEntitiesPersonalAccessTokenWithLastUsedIp().load({ id })`.
-  ApiEntitiesPersonalAccessTokenWithLastUsedIp(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPersonalAccessTokenWithLastUsedIp(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPersonalAccessTokenWithLastUsedIpEntity(self,data)
+    return new ApiEntitiesPersonalAccessTokenWithLastUsedIpEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPersonalAccessTokenWithToken().list()` / `client.ApiEntitiesPersonalAccessTokenWithToken().load({ id })`.
-  ApiEntitiesPersonalAccessTokenWithToken(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPersonalAccessTokenWithToken(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPersonalAccessTokenWithTokenEntity(self,data)
+    return new ApiEntitiesPersonalAccessTokenWithTokenEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPersonalSnippet().list()` / `client.ApiEntitiesPersonalSnippet().load({ id })`.
-  ApiEntitiesPersonalSnippet(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPersonalSnippet(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPersonalSnippetEntity(self,data)
+    return new ApiEntitiesPersonalSnippetEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPlanLimit().list()` / `client.ApiEntitiesPlanLimit().load({ id })`.
-  ApiEntitiesPlanLimit(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPlanLimit(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPlanLimitEntity(self,data)
+    return new ApiEntitiesPlanLimitEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProject().list()` / `client.ApiEntitiesProject().load({ id })`.
-  ApiEntitiesProject(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProject(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectEntity(self,data)
+    return new ApiEntitiesProjectEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectDailyStatistic().list()` / `client.ApiEntitiesProjectDailyStatistic().load({ id })`.
-  ApiEntitiesProjectDailyStatistic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectDailyStatistic(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectDailyStatisticEntity(self,data)
+    return new ApiEntitiesProjectDailyStatisticEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectExportStatus().list()` / `client.ApiEntitiesProjectExportStatus().load({ id })`.
-  ApiEntitiesProjectExportStatus(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectExportStatus(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectExportStatusEntity(self,data)
+    return new ApiEntitiesProjectExportStatusEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectGroupLink().list()` / `client.ApiEntitiesProjectGroupLink().load({ id })`.
-  ApiEntitiesProjectGroupLink(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectGroupLink(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectGroupLinkEntity(self,data)
+    return new ApiEntitiesProjectGroupLinkEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectHook().list()` / `client.ApiEntitiesProjectHook().load({ id })`.
-  ApiEntitiesProjectHook(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectHook(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectHookEntity(self,data)
+    return new ApiEntitiesProjectHookEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectImportStatus().list()` / `client.ApiEntitiesProjectImportStatus().load({ id })`.
-  ApiEntitiesProjectImportStatus(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectImportStatus(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectImportStatusEntity(self,data)
+    return new ApiEntitiesProjectImportStatusEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectJobTokenScope().list()` / `client.ApiEntitiesProjectJobTokenScope().load({ id })`.
-  ApiEntitiesProjectJobTokenScope(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectJobTokenScope(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectJobTokenScopeEntity(self,data)
+    return new ApiEntitiesProjectJobTokenScopeEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectRepositoryStorage().list()` / `client.ApiEntitiesProjectRepositoryStorage().load({ id })`.
-  ApiEntitiesProjectRepositoryStorage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectRepositoryStorage(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectRepositoryStorageEntity(self,data)
+    return new ApiEntitiesProjectRepositoryStorageEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectSnippet().list()` / `client.ApiEntitiesProjectSnippet().load({ id })`.
-  ApiEntitiesProjectSnippet(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectSnippet(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectSnippetEntity(self,data)
+    return new ApiEntitiesProjectSnippetEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectUpload().list()` / `client.ApiEntitiesProjectUpload().load({ id })`.
-  ApiEntitiesProjectUpload(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectUpload(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectUploadEntity(self,data)
+    return new ApiEntitiesProjectUploadEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectWithAccess().list()` / `client.ApiEntitiesProjectWithAccess().load({ id })`.
-  ApiEntitiesProjectWithAccess(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectWithAccess(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectWithAccessEntity(self,data)
+    return new ApiEntitiesProjectWithAccessEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectsContainerRegistryProtectionRule().list()` / `client.ApiEntitiesProjectsContainerRegistryProtectionRule().load({ id })`.
-  ApiEntitiesProjectsContainerRegistryProtectionRule(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectsContainerRegistryProtectionRule(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectsContainerRegistryProtectionRuleEntity(self,data)
+    return new ApiEntitiesProjectsContainerRegistryProtectionRuleEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectsPackagesProtectionRule().list()` / `client.ApiEntitiesProjectsPackagesProtectionRule().load({ id })`.
-  ApiEntitiesProjectsPackagesProtectionRule(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectsPackagesProtectionRule(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectsPackagesProtectionRuleEntity(self,data)
+    return new ApiEntitiesProjectsPackagesProtectionRuleEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProjectsTopic().list()` / `client.ApiEntitiesProjectsTopic().load({ id })`.
-  ApiEntitiesProjectsTopic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProjectsTopic(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProjectsTopicEntity(self,data)
+    return new ApiEntitiesProjectsTopicEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProtectedBranch().list()` / `client.ApiEntitiesProtectedBranch().load({ id })`.
-  ApiEntitiesProtectedBranch(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProtectedBranch(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProtectedBranchEntity(self,data)
+    return new ApiEntitiesProtectedBranchEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesProtectedTag().list()` / `client.ApiEntitiesProtectedTag().load({ id })`.
-  ApiEntitiesProtectedTag(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesProtectedTag(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesProtectedTagEntity(self,data)
+    return new ApiEntitiesProtectedTagEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesPublicGroupDetail().list()` / `client.ApiEntitiesPublicGroupDetail().load({ id })`.
-  ApiEntitiesPublicGroupDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesPublicGroupDetail(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesPublicGroupDetailEntity(self,data)
+    return new ApiEntitiesPublicGroupDetailEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesRelatedIssue().list()` / `client.ApiEntitiesRelatedIssue().load({ id })`.
-  ApiEntitiesRelatedIssue(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesRelatedIssue(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesRelatedIssueEntity(self,data)
+    return new ApiEntitiesRelatedIssueEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesRelationImportTracker().list()` / `client.ApiEntitiesRelationImportTracker().load({ id })`.
-  ApiEntitiesRelationImportTracker(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesRelationImportTracker(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesRelationImportTrackerEntity(self,data)
+    return new ApiEntitiesRelationImportTrackerEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesRelease().list()` / `client.ApiEntitiesRelease().load({ id })`.
-  ApiEntitiesRelease(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesRelease(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesReleaseEntity(self,data)
+    return new ApiEntitiesReleaseEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesReleasesLink().list()` / `client.ApiEntitiesReleasesLink().load({ id })`.
-  ApiEntitiesReleasesLink(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesReleasesLink(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesReleasesLinkEntity(self,data)
+    return new ApiEntitiesReleasesLinkEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesRemoteMirror().list()` / `client.ApiEntitiesRemoteMirror().load({ id })`.
-  ApiEntitiesRemoteMirror(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesRemoteMirror(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesRemoteMirrorEntity(self,data)
+    return new ApiEntitiesRemoteMirrorEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesRepositoryHealth().list()` / `client.ApiEntitiesRepositoryHealth().load({ id })`.
-  ApiEntitiesRepositoryHealth(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesRepositoryHealth(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesRepositoryHealthEntity(self,data)
+    return new ApiEntitiesRepositoryHealthEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesResourceAccessTokenWithToken().list()` / `client.ApiEntitiesResourceAccessTokenWithToken().load({ id })`.
-  ApiEntitiesResourceAccessTokenWithToken(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesResourceAccessTokenWithToken(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesResourceAccessTokenWithTokenEntity(self,data)
+    return new ApiEntitiesResourceAccessTokenWithTokenEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesResourceMilestoneEvent().list()` / `client.ApiEntitiesResourceMilestoneEvent().load({ id })`.
-  ApiEntitiesResourceMilestoneEvent(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesResourceMilestoneEvent(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesResourceMilestoneEventEntity(self,data)
+    return new ApiEntitiesResourceMilestoneEventEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesSnippet().list()` / `client.ApiEntitiesSnippet().load({ id })`.
-  ApiEntitiesSnippet(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesSnippet(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesSnippetEntity(self,data)
+    return new ApiEntitiesSnippetEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesSshKeyWithUser().list()` / `client.ApiEntitiesSshKeyWithUser().load({ id })`.
-  ApiEntitiesSshKeyWithUser(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesSshKeyWithUser(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesSshKeyWithUserEntity(self,data)
+    return new ApiEntitiesSshKeyWithUserEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesSuggestion().list()` / `client.ApiEntitiesSuggestion().load({ id })`.
-  ApiEntitiesSuggestion(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesSuggestion(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesSuggestionEntity(self,data)
+    return new ApiEntitiesSuggestionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesSystemBroadcastMessage().list()` / `client.ApiEntitiesSystemBroadcastMessage().load({ id })`.
-  ApiEntitiesSystemBroadcastMessage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesSystemBroadcastMessage(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesSystemBroadcastMessageEntity(self,data)
+    return new ApiEntitiesSystemBroadcastMessageEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesTag().list()` / `client.ApiEntitiesTag().load({ id })`.
-  ApiEntitiesTag(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesTag(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesTagEntity(self,data)
+    return new ApiEntitiesTagEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesTagSignature().list()` / `client.ApiEntitiesTagSignature().load({ id })`.
-  ApiEntitiesTagSignature(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesTagSignature(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesTagSignatureEntity(self,data)
+    return new ApiEntitiesTagSignatureEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesTemplatesList().list()` / `client.ApiEntitiesTemplatesList().load({ id })`.
-  ApiEntitiesTemplatesList(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesTemplatesList(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesTemplatesListEntity(self,data)
+    return new ApiEntitiesTemplatesListEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesTerraformModuleVersion().list()` / `client.ApiEntitiesTerraformModuleVersion().load({ id })`.
-  ApiEntitiesTerraformModuleVersion(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesTerraformModuleVersion(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesTerraformModuleVersionEntity(self,data)
+    return new ApiEntitiesTerraformModuleVersionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesTreeObject().list()` / `client.ApiEntitiesTreeObject().load({ id })`.
-  ApiEntitiesTreeObject(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesTreeObject(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesTreeObjectEntity(self,data)
+    return new ApiEntitiesTreeObjectEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesTrigger().list()` / `client.ApiEntitiesTrigger().load({ id })`.
-  ApiEntitiesTrigger(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesTrigger(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesTriggerEntity(self,data)
+    return new ApiEntitiesTriggerEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesUserAgentDetail().list()` / `client.ApiEntitiesUserAgentDetail().load({ id })`.
-  ApiEntitiesUserAgentDetail(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesUserAgentDetail(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesUserAgentDetailEntity(self,data)
+    return new ApiEntitiesUserAgentDetailEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesUserCount().list()` / `client.ApiEntitiesUserCount().load({ id })`.
-  ApiEntitiesUserCount(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesUserCount(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesUserCountEntity(self,data)
+    return new ApiEntitiesUserCountEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesUserPublic().list()` / `client.ApiEntitiesUserPublic().load({ id })`.
-  ApiEntitiesUserPublic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesUserPublic(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesUserPublicEntity(self,data)
+    return new ApiEntitiesUserPublicEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesUserWithAdmin().list()` / `client.ApiEntitiesUserWithAdmin().load({ id })`.
-  ApiEntitiesUserWithAdmin(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesUserWithAdmin(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesUserWithAdminEntity(self,data)
+    return new ApiEntitiesUserWithAdminEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesWikiAttachment().list()` / `client.ApiEntitiesWikiAttachment().load({ id })`.
-  ApiEntitiesWikiAttachment(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesWikiAttachment(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesWikiAttachmentEntity(self,data)
+    return new ApiEntitiesWikiAttachmentEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesWikiPage().list()` / `client.ApiEntitiesWikiPage().load({ id })`.
-  ApiEntitiesWikiPage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesWikiPage(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesWikiPageEntity(self,data)
+    return new ApiEntitiesWikiPageEntity(self, entopts)
   }
 
 
   // Entity access: `client.ApiEntitiesWikiPageBasic().list()` / `client.ApiEntitiesWikiPageBasic().load({ id })`.
-  ApiEntitiesWikiPageBasic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ApiEntitiesWikiPageBasic(entopts?: Record<string, any>) {
     const self = this
-    return new ApiEntitiesWikiPageBasicEntity(self,data)
+    return new ApiEntitiesWikiPageBasicEntity(self, entopts)
   }
 
 
   // Entity access: `client.Application().list()` / `client.Application().load({ id })`.
-  Application(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Application(entopts?: Record<string, any>) {
     const self = this
-    return new ApplicationEntity(self,data)
+    return new ApplicationEntity(self, entopts)
   }
 
 
   // Entity access: `client.AwardEmoji().list()` / `client.AwardEmoji().load({ id })`.
-  AwardEmoji(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  AwardEmoji(entopts?: Record<string, any>) {
     const self = this
-    return new AwardEmojiEntity(self,data)
+    return new AwardEmojiEntity(self, entopts)
   }
 
 
   // Entity access: `client.Badge().list()` / `client.Badge().load({ id })`.
-  Badge(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Badge(entopts?: Record<string, any>) {
     const self = this
-    return new BadgeEntity(self,data)
+    return new BadgeEntity(self, entopts)
   }
 
 
   // Entity access: `client.Branch().list()` / `client.Branch().load({ id })`.
-  Branch(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Branch(entopts?: Record<string, any>) {
     const self = this
-    return new BranchEntity(self,data)
+    return new BranchEntity(self, entopts)
   }
 
 
   // Entity access: `client.CargoPackage().list()` / `client.CargoPackage().load({ id })`.
-  CargoPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  CargoPackage(entopts?: Record<string, any>) {
     const self = this
-    return new CargoPackageEntity(self,data)
+    return new CargoPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.CiVariable().list()` / `client.CiVariable().load({ id })`.
-  CiVariable(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  CiVariable(entopts?: Record<string, any>) {
     const self = this
-    return new CiVariableEntity(self,data)
+    return new CiVariableEntity(self, entopts)
   }
 
 
   // Entity access: `client.Cluster().list()` / `client.Cluster().load({ id })`.
-  Cluster(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Cluster(entopts?: Record<string, any>) {
     const self = this
-    return new ClusterEntity(self,data)
+    return new ClusterEntity(self, entopts)
   }
 
 
   // Entity access: `client.ClusterAgent().list()` / `client.ClusterAgent().load({ id })`.
-  ClusterAgent(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ClusterAgent(entopts?: Record<string, any>) {
     const self = this
-    return new ClusterAgentEntity(self,data)
+    return new ClusterAgentEntity(self, entopts)
   }
 
 
   // Entity access: `client.Composer().list()` / `client.Composer().load({ id })`.
-  Composer(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Composer(entopts?: Record<string, any>) {
     const self = this
-    return new ComposerEntity(self,data)
+    return new ComposerEntity(self, entopts)
   }
 
 
   // Entity access: `client.ComposerPackage().list()` / `client.ComposerPackage().load({ id })`.
-  ComposerPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ComposerPackage(entopts?: Record<string, any>) {
     const self = this
-    return new ComposerPackageEntity(self,data)
+    return new ComposerPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.Conan().list()` / `client.Conan().load({ id })`.
-  Conan(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Conan(entopts?: Record<string, any>) {
     const self = this
-    return new ConanEntity(self,data)
+    return new ConanEntity(self, entopts)
   }
 
 
   // Entity access: `client.ConanPackage().list()` / `client.ConanPackage().load({ id })`.
-  ConanPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ConanPackage(entopts?: Record<string, any>) {
     const self = this
-    return new ConanPackageEntity(self,data)
+    return new ConanPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.ContainerRegistry().list()` / `client.ContainerRegistry().load({ id })`.
-  ContainerRegistry(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ContainerRegistry(entopts?: Record<string, any>) {
     const self = this
-    return new ContainerRegistryEntity(self,data)
+    return new ContainerRegistryEntity(self, entopts)
   }
 
 
   // Entity access: `client.ContainerRegistryEvent().list()` / `client.ContainerRegistryEvent().load({ id })`.
-  ContainerRegistryEvent(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ContainerRegistryEvent(entopts?: Record<string, any>) {
     const self = this
-    return new ContainerRegistryEventEntity(self,data)
+    return new ContainerRegistryEventEntity(self, entopts)
   }
 
 
   // Entity access: `client.CustomAttribute().list()` / `client.CustomAttribute().load({ id })`.
-  CustomAttribute(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  CustomAttribute(entopts?: Record<string, any>) {
     const self = this
-    return new CustomAttributeEntity(self,data)
+    return new CustomAttributeEntity(self, entopts)
   }
 
 
   // Entity access: `client.Debian().list()` / `client.Debian().load({ id })`.
-  Debian(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Debian(entopts?: Record<string, any>) {
     const self = this
-    return new DebianEntity(self,data)
+    return new DebianEntity(self, entopts)
   }
 
 
   // Entity access: `client.DebianDistribution().list()` / `client.DebianDistribution().load({ id })`.
-  DebianDistribution(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  DebianDistribution(entopts?: Record<string, any>) {
     const self = this
-    return new DebianDistributionEntity(self,data)
+    return new DebianDistributionEntity(self, entopts)
   }
 
 
   // Entity access: `client.DebianPackage().list()` / `client.DebianPackage().load({ id })`.
-  DebianPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  DebianPackage(entopts?: Record<string, any>) {
     const self = this
-    return new DebianPackageEntity(self,data)
+    return new DebianPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.DependencyProxy().list()` / `client.DependencyProxy().load({ id })`.
-  DependencyProxy(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  DependencyProxy(entopts?: Record<string, any>) {
     const self = this
-    return new DependencyProxyEntity(self,data)
+    return new DependencyProxyEntity(self, entopts)
   }
 
 
   // Entity access: `client.DeployKey().list()` / `client.DeployKey().load({ id })`.
-  DeployKey(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  DeployKey(entopts?: Record<string, any>) {
     const self = this
-    return new DeployKeyEntity(self,data)
+    return new DeployKeyEntity(self, entopts)
   }
 
 
   // Entity access: `client.DeployToken().list()` / `client.DeployToken().load({ id })`.
-  DeployToken(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  DeployToken(entopts?: Record<string, any>) {
     const self = this
-    return new DeployTokenEntity(self,data)
+    return new DeployTokenEntity(self, entopts)
   }
 
 
   // Entity access: `client.Deployment().list()` / `client.Deployment().load({ id })`.
-  Deployment(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Deployment(entopts?: Record<string, any>) {
     const self = this
-    return new DeploymentEntity(self,data)
+    return new DeploymentEntity(self, entopts)
   }
 
 
   // Entity access: `client.EeApiEntitiesApprovalState().list()` / `client.EeApiEntitiesApprovalState().load({ id })`.
-  EeApiEntitiesApprovalState(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  EeApiEntitiesApprovalState(entopts?: Record<string, any>) {
     const self = this
-    return new EeApiEntitiesApprovalStateEntity(self,data)
+    return new EeApiEntitiesApprovalStateEntity(self, entopts)
   }
 
 
   // Entity access: `client.EeApiEntitiesAuditEvent().list()` / `client.EeApiEntitiesAuditEvent().load({ id })`.
-  EeApiEntitiesAuditEvent(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  EeApiEntitiesAuditEvent(entopts?: Record<string, any>) {
     const self = this
-    return new EeApiEntitiesAuditEventEntity(self,data)
+    return new EeApiEntitiesAuditEventEntity(self, entopts)
   }
 
 
   // Entity access: `client.EeApiEntitiesBillableMembership().list()` / `client.EeApiEntitiesBillableMembership().load({ id })`.
-  EeApiEntitiesBillableMembership(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  EeApiEntitiesBillableMembership(entopts?: Record<string, any>) {
     const self = this
-    return new EeApiEntitiesBillableMembershipEntity(self,data)
+    return new EeApiEntitiesBillableMembershipEntity(self, entopts)
   }
 
 
   // Entity access: `client.EeApiEntitiesGeoNodeStatus().list()` / `client.EeApiEntitiesGeoNodeStatus().load({ id })`.
-  EeApiEntitiesGeoNodeStatus(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  EeApiEntitiesGeoNodeStatus(entopts?: Record<string, any>) {
     const self = this
-    return new EeApiEntitiesGeoNodeStatusEntity(self,data)
+    return new EeApiEntitiesGeoNodeStatusEntity(self, entopts)
   }
 
 
   // Entity access: `client.EeApiEntitiesGeoPipelineRef().list()` / `client.EeApiEntitiesGeoPipelineRef().load({ id })`.
-  EeApiEntitiesGeoPipelineRef(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  EeApiEntitiesGeoPipelineRef(entopts?: Record<string, any>) {
     const self = this
-    return new EeApiEntitiesGeoPipelineRefEntity(self,data)
+    return new EeApiEntitiesGeoPipelineRefEntity(self, entopts)
   }
 
 
   // Entity access: `client.EeApiEntitiesIssuableMetricImage().list()` / `client.EeApiEntitiesIssuableMetricImage().load({ id })`.
-  EeApiEntitiesIssuableMetricImage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  EeApiEntitiesIssuableMetricImage(entopts?: Record<string, any>) {
     const self = this
-    return new EeApiEntitiesIssuableMetricImageEntity(self,data)
+    return new EeApiEntitiesIssuableMetricImageEntity(self, entopts)
   }
 
 
   // Entity access: `client.EeApiEntitiesMergeRequestApprovalState().list()` / `client.EeApiEntitiesMergeRequestApprovalState().load({ id })`.
-  EeApiEntitiesMergeRequestApprovalState(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  EeApiEntitiesMergeRequestApprovalState(entopts?: Record<string, any>) {
     const self = this
-    return new EeApiEntitiesMergeRequestApprovalStateEntity(self,data)
+    return new EeApiEntitiesMergeRequestApprovalStateEntity(self, entopts)
   }
 
 
   // Entity access: `client.EeApiEntitiesSshCertificate().list()` / `client.EeApiEntitiesSshCertificate().load({ id })`.
-  EeApiEntitiesSshCertificate(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  EeApiEntitiesSshCertificate(entopts?: Record<string, any>) {
     const self = this
-    return new EeApiEntitiesSshCertificateEntity(self,data)
+    return new EeApiEntitiesSshCertificateEntity(self, entopts)
   }
 
 
   // Entity access: `client.Environment().list()` / `client.Environment().load({ id })`.
-  Environment(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Environment(entopts?: Record<string, any>) {
     const self = this
-    return new EnvironmentEntity(self,data)
+    return new EnvironmentEntity(self, entopts)
   }
 
 
   // Entity access: `client.ErrorTrackingClientKey().list()` / `client.ErrorTrackingClientKey().load({ id })`.
-  ErrorTrackingClientKey(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ErrorTrackingClientKey(entopts?: Record<string, any>) {
     const self = this
-    return new ErrorTrackingClientKeyEntity(self,data)
+    return new ErrorTrackingClientKeyEntity(self, entopts)
   }
 
 
   // Entity access: `client.Feature().list()` / `client.Feature().load({ id })`.
-  Feature(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Feature(entopts?: Record<string, any>) {
     const self = this
-    return new FeatureEntity(self,data)
+    return new FeatureEntity(self, entopts)
   }
 
 
   // Entity access: `client.FeatureFlag().list()` / `client.FeatureFlag().load({ id })`.
-  FeatureFlag(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FeatureFlag(entopts?: Record<string, any>) {
     const self = this
-    return new FeatureFlagEntity(self,data)
+    return new FeatureFlagEntity(self, entopts)
   }
 
 
   // Entity access: `client.FeatureFlagsUserList().list()` / `client.FeatureFlagsUserList().load({ id })`.
-  FeatureFlagsUserList(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FeatureFlagsUserList(entopts?: Record<string, any>) {
     const self = this
-    return new FeatureFlagsUserListEntity(self,data)
+    return new FeatureFlagsUserListEntity(self, entopts)
   }
 
 
   // Entity access: `client.FreezePeriod().list()` / `client.FreezePeriod().load({ id })`.
-  FreezePeriod(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FreezePeriod(entopts?: Record<string, any>) {
     const self = this
-    return new FreezePeriodEntity(self,data)
+    return new FreezePeriodEntity(self, entopts)
   }
 
 
   // Entity access: `client.GenericPackage().list()` / `client.GenericPackage().load({ id })`.
-  GenericPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GenericPackage(entopts?: Record<string, any>) {
     const self = this
-    return new GenericPackageEntity(self,data)
+    return new GenericPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.Geo().list()` / `client.Geo().load({ id })`.
-  Geo(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Geo(entopts?: Record<string, any>) {
     const self = this
-    return new GeoEntity(self,data)
+    return new GeoEntity(self, entopts)
   }
 
 
   // Entity access: `client.GoProxy().list()` / `client.GoProxy().load({ id })`.
-  GoProxy(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GoProxy(entopts?: Record<string, any>) {
     const self = this
-    return new GoProxyEntity(self,data)
+    return new GoProxyEntity(self, entopts)
   }
 
 
   // Entity access: `client.Group().list()` / `client.Group().load({ id })`.
-  Group(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Group(entopts?: Record<string, any>) {
     const self = this
-    return new GroupEntity(self,data)
+    return new GroupEntity(self, entopts)
   }
 
 
   // Entity access: `client.GroupAvatar().list()` / `client.GroupAvatar().load({ id })`.
-  GroupAvatar(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GroupAvatar(entopts?: Record<string, any>) {
     const self = this
-    return new GroupAvatarEntity(self,data)
+    return new GroupAvatarEntity(self, entopts)
   }
 
 
   // Entity access: `client.GroupExport().list()` / `client.GroupExport().load({ id })`.
-  GroupExport(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GroupExport(entopts?: Record<string, any>) {
     const self = this
-    return new GroupExportEntity(self,data)
+    return new GroupExportEntity(self, entopts)
   }
 
 
   // Entity access: `client.GroupImport().list()` / `client.GroupImport().load({ id })`.
-  GroupImport(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GroupImport(entopts?: Record<string, any>) {
     const self = this
-    return new GroupImportEntity(self,data)
+    return new GroupImportEntity(self, entopts)
   }
 
 
   // Entity access: `client.HelmPackage().list()` / `client.HelmPackage().load({ id })`.
-  HelmPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  HelmPackage(entopts?: Record<string, any>) {
     const self = this
-    return new HelmPackageEntity(self,data)
+    return new HelmPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.Hook().list()` / `client.Hook().load({ id })`.
-  Hook(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Hook(entopts?: Record<string, any>) {
     const self = this
-    return new HookEntity(self,data)
+    return new HookEntity(self, entopts)
   }
 
 
   // Entity access: `client.Import().list()` / `client.Import().load({ id })`.
-  Import(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Import(entopts?: Record<string, any>) {
     const self = this
-    return new ImportEntity(self,data)
+    return new ImportEntity(self, entopts)
   }
 
 
   // Entity access: `client.Integration().list()` / `client.Integration().load({ id })`.
-  Integration(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Integration(entopts?: Record<string, any>) {
     const self = this
-    return new IntegrationEntity(self,data)
+    return new IntegrationEntity(self, entopts)
   }
 
 
   // Entity access: `client.Invitation().list()` / `client.Invitation().load({ id })`.
-  Invitation(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Invitation(entopts?: Record<string, any>) {
     const self = this
-    return new InvitationEntity(self,data)
+    return new InvitationEntity(self, entopts)
   }
 
 
   // Entity access: `client.IssueLink().list()` / `client.IssueLink().load({ id })`.
-  IssueLink(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  IssueLink(entopts?: Record<string, any>) {
     const self = this
-    return new IssueLinkEntity(self,data)
+    return new IssueLinkEntity(self, entopts)
   }
 
 
   // Entity access: `client.IssuesStatistic().list()` / `client.IssuesStatistic().load({ id })`.
-  IssuesStatistic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  IssuesStatistic(entopts?: Record<string, any>) {
     const self = this
-    return new IssuesStatisticEntity(self,data)
+    return new IssuesStatisticEntity(self, entopts)
   }
 
 
   // Entity access: `client.Job().list()` / `client.Job().load({ id })`.
-  Job(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Job(entopts?: Record<string, any>) {
     const self = this
-    return new JobEntity(self,data)
+    return new JobEntity(self, entopts)
   }
 
 
   // Entity access: `client.MavenPackage().list()` / `client.MavenPackage().load({ id })`.
-  MavenPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MavenPackage(entopts?: Record<string, any>) {
     const self = this
-    return new MavenPackageEntity(self,data)
+    return new MavenPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.Member().list()` / `client.Member().load({ id })`.
-  Member(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Member(entopts?: Record<string, any>) {
     const self = this
-    return new MemberEntity(self,data)
+    return new MemberEntity(self, entopts)
   }
 
 
   // Entity access: `client.MergeRequest().list()` / `client.MergeRequest().load({ id })`.
-  MergeRequest(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MergeRequest(entopts?: Record<string, any>) {
     const self = this
-    return new MergeRequestEntity(self,data)
+    return new MergeRequestEntity(self, entopts)
   }
 
 
   // Entity access: `client.Metadata().list()` / `client.Metadata().load({ id })`.
-  Metadata(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Metadata(entopts?: Record<string, any>) {
     const self = this
-    return new MetadataEntity(self,data)
+    return new MetadataEntity(self, entopts)
   }
 
 
   // Entity access: `client.Migration().list()` / `client.Migration().load({ id })`.
-  Migration(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Migration(entopts?: Record<string, any>) {
     const self = this
-    return new MigrationEntity(self,data)
+    return new MigrationEntity(self, entopts)
   }
 
 
   // Entity access: `client.MlModelRegistry().list()` / `client.MlModelRegistry().load({ id })`.
-  MlModelRegistry(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MlModelRegistry(entopts?: Record<string, any>) {
     const self = this
-    return new MlModelRegistryEntity(self,data)
+    return new MlModelRegistryEntity(self, entopts)
   }
 
 
   // Entity access: `client.Namespace().list()` / `client.Namespace().load({ id })`.
-  Namespace(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Namespace(entopts?: Record<string, any>) {
     const self = this
-    return new NamespaceEntity(self,data)
+    return new NamespaceEntity(self, entopts)
   }
 
 
   // Entity access: `client.Npm().list()` / `client.Npm().load({ id })`.
-  Npm(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Npm(entopts?: Record<string, any>) {
     const self = this
-    return new NpmEntity(self,data)
+    return new NpmEntity(self, entopts)
   }
 
 
   // Entity access: `client.NpmPackage().list()` / `client.NpmPackage().load({ id })`.
-  NpmPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  NpmPackage(entopts?: Record<string, any>) {
     const self = this
-    return new NpmPackageEntity(self,data)
+    return new NpmPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.Nuget().list()` / `client.Nuget().load({ id })`.
-  Nuget(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Nuget(entopts?: Record<string, any>) {
     const self = this
-    return new NugetEntity(self,data)
+    return new NugetEntity(self, entopts)
   }
 
 
   // Entity access: `client.NugetPackage().list()` / `client.NugetPackage().load({ id })`.
-  NugetPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  NugetPackage(entopts?: Record<string, any>) {
     const self = this
-    return new NugetPackageEntity(self,data)
+    return new NugetPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.PackageFile().list()` / `client.PackageFile().load({ id })`.
-  PackageFile(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PackageFile(entopts?: Record<string, any>) {
     const self = this
-    return new PackageFileEntity(self,data)
+    return new PackageFileEntity(self, entopts)
   }
 
 
   // Entity access: `client.Page().list()` / `client.Page().load({ id })`.
-  Page(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Page(entopts?: Record<string, any>) {
     const self = this
-    return new PageEntity(self,data)
+    return new PageEntity(self, entopts)
   }
 
 
   // Entity access: `client.Participant().list()` / `client.Participant().load({ id })`.
-  Participant(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Participant(entopts?: Record<string, any>) {
     const self = this
-    return new ParticipantEntity(self,data)
+    return new ParticipantEntity(self, entopts)
   }
 
 
   // Entity access: `client.PersonalAccessToken().list()` / `client.PersonalAccessToken().load({ id })`.
-  PersonalAccessToken(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PersonalAccessToken(entopts?: Record<string, any>) {
     const self = this
-    return new PersonalAccessTokenEntity(self,data)
+    return new PersonalAccessTokenEntity(self, entopts)
   }
 
 
   // Entity access: `client.Project().list()` / `client.Project().load({ id })`.
-  Project(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Project(entopts?: Record<string, any>) {
     const self = this
-    return new ProjectEntityClient(self,data)
+    return new ProjectEntityClient(self, entopts)
   }
 
 
   // Entity access: `client.ProjectAvatar().list()` / `client.ProjectAvatar().load({ id })`.
-  ProjectAvatar(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProjectAvatar(entopts?: Record<string, any>) {
     const self = this
-    return new ProjectAvatarEntity(self,data)
+    return new ProjectAvatarEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProjectEntity().list()` / `client.ProjectEntity().load({ id })`.
-  ProjectEntity(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProjectEntity(entopts?: Record<string, any>) {
     const self = this
-    return new ProjectEntityEntity(self,data)
+    return new ProjectEntityEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProjectExport().list()` / `client.ProjectExport().load({ id })`.
-  ProjectExport(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProjectExport(entopts?: Record<string, any>) {
     const self = this
-    return new ProjectExportEntity(self,data)
+    return new ProjectExportEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProjectHook().list()` / `client.ProjectHook().load({ id })`.
-  ProjectHook(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProjectHook(entopts?: Record<string, any>) {
     const self = this
-    return new ProjectHookEntity(self,data)
+    return new ProjectHookEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProjectImport().list()` / `client.ProjectImport().load({ id })`.
-  ProjectImport(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProjectImport(entopts?: Record<string, any>) {
     const self = this
-    return new ProjectImportEntityClient(self,data)
+    return new ProjectImportEntityClient(self, entopts)
   }
 
 
   // Entity access: `client.ProjectImportEntity().list()` / `client.ProjectImportEntity().load({ id })`.
-  ProjectImportEntity(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProjectImportEntity(entopts?: Record<string, any>) {
     const self = this
-    return new ProjectImportEntityEntity(self,data)
+    return new ProjectImportEntityEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProjectPackage().list()` / `client.ProjectPackage().load({ id })`.
-  ProjectPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProjectPackage(entopts?: Record<string, any>) {
     const self = this
-    return new ProjectPackageEntity(self,data)
+    return new ProjectPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProjectSnippet().list()` / `client.ProjectSnippet().load({ id })`.
-  ProjectSnippet(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProjectSnippet(entopts?: Record<string, any>) {
     const self = this
-    return new ProjectSnippetEntity(self,data)
+    return new ProjectSnippetEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProjectsJobTokenScope().list()` / `client.ProjectsJobTokenScope().load({ id })`.
-  ProjectsJobTokenScope(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProjectsJobTokenScope(entopts?: Record<string, any>) {
     const self = this
-    return new ProjectsJobTokenScopeEntity(self,data)
+    return new ProjectsJobTokenScopeEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProtectedTag().list()` / `client.ProtectedTag().load({ id })`.
-  ProtectedTag(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProtectedTag(entopts?: Record<string, any>) {
     const self = this
-    return new ProtectedTagEntity(self,data)
+    return new ProtectedTagEntity(self, entopts)
   }
 
 
   // Entity access: `client.Pypi().list()` / `client.Pypi().load({ id })`.
-  Pypi(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Pypi(entopts?: Record<string, any>) {
     const self = this
-    return new PypiEntity(self,data)
+    return new PypiEntity(self, entopts)
   }
 
 
   // Entity access: `client.PypiPackage().list()` / `client.PypiPackage().load({ id })`.
-  PypiPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PypiPackage(entopts?: Record<string, any>) {
     const self = this
-    return new PypiPackageEntity(self,data)
+    return new PypiPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.Release().list()` / `client.Release().load({ id })`.
-  Release(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Release(entopts?: Record<string, any>) {
     const self = this
-    return new ReleaseEntity(self,data)
+    return new ReleaseEntity(self, entopts)
   }
 
 
   // Entity access: `client.ReleaseLink().list()` / `client.ReleaseLink().load({ id })`.
-  ReleaseLink(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ReleaseLink(entopts?: Record<string, any>) {
     const self = this
-    return new ReleaseLinkEntity(self,data)
+    return new ReleaseLinkEntity(self, entopts)
   }
 
 
   // Entity access: `client.RemoteMirror().list()` / `client.RemoteMirror().load({ id })`.
-  RemoteMirror(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  RemoteMirror(entopts?: Record<string, any>) {
     const self = this
-    return new RemoteMirrorEntity(self,data)
+    return new RemoteMirrorEntity(self, entopts)
   }
 
 
   // Entity access: `client.Rpm().list()` / `client.Rpm().load({ id })`.
-  Rpm(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Rpm(entopts?: Record<string, any>) {
     const self = this
-    return new RpmEntity(self,data)
+    return new RpmEntity(self, entopts)
   }
 
 
   // Entity access: `client.RpmPackage().list()` / `client.RpmPackage().load({ id })`.
-  RpmPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  RpmPackage(entopts?: Record<string, any>) {
     const self = this
-    return new RpmPackageEntity(self,data)
+    return new RpmPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.Rubygem().list()` / `client.Rubygem().load({ id })`.
-  Rubygem(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Rubygem(entopts?: Record<string, any>) {
     const self = this
-    return new RubygemEntity(self,data)
+    return new RubygemEntity(self, entopts)
   }
 
 
   // Entity access: `client.RubygemPackage().list()` / `client.RubygemPackage().load({ id })`.
-  RubygemPackage(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  RubygemPackage(entopts?: Record<string, any>) {
     const self = this
-    return new RubygemPackageEntity(self,data)
+    return new RubygemPackageEntity(self, entopts)
   }
 
 
   // Entity access: `client.Runner().list()` / `client.Runner().load({ id })`.
-  Runner(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Runner(entopts?: Record<string, any>) {
     const self = this
-    return new RunnerEntity(self,data)
+    return new RunnerEntity(self, entopts)
   }
 
 
   // Entity access: `client.Search().list()` / `client.Search().load({ id })`.
-  Search(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Search(entopts?: Record<string, any>) {
     const self = this
-    return new SearchEntity(self,data)
+    return new SearchEntity(self, entopts)
   }
 
 
   // Entity access: `client.SecureFile().list()` / `client.SecureFile().load({ id })`.
-  SecureFile(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SecureFile(entopts?: Record<string, any>) {
     const self = this
-    return new SecureFileEntity(self,data)
+    return new SecureFileEntity(self, entopts)
   }
 
 
   // Entity access: `client.Slack().list()` / `client.Slack().load({ id })`.
-  Slack(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Slack(entopts?: Record<string, any>) {
     const self = this
-    return new SlackEntity(self,data)
+    return new SlackEntity(self, entopts)
   }
 
 
   // Entity access: `client.Snippet().list()` / `client.Snippet().load({ id })`.
-  Snippet(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Snippet(entopts?: Record<string, any>) {
     const self = this
-    return new SnippetEntity(self,data)
+    return new SnippetEntity(self, entopts)
   }
 
 
   // Entity access: `client.Starrer().list()` / `client.Starrer().load({ id })`.
-  Starrer(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Starrer(entopts?: Record<string, any>) {
     const self = this
-    return new StarrerEntity(self,data)
+    return new StarrerEntity(self, entopts)
   }
 
 
   // Entity access: `client.SystemHook().list()` / `client.SystemHook().load({ id })`.
-  SystemHook(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SystemHook(entopts?: Record<string, any>) {
     const self = this
-    return new SystemHookEntity(self,data)
+    return new SystemHookEntity(self, entopts)
   }
 
 
   // Entity access: `client.Tag().list()` / `client.Tag().load({ id })`.
-  Tag(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Tag(entopts?: Record<string, any>) {
     const self = this
-    return new TagEntity(self,data)
+    return new TagEntity(self, entopts)
   }
 
 
   // Entity access: `client.TerraformRegistry().list()` / `client.TerraformRegistry().load({ id })`.
-  TerraformRegistry(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  TerraformRegistry(entopts?: Record<string, any>) {
     const self = this
-    return new TerraformRegistryEntity(self,data)
+    return new TerraformRegistryEntity(self, entopts)
   }
 
 
   // Entity access: `client.TerraformState().list()` / `client.TerraformState().load({ id })`.
-  TerraformState(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  TerraformState(entopts?: Record<string, any>) {
     const self = this
-    return new TerraformStateEntity(self,data)
+    return new TerraformStateEntity(self, entopts)
   }
 
 
   // Entity access: `client.TestReport().list()` / `client.TestReport().load({ id })`.
-  TestReport(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  TestReport(entopts?: Record<string, any>) {
     const self = this
-    return new TestReportEntity(self,data)
+    return new TestReportEntity(self, entopts)
   }
 
 
   // Entity access: `client.TestReportSummary().list()` / `client.TestReportSummary().load({ id })`.
-  TestReportSummary(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  TestReportSummary(entopts?: Record<string, any>) {
     const self = this
-    return new TestReportSummaryEntity(self,data)
+    return new TestReportSummaryEntity(self, entopts)
   }
 
 
   // Entity access: `client.Topic().list()` / `client.Topic().load({ id })`.
-  Topic(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Topic(entopts?: Record<string, any>) {
     const self = this
-    return new TopicEntity(self,data)
+    return new TopicEntity(self, entopts)
   }
 
 
   // Entity access: `client.UnleashApi().list()` / `client.UnleashApi().load({ id })`.
-  UnleashApi(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UnleashApi(entopts?: Record<string, any>) {
     const self = this
-    return new UnleashApiEntity(self,data)
+    return new UnleashApiEntity(self, entopts)
   }
 
 
   // Entity access: `client.UsageData().list()` / `client.UsageData().load({ id })`.
-  UsageData(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UsageData(entopts?: Record<string, any>) {
     const self = this
-    return new UsageDataEntity(self,data)
+    return new UsageDataEntity(self, entopts)
   }
 
 
   // Entity access: `client.User().list()` / `client.User().load({ id })`.
-  User(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  User(entopts?: Record<string, any>) {
     const self = this
-    return new UserEntity(self,data)
+    return new UserEntity(self, entopts)
   }
 
 
   // Entity access: `client.WebCommit().list()` / `client.WebCommit().load({ id })`.
-  WebCommit(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  WebCommit(entopts?: Record<string, any>) {
     const self = this
-    return new WebCommitEntity(self,data)
+    return new WebCommitEntity(self, entopts)
   }
 
 
   // Entity access: `client.Wiki().list()` / `client.Wiki().load({ id })`.
-  Wiki(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Wiki(entopts?: Record<string, any>) {
     const self = this
-    return new WikiEntity(self,data)
+    return new WikiEntity(self, entopts)
   }
 
 

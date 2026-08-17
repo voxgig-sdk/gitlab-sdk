@@ -68,7 +68,7 @@ func TestApiEntitiesProjectWithAccessEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesProjectWithAccessRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesProjectWithAccessRef01DataDt0Loaded)
+		apiEntitiesProjectWithAccessRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesProjectWithAccessRef01DataDt0Loaded))
 		if apiEntitiesProjectWithAccessRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

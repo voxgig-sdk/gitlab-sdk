@@ -27,7 +27,7 @@
 ---@class ApiEntitiesAccessRequester
 ---@field avatar_path? string
 ---@field avatar_url? string
----@field custom_attribute? table
+---@field custom_attributes? table
 ---@field id? number
 ---@field key? string
 ---@field locked? boolean
@@ -46,11 +46,37 @@
 ---@class ApiEntitiesAccessRequesterCreateData
 ---@field group_id? string
 ---@field project_id? string
+---@field avatar_path? string
+---@field avatar_url? string
+---@field custom_attributes? table
+---@field id? number
+---@field key? string
+---@field locked? boolean
+---@field name? string
+---@field public_email? string
+---@field requested_at? string
+---@field state? string
+---@field username? string
+---@field value? string
+---@field web_url? string
 
 ---@class ApiEntitiesAccessRequesterUpdateData
 ---@field access_request_id string
 ---@field group_id? string
 ---@field project_id? string
+---@field avatar_path? string
+---@field avatar_url? string
+---@field custom_attributes? table
+---@field id? number
+---@field key? string
+---@field locked? boolean
+---@field name? string
+---@field public_email? string
+---@field requested_at? string
+---@field state? string
+---@field username? string
+---@field value? string
+---@field web_url? string
 
 ---@class ApiEntitiesAppearance
 ---@field description? string
@@ -60,11 +86,11 @@
 ---@field header_logo? string
 ---@field header_message? string
 ---@field logo? string
----@field member_guideline? string
+---@field member_guidelines? string
 ---@field message_background_color? string
 ---@field message_font_color? string
----@field new_project_guideline? string
----@field profile_image_guideline? string
+---@field new_project_guidelines? string
+---@field profile_image_guidelines? string
 ---@field pwa_description? string
 ---@field pwa_icon? string
 ---@field pwa_name? string
@@ -79,11 +105,11 @@
 ---@field header_logo? string
 ---@field header_message? string
 ---@field logo? string
----@field member_guideline? string
+---@field member_guidelines? string
 ---@field message_background_color? string
 ---@field message_font_color? string
----@field new_project_guideline? string
----@field profile_image_guideline? string
+---@field new_project_guidelines? string
+---@field profile_image_guidelines? string
 ---@field pwa_description? string
 ---@field pwa_icon? string
 ---@field pwa_name? string
@@ -98,11 +124,11 @@
 ---@field header_logo? string
 ---@field header_message? string
 ---@field logo? string
----@field member_guideline? string
+---@field member_guidelines? string
 ---@field message_background_color? string
 ---@field message_font_color? string
----@field new_project_guideline? string
----@field profile_image_guideline? string
+---@field new_project_guidelines? string
+---@field profile_image_guidelines? string
 ---@field pwa_description? string
 ---@field pwa_icon? string
 ---@field pwa_name? string
@@ -124,30 +150,30 @@
 ---@field id? string
 
 ---@class ApiEntitiesApplicationStatistic
----@field active_user? number
----@field fork? number
----@field group? number
----@field issue? number
----@field merge_request? number
----@field milestone? number
----@field note? number
----@field project? number
----@field snippet? number
----@field ssh_key? number
----@field user? number
+---@field active_users? number
+---@field forks? number
+---@field groups? number
+---@field issues? number
+---@field merge_requests? number
+---@field milestones? number
+---@field notes? number
+---@field projects? number
+---@field snippets? number
+---@field ssh_keys? number
+---@field users? number
 
 ---@class ApiEntitiesApplicationStatisticLoadMatch
----@field active_user? number
----@field fork? number
----@field group? number
----@field issue? number
----@field merge_request? number
----@field milestone? number
----@field note? number
----@field project? number
----@field snippet? number
----@field ssh_key? number
----@field user? number
+---@field active_users? number
+---@field forks? number
+---@field groups? number
+---@field issues? number
+---@field merge_requests? number
+---@field milestones? number
+---@field notes? number
+---@field projects? number
+---@field snippets? number
+---@field ssh_keys? number
+---@field users? number
 
 ---@class ApiEntitiesApplicationWithSecret
 ---@field application_id? string
@@ -159,6 +185,11 @@
 
 ---@class ApiEntitiesApplicationWithSecretCreateData
 ---@field application_id? string
+---@field application_name? string
+---@field callback_url? string
+---@field confidential? boolean
+---@field id? string
+---@field secret? string
 
 ---@class ApiEntitiesAvatar
 ---@field avatar_url? string
@@ -167,14 +198,22 @@
 ---@field avatar_url? string
 
 ---@class ApiEntitiesAwardEmoji
+---@field avatar_path? string
+---@field avatar_url? string
 ---@field awardable_id? number
 ---@field awardable_type? string
 ---@field created_at? string
+---@field custom_attributes? table
 ---@field id? number
+---@field locked? boolean
 ---@field name? string
+---@field public_email? string
+---@field state? string
 ---@field updated_at? string
 ---@field url? string
 ---@field user? table
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesAwardEmojiLoadMatch
 ---@field epic_id? string
@@ -203,6 +242,22 @@
 ---@field project_id? string
 ---@field merge_request_id? string
 ---@field snippet_id? string
+---@field avatar_path? string
+---@field avatar_url? string
+---@field awardable_id? number
+---@field awardable_type? string
+---@field created_at? string
+---@field custom_attributes? table
+---@field id? number
+---@field locked? boolean
+---@field name? string
+---@field public_email? string
+---@field state? string
+---@field updated_at? string
+---@field url? string
+---@field user? table
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesBadge
 ---@field id? string
@@ -225,11 +280,24 @@
 ---@class ApiEntitiesBadgeCreateData
 ---@field group_id? string
 ---@field project_id? string
+---@field id? string
+---@field image_url? string
+---@field kind? string
+---@field link_url? string
+---@field name? string
+---@field rendered_image_url? string
+---@field rendered_link_url? string
 
 ---@class ApiEntitiesBadgeUpdateData
 ---@field group_id? string
 ---@field id string
 ---@field project_id? string
+---@field image_url? string
+---@field kind? string
+---@field link_url? string
+---@field name? string
+---@field rendered_image_url? string
+---@field rendered_link_url? string
 
 ---@class ApiEntitiesBasicBadgeDetail
 ---@field image_url? string
@@ -250,7 +318,7 @@
 ---@class ApiEntitiesBasicProjectDetail
 ---@field avatar_url? string
 ---@field created_at? string
----@field custom_attribute? table
+---@field custom_attributes? table
 ---@field default_branch? string
 ---@field description? string
 ---@field forks_count? number
@@ -269,7 +337,7 @@
 ---@field ssh_url_to_repo? string
 ---@field star_count? number
 ---@field tag_list? table
----@field topic? table
+---@field topics? table
 ---@field visibility? string
 ---@field web_url? string
 
@@ -279,6 +347,30 @@
 
 ---@class ApiEntitiesBasicProjectDetailCreateData
 ---@field project_id string
+---@field avatar_url? string
+---@field created_at? string
+---@field custom_attributes? table
+---@field default_branch? string
+---@field description? string
+---@field forks_count? number
+---@field http_url_to_repo? string
+---@field id? number
+---@field last_activity_at? string
+---@field license? table
+---@field license_url? string
+---@field name? string
+---@field name_with_namespace? string
+---@field namespace? table
+---@field path? string
+---@field path_with_namespace? string
+---@field readme_url? string
+---@field repository_storage? string
+---@field ssh_url_to_repo? string
+---@field star_count? number
+---@field tag_list? table
+---@field topics? table
+---@field visibility? string
+---@field web_url? string
 
 ---@class ApiEntitiesBasicRef
 ---@field name? string
@@ -315,16 +407,37 @@
 
 ---@class ApiEntitiesBatchedBackgroundMigrationUpdateData
 ---@field batched_background_migration_id string
+---@field column_name? string
+---@field created_at? string
+---@field id? string
+---@field job_class_name? string
+---@field progress? number
+---@field status? string
+---@field table_name? string
 
 ---@class ApiEntitiesBranch
+---@field author_email? string
+---@field author_name? string
+---@field authored_date? string
 ---@field can_push? boolean
 ---@field commit? table
+---@field committed_date? string
+---@field committer_email? string
+---@field committer_name? string
+---@field created_at? string
 ---@field default? boolean
 ---@field developers_can_merge? boolean
 ---@field developers_can_push? boolean
+---@field extended_trailers? table
+---@field id? string
 ---@field merged? boolean
+---@field message? string
 ---@field name? string
+---@field parent_ids? table
 ---@field protected? boolean
+---@field short_id? string
+---@field title? string
+---@field trailers? table
 ---@field web_url? string
 
 ---@class ApiEntitiesBranchLoadMatch
@@ -336,10 +449,56 @@
 
 ---@class ApiEntitiesBranchCreateData
 ---@field project_id string
+---@field author_email? string
+---@field author_name? string
+---@field authored_date? string
+---@field can_push? boolean
+---@field commit? table
+---@field committed_date? string
+---@field committer_email? string
+---@field committer_name? string
+---@field created_at? string
+---@field default? boolean
+---@field developers_can_merge? boolean
+---@field developers_can_push? boolean
+---@field extended_trailers? table
+---@field id? string
+---@field merged? boolean
+---@field message? string
+---@field name? string
+---@field parent_ids? table
+---@field protected? boolean
+---@field short_id? string
+---@field title? string
+---@field trailers? table
+---@field web_url? string
 
 ---@class ApiEntitiesBranchUpdateData
 ---@field branch_id string
 ---@field project_id string
+---@field author_email? string
+---@field author_name? string
+---@field authored_date? string
+---@field can_push? boolean
+---@field commit? table
+---@field committed_date? string
+---@field committer_email? string
+---@field committer_name? string
+---@field created_at? string
+---@field default? boolean
+---@field developers_can_merge? boolean
+---@field developers_can_push? boolean
+---@field extended_trailers? table
+---@field id? string
+---@field merged? boolean
+---@field message? string
+---@field name? string
+---@field parent_ids? table
+---@field protected? boolean
+---@field short_id? string
+---@field title? string
+---@field trailers? table
+---@field web_url? string
 
 ---@class ApiEntitiesBulkImport
 ---@field bulk_import_id? number
@@ -349,18 +508,18 @@
 ---@field destination_namespace? string
 ---@field destination_slug? string
 ---@field entity_type? string
----@field failure? table
----@field has_failure? boolean
+---@field failures? table
+---@field has_failures? boolean
 ---@field id? number
----@field migrate_membership? boolean
----@field migrate_project? boolean
+---@field migrate_memberships? boolean
+---@field migrate_projects? boolean
 ---@field namespace_id? number
 ---@field parent_id? number
 ---@field project_id? number
 ---@field source_full_path? string
 ---@field source_type? string
 ---@field source_url? string
----@field stat? table
+---@field stats? table
 ---@field status? string
 ---@field updated_at? string
 
@@ -374,6 +533,26 @@
 
 ---@class ApiEntitiesBulkImportCreateData
 ---@field bulk_import_id? string
+---@field created_at? string
+---@field destination_full_path? string
+---@field destination_name? string
+---@field destination_namespace? string
+---@field destination_slug? string
+---@field entity_type? string
+---@field failures? table
+---@field has_failures? boolean
+---@field id? number
+---@field migrate_memberships? boolean
+---@field migrate_projects? boolean
+---@field namespace_id? number
+---@field parent_id? number
+---@field project_id? number
+---@field source_full_path? string
+---@field source_type? string
+---@field source_url? string
+---@field stats? table
+---@field status? string
+---@field updated_at? string
 
 ---@class ApiEntitiesBulkImportsEntityFailure
 ---@field correlation_id_value? string
@@ -388,8 +567,8 @@
 ---@field entity_id string
 
 ---@class ApiEntitiesBulkImportsExportStatus
----@field batch? table
 ---@field batched? boolean
+---@field batches? table
 ---@field batches_count? number
 ---@field error? string
 ---@field relation? string
@@ -402,7 +581,7 @@
 ---@field project_id? string
 
 ---@class ApiEntitiesChangelog
----@field note? string
+---@field notes? string
 
 ---@class ApiEntitiesChangelogLoadMatch
 ---@field project_id string
@@ -442,7 +621,7 @@
 ---@class ApiEntitiesCiJob
 ---@field allow_failure? boolean
 ---@field archived? boolean
----@field artifact? table
+---@field artifacts? table
 ---@field artifacts_expire_at? string
 ---@field artifacts_file? table
 ---@field commit? table
@@ -484,6 +663,37 @@
 ---@class ApiEntitiesCiJobCreateData
 ---@field job_id string
 ---@field project_id string
+---@field allow_failure? boolean
+---@field archived? boolean
+---@field artifacts? table
+---@field artifacts_expire_at? string
+---@field artifacts_file? table
+---@field commit? table
+---@field coverage? number
+---@field created_at? string
+---@field duration? number
+---@field erased_at? string
+---@field failure_reason? string
+---@field file_format? string
+---@field file_type? string
+---@field filename? string
+---@field finished_at? string
+---@field id? number
+---@field name? string
+---@field pipeline? table
+---@field project? table
+---@field queued_duration? number
+---@field ref? string
+---@field runner? table
+---@field runner_manager? table
+---@field size? number
+---@field stage? string
+---@field started_at? string
+---@field status? string
+---@field tag? boolean
+---@field tag_list? table
+---@field user? table
+---@field web_url? string
 
 ---@class ApiEntitiesCiJobBasic
 ---@field allow_failure? boolean
@@ -514,6 +724,26 @@
 ---@class ApiEntitiesCiJobBasicCreateData
 ---@field job_id string
 ---@field project_id string
+---@field allow_failure? boolean
+---@field commit? table
+---@field coverage? number
+---@field created_at? string
+---@field duration? number
+---@field erased_at? string
+---@field failure_reason? string
+---@field finished_at? string
+---@field id? number
+---@field name? string
+---@field pipeline? table
+---@field project? table
+---@field queued_duration? number
+---@field ref? string
+---@field stage? string
+---@field started_at? string
+---@field status? string
+---@field tag? boolean
+---@field user? table
+---@field web_url? string
 
 ---@class ApiEntitiesCiJobBasicWithProject
 ---@field allow_failure? boolean
@@ -544,22 +774,35 @@
 ---@field blob? string
 ---@field context_project? string
 ---@field context_sha? string
----@field error? table
+---@field errors? table
 ---@field extra? table
----@field include? table
----@field job? table
+---@field includes? table
+---@field jobs? table
 ---@field location? string
 ---@field merged_yaml? string
 ---@field raw? string
 ---@field type? string
 ---@field valid? boolean
----@field warning? table
+---@field warnings? table
 
 ---@class ApiEntitiesCiLintResultListMatch
 ---@field project_id string
 
 ---@class ApiEntitiesCiLintResultCreateData
 ---@field project_id string
+---@field blob? string
+---@field context_project? string
+---@field context_sha? string
+---@field errors? table
+---@field extra? table
+---@field includes? table
+---@field jobs? table
+---@field location? string
+---@field merged_yaml? string
+---@field raw? string
+---@field type? string
+---@field valid? boolean
+---@field warnings? table
 
 ---@class ApiEntitiesCiPipeline
 
@@ -596,7 +839,7 @@
 ---@field cron_timezone? string
 ---@field description? string
 ---@field id? number
----@field input? table
+---@field inputs? table
 ---@field next_run_at? string
 ---@field owner? table
 ---@field ref? string
@@ -612,13 +855,13 @@
 ---@field cron_timezone? string
 ---@field description? string
 ---@field id? number
----@field input? table
+---@field inputs? table
 ---@field last_pipeline? table
 ---@field next_run_at? string
 ---@field owner? table
 ---@field ref? string
 ---@field updated_at? string
----@field variable? table
+---@field variables? table
 
 ---@class ApiEntitiesCiPipelineScheduleDetailLoadMatch
 ---@field pipeline_schedule_id string
@@ -627,10 +870,36 @@
 ---@class ApiEntitiesCiPipelineScheduleDetailCreateData
 ---@field pipeline_schedule_id? string
 ---@field project_id string
+---@field active? boolean
+---@field created_at? string
+---@field cron? string
+---@field cron_timezone? string
+---@field description? string
+---@field id? number
+---@field inputs? table
+---@field last_pipeline? table
+---@field next_run_at? string
+---@field owner? table
+---@field ref? string
+---@field updated_at? string
+---@field variables? table
 
 ---@class ApiEntitiesCiPipelineScheduleDetailUpdateData
 ---@field pipeline_schedule_id string
 ---@field project_id string
+---@field active? boolean
+---@field created_at? string
+---@field cron? string
+---@field cron_timezone? string
+---@field description? string
+---@field id? number
+---@field inputs? table
+---@field last_pipeline? table
+---@field next_run_at? string
+---@field owner? table
+---@field ref? string
+---@field updated_at? string
+---@field variables? table
 
 ---@class ApiEntitiesCiResetTokenResult
 
@@ -656,21 +925,22 @@
 ---@class ApiEntitiesCiResourceGroupUpdateData
 ---@field id string
 ---@field project_id string
+---@field created_at? string
+---@field key? string
+---@field process_mode? string
+---@field updated_at? string
 
 ---@class ApiEntitiesCiRunner
----@field active? boolean
----@field created_at? string
----@field created_by? table
----@field description? string
+---@field avatar_path? string
+---@field avatar_url? string
+---@field custom_attributes? table
 ---@field id? number
----@field ip_address? string
----@field is_shared? boolean
----@field job_execution_status? string
+---@field locked? boolean
 ---@field name? string
----@field online? boolean
----@field paused? boolean
----@field runner_type? string
----@field status? string
+---@field public_email? string
+---@field state? string
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesCiRunnerLoadMatch
 ---@field project_id? string
@@ -678,6 +948,16 @@
 
 ---@class ApiEntitiesCiRunnerCreateData
 ---@field project_id string
+---@field avatar_path? string
+---@field avatar_url? string
+---@field custom_attributes? table
+---@field id? number
+---@field locked? boolean
+---@field name? string
+---@field public_email? string
+---@field state? string
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesCiRunnerDetail
 ---@field access_level? string
@@ -687,7 +967,7 @@
 ---@field created_at? string
 ---@field created_by? table
 ---@field description? string
----@field group? table
+---@field groups? table
 ---@field id? number
 ---@field ip_address? string
 ---@field is_shared? boolean
@@ -699,7 +979,7 @@
 ---@field online? boolean
 ---@field paused? boolean
 ---@field platform? string
----@field project? table
+---@field projects? table
 ---@field revision? string
 ---@field run_untagged? string
 ---@field runner_type? string
@@ -712,6 +992,31 @@
 
 ---@class ApiEntitiesCiRunnerDetailUpdateData
 ---@field id string
+---@field access_level? string
+---@field active? boolean
+---@field architecture? string
+---@field contacted_at? string
+---@field created_at? string
+---@field created_by? table
+---@field description? string
+---@field groups? table
+---@field ip_address? string
+---@field is_shared? boolean
+---@field job_execution_status? string
+---@field locked? boolean
+---@field maintenance_note? string
+---@field maximum_timeout? string
+---@field name? string
+---@field online? boolean
+---@field paused? boolean
+---@field platform? string
+---@field projects? table
+---@field revision? string
+---@field run_untagged? string
+---@field runner_type? string
+---@field status? string
+---@field tag_list? string
+---@field version? string
 
 ---@class ApiEntitiesCiRunnerManager
 ---@field architecture? string
@@ -734,14 +1039,6 @@
 ---@class ApiEntitiesCiRunnerRegistrationDetailCreateData
 
 ---@class ApiEntitiesCiSecureFile
----@field checksum? string
----@field checksum_algorithm? string
----@field created_at? string
----@field expires_at? string
----@field file_extension? string
----@field id? number
----@field metadata? table
----@field name? string
 
 ---@class ApiEntitiesCiSecureFileLoadMatch
 ---@field project_id string
@@ -774,12 +1071,30 @@
 ---@field pipeline_schedule_id? string
 ---@field project_id? string
 ---@field group_id? string
+---@field description? string
+---@field environment_scope? string
+---@field hidden? boolean
+---@field key? string
+---@field masked? boolean
+---@field protected? boolean
+---@field raw? boolean
+---@field value? string
+---@field variable_type? string
 
 ---@class ApiEntitiesCiVariableUpdateData
 ---@field id string
 ---@field pipeline_schedule_id? string
 ---@field project_id? string
 ---@field group_id? string
+---@field description? string
+---@field environment_scope? string
+---@field hidden? boolean
+---@field key? string
+---@field masked? boolean
+---@field protected? boolean
+---@field raw? boolean
+---@field value? string
+---@field variable_type? string
 
 ---@class ApiEntitiesCluster
 ---@field cluster_type? string
@@ -792,7 +1107,7 @@
 ---@field management_project? table
 ---@field name? string
 ---@field namespace_per_environment? string
----@field platform_kubernete? table
+---@field platform_kubernetes? table
 ---@field platform_type? string
 ---@field provider_gcp? table
 ---@field provider_type? string
@@ -816,7 +1131,7 @@
 ---@field management_project? table
 ---@field name? string
 ---@field namespace_per_environment? string
----@field platform_kubernete? table
+---@field platform_kubernetes? table
 ---@field platform_type? string
 ---@field provider_gcp? table
 ---@field provider_type? string
@@ -824,6 +1139,20 @@
 
 ---@class ApiEntitiesClusterUpdateData
 ---@field id string
+---@field cluster_type? string
+---@field created_at? string
+---@field domain? string
+---@field enabled? boolean
+---@field environment_scope? string
+---@field managed? string
+---@field management_project? table
+---@field name? string
+---@field namespace_per_environment? string
+---@field platform_kubernetes? table
+---@field platform_type? string
+---@field provider_gcp? table
+---@field provider_type? string
+---@field user? table
 
 ---@class ApiEntitiesClusterGroup
 ---@field cluster_type? string
@@ -837,7 +1166,7 @@
 ---@field management_project? table
 ---@field name? string
 ---@field namespace_per_environment? string
----@field platform_kubernete? table
+---@field platform_kubernetes? table
 ---@field platform_type? string
 ---@field provider_gcp? table
 ---@field provider_type? string
@@ -849,10 +1178,42 @@
 
 ---@class ApiEntitiesClusterGroupCreateData
 ---@field group_id string
+---@field cluster_type? string
+---@field created_at? string
+---@field domain? string
+---@field enabled? boolean
+---@field environment_scope? string
+---@field group? table
+---@field id? string
+---@field managed? string
+---@field management_project? table
+---@field name? string
+---@field namespace_per_environment? string
+---@field platform_kubernetes? table
+---@field platform_type? string
+---@field provider_gcp? table
+---@field provider_type? string
+---@field user? table
 
 ---@class ApiEntitiesClusterGroupUpdateData
 ---@field cluster_id string
 ---@field group_id string
+---@field cluster_type? string
+---@field created_at? string
+---@field domain? string
+---@field enabled? boolean
+---@field environment_scope? string
+---@field group? table
+---@field id? string
+---@field managed? string
+---@field management_project? table
+---@field name? string
+---@field namespace_per_environment? string
+---@field platform_kubernetes? table
+---@field platform_type? string
+---@field provider_gcp? table
+---@field provider_type? string
+---@field user? table
 
 ---@class ApiEntitiesClusterProject
 ---@field cluster_type? string
@@ -865,7 +1226,7 @@
 ---@field management_project? table
 ---@field name? string
 ---@field namespace_per_environment? string
----@field platform_kubernete? table
+---@field platform_kubernetes? table
 ---@field platform_type? string
 ---@field project? table
 ---@field provider_gcp? table
@@ -878,18 +1239,51 @@
 
 ---@class ApiEntitiesClusterProjectCreateData
 ---@field project_id string
+---@field cluster_type? string
+---@field created_at? string
+---@field domain? string
+---@field enabled? boolean
+---@field environment_scope? string
+---@field id? string
+---@field managed? string
+---@field management_project? table
+---@field name? string
+---@field namespace_per_environment? string
+---@field platform_kubernetes? table
+---@field platform_type? string
+---@field project? table
+---@field provider_gcp? table
+---@field provider_type? string
+---@field user? table
 
 ---@class ApiEntitiesClusterProjectUpdateData
 ---@field cluster_id string
 ---@field project_id string
+---@field cluster_type? string
+---@field created_at? string
+---@field domain? string
+---@field enabled? boolean
+---@field environment_scope? string
+---@field id? string
+---@field managed? string
+---@field management_project? table
+---@field name? string
+---@field namespace_per_environment? string
+---@field platform_kubernetes? table
+---@field platform_type? string
+---@field project? table
+---@field provider_gcp? table
+---@field provider_type? string
+---@field user? table
 
 ---@class ApiEntitiesClustersAgent
----@field config_project? table
 ---@field created_at? string
----@field created_by_user_id? string
----@field id? string
----@field is_receptive? boolean
+---@field description? string
+---@field id? number
 ---@field name? string
+---@field name_with_namespace? string
+---@field path? string
+---@field path_with_namespace? string
 
 ---@class ApiEntitiesClustersAgentLoadMatch
 ---@field project_id string
@@ -897,6 +1291,13 @@
 
 ---@class ApiEntitiesClustersAgentCreateData
 ---@field project_id string
+---@field created_at? string
+---@field description? string
+---@field id? number
+---@field name? string
+---@field name_with_namespace? string
+---@field path? string
+---@field path_with_namespace? string
 
 ---@class ApiEntitiesClustersAgentToken
 ---@field agent_id? string
@@ -940,13 +1341,13 @@
 ---@field committer_email? string
 ---@field committer_name? string
 ---@field created_at? string
----@field extended_trailer? table
+---@field extended_trailers? table
 ---@field id? string
 ---@field message? string
----@field parent_id? table
+---@field parent_ids? table
 ---@field short_id? string
 ---@field title? string
----@field trailer? table
+---@field trailers? table
 ---@field web_url? string
 
 ---@class ApiEntitiesCommitListMatch
@@ -957,6 +1358,21 @@
 ---@field merge_request_id? string
 ---@field project_id string
 ---@field sha? any
+---@field author_email? string
+---@field author_name? string
+---@field authored_date? string
+---@field committed_date? string
+---@field committer_email? string
+---@field committer_name? string
+---@field created_at? string
+---@field extended_trailers? table
+---@field id? string
+---@field message? string
+---@field parent_ids? table
+---@field short_id? string
+---@field title? string
+---@field trailers? table
+---@field web_url? string
 
 ---@class ApiEntitiesCommitDetail
 ---@field author_email? string
@@ -966,17 +1382,17 @@
 ---@field committer_email? string
 ---@field committer_name? string
 ---@field created_at? string
----@field extended_trailer? table
+---@field extended_trailers? table
 ---@field id? string
 ---@field last_pipeline? table
 ---@field message? string
----@field parent_id? table
+---@field parent_ids? table
 ---@field project_id? number
 ---@field short_id? string
----@field stat? table
+---@field stats? table
 ---@field status? string
 ---@field title? string
----@field trailer? table
+---@field trailers? table
 ---@field web_url? string
 
 ---@class ApiEntitiesCommitDetailLoadMatch
@@ -985,18 +1401,64 @@
 
 ---@class ApiEntitiesCommitDetailCreateData
 ---@field project_id string
+---@field author_email? string
+---@field author_name? string
+---@field authored_date? string
+---@field committed_date? string
+---@field committer_email? string
+---@field committer_name? string
+---@field created_at? string
+---@field extended_trailers? table
+---@field id? string
+---@field last_pipeline? table
+---@field message? string
+---@field parent_ids? table
+---@field short_id? string
+---@field stats? table
+---@field status? string
+---@field title? string
+---@field trailers? table
+---@field web_url? string
 
 ---@class ApiEntitiesCommitDetailUpdateData
 ---@field project_id string
 ---@field submodule any
+---@field author_email? string
+---@field author_name? string
+---@field authored_date? string
+---@field committed_date? string
+---@field committer_email? string
+---@field committer_name? string
+---@field created_at? string
+---@field extended_trailers? table
+---@field id? string
+---@field last_pipeline? table
+---@field message? string
+---@field parent_ids? table
+---@field short_id? string
+---@field stats? table
+---@field status? string
+---@field title? string
+---@field trailers? table
+---@field web_url? string
 
 ---@class ApiEntitiesCommitNote
 ---@field author? table
+---@field avatar_path? string
+---@field avatar_url? string
 ---@field created_at? string
+---@field custom_attributes? table
+---@field id? number
 ---@field line? number
 ---@field line_type? string
+---@field locked? boolean
+---@field name? string
 ---@field note? string
 ---@field path? string
+---@field public_email? string
+---@field state? string
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesCommitNoteListMatch
 ---@field project_id string
@@ -1005,6 +1467,22 @@
 ---@class ApiEntitiesCommitNoteCreateData
 ---@field project_id string
 ---@field sha any
+---@field author? table
+---@field avatar_path? string
+---@field avatar_url? string
+---@field created_at? string
+---@field custom_attributes? table
+---@field id? number
+---@field line? number
+---@field line_type? string
+---@field locked? boolean
+---@field name? string
+---@field note? string
+---@field path? string
+---@field public_email? string
+---@field state? string
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesCommitSequence
 ---@field count? number
@@ -1025,18 +1503,26 @@
 ---@class ApiEntitiesCommitStatus
 ---@field allow_failure? boolean
 ---@field author? table
+---@field avatar_path? string
+---@field avatar_url? string
 ---@field coverage? number
 ---@field created_at? string
+---@field custom_attributes? table
 ---@field description? string
 ---@field finished_at? string
 ---@field id? number
+---@field locked? boolean
 ---@field name? string
 ---@field pipeline_id? number
+---@field public_email? string
 ---@field ref? string
 ---@field sha? string
 ---@field started_at? string
+---@field state? string
 ---@field status? string
 ---@field target_url? string
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesCommitStatusListMatch
 ---@field project_id string
@@ -1045,12 +1531,34 @@
 ---@class ApiEntitiesCommitStatusCreateData
 ---@field id string
 ---@field project_id string
+---@field allow_failure? boolean
+---@field author? table
+---@field avatar_path? string
+---@field avatar_url? string
+---@field coverage? number
+---@field created_at? string
+---@field custom_attributes? table
+---@field description? string
+---@field finished_at? string
+---@field locked? boolean
+---@field name? string
+---@field pipeline_id? number
+---@field public_email? string
+---@field ref? string
+---@field sha? string
+---@field started_at? string
+---@field state? string
+---@field status? string
+---@field target_url? string
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesCompare
 ---@field commit? table
+---@field commits? table
 ---@field compare_same_ref? boolean
 ---@field compare_timeout? boolean
----@field diff? table
+---@field diffs? table
 ---@field web_url? string
 
 ---@class ApiEntitiesCompareListMatch
@@ -1067,7 +1575,7 @@
 ---@field project_id? number
 ---@field size? number
 ---@field status? string
----@field tag? table
+---@field tags? table
 ---@field tags_count? number
 
 ---@class ApiEntitiesContainerRegistryRepositoryLoadMatch
@@ -1102,9 +1610,9 @@
 ---@field tag_name any
 
 ---@class ApiEntitiesContributor
----@field addition? number
----@field commit? number
----@field deletion? number
+---@field additions? number
+---@field commits? number
+---@field deletions? number
 ---@field email? string
 ---@field name? string
 
@@ -1140,10 +1648,31 @@
 ---@class ApiEntitiesDeployKeyCreateData
 ---@field deploy_key_id? string
 ---@field project_id? string
+---@field created_at? string
+---@field expires_at? string
+---@field fingerprint? string
+---@field fingerprint_sha256? string
+---@field id? number
+---@field key? string
+---@field last_used_at? string
+---@field projects_with_readonly_access? table
+---@field projects_with_write_access? table
+---@field title? string
+---@field usage_type? string
 
 ---@class ApiEntitiesDeployKeyUpdateData
 ---@field id string
 ---@field project_id string
+---@field created_at? string
+---@field expires_at? string
+---@field fingerprint? string
+---@field fingerprint_sha256? string
+---@field key? string
+---@field last_used_at? string
+---@field projects_with_readonly_access? table
+---@field projects_with_write_access? table
+---@field title? string
+---@field usage_type? string
 
 ---@class ApiEntitiesDeployKeysProject
 ---@field can_push? boolean
@@ -1168,6 +1697,18 @@
 
 ---@class ApiEntitiesDeployKeysProjectCreateData
 ---@field project_id string
+---@field can_push? boolean
+---@field created_at? string
+---@field expires_at? string
+---@field fingerprint? string
+---@field fingerprint_sha256? string
+---@field id? number
+---@field key? string
+---@field last_used_at? string
+---@field projects_with_readonly_access? table
+---@field projects_with_write_access? table
+---@field title? string
+---@field usage_type? string
 
 ---@class ApiEntitiesDeployToken
 ---@field expired? boolean
@@ -1175,7 +1716,7 @@
 ---@field id? number
 ---@field name? string
 ---@field revoked? boolean
----@field scope? table
+---@field scopes? table
 ---@field username? string
 
 ---@class ApiEntitiesDeployTokenLoadMatch
@@ -1209,8 +1750,8 @@
 ---@field project_id string
 
 ---@class ApiEntitiesDeploymentExtended
----@field approval? table
 ---@field approval_summary? table
+---@field approvals? table
 ---@field created_at? string
 ---@field deployable? table
 ---@field environment? table
@@ -1229,10 +1770,36 @@
 
 ---@class ApiEntitiesDeploymentExtendedCreateData
 ---@field project_id string
+---@field approval_summary? table
+---@field approvals? table
+---@field created_at? string
+---@field deployable? table
+---@field environment? table
+---@field id? number
+---@field iid? number
+---@field pending_approval_count? number
+---@field ref? string
+---@field sha? string
+---@field status? string
+---@field updated_at? string
+---@field user? table
 
 ---@class ApiEntitiesDeploymentExtendedUpdateData
 ---@field deployment_id string
 ---@field project_id string
+---@field approval_summary? table
+---@field approvals? table
+---@field created_at? string
+---@field deployable? table
+---@field environment? table
+---@field id? number
+---@field iid? number
+---@field pending_approval_count? number
+---@field ref? string
+---@field sha? string
+---@field status? string
+---@field updated_at? string
+---@field user? table
 
 ---@class ApiEntitiesDeploymentsApproval
 
@@ -1241,7 +1808,7 @@
 ---@field project_id string
 
 ---@class ApiEntitiesDictionaryTable
----@field feature_category? table
+---@field feature_categories? table
 ---@field table_name? string
 
 ---@class ApiEntitiesDictionaryTableLoadMatch
@@ -1270,12 +1837,12 @@
 ---@field sha any
 
 ---@class ApiEntitiesDiscoveredCluster
----@field group? string
----@field project? string
+---@field groups? string
+---@field projects? string
 
 ---@class ApiEntitiesDiscoveredClusterLoadMatch
----@field group? string
----@field project? string
+---@field groups? string
+---@field projects? string
 
 ---@class ApiEntitiesDraftNote
 ---@field author_id? number
@@ -1300,11 +1867,26 @@
 ---@class ApiEntitiesDraftNoteCreateData
 ---@field merge_request_id string
 ---@field project_id string
+---@field author_id? number
+---@field commit_id? number
+---@field discussion_id? number
+---@field id? number
+---@field line_code? string
+---@field note? string
+---@field position? table
+---@field resolve_discussion? boolean
 
 ---@class ApiEntitiesDraftNoteUpdateData
 ---@field id string
 ---@field merge_request_id string
 ---@field project_id string
+---@field author_id? number
+---@field commit_id? number
+---@field discussion_id? number
+---@field line_code? string
+---@field note? string
+---@field position? table
+---@field resolve_discussion? boolean
 
 ---@class ApiEntitiesEnvironment
 ---@field auto_stop_at? string
@@ -1334,10 +1916,41 @@
 ---@class ApiEntitiesEnvironmentCreateData
 ---@field environment_id? string
 ---@field project_id string
+---@field auto_stop_at? string
+---@field auto_stop_setting? string
+---@field cluster_agent? table
+---@field created_at? string
+---@field description? string
+---@field external_url? string
+---@field flux_resource_path? string
+---@field id? number
+---@field kubernetes_namespace? string
+---@field last_deployment? table
+---@field name? string
+---@field project? table
+---@field slug? string
+---@field state? string
+---@field tier? string
+---@field updated_at? string
 
 ---@class ApiEntitiesEnvironmentUpdateData
 ---@field id string
 ---@field project_id string
+---@field auto_stop_at? string
+---@field auto_stop_setting? string
+---@field cluster_agent? table
+---@field created_at? string
+---@field description? string
+---@field external_url? string
+---@field flux_resource_path? string
+---@field kubernetes_namespace? string
+---@field last_deployment? table
+---@field name? string
+---@field project? table
+---@field slug? string
+---@field state? string
+---@field tier? string
+---@field updated_at? string
 
 ---@class ApiEntitiesErrorTrackingClientKey
 ---@field active? boolean
@@ -1350,6 +1963,10 @@
 
 ---@class ApiEntitiesErrorTrackingClientKeyCreateData
 ---@field project_id string
+---@field active? boolean
+---@field id? number
+---@field public_key? string
+---@field sentry_dsn? string
 
 ---@class ApiEntitiesErrorTrackingProjectSetting
 ---@field active? boolean
@@ -1363,6 +1980,11 @@
 
 ---@class ApiEntitiesErrorTrackingProjectSettingUpdateData
 ---@field project_id string
+---@field active? boolean
+---@field api_url? string
+---@field integrated? boolean
+---@field project_name? string
+---@field sentry_external_url? string
 
 ---@class ApiEntitiesEvent
 ---@field action_name? string
@@ -1390,18 +2012,22 @@
 
 ---@class ApiEntitiesFeature
 ---@field definition? table
----@field gate? table
+---@field gates? table
 ---@field name? string
 ---@field state? string
 
 ---@class ApiEntitiesFeatureListMatch
 ---@field definition? table
----@field gate? table
+---@field gates? table
 ---@field name? string
 ---@field state? string
 
 ---@class ApiEntitiesFeatureCreateData
 ---@field id string
+---@field definition? table
+---@field gates? table
+---@field name? string
+---@field state? string
 
 ---@class ApiEntitiesFeatureDefinition
 ---@field default_enabled? string
@@ -1409,7 +2035,7 @@
 ---@field group? string
 ---@field intended_to_rollout_by? string
 ---@field introduced_by_url? string
----@field log_state_change? string
+---@field log_state_changes? string
 ---@field milestone? string
 ---@field name? string
 ---@field rollout_issue_url? string
@@ -1421,7 +2047,7 @@
 ---@field group? string
 ---@field intended_to_rollout_by? string
 ---@field introduced_by_url? string
----@field log_state_change? string
+---@field log_state_changes? string
 ---@field milestone? string
 ---@field name? string
 ---@field rollout_issue_url? string
@@ -1431,10 +2057,13 @@
 ---@field active? boolean
 ---@field created_at? string
 ---@field description? string
+---@field id? number
 ---@field name? string
----@field scope? string
----@field strategy? table
+---@field parameters? string
+---@field scopes? table
+---@field strategies? table
 ---@field updated_at? string
+---@field user_list? table
 ---@field version? string
 
 ---@class ApiEntitiesFeatureFlagLoadMatch
@@ -1446,10 +2075,31 @@
 
 ---@class ApiEntitiesFeatureFlagCreateData
 ---@field project_id string
+---@field active? boolean
+---@field created_at? string
+---@field description? string
+---@field id? number
+---@field name? string
+---@field parameters? string
+---@field scopes? table
+---@field strategies? table
+---@field updated_at? string
+---@field user_list? table
+---@field version? string
 
 ---@class ApiEntitiesFeatureFlagUpdateData
 ---@field id string
 ---@field project_id string
+---@field active? boolean
+---@field created_at? string
+---@field description? string
+---@field name? string
+---@field parameters? string
+---@field scopes? table
+---@field strategies? table
+---@field updated_at? string
+---@field user_list? table
+---@field version? string
 
 ---@class ApiEntitiesFeatureFlagUserList
 ---@field created_at? string
@@ -1460,7 +2110,7 @@
 ---@field path? string
 ---@field project_id? number
 ---@field updated_at? string
----@field user_xid? string
+---@field user_xids? string
 
 ---@class ApiEntitiesFeatureFlagUserListLoadMatch
 ---@field iid any
@@ -1471,10 +2121,25 @@
 
 ---@class ApiEntitiesFeatureFlagUserListCreateData
 ---@field project_id string
+---@field created_at? string
+---@field edit_path? string
+---@field id? number
+---@field iid? number
+---@field name? string
+---@field path? string
+---@field updated_at? string
+---@field user_xids? string
 
 ---@class ApiEntitiesFeatureFlagUserListUpdateData
 ---@field iid any
 ---@field project_id string
+---@field created_at? string
+---@field edit_path? string
+---@field id? number
+---@field name? string
+---@field path? string
+---@field updated_at? string
+---@field user_xids? string
 
 ---@class ApiEntitiesFreezePeriod
 ---@field created_at? string
@@ -1493,10 +2158,21 @@
 
 ---@class ApiEntitiesFreezePeriodCreateData
 ---@field project_id string
+---@field created_at? string
+---@field cron_timezone? string
+---@field freeze_end? string
+---@field freeze_start? string
+---@field id? number
+---@field updated_at? string
 
 ---@class ApiEntitiesFreezePeriodUpdateData
 ---@field id string
 ---@field project_id string
+---@field created_at? string
+---@field cron_timezone? string
+---@field freeze_end? string
+---@field freeze_start? string
+---@field updated_at? string
 
 ---@class ApiEntitiesGitlabSubscription
 ---@field billing? table
@@ -1507,8 +2183,8 @@
 ---@field namespace_id string
 
 ---@class ApiEntitiesGoModuleVersion
----@field time? string
----@field version? string
+---@field Time? string
+---@field Version? string
 
 ---@class ApiEntitiesGoModuleVersionLoadMatch
 ---@field module_version any
@@ -1520,10 +2196,10 @@
 ---@field auto_duo_code_review_enabled? string
 ---@field avatar_url? string
 ---@field created_at? string
----@field custom_attribute? table
+---@field custom_attributes? table
 ---@field default_branch? string
 ---@field default_branch_protection? string
----@field default_branch_protection_default? string
+---@field default_branch_protection_defaults? string
 ---@field description? string
 ---@field duo_core_features_enabled? boolean
 ---@field duo_features_enabled? string
@@ -1535,7 +2211,7 @@
 ---@field id? string
 ---@field ldap_access? string
 ---@field ldap_cn? string
----@field ldap_group_link? table
+---@field ldap_group_links? table
 ---@field lfs_enabled? string
 ---@field lock_duo_features_enabled? string
 ---@field lock_math_rendering_limits_enabled? boolean
@@ -1551,12 +2227,12 @@
 ---@field repository_storage? string
 ---@field request_access_enabled? string
 ---@field require_two_factor_authentication? string
----@field root_storage_statistic? table
----@field saml_group_link? table
+---@field root_storage_statistics? table
+---@field saml_group_links? table
 ---@field share_with_group_lock? string
 ---@field shared_runners_setting? string
 ---@field show_diff_preview_in_email? boolean
----@field statistic? table
+---@field statistics? table
 ---@field subgroup_creation_level? string
 ---@field two_factor_grace_period? string
 ---@field visibility? string
@@ -1573,9 +2249,104 @@
 
 ---@class ApiEntitiesGroupCreateData
 ---@field group_id? string
+---@field archived? boolean
+---@field auto_devops_enabled? string
+---@field auto_duo_code_review_enabled? string
+---@field avatar_url? string
+---@field created_at? string
+---@field custom_attributes? table
+---@field default_branch? string
+---@field default_branch_protection? string
+---@field default_branch_protection_defaults? string
+---@field description? string
+---@field duo_core_features_enabled? boolean
+---@field duo_features_enabled? string
+---@field emails_disabled? boolean
+---@field emails_enabled? boolean
+---@field file_template_project_id? string
+---@field full_name? string
+---@field full_path? string
+---@field id? string
+---@field ldap_access? string
+---@field ldap_cn? string
+---@field ldap_group_links? table
+---@field lfs_enabled? string
+---@field lock_duo_features_enabled? string
+---@field lock_math_rendering_limits_enabled? boolean
+---@field marked_for_deletion_on? string
+---@field math_rendering_limits_enabled? boolean
+---@field max_artifacts_size? number
+---@field mentions_disabled? string
+---@field name? string
+---@field organization_id? string
+---@field parent_id? string
+---@field path? string
+---@field project_creation_level? string
+---@field repository_storage? string
+---@field request_access_enabled? string
+---@field require_two_factor_authentication? string
+---@field root_storage_statistics? table
+---@field saml_group_links? table
+---@field share_with_group_lock? string
+---@field shared_runners_setting? string
+---@field show_diff_preview_in_email? boolean
+---@field statistics? table
+---@field subgroup_creation_level? string
+---@field two_factor_grace_period? string
+---@field visibility? string
+---@field web_based_commit_signing_enabled? string
+---@field web_url? string
+---@field wiki_access_level? string
 
 ---@class ApiEntitiesGroupUpdateData
 ---@field id string
+---@field archived? boolean
+---@field auto_devops_enabled? string
+---@field auto_duo_code_review_enabled? string
+---@field avatar_url? string
+---@field created_at? string
+---@field custom_attributes? table
+---@field default_branch? string
+---@field default_branch_protection? string
+---@field default_branch_protection_defaults? string
+---@field description? string
+---@field duo_core_features_enabled? boolean
+---@field duo_features_enabled? string
+---@field emails_disabled? boolean
+---@field emails_enabled? boolean
+---@field file_template_project_id? string
+---@field full_name? string
+---@field full_path? string
+---@field ldap_access? string
+---@field ldap_cn? string
+---@field ldap_group_links? table
+---@field lfs_enabled? string
+---@field lock_duo_features_enabled? string
+---@field lock_math_rendering_limits_enabled? boolean
+---@field marked_for_deletion_on? string
+---@field math_rendering_limits_enabled? boolean
+---@field max_artifacts_size? number
+---@field mentions_disabled? string
+---@field name? string
+---@field organization_id? string
+---@field parent_id? string
+---@field path? string
+---@field project_creation_level? string
+---@field repository_storage? string
+---@field request_access_enabled? string
+---@field require_two_factor_authentication? string
+---@field root_storage_statistics? table
+---@field saml_group_links? table
+---@field share_with_group_lock? string
+---@field shared_runners_setting? string
+---@field show_diff_preview_in_email? boolean
+---@field statistics? table
+---@field subgroup_creation_level? string
+---@field two_factor_grace_period? string
+---@field visibility? string
+---@field web_based_commit_signing_enabled? string
+---@field web_url? string
+---@field wiki_access_level? string
 
 ---@class ApiEntitiesGroupDetail
 ---@field allowed_email_domains_list? string
@@ -1585,10 +2356,10 @@
 ---@field auto_duo_code_review_enabled? string
 ---@field avatar_url? string
 ---@field created_at? string
----@field custom_attribute? table
+---@field custom_attributes? table
 ---@field default_branch? string
 ---@field default_branch_protection? string
----@field default_branch_protection_default? string
+---@field default_branch_protection_defaults? string
 ---@field description? string
 ---@field duo_core_features_enabled? boolean
 ---@field duo_features_enabled? string
@@ -1600,10 +2371,10 @@
 ---@field full_name? string
 ---@field full_path? string
 ---@field id? string
----@field ip_restriction_range? string
+---@field ip_restriction_ranges? string
 ---@field ldap_access? string
 ---@field ldap_cn? string
----@field ldap_group_link? table
+---@field ldap_group_links? table
 ---@field lfs_enabled? string
 ---@field lock_duo_features_enabled? string
 ---@field lock_math_rendering_limits_enabled? boolean
@@ -1618,28 +2389,28 @@
 ---@field path? string
 ---@field prevent_forking_outside_group? string
 ---@field prevent_sharing_groups_outside_hierarchy? string
----@field project? table
 ---@field project_creation_level? string
+---@field projects? table
 ---@field repository_storage? string
 ---@field request_access_enabled? string
 ---@field require_two_factor_authentication? string
----@field root_storage_statistic? table
+---@field root_storage_statistics? table
 ---@field runners_token? string
----@field saml_group_link? table
+---@field saml_group_links? table
 ---@field service_access_tokens_expiration_enforced? string
 ---@field share_with_group_lock? string
----@field shared_project? table
+---@field shared_projects? table
 ---@field shared_runners_minutes_limit? string
 ---@field shared_runners_setting? string
----@field shared_with_group? string
+---@field shared_with_groups? string
 ---@field show_diff_preview_in_email? boolean
----@field statistic? table
+---@field statistics? table
 ---@field subgroup_creation_level? string
 ---@field two_factor_grace_period? string
 ---@field unique_project_download_limit? string
 ---@field unique_project_download_limit_alertlist? string
 ---@field unique_project_download_limit_allowlist? string
----@field unique_project_download_limit_interval_in_second? string
+---@field unique_project_download_limit_interval_in_seconds? string
 ---@field visibility? string
 ---@field web_based_commit_signing_enabled? string
 ---@field web_url? string
@@ -1651,25 +2422,91 @@
 ---@class ApiEntitiesGroupDetailCreateData
 ---@field group_id string
 ---@field project_id? string
+---@field allowed_email_domains_list? string
+---@field archived? boolean
+---@field auto_ban_user_on_excessive_projects_download? string
+---@field auto_devops_enabled? string
+---@field auto_duo_code_review_enabled? string
+---@field avatar_url? string
+---@field created_at? string
+---@field custom_attributes? table
+---@field default_branch? string
+---@field default_branch_protection? string
+---@field default_branch_protection_defaults? string
+---@field description? string
+---@field duo_core_features_enabled? boolean
+---@field duo_features_enabled? string
+---@field emails_disabled? boolean
+---@field emails_enabled? boolean
+---@field enabled_git_access_protocol? string
+---@field extra_shared_runners_minutes_limit? string
+---@field file_template_project_id? string
+---@field full_name? string
+---@field full_path? string
+---@field id? string
+---@field ip_restriction_ranges? string
+---@field ldap_access? string
+---@field ldap_cn? string
+---@field ldap_group_links? table
+---@field lfs_enabled? string
+---@field lock_duo_features_enabled? string
+---@field lock_math_rendering_limits_enabled? boolean
+---@field marked_for_deletion_on? string
+---@field math_rendering_limits_enabled? boolean
+---@field max_artifacts_size? number
+---@field membership_lock? string
+---@field mentions_disabled? string
+---@field name? string
+---@field organization_id? string
+---@field parent_id? string
+---@field path? string
+---@field prevent_forking_outside_group? string
+---@field prevent_sharing_groups_outside_hierarchy? string
+---@field project_creation_level? string
+---@field projects? table
+---@field repository_storage? string
+---@field request_access_enabled? string
+---@field require_two_factor_authentication? string
+---@field root_storage_statistics? table
+---@field runners_token? string
+---@field saml_group_links? table
+---@field service_access_tokens_expiration_enforced? string
+---@field share_with_group_lock? string
+---@field shared_projects? table
+---@field shared_runners_minutes_limit? string
+---@field shared_runners_setting? string
+---@field shared_with_groups? string
+---@field show_diff_preview_in_email? boolean
+---@field statistics? table
+---@field subgroup_creation_level? string
+---@field two_factor_grace_period? string
+---@field unique_project_download_limit? string
+---@field unique_project_download_limit_alertlist? string
+---@field unique_project_download_limit_allowlist? string
+---@field unique_project_download_limit_interval_in_seconds? string
+---@field visibility? string
+---@field web_based_commit_signing_enabled? string
+---@field web_url? string
+---@field wiki_access_level? string
 
 ---@class ApiEntitiesHook
 ---@field alert_status? any
 ---@field branch_filter_strategy? string
 ---@field created_at? string
----@field custom_header? table
+---@field custom_headers? table
 ---@field custom_webhook_template? string
 ---@field description? string
 ---@field disabled_until? string
 ---@field enable_ssl_verification? boolean
 ---@field id? string
----@field merge_requests_event? boolean
+---@field merge_requests_events? boolean
 ---@field name? string
----@field push_event? boolean
+---@field push_events? boolean
 ---@field push_events_branch_filter? string
----@field repository_update_event? boolean
----@field tag_push_event? boolean
+---@field repository_update_events? boolean
+---@field tag_push_events? boolean
 ---@field url? string
----@field url_variable? table
+---@field url_variables? table
 
 ---@class ApiEntitiesHookLoadMatch
 ---@field id string
@@ -1678,68 +2515,60 @@
 ---@field alert_status? any
 ---@field branch_filter_strategy? string
 ---@field created_at? string
----@field custom_header? table
+---@field custom_headers? table
 ---@field custom_webhook_template? string
 ---@field description? string
 ---@field disabled_until? string
 ---@field enable_ssl_verification? boolean
 ---@field id? string
----@field merge_requests_event? boolean
+---@field merge_requests_events? boolean
 ---@field name? string
----@field push_event? boolean
+---@field push_events? boolean
 ---@field push_events_branch_filter? string
----@field repository_update_event? boolean
----@field tag_push_event? boolean
+---@field repository_update_events? boolean
+---@field tag_push_events? boolean
 ---@field url? string
----@field url_variable? table
+---@field url_variables? table
 
 ---@class ApiEntitiesHookCreateData
 ---@field alert_status? any
 ---@field branch_filter_strategy? string
 ---@field created_at? string
----@field custom_header? table
+---@field custom_headers? table
 ---@field custom_webhook_template? string
 ---@field description? string
 ---@field disabled_until? string
 ---@field enable_ssl_verification? boolean
 ---@field id? string
----@field merge_requests_event? boolean
+---@field merge_requests_events? boolean
 ---@field name? string
----@field push_event? boolean
+---@field push_events? boolean
 ---@field push_events_branch_filter? string
----@field repository_update_event? boolean
----@field tag_push_event? boolean
+---@field repository_update_events? boolean
+---@field tag_push_events? boolean
 ---@field url? string
----@field url_variable? table
+---@field url_variables? table
 
 ---@class ApiEntitiesHookUpdateData
 ---@field id string
+---@field alert_status? any
+---@field branch_filter_strategy? string
+---@field created_at? string
+---@field custom_headers? table
+---@field custom_webhook_template? string
+---@field description? string
+---@field disabled_until? string
+---@field enable_ssl_verification? boolean
+---@field merge_requests_events? boolean
+---@field name? string
+---@field push_events? boolean
+---@field push_events_branch_filter? string
+---@field repository_update_events? boolean
+---@field tag_push_events? boolean
+---@field url? string
+---@field url_variables? table
 
 ---@class ApiEntitiesIntegration
----@field active? boolean
----@field alert_event? boolean
----@field comment_on_event_enabled? boolean
----@field commit_event? boolean
----@field confidential_issues_event? boolean
----@field confidential_note_event? boolean
----@field created_at? string
----@field deployment_event? boolean
----@field id? number
----@field incident_event? boolean
----@field inherited? boolean
----@field issues_event? boolean
----@field job_event? boolean
----@field merge_requests_event? boolean
----@field note_event? boolean
----@field pipeline_event? boolean
----@field property? table
----@field push_event? boolean
----@field slug? number
----@field tag_push_event? boolean
----@field title? string
----@field updated_at? string
----@field vulnerability_event? boolean
----@field wiki_page_event? boolean
 
 ---@class ApiEntitiesIntegrationLoadMatch
 ---@field group_id? string
@@ -1749,28 +2578,28 @@
 
 ---@class ApiEntitiesIntegrationBasic
 ---@field active? boolean
----@field alert_event? boolean
+---@field alert_events? boolean
 ---@field comment_on_event_enabled? boolean
----@field commit_event? boolean
----@field confidential_issues_event? boolean
----@field confidential_note_event? boolean
+---@field commit_events? boolean
+---@field confidential_issues_events? boolean
+---@field confidential_note_events? boolean
 ---@field created_at? string
----@field deployment_event? boolean
+---@field deployment_events? boolean
 ---@field id? number
----@field incident_event? boolean
+---@field incident_events? boolean
 ---@field inherited? boolean
----@field issues_event? boolean
----@field job_event? boolean
----@field merge_requests_event? boolean
----@field note_event? boolean
----@field pipeline_event? boolean
----@field push_event? boolean
+---@field issues_events? boolean
+---@field job_events? boolean
+---@field merge_requests_events? boolean
+---@field note_events? boolean
+---@field pipeline_events? boolean
+---@field push_events? boolean
 ---@field slug? number
----@field tag_push_event? boolean
+---@field tag_push_events? boolean
 ---@field title? string
 ---@field updated_at? string
----@field vulnerability_event? boolean
----@field wiki_page_event? boolean
+---@field vulnerability_events? boolean
+---@field wiki_page_events? boolean
 
 ---@class ApiEntitiesIntegrationBasicListMatch
 ---@field group_id? string
@@ -1779,6 +2608,29 @@
 ---@class ApiEntitiesIntegrationBasicUpdateData
 ---@field group_id? string
 ---@field project_id? string
+---@field active? boolean
+---@field alert_events? boolean
+---@field comment_on_event_enabled? boolean
+---@field commit_events? boolean
+---@field confidential_issues_events? boolean
+---@field confidential_note_events? boolean
+---@field created_at? string
+---@field deployment_events? boolean
+---@field id? number
+---@field incident_events? boolean
+---@field inherited? boolean
+---@field issues_events? boolean
+---@field job_events? boolean
+---@field merge_requests_events? boolean
+---@field note_events? boolean
+---@field pipeline_events? boolean
+---@field push_events? boolean
+---@field slug? number
+---@field tag_push_events? boolean
+---@field title? string
+---@field updated_at? string
+---@field vulnerability_events? boolean
+---@field wiki_page_events? boolean
 
 ---@class ApiEntitiesInvitation
 ---@field access_level? string
@@ -1796,11 +2648,25 @@
 ---@class ApiEntitiesInvitationCreateData
 ---@field group_id? string
 ---@field project_id? string
+---@field access_level? string
+---@field created_at? string
+---@field created_by_name? string
+---@field expires_at? string
+---@field invite_email? string
+---@field invite_token? string
+---@field user_name? string
 
 ---@class ApiEntitiesInvitationUpdateData
 ---@field group_id? string
 ---@field id string
 ---@field project_id? string
+---@field access_level? string
+---@field created_at? string
+---@field created_by_name? string
+---@field expires_at? string
+---@field invite_email? string
+---@field invite_token? string
+---@field user_name? string
 
 ---@class ApiEntitiesIssuableTimeStat
 ---@field human_time_estimate? string
@@ -1817,9 +2683,14 @@
 ---@field issue_id? string
 ---@field project_id string
 ---@field merge_request_id? string
+---@field human_time_estimate? string
+---@field human_total_time_spent? string
+---@field time_estimate? number
+---@field total_time_spent? number
 
 ---@class ApiEntitiesIssue
 ---@field assignee? table
+---@field assignees? table
 ---@field author? table
 ---@field blocking_issues_count? string
 ---@field closed_at? string
@@ -1828,11 +2699,11 @@
 ---@field created_at? string
 ---@field description? string
 ---@field discussion_locked? boolean
----@field downvote? string
+---@field downvotes? string
 ---@field due_date? string
 ---@field epic? table
 ---@field epic_iid? string
----@field has_task? boolean
+---@field has_tasks? boolean
 ---@field health_status? string
 ---@field id? number
 ---@field iid? number
@@ -1840,24 +2711,24 @@
 ---@field imported_from? string
 ---@field issue_type? string
 ---@field iteration? table
----@field label? table
----@field link? table
+---@field labels? table
+---@field links? table
 ---@field merge_requests_count? string
 ---@field milestone? table
 ---@field moved_to_id? string
 ---@field project_id? number
----@field reference? table
+---@field references? table
 ---@field service_desk_reply_to? string
 ---@field severity? string
 ---@field state? string
 ---@field subscribed? string
 ---@field task_completion_status? string
 ---@field task_status? string
----@field time_stat? table
+---@field time_stats? table
 ---@field title? string
 ---@field type? string
 ---@field updated_at? string
----@field upvote? string
+---@field upvotes? string
 ---@field user_notes_count? string
 ---@field web_url? string
 ---@field weight? string
@@ -1873,11 +2744,94 @@
 ---@class ApiEntitiesIssueCreateData
 ---@field issue_id? string
 ---@field project_id string
+---@field assignee? table
+---@field assignees? table
+---@field author? table
+---@field blocking_issues_count? string
+---@field closed_at? string
+---@field closed_by? table
+---@field confidential? boolean
+---@field created_at? string
+---@field description? string
+---@field discussion_locked? boolean
+---@field downvotes? string
+---@field due_date? string
+---@field epic? table
+---@field epic_iid? string
+---@field has_tasks? boolean
+---@field health_status? string
+---@field id? number
+---@field iid? number
+---@field imported? string
+---@field imported_from? string
+---@field issue_type? string
+---@field iteration? table
+---@field labels? table
+---@field links? table
+---@field merge_requests_count? string
+---@field milestone? table
+---@field moved_to_id? string
+---@field references? table
+---@field service_desk_reply_to? string
+---@field severity? string
+---@field state? string
+---@field subscribed? string
+---@field task_completion_status? string
+---@field task_status? string
+---@field time_stats? table
+---@field title? string
+---@field type? string
+---@field updated_at? string
+---@field upvotes? string
+---@field user_notes_count? string
+---@field web_url? string
+---@field weight? string
 
 ---@class ApiEntitiesIssueUpdateData
 ---@field id? string
 ---@field project_id string
 ---@field issue_id? string
+---@field assignee? table
+---@field assignees? table
+---@field author? table
+---@field blocking_issues_count? string
+---@field closed_at? string
+---@field closed_by? table
+---@field confidential? boolean
+---@field created_at? string
+---@field description? string
+---@field discussion_locked? boolean
+---@field downvotes? string
+---@field due_date? string
+---@field epic? table
+---@field epic_iid? string
+---@field has_tasks? boolean
+---@field health_status? string
+---@field iid? number
+---@field imported? string
+---@field imported_from? string
+---@field issue_type? string
+---@field iteration? table
+---@field labels? table
+---@field links? table
+---@field merge_requests_count? string
+---@field milestone? table
+---@field moved_to_id? string
+---@field references? table
+---@field service_desk_reply_to? string
+---@field severity? string
+---@field state? string
+---@field subscribed? string
+---@field task_completion_status? string
+---@field task_status? string
+---@field time_stats? table
+---@field title? string
+---@field type? string
+---@field updated_at? string
+---@field upvotes? string
+---@field user_notes_count? string
+---@field web_url? string
+---@field weight? string
 
 ---@class ApiEntitiesIssueLink
 ---@field link_type? string
@@ -1892,17 +2846,20 @@
 ---@class ApiEntitiesIssueLinkCreateData
 ---@field issue_id string
 ---@field project_id string
+---@field link_type? string
+---@field source_issue? table
+---@field target_issue? table
 
 ---@class ApiEntitiesLicense
----@field condition? table
+---@field conditions? table
 ---@field content? string
 ---@field description? string
 ---@field html_url? string
 ---@field key? string
----@field limitation? table
+---@field limitations? table
 ---@field name? string
 ---@field nickname? string
----@field permission? table
+---@field permissions? table
 ---@field popular? boolean
 ---@field source_url? string
 
@@ -1932,7 +2889,7 @@
 ---@field avatar_url? string
 ---@field created_at? string
 ---@field created_by? table
----@field custom_attribute? table
+---@field custom_attributes? table
 ---@field email? string
 ---@field expires_at? string
 ---@field group_saml_identity? table
@@ -1965,11 +2922,56 @@
 ---@field group_id? string
 ---@field member_id? string
 ---@field project_id? string
+---@field access_level? string
+---@field avatar_path? string
+---@field avatar_url? string
+---@field created_at? string
+---@field created_by? table
+---@field custom_attributes? table
+---@field email? string
+---@field expires_at? string
+---@field group_saml_identity? table
+---@field group_scim_identity? table
+---@field id? number
+---@field is_using_seat? boolean
+---@field key? string
+---@field locked? boolean
+---@field member_role? table
+---@field membership_state? string
+---@field name? string
+---@field override? string
+---@field public_email? string
+---@field state? string
+---@field username? string
+---@field value? string
+---@field web_url? string
 
 ---@class ApiEntitiesMemberUpdateData
 ---@field group_id? string
 ---@field id string
 ---@field project_id? string
+---@field access_level? string
+---@field avatar_path? string
+---@field avatar_url? string
+---@field created_at? string
+---@field created_by? table
+---@field custom_attributes? table
+---@field email? string
+---@field expires_at? string
+---@field group_saml_identity? table
+---@field group_scim_identity? table
+---@field is_using_seat? boolean
+---@field key? string
+---@field locked? boolean
+---@field member_role? table
+---@field membership_state? string
+---@field name? string
+---@field override? string
+---@field public_email? string
+---@field state? string
+---@field username? string
+---@field value? string
+---@field web_url? string
 
 ---@class ApiEntitiesMemberRemoveMatch
 ---@field group_id string
@@ -1980,6 +2982,7 @@
 ---@field allow_maintainer_to_push? boolean
 ---@field approvals_before_merge? string
 ---@field assignee? table
+---@field assignees? table
 ---@field author? table
 ---@field blocking_discussions_resolved? string
 ---@field changes_count? string
@@ -1989,21 +2992,21 @@
 ---@field description? string
 ---@field description_html? string
 ---@field detailed_merge_status? string
----@field diff_ref? table
+---@field diff_refs? table
 ---@field discussion_locked? string
 ---@field diverged_commits_count? string
----@field downvote? string
+---@field downvotes? string
 ---@field draft? string
 ---@field first_contribution? string
 ---@field first_deployed_to_production_at? string
 ---@field force_remove_source_branch? string
----@field has_conflict? boolean
+---@field has_conflicts? boolean
 ---@field head_pipeline? table
 ---@field id? number
 ---@field iid? number
 ---@field imported? string
 ---@field imported_from? string
----@field label? string
+---@field labels? string
 ---@field latest_build_finished_at? string
 ---@field latest_build_started_at? string
 ---@field merge_after? string
@@ -2011,7 +3014,7 @@
 ---@field merge_error? string
 ---@field merge_status? string
 ---@field merge_user? table
----@field merge_when_pipeline_succeed? string
+---@field merge_when_pipeline_succeeds? string
 ---@field merged_at? string
 ---@field merged_by? table
 ---@field milestone? table
@@ -2020,7 +3023,8 @@
 ---@field project_id? number
 ---@field rebase_in_progress? string
 ---@field reference? string
----@field reviewer? table
+---@field references? table
+---@field reviewers? table
 ---@field sha? string
 ---@field should_remove_source_branch? boolean
 ---@field source_branch? string
@@ -2033,11 +3037,11 @@
 ---@field target_branch? string
 ---@field target_project_id? string
 ---@field task_completion_status? string
----@field time_stat? table
+---@field time_stats? table
 ---@field title? string
 ---@field title_html? string
 ---@field updated_at? string
----@field upvote? string
+---@field upvotes? string
 ---@field user? table
 ---@field user_notes_count? string
 ---@field web_url? string
@@ -2050,17 +3054,149 @@
 ---@class ApiEntitiesMergeCreateData
 ---@field merge_request_id? string
 ---@field project_id string
+---@field allow_collaboration? boolean
+---@field allow_maintainer_to_push? boolean
+---@field approvals_before_merge? string
+---@field assignee? table
+---@field assignees? table
+---@field author? table
+---@field blocking_discussions_resolved? string
+---@field changes_count? string
+---@field closed_at? string
+---@field closed_by? table
+---@field created_at? string
+---@field description? string
+---@field description_html? string
+---@field detailed_merge_status? string
+---@field diff_refs? table
+---@field discussion_locked? string
+---@field diverged_commits_count? string
+---@field downvotes? string
+---@field draft? string
+---@field first_contribution? string
+---@field first_deployed_to_production_at? string
+---@field force_remove_source_branch? string
+---@field has_conflicts? boolean
+---@field head_pipeline? table
+---@field id? number
+---@field iid? number
+---@field imported? string
+---@field imported_from? string
+---@field labels? string
+---@field latest_build_finished_at? string
+---@field latest_build_started_at? string
+---@field merge_after? string
+---@field merge_commit_sha? string
+---@field merge_error? string
+---@field merge_status? string
+---@field merge_user? table
+---@field merge_when_pipeline_succeeds? string
+---@field merged_at? string
+---@field merged_by? table
+---@field milestone? table
+---@field pipeline? table
+---@field prepared_at? string
+---@field rebase_in_progress? string
+---@field reference? string
+---@field references? table
+---@field reviewers? table
+---@field sha? string
+---@field should_remove_source_branch? boolean
+---@field source_branch? string
+---@field source_project_id? string
+---@field squash? string
+---@field squash_commit_sha? string
+---@field squash_on_merge? string
+---@field state? string
+---@field subscribed? string
+---@field target_branch? string
+---@field target_project_id? string
+---@field task_completion_status? string
+---@field time_stats? table
+---@field title? string
+---@field title_html? string
+---@field updated_at? string
+---@field upvotes? string
+---@field user? table
+---@field user_notes_count? string
+---@field web_url? string
+---@field work_in_progress? string
 
 ---@class ApiEntitiesMergeUpdateData
 ---@field merge_request_id? string
 ---@field project_id string
 ---@field merge_request_iid? any
+---@field allow_collaboration? boolean
+---@field allow_maintainer_to_push? boolean
+---@field approvals_before_merge? string
+---@field assignee? table
+---@field assignees? table
+---@field author? table
+---@field blocking_discussions_resolved? string
+---@field changes_count? string
+---@field closed_at? string
+---@field closed_by? table
+---@field created_at? string
+---@field description? string
+---@field description_html? string
+---@field detailed_merge_status? string
+---@field diff_refs? table
+---@field discussion_locked? string
+---@field diverged_commits_count? string
+---@field downvotes? string
+---@field draft? string
+---@field first_contribution? string
+---@field first_deployed_to_production_at? string
+---@field force_remove_source_branch? string
+---@field has_conflicts? boolean
+---@field head_pipeline? table
+---@field id? number
+---@field iid? number
+---@field imported? string
+---@field imported_from? string
+---@field labels? string
+---@field latest_build_finished_at? string
+---@field latest_build_started_at? string
+---@field merge_after? string
+---@field merge_commit_sha? string
+---@field merge_error? string
+---@field merge_status? string
+---@field merge_user? table
+---@field merge_when_pipeline_succeeds? string
+---@field merged_at? string
+---@field merged_by? table
+---@field milestone? table
+---@field pipeline? table
+---@field prepared_at? string
+---@field rebase_in_progress? string
+---@field reference? string
+---@field references? table
+---@field reviewers? table
+---@field sha? string
+---@field should_remove_source_branch? boolean
+---@field source_branch? string
+---@field source_project_id? string
+---@field squash? string
+---@field squash_commit_sha? string
+---@field squash_on_merge? string
+---@field state? string
+---@field subscribed? string
+---@field target_branch? string
+---@field target_project_id? string
+---@field task_completion_status? string
+---@field time_stats? table
+---@field title? string
+---@field title_html? string
+---@field updated_at? string
+---@field upvotes? string
+---@field user? table
+---@field user_notes_count? string
+---@field web_url? string
+---@field work_in_progress? string
 
 ---@class ApiEntitiesMergeRequestApproval
----@field approved? boolean
----@field approved_by? table
----@field user_can_approve? boolean
----@field user_has_approved? boolean
+---@field approved_at? string
+---@field user? table
 
 ---@class ApiEntitiesMergeRequestApprovalLoadMatch
 ---@field merge_request_id string
@@ -2069,12 +3205,15 @@
 ---@class ApiEntitiesMergeRequestApprovalCreateData
 ---@field merge_request_id string
 ---@field project_id string
+---@field approved_at? string
+---@field user? table
 
 ---@class ApiEntitiesMergeRequestBasic
 ---@field allow_collaboration? boolean
 ---@field allow_maintainer_to_push? boolean
 ---@field approvals_before_merge? string
 ---@field assignee? table
+---@field assignees? table
 ---@field author? table
 ---@field blocking_discussions_resolved? string
 ---@field closed_at? string
@@ -2084,27 +3223,28 @@
 ---@field description_html? string
 ---@field detailed_merge_status? string
 ---@field discussion_locked? string
----@field downvote? string
+---@field downvotes? string
 ---@field draft? string
 ---@field force_remove_source_branch? string
----@field has_conflict? boolean
+---@field has_conflicts? boolean
 ---@field id? number
 ---@field iid? number
 ---@field imported? string
 ---@field imported_from? string
----@field label? string
+---@field labels? string
 ---@field merge_after? string
 ---@field merge_commit_sha? string
 ---@field merge_status? string
 ---@field merge_user? table
----@field merge_when_pipeline_succeed? string
+---@field merge_when_pipeline_succeeds? string
 ---@field merged_at? string
 ---@field merged_by? table
 ---@field milestone? table
 ---@field prepared_at? string
 ---@field project_id? number
 ---@field reference? string
----@field reviewer? table
+---@field references? table
+---@field reviewers? table
 ---@field sha? string
 ---@field should_remove_source_branch? boolean
 ---@field source_branch? string
@@ -2116,11 +3256,11 @@
 ---@field target_branch? string
 ---@field target_project_id? string
 ---@field task_completion_status? string
----@field time_stat? table
+---@field time_stats? table
 ---@field title? string
 ---@field title_html? string
 ---@field updated_at? string
----@field upvote? string
+---@field upvotes? string
 ---@field user_notes_count? string
 ---@field web_url? string
 ---@field work_in_progress? string
@@ -2140,9 +3280,10 @@
 ---@field allow_maintainer_to_push? boolean
 ---@field approvals_before_merge? string
 ---@field assignee? table
+---@field assignees? table
 ---@field author? table
 ---@field blocking_discussions_resolved? string
----@field change? table
+---@field changes? table
 ---@field changes_count? string
 ---@field closed_at? string
 ---@field closed_by? table
@@ -2150,21 +3291,21 @@
 ---@field description? string
 ---@field description_html? string
 ---@field detailed_merge_status? string
----@field diff_ref? table
+---@field diff_refs? table
 ---@field discussion_locked? string
 ---@field diverged_commits_count? string
----@field downvote? string
+---@field downvotes? string
 ---@field draft? string
 ---@field first_contribution? string
 ---@field first_deployed_to_production_at? string
 ---@field force_remove_source_branch? string
----@field has_conflict? boolean
+---@field has_conflicts? boolean
 ---@field head_pipeline? table
 ---@field id? number
 ---@field iid? number
 ---@field imported? string
 ---@field imported_from? string
----@field label? string
+---@field labels? string
 ---@field latest_build_finished_at? string
 ---@field latest_build_started_at? string
 ---@field merge_after? string
@@ -2172,7 +3313,7 @@
 ---@field merge_error? string
 ---@field merge_status? string
 ---@field merge_user? table
----@field merge_when_pipeline_succeed? string
+---@field merge_when_pipeline_succeeds? string
 ---@field merged_at? string
 ---@field merged_by? table
 ---@field milestone? table
@@ -2182,7 +3323,8 @@
 ---@field project_id? number
 ---@field rebase_in_progress? string
 ---@field reference? string
----@field reviewer? table
+---@field references? table
+---@field reviewers? table
 ---@field sha? string
 ---@field should_remove_source_branch? boolean
 ---@field source_branch? string
@@ -2195,11 +3337,11 @@
 ---@field target_branch? string
 ---@field target_project_id? string
 ---@field task_completion_status? string
----@field time_stat? table
+---@field time_stats? table
 ---@field title? string
 ---@field title_html? string
 ---@field updated_at? string
----@field upvote? string
+---@field upvotes? string
 ---@field user? table
 ---@field user_notes_count? string
 ---@field web_url? string
@@ -2226,9 +3368,9 @@
 
 ---@class ApiEntitiesMergeRequestDiffFull
 ---@field base_commit_sha? string
----@field commit? table
+---@field commits? table
 ---@field created_at? string
----@field diff? table
+---@field diffs? table
 ---@field head_commit_sha? string
 ---@field id? string
 ---@field merge_request_id? string
@@ -2243,9 +3385,16 @@
 ---@field version_id string
 
 ---@class ApiEntitiesMergeRequestReviewer
----@field created_at? string
+---@field avatar_path? string
+---@field avatar_url? string
+---@field custom_attributes? table
+---@field id? number
+---@field locked? boolean
+---@field name? string
+---@field public_email? string
 ---@field state? string
----@field user? table
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesMergeRequestReviewerLoadMatch
 ---@field merge_request_id string
@@ -2266,15 +3415,34 @@
 ---@class ApiEntitiesMetricImageCreateData
 ---@field alert_management_alert_id string
 ---@field project_id string
+---@field created_at? string
+---@field file_path? string
+---@field filename? string
+---@field id? number
+---@field url? string
+---@field url_text? string
 
 ---@class ApiEntitiesMetricImageUpdateData
 ---@field alert_management_alert_id string
 ---@field id string
 ---@field project_id string
+---@field created_at? string
+---@field file_path? string
+---@field filename? string
+---@field url? string
+---@field url_text? string
 
 ---@class ApiEntitiesMrNote
----@field author? table
----@field note? string
+---@field avatar_path? string
+---@field avatar_url? string
+---@field custom_attributes? table
+---@field id? number
+---@field locked? boolean
+---@field name? string
+---@field public_email? string
+---@field state? string
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesMrNoteLoadMatch
 ---@field merge_request_id string
@@ -2292,7 +3460,7 @@
 ---@field kind? string
 ---@field max_seats_used? number
 ---@field max_seats_used_changed_at? string
----@field members_count_with_descendant? number
+---@field members_count_with_descendants? number
 ---@field name? string
 ---@field parent_id? number
 ---@field path? string
@@ -2320,7 +3488,7 @@
 ---@field kind? string
 ---@field max_seats_used? number
 ---@field max_seats_used_changed_at? string
----@field members_count_with_descendant? number
+---@field members_count_with_descendants? number
 ---@field name? string
 ---@field parent_id? number
 ---@field path? string
@@ -2335,10 +3503,32 @@
 
 ---@class ApiEntitiesNamespaceUpdateData
 ---@field id string
+---@field additional_purchased_storage_ends_on? string
+---@field additional_purchased_storage_size? number
+---@field avatar_url? string
+---@field billable_members_count? number
+---@field end_date? string
+---@field extra_shared_runners_minutes_limit? number
+---@field full_path? string
+---@field kind? string
+---@field max_seats_used? number
+---@field max_seats_used_changed_at? string
+---@field members_count_with_descendants? number
+---@field name? string
+---@field parent_id? number
+---@field path? string
+---@field plan? string
+---@field projects_count? number
+---@field root_repository_size? number
+---@field seats_in_use? number
+---@field shared_runners_minutes_limit? number
+---@field trial? boolean
+---@field trial_ends_on? string
+---@field web_url? string
 
 ---@class ApiEntitiesNamespaceExistence
----@field exist? boolean
----@field suggest? table
+---@field exists? boolean
+---@field suggests? table
 
 ---@class ApiEntitiesNamespaceExistenceListMatch
 ---@field namespace_id string
@@ -2357,50 +3547,53 @@
 
 ---@class ApiEntitiesNamespacesStorageLimitExclusionCreateData
 ---@field namespace_id string
+---@field id? number
+---@field namespace_name? string
+---@field reason? string
 
 ---@class ApiEntitiesNpmPackage
----@field dist_tag? table
+---@field disttags? table
 ---@field name? string
----@field version? table
+---@field versions? table
 
 ---@class ApiEntitiesNpmPackageLoadMatch
 ---@field group_id? string
 ---@field project_id? string
 
 ---@class ApiEntitiesNpmPackageTag
----@field dist_tag? table
 
 ---@class ApiEntitiesNpmPackageTagLoadMatch
 ---@field group_id? string
 ---@field project_id? string
 
 ---@class ApiEntitiesNugetPackagesVersion
----@field version? table
+---@field versions? table
 
 ---@class ApiEntitiesNugetPackagesVersionListMatch
 ---@field project_id string
 
 ---@class ApiEntitiesNugetSearchResult
----@field author? string
+---@field authors? string
 ---@field description? string
----@field icon_url? string
+---@field iconUrl? string
 ---@field id? string
----@field license_url? string
----@field project_url? string
+---@field licenseUrl? string
+---@field projectUrl? string
 ---@field summary? string
----@field tag? string
+---@field tags? string
 ---@field title? string
----@field total_download? number
+---@field totalDownloads? number
 ---@field type? string
 ---@field verified? boolean
 ---@field version? string
+---@field versions? table
 
 ---@class ApiEntitiesNugetSearchResultListMatch
 ---@field group_id? string
 ---@field project_id? string
 
 ---@class ApiEntitiesNugetServiceIndex
----@field resource? table
+---@field resources? table
 ---@field version? string
 
 ---@class ApiEntitiesNugetServiceIndexListMatch
@@ -2416,15 +3609,17 @@
 ---@field created_at? string
 ---@field id? number
 ---@field last_downloaded_at? string
----@field link? table
+---@field links? table
 ---@field name? string
 ---@field package_type? string
 ---@field pipeline? table
+---@field pipelines? table
 ---@field project_id? number
 ---@field project_path? string
 ---@field status? string
----@field tag? string
+---@field tags? string
 ---@field version? string
+---@field versions? table
 
 ---@class ApiEntitiesPackageLoadMatch
 ---@field id string
@@ -2442,7 +3637,7 @@
 ---@field file_sha256? string
 ---@field id? number
 ---@field package_id? number
----@field pipeline? table
+---@field pipelines? table
 ---@field size? number
 
 ---@class ApiEntitiesPackageFileListMatch
@@ -2450,16 +3645,15 @@
 ---@field project_id string
 
 ---@class ApiEntitiesPackagePipeline
----@field created_at? string
+---@field avatar_path? string
+---@field avatar_url? string
+---@field custom_attributes? table
 ---@field id? number
----@field iid? number
----@field project_id? number
----@field ref? string
----@field sha? string
----@field source? string
----@field status? string
----@field updated_at? string
----@field user? table
+---@field locked? boolean
+---@field name? string
+---@field public_email? string
+---@field state? string
+---@field username? string
 ---@field web_url? string
 
 ---@class ApiEntitiesPackagePipelineLoadMatch
@@ -2467,7 +3661,6 @@
 ---@field project_id string
 
 ---@class ApiEntitiesPackagesConanFilesList
----@field file? table
 
 ---@class ApiEntitiesPackagesConanFilesListLoadMatch
 ---@field conan_id string
@@ -2481,7 +3674,6 @@
 ---@field recipe_revision? any
 
 ---@class ApiEntitiesPackagesConanPackageManifest
----@field package_url? table
 
 ---@class ApiEntitiesPackagesConanPackageManifestLoadMatch
 ---@field conan_id string
@@ -2505,7 +3697,6 @@
 ---@field revision_id string
 
 ---@class ApiEntitiesPackagesConanPackageSnapshot
----@field package_snapshot? table
 
 ---@class ApiEntitiesPackagesConanPackageSnapshotLoadMatch
 ---@field conan_id string
@@ -2516,7 +3707,6 @@
 ---@field project_id? string
 
 ---@class ApiEntitiesPackagesConanRecipeManifest
----@field recipe_url? table
 
 ---@class ApiEntitiesPackagesConanRecipeManifestLoadMatch
 ---@field conan_id string
@@ -2537,7 +3727,6 @@
 ---@field project_id string
 
 ---@class ApiEntitiesPackagesConanRecipeSnapshot
----@field recipe_snapshot? table
 
 ---@class ApiEntitiesPackagesConanRecipeSnapshotLoadMatch
 ---@field id? string
@@ -2560,7 +3749,6 @@
 ---@field revision_id? string
 
 ---@class ApiEntitiesPackagesConanUploadUrl
----@field upload_url? table
 
 ---@class ApiEntitiesPackagesConanUploadUrlCreateData
 ---@field conan_id string
@@ -2571,15 +3759,15 @@
 ---@field project_id? string
 
 ---@class ApiEntitiesPackagesDebianDistribution
----@field architecture? table
+---@field architectures? table
 ---@field codename? string
----@field component? table
+---@field components? table
 ---@field description? string
 ---@field id? number
 ---@field label? string
 ---@field origin? string
 ---@field suite? string
----@field valid_time_duration_second? number
+---@field valid_time_duration_seconds? number
 ---@field version? string
 
 ---@class ApiEntitiesPackagesDebianDistributionLoadMatch
@@ -2595,17 +3783,39 @@
 ---@class ApiEntitiesPackagesDebianDistributionCreateData
 ---@field group_id? string
 ---@field project_id? string
+---@field architectures? table
+---@field codename? string
+---@field components? table
+---@field description? string
+---@field id? number
+---@field label? string
+---@field origin? string
+---@field suite? string
+---@field valid_time_duration_seconds? number
+---@field version? string
 
 ---@class ApiEntitiesPackagesDebianDistributionUpdateData
 ---@field group_id? string
 ---@field id string
 ---@field project_id? string
+---@field architectures? table
+---@field codename? string
+---@field components? table
+---@field description? string
+---@field label? string
+---@field origin? string
+---@field suite? string
+---@field valid_time_duration_seconds? number
+---@field version? string
 
 ---@class ApiEntitiesPagesDomain
 ---@field auto_ssl_enabled? string
----@field certificate? table
+---@field certificate? string
+---@field certificate_text? string
 ---@field domain? string
 ---@field enabled_until? string
+---@field expired? string
+---@field subject? string
 ---@field url? string
 ---@field verification_code? string
 ---@field verified? boolean
@@ -2619,30 +3829,38 @@
 
 ---@class ApiEntitiesPagesDomainCreateData
 ---@field project_id string
+---@field auto_ssl_enabled? string
+---@field certificate? string
+---@field certificate_text? string
+---@field domain? string
+---@field enabled_until? string
+---@field expired? string
+---@field subject? string
+---@field url? string
+---@field verification_code? string
+---@field verified? boolean
 
 ---@class ApiEntitiesPagesDomainUpdateData
 ---@field domain_id string
 ---@field project_id string
+---@field auto_ssl_enabled? string
+---@field certificate? string
+---@field certificate_text? string
+---@field domain? string
+---@field enabled_until? string
+---@field expired? string
+---@field subject? string
+---@field url? string
+---@field verification_code? string
+---@field verified? boolean
 
 ---@class ApiEntitiesPagesDomainBasic
----@field auto_ssl_enabled? string
----@field certificate_expiration? table
----@field domain? string
----@field enabled_until? string
----@field project_id? string
----@field url? string
----@field verification_code? string
----@field verified? boolean
+---@field expiration? string
+---@field expired? string
 
 ---@class ApiEntitiesPagesDomainBasicLoadMatch
----@field auto_ssl_enabled? string
----@field certificate_expiration? table
----@field domain? string
----@field enabled_until? string
----@field project_id? string
----@field url? string
----@field verification_code? string
----@field verified? boolean
+---@field expiration? string
+---@field expired? string
 
 ---@class ApiEntitiesPersonalAccessToken
 ---@field active? boolean
@@ -2653,7 +3871,7 @@
 ---@field last_used_at? string
 ---@field name? string
 ---@field revoked? boolean
----@field scope? table
+---@field scopes? table
 ---@field user_id? number
 
 ---@class ApiEntitiesPersonalAccessTokenListMatch
@@ -2665,7 +3883,7 @@
 ---@field last_used_at? string
 ---@field name? string
 ---@field revoked? boolean
----@field scope? table
+---@field scopes? table
 ---@field user_id? number
 
 ---@class ApiEntitiesPersonalAccessTokenWithLastUsedIp
@@ -2675,10 +3893,10 @@
 ---@field expires_at? string
 ---@field id? number
 ---@field last_used_at? string
----@field last_used_ip? table
+---@field last_used_ips? table
 ---@field name? string
 ---@field revoked? boolean
----@field scope? table
+---@field scopes? table
 ---@field user_id? number
 
 ---@class ApiEntitiesPersonalAccessTokenWithLastUsedIpLoadMatch
@@ -2691,10 +3909,10 @@
 ---@field expires_at? string
 ---@field id? number
 ---@field last_used_at? string
----@field last_used_ip? table
+---@field last_used_ips? table
 ---@field name? string
 ---@field revoked? boolean
----@field scope? table
+---@field scopes? table
 ---@field user_id? number
 
 ---@class ApiEntitiesPersonalAccessTokenWithToken
@@ -2706,19 +3924,30 @@
 ---@field last_used_at? string
 ---@field name? string
 ---@field revoked? boolean
----@field scope? table
+---@field scopes? table
 ---@field token? string
 ---@field user_id? number
 
 ---@class ApiEntitiesPersonalAccessTokenWithTokenCreateData
 ---@field personal_access_token_id? string
+---@field active? boolean
+---@field created_at? string
+---@field description? string
+---@field expires_at? string
+---@field id? number
+---@field last_used_at? string
+---@field name? string
+---@field revoked? boolean
+---@field scopes? table
+---@field token? string
+---@field user_id? number
 
 ---@class ApiEntitiesPersonalSnippet
 ---@field author? table
 ---@field created_at? string
 ---@field description? string
----@field file? table
 ---@field file_name? string
+---@field files? table
 ---@field http_url_to_repo? string
 ---@field id? number
 ---@field imported? boolean
@@ -2739,8 +3968,8 @@
 ---@field author? table
 ---@field created_at? string
 ---@field description? string
----@field file? table
 ---@field file_name? string
+---@field files? table
 ---@field http_url_to_repo? string
 ---@field id? number
 ---@field imported? boolean
@@ -2758,8 +3987,8 @@
 ---@field author? table
 ---@field created_at? string
 ---@field description? string
----@field file? table
 ---@field file_name? string
+---@field files? table
 ---@field http_url_to_repo? string
 ---@field id? number
 ---@field imported? boolean
@@ -2775,81 +4004,28 @@
 
 ---@class ApiEntitiesPersonalSnippetUpdateData
 ---@field id string
+---@field author? table
+---@field created_at? string
+---@field description? string
+---@field file_name? string
+---@field files? table
+---@field http_url_to_repo? string
+---@field imported? boolean
+---@field imported_from? string
+---@field project_id? number
+---@field raw_url? string
+---@field repository_storage? string
+---@field ssh_url_to_repo? string
+---@field title? string
+---@field updated_at? string
+---@field visibility? string
+---@field web_url? string
 
 ---@class ApiEntitiesPlanLimit
----@field ci_active_job? number
----@field ci_instance_level_variable? number
----@field ci_needs_size_limit? number
----@field ci_pipeline_schedule? number
----@field ci_pipeline_size? number
----@field ci_project_subscription? number
----@field ci_registered_group_runner? number
----@field ci_registered_project_runner? number
----@field conan_max_file_size? number
----@field dotenv_size? number
----@field dotenv_variable? number
----@field enforcement_limit? number
----@field generic_packages_max_file_size? number
----@field helm_max_file_size? number
----@field limits_history? table
----@field maven_max_file_size? number
----@field notification_limit? number
----@field npm_max_file_size? number
----@field nuget_max_file_size? number
----@field pipeline_hierarchy_size? number
----@field pypi_max_file_size? number
----@field storage_size_limit? number
----@field terraform_module_max_file_size? number
 
 ---@class ApiEntitiesPlanLimitLoadMatch
----@field ci_active_job? number
----@field ci_instance_level_variable? number
----@field ci_needs_size_limit? number
----@field ci_pipeline_schedule? number
----@field ci_pipeline_size? number
----@field ci_project_subscription? number
----@field ci_registered_group_runner? number
----@field ci_registered_project_runner? number
----@field conan_max_file_size? number
----@field dotenv_size? number
----@field dotenv_variable? number
----@field enforcement_limit? number
----@field generic_packages_max_file_size? number
----@field helm_max_file_size? number
----@field limits_history? table
----@field maven_max_file_size? number
----@field notification_limit? number
----@field npm_max_file_size? number
----@field nuget_max_file_size? number
----@field pipeline_hierarchy_size? number
----@field pypi_max_file_size? number
----@field storage_size_limit? number
----@field terraform_module_max_file_size? number
 
 ---@class ApiEntitiesPlanLimitUpdateData
----@field ci_active_job? number
----@field ci_instance_level_variable? number
----@field ci_needs_size_limit? number
----@field ci_pipeline_schedule? number
----@field ci_pipeline_size? number
----@field ci_project_subscription? number
----@field ci_registered_group_runner? number
----@field ci_registered_project_runner? number
----@field conan_max_file_size? number
----@field dotenv_size? number
----@field dotenv_variable? number
----@field enforcement_limit? number
----@field generic_packages_max_file_size? number
----@field helm_max_file_size? number
----@field limits_history? table
----@field maven_max_file_size? number
----@field notification_limit? number
----@field npm_max_file_size? number
----@field nuget_max_file_size? number
----@field pipeline_hierarchy_size? number
----@field pypi_max_file_size? number
----@field storage_size_limit? number
----@field terraform_module_max_file_size? number
 
 ---@class ApiEntitiesProject
 ---@field allow_merge_on_skipped_pipeline? boolean
@@ -2857,11 +4033,11 @@
 ---@field analytics_access_level? string
 ---@field approvals_before_merge? string
 ---@field archived? boolean
----@field auto_cancel_pending_pipeline? string
+---@field auto_cancel_pending_pipelines? string
 ---@field auto_devops_deploy_strategy? string
 ---@field auto_devops_enabled? boolean
 ---@field auto_duo_code_review_enabled? string
----@field autoclose_referenced_issue? boolean
+---@field autoclose_referenced_issues? boolean
 ---@field avatar_url? string
 ---@field build_git_strategy? string
 ---@field build_timeout? number
@@ -2870,23 +4046,23 @@
 ---@field ci_allow_fork_pipelines_to_run_in_parent_project? boolean
 ---@field ci_config_path? string
 ---@field ci_default_git_depth? number
----@field ci_delete_pipelines_in_second? number
+---@field ci_delete_pipelines_in_seconds? number
 ---@field ci_forward_deployment_enabled? boolean
 ---@field ci_forward_deployment_rollback_allowed? boolean
----@field ci_id_token_sub_claim_component? table
+---@field ci_id_token_sub_claim_components? table
 ---@field ci_job_token_scope_enabled? boolean
 ---@field ci_pipeline_variables_minimum_override_role? string
 ---@field ci_push_repository_for_job_token_allowed? boolean
 ---@field ci_restrict_pipeline_cancellation_role? string
----@field ci_separated_cache? boolean
----@field compliance_framework? string
+---@field ci_separated_caches? boolean
+---@field compliance_frameworks? string
 ---@field container_expiration_policy? table
 ---@field container_registry_access_level? string
 ---@field container_registry_enabled? boolean
 ---@field container_registry_image_prefix? string
 ---@field created_at? string
 ---@field creator_id? number
----@field custom_attribute? table
+---@field custom_attributes? table
 ---@field default_branch? string
 ---@field description? string
 ---@field description_html? string
@@ -2894,7 +4070,7 @@
 ---@field emails_disabled? boolean
 ---@field emails_enabled? boolean
 ---@field empty_repo? boolean
----@field enforce_auth_checks_on_upload? boolean
+---@field enforce_auth_checks_on_uploads? boolean
 ---@field environments_access_level? string
 ---@field external_authorization_classification_label? string
 ---@field feature_flags_access_level? string
@@ -2919,7 +4095,7 @@
 ---@field lfs_enabled? boolean
 ---@field license? table
 ---@field license_url? string
----@field link? table
+---@field links? table
 ---@field marked_for_deletion_at? string
 ---@field marked_for_deletion_on? string
 ---@field max_artifacts_size? number
@@ -2934,8 +4110,8 @@
 ---@field merge_trains_enabled? string
 ---@field merge_trains_skip_train_allowed? string
 ---@field mirror? string
----@field mirror_overwrites_diverged_branch? string
----@field mirror_trigger_build? string
+---@field mirror_overwrites_diverged_branches? string
+---@field mirror_trigger_builds? string
 ---@field mirror_user_id? string
 ---@field model_experiments_access_level? string
 ---@field model_registry_access_level? string
@@ -2946,8 +4122,8 @@
 ---@field namespace? table
 ---@field only_allow_merge_if_all_discussions_are_resolved? boolean
 ---@field only_allow_merge_if_all_status_checks_passed? string
----@field only_allow_merge_if_pipeline_succeed? boolean
----@field only_mirror_protected_branch? string
+---@field only_allow_merge_if_pipeline_succeeds? boolean
+---@field only_mirror_protected_branches? string
 ---@field open_issues_count? number
 ---@field owner? table
 ---@field package_registry_access_level? string
@@ -2958,7 +4134,7 @@
 ---@field pre_receive_secret_detection_enabled? boolean
 ---@field prevent_merge_without_jira_issue? string
 ---@field printing_merge_request_link_enabled? boolean
----@field public_job? boolean
+---@field public_jobs? boolean
 ---@field readme_url? string
 ---@field releases_access_level? string
 ---@field remove_source_branch_after_merge? boolean
@@ -2968,9 +4144,9 @@
 ---@field request_access_enabled? boolean
 ---@field requirements_access_level? string
 ---@field requirements_enabled? string
----@field resolve_outdated_diff_discussion? boolean
+---@field resolve_outdated_diff_discussions? boolean
 ---@field resource_group_default_process_mode? string
----@field restrict_user_defined_variable? boolean
+---@field restrict_user_defined_variables? boolean
 ---@field runner_token_expiration_interval? number
 ---@field runners_token? string
 ---@field secret_push_protection_enabled? boolean
@@ -2979,7 +4155,7 @@
 ---@field service_desk_address? string
 ---@field service_desk_enabled? boolean
 ---@field shared_runners_enabled? boolean
----@field shared_with_group? table
+---@field shared_with_groups? table
 ---@field show_diff_preview_in_email? boolean
 ---@field snippets_access_level? string
 ---@field snippets_enabled? boolean
@@ -2988,13 +4164,13 @@
 ---@field squash_option? string
 ---@field ssh_url_to_repo? string
 ---@field star_count? number
----@field statistic? table
+---@field statistics? table
 ---@field suggestion_commit_message? string
 ---@field tag_list? table
----@field topic? table
+---@field topics? table
 ---@field updated_at? string
 ---@field visibility? string
----@field warn_about_potentially_unwanted_character? boolean
+---@field warn_about_potentially_unwanted_characters? boolean
 ---@field web_based_commit_signing_enabled? string
 ---@field web_url? string
 ---@field wiki_access_level? string
@@ -3008,27 +4184,314 @@
 ---@field forked_from_id? string
 ---@field project_id? string
 ---@field user_id? string
+---@field allow_merge_on_skipped_pipeline? boolean
+---@field allow_pipeline_trigger_approve_deployment? boolean
+---@field analytics_access_level? string
+---@field approvals_before_merge? string
+---@field archived? boolean
+---@field auto_cancel_pending_pipelines? string
+---@field auto_devops_deploy_strategy? string
+---@field auto_devops_enabled? boolean
+---@field auto_duo_code_review_enabled? string
+---@field autoclose_referenced_issues? boolean
+---@field avatar_url? string
+---@field build_git_strategy? string
+---@field build_timeout? number
+---@field builds_access_level? string
+---@field can_create_merge_request_in? boolean
+---@field ci_allow_fork_pipelines_to_run_in_parent_project? boolean
+---@field ci_config_path? string
+---@field ci_default_git_depth? number
+---@field ci_delete_pipelines_in_seconds? number
+---@field ci_forward_deployment_enabled? boolean
+---@field ci_forward_deployment_rollback_allowed? boolean
+---@field ci_id_token_sub_claim_components? table
+---@field ci_job_token_scope_enabled? boolean
+---@field ci_pipeline_variables_minimum_override_role? string
+---@field ci_push_repository_for_job_token_allowed? boolean
+---@field ci_restrict_pipeline_cancellation_role? string
+---@field ci_separated_caches? boolean
+---@field compliance_frameworks? string
+---@field container_expiration_policy? table
+---@field container_registry_access_level? string
+---@field container_registry_enabled? boolean
+---@field container_registry_image_prefix? string
+---@field created_at? string
+---@field creator_id? number
+---@field custom_attributes? table
+---@field default_branch? string
+---@field description? string
+---@field description_html? string
+---@field duo_remote_flows_enabled? string
+---@field emails_disabled? boolean
+---@field emails_enabled? boolean
+---@field empty_repo? boolean
+---@field enforce_auth_checks_on_uploads? boolean
+---@field environments_access_level? string
+---@field external_authorization_classification_label? string
+---@field feature_flags_access_level? string
+---@field forked_from_project? table
+---@field forking_access_level? string
+---@field forks_count? number
+---@field group_runners_enabled? boolean
+---@field http_url_to_repo? string
+---@field id? number
+---@field import_error? string
+---@field import_status? string
+---@field import_type? string
+---@field import_url? string
+---@field infrastructure_access_level? string
+---@field issue_branch_template? string
+---@field issues_access_level? string
+---@field issues_enabled? boolean
+---@field issues_template? string
+---@field jobs_enabled? boolean
+---@field keep_latest_artifact? boolean
+---@field last_activity_at? string
+---@field lfs_enabled? boolean
+---@field license? table
+---@field license_url? string
+---@field links? table
+---@field marked_for_deletion_at? string
+---@field marked_for_deletion_on? string
+---@field max_artifacts_size? number
+---@field merge_commit_template? string
+---@field merge_method? string
+---@field merge_pipelines_enabled? string
+---@field merge_request_title_regex? string
+---@field merge_request_title_regex_description? string
+---@field merge_requests_access_level? string
+---@field merge_requests_enabled? boolean
+---@field merge_requests_template? string
+---@field merge_trains_enabled? string
+---@field merge_trains_skip_train_allowed? string
+---@field mirror? string
+---@field mirror_overwrites_diverged_branches? string
+---@field mirror_trigger_builds? string
+---@field mirror_user_id? string
+---@field model_experiments_access_level? string
+---@field model_registry_access_level? string
+---@field monitor_access_level? string
+---@field mr_default_target_self? boolean
+---@field name? string
+---@field name_with_namespace? string
+---@field namespace? table
+---@field only_allow_merge_if_all_discussions_are_resolved? boolean
+---@field only_allow_merge_if_all_status_checks_passed? string
+---@field only_allow_merge_if_pipeline_succeeds? boolean
+---@field only_mirror_protected_branches? string
+---@field open_issues_count? number
+---@field owner? table
+---@field package_registry_access_level? string
+---@field packages_enabled? boolean
+---@field pages_access_level? string
+---@field path? string
+---@field path_with_namespace? string
+---@field pre_receive_secret_detection_enabled? boolean
+---@field prevent_merge_without_jira_issue? string
+---@field printing_merge_request_link_enabled? boolean
+---@field public_jobs? boolean
+---@field readme_url? string
+---@field releases_access_level? string
+---@field remove_source_branch_after_merge? boolean
+---@field repository_access_level? string
+---@field repository_object_format? string
+---@field repository_storage? string
+---@field request_access_enabled? boolean
+---@field requirements_access_level? string
+---@field requirements_enabled? string
+---@field resolve_outdated_diff_discussions? boolean
+---@field resource_group_default_process_mode? string
+---@field restrict_user_defined_variables? boolean
+---@field runner_token_expiration_interval? number
+---@field runners_token? string
+---@field secret_push_protection_enabled? boolean
+---@field security_and_compliance_access_level? string
+---@field security_and_compliance_enabled? string
+---@field service_desk_address? string
+---@field service_desk_enabled? boolean
+---@field shared_runners_enabled? boolean
+---@field shared_with_groups? table
+---@field show_diff_preview_in_email? boolean
+---@field snippets_access_level? string
+---@field snippets_enabled? boolean
+---@field spp_repository_pipeline_access? boolean
+---@field squash_commit_template? string
+---@field squash_option? string
+---@field ssh_url_to_repo? string
+---@field star_count? number
+---@field statistics? table
+---@field suggestion_commit_message? string
+---@field tag_list? table
+---@field topics? table
+---@field updated_at? string
+---@field visibility? string
+---@field warn_about_potentially_unwanted_characters? boolean
+---@field web_based_commit_signing_enabled? string
+---@field web_url? string
+---@field wiki_access_level? string
+---@field wiki_enabled? boolean
 
 ---@class ApiEntitiesProjectUpdateData
 ---@field id? string
 ---@field project_id? string
+---@field allow_merge_on_skipped_pipeline? boolean
+---@field allow_pipeline_trigger_approve_deployment? boolean
+---@field analytics_access_level? string
+---@field approvals_before_merge? string
+---@field archived? boolean
+---@field auto_cancel_pending_pipelines? string
+---@field auto_devops_deploy_strategy? string
+---@field auto_devops_enabled? boolean
+---@field auto_duo_code_review_enabled? string
+---@field autoclose_referenced_issues? boolean
+---@field avatar_url? string
+---@field build_git_strategy? string
+---@field build_timeout? number
+---@field builds_access_level? string
+---@field can_create_merge_request_in? boolean
+---@field ci_allow_fork_pipelines_to_run_in_parent_project? boolean
+---@field ci_config_path? string
+---@field ci_default_git_depth? number
+---@field ci_delete_pipelines_in_seconds? number
+---@field ci_forward_deployment_enabled? boolean
+---@field ci_forward_deployment_rollback_allowed? boolean
+---@field ci_id_token_sub_claim_components? table
+---@field ci_job_token_scope_enabled? boolean
+---@field ci_pipeline_variables_minimum_override_role? string
+---@field ci_push_repository_for_job_token_allowed? boolean
+---@field ci_restrict_pipeline_cancellation_role? string
+---@field ci_separated_caches? boolean
+---@field compliance_frameworks? string
+---@field container_expiration_policy? table
+---@field container_registry_access_level? string
+---@field container_registry_enabled? boolean
+---@field container_registry_image_prefix? string
+---@field created_at? string
+---@field creator_id? number
+---@field custom_attributes? table
+---@field default_branch? string
+---@field description? string
+---@field description_html? string
+---@field duo_remote_flows_enabled? string
+---@field emails_disabled? boolean
+---@field emails_enabled? boolean
+---@field empty_repo? boolean
+---@field enforce_auth_checks_on_uploads? boolean
+---@field environments_access_level? string
+---@field external_authorization_classification_label? string
+---@field feature_flags_access_level? string
+---@field forked_from_project? table
+---@field forking_access_level? string
+---@field forks_count? number
+---@field group_runners_enabled? boolean
+---@field http_url_to_repo? string
+---@field import_error? string
+---@field import_status? string
+---@field import_type? string
+---@field import_url? string
+---@field infrastructure_access_level? string
+---@field issue_branch_template? string
+---@field issues_access_level? string
+---@field issues_enabled? boolean
+---@field issues_template? string
+---@field jobs_enabled? boolean
+---@field keep_latest_artifact? boolean
+---@field last_activity_at? string
+---@field lfs_enabled? boolean
+---@field license? table
+---@field license_url? string
+---@field links? table
+---@field marked_for_deletion_at? string
+---@field marked_for_deletion_on? string
+---@field max_artifacts_size? number
+---@field merge_commit_template? string
+---@field merge_method? string
+---@field merge_pipelines_enabled? string
+---@field merge_request_title_regex? string
+---@field merge_request_title_regex_description? string
+---@field merge_requests_access_level? string
+---@field merge_requests_enabled? boolean
+---@field merge_requests_template? string
+---@field merge_trains_enabled? string
+---@field merge_trains_skip_train_allowed? string
+---@field mirror? string
+---@field mirror_overwrites_diverged_branches? string
+---@field mirror_trigger_builds? string
+---@field mirror_user_id? string
+---@field model_experiments_access_level? string
+---@field model_registry_access_level? string
+---@field monitor_access_level? string
+---@field mr_default_target_self? boolean
+---@field name? string
+---@field name_with_namespace? string
+---@field namespace? table
+---@field only_allow_merge_if_all_discussions_are_resolved? boolean
+---@field only_allow_merge_if_all_status_checks_passed? string
+---@field only_allow_merge_if_pipeline_succeeds? boolean
+---@field only_mirror_protected_branches? string
+---@field open_issues_count? number
+---@field owner? table
+---@field package_registry_access_level? string
+---@field packages_enabled? boolean
+---@field pages_access_level? string
+---@field path? string
+---@field path_with_namespace? string
+---@field pre_receive_secret_detection_enabled? boolean
+---@field prevent_merge_without_jira_issue? string
+---@field printing_merge_request_link_enabled? boolean
+---@field public_jobs? boolean
+---@field readme_url? string
+---@field releases_access_level? string
+---@field remove_source_branch_after_merge? boolean
+---@field repository_access_level? string
+---@field repository_object_format? string
+---@field repository_storage? string
+---@field request_access_enabled? boolean
+---@field requirements_access_level? string
+---@field requirements_enabled? string
+---@field resolve_outdated_diff_discussions? boolean
+---@field resource_group_default_process_mode? string
+---@field restrict_user_defined_variables? boolean
+---@field runner_token_expiration_interval? number
+---@field runners_token? string
+---@field secret_push_protection_enabled? boolean
+---@field security_and_compliance_access_level? string
+---@field security_and_compliance_enabled? string
+---@field service_desk_address? string
+---@field service_desk_enabled? boolean
+---@field shared_runners_enabled? boolean
+---@field shared_with_groups? table
+---@field show_diff_preview_in_email? boolean
+---@field snippets_access_level? string
+---@field snippets_enabled? boolean
+---@field spp_repository_pipeline_access? boolean
+---@field squash_commit_template? string
+---@field squash_option? string
+---@field ssh_url_to_repo? string
+---@field star_count? number
+---@field statistics? table
+---@field suggestion_commit_message? string
+---@field tag_list? table
+---@field topics? table
+---@field updated_at? string
+---@field visibility? string
+---@field warn_about_potentially_unwanted_characters? boolean
+---@field web_based_commit_signing_enabled? string
+---@field web_url? string
+---@field wiki_access_level? string
+---@field wiki_enabled? boolean
 
 ---@class ApiEntitiesProjectDailyStatistic
----@field fetch? table
+---@field days? table
+---@field total? number
 
 ---@class ApiEntitiesProjectDailyStatisticLoadMatch
 ---@field project_id string
 
 ---@class ApiEntitiesProjectExportStatus
----@field created_at? string
----@field description? string
----@field export_status? string
----@field id? number
----@field link? table
----@field name? string
----@field name_with_namespace? string
----@field path? string
----@field path_with_namespace? string
+---@field api_url? string
+---@field web_url? string
 
 ---@class ApiEntitiesProjectExportStatusLoadMatch
 ---@field project_id string
@@ -3041,36 +4504,36 @@
 ---@class ApiEntitiesProjectHook
 ---@field alert_status? any
 ---@field branch_filter_strategy? string
----@field confidential_issues_event? boolean
----@field confidential_note_event? boolean
+---@field confidential_issues_events? boolean
+---@field confidential_note_events? boolean
 ---@field created_at? string
----@field custom_header? table
+---@field custom_headers? table
 ---@field custom_webhook_template? string
----@field deployment_event? boolean
+---@field deployment_events? boolean
 ---@field description? string
 ---@field disabled_until? string
----@field emoji_event? boolean
+---@field emoji_events? boolean
 ---@field enable_ssl_verification? boolean
----@field feature_flag_event? boolean
+---@field feature_flag_events? boolean
 ---@field id? string
----@field issues_event? boolean
----@field job_event? boolean
----@field merge_requests_event? boolean
----@field milestone_event? boolean
+---@field issues_events? boolean
+---@field job_events? boolean
+---@field merge_requests_events? boolean
+---@field milestone_events? boolean
 ---@field name? string
----@field note_event? boolean
----@field pipeline_event? boolean
+---@field note_events? boolean
+---@field pipeline_events? boolean
 ---@field project_id? string
----@field push_event? boolean
+---@field push_events? boolean
 ---@field push_events_branch_filter? string
----@field releases_event? boolean
----@field repository_update_event? boolean
----@field resource_access_token_event? boolean
----@field tag_push_event? boolean
+---@field releases_events? boolean
+---@field repository_update_events? boolean
+---@field resource_access_token_events? boolean
+---@field tag_push_events? boolean
 ---@field url? string
----@field url_variable? table
----@field vulnerability_event? boolean
----@field wiki_page_event? boolean
+---@field url_variables? table
+---@field vulnerability_events? boolean
+---@field wiki_page_events? boolean
 
 ---@class ApiEntitiesProjectHookLoadMatch
 ---@field id string
@@ -3081,10 +4544,71 @@
 
 ---@class ApiEntitiesProjectHookCreateData
 ---@field project_id string
+---@field alert_status? any
+---@field branch_filter_strategy? string
+---@field confidential_issues_events? boolean
+---@field confidential_note_events? boolean
+---@field created_at? string
+---@field custom_headers? table
+---@field custom_webhook_template? string
+---@field deployment_events? boolean
+---@field description? string
+---@field disabled_until? string
+---@field emoji_events? boolean
+---@field enable_ssl_verification? boolean
+---@field feature_flag_events? boolean
+---@field id? string
+---@field issues_events? boolean
+---@field job_events? boolean
+---@field merge_requests_events? boolean
+---@field milestone_events? boolean
+---@field name? string
+---@field note_events? boolean
+---@field pipeline_events? boolean
+---@field push_events? boolean
+---@field push_events_branch_filter? string
+---@field releases_events? boolean
+---@field repository_update_events? boolean
+---@field resource_access_token_events? boolean
+---@field tag_push_events? boolean
+---@field url? string
+---@field url_variables? table
+---@field vulnerability_events? boolean
+---@field wiki_page_events? boolean
 
 ---@class ApiEntitiesProjectHookUpdateData
 ---@field id string
 ---@field project_id string
+---@field alert_status? any
+---@field branch_filter_strategy? string
+---@field confidential_issues_events? boolean
+---@field confidential_note_events? boolean
+---@field created_at? string
+---@field custom_headers? table
+---@field custom_webhook_template? string
+---@field deployment_events? boolean
+---@field description? string
+---@field disabled_until? string
+---@field emoji_events? boolean
+---@field enable_ssl_verification? boolean
+---@field feature_flag_events? boolean
+---@field issues_events? boolean
+---@field job_events? boolean
+---@field merge_requests_events? boolean
+---@field milestone_events? boolean
+---@field name? string
+---@field note_events? boolean
+---@field pipeline_events? boolean
+---@field push_events? boolean
+---@field push_events_branch_filter? string
+---@field releases_events? boolean
+---@field repository_update_events? boolean
+---@field resource_access_token_events? boolean
+---@field tag_push_events? boolean
+---@field url? string
+---@field url_variables? table
+---@field vulnerability_events? boolean
+---@field wiki_page_events? boolean
 
 ---@class ApiEntitiesProjectImportStatus
 ---@field created_at? string
@@ -3127,8 +4651,8 @@
 ---@field author? table
 ---@field created_at? string
 ---@field description? string
----@field file? table
 ---@field file_name? string
+---@field files? table
 ---@field http_url_to_repo? string
 ---@field id? number
 ---@field imported? boolean
@@ -3154,10 +4678,41 @@
 
 ---@class ApiEntitiesProjectSnippetCreateData
 ---@field project_id string
+---@field author? table
+---@field created_at? string
+---@field description? string
+---@field file_name? string
+---@field files? table
+---@field http_url_to_repo? string
+---@field id? number
+---@field imported? boolean
+---@field imported_from? string
+---@field raw_url? string
+---@field repository_storage? string
+---@field ssh_url_to_repo? string
+---@field title? string
+---@field updated_at? string
+---@field visibility? string
+---@field web_url? string
 
 ---@class ApiEntitiesProjectSnippetUpdateData
 ---@field id string
 ---@field project_id string
+---@field author? table
+---@field created_at? string
+---@field description? string
+---@field file_name? string
+---@field files? table
+---@field http_url_to_repo? string
+---@field imported? boolean
+---@field imported_from? string
+---@field raw_url? string
+---@field repository_storage? string
+---@field ssh_url_to_repo? string
+---@field title? string
+---@field updated_at? string
+---@field visibility? string
+---@field web_url? string
 
 ---@class ApiEntitiesProjectUpload
 
@@ -3170,11 +4725,11 @@
 ---@field analytics_access_level? string
 ---@field approvals_before_merge? string
 ---@field archived? boolean
----@field auto_cancel_pending_pipeline? string
+---@field auto_cancel_pending_pipelines? string
 ---@field auto_devops_deploy_strategy? string
 ---@field auto_devops_enabled? boolean
 ---@field auto_duo_code_review_enabled? string
----@field autoclose_referenced_issue? boolean
+---@field autoclose_referenced_issues? boolean
 ---@field avatar_url? string
 ---@field build_git_strategy? string
 ---@field build_timeout? number
@@ -3183,23 +4738,23 @@
 ---@field ci_allow_fork_pipelines_to_run_in_parent_project? boolean
 ---@field ci_config_path? string
 ---@field ci_default_git_depth? number
----@field ci_delete_pipelines_in_second? number
+---@field ci_delete_pipelines_in_seconds? number
 ---@field ci_forward_deployment_enabled? boolean
 ---@field ci_forward_deployment_rollback_allowed? boolean
----@field ci_id_token_sub_claim_component? table
+---@field ci_id_token_sub_claim_components? table
 ---@field ci_job_token_scope_enabled? boolean
 ---@field ci_pipeline_variables_minimum_override_role? string
 ---@field ci_push_repository_for_job_token_allowed? boolean
 ---@field ci_restrict_pipeline_cancellation_role? string
----@field ci_separated_cache? boolean
----@field compliance_framework? string
+---@field ci_separated_caches? boolean
+---@field compliance_frameworks? string
 ---@field container_expiration_policy? table
 ---@field container_registry_access_level? string
 ---@field container_registry_enabled? boolean
 ---@field container_registry_image_prefix? string
 ---@field created_at? string
 ---@field creator_id? number
----@field custom_attribute? table
+---@field custom_attributes? table
 ---@field default_branch? string
 ---@field description? string
 ---@field description_html? string
@@ -3207,7 +4762,7 @@
 ---@field emails_disabled? boolean
 ---@field emails_enabled? boolean
 ---@field empty_repo? boolean
----@field enforce_auth_checks_on_upload? boolean
+---@field enforce_auth_checks_on_uploads? boolean
 ---@field environments_access_level? string
 ---@field external_authorization_classification_label? string
 ---@field feature_flags_access_level? string
@@ -3232,7 +4787,7 @@
 ---@field lfs_enabled? boolean
 ---@field license? table
 ---@field license_url? string
----@field link? table
+---@field links? table
 ---@field marked_for_deletion_at? string
 ---@field marked_for_deletion_on? string
 ---@field max_artifacts_size? number
@@ -3247,8 +4802,8 @@
 ---@field merge_trains_enabled? string
 ---@field merge_trains_skip_train_allowed? string
 ---@field mirror? string
----@field mirror_overwrites_diverged_branch? string
----@field mirror_trigger_build? string
+---@field mirror_overwrites_diverged_branches? string
+---@field mirror_trigger_builds? string
 ---@field mirror_user_id? string
 ---@field model_experiments_access_level? string
 ---@field model_registry_access_level? string
@@ -3259,8 +4814,8 @@
 ---@field namespace? table
 ---@field only_allow_merge_if_all_discussions_are_resolved? boolean
 ---@field only_allow_merge_if_all_status_checks_passed? string
----@field only_allow_merge_if_pipeline_succeed? boolean
----@field only_mirror_protected_branch? string
+---@field only_allow_merge_if_pipeline_succeeds? boolean
+---@field only_mirror_protected_branches? string
 ---@field open_issues_count? number
 ---@field owner? table
 ---@field package_registry_access_level? string
@@ -3268,11 +4823,11 @@
 ---@field pages_access_level? string
 ---@field path? string
 ---@field path_with_namespace? string
----@field permission? table
+---@field permissions? table
 ---@field pre_receive_secret_detection_enabled? boolean
 ---@field prevent_merge_without_jira_issue? string
 ---@field printing_merge_request_link_enabled? boolean
----@field public_job? boolean
+---@field public_jobs? boolean
 ---@field readme_url? string
 ---@field releases_access_level? string
 ---@field remove_source_branch_after_merge? boolean
@@ -3282,9 +4837,9 @@
 ---@field request_access_enabled? boolean
 ---@field requirements_access_level? string
 ---@field requirements_enabled? string
----@field resolve_outdated_diff_discussion? boolean
+---@field resolve_outdated_diff_discussions? boolean
 ---@field resource_group_default_process_mode? string
----@field restrict_user_defined_variable? boolean
+---@field restrict_user_defined_variables? boolean
 ---@field runner_token_expiration_interval? number
 ---@field runners_token? string
 ---@field secret_push_protection_enabled? boolean
@@ -3293,7 +4848,7 @@
 ---@field service_desk_address? string
 ---@field service_desk_enabled? boolean
 ---@field shared_runners_enabled? boolean
----@field shared_with_group? table
+---@field shared_with_groups? table
 ---@field show_diff_preview_in_email? boolean
 ---@field snippets_access_level? string
 ---@field snippets_enabled? boolean
@@ -3302,13 +4857,13 @@
 ---@field squash_option? string
 ---@field ssh_url_to_repo? string
 ---@field star_count? number
----@field statistic? table
+---@field statistics? table
 ---@field suggestion_commit_message? string
 ---@field tag_list? table
----@field topic? table
+---@field topics? table
 ---@field updated_at? string
 ---@field visibility? string
----@field warn_about_potentially_unwanted_character? boolean
+---@field warn_about_potentially_unwanted_characters? boolean
 ---@field web_based_commit_signing_enabled? string
 ---@field web_url? string
 ---@field wiki_access_level? string
@@ -3329,10 +4884,17 @@
 
 ---@class ApiEntitiesProjectsContainerRegistryProtectionRuleCreateData
 ---@field project_id string
+---@field id? number
+---@field minimum_access_level_for_delete? string
+---@field minimum_access_level_for_push? string
+---@field repository_path_pattern? string
 
 ---@class ApiEntitiesProjectsContainerRegistryProtectionRuleUpdateData
 ---@field id string
 ---@field project_id string
+---@field minimum_access_level_for_delete? string
+---@field minimum_access_level_for_push? string
+---@field repository_path_pattern? string
 
 ---@class ApiEntitiesProjectsPackagesProtectionRule
 ---@field id? number
@@ -3347,10 +4909,19 @@
 
 ---@class ApiEntitiesProjectsPackagesProtectionRuleCreateData
 ---@field project_id string
+---@field id? number
+---@field minimum_access_level_for_delete? string
+---@field minimum_access_level_for_push? string
+---@field package_name_pattern? string
+---@field package_type? string
 
 ---@class ApiEntitiesProjectsPackagesProtectionRuleUpdateData
 ---@field id string
 ---@field project_id string
+---@field minimum_access_level_for_delete? string
+---@field minimum_access_level_for_push? string
+---@field package_name_pattern? string
+---@field package_type? string
 
 ---@class ApiEntitiesProjectsTopic
 ---@field avatar_url? string
@@ -3375,16 +4946,22 @@
 
 ---@class ApiEntitiesProjectsTopicUpdateData
 ---@field id string
+---@field avatar_url? string
+---@field description? string
+---@field name? string
+---@field organization_id? string
+---@field title? string
+---@field total_projects_count? string
 
 ---@class ApiEntitiesProtectedBranch
 ---@field allow_force_push? boolean
 ---@field code_owner_approval_required? boolean
 ---@field id? number
 ---@field inherited? boolean
----@field merge_access_level? table
+---@field merge_access_levels? table
 ---@field name? string
----@field push_access_level? table
----@field unprotect_access_level? table
+---@field push_access_levels? table
+---@field unprotect_access_levels? table
 
 ---@class ApiEntitiesProtectedBranchLoadMatch
 ---@field id string
@@ -3395,14 +4972,35 @@
 
 ---@class ApiEntitiesProtectedBranchCreateData
 ---@field project_id string
+---@field allow_force_push? boolean
+---@field code_owner_approval_required? boolean
+---@field id? number
+---@field inherited? boolean
+---@field merge_access_levels? table
+---@field name? string
+---@field push_access_levels? table
+---@field unprotect_access_levels? table
 
 ---@class ApiEntitiesProtectedBranchUpdateData
 ---@field id string
 ---@field project_id string
+---@field allow_force_push? boolean
+---@field code_owner_approval_required? boolean
+---@field inherited? boolean
+---@field merge_access_levels? table
+---@field name? string
+---@field push_access_levels? table
+---@field unprotect_access_levels? table
 
 ---@class ApiEntitiesProtectedTag
----@field create_access_level? table
+---@field access_level? number
+---@field access_level_description? string
+---@field create_access_levels? table
+---@field deploy_key_id? number
+---@field group_id? number
+---@field id? number
 ---@field name? string
+---@field user_id? number
 
 ---@class ApiEntitiesProtectedTagLoadMatch
 ---@field id string
@@ -3413,6 +5011,14 @@
 
 ---@class ApiEntitiesProtectedTagCreateData
 ---@field project_id string
+---@field access_level? number
+---@field access_level_description? string
+---@field create_access_levels? table
+---@field deploy_key_id? number
+---@field group_id? number
+---@field id? number
+---@field name? string
+---@field user_id? number
 
 ---@class ApiEntitiesPublicGroupDetail
 ---@field avatar_url? string
@@ -3427,6 +5033,7 @@
 
 ---@class ApiEntitiesRelatedIssue
 ---@field assignee? table
+---@field assignees? table
 ---@field author? table
 ---@field blocking_issues_count? string
 ---@field closed_at? string
@@ -3435,11 +5042,11 @@
 ---@field created_at? string
 ---@field description? string
 ---@field discussion_locked? boolean
----@field downvote? string
+---@field downvotes? string
 ---@field due_date? string
 ---@field epic? table
 ---@field epic_iid? string
----@field has_task? boolean
+---@field has_tasks? boolean
 ---@field health_status? string
 ---@field id? number
 ---@field iid? number
@@ -3448,27 +5055,27 @@
 ---@field issue_link_id? string
 ---@field issue_type? string
 ---@field iteration? table
----@field label? table
----@field link? table
+---@field labels? table
 ---@field link_created_at? string
 ---@field link_type? string
 ---@field link_updated_at? string
+---@field links? table
 ---@field merge_requests_count? string
 ---@field milestone? table
 ---@field moved_to_id? string
 ---@field project_id? number
----@field reference? table
+---@field references? table
 ---@field service_desk_reply_to? string
 ---@field severity? string
 ---@field state? string
 ---@field subscribed? string
 ---@field task_completion_status? string
 ---@field task_status? string
----@field time_stat? table
+---@field time_stats? table
 ---@field title? string
 ---@field type? string
 ---@field updated_at? string
----@field upvote? string
+---@field upvotes? string
 ---@field user_notes_count? string
 ---@field web_url? string
 ---@field weight? string
@@ -3482,16 +5089,16 @@
 ---@class ApiEntitiesRelationImportTrackerCreateData
 
 ---@class ApiEntitiesRelease
----@field asset? table
+---@field assets? table
 ---@field author? table
 ---@field commit? table
 ---@field commit_path? string
 ---@field created_at? string
 ---@field description? string
 ---@field description_html? string
----@field evidence? table
----@field link? table
----@field milestone? table
+---@field evidences? table
+---@field links? table
+---@field milestones? table
 ---@field name? string
 ---@field released_at? string
 ---@field tag_name? string
@@ -3509,10 +5116,39 @@
 ---@class ApiEntitiesReleaseCreateData
 ---@field project_id string
 ---@field tag_name? any
+---@field assets? table
+---@field author? table
+---@field commit? table
+---@field commit_path? string
+---@field created_at? string
+---@field description? string
+---@field description_html? string
+---@field evidences? table
+---@field links? table
+---@field milestones? table
+---@field name? string
+---@field released_at? string
+---@field tag_path? string
+---@field upcoming_release? boolean
 
 ---@class ApiEntitiesReleaseUpdateData
 ---@field id string
 ---@field project_id string
+---@field assets? table
+---@field author? table
+---@field commit? table
+---@field commit_path? string
+---@field created_at? string
+---@field description? string
+---@field description_html? string
+---@field evidences? table
+---@field links? table
+---@field milestones? table
+---@field name? string
+---@field released_at? string
+---@field tag_name? string
+---@field tag_path? string
+---@field upcoming_release? boolean
 
 ---@class ApiEntitiesReleasesLink
 ---@field direct_asset_url? string
@@ -3533,24 +5169,33 @@
 ---@class ApiEntitiesReleasesLinkCreateData
 ---@field project_id string
 ---@field release_id string
+---@field direct_asset_url? string
+---@field id? number
+---@field link_type? string
+---@field name? string
+---@field url? string
 
 ---@class ApiEntitiesReleasesLinkUpdateData
 ---@field id string
 ---@field project_id string
 ---@field release_id string
+---@field direct_asset_url? string
+---@field link_type? string
+---@field name? string
+---@field url? string
 
 ---@class ApiEntitiesRemoteMirror
 ---@field auth_method? string
 ---@field enabled? boolean
----@field host_key? table
+---@field host_keys? table
 ---@field id? number
----@field keep_divergent_ref? boolean
+---@field keep_divergent_refs? boolean
 ---@field last_error? number
 ---@field last_successful_update_at? string
 ---@field last_update_at? string
 ---@field last_update_started_at? string
 ---@field mirror_branch_regex? string
----@field only_protected_branch? boolean
+---@field only_protected_branches? boolean
 ---@field update_status? string
 ---@field url? string
 
@@ -3563,21 +5208,46 @@
 
 ---@class ApiEntitiesRemoteMirrorCreateData
 ---@field project_id string
+---@field auth_method? string
+---@field enabled? boolean
+---@field host_keys? table
+---@field id? number
+---@field keep_divergent_refs? boolean
+---@field last_error? number
+---@field last_successful_update_at? string
+---@field last_update_at? string
+---@field last_update_started_at? string
+---@field mirror_branch_regex? string
+---@field only_protected_branches? boolean
+---@field update_status? string
+---@field url? string
 
 ---@class ApiEntitiesRemoteMirrorUpdateData
 ---@field id string
 ---@field project_id string
+---@field auth_method? string
+---@field enabled? boolean
+---@field host_keys? table
+---@field keep_divergent_refs? boolean
+---@field last_error? number
+---@field last_successful_update_at? string
+---@field last_update_at? string
+---@field last_update_started_at? string
+---@field mirror_branch_regex? string
+---@field only_protected_branches? boolean
+---@field update_status? string
+---@field url? string
 
 ---@class ApiEntitiesRepositoryHealth
----@field alternate? table
+---@field alternates? table
 ---@field bitmap? table
 ---@field commit_graph? table
 ---@field is_object_pool? boolean
 ---@field last_full_repack? table
 ---@field multi_pack_index? table
 ---@field multi_pack_index_bitmap? table
----@field object? table
----@field reference? table
+---@field objects? table
+---@field references? table
 ---@field size? number
 ---@field updated_at? string
 
@@ -3596,13 +5266,27 @@
 ---@field resource_id? number
 ---@field resource_type? string
 ---@field revoked? boolean
----@field scope? table
+---@field scopes? table
 ---@field token? string
 ---@field user_id? number
 
 ---@class ApiEntitiesResourceAccessTokenWithTokenCreateData
 ---@field group_id? string
 ---@field project_id? string
+---@field access_level? number
+---@field active? boolean
+---@field created_at? string
+---@field description? string
+---@field expires_at? string
+---@field id? number
+---@field last_used_at? string
+---@field name? string
+---@field resource_id? number
+---@field resource_type? string
+---@field revoked? boolean
+---@field scopes? table
+---@field token? string
+---@field user_id? number
 
 ---@class ApiEntitiesResourceMilestoneEvent
 ---@field action? string
@@ -3629,8 +5313,8 @@
 ---@field author? table
 ---@field created_at? string
 ---@field description? string
----@field file? table
 ---@field file_name? string
+---@field files? table
 ---@field http_url_to_repo? string
 ---@field id? number
 ---@field imported? boolean
@@ -3648,8 +5332,8 @@
 ---@field author? table
 ---@field created_at? string
 ---@field description? string
----@field file? table
 ---@field file_name? string
+---@field files? table
 ---@field http_url_to_repo? string
 ---@field id? number
 ---@field imported? boolean
@@ -3664,14 +5348,52 @@
 ---@field web_url? string
 
 ---@class ApiEntitiesSshKeyWithUser
+---@field avatar_path? string
+---@field avatar_url? string
+---@field bio? string
+---@field bot? string
+---@field can_create_group? boolean
+---@field can_create_project? boolean
+---@field color_scheme_id? number
+---@field commit_email? string
+---@field confirmed_at? string
 ---@field created_at? string
----@field expires_at? string
+---@field current_sign_in_at? string
+---@field custom_attributes? table
+---@field discord? string
+---@field email? string
+---@field external? string
+---@field extra_shared_runners_minutes_limit? string
+---@field followers? string
+---@field following? string
+---@field github? string
 ---@field id? number
----@field key? string
----@field last_used_at? string
----@field title? string
----@field usage_type? string
----@field user? table
+---@field identities? table
+---@field is_followed? boolean
+---@field job_title? string
+---@field last_activity_on? string
+---@field last_sign_in_at? string
+---@field linkedin? string
+---@field local_time? string
+---@field location? string
+---@field locked? boolean
+---@field name? string
+---@field organization? string
+---@field preferred_language? string
+---@field private_profile? boolean
+---@field projects_limit? number
+---@field pronouns? string
+---@field public_email? string
+---@field scim_identities? table
+---@field shared_runners_minutes_limit? string
+---@field state? string
+---@field theme_id? number
+---@field twitter? string
+---@field two_factor_enabled? boolean
+---@field username? string
+---@field web_url? string
+---@field website_url? string
+---@field work_information? string
 
 ---@class ApiEntitiesSshKeyWithUserLoadMatch
 ---@field id string
@@ -3687,6 +5409,13 @@
 
 ---@class ApiEntitiesSuggestionUpdateData
 ---@field suggestion_id? string
+---@field appliable? string
+---@field applied? string
+---@field from_content? string
+---@field from_line? string
+---@field id? string
+---@field to_content? string
+---@field to_line? string
 
 ---@class ApiEntitiesSystemBroadcastMessage
 ---@field active? boolean
@@ -3698,7 +5427,7 @@
 ---@field id? string
 ---@field message? string
 ---@field starts_at? string
----@field target_access_level? string
+---@field target_access_levels? string
 ---@field target_path? string
 ---@field theme? string
 
@@ -3715,12 +5444,23 @@
 ---@field id? string
 ---@field message? string
 ---@field starts_at? string
----@field target_access_level? string
+---@field target_access_levels? string
 ---@field target_path? string
 ---@field theme? string
 
 ---@class ApiEntitiesSystemBroadcastMessageUpdateData
 ---@field id string
+---@field active? boolean
+---@field broadcast_type? string
+---@field color? string
+---@field dismissable? string
+---@field ends_at? string
+---@field font? string
+---@field message? string
+---@field starts_at? string
+---@field target_access_levels? string
+---@field target_path? string
+---@field theme? string
 
 ---@class ApiEntitiesSystemBroadcastMessageRemoveMatch
 ---@field id string
@@ -3743,6 +5483,13 @@
 
 ---@class ApiEntitiesTagCreateData
 ---@field project_id string
+---@field commit? table
+---@field created_at? string
+---@field message? string
+---@field name? string
+---@field protected? boolean
+---@field release? table
+---@field target? string
 
 ---@class ApiEntitiesTagSignature
 ---@field signature? string
@@ -3761,13 +5508,15 @@
 ---@field type any
 
 ---@class ApiEntitiesTerraformModuleVersion
----@field module? string
+---@field modules? string
 ---@field name? string
 ---@field provider? string
+---@field providers? string
 ---@field root? string
 ---@field source? string
----@field submodule? string
+---@field submodules? string
 ---@field version? string
+---@field versions? string
 
 ---@class ApiEntitiesTerraformModuleVersionLoadMatch
 ---@field module_name any
@@ -3791,14 +5540,23 @@
 ---@field project_id string
 
 ---@class ApiEntitiesTrigger
+---@field avatar_path? string
+---@field avatar_url? string
 ---@field created_at? string
+---@field custom_attributes? table
 ---@field description? string
 ---@field expires_at? string
 ---@field id? number
 ---@field last_used? string
+---@field locked? boolean
+---@field name? string
 ---@field owner? table
+---@field public_email? string
+---@field state? string
 ---@field token? string
 ---@field updated_at? string
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesTriggerLoadMatch
 ---@field id string
@@ -3809,10 +5567,43 @@
 
 ---@class ApiEntitiesTriggerCreateData
 ---@field project_id string
+---@field avatar_path? string
+---@field avatar_url? string
+---@field created_at? string
+---@field custom_attributes? table
+---@field description? string
+---@field expires_at? string
+---@field id? number
+---@field last_used? string
+---@field locked? boolean
+---@field name? string
+---@field owner? table
+---@field public_email? string
+---@field state? string
+---@field token? string
+---@field updated_at? string
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesTriggerUpdateData
 ---@field id string
 ---@field project_id string
+---@field avatar_path? string
+---@field avatar_url? string
+---@field created_at? string
+---@field custom_attributes? table
+---@field description? string
+---@field expires_at? string
+---@field last_used? string
+---@field locked? boolean
+---@field name? string
+---@field owner? table
+---@field public_email? string
+---@field state? string
+---@field token? string
+---@field updated_at? string
+---@field username? string
+---@field web_url? string
 
 ---@class ApiEntitiesUserAgentDetail
 ---@field akismet_submitted? boolean
@@ -3825,18 +5616,18 @@
 ---@field snippet_id? string
 
 ---@class ApiEntitiesUserCount
----@field assigned_issue? number
----@field assigned_merge_request? number
----@field merge_request? number
----@field review_requested_merge_request? number
----@field todo? number
+---@field assigned_issues? number
+---@field assigned_merge_requests? number
+---@field merge_requests? number
+---@field review_requested_merge_requests? number
+---@field todos? number
 
 ---@class ApiEntitiesUserCountLoadMatch
----@field assigned_issue? number
----@field assigned_merge_request? number
----@field merge_request? number
----@field review_requested_merge_request? number
----@field todo? number
+---@field assigned_issues? number
+---@field assigned_merge_requests? number
+---@field merge_requests? number
+---@field review_requested_merge_requests? number
+---@field todos? number
 
 ---@class ApiEntitiesUserPublic
 ---@field avatar_path? string
@@ -3850,16 +5641,16 @@
 ---@field confirmed_at? string
 ---@field created_at? string
 ---@field current_sign_in_at? string
----@field custom_attribute? table
+---@field custom_attributes? table
 ---@field discord? string
 ---@field email? string
 ---@field external? string
 ---@field extra_shared_runners_minutes_limit? string
----@field follower? string
+---@field followers? string
 ---@field following? string
 ---@field github? string
 ---@field id? number
----@field identity? table
+---@field identities? table
 ---@field is_followed? boolean
 ---@field job_title? string
 ---@field key? string
@@ -3874,9 +5665,9 @@
 ---@field preferred_language? string
 ---@field private_profile? boolean
 ---@field projects_limit? number
----@field pronoun? string
+---@field pronouns? string
 ---@field public_email? string
----@field scim_identity? table
+---@field scim_identities? table
 ---@field shared_runners_minutes_limit? string
 ---@field state? string
 ---@field theme_id? number
@@ -3906,13 +5697,6 @@
 ---@field project_id? string
 
 ---@class ApiEntitiesWikiPage
----@field content? string
----@field encoding? string
----@field format? string
----@field front_matter? table
----@field slug? string
----@field title? string
----@field wiki_page_meta_id? number
 
 ---@class ApiEntitiesWikiPageLoadMatch
 ---@field group_id? string
@@ -4145,7 +5929,7 @@
 ---@class EeApiEntitiesAuditEvent
 ---@field author_id? string
 ---@field created_at? string
----@field detail? string
+---@field details? string
 ---@field entity_id? string
 ---@field entity_type? string
 ---@field event_name? string
@@ -4161,13 +5945,9 @@
 ---@field project_id? string
 
 ---@class EeApiEntitiesBillableMembership
----@field access_level? table
----@field created_at? string
----@field expires_at? string
----@field id? string
----@field source_full_name? string
----@field source_id? string
----@field source_members_url? string
+---@field custom_role? string
+---@field integer_value? string
+---@field string_value? string
 
 ---@class EeApiEntitiesBillableMembershipLoadMatch
 ---@field billable_member_id string
@@ -4201,7 +5981,7 @@
 ---@field container_repositories_verified_in_percentage? string
 ---@field cursor_last_event_id? string
 ---@field cursor_last_event_timestamp? string
----@field db_replication_lag_second? string
+---@field db_replication_lag_seconds? string
 ---@field dependency_proxy_blobs_checksum_failed_count? string
 ---@field dependency_proxy_blobs_checksum_total_count? string
 ---@field dependency_proxy_blobs_checksummed_count? string
@@ -4283,7 +6063,7 @@
 ---@field lfs_objects_verification_total_count? string
 ---@field lfs_objects_verified_count? string
 ---@field lfs_objects_verified_in_percentage? string
----@field link? table
+---@field links? table
 ---@field merge_request_diffs_checksum_failed_count? string
 ---@field merge_request_diffs_checksum_total_count? string
 ---@field merge_request_diffs_checksummed_count? string
@@ -4297,7 +6077,7 @@
 ---@field merge_request_diffs_verified_count? string
 ---@field merge_request_diffs_verified_in_percentage? string
 ---@field missing_oauth_application? string
----@field namespace? table
+---@field namespaces? table
 ---@field package_files_checksum_failed_count? string
 ---@field package_files_checksum_total_count? string
 ---@field package_files_checksummed_count? string
@@ -4362,7 +6142,7 @@
 ---@field proxy_local_requests_event_count_weekly? string
 ---@field proxy_remote_requests_event_count_weekly? string
 ---@field replication_slots_count? string
----@field replication_slots_max_retained_wal_byte? string
+---@field replication_slots_max_retained_wal_bytes? string
 ---@field replication_slots_used_count? string
 ---@field replication_slots_used_in_percentage? string
 ---@field repositories_checked_count? string
@@ -4383,7 +6163,7 @@
 ---@field snippet_repositories_verification_total_count? string
 ---@field snippet_repositories_verified_count? string
 ---@field snippet_repositories_verified_in_percentage? string
----@field storage_shard? table
+---@field storage_shards? table
 ---@field storage_shards_match? string
 ---@field terraform_state_versions_checksum_failed_count? string
 ---@field terraform_state_versions_checksum_total_count? string
@@ -4440,7 +6220,7 @@
 ---@field container_repositories_verified_in_percentage? string
 ---@field cursor_last_event_id? string
 ---@field cursor_last_event_timestamp? string
----@field db_replication_lag_second? string
+---@field db_replication_lag_seconds? string
 ---@field dependency_proxy_blobs_checksum_failed_count? string
 ---@field dependency_proxy_blobs_checksum_total_count? string
 ---@field dependency_proxy_blobs_checksummed_count? string
@@ -4522,7 +6302,7 @@
 ---@field lfs_objects_verification_total_count? string
 ---@field lfs_objects_verified_count? string
 ---@field lfs_objects_verified_in_percentage? string
----@field link? table
+---@field links? table
 ---@field merge_request_diffs_checksum_failed_count? string
 ---@field merge_request_diffs_checksum_total_count? string
 ---@field merge_request_diffs_checksummed_count? string
@@ -4536,7 +6316,7 @@
 ---@field merge_request_diffs_verified_count? string
 ---@field merge_request_diffs_verified_in_percentage? string
 ---@field missing_oauth_application? string
----@field namespace? table
+---@field namespaces? table
 ---@field package_files_checksum_failed_count? string
 ---@field package_files_checksum_total_count? string
 ---@field package_files_checksummed_count? string
@@ -4601,7 +6381,7 @@
 ---@field proxy_local_requests_event_count_weekly? string
 ---@field proxy_remote_requests_event_count_weekly? string
 ---@field replication_slots_count? string
----@field replication_slots_max_retained_wal_byte? string
+---@field replication_slots_max_retained_wal_bytes? string
 ---@field replication_slots_used_count? string
 ---@field replication_slots_used_in_percentage? string
 ---@field repositories_checked_count? string
@@ -4622,7 +6402,7 @@
 ---@field snippet_repositories_verification_total_count? string
 ---@field snippet_repositories_verified_count? string
 ---@field snippet_repositories_verified_in_percentage? string
----@field storage_shard? table
+---@field storage_shards? table
 ---@field storage_shards_match? string
 ---@field terraform_state_versions_checksum_failed_count? string
 ---@field terraform_state_versions_checksum_total_count? string
@@ -4652,7 +6432,7 @@
 ---@field version? string
 
 ---@class EeApiEntitiesGeoPipelineRef
----@field pipeline_ref? table
+---@field pipeline_refs? table
 
 ---@class EeApiEntitiesGeoPipelineRefListMatch
 ---@field gl_repository any
@@ -4668,11 +6448,22 @@
 ---@class EeApiEntitiesIssuableMetricImageCreateData
 ---@field issue_id string
 ---@field project_id string
+---@field created_at? string
+---@field file_path? string
+---@field filename? string
+---@field id? string
+---@field url? string
+---@field url_text? string
 
 ---@class EeApiEntitiesIssuableMetricImageUpdateData
 ---@field id string
 ---@field issue_id string
 ---@field project_id string
+---@field created_at? string
+---@field file_path? string
+---@field filename? string
+---@field url? string
+---@field url_text? string
 
 ---@class EeApiEntitiesIssuableMetricImageRemoveMatch
 ---@field id string
@@ -4684,9 +6475,9 @@
 ---@field approved? boolean
 ---@field approved_by? table
 ---@field code_owner? boolean
----@field contains_hidden_group? boolean
----@field eligible_approver? table
----@field group? table
+---@field contains_hidden_groups? boolean
+---@field eligible_approvers? table
+---@field groups? table
 ---@field id? number
 ---@field name? string
 ---@field overridden? boolean
@@ -4694,7 +6485,7 @@
 ---@field rule_type? string
 ---@field section? string
 ---@field source_rule? table
----@field user? table
+---@field users? table
 
 ---@class EeApiEntitiesMergeRequestApprovalStateListMatch
 ---@field merge_request_id string
@@ -4711,6 +6502,10 @@
 
 ---@class EeApiEntitiesSshCertificateCreateData
 ---@field group_id string
+---@field created_at? string
+---@field id? number
+---@field key? string
+---@field title? string
 
 ---@class Environment
 
@@ -4929,15 +6724,15 @@
 ---@field project_id string
 
 ---@class Metadata
----@field enterprise? boolean
----@field kas? table
----@field revision? string
+---@field enabled? boolean
+---@field externalK8sProxyUrl? string
+---@field externalUrl? string
 ---@field version? string
 
 ---@class MetadataLoadMatch
----@field enterprise? boolean
----@field kas? table
----@field revision? string
+---@field enabled? boolean
+---@field externalK8sProxyUrl? string
+---@field externalUrl? string
 ---@field version? string
 
 ---@class Migration
@@ -4993,13 +6788,22 @@
 ---@field project_id string
 
 ---@class NugetPackage
----@field catalog_entry? table
+---@field authors? string
 ---@field count? number
+---@field dependencyGroups? table
+---@field description? string
+---@field iconUrl? string
 ---@field id? string
----@field item? table
+---@field items? table
+---@field licenseUrl? string
 ---@field lower? string
----@field package_content? string
+---@field packageContent? string
+---@field projectUrl? string
+---@field published? string
+---@field summary? string
+---@field tags? string
 ---@field upper? string
+---@field version? string
 
 ---@class NugetPackageLoadMatch
 ---@field group_id? string
@@ -5011,6 +6815,22 @@
 
 ---@class NugetPackageUpdateData
 ---@field project_id string
+---@field authors? string
+---@field count? number
+---@field dependencyGroups? table
+---@field description? string
+---@field iconUrl? string
+---@field id? string
+---@field items? table
+---@field licenseUrl? string
+---@field lower? string
+---@field packageContent? string
+---@field projectUrl? string
+---@field published? string
+---@field summary? string
+---@field tags? string
+---@field upper? string
+---@field version? string
 
 ---@class NugetPackageRemoveMatch
 ---@field project_id string
@@ -5074,7 +6894,7 @@
 ---@field updated_at? string
 ---@field user? table
 ---@field web_url? string
----@field yaml_error? string
+---@field yaml_errors? string
 
 ---@class ProjectLoadMatch
 ---@field artifact_id? string
@@ -5100,6 +6920,26 @@
 ---@field merge_request_id? string
 ---@field pipeline_schedule_id? string
 ---@field project_id? string
+---@field before_sha? string
+---@field committed_at? string
+---@field coverage? number
+---@field created_at? string
+---@field detailed_status? table
+---@field duration? number
+---@field finished_at? string
+---@field iid? number
+---@field name? string
+---@field queued_duration? number
+---@field ref? string
+---@field sha? string
+---@field source? string
+---@field started_at? string
+---@field status? string
+---@field tag? boolean
+---@field updated_at? string
+---@field user? table
+---@field web_url? string
+---@field yaml_errors? string
 
 ---@class ProjectUpdateData
 ---@field hook_id? string
@@ -5110,6 +6950,27 @@
 ---@field merge_request_id? string
 ---@field file_path? any
 ---@field pipeline_id? string
+---@field before_sha? string
+---@field committed_at? string
+---@field coverage? number
+---@field created_at? string
+---@field detailed_status? table
+---@field duration? number
+---@field finished_at? string
+---@field iid? number
+---@field name? string
+---@field project_id? number
+---@field queued_duration? number
+---@field ref? string
+---@field sha? string
+---@field source? string
+---@field started_at? string
+---@field status? string
+---@field tag? boolean
+---@field updated_at? string
+---@field user? table
+---@field web_url? string
+---@field yaml_errors? string
 
 ---@class ProjectRemoveMatch
 ---@field file_path? any
@@ -5329,7 +7190,7 @@
 ---@class Starrer
 ---@field avatar_path? string
 ---@field avatar_url? string
----@field custom_attribute? table
+---@field custom_attributes? table
 ---@field id? number
 ---@field locked? boolean
 ---@field name? string
@@ -5394,7 +7255,7 @@
 ---@field skipped_count? number
 ---@field success_count? number
 ---@field suite_error? string
----@field test_case? table
+---@field test_cases? table
 ---@field total_count? number
 ---@field total_time? number
 
@@ -5403,7 +7264,7 @@
 ---@field project_id string
 
 ---@class TestReportSummary
----@field test_suite? table
+---@field test_suites? table
 ---@field total? table
 
 ---@class TestReportSummaryLoadMatch
@@ -5429,7 +7290,7 @@
 ---@class User
 ---@field avatar_path? string
 ---@field avatar_url? string
----@field custom_attribute? table
+---@field custom_attributes? table
 ---@field id? number
 ---@field locked? boolean
 ---@field name? string

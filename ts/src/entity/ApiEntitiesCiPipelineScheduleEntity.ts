@@ -37,7 +37,7 @@ class ApiEntitiesCiPipelineScheduleEntity extends GitlabEntityBase<ApiEntitiesCi
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesCiPipelineScheduleListMatch, ctrl?: Control): Promise<ApiEntitiesCiPipelineSchedule[]> {
+  async list(this: any, reqmatch?: ApiEntitiesCiPipelineScheduleListMatch, ctrl?: Control): Promise<ApiEntitiesCiPipelineScheduleEntity[]> {
 
     const utility = this._utility
 

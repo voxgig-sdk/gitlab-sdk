@@ -4,7 +4,7 @@
       "API_ENTITIES_ACCESS_REQUESTER00": {
         "avatar_path": "s82",
         "avatar_url": "s83",
-        "custom_attribute": [],
+        "custom_attributes": [],
         "id": "API_ENTITIES_ACCESS_REQUESTER00",
         "key": "s86",
         "locked": false,
@@ -22,7 +22,7 @@
       "API_ENTITIES_ACCESS_REQUESTER01": {
         "avatar_path": "s104",
         "avatar_url": "s105",
-        "custom_attribute": [],
+        "custom_attributes": [],
         "id": "API_ENTITIES_ACCESS_REQUESTER01",
         "key": "s108",
         "locked": false,
@@ -40,7 +40,7 @@
       "API_ENTITIES_ACCESS_REQUESTER02": {
         "avatar_path": "s186",
         "avatar_url": "s187",
-        "custom_attribute": [],
+        "custom_attributes": [],
         "id": "API_ENTITIES_ACCESS_REQUESTER02",
         "key": "s18a",
         "locked": false,
@@ -62,7 +62,7 @@
       "api_entities_access_requester_ref01": {
         "avatar_path": "s208",
         "avatar_url": "s209",
-        "custom_attribute": [],
+        "custom_attributes": [],
         "key": "s20c",
         "locked": false,
         "name": "s20e",

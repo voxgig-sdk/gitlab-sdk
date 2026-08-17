@@ -37,7 +37,7 @@ class ApiEntitiesMarkdownUploadAdminEntity extends GitlabEntityBase<ApiEntitiesM
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesMarkdownUploadAdminListMatch, ctrl?: Control): Promise<ApiEntitiesMarkdownUploadAdmin[]> {
+  async list(this: any, reqmatch?: ApiEntitiesMarkdownUploadAdminListMatch, ctrl?: Control): Promise<ApiEntitiesMarkdownUploadAdminEntity[]> {
 
     const utility = this._utility
 

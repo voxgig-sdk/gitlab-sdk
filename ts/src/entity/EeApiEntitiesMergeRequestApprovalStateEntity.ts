@@ -37,7 +37,7 @@ class EeApiEntitiesMergeRequestApprovalStateEntity extends GitlabEntityBase<EeAp
 
 
 
-  async list(this: any, reqmatch?: EeApiEntitiesMergeRequestApprovalStateListMatch, ctrl?: Control): Promise<EeApiEntitiesMergeRequestApprovalState[]> {
+  async list(this: any, reqmatch?: EeApiEntitiesMergeRequestApprovalStateListMatch, ctrl?: Control): Promise<EeApiEntitiesMergeRequestApprovalStateEntity[]> {
 
     const utility = this._utility
 

@@ -45,7 +45,7 @@ class RpmPackageEntityTest extends TestCase
         $rpm_package_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $rpm_package_ref01_data_result = $rpm_package_ref01_ent->create($rpm_package_ref01_data, null);
-        $rpm_package_ref01_data = Helpers::to_map($rpm_package_ref01_data_result);
+        $rpm_package_ref01_data = Helpers::to_map(is_object($rpm_package_ref01_data_result) && method_exists($rpm_package_ref01_data_result, 'data_get') ? $rpm_package_ref01_data_result->data_get() : $rpm_package_ref01_data_result);
         $this->assertNotNull($rpm_package_ref01_data);
 
         // LOAD

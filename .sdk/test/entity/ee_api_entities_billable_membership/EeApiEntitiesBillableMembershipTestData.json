@@ -2,49 +2,37 @@
   "existing": {
     "ee_api_entities_billable_membership": {
       "EE_API_ENTITIES_BILLABLE_MEMBERSHIP00": {
-        "access_level": {},
-        "created_at": "s47",
-        "expires_at": "s48",
-        "id": "EE_API_ENTITIES_BILLABLE_MEMBERSHIP00",
-        "source_full_name": "s4a",
-        "source_id": "SOURCE01",
-        "source_members_url": "s4c",
+        "custom_role": "s1e",
+        "integer_value": "s1f",
+        "string_value": "s20",
         "billable_member_id": "BILLABLE_MEMBER01",
-        "group_id": "GROUP01"
+        "group_id": "GROUP01",
+        "id": "EE_API_ENTITIES_BILLABLE_MEMBERSHIP00"
       },
       "EE_API_ENTITIES_BILLABLE_MEMBERSHIP01": {
-        "access_level": {},
-        "created_at": "s8d",
-        "expires_at": "s8e",
-        "id": "EE_API_ENTITIES_BILLABLE_MEMBERSHIP01",
-        "source_full_name": "s90",
-        "source_id": "SOURCE01",
-        "source_members_url": "s92",
+        "custom_role": "s3c",
+        "integer_value": "s3d",
+        "string_value": "s3e",
         "billable_member_id": "BILLABLE_MEMBER01",
-        "group_id": "GROUP01"
+        "group_id": "GROUP01",
+        "id": "EE_API_ENTITIES_BILLABLE_MEMBERSHIP01"
       },
       "EE_API_ENTITIES_BILLABLE_MEMBERSHIP02": {
-        "access_level": {},
-        "created_at": "sd3",
-        "expires_at": "sd4",
-        "id": "EE_API_ENTITIES_BILLABLE_MEMBERSHIP02",
-        "source_full_name": "sd6",
-        "source_id": "SOURCE01",
-        "source_members_url": "sd8",
+        "custom_role": "s5a",
+        "integer_value": "s5b",
+        "string_value": "s5c",
         "billable_member_id": "BILLABLE_MEMBER01",
-        "group_id": "GROUP01"
+        "group_id": "GROUP01",
+        "id": "EE_API_ENTITIES_BILLABLE_MEMBERSHIP02"
       }
     }
   },
   "new": {
     "ee_api_entities_billable_membership": {
       "ee_api_entities_billable_membership_ref01": {
-        "access_level": {},
-        "created_at": "s119",
-        "expires_at": "s11a",
-        "source_full_name": "s11c",
-        "source_id": "SOURCE01",
-        "source_members_url": "s11e"
+        "custom_role": "s78",
+        "integer_value": "s79",
+        "string_value": "s7a"
       }
     }
   }

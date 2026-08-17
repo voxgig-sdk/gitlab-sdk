@@ -7,7 +7,7 @@
 # SDK Details.
 name: 'gitlab'
 origin: 'voxgig-sdk'
-def: 'gitlab-openapi.yaml'
+def: 'gitlab-v4-swagger-2.0.yaml'
 
 
 # API Information

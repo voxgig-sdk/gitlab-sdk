@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -46,7 +46,7 @@ class TestEeApiEntitiesIssuableMetricImageEntity:
         ee_api_entities_issuable_metric_image_ref01_data["issue_id"] = setup["idmap"]["issue01"]
         ee_api_entities_issuable_metric_image_ref01_data["project_id"] = setup["idmap"]["project01"]
 
-        ee_api_entities_issuable_metric_image_ref01_data = helpers.to_map(ee_api_entities_issuable_metric_image_ref01_ent.create(ee_api_entities_issuable_metric_image_ref01_data, None))
+        ee_api_entities_issuable_metric_image_ref01_data = helpers.to_map(runner.entity_data(ee_api_entities_issuable_metric_image_ref01_ent.create(ee_api_entities_issuable_metric_image_ref01_data, None)))
         assert ee_api_entities_issuable_metric_image_ref01_data is not None
         assert ee_api_entities_issuable_metric_image_ref01_data["id"] is not None
 
@@ -61,7 +61,7 @@ class TestEeApiEntitiesIssuableMetricImageEntity:
         ee_api_entities_issuable_metric_image_ref01_markdef_up0_value = "Mark01-ee_api_entities_issuable_metric_image_ref01_" + str(setup["now"])
         ee_api_entities_issuable_metric_image_ref01_data_up0_up[ee_api_entities_issuable_metric_image_ref01_markdef_up0_name] = ee_api_entities_issuable_metric_image_ref01_markdef_up0_value
 
-        ee_api_entities_issuable_metric_image_ref01_resdata_up0 = helpers.to_map(ee_api_entities_issuable_metric_image_ref01_ent.update(ee_api_entities_issuable_metric_image_ref01_data_up0_up, None))
+        ee_api_entities_issuable_metric_image_ref01_resdata_up0 = helpers.to_map(runner.entity_data(ee_api_entities_issuable_metric_image_ref01_ent.update(ee_api_entities_issuable_metric_image_ref01_data_up0_up, None)))
         assert ee_api_entities_issuable_metric_image_ref01_resdata_up0 is not None
         assert ee_api_entities_issuable_metric_image_ref01_resdata_up0["id"] == ee_api_entities_issuable_metric_image_ref01_data_up0_up["id"]
         assert ee_api_entities_issuable_metric_image_ref01_resdata_up0[ee_api_entities_issuable_metric_image_ref01_markdef_up0_name] == ee_api_entities_issuable_metric_image_ref01_markdef_up0_value

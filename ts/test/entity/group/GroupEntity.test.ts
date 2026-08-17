@@ -63,22 +63,18 @@ describe('GroupEntity', async () => {
     let group_ref01_data = setup.data.new.group['group_ref01']
     group_ref01_data['secret'] = setup.idmap['secret01']
 
-    group_ref01_data = await group_ref01_ent.create(group_ref01_data)
+    group_ref01_data = (await group_ref01_ent.create(group_ref01_data)).data()
     assert(null != group_ref01_data)
 
 
     // UPDATE
     const group_ref01_data_up0: any = {}
 
-    const group_ref01_resdata_up0 = await group_ref01_ent.update(group_ref01_data_up0)
+    const group_ref01_resdata_up0 = (await group_ref01_ent.update(group_ref01_data_up0)).data()
     assert(null != group_ref01_resdata_up0)
 
 
 
-    // REMOVE
-    const group_ref01_match_rm0: any = { id: group_ref01_data.id }
-    await group_ref01_ent.remove(group_ref01_match_rm0)
-  
 
   })
 })

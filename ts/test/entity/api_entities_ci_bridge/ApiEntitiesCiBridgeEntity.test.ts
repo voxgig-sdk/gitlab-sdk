@@ -65,7 +65,7 @@ describe('ApiEntitiesCiBridgeEntity', async () => {
     api_entities_ci_bridge_ref01_match['pipeline_id'] = setup.idmap['pipeline01']
     api_entities_ci_bridge_ref01_match['project_id'] = setup.idmap['project01']
 
-    const api_entities_ci_bridge_ref01_list = await api_entities_ci_bridge_ref01_ent.list(api_entities_ci_bridge_ref01_match)
+    const api_entities_ci_bridge_ref01_list = (await api_entities_ci_bridge_ref01_ent.list(api_entities_ci_bridge_ref01_match)).map((e: any) => e.data())
 
 
   })

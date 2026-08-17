@@ -60,7 +60,7 @@ func TestEeApiEntitiesApprovalStateEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		eeApiEntitiesApprovalStateRef01Data = core.ToMapAny(eeApiEntitiesApprovalStateRef01DataResult)
+		eeApiEntitiesApprovalStateRef01Data = core.ToMapAny(entityData(eeApiEntitiesApprovalStateRef01DataResult))
 		if eeApiEntitiesApprovalStateRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

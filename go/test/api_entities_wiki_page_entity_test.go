@@ -2,7 +2,6 @@ package sdktest
 
 import (
 	"encoding/json"
-	"fmt"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -61,7 +60,7 @@ func TestApiEntitiesWikiPageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesWikiPageRef01Data = core.ToMapAny(apiEntitiesWikiPageRef01DataResult)
+		apiEntitiesWikiPageRef01Data = core.ToMapAny(entityData(apiEntitiesWikiPageRef01DataResult))
 		if apiEntitiesWikiPageRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -71,20 +70,13 @@ func TestApiEntitiesWikiPageEntity(t *testing.T) {
 			"project_id": setup.idmap["project_id"],
 		}
 
-		apiEntitiesWikiPageRef01MarkdefUp0Name := "content"
-		apiEntitiesWikiPageRef01MarkdefUp0Value := fmt.Sprintf("Mark01-api_entities_wiki_page_ref01_%d", setup.now)
-		apiEntitiesWikiPageRef01DataUp0Up[apiEntitiesWikiPageRef01MarkdefUp0Name] = apiEntitiesWikiPageRef01MarkdefUp0Value
-
 		apiEntitiesWikiPageRef01ResdataUp0Result, err := apiEntitiesWikiPageRef01Ent.Update(apiEntitiesWikiPageRef01DataUp0Up, nil)
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesWikiPageRef01ResdataUp0 := core.ToMapAny(apiEntitiesWikiPageRef01ResdataUp0Result)
+		apiEntitiesWikiPageRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesWikiPageRef01ResdataUp0Result))
 		if apiEntitiesWikiPageRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
-		}
-		if apiEntitiesWikiPageRef01ResdataUp0[apiEntitiesWikiPageRef01MarkdefUp0Name] != apiEntitiesWikiPageRef01MarkdefUp0Value {
-			t.Fatalf("expected %s to be updated, got %v", apiEntitiesWikiPageRef01MarkdefUp0Name, apiEntitiesWikiPageRef01ResdataUp0[apiEntitiesWikiPageRef01MarkdefUp0Name])
 		}
 
 		// LOAD

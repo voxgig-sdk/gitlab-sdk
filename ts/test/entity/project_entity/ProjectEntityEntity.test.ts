@@ -62,7 +62,7 @@ describe('ProjectEntityEntity', async () => {
     const project_entity_ref01_ent = client.ProjectEntity()
     let project_entity_ref01_data = setup.data.new.project_entity['project_entity_ref01']
 
-    project_entity_ref01_data = await project_entity_ref01_ent.create(project_entity_ref01_data)
+    project_entity_ref01_data = (await project_entity_ref01_ent.create(project_entity_ref01_data)).data()
     assert(null != project_entity_ref01_data)
 
 

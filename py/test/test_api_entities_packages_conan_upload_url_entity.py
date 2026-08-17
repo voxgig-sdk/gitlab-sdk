@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -48,7 +48,7 @@ class TestApiEntitiesPackagesConanUploadUrlEntity:
         api_entities_packages_conan_upload_url_ref01_data["package_username"] = setup["idmap"]["package_username01"]
         api_entities_packages_conan_upload_url_ref01_data["package_version"] = setup["idmap"]["package_version01"]
 
-        api_entities_packages_conan_upload_url_ref01_data = helpers.to_map(api_entities_packages_conan_upload_url_ref01_ent.create(api_entities_packages_conan_upload_url_ref01_data, None))
+        api_entities_packages_conan_upload_url_ref01_data = helpers.to_map(runner.entity_data(api_entities_packages_conan_upload_url_ref01_ent.create(api_entities_packages_conan_upload_url_ref01_data, None)))
         assert api_entities_packages_conan_upload_url_ref01_data is not None
 
 

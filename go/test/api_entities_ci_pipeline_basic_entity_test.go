@@ -51,7 +51,7 @@ func TestApiEntitiesCiPipelineBasicEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -131,7 +131,7 @@ func TestApiEntitiesCiPipelineBasicEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesCiPipelineBasicRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesCiPipelineBasicRef01DataDt0Loaded)
+		apiEntitiesCiPipelineBasicRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesCiPipelineBasicRef01DataDt0Loaded))
 		if apiEntitiesCiPipelineBasicRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

@@ -47,7 +47,7 @@ class MlModelRegistryEntityTest < Minitest::Test
     }
 
     ml_model_registry_ref01_resdata_up0_result = ml_model_registry_ref01_ent.update(ml_model_registry_ref01_data_up0_up, nil)
-    ml_model_registry_ref01_resdata_up0 = Helpers.to_map(ml_model_registry_ref01_resdata_up0_result)
+    ml_model_registry_ref01_resdata_up0 = Helpers.to_map(ml_model_registry_ref01_resdata_up0_result.respond_to?(:data_get) ? ml_model_registry_ref01_resdata_up0_result.data_get : ml_model_registry_ref01_resdata_up0_result)
     assert !ml_model_registry_ref01_resdata_up0.nil?
 
     # LOAD

@@ -39,7 +39,7 @@ class ApiEntitiesFeatureFlagEntity extends GitlabEntityBase<ApiEntitiesFeatureFl
 
 
 
-  async load(this: any, reqmatch?: ApiEntitiesFeatureFlagLoadMatch, ctrl?: Control): Promise<ApiEntitiesFeatureFlag> {
+  async load(this: any, reqmatch?: ApiEntitiesFeatureFlagLoadMatch, ctrl?: Control): Promise<ApiEntitiesFeatureFlagEntity> {
 
     const utility = this._utility
 
@@ -130,7 +130,15 @@ class ApiEntitiesFeatureFlagEntity extends GitlabEntityBase<ApiEntitiesFeatureFl
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 
@@ -152,7 +160,7 @@ class ApiEntitiesFeatureFlagEntity extends GitlabEntityBase<ApiEntitiesFeatureFl
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesFeatureFlagListMatch, ctrl?: Control): Promise<ApiEntitiesFeatureFlag[]> {
+  async list(this: any, reqmatch?: ApiEntitiesFeatureFlagListMatch, ctrl?: Control): Promise<ApiEntitiesFeatureFlagEntity[]> {
 
     const utility = this._utility
 
@@ -261,7 +269,7 @@ class ApiEntitiesFeatureFlagEntity extends GitlabEntityBase<ApiEntitiesFeatureFl
 
 
 
-  async create(this: any, reqdata?: ApiEntitiesFeatureFlagCreateData, ctrl?: Control): Promise<ApiEntitiesFeatureFlag> {
+  async create(this: any, reqdata?: ApiEntitiesFeatureFlagCreateData, ctrl?: Control): Promise<ApiEntitiesFeatureFlagEntity> {
 
     const utility = this._utility
     const {
@@ -347,7 +355,15 @@ class ApiEntitiesFeatureFlagEntity extends GitlabEntityBase<ApiEntitiesFeatureFl
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 
@@ -369,7 +385,7 @@ class ApiEntitiesFeatureFlagEntity extends GitlabEntityBase<ApiEntitiesFeatureFl
 
 
 
-  async update(this: any, reqdata?: ApiEntitiesFeatureFlagUpdateData, ctrl?: Control): Promise<ApiEntitiesFeatureFlag> {
+  async update(this: any, reqdata?: ApiEntitiesFeatureFlagUpdateData, ctrl?: Control): Promise<ApiEntitiesFeatureFlagEntity> {
 
     const utility = this._utility
 
@@ -461,7 +477,15 @@ class ApiEntitiesFeatureFlagEntity extends GitlabEntityBase<ApiEntitiesFeatureFl
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 

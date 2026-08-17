@@ -46,14 +46,9 @@ class IntegrationEntityTest extends TestCase
         $integration_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $integration_ref01_data_result = $integration_ref01_ent->create($integration_ref01_data, null);
-        $integration_ref01_data = Helpers::to_map($integration_ref01_data_result);
+        $integration_ref01_data = Helpers::to_map(is_object($integration_ref01_data_result) && method_exists($integration_ref01_data_result, 'data_get') ? $integration_ref01_data_result->data_get() : $integration_ref01_data_result);
         $this->assertNotNull($integration_ref01_data);
 
-        // REMOVE
-        $integration_ref01_match_rm0 = [
-            "id" => $integration_ref01_data["id"],
-        ];
-        $integration_ref01_ent->remove($integration_ref01_match_rm0, null);
 
     }
 }

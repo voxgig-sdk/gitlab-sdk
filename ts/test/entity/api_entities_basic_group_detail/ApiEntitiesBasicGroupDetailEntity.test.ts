@@ -63,7 +63,7 @@ describe('ApiEntitiesBasicGroupDetailEntity', async () => {
     let api_entities_basic_group_detail_ref01_data = setup.data.new.api_entities_basic_group_detail['api_entities_basic_group_detail_ref01']
     api_entities_basic_group_detail_ref01_data['project_id'] = setup.idmap['project01']
 
-    api_entities_basic_group_detail_ref01_data = await api_entities_basic_group_detail_ref01_ent.create(api_entities_basic_group_detail_ref01_data)
+    api_entities_basic_group_detail_ref01_data = (await api_entities_basic_group_detail_ref01_ent.create(api_entities_basic_group_detail_ref01_data)).data()
     assert(null != api_entities_basic_group_detail_ref01_data)
 
 

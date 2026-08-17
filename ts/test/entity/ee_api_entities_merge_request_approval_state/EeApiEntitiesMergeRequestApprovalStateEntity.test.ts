@@ -65,7 +65,7 @@ describe('EeApiEntitiesMergeRequestApprovalStateEntity', async () => {
     ee_api_entities_merge_request_approval_state_ref01_match['merge_request_id'] = setup.idmap['merge_request01']
     ee_api_entities_merge_request_approval_state_ref01_match['project_id'] = setup.idmap['project01']
 
-    const ee_api_entities_merge_request_approval_state_ref01_list = await ee_api_entities_merge_request_approval_state_ref01_ent.list(ee_api_entities_merge_request_approval_state_ref01_match)
+    const ee_api_entities_merge_request_approval_state_ref01_list = (await ee_api_entities_merge_request_approval_state_ref01_ent.list(ee_api_entities_merge_request_approval_state_ref01_match)).map((e: any) => e.data())
 
 
   })

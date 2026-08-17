@@ -45,7 +45,7 @@ class ApiEntitiesPlanLimitEntityTest < Minitest::Test
     }
 
     api_entities_plan_limit_ref01_resdata_up0_result = api_entities_plan_limit_ref01_ent.update(api_entities_plan_limit_ref01_data_up0_up, nil)
-    api_entities_plan_limit_ref01_resdata_up0 = Helpers.to_map(api_entities_plan_limit_ref01_resdata_up0_result)
+    api_entities_plan_limit_ref01_resdata_up0 = Helpers.to_map(api_entities_plan_limit_ref01_resdata_up0_result.respond_to?(:data_get) ? api_entities_plan_limit_ref01_resdata_up0_result.data_get : api_entities_plan_limit_ref01_resdata_up0_result)
     assert !api_entities_plan_limit_ref01_resdata_up0.nil?
 
     # LOAD

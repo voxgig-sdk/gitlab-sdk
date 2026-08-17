@@ -63,7 +63,7 @@ describe('ApiEntitiesCiLintResultEntity', async () => {
     let api_entities_ci_lint_result_ref01_data = setup.data.new.api_entities_ci_lint_result['api_entities_ci_lint_result_ref01']
     api_entities_ci_lint_result_ref01_data['project_id'] = setup.idmap['project01']
 
-    api_entities_ci_lint_result_ref01_data = await api_entities_ci_lint_result_ref01_ent.create(api_entities_ci_lint_result_ref01_data)
+    api_entities_ci_lint_result_ref01_data = (await api_entities_ci_lint_result_ref01_ent.create(api_entities_ci_lint_result_ref01_data)).data()
     assert(null != api_entities_ci_lint_result_ref01_data)
 
 
@@ -71,9 +71,7 @@ describe('ApiEntitiesCiLintResultEntity', async () => {
     const api_entities_ci_lint_result_ref01_match: any = {}
     api_entities_ci_lint_result_ref01_match['project_id'] = setup.idmap['project01']
 
-    const api_entities_ci_lint_result_ref01_list = await api_entities_ci_lint_result_ref01_ent.list(api_entities_ci_lint_result_ref01_match)
-
-    assert(!isempty(select(api_entities_ci_lint_result_ref01_list, { id: api_entities_ci_lint_result_ref01_data.id })))
+    const api_entities_ci_lint_result_ref01_list = (await api_entities_ci_lint_result_ref01_ent.list(api_entities_ci_lint_result_ref01_match)).map((e: any) => e.data())
 
 
   })

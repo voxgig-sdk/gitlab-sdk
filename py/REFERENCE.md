@@ -1291,7 +1291,7 @@ api_entities_access_requester = client.ApiEntitiesAccessRequester()
 | --- | --- | --- | --- |
 | `avatar_path` | `str` | No |  |
 | `avatar_url` | `str` | No |  |
-| `custom_attribute` | `list` | No |  |
+| `custom_attributes` | `list` | No |  |
 | `id` | `int` | No |  |
 | `key` | `str` | No |  |
 | `locked` | `bool` | No |  |
@@ -1381,11 +1381,11 @@ api_entities_appearance = client.ApiEntitiesAppearance()
 | `header_logo` | `str` | No |  |
 | `header_message` | `str` | No |  |
 | `logo` | `str` | No |  |
-| `member_guideline` | `str` | No |  |
+| `member_guidelines` | `str` | No |  |
 | `message_background_color` | `str` | No |  |
 | `message_font_color` | `str` | No |  |
-| `new_project_guideline` | `str` | No |  |
-| `profile_image_guideline` | `str` | No |  |
+| `new_project_guidelines` | `str` | No |  |
+| `profile_image_guidelines` | `str` | No |  |
 | `pwa_description` | `str` | No |  |
 | `pwa_icon` | `str` | No |  |
 | `pwa_name` | `str` | No |  |
@@ -1508,17 +1508,17 @@ api_entities_application_statistic = client.ApiEntitiesApplicationStatistic()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_user` | `int` | No |  |
-| `fork` | `int` | No |  |
-| `group` | `int` | No |  |
-| `issue` | `int` | No |  |
-| `merge_request` | `int` | No |  |
-| `milestone` | `int` | No |  |
-| `note` | `int` | No |  |
-| `project` | `int` | No |  |
-| `snippet` | `int` | No |  |
-| `ssh_key` | `int` | No |  |
-| `user` | `int` | No |  |
+| `active_users` | `int` | No |  |
+| `forks` | `int` | No |  |
+| `groups` | `int` | No |  |
+| `issues` | `int` | No |  |
+| `merge_requests` | `int` | No |  |
+| `milestones` | `int` | No |  |
+| `notes` | `int` | No |  |
+| `projects` | `int` | No |  |
+| `snippets` | `int` | No |  |
+| `ssh_keys` | `int` | No |  |
+| `users` | `int` | No |  |
 
 ### Operations
 
@@ -1677,14 +1677,22 @@ api_entities_award_emoji = client.ApiEntitiesAwardEmoji()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `avatar_path` | `str` | No |  |
+| `avatar_url` | `str` | No |  |
 | `awardable_id` | `int` | No |  |
 | `awardable_type` | `str` | No |  |
 | `created_at` | `str` | No |  |
+| `custom_attributes` | `list` | No |  |
 | `id` | `int` | No |  |
+| `locked` | `bool` | No |  |
 | `name` | `str` | No |  |
+| `public_email` | `str` | No |  |
+| `state` | `str` | No |  |
 | `updated_at` | `str` | No |  |
 | `url` | `str` | No |  |
 | `user` | `dict` | No |  |
+| `username` | `str` | No |  |
+| `web_url` | `str` | No |  |
 
 ### Operations
 
@@ -1945,7 +1953,7 @@ api_entities_basic_project_detail = client.ApiEntitiesBasicProjectDetail()
 | --- | --- | --- | --- |
 | `avatar_url` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `custom_attribute` | `dict` | No |  |
+| `custom_attributes` | `dict` | No |  |
 | `default_branch` | `str` | No |  |
 | `description` | `str` | No |  |
 | `forks_count` | `int` | No |  |
@@ -1964,7 +1972,7 @@ api_entities_basic_project_detail = client.ApiEntitiesBasicProjectDetail()
 | `ssh_url_to_repo` | `str` | No |  |
 | `star_count` | `int` | No |  |
 | `tag_list` | `list` | No |  |
-| `topic` | `list` | No |  |
+| `topics` | `list` | No |  |
 | `visibility` | `str` | No |  |
 | `web_url` | `str` | No |  |
 
@@ -2039,7 +2047,7 @@ api_entities_basic_ref = client.ApiEntitiesBasicRef()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesBasicRef().list()
+results = client.ApiEntitiesBasicRef().list({"project_id": "example", "sha": "example"})
 for api_entities_basic_ref in results:
     print(api_entities_basic_ref)
 ```
@@ -2163,6 +2171,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.ApiEntitiesBatchedBackgroundMigration().update({
+    "id": "api_entities_batched_background_migration_id",
     "batched_background_migration_id": "batched_background_migration_id",
     # Fields to update
 })
@@ -2207,14 +2216,28 @@ api_entities_branch = client.ApiEntitiesBranch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `author_email` | `str` | No |  |
+| `author_name` | `str` | No |  |
+| `authored_date` | `str` | No |  |
 | `can_push` | `bool` | No |  |
 | `commit` | `dict` | No |  |
+| `committed_date` | `str` | No |  |
+| `committer_email` | `str` | No |  |
+| `committer_name` | `str` | No |  |
+| `created_at` | `str` | No |  |
 | `default` | `bool` | No |  |
 | `developers_can_merge` | `bool` | No |  |
 | `developers_can_push` | `bool` | No |  |
+| `extended_trailers` | `dict` | No |  |
+| `id` | `str` | No |  |
 | `merged` | `bool` | No |  |
+| `message` | `str` | No |  |
 | `name` | `str` | No |  |
+| `parent_ids` | `list` | No |  |
 | `protected` | `bool` | No |  |
+| `short_id` | `str` | No |  |
+| `title` | `str` | No |  |
+| `trailers` | `dict` | No |  |
 | `web_url` | `str` | No |  |
 
 ### Operations
@@ -2234,7 +2257,7 @@ result = client.ApiEntitiesBranch().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesBranch().list()
+results = client.ApiEntitiesBranch().list({"project_id": "example"})
 for api_entities_branch in results:
     print(api_entities_branch)
 ```
@@ -2253,6 +2276,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.ApiEntitiesBranch().update({
+    "id": "api_entities_branch_id",
     "branch_id": "branch_id",
     "project_id": "project_id",
     # Fields to update
@@ -2305,18 +2329,18 @@ api_entities_bulk_import = client.ApiEntitiesBulkImport()
 | `destination_namespace` | `str` | No |  |
 | `destination_slug` | `str` | No |  |
 | `entity_type` | `str` | No |  |
-| `failure` | `list` | No |  |
-| `has_failure` | `bool` | No |  |
+| `failures` | `list` | No |  |
+| `has_failures` | `bool` | No |  |
 | `id` | `int` | No |  |
-| `migrate_membership` | `bool` | No |  |
-| `migrate_project` | `bool` | No |  |
+| `migrate_memberships` | `bool` | No |  |
+| `migrate_projects` | `bool` | No |  |
 | `namespace_id` | `int` | No |  |
 | `parent_id` | `int` | No |  |
 | `project_id` | `int` | No |  |
 | `source_full_path` | `str` | No |  |
 | `source_type` | `str` | No |  |
 | `source_url` | `str` | No |  |
-| `stat` | `dict` | No |  |
+| `stats` | `dict` | No |  |
 | `status` | `str` | No |  |
 | `updated_at` | `str` | No |  |
 
@@ -2444,8 +2468,8 @@ api_entities_bulk_imports_export_status = client.ApiEntitiesBulkImportsExportSta
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `batch` | `dict` | No |  |
 | `batched` | `bool` | No |  |
+| `batches` | `dict` | No |  |
 | `batches_count` | `int` | No |  |
 | `error` | `str` | No |  |
 | `relation` | `str` | No |  |
@@ -2504,7 +2528,7 @@ api_entities_changelog = client.ApiEntitiesChangelog()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `note` | `str` | No |  |
+| `notes` | `str` | No |  |
 
 ### Operations
 
@@ -2584,7 +2608,7 @@ api_entities_ci_bridge = client.ApiEntitiesCiBridge()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesCiBridge().list()
+results = client.ApiEntitiesCiBridge().list({"pipeline_id": "example", "project_id": "example"})
 for api_entities_ci_bridge in results:
     print(api_entities_ci_bridge)
 ```
@@ -2677,7 +2701,7 @@ api_entities_ci_job = client.ApiEntitiesCiJob()
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
 | `archived` | `bool` | No |  |
-| `artifact` | `list` | No |  |
+| `artifacts` | `list` | No |  |
 | `artifacts_expire_at` | `str` | No |  |
 | `artifacts_file` | `dict` | No |  |
 | `commit` | `dict` | No |  |
@@ -2816,7 +2840,7 @@ result = client.ApiEntitiesCiJobBasic().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesCiJobBasic().list()
+results = client.ApiEntitiesCiJobBasic().list({"key": "example", "project_id": "example"})
 for api_entities_ci_job_basic in results:
     print(api_entities_ci_job_basic)
 ```
@@ -2933,16 +2957,16 @@ api_entities_ci_lint_result = client.ApiEntitiesCiLintResult()
 | `blob` | `str` | No |  |
 | `context_project` | `str` | No |  |
 | `context_sha` | `str` | No |  |
-| `error` | `list` | No |  |
+| `errors` | `list` | No |  |
 | `extra` | `dict` | No |  |
-| `include` | `list` | No |  |
-| `job` | `list` | No |  |
+| `includes` | `list` | No |  |
+| `jobs` | `list` | No |  |
 | `location` | `str` | No |  |
 | `merged_yaml` | `str` | No |  |
 | `raw` | `str` | No |  |
 | `type` | `str` | No |  |
 | `valid` | `bool` | No |  |
-| `warning` | `list` | No |  |
+| `warnings` | `list` | No |  |
 
 ### Operations
 
@@ -2961,7 +2985,7 @@ result = client.ApiEntitiesCiLintResult().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesCiLintResult().list()
+results = client.ApiEntitiesCiLintResult().list({"project_id": "example"})
 for api_entities_ci_lint_result in results:
     print(api_entities_ci_lint_result)
 ```
@@ -3070,7 +3094,7 @@ api_entities_ci_pipeline_basic = client.ApiEntitiesCiPipelineBasic()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesCiPipelineBasic().list()
+results = client.ApiEntitiesCiPipelineBasic().list({"project_id": "example"})
 for api_entities_ci_pipeline_basic in results:
     print(api_entities_ci_pipeline_basic)
 ```
@@ -3128,7 +3152,7 @@ api_entities_ci_pipeline_schedule = client.ApiEntitiesCiPipelineSchedule()
 | `cron_timezone` | `str` | No |  |
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
-| `input` | `dict` | No |  |
+| `inputs` | `dict` | No |  |
 | `next_run_at` | `str` | No |  |
 | `owner` | `dict` | No |  |
 | `ref` | `str` | No |  |
@@ -3141,7 +3165,7 @@ api_entities_ci_pipeline_schedule = client.ApiEntitiesCiPipelineSchedule()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesCiPipelineSchedule().list()
+results = client.ApiEntitiesCiPipelineSchedule().list({"project_id": "example"})
 for api_entities_ci_pipeline_schedule in results:
     print(api_entities_ci_pipeline_schedule)
 ```
@@ -3191,13 +3215,13 @@ api_entities_ci_pipeline_schedule_detail = client.ApiEntitiesCiPipelineScheduleD
 | `cron_timezone` | `str` | No |  |
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
-| `input` | `dict` | No |  |
+| `inputs` | `dict` | No |  |
 | `last_pipeline` | `dict` | No |  |
 | `next_run_at` | `str` | No |  |
 | `owner` | `dict` | No |  |
 | `ref` | `str` | No |  |
 | `updated_at` | `str` | No |  |
-| `variable` | `dict` | No |  |
+| `variables` | `dict` | No |  |
 
 ### Operations
 
@@ -3329,7 +3353,7 @@ api_entities_ci_resource_group = client.ApiEntitiesCiResourceGroup()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesCiResourceGroup().list()
+results = client.ApiEntitiesCiResourceGroup().list({"project_id": "example"})
 for api_entities_ci_resource_group in results:
     print(api_entities_ci_resource_group)
 ```
@@ -3393,19 +3417,16 @@ api_entities_ci_runner = client.ApiEntitiesCiRunner()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active` | `bool` | No |  |
-| `created_at` | `str` | No |  |
-| `created_by` | `dict` | No |  |
-| `description` | `str` | No |  |
+| `avatar_path` | `str` | No |  |
+| `avatar_url` | `str` | No |  |
+| `custom_attributes` | `list` | No |  |
 | `id` | `int` | No |  |
-| `ip_address` | `str` | No |  |
-| `is_shared` | `bool` | No |  |
-| `job_execution_status` | `str` | No |  |
+| `locked` | `bool` | No |  |
 | `name` | `str` | No |  |
-| `online` | `bool` | No |  |
-| `paused` | `bool` | No |  |
-| `runner_type` | `str` | No |  |
-| `status` | `str` | No |  |
+| `public_email` | `str` | No |  |
+| `state` | `str` | No |  |
+| `username` | `str` | No |  |
+| `web_url` | `str` | No |  |
 
 ### Operations
 
@@ -3473,7 +3494,7 @@ api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerDetail()
 | `created_at` | `str` | No |  |
 | `created_by` | `dict` | No |  |
 | `description` | `str` | No |  |
-| `group` | `dict` | No |  |
+| `groups` | `dict` | No |  |
 | `id` | `int` | No |  |
 | `ip_address` | `str` | No |  |
 | `is_shared` | `bool` | No |  |
@@ -3485,7 +3506,7 @@ api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerDetail()
 | `online` | `bool` | No |  |
 | `paused` | `bool` | No |  |
 | `platform` | `str` | No |  |
-| `project` | `dict` | No |  |
+| `projects` | `dict` | No |  |
 | `revision` | `str` | No |  |
 | `run_untagged` | `str` | No |  |
 | `runner_type` | `str` | No |  |
@@ -3656,19 +3677,6 @@ Return the entity name.
 api_entities_ci_secure_file = client.ApiEntitiesCiSecureFile()
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `checksum` | `str` | No |  |
-| `checksum_algorithm` | `str` | No |  |
-| `created_at` | `str` | No |  |
-| `expires_at` | `str` | No |  |
-| `file_extension` | `str` | No |  |
-| `id` | `int` | No |  |
-| `metadata` | `dict` | No |  |
-| `name` | `str` | No |  |
-
 ### Operations
 
 #### `create(reqdata, ctrl=None) -> dict`
@@ -3754,7 +3762,7 @@ result = client.ApiEntitiesCiVariable().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesCiVariable().list()
+results = client.ApiEntitiesCiVariable().list({"pipeline_id": "example", "project_id": "example"})
 for api_entities_ci_variable in results:
     print(api_entities_ci_variable)
 ```
@@ -3827,7 +3835,7 @@ api_entities_cluster = client.ApiEntitiesCluster()
 | `management_project` | `dict` | No |  |
 | `name` | `str` | No |  |
 | `namespace_per_environment` | `str` | No |  |
-| `platform_kubernete` | `dict` | No |  |
+| `platform_kubernetes` | `dict` | No |  |
 | `platform_type` | `str` | No |  |
 | `provider_gcp` | `dict` | No |  |
 | `provider_type` | `str` | No |  |
@@ -3923,7 +3931,7 @@ api_entities_cluster_group = client.ApiEntitiesClusterGroup()
 | `management_project` | `dict` | No |  |
 | `name` | `str` | No |  |
 | `namespace_per_environment` | `str` | No |  |
-| `platform_kubernete` | `dict` | No |  |
+| `platform_kubernetes` | `dict` | No |  |
 | `platform_type` | `str` | No |  |
 | `provider_gcp` | `dict` | No |  |
 | `provider_type` | `str` | No |  |
@@ -4010,7 +4018,7 @@ api_entities_cluster_project = client.ApiEntitiesClusterProject()
 | `management_project` | `dict` | No |  |
 | `name` | `str` | No |  |
 | `namespace_per_environment` | `str` | No |  |
-| `platform_kubernete` | `dict` | No |  |
+| `platform_kubernetes` | `dict` | No |  |
 | `platform_type` | `str` | No |  |
 | `project` | `dict` | No |  |
 | `provider_gcp` | `dict` | No |  |
@@ -4088,12 +4096,13 @@ api_entities_clusters_agent = client.ApiEntitiesClustersAgent()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `config_project` | `dict` | No |  |
 | `created_at` | `str` | No |  |
-| `created_by_user_id` | `str` | No |  |
-| `id` | `str` | No |  |
-| `is_receptive` | `bool` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
 | `name` | `str` | No |  |
+| `name_with_namespace` | `str` | No |  |
+| `path` | `str` | No |  |
+| `path_with_namespace` | `str` | No |  |
 
 ### Operations
 
@@ -4324,13 +4333,13 @@ api_entities_commit = client.ApiEntitiesCommit()
 | `committer_email` | `str` | No |  |
 | `committer_name` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `extended_trailer` | `dict` | No |  |
+| `extended_trailers` | `dict` | No |  |
 | `id` | `str` | No |  |
 | `message` | `str` | No |  |
-| `parent_id` | `list` | No |  |
+| `parent_ids` | `list` | No |  |
 | `short_id` | `str` | No |  |
 | `title` | `str` | No |  |
-| `trailer` | `dict` | No |  |
+| `trailers` | `dict` | No |  |
 | `web_url` | `str` | No |  |
 
 ### Operations
@@ -4350,7 +4359,7 @@ result = client.ApiEntitiesCommit().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesCommit().list()
+results = client.ApiEntitiesCommit().list({"project_id": "example"})
 for api_entities_commit in results:
     print(api_entities_commit)
 ```
@@ -4401,17 +4410,17 @@ api_entities_commit_detail = client.ApiEntitiesCommitDetail()
 | `committer_email` | `str` | No |  |
 | `committer_name` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `extended_trailer` | `dict` | No |  |
+| `extended_trailers` | `dict` | No |  |
 | `id` | `str` | No |  |
 | `last_pipeline` | `dict` | No |  |
 | `message` | `str` | No |  |
-| `parent_id` | `list` | No |  |
+| `parent_ids` | `list` | No |  |
 | `project_id` | `int` | No |  |
 | `short_id` | `str` | No |  |
-| `stat` | `dict` | No |  |
+| `stats` | `dict` | No |  |
 | `status` | `str` | No |  |
 | `title` | `str` | No |  |
-| `trailer` | `dict` | No |  |
+| `trailers` | `dict` | No |  |
 | `web_url` | `str` | No |  |
 
 ### Operations
@@ -4486,11 +4495,21 @@ api_entities_commit_note = client.ApiEntitiesCommitNote()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `author` | `dict` | No |  |
+| `avatar_path` | `str` | No |  |
+| `avatar_url` | `str` | No |  |
 | `created_at` | `str` | No |  |
+| `custom_attributes` | `list` | No |  |
+| `id` | `int` | No |  |
 | `line` | `int` | No |  |
 | `line_type` | `str` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `str` | No |  |
 | `note` | `str` | No |  |
 | `path` | `str` | No |  |
+| `public_email` | `str` | No |  |
+| `state` | `str` | No |  |
+| `username` | `str` | No |  |
+| `web_url` | `str` | No |  |
 
 ### Operations
 
@@ -4510,7 +4529,7 @@ result = client.ApiEntitiesCommitNote().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesCommitNote().list()
+results = client.ApiEntitiesCommitNote().list({"project_id": "example", "sha": "example"})
 for api_entities_commit_note in results:
     print(api_entities_commit_note)
 ```
@@ -4660,18 +4679,26 @@ api_entities_commit_status = client.ApiEntitiesCommitStatus()
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
 | `author` | `dict` | No |  |
+| `avatar_path` | `str` | No |  |
+| `avatar_url` | `str` | No |  |
 | `coverage` | `float` | No |  |
 | `created_at` | `str` | No |  |
+| `custom_attributes` | `list` | No |  |
 | `description` | `str` | No |  |
 | `finished_at` | `str` | No |  |
 | `id` | `int` | No |  |
+| `locked` | `bool` | No |  |
 | `name` | `str` | No |  |
 | `pipeline_id` | `int` | No |  |
+| `public_email` | `str` | No |  |
 | `ref` | `str` | No |  |
 | `sha` | `str` | No |  |
 | `started_at` | `str` | No |  |
+| `state` | `str` | No |  |
 | `status` | `str` | No |  |
 | `target_url` | `str` | No |  |
+| `username` | `str` | No |  |
+| `web_url` | `str` | No |  |
 
 ### Operations
 
@@ -4691,7 +4718,7 @@ result = client.ApiEntitiesCommitStatus().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesCommitStatus().list()
+results = client.ApiEntitiesCommitStatus().list({"project_id": "example", "sha": "example"})
 for api_entities_commit_status in results:
     print(api_entities_commit_status)
 ```
@@ -4736,9 +4763,10 @@ api_entities_compare = client.ApiEntitiesCompare()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `commit` | `dict` | No |  |
+| `commits` | `list` | No |  |
 | `compare_same_ref` | `bool` | No |  |
 | `compare_timeout` | `bool` | No |  |
-| `diff` | `list` | No |  |
+| `diffs` | `list` | No |  |
 | `web_url` | `str` | No |  |
 
 ### Operations
@@ -4748,7 +4776,7 @@ api_entities_compare = client.ApiEntitiesCompare()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesCompare().list()
+results = client.ApiEntitiesCompare().list({"project_id": "example"})
 for api_entities_compare in results:
     print(api_entities_compare)
 ```
@@ -4802,7 +4830,7 @@ api_entities_container_registry_repository = client.ApiEntitiesContainerRegistry
 | `project_id` | `int` | No |  |
 | `size` | `int` | No |  |
 | `status` | `str` | No |  |
-| `tag` | `dict` | No |  |
+| `tags` | `dict` | No |  |
 | `tags_count` | `int` | No |  |
 
 ### Operations
@@ -4875,7 +4903,7 @@ api_entities_container_registry_tag = client.ApiEntitiesContainerRegistryTag()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesContainerRegistryTag().list()
+results = client.ApiEntitiesContainerRegistryTag().list({"project_id": "example", "repository_id": "example"})
 for api_entities_container_registry_tag in results:
     print(api_entities_container_registry_tag)
 ```
@@ -4977,9 +5005,9 @@ api_entities_contributor = client.ApiEntitiesContributor()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addition` | `int` | No |  |
-| `commit` | `int` | No |  |
-| `deletion` | `int` | No |  |
+| `additions` | `int` | No |  |
+| `commits` | `int` | No |  |
+| `deletions` | `int` | No |  |
 | `email` | `str` | No |  |
 | `name` | `str` | No |  |
 
@@ -5146,7 +5174,7 @@ result = client.ApiEntitiesDeployKeysProject().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesDeployKeysProject().list()
+results = client.ApiEntitiesDeployKeysProject().list({"project_id": "example"})
 for api_entities_deploy_keys_project in results:
     print(api_entities_deploy_keys_project)
 ```
@@ -5203,7 +5231,7 @@ api_entities_deploy_token = client.ApiEntitiesDeployToken()
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `list` | No |  |
+| `scopes` | `list` | No |  |
 | `username` | `str` | No |  |
 
 ### Operations
@@ -5329,7 +5357,7 @@ api_entities_deployment = client.ApiEntitiesDeployment()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesDeployment().list()
+results = client.ApiEntitiesDeployment().list({"project_id": "example"})
 for api_entities_deployment in results:
     print(api_entities_deployment)
 ```
@@ -5373,8 +5401,8 @@ api_entities_deployment_extended = client.ApiEntitiesDeploymentExtended()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `approval` | `dict` | No |  |
 | `approval_summary` | `dict` | No |  |
+| `approvals` | `dict` | No |  |
 | `created_at` | `str` | No |  |
 | `deployable` | `dict` | No |  |
 | `environment` | `dict` | No |  |
@@ -5506,7 +5534,7 @@ api_entities_dictionary_table = client.ApiEntitiesDictionaryTable()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `feature_category` | `list` | No |  |
+| `feature_categories` | `list` | No |  |
 | `table_name` | `str` | No |  |
 
 ### Operations
@@ -5577,7 +5605,7 @@ api_entities_diff = client.ApiEntitiesDiff()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesDiff().list()
+results = client.ApiEntitiesDiff().list({"project_id": "example", "sha": "example"})
 for api_entities_diff in results:
     print(api_entities_diff)
 ```
@@ -5629,8 +5657,8 @@ api_entities_discovered_cluster = client.ApiEntitiesDiscoveredCluster()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `group` | `str` | No |  |
-| `project` | `str` | No |  |
+| `groups` | `str` | No |  |
+| `projects` | `str` | No |  |
 
 ### Operations
 
@@ -5709,7 +5737,7 @@ result = client.ApiEntitiesDraftNote().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesDraftNote().list()
+results = client.ApiEntitiesDraftNote().list({"merge_request_id": "example", "project_id": "example"})
 for api_entities_draft_note in results:
     print(api_entities_draft_note)
 ```
@@ -5808,7 +5836,7 @@ result = client.ApiEntitiesEnvironment().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesEnvironment().list()
+results = client.ApiEntitiesEnvironment().list({"project_id": "example"})
 for api_entities_environment in results:
     print(api_entities_environment)
 ```
@@ -5894,7 +5922,7 @@ result = client.ApiEntitiesErrorTrackingClientKey().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesErrorTrackingClientKey().list()
+results = client.ApiEntitiesErrorTrackingClientKey().list({"project_id": "example"})
 for api_entities_error_tracking_client_key in results:
     print(api_entities_error_tracking_client_key)
 ```
@@ -6081,7 +6109,7 @@ api_entities_feature = client.ApiEntitiesFeature()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `definition` | `dict` | No |  |
-| `gate` | `dict` | No |  |
+| `gates` | `dict` | No |  |
 | `name` | `str` | No |  |
 | `state` | `str` | No |  |
 
@@ -6151,7 +6179,7 @@ api_entities_feature_definition = client.ApiEntitiesFeatureDefinition()
 | `group` | `str` | No |  |
 | `intended_to_rollout_by` | `str` | No |  |
 | `introduced_by_url` | `str` | No |  |
-| `log_state_change` | `str` | No |  |
+| `log_state_changes` | `str` | No |  |
 | `milestone` | `str` | No |  |
 | `name` | `str` | No |  |
 | `rollout_issue_url` | `str` | No |  |
@@ -6211,10 +6239,13 @@ api_entities_feature_flag = client.ApiEntitiesFeatureFlag()
 | `active` | `bool` | No |  |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
+| `id` | `int` | No |  |
 | `name` | `str` | No |  |
-| `scope` | `str` | No |  |
-| `strategy` | `dict` | No |  |
+| `parameters` | `str` | No |  |
+| `scopes` | `dict` | No |  |
+| `strategies` | `dict` | No |  |
 | `updated_at` | `str` | No |  |
+| `user_list` | `dict` | No |  |
 | `version` | `str` | No |  |
 
 ### Operations
@@ -6234,7 +6265,7 @@ result = client.ApiEntitiesFeatureFlag().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesFeatureFlag().list()
+results = client.ApiEntitiesFeatureFlag().list({"project_id": "example"})
 for api_entities_feature_flag in results:
     print(api_entities_feature_flag)
 ```
@@ -6306,7 +6337,7 @@ api_entities_feature_flag_user_list = client.ApiEntitiesFeatureFlagUserList()
 | `path` | `str` | No |  |
 | `project_id` | `int` | No |  |
 | `updated_at` | `str` | No |  |
-| `user_xid` | `str` | No |  |
+| `user_xids` | `str` | No |  |
 
 ### Operations
 
@@ -6325,7 +6356,7 @@ result = client.ApiEntitiesFeatureFlagUserList().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesFeatureFlagUserList().list()
+results = client.ApiEntitiesFeatureFlagUserList().list({"project_id": "example"})
 for api_entities_feature_flag_user_list in results:
     print(api_entities_feature_flag_user_list)
 ```
@@ -6413,7 +6444,7 @@ result = client.ApiEntitiesFreezePeriod().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesFreezePeriod().list()
+results = client.ApiEntitiesFreezePeriod().list({"project_id": "example"})
 for api_entities_freeze_period in results:
     print(api_entities_freeze_period)
 ```
@@ -6530,8 +6561,8 @@ api_entities_go_module_version = client.ApiEntitiesGoModuleVersion()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `time` | `str` | No |  |
-| `version` | `str` | No |  |
+| `Time` | `str` | No |  |
+| `Version` | `str` | No |  |
 
 ### Operations
 
@@ -6587,10 +6618,10 @@ api_entities_group = client.ApiEntitiesGroup()
 | `auto_duo_code_review_enabled` | `str` | No |  |
 | `avatar_url` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `custom_attribute` | `dict` | No |  |
+| `custom_attributes` | `dict` | No |  |
 | `default_branch` | `str` | No |  |
 | `default_branch_protection` | `str` | No |  |
-| `default_branch_protection_default` | `str` | No |  |
+| `default_branch_protection_defaults` | `str` | No |  |
 | `description` | `str` | No |  |
 | `duo_core_features_enabled` | `bool` | No |  |
 | `duo_features_enabled` | `str` | No |  |
@@ -6602,7 +6633,7 @@ api_entities_group = client.ApiEntitiesGroup()
 | `id` | `str` | No |  |
 | `ldap_access` | `str` | No |  |
 | `ldap_cn` | `str` | No |  |
-| `ldap_group_link` | `dict` | No |  |
+| `ldap_group_links` | `dict` | No |  |
 | `lfs_enabled` | `str` | No |  |
 | `lock_duo_features_enabled` | `str` | No |  |
 | `lock_math_rendering_limits_enabled` | `bool` | No |  |
@@ -6618,12 +6649,12 @@ api_entities_group = client.ApiEntitiesGroup()
 | `repository_storage` | `str` | No |  |
 | `request_access_enabled` | `str` | No |  |
 | `require_two_factor_authentication` | `str` | No |  |
-| `root_storage_statistic` | `dict` | No |  |
-| `saml_group_link` | `dict` | No |  |
+| `root_storage_statistics` | `dict` | No |  |
+| `saml_group_links` | `dict` | No |  |
 | `share_with_group_lock` | `str` | No |  |
 | `shared_runners_setting` | `str` | No |  |
 | `show_diff_preview_in_email` | `bool` | No |  |
-| `statistic` | `dict` | No |  |
+| `statistics` | `dict` | No |  |
 | `subgroup_creation_level` | `str` | No |  |
 | `two_factor_grace_period` | `str` | No |  |
 | `visibility` | `str` | No |  |
@@ -6717,10 +6748,10 @@ api_entities_group_detail = client.ApiEntitiesGroupDetail()
 | `auto_duo_code_review_enabled` | `str` | No |  |
 | `avatar_url` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `custom_attribute` | `dict` | No |  |
+| `custom_attributes` | `dict` | No |  |
 | `default_branch` | `str` | No |  |
 | `default_branch_protection` | `str` | No |  |
-| `default_branch_protection_default` | `str` | No |  |
+| `default_branch_protection_defaults` | `str` | No |  |
 | `description` | `str` | No |  |
 | `duo_core_features_enabled` | `bool` | No |  |
 | `duo_features_enabled` | `str` | No |  |
@@ -6732,10 +6763,10 @@ api_entities_group_detail = client.ApiEntitiesGroupDetail()
 | `full_name` | `str` | No |  |
 | `full_path` | `str` | No |  |
 | `id` | `str` | No |  |
-| `ip_restriction_range` | `str` | No |  |
+| `ip_restriction_ranges` | `str` | No |  |
 | `ldap_access` | `str` | No |  |
 | `ldap_cn` | `str` | No |  |
-| `ldap_group_link` | `dict` | No |  |
+| `ldap_group_links` | `dict` | No |  |
 | `lfs_enabled` | `str` | No |  |
 | `lock_duo_features_enabled` | `str` | No |  |
 | `lock_math_rendering_limits_enabled` | `bool` | No |  |
@@ -6750,28 +6781,28 @@ api_entities_group_detail = client.ApiEntitiesGroupDetail()
 | `path` | `str` | No |  |
 | `prevent_forking_outside_group` | `str` | No |  |
 | `prevent_sharing_groups_outside_hierarchy` | `str` | No |  |
-| `project` | `dict` | No |  |
 | `project_creation_level` | `str` | No |  |
+| `projects` | `dict` | No |  |
 | `repository_storage` | `str` | No |  |
 | `request_access_enabled` | `str` | No |  |
 | `require_two_factor_authentication` | `str` | No |  |
-| `root_storage_statistic` | `dict` | No |  |
+| `root_storage_statistics` | `dict` | No |  |
 | `runners_token` | `str` | No |  |
-| `saml_group_link` | `dict` | No |  |
+| `saml_group_links` | `dict` | No |  |
 | `service_access_tokens_expiration_enforced` | `str` | No |  |
 | `share_with_group_lock` | `str` | No |  |
-| `shared_project` | `dict` | No |  |
+| `shared_projects` | `dict` | No |  |
 | `shared_runners_minutes_limit` | `str` | No |  |
 | `shared_runners_setting` | `str` | No |  |
-| `shared_with_group` | `str` | No |  |
+| `shared_with_groups` | `str` | No |  |
 | `show_diff_preview_in_email` | `bool` | No |  |
-| `statistic` | `dict` | No |  |
+| `statistics` | `dict` | No |  |
 | `subgroup_creation_level` | `str` | No |  |
 | `two_factor_grace_period` | `str` | No |  |
 | `unique_project_download_limit` | `str` | No |  |
 | `unique_project_download_limit_alertlist` | `str` | No |  |
 | `unique_project_download_limit_allowlist` | `str` | No |  |
-| `unique_project_download_limit_interval_in_second` | `str` | No |  |
+| `unique_project_download_limit_interval_in_seconds` | `str` | No |  |
 | `visibility` | `str` | No |  |
 | `web_based_commit_signing_enabled` | `str` | No |  |
 | `web_url` | `str` | No |  |
@@ -6839,20 +6870,20 @@ api_entities_hook = client.ApiEntitiesHook()
 | `alert_status` | `Any` | No |  |
 | `branch_filter_strategy` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `custom_header` | `list` | No |  |
+| `custom_headers` | `list` | No |  |
 | `custom_webhook_template` | `str` | No |  |
 | `description` | `str` | No |  |
 | `disabled_until` | `str` | No |  |
 | `enable_ssl_verification` | `bool` | No |  |
 | `id` | `str` | No |  |
-| `merge_requests_event` | `bool` | No |  |
+| `merge_requests_events` | `bool` | No |  |
 | `name` | `str` | No |  |
-| `push_event` | `bool` | No |  |
+| `push_events` | `bool` | No |  |
 | `push_events_branch_filter` | `str` | No |  |
-| `repository_update_event` | `bool` | No |  |
-| `tag_push_event` | `bool` | No |  |
+| `repository_update_events` | `bool` | No |  |
+| `tag_push_events` | `bool` | No |  |
 | `url` | `str` | No |  |
-| `url_variable` | `list` | No |  |
+| `url_variables` | `list` | No |  |
 
 ### Operations
 
@@ -6929,35 +6960,6 @@ Return the entity name.
 api_entities_integration = client.ApiEntitiesIntegration()
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `active` | `bool` | No |  |
-| `alert_event` | `bool` | No |  |
-| `comment_on_event_enabled` | `bool` | No |  |
-| `commit_event` | `bool` | No |  |
-| `confidential_issues_event` | `bool` | No |  |
-| `confidential_note_event` | `bool` | No |  |
-| `created_at` | `str` | No |  |
-| `deployment_event` | `bool` | No |  |
-| `id` | `int` | No |  |
-| `incident_event` | `bool` | No |  |
-| `inherited` | `bool` | No |  |
-| `issues_event` | `bool` | No |  |
-| `job_event` | `bool` | No |  |
-| `merge_requests_event` | `bool` | No |  |
-| `note_event` | `bool` | No |  |
-| `pipeline_event` | `bool` | No |  |
-| `property` | `dict` | No |  |
-| `push_event` | `bool` | No |  |
-| `slug` | `int` | No |  |
-| `tag_push_event` | `bool` | No |  |
-| `title` | `str` | No |  |
-| `updated_at` | `str` | No |  |
-| `vulnerability_event` | `bool` | No |  |
-| `wiki_page_event` | `bool` | No |  |
-
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -7008,28 +7010,28 @@ api_entities_integration_basic = client.ApiEntitiesIntegrationBasic()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `active` | `bool` | No |  |
-| `alert_event` | `bool` | No |  |
+| `alert_events` | `bool` | No |  |
 | `comment_on_event_enabled` | `bool` | No |  |
-| `commit_event` | `bool` | No |  |
-| `confidential_issues_event` | `bool` | No |  |
-| `confidential_note_event` | `bool` | No |  |
+| `commit_events` | `bool` | No |  |
+| `confidential_issues_events` | `bool` | No |  |
+| `confidential_note_events` | `bool` | No |  |
 | `created_at` | `str` | No |  |
-| `deployment_event` | `bool` | No |  |
+| `deployment_events` | `bool` | No |  |
 | `id` | `int` | No |  |
-| `incident_event` | `bool` | No |  |
+| `incident_events` | `bool` | No |  |
 | `inherited` | `bool` | No |  |
-| `issues_event` | `bool` | No |  |
-| `job_event` | `bool` | No |  |
-| `merge_requests_event` | `bool` | No |  |
-| `note_event` | `bool` | No |  |
-| `pipeline_event` | `bool` | No |  |
-| `push_event` | `bool` | No |  |
+| `issues_events` | `bool` | No |  |
+| `job_events` | `bool` | No |  |
+| `merge_requests_events` | `bool` | No |  |
+| `note_events` | `bool` | No |  |
+| `pipeline_events` | `bool` | No |  |
+| `push_events` | `bool` | No |  |
 | `slug` | `int` | No |  |
-| `tag_push_event` | `bool` | No |  |
+| `tag_push_events` | `bool` | No |  |
 | `title` | `str` | No |  |
 | `updated_at` | `str` | No |  |
-| `vulnerability_event` | `bool` | No |  |
-| `wiki_page_event` | `bool` | No |  |
+| `vulnerability_events` | `bool` | No |  |
+| `wiki_page_events` | `bool` | No |  |
 
 ### Operations
 
@@ -7236,6 +7238,7 @@ api_entities_issue = client.ApiEntitiesIssue()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `assignee` | `dict` | No |  |
+| `assignees` | `dict` | No |  |
 | `author` | `dict` | No |  |
 | `blocking_issues_count` | `str` | No |  |
 | `closed_at` | `str` | No |  |
@@ -7244,11 +7247,11 @@ api_entities_issue = client.ApiEntitiesIssue()
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
 | `discussion_locked` | `bool` | No |  |
-| `downvote` | `str` | No |  |
+| `downvotes` | `str` | No |  |
 | `due_date` | `str` | No |  |
 | `epic` | `dict` | No |  |
 | `epic_iid` | `str` | No |  |
-| `has_task` | `bool` | No |  |
+| `has_tasks` | `bool` | No |  |
 | `health_status` | `str` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
@@ -7256,24 +7259,24 @@ api_entities_issue = client.ApiEntitiesIssue()
 | `imported_from` | `str` | No |  |
 | `issue_type` | `str` | No |  |
 | `iteration` | `dict` | No |  |
-| `label` | `list` | No |  |
-| `link` | `dict` | No |  |
+| `labels` | `list` | No |  |
+| `links` | `dict` | No |  |
 | `merge_requests_count` | `str` | No |  |
 | `milestone` | `dict` | No |  |
 | `moved_to_id` | `str` | No |  |
 | `project_id` | `int` | No |  |
-| `reference` | `dict` | No |  |
+| `references` | `dict` | No |  |
 | `service_desk_reply_to` | `str` | No |  |
 | `severity` | `str` | No |  |
 | `state` | `str` | No |  |
 | `subscribed` | `str` | No |  |
 | `task_completion_status` | `str` | No |  |
 | `task_status` | `str` | No |  |
-| `time_stat` | `dict` | No |  |
+| `time_stats` | `dict` | No |  |
 | `title` | `str` | No |  |
 | `type` | `str` | No |  |
 | `updated_at` | `str` | No |  |
-| `upvote` | `str` | No |  |
+| `upvotes` | `str` | No |  |
 | `user_notes_count` | `str` | No |  |
 | `web_url` | `str` | No |  |
 | `weight` | `str` | No |  |
@@ -7423,15 +7426,15 @@ api_entities_license = client.ApiEntitiesLicense()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condition` | `list` | No |  |
+| `conditions` | `list` | No |  |
 | `content` | `str` | No |  |
 | `description` | `str` | No |  |
 | `html_url` | `str` | No |  |
 | `key` | `str` | No |  |
-| `limitation` | `list` | No |  |
+| `limitations` | `list` | No |  |
 | `name` | `str` | No |  |
 | `nickname` | `str` | No |  |
-| `permission` | `list` | No |  |
+| `permissions` | `list` | No |  |
 | `popular` | `bool` | No |  |
 | `source_url` | `str` | No |  |
 
@@ -7442,7 +7445,7 @@ api_entities_license = client.ApiEntitiesLicense()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesLicense().list()
+results = client.ApiEntitiesLicense().list({"id": "example", "name": "example", "type": "example"})
 for api_entities_license in results:
     print(api_entities_license)
 ```
@@ -7594,7 +7597,7 @@ api_entities_member = client.ApiEntitiesMember()
 | `avatar_url` | `str` | No |  |
 | `created_at` | `str` | No |  |
 | `created_by` | `dict` | No |  |
-| `custom_attribute` | `list` | No |  |
+| `custom_attributes` | `list` | No |  |
 | `email` | `str` | No |  |
 | `expires_at` | `str` | No |  |
 | `group_saml_identity` | `dict` | No |  |
@@ -7704,6 +7707,7 @@ api_entities_merge = client.ApiEntitiesMerge()
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `str` | No |  |
 | `assignee` | `dict` | No |  |
+| `assignees` | `dict` | No |  |
 | `author` | `dict` | No |  |
 | `blocking_discussions_resolved` | `str` | No |  |
 | `changes_count` | `str` | No |  |
@@ -7713,21 +7717,21 @@ api_entities_merge = client.ApiEntitiesMerge()
 | `description` | `str` | No |  |
 | `description_html` | `str` | No |  |
 | `detailed_merge_status` | `str` | No |  |
-| `diff_ref` | `dict` | No |  |
+| `diff_refs` | `dict` | No |  |
 | `discussion_locked` | `str` | No |  |
 | `diverged_commits_count` | `str` | No |  |
-| `downvote` | `str` | No |  |
+| `downvotes` | `str` | No |  |
 | `draft` | `str` | No |  |
 | `first_contribution` | `str` | No |  |
 | `first_deployed_to_production_at` | `str` | No |  |
 | `force_remove_source_branch` | `str` | No |  |
-| `has_conflict` | `bool` | No |  |
+| `has_conflicts` | `bool` | No |  |
 | `head_pipeline` | `dict` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `str` | No |  |
 | `imported_from` | `str` | No |  |
-| `label` | `str` | No |  |
+| `labels` | `str` | No |  |
 | `latest_build_finished_at` | `str` | No |  |
 | `latest_build_started_at` | `str` | No |  |
 | `merge_after` | `str` | No |  |
@@ -7735,7 +7739,7 @@ api_entities_merge = client.ApiEntitiesMerge()
 | `merge_error` | `str` | No |  |
 | `merge_status` | `str` | No |  |
 | `merge_user` | `dict` | No |  |
-| `merge_when_pipeline_succeed` | `str` | No |  |
+| `merge_when_pipeline_succeeds` | `str` | No |  |
 | `merged_at` | `str` | No |  |
 | `merged_by` | `dict` | No |  |
 | `milestone` | `dict` | No |  |
@@ -7744,7 +7748,8 @@ api_entities_merge = client.ApiEntitiesMerge()
 | `project_id` | `int` | No |  |
 | `rebase_in_progress` | `str` | No |  |
 | `reference` | `str` | No |  |
-| `reviewer` | `dict` | No |  |
+| `references` | `dict` | No |  |
+| `reviewers` | `dict` | No |  |
 | `sha` | `str` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `str` | No |  |
@@ -7757,11 +7762,11 @@ api_entities_merge = client.ApiEntitiesMerge()
 | `target_branch` | `str` | No |  |
 | `target_project_id` | `str` | No |  |
 | `task_completion_status` | `str` | No |  |
-| `time_stat` | `dict` | No |  |
+| `time_stats` | `dict` | No |  |
 | `title` | `str` | No |  |
 | `title_html` | `str` | No |  |
 | `updated_at` | `str` | No |  |
-| `upvote` | `str` | No |  |
+| `upvotes` | `str` | No |  |
 | `user` | `dict` | No |  |
 | `user_notes_count` | `str` | No |  |
 | `web_url` | `str` | No |  |
@@ -7837,10 +7842,8 @@ api_entities_merge_request_approval = client.ApiEntitiesMergeRequestApproval()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `approved` | `bool` | No |  |
-| `approved_by` | `dict` | No |  |
-| `user_can_approve` | `bool` | No |  |
-| `user_has_approved` | `bool` | No |  |
+| `approved_at` | `str` | No |  |
+| `user` | `dict` | No |  |
 
 ### Operations
 
@@ -7906,6 +7909,7 @@ api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic()
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `str` | No |  |
 | `assignee` | `dict` | No |  |
+| `assignees` | `dict` | No |  |
 | `author` | `dict` | No |  |
 | `blocking_discussions_resolved` | `str` | No |  |
 | `closed_at` | `str` | No |  |
@@ -7915,27 +7919,28 @@ api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic()
 | `description_html` | `str` | No |  |
 | `detailed_merge_status` | `str` | No |  |
 | `discussion_locked` | `str` | No |  |
-| `downvote` | `str` | No |  |
+| `downvotes` | `str` | No |  |
 | `draft` | `str` | No |  |
 | `force_remove_source_branch` | `str` | No |  |
-| `has_conflict` | `bool` | No |  |
+| `has_conflicts` | `bool` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `str` | No |  |
 | `imported_from` | `str` | No |  |
-| `label` | `str` | No |  |
+| `labels` | `str` | No |  |
 | `merge_after` | `str` | No |  |
 | `merge_commit_sha` | `str` | No |  |
 | `merge_status` | `str` | No |  |
 | `merge_user` | `dict` | No |  |
-| `merge_when_pipeline_succeed` | `str` | No |  |
+| `merge_when_pipeline_succeeds` | `str` | No |  |
 | `merged_at` | `str` | No |  |
 | `merged_by` | `dict` | No |  |
 | `milestone` | `dict` | No |  |
 | `prepared_at` | `str` | No |  |
 | `project_id` | `int` | No |  |
 | `reference` | `str` | No |  |
-| `reviewer` | `dict` | No |  |
+| `references` | `dict` | No |  |
+| `reviewers` | `dict` | No |  |
 | `sha` | `str` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `str` | No |  |
@@ -7947,11 +7952,11 @@ api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic()
 | `target_branch` | `str` | No |  |
 | `target_project_id` | `str` | No |  |
 | `task_completion_status` | `str` | No |  |
-| `time_stat` | `dict` | No |  |
+| `time_stats` | `dict` | No |  |
 | `title` | `str` | No |  |
 | `title_html` | `str` | No |  |
 | `updated_at` | `str` | No |  |
-| `upvote` | `str` | No |  |
+| `upvotes` | `str` | No |  |
 | `user_notes_count` | `str` | No |  |
 | `web_url` | `str` | No |  |
 | `work_in_progress` | `str` | No |  |
@@ -7963,7 +7968,7 @@ api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesMergeRequestBasic().list()
+results = client.ApiEntitiesMergeRequestBasic().list({"project_id": "example"})
 for api_entities_merge_request_basic in results:
     print(api_entities_merge_request_basic)
 ```
@@ -8019,9 +8024,10 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `str` | No |  |
 | `assignee` | `dict` | No |  |
+| `assignees` | `dict` | No |  |
 | `author` | `dict` | No |  |
 | `blocking_discussions_resolved` | `str` | No |  |
-| `change` | `dict` | No |  |
+| `changes` | `dict` | No |  |
 | `changes_count` | `str` | No |  |
 | `closed_at` | `str` | No |  |
 | `closed_by` | `dict` | No |  |
@@ -8029,21 +8035,21 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `description` | `str` | No |  |
 | `description_html` | `str` | No |  |
 | `detailed_merge_status` | `str` | No |  |
-| `diff_ref` | `dict` | No |  |
+| `diff_refs` | `dict` | No |  |
 | `discussion_locked` | `str` | No |  |
 | `diverged_commits_count` | `str` | No |  |
-| `downvote` | `str` | No |  |
+| `downvotes` | `str` | No |  |
 | `draft` | `str` | No |  |
 | `first_contribution` | `str` | No |  |
 | `first_deployed_to_production_at` | `str` | No |  |
 | `force_remove_source_branch` | `str` | No |  |
-| `has_conflict` | `bool` | No |  |
+| `has_conflicts` | `bool` | No |  |
 | `head_pipeline` | `dict` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `str` | No |  |
 | `imported_from` | `str` | No |  |
-| `label` | `str` | No |  |
+| `labels` | `str` | No |  |
 | `latest_build_finished_at` | `str` | No |  |
 | `latest_build_started_at` | `str` | No |  |
 | `merge_after` | `str` | No |  |
@@ -8051,7 +8057,7 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `merge_error` | `str` | No |  |
 | `merge_status` | `str` | No |  |
 | `merge_user` | `dict` | No |  |
-| `merge_when_pipeline_succeed` | `str` | No |  |
+| `merge_when_pipeline_succeeds` | `str` | No |  |
 | `merged_at` | `str` | No |  |
 | `merged_by` | `dict` | No |  |
 | `milestone` | `dict` | No |  |
@@ -8061,7 +8067,8 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `project_id` | `int` | No |  |
 | `rebase_in_progress` | `str` | No |  |
 | `reference` | `str` | No |  |
-| `reviewer` | `dict` | No |  |
+| `references` | `dict` | No |  |
+| `reviewers` | `dict` | No |  |
 | `sha` | `str` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `str` | No |  |
@@ -8074,11 +8081,11 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `target_branch` | `str` | No |  |
 | `target_project_id` | `str` | No |  |
 | `task_completion_status` | `str` | No |  |
-| `time_stat` | `dict` | No |  |
+| `time_stats` | `dict` | No |  |
 | `title` | `str` | No |  |
 | `title_html` | `str` | No |  |
 | `updated_at` | `str` | No |  |
-| `upvote` | `str` | No |  |
+| `upvotes` | `str` | No |  |
 | `user` | `dict` | No |  |
 | `user_notes_count` | `str` | No |  |
 | `web_url` | `str` | No |  |
@@ -8150,7 +8157,7 @@ api_entities_merge_request_diff = client.ApiEntitiesMergeRequestDiff()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesMergeRequestDiff().list()
+results = client.ApiEntitiesMergeRequestDiff().list({"merge_request_id": "example", "project_id": "example"})
 for api_entities_merge_request_diff in results:
     print(api_entities_merge_request_diff)
 ```
@@ -8195,9 +8202,9 @@ api_entities_merge_request_diff_full = client.ApiEntitiesMergeRequestDiffFull()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `base_commit_sha` | `str` | No |  |
-| `commit` | `dict` | No |  |
+| `commits` | `dict` | No |  |
 | `created_at` | `str` | No |  |
-| `diff` | `dict` | No |  |
+| `diffs` | `dict` | No |  |
 | `head_commit_sha` | `str` | No |  |
 | `id` | `str` | No |  |
 | `merge_request_id` | `str` | No |  |
@@ -8255,9 +8262,16 @@ api_entities_merge_request_reviewer = client.ApiEntitiesMergeRequestReviewer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created_at` | `str` | No |  |
+| `avatar_path` | `str` | No |  |
+| `avatar_url` | `str` | No |  |
+| `custom_attributes` | `list` | No |  |
+| `id` | `int` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `str` | No |  |
+| `public_email` | `str` | No |  |
 | `state` | `str` | No |  |
-| `user` | `dict` | No |  |
+| `username` | `str` | No |  |
+| `web_url` | `str` | No |  |
 
 ### Operations
 
@@ -8333,7 +8347,7 @@ result = client.ApiEntitiesMetricImage().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesMetricImage().list()
+results = client.ApiEntitiesMetricImage().list({"alert_management_alert_id": "example", "project_id": "example"})
 for api_entities_metric_image in results:
     print(api_entities_metric_image)
 ```
@@ -8390,8 +8404,16 @@ api_entities_mr_note = client.ApiEntitiesMrNote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `dict` | No |  |
-| `note` | `str` | No |  |
+| `avatar_path` | `str` | No |  |
+| `avatar_url` | `str` | No |  |
+| `custom_attributes` | `list` | No |  |
+| `id` | `int` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `str` | No |  |
+| `public_email` | `str` | No |  |
+| `state` | `str` | No |  |
+| `username` | `str` | No |  |
+| `web_url` | `str` | No |  |
 
 ### Operations
 
@@ -8453,7 +8475,7 @@ api_entities_namespace = client.ApiEntitiesNamespace()
 | `kind` | `str` | No |  |
 | `max_seats_used` | `int` | No |  |
 | `max_seats_used_changed_at` | `str` | No |  |
-| `members_count_with_descendant` | `int` | No |  |
+| `members_count_with_descendants` | `int` | No |  |
 | `name` | `str` | No |  |
 | `parent_id` | `int` | No |  |
 | `path` | `str` | No |  |
@@ -8536,8 +8558,8 @@ api_entities_namespace_existence = client.ApiEntitiesNamespaceExistence()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `exist` | `bool` | No |  |
-| `suggest` | `list` | No |  |
+| `exists` | `bool` | No |  |
+| `suggests` | `list` | No |  |
 
 ### Operations
 
@@ -8546,7 +8568,7 @@ api_entities_namespace_existence = client.ApiEntitiesNamespaceExistence()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesNamespaceExistence().list()
+results = client.ApiEntitiesNamespaceExistence().list({"namespace_id": "example"})
 for api_entities_namespace_existence in results:
     print(api_entities_namespace_existence)
 ```
@@ -8654,9 +8676,9 @@ api_entities_npm_package = client.ApiEntitiesNpmPackage()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dist_tag` | `dict` | No |  |
+| `disttags` | `dict` | No |  |
 | `name` | `str` | No |  |
-| `version` | `dict` | No |  |
+| `versions` | `dict` | No |  |
 
 ### Operations
 
@@ -8702,12 +8724,6 @@ Return the entity name.
 ```python
 api_entities_npm_package_tag = client.ApiEntitiesNpmPackageTag()
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `dist_tag` | `dict` | No |  |
 
 ### Operations
 
@@ -8758,7 +8774,7 @@ api_entities_nuget_packages_version = client.ApiEntitiesNugetPackagesVersion()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `version` | `list` | No |  |
+| `versions` | `list` | No |  |
 
 ### Operations
 
@@ -8767,7 +8783,7 @@ api_entities_nuget_packages_version = client.ApiEntitiesNugetPackagesVersion()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesNugetPackagesVersion().list()
+results = client.ApiEntitiesNugetPackagesVersion().list({"project_id": "example"})
 for api_entities_nuget_packages_version in results:
     print(api_entities_nuget_packages_version)
 ```
@@ -8811,19 +8827,20 @@ api_entities_nuget_search_result = client.ApiEntitiesNugetSearchResult()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `str` | No |  |
+| `authors` | `str` | No |  |
 | `description` | `str` | No |  |
-| `icon_url` | `str` | No |  |
+| `iconUrl` | `str` | No |  |
 | `id` | `str` | No |  |
-| `license_url` | `str` | No |  |
-| `project_url` | `str` | No |  |
+| `licenseUrl` | `str` | No |  |
+| `projectUrl` | `str` | No |  |
 | `summary` | `str` | No |  |
-| `tag` | `str` | No |  |
+| `tags` | `str` | No |  |
 | `title` | `str` | No |  |
-| `total_download` | `int` | No |  |
+| `totalDownloads` | `int` | No |  |
 | `type` | `str` | No |  |
 | `verified` | `bool` | No |  |
 | `version` | `str` | No |  |
+| `versions` | `dict` | No |  |
 
 ### Operations
 
@@ -8876,7 +8893,7 @@ api_entities_nuget_service_index = client.ApiEntitiesNugetServiceIndex()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `resource` | `list` | No |  |
+| `resources` | `list` | No |  |
 | `version` | `str` | No |  |
 
 ### Operations
@@ -8980,15 +8997,17 @@ api_entities_package = client.ApiEntitiesPackage()
 | `created_at` | `str` | No |  |
 | `id` | `int` | No |  |
 | `last_downloaded_at` | `str` | No |  |
-| `link` | `dict` | No |  |
+| `links` | `dict` | No |  |
 | `name` | `str` | No |  |
 | `package_type` | `str` | No |  |
 | `pipeline` | `dict` | No |  |
+| `pipelines` | `dict` | No |  |
 | `project_id` | `int` | No |  |
 | `project_path` | `str` | No |  |
 | `status` | `str` | No |  |
-| `tag` | `str` | No |  |
+| `tags` | `str` | No |  |
 | `version` | `str` | No |  |
+| `versions` | `dict` | No |  |
 
 ### Operations
 
@@ -9056,7 +9075,7 @@ api_entities_package_file = client.ApiEntitiesPackageFile()
 | `file_sha256` | `str` | No |  |
 | `id` | `int` | No |  |
 | `package_id` | `int` | No |  |
-| `pipeline` | `dict` | No |  |
+| `pipelines` | `dict` | No |  |
 | `size` | `int` | No |  |
 
 ### Operations
@@ -9066,7 +9085,7 @@ api_entities_package_file = client.ApiEntitiesPackageFile()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesPackageFile().list()
+results = client.ApiEntitiesPackageFile().list({"package_id": "example", "project_id": "example"})
 for api_entities_package_file in results:
     print(api_entities_package_file)
 ```
@@ -9110,16 +9129,15 @@ api_entities_package_pipeline = client.ApiEntitiesPackagePipeline()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created_at` | `str` | No |  |
+| `avatar_path` | `str` | No |  |
+| `avatar_url` | `str` | No |  |
+| `custom_attributes` | `list` | No |  |
 | `id` | `int` | No |  |
-| `iid` | `int` | No |  |
-| `project_id` | `int` | No |  |
-| `ref` | `str` | No |  |
-| `sha` | `str` | No |  |
-| `source` | `str` | No |  |
-| `status` | `str` | No |  |
-| `updated_at` | `str` | No |  |
-| `user` | `dict` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `str` | No |  |
+| `public_email` | `str` | No |  |
+| `state` | `str` | No |  |
+| `username` | `str` | No |  |
 | `web_url` | `str` | No |  |
 
 ### Operations
@@ -9167,12 +9185,6 @@ Return the entity name.
 api_entities_packages_conan_files_list = client.ApiEntitiesPackagesConanFilesList()
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `file` | `dict` | No |  |
-
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -9217,12 +9229,6 @@ Return the entity name.
 ```python
 api_entities_packages_conan_package_manifest = client.ApiEntitiesPackagesConanPackageManifest()
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `package_url` | `dict` | No |  |
 
 ### Operations
 
@@ -9283,7 +9289,7 @@ api_entities_packages_conan_package_revision = client.ApiEntitiesPackagesConanPa
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesPackagesConanPackageRevision().list()
+results = client.ApiEntitiesPackagesConanPackageRevision().list({"conan_id": "example", "conan_package_reference": "example", "package_channel": "example", "package_username": "example", "package_version": "example", "project_id": "example", "revision_id": "example"})
 for api_entities_packages_conan_package_revision in results:
     print(api_entities_packages_conan_package_revision)
 ```
@@ -9322,12 +9328,6 @@ Return the entity name.
 ```python
 api_entities_packages_conan_package_snapshot = client.ApiEntitiesPackagesConanPackageSnapshot()
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `package_snapshot` | `dict` | No |  |
 
 ### Operations
 
@@ -9373,12 +9373,6 @@ Return the entity name.
 ```python
 api_entities_packages_conan_recipe_manifest = client.ApiEntitiesPackagesConanRecipeManifest()
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `recipe_url` | `dict` | No |  |
 
 ### Operations
 
@@ -9439,7 +9433,7 @@ api_entities_packages_conan_recipe_revision = client.ApiEntitiesPackagesConanRec
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesPackagesConanRecipeRevision().list()
+results = client.ApiEntitiesPackagesConanRecipeRevision().list({"conan_id": "example", "package_channel": "example", "package_username": "example", "package_version": "example", "project_id": "example"})
 for api_entities_packages_conan_recipe_revision in results:
     print(api_entities_packages_conan_recipe_revision)
 ```
@@ -9478,12 +9472,6 @@ Return the entity name.
 ```python
 api_entities_packages_conan_recipe_snapshot = client.ApiEntitiesPackagesConanRecipeSnapshot()
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `recipe_snapshot` | `dict` | No |  |
 
 ### Operations
 
@@ -9582,12 +9570,6 @@ Return the entity name.
 api_entities_packages_conan_upload_url = client.ApiEntitiesPackagesConanUploadUrl()
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `upload_url` | `dict` | No |  |
-
 ### Operations
 
 #### `create(reqdata, ctrl=None) -> dict`
@@ -9642,15 +9624,15 @@ api_entities_packages_debian_distribution = client.ApiEntitiesPackagesDebianDist
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `architecture` | `list` | No |  |
+| `architectures` | `list` | No |  |
 | `codename` | `str` | No |  |
-| `component` | `list` | No |  |
+| `components` | `list` | No |  |
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
 | `label` | `str` | No |  |
 | `origin` | `str` | No |  |
 | `suite` | `str` | No |  |
-| `valid_time_duration_second` | `int` | No |  |
+| `valid_time_duration_seconds` | `int` | No |  |
 | `version` | `str` | No |  |
 
 ### Operations
@@ -9733,9 +9715,12 @@ api_entities_pages_domain = client.ApiEntitiesPagesDomain()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `auto_ssl_enabled` | `str` | No |  |
-| `certificate` | `dict` | No |  |
+| `certificate` | `str` | No |  |
+| `certificate_text` | `str` | No |  |
 | `domain` | `str` | No |  |
 | `enabled_until` | `str` | No |  |
+| `expired` | `str` | No |  |
+| `subject` | `str` | No |  |
 | `url` | `str` | No |  |
 | `verification_code` | `str` | No |  |
 | `verified` | `bool` | No |  |
@@ -9757,7 +9742,7 @@ result = client.ApiEntitiesPagesDomain().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesPagesDomain().list()
+results = client.ApiEntitiesPagesDomain().list({"project_id": "example"})
 for api_entities_pages_domain in results:
     print(api_entities_pages_domain)
 ```
@@ -9821,14 +9806,8 @@ api_entities_pages_domain_basic = client.ApiEntitiesPagesDomainBasic()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `auto_ssl_enabled` | `str` | No |  |
-| `certificate_expiration` | `dict` | No |  |
-| `domain` | `str` | No |  |
-| `enabled_until` | `str` | No |  |
-| `project_id` | `str` | No |  |
-| `url` | `str` | No |  |
-| `verification_code` | `str` | No |  |
-| `verified` | `bool` | No |  |
+| `expiration` | `str` | No |  |
+| `expired` | `str` | No |  |
 
 ### Operations
 
@@ -9887,7 +9866,7 @@ api_entities_personal_access_token = client.ApiEntitiesPersonalAccessToken()
 | `last_used_at` | `str` | No |  |
 | `name` | `str` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `list` | No |  |
+| `scopes` | `list` | No |  |
 | `user_id` | `int` | No |  |
 
 ### Operations
@@ -9947,10 +9926,10 @@ api_entities_personal_access_token_with_last_used_ip = client.ApiEntitiesPersona
 | `expires_at` | `str` | No |  |
 | `id` | `int` | No |  |
 | `last_used_at` | `str` | No |  |
-| `last_used_ip` | `list` | No |  |
+| `last_used_ips` | `list` | No |  |
 | `name` | `str` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `list` | No |  |
+| `scopes` | `list` | No |  |
 | `user_id` | `int` | No |  |
 
 ### Operations
@@ -10020,7 +9999,7 @@ api_entities_personal_access_token_with_token = client.ApiEntitiesPersonalAccess
 | `last_used_at` | `str` | No |  |
 | `name` | `str` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `list` | No |  |
+| `scopes` | `list` | No |  |
 | `token` | `str` | No |  |
 | `user_id` | `int` | No |  |
 
@@ -10077,8 +10056,8 @@ api_entities_personal_snippet = client.ApiEntitiesPersonalSnippet()
 | `author` | `dict` | No |  |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
-| `file` | `list` | No |  |
 | `file_name` | `str` | No |  |
+| `files` | `list` | No |  |
 | `http_url_to_repo` | `str` | No |  |
 | `id` | `int` | No |  |
 | `imported` | `bool` | No |  |
@@ -10167,34 +10146,6 @@ Return the entity name.
 api_entities_plan_limit = client.ApiEntitiesPlanLimit()
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `ci_active_job` | `int` | No |  |
-| `ci_instance_level_variable` | `int` | No |  |
-| `ci_needs_size_limit` | `int` | No |  |
-| `ci_pipeline_schedule` | `int` | No |  |
-| `ci_pipeline_size` | `int` | No |  |
-| `ci_project_subscription` | `int` | No |  |
-| `ci_registered_group_runner` | `int` | No |  |
-| `ci_registered_project_runner` | `int` | No |  |
-| `conan_max_file_size` | `int` | No |  |
-| `dotenv_size` | `int` | No |  |
-| `dotenv_variable` | `int` | No |  |
-| `enforcement_limit` | `int` | No |  |
-| `generic_packages_max_file_size` | `int` | No |  |
-| `helm_max_file_size` | `int` | No |  |
-| `limits_history` | `dict` | No |  |
-| `maven_max_file_size` | `int` | No |  |
-| `notification_limit` | `int` | No |  |
-| `npm_max_file_size` | `int` | No |  |
-| `nuget_max_file_size` | `int` | No |  |
-| `pipeline_hierarchy_size` | `int` | No |  |
-| `pypi_max_file_size` | `int` | No |  |
-| `storage_size_limit` | `int` | No |  |
-| `terraform_module_max_file_size` | `int` | No |  |
-
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -10259,11 +10210,11 @@ api_entities_project = client.ApiEntitiesProject()
 | `analytics_access_level` | `str` | No |  |
 | `approvals_before_merge` | `str` | No |  |
 | `archived` | `bool` | No |  |
-| `auto_cancel_pending_pipeline` | `str` | No |  |
+| `auto_cancel_pending_pipelines` | `str` | No |  |
 | `auto_devops_deploy_strategy` | `str` | No |  |
 | `auto_devops_enabled` | `bool` | No |  |
 | `auto_duo_code_review_enabled` | `str` | No |  |
-| `autoclose_referenced_issue` | `bool` | No |  |
+| `autoclose_referenced_issues` | `bool` | No |  |
 | `avatar_url` | `str` | No |  |
 | `build_git_strategy` | `str` | No |  |
 | `build_timeout` | `int` | No |  |
@@ -10272,23 +10223,23 @@ api_entities_project = client.ApiEntitiesProject()
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `bool` | No |  |
 | `ci_config_path` | `str` | No |  |
 | `ci_default_git_depth` | `int` | No |  |
-| `ci_delete_pipelines_in_second` | `int` | No |  |
+| `ci_delete_pipelines_in_seconds` | `int` | No |  |
 | `ci_forward_deployment_enabled` | `bool` | No |  |
 | `ci_forward_deployment_rollback_allowed` | `bool` | No |  |
-| `ci_id_token_sub_claim_component` | `list` | No |  |
+| `ci_id_token_sub_claim_components` | `list` | No |  |
 | `ci_job_token_scope_enabled` | `bool` | No |  |
 | `ci_pipeline_variables_minimum_override_role` | `str` | No |  |
 | `ci_push_repository_for_job_token_allowed` | `bool` | No |  |
 | `ci_restrict_pipeline_cancellation_role` | `str` | No |  |
-| `ci_separated_cache` | `bool` | No |  |
-| `compliance_framework` | `str` | No |  |
+| `ci_separated_caches` | `bool` | No |  |
+| `compliance_frameworks` | `str` | No |  |
 | `container_expiration_policy` | `dict` | No |  |
 | `container_registry_access_level` | `str` | No |  |
 | `container_registry_enabled` | `bool` | No |  |
 | `container_registry_image_prefix` | `str` | No |  |
 | `created_at` | `str` | No |  |
 | `creator_id` | `int` | No |  |
-| `custom_attribute` | `dict` | No |  |
+| `custom_attributes` | `dict` | No |  |
 | `default_branch` | `str` | No |  |
 | `description` | `str` | No |  |
 | `description_html` | `str` | No |  |
@@ -10296,7 +10247,7 @@ api_entities_project = client.ApiEntitiesProject()
 | `emails_disabled` | `bool` | No |  |
 | `emails_enabled` | `bool` | No |  |
 | `empty_repo` | `bool` | No |  |
-| `enforce_auth_checks_on_upload` | `bool` | No |  |
+| `enforce_auth_checks_on_uploads` | `bool` | No |  |
 | `environments_access_level` | `str` | No |  |
 | `external_authorization_classification_label` | `str` | No |  |
 | `feature_flags_access_level` | `str` | No |  |
@@ -10321,7 +10272,7 @@ api_entities_project = client.ApiEntitiesProject()
 | `lfs_enabled` | `bool` | No |  |
 | `license` | `dict` | No |  |
 | `license_url` | `str` | No |  |
-| `link` | `dict` | No |  |
+| `links` | `dict` | No |  |
 | `marked_for_deletion_at` | `str` | No |  |
 | `marked_for_deletion_on` | `str` | No |  |
 | `max_artifacts_size` | `int` | No |  |
@@ -10336,8 +10287,8 @@ api_entities_project = client.ApiEntitiesProject()
 | `merge_trains_enabled` | `str` | No |  |
 | `merge_trains_skip_train_allowed` | `str` | No |  |
 | `mirror` | `str` | No |  |
-| `mirror_overwrites_diverged_branch` | `str` | No |  |
-| `mirror_trigger_build` | `str` | No |  |
+| `mirror_overwrites_diverged_branches` | `str` | No |  |
+| `mirror_trigger_builds` | `str` | No |  |
 | `mirror_user_id` | `str` | No |  |
 | `model_experiments_access_level` | `str` | No |  |
 | `model_registry_access_level` | `str` | No |  |
@@ -10348,8 +10299,8 @@ api_entities_project = client.ApiEntitiesProject()
 | `namespace` | `dict` | No |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `bool` | No |  |
 | `only_allow_merge_if_all_status_checks_passed` | `str` | No |  |
-| `only_allow_merge_if_pipeline_succeed` | `bool` | No |  |
-| `only_mirror_protected_branch` | `str` | No |  |
+| `only_allow_merge_if_pipeline_succeeds` | `bool` | No |  |
+| `only_mirror_protected_branches` | `str` | No |  |
 | `open_issues_count` | `int` | No |  |
 | `owner` | `dict` | No |  |
 | `package_registry_access_level` | `str` | No |  |
@@ -10360,7 +10311,7 @@ api_entities_project = client.ApiEntitiesProject()
 | `pre_receive_secret_detection_enabled` | `bool` | No |  |
 | `prevent_merge_without_jira_issue` | `str` | No |  |
 | `printing_merge_request_link_enabled` | `bool` | No |  |
-| `public_job` | `bool` | No |  |
+| `public_jobs` | `bool` | No |  |
 | `readme_url` | `str` | No |  |
 | `releases_access_level` | `str` | No |  |
 | `remove_source_branch_after_merge` | `bool` | No |  |
@@ -10370,9 +10321,9 @@ api_entities_project = client.ApiEntitiesProject()
 | `request_access_enabled` | `bool` | No |  |
 | `requirements_access_level` | `str` | No |  |
 | `requirements_enabled` | `str` | No |  |
-| `resolve_outdated_diff_discussion` | `bool` | No |  |
+| `resolve_outdated_diff_discussions` | `bool` | No |  |
 | `resource_group_default_process_mode` | `str` | No |  |
-| `restrict_user_defined_variable` | `bool` | No |  |
+| `restrict_user_defined_variables` | `bool` | No |  |
 | `runner_token_expiration_interval` | `int` | No |  |
 | `runners_token` | `str` | No |  |
 | `secret_push_protection_enabled` | `bool` | No |  |
@@ -10381,7 +10332,7 @@ api_entities_project = client.ApiEntitiesProject()
 | `service_desk_address` | `str` | No |  |
 | `service_desk_enabled` | `bool` | No |  |
 | `shared_runners_enabled` | `bool` | No |  |
-| `shared_with_group` | `list` | No |  |
+| `shared_with_groups` | `list` | No |  |
 | `show_diff_preview_in_email` | `bool` | No |  |
 | `snippets_access_level` | `str` | No |  |
 | `snippets_enabled` | `bool` | No |  |
@@ -10390,13 +10341,13 @@ api_entities_project = client.ApiEntitiesProject()
 | `squash_option` | `str` | No |  |
 | `ssh_url_to_repo` | `str` | No |  |
 | `star_count` | `int` | No |  |
-| `statistic` | `dict` | No |  |
+| `statistics` | `dict` | No |  |
 | `suggestion_commit_message` | `str` | No |  |
 | `tag_list` | `list` | No |  |
-| `topic` | `list` | No |  |
+| `topics` | `list` | No |  |
 | `updated_at` | `str` | No |  |
 | `visibility` | `str` | No |  |
-| `warn_about_potentially_unwanted_character` | `bool` | No |  |
+| `warn_about_potentially_unwanted_characters` | `bool` | No |  |
 | `web_based_commit_signing_enabled` | `str` | No |  |
 | `web_url` | `str` | No |  |
 | `wiki_access_level` | `str` | No |  |
@@ -10472,7 +10423,8 @@ api_entities_project_daily_statistic = client.ApiEntitiesProjectDailyStatistic()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fetch` | `dict` | No |  |
+| `days` | `list` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 
@@ -10523,15 +10475,8 @@ api_entities_project_export_status = client.ApiEntitiesProjectExportStatus()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created_at` | `str` | No |  |
-| `description` | `str` | No |  |
-| `export_status` | `str` | No |  |
-| `id` | `int` | No |  |
-| `link` | `dict` | No |  |
-| `name` | `str` | No |  |
-| `name_with_namespace` | `str` | No |  |
-| `path` | `str` | No |  |
-| `path_with_namespace` | `str` | No |  |
+| `api_url` | `str` | No |  |
+| `web_url` | `str` | No |  |
 
 ### Operations
 
@@ -10631,36 +10576,36 @@ api_entities_project_hook = client.ApiEntitiesProjectHook()
 | --- | --- | --- | --- |
 | `alert_status` | `Any` | No |  |
 | `branch_filter_strategy` | `str` | No |  |
-| `confidential_issues_event` | `bool` | No |  |
-| `confidential_note_event` | `bool` | No |  |
+| `confidential_issues_events` | `bool` | No |  |
+| `confidential_note_events` | `bool` | No |  |
 | `created_at` | `str` | No |  |
-| `custom_header` | `list` | No |  |
+| `custom_headers` | `list` | No |  |
 | `custom_webhook_template` | `str` | No |  |
-| `deployment_event` | `bool` | No |  |
+| `deployment_events` | `bool` | No |  |
 | `description` | `str` | No |  |
 | `disabled_until` | `str` | No |  |
-| `emoji_event` | `bool` | No |  |
+| `emoji_events` | `bool` | No |  |
 | `enable_ssl_verification` | `bool` | No |  |
-| `feature_flag_event` | `bool` | No |  |
+| `feature_flag_events` | `bool` | No |  |
 | `id` | `str` | No |  |
-| `issues_event` | `bool` | No |  |
-| `job_event` | `bool` | No |  |
-| `merge_requests_event` | `bool` | No |  |
-| `milestone_event` | `bool` | No |  |
+| `issues_events` | `bool` | No |  |
+| `job_events` | `bool` | No |  |
+| `merge_requests_events` | `bool` | No |  |
+| `milestone_events` | `bool` | No |  |
 | `name` | `str` | No |  |
-| `note_event` | `bool` | No |  |
-| `pipeline_event` | `bool` | No |  |
+| `note_events` | `bool` | No |  |
+| `pipeline_events` | `bool` | No |  |
 | `project_id` | `str` | No |  |
-| `push_event` | `bool` | No |  |
+| `push_events` | `bool` | No |  |
 | `push_events_branch_filter` | `str` | No |  |
-| `releases_event` | `bool` | No |  |
-| `repository_update_event` | `bool` | No |  |
-| `resource_access_token_event` | `bool` | No |  |
-| `tag_push_event` | `bool` | No |  |
+| `releases_events` | `bool` | No |  |
+| `repository_update_events` | `bool` | No |  |
+| `resource_access_token_events` | `bool` | No |  |
+| `tag_push_events` | `bool` | No |  |
 | `url` | `str` | No |  |
-| `url_variable` | `list` | No |  |
-| `vulnerability_event` | `bool` | No |  |
-| `wiki_page_event` | `bool` | No |  |
+| `url_variables` | `list` | No |  |
+| `vulnerability_events` | `bool` | No |  |
+| `wiki_page_events` | `bool` | No |  |
 
 ### Operations
 
@@ -10679,7 +10624,7 @@ result = client.ApiEntitiesProjectHook().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesProjectHook().list()
+results = client.ApiEntitiesProjectHook().list({"project_id": "example"})
 for api_entities_project_hook in results:
     print(api_entities_project_hook)
 ```
@@ -10767,7 +10712,7 @@ result = client.ApiEntitiesProjectImportStatus().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesProjectImportStatus().list()
+results = client.ApiEntitiesProjectImportStatus().list({"project_id": "example"})
 for api_entities_project_import_status in results:
     print(api_entities_project_import_status)
 ```
@@ -10920,8 +10865,8 @@ api_entities_project_snippet = client.ApiEntitiesProjectSnippet()
 | `author` | `dict` | No |  |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
-| `file` | `list` | No |  |
 | `file_name` | `str` | No |  |
+| `files` | `list` | No |  |
 | `http_url_to_repo` | `str` | No |  |
 | `id` | `int` | No |  |
 | `imported` | `bool` | No |  |
@@ -10952,7 +10897,7 @@ result = client.ApiEntitiesProjectSnippet().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesProjectSnippet().list()
+results = client.ApiEntitiesProjectSnippet().list({"project_id": "example"})
 for api_entities_project_snippet in results:
     print(api_entities_project_snippet)
 ```
@@ -11068,11 +11013,11 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `analytics_access_level` | `str` | No |  |
 | `approvals_before_merge` | `str` | No |  |
 | `archived` | `bool` | No |  |
-| `auto_cancel_pending_pipeline` | `str` | No |  |
+| `auto_cancel_pending_pipelines` | `str` | No |  |
 | `auto_devops_deploy_strategy` | `str` | No |  |
 | `auto_devops_enabled` | `bool` | No |  |
 | `auto_duo_code_review_enabled` | `str` | No |  |
-| `autoclose_referenced_issue` | `bool` | No |  |
+| `autoclose_referenced_issues` | `bool` | No |  |
 | `avatar_url` | `str` | No |  |
 | `build_git_strategy` | `str` | No |  |
 | `build_timeout` | `int` | No |  |
@@ -11081,23 +11026,23 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `bool` | No |  |
 | `ci_config_path` | `str` | No |  |
 | `ci_default_git_depth` | `int` | No |  |
-| `ci_delete_pipelines_in_second` | `int` | No |  |
+| `ci_delete_pipelines_in_seconds` | `int` | No |  |
 | `ci_forward_deployment_enabled` | `bool` | No |  |
 | `ci_forward_deployment_rollback_allowed` | `bool` | No |  |
-| `ci_id_token_sub_claim_component` | `list` | No |  |
+| `ci_id_token_sub_claim_components` | `list` | No |  |
 | `ci_job_token_scope_enabled` | `bool` | No |  |
 | `ci_pipeline_variables_minimum_override_role` | `str` | No |  |
 | `ci_push_repository_for_job_token_allowed` | `bool` | No |  |
 | `ci_restrict_pipeline_cancellation_role` | `str` | No |  |
-| `ci_separated_cache` | `bool` | No |  |
-| `compliance_framework` | `str` | No |  |
+| `ci_separated_caches` | `bool` | No |  |
+| `compliance_frameworks` | `str` | No |  |
 | `container_expiration_policy` | `dict` | No |  |
 | `container_registry_access_level` | `str` | No |  |
 | `container_registry_enabled` | `bool` | No |  |
 | `container_registry_image_prefix` | `str` | No |  |
 | `created_at` | `str` | No |  |
 | `creator_id` | `int` | No |  |
-| `custom_attribute` | `dict` | No |  |
+| `custom_attributes` | `dict` | No |  |
 | `default_branch` | `str` | No |  |
 | `description` | `str` | No |  |
 | `description_html` | `str` | No |  |
@@ -11105,7 +11050,7 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `emails_disabled` | `bool` | No |  |
 | `emails_enabled` | `bool` | No |  |
 | `empty_repo` | `bool` | No |  |
-| `enforce_auth_checks_on_upload` | `bool` | No |  |
+| `enforce_auth_checks_on_uploads` | `bool` | No |  |
 | `environments_access_level` | `str` | No |  |
 | `external_authorization_classification_label` | `str` | No |  |
 | `feature_flags_access_level` | `str` | No |  |
@@ -11130,7 +11075,7 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `lfs_enabled` | `bool` | No |  |
 | `license` | `dict` | No |  |
 | `license_url` | `str` | No |  |
-| `link` | `dict` | No |  |
+| `links` | `dict` | No |  |
 | `marked_for_deletion_at` | `str` | No |  |
 | `marked_for_deletion_on` | `str` | No |  |
 | `max_artifacts_size` | `int` | No |  |
@@ -11145,8 +11090,8 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `merge_trains_enabled` | `str` | No |  |
 | `merge_trains_skip_train_allowed` | `str` | No |  |
 | `mirror` | `str` | No |  |
-| `mirror_overwrites_diverged_branch` | `str` | No |  |
-| `mirror_trigger_build` | `str` | No |  |
+| `mirror_overwrites_diverged_branches` | `str` | No |  |
+| `mirror_trigger_builds` | `str` | No |  |
 | `mirror_user_id` | `str` | No |  |
 | `model_experiments_access_level` | `str` | No |  |
 | `model_registry_access_level` | `str` | No |  |
@@ -11157,8 +11102,8 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `namespace` | `dict` | No |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `bool` | No |  |
 | `only_allow_merge_if_all_status_checks_passed` | `str` | No |  |
-| `only_allow_merge_if_pipeline_succeed` | `bool` | No |  |
-| `only_mirror_protected_branch` | `str` | No |  |
+| `only_allow_merge_if_pipeline_succeeds` | `bool` | No |  |
+| `only_mirror_protected_branches` | `str` | No |  |
 | `open_issues_count` | `int` | No |  |
 | `owner` | `dict` | No |  |
 | `package_registry_access_level` | `str` | No |  |
@@ -11166,11 +11111,11 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `pages_access_level` | `str` | No |  |
 | `path` | `str` | No |  |
 | `path_with_namespace` | `str` | No |  |
-| `permission` | `dict` | No |  |
+| `permissions` | `dict` | No |  |
 | `pre_receive_secret_detection_enabled` | `bool` | No |  |
 | `prevent_merge_without_jira_issue` | `str` | No |  |
 | `printing_merge_request_link_enabled` | `bool` | No |  |
-| `public_job` | `bool` | No |  |
+| `public_jobs` | `bool` | No |  |
 | `readme_url` | `str` | No |  |
 | `releases_access_level` | `str` | No |  |
 | `remove_source_branch_after_merge` | `bool` | No |  |
@@ -11180,9 +11125,9 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `request_access_enabled` | `bool` | No |  |
 | `requirements_access_level` | `str` | No |  |
 | `requirements_enabled` | `str` | No |  |
-| `resolve_outdated_diff_discussion` | `bool` | No |  |
+| `resolve_outdated_diff_discussions` | `bool` | No |  |
 | `resource_group_default_process_mode` | `str` | No |  |
-| `restrict_user_defined_variable` | `bool` | No |  |
+| `restrict_user_defined_variables` | `bool` | No |  |
 | `runner_token_expiration_interval` | `int` | No |  |
 | `runners_token` | `str` | No |  |
 | `secret_push_protection_enabled` | `bool` | No |  |
@@ -11191,7 +11136,7 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `service_desk_address` | `str` | No |  |
 | `service_desk_enabled` | `bool` | No |  |
 | `shared_runners_enabled` | `bool` | No |  |
-| `shared_with_group` | `list` | No |  |
+| `shared_with_groups` | `list` | No |  |
 | `show_diff_preview_in_email` | `bool` | No |  |
 | `snippets_access_level` | `str` | No |  |
 | `snippets_enabled` | `bool` | No |  |
@@ -11200,13 +11145,13 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `squash_option` | `str` | No |  |
 | `ssh_url_to_repo` | `str` | No |  |
 | `star_count` | `int` | No |  |
-| `statistic` | `dict` | No |  |
+| `statistics` | `dict` | No |  |
 | `suggestion_commit_message` | `str` | No |  |
 | `tag_list` | `list` | No |  |
-| `topic` | `list` | No |  |
+| `topics` | `list` | No |  |
 | `updated_at` | `str` | No |  |
 | `visibility` | `str` | No |  |
-| `warn_about_potentially_unwanted_character` | `bool` | No |  |
+| `warn_about_potentially_unwanted_characters` | `bool` | No |  |
 | `web_based_commit_signing_enabled` | `str` | No |  |
 | `web_url` | `str` | No |  |
 | `wiki_access_level` | `str` | No |  |
@@ -11284,7 +11229,7 @@ result = client.ApiEntitiesProjectsContainerRegistryProtectionRule().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesProjectsContainerRegistryProtectionRule().list()
+results = client.ApiEntitiesProjectsContainerRegistryProtectionRule().list({"project_id": "example"})
 for api_entities_projects_container_registry_protection_rule in results:
     print(api_entities_projects_container_registry_protection_rule)
 ```
@@ -11364,7 +11309,7 @@ result = client.ApiEntitiesProjectsPackagesProtectionRule().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesProjectsPackagesProtectionRule().list()
+results = client.ApiEntitiesProjectsPackagesProtectionRule().list({"project_id": "example"})
 for api_entities_projects_packages_protection_rule in results:
     print(api_entities_projects_packages_protection_rule)
 ```
@@ -11501,10 +11446,10 @@ api_entities_protected_branch = client.ApiEntitiesProtectedBranch()
 | `code_owner_approval_required` | `bool` | No |  |
 | `id` | `int` | No |  |
 | `inherited` | `bool` | No |  |
-| `merge_access_level` | `list` | No |  |
+| `merge_access_levels` | `list` | No |  |
 | `name` | `str` | No |  |
-| `push_access_level` | `list` | No |  |
-| `unprotect_access_level` | `list` | No |  |
+| `push_access_levels` | `list` | No |  |
+| `unprotect_access_levels` | `list` | No |  |
 
 ### Operations
 
@@ -11523,7 +11468,7 @@ result = client.ApiEntitiesProtectedBranch().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesProtectedBranch().list()
+results = client.ApiEntitiesProtectedBranch().list({"project_id": "example"})
 for api_entities_protected_branch in results:
     print(api_entities_protected_branch)
 ```
@@ -11587,8 +11532,14 @@ api_entities_protected_tag = client.ApiEntitiesProtectedTag()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `create_access_level` | `dict` | No |  |
+| `access_level` | `int` | No |  |
+| `access_level_description` | `str` | No |  |
+| `create_access_levels` | `dict` | No |  |
+| `deploy_key_id` | `int` | No |  |
+| `group_id` | `int` | No |  |
+| `id` | `int` | No |  |
 | `name` | `str` | No |  |
+| `user_id` | `int` | No |  |
 
 ### Operations
 
@@ -11607,7 +11558,7 @@ result = client.ApiEntitiesProtectedTag().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesProtectedTag().list()
+results = client.ApiEntitiesProtectedTag().list({"project_id": "example"})
 for api_entities_protected_tag in results:
     print(api_entities_protected_tag)
 ```
@@ -11673,7 +11624,7 @@ api_entities_public_group_detail = client.ApiEntitiesPublicGroupDetail()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesPublicGroupDetail().list()
+results = client.ApiEntitiesPublicGroupDetail().list({"project_id": "example"})
 for api_entities_public_group_detail in results:
     print(api_entities_public_group_detail)
 ```
@@ -11718,6 +11669,7 @@ api_entities_related_issue = client.ApiEntitiesRelatedIssue()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `assignee` | `dict` | No |  |
+| `assignees` | `dict` | No |  |
 | `author` | `dict` | No |  |
 | `blocking_issues_count` | `str` | No |  |
 | `closed_at` | `str` | No |  |
@@ -11726,11 +11678,11 @@ api_entities_related_issue = client.ApiEntitiesRelatedIssue()
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
 | `discussion_locked` | `bool` | No |  |
-| `downvote` | `str` | No |  |
+| `downvotes` | `str` | No |  |
 | `due_date` | `str` | No |  |
 | `epic` | `dict` | No |  |
 | `epic_iid` | `str` | No |  |
-| `has_task` | `bool` | No |  |
+| `has_tasks` | `bool` | No |  |
 | `health_status` | `str` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
@@ -11739,27 +11691,27 @@ api_entities_related_issue = client.ApiEntitiesRelatedIssue()
 | `issue_link_id` | `str` | No |  |
 | `issue_type` | `str` | No |  |
 | `iteration` | `dict` | No |  |
-| `label` | `list` | No |  |
-| `link` | `dict` | No |  |
+| `labels` | `list` | No |  |
 | `link_created_at` | `str` | No |  |
 | `link_type` | `str` | No |  |
 | `link_updated_at` | `str` | No |  |
+| `links` | `dict` | No |  |
 | `merge_requests_count` | `str` | No |  |
 | `milestone` | `dict` | No |  |
 | `moved_to_id` | `str` | No |  |
 | `project_id` | `int` | No |  |
-| `reference` | `dict` | No |  |
+| `references` | `dict` | No |  |
 | `service_desk_reply_to` | `str` | No |  |
 | `severity` | `str` | No |  |
 | `state` | `str` | No |  |
 | `subscribed` | `str` | No |  |
 | `task_completion_status` | `str` | No |  |
 | `task_status` | `str` | No |  |
-| `time_stat` | `dict` | No |  |
+| `time_stats` | `dict` | No |  |
 | `title` | `str` | No |  |
 | `type` | `str` | No |  |
 | `updated_at` | `str` | No |  |
-| `upvote` | `str` | No |  |
+| `upvotes` | `str` | No |  |
 | `user_notes_count` | `str` | No |  |
 | `web_url` | `str` | No |  |
 | `weight` | `str` | No |  |
@@ -11771,7 +11723,7 @@ api_entities_related_issue = client.ApiEntitiesRelatedIssue()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesRelatedIssue().list()
+results = client.ApiEntitiesRelatedIssue().list({"issue_id": "example", "project_id": "example"})
 for api_entities_related_issue in results:
     print(api_entities_related_issue)
 ```
@@ -11861,16 +11813,16 @@ api_entities_release = client.ApiEntitiesRelease()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `dict` | No |  |
+| `assets` | `dict` | No |  |
 | `author` | `dict` | No |  |
 | `commit` | `dict` | No |  |
 | `commit_path` | `str` | No |  |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
 | `description_html` | `str` | No |  |
-| `evidence` | `dict` | No |  |
-| `link` | `dict` | No |  |
-| `milestone` | `dict` | No |  |
+| `evidences` | `dict` | No |  |
+| `links` | `dict` | No |  |
+| `milestones` | `dict` | No |  |
 | `name` | `str` | No |  |
 | `released_at` | `str` | No |  |
 | `tag_name` | `str` | No |  |
@@ -11982,7 +11934,7 @@ result = client.ApiEntitiesReleasesLink().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesReleasesLink().list()
+results = client.ApiEntitiesReleasesLink().list({"project_id": "example", "release_id": "example"})
 for api_entities_releases_link in results:
     print(api_entities_releases_link)
 ```
@@ -12049,15 +12001,15 @@ api_entities_remote_mirror = client.ApiEntitiesRemoteMirror()
 | --- | --- | --- | --- |
 | `auth_method` | `str` | No |  |
 | `enabled` | `bool` | No |  |
-| `host_key` | `list` | No |  |
+| `host_keys` | `list` | No |  |
 | `id` | `int` | No |  |
-| `keep_divergent_ref` | `bool` | No |  |
+| `keep_divergent_refs` | `bool` | No |  |
 | `last_error` | `int` | No |  |
 | `last_successful_update_at` | `str` | No |  |
 | `last_update_at` | `str` | No |  |
 | `last_update_started_at` | `str` | No |  |
 | `mirror_branch_regex` | `str` | No |  |
-| `only_protected_branch` | `bool` | No |  |
+| `only_protected_branches` | `bool` | No |  |
 | `update_status` | `str` | No |  |
 | `url` | `str` | No |  |
 
@@ -12078,7 +12030,7 @@ result = client.ApiEntitiesRemoteMirror().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesRemoteMirror().list()
+results = client.ApiEntitiesRemoteMirror().list({"project_id": "example"})
 for api_entities_remote_mirror in results:
     print(api_entities_remote_mirror)
 ```
@@ -12142,15 +12094,15 @@ api_entities_repository_health = client.ApiEntitiesRepositoryHealth()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `alternate` | `dict` | No |  |
+| `alternates` | `dict` | No |  |
 | `bitmap` | `dict` | No |  |
 | `commit_graph` | `dict` | No |  |
 | `is_object_pool` | `bool` | No |  |
 | `last_full_repack` | `dict` | No |  |
 | `multi_pack_index` | `dict` | No |  |
 | `multi_pack_index_bitmap` | `dict` | No |  |
-| `object` | `dict` | No |  |
-| `reference` | `dict` | No |  |
+| `objects` | `dict` | No |  |
+| `references` | `dict` | No |  |
 | `size` | `int` | No |  |
 | `updated_at` | `str` | No |  |
 
@@ -12214,7 +12166,7 @@ api_entities_resource_access_token_with_token = client.ApiEntitiesResourceAccess
 | `resource_id` | `int` | No |  |
 | `resource_type` | `str` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `list` | No |  |
+| `scopes` | `list` | No |  |
 | `token` | `str` | No |  |
 | `user_id` | `int` | No |  |
 
@@ -12284,7 +12236,7 @@ api_entities_resource_milestone_event = client.ApiEntitiesResourceMilestoneEvent
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesResourceMilestoneEvent().list()
+results = client.ApiEntitiesResourceMilestoneEvent().list({"project_id": "example"})
 for api_entities_resource_milestone_event in results:
     print(api_entities_resource_milestone_event)
 ```
@@ -12339,8 +12291,8 @@ api_entities_snippet = client.ApiEntitiesSnippet()
 | `author` | `dict` | No |  |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
-| `file` | `list` | No |  |
 | `file_name` | `str` | No |  |
+| `files` | `list` | No |  |
 | `http_url_to_repo` | `str` | No |  |
 | `id` | `int` | No |  |
 | `imported` | `bool` | No |  |
@@ -12405,14 +12357,52 @@ api_entities_ssh_key_with_user = client.ApiEntitiesSshKeyWithUser()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `avatar_path` | `str` | No |  |
+| `avatar_url` | `str` | No |  |
+| `bio` | `str` | No |  |
+| `bot` | `str` | No |  |
+| `can_create_group` | `bool` | No |  |
+| `can_create_project` | `bool` | No |  |
+| `color_scheme_id` | `int` | No |  |
+| `commit_email` | `str` | No |  |
+| `confirmed_at` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `expires_at` | `str` | No |  |
+| `current_sign_in_at` | `str` | No |  |
+| `custom_attributes` | `list` | No |  |
+| `discord` | `str` | No |  |
+| `email` | `str` | No |  |
+| `external` | `str` | No |  |
+| `extra_shared_runners_minutes_limit` | `str` | No |  |
+| `followers` | `str` | No |  |
+| `following` | `str` | No |  |
+| `github` | `str` | No |  |
 | `id` | `int` | No |  |
-| `key` | `str` | No |  |
-| `last_used_at` | `str` | No |  |
-| `title` | `str` | No |  |
-| `usage_type` | `str` | No |  |
-| `user` | `dict` | No |  |
+| `identities` | `dict` | No |  |
+| `is_followed` | `bool` | No |  |
+| `job_title` | `str` | No |  |
+| `last_activity_on` | `str` | No |  |
+| `last_sign_in_at` | `str` | No |  |
+| `linkedin` | `str` | No |  |
+| `local_time` | `str` | No |  |
+| `location` | `str` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `str` | No |  |
+| `organization` | `str` | No |  |
+| `preferred_language` | `str` | No |  |
+| `private_profile` | `bool` | No |  |
+| `projects_limit` | `int` | No |  |
+| `pronouns` | `str` | No |  |
+| `public_email` | `str` | No |  |
+| `scim_identities` | `dict` | No |  |
+| `shared_runners_minutes_limit` | `str` | No |  |
+| `state` | `str` | No |  |
+| `theme_id` | `int` | No |  |
+| `twitter` | `str` | No |  |
+| `two_factor_enabled` | `bool` | No |  |
+| `username` | `str` | No |  |
+| `web_url` | `str` | No |  |
+| `website_url` | `str` | No |  |
+| `work_information` | `str` | No |  |
 
 ### Operations
 
@@ -12531,7 +12521,7 @@ api_entities_system_broadcast_message = client.ApiEntitiesSystemBroadcastMessage
 | `id` | `str` | No |  |
 | `message` | `str` | No |  |
 | `starts_at` | `str` | No |  |
-| `target_access_level` | `str` | No |  |
+| `target_access_levels` | `str` | No |  |
 | `target_path` | `str` | No |  |
 | `theme` | `str` | No |  |
 
@@ -12637,7 +12627,7 @@ result = client.ApiEntitiesTag().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesTag().list()
+results = client.ApiEntitiesTag().list({"project_id": "example"})
 for api_entities_tag in results:
     print(api_entities_tag)
 ```
@@ -12793,13 +12783,15 @@ api_entities_terraform_module_version = client.ApiEntitiesTerraformModuleVersion
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `module` | `str` | No |  |
+| `modules` | `str` | No |  |
 | `name` | `str` | No |  |
 | `provider` | `str` | No |  |
+| `providers` | `str` | No |  |
 | `root` | `str` | No |  |
 | `source` | `str` | No |  |
-| `submodule` | `str` | No |  |
+| `submodules` | `str` | No |  |
 | `version` | `str` | No |  |
+| `versions` | `str` | No |  |
 
 ### Operations
 
@@ -12808,7 +12800,7 @@ api_entities_terraform_module_version = client.ApiEntitiesTerraformModuleVersion
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesTerraformModuleVersion().list()
+results = client.ApiEntitiesTerraformModuleVersion().list({"module_name": "example", "module_system": "example", "v1_id": "example"})
 for api_entities_terraform_module_version in results:
     print(api_entities_terraform_module_version)
 ```
@@ -12915,14 +12907,23 @@ api_entities_trigger = client.ApiEntitiesTrigger()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `avatar_path` | `str` | No |  |
+| `avatar_url` | `str` | No |  |
 | `created_at` | `str` | No |  |
+| `custom_attributes` | `list` | No |  |
 | `description` | `str` | No |  |
 | `expires_at` | `str` | No |  |
 | `id` | `int` | No |  |
 | `last_used` | `str` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `str` | No |  |
 | `owner` | `dict` | No |  |
+| `public_email` | `str` | No |  |
+| `state` | `str` | No |  |
 | `token` | `str` | No |  |
 | `updated_at` | `str` | No |  |
+| `username` | `str` | No |  |
+| `web_url` | `str` | No |  |
 
 ### Operations
 
@@ -12941,7 +12942,7 @@ result = client.ApiEntitiesTrigger().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesTrigger().list()
+results = client.ApiEntitiesTrigger().list({"project_id": "example"})
 for api_entities_trigger in results:
     print(api_entities_trigger)
 ```
@@ -13058,11 +13059,11 @@ api_entities_user_count = client.ApiEntitiesUserCount()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assigned_issue` | `int` | No |  |
-| `assigned_merge_request` | `int` | No |  |
-| `merge_request` | `int` | No |  |
-| `review_requested_merge_request` | `int` | No |  |
-| `todo` | `int` | No |  |
+| `assigned_issues` | `int` | No |  |
+| `assigned_merge_requests` | `int` | No |  |
+| `merge_requests` | `int` | No |  |
+| `review_requested_merge_requests` | `int` | No |  |
+| `todos` | `int` | No |  |
 
 ### Operations
 
@@ -13124,16 +13125,16 @@ api_entities_user_public = client.ApiEntitiesUserPublic()
 | `confirmed_at` | `str` | No |  |
 | `created_at` | `str` | No |  |
 | `current_sign_in_at` | `str` | No |  |
-| `custom_attribute` | `list` | No |  |
+| `custom_attributes` | `list` | No |  |
 | `discord` | `str` | No |  |
 | `email` | `str` | No |  |
 | `external` | `str` | No |  |
 | `extra_shared_runners_minutes_limit` | `str` | No |  |
-| `follower` | `str` | No |  |
+| `followers` | `str` | No |  |
 | `following` | `str` | No |  |
 | `github` | `str` | No |  |
 | `id` | `int` | No |  |
-| `identity` | `dict` | No |  |
+| `identities` | `dict` | No |  |
 | `is_followed` | `bool` | No |  |
 | `job_title` | `str` | No |  |
 | `key` | `str` | No |  |
@@ -13148,9 +13149,9 @@ api_entities_user_public = client.ApiEntitiesUserPublic()
 | `preferred_language` | `str` | No |  |
 | `private_profile` | `bool` | No |  |
 | `projects_limit` | `int` | No |  |
-| `pronoun` | `str` | No |  |
+| `pronouns` | `str` | No |  |
 | `public_email` | `str` | No |  |
-| `scim_identity` | `dict` | No |  |
+| `scim_identities` | `dict` | No |  |
 | `shared_runners_minutes_limit` | `str` | No |  |
 | `state` | `str` | No |  |
 | `theme_id` | `int` | No |  |
@@ -13169,7 +13170,7 @@ api_entities_user_public = client.ApiEntitiesUserPublic()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesUserPublic().list()
+results = client.ApiEntitiesUserPublic().list({"group_id": "example"})
 for api_entities_user_public in results:
     print(api_entities_user_public)
 ```
@@ -13308,18 +13309,6 @@ Return the entity name.
 ```python
 api_entities_wiki_page = client.ApiEntitiesWikiPage()
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `content` | `str` | No |  |
-| `encoding` | `str` | No |  |
-| `format` | `str` | No |  |
-| `front_matter` | `dict` | No |  |
-| `slug` | `str` | No |  |
-| `title` | `str` | No |  |
-| `wiki_page_meta_id` | `int` | No |  |
 
 ### Operations
 
@@ -14535,7 +14524,7 @@ ee_api_entities_audit_event = client.EeApiEntitiesAuditEvent()
 | --- | --- | --- | --- |
 | `author_id` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `detail` | `str` | No |  |
+| `details` | `str` | No |  |
 | `entity_id` | `str` | No |  |
 | `entity_type` | `str` | No |  |
 | `event_name` | `str` | No |  |
@@ -14600,13 +14589,9 @@ ee_api_entities_billable_membership = client.EeApiEntitiesBillableMembership()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_level` | `dict` | No |  |
-| `created_at` | `str` | No |  |
-| `expires_at` | `str` | No |  |
-| `id` | `str` | No |  |
-| `source_full_name` | `str` | No |  |
-| `source_id` | `str` | No |  |
-| `source_members_url` | `str` | No |  |
+| `custom_role` | `str` | No |  |
+| `integer_value` | `str` | No |  |
+| `string_value` | `str` | No |  |
 
 ### Operations
 
@@ -14684,7 +14669,7 @@ ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNodeStatus()
 | `container_repositories_verified_in_percentage` | `str` | No |  |
 | `cursor_last_event_id` | `str` | No |  |
 | `cursor_last_event_timestamp` | `str` | No |  |
-| `db_replication_lag_second` | `str` | No |  |
+| `db_replication_lag_seconds` | `str` | No |  |
 | `dependency_proxy_blobs_checksum_failed_count` | `str` | No |  |
 | `dependency_proxy_blobs_checksum_total_count` | `str` | No |  |
 | `dependency_proxy_blobs_checksummed_count` | `str` | No |  |
@@ -14766,7 +14751,7 @@ ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNodeStatus()
 | `lfs_objects_verification_total_count` | `str` | No |  |
 | `lfs_objects_verified_count` | `str` | No |  |
 | `lfs_objects_verified_in_percentage` | `str` | No |  |
-| `link` | `dict` | No |  |
+| `links` | `dict` | No |  |
 | `merge_request_diffs_checksum_failed_count` | `str` | No |  |
 | `merge_request_diffs_checksum_total_count` | `str` | No |  |
 | `merge_request_diffs_checksummed_count` | `str` | No |  |
@@ -14780,7 +14765,7 @@ ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNodeStatus()
 | `merge_request_diffs_verified_count` | `str` | No |  |
 | `merge_request_diffs_verified_in_percentage` | `str` | No |  |
 | `missing_oauth_application` | `str` | No |  |
-| `namespace` | `dict` | No |  |
+| `namespaces` | `dict` | No |  |
 | `package_files_checksum_failed_count` | `str` | No |  |
 | `package_files_checksum_total_count` | `str` | No |  |
 | `package_files_checksummed_count` | `str` | No |  |
@@ -14845,7 +14830,7 @@ ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNodeStatus()
 | `proxy_local_requests_event_count_weekly` | `str` | No |  |
 | `proxy_remote_requests_event_count_weekly` | `str` | No |  |
 | `replication_slots_count` | `str` | No |  |
-| `replication_slots_max_retained_wal_byte` | `str` | No |  |
+| `replication_slots_max_retained_wal_bytes` | `str` | No |  |
 | `replication_slots_used_count` | `str` | No |  |
 | `replication_slots_used_in_percentage` | `str` | No |  |
 | `repositories_checked_count` | `str` | No |  |
@@ -14866,7 +14851,7 @@ ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNodeStatus()
 | `snippet_repositories_verification_total_count` | `str` | No |  |
 | `snippet_repositories_verified_count` | `str` | No |  |
 | `snippet_repositories_verified_in_percentage` | `str` | No |  |
-| `storage_shard` | `dict` | No |  |
+| `storage_shards` | `dict` | No |  |
 | `storage_shards_match` | `str` | No |  |
 | `terraform_state_versions_checksum_failed_count` | `str` | No |  |
 | `terraform_state_versions_checksum_total_count` | `str` | No |  |
@@ -14945,7 +14930,7 @@ ee_api_entities_geo_pipeline_ref = client.EeApiEntitiesGeoPipelineRef()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `pipeline_ref` | `list` | No |  |
+| `pipeline_refs` | `list` | No |  |
 
 ### Operations
 
@@ -14954,7 +14939,7 @@ ee_api_entities_geo_pipeline_ref = client.EeApiEntitiesGeoPipelineRef()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.EeApiEntitiesGeoPipelineRef().list()
+results = client.EeApiEntitiesGeoPipelineRef().list({"gl_repository": "example"})
 for ee_api_entities_geo_pipeline_ref in results:
     print(ee_api_entities_geo_pipeline_ref)
 ```
@@ -15082,9 +15067,9 @@ ee_api_entities_merge_request_approval_state = client.EeApiEntitiesMergeRequestA
 | `approved` | `bool` | No |  |
 | `approved_by` | `list` | No |  |
 | `code_owner` | `bool` | No |  |
-| `contains_hidden_group` | `bool` | No |  |
-| `eligible_approver` | `list` | No |  |
-| `group` | `list` | No |  |
+| `contains_hidden_groups` | `bool` | No |  |
+| `eligible_approvers` | `list` | No |  |
+| `groups` | `list` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
 | `overridden` | `bool` | No |  |
@@ -15092,7 +15077,7 @@ ee_api_entities_merge_request_approval_state = client.EeApiEntitiesMergeRequestA
 | `rule_type` | `str` | No |  |
 | `section` | `str` | No |  |
 | `source_rule` | `dict` | No |  |
-| `user` | `list` | No |  |
+| `users` | `list` | No |  |
 
 ### Operations
 
@@ -15101,7 +15086,7 @@ ee_api_entities_merge_request_approval_state = client.EeApiEntitiesMergeRequestA
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.EeApiEntitiesMergeRequestApprovalState().list()
+results = client.EeApiEntitiesMergeRequestApprovalState().list({"merge_request_id": "example", "project_id": "example"})
 for ee_api_entities_merge_request_approval_state in results:
     print(ee_api_entities_merge_request_approval_state)
 ```
@@ -15167,7 +15152,7 @@ result = client.EeApiEntitiesSshCertificate().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.EeApiEntitiesSshCertificate().list()
+results = client.EeApiEntitiesSshCertificate().list({"group_id": "example"})
 for ee_api_entities_ssh_certificate in results:
     print(ee_api_entities_ssh_certificate)
 ```
@@ -16475,9 +16460,9 @@ metadata = client.Metadata()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enterprise` | `bool` | No |  |
-| `kas` | `dict` | No |  |
-| `revision` | `str` | No |  |
+| `enabled` | `bool` | No |  |
+| `externalK8sProxyUrl` | `str` | No |  |
+| `externalUrl` | `str` | No |  |
 | `version` | `str` | No |  |
 
 ### Operations
@@ -16849,13 +16834,22 @@ nuget_package = client.NugetPackage()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `catalog_entry` | `dict` | No |  |
+| `authors` | `str` | No |  |
 | `count` | `int` | No |  |
+| `dependencyGroups` | `list` | No |  |
+| `description` | `str` | No |  |
+| `iconUrl` | `str` | No |  |
 | `id` | `str` | No |  |
-| `item` | `list` | No |  |
+| `items` | `list` | No |  |
+| `licenseUrl` | `str` | No |  |
 | `lower` | `str` | No |  |
-| `package_content` | `str` | No |  |
+| `packageContent` | `str` | No |  |
+| `projectUrl` | `str` | No |  |
+| `published` | `str` | No |  |
+| `summary` | `str` | No |  |
+| `tags` | `str` | No |  |
 | `upper` | `str` | No |  |
+| `version` | `str` | No |  |
 
 ### Operations
 
@@ -17062,7 +17056,7 @@ participant = client.Participant()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Participant().list()
+results = client.Participant().list({"project_id": "example"})
 for participant in results:
     print(participant)
 ```
@@ -17172,7 +17166,7 @@ project = client.Project()
 | `updated_at` | `str` | No |  |
 | `user` | `dict` | No |  |
 | `web_url` | `str` | No |  |
-| `yaml_error` | `str` | No |  |
+| `yaml_errors` | `str` | No |  |
 
 ### Operations
 
@@ -18463,7 +18457,7 @@ starrer = client.Starrer()
 | --- | --- | --- | --- |
 | `avatar_path` | `str` | No |  |
 | `avatar_url` | `str` | No |  |
-| `custom_attribute` | `list` | No |  |
+| `custom_attributes` | `list` | No |  |
 | `id` | `int` | No |  |
 | `locked` | `bool` | No |  |
 | `name` | `str` | No |  |
@@ -18479,7 +18473,7 @@ starrer = client.Starrer()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Starrer().list()
+results = client.Starrer().list({"project_id": "example"})
 for starrer in results:
     print(starrer)
 ```
@@ -18740,7 +18734,7 @@ test_report = client.TestReport()
 | `skipped_count` | `int` | No |  |
 | `success_count` | `int` | No |  |
 | `suite_error` | `str` | No |  |
-| `test_case` | `list` | No |  |
+| `test_cases` | `list` | No |  |
 | `total_count` | `int` | No |  |
 | `total_time` | `int` | No |  |
 
@@ -18751,7 +18745,7 @@ test_report = client.TestReport()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.TestReport().list()
+results = client.TestReport().list({"pipeline_id": "example", "project_id": "example"})
 for test_report in results:
     print(test_report)
 ```
@@ -18795,7 +18789,7 @@ test_report_summary = client.TestReportSummary()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `test_suite` | `dict` | No |  |
+| `test_suites` | `dict` | No |  |
 | `total` | `dict` | No |  |
 
 ### Operations
@@ -18993,7 +18987,7 @@ user = client.User()
 | --- | --- | --- | --- |
 | `avatar_path` | `str` | No |  |
 | `avatar_url` | `str` | No |  |
-| `custom_attribute` | `list` | No |  |
+| `custom_attributes` | `list` | No |  |
 | `id` | `int` | No |  |
 | `locked` | `bool` | No |  |
 | `name` | `str` | No |  |
@@ -19009,7 +19003,7 @@ user = client.User()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.User().list()
+results = client.User().list({"project_id": "example"})
 for user in results:
     print(user)
 ```

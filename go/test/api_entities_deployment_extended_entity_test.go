@@ -60,7 +60,7 @@ func TestApiEntitiesDeploymentExtendedEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesDeploymentExtendedRef01Data = core.ToMapAny(apiEntitiesDeploymentExtendedRef01DataResult)
+		apiEntitiesDeploymentExtendedRef01Data = core.ToMapAny(entityData(apiEntitiesDeploymentExtendedRef01DataResult))
 		if apiEntitiesDeploymentExtendedRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -82,7 +82,7 @@ func TestApiEntitiesDeploymentExtendedEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesDeploymentExtendedRef01ResdataUp0 := core.ToMapAny(apiEntitiesDeploymentExtendedRef01ResdataUp0Result)
+		apiEntitiesDeploymentExtendedRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesDeploymentExtendedRef01ResdataUp0Result))
 		if apiEntitiesDeploymentExtendedRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -101,7 +101,7 @@ func TestApiEntitiesDeploymentExtendedEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesDeploymentExtendedRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesDeploymentExtendedRef01DataDt0Loaded)
+		apiEntitiesDeploymentExtendedRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesDeploymentExtendedRef01DataDt0Loaded))
 		if apiEntitiesDeploymentExtendedRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

@@ -73,7 +73,7 @@ func TestApiEntitiesAppearanceEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesAppearanceRef01ResdataUp0 := core.ToMapAny(apiEntitiesAppearanceRef01ResdataUp0Result)
+		apiEntitiesAppearanceRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesAppearanceRef01ResdataUp0Result))
 		if apiEntitiesAppearanceRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

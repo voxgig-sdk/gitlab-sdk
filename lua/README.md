@@ -59,7 +59,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local apientitiesaccessrequesters, err = client:ApiEntitiesAccessRequester():list()
+local apientitiesmetricimages, err = client:ApiEntitiesMetricImage():list()
 if err then error(err) end
 ```
 
@@ -117,7 +117,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:ApiEntitiesAccessRequester():list()
+local result, err = client:ApiEntitiesMetricImage():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -505,9 +505,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local access_request, err = client:AccessRequest():load()
+    local api_entities_appearance, err = client:ApiEntitiesAppearance():load()
     if err then error(err) end
-    -- access_request is the loaded record
+    -- api_entities_appearance is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -538,7 +538,7 @@ API path: `/api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_imag
 | --- | --- |
 | `avatar_path` |  |
 | `avatar_url` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `id` |  |
 | `key` |  |
 | `locked` |  |
@@ -565,11 +565,11 @@ API path: `/api/v4/groups/{id}/access_requests`
 | `header_logo` |  |
 | `header_message` |  |
 | `logo` |  |
-| `member_guideline` |  |
+| `member_guidelines` |  |
 | `message_background_color` |  |
 | `message_font_color` |  |
-| `new_project_guideline` |  |
-| `profile_image_guideline` |  |
+| `new_project_guidelines` |  |
+| `profile_image_guidelines` |  |
 | `pwa_description` |  |
 | `pwa_icon` |  |
 | `pwa_name` |  |
@@ -598,17 +598,17 @@ API path: `/api/v4/applications`
 
 | Field | Description |
 | --- | --- |
-| `active_user` |  |
-| `fork` |  |
-| `group` |  |
-| `issue` |  |
-| `merge_request` |  |
-| `milestone` |  |
-| `note` |  |
-| `project` |  |
-| `snippet` |  |
-| `ssh_key` |  |
-| `user` |  |
+| `active_users` |  |
+| `forks` |  |
+| `groups` |  |
+| `issues` |  |
+| `merge_requests` |  |
+| `milestones` |  |
+| `notes` |  |
+| `projects` |  |
+| `snippets` |  |
+| `ssh_keys` |  |
+| `users` |  |
 
 Operations: Load.
 
@@ -643,14 +643,22 @@ API path: `/api/v4/avatar`
 
 | Field | Description |
 | --- | --- |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `awardable_id` |  |
 | `awardable_type` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
 | `id` |  |
+| `locked` |  |
 | `name` |  |
+| `public_email` |  |
+| `state` |  |
 | `updated_at` |  |
 | `url` |  |
 | `user` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, List, Load.
 
@@ -701,7 +709,7 @@ API path: `/api/v4/projects/{id}/job_token_scope/groups_allowlist`
 | --- | --- |
 | `avatar_url` |  |
 | `created_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `description` |  |
 | `forks_count` |  |
@@ -720,7 +728,7 @@ API path: `/api/v4/projects/{id}/job_token_scope/groups_allowlist`
 | `ssh_url_to_repo` |  |
 | `star_count` |  |
 | `tag_list` |  |
-| `topic` |  |
+| `topics` |  |
 | `visibility` |  |
 | `web_url` |  |
 
@@ -768,14 +776,28 @@ API path: `/api/v4/admin/batched_background_migrations`
 
 | Field | Description |
 | --- | --- |
+| `author_email` |  |
+| `author_name` |  |
+| `authored_date` |  |
 | `can_push` |  |
 | `commit` |  |
+| `committed_date` |  |
+| `committer_email` |  |
+| `committer_name` |  |
+| `created_at` |  |
 | `default` |  |
 | `developers_can_merge` |  |
 | `developers_can_push` |  |
+| `extended_trailers` |  |
+| `id` |  |
 | `merged` |  |
+| `message` |  |
 | `name` |  |
+| `parent_ids` |  |
 | `protected` |  |
+| `short_id` |  |
+| `title` |  |
+| `trailers` |  |
 | `web_url` |  |
 
 Operations: Create, List, Load, Update.
@@ -793,18 +815,18 @@ API path: `/api/v4/projects/{id}/repository/branches`
 | `destination_namespace` |  |
 | `destination_slug` |  |
 | `entity_type` |  |
-| `failure` |  |
-| `has_failure` |  |
+| `failures` |  |
+| `has_failures` |  |
 | `id` |  |
-| `migrate_membership` |  |
-| `migrate_project` |  |
+| `migrate_memberships` |  |
+| `migrate_projects` |  |
 | `namespace_id` |  |
 | `parent_id` |  |
 | `project_id` |  |
 | `source_full_path` |  |
 | `source_type` |  |
 | `source_url` |  |
-| `stat` |  |
+| `stats` |  |
 | `status` |  |
 | `updated_at` |  |
 
@@ -831,8 +853,8 @@ API path: `/api/v4/bulk_imports/{import_id}/entities/{entity_id}/failures`
 
 | Field | Description |
 | --- | --- |
-| `batch` |  |
 | `batched` |  |
+| `batches` |  |
 | `batches_count` |  |
 | `error` |  |
 | `relation` |  |
@@ -848,7 +870,7 @@ API path: `/api/v4/groups/{id}/export_relations/status`
 
 | Field | Description |
 | --- | --- |
-| `note` |  |
+| `notes` |  |
 
 Operations: Load.
 
@@ -899,7 +921,7 @@ API path: `/api/v4/projects/{id}/catalog/publish`
 | --- | --- |
 | `allow_failure` |  |
 | `archived` |  |
-| `artifact` |  |
+| `artifacts` |  |
 | `artifacts_expire_at` |  |
 | `artifacts_file` |  |
 | `commit` |  |
@@ -998,16 +1020,16 @@ API path: `/api/v4/runners/{id}/jobs`
 | `blob` |  |
 | `context_project` |  |
 | `context_sha` |  |
-| `error` |  |
+| `errors` |  |
 | `extra` |  |
-| `include` |  |
-| `job` |  |
+| `includes` |  |
+| `jobs` |  |
 | `location` |  |
 | `merged_yaml` |  |
 | `raw` |  |
 | `type` |  |
 | `valid` |  |
-| `warning` |  |
+| `warnings` |  |
 
 Operations: Create, List.
 
@@ -1051,7 +1073,7 @@ API path: `/api/v4/projects/{id}/pipelines`
 | `cron_timezone` |  |
 | `description` |  |
 | `id` |  |
-| `input` |  |
+| `inputs` |  |
 | `next_run_at` |  |
 | `owner` |  |
 | `ref` |  |
@@ -1071,13 +1093,13 @@ API path: `/api/v4/projects/{id}/pipeline_schedules`
 | `cron_timezone` |  |
 | `description` |  |
 | `id` |  |
-| `input` |  |
+| `inputs` |  |
 | `last_pipeline` |  |
 | `next_run_at` |  |
 | `owner` |  |
 | `ref` |  |
 | `updated_at` |  |
-| `variable` |  |
+| `variables` |  |
 
 Operations: Create, Load, Update.
 
@@ -1110,19 +1132,16 @@ API path: `/api/v4/projects/{id}/resource_groups`
 
 | Field | Description |
 | --- | --- |
-| `active` |  |
-| `created_at` |  |
-| `created_by` |  |
-| `description` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
 | `id` |  |
-| `ip_address` |  |
-| `is_shared` |  |
-| `job_execution_status` |  |
+| `locked` |  |
 | `name` |  |
-| `online` |  |
-| `paused` |  |
-| `runner_type` |  |
-| `status` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, Load.
 
@@ -1139,7 +1158,7 @@ API path: `/api/v4/projects/{id}/runners`
 | `created_at` |  |
 | `created_by` |  |
 | `description` |  |
-| `group` |  |
+| `groups` |  |
 | `id` |  |
 | `ip_address` |  |
 | `is_shared` |  |
@@ -1151,7 +1170,7 @@ API path: `/api/v4/projects/{id}/runners`
 | `online` |  |
 | `paused` |  |
 | `platform` |  |
-| `project` |  |
+| `projects` |  |
 | `revision` |  |
 | `run_untagged` |  |
 | `runner_type` |  |
@@ -1196,14 +1215,6 @@ API path: `/api/v4/runners`
 
 | Field | Description |
 | --- | --- |
-| `checksum` |  |
-| `checksum_algorithm` |  |
-| `created_at` |  |
-| `expires_at` |  |
-| `file_extension` |  |
-| `id` |  |
-| `metadata` |  |
-| `name` |  |
 
 Operations: Create, Load.
 
@@ -1241,7 +1252,7 @@ API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/varia
 | `management_project` |  |
 | `name` |  |
 | `namespace_per_environment` |  |
-| `platform_kubernete` |  |
+| `platform_kubernetes` |  |
 | `platform_type` |  |
 | `provider_gcp` |  |
 | `provider_type` |  |
@@ -1266,7 +1277,7 @@ API path: `/api/v4/admin/clusters/add`
 | `management_project` |  |
 | `name` |  |
 | `namespace_per_environment` |  |
-| `platform_kubernete` |  |
+| `platform_kubernetes` |  |
 | `platform_type` |  |
 | `provider_gcp` |  |
 | `provider_type` |  |
@@ -1290,7 +1301,7 @@ API path: `/api/v4/groups/{id}/clusters/user`
 | `management_project` |  |
 | `name` |  |
 | `namespace_per_environment` |  |
-| `platform_kubernete` |  |
+| `platform_kubernetes` |  |
 | `platform_type` |  |
 | `project` |  |
 | `provider_gcp` |  |
@@ -1305,12 +1316,13 @@ API path: `/api/v4/projects/{id}/clusters/user`
 
 | Field | Description |
 | --- | --- |
-| `config_project` |  |
 | `created_at` |  |
-| `created_by_user_id` |  |
+| `description` |  |
 | `id` |  |
-| `is_receptive` |  |
 | `name` |  |
+| `name_with_namespace` |  |
+| `path` |  |
+| `path_with_namespace` |  |
 
 Operations: Create, Load.
 
@@ -1369,13 +1381,13 @@ API path: `/api/v4/projects/{id}/cluster_agents/{agent_id}/tokens`
 | `committer_email` |  |
 | `committer_name` |  |
 | `created_at` |  |
-| `extended_trailer` |  |
+| `extended_trailers` |  |
 | `id` |  |
 | `message` |  |
-| `parent_id` |  |
+| `parent_ids` |  |
 | `short_id` |  |
 | `title` |  |
-| `trailer` |  |
+| `trailers` |  |
 | `web_url` |  |
 
 Operations: Create, List.
@@ -1393,17 +1405,17 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/context_comm
 | `committer_email` |  |
 | `committer_name` |  |
 | `created_at` |  |
-| `extended_trailer` |  |
+| `extended_trailers` |  |
 | `id` |  |
 | `last_pipeline` |  |
 | `message` |  |
-| `parent_id` |  |
+| `parent_ids` |  |
 | `project_id` |  |
 | `short_id` |  |
-| `stat` |  |
+| `stats` |  |
 | `status` |  |
 | `title` |  |
-| `trailer` |  |
+| `trailers` |  |
 | `web_url` |  |
 
 Operations: Create, Load, Update.
@@ -1415,11 +1427,21 @@ API path: `/api/v4/projects/{id}/repository/commits`
 | Field | Description |
 | --- | --- |
 | `author` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
+| `id` |  |
 | `line` |  |
 | `line_type` |  |
+| `locked` |  |
+| `name` |  |
 | `note` |  |
 | `path` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, List.
 
@@ -1453,18 +1475,26 @@ API path: `/api/v4/projects/{id}/repository/commits/{sha}/signature`
 | --- | --- |
 | `allow_failure` |  |
 | `author` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `coverage` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
 | `description` |  |
 | `finished_at` |  |
 | `id` |  |
+| `locked` |  |
 | `name` |  |
 | `pipeline_id` |  |
+| `public_email` |  |
 | `ref` |  |
 | `sha` |  |
 | `started_at` |  |
+| `state` |  |
 | `status` |  |
 | `target_url` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, List.
 
@@ -1475,9 +1505,10 @@ API path: `/api/v4/projects/{id}/statuses/{sha}`
 | Field | Description |
 | --- | --- |
 | `commit` |  |
+| `commits` |  |
 | `compare_same_ref` |  |
 | `compare_timeout` |  |
-| `diff` |  |
+| `diffs` |  |
 | `web_url` |  |
 
 Operations: List.
@@ -1498,7 +1529,7 @@ API path: `/api/v4/projects/{id}/repository/compare`
 | `project_id` |  |
 | `size` |  |
 | `status` |  |
-| `tag` |  |
+| `tags` |  |
 | `tags_count` |  |
 
 Operations: List, Load.
@@ -1538,9 +1569,9 @@ API path: `/api/v4/projects/{id}/registry/repositories/{repository_id}/tags/{tag
 
 | Field | Description |
 | --- | --- |
-| `addition` |  |
-| `commit` |  |
-| `deletion` |  |
+| `additions` |  |
+| `commits` |  |
+| `deletions` |  |
 | `email` |  |
 | `name` |  |
 
@@ -1598,7 +1629,7 @@ API path: `/api/v4/projects/{id}/deploy_keys`
 | `id` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `username` |  |
 
 Operations: List, Load.
@@ -1637,8 +1668,8 @@ API path: `/api/v4/projects/{id}/deployments`
 
 | Field | Description |
 | --- | --- |
-| `approval` |  |
 | `approval_summary` |  |
+| `approvals` |  |
 | `created_at` |  |
 | `deployable` |  |
 | `environment` |  |
@@ -1668,7 +1699,7 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/approval`
 
 | Field | Description |
 | --- | --- |
-| `feature_category` |  |
+| `feature_categories` |  |
 | `table_name` |  |
 
 Operations: Load.
@@ -1699,8 +1730,8 @@ API path: `/api/v4/projects/{id}/repository/commits/{sha}/diff`
 
 | Field | Description |
 | --- | --- |
-| `group` |  |
-| `project` |  |
+| `groups` |  |
+| `projects` |  |
 
 Operations: Load.
 
@@ -1806,7 +1837,7 @@ API path: `/api/v4/events`
 | Field | Description |
 | --- | --- |
 | `definition` |  |
-| `gate` |  |
+| `gates` |  |
 | `name` |  |
 | `state` |  |
 
@@ -1823,7 +1854,7 @@ API path: `/api/v4/features/{name}`
 | `group` |  |
 | `intended_to_rollout_by` |  |
 | `introduced_by_url` |  |
-| `log_state_change` |  |
+| `log_state_changes` |  |
 | `milestone` |  |
 | `name` |  |
 | `rollout_issue_url` |  |
@@ -1840,10 +1871,13 @@ API path: `/api/v4/features/definitions`
 | `active` |  |
 | `created_at` |  |
 | `description` |  |
+| `id` |  |
 | `name` |  |
-| `scope` |  |
-| `strategy` |  |
+| `parameters` |  |
+| `scopes` |  |
+| `strategies` |  |
 | `updated_at` |  |
+| `user_list` |  |
 | `version` |  |
 
 Operations: Create, List, Load, Update.
@@ -1862,7 +1896,7 @@ API path: `/api/v4/projects/{id}/feature_flags`
 | `path` |  |
 | `project_id` |  |
 | `updated_at` |  |
-| `user_xid` |  |
+| `user_xids` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -1899,8 +1933,8 @@ API path: `/api/v4/namespaces/{id}/gitlab_subscription`
 
 | Field | Description |
 | --- | --- |
-| `time` |  |
-| `version` |  |
+| `Time` |  |
+| `Version` |  |
 
 Operations: Load.
 
@@ -1915,10 +1949,10 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.in
 | `auto_duo_code_review_enabled` |  |
 | `avatar_url` |  |
 | `created_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `default_branch_protection` |  |
-| `default_branch_protection_default` |  |
+| `default_branch_protection_defaults` |  |
 | `description` |  |
 | `duo_core_features_enabled` |  |
 | `duo_features_enabled` |  |
@@ -1930,7 +1964,7 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.in
 | `id` |  |
 | `ldap_access` |  |
 | `ldap_cn` |  |
-| `ldap_group_link` |  |
+| `ldap_group_links` |  |
 | `lfs_enabled` |  |
 | `lock_duo_features_enabled` |  |
 | `lock_math_rendering_limits_enabled` |  |
@@ -1946,12 +1980,12 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.in
 | `repository_storage` |  |
 | `request_access_enabled` |  |
 | `require_two_factor_authentication` |  |
-| `root_storage_statistic` |  |
-| `saml_group_link` |  |
+| `root_storage_statistics` |  |
+| `saml_group_links` |  |
 | `share_with_group_lock` |  |
 | `shared_runners_setting` |  |
 | `show_diff_preview_in_email` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `subgroup_creation_level` |  |
 | `two_factor_grace_period` |  |
 | `visibility` |  |
@@ -1974,10 +2008,10 @@ API path: `/api/v4/groups/{id}/archive`
 | `auto_duo_code_review_enabled` |  |
 | `avatar_url` |  |
 | `created_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `default_branch_protection` |  |
-| `default_branch_protection_default` |  |
+| `default_branch_protection_defaults` |  |
 | `description` |  |
 | `duo_core_features_enabled` |  |
 | `duo_features_enabled` |  |
@@ -1989,10 +2023,10 @@ API path: `/api/v4/groups/{id}/archive`
 | `full_name` |  |
 | `full_path` |  |
 | `id` |  |
-| `ip_restriction_range` |  |
+| `ip_restriction_ranges` |  |
 | `ldap_access` |  |
 | `ldap_cn` |  |
-| `ldap_group_link` |  |
+| `ldap_group_links` |  |
 | `lfs_enabled` |  |
 | `lock_duo_features_enabled` |  |
 | `lock_math_rendering_limits_enabled` |  |
@@ -2007,28 +2041,28 @@ API path: `/api/v4/groups/{id}/archive`
 | `path` |  |
 | `prevent_forking_outside_group` |  |
 | `prevent_sharing_groups_outside_hierarchy` |  |
-| `project` |  |
 | `project_creation_level` |  |
+| `projects` |  |
 | `repository_storage` |  |
 | `request_access_enabled` |  |
 | `require_two_factor_authentication` |  |
-| `root_storage_statistic` |  |
+| `root_storage_statistics` |  |
 | `runners_token` |  |
-| `saml_group_link` |  |
+| `saml_group_links` |  |
 | `service_access_tokens_expiration_enforced` |  |
 | `share_with_group_lock` |  |
-| `shared_project` |  |
+| `shared_projects` |  |
 | `shared_runners_minutes_limit` |  |
 | `shared_runners_setting` |  |
-| `shared_with_group` |  |
+| `shared_with_groups` |  |
 | `show_diff_preview_in_email` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `subgroup_creation_level` |  |
 | `two_factor_grace_period` |  |
 | `unique_project_download_limit` |  |
 | `unique_project_download_limit_alertlist` |  |
 | `unique_project_download_limit_allowlist` |  |
-| `unique_project_download_limit_interval_in_second` |  |
+| `unique_project_download_limit_interval_in_seconds` |  |
 | `visibility` |  |
 | `web_based_commit_signing_enabled` |  |
 | `web_url` |  |
@@ -2045,20 +2079,20 @@ API path: `/api/v4/groups/{id}/share`
 | `alert_status` |  |
 | `branch_filter_strategy` |  |
 | `created_at` |  |
-| `custom_header` |  |
+| `custom_headers` |  |
 | `custom_webhook_template` |  |
 | `description` |  |
 | `disabled_until` |  |
 | `enable_ssl_verification` |  |
 | `id` |  |
-| `merge_requests_event` |  |
+| `merge_requests_events` |  |
 | `name` |  |
-| `push_event` |  |
+| `push_events` |  |
 | `push_events_branch_filter` |  |
-| `repository_update_event` |  |
-| `tag_push_event` |  |
+| `repository_update_events` |  |
+| `tag_push_events` |  |
 | `url` |  |
-| `url_variable` |  |
+| `url_variables` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -2068,30 +2102,6 @@ API path: `/api/v4/hooks`
 
 | Field | Description |
 | --- | --- |
-| `active` |  |
-| `alert_event` |  |
-| `comment_on_event_enabled` |  |
-| `commit_event` |  |
-| `confidential_issues_event` |  |
-| `confidential_note_event` |  |
-| `created_at` |  |
-| `deployment_event` |  |
-| `id` |  |
-| `incident_event` |  |
-| `inherited` |  |
-| `issues_event` |  |
-| `job_event` |  |
-| `merge_requests_event` |  |
-| `note_event` |  |
-| `pipeline_event` |  |
-| `property` |  |
-| `push_event` |  |
-| `slug` |  |
-| `tag_push_event` |  |
-| `title` |  |
-| `updated_at` |  |
-| `vulnerability_event` |  |
-| `wiki_page_event` |  |
 
 Operations: Load.
 
@@ -2102,28 +2112,28 @@ API path: `/api/v4/groups/{id}/integrations/{slug}`
 | Field | Description |
 | --- | --- |
 | `active` |  |
-| `alert_event` |  |
+| `alert_events` |  |
 | `comment_on_event_enabled` |  |
-| `commit_event` |  |
-| `confidential_issues_event` |  |
-| `confidential_note_event` |  |
+| `commit_events` |  |
+| `confidential_issues_events` |  |
+| `confidential_note_events` |  |
 | `created_at` |  |
-| `deployment_event` |  |
+| `deployment_events` |  |
 | `id` |  |
-| `incident_event` |  |
+| `incident_events` |  |
 | `inherited` |  |
-| `issues_event` |  |
-| `job_event` |  |
-| `merge_requests_event` |  |
-| `note_event` |  |
-| `pipeline_event` |  |
-| `push_event` |  |
+| `issues_events` |  |
+| `job_events` |  |
+| `merge_requests_events` |  |
+| `note_events` |  |
+| `pipeline_events` |  |
+| `push_events` |  |
 | `slug` |  |
-| `tag_push_event` |  |
+| `tag_push_events` |  |
 | `title` |  |
 | `updated_at` |  |
-| `vulnerability_event` |  |
-| `wiki_page_event` |  |
+| `vulnerability_events` |  |
+| `wiki_page_events` |  |
 
 Operations: List, Update.
 
@@ -2163,6 +2173,7 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time`
 | Field | Description |
 | --- | --- |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_issues_count` |  |
 | `closed_at` |  |
@@ -2171,11 +2182,11 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time`
 | `created_at` |  |
 | `description` |  |
 | `discussion_locked` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `due_date` |  |
 | `epic` |  |
 | `epic_iid` |  |
-| `has_task` |  |
+| `has_tasks` |  |
 | `health_status` |  |
 | `id` |  |
 | `iid` |  |
@@ -2183,24 +2194,24 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/add_spent_time`
 | `imported_from` |  |
 | `issue_type` |  |
 | `iteration` |  |
-| `label` |  |
-| `link` |  |
+| `labels` |  |
+| `links` |  |
 | `merge_requests_count` |  |
 | `milestone` |  |
 | `moved_to_id` |  |
 | `project_id` |  |
-| `reference` |  |
+| `references` |  |
 | `service_desk_reply_to` |  |
 | `severity` |  |
 | `state` |  |
 | `subscribed` |  |
 | `task_completion_status` |  |
 | `task_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `type` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
 | `weight` |  |
@@ -2225,15 +2236,15 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/links`
 
 | Field | Description |
 | --- | --- |
-| `condition` |  |
+| `conditions` |  |
 | `content` |  |
 | `description` |  |
 | `html_url` |  |
 | `key` |  |
-| `limitation` |  |
+| `limitations` |  |
 | `name` |  |
 | `nickname` |  |
-| `permission` |  |
+| `permissions` |  |
 | `popular` |  |
 | `source_url` |  |
 
@@ -2273,7 +2284,7 @@ API path: `/api/v4/groups/{id}/uploads`
 | `avatar_url` |  |
 | `created_at` |  |
 | `created_by` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `email` |  |
 | `expires_at` |  |
 | `group_saml_identity` |  |
@@ -2304,6 +2315,7 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `allow_maintainer_to_push` |  |
 | `approvals_before_merge` |  |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_discussions_resolved` |  |
 | `changes_count` |  |
@@ -2313,21 +2325,21 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `description` |  |
 | `description_html` |  |
 | `detailed_merge_status` |  |
-| `diff_ref` |  |
+| `diff_refs` |  |
 | `discussion_locked` |  |
 | `diverged_commits_count` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `draft` |  |
 | `first_contribution` |  |
 | `first_deployed_to_production_at` |  |
 | `force_remove_source_branch` |  |
-| `has_conflict` |  |
+| `has_conflicts` |  |
 | `head_pipeline` |  |
 | `id` |  |
 | `iid` |  |
 | `imported` |  |
 | `imported_from` |  |
-| `label` |  |
+| `labels` |  |
 | `latest_build_finished_at` |  |
 | `latest_build_started_at` |  |
 | `merge_after` |  |
@@ -2335,7 +2347,7 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `merge_error` |  |
 | `merge_status` |  |
 | `merge_user` |  |
-| `merge_when_pipeline_succeed` |  |
+| `merge_when_pipeline_succeeds` |  |
 | `merged_at` |  |
 | `merged_by` |  |
 | `milestone` |  |
@@ -2344,7 +2356,8 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `project_id` |  |
 | `rebase_in_progress` |  |
 | `reference` |  |
-| `reviewer` |  |
+| `references` |  |
+| `reviewers` |  |
 | `sha` |  |
 | `should_remove_source_branch` |  |
 | `source_branch` |  |
@@ -2357,11 +2370,11 @@ API path: `/api/v4/groups/{id}/members/{user_id}/override`
 | `target_branch` |  |
 | `target_project_id` |  |
 | `task_completion_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `title_html` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
@@ -2375,10 +2388,8 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/cancel_merge
 
 | Field | Description |
 | --- | --- |
-| `approved` |  |
-| `approved_by` |  |
-| `user_can_approve` |  |
-| `user_has_approved` |  |
+| `approved_at` |  |
+| `user` |  |
 
 Operations: Create, Load.
 
@@ -2392,6 +2403,7 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve`
 | `allow_maintainer_to_push` |  |
 | `approvals_before_merge` |  |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_discussions_resolved` |  |
 | `closed_at` |  |
@@ -2401,27 +2413,28 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve`
 | `description_html` |  |
 | `detailed_merge_status` |  |
 | `discussion_locked` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `draft` |  |
 | `force_remove_source_branch` |  |
-| `has_conflict` |  |
+| `has_conflicts` |  |
 | `id` |  |
 | `iid` |  |
 | `imported` |  |
 | `imported_from` |  |
-| `label` |  |
+| `labels` |  |
 | `merge_after` |  |
 | `merge_commit_sha` |  |
 | `merge_status` |  |
 | `merge_user` |  |
-| `merge_when_pipeline_succeed` |  |
+| `merge_when_pipeline_succeeds` |  |
 | `merged_at` |  |
 | `merged_by` |  |
 | `milestone` |  |
 | `prepared_at` |  |
 | `project_id` |  |
 | `reference` |  |
-| `reviewer` |  |
+| `references` |  |
+| `reviewers` |  |
 | `sha` |  |
 | `should_remove_source_branch` |  |
 | `source_branch` |  |
@@ -2433,11 +2446,11 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approve`
 | `target_branch` |  |
 | `target_project_id` |  |
 | `task_completion_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `title_html` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
 | `work_in_progress` |  |
@@ -2454,9 +2467,10 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `allow_maintainer_to_push` |  |
 | `approvals_before_merge` |  |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_discussions_resolved` |  |
-| `change` |  |
+| `changes` |  |
 | `changes_count` |  |
 | `closed_at` |  |
 | `closed_by` |  |
@@ -2464,21 +2478,21 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `description` |  |
 | `description_html` |  |
 | `detailed_merge_status` |  |
-| `diff_ref` |  |
+| `diff_refs` |  |
 | `discussion_locked` |  |
 | `diverged_commits_count` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `draft` |  |
 | `first_contribution` |  |
 | `first_deployed_to_production_at` |  |
 | `force_remove_source_branch` |  |
-| `has_conflict` |  |
+| `has_conflicts` |  |
 | `head_pipeline` |  |
 | `id` |  |
 | `iid` |  |
 | `imported` |  |
 | `imported_from` |  |
-| `label` |  |
+| `labels` |  |
 | `latest_build_finished_at` |  |
 | `latest_build_started_at` |  |
 | `merge_after` |  |
@@ -2486,7 +2500,7 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `merge_error` |  |
 | `merge_status` |  |
 | `merge_user` |  |
-| `merge_when_pipeline_succeed` |  |
+| `merge_when_pipeline_succeeds` |  |
 | `merged_at` |  |
 | `merged_by` |  |
 | `milestone` |  |
@@ -2496,7 +2510,8 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `project_id` |  |
 | `rebase_in_progress` |  |
 | `reference` |  |
-| `reviewer` |  |
+| `references` |  |
+| `reviewers` |  |
 | `sha` |  |
 | `should_remove_source_branch` |  |
 | `source_branch` |  |
@@ -2509,11 +2524,11 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/merge_requests`
 | `target_branch` |  |
 | `target_project_id` |  |
 | `task_completion_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `title_html` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
@@ -2546,9 +2561,9 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/versions`
 | Field | Description |
 | --- | --- |
 | `base_commit_sha` |  |
-| `commit` |  |
+| `commits` |  |
 | `created_at` |  |
-| `diff` |  |
+| `diffs` |  |
 | `head_commit_sha` |  |
 | `id` |  |
 | `merge_request_id` |  |
@@ -2565,9 +2580,16 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/versions/{ve
 
 | Field | Description |
 | --- | --- |
-| `created_at` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
+| `id` |  |
+| `locked` |  |
+| `name` |  |
+| `public_email` |  |
 | `state` |  |
-| `user` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Load.
 
@@ -2592,8 +2614,16 @@ API path: `/api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_imag
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `note` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
+| `id` |  |
+| `locked` |  |
+| `name` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Load.
 
@@ -2614,7 +2644,7 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/closes_issue
 | `kind` |  |
 | `max_seats_used` |  |
 | `max_seats_used_changed_at` |  |
-| `members_count_with_descendant` |  |
+| `members_count_with_descendants` |  |
 | `name` |  |
 | `parent_id` |  |
 | `path` |  |
@@ -2635,8 +2665,8 @@ API path: `/api/v4/namespaces`
 
 | Field | Description |
 | --- | --- |
-| `exist` |  |
-| `suggest` |  |
+| `exists` |  |
+| `suggests` |  |
 
 Operations: List.
 
@@ -2659,9 +2689,9 @@ API path: `/api/v4/namespaces/{id}/storage/limit_exclusion`
 
 | Field | Description |
 | --- | --- |
-| `dist_tag` |  |
+| `disttags` |  |
 | `name` |  |
-| `version` |  |
+| `versions` |  |
 
 Operations: Load.
 
@@ -2671,7 +2701,6 @@ API path: `/api/v4/groups/{id}/-/packages/npm/*package_name`
 
 | Field | Description |
 | --- | --- |
-| `dist_tag` |  |
 
 Operations: Load.
 
@@ -2681,7 +2710,7 @@ API path: `/api/v4/groups/{id}/-/packages/npm/-/package/*package_name/dist-tags`
 
 | Field | Description |
 | --- | --- |
-| `version` |  |
+| `versions` |  |
 
 Operations: List.
 
@@ -2691,19 +2720,20 @@ API path: `/api/v4/projects/{id}/packages/nuget/download/*package_name/index`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
+| `authors` |  |
 | `description` |  |
-| `icon_url` |  |
+| `iconUrl` |  |
 | `id` |  |
-| `license_url` |  |
-| `project_url` |  |
+| `licenseUrl` |  |
+| `projectUrl` |  |
 | `summary` |  |
-| `tag` |  |
+| `tags` |  |
 | `title` |  |
-| `total_download` |  |
+| `totalDownloads` |  |
 | `type` |  |
 | `verified` |  |
 | `version` |  |
+| `versions` |  |
 
 Operations: List.
 
@@ -2713,7 +2743,7 @@ API path: `/api/v4/groups/{id}/-/packages/nuget/query`
 
 | Field | Description |
 | --- | --- |
-| `resource` |  |
+| `resources` |  |
 | `version` |  |
 
 Operations: List.
@@ -2737,15 +2767,17 @@ API path: `/api/v4/organizations`
 | `created_at` |  |
 | `id` |  |
 | `last_downloaded_at` |  |
-| `link` |  |
+| `links` |  |
 | `name` |  |
 | `package_type` |  |
 | `pipeline` |  |
+| `pipelines` |  |
 | `project_id` |  |
 | `project_path` |  |
 | `status` |  |
-| `tag` |  |
+| `tags` |  |
 | `version` |  |
+| `versions` |  |
 
 Operations: List, Load.
 
@@ -2762,7 +2794,7 @@ API path: `/api/v4/groups/{id}/packages`
 | `file_sha256` |  |
 | `id` |  |
 | `package_id` |  |
-| `pipeline` |  |
+| `pipelines` |  |
 | `size` |  |
 
 Operations: List.
@@ -2773,16 +2805,15 @@ API path: `/api/v4/projects/{id}/packages/{package_id}/package_files`
 
 | Field | Description |
 | --- | --- |
-| `created_at` |  |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `custom_attributes` |  |
 | `id` |  |
-| `iid` |  |
-| `project_id` |  |
-| `ref` |  |
-| `sha` |  |
-| `source` |  |
-| `status` |  |
-| `updated_at` |  |
-| `user` |  |
+| `locked` |  |
+| `name` |  |
+| `public_email` |  |
+| `state` |  |
+| `username` |  |
 | `web_url` |  |
 
 Operations: Load.
@@ -2793,7 +2824,6 @@ API path: `/api/v4/projects/{id}/packages/{package_id}/pipelines`
 
 | Field | Description |
 | --- | --- |
-| `file` |  |
 
 Operations: Load.
 
@@ -2803,7 +2833,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `package_url` |  |
 
 Operations: Load.
 
@@ -2824,7 +2853,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `package_snapshot` |  |
 
 Operations: Load.
 
@@ -2834,7 +2862,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `recipe_url` |  |
 
 Operations: Load.
 
@@ -2855,7 +2882,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `recipe_snapshot` |  |
 
 Operations: Load.
 
@@ -2876,7 +2902,6 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `upload_url` |  |
 
 Operations: Create.
 
@@ -2886,15 +2911,15 @@ API path: `/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
-| `architecture` |  |
+| `architectures` |  |
 | `codename` |  |
-| `component` |  |
+| `components` |  |
 | `description` |  |
 | `id` |  |
 | `label` |  |
 | `origin` |  |
 | `suite` |  |
-| `valid_time_duration_second` |  |
+| `valid_time_duration_seconds` |  |
 | `version` |  |
 
 Operations: Create, List, Load, Update.
@@ -2907,8 +2932,11 @@ API path: `/api/v4/groups/{id}/-/debian_distributions`
 | --- | --- |
 | `auto_ssl_enabled` |  |
 | `certificate` |  |
+| `certificate_text` |  |
 | `domain` |  |
 | `enabled_until` |  |
+| `expired` |  |
+| `subject` |  |
 | `url` |  |
 | `verification_code` |  |
 | `verified` |  |
@@ -2921,14 +2949,8 @@ API path: `/api/v4/projects/{id}/pages/domains`
 
 | Field | Description |
 | --- | --- |
-| `auto_ssl_enabled` |  |
-| `certificate_expiration` |  |
-| `domain` |  |
-| `enabled_until` |  |
-| `project_id` |  |
-| `url` |  |
-| `verification_code` |  |
-| `verified` |  |
+| `expiration` |  |
+| `expired` |  |
 
 Operations: Load.
 
@@ -2946,7 +2968,7 @@ API path: `/api/v4/pages/domains`
 | `last_used_at` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `user_id` |  |
 
 Operations: List.
@@ -2963,10 +2985,10 @@ API path: `/api/v4/personal_access_tokens/self/associations`
 | `expires_at` |  |
 | `id` |  |
 | `last_used_at` |  |
-| `last_used_ip` |  |
+| `last_used_ips` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `user_id` |  |
 
 Operations: List, Load.
@@ -2985,7 +3007,7 @@ API path: `/api/v4/personal_access_tokens`
 | `last_used_at` |  |
 | `name` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `token` |  |
 | `user_id` |  |
 
@@ -3000,8 +3022,8 @@ API path: `/api/v4/personal_access_tokens/{id}/rotate`
 | `author` |  |
 | `created_at` |  |
 | `description` |  |
-| `file` |  |
 | `file_name` |  |
+| `files` |  |
 | `http_url_to_repo` |  |
 | `id` |  |
 | `imported` |  |
@@ -3023,29 +3045,6 @@ API path: `/api/v4/snippets`
 
 | Field | Description |
 | --- | --- |
-| `ci_active_job` |  |
-| `ci_instance_level_variable` |  |
-| `ci_needs_size_limit` |  |
-| `ci_pipeline_schedule` |  |
-| `ci_pipeline_size` |  |
-| `ci_project_subscription` |  |
-| `ci_registered_group_runner` |  |
-| `ci_registered_project_runner` |  |
-| `conan_max_file_size` |  |
-| `dotenv_size` |  |
-| `dotenv_variable` |  |
-| `enforcement_limit` |  |
-| `generic_packages_max_file_size` |  |
-| `helm_max_file_size` |  |
-| `limits_history` |  |
-| `maven_max_file_size` |  |
-| `notification_limit` |  |
-| `npm_max_file_size` |  |
-| `nuget_max_file_size` |  |
-| `pipeline_hierarchy_size` |  |
-| `pypi_max_file_size` |  |
-| `storage_size_limit` |  |
-| `terraform_module_max_file_size` |  |
 
 Operations: Load, Update.
 
@@ -3060,11 +3059,11 @@ API path: `/api/v4/application/plan_limits`
 | `analytics_access_level` |  |
 | `approvals_before_merge` |  |
 | `archived` |  |
-| `auto_cancel_pending_pipeline` |  |
+| `auto_cancel_pending_pipelines` |  |
 | `auto_devops_deploy_strategy` |  |
 | `auto_devops_enabled` |  |
 | `auto_duo_code_review_enabled` |  |
-| `autoclose_referenced_issue` |  |
+| `autoclose_referenced_issues` |  |
 | `avatar_url` |  |
 | `build_git_strategy` |  |
 | `build_timeout` |  |
@@ -3073,23 +3072,23 @@ API path: `/api/v4/application/plan_limits`
 | `ci_allow_fork_pipelines_to_run_in_parent_project` |  |
 | `ci_config_path` |  |
 | `ci_default_git_depth` |  |
-| `ci_delete_pipelines_in_second` |  |
+| `ci_delete_pipelines_in_seconds` |  |
 | `ci_forward_deployment_enabled` |  |
 | `ci_forward_deployment_rollback_allowed` |  |
-| `ci_id_token_sub_claim_component` |  |
+| `ci_id_token_sub_claim_components` |  |
 | `ci_job_token_scope_enabled` |  |
 | `ci_pipeline_variables_minimum_override_role` |  |
 | `ci_push_repository_for_job_token_allowed` |  |
 | `ci_restrict_pipeline_cancellation_role` |  |
-| `ci_separated_cache` |  |
-| `compliance_framework` |  |
+| `ci_separated_caches` |  |
+| `compliance_frameworks` |  |
 | `container_expiration_policy` |  |
 | `container_registry_access_level` |  |
 | `container_registry_enabled` |  |
 | `container_registry_image_prefix` |  |
 | `created_at` |  |
 | `creator_id` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `description` |  |
 | `description_html` |  |
@@ -3097,7 +3096,7 @@ API path: `/api/v4/application/plan_limits`
 | `emails_disabled` |  |
 | `emails_enabled` |  |
 | `empty_repo` |  |
-| `enforce_auth_checks_on_upload` |  |
+| `enforce_auth_checks_on_uploads` |  |
 | `environments_access_level` |  |
 | `external_authorization_classification_label` |  |
 | `feature_flags_access_level` |  |
@@ -3122,7 +3121,7 @@ API path: `/api/v4/application/plan_limits`
 | `lfs_enabled` |  |
 | `license` |  |
 | `license_url` |  |
-| `link` |  |
+| `links` |  |
 | `marked_for_deletion_at` |  |
 | `marked_for_deletion_on` |  |
 | `max_artifacts_size` |  |
@@ -3137,8 +3136,8 @@ API path: `/api/v4/application/plan_limits`
 | `merge_trains_enabled` |  |
 | `merge_trains_skip_train_allowed` |  |
 | `mirror` |  |
-| `mirror_overwrites_diverged_branch` |  |
-| `mirror_trigger_build` |  |
+| `mirror_overwrites_diverged_branches` |  |
+| `mirror_trigger_builds` |  |
 | `mirror_user_id` |  |
 | `model_experiments_access_level` |  |
 | `model_registry_access_level` |  |
@@ -3149,8 +3148,8 @@ API path: `/api/v4/application/plan_limits`
 | `namespace` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` |  |
 | `only_allow_merge_if_all_status_checks_passed` |  |
-| `only_allow_merge_if_pipeline_succeed` |  |
-| `only_mirror_protected_branch` |  |
+| `only_allow_merge_if_pipeline_succeeds` |  |
+| `only_mirror_protected_branches` |  |
 | `open_issues_count` |  |
 | `owner` |  |
 | `package_registry_access_level` |  |
@@ -3161,7 +3160,7 @@ API path: `/api/v4/application/plan_limits`
 | `pre_receive_secret_detection_enabled` |  |
 | `prevent_merge_without_jira_issue` |  |
 | `printing_merge_request_link_enabled` |  |
-| `public_job` |  |
+| `public_jobs` |  |
 | `readme_url` |  |
 | `releases_access_level` |  |
 | `remove_source_branch_after_merge` |  |
@@ -3171,9 +3170,9 @@ API path: `/api/v4/application/plan_limits`
 | `request_access_enabled` |  |
 | `requirements_access_level` |  |
 | `requirements_enabled` |  |
-| `resolve_outdated_diff_discussion` |  |
+| `resolve_outdated_diff_discussions` |  |
 | `resource_group_default_process_mode` |  |
-| `restrict_user_defined_variable` |  |
+| `restrict_user_defined_variables` |  |
 | `runner_token_expiration_interval` |  |
 | `runners_token` |  |
 | `secret_push_protection_enabled` |  |
@@ -3182,7 +3181,7 @@ API path: `/api/v4/application/plan_limits`
 | `service_desk_address` |  |
 | `service_desk_enabled` |  |
 | `shared_runners_enabled` |  |
-| `shared_with_group` |  |
+| `shared_with_groups` |  |
 | `show_diff_preview_in_email` |  |
 | `snippets_access_level` |  |
 | `snippets_enabled` |  |
@@ -3191,13 +3190,13 @@ API path: `/api/v4/application/plan_limits`
 | `squash_option` |  |
 | `ssh_url_to_repo` |  |
 | `star_count` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `suggestion_commit_message` |  |
 | `tag_list` |  |
-| `topic` |  |
+| `topics` |  |
 | `updated_at` |  |
 | `visibility` |  |
-| `warn_about_potentially_unwanted_character` |  |
+| `warn_about_potentially_unwanted_characters` |  |
 | `web_based_commit_signing_enabled` |  |
 | `web_url` |  |
 | `wiki_access_level` |  |
@@ -3211,7 +3210,8 @@ API path: `/api/v4/projects/{id}/fork/{forked_from_id}`
 
 | Field | Description |
 | --- | --- |
-| `fetch` |  |
+| `days` |  |
+| `total` |  |
 
 Operations: Load.
 
@@ -3221,15 +3221,8 @@ API path: `/api/v4/projects/{id}/statistics`
 
 | Field | Description |
 | --- | --- |
-| `created_at` |  |
-| `description` |  |
-| `export_status` |  |
-| `id` |  |
-| `link` |  |
-| `name` |  |
-| `name_with_namespace` |  |
-| `path` |  |
-| `path_with_namespace` |  |
+| `api_url` |  |
+| `web_url` |  |
 
 Operations: Load.
 
@@ -3250,36 +3243,36 @@ API path: `/api/v4/projects/{id}/share`
 | --- | --- |
 | `alert_status` |  |
 | `branch_filter_strategy` |  |
-| `confidential_issues_event` |  |
-| `confidential_note_event` |  |
+| `confidential_issues_events` |  |
+| `confidential_note_events` |  |
 | `created_at` |  |
-| `custom_header` |  |
+| `custom_headers` |  |
 | `custom_webhook_template` |  |
-| `deployment_event` |  |
+| `deployment_events` |  |
 | `description` |  |
 | `disabled_until` |  |
-| `emoji_event` |  |
+| `emoji_events` |  |
 | `enable_ssl_verification` |  |
-| `feature_flag_event` |  |
+| `feature_flag_events` |  |
 | `id` |  |
-| `issues_event` |  |
-| `job_event` |  |
-| `merge_requests_event` |  |
-| `milestone_event` |  |
+| `issues_events` |  |
+| `job_events` |  |
+| `merge_requests_events` |  |
+| `milestone_events` |  |
 | `name` |  |
-| `note_event` |  |
-| `pipeline_event` |  |
+| `note_events` |  |
+| `pipeline_events` |  |
 | `project_id` |  |
-| `push_event` |  |
+| `push_events` |  |
 | `push_events_branch_filter` |  |
-| `releases_event` |  |
-| `repository_update_event` |  |
-| `resource_access_token_event` |  |
-| `tag_push_event` |  |
+| `releases_events` |  |
+| `repository_update_events` |  |
+| `resource_access_token_events` |  |
+| `tag_push_events` |  |
 | `url` |  |
-| `url_variable` |  |
-| `vulnerability_event` |  |
-| `wiki_page_event` |  |
+| `url_variables` |  |
+| `vulnerability_events` |  |
+| `wiki_page_events` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -3332,8 +3325,8 @@ API path: `/api/v4/projects/{id}/storage`
 | `author` |  |
 | `created_at` |  |
 | `description` |  |
-| `file` |  |
 | `file_name` |  |
+| `files` |  |
 | `http_url_to_repo` |  |
 | `id` |  |
 | `imported` |  |
@@ -3369,11 +3362,11 @@ API path: `/api/v4/projects/{id}/uploads`
 | `analytics_access_level` |  |
 | `approvals_before_merge` |  |
 | `archived` |  |
-| `auto_cancel_pending_pipeline` |  |
+| `auto_cancel_pending_pipelines` |  |
 | `auto_devops_deploy_strategy` |  |
 | `auto_devops_enabled` |  |
 | `auto_duo_code_review_enabled` |  |
-| `autoclose_referenced_issue` |  |
+| `autoclose_referenced_issues` |  |
 | `avatar_url` |  |
 | `build_git_strategy` |  |
 | `build_timeout` |  |
@@ -3382,23 +3375,23 @@ API path: `/api/v4/projects/{id}/uploads`
 | `ci_allow_fork_pipelines_to_run_in_parent_project` |  |
 | `ci_config_path` |  |
 | `ci_default_git_depth` |  |
-| `ci_delete_pipelines_in_second` |  |
+| `ci_delete_pipelines_in_seconds` |  |
 | `ci_forward_deployment_enabled` |  |
 | `ci_forward_deployment_rollback_allowed` |  |
-| `ci_id_token_sub_claim_component` |  |
+| `ci_id_token_sub_claim_components` |  |
 | `ci_job_token_scope_enabled` |  |
 | `ci_pipeline_variables_minimum_override_role` |  |
 | `ci_push_repository_for_job_token_allowed` |  |
 | `ci_restrict_pipeline_cancellation_role` |  |
-| `ci_separated_cache` |  |
-| `compliance_framework` |  |
+| `ci_separated_caches` |  |
+| `compliance_frameworks` |  |
 | `container_expiration_policy` |  |
 | `container_registry_access_level` |  |
 | `container_registry_enabled` |  |
 | `container_registry_image_prefix` |  |
 | `created_at` |  |
 | `creator_id` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `default_branch` |  |
 | `description` |  |
 | `description_html` |  |
@@ -3406,7 +3399,7 @@ API path: `/api/v4/projects/{id}/uploads`
 | `emails_disabled` |  |
 | `emails_enabled` |  |
 | `empty_repo` |  |
-| `enforce_auth_checks_on_upload` |  |
+| `enforce_auth_checks_on_uploads` |  |
 | `environments_access_level` |  |
 | `external_authorization_classification_label` |  |
 | `feature_flags_access_level` |  |
@@ -3431,7 +3424,7 @@ API path: `/api/v4/projects/{id}/uploads`
 | `lfs_enabled` |  |
 | `license` |  |
 | `license_url` |  |
-| `link` |  |
+| `links` |  |
 | `marked_for_deletion_at` |  |
 | `marked_for_deletion_on` |  |
 | `max_artifacts_size` |  |
@@ -3446,8 +3439,8 @@ API path: `/api/v4/projects/{id}/uploads`
 | `merge_trains_enabled` |  |
 | `merge_trains_skip_train_allowed` |  |
 | `mirror` |  |
-| `mirror_overwrites_diverged_branch` |  |
-| `mirror_trigger_build` |  |
+| `mirror_overwrites_diverged_branches` |  |
+| `mirror_trigger_builds` |  |
 | `mirror_user_id` |  |
 | `model_experiments_access_level` |  |
 | `model_registry_access_level` |  |
@@ -3458,8 +3451,8 @@ API path: `/api/v4/projects/{id}/uploads`
 | `namespace` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` |  |
 | `only_allow_merge_if_all_status_checks_passed` |  |
-| `only_allow_merge_if_pipeline_succeed` |  |
-| `only_mirror_protected_branch` |  |
+| `only_allow_merge_if_pipeline_succeeds` |  |
+| `only_mirror_protected_branches` |  |
 | `open_issues_count` |  |
 | `owner` |  |
 | `package_registry_access_level` |  |
@@ -3467,11 +3460,11 @@ API path: `/api/v4/projects/{id}/uploads`
 | `pages_access_level` |  |
 | `path` |  |
 | `path_with_namespace` |  |
-| `permission` |  |
+| `permissions` |  |
 | `pre_receive_secret_detection_enabled` |  |
 | `prevent_merge_without_jira_issue` |  |
 | `printing_merge_request_link_enabled` |  |
-| `public_job` |  |
+| `public_jobs` |  |
 | `readme_url` |  |
 | `releases_access_level` |  |
 | `remove_source_branch_after_merge` |  |
@@ -3481,9 +3474,9 @@ API path: `/api/v4/projects/{id}/uploads`
 | `request_access_enabled` |  |
 | `requirements_access_level` |  |
 | `requirements_enabled` |  |
-| `resolve_outdated_diff_discussion` |  |
+| `resolve_outdated_diff_discussions` |  |
 | `resource_group_default_process_mode` |  |
-| `restrict_user_defined_variable` |  |
+| `restrict_user_defined_variables` |  |
 | `runner_token_expiration_interval` |  |
 | `runners_token` |  |
 | `secret_push_protection_enabled` |  |
@@ -3492,7 +3485,7 @@ API path: `/api/v4/projects/{id}/uploads`
 | `service_desk_address` |  |
 | `service_desk_enabled` |  |
 | `shared_runners_enabled` |  |
-| `shared_with_group` |  |
+| `shared_with_groups` |  |
 | `show_diff_preview_in_email` |  |
 | `snippets_access_level` |  |
 | `snippets_enabled` |  |
@@ -3501,13 +3494,13 @@ API path: `/api/v4/projects/{id}/uploads`
 | `squash_option` |  |
 | `ssh_url_to_repo` |  |
 | `star_count` |  |
-| `statistic` |  |
+| `statistics` |  |
 | `suggestion_commit_message` |  |
 | `tag_list` |  |
-| `topic` |  |
+| `topics` |  |
 | `updated_at` |  |
 | `visibility` |  |
-| `warn_about_potentially_unwanted_character` |  |
+| `warn_about_potentially_unwanted_characters` |  |
 | `web_based_commit_signing_enabled` |  |
 | `web_url` |  |
 | `wiki_access_level` |  |
@@ -3570,10 +3563,10 @@ API path: `/api/v4/topics`
 | `code_owner_approval_required` |  |
 | `id` |  |
 | `inherited` |  |
-| `merge_access_level` |  |
+| `merge_access_levels` |  |
 | `name` |  |
-| `push_access_level` |  |
-| `unprotect_access_level` |  |
+| `push_access_levels` |  |
+| `unprotect_access_levels` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -3583,8 +3576,14 @@ API path: `/api/v4/projects/{id}/protected_branches`
 
 | Field | Description |
 | --- | --- |
-| `create_access_level` |  |
+| `access_level` |  |
+| `access_level_description` |  |
+| `create_access_levels` |  |
+| `deploy_key_id` |  |
+| `group_id` |  |
+| `id` |  |
 | `name` |  |
+| `user_id` |  |
 
 Operations: Create, List, Load.
 
@@ -3610,6 +3609,7 @@ API path: `/api/v4/projects/{id}/groups`
 | Field | Description |
 | --- | --- |
 | `assignee` |  |
+| `assignees` |  |
 | `author` |  |
 | `blocking_issues_count` |  |
 | `closed_at` |  |
@@ -3618,11 +3618,11 @@ API path: `/api/v4/projects/{id}/groups`
 | `created_at` |  |
 | `description` |  |
 | `discussion_locked` |  |
-| `downvote` |  |
+| `downvotes` |  |
 | `due_date` |  |
 | `epic` |  |
 | `epic_iid` |  |
-| `has_task` |  |
+| `has_tasks` |  |
 | `health_status` |  |
 | `id` |  |
 | `iid` |  |
@@ -3631,27 +3631,27 @@ API path: `/api/v4/projects/{id}/groups`
 | `issue_link_id` |  |
 | `issue_type` |  |
 | `iteration` |  |
-| `label` |  |
-| `link` |  |
+| `labels` |  |
 | `link_created_at` |  |
 | `link_type` |  |
 | `link_updated_at` |  |
+| `links` |  |
 | `merge_requests_count` |  |
 | `milestone` |  |
 | `moved_to_id` |  |
 | `project_id` |  |
-| `reference` |  |
+| `references` |  |
 | `service_desk_reply_to` |  |
 | `severity` |  |
 | `state` |  |
 | `subscribed` |  |
 | `task_completion_status` |  |
 | `task_status` |  |
-| `time_stat` |  |
+| `time_stats` |  |
 | `title` |  |
 | `type` |  |
 | `updated_at` |  |
-| `upvote` |  |
+| `upvotes` |  |
 | `user_notes_count` |  |
 | `web_url` |  |
 | `weight` |  |
@@ -3673,16 +3673,16 @@ API path: `/api/v4/projects/import-relation`
 
 | Field | Description |
 | --- | --- |
-| `asset` |  |
+| `assets` |  |
 | `author` |  |
 | `commit` |  |
 | `commit_path` |  |
 | `created_at` |  |
 | `description` |  |
 | `description_html` |  |
-| `evidence` |  |
-| `link` |  |
-| `milestone` |  |
+| `evidences` |  |
+| `links` |  |
+| `milestones` |  |
 | `name` |  |
 | `released_at` |  |
 | `tag_name` |  |
@@ -3713,15 +3713,15 @@ API path: `/api/v4/projects/{id}/releases/{tag_name}/assets/links`
 | --- | --- |
 | `auth_method` |  |
 | `enabled` |  |
-| `host_key` |  |
+| `host_keys` |  |
 | `id` |  |
-| `keep_divergent_ref` |  |
+| `keep_divergent_refs` |  |
 | `last_error` |  |
 | `last_successful_update_at` |  |
 | `last_update_at` |  |
 | `last_update_started_at` |  |
 | `mirror_branch_regex` |  |
-| `only_protected_branch` |  |
+| `only_protected_branches` |  |
 | `update_status` |  |
 | `url` |  |
 
@@ -3733,15 +3733,15 @@ API path: `/api/v4/projects/{id}/remote_mirrors`
 
 | Field | Description |
 | --- | --- |
-| `alternate` |  |
+| `alternates` |  |
 | `bitmap` |  |
 | `commit_graph` |  |
 | `is_object_pool` |  |
 | `last_full_repack` |  |
 | `multi_pack_index` |  |
 | `multi_pack_index_bitmap` |  |
-| `object` |  |
-| `reference` |  |
+| `objects` |  |
+| `references` |  |
 | `size` |  |
 | `updated_at` |  |
 
@@ -3764,7 +3764,7 @@ API path: `/api/v4/projects/{id}/repository/health`
 | `resource_id` |  |
 | `resource_type` |  |
 | `revoked` |  |
-| `scope` |  |
+| `scopes` |  |
 | `token` |  |
 | `user_id` |  |
 
@@ -3796,8 +3796,8 @@ API path: `/api/v4/projects/{id}/issues/{eventable_id}/resource_milestone_events
 | `author` |  |
 | `created_at` |  |
 | `description` |  |
-| `file` |  |
 | `file_name` |  |
+| `files` |  |
 | `http_url_to_repo` |  |
 | `id` |  |
 | `imported` |  |
@@ -3819,14 +3819,52 @@ API path: `/api/v4/snippets/all`
 
 | Field | Description |
 | --- | --- |
+| `avatar_path` |  |
+| `avatar_url` |  |
+| `bio` |  |
+| `bot` |  |
+| `can_create_group` |  |
+| `can_create_project` |  |
+| `color_scheme_id` |  |
+| `commit_email` |  |
+| `confirmed_at` |  |
 | `created_at` |  |
-| `expires_at` |  |
+| `current_sign_in_at` |  |
+| `custom_attributes` |  |
+| `discord` |  |
+| `email` |  |
+| `external` |  |
+| `extra_shared_runners_minutes_limit` |  |
+| `followers` |  |
+| `following` |  |
+| `github` |  |
 | `id` |  |
-| `key` |  |
-| `last_used_at` |  |
-| `title` |  |
-| `usage_type` |  |
-| `user` |  |
+| `identities` |  |
+| `is_followed` |  |
+| `job_title` |  |
+| `last_activity_on` |  |
+| `last_sign_in_at` |  |
+| `linkedin` |  |
+| `local_time` |  |
+| `location` |  |
+| `locked` |  |
+| `name` |  |
+| `organization` |  |
+| `preferred_language` |  |
+| `private_profile` |  |
+| `projects_limit` |  |
+| `pronouns` |  |
+| `public_email` |  |
+| `scim_identities` |  |
+| `shared_runners_minutes_limit` |  |
+| `state` |  |
+| `theme_id` |  |
+| `twitter` |  |
+| `two_factor_enabled` |  |
+| `username` |  |
+| `web_url` |  |
+| `website_url` |  |
+| `work_information` |  |
 
 Operations: Load.
 
@@ -3861,7 +3899,7 @@ API path: `/api/v4/suggestions/{id}/apply`
 | `id` |  |
 | `message` |  |
 | `starts_at` |  |
-| `target_access_level` |  |
+| `target_access_levels` |  |
 | `target_path` |  |
 | `theme` |  |
 
@@ -3911,13 +3949,15 @@ API path: `/api/v4/projects/{id}/templates/{type}`
 
 | Field | Description |
 | --- | --- |
-| `module` |  |
+| `modules` |  |
 | `name` |  |
 | `provider` |  |
+| `providers` |  |
 | `root` |  |
 | `source` |  |
-| `submodule` |  |
+| `submodules` |  |
 | `version` |  |
+| `versions` |  |
 
 Operations: List, Load.
 
@@ -3941,14 +3981,23 @@ API path: `/api/v4/projects/{id}/repository/tree`
 
 | Field | Description |
 | --- | --- |
+| `avatar_path` |  |
+| `avatar_url` |  |
 | `created_at` |  |
+| `custom_attributes` |  |
 | `description` |  |
 | `expires_at` |  |
 | `id` |  |
 | `last_used` |  |
+| `locked` |  |
+| `name` |  |
 | `owner` |  |
+| `public_email` |  |
+| `state` |  |
 | `token` |  |
 | `updated_at` |  |
+| `username` |  |
+| `web_url` |  |
 
 Operations: Create, List, Load, Update.
 
@@ -3970,11 +4019,11 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/user_agent_detail`
 
 | Field | Description |
 | --- | --- |
-| `assigned_issue` |  |
-| `assigned_merge_request` |  |
-| `merge_request` |  |
-| `review_requested_merge_request` |  |
-| `todo` |  |
+| `assigned_issues` |  |
+| `assigned_merge_requests` |  |
+| `merge_requests` |  |
+| `review_requested_merge_requests` |  |
+| `todos` |  |
 
 Operations: Load.
 
@@ -3995,16 +4044,16 @@ API path: `/api/v4/user_counts`
 | `confirmed_at` |  |
 | `created_at` |  |
 | `current_sign_in_at` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `discord` |  |
 | `email` |  |
 | `external` |  |
 | `extra_shared_runners_minutes_limit` |  |
-| `follower` |  |
+| `followers` |  |
 | `following` |  |
 | `github` |  |
 | `id` |  |
-| `identity` |  |
+| `identities` |  |
 | `is_followed` |  |
 | `job_title` |  |
 | `key` |  |
@@ -4019,9 +4068,9 @@ API path: `/api/v4/user_counts`
 | `preferred_language` |  |
 | `private_profile` |  |
 | `projects_limit` |  |
-| `pronoun` |  |
+| `pronouns` |  |
 | `public_email` |  |
-| `scim_identity` |  |
+| `scim_identities` |  |
 | `shared_runners_minutes_limit` |  |
 | `state` |  |
 | `theme_id` |  |
@@ -4061,13 +4110,6 @@ API path: `/api/v4/groups/{id}/wikis/attachments`
 
 | Field | Description |
 | --- | --- |
-| `content` |  |
-| `encoding` |  |
-| `format` |  |
-| `front_matter` |  |
-| `slug` |  |
-| `title` |  |
-| `wiki_page_meta_id` |  |
 
 Operations: Create, Load, Update.
 
@@ -4301,7 +4343,7 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/approvals`
 | --- | --- |
 | `author_id` |  |
 | `created_at` |  |
-| `detail` |  |
+| `details` |  |
 | `entity_id` |  |
 | `entity_type` |  |
 | `event_name` |  |
@@ -4315,13 +4357,9 @@ API path: `/api/v4/groups/{id}/audit_events`
 
 | Field | Description |
 | --- | --- |
-| `access_level` |  |
-| `created_at` |  |
-| `expires_at` |  |
-| `id` |  |
-| `source_full_name` |  |
-| `source_id` |  |
-| `source_members_url` |  |
+| `custom_role` |  |
+| `integer_value` |  |
+| `string_value` |  |
 
 Operations: Load.
 
@@ -4358,7 +4396,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `container_repositories_verified_in_percentage` |  |
 | `cursor_last_event_id` |  |
 | `cursor_last_event_timestamp` |  |
-| `db_replication_lag_second` |  |
+| `db_replication_lag_seconds` |  |
 | `dependency_proxy_blobs_checksum_failed_count` |  |
 | `dependency_proxy_blobs_checksum_total_count` |  |
 | `dependency_proxy_blobs_checksummed_count` |  |
@@ -4440,7 +4478,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `lfs_objects_verification_total_count` |  |
 | `lfs_objects_verified_count` |  |
 | `lfs_objects_verified_in_percentage` |  |
-| `link` |  |
+| `links` |  |
 | `merge_request_diffs_checksum_failed_count` |  |
 | `merge_request_diffs_checksum_total_count` |  |
 | `merge_request_diffs_checksummed_count` |  |
@@ -4454,7 +4492,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `merge_request_diffs_verified_count` |  |
 | `merge_request_diffs_verified_in_percentage` |  |
 | `missing_oauth_application` |  |
-| `namespace` |  |
+| `namespaces` |  |
 | `package_files_checksum_failed_count` |  |
 | `package_files_checksum_total_count` |  |
 | `package_files_checksummed_count` |  |
@@ -4519,7 +4557,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `proxy_local_requests_event_count_weekly` |  |
 | `proxy_remote_requests_event_count_weekly` |  |
 | `replication_slots_count` |  |
-| `replication_slots_max_retained_wal_byte` |  |
+| `replication_slots_max_retained_wal_bytes` |  |
 | `replication_slots_used_count` |  |
 | `replication_slots_used_in_percentage` |  |
 | `repositories_checked_count` |  |
@@ -4540,7 +4578,7 @@ API path: `/api/v4/groups/{id}/billable_members/{user_id}/indirect`
 | `snippet_repositories_verification_total_count` |  |
 | `snippet_repositories_verified_count` |  |
 | `snippet_repositories_verified_in_percentage` |  |
-| `storage_shard` |  |
+| `storage_shards` |  |
 | `storage_shards_match` |  |
 | `terraform_state_versions_checksum_failed_count` |  |
 | `terraform_state_versions_checksum_total_count` |  |
@@ -4577,7 +4615,7 @@ API path: `/api/v4/geo/status`
 
 | Field | Description |
 | --- | --- |
-| `pipeline_ref` |  |
+| `pipeline_refs` |  |
 
 Operations: List.
 
@@ -4606,9 +4644,9 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/metric_images`
 | `approved` |  |
 | `approved_by` |  |
 | `code_owner` |  |
-| `contains_hidden_group` |  |
-| `eligible_approver` |  |
-| `group` |  |
+| `contains_hidden_groups` |  |
+| `eligible_approvers` |  |
+| `groups` |  |
 | `id` |  |
 | `name` |  |
 | `overridden` |  |
@@ -4616,7 +4654,7 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/metric_images`
 | `rule_type` |  |
 | `section` |  |
 | `source_rule` |  |
-| `user` |  |
+| `users` |  |
 
 Operations: List.
 
@@ -4855,9 +4893,9 @@ API path: `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/related_issu
 
 | Field | Description |
 | --- | --- |
-| `enterprise` |  |
-| `kas` |  |
-| `revision` |  |
+| `enabled` |  |
+| `externalK8sProxyUrl` |  |
+| `externalUrl` |  |
 | `version` |  |
 
 Operations: Load.
@@ -4922,13 +4960,22 @@ API path: `/api/v4/projects/{id}/packages/nuget`
 
 | Field | Description |
 | --- | --- |
-| `catalog_entry` |  |
+| `authors` |  |
 | `count` |  |
+| `dependencyGroups` |  |
+| `description` |  |
+| `iconUrl` |  |
 | `id` |  |
-| `item` |  |
+| `items` |  |
+| `licenseUrl` |  |
 | `lower` |  |
-| `package_content` |  |
+| `packageContent` |  |
+| `projectUrl` |  |
+| `published` |  |
+| `summary` |  |
+| `tags` |  |
 | `upper` |  |
+| `version` |  |
 
 Operations: List, Load, Remove, Update.
 
@@ -4997,7 +5044,7 @@ API path: `/api/v4/personal_access_tokens/{id}`
 | `updated_at` |  |
 | `user` |  |
 | `web_url` |  |
-| `yaml_error` |  |
+| `yaml_errors` |  |
 
 Operations: Create, Load, Remove, Update.
 
@@ -5238,7 +5285,7 @@ API path: `/api/v4/snippets/{id}/files/{ref}/{file_path}/raw`
 | --- | --- |
 | `avatar_path` |  |
 | `avatar_url` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `id` |  |
 | `locked` |  |
 | `name` |  |
@@ -5297,7 +5344,7 @@ API path: `/api/v4/projects/{id}/terraform/state/{name}/lock`
 | `skipped_count` |  |
 | `success_count` |  |
 | `suite_error` |  |
-| `test_case` |  |
+| `test_cases` |  |
 | `total_count` |  |
 | `total_time` |  |
 
@@ -5309,7 +5356,7 @@ API path: `/api/v4/projects/{id}/pipelines/{pipeline_id}/test_report`
 
 | Field | Description |
 | --- | --- |
-| `test_suite` |  |
+| `test_suites` |  |
 | `total` |  |
 
 Operations: Load.
@@ -5349,7 +5396,7 @@ API path: `/api/v4/usage_data/increment_counter`
 | --- | --- |
 | `avatar_path` |  |
 | `avatar_url` |  |
-| `custom_attribute` |  |
+| `custom_attributes` |  |
 | `id` |  |
 | `locked` |  |
 | `name` |  |
@@ -5435,7 +5482,7 @@ Create an instance: `local api_entities_access_requester = client:ApiEntitiesAcc
 | --- | --- | --- |
 | `avatar_path` | `string` |  |
 | `avatar_url` | `string` |  |
-| `custom_attribute` | `table` |  |
+| `custom_attributes` | `table` |  |
 | `id` | `number` |  |
 | `key` | `string` |  |
 | `locked` | `boolean` |  |
@@ -5483,11 +5530,11 @@ Create an instance: `local api_entities_appearance = client:ApiEntitiesAppearanc
 | `header_logo` | `string` |  |
 | `header_message` | `string` |  |
 | `logo` | `string` |  |
-| `member_guideline` | `string` |  |
+| `member_guidelines` | `string` |  |
 | `message_background_color` | `string` |  |
 | `message_font_color` | `string` |  |
-| `new_project_guideline` | `string` |  |
-| `profile_image_guideline` | `string` |  |
+| `new_project_guidelines` | `string` |  |
+| `profile_image_guidelines` | `string` |  |
 | `pwa_description` | `string` |  |
 | `pwa_icon` | `string` |  |
 | `pwa_name` | `string` |  |
@@ -5542,17 +5589,17 @@ Create an instance: `local api_entities_application_statistic = client:ApiEntiti
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active_user` | `number` |  |
-| `fork` | `number` |  |
-| `group` | `number` |  |
-| `issue` | `number` |  |
-| `merge_request` | `number` |  |
-| `milestone` | `number` |  |
-| `note` | `number` |  |
-| `project` | `number` |  |
-| `snippet` | `number` |  |
-| `ssh_key` | `number` |  |
-| `user` | `number` |  |
+| `active_users` | `number` |  |
+| `forks` | `number` |  |
+| `groups` | `number` |  |
+| `issues` | `number` |  |
+| `merge_requests` | `number` |  |
+| `milestones` | `number` |  |
+| `notes` | `number` |  |
+| `projects` | `number` |  |
+| `snippets` | `number` |  |
+| `ssh_keys` | `number` |  |
+| `users` | `number` |  |
 
 #### Example: Load
 
@@ -5629,14 +5676,22 @@ Create an instance: `local api_entities_award_emoji = client:ApiEntitiesAwardEmo
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
 | `awardable_id` | `number` |  |
 | `awardable_type` | `string` |  |
 | `created_at` | `string` |  |
+| `custom_attributes` | `table` |  |
 | `id` | `number` |  |
+| `locked` | `boolean` |  |
 | `name` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
 | `updated_at` | `string` |  |
 | `url` | `string` |  |
 | `user` | `table` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
@@ -5766,7 +5821,7 @@ Create an instance: `local api_entities_basic_project_detail = client:ApiEntitie
 | --- | --- | --- |
 | `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
-| `custom_attribute` | `table` |  |
+| `custom_attributes` | `table` |  |
 | `default_branch` | `string` |  |
 | `description` | `string` |  |
 | `forks_count` | `number` |  |
@@ -5785,7 +5840,7 @@ Create an instance: `local api_entities_basic_project_detail = client:ApiEntitie
 | `ssh_url_to_repo` | `string` |  |
 | `star_count` | `number` |  |
 | `tag_list` | `table` |  |
-| `topic` | `table` |  |
+| `topics` | `table` |  |
 | `visibility` | `string` |  |
 | `web_url` | `string` |  |
 
@@ -5900,14 +5955,28 @@ Create an instance: `local api_entities_branch = client:ApiEntitiesBranch(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `author_email` | `string` |  |
+| `author_name` | `string` |  |
+| `authored_date` | `string` |  |
 | `can_push` | `boolean` |  |
 | `commit` | `table` |  |
+| `committed_date` | `string` |  |
+| `committer_email` | `string` |  |
+| `committer_name` | `string` |  |
+| `created_at` | `string` |  |
 | `default` | `boolean` |  |
 | `developers_can_merge` | `boolean` |  |
 | `developers_can_push` | `boolean` |  |
+| `extended_trailers` | `table` |  |
+| `id` | `string` |  |
 | `merged` | `boolean` |  |
+| `message` | `string` |  |
 | `name` | `string` |  |
+| `parent_ids` | `table` |  |
 | `protected` | `boolean` |  |
+| `short_id` | `string` |  |
+| `title` | `string` |  |
+| `trailers` | `table` |  |
 | `web_url` | `string` |  |
 
 #### Example: Load
@@ -5954,18 +6023,18 @@ Create an instance: `local api_entities_bulk_import = client:ApiEntitiesBulkImpo
 | `destination_namespace` | `string` |  |
 | `destination_slug` | `string` |  |
 | `entity_type` | `string` |  |
-| `failure` | `table` |  |
-| `has_failure` | `boolean` |  |
+| `failures` | `table` |  |
+| `has_failures` | `boolean` |  |
 | `id` | `number` |  |
-| `migrate_membership` | `boolean` |  |
-| `migrate_project` | `boolean` |  |
+| `migrate_memberships` | `boolean` |  |
+| `migrate_projects` | `boolean` |  |
 | `namespace_id` | `number` |  |
 | `parent_id` | `number` |  |
 | `project_id` | `number` |  |
 | `source_full_path` | `string` |  |
 | `source_type` | `string` |  |
 | `source_url` | `string` |  |
-| `stat` | `table` |  |
+| `stats` | `table` |  |
 | `status` | `string` |  |
 | `updated_at` | `string` |  |
 
@@ -6031,8 +6100,8 @@ Create an instance: `local api_entities_bulk_imports_export_status = client:ApiE
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `batch` | `table` |  |
 | `batched` | `boolean` |  |
+| `batches` | `table` |  |
 | `batches_count` | `number` |  |
 | `error` | `string` |  |
 | `relation` | `string` |  |
@@ -6061,7 +6130,7 @@ Create an instance: `local api_entities_changelog = client:ApiEntitiesChangelog(
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `note` | `string` |  |
+| `notes` | `string` |  |
 
 #### Example: Load
 
@@ -6150,7 +6219,7 @@ Create an instance: `local api_entities_ci_job = client:ApiEntitiesCiJob(nil)`
 | --- | --- | --- |
 | `allow_failure` | `boolean` |  |
 | `archived` | `boolean` |  |
-| `artifact` | `table` |  |
+| `artifacts` | `table` |  |
 | `artifacts_expire_at` | `string` |  |
 | `artifacts_file` | `table` |  |
 | `commit` | `table` |  |
@@ -6314,16 +6383,16 @@ Create an instance: `local api_entities_ci_lint_result = client:ApiEntitiesCiLin
 | `blob` | `string` |  |
 | `context_project` | `string` |  |
 | `context_sha` | `string` |  |
-| `error` | `table` |  |
+| `errors` | `table` |  |
 | `extra` | `table` |  |
-| `include` | `table` |  |
-| `job` | `table` |  |
+| `includes` | `table` |  |
+| `jobs` | `table` |  |
 | `location` | `string` |  |
 | `merged_yaml` | `string` |  |
 | `raw` | `string` |  |
 | `type` | `string` |  |
 | `valid` | `boolean` |  |
-| `warning` | `table` |  |
+| `warnings` | `table` |  |
 
 #### Example: List
 
@@ -6418,7 +6487,7 @@ Create an instance: `local api_entities_ci_pipeline_schedule = client:ApiEntitie
 | `cron_timezone` | `string` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `input` | `table` |  |
+| `inputs` | `table` |  |
 | `next_run_at` | `string` |  |
 | `owner` | `table` |  |
 | `ref` | `string` |  |
@@ -6453,13 +6522,13 @@ Create an instance: `local api_entities_ci_pipeline_schedule_detail = client:Api
 | `cron_timezone` | `string` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
-| `input` | `table` |  |
+| `inputs` | `table` |  |
 | `last_pipeline` | `table` |  |
 | `next_run_at` | `string` |  |
 | `owner` | `table` |  |
 | `ref` | `string` |  |
 | `updated_at` | `string` |  |
-| `variable` | `table` |  |
+| `variables` | `table` |  |
 
 #### Example: Load
 
@@ -6544,19 +6613,16 @@ Create an instance: `local api_entities_ci_runner = client:ApiEntitiesCiRunner(n
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active` | `boolean` |  |
-| `created_at` | `string` |  |
-| `created_by` | `table` |  |
-| `description` | `string` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `custom_attributes` | `table` |  |
 | `id` | `number` |  |
-| `ip_address` | `string` |  |
-| `is_shared` | `boolean` |  |
-| `job_execution_status` | `string` |  |
+| `locked` | `boolean` |  |
 | `name` | `string` |  |
-| `online` | `boolean` |  |
-| `paused` | `boolean` |  |
-| `runner_type` | `string` |  |
-| `status` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
@@ -6595,7 +6661,7 @@ Create an instance: `local api_entities_ci_runner_detail = client:ApiEntitiesCiR
 | `created_at` | `string` |  |
 | `created_by` | `table` |  |
 | `description` | `string` |  |
-| `group` | `table` |  |
+| `groups` | `table` |  |
 | `id` | `number` |  |
 | `ip_address` | `string` |  |
 | `is_shared` | `boolean` |  |
@@ -6607,7 +6673,7 @@ Create an instance: `local api_entities_ci_runner_detail = client:ApiEntitiesCiR
 | `online` | `boolean` |  |
 | `paused` | `boolean` |  |
 | `platform` | `string` |  |
-| `project` | `table` |  |
+| `projects` | `table` |  |
 | `revision` | `string` |  |
 | `run_untagged` | `string` |  |
 | `runner_type` | `string` |  |
@@ -6683,19 +6749,6 @@ Create an instance: `local api_entities_ci_secure_file = client:ApiEntitiesCiSec
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `checksum` | `string` |  |
-| `checksum_algorithm` | `string` |  |
-| `created_at` | `string` |  |
-| `expires_at` | `string` |  |
-| `file_extension` | `string` |  |
-| `id` | `number` |  |
-| `metadata` | `table` |  |
-| `name` | `string` |  |
 
 #### Example: Load
 
@@ -6786,7 +6839,7 @@ Create an instance: `local api_entities_cluster = client:ApiEntitiesCluster(nil)
 | `management_project` | `table` |  |
 | `name` | `string` |  |
 | `namespace_per_environment` | `string` |  |
-| `platform_kubernete` | `table` |  |
+| `platform_kubernetes` | `table` |  |
 | `platform_type` | `string` |  |
 | `provider_gcp` | `table` |  |
 | `provider_type` | `string` |  |
@@ -6839,7 +6892,7 @@ Create an instance: `local api_entities_cluster_group = client:ApiEntitiesCluste
 | `management_project` | `table` |  |
 | `name` | `string` |  |
 | `namespace_per_environment` | `string` |  |
-| `platform_kubernete` | `table` |  |
+| `platform_kubernetes` | `table` |  |
 | `platform_type` | `string` |  |
 | `provider_gcp` | `table` |  |
 | `provider_type` | `string` |  |
@@ -6886,7 +6939,7 @@ Create an instance: `local api_entities_cluster_project = client:ApiEntitiesClus
 | `management_project` | `table` |  |
 | `name` | `string` |  |
 | `namespace_per_environment` | `string` |  |
-| `platform_kubernete` | `table` |  |
+| `platform_kubernetes` | `table` |  |
 | `platform_type` | `string` |  |
 | `project` | `table` |  |
 | `provider_gcp` | `table` |  |
@@ -6923,12 +6976,13 @@ Create an instance: `local api_entities_clusters_agent = client:ApiEntitiesClust
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `config_project` | `table` |  |
 | `created_at` | `string` |  |
-| `created_by_user_id` | `string` |  |
-| `id` | `string` |  |
-| `is_receptive` | `boolean` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
 | `name` | `string` |  |
+| `name_with_namespace` | `string` |  |
+| `path` | `string` |  |
+| `path_with_namespace` | `string` |  |
 
 #### Example: Load
 
@@ -7046,13 +7100,13 @@ Create an instance: `local api_entities_commit = client:ApiEntitiesCommit(nil)`
 | `committer_email` | `string` |  |
 | `committer_name` | `string` |  |
 | `created_at` | `string` |  |
-| `extended_trailer` | `table` |  |
+| `extended_trailers` | `table` |  |
 | `id` | `string` |  |
 | `message` | `string` |  |
-| `parent_id` | `table` |  |
+| `parent_ids` | `table` |  |
 | `short_id` | `string` |  |
 | `title` | `string` |  |
-| `trailer` | `table` |  |
+| `trailers` | `table` |  |
 | `web_url` | `string` |  |
 
 #### Example: List
@@ -7093,17 +7147,17 @@ Create an instance: `local api_entities_commit_detail = client:ApiEntitiesCommit
 | `committer_email` | `string` |  |
 | `committer_name` | `string` |  |
 | `created_at` | `string` |  |
-| `extended_trailer` | `table` |  |
+| `extended_trailers` | `table` |  |
 | `id` | `string` |  |
 | `last_pipeline` | `table` |  |
 | `message` | `string` |  |
-| `parent_id` | `table` |  |
+| `parent_ids` | `table` |  |
 | `project_id` | `number` |  |
 | `short_id` | `string` |  |
-| `stat` | `table` |  |
+| `stats` | `table` |  |
 | `status` | `string` |  |
 | `title` | `string` |  |
-| `trailer` | `table` |  |
+| `trailers` | `table` |  |
 | `web_url` | `string` |  |
 
 #### Example: Load
@@ -7137,11 +7191,21 @@ Create an instance: `local api_entities_commit_note = client:ApiEntitiesCommitNo
 | Field | Type | Description |
 | --- | --- | --- |
 | `author` | `table` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
+| `custom_attributes` | `table` |  |
+| `id` | `number` |  |
 | `line` | `number` |  |
 | `line_type` | `string` |  |
+| `locked` | `boolean` |  |
+| `name` | `string` |  |
 | `note` | `string` |  |
 | `path` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: List
 
@@ -7224,18 +7288,26 @@ Create an instance: `local api_entities_commit_status = client:ApiEntitiesCommit
 | --- | --- | --- |
 | `allow_failure` | `boolean` |  |
 | `author` | `table` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
 | `coverage` | `number` |  |
 | `created_at` | `string` |  |
+| `custom_attributes` | `table` |  |
 | `description` | `string` |  |
 | `finished_at` | `string` |  |
 | `id` | `number` |  |
+| `locked` | `boolean` |  |
 | `name` | `string` |  |
 | `pipeline_id` | `number` |  |
+| `public_email` | `string` |  |
 | `ref` | `string` |  |
 | `sha` | `string` |  |
 | `started_at` | `string` |  |
+| `state` | `string` |  |
 | `status` | `string` |  |
 | `target_url` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: List
 
@@ -7268,9 +7340,10 @@ Create an instance: `local api_entities_compare = client:ApiEntitiesCompare(nil)
 | Field | Type | Description |
 | --- | --- | --- |
 | `commit` | `table` |  |
+| `commits` | `table` |  |
 | `compare_same_ref` | `boolean` |  |
 | `compare_timeout` | `boolean` |  |
-| `diff` | `table` |  |
+| `diffs` | `table` |  |
 | `web_url` | `string` |  |
 
 #### Example: List
@@ -7305,7 +7378,7 @@ Create an instance: `local api_entities_container_registry_repository = client:A
 | `project_id` | `number` |  |
 | `size` | `number` |  |
 | `status` | `string` |  |
-| `tag` | `table` |  |
+| `tags` | `table` |  |
 | `tags_count` | `number` |  |
 
 #### Example: Load
@@ -7390,9 +7463,9 @@ Create an instance: `local api_entities_contributor = client:ApiEntitiesContribu
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addition` | `number` |  |
-| `commit` | `number` |  |
-| `deletion` | `number` |  |
+| `additions` | `number` |  |
+| `commits` | `number` |  |
+| `deletions` | `number` |  |
 | `email` | `string` |  |
 | `name` | `string` |  |
 
@@ -7515,7 +7588,7 @@ Create an instance: `local api_entities_deploy_token = client:ApiEntitiesDeployT
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `revoked` | `boolean` |  |
-| `scope` | `table` |  |
+| `scopes` | `table` |  |
 | `username` | `string` |  |
 
 #### Example: Load
@@ -7597,8 +7670,8 @@ Create an instance: `local api_entities_deployment_extended = client:ApiEntities
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `approval` | `table` |  |
 | `approval_summary` | `table` |  |
+| `approvals` | `table` |  |
 | `created_at` | `string` |  |
 | `deployable` | `table` |  |
 | `environment` | `table` |  |
@@ -7660,7 +7733,7 @@ Create an instance: `local api_entities_dictionary_table = client:ApiEntitiesDic
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `feature_category` | `table` |  |
+| `feature_categories` | `table` |  |
 | `table_name` | `string` |  |
 
 #### Example: Load
@@ -7724,8 +7797,8 @@ Create an instance: `local api_entities_discovered_cluster = client:ApiEntitiesD
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `group` | `string` |  |
-| `project` | `string` |  |
+| `groups` | `string` |  |
+| `projects` | `string` |  |
 
 #### Example: Load
 
@@ -7962,7 +8035,7 @@ Create an instance: `local api_entities_feature = client:ApiEntitiesFeature(nil)
 | Field | Type | Description |
 | --- | --- | --- |
 | `definition` | `table` |  |
-| `gate` | `table` |  |
+| `gates` | `table` |  |
 | `name` | `string` |  |
 | `state` | `string` |  |
 
@@ -8000,7 +8073,7 @@ Create an instance: `local api_entities_feature_definition = client:ApiEntitiesF
 | `group` | `string` |  |
 | `intended_to_rollout_by` | `string` |  |
 | `introduced_by_url` | `string` |  |
-| `log_state_change` | `string` |  |
+| `log_state_changes` | `string` |  |
 | `milestone` | `string` |  |
 | `name` | `string` |  |
 | `rollout_issue_url` | `string` |  |
@@ -8033,10 +8106,13 @@ Create an instance: `local api_entities_feature_flag = client:ApiEntitiesFeature
 | `active` | `boolean` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
+| `id` | `number` |  |
 | `name` | `string` |  |
-| `scope` | `string` |  |
-| `strategy` | `table` |  |
+| `parameters` | `string` |  |
+| `scopes` | `table` |  |
+| `strategies` | `table` |  |
 | `updated_at` | `string` |  |
+| `user_list` | `table` |  |
 | `version` | `string` |  |
 
 #### Example: Load
@@ -8085,7 +8161,7 @@ Create an instance: `local api_entities_feature_flag_user_list = client:ApiEntit
 | `path` | `string` |  |
 | `project_id` | `number` |  |
 | `updated_at` | `string` |  |
-| `user_xid` | `string` |  |
+| `user_xids` | `string` |  |
 
 #### Example: Load
 
@@ -8192,8 +8268,8 @@ Create an instance: `local api_entities_go_module_version = client:ApiEntitiesGo
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `time` | `string` |  |
-| `version` | `string` |  |
+| `Time` | `string` |  |
+| `Version` | `string` |  |
 
 #### Example: Load
 
@@ -8224,10 +8300,10 @@ Create an instance: `local api_entities_group = client:ApiEntitiesGroup(nil)`
 | `auto_duo_code_review_enabled` | `string` |  |
 | `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
-| `custom_attribute` | `table` |  |
+| `custom_attributes` | `table` |  |
 | `default_branch` | `string` |  |
 | `default_branch_protection` | `string` |  |
-| `default_branch_protection_default` | `string` |  |
+| `default_branch_protection_defaults` | `string` |  |
 | `description` | `string` |  |
 | `duo_core_features_enabled` | `boolean` |  |
 | `duo_features_enabled` | `string` |  |
@@ -8239,7 +8315,7 @@ Create an instance: `local api_entities_group = client:ApiEntitiesGroup(nil)`
 | `id` | `string` |  |
 | `ldap_access` | `string` |  |
 | `ldap_cn` | `string` |  |
-| `ldap_group_link` | `table` |  |
+| `ldap_group_links` | `table` |  |
 | `lfs_enabled` | `string` |  |
 | `lock_duo_features_enabled` | `string` |  |
 | `lock_math_rendering_limits_enabled` | `boolean` |  |
@@ -8255,12 +8331,12 @@ Create an instance: `local api_entities_group = client:ApiEntitiesGroup(nil)`
 | `repository_storage` | `string` |  |
 | `request_access_enabled` | `string` |  |
 | `require_two_factor_authentication` | `string` |  |
-| `root_storage_statistic` | `table` |  |
-| `saml_group_link` | `table` |  |
+| `root_storage_statistics` | `table` |  |
+| `saml_group_links` | `table` |  |
 | `share_with_group_lock` | `string` |  |
 | `shared_runners_setting` | `string` |  |
 | `show_diff_preview_in_email` | `boolean` |  |
-| `statistic` | `table` |  |
+| `statistics` | `table` |  |
 | `subgroup_creation_level` | `string` |  |
 | `two_factor_grace_period` | `string` |  |
 | `visibility` | `string` |  |
@@ -8310,10 +8386,10 @@ Create an instance: `local api_entities_group_detail = client:ApiEntitiesGroupDe
 | `auto_duo_code_review_enabled` | `string` |  |
 | `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
-| `custom_attribute` | `table` |  |
+| `custom_attributes` | `table` |  |
 | `default_branch` | `string` |  |
 | `default_branch_protection` | `string` |  |
-| `default_branch_protection_default` | `string` |  |
+| `default_branch_protection_defaults` | `string` |  |
 | `description` | `string` |  |
 | `duo_core_features_enabled` | `boolean` |  |
 | `duo_features_enabled` | `string` |  |
@@ -8325,10 +8401,10 @@ Create an instance: `local api_entities_group_detail = client:ApiEntitiesGroupDe
 | `full_name` | `string` |  |
 | `full_path` | `string` |  |
 | `id` | `string` |  |
-| `ip_restriction_range` | `string` |  |
+| `ip_restriction_ranges` | `string` |  |
 | `ldap_access` | `string` |  |
 | `ldap_cn` | `string` |  |
-| `ldap_group_link` | `table` |  |
+| `ldap_group_links` | `table` |  |
 | `lfs_enabled` | `string` |  |
 | `lock_duo_features_enabled` | `string` |  |
 | `lock_math_rendering_limits_enabled` | `boolean` |  |
@@ -8343,28 +8419,28 @@ Create an instance: `local api_entities_group_detail = client:ApiEntitiesGroupDe
 | `path` | `string` |  |
 | `prevent_forking_outside_group` | `string` |  |
 | `prevent_sharing_groups_outside_hierarchy` | `string` |  |
-| `project` | `table` |  |
 | `project_creation_level` | `string` |  |
+| `projects` | `table` |  |
 | `repository_storage` | `string` |  |
 | `request_access_enabled` | `string` |  |
 | `require_two_factor_authentication` | `string` |  |
-| `root_storage_statistic` | `table` |  |
+| `root_storage_statistics` | `table` |  |
 | `runners_token` | `string` |  |
-| `saml_group_link` | `table` |  |
+| `saml_group_links` | `table` |  |
 | `service_access_tokens_expiration_enforced` | `string` |  |
 | `share_with_group_lock` | `string` |  |
-| `shared_project` | `table` |  |
+| `shared_projects` | `table` |  |
 | `shared_runners_minutes_limit` | `string` |  |
 | `shared_runners_setting` | `string` |  |
-| `shared_with_group` | `string` |  |
+| `shared_with_groups` | `string` |  |
 | `show_diff_preview_in_email` | `boolean` |  |
-| `statistic` | `table` |  |
+| `statistics` | `table` |  |
 | `subgroup_creation_level` | `string` |  |
 | `two_factor_grace_period` | `string` |  |
 | `unique_project_download_limit` | `string` |  |
 | `unique_project_download_limit_alertlist` | `string` |  |
 | `unique_project_download_limit_allowlist` | `string` |  |
-| `unique_project_download_limit_interval_in_second` | `string` |  |
+| `unique_project_download_limit_interval_in_seconds` | `string` |  |
 | `visibility` | `string` |  |
 | `web_based_commit_signing_enabled` | `string` |  |
 | `web_url` | `string` |  |
@@ -8405,20 +8481,20 @@ Create an instance: `local api_entities_hook = client:ApiEntitiesHook(nil)`
 | `alert_status` | `any` |  |
 | `branch_filter_strategy` | `string` |  |
 | `created_at` | `string` |  |
-| `custom_header` | `table` |  |
+| `custom_headers` | `table` |  |
 | `custom_webhook_template` | `string` |  |
 | `description` | `string` |  |
 | `disabled_until` | `string` |  |
 | `enable_ssl_verification` | `boolean` |  |
 | `id` | `string` |  |
-| `merge_requests_event` | `boolean` |  |
+| `merge_requests_events` | `boolean` |  |
 | `name` | `string` |  |
-| `push_event` | `boolean` |  |
+| `push_events` | `boolean` |  |
 | `push_events_branch_filter` | `string` |  |
-| `repository_update_event` | `boolean` |  |
-| `tag_push_event` | `boolean` |  |
+| `repository_update_events` | `boolean` |  |
+| `tag_push_events` | `boolean` |  |
 | `url` | `string` |  |
-| `url_variable` | `table` |  |
+| `url_variables` | `table` |  |
 
 #### Example: Load
 
@@ -8450,35 +8526,6 @@ Create an instance: `local api_entities_integration = client:ApiEntitiesIntegrat
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `active` | `boolean` |  |
-| `alert_event` | `boolean` |  |
-| `comment_on_event_enabled` | `boolean` |  |
-| `commit_event` | `boolean` |  |
-| `confidential_issues_event` | `boolean` |  |
-| `confidential_note_event` | `boolean` |  |
-| `created_at` | `string` |  |
-| `deployment_event` | `boolean` |  |
-| `id` | `number` |  |
-| `incident_event` | `boolean` |  |
-| `inherited` | `boolean` |  |
-| `issues_event` | `boolean` |  |
-| `job_event` | `boolean` |  |
-| `merge_requests_event` | `boolean` |  |
-| `note_event` | `boolean` |  |
-| `pipeline_event` | `boolean` |  |
-| `property` | `table` |  |
-| `push_event` | `boolean` |  |
-| `slug` | `number` |  |
-| `tag_push_event` | `boolean` |  |
-| `title` | `string` |  |
-| `updated_at` | `string` |  |
-| `vulnerability_event` | `boolean` |  |
-| `wiki_page_event` | `boolean` |  |
-
 #### Example: Load
 
 ```lua
@@ -8502,28 +8549,28 @@ Create an instance: `local api_entities_integration_basic = client:ApiEntitiesIn
 | Field | Type | Description |
 | --- | --- | --- |
 | `active` | `boolean` |  |
-| `alert_event` | `boolean` |  |
+| `alert_events` | `boolean` |  |
 | `comment_on_event_enabled` | `boolean` |  |
-| `commit_event` | `boolean` |  |
-| `confidential_issues_event` | `boolean` |  |
-| `confidential_note_event` | `boolean` |  |
+| `commit_events` | `boolean` |  |
+| `confidential_issues_events` | `boolean` |  |
+| `confidential_note_events` | `boolean` |  |
 | `created_at` | `string` |  |
-| `deployment_event` | `boolean` |  |
+| `deployment_events` | `boolean` |  |
 | `id` | `number` |  |
-| `incident_event` | `boolean` |  |
+| `incident_events` | `boolean` |  |
 | `inherited` | `boolean` |  |
-| `issues_event` | `boolean` |  |
-| `job_event` | `boolean` |  |
-| `merge_requests_event` | `boolean` |  |
-| `note_event` | `boolean` |  |
-| `pipeline_event` | `boolean` |  |
-| `push_event` | `boolean` |  |
+| `issues_events` | `boolean` |  |
+| `job_events` | `boolean` |  |
+| `merge_requests_events` | `boolean` |  |
+| `note_events` | `boolean` |  |
+| `pipeline_events` | `boolean` |  |
+| `push_events` | `boolean` |  |
 | `slug` | `number` |  |
-| `tag_push_event` | `boolean` |  |
+| `tag_push_events` | `boolean` |  |
 | `title` | `string` |  |
 | `updated_at` | `string` |  |
-| `vulnerability_event` | `boolean` |  |
-| `wiki_page_event` | `boolean` |  |
+| `vulnerability_events` | `boolean` |  |
+| `wiki_page_events` | `boolean` |  |
 
 #### Example: List
 
@@ -8623,6 +8670,7 @@ Create an instance: `local api_entities_issue = client:ApiEntitiesIssue(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `assignee` | `table` |  |
+| `assignees` | `table` |  |
 | `author` | `table` |  |
 | `blocking_issues_count` | `string` |  |
 | `closed_at` | `string` |  |
@@ -8631,11 +8679,11 @@ Create an instance: `local api_entities_issue = client:ApiEntitiesIssue(nil)`
 | `created_at` | `string` |  |
 | `description` | `string` |  |
 | `discussion_locked` | `boolean` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `due_date` | `string` |  |
 | `epic` | `table` |  |
 | `epic_iid` | `string` |  |
-| `has_task` | `boolean` |  |
+| `has_tasks` | `boolean` |  |
 | `health_status` | `string` |  |
 | `id` | `number` |  |
 | `iid` | `number` |  |
@@ -8643,24 +8691,24 @@ Create an instance: `local api_entities_issue = client:ApiEntitiesIssue(nil)`
 | `imported_from` | `string` |  |
 | `issue_type` | `string` |  |
 | `iteration` | `table` |  |
-| `label` | `table` |  |
-| `link` | `table` |  |
+| `labels` | `table` |  |
+| `links` | `table` |  |
 | `merge_requests_count` | `string` |  |
 | `milestone` | `table` |  |
 | `moved_to_id` | `string` |  |
 | `project_id` | `number` |  |
-| `reference` | `table` |  |
+| `references` | `table` |  |
 | `service_desk_reply_to` | `string` |  |
 | `severity` | `string` |  |
 | `state` | `string` |  |
 | `subscribed` | `string` |  |
 | `task_completion_status` | `string` |  |
 | `task_status` | `string` |  |
-| `time_stat` | `table` |  |
+| `time_stats` | `table` |  |
 | `title` | `string` |  |
 | `type` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
 | `weight` | `string` |  |
@@ -8735,15 +8783,15 @@ Create an instance: `local api_entities_license = client:ApiEntitiesLicense(nil)
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `condition` | `table` |  |
+| `conditions` | `table` |  |
 | `content` | `string` |  |
 | `description` | `string` |  |
 | `html_url` | `string` |  |
 | `key` | `string` |  |
-| `limitation` | `table` |  |
+| `limitations` | `table` |  |
 | `name` | `string` |  |
 | `nickname` | `string` |  |
-| `permission` | `table` |  |
+| `permissions` | `table` |  |
 | `popular` | `boolean` |  |
 | `source_url` | `string` |  |
 
@@ -8822,7 +8870,7 @@ Create an instance: `local api_entities_member = client:ApiEntitiesMember(nil)`
 | `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
 | `created_by` | `table` |  |
-| `custom_attribute` | `table` |  |
+| `custom_attributes` | `table` |  |
 | `email` | `string` |  |
 | `expires_at` | `string` |  |
 | `group_saml_identity` | `table` |  |
@@ -8881,6 +8929,7 @@ Create an instance: `local api_entities_merge = client:ApiEntitiesMerge(nil)`
 | `allow_maintainer_to_push` | `boolean` |  |
 | `approvals_before_merge` | `string` |  |
 | `assignee` | `table` |  |
+| `assignees` | `table` |  |
 | `author` | `table` |  |
 | `blocking_discussions_resolved` | `string` |  |
 | `changes_count` | `string` |  |
@@ -8890,21 +8939,21 @@ Create an instance: `local api_entities_merge = client:ApiEntitiesMerge(nil)`
 | `description` | `string` |  |
 | `description_html` | `string` |  |
 | `detailed_merge_status` | `string` |  |
-| `diff_ref` | `table` |  |
+| `diff_refs` | `table` |  |
 | `discussion_locked` | `string` |  |
 | `diverged_commits_count` | `string` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `draft` | `string` |  |
 | `first_contribution` | `string` |  |
 | `first_deployed_to_production_at` | `string` |  |
 | `force_remove_source_branch` | `string` |  |
-| `has_conflict` | `boolean` |  |
+| `has_conflicts` | `boolean` |  |
 | `head_pipeline` | `table` |  |
 | `id` | `number` |  |
 | `iid` | `number` |  |
 | `imported` | `string` |  |
 | `imported_from` | `string` |  |
-| `label` | `string` |  |
+| `labels` | `string` |  |
 | `latest_build_finished_at` | `string` |  |
 | `latest_build_started_at` | `string` |  |
 | `merge_after` | `string` |  |
@@ -8912,7 +8961,7 @@ Create an instance: `local api_entities_merge = client:ApiEntitiesMerge(nil)`
 | `merge_error` | `string` |  |
 | `merge_status` | `string` |  |
 | `merge_user` | `table` |  |
-| `merge_when_pipeline_succeed` | `string` |  |
+| `merge_when_pipeline_succeeds` | `string` |  |
 | `merged_at` | `string` |  |
 | `merged_by` | `table` |  |
 | `milestone` | `table` |  |
@@ -8921,7 +8970,8 @@ Create an instance: `local api_entities_merge = client:ApiEntitiesMerge(nil)`
 | `project_id` | `number` |  |
 | `rebase_in_progress` | `string` |  |
 | `reference` | `string` |  |
-| `reviewer` | `table` |  |
+| `references` | `table` |  |
+| `reviewers` | `table` |  |
 | `sha` | `string` |  |
 | `should_remove_source_branch` | `boolean` |  |
 | `source_branch` | `string` |  |
@@ -8934,11 +8984,11 @@ Create an instance: `local api_entities_merge = client:ApiEntitiesMerge(nil)`
 | `target_branch` | `string` |  |
 | `target_project_id` | `string` |  |
 | `task_completion_status` | `string` |  |
-| `time_stat` | `table` |  |
+| `time_stats` | `table` |  |
 | `title` | `string` |  |
 | `title_html` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user` | `table` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
@@ -8974,10 +9024,8 @@ Create an instance: `local api_entities_merge_request_approval = client:ApiEntit
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `approved` | `boolean` |  |
-| `approved_by` | `table` |  |
-| `user_can_approve` | `boolean` |  |
-| `user_has_approved` | `boolean` |  |
+| `approved_at` | `string` |  |
+| `user` | `table` |  |
 
 #### Example: Load
 
@@ -9014,6 +9062,7 @@ Create an instance: `local api_entities_merge_request_basic = client:ApiEntities
 | `allow_maintainer_to_push` | `boolean` |  |
 | `approvals_before_merge` | `string` |  |
 | `assignee` | `table` |  |
+| `assignees` | `table` |  |
 | `author` | `table` |  |
 | `blocking_discussions_resolved` | `string` |  |
 | `closed_at` | `string` |  |
@@ -9023,27 +9072,28 @@ Create an instance: `local api_entities_merge_request_basic = client:ApiEntities
 | `description_html` | `string` |  |
 | `detailed_merge_status` | `string` |  |
 | `discussion_locked` | `string` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `draft` | `string` |  |
 | `force_remove_source_branch` | `string` |  |
-| `has_conflict` | `boolean` |  |
+| `has_conflicts` | `boolean` |  |
 | `id` | `number` |  |
 | `iid` | `number` |  |
 | `imported` | `string` |  |
 | `imported_from` | `string` |  |
-| `label` | `string` |  |
+| `labels` | `string` |  |
 | `merge_after` | `string` |  |
 | `merge_commit_sha` | `string` |  |
 | `merge_status` | `string` |  |
 | `merge_user` | `table` |  |
-| `merge_when_pipeline_succeed` | `string` |  |
+| `merge_when_pipeline_succeeds` | `string` |  |
 | `merged_at` | `string` |  |
 | `merged_by` | `table` |  |
 | `milestone` | `table` |  |
 | `prepared_at` | `string` |  |
 | `project_id` | `number` |  |
 | `reference` | `string` |  |
-| `reviewer` | `table` |  |
+| `references` | `table` |  |
+| `reviewers` | `table` |  |
 | `sha` | `string` |  |
 | `should_remove_source_branch` | `boolean` |  |
 | `source_branch` | `string` |  |
@@ -9055,11 +9105,11 @@ Create an instance: `local api_entities_merge_request_basic = client:ApiEntities
 | `target_branch` | `string` |  |
 | `target_project_id` | `string` |  |
 | `task_completion_status` | `string` |  |
-| `time_stat` | `table` |  |
+| `time_stats` | `table` |  |
 | `title` | `string` |  |
 | `title_html` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
 | `work_in_progress` | `string` |  |
@@ -9095,9 +9145,10 @@ Create an instance: `local api_entities_merge_request_change = client:ApiEntitie
 | `allow_maintainer_to_push` | `boolean` |  |
 | `approvals_before_merge` | `string` |  |
 | `assignee` | `table` |  |
+| `assignees` | `table` |  |
 | `author` | `table` |  |
 | `blocking_discussions_resolved` | `string` |  |
-| `change` | `table` |  |
+| `changes` | `table` |  |
 | `changes_count` | `string` |  |
 | `closed_at` | `string` |  |
 | `closed_by` | `table` |  |
@@ -9105,21 +9156,21 @@ Create an instance: `local api_entities_merge_request_change = client:ApiEntitie
 | `description` | `string` |  |
 | `description_html` | `string` |  |
 | `detailed_merge_status` | `string` |  |
-| `diff_ref` | `table` |  |
+| `diff_refs` | `table` |  |
 | `discussion_locked` | `string` |  |
 | `diverged_commits_count` | `string` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `draft` | `string` |  |
 | `first_contribution` | `string` |  |
 | `first_deployed_to_production_at` | `string` |  |
 | `force_remove_source_branch` | `string` |  |
-| `has_conflict` | `boolean` |  |
+| `has_conflicts` | `boolean` |  |
 | `head_pipeline` | `table` |  |
 | `id` | `number` |  |
 | `iid` | `number` |  |
 | `imported` | `string` |  |
 | `imported_from` | `string` |  |
-| `label` | `string` |  |
+| `labels` | `string` |  |
 | `latest_build_finished_at` | `string` |  |
 | `latest_build_started_at` | `string` |  |
 | `merge_after` | `string` |  |
@@ -9127,7 +9178,7 @@ Create an instance: `local api_entities_merge_request_change = client:ApiEntitie
 | `merge_error` | `string` |  |
 | `merge_status` | `string` |  |
 | `merge_user` | `table` |  |
-| `merge_when_pipeline_succeed` | `string` |  |
+| `merge_when_pipeline_succeeds` | `string` |  |
 | `merged_at` | `string` |  |
 | `merged_by` | `table` |  |
 | `milestone` | `table` |  |
@@ -9137,7 +9188,8 @@ Create an instance: `local api_entities_merge_request_change = client:ApiEntitie
 | `project_id` | `number` |  |
 | `rebase_in_progress` | `string` |  |
 | `reference` | `string` |  |
-| `reviewer` | `table` |  |
+| `references` | `table` |  |
+| `reviewers` | `table` |  |
 | `sha` | `string` |  |
 | `should_remove_source_branch` | `boolean` |  |
 | `source_branch` | `string` |  |
@@ -9150,11 +9202,11 @@ Create an instance: `local api_entities_merge_request_change = client:ApiEntitie
 | `target_branch` | `string` |  |
 | `target_project_id` | `string` |  |
 | `task_completion_status` | `string` |  |
-| `time_stat` | `table` |  |
+| `time_stats` | `table` |  |
 | `title` | `string` |  |
 | `title_html` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user` | `table` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
@@ -9213,9 +9265,9 @@ Create an instance: `local api_entities_merge_request_diff_full = client:ApiEnti
 | Field | Type | Description |
 | --- | --- | --- |
 | `base_commit_sha` | `string` |  |
-| `commit` | `table` |  |
+| `commits` | `table` |  |
 | `created_at` | `string` |  |
-| `diff` | `table` |  |
+| `diffs` | `table` |  |
 | `head_commit_sha` | `string` |  |
 | `id` | `string` |  |
 | `merge_request_id` | `string` |  |
@@ -9245,9 +9297,16 @@ Create an instance: `local api_entities_merge_request_reviewer = client:ApiEntit
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created_at` | `string` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `custom_attributes` | `table` |  |
+| `id` | `number` |  |
+| `locked` | `boolean` |  |
+| `name` | `string` |  |
+| `public_email` | `string` |  |
 | `state` | `string` |  |
-| `user` | `table` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
@@ -9309,8 +9368,16 @@ Create an instance: `local api_entities_mr_note = client:ApiEntitiesMrNote(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `table` |  |
-| `note` | `string` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `custom_attributes` | `table` |  |
+| `id` | `number` |  |
+| `locked` | `boolean` |  |
+| `name` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
@@ -9346,7 +9413,7 @@ Create an instance: `local api_entities_namespace = client:ApiEntitiesNamespace(
 | `kind` | `string` |  |
 | `max_seats_used` | `number` |  |
 | `max_seats_used_changed_at` | `string` |  |
-| `members_count_with_descendant` | `number` |  |
+| `members_count_with_descendants` | `number` |  |
 | `name` | `string` |  |
 | `parent_id` | `number` |  |
 | `path` | `string` |  |
@@ -9386,8 +9453,8 @@ Create an instance: `local api_entities_namespace_existence = client:ApiEntities
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `exist` | `boolean` |  |
-| `suggest` | `table` |  |
+| `exists` | `boolean` |  |
+| `suggests` | `table` |  |
 
 #### Example: List
 
@@ -9445,9 +9512,9 @@ Create an instance: `local api_entities_npm_package = client:ApiEntitiesNpmPacka
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dist_tag` | `table` |  |
+| `disttags` | `table` |  |
 | `name` | `string` |  |
-| `version` | `table` |  |
+| `versions` | `table` |  |
 
 #### Example: Load
 
@@ -9465,12 +9532,6 @@ Create an instance: `local api_entities_npm_package_tag = client:ApiEntitiesNpmP
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `dist_tag` | `table` |  |
 
 #### Example: Load
 
@@ -9493,7 +9554,7 @@ Create an instance: `local api_entities_nuget_packages_version = client:ApiEntit
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `version` | `table` |  |
+| `versions` | `table` |  |
 
 #### Example: List
 
@@ -9516,19 +9577,20 @@ Create an instance: `local api_entities_nuget_search_result = client:ApiEntities
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
+| `authors` | `string` |  |
 | `description` | `string` |  |
-| `icon_url` | `string` |  |
+| `iconUrl` | `string` |  |
 | `id` | `string` |  |
-| `license_url` | `string` |  |
-| `project_url` | `string` |  |
+| `licenseUrl` | `string` |  |
+| `projectUrl` | `string` |  |
 | `summary` | `string` |  |
-| `tag` | `string` |  |
+| `tags` | `string` |  |
 | `title` | `string` |  |
-| `total_download` | `number` |  |
+| `totalDownloads` | `number` |  |
 | `type` | `string` |  |
 | `verified` | `boolean` |  |
 | `version` | `string` |  |
+| `versions` | `table` |  |
 
 #### Example: List
 
@@ -9551,7 +9613,7 @@ Create an instance: `local api_entities_nuget_service_index = client:ApiEntities
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `resource` | `table` |  |
+| `resources` | `table` |  |
 | `version` | `string` |  |
 
 #### Example: List
@@ -9598,15 +9660,17 @@ Create an instance: `local api_entities_package = client:ApiEntitiesPackage(nil)
 | `created_at` | `string` |  |
 | `id` | `number` |  |
 | `last_downloaded_at` | `string` |  |
-| `link` | `table` |  |
+| `links` | `table` |  |
 | `name` | `string` |  |
 | `package_type` | `string` |  |
 | `pipeline` | `table` |  |
+| `pipelines` | `table` |  |
 | `project_id` | `number` |  |
 | `project_path` | `string` |  |
 | `status` | `string` |  |
-| `tag` | `string` |  |
+| `tags` | `string` |  |
 | `version` | `string` |  |
+| `versions` | `table` |  |
 
 #### Example: Load
 
@@ -9642,7 +9706,7 @@ Create an instance: `local api_entities_package_file = client:ApiEntitiesPackage
 | `file_sha256` | `string` |  |
 | `id` | `number` |  |
 | `package_id` | `number` |  |
-| `pipeline` | `table` |  |
+| `pipelines` | `table` |  |
 | `size` | `number` |  |
 
 #### Example: List
@@ -9666,16 +9730,15 @@ Create an instance: `local api_entities_package_pipeline = client:ApiEntitiesPac
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created_at` | `string` |  |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `custom_attributes` | `table` |  |
 | `id` | `number` |  |
-| `iid` | `number` |  |
-| `project_id` | `number` |  |
-| `ref` | `string` |  |
-| `sha` | `string` |  |
-| `source` | `string` |  |
-| `status` | `string` |  |
-| `updated_at` | `string` |  |
-| `user` | `table` |  |
+| `locked` | `boolean` |  |
+| `name` | `string` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
+| `username` | `string` |  |
 | `web_url` | `string` |  |
 
 #### Example: Load
@@ -9695,12 +9758,6 @@ Create an instance: `local api_entities_packages_conan_files_list = client:ApiEn
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `file` | `table` |  |
-
 #### Example: Load
 
 ```lua
@@ -9717,12 +9774,6 @@ Create an instance: `local api_entities_packages_conan_package_manifest = client
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `package_url` | `table` |  |
 
 #### Example: Load
 
@@ -9765,12 +9816,6 @@ Create an instance: `local api_entities_packages_conan_package_snapshot = client
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `package_snapshot` | `table` |  |
-
 #### Example: Load
 
 ```lua
@@ -9787,12 +9832,6 @@ Create an instance: `local api_entities_packages_conan_recipe_manifest = client:
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `recipe_url` | `table` |  |
 
 #### Example: Load
 
@@ -9835,12 +9874,6 @@ Create an instance: `local api_entities_packages_conan_recipe_snapshot = client:
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `recipe_snapshot` | `table` |  |
-
 #### Example: Load
 
 ```lua
@@ -9882,12 +9915,6 @@ Create an instance: `local api_entities_packages_conan_upload_url = client:ApiEn
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `upload_url` | `table` |  |
-
 #### Example: Create
 
 ```lua
@@ -9917,15 +9944,15 @@ Create an instance: `local api_entities_packages_debian_distribution = client:Ap
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `architecture` | `table` |  |
+| `architectures` | `table` |  |
 | `codename` | `string` |  |
-| `component` | `table` |  |
+| `components` | `table` |  |
 | `description` | `string` |  |
 | `id` | `number` |  |
 | `label` | `string` |  |
 | `origin` | `string` |  |
 | `suite` | `string` |  |
-| `valid_time_duration_second` | `number` |  |
+| `valid_time_duration_seconds` | `number` |  |
 | `version` | `string` |  |
 
 #### Example: Load
@@ -9966,9 +9993,12 @@ Create an instance: `local api_entities_pages_domain = client:ApiEntitiesPagesDo
 | Field | Type | Description |
 | --- | --- | --- |
 | `auto_ssl_enabled` | `string` |  |
-| `certificate` | `table` |  |
+| `certificate` | `string` |  |
+| `certificate_text` | `string` |  |
 | `domain` | `string` |  |
 | `enabled_until` | `string` |  |
+| `expired` | `string` |  |
+| `subject` | `string` |  |
 | `url` | `string` |  |
 | `verification_code` | `string` |  |
 | `verified` | `boolean` |  |
@@ -10008,14 +10038,8 @@ Create an instance: `local api_entities_pages_domain_basic = client:ApiEntitiesP
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `auto_ssl_enabled` | `string` |  |
-| `certificate_expiration` | `table` |  |
-| `domain` | `string` |  |
-| `enabled_until` | `string` |  |
-| `project_id` | `string` |  |
-| `url` | `string` |  |
-| `verification_code` | `string` |  |
-| `verified` | `boolean` |  |
+| `expiration` | `string` |  |
+| `expired` | `string` |  |
 
 #### Example: Load
 
@@ -10046,7 +10070,7 @@ Create an instance: `local api_entities_personal_access_token = client:ApiEntiti
 | `last_used_at` | `string` |  |
 | `name` | `string` |  |
 | `revoked` | `boolean` |  |
-| `scope` | `table` |  |
+| `scopes` | `table` |  |
 | `user_id` | `number` |  |
 
 #### Example: List
@@ -10077,10 +10101,10 @@ Create an instance: `local api_entities_personal_access_token_with_last_used_ip 
 | `expires_at` | `string` |  |
 | `id` | `number` |  |
 | `last_used_at` | `string` |  |
-| `last_used_ip` | `table` |  |
+| `last_used_ips` | `table` |  |
 | `name` | `string` |  |
 | `revoked` | `boolean` |  |
-| `scope` | `table` |  |
+| `scopes` | `table` |  |
 | `user_id` | `number` |  |
 
 #### Example: Load
@@ -10118,7 +10142,7 @@ Create an instance: `local api_entities_personal_access_token_with_token = clien
 | `last_used_at` | `string` |  |
 | `name` | `string` |  |
 | `revoked` | `boolean` |  |
-| `scope` | `table` |  |
+| `scopes` | `table` |  |
 | `token` | `string` |  |
 | `user_id` | `number` |  |
 
@@ -10150,8 +10174,8 @@ Create an instance: `local api_entities_personal_snippet = client:ApiEntitiesPer
 | `author` | `table` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
-| `file` | `table` |  |
 | `file_name` | `string` |  |
+| `files` | `table` |  |
 | `http_url_to_repo` | `string` |  |
 | `id` | `number` |  |
 | `imported` | `boolean` |  |
@@ -10196,34 +10220,6 @@ Create an instance: `local api_entities_plan_limit = client:ApiEntitiesPlanLimit
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `ci_active_job` | `number` |  |
-| `ci_instance_level_variable` | `number` |  |
-| `ci_needs_size_limit` | `number` |  |
-| `ci_pipeline_schedule` | `number` |  |
-| `ci_pipeline_size` | `number` |  |
-| `ci_project_subscription` | `number` |  |
-| `ci_registered_group_runner` | `number` |  |
-| `ci_registered_project_runner` | `number` |  |
-| `conan_max_file_size` | `number` |  |
-| `dotenv_size` | `number` |  |
-| `dotenv_variable` | `number` |  |
-| `enforcement_limit` | `number` |  |
-| `generic_packages_max_file_size` | `number` |  |
-| `helm_max_file_size` | `number` |  |
-| `limits_history` | `table` |  |
-| `maven_max_file_size` | `number` |  |
-| `notification_limit` | `number` |  |
-| `npm_max_file_size` | `number` |  |
-| `nuget_max_file_size` | `number` |  |
-| `pipeline_hierarchy_size` | `number` |  |
-| `pypi_max_file_size` | `number` |  |
-| `storage_size_limit` | `number` |  |
-| `terraform_module_max_file_size` | `number` |  |
-
 #### Example: Load
 
 ```lua
@@ -10252,11 +10248,11 @@ Create an instance: `local api_entities_project = client:ApiEntitiesProject(nil)
 | `analytics_access_level` | `string` |  |
 | `approvals_before_merge` | `string` |  |
 | `archived` | `boolean` |  |
-| `auto_cancel_pending_pipeline` | `string` |  |
+| `auto_cancel_pending_pipelines` | `string` |  |
 | `auto_devops_deploy_strategy` | `string` |  |
 | `auto_devops_enabled` | `boolean` |  |
 | `auto_duo_code_review_enabled` | `string` |  |
-| `autoclose_referenced_issue` | `boolean` |  |
+| `autoclose_referenced_issues` | `boolean` |  |
 | `avatar_url` | `string` |  |
 | `build_git_strategy` | `string` |  |
 | `build_timeout` | `number` |  |
@@ -10265,23 +10261,23 @@ Create an instance: `local api_entities_project = client:ApiEntitiesProject(nil)
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `boolean` |  |
 | `ci_config_path` | `string` |  |
 | `ci_default_git_depth` | `number` |  |
-| `ci_delete_pipelines_in_second` | `number` |  |
+| `ci_delete_pipelines_in_seconds` | `number` |  |
 | `ci_forward_deployment_enabled` | `boolean` |  |
 | `ci_forward_deployment_rollback_allowed` | `boolean` |  |
-| `ci_id_token_sub_claim_component` | `table` |  |
+| `ci_id_token_sub_claim_components` | `table` |  |
 | `ci_job_token_scope_enabled` | `boolean` |  |
 | `ci_pipeline_variables_minimum_override_role` | `string` |  |
 | `ci_push_repository_for_job_token_allowed` | `boolean` |  |
 | `ci_restrict_pipeline_cancellation_role` | `string` |  |
-| `ci_separated_cache` | `boolean` |  |
-| `compliance_framework` | `string` |  |
+| `ci_separated_caches` | `boolean` |  |
+| `compliance_frameworks` | `string` |  |
 | `container_expiration_policy` | `table` |  |
 | `container_registry_access_level` | `string` |  |
 | `container_registry_enabled` | `boolean` |  |
 | `container_registry_image_prefix` | `string` |  |
 | `created_at` | `string` |  |
 | `creator_id` | `number` |  |
-| `custom_attribute` | `table` |  |
+| `custom_attributes` | `table` |  |
 | `default_branch` | `string` |  |
 | `description` | `string` |  |
 | `description_html` | `string` |  |
@@ -10289,7 +10285,7 @@ Create an instance: `local api_entities_project = client:ApiEntitiesProject(nil)
 | `emails_disabled` | `boolean` |  |
 | `emails_enabled` | `boolean` |  |
 | `empty_repo` | `boolean` |  |
-| `enforce_auth_checks_on_upload` | `boolean` |  |
+| `enforce_auth_checks_on_uploads` | `boolean` |  |
 | `environments_access_level` | `string` |  |
 | `external_authorization_classification_label` | `string` |  |
 | `feature_flags_access_level` | `string` |  |
@@ -10314,7 +10310,7 @@ Create an instance: `local api_entities_project = client:ApiEntitiesProject(nil)
 | `lfs_enabled` | `boolean` |  |
 | `license` | `table` |  |
 | `license_url` | `string` |  |
-| `link` | `table` |  |
+| `links` | `table` |  |
 | `marked_for_deletion_at` | `string` |  |
 | `marked_for_deletion_on` | `string` |  |
 | `max_artifacts_size` | `number` |  |
@@ -10329,8 +10325,8 @@ Create an instance: `local api_entities_project = client:ApiEntitiesProject(nil)
 | `merge_trains_enabled` | `string` |  |
 | `merge_trains_skip_train_allowed` | `string` |  |
 | `mirror` | `string` |  |
-| `mirror_overwrites_diverged_branch` | `string` |  |
-| `mirror_trigger_build` | `string` |  |
+| `mirror_overwrites_diverged_branches` | `string` |  |
+| `mirror_trigger_builds` | `string` |  |
 | `mirror_user_id` | `string` |  |
 | `model_experiments_access_level` | `string` |  |
 | `model_registry_access_level` | `string` |  |
@@ -10341,8 +10337,8 @@ Create an instance: `local api_entities_project = client:ApiEntitiesProject(nil)
 | `namespace` | `table` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `boolean` |  |
 | `only_allow_merge_if_all_status_checks_passed` | `string` |  |
-| `only_allow_merge_if_pipeline_succeed` | `boolean` |  |
-| `only_mirror_protected_branch` | `string` |  |
+| `only_allow_merge_if_pipeline_succeeds` | `boolean` |  |
+| `only_mirror_protected_branches` | `string` |  |
 | `open_issues_count` | `number` |  |
 | `owner` | `table` |  |
 | `package_registry_access_level` | `string` |  |
@@ -10353,7 +10349,7 @@ Create an instance: `local api_entities_project = client:ApiEntitiesProject(nil)
 | `pre_receive_secret_detection_enabled` | `boolean` |  |
 | `prevent_merge_without_jira_issue` | `string` |  |
 | `printing_merge_request_link_enabled` | `boolean` |  |
-| `public_job` | `boolean` |  |
+| `public_jobs` | `boolean` |  |
 | `readme_url` | `string` |  |
 | `releases_access_level` | `string` |  |
 | `remove_source_branch_after_merge` | `boolean` |  |
@@ -10363,9 +10359,9 @@ Create an instance: `local api_entities_project = client:ApiEntitiesProject(nil)
 | `request_access_enabled` | `boolean` |  |
 | `requirements_access_level` | `string` |  |
 | `requirements_enabled` | `string` |  |
-| `resolve_outdated_diff_discussion` | `boolean` |  |
+| `resolve_outdated_diff_discussions` | `boolean` |  |
 | `resource_group_default_process_mode` | `string` |  |
-| `restrict_user_defined_variable` | `boolean` |  |
+| `restrict_user_defined_variables` | `boolean` |  |
 | `runner_token_expiration_interval` | `number` |  |
 | `runners_token` | `string` |  |
 | `secret_push_protection_enabled` | `boolean` |  |
@@ -10374,7 +10370,7 @@ Create an instance: `local api_entities_project = client:ApiEntitiesProject(nil)
 | `service_desk_address` | `string` |  |
 | `service_desk_enabled` | `boolean` |  |
 | `shared_runners_enabled` | `boolean` |  |
-| `shared_with_group` | `table` |  |
+| `shared_with_groups` | `table` |  |
 | `show_diff_preview_in_email` | `boolean` |  |
 | `snippets_access_level` | `string` |  |
 | `snippets_enabled` | `boolean` |  |
@@ -10383,13 +10379,13 @@ Create an instance: `local api_entities_project = client:ApiEntitiesProject(nil)
 | `squash_option` | `string` |  |
 | `ssh_url_to_repo` | `string` |  |
 | `star_count` | `number` |  |
-| `statistic` | `table` |  |
+| `statistics` | `table` |  |
 | `suggestion_commit_message` | `string` |  |
 | `tag_list` | `table` |  |
-| `topic` | `table` |  |
+| `topics` | `table` |  |
 | `updated_at` | `string` |  |
 | `visibility` | `string` |  |
-| `warn_about_potentially_unwanted_character` | `boolean` |  |
+| `warn_about_potentially_unwanted_characters` | `boolean` |  |
 | `web_based_commit_signing_enabled` | `string` |  |
 | `web_url` | `string` |  |
 | `wiki_access_level` | `string` |  |
@@ -10423,7 +10419,8 @@ Create an instance: `local api_entities_project_daily_statistic = client:ApiEnti
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fetch` | `table` |  |
+| `days` | `table` |  |
+| `total` | `number` |  |
 
 #### Example: Load
 
@@ -10446,15 +10443,8 @@ Create an instance: `local api_entities_project_export_status = client:ApiEntiti
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `created_at` | `string` |  |
-| `description` | `string` |  |
-| `export_status` | `string` |  |
-| `id` | `number` |  |
-| `link` | `table` |  |
-| `name` | `string` |  |
-| `name_with_namespace` | `string` |  |
-| `path` | `string` |  |
-| `path_with_namespace` | `string` |  |
+| `api_url` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
@@ -10501,36 +10491,36 @@ Create an instance: `local api_entities_project_hook = client:ApiEntitiesProject
 | --- | --- | --- |
 | `alert_status` | `any` |  |
 | `branch_filter_strategy` | `string` |  |
-| `confidential_issues_event` | `boolean` |  |
-| `confidential_note_event` | `boolean` |  |
+| `confidential_issues_events` | `boolean` |  |
+| `confidential_note_events` | `boolean` |  |
 | `created_at` | `string` |  |
-| `custom_header` | `table` |  |
+| `custom_headers` | `table` |  |
 | `custom_webhook_template` | `string` |  |
-| `deployment_event` | `boolean` |  |
+| `deployment_events` | `boolean` |  |
 | `description` | `string` |  |
 | `disabled_until` | `string` |  |
-| `emoji_event` | `boolean` |  |
+| `emoji_events` | `boolean` |  |
 | `enable_ssl_verification` | `boolean` |  |
-| `feature_flag_event` | `boolean` |  |
+| `feature_flag_events` | `boolean` |  |
 | `id` | `string` |  |
-| `issues_event` | `boolean` |  |
-| `job_event` | `boolean` |  |
-| `merge_requests_event` | `boolean` |  |
-| `milestone_event` | `boolean` |  |
+| `issues_events` | `boolean` |  |
+| `job_events` | `boolean` |  |
+| `merge_requests_events` | `boolean` |  |
+| `milestone_events` | `boolean` |  |
 | `name` | `string` |  |
-| `note_event` | `boolean` |  |
-| `pipeline_event` | `boolean` |  |
+| `note_events` | `boolean` |  |
+| `pipeline_events` | `boolean` |  |
 | `project_id` | `string` |  |
-| `push_event` | `boolean` |  |
+| `push_events` | `boolean` |  |
 | `push_events_branch_filter` | `string` |  |
-| `releases_event` | `boolean` |  |
-| `repository_update_event` | `boolean` |  |
-| `resource_access_token_event` | `boolean` |  |
-| `tag_push_event` | `boolean` |  |
+| `releases_events` | `boolean` |  |
+| `repository_update_events` | `boolean` |  |
+| `resource_access_token_events` | `boolean` |  |
+| `tag_push_events` | `boolean` |  |
 | `url` | `string` |  |
-| `url_variable` | `table` |  |
-| `vulnerability_event` | `boolean` |  |
-| `wiki_page_event` | `boolean` |  |
+| `url_variables` | `table` |  |
+| `vulnerability_events` | `boolean` |  |
+| `wiki_page_events` | `boolean` |  |
 
 #### Example: Load
 
@@ -10660,8 +10650,8 @@ Create an instance: `local api_entities_project_snippet = client:ApiEntitiesProj
 | `author` | `table` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
-| `file` | `table` |  |
 | `file_name` | `string` |  |
+| `files` | `table` |  |
 | `http_url_to_repo` | `string` |  |
 | `id` | `number` |  |
 | `imported` | `boolean` |  |
@@ -10734,11 +10724,11 @@ Create an instance: `local api_entities_project_with_access = client:ApiEntities
 | `analytics_access_level` | `string` |  |
 | `approvals_before_merge` | `string` |  |
 | `archived` | `boolean` |  |
-| `auto_cancel_pending_pipeline` | `string` |  |
+| `auto_cancel_pending_pipelines` | `string` |  |
 | `auto_devops_deploy_strategy` | `string` |  |
 | `auto_devops_enabled` | `boolean` |  |
 | `auto_duo_code_review_enabled` | `string` |  |
-| `autoclose_referenced_issue` | `boolean` |  |
+| `autoclose_referenced_issues` | `boolean` |  |
 | `avatar_url` | `string` |  |
 | `build_git_strategy` | `string` |  |
 | `build_timeout` | `number` |  |
@@ -10747,23 +10737,23 @@ Create an instance: `local api_entities_project_with_access = client:ApiEntities
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `boolean` |  |
 | `ci_config_path` | `string` |  |
 | `ci_default_git_depth` | `number` |  |
-| `ci_delete_pipelines_in_second` | `number` |  |
+| `ci_delete_pipelines_in_seconds` | `number` |  |
 | `ci_forward_deployment_enabled` | `boolean` |  |
 | `ci_forward_deployment_rollback_allowed` | `boolean` |  |
-| `ci_id_token_sub_claim_component` | `table` |  |
+| `ci_id_token_sub_claim_components` | `table` |  |
 | `ci_job_token_scope_enabled` | `boolean` |  |
 | `ci_pipeline_variables_minimum_override_role` | `string` |  |
 | `ci_push_repository_for_job_token_allowed` | `boolean` |  |
 | `ci_restrict_pipeline_cancellation_role` | `string` |  |
-| `ci_separated_cache` | `boolean` |  |
-| `compliance_framework` | `string` |  |
+| `ci_separated_caches` | `boolean` |  |
+| `compliance_frameworks` | `string` |  |
 | `container_expiration_policy` | `table` |  |
 | `container_registry_access_level` | `string` |  |
 | `container_registry_enabled` | `boolean` |  |
 | `container_registry_image_prefix` | `string` |  |
 | `created_at` | `string` |  |
 | `creator_id` | `number` |  |
-| `custom_attribute` | `table` |  |
+| `custom_attributes` | `table` |  |
 | `default_branch` | `string` |  |
 | `description` | `string` |  |
 | `description_html` | `string` |  |
@@ -10771,7 +10761,7 @@ Create an instance: `local api_entities_project_with_access = client:ApiEntities
 | `emails_disabled` | `boolean` |  |
 | `emails_enabled` | `boolean` |  |
 | `empty_repo` | `boolean` |  |
-| `enforce_auth_checks_on_upload` | `boolean` |  |
+| `enforce_auth_checks_on_uploads` | `boolean` |  |
 | `environments_access_level` | `string` |  |
 | `external_authorization_classification_label` | `string` |  |
 | `feature_flags_access_level` | `string` |  |
@@ -10796,7 +10786,7 @@ Create an instance: `local api_entities_project_with_access = client:ApiEntities
 | `lfs_enabled` | `boolean` |  |
 | `license` | `table` |  |
 | `license_url` | `string` |  |
-| `link` | `table` |  |
+| `links` | `table` |  |
 | `marked_for_deletion_at` | `string` |  |
 | `marked_for_deletion_on` | `string` |  |
 | `max_artifacts_size` | `number` |  |
@@ -10811,8 +10801,8 @@ Create an instance: `local api_entities_project_with_access = client:ApiEntities
 | `merge_trains_enabled` | `string` |  |
 | `merge_trains_skip_train_allowed` | `string` |  |
 | `mirror` | `string` |  |
-| `mirror_overwrites_diverged_branch` | `string` |  |
-| `mirror_trigger_build` | `string` |  |
+| `mirror_overwrites_diverged_branches` | `string` |  |
+| `mirror_trigger_builds` | `string` |  |
 | `mirror_user_id` | `string` |  |
 | `model_experiments_access_level` | `string` |  |
 | `model_registry_access_level` | `string` |  |
@@ -10823,8 +10813,8 @@ Create an instance: `local api_entities_project_with_access = client:ApiEntities
 | `namespace` | `table` |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `boolean` |  |
 | `only_allow_merge_if_all_status_checks_passed` | `string` |  |
-| `only_allow_merge_if_pipeline_succeed` | `boolean` |  |
-| `only_mirror_protected_branch` | `string` |  |
+| `only_allow_merge_if_pipeline_succeeds` | `boolean` |  |
+| `only_mirror_protected_branches` | `string` |  |
 | `open_issues_count` | `number` |  |
 | `owner` | `table` |  |
 | `package_registry_access_level` | `string` |  |
@@ -10832,11 +10822,11 @@ Create an instance: `local api_entities_project_with_access = client:ApiEntities
 | `pages_access_level` | `string` |  |
 | `path` | `string` |  |
 | `path_with_namespace` | `string` |  |
-| `permission` | `table` |  |
+| `permissions` | `table` |  |
 | `pre_receive_secret_detection_enabled` | `boolean` |  |
 | `prevent_merge_without_jira_issue` | `string` |  |
 | `printing_merge_request_link_enabled` | `boolean` |  |
-| `public_job` | `boolean` |  |
+| `public_jobs` | `boolean` |  |
 | `readme_url` | `string` |  |
 | `releases_access_level` | `string` |  |
 | `remove_source_branch_after_merge` | `boolean` |  |
@@ -10846,9 +10836,9 @@ Create an instance: `local api_entities_project_with_access = client:ApiEntities
 | `request_access_enabled` | `boolean` |  |
 | `requirements_access_level` | `string` |  |
 | `requirements_enabled` | `string` |  |
-| `resolve_outdated_diff_discussion` | `boolean` |  |
+| `resolve_outdated_diff_discussions` | `boolean` |  |
 | `resource_group_default_process_mode` | `string` |  |
-| `restrict_user_defined_variable` | `boolean` |  |
+| `restrict_user_defined_variables` | `boolean` |  |
 | `runner_token_expiration_interval` | `number` |  |
 | `runners_token` | `string` |  |
 | `secret_push_protection_enabled` | `boolean` |  |
@@ -10857,7 +10847,7 @@ Create an instance: `local api_entities_project_with_access = client:ApiEntities
 | `service_desk_address` | `string` |  |
 | `service_desk_enabled` | `boolean` |  |
 | `shared_runners_enabled` | `boolean` |  |
-| `shared_with_group` | `table` |  |
+| `shared_with_groups` | `table` |  |
 | `show_diff_preview_in_email` | `boolean` |  |
 | `snippets_access_level` | `string` |  |
 | `snippets_enabled` | `boolean` |  |
@@ -10866,13 +10856,13 @@ Create an instance: `local api_entities_project_with_access = client:ApiEntities
 | `squash_option` | `string` |  |
 | `ssh_url_to_repo` | `string` |  |
 | `star_count` | `number` |  |
-| `statistic` | `table` |  |
+| `statistics` | `table` |  |
 | `suggestion_commit_message` | `string` |  |
 | `tag_list` | `table` |  |
-| `topic` | `table` |  |
+| `topics` | `table` |  |
 | `updated_at` | `string` |  |
 | `visibility` | `string` |  |
-| `warn_about_potentially_unwanted_character` | `boolean` |  |
+| `warn_about_potentially_unwanted_characters` | `boolean` |  |
 | `web_based_commit_signing_enabled` | `string` |  |
 | `web_url` | `string` |  |
 | `wiki_access_level` | `string` |  |
@@ -11019,10 +11009,10 @@ Create an instance: `local api_entities_protected_branch = client:ApiEntitiesPro
 | `code_owner_approval_required` | `boolean` |  |
 | `id` | `number` |  |
 | `inherited` | `boolean` |  |
-| `merge_access_level` | `table` |  |
+| `merge_access_levels` | `table` |  |
 | `name` | `string` |  |
-| `push_access_level` | `table` |  |
-| `unprotect_access_level` | `table` |  |
+| `push_access_levels` | `table` |  |
+| `unprotect_access_levels` | `table` |  |
 
 #### Example: Load
 
@@ -11061,8 +11051,14 @@ Create an instance: `local api_entities_protected_tag = client:ApiEntitiesProtec
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `create_access_level` | `table` |  |
+| `access_level` | `number` |  |
+| `access_level_description` | `string` |  |
+| `create_access_levels` | `table` |  |
+| `deploy_key_id` | `number` |  |
+| `group_id` | `number` |  |
+| `id` | `number` |  |
 | `name` | `string` |  |
+| `user_id` | `number` |  |
 
 #### Example: Load
 
@@ -11128,6 +11124,7 @@ Create an instance: `local api_entities_related_issue = client:ApiEntitiesRelate
 | Field | Type | Description |
 | --- | --- | --- |
 | `assignee` | `table` |  |
+| `assignees` | `table` |  |
 | `author` | `table` |  |
 | `blocking_issues_count` | `string` |  |
 | `closed_at` | `string` |  |
@@ -11136,11 +11133,11 @@ Create an instance: `local api_entities_related_issue = client:ApiEntitiesRelate
 | `created_at` | `string` |  |
 | `description` | `string` |  |
 | `discussion_locked` | `boolean` |  |
-| `downvote` | `string` |  |
+| `downvotes` | `string` |  |
 | `due_date` | `string` |  |
 | `epic` | `table` |  |
 | `epic_iid` | `string` |  |
-| `has_task` | `boolean` |  |
+| `has_tasks` | `boolean` |  |
 | `health_status` | `string` |  |
 | `id` | `number` |  |
 | `iid` | `number` |  |
@@ -11149,27 +11146,27 @@ Create an instance: `local api_entities_related_issue = client:ApiEntitiesRelate
 | `issue_link_id` | `string` |  |
 | `issue_type` | `string` |  |
 | `iteration` | `table` |  |
-| `label` | `table` |  |
-| `link` | `table` |  |
+| `labels` | `table` |  |
 | `link_created_at` | `string` |  |
 | `link_type` | `string` |  |
 | `link_updated_at` | `string` |  |
+| `links` | `table` |  |
 | `merge_requests_count` | `string` |  |
 | `milestone` | `table` |  |
 | `moved_to_id` | `string` |  |
 | `project_id` | `number` |  |
-| `reference` | `table` |  |
+| `references` | `table` |  |
 | `service_desk_reply_to` | `string` |  |
 | `severity` | `string` |  |
 | `state` | `string` |  |
 | `subscribed` | `string` |  |
 | `task_completion_status` | `string` |  |
 | `task_status` | `string` |  |
-| `time_stat` | `table` |  |
+| `time_stats` | `table` |  |
 | `title` | `string` |  |
 | `type` | `string` |  |
 | `updated_at` | `string` |  |
-| `upvote` | `string` |  |
+| `upvotes` | `string` |  |
 | `user_notes_count` | `string` |  |
 | `web_url` | `string` |  |
 | `weight` | `string` |  |
@@ -11216,16 +11213,16 @@ Create an instance: `local api_entities_release = client:ApiEntitiesRelease(nil)
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `asset` | `table` |  |
+| `assets` | `table` |  |
 | `author` | `table` |  |
 | `commit` | `table` |  |
 | `commit_path` | `string` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
 | `description_html` | `string` |  |
-| `evidence` | `table` |  |
-| `link` | `table` |  |
-| `milestone` | `table` |  |
+| `evidences` | `table` |  |
+| `links` | `table` |  |
+| `milestones` | `table` |  |
 | `name` | `string` |  |
 | `released_at` | `string` |  |
 | `tag_name` | `string` |  |
@@ -11317,15 +11314,15 @@ Create an instance: `local api_entities_remote_mirror = client:ApiEntitiesRemote
 | --- | --- | --- |
 | `auth_method` | `string` |  |
 | `enabled` | `boolean` |  |
-| `host_key` | `table` |  |
+| `host_keys` | `table` |  |
 | `id` | `number` |  |
-| `keep_divergent_ref` | `boolean` |  |
+| `keep_divergent_refs` | `boolean` |  |
 | `last_error` | `number` |  |
 | `last_successful_update_at` | `string` |  |
 | `last_update_at` | `string` |  |
 | `last_update_started_at` | `string` |  |
 | `mirror_branch_regex` | `string` |  |
-| `only_protected_branch` | `boolean` |  |
+| `only_protected_branches` | `boolean` |  |
 | `update_status` | `string` |  |
 | `url` | `string` |  |
 
@@ -11364,15 +11361,15 @@ Create an instance: `local api_entities_repository_health = client:ApiEntitiesRe
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `alternate` | `table` |  |
+| `alternates` | `table` |  |
 | `bitmap` | `table` |  |
 | `commit_graph` | `table` |  |
 | `is_object_pool` | `boolean` |  |
 | `last_full_repack` | `table` |  |
 | `multi_pack_index` | `table` |  |
 | `multi_pack_index_bitmap` | `table` |  |
-| `object` | `table` |  |
-| `reference` | `table` |  |
+| `objects` | `table` |  |
+| `references` | `table` |  |
 | `size` | `number` |  |
 | `updated_at` | `string` |  |
 
@@ -11408,7 +11405,7 @@ Create an instance: `local api_entities_resource_access_token_with_token = clien
 | `resource_id` | `number` |  |
 | `resource_type` | `string` |  |
 | `revoked` | `boolean` |  |
-| `scope` | `table` |  |
+| `scopes` | `table` |  |
 | `token` | `string` |  |
 | `user_id` | `number` |  |
 
@@ -11474,8 +11471,8 @@ Create an instance: `local api_entities_snippet = client:ApiEntitiesSnippet(nil)
 | `author` | `table` |  |
 | `created_at` | `string` |  |
 | `description` | `string` |  |
-| `file` | `table` |  |
 | `file_name` | `string` |  |
+| `files` | `table` |  |
 | `http_url_to_repo` | `string` |  |
 | `id` | `number` |  |
 | `imported` | `boolean` |  |
@@ -11510,14 +11507,52 @@ Create an instance: `local api_entities_ssh_key_with_user = client:ApiEntitiesSs
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
+| `bio` | `string` |  |
+| `bot` | `string` |  |
+| `can_create_group` | `boolean` |  |
+| `can_create_project` | `boolean` |  |
+| `color_scheme_id` | `number` |  |
+| `commit_email` | `string` |  |
+| `confirmed_at` | `string` |  |
 | `created_at` | `string` |  |
-| `expires_at` | `string` |  |
+| `current_sign_in_at` | `string` |  |
+| `custom_attributes` | `table` |  |
+| `discord` | `string` |  |
+| `email` | `string` |  |
+| `external` | `string` |  |
+| `extra_shared_runners_minutes_limit` | `string` |  |
+| `followers` | `string` |  |
+| `following` | `string` |  |
+| `github` | `string` |  |
 | `id` | `number` |  |
-| `key` | `string` |  |
-| `last_used_at` | `string` |  |
-| `title` | `string` |  |
-| `usage_type` | `string` |  |
-| `user` | `table` |  |
+| `identities` | `table` |  |
+| `is_followed` | `boolean` |  |
+| `job_title` | `string` |  |
+| `last_activity_on` | `string` |  |
+| `last_sign_in_at` | `string` |  |
+| `linkedin` | `string` |  |
+| `local_time` | `string` |  |
+| `location` | `string` |  |
+| `locked` | `boolean` |  |
+| `name` | `string` |  |
+| `organization` | `string` |  |
+| `preferred_language` | `string` |  |
+| `private_profile` | `boolean` |  |
+| `projects_limit` | `number` |  |
+| `pronouns` | `string` |  |
+| `public_email` | `string` |  |
+| `scim_identities` | `table` |  |
+| `shared_runners_minutes_limit` | `string` |  |
+| `state` | `string` |  |
+| `theme_id` | `number` |  |
+| `twitter` | `string` |  |
+| `two_factor_enabled` | `boolean` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
+| `website_url` | `string` |  |
+| `work_information` | `string` |  |
 
 #### Example: Load
 
@@ -11575,7 +11610,7 @@ Create an instance: `local api_entities_system_broadcast_message = client:ApiEnt
 | `id` | `string` |  |
 | `message` | `string` |  |
 | `starts_at` | `string` |  |
-| `target_access_level` | `string` |  |
+| `target_access_levels` | `string` |  |
 | `target_path` | `string` |  |
 | `theme` | `string` |  |
 
@@ -11701,13 +11736,15 @@ Create an instance: `local api_entities_terraform_module_version = client:ApiEnt
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `module` | `string` |  |
+| `modules` | `string` |  |
 | `name` | `string` |  |
 | `provider` | `string` |  |
+| `providers` | `string` |  |
 | `root` | `string` |  |
 | `source` | `string` |  |
-| `submodule` | `string` |  |
+| `submodules` | `string` |  |
 | `version` | `string` |  |
+| `versions` | `string` |  |
 
 #### Example: Load
 
@@ -11766,14 +11803,23 @@ Create an instance: `local api_entities_trigger = client:ApiEntitiesTrigger(nil)
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `avatar_path` | `string` |  |
+| `avatar_url` | `string` |  |
 | `created_at` | `string` |  |
+| `custom_attributes` | `table` |  |
 | `description` | `string` |  |
 | `expires_at` | `string` |  |
 | `id` | `number` |  |
 | `last_used` | `string` |  |
+| `locked` | `boolean` |  |
+| `name` | `string` |  |
 | `owner` | `table` |  |
+| `public_email` | `string` |  |
+| `state` | `string` |  |
 | `token` | `string` |  |
 | `updated_at` | `string` |  |
+| `username` | `string` |  |
+| `web_url` | `string` |  |
 
 #### Example: Load
 
@@ -11835,11 +11881,11 @@ Create an instance: `local api_entities_user_count = client:ApiEntitiesUserCount
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `assigned_issue` | `number` |  |
-| `assigned_merge_request` | `number` |  |
-| `merge_request` | `number` |  |
-| `review_requested_merge_request` | `number` |  |
-| `todo` | `number` |  |
+| `assigned_issues` | `number` |  |
+| `assigned_merge_requests` | `number` |  |
+| `merge_requests` | `number` |  |
+| `review_requested_merge_requests` | `number` |  |
+| `todos` | `number` |  |
 
 #### Example: Load
 
@@ -11873,16 +11919,16 @@ Create an instance: `local api_entities_user_public = client:ApiEntitiesUserPubl
 | `confirmed_at` | `string` |  |
 | `created_at` | `string` |  |
 | `current_sign_in_at` | `string` |  |
-| `custom_attribute` | `table` |  |
+| `custom_attributes` | `table` |  |
 | `discord` | `string` |  |
 | `email` | `string` |  |
 | `external` | `string` |  |
 | `extra_shared_runners_minutes_limit` | `string` |  |
-| `follower` | `string` |  |
+| `followers` | `string` |  |
 | `following` | `string` |  |
 | `github` | `string` |  |
 | `id` | `number` |  |
-| `identity` | `table` |  |
+| `identities` | `table` |  |
 | `is_followed` | `boolean` |  |
 | `job_title` | `string` |  |
 | `key` | `string` |  |
@@ -11897,9 +11943,9 @@ Create an instance: `local api_entities_user_public = client:ApiEntitiesUserPubl
 | `preferred_language` | `string` |  |
 | `private_profile` | `boolean` |  |
 | `projects_limit` | `number` |  |
-| `pronoun` | `string` |  |
+| `pronouns` | `string` |  |
 | `public_email` | `string` |  |
-| `scim_identity` | `table` |  |
+| `scim_identities` | `table` |  |
 | `shared_runners_minutes_limit` | `string` |  |
 | `state` | `string` |  |
 | `theme_id` | `number` |  |
@@ -11971,18 +12017,6 @@ Create an instance: `local api_entities_wiki_page = client:ApiEntitiesWikiPage(n
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `content` | `string` |  |
-| `encoding` | `string` |  |
-| `format` | `string` |  |
-| `front_matter` | `table` |  |
-| `slug` | `string` |  |
-| `title` | `string` |  |
-| `wiki_page_meta_id` | `number` |  |
 
 #### Example: Load
 
@@ -12358,7 +12392,7 @@ Create an instance: `local ee_api_entities_audit_event = client:EeApiEntitiesAud
 | --- | --- | --- |
 | `author_id` | `string` |  |
 | `created_at` | `string` |  |
-| `detail` | `string` |  |
+| `details` | `string` |  |
 | `entity_id` | `string` |  |
 | `entity_type` | `string` |  |
 | `event_name` | `string` |  |
@@ -12391,13 +12425,9 @@ Create an instance: `local ee_api_entities_billable_membership = client:EeApiEnt
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `access_level` | `table` |  |
-| `created_at` | `string` |  |
-| `expires_at` | `string` |  |
-| `id` | `string` |  |
-| `source_full_name` | `string` |  |
-| `source_id` | `string` |  |
-| `source_members_url` | `string` |  |
+| `custom_role` | `string` |  |
+| `integer_value` | `string` |  |
+| `string_value` | `string` |  |
 
 #### Example: Load
 
@@ -12447,7 +12477,7 @@ Create an instance: `local ee_api_entities_geo_node_status = client:EeApiEntitie
 | `container_repositories_verified_in_percentage` | `string` |  |
 | `cursor_last_event_id` | `string` |  |
 | `cursor_last_event_timestamp` | `string` |  |
-| `db_replication_lag_second` | `string` |  |
+| `db_replication_lag_seconds` | `string` |  |
 | `dependency_proxy_blobs_checksum_failed_count` | `string` |  |
 | `dependency_proxy_blobs_checksum_total_count` | `string` |  |
 | `dependency_proxy_blobs_checksummed_count` | `string` |  |
@@ -12529,7 +12559,7 @@ Create an instance: `local ee_api_entities_geo_node_status = client:EeApiEntitie
 | `lfs_objects_verification_total_count` | `string` |  |
 | `lfs_objects_verified_count` | `string` |  |
 | `lfs_objects_verified_in_percentage` | `string` |  |
-| `link` | `table` |  |
+| `links` | `table` |  |
 | `merge_request_diffs_checksum_failed_count` | `string` |  |
 | `merge_request_diffs_checksum_total_count` | `string` |  |
 | `merge_request_diffs_checksummed_count` | `string` |  |
@@ -12543,7 +12573,7 @@ Create an instance: `local ee_api_entities_geo_node_status = client:EeApiEntitie
 | `merge_request_diffs_verified_count` | `string` |  |
 | `merge_request_diffs_verified_in_percentage` | `string` |  |
 | `missing_oauth_application` | `string` |  |
-| `namespace` | `table` |  |
+| `namespaces` | `table` |  |
 | `package_files_checksum_failed_count` | `string` |  |
 | `package_files_checksum_total_count` | `string` |  |
 | `package_files_checksummed_count` | `string` |  |
@@ -12608,7 +12638,7 @@ Create an instance: `local ee_api_entities_geo_node_status = client:EeApiEntitie
 | `proxy_local_requests_event_count_weekly` | `string` |  |
 | `proxy_remote_requests_event_count_weekly` | `string` |  |
 | `replication_slots_count` | `string` |  |
-| `replication_slots_max_retained_wal_byte` | `string` |  |
+| `replication_slots_max_retained_wal_bytes` | `string` |  |
 | `replication_slots_used_count` | `string` |  |
 | `replication_slots_used_in_percentage` | `string` |  |
 | `repositories_checked_count` | `string` |  |
@@ -12629,7 +12659,7 @@ Create an instance: `local ee_api_entities_geo_node_status = client:EeApiEntitie
 | `snippet_repositories_verification_total_count` | `string` |  |
 | `snippet_repositories_verified_count` | `string` |  |
 | `snippet_repositories_verified_in_percentage` | `string` |  |
-| `storage_shard` | `table` |  |
+| `storage_shards` | `table` |  |
 | `storage_shards_match` | `string` |  |
 | `terraform_state_versions_checksum_failed_count` | `string` |  |
 | `terraform_state_versions_checksum_total_count` | `string` |  |
@@ -12680,7 +12710,7 @@ Create an instance: `local ee_api_entities_geo_pipeline_ref = client:EeApiEntiti
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `pipeline_ref` | `table` |  |
+| `pipeline_refs` | `table` |  |
 
 #### Example: List
 
@@ -12740,9 +12770,9 @@ Create an instance: `local ee_api_entities_merge_request_approval_state = client
 | `approved` | `boolean` |  |
 | `approved_by` | `table` |  |
 | `code_owner` | `boolean` |  |
-| `contains_hidden_group` | `boolean` |  |
-| `eligible_approver` | `table` |  |
-| `group` | `table` |  |
+| `contains_hidden_groups` | `boolean` |  |
+| `eligible_approvers` | `table` |  |
+| `groups` | `table` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
 | `overridden` | `boolean` |  |
@@ -12750,7 +12780,7 @@ Create an instance: `local ee_api_entities_merge_request_approval_state = client
 | `rule_type` | `string` |  |
 | `section` | `string` |  |
 | `source_rule` | `table` |  |
-| `user` | `table` |  |
+| `users` | `table` |  |
 
 #### Example: List
 
@@ -13245,9 +13275,9 @@ Create an instance: `local metadata = client:Metadata(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `enterprise` | `boolean` |  |
-| `kas` | `table` |  |
-| `revision` | `string` |  |
+| `enabled` | `boolean` |  |
+| `externalK8sProxyUrl` | `string` |  |
+| `externalUrl` | `string` |  |
 | `version` | `string` |  |
 
 #### Example: Load
@@ -13371,13 +13401,22 @@ Create an instance: `local nuget_package = client:NugetPackage(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `catalog_entry` | `table` |  |
+| `authors` | `string` |  |
 | `count` | `number` |  |
+| `dependencyGroups` | `table` |  |
+| `description` | `string` |  |
+| `iconUrl` | `string` |  |
 | `id` | `string` |  |
-| `item` | `table` |  |
+| `items` | `table` |  |
+| `licenseUrl` | `string` |  |
 | `lower` | `string` |  |
-| `package_content` | `string` |  |
+| `packageContent` | `string` |  |
+| `projectUrl` | `string` |  |
+| `published` | `string` |  |
+| `summary` | `string` |  |
+| `tags` | `string` |  |
 | `upper` | `string` |  |
+| `version` | `string` |  |
 
 #### Example: Load
 
@@ -13502,7 +13541,7 @@ Create an instance: `local project = client:Project(nil)`
 | `updated_at` | `string` |  |
 | `user` | `table` |  |
 | `web_url` | `string` |  |
-| `yaml_error` | `string` |  |
+| `yaml_errors` | `string` |  |
 
 #### Example: Load
 
@@ -13986,7 +14025,7 @@ Create an instance: `local starrer = client:Starrer(nil)`
 | --- | --- | --- |
 | `avatar_path` | `string` |  |
 | `avatar_url` | `string` |  |
-| `custom_attribute` | `table` |  |
+| `custom_attributes` | `table` |  |
 | `id` | `number` |  |
 | `locked` | `boolean` |  |
 | `name` | `string` |  |
@@ -14089,7 +14128,7 @@ Create an instance: `local test_report = client:TestReport(nil)`
 | `skipped_count` | `number` |  |
 | `success_count` | `number` |  |
 | `suite_error` | `string` |  |
-| `test_case` | `table` |  |
+| `test_cases` | `table` |  |
 | `total_count` | `number` |  |
 | `total_time` | `number` |  |
 
@@ -14114,7 +14153,7 @@ Create an instance: `local test_report_summary = client:TestReportSummary(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `test_suite` | `table` |  |
+| `test_suites` | `table` |  |
 | `total` | `table` |  |
 
 #### Example: Load
@@ -14193,7 +14232,7 @@ Create an instance: `local user = client:User(nil)`
 | --- | --- | --- |
 | `avatar_path` | `string` |  |
 | `avatar_url` | `string` |  |
-| `custom_attribute` | `table` |  |
+| `custom_attributes` | `table` |  |
 | `id` | `number` |  |
 | `locked` | `boolean` |  |
 | `name` | `string` |  |
@@ -14313,11 +14352,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local apientitiesaccessrequester = client:ApiEntitiesAccessRequester()
-apientitiesaccessrequester:list()
+local apientitiesmetricimage = client:ApiEntitiesMetricImage()
+apientitiesmetricimage:list()
 
--- apientitiesaccessrequester:data_get() now returns the apientitiesaccessrequester data from the last list
--- apientitiesaccessrequester:match_get() returns the last match criteria
+-- apientitiesmetricimage:data_get() now returns the apientitiesmetricimage data from the last list
+-- apientitiesmetricimage:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -50,7 +50,7 @@ describe("DebianPackageEntity", function()
 
     local debian_package_ref01_resdata_up0_result, err = debian_package_ref01_ent:update(debian_package_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local debian_package_ref01_resdata_up0 = helpers.to_map(debian_package_ref01_resdata_up0_result)
+    local debian_package_ref01_resdata_up0 = helpers.to_map(type(debian_package_ref01_resdata_up0_result) == 'table' and debian_package_ref01_resdata_up0_result.data_get and debian_package_ref01_resdata_up0_result:data_get() or debian_package_ref01_resdata_up0_result)
     assert.is_not_nil(debian_package_ref01_resdata_up0)
 
     -- LOAD

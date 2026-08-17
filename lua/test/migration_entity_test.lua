@@ -42,7 +42,7 @@ describe("MigrationEntity", function()
 
     local migration_ref01_data_result, err = migration_ref01_ent:create(migration_ref01_data, nil)
     assert.is_nil(err)
-    migration_ref01_data = helpers.to_map(migration_ref01_data_result)
+    migration_ref01_data = helpers.to_map(type(migration_ref01_data_result) == 'table' and migration_ref01_data_result.data_get and migration_ref01_data_result:data_get() or migration_ref01_data_result)
     assert.is_not_nil(migration_ref01_data)
 
   end)

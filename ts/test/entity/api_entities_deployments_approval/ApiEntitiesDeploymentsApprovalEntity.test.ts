@@ -64,7 +64,7 @@ describe('ApiEntitiesDeploymentsApprovalEntity', async () => {
     api_entities_deployments_approval_ref01_data['deployment_id'] = setup.idmap['deployment01']
     api_entities_deployments_approval_ref01_data['project_id'] = setup.idmap['project01']
 
-    api_entities_deployments_approval_ref01_data = await api_entities_deployments_approval_ref01_ent.create(api_entities_deployments_approval_ref01_data)
+    api_entities_deployments_approval_ref01_data = (await api_entities_deployments_approval_ref01_ent.create(api_entities_deployments_approval_ref01_data)).data()
     assert(null != api_entities_deployments_approval_ref01_data)
 
 

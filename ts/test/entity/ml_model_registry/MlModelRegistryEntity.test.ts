@@ -65,7 +65,7 @@ describe('MlModelRegistryEntity', async () => {
     ml_model_registry_ref01_data_up0 ['file_name'] = setup.idmap['file_name']
     ml_model_registry_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
 
-    const ml_model_registry_ref01_resdata_up0 = await ml_model_registry_ref01_ent.update(ml_model_registry_ref01_data_up0)
+    const ml_model_registry_ref01_resdata_up0 = (await ml_model_registry_ref01_ent.update(ml_model_registry_ref01_data_up0)).data()
     assert(null != ml_model_registry_ref01_resdata_up0)
 
 

@@ -42,7 +42,7 @@ describe("GroupEntity", function()
 
     local group_ref01_data_result, err = group_ref01_ent:create(group_ref01_data, nil)
     assert.is_nil(err)
-    group_ref01_data = helpers.to_map(group_ref01_data_result)
+    group_ref01_data = helpers.to_map(type(group_ref01_data_result) == 'table' and group_ref01_data_result.data_get and group_ref01_data_result:data_get() or group_ref01_data_result)
     assert.is_not_nil(group_ref01_data)
 
     -- UPDATE
@@ -51,7 +51,7 @@ describe("GroupEntity", function()
 
     local group_ref01_resdata_up0_result, err = group_ref01_ent:update(group_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local group_ref01_resdata_up0 = helpers.to_map(group_ref01_resdata_up0_result)
+    local group_ref01_resdata_up0 = helpers.to_map(type(group_ref01_resdata_up0_result) == 'table' and group_ref01_resdata_up0_result.data_get and group_ref01_resdata_up0_result:data_get() or group_ref01_resdata_up0_result)
     assert.is_not_nil(group_ref01_resdata_up0)
 
     -- LOAD
@@ -60,12 +60,6 @@ describe("GroupEntity", function()
     assert.is_nil(err)
     assert.is_not_nil(group_ref01_data_dt0_loaded)
 
-    -- REMOVE
-    local group_ref01_match_rm0 = {
-      id = group_ref01_data["id"],
-    }
-    local _, err = group_ref01_ent:remove(group_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

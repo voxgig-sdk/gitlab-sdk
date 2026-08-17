@@ -46,7 +46,7 @@ class EeApiEntitiesApprovalStateEntityTest extends TestCase
         $ee_api_entities_approval_state_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $ee_api_entities_approval_state_ref01_data_result = $ee_api_entities_approval_state_ref01_ent->create($ee_api_entities_approval_state_ref01_data, null);
-        $ee_api_entities_approval_state_ref01_data = Helpers::to_map($ee_api_entities_approval_state_ref01_data_result);
+        $ee_api_entities_approval_state_ref01_data = Helpers::to_map(is_object($ee_api_entities_approval_state_ref01_data_result) && method_exists($ee_api_entities_approval_state_ref01_data_result, 'data_get') ? $ee_api_entities_approval_state_ref01_data_result->data_get() : $ee_api_entities_approval_state_ref01_data_result);
         $this->assertNotNull($ee_api_entities_approval_state_ref01_data);
 
     }

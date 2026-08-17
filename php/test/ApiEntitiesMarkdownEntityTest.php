@@ -44,7 +44,7 @@ class ApiEntitiesMarkdownEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.api_entities_markdown"), "api_entities_markdown_ref01"));
 
         $api_entities_markdown_ref01_data_result = $api_entities_markdown_ref01_ent->create($api_entities_markdown_ref01_data, null);
-        $api_entities_markdown_ref01_data = Helpers::to_map($api_entities_markdown_ref01_data_result);
+        $api_entities_markdown_ref01_data = Helpers::to_map(is_object($api_entities_markdown_ref01_data_result) && method_exists($api_entities_markdown_ref01_data_result, 'data_get') ? $api_entities_markdown_ref01_data_result->data_get() : $api_entities_markdown_ref01_data_result);
         $this->assertNotNull($api_entities_markdown_ref01_data);
 
     }

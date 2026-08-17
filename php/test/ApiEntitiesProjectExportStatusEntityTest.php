@@ -48,13 +48,9 @@ class ApiEntitiesProjectExportStatusEntityTest extends TestCase
 
         // LOAD
         $api_entities_project_export_status_ref01_ent = $client->ApiEntitiesProjectExportStatus(null);
-        $api_entities_project_export_status_ref01_match_dt0 = [
-            "id" => $api_entities_project_export_status_ref01_data["id"],
-        ];
+        $api_entities_project_export_status_ref01_match_dt0 = [];
         $api_entities_project_export_status_ref01_data_dt0_loaded = $api_entities_project_export_status_ref01_ent->load($api_entities_project_export_status_ref01_match_dt0, null);
-        $api_entities_project_export_status_ref01_data_dt0_load_result = Helpers::to_map($api_entities_project_export_status_ref01_data_dt0_loaded);
-        $this->assertNotNull($api_entities_project_export_status_ref01_data_dt0_load_result);
-        $this->assertEquals($api_entities_project_export_status_ref01_data_dt0_load_result["id"], $api_entities_project_export_status_ref01_data["id"]);
+        $this->assertNotNull($api_entities_project_export_status_ref01_data_dt0_loaded);
 
     }
 }

@@ -53,7 +53,7 @@ class MavenPackageEntityTest extends TestCase
         ];
 
         $maven_package_ref01_resdata_up0_result = $maven_package_ref01_ent->update($maven_package_ref01_data_up0_up, null);
-        $maven_package_ref01_resdata_up0 = Helpers::to_map($maven_package_ref01_resdata_up0_result);
+        $maven_package_ref01_resdata_up0 = Helpers::to_map(is_object($maven_package_ref01_resdata_up0_result) && method_exists($maven_package_ref01_resdata_up0_result, 'data_get') ? $maven_package_ref01_resdata_up0_result->data_get() : $maven_package_ref01_resdata_up0_result);
         $this->assertNotNull($maven_package_ref01_resdata_up0);
 
         // LOAD

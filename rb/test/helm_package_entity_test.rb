@@ -40,7 +40,7 @@ class HelmPackageEntityTest < Minitest::Test
     helm_package_ref01_data["project_id"] = setup[:idmap]["project01"]
 
     helm_package_ref01_data_result = helm_package_ref01_ent.create(helm_package_ref01_data, nil)
-    helm_package_ref01_data = Helpers.to_map(helm_package_ref01_data_result)
+    helm_package_ref01_data = Helpers.to_map(helm_package_ref01_data_result.respond_to?(:data_get) ? helm_package_ref01_data_result.data_get : helm_package_ref01_data_result)
     assert !helm_package_ref01_data.nil?
 
     # LOAD

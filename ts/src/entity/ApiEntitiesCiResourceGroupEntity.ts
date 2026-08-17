@@ -38,7 +38,7 @@ class ApiEntitiesCiResourceGroupEntity extends GitlabEntityBase<ApiEntitiesCiRes
 
 
 
-  async load(this: any, reqmatch?: ApiEntitiesCiResourceGroupLoadMatch, ctrl?: Control): Promise<ApiEntitiesCiResourceGroup> {
+  async load(this: any, reqmatch?: ApiEntitiesCiResourceGroupLoadMatch, ctrl?: Control): Promise<ApiEntitiesCiResourceGroupEntity> {
 
     const utility = this._utility
 
@@ -129,7 +129,15 @@ class ApiEntitiesCiResourceGroupEntity extends GitlabEntityBase<ApiEntitiesCiRes
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 
@@ -151,7 +159,7 @@ class ApiEntitiesCiResourceGroupEntity extends GitlabEntityBase<ApiEntitiesCiRes
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesCiResourceGroupListMatch, ctrl?: Control): Promise<ApiEntitiesCiResourceGroup[]> {
+  async list(this: any, reqmatch?: ApiEntitiesCiResourceGroupListMatch, ctrl?: Control): Promise<ApiEntitiesCiResourceGroupEntity[]> {
 
     const utility = this._utility
 
@@ -261,7 +269,7 @@ class ApiEntitiesCiResourceGroupEntity extends GitlabEntityBase<ApiEntitiesCiRes
 
 
 
-  async update(this: any, reqdata?: ApiEntitiesCiResourceGroupUpdateData, ctrl?: Control): Promise<ApiEntitiesCiResourceGroup> {
+  async update(this: any, reqdata?: ApiEntitiesCiResourceGroupUpdateData, ctrl?: Control): Promise<ApiEntitiesCiResourceGroupEntity> {
 
     const utility = this._utility
 
@@ -353,7 +361,15 @@ class ApiEntitiesCiResourceGroupEntity extends GitlabEntityBase<ApiEntitiesCiRes
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 

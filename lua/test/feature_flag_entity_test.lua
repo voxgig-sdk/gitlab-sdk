@@ -43,7 +43,7 @@ describe("FeatureFlagEntity", function()
 
     local feature_flag_ref01_data_result, err = feature_flag_ref01_ent:create(feature_flag_ref01_data, nil)
     assert.is_nil(err)
-    feature_flag_ref01_data = helpers.to_map(feature_flag_ref01_data_result)
+    feature_flag_ref01_data = helpers.to_map(type(feature_flag_ref01_data_result) == 'table' and feature_flag_ref01_data_result.data_get and feature_flag_ref01_data_result:data_get() or feature_flag_ref01_data_result)
     assert.is_not_nil(feature_flag_ref01_data)
 
     -- LOAD
@@ -52,12 +52,6 @@ describe("FeatureFlagEntity", function()
     assert.is_nil(err)
     assert.is_not_nil(feature_flag_ref01_data_dt0_loaded)
 
-    -- REMOVE
-    local feature_flag_ref01_match_rm0 = {
-      id = feature_flag_ref01_data["id"],
-    }
-    local _, err = feature_flag_ref01_ent:remove(feature_flag_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

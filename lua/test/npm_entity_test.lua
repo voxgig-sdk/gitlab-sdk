@@ -50,7 +50,7 @@ describe("NpmEntity", function()
 
     local npm_ref01_resdata_up0_result, err = npm_ref01_ent:update(npm_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local npm_ref01_resdata_up0 = helpers.to_map(npm_ref01_resdata_up0_result)
+    local npm_ref01_resdata_up0 = helpers.to_map(type(npm_ref01_resdata_up0_result) == 'table' and npm_ref01_resdata_up0_result.data_get and npm_ref01_resdata_up0_result:data_get() or npm_ref01_resdata_up0_result)
     assert.is_not_nil(npm_ref01_resdata_up0)
 
   end)

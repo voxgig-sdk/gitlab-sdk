@@ -62,7 +62,7 @@ describe('GroupImportEntity', async () => {
     const group_import_ref01_ent = client.GroupImport()
     let group_import_ref01_data = setup.data.new.group_import['group_import_ref01']
 
-    group_import_ref01_data = await group_import_ref01_ent.create(group_import_ref01_data)
+    group_import_ref01_data = (await group_import_ref01_ent.create(group_import_ref01_data)).data()
     assert(null != group_import_ref01_data)
 
 

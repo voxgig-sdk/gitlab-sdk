@@ -67,7 +67,7 @@ describe('ApiEntitiesCiRunnerDetailEntity', async () => {
     const api_entities_ci_runner_detail_ref01_markdef_up0 = { name: 'access_level', value: 'Mark01-api_entities_ci_runner_detail_ref01_' + setup.now }
     ;(api_entities_ci_runner_detail_ref01_data_up0 as any)[api_entities_ci_runner_detail_ref01_markdef_up0.name] = api_entities_ci_runner_detail_ref01_markdef_up0.value
 
-    const api_entities_ci_runner_detail_ref01_resdata_up0 = await api_entities_ci_runner_detail_ref01_ent.update(api_entities_ci_runner_detail_ref01_data_up0)
+    const api_entities_ci_runner_detail_ref01_resdata_up0 = (await api_entities_ci_runner_detail_ref01_ent.update(api_entities_ci_runner_detail_ref01_data_up0)).data()
     assert(api_entities_ci_runner_detail_ref01_resdata_up0.id === api_entities_ci_runner_detail_ref01_data_up0.id)
 
     assert((api_entities_ci_runner_detail_ref01_resdata_up0 as any)[api_entities_ci_runner_detail_ref01_markdef_up0.name] === api_entities_ci_runner_detail_ref01_markdef_up0.value)
@@ -76,7 +76,7 @@ describe('ApiEntitiesCiRunnerDetailEntity', async () => {
     // LOAD
     const api_entities_ci_runner_detail_ref01_match_dt0: any = {}
     api_entities_ci_runner_detail_ref01_match_dt0.id = api_entities_ci_runner_detail_ref01_data.id
-    const api_entities_ci_runner_detail_ref01_data_dt0 = await api_entities_ci_runner_detail_ref01_ent.load(api_entities_ci_runner_detail_ref01_match_dt0)
+    const api_entities_ci_runner_detail_ref01_data_dt0 = (await api_entities_ci_runner_detail_ref01_ent.load(api_entities_ci_runner_detail_ref01_match_dt0)).data()
     assert(api_entities_ci_runner_detail_ref01_data_dt0.id === api_entities_ci_runner_detail_ref01_data.id)
 
 

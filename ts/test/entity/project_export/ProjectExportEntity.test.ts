@@ -62,7 +62,7 @@ describe('ProjectExportEntity', async () => {
     const project_export_ref01_ent = client.ProjectExport()
     let project_export_ref01_data = setup.data.new.project_export['project_export_ref01']
 
-    project_export_ref01_data = await project_export_ref01_ent.create(project_export_ref01_data)
+    project_export_ref01_data = (await project_export_ref01_ent.create(project_export_ref01_data)).data()
     assert(null != project_export_ref01_data)
 
 

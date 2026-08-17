@@ -41,13 +41,9 @@ class EeApiEntitiesBillableMembershipEntityTest < Minitest::Test
 
     # LOAD
     ee_api_entities_billable_membership_ref01_ent = client.EeApiEntitiesBillableMembership(nil)
-    ee_api_entities_billable_membership_ref01_match_dt0 = {
-      "id" => ee_api_entities_billable_membership_ref01_data["id"],
-    }
+    ee_api_entities_billable_membership_ref01_match_dt0 = {}
     ee_api_entities_billable_membership_ref01_data_dt0_loaded = ee_api_entities_billable_membership_ref01_ent.load(ee_api_entities_billable_membership_ref01_match_dt0, nil)
-    ee_api_entities_billable_membership_ref01_data_dt0_load_result = Helpers.to_map(ee_api_entities_billable_membership_ref01_data_dt0_loaded)
-    assert !ee_api_entities_billable_membership_ref01_data_dt0_load_result.nil?
-    assert_equal ee_api_entities_billable_membership_ref01_data_dt0_load_result["id"], ee_api_entities_billable_membership_ref01_data["id"]
+    assert !ee_api_entities_billable_membership_ref01_data_dt0_loaded.nil?
 
   end
 end

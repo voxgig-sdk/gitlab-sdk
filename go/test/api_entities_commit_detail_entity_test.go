@@ -60,7 +60,7 @@ func TestApiEntitiesCommitDetailEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesCommitDetailRef01Data = core.ToMapAny(apiEntitiesCommitDetailRef01DataResult)
+		apiEntitiesCommitDetailRef01Data = core.ToMapAny(entityData(apiEntitiesCommitDetailRef01DataResult))
 		if apiEntitiesCommitDetailRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -82,7 +82,7 @@ func TestApiEntitiesCommitDetailEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesCommitDetailRef01ResdataUp0 := core.ToMapAny(apiEntitiesCommitDetailRef01ResdataUp0Result)
+		apiEntitiesCommitDetailRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesCommitDetailRef01ResdataUp0Result))
 		if apiEntitiesCommitDetailRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -101,7 +101,7 @@ func TestApiEntitiesCommitDetailEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesCommitDetailRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesCommitDetailRef01DataDt0Loaded)
+		apiEntitiesCommitDetailRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesCommitDetailRef01DataDt0Loaded))
 		if apiEntitiesCommitDetailRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

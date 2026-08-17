@@ -59,19 +59,11 @@ func TestRunnerEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		runnerRef01Data = core.ToMapAny(runnerRef01DataResult)
+		runnerRef01Data = core.ToMapAny(entityData(runnerRef01DataResult))
 		if runnerRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
 
-		// REMOVE
-		runnerRef01MatchRm0 := map[string]any{
-			"id": runnerRef01Data["id"],
-		}
-		_, err = runnerRef01Ent.Remove(runnerRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
 
 	})
 }

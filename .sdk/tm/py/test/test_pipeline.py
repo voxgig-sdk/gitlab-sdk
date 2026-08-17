@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import GitlabSDK
-from core.error import GitlabError
-from core.result import GitlabResult
-from core.response import GitlabResponse
-from core.spec import GitlabSpec
-from feature.base_feature import GitlabBaseFeature
+from projectname_sdk.core.error import GitlabError
+from projectname_sdk.core.result import GitlabResult
+from projectname_sdk.core.response import GitlabResponse
+from projectname_sdk.core.spec import GitlabSpec
+from projectname_sdk.feature.base_feature import GitlabBaseFeature
 
 
 def _client():

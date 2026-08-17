@@ -38,7 +38,7 @@ class RubygemPackageEntityTest < Minitest::Test
     rubygem_package_ref01_data["project_id"] = setup[:idmap]["project01"]
 
     rubygem_package_ref01_data_result = rubygem_package_ref01_ent.create(rubygem_package_ref01_data, nil)
-    rubygem_package_ref01_data = Helpers.to_map(rubygem_package_ref01_data_result)
+    rubygem_package_ref01_data = Helpers.to_map(rubygem_package_ref01_data_result.respond_to?(:data_get) ? rubygem_package_ref01_data_result.data_get : rubygem_package_ref01_data_result)
     assert !rubygem_package_ref01_data.nil?
 
     # LOAD

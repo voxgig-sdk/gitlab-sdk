@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -46,7 +46,7 @@ class TestFeatureFlagEntity:
         feature_flag_ref01_data["project_id"] = setup["idmap"]["project01"]
         feature_flag_ref01_data["unleash_id"] = setup["idmap"]["unleash01"]
 
-        feature_flag_ref01_data = helpers.to_map(feature_flag_ref01_ent.create(feature_flag_ref01_data, None))
+        feature_flag_ref01_data = helpers.to_map(runner.entity_data(feature_flag_ref01_ent.create(feature_flag_ref01_data, None)))
         assert feature_flag_ref01_data is not None
 
         # LOAD
@@ -54,11 +54,6 @@ class TestFeatureFlagEntity:
         feature_flag_ref01_data_dt0_loaded = feature_flag_ref01_ent.load(feature_flag_ref01_match_dt0, None)
         assert feature_flag_ref01_data_dt0_loaded is not None
 
-        # REMOVE
-        feature_flag_ref01_match_rm0 = {
-            "id": feature_flag_ref01_data["id"],
-        }
-        feature_flag_ref01_ent.remove(feature_flag_ref01_match_rm0, None)
 
 
 

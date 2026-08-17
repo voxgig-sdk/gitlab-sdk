@@ -69,7 +69,7 @@ func TestDebianEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		debianRef01ResdataUp0 := core.ToMapAny(debianRef01ResdataUp0Result)
+		debianRef01ResdataUp0 := core.ToMapAny(entityData(debianRef01ResdataUp0Result))
 		if debianRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

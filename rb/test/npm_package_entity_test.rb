@@ -39,7 +39,7 @@ class NpmPackageEntityTest < Minitest::Test
     npm_package_ref01_data["project_id"] = setup[:idmap]["project01"]
 
     npm_package_ref01_data_result = npm_package_ref01_ent.create(npm_package_ref01_data, nil)
-    npm_package_ref01_data = Helpers.to_map(npm_package_ref01_data_result)
+    npm_package_ref01_data = Helpers.to_map(npm_package_ref01_data_result.respond_to?(:data_get) ? npm_package_ref01_data_result.data_get : npm_package_ref01_data_result)
     assert !npm_package_ref01_data.nil?
 
     # UPDATE
@@ -47,7 +47,7 @@ class NpmPackageEntityTest < Minitest::Test
     }
 
     npm_package_ref01_resdata_up0_result = npm_package_ref01_ent.update(npm_package_ref01_data_up0_up, nil)
-    npm_package_ref01_resdata_up0 = Helpers.to_map(npm_package_ref01_resdata_up0_result)
+    npm_package_ref01_resdata_up0 = Helpers.to_map(npm_package_ref01_resdata_up0_result.respond_to?(:data_get) ? npm_package_ref01_resdata_up0_result.data_get : npm_package_ref01_resdata_up0_result)
     assert !npm_package_ref01_resdata_up0.nil?
 
     # LOAD
@@ -55,11 +55,6 @@ class NpmPackageEntityTest < Minitest::Test
     npm_package_ref01_data_dt0_loaded = npm_package_ref01_ent.load(npm_package_ref01_match_dt0, nil)
     assert !npm_package_ref01_data_dt0_loaded.nil?
 
-    # REMOVE
-    npm_package_ref01_match_rm0 = {
-      "id" => npm_package_ref01_data["id"],
-    }
-    npm_package_ref01_ent.remove(npm_package_ref01_match_rm0, nil)
 
   end
 end

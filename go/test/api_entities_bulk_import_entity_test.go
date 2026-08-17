@@ -51,7 +51,7 @@ func TestApiEntitiesBulkImportEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -107,7 +107,7 @@ func TestApiEntitiesBulkImportEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesBulkImportRef01Data = core.ToMapAny(apiEntitiesBulkImportRef01DataResult)
+		apiEntitiesBulkImportRef01Data = core.ToMapAny(entityData(apiEntitiesBulkImportRef01DataResult))
 		if apiEntitiesBulkImportRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -140,7 +140,7 @@ func TestApiEntitiesBulkImportEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesBulkImportRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesBulkImportRef01DataDt0Loaded)
+		apiEntitiesBulkImportRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesBulkImportRef01DataDt0Loaded))
 		if apiEntitiesBulkImportRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

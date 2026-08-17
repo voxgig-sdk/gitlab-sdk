@@ -37,7 +37,7 @@ class ApiEntitiesNugetSearchResultEntity extends GitlabEntityBase<ApiEntitiesNug
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesNugetSearchResultListMatch, ctrl?: Control): Promise<ApiEntitiesNugetSearchResult[]> {
+  async list(this: any, reqmatch?: ApiEntitiesNugetSearchResultListMatch, ctrl?: Control): Promise<ApiEntitiesNugetSearchResultEntity[]> {
 
     const utility = this._utility
 

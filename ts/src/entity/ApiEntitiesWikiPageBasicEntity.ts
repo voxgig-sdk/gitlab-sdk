@@ -37,7 +37,7 @@ class ApiEntitiesWikiPageBasicEntity extends GitlabEntityBase<ApiEntitiesWikiPag
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesWikiPageBasicListMatch, ctrl?: Control): Promise<ApiEntitiesWikiPageBasic[]> {
+  async list(this: any, reqmatch?: ApiEntitiesWikiPageBasicListMatch, ctrl?: Control): Promise<ApiEntitiesWikiPageBasicEntity[]> {
 
     const utility = this._utility
 

@@ -39,7 +39,7 @@ class PypiPackageEntityTest < Minitest::Test
     pypi_package_ref01_data["project_id"] = setup[:idmap]["project01"]
 
     pypi_package_ref01_data_result = pypi_package_ref01_ent.create(pypi_package_ref01_data, nil)
-    pypi_package_ref01_data = Helpers.to_map(pypi_package_ref01_data_result)
+    pypi_package_ref01_data = Helpers.to_map(pypi_package_ref01_data_result.respond_to?(:data_get) ? pypi_package_ref01_data_result.data_get : pypi_package_ref01_data_result)
     assert !pypi_package_ref01_data.nil?
 
     # LOAD

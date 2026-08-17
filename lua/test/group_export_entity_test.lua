@@ -41,7 +41,7 @@ describe("GroupExportEntity", function()
 
     local group_export_ref01_data_result, err = group_export_ref01_ent:create(group_export_ref01_data, nil)
     assert.is_nil(err)
-    group_export_ref01_data = helpers.to_map(group_export_ref01_data_result)
+    group_export_ref01_data = helpers.to_map(type(group_export_ref01_data_result) == 'table' and group_export_ref01_data_result.data_get and group_export_ref01_data_result:data_get() or group_export_ref01_data_result)
     assert.is_not_nil(group_export_ref01_data)
 
     -- LOAD

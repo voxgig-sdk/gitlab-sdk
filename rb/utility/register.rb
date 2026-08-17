@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ GitlabUtility.registrar = ->(u) {
   u.prepare_params = GitlabUtilities::PrepareParams
   u.prepare_path = GitlabUtilities::PreparePath
   u.prepare_query = GitlabUtilities::PrepareQuery
+  u.graphql_body = GitlabUtilities::GraphqlBody
+  u.graphql_errors = GitlabUtilities::GraphqlErrors
   u.result_basic = GitlabUtilities::ResultBasic
   u.result_body = GitlabUtilities::ResultBody
   u.result_headers = GitlabUtilities::ResultHeaders

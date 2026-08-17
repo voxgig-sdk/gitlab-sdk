@@ -65,15 +65,11 @@ describe('TerraformStateEntity', async () => {
     terraform_state_ref01_data['project_id'] = setup.idmap['project01']
     terraform_state_ref01_data['state_id'] = setup.idmap['state01']
 
-    terraform_state_ref01_data = await terraform_state_ref01_ent.create(terraform_state_ref01_data)
+    terraform_state_ref01_data = (await terraform_state_ref01_ent.create(terraform_state_ref01_data)).data()
     assert(null != terraform_state_ref01_data)
 
 
 
-    // REMOVE
-    const terraform_state_ref01_match_rm0: any = { id: terraform_state_ref01_data.id }
-    await terraform_state_ref01_ent.remove(terraform_state_ref01_match_rm0)
-  
 
   })
 })

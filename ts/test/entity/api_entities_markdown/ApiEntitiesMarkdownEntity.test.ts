@@ -62,7 +62,7 @@ describe('ApiEntitiesMarkdownEntity', async () => {
     const api_entities_markdown_ref01_ent = client.ApiEntitiesMarkdown()
     let api_entities_markdown_ref01_data = setup.data.new.api_entities_markdown['api_entities_markdown_ref01']
 
-    api_entities_markdown_ref01_data = await api_entities_markdown_ref01_ent.create(api_entities_markdown_ref01_data)
+    api_entities_markdown_ref01_data = (await api_entities_markdown_ref01_ent.create(api_entities_markdown_ref01_data)).data()
     assert(null != api_entities_markdown_ref01_data)
 
 

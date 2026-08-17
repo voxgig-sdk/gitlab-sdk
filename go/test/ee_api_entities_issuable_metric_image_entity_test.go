@@ -61,7 +61,7 @@ func TestEeApiEntitiesIssuableMetricImageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		eeApiEntitiesIssuableMetricImageRef01Data = core.ToMapAny(eeApiEntitiesIssuableMetricImageRef01DataResult)
+		eeApiEntitiesIssuableMetricImageRef01Data = core.ToMapAny(entityData(eeApiEntitiesIssuableMetricImageRef01DataResult))
 		if eeApiEntitiesIssuableMetricImageRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -84,7 +84,7 @@ func TestEeApiEntitiesIssuableMetricImageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		eeApiEntitiesIssuableMetricImageRef01ResdataUp0 := core.ToMapAny(eeApiEntitiesIssuableMetricImageRef01ResdataUp0Result)
+		eeApiEntitiesIssuableMetricImageRef01ResdataUp0 := core.ToMapAny(entityData(eeApiEntitiesIssuableMetricImageRef01ResdataUp0Result))
 		if eeApiEntitiesIssuableMetricImageRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

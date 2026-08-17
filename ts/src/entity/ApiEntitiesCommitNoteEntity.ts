@@ -38,7 +38,7 @@ class ApiEntitiesCommitNoteEntity extends GitlabEntityBase<ApiEntitiesCommitNote
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesCommitNoteListMatch, ctrl?: Control): Promise<ApiEntitiesCommitNote[]> {
+  async list(this: any, reqmatch?: ApiEntitiesCommitNoteListMatch, ctrl?: Control): Promise<ApiEntitiesCommitNoteEntity[]> {
 
     const utility = this._utility
 
@@ -147,7 +147,7 @@ class ApiEntitiesCommitNoteEntity extends GitlabEntityBase<ApiEntitiesCommitNote
 
 
 
-  async create(this: any, reqdata?: ApiEntitiesCommitNoteCreateData, ctrl?: Control): Promise<ApiEntitiesCommitNote> {
+  async create(this: any, reqdata?: ApiEntitiesCommitNoteCreateData, ctrl?: Control): Promise<ApiEntitiesCommitNoteEntity> {
 
     const utility = this._utility
     const {
@@ -233,7 +233,15 @@ class ApiEntitiesCommitNoteEntity extends GitlabEntityBase<ApiEntitiesCommitNote
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 

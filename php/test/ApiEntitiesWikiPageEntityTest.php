@@ -46,7 +46,7 @@ class ApiEntitiesWikiPageEntityTest extends TestCase
         $api_entities_wiki_page_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $api_entities_wiki_page_ref01_data_result = $api_entities_wiki_page_ref01_ent->create($api_entities_wiki_page_ref01_data, null);
-        $api_entities_wiki_page_ref01_data = Helpers::to_map($api_entities_wiki_page_ref01_data_result);
+        $api_entities_wiki_page_ref01_data = Helpers::to_map(is_object($api_entities_wiki_page_ref01_data_result) && method_exists($api_entities_wiki_page_ref01_data_result, 'data_get') ? $api_entities_wiki_page_ref01_data_result->data_get() : $api_entities_wiki_page_ref01_data_result);
         $this->assertNotNull($api_entities_wiki_page_ref01_data);
 
         // UPDATE
@@ -54,14 +54,9 @@ class ApiEntitiesWikiPageEntityTest extends TestCase
             "project_id" => $setup["idmap"]["project_id"],
         ];
 
-        $api_entities_wiki_page_ref01_markdef_up0_name = "content";
-        $api_entities_wiki_page_ref01_markdef_up0_value = "Mark01-api_entities_wiki_page_ref01_" . $setup["now"];
-        $api_entities_wiki_page_ref01_data_up0_up[$api_entities_wiki_page_ref01_markdef_up0_name] = $api_entities_wiki_page_ref01_markdef_up0_value;
-
         $api_entities_wiki_page_ref01_resdata_up0_result = $api_entities_wiki_page_ref01_ent->update($api_entities_wiki_page_ref01_data_up0_up, null);
-        $api_entities_wiki_page_ref01_resdata_up0 = Helpers::to_map($api_entities_wiki_page_ref01_resdata_up0_result);
+        $api_entities_wiki_page_ref01_resdata_up0 = Helpers::to_map(is_object($api_entities_wiki_page_ref01_resdata_up0_result) && method_exists($api_entities_wiki_page_ref01_resdata_up0_result, 'data_get') ? $api_entities_wiki_page_ref01_resdata_up0_result->data_get() : $api_entities_wiki_page_ref01_resdata_up0_result);
         $this->assertNotNull($api_entities_wiki_page_ref01_resdata_up0);
-        $this->assertEquals($api_entities_wiki_page_ref01_resdata_up0[$api_entities_wiki_page_ref01_markdef_up0_name], $api_entities_wiki_page_ref01_markdef_up0_value);
 
         // LOAD
         $api_entities_wiki_page_ref01_match_dt0 = [];

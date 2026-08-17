@@ -42,7 +42,7 @@ describe("ComposerEntity", function()
 
     local composer_ref01_data_result, err = composer_ref01_ent:create(composer_ref01_data, nil)
     assert.is_nil(err)
-    composer_ref01_data = helpers.to_map(composer_ref01_data_result)
+    composer_ref01_data = helpers.to_map(type(composer_ref01_data_result) == 'table' and composer_ref01_data_result.data_get and composer_ref01_data_result:data_get() or composer_ref01_data_result)
     assert.is_not_nil(composer_ref01_data)
 
   end)

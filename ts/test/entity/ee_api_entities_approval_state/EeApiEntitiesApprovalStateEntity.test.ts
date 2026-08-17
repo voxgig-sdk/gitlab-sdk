@@ -64,7 +64,7 @@ describe('EeApiEntitiesApprovalStateEntity', async () => {
     ee_api_entities_approval_state_ref01_data['merge_request_id'] = setup.idmap['merge_request01']
     ee_api_entities_approval_state_ref01_data['project_id'] = setup.idmap['project01']
 
-    ee_api_entities_approval_state_ref01_data = await ee_api_entities_approval_state_ref01_ent.create(ee_api_entities_approval_state_ref01_data)
+    ee_api_entities_approval_state_ref01_data = (await ee_api_entities_approval_state_ref01_ent.create(ee_api_entities_approval_state_ref01_data)).data()
     assert(null != ee_api_entities_approval_state_ref01_data)
 
 

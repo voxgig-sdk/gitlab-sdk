@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -52,7 +52,7 @@ class TestApiEntitiesCiRunnerManagerEntity:
             "id": api_entities_ci_runner_manager_ref01_data["id"],
         }
         api_entities_ci_runner_manager_ref01_data_dt0_loaded = api_entities_ci_runner_manager_ref01_ent.load(api_entities_ci_runner_manager_ref01_match_dt0, None)
-        api_entities_ci_runner_manager_ref01_data_dt0_load_result = helpers.to_map(api_entities_ci_runner_manager_ref01_data_dt0_loaded)
+        api_entities_ci_runner_manager_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(api_entities_ci_runner_manager_ref01_data_dt0_loaded))
         assert api_entities_ci_runner_manager_ref01_data_dt0_load_result is not None
         assert api_entities_ci_runner_manager_ref01_data_dt0_load_result["id"] == api_entities_ci_runner_manager_ref01_data["id"]
 

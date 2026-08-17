@@ -40,7 +40,7 @@ class TerraformStateEntityTest < Minitest::Test
     terraform_state_ref01_data["state_id"] = setup[:idmap]["state01"]
 
     terraform_state_ref01_data_result = terraform_state_ref01_ent.create(terraform_state_ref01_data, nil)
-    terraform_state_ref01_data = Helpers.to_map(terraform_state_ref01_data_result)
+    terraform_state_ref01_data = Helpers.to_map(terraform_state_ref01_data_result.respond_to?(:data_get) ? terraform_state_ref01_data_result.data_get : terraform_state_ref01_data_result)
     assert !terraform_state_ref01_data.nil?
 
     # LOAD
@@ -48,11 +48,6 @@ class TerraformStateEntityTest < Minitest::Test
     terraform_state_ref01_data_dt0_loaded = terraform_state_ref01_ent.load(terraform_state_ref01_match_dt0, nil)
     assert !terraform_state_ref01_data_dt0_loaded.nil?
 
-    # REMOVE
-    terraform_state_ref01_match_rm0 = {
-      "id" => terraform_state_ref01_data["id"],
-    }
-    terraform_state_ref01_ent.remove(terraform_state_ref01_match_rm0, nil)
 
   end
 end

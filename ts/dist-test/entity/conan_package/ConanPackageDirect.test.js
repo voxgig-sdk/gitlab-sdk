@@ -1,0 +1,131 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const envlocal = __dirname + '/../../../.env.local';
+require('dotenv').config({ quiet: true, path: [envlocal] });
+const node_test_1 = require("node:test");
+const node_assert_1 = __importDefault(require("node:assert"));
+const __1 = require("../../..");
+const utility_1 = require("../../utility");
+(0, node_test_1.describe)('ConanPackageDirect', async () => {
+    // Per-test live pacing. Delay is read from sdk-test-control.json's
+    // `test.live.delayMs`; only sleeps when GITLAB_TEST_LIVE=TRUE.
+    (0, node_test_1.afterEach)((0, utility_1.liveDelay)('GITLAB_TEST_LIVE'));
+    (0, node_test_1.test)('direct-exists', async () => {
+        const sdk = new __1.GitlabSDK({
+            // Concrete base: a live construction must satisfy any server
+            // variables a templated base URL declares; overriding base with a
+            // literal (as the direct flow tests do) sidesteps the requirement.
+            base: 'http://localhost:8080',
+            system: { fetch: async () => ({}) }
+        });
+        (0, node_assert_1.default)('function' === typeof sdk.direct);
+        (0, node_assert_1.default)('function' === typeof sdk.prepare);
+    });
+    (0, node_test_1.test)('direct-load-conan_package', async (t) => {
+        const setup = directSetup({ id: 'direct01' });
+        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-conan_package', setup.live))
+            return;
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["conan_package_reference01", "file_name01", "id01", "package_channel01", "package_name01", "package_revision01", "package_username01", "package_version01", "recipe_revision01"]))
+            return;
+        const { client, calls } = setup;
+        const params = {};
+        const query = {};
+        if (setup.live) {
+        }
+        else {
+            params.conan_package_reference = 'direct01';
+            params.file_name = 'direct02';
+            params.id = 'direct03';
+            params.package_channel = 'direct04';
+            params.package_name = 'direct05';
+            params.package_revision = 'direct06';
+            params.package_username = 'direct07';
+            params.package_version = 'direct08';
+            params.recipe_revision = 'direct09';
+        }
+        const result = await client.direct({
+            path: 'api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}',
+            method: 'GET',
+            params,
+            query,
+        });
+        if (setup.live) {
+            // Live mode is lenient: synthetic IDs frequently 4xx. Skip rather
+            // than fail when the load endpoint isn't reachable with the IDs we
+            // can construct from setup.idmap.
+            if (!result.ok || result.status < 200 || result.status >= 300) {
+                return;
+            }
+        }
+        else {
+            (0, node_assert_1.default)(result.ok === true);
+            (0, node_assert_1.default)(result.status === 200);
+            (0, node_assert_1.default)(null != result.data);
+            (0, node_assert_1.default)(result.data.id === 'direct01');
+            (0, node_assert_1.default)(calls.length === 1);
+            (0, node_assert_1.default)(calls[0].init.method === 'GET');
+            (0, node_assert_1.default)(calls[0].url.includes('direct01'));
+            (0, node_assert_1.default)(calls[0].url.includes('direct02'));
+            (0, node_assert_1.default)(calls[0].url.includes('direct03'));
+            (0, node_assert_1.default)(calls[0].url.includes('direct04'));
+            (0, node_assert_1.default)(calls[0].url.includes('direct05'));
+            (0, node_assert_1.default)(calls[0].url.includes('direct06'));
+            (0, node_assert_1.default)(calls[0].url.includes('direct07'));
+            (0, node_assert_1.default)(calls[0].url.includes('direct08'));
+            (0, node_assert_1.default)(calls[0].url.includes('direct09'));
+        }
+    });
+});
+function directSetup(mockres) {
+    const calls = [];
+    const env = (0, utility_1.envOverride)({
+        'GITLAB_TEST_CONAN_PACKAGE_ENTID': {},
+        'GITLAB_TEST_LIVE': 'FALSE',
+        'GITLAB_APIKEY': 'NONE',
+    });
+    const live = 'TRUE' === env.GITLAB_TEST_LIVE;
+    if (live) {
+        const client = new __1.GitlabSDK({
+            apikey: env.GITLAB_APIKEY,
+        });
+        let idmap = env['GITLAB_TEST_CONAN_PACKAGE_ENTID'];
+        if ('string' === typeof idmap && idmap.startsWith('{')) {
+            idmap = JSON.parse(idmap);
+        }
+        return { client, calls, live, idmap };
+    }
+    const mockFetch = async (url, init) => {
+        calls.push({ url, init });
+        return {
+            status: 200,
+            statusText: 'OK',
+            headers: {},
+            json: async () => (null != mockres ? mockres : { id: 'direct01' }),
+        };
+    };
+    const client = new __1.GitlabSDK({
+        base: 'http://localhost:8080',
+        system: { fetch: mockFetch },
+    });
+    return { client, calls, live, idmap: {} };
+}
+// direct() returns the raw response body. List endpoints often wrap the
+// array in an envelope (e.g. { data: [...] }, { entities: [...] },
+// { pagination, data: [...] }). The test transforms the raw body to
+// extract the first array — either the body itself or the first array
+// property of an envelope object.
+function unwrapListData(data) {
+    if (Array.isArray(data))
+        return data;
+    if (data && 'object' === typeof data) {
+        for (const v of Object.values(data)) {
+            if (Array.isArray(v))
+                return v;
+        }
+    }
+    return null;
+}
+//# sourceMappingURL=ConanPackageDirect.test.js.map

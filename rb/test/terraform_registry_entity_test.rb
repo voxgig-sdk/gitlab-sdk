@@ -47,7 +47,7 @@ class TerraformRegistryEntityTest < Minitest::Test
     }
 
     terraform_registry_ref01_resdata_up0_result = terraform_registry_ref01_ent.update(terraform_registry_ref01_data_up0_up, nil)
-    terraform_registry_ref01_resdata_up0 = Helpers.to_map(terraform_registry_ref01_resdata_up0_result)
+    terraform_registry_ref01_resdata_up0 = Helpers.to_map(terraform_registry_ref01_resdata_up0_result.respond_to?(:data_get) ? terraform_registry_ref01_resdata_up0_result.data_get : terraform_registry_ref01_resdata_up0_result)
     assert !terraform_registry_ref01_resdata_up0.nil?
 
     # LOAD

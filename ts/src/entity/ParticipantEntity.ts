@@ -37,7 +37,7 @@ class ParticipantEntity extends GitlabEntityBase<Participant> {
 
 
 
-  async list(this: any, reqmatch?: ParticipantListMatch, ctrl?: Control): Promise<Participant[]> {
+  async list(this: any, reqmatch?: ParticipantListMatch, ctrl?: Control): Promise<ParticipantEntity[]> {
 
     const utility = this._utility
 

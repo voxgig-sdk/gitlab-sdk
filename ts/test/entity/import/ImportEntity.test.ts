@@ -62,7 +62,7 @@ describe('ImportEntity', async () => {
     const import_ref01_ent = client.Import()
     let import_ref01_data = setup.data.new.import['import_ref01']
 
-    import_ref01_data = await import_ref01_ent.create(import_ref01_data)
+    import_ref01_data = (await import_ref01_ent.create(import_ref01_data)).data()
     assert(null != import_ref01_data)
 
 

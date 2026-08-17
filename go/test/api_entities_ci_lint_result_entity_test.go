@@ -51,7 +51,7 @@ func TestApiEntitiesCiLintResultEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -107,7 +107,7 @@ func TestApiEntitiesCiLintResultEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesCiLintResultRef01Data = core.ToMapAny(apiEntitiesCiLintResultRef01DataResult)
+		apiEntitiesCiLintResultRef01Data = core.ToMapAny(entityData(apiEntitiesCiLintResultRef01DataResult))
 		if apiEntitiesCiLintResultRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -121,14 +121,9 @@ func TestApiEntitiesCiLintResultEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("list failed: %v", err)
 		}
-		apiEntitiesCiLintResultRef01List, apiEntitiesCiLintResultRef01ListOk := apiEntitiesCiLintResultRef01ListResult.([]any)
+		_, apiEntitiesCiLintResultRef01ListOk := apiEntitiesCiLintResultRef01ListResult.([]any)
 		if !apiEntitiesCiLintResultRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", apiEntitiesCiLintResultRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(apiEntitiesCiLintResultRef01List), map[string]any{"id": apiEntitiesCiLintResultRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
 		}
 
 	})

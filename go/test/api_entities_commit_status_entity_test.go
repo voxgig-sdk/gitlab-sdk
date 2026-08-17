@@ -51,7 +51,7 @@ func TestApiEntitiesCommitStatusEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -108,7 +108,7 @@ func TestApiEntitiesCommitStatusEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesCommitStatusRef01Data = core.ToMapAny(apiEntitiesCommitStatusRef01DataResult)
+		apiEntitiesCommitStatusRef01Data = core.ToMapAny(entityData(apiEntitiesCommitStatusRef01DataResult))
 		if apiEntitiesCommitStatusRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}

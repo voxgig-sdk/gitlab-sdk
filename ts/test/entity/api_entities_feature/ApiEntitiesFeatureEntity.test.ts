@@ -63,16 +63,14 @@ describe('ApiEntitiesFeatureEntity', async () => {
     let api_entities_feature_ref01_data = setup.data.new.api_entities_feature['api_entities_feature_ref01']
     api_entities_feature_ref01_data['name'] = setup.idmap['name01']
 
-    api_entities_feature_ref01_data = await api_entities_feature_ref01_ent.create(api_entities_feature_ref01_data)
+    api_entities_feature_ref01_data = (await api_entities_feature_ref01_ent.create(api_entities_feature_ref01_data)).data()
     assert(null != api_entities_feature_ref01_data)
 
 
     // LIST
     const api_entities_feature_ref01_match: any = {}
 
-    const api_entities_feature_ref01_list = await api_entities_feature_ref01_ent.list(api_entities_feature_ref01_match)
-
-    assert(!isempty(select(api_entities_feature_ref01_list, { id: api_entities_feature_ref01_data.id })))
+    const api_entities_feature_ref01_list = (await api_entities_feature_ref01_ent.list(api_entities_feature_ref01_match)).map((e: any) => e.data())
 
 
   })

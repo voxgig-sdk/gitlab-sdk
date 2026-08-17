@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      description: "The GitLab API."
       security: {
         in: "header"
         name: "PRIVATE-TOKEN"

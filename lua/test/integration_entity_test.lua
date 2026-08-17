@@ -43,15 +43,9 @@ describe("IntegrationEntity", function()
 
     local integration_ref01_data_result, err = integration_ref01_ent:create(integration_ref01_data, nil)
     assert.is_nil(err)
-    integration_ref01_data = helpers.to_map(integration_ref01_data_result)
+    integration_ref01_data = helpers.to_map(type(integration_ref01_data_result) == 'table' and integration_ref01_data_result.data_get and integration_ref01_data_result:data_get() or integration_ref01_data_result)
     assert.is_not_nil(integration_ref01_data)
 
-    -- REMOVE
-    local integration_ref01_match_rm0 = {
-      id = integration_ref01_data["id"],
-    }
-    local _, err = integration_ref01_ent:remove(integration_ref01_match_rm0, nil)
-    assert.is_nil(err)
 
   end)
 end)

@@ -46,7 +46,7 @@ class NpmEntityTest < Minitest::Test
     }
 
     npm_ref01_resdata_up0_result = npm_ref01_ent.update(npm_ref01_data_up0_up, nil)
-    npm_ref01_resdata_up0 = Helpers.to_map(npm_ref01_resdata_up0_result)
+    npm_ref01_resdata_up0 = Helpers.to_map(npm_ref01_resdata_up0_result.respond_to?(:data_get) ? npm_ref01_resdata_up0_result.data_get : npm_ref01_resdata_up0_result)
     assert !npm_ref01_resdata_up0.nil?
 
   end

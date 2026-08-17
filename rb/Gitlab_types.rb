@@ -71,7 +71,7 @@ AlertManagementRemoveMatch = Struct.new(
 # @!attribute [rw] avatar_url
 #   @return [String, nil]
 #
-# @!attribute [rw] custom_attribute
+# @!attribute [rw] custom_attributes
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -106,7 +106,7 @@ AlertManagementRemoveMatch = Struct.new(
 ApiEntitiesAccessRequester = Struct.new(
   :avatar_path,
   :avatar_url,
-  :custom_attribute,
+  :custom_attributes,
   :id,
   :key,
   :locked,
@@ -140,9 +140,61 @@ ApiEntitiesAccessRequesterListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] requested_at
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] value
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesAccessRequesterCreateData = Struct.new(
   :group_id,
   :project_id,
+  :avatar_path,
+  :avatar_url,
+  :custom_attributes,
+  :id,
+  :key,
+  :locked,
+  :name,
+  :public_email,
+  :requested_at,
+  :state,
+  :username,
+  :value,
+  :web_url,
   keyword_init: true
 )
 
@@ -156,10 +208,62 @@ ApiEntitiesAccessRequesterCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] requested_at
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] value
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesAccessRequesterUpdateData = Struct.new(
   :access_request_id,
   :group_id,
   :project_id,
+  :avatar_path,
+  :avatar_url,
+  :custom_attributes,
+  :id,
+  :key,
+  :locked,
+  :name,
+  :public_email,
+  :requested_at,
+  :state,
+  :username,
+  :value,
+  :web_url,
   keyword_init: true
 )
 
@@ -186,7 +290,7 @@ ApiEntitiesAccessRequesterUpdateData = Struct.new(
 # @!attribute [rw] logo
 #   @return [String, nil]
 #
-# @!attribute [rw] member_guideline
+# @!attribute [rw] member_guidelines
 #   @return [String, nil]
 #
 # @!attribute [rw] message_background_color
@@ -195,10 +299,10 @@ ApiEntitiesAccessRequesterUpdateData = Struct.new(
 # @!attribute [rw] message_font_color
 #   @return [String, nil]
 #
-# @!attribute [rw] new_project_guideline
+# @!attribute [rw] new_project_guidelines
 #   @return [String, nil]
 #
-# @!attribute [rw] profile_image_guideline
+# @!attribute [rw] profile_image_guidelines
 #   @return [String, nil]
 #
 # @!attribute [rw] pwa_description
@@ -223,11 +327,11 @@ ApiEntitiesAppearance = Struct.new(
   :header_logo,
   :header_message,
   :logo,
-  :member_guideline,
+  :member_guidelines,
   :message_background_color,
   :message_font_color,
-  :new_project_guideline,
-  :profile_image_guideline,
+  :new_project_guidelines,
+  :profile_image_guidelines,
   :pwa_description,
   :pwa_icon,
   :pwa_name,
@@ -259,7 +363,7 @@ ApiEntitiesAppearance = Struct.new(
 # @!attribute [rw] logo
 #   @return [String, nil]
 #
-# @!attribute [rw] member_guideline
+# @!attribute [rw] member_guidelines
 #   @return [String, nil]
 #
 # @!attribute [rw] message_background_color
@@ -268,10 +372,10 @@ ApiEntitiesAppearance = Struct.new(
 # @!attribute [rw] message_font_color
 #   @return [String, nil]
 #
-# @!attribute [rw] new_project_guideline
+# @!attribute [rw] new_project_guidelines
 #   @return [String, nil]
 #
-# @!attribute [rw] profile_image_guideline
+# @!attribute [rw] profile_image_guidelines
 #   @return [String, nil]
 #
 # @!attribute [rw] pwa_description
@@ -296,11 +400,11 @@ ApiEntitiesAppearanceLoadMatch = Struct.new(
   :header_logo,
   :header_message,
   :logo,
-  :member_guideline,
+  :member_guidelines,
   :message_background_color,
   :message_font_color,
-  :new_project_guideline,
-  :profile_image_guideline,
+  :new_project_guidelines,
+  :profile_image_guidelines,
   :pwa_description,
   :pwa_icon,
   :pwa_name,
@@ -332,7 +436,7 @@ ApiEntitiesAppearanceLoadMatch = Struct.new(
 # @!attribute [rw] logo
 #   @return [String, nil]
 #
-# @!attribute [rw] member_guideline
+# @!attribute [rw] member_guidelines
 #   @return [String, nil]
 #
 # @!attribute [rw] message_background_color
@@ -341,10 +445,10 @@ ApiEntitiesAppearanceLoadMatch = Struct.new(
 # @!attribute [rw] message_font_color
 #   @return [String, nil]
 #
-# @!attribute [rw] new_project_guideline
+# @!attribute [rw] new_project_guidelines
 #   @return [String, nil]
 #
-# @!attribute [rw] profile_image_guideline
+# @!attribute [rw] profile_image_guidelines
 #   @return [String, nil]
 #
 # @!attribute [rw] pwa_description
@@ -369,11 +473,11 @@ ApiEntitiesAppearanceUpdateData = Struct.new(
   :header_logo,
   :header_message,
   :logo,
-  :member_guideline,
+  :member_guidelines,
   :message_background_color,
   :message_font_color,
-  :new_project_guideline,
-  :profile_image_guideline,
+  :new_project_guidelines,
+  :profile_image_guidelines,
   :pwa_description,
   :pwa_icon,
   :pwa_name,
@@ -434,99 +538,99 @@ ApiEntitiesApplicationListMatch = Struct.new(
 
 # ApiEntitiesApplicationStatistic entity data model.
 #
-# @!attribute [rw] active_user
+# @!attribute [rw] active_users
 #   @return [Integer, nil]
 #
-# @!attribute [rw] fork
+# @!attribute [rw] forks
 #   @return [Integer, nil]
 #
-# @!attribute [rw] group
+# @!attribute [rw] groups
 #   @return [Integer, nil]
 #
-# @!attribute [rw] issue
+# @!attribute [rw] issues
 #   @return [Integer, nil]
 #
-# @!attribute [rw] merge_request
+# @!attribute [rw] merge_requests
 #   @return [Integer, nil]
 #
-# @!attribute [rw] milestone
+# @!attribute [rw] milestones
 #   @return [Integer, nil]
 #
-# @!attribute [rw] note
+# @!attribute [rw] notes
 #   @return [Integer, nil]
 #
-# @!attribute [rw] project
+# @!attribute [rw] projects
 #   @return [Integer, nil]
 #
-# @!attribute [rw] snippet
+# @!attribute [rw] snippets
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ssh_key
+# @!attribute [rw] ssh_keys
 #   @return [Integer, nil]
 #
-# @!attribute [rw] user
+# @!attribute [rw] users
 #   @return [Integer, nil]
 ApiEntitiesApplicationStatistic = Struct.new(
-  :active_user,
-  :fork,
-  :group,
-  :issue,
-  :merge_request,
-  :milestone,
-  :note,
-  :project,
-  :snippet,
-  :ssh_key,
-  :user,
+  :active_users,
+  :forks,
+  :groups,
+  :issues,
+  :merge_requests,
+  :milestones,
+  :notes,
+  :projects,
+  :snippets,
+  :ssh_keys,
+  :users,
   keyword_init: true
 )
 
 # Request payload for ApiEntitiesApplicationStatistic#load.
 #
-# @!attribute [rw] active_user
+# @!attribute [rw] active_users
 #   @return [Integer, nil]
 #
-# @!attribute [rw] fork
+# @!attribute [rw] forks
 #   @return [Integer, nil]
 #
-# @!attribute [rw] group
+# @!attribute [rw] groups
 #   @return [Integer, nil]
 #
-# @!attribute [rw] issue
+# @!attribute [rw] issues
 #   @return [Integer, nil]
 #
-# @!attribute [rw] merge_request
+# @!attribute [rw] merge_requests
 #   @return [Integer, nil]
 #
-# @!attribute [rw] milestone
+# @!attribute [rw] milestones
 #   @return [Integer, nil]
 #
-# @!attribute [rw] note
+# @!attribute [rw] notes
 #   @return [Integer, nil]
 #
-# @!attribute [rw] project
+# @!attribute [rw] projects
 #   @return [Integer, nil]
 #
-# @!attribute [rw] snippet
+# @!attribute [rw] snippets
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ssh_key
+# @!attribute [rw] ssh_keys
 #   @return [Integer, nil]
 #
-# @!attribute [rw] user
+# @!attribute [rw] users
 #   @return [Integer, nil]
 ApiEntitiesApplicationStatisticLoadMatch = Struct.new(
-  :active_user,
-  :fork,
-  :group,
-  :issue,
-  :merge_request,
-  :milestone,
-  :note,
-  :project,
-  :snippet,
-  :ssh_key,
-  :user,
+  :active_users,
+  :forks,
+  :groups,
+  :issues,
+  :merge_requests,
+  :milestones,
+  :notes,
+  :projects,
+  :snippets,
+  :ssh_keys,
+  :users,
   keyword_init: true
 )
 
@@ -563,8 +667,28 @@ ApiEntitiesApplicationWithSecret = Struct.new(
 #
 # @!attribute [rw] application_id
 #   @return [String, nil]
+#
+# @!attribute [rw] application_name
+#   @return [String, nil]
+#
+# @!attribute [rw] callback_url
+#   @return [String, nil]
+#
+# @!attribute [rw] confidential
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] secret
+#   @return [String, nil]
 ApiEntitiesApplicationWithSecretCreateData = Struct.new(
   :application_id,
+  :application_name,
+  :callback_url,
+  :confidential,
+  :id,
+  :secret,
   keyword_init: true
 )
 
@@ -588,6 +712,12 @@ ApiEntitiesAvatarLoadMatch = Struct.new(
 
 # ApiEntitiesAwardEmoji entity data model.
 #
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
 # @!attribute [rw] awardable_id
 #   @return [Integer, nil]
 #
@@ -597,10 +727,22 @@ ApiEntitiesAvatarLoadMatch = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
 # @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] state
 #   @return [String, nil]
 #
 # @!attribute [rw] updated_at
@@ -611,15 +753,29 @@ ApiEntitiesAvatarLoadMatch = Struct.new(
 #
 # @!attribute [rw] user
 #   @return [Hash, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesAwardEmoji = Struct.new(
+  :avatar_path,
+  :avatar_url,
   :awardable_id,
   :awardable_type,
   :created_at,
+  :custom_attributes,
   :id,
+  :locked,
   :name,
+  :public_email,
+  :state,
   :updated_at,
   :url,
   :user,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -715,6 +871,54 @@ ApiEntitiesAwardEmojiListMatch = Struct.new(
 #
 # @!attribute [rw] snippet_id
 #   @return [String, nil]
+#
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] awardable_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] awardable_type
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesAwardEmojiCreateData = Struct.new(
   :epic_id,
   :group_id,
@@ -723,6 +927,22 @@ ApiEntitiesAwardEmojiCreateData = Struct.new(
   :project_id,
   :merge_request_id,
   :snippet_id,
+  :avatar_path,
+  :avatar_url,
+  :awardable_id,
+  :awardable_type,
+  :created_at,
+  :custom_attributes,
+  :id,
+  :locked,
+  :name,
+  :public_email,
+  :state,
+  :updated_at,
+  :url,
+  :user,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -796,9 +1016,37 @@ ApiEntitiesBadgeListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] image_url
+#   @return [String, nil]
+#
+# @!attribute [rw] kind
+#   @return [String, nil]
+#
+# @!attribute [rw] link_url
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] rendered_image_url
+#   @return [String, nil]
+#
+# @!attribute [rw] rendered_link_url
+#   @return [String, nil]
 ApiEntitiesBadgeCreateData = Struct.new(
   :group_id,
   :project_id,
+  :id,
+  :image_url,
+  :kind,
+  :link_url,
+  :name,
+  :rendered_image_url,
+  :rendered_link_url,
   keyword_init: true
 )
 
@@ -812,10 +1060,34 @@ ApiEntitiesBadgeCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] image_url
+#   @return [String, nil]
+#
+# @!attribute [rw] kind
+#   @return [String, nil]
+#
+# @!attribute [rw] link_url
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] rendered_image_url
+#   @return [String, nil]
+#
+# @!attribute [rw] rendered_link_url
+#   @return [String, nil]
 ApiEntitiesBadgeUpdateData = Struct.new(
   :group_id,
   :id,
   :project_id,
+  :image_url,
+  :kind,
+  :link_url,
+  :name,
+  :rendered_image_url,
+  :rendered_link_url,
   keyword_init: true
 )
 
@@ -878,7 +1150,7 @@ ApiEntitiesBasicGroupDetailCreateData = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] custom_attribute
+# @!attribute [rw] custom_attributes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] default_branch
@@ -935,7 +1207,7 @@ ApiEntitiesBasicGroupDetailCreateData = Struct.new(
 # @!attribute [rw] tag_list
 #   @return [Array, nil]
 #
-# @!attribute [rw] topic
+# @!attribute [rw] topics
 #   @return [Array, nil]
 #
 # @!attribute [rw] visibility
@@ -946,7 +1218,7 @@ ApiEntitiesBasicGroupDetailCreateData = Struct.new(
 ApiEntitiesBasicProjectDetail = Struct.new(
   :avatar_url,
   :created_at,
-  :custom_attribute,
+  :custom_attributes,
   :default_branch,
   :description,
   :forks_count,
@@ -965,7 +1237,7 @@ ApiEntitiesBasicProjectDetail = Struct.new(
   :ssh_url_to_repo,
   :star_count,
   :tag_list,
-  :topic,
+  :topics,
   :visibility,
   :web_url,
   keyword_init: true
@@ -988,8 +1260,104 @@ ApiEntitiesBasicProjectDetailListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] forks_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] http_url_to_repo
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] last_activity_at
+#   @return [String, nil]
+#
+# @!attribute [rw] license
+#   @return [Hash, nil]
+#
+# @!attribute [rw] license_url
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] name_with_namespace
+#   @return [String, nil]
+#
+# @!attribute [rw] namespace
+#   @return [Hash, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] path_with_namespace
+#   @return [String, nil]
+#
+# @!attribute [rw] readme_url
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_storage
+#   @return [String, nil]
+#
+# @!attribute [rw] ssh_url_to_repo
+#   @return [String, nil]
+#
+# @!attribute [rw] star_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] tag_list
+#   @return [Array, nil]
+#
+# @!attribute [rw] topics
+#   @return [Array, nil]
+#
+# @!attribute [rw] visibility
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesBasicProjectDetailCreateData = Struct.new(
   :project_id,
+  :avatar_url,
+  :created_at,
+  :custom_attributes,
+  :default_branch,
+  :description,
+  :forks_count,
+  :http_url_to_repo,
+  :id,
+  :last_activity_at,
+  :license,
+  :license_url,
+  :name,
+  :name_with_namespace,
+  :namespace,
+  :path,
+  :path_with_namespace,
+  :readme_url,
+  :repository_storage,
+  :ssh_url_to_repo,
+  :star_count,
+  :tag_list,
+  :topics,
+  :visibility,
+  :web_url,
   keyword_init: true
 )
 
@@ -1106,18 +1474,67 @@ ApiEntitiesBatchedBackgroundMigrationListMatch = Struct.new(
 #
 # @!attribute [rw] batched_background_migration_id
 #   @return [String]
+#
+# @!attribute [rw] column_name
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] job_class_name
+#   @return [String, nil]
+#
+# @!attribute [rw] progress
+#   @return [Float, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] table_name
+#   @return [String, nil]
 ApiEntitiesBatchedBackgroundMigrationUpdateData = Struct.new(
   :batched_background_migration_id,
+  :column_name,
+  :created_at,
+  :id,
+  :job_class_name,
+  :progress,
+  :status,
+  :table_name,
   keyword_init: true
 )
 
 # ApiEntitiesBranch entity data model.
+#
+# @!attribute [rw] author_email
+#   @return [String, nil]
+#
+# @!attribute [rw] author_name
+#   @return [String, nil]
+#
+# @!attribute [rw] authored_date
+#   @return [String, nil]
 #
 # @!attribute [rw] can_push
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] commit
 #   @return [Hash, nil]
+#
+# @!attribute [rw] committed_date
+#   @return [String, nil]
+#
+# @!attribute [rw] committer_email
+#   @return [String, nil]
+#
+# @!attribute [rw] committer_name
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
 #
 # @!attribute [rw] default
 #   @return [Boolean, nil]
@@ -1128,26 +1545,61 @@ ApiEntitiesBatchedBackgroundMigrationUpdateData = Struct.new(
 # @!attribute [rw] developers_can_push
 #   @return [Boolean, nil]
 #
+# @!attribute [rw] extended_trailers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] merged
 #   @return [Boolean, nil]
+#
+# @!attribute [rw] message
+#   @return [String, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
+# @!attribute [rw] parent_ids
+#   @return [Array, nil]
+#
 # @!attribute [rw] protected
 #   @return [Boolean, nil]
+#
+# @!attribute [rw] short_id
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] trailers
+#   @return [Hash, nil]
 #
 # @!attribute [rw] web_url
 #   @return [String, nil]
 ApiEntitiesBranch = Struct.new(
+  :author_email,
+  :author_name,
+  :authored_date,
   :can_push,
   :commit,
+  :committed_date,
+  :committer_email,
+  :committer_name,
+  :created_at,
   :default,
   :developers_can_merge,
   :developers_can_push,
+  :extended_trailers,
+  :id,
   :merged,
+  :message,
   :name,
+  :parent_ids,
   :protected,
+  :short_id,
+  :title,
+  :trailers,
   :web_url,
   keyword_init: true
 )
@@ -1178,8 +1630,100 @@ ApiEntitiesBranchListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] author_email
+#   @return [String, nil]
+#
+# @!attribute [rw] author_name
+#   @return [String, nil]
+#
+# @!attribute [rw] authored_date
+#   @return [String, nil]
+#
+# @!attribute [rw] can_push
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] commit
+#   @return [Hash, nil]
+#
+# @!attribute [rw] committed_date
+#   @return [String, nil]
+#
+# @!attribute [rw] committer_email
+#   @return [String, nil]
+#
+# @!attribute [rw] committer_name
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] default
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] developers_can_merge
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] developers_can_push
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] extended_trailers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] merged
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] message
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_ids
+#   @return [Array, nil]
+#
+# @!attribute [rw] protected
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] short_id
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] trailers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesBranchCreateData = Struct.new(
   :project_id,
+  :author_email,
+  :author_name,
+  :authored_date,
+  :can_push,
+  :commit,
+  :committed_date,
+  :committer_email,
+  :committer_name,
+  :created_at,
+  :default,
+  :developers_can_merge,
+  :developers_can_push,
+  :extended_trailers,
+  :id,
+  :merged,
+  :message,
+  :name,
+  :parent_ids,
+  :protected,
+  :short_id,
+  :title,
+  :trailers,
+  :web_url,
   keyword_init: true
 )
 
@@ -1190,9 +1734,101 @@ ApiEntitiesBranchCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] author_email
+#   @return [String, nil]
+#
+# @!attribute [rw] author_name
+#   @return [String, nil]
+#
+# @!attribute [rw] authored_date
+#   @return [String, nil]
+#
+# @!attribute [rw] can_push
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] commit
+#   @return [Hash, nil]
+#
+# @!attribute [rw] committed_date
+#   @return [String, nil]
+#
+# @!attribute [rw] committer_email
+#   @return [String, nil]
+#
+# @!attribute [rw] committer_name
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] default
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] developers_can_merge
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] developers_can_push
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] extended_trailers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] merged
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] message
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_ids
+#   @return [Array, nil]
+#
+# @!attribute [rw] protected
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] short_id
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] trailers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesBranchUpdateData = Struct.new(
   :branch_id,
   :project_id,
+  :author_email,
+  :author_name,
+  :authored_date,
+  :can_push,
+  :commit,
+  :committed_date,
+  :committer_email,
+  :committer_name,
+  :created_at,
+  :default,
+  :developers_can_merge,
+  :developers_can_push,
+  :extended_trailers,
+  :id,
+  :merged,
+  :message,
+  :name,
+  :parent_ids,
+  :protected,
+  :short_id,
+  :title,
+  :trailers,
+  :web_url,
   keyword_init: true
 )
 
@@ -1219,19 +1855,19 @@ ApiEntitiesBranchUpdateData = Struct.new(
 # @!attribute [rw] entity_type
 #   @return [String, nil]
 #
-# @!attribute [rw] failure
+# @!attribute [rw] failures
 #   @return [Array, nil]
 #
-# @!attribute [rw] has_failure
+# @!attribute [rw] has_failures
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] migrate_membership
+# @!attribute [rw] migrate_memberships
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] migrate_project
+# @!attribute [rw] migrate_projects
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] namespace_id
@@ -1252,7 +1888,7 @@ ApiEntitiesBranchUpdateData = Struct.new(
 # @!attribute [rw] source_url
 #   @return [String, nil]
 #
-# @!attribute [rw] stat
+# @!attribute [rw] stats
 #   @return [Hash, nil]
 #
 # @!attribute [rw] status
@@ -1268,18 +1904,18 @@ ApiEntitiesBulkImport = Struct.new(
   :destination_namespace,
   :destination_slug,
   :entity_type,
-  :failure,
-  :has_failure,
+  :failures,
+  :has_failures,
   :id,
-  :migrate_membership,
-  :migrate_project,
+  :migrate_memberships,
+  :migrate_projects,
   :namespace_id,
   :parent_id,
   :project_id,
   :source_full_path,
   :source_type,
   :source_url,
-  :stat,
+  :stats,
   :status,
   :updated_at,
   keyword_init: true
@@ -1315,8 +1951,88 @@ ApiEntitiesBulkImportListMatch = Struct.new(
 #
 # @!attribute [rw] bulk_import_id
 #   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] destination_full_path
+#   @return [String, nil]
+#
+# @!attribute [rw] destination_name
+#   @return [String, nil]
+#
+# @!attribute [rw] destination_namespace
+#   @return [String, nil]
+#
+# @!attribute [rw] destination_slug
+#   @return [String, nil]
+#
+# @!attribute [rw] entity_type
+#   @return [String, nil]
+#
+# @!attribute [rw] failures
+#   @return [Array, nil]
+#
+# @!attribute [rw] has_failures
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] migrate_memberships
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] migrate_projects
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] namespace_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] parent_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] project_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] source_full_path
+#   @return [String, nil]
+#
+# @!attribute [rw] source_type
+#   @return [String, nil]
+#
+# @!attribute [rw] source_url
+#   @return [String, nil]
+#
+# @!attribute [rw] stats
+#   @return [Hash, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
 ApiEntitiesBulkImportCreateData = Struct.new(
   :bulk_import_id,
+  :created_at,
+  :destination_full_path,
+  :destination_name,
+  :destination_namespace,
+  :destination_slug,
+  :entity_type,
+  :failures,
+  :has_failures,
+  :id,
+  :migrate_memberships,
+  :migrate_projects,
+  :namespace_id,
+  :parent_id,
+  :project_id,
+  :source_full_path,
+  :source_type,
+  :source_url,
+  :stats,
+  :status,
+  :updated_at,
   keyword_init: true
 )
 
@@ -1364,11 +2080,11 @@ ApiEntitiesBulkImportsEntityFailureLoadMatch = Struct.new(
 
 # ApiEntitiesBulkImportsExportStatus entity data model.
 #
-# @!attribute [rw] batch
-#   @return [Hash, nil]
-#
 # @!attribute [rw] batched
 #   @return [Boolean, nil]
+#
+# @!attribute [rw] batches
+#   @return [Hash, nil]
 #
 # @!attribute [rw] batches_count
 #   @return [Integer, nil]
@@ -1388,8 +2104,8 @@ ApiEntitiesBulkImportsEntityFailureLoadMatch = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 ApiEntitiesBulkImportsExportStatus = Struct.new(
-  :batch,
   :batched,
+  :batches,
   :batches_count,
   :error,
   :relation,
@@ -1414,10 +2130,10 @@ ApiEntitiesBulkImportsExportStatusListMatch = Struct.new(
 
 # ApiEntitiesChangelog entity data model.
 #
-# @!attribute [rw] note
+# @!attribute [rw] notes
 #   @return [String, nil]
 ApiEntitiesChangelog = Struct.new(
-  :note,
+  :notes,
   keyword_init: true
 )
 
@@ -1553,7 +2269,7 @@ ApiEntitiesCiCatalogResourcesVersionCreateData = Struct.new(
 # @!attribute [rw] archived
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] artifact
+# @!attribute [rw] artifacts
 #   @return [Array, nil]
 #
 # @!attribute [rw] artifacts_expire_at
@@ -1642,7 +2358,7 @@ ApiEntitiesCiCatalogResourcesVersionCreateData = Struct.new(
 ApiEntitiesCiJob = Struct.new(
   :allow_failure,
   :archived,
-  :artifact,
+  :artifacts,
   :artifacts_expire_at,
   :artifacts_file,
   :commit,
@@ -1711,9 +2427,133 @@ ApiEntitiesCiJobListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] allow_failure
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] archived
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] artifacts
+#   @return [Array, nil]
+#
+# @!attribute [rw] artifacts_expire_at
+#   @return [String, nil]
+#
+# @!attribute [rw] artifacts_file
+#   @return [Hash, nil]
+#
+# @!attribute [rw] commit
+#   @return [Hash, nil]
+#
+# @!attribute [rw] coverage
+#   @return [Float, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] duration
+#   @return [Float, nil]
+#
+# @!attribute [rw] erased_at
+#   @return [String, nil]
+#
+# @!attribute [rw] failure_reason
+#   @return [String, nil]
+#
+# @!attribute [rw] file_format
+#   @return [String, nil]
+#
+# @!attribute [rw] file_type
+#   @return [String, nil]
+#
+# @!attribute [rw] filename
+#   @return [String, nil]
+#
+# @!attribute [rw] finished_at
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] pipeline
+#   @return [Hash, nil]
+#
+# @!attribute [rw] project
+#   @return [Hash, nil]
+#
+# @!attribute [rw] queued_duration
+#   @return [Float, nil]
+#
+# @!attribute [rw] ref
+#   @return [String, nil]
+#
+# @!attribute [rw] runner
+#   @return [Hash, nil]
+#
+# @!attribute [rw] runner_manager
+#   @return [Hash, nil]
+#
+# @!attribute [rw] size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] stage
+#   @return [String, nil]
+#
+# @!attribute [rw] started_at
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] tag
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] tag_list
+#   @return [Array, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesCiJobCreateData = Struct.new(
   :job_id,
   :project_id,
+  :allow_failure,
+  :archived,
+  :artifacts,
+  :artifacts_expire_at,
+  :artifacts_file,
+  :commit,
+  :coverage,
+  :created_at,
+  :duration,
+  :erased_at,
+  :failure_reason,
+  :file_format,
+  :file_type,
+  :filename,
+  :finished_at,
+  :id,
+  :name,
+  :pipeline,
+  :project,
+  :queued_duration,
+  :ref,
+  :runner,
+  :runner_manager,
+  :size,
+  :stage,
+  :started_at,
+  :status,
+  :tag,
+  :tag_list,
+  :user,
+  :web_url,
   keyword_init: true
 )
 
@@ -1822,9 +2662,89 @@ ApiEntitiesCiJobBasicListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] allow_failure
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] commit
+#   @return [Hash, nil]
+#
+# @!attribute [rw] coverage
+#   @return [Float, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] duration
+#   @return [Float, nil]
+#
+# @!attribute [rw] erased_at
+#   @return [String, nil]
+#
+# @!attribute [rw] failure_reason
+#   @return [String, nil]
+#
+# @!attribute [rw] finished_at
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] pipeline
+#   @return [Hash, nil]
+#
+# @!attribute [rw] project
+#   @return [Hash, nil]
+#
+# @!attribute [rw] queued_duration
+#   @return [Float, nil]
+#
+# @!attribute [rw] ref
+#   @return [String, nil]
+#
+# @!attribute [rw] stage
+#   @return [String, nil]
+#
+# @!attribute [rw] started_at
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] tag
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesCiJobBasicCreateData = Struct.new(
   :job_id,
   :project_id,
+  :allow_failure,
+  :commit,
+  :coverage,
+  :created_at,
+  :duration,
+  :erased_at,
+  :failure_reason,
+  :finished_at,
+  :id,
+  :name,
+  :pipeline,
+  :project,
+  :queued_duration,
+  :ref,
+  :stage,
+  :started_at,
+  :status,
+  :tag,
+  :user,
+  :web_url,
   keyword_init: true
 )
 
@@ -1933,16 +2853,16 @@ ApiEntitiesCiJobBasicWithProjectLoadMatch = Struct.new(
 # @!attribute [rw] context_sha
 #   @return [String, nil]
 #
-# @!attribute [rw] error
+# @!attribute [rw] errors
 #   @return [Array, nil]
 #
 # @!attribute [rw] extra
 #   @return [Hash, nil]
 #
-# @!attribute [rw] include
+# @!attribute [rw] includes
 #   @return [Array, nil]
 #
-# @!attribute [rw] job
+# @!attribute [rw] jobs
 #   @return [Array, nil]
 #
 # @!attribute [rw] location
@@ -1960,22 +2880,22 @@ ApiEntitiesCiJobBasicWithProjectLoadMatch = Struct.new(
 # @!attribute [rw] valid
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] warning
+# @!attribute [rw] warnings
 #   @return [Array, nil]
 ApiEntitiesCiLintResult = Struct.new(
   :blob,
   :context_project,
   :context_sha,
-  :error,
+  :errors,
   :extra,
-  :include,
-  :job,
+  :includes,
+  :jobs,
   :location,
   :merged_yaml,
   :raw,
   :type,
   :valid,
-  :warning,
+  :warnings,
   keyword_init: true
 )
 
@@ -1992,8 +2912,60 @@ ApiEntitiesCiLintResultListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] blob
+#   @return [String, nil]
+#
+# @!attribute [rw] context_project
+#   @return [String, nil]
+#
+# @!attribute [rw] context_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] errors
+#   @return [Array, nil]
+#
+# @!attribute [rw] extra
+#   @return [Hash, nil]
+#
+# @!attribute [rw] includes
+#   @return [Array, nil]
+#
+# @!attribute [rw] jobs
+#   @return [Array, nil]
+#
+# @!attribute [rw] location
+#   @return [String, nil]
+#
+# @!attribute [rw] merged_yaml
+#   @return [String, nil]
+#
+# @!attribute [rw] raw
+#   @return [String, nil]
+#
+# @!attribute [rw] type
+#   @return [String, nil]
+#
+# @!attribute [rw] valid
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] warnings
+#   @return [Array, nil]
 ApiEntitiesCiLintResultCreateData = Struct.new(
   :project_id,
+  :blob,
+  :context_project,
+  :context_sha,
+  :errors,
+  :extra,
+  :includes,
+  :jobs,
+  :location,
+  :merged_yaml,
+  :raw,
+  :type,
+  :valid,
+  :warnings,
   keyword_init: true
 )
 
@@ -2113,7 +3085,7 @@ ApiEntitiesCiPipelineBasicListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] input
+# @!attribute [rw] inputs
 #   @return [Hash, nil]
 #
 # @!attribute [rw] next_run_at
@@ -2134,7 +3106,7 @@ ApiEntitiesCiPipelineSchedule = Struct.new(
   :cron_timezone,
   :description,
   :id,
-  :input,
+  :inputs,
   :next_run_at,
   :owner,
   :ref,
@@ -2171,7 +3143,7 @@ ApiEntitiesCiPipelineScheduleListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] input
+# @!attribute [rw] inputs
 #   @return [Hash, nil]
 #
 # @!attribute [rw] last_pipeline
@@ -2189,7 +3161,7 @@ ApiEntitiesCiPipelineScheduleListMatch = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 #
-# @!attribute [rw] variable
+# @!attribute [rw] variables
 #   @return [Hash, nil]
 ApiEntitiesCiPipelineScheduleDetail = Struct.new(
   :active,
@@ -2198,13 +3170,13 @@ ApiEntitiesCiPipelineScheduleDetail = Struct.new(
   :cron_timezone,
   :description,
   :id,
-  :input,
+  :inputs,
   :last_pipeline,
   :next_run_at,
   :owner,
   :ref,
   :updated_at,
-  :variable,
+  :variables,
   keyword_init: true
 )
 
@@ -2228,9 +3200,61 @@ ApiEntitiesCiPipelineScheduleDetailLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] active
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] cron
+#   @return [String, nil]
+#
+# @!attribute [rw] cron_timezone
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] inputs
+#   @return [Hash, nil]
+#
+# @!attribute [rw] last_pipeline
+#   @return [Hash, nil]
+#
+# @!attribute [rw] next_run_at
+#   @return [String, nil]
+#
+# @!attribute [rw] owner
+#   @return [Hash, nil]
+#
+# @!attribute [rw] ref
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] variables
+#   @return [Hash, nil]
 ApiEntitiesCiPipelineScheduleDetailCreateData = Struct.new(
   :pipeline_schedule_id,
   :project_id,
+  :active,
+  :created_at,
+  :cron,
+  :cron_timezone,
+  :description,
+  :id,
+  :inputs,
+  :last_pipeline,
+  :next_run_at,
+  :owner,
+  :ref,
+  :updated_at,
+  :variables,
   keyword_init: true
 )
 
@@ -2241,9 +3265,61 @@ ApiEntitiesCiPipelineScheduleDetailCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] active
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] cron
+#   @return [String, nil]
+#
+# @!attribute [rw] cron_timezone
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] inputs
+#   @return [Hash, nil]
+#
+# @!attribute [rw] last_pipeline
+#   @return [Hash, nil]
+#
+# @!attribute [rw] next_run_at
+#   @return [String, nil]
+#
+# @!attribute [rw] owner
+#   @return [Hash, nil]
+#
+# @!attribute [rw] ref
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] variables
+#   @return [Hash, nil]
 ApiEntitiesCiPipelineScheduleDetailUpdateData = Struct.new(
   :pipeline_schedule_id,
   :project_id,
+  :active,
+  :created_at,
+  :cron,
+  :cron_timezone,
+  :description,
+  :id,
+  :inputs,
+  :last_pipeline,
+  :next_run_at,
+  :owner,
+  :ref,
+  :updated_at,
+  :variables,
   keyword_init: true
 )
 
@@ -2322,66 +3398,70 @@ ApiEntitiesCiResourceGroupListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] process_mode
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
 ApiEntitiesCiResourceGroupUpdateData = Struct.new(
   :id,
   :project_id,
+  :created_at,
+  :key,
+  :process_mode,
+  :updated_at,
   keyword_init: true
 )
 
 # ApiEntitiesCiRunner entity data model.
 #
-# @!attribute [rw] active
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] created_at
+# @!attribute [rw] avatar_path
 #   @return [String, nil]
 #
-# @!attribute [rw] created_by
-#   @return [Hash, nil]
-#
-# @!attribute [rw] description
+# @!attribute [rw] avatar_url
 #   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ip_address
-#   @return [String, nil]
-#
-# @!attribute [rw] is_shared
+# @!attribute [rw] locked
 #   @return [Boolean, nil]
-#
-# @!attribute [rw] job_execution_status
-#   @return [String, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] online
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] paused
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] runner_type
+# @!attribute [rw] public_email
 #   @return [String, nil]
 #
-# @!attribute [rw] status
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
 #   @return [String, nil]
 ApiEntitiesCiRunner = Struct.new(
-  :active,
-  :created_at,
-  :created_by,
-  :description,
+  :avatar_path,
+  :avatar_url,
+  :custom_attributes,
   :id,
-  :ip_address,
-  :is_shared,
-  :job_execution_status,
+  :locked,
   :name,
-  :online,
-  :paused,
-  :runner_type,
-  :status,
+  :public_email,
+  :state,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -2402,8 +3482,48 @@ ApiEntitiesCiRunnerLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesCiRunnerCreateData = Struct.new(
   :project_id,
+  :avatar_path,
+  :avatar_url,
+  :custom_attributes,
+  :id,
+  :locked,
+  :name,
+  :public_email,
+  :state,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -2430,7 +3550,7 @@ ApiEntitiesCiRunnerCreateData = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] group
+# @!attribute [rw] groups
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
@@ -2466,7 +3586,7 @@ ApiEntitiesCiRunnerCreateData = Struct.new(
 # @!attribute [rw] platform
 #   @return [String, nil]
 #
-# @!attribute [rw] project
+# @!attribute [rw] projects
 #   @return [Hash, nil]
 #
 # @!attribute [rw] revision
@@ -2494,7 +3614,7 @@ ApiEntitiesCiRunnerDetail = Struct.new(
   :created_at,
   :created_by,
   :description,
-  :group,
+  :groups,
   :id,
   :ip_address,
   :is_shared,
@@ -2506,7 +3626,7 @@ ApiEntitiesCiRunnerDetail = Struct.new(
   :online,
   :paused,
   :platform,
-  :project,
+  :projects,
   :revision,
   :run_untagged,
   :runner_type,
@@ -2529,8 +3649,108 @@ ApiEntitiesCiRunnerDetailLoadMatch = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] active
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] architecture
+#   @return [String, nil]
+#
+# @!attribute [rw] contacted_at
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] created_by
+#   @return [Hash, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] groups
+#   @return [Hash, nil]
+#
+# @!attribute [rw] ip_address
+#   @return [String, nil]
+#
+# @!attribute [rw] is_shared
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] job_execution_status
+#   @return [String, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] maintenance_note
+#   @return [String, nil]
+#
+# @!attribute [rw] maximum_timeout
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] online
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] paused
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] platform
+#   @return [String, nil]
+#
+# @!attribute [rw] projects
+#   @return [Hash, nil]
+#
+# @!attribute [rw] revision
+#   @return [String, nil]
+#
+# @!attribute [rw] run_untagged
+#   @return [String, nil]
+#
+# @!attribute [rw] runner_type
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] tag_list
+#   @return [String, nil]
+#
+# @!attribute [rw] version
+#   @return [String, nil]
 ApiEntitiesCiRunnerDetailUpdateData = Struct.new(
   :id,
+  :access_level,
+  :active,
+  :architecture,
+  :contacted_at,
+  :created_at,
+  :created_by,
+  :description,
+  :groups,
+  :ip_address,
+  :is_shared,
+  :job_execution_status,
+  :locked,
+  :maintenance_note,
+  :maximum_timeout,
+  :name,
+  :online,
+  :paused,
+  :platform,
+  :projects,
+  :revision,
+  :run_untagged,
+  :runner_type,
+  :status,
+  :tag_list,
+  :version,
   keyword_init: true
 )
 
@@ -2601,41 +3821,8 @@ class ApiEntitiesCiRunnerRegistrationDetailCreateData
 end
 
 # ApiEntitiesCiSecureFile entity data model.
-#
-# @!attribute [rw] checksum
-#   @return [String, nil]
-#
-# @!attribute [rw] checksum_algorithm
-#   @return [String, nil]
-#
-# @!attribute [rw] created_at
-#   @return [String, nil]
-#
-# @!attribute [rw] expires_at
-#   @return [String, nil]
-#
-# @!attribute [rw] file_extension
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [Integer, nil]
-#
-# @!attribute [rw] metadata
-#   @return [Hash, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-ApiEntitiesCiSecureFile = Struct.new(
-  :checksum,
-  :checksum_algorithm,
-  :created_at,
-  :expires_at,
-  :file_extension,
-  :id,
-  :metadata,
-  :name,
-  keyword_init: true
-)
+class ApiEntitiesCiSecureFile
+end
 
 # Request payload for ApiEntitiesCiSecureFile#load.
 #
@@ -2740,10 +3927,46 @@ ApiEntitiesCiVariableListMatch = Struct.new(
 #
 # @!attribute [rw] group_id
 #   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] environment_scope
+#   @return [String, nil]
+#
+# @!attribute [rw] hidden
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] masked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] protected
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] raw
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] value
+#   @return [String, nil]
+#
+# @!attribute [rw] variable_type
+#   @return [String, nil]
 ApiEntitiesCiVariableCreateData = Struct.new(
   :pipeline_schedule_id,
   :project_id,
   :group_id,
+  :description,
+  :environment_scope,
+  :hidden,
+  :key,
+  :masked,
+  :protected,
+  :raw,
+  :value,
+  :variable_type,
   keyword_init: true
 )
 
@@ -2760,11 +3983,47 @@ ApiEntitiesCiVariableCreateData = Struct.new(
 #
 # @!attribute [rw] group_id
 #   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] environment_scope
+#   @return [String, nil]
+#
+# @!attribute [rw] hidden
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] masked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] protected
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] raw
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] value
+#   @return [String, nil]
+#
+# @!attribute [rw] variable_type
+#   @return [String, nil]
 ApiEntitiesCiVariableUpdateData = Struct.new(
   :id,
   :pipeline_schedule_id,
   :project_id,
   :group_id,
+  :description,
+  :environment_scope,
+  :hidden,
+  :key,
+  :masked,
+  :protected,
+  :raw,
+  :value,
+  :variable_type,
   keyword_init: true
 )
 
@@ -2800,7 +4059,7 @@ ApiEntitiesCiVariableUpdateData = Struct.new(
 # @!attribute [rw] namespace_per_environment
 #   @return [String, nil]
 #
-# @!attribute [rw] platform_kubernete
+# @!attribute [rw] platform_kubernetes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] platform_type
@@ -2825,7 +4084,7 @@ ApiEntitiesCluster = Struct.new(
   :management_project,
   :name,
   :namespace_per_environment,
-  :platform_kubernete,
+  :platform_kubernetes,
   :platform_type,
   :provider_gcp,
   :provider_type,
@@ -2887,7 +4146,7 @@ ApiEntitiesClusterListMatch = Struct.new(
 # @!attribute [rw] namespace_per_environment
 #   @return [String, nil]
 #
-# @!attribute [rw] platform_kubernete
+# @!attribute [rw] platform_kubernetes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] platform_type
@@ -2912,7 +4171,7 @@ ApiEntitiesClusterCreateData = Struct.new(
   :management_project,
   :name,
   :namespace_per_environment,
-  :platform_kubernete,
+  :platform_kubernetes,
   :platform_type,
   :provider_gcp,
   :provider_type,
@@ -2924,8 +4183,64 @@ ApiEntitiesClusterCreateData = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] cluster_type
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] domain
+#   @return [String, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] environment_scope
+#   @return [String, nil]
+#
+# @!attribute [rw] managed
+#   @return [String, nil]
+#
+# @!attribute [rw] management_project
+#   @return [Hash, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] namespace_per_environment
+#   @return [String, nil]
+#
+# @!attribute [rw] platform_kubernetes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] platform_type
+#   @return [String, nil]
+#
+# @!attribute [rw] provider_gcp
+#   @return [Hash, nil]
+#
+# @!attribute [rw] provider_type
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
 ApiEntitiesClusterUpdateData = Struct.new(
   :id,
+  :cluster_type,
+  :created_at,
+  :domain,
+  :enabled,
+  :environment_scope,
+  :managed,
+  :management_project,
+  :name,
+  :namespace_per_environment,
+  :platform_kubernetes,
+  :platform_type,
+  :provider_gcp,
+  :provider_type,
+  :user,
   keyword_init: true
 )
 
@@ -2964,7 +4279,7 @@ ApiEntitiesClusterUpdateData = Struct.new(
 # @!attribute [rw] namespace_per_environment
 #   @return [String, nil]
 #
-# @!attribute [rw] platform_kubernete
+# @!attribute [rw] platform_kubernetes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] platform_type
@@ -2990,7 +4305,7 @@ ApiEntitiesClusterGroup = Struct.new(
   :management_project,
   :name,
   :namespace_per_environment,
-  :platform_kubernete,
+  :platform_kubernetes,
   :platform_type,
   :provider_gcp,
   :provider_type,
@@ -3015,8 +4330,72 @@ ApiEntitiesClusterGroupLoadMatch = Struct.new(
 #
 # @!attribute [rw] group_id
 #   @return [String]
+#
+# @!attribute [rw] cluster_type
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] domain
+#   @return [String, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] environment_scope
+#   @return [String, nil]
+#
+# @!attribute [rw] group
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] managed
+#   @return [String, nil]
+#
+# @!attribute [rw] management_project
+#   @return [Hash, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] namespace_per_environment
+#   @return [String, nil]
+#
+# @!attribute [rw] platform_kubernetes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] platform_type
+#   @return [String, nil]
+#
+# @!attribute [rw] provider_gcp
+#   @return [Hash, nil]
+#
+# @!attribute [rw] provider_type
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
 ApiEntitiesClusterGroupCreateData = Struct.new(
   :group_id,
+  :cluster_type,
+  :created_at,
+  :domain,
+  :enabled,
+  :environment_scope,
+  :group,
+  :id,
+  :managed,
+  :management_project,
+  :name,
+  :namespace_per_environment,
+  :platform_kubernetes,
+  :platform_type,
+  :provider_gcp,
+  :provider_type,
+  :user,
   keyword_init: true
 )
 
@@ -3027,9 +4406,73 @@ ApiEntitiesClusterGroupCreateData = Struct.new(
 #
 # @!attribute [rw] group_id
 #   @return [String]
+#
+# @!attribute [rw] cluster_type
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] domain
+#   @return [String, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] environment_scope
+#   @return [String, nil]
+#
+# @!attribute [rw] group
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] managed
+#   @return [String, nil]
+#
+# @!attribute [rw] management_project
+#   @return [Hash, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] namespace_per_environment
+#   @return [String, nil]
+#
+# @!attribute [rw] platform_kubernetes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] platform_type
+#   @return [String, nil]
+#
+# @!attribute [rw] provider_gcp
+#   @return [Hash, nil]
+#
+# @!attribute [rw] provider_type
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
 ApiEntitiesClusterGroupUpdateData = Struct.new(
   :cluster_id,
   :group_id,
+  :cluster_type,
+  :created_at,
+  :domain,
+  :enabled,
+  :environment_scope,
+  :group,
+  :id,
+  :managed,
+  :management_project,
+  :name,
+  :namespace_per_environment,
+  :platform_kubernetes,
+  :platform_type,
+  :provider_gcp,
+  :provider_type,
+  :user,
   keyword_init: true
 )
 
@@ -3065,7 +4508,7 @@ ApiEntitiesClusterGroupUpdateData = Struct.new(
 # @!attribute [rw] namespace_per_environment
 #   @return [String, nil]
 #
-# @!attribute [rw] platform_kubernete
+# @!attribute [rw] platform_kubernetes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] platform_type
@@ -3093,7 +4536,7 @@ ApiEntitiesClusterProject = Struct.new(
   :management_project,
   :name,
   :namespace_per_environment,
-  :platform_kubernete,
+  :platform_kubernetes,
   :platform_type,
   :project,
   :provider_gcp,
@@ -3119,8 +4562,72 @@ ApiEntitiesClusterProjectLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] cluster_type
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] domain
+#   @return [String, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] environment_scope
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] managed
+#   @return [String, nil]
+#
+# @!attribute [rw] management_project
+#   @return [Hash, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] namespace_per_environment
+#   @return [String, nil]
+#
+# @!attribute [rw] platform_kubernetes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] platform_type
+#   @return [String, nil]
+#
+# @!attribute [rw] project
+#   @return [Hash, nil]
+#
+# @!attribute [rw] provider_gcp
+#   @return [Hash, nil]
+#
+# @!attribute [rw] provider_type
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
 ApiEntitiesClusterProjectCreateData = Struct.new(
   :project_id,
+  :cluster_type,
+  :created_at,
+  :domain,
+  :enabled,
+  :environment_scope,
+  :id,
+  :managed,
+  :management_project,
+  :name,
+  :namespace_per_environment,
+  :platform_kubernetes,
+  :platform_type,
+  :project,
+  :provider_gcp,
+  :provider_type,
+  :user,
   keyword_init: true
 )
 
@@ -3131,38 +4638,106 @@ ApiEntitiesClusterProjectCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
-ApiEntitiesClusterProjectUpdateData = Struct.new(
-  :cluster_id,
-  :project_id,
-  keyword_init: true
-)
-
-# ApiEntitiesClustersAgent entity data model.
 #
-# @!attribute [rw] config_project
-#   @return [Hash, nil]
+# @!attribute [rw] cluster_type
+#   @return [String, nil]
 #
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] created_by_user_id
+# @!attribute [rw] domain
+#   @return [String, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] environment_scope
 #   @return [String, nil]
 #
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] is_receptive
-#   @return [Boolean, nil]
+# @!attribute [rw] managed
+#   @return [String, nil]
+#
+# @!attribute [rw] management_project
+#   @return [Hash, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
-ApiEntitiesClustersAgent = Struct.new(
-  :config_project,
+#
+# @!attribute [rw] namespace_per_environment
+#   @return [String, nil]
+#
+# @!attribute [rw] platform_kubernetes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] platform_type
+#   @return [String, nil]
+#
+# @!attribute [rw] project
+#   @return [Hash, nil]
+#
+# @!attribute [rw] provider_gcp
+#   @return [Hash, nil]
+#
+# @!attribute [rw] provider_type
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
+ApiEntitiesClusterProjectUpdateData = Struct.new(
+  :cluster_id,
+  :project_id,
+  :cluster_type,
   :created_at,
-  :created_by_user_id,
+  :domain,
+  :enabled,
+  :environment_scope,
   :id,
-  :is_receptive,
+  :managed,
+  :management_project,
   :name,
+  :namespace_per_environment,
+  :platform_kubernetes,
+  :platform_type,
+  :project,
+  :provider_gcp,
+  :provider_type,
+  :user,
+  keyword_init: true
+)
+
+# ApiEntitiesClustersAgent entity data model.
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] name_with_namespace
+#   @return [String, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] path_with_namespace
+#   @return [String, nil]
+ApiEntitiesClustersAgent = Struct.new(
+  :created_at,
+  :description,
+  :id,
+  :name,
+  :name_with_namespace,
+  :path,
+  :path_with_namespace,
   keyword_init: true
 )
 
@@ -3183,8 +4758,36 @@ ApiEntitiesClustersAgentLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] name_with_namespace
+#   @return [String, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] path_with_namespace
+#   @return [String, nil]
 ApiEntitiesClustersAgentCreateData = Struct.new(
   :project_id,
+  :created_at,
+  :description,
+  :id,
+  :name,
+  :name_with_namespace,
+  :path,
+  :path_with_namespace,
   keyword_init: true
 )
 
@@ -3328,7 +4931,7 @@ ApiEntitiesClustersAgentTokenWithTokenCreateData = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] extended_trailer
+# @!attribute [rw] extended_trailers
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
@@ -3337,7 +4940,7 @@ ApiEntitiesClustersAgentTokenWithTokenCreateData = Struct.new(
 # @!attribute [rw] message
 #   @return [String, nil]
 #
-# @!attribute [rw] parent_id
+# @!attribute [rw] parent_ids
 #   @return [Array, nil]
 #
 # @!attribute [rw] short_id
@@ -3346,7 +4949,7 @@ ApiEntitiesClustersAgentTokenWithTokenCreateData = Struct.new(
 # @!attribute [rw] title
 #   @return [String, nil]
 #
-# @!attribute [rw] trailer
+# @!attribute [rw] trailers
 #   @return [Hash, nil]
 #
 # @!attribute [rw] web_url
@@ -3359,13 +4962,13 @@ ApiEntitiesCommit = Struct.new(
   :committer_email,
   :committer_name,
   :created_at,
-  :extended_trailer,
+  :extended_trailers,
   :id,
   :message,
-  :parent_id,
+  :parent_ids,
   :short_id,
   :title,
-  :trailer,
+  :trailers,
   :web_url,
   keyword_init: true
 )
@@ -3393,10 +4996,70 @@ ApiEntitiesCommitListMatch = Struct.new(
 #
 # @!attribute [rw] sha
 #   @return [Object, nil]
+#
+# @!attribute [rw] author_email
+#   @return [String, nil]
+#
+# @!attribute [rw] author_name
+#   @return [String, nil]
+#
+# @!attribute [rw] authored_date
+#   @return [String, nil]
+#
+# @!attribute [rw] committed_date
+#   @return [String, nil]
+#
+# @!attribute [rw] committer_email
+#   @return [String, nil]
+#
+# @!attribute [rw] committer_name
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] extended_trailers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] message
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_ids
+#   @return [Array, nil]
+#
+# @!attribute [rw] short_id
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] trailers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesCommitCreateData = Struct.new(
   :merge_request_id,
   :project_id,
   :sha,
+  :author_email,
+  :author_name,
+  :authored_date,
+  :committed_date,
+  :committer_email,
+  :committer_name,
+  :created_at,
+  :extended_trailers,
+  :id,
+  :message,
+  :parent_ids,
+  :short_id,
+  :title,
+  :trailers,
+  :web_url,
   keyword_init: true
 )
 
@@ -3423,7 +5086,7 @@ ApiEntitiesCommitCreateData = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] extended_trailer
+# @!attribute [rw] extended_trailers
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
@@ -3435,7 +5098,7 @@ ApiEntitiesCommitCreateData = Struct.new(
 # @!attribute [rw] message
 #   @return [String, nil]
 #
-# @!attribute [rw] parent_id
+# @!attribute [rw] parent_ids
 #   @return [Array, nil]
 #
 # @!attribute [rw] project_id
@@ -3444,7 +5107,7 @@ ApiEntitiesCommitCreateData = Struct.new(
 # @!attribute [rw] short_id
 #   @return [String, nil]
 #
-# @!attribute [rw] stat
+# @!attribute [rw] stats
 #   @return [Hash, nil]
 #
 # @!attribute [rw] status
@@ -3453,7 +5116,7 @@ ApiEntitiesCommitCreateData = Struct.new(
 # @!attribute [rw] title
 #   @return [String, nil]
 #
-# @!attribute [rw] trailer
+# @!attribute [rw] trailers
 #   @return [Hash, nil]
 #
 # @!attribute [rw] web_url
@@ -3466,17 +5129,17 @@ ApiEntitiesCommitDetail = Struct.new(
   :committer_email,
   :committer_name,
   :created_at,
-  :extended_trailer,
+  :extended_trailers,
   :id,
   :last_pipeline,
   :message,
-  :parent_id,
+  :parent_ids,
   :project_id,
   :short_id,
-  :stat,
+  :stats,
   :status,
   :title,
-  :trailer,
+  :trailers,
   :web_url,
   keyword_init: true
 )
@@ -3498,8 +5161,80 @@ ApiEntitiesCommitDetailLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] author_email
+#   @return [String, nil]
+#
+# @!attribute [rw] author_name
+#   @return [String, nil]
+#
+# @!attribute [rw] authored_date
+#   @return [String, nil]
+#
+# @!attribute [rw] committed_date
+#   @return [String, nil]
+#
+# @!attribute [rw] committer_email
+#   @return [String, nil]
+#
+# @!attribute [rw] committer_name
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] extended_trailers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] last_pipeline
+#   @return [Hash, nil]
+#
+# @!attribute [rw] message
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_ids
+#   @return [Array, nil]
+#
+# @!attribute [rw] short_id
+#   @return [String, nil]
+#
+# @!attribute [rw] stats
+#   @return [Hash, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] trailers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesCommitDetailCreateData = Struct.new(
   :project_id,
+  :author_email,
+  :author_name,
+  :authored_date,
+  :committed_date,
+  :committer_email,
+  :committer_name,
+  :created_at,
+  :extended_trailers,
+  :id,
+  :last_pipeline,
+  :message,
+  :parent_ids,
+  :short_id,
+  :stats,
+  :status,
+  :title,
+  :trailers,
+  :web_url,
   keyword_init: true
 )
 
@@ -3510,9 +5245,81 @@ ApiEntitiesCommitDetailCreateData = Struct.new(
 #
 # @!attribute [rw] submodule
 #   @return [Object]
+#
+# @!attribute [rw] author_email
+#   @return [String, nil]
+#
+# @!attribute [rw] author_name
+#   @return [String, nil]
+#
+# @!attribute [rw] authored_date
+#   @return [String, nil]
+#
+# @!attribute [rw] committed_date
+#   @return [String, nil]
+#
+# @!attribute [rw] committer_email
+#   @return [String, nil]
+#
+# @!attribute [rw] committer_name
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] extended_trailers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] last_pipeline
+#   @return [Hash, nil]
+#
+# @!attribute [rw] message
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_ids
+#   @return [Array, nil]
+#
+# @!attribute [rw] short_id
+#   @return [String, nil]
+#
+# @!attribute [rw] stats
+#   @return [Hash, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] trailers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesCommitDetailUpdateData = Struct.new(
   :project_id,
   :submodule,
+  :author_email,
+  :author_name,
+  :authored_date,
+  :committed_date,
+  :committer_email,
+  :committer_name,
+  :created_at,
+  :extended_trailers,
+  :id,
+  :last_pipeline,
+  :message,
+  :parent_ids,
+  :short_id,
+  :stats,
+  :status,
+  :title,
+  :trailers,
+  :web_url,
   keyword_init: true
 )
 
@@ -3521,8 +5328,20 @@ ApiEntitiesCommitDetailUpdateData = Struct.new(
 # @!attribute [rw] author
 #   @return [Hash, nil]
 #
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
 # @!attribute [rw] created_at
 #   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
 #
 # @!attribute [rw] line
 #   @return [Integer, nil]
@@ -3530,18 +5349,46 @@ ApiEntitiesCommitDetailUpdateData = Struct.new(
 # @!attribute [rw] line_type
 #   @return [String, nil]
 #
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
 # @!attribute [rw] note
 #   @return [String, nil]
 #
 # @!attribute [rw] path
 #   @return [String, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesCommitNote = Struct.new(
   :author,
+  :avatar_path,
+  :avatar_url,
   :created_at,
+  :custom_attributes,
+  :id,
   :line,
   :line_type,
+  :locked,
+  :name,
   :note,
   :path,
+  :public_email,
+  :state,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -3565,9 +5412,73 @@ ApiEntitiesCommitNoteListMatch = Struct.new(
 #
 # @!attribute [rw] sha
 #   @return [Object]
+#
+# @!attribute [rw] author
+#   @return [Hash, nil]
+#
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] line
+#   @return [Integer, nil]
+#
+# @!attribute [rw] line_type
+#   @return [String, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] note
+#   @return [String, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesCommitNoteCreateData = Struct.new(
   :project_id,
   :sha,
+  :author,
+  :avatar_path,
+  :avatar_url,
+  :created_at,
+  :custom_attributes,
+  :id,
+  :line,
+  :line_type,
+  :locked,
+  :name,
+  :note,
+  :path,
+  :public_email,
+  :state,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -3631,11 +5542,20 @@ ApiEntitiesCommitSignatureLoadMatch = Struct.new(
 # @!attribute [rw] author
 #   @return [Hash, nil]
 #
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
 # @!attribute [rw] coverage
 #   @return [Float, nil]
 #
 # @!attribute [rw] created_at
 #   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -3646,11 +5566,17 @@ ApiEntitiesCommitSignatureLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 #
 # @!attribute [rw] pipeline_id
 #   @return [Integer, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
 #
 # @!attribute [rw] ref
 #   @return [String, nil]
@@ -3661,26 +5587,43 @@ ApiEntitiesCommitSignatureLoadMatch = Struct.new(
 # @!attribute [rw] started_at
 #   @return [String, nil]
 #
+# @!attribute [rw] state
+#   @return [String, nil]
+#
 # @!attribute [rw] status
 #   @return [String, nil]
 #
 # @!attribute [rw] target_url
 #   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesCommitStatus = Struct.new(
   :allow_failure,
   :author,
+  :avatar_path,
+  :avatar_url,
   :coverage,
   :created_at,
+  :custom_attributes,
   :description,
   :finished_at,
   :id,
+  :locked,
   :name,
   :pipeline_id,
+  :public_email,
   :ref,
   :sha,
   :started_at,
+  :state,
   :status,
   :target_url,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -3704,9 +5647,93 @@ ApiEntitiesCommitStatusListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] allow_failure
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] author
+#   @return [Hash, nil]
+#
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] coverage
+#   @return [Float, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] finished_at
+#   @return [String, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] pipeline_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] ref
+#   @return [String, nil]
+#
+# @!attribute [rw] sha
+#   @return [String, nil]
+#
+# @!attribute [rw] started_at
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] target_url
+#   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesCommitStatusCreateData = Struct.new(
   :id,
   :project_id,
+  :allow_failure,
+  :author,
+  :avatar_path,
+  :avatar_url,
+  :coverage,
+  :created_at,
+  :custom_attributes,
+  :description,
+  :finished_at,
+  :locked,
+  :name,
+  :pipeline_id,
+  :public_email,
+  :ref,
+  :sha,
+  :started_at,
+  :state,
+  :status,
+  :target_url,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -3715,22 +5742,26 @@ ApiEntitiesCommitStatusCreateData = Struct.new(
 # @!attribute [rw] commit
 #   @return [Hash, nil]
 #
+# @!attribute [rw] commits
+#   @return [Array, nil]
+#
 # @!attribute [rw] compare_same_ref
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] compare_timeout
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] diff
+# @!attribute [rw] diffs
 #   @return [Array, nil]
 #
 # @!attribute [rw] web_url
 #   @return [String, nil]
 ApiEntitiesCompare = Struct.new(
   :commit,
+  :commits,
   :compare_same_ref,
   :compare_timeout,
-  :diff,
+  :diffs,
   :web_url,
   keyword_init: true
 )
@@ -3776,7 +5807,7 @@ ApiEntitiesCompareListMatch = Struct.new(
 # @!attribute [rw] status
 #   @return [String, nil]
 #
-# @!attribute [rw] tag
+# @!attribute [rw] tags
 #   @return [Hash, nil]
 #
 # @!attribute [rw] tags_count
@@ -3792,7 +5823,7 @@ ApiEntitiesContainerRegistryRepository = Struct.new(
   :project_id,
   :size,
   :status,
-  :tag,
+  :tags,
   :tags_count,
   keyword_init: true
 )
@@ -3905,13 +5936,13 @@ ApiEntitiesContainerRegistryTagDetailLoadMatch = Struct.new(
 
 # ApiEntitiesContributor entity data model.
 #
-# @!attribute [rw] addition
+# @!attribute [rw] additions
 #   @return [Integer, nil]
 #
-# @!attribute [rw] commit
+# @!attribute [rw] commits
 #   @return [Integer, nil]
 #
-# @!attribute [rw] deletion
+# @!attribute [rw] deletions
 #   @return [Integer, nil]
 #
 # @!attribute [rw] email
@@ -3920,9 +5951,9 @@ ApiEntitiesContainerRegistryTagDetailLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 ApiEntitiesContributor = Struct.new(
-  :addition,
-  :commit,
-  :deletion,
+  :additions,
+  :commits,
+  :deletions,
   :email,
   :name,
   keyword_init: true
@@ -4042,9 +6073,53 @@ ApiEntitiesDeployKeyListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String, nil]
+#
+# @!attribute [rw] fingerprint
+#   @return [String, nil]
+#
+# @!attribute [rw] fingerprint_sha256
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] last_used_at
+#   @return [String, nil]
+#
+# @!attribute [rw] projects_with_readonly_access
+#   @return [Hash, nil]
+#
+# @!attribute [rw] projects_with_write_access
+#   @return [Hash, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] usage_type
+#   @return [String, nil]
 ApiEntitiesDeployKeyCreateData = Struct.new(
   :deploy_key_id,
   :project_id,
+  :created_at,
+  :expires_at,
+  :fingerprint,
+  :fingerprint_sha256,
+  :id,
+  :key,
+  :last_used_at,
+  :projects_with_readonly_access,
+  :projects_with_write_access,
+  :title,
+  :usage_type,
   keyword_init: true
 )
 
@@ -4055,9 +6130,49 @@ ApiEntitiesDeployKeyCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String, nil]
+#
+# @!attribute [rw] fingerprint
+#   @return [String, nil]
+#
+# @!attribute [rw] fingerprint_sha256
+#   @return [String, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] last_used_at
+#   @return [String, nil]
+#
+# @!attribute [rw] projects_with_readonly_access
+#   @return [Hash, nil]
+#
+# @!attribute [rw] projects_with_write_access
+#   @return [Hash, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] usage_type
+#   @return [String, nil]
 ApiEntitiesDeployKeyUpdateData = Struct.new(
   :id,
   :project_id,
+  :created_at,
+  :expires_at,
+  :fingerprint,
+  :fingerprint_sha256,
+  :key,
+  :last_used_at,
+  :projects_with_readonly_access,
+  :projects_with_write_access,
+  :title,
+  :usage_type,
   keyword_init: true
 )
 
@@ -4140,8 +6255,56 @@ ApiEntitiesDeployKeysProjectListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] can_push
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String, nil]
+#
+# @!attribute [rw] fingerprint
+#   @return [String, nil]
+#
+# @!attribute [rw] fingerprint_sha256
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] last_used_at
+#   @return [String, nil]
+#
+# @!attribute [rw] projects_with_readonly_access
+#   @return [Hash, nil]
+#
+# @!attribute [rw] projects_with_write_access
+#   @return [Hash, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] usage_type
+#   @return [String, nil]
 ApiEntitiesDeployKeysProjectCreateData = Struct.new(
   :project_id,
+  :can_push,
+  :created_at,
+  :expires_at,
+  :fingerprint,
+  :fingerprint_sha256,
+  :id,
+  :key,
+  :last_used_at,
+  :projects_with_readonly_access,
+  :projects_with_write_access,
+  :title,
+  :usage_type,
   keyword_init: true
 )
 
@@ -4162,7 +6325,7 @@ ApiEntitiesDeployKeysProjectCreateData = Struct.new(
 # @!attribute [rw] revoked
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] scope
+# @!attribute [rw] scopes
 #   @return [Array, nil]
 #
 # @!attribute [rw] username
@@ -4173,7 +6336,7 @@ ApiEntitiesDeployToken = Struct.new(
   :id,
   :name,
   :revoked,
-  :scope,
+  :scopes,
   :username,
   keyword_init: true
 )
@@ -4281,10 +6444,10 @@ ApiEntitiesDeploymentListMatch = Struct.new(
 
 # ApiEntitiesDeploymentExtended entity data model.
 #
-# @!attribute [rw] approval
+# @!attribute [rw] approval_summary
 #   @return [Hash, nil]
 #
-# @!attribute [rw] approval_summary
+# @!attribute [rw] approvals
 #   @return [Hash, nil]
 #
 # @!attribute [rw] created_at
@@ -4320,8 +6483,8 @@ ApiEntitiesDeploymentListMatch = Struct.new(
 # @!attribute [rw] user
 #   @return [Hash, nil]
 ApiEntitiesDeploymentExtended = Struct.new(
-  :approval,
   :approval_summary,
+  :approvals,
   :created_at,
   :deployable,
   :environment,
@@ -4353,8 +6516,60 @@ ApiEntitiesDeploymentExtendedLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] approval_summary
+#   @return [Hash, nil]
+#
+# @!attribute [rw] approvals
+#   @return [Hash, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] deployable
+#   @return [Hash, nil]
+#
+# @!attribute [rw] environment
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] iid
+#   @return [Integer, nil]
+#
+# @!attribute [rw] pending_approval_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] ref
+#   @return [String, nil]
+#
+# @!attribute [rw] sha
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
 ApiEntitiesDeploymentExtendedCreateData = Struct.new(
   :project_id,
+  :approval_summary,
+  :approvals,
+  :created_at,
+  :deployable,
+  :environment,
+  :id,
+  :iid,
+  :pending_approval_count,
+  :ref,
+  :sha,
+  :status,
+  :updated_at,
+  :user,
   keyword_init: true
 )
 
@@ -4365,9 +6580,61 @@ ApiEntitiesDeploymentExtendedCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] approval_summary
+#   @return [Hash, nil]
+#
+# @!attribute [rw] approvals
+#   @return [Hash, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] deployable
+#   @return [Hash, nil]
+#
+# @!attribute [rw] environment
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] iid
+#   @return [Integer, nil]
+#
+# @!attribute [rw] pending_approval_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] ref
+#   @return [String, nil]
+#
+# @!attribute [rw] sha
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
 ApiEntitiesDeploymentExtendedUpdateData = Struct.new(
   :deployment_id,
   :project_id,
+  :approval_summary,
+  :approvals,
+  :created_at,
+  :deployable,
+  :environment,
+  :id,
+  :iid,
+  :pending_approval_count,
+  :ref,
+  :sha,
+  :status,
+  :updated_at,
+  :user,
   keyword_init: true
 )
 
@@ -4390,13 +6657,13 @@ ApiEntitiesDeploymentsApprovalCreateData = Struct.new(
 
 # ApiEntitiesDictionaryTable entity data model.
 #
-# @!attribute [rw] feature_category
+# @!attribute [rw] feature_categories
 #   @return [Array, nil]
 #
 # @!attribute [rw] table_name
 #   @return [String, nil]
 ApiEntitiesDictionaryTable = Struct.new(
-  :feature_category,
+  :feature_categories,
   :table_name,
   keyword_init: true
 )
@@ -4491,27 +6758,27 @@ ApiEntitiesDiffListMatch = Struct.new(
 
 # ApiEntitiesDiscoveredCluster entity data model.
 #
-# @!attribute [rw] group
+# @!attribute [rw] groups
 #   @return [String, nil]
 #
-# @!attribute [rw] project
+# @!attribute [rw] projects
 #   @return [String, nil]
 ApiEntitiesDiscoveredCluster = Struct.new(
-  :group,
-  :project,
+  :groups,
+  :projects,
   keyword_init: true
 )
 
 # Request payload for ApiEntitiesDiscoveredCluster#load.
 #
-# @!attribute [rw] group
+# @!attribute [rw] groups
 #   @return [String, nil]
 #
-# @!attribute [rw] project
+# @!attribute [rw] projects
 #   @return [String, nil]
 ApiEntitiesDiscoveredClusterLoadMatch = Struct.new(
-  :group,
-  :project,
+  :groups,
+  :projects,
   keyword_init: true
 )
 
@@ -4593,9 +6860,41 @@ ApiEntitiesDraftNoteListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] author_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] commit_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] discussion_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] line_code
+#   @return [String, nil]
+#
+# @!attribute [rw] note
+#   @return [String, nil]
+#
+# @!attribute [rw] position
+#   @return [Hash, nil]
+#
+# @!attribute [rw] resolve_discussion
+#   @return [Boolean, nil]
 ApiEntitiesDraftNoteCreateData = Struct.new(
   :merge_request_id,
   :project_id,
+  :author_id,
+  :commit_id,
+  :discussion_id,
+  :id,
+  :line_code,
+  :note,
+  :position,
+  :resolve_discussion,
   keyword_init: true
 )
 
@@ -4609,10 +6908,38 @@ ApiEntitiesDraftNoteCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] author_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] commit_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] discussion_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] line_code
+#   @return [String, nil]
+#
+# @!attribute [rw] note
+#   @return [String, nil]
+#
+# @!attribute [rw] position
+#   @return [Hash, nil]
+#
+# @!attribute [rw] resolve_discussion
+#   @return [Boolean, nil]
 ApiEntitiesDraftNoteUpdateData = Struct.new(
   :id,
   :merge_request_id,
   :project_id,
+  :author_id,
+  :commit_id,
+  :discussion_id,
+  :line_code,
+  :note,
+  :position,
+  :resolve_discussion,
   keyword_init: true
 )
 
@@ -4714,9 +7041,73 @@ ApiEntitiesEnvironmentListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] auto_stop_at
+#   @return [String, nil]
+#
+# @!attribute [rw] auto_stop_setting
+#   @return [String, nil]
+#
+# @!attribute [rw] cluster_agent
+#   @return [Hash, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] external_url
+#   @return [String, nil]
+#
+# @!attribute [rw] flux_resource_path
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] kubernetes_namespace
+#   @return [String, nil]
+#
+# @!attribute [rw] last_deployment
+#   @return [Hash, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] project
+#   @return [Hash, nil]
+#
+# @!attribute [rw] slug
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] tier
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
 ApiEntitiesEnvironmentCreateData = Struct.new(
   :environment_id,
   :project_id,
+  :auto_stop_at,
+  :auto_stop_setting,
+  :cluster_agent,
+  :created_at,
+  :description,
+  :external_url,
+  :flux_resource_path,
+  :id,
+  :kubernetes_namespace,
+  :last_deployment,
+  :name,
+  :project,
+  :slug,
+  :state,
+  :tier,
+  :updated_at,
   keyword_init: true
 )
 
@@ -4727,9 +7118,69 @@ ApiEntitiesEnvironmentCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] auto_stop_at
+#   @return [String, nil]
+#
+# @!attribute [rw] auto_stop_setting
+#   @return [String, nil]
+#
+# @!attribute [rw] cluster_agent
+#   @return [Hash, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] external_url
+#   @return [String, nil]
+#
+# @!attribute [rw] flux_resource_path
+#   @return [String, nil]
+#
+# @!attribute [rw] kubernetes_namespace
+#   @return [String, nil]
+#
+# @!attribute [rw] last_deployment
+#   @return [Hash, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] project
+#   @return [Hash, nil]
+#
+# @!attribute [rw] slug
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] tier
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
 ApiEntitiesEnvironmentUpdateData = Struct.new(
   :id,
   :project_id,
+  :auto_stop_at,
+  :auto_stop_setting,
+  :cluster_agent,
+  :created_at,
+  :description,
+  :external_url,
+  :flux_resource_path,
+  :kubernetes_namespace,
+  :last_deployment,
+  :name,
+  :project,
+  :slug,
+  :state,
+  :tier,
+  :updated_at,
   keyword_init: true
 )
 
@@ -4767,8 +7218,24 @@ ApiEntitiesErrorTrackingClientKeyListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] active
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] public_key
+#   @return [String, nil]
+#
+# @!attribute [rw] sentry_dsn
+#   @return [String, nil]
 ApiEntitiesErrorTrackingClientKeyCreateData = Struct.new(
   :project_id,
+  :active,
+  :id,
+  :public_key,
+  :sentry_dsn,
   keyword_init: true
 )
 
@@ -4810,8 +7277,28 @@ ApiEntitiesErrorTrackingProjectSettingLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] active
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] api_url
+#   @return [String, nil]
+#
+# @!attribute [rw] integrated
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] project_name
+#   @return [String, nil]
+#
+# @!attribute [rw] sentry_external_url
+#   @return [String, nil]
 ApiEntitiesErrorTrackingProjectSettingUpdateData = Struct.new(
   :project_id,
+  :active,
+  :api_url,
+  :integrated,
+  :project_name,
+  :sentry_external_url,
   keyword_init: true
 )
 
@@ -4907,7 +7394,7 @@ ApiEntitiesEventListMatch = Struct.new(
 # @!attribute [rw] definition
 #   @return [Hash, nil]
 #
-# @!attribute [rw] gate
+# @!attribute [rw] gates
 #   @return [Hash, nil]
 #
 # @!attribute [rw] name
@@ -4917,7 +7404,7 @@ ApiEntitiesEventListMatch = Struct.new(
 #   @return [String, nil]
 ApiEntitiesFeature = Struct.new(
   :definition,
-  :gate,
+  :gates,
   :name,
   :state,
   keyword_init: true
@@ -4928,7 +7415,7 @@ ApiEntitiesFeature = Struct.new(
 # @!attribute [rw] definition
 #   @return [Hash, nil]
 #
-# @!attribute [rw] gate
+# @!attribute [rw] gates
 #   @return [Hash, nil]
 #
 # @!attribute [rw] name
@@ -4938,7 +7425,7 @@ ApiEntitiesFeature = Struct.new(
 #   @return [String, nil]
 ApiEntitiesFeatureListMatch = Struct.new(
   :definition,
-  :gate,
+  :gates,
   :name,
   :state,
   keyword_init: true
@@ -4948,8 +7435,24 @@ ApiEntitiesFeatureListMatch = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] definition
+#   @return [Hash, nil]
+#
+# @!attribute [rw] gates
+#   @return [Hash, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
 ApiEntitiesFeatureCreateData = Struct.new(
   :id,
+  :definition,
+  :gates,
+  :name,
+  :state,
   keyword_init: true
 )
 
@@ -4970,7 +7473,7 @@ ApiEntitiesFeatureCreateData = Struct.new(
 # @!attribute [rw] introduced_by_url
 #   @return [String, nil]
 #
-# @!attribute [rw] log_state_change
+# @!attribute [rw] log_state_changes
 #   @return [String, nil]
 #
 # @!attribute [rw] milestone
@@ -4990,7 +7493,7 @@ ApiEntitiesFeatureDefinition = Struct.new(
   :group,
   :intended_to_rollout_by,
   :introduced_by_url,
-  :log_state_change,
+  :log_state_changes,
   :milestone,
   :name,
   :rollout_issue_url,
@@ -5015,7 +7518,7 @@ ApiEntitiesFeatureDefinition = Struct.new(
 # @!attribute [rw] introduced_by_url
 #   @return [String, nil]
 #
-# @!attribute [rw] log_state_change
+# @!attribute [rw] log_state_changes
 #   @return [String, nil]
 #
 # @!attribute [rw] milestone
@@ -5035,7 +7538,7 @@ ApiEntitiesFeatureDefinitionListMatch = Struct.new(
   :group,
   :intended_to_rollout_by,
   :introduced_by_url,
-  :log_state_change,
+  :log_state_changes,
   :milestone,
   :name,
   :rollout_issue_url,
@@ -5054,17 +7557,26 @@ ApiEntitiesFeatureDefinitionListMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] scope
+# @!attribute [rw] parameters
 #   @return [String, nil]
 #
-# @!attribute [rw] strategy
+# @!attribute [rw] scopes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] strategies
 #   @return [Hash, nil]
 #
 # @!attribute [rw] updated_at
 #   @return [String, nil]
+#
+# @!attribute [rw] user_list
+#   @return [Hash, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
@@ -5072,10 +7584,13 @@ ApiEntitiesFeatureFlag = Struct.new(
   :active,
   :created_at,
   :description,
+  :id,
   :name,
-  :scope,
-  :strategy,
+  :parameters,
+  :scopes,
+  :strategies,
   :updated_at,
+  :user_list,
   :version,
   keyword_init: true
 )
@@ -5106,8 +7621,52 @@ ApiEntitiesFeatureFlagListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] active
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] parameters
+#   @return [String, nil]
+#
+# @!attribute [rw] scopes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] strategies
+#   @return [Hash, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] user_list
+#   @return [Hash, nil]
+#
+# @!attribute [rw] version
+#   @return [String, nil]
 ApiEntitiesFeatureFlagCreateData = Struct.new(
   :project_id,
+  :active,
+  :created_at,
+  :description,
+  :id,
+  :name,
+  :parameters,
+  :scopes,
+  :strategies,
+  :updated_at,
+  :user_list,
+  :version,
   keyword_init: true
 )
 
@@ -5118,9 +7677,49 @@ ApiEntitiesFeatureFlagCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] active
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] parameters
+#   @return [String, nil]
+#
+# @!attribute [rw] scopes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] strategies
+#   @return [Hash, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] user_list
+#   @return [Hash, nil]
+#
+# @!attribute [rw] version
+#   @return [String, nil]
 ApiEntitiesFeatureFlagUpdateData = Struct.new(
   :id,
   :project_id,
+  :active,
+  :created_at,
+  :description,
+  :name,
+  :parameters,
+  :scopes,
+  :strategies,
+  :updated_at,
+  :user_list,
+  :version,
   keyword_init: true
 )
 
@@ -5150,7 +7749,7 @@ ApiEntitiesFeatureFlagUpdateData = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 #
-# @!attribute [rw] user_xid
+# @!attribute [rw] user_xids
 #   @return [String, nil]
 ApiEntitiesFeatureFlagUserList = Struct.new(
   :created_at,
@@ -5161,7 +7760,7 @@ ApiEntitiesFeatureFlagUserList = Struct.new(
   :path,
   :project_id,
   :updated_at,
-  :user_xid,
+  :user_xids,
   keyword_init: true
 )
 
@@ -5191,8 +7790,40 @@ ApiEntitiesFeatureFlagUserListListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] edit_path
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] iid
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] user_xids
+#   @return [String, nil]
 ApiEntitiesFeatureFlagUserListCreateData = Struct.new(
   :project_id,
+  :created_at,
+  :edit_path,
+  :id,
+  :iid,
+  :name,
+  :path,
+  :updated_at,
+  :user_xids,
   keyword_init: true
 )
 
@@ -5203,9 +7834,37 @@ ApiEntitiesFeatureFlagUserListCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] edit_path
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] user_xids
+#   @return [String, nil]
 ApiEntitiesFeatureFlagUserListUpdateData = Struct.new(
   :iid,
   :project_id,
+  :created_at,
+  :edit_path,
+  :id,
+  :name,
+  :path,
+  :updated_at,
+  :user_xids,
   keyword_init: true
 )
 
@@ -5264,8 +7923,32 @@ ApiEntitiesFreezePeriodListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] cron_timezone
+#   @return [String, nil]
+#
+# @!attribute [rw] freeze_end
+#   @return [String, nil]
+#
+# @!attribute [rw] freeze_start
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
 ApiEntitiesFreezePeriodCreateData = Struct.new(
   :project_id,
+  :created_at,
+  :cron_timezone,
+  :freeze_end,
+  :freeze_start,
+  :id,
+  :updated_at,
   keyword_init: true
 )
 
@@ -5276,9 +7959,29 @@ ApiEntitiesFreezePeriodCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] cron_timezone
+#   @return [String, nil]
+#
+# @!attribute [rw] freeze_end
+#   @return [String, nil]
+#
+# @!attribute [rw] freeze_start
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
 ApiEntitiesFreezePeriodUpdateData = Struct.new(
   :id,
   :project_id,
+  :created_at,
+  :cron_timezone,
+  :freeze_end,
+  :freeze_start,
+  :updated_at,
   keyword_init: true
 )
 
@@ -5310,14 +8013,14 @@ ApiEntitiesGitlabSubscriptionLoadMatch = Struct.new(
 
 # ApiEntitiesGoModuleVersion entity data model.
 #
-# @!attribute [rw] time
+# @!attribute [rw] Time
 #   @return [String, nil]
 #
-# @!attribute [rw] version
+# @!attribute [rw] Version
 #   @return [String, nil]
 ApiEntitiesGoModuleVersion = Struct.new(
-  :time,
-  :version,
+  :Time,
+  :Version,
   keyword_init: true
 )
 
@@ -5351,7 +8054,7 @@ ApiEntitiesGoModuleVersionLoadMatch = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] custom_attribute
+# @!attribute [rw] custom_attributes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] default_branch
@@ -5360,7 +8063,7 @@ ApiEntitiesGoModuleVersionLoadMatch = Struct.new(
 # @!attribute [rw] default_branch_protection
 #   @return [String, nil]
 #
-# @!attribute [rw] default_branch_protection_default
+# @!attribute [rw] default_branch_protection_defaults
 #   @return [String, nil]
 #
 # @!attribute [rw] description
@@ -5396,7 +8099,7 @@ ApiEntitiesGoModuleVersionLoadMatch = Struct.new(
 # @!attribute [rw] ldap_cn
 #   @return [String, nil]
 #
-# @!attribute [rw] ldap_group_link
+# @!attribute [rw] ldap_group_links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] lfs_enabled
@@ -5444,10 +8147,10 @@ ApiEntitiesGoModuleVersionLoadMatch = Struct.new(
 # @!attribute [rw] require_two_factor_authentication
 #   @return [String, nil]
 #
-# @!attribute [rw] root_storage_statistic
+# @!attribute [rw] root_storage_statistics
 #   @return [Hash, nil]
 #
-# @!attribute [rw] saml_group_link
+# @!attribute [rw] saml_group_links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] share_with_group_lock
@@ -5459,7 +8162,7 @@ ApiEntitiesGoModuleVersionLoadMatch = Struct.new(
 # @!attribute [rw] show_diff_preview_in_email
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] statistic
+# @!attribute [rw] statistics
 #   @return [Hash, nil]
 #
 # @!attribute [rw] subgroup_creation_level
@@ -5485,10 +8188,10 @@ ApiEntitiesGroup = Struct.new(
   :auto_duo_code_review_enabled,
   :avatar_url,
   :created_at,
-  :custom_attribute,
+  :custom_attributes,
   :default_branch,
   :default_branch_protection,
-  :default_branch_protection_default,
+  :default_branch_protection_defaults,
   :description,
   :duo_core_features_enabled,
   :duo_features_enabled,
@@ -5500,7 +8203,7 @@ ApiEntitiesGroup = Struct.new(
   :id,
   :ldap_access,
   :ldap_cn,
-  :ldap_group_link,
+  :ldap_group_links,
   :lfs_enabled,
   :lock_duo_features_enabled,
   :lock_math_rendering_limits_enabled,
@@ -5516,12 +8219,12 @@ ApiEntitiesGroup = Struct.new(
   :repository_storage,
   :request_access_enabled,
   :require_two_factor_authentication,
-  :root_storage_statistic,
-  :saml_group_link,
+  :root_storage_statistics,
+  :saml_group_links,
   :share_with_group_lock,
   :shared_runners_setting,
   :show_diff_preview_in_email,
-  :statistic,
+  :statistics,
   :subgroup_creation_level,
   :two_factor_grace_period,
   :visibility,
@@ -5557,8 +8260,200 @@ ApiEntitiesGroupListMatch = Struct.new(
 #
 # @!attribute [rw] group_id
 #   @return [String, nil]
+#
+# @!attribute [rw] archived
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] auto_devops_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] auto_duo_code_review_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] default_branch_protection
+#   @return [String, nil]
+#
+# @!attribute [rw] default_branch_protection_defaults
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] duo_core_features_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] duo_features_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] emails_disabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] emails_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] file_template_project_id
+#   @return [String, nil]
+#
+# @!attribute [rw] full_name
+#   @return [String, nil]
+#
+# @!attribute [rw] full_path
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] ldap_access
+#   @return [String, nil]
+#
+# @!attribute [rw] ldap_cn
+#   @return [String, nil]
+#
+# @!attribute [rw] ldap_group_links
+#   @return [Hash, nil]
+#
+# @!attribute [rw] lfs_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] lock_duo_features_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] lock_math_rendering_limits_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] marked_for_deletion_on
+#   @return [String, nil]
+#
+# @!attribute [rw] math_rendering_limits_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] max_artifacts_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] mentions_disabled
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_id
+#   @return [String, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] project_creation_level
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_storage
+#   @return [String, nil]
+#
+# @!attribute [rw] request_access_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] require_two_factor_authentication
+#   @return [String, nil]
+#
+# @!attribute [rw] root_storage_statistics
+#   @return [Hash, nil]
+#
+# @!attribute [rw] saml_group_links
+#   @return [Hash, nil]
+#
+# @!attribute [rw] share_with_group_lock
+#   @return [String, nil]
+#
+# @!attribute [rw] shared_runners_setting
+#   @return [String, nil]
+#
+# @!attribute [rw] show_diff_preview_in_email
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] statistics
+#   @return [Hash, nil]
+#
+# @!attribute [rw] subgroup_creation_level
+#   @return [String, nil]
+#
+# @!attribute [rw] two_factor_grace_period
+#   @return [String, nil]
+#
+# @!attribute [rw] visibility
+#   @return [String, nil]
+#
+# @!attribute [rw] web_based_commit_signing_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
+#
+# @!attribute [rw] wiki_access_level
+#   @return [String, nil]
 ApiEntitiesGroupCreateData = Struct.new(
   :group_id,
+  :archived,
+  :auto_devops_enabled,
+  :auto_duo_code_review_enabled,
+  :avatar_url,
+  :created_at,
+  :custom_attributes,
+  :default_branch,
+  :default_branch_protection,
+  :default_branch_protection_defaults,
+  :description,
+  :duo_core_features_enabled,
+  :duo_features_enabled,
+  :emails_disabled,
+  :emails_enabled,
+  :file_template_project_id,
+  :full_name,
+  :full_path,
+  :id,
+  :ldap_access,
+  :ldap_cn,
+  :ldap_group_links,
+  :lfs_enabled,
+  :lock_duo_features_enabled,
+  :lock_math_rendering_limits_enabled,
+  :marked_for_deletion_on,
+  :math_rendering_limits_enabled,
+  :max_artifacts_size,
+  :mentions_disabled,
+  :name,
+  :organization_id,
+  :parent_id,
+  :path,
+  :project_creation_level,
+  :repository_storage,
+  :request_access_enabled,
+  :require_two_factor_authentication,
+  :root_storage_statistics,
+  :saml_group_links,
+  :share_with_group_lock,
+  :shared_runners_setting,
+  :show_diff_preview_in_email,
+  :statistics,
+  :subgroup_creation_level,
+  :two_factor_grace_period,
+  :visibility,
+  :web_based_commit_signing_enabled,
+  :web_url,
+  :wiki_access_level,
   keyword_init: true
 )
 
@@ -5566,8 +8461,196 @@ ApiEntitiesGroupCreateData = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] archived
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] auto_devops_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] auto_duo_code_review_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] default_branch_protection
+#   @return [String, nil]
+#
+# @!attribute [rw] default_branch_protection_defaults
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] duo_core_features_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] duo_features_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] emails_disabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] emails_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] file_template_project_id
+#   @return [String, nil]
+#
+# @!attribute [rw] full_name
+#   @return [String, nil]
+#
+# @!attribute [rw] full_path
+#   @return [String, nil]
+#
+# @!attribute [rw] ldap_access
+#   @return [String, nil]
+#
+# @!attribute [rw] ldap_cn
+#   @return [String, nil]
+#
+# @!attribute [rw] ldap_group_links
+#   @return [Hash, nil]
+#
+# @!attribute [rw] lfs_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] lock_duo_features_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] lock_math_rendering_limits_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] marked_for_deletion_on
+#   @return [String, nil]
+#
+# @!attribute [rw] math_rendering_limits_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] max_artifacts_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] mentions_disabled
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_id
+#   @return [String, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] project_creation_level
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_storage
+#   @return [String, nil]
+#
+# @!attribute [rw] request_access_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] require_two_factor_authentication
+#   @return [String, nil]
+#
+# @!attribute [rw] root_storage_statistics
+#   @return [Hash, nil]
+#
+# @!attribute [rw] saml_group_links
+#   @return [Hash, nil]
+#
+# @!attribute [rw] share_with_group_lock
+#   @return [String, nil]
+#
+# @!attribute [rw] shared_runners_setting
+#   @return [String, nil]
+#
+# @!attribute [rw] show_diff_preview_in_email
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] statistics
+#   @return [Hash, nil]
+#
+# @!attribute [rw] subgroup_creation_level
+#   @return [String, nil]
+#
+# @!attribute [rw] two_factor_grace_period
+#   @return [String, nil]
+#
+# @!attribute [rw] visibility
+#   @return [String, nil]
+#
+# @!attribute [rw] web_based_commit_signing_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
+#
+# @!attribute [rw] wiki_access_level
+#   @return [String, nil]
 ApiEntitiesGroupUpdateData = Struct.new(
   :id,
+  :archived,
+  :auto_devops_enabled,
+  :auto_duo_code_review_enabled,
+  :avatar_url,
+  :created_at,
+  :custom_attributes,
+  :default_branch,
+  :default_branch_protection,
+  :default_branch_protection_defaults,
+  :description,
+  :duo_core_features_enabled,
+  :duo_features_enabled,
+  :emails_disabled,
+  :emails_enabled,
+  :file_template_project_id,
+  :full_name,
+  :full_path,
+  :ldap_access,
+  :ldap_cn,
+  :ldap_group_links,
+  :lfs_enabled,
+  :lock_duo_features_enabled,
+  :lock_math_rendering_limits_enabled,
+  :marked_for_deletion_on,
+  :math_rendering_limits_enabled,
+  :max_artifacts_size,
+  :mentions_disabled,
+  :name,
+  :organization_id,
+  :parent_id,
+  :path,
+  :project_creation_level,
+  :repository_storage,
+  :request_access_enabled,
+  :require_two_factor_authentication,
+  :root_storage_statistics,
+  :saml_group_links,
+  :share_with_group_lock,
+  :shared_runners_setting,
+  :show_diff_preview_in_email,
+  :statistics,
+  :subgroup_creation_level,
+  :two_factor_grace_period,
+  :visibility,
+  :web_based_commit_signing_enabled,
+  :web_url,
+  :wiki_access_level,
   keyword_init: true
 )
 
@@ -5594,7 +8677,7 @@ ApiEntitiesGroupUpdateData = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] custom_attribute
+# @!attribute [rw] custom_attributes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] default_branch
@@ -5603,7 +8686,7 @@ ApiEntitiesGroupUpdateData = Struct.new(
 # @!attribute [rw] default_branch_protection
 #   @return [String, nil]
 #
-# @!attribute [rw] default_branch_protection_default
+# @!attribute [rw] default_branch_protection_defaults
 #   @return [String, nil]
 #
 # @!attribute [rw] description
@@ -5639,7 +8722,7 @@ ApiEntitiesGroupUpdateData = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] ip_restriction_range
+# @!attribute [rw] ip_restriction_ranges
 #   @return [String, nil]
 #
 # @!attribute [rw] ldap_access
@@ -5648,7 +8731,7 @@ ApiEntitiesGroupUpdateData = Struct.new(
 # @!attribute [rw] ldap_cn
 #   @return [String, nil]
 #
-# @!attribute [rw] ldap_group_link
+# @!attribute [rw] ldap_group_links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] lfs_enabled
@@ -5693,11 +8776,11 @@ ApiEntitiesGroupUpdateData = Struct.new(
 # @!attribute [rw] prevent_sharing_groups_outside_hierarchy
 #   @return [String, nil]
 #
-# @!attribute [rw] project
-#   @return [Hash, nil]
-#
 # @!attribute [rw] project_creation_level
 #   @return [String, nil]
+#
+# @!attribute [rw] projects
+#   @return [Hash, nil]
 #
 # @!attribute [rw] repository_storage
 #   @return [String, nil]
@@ -5708,13 +8791,13 @@ ApiEntitiesGroupUpdateData = Struct.new(
 # @!attribute [rw] require_two_factor_authentication
 #   @return [String, nil]
 #
-# @!attribute [rw] root_storage_statistic
+# @!attribute [rw] root_storage_statistics
 #   @return [Hash, nil]
 #
 # @!attribute [rw] runners_token
 #   @return [String, nil]
 #
-# @!attribute [rw] saml_group_link
+# @!attribute [rw] saml_group_links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] service_access_tokens_expiration_enforced
@@ -5723,7 +8806,7 @@ ApiEntitiesGroupUpdateData = Struct.new(
 # @!attribute [rw] share_with_group_lock
 #   @return [String, nil]
 #
-# @!attribute [rw] shared_project
+# @!attribute [rw] shared_projects
 #   @return [Hash, nil]
 #
 # @!attribute [rw] shared_runners_minutes_limit
@@ -5732,13 +8815,13 @@ ApiEntitiesGroupUpdateData = Struct.new(
 # @!attribute [rw] shared_runners_setting
 #   @return [String, nil]
 #
-# @!attribute [rw] shared_with_group
+# @!attribute [rw] shared_with_groups
 #   @return [String, nil]
 #
 # @!attribute [rw] show_diff_preview_in_email
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] statistic
+# @!attribute [rw] statistics
 #   @return [Hash, nil]
 #
 # @!attribute [rw] subgroup_creation_level
@@ -5756,7 +8839,7 @@ ApiEntitiesGroupUpdateData = Struct.new(
 # @!attribute [rw] unique_project_download_limit_allowlist
 #   @return [String, nil]
 #
-# @!attribute [rw] unique_project_download_limit_interval_in_second
+# @!attribute [rw] unique_project_download_limit_interval_in_seconds
 #   @return [String, nil]
 #
 # @!attribute [rw] visibility
@@ -5778,10 +8861,10 @@ ApiEntitiesGroupDetail = Struct.new(
   :auto_duo_code_review_enabled,
   :avatar_url,
   :created_at,
-  :custom_attribute,
+  :custom_attributes,
   :default_branch,
   :default_branch_protection,
-  :default_branch_protection_default,
+  :default_branch_protection_defaults,
   :description,
   :duo_core_features_enabled,
   :duo_features_enabled,
@@ -5793,10 +8876,10 @@ ApiEntitiesGroupDetail = Struct.new(
   :full_name,
   :full_path,
   :id,
-  :ip_restriction_range,
+  :ip_restriction_ranges,
   :ldap_access,
   :ldap_cn,
-  :ldap_group_link,
+  :ldap_group_links,
   :lfs_enabled,
   :lock_duo_features_enabled,
   :lock_math_rendering_limits_enabled,
@@ -5811,28 +8894,28 @@ ApiEntitiesGroupDetail = Struct.new(
   :path,
   :prevent_forking_outside_group,
   :prevent_sharing_groups_outside_hierarchy,
-  :project,
   :project_creation_level,
+  :projects,
   :repository_storage,
   :request_access_enabled,
   :require_two_factor_authentication,
-  :root_storage_statistic,
+  :root_storage_statistics,
   :runners_token,
-  :saml_group_link,
+  :saml_group_links,
   :service_access_tokens_expiration_enforced,
   :share_with_group_lock,
-  :shared_project,
+  :shared_projects,
   :shared_runners_minutes_limit,
   :shared_runners_setting,
-  :shared_with_group,
+  :shared_with_groups,
   :show_diff_preview_in_email,
-  :statistic,
+  :statistics,
   :subgroup_creation_level,
   :two_factor_grace_period,
   :unique_project_download_limit,
   :unique_project_download_limit_alertlist,
   :unique_project_download_limit_allowlist,
-  :unique_project_download_limit_interval_in_second,
+  :unique_project_download_limit_interval_in_seconds,
   :visibility,
   :web_based_commit_signing_enabled,
   :web_url,
@@ -5856,9 +8939,273 @@ ApiEntitiesGroupDetailLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] allowed_email_domains_list
+#   @return [String, nil]
+#
+# @!attribute [rw] archived
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] auto_ban_user_on_excessive_projects_download
+#   @return [String, nil]
+#
+# @!attribute [rw] auto_devops_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] auto_duo_code_review_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] default_branch_protection
+#   @return [String, nil]
+#
+# @!attribute [rw] default_branch_protection_defaults
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] duo_core_features_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] duo_features_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] emails_disabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] emails_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] enabled_git_access_protocol
+#   @return [String, nil]
+#
+# @!attribute [rw] extra_shared_runners_minutes_limit
+#   @return [String, nil]
+#
+# @!attribute [rw] file_template_project_id
+#   @return [String, nil]
+#
+# @!attribute [rw] full_name
+#   @return [String, nil]
+#
+# @!attribute [rw] full_path
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] ip_restriction_ranges
+#   @return [String, nil]
+#
+# @!attribute [rw] ldap_access
+#   @return [String, nil]
+#
+# @!attribute [rw] ldap_cn
+#   @return [String, nil]
+#
+# @!attribute [rw] ldap_group_links
+#   @return [Hash, nil]
+#
+# @!attribute [rw] lfs_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] lock_duo_features_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] lock_math_rendering_limits_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] marked_for_deletion_on
+#   @return [String, nil]
+#
+# @!attribute [rw] math_rendering_limits_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] max_artifacts_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] membership_lock
+#   @return [String, nil]
+#
+# @!attribute [rw] mentions_disabled
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_id
+#   @return [String, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] prevent_forking_outside_group
+#   @return [String, nil]
+#
+# @!attribute [rw] prevent_sharing_groups_outside_hierarchy
+#   @return [String, nil]
+#
+# @!attribute [rw] project_creation_level
+#   @return [String, nil]
+#
+# @!attribute [rw] projects
+#   @return [Hash, nil]
+#
+# @!attribute [rw] repository_storage
+#   @return [String, nil]
+#
+# @!attribute [rw] request_access_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] require_two_factor_authentication
+#   @return [String, nil]
+#
+# @!attribute [rw] root_storage_statistics
+#   @return [Hash, nil]
+#
+# @!attribute [rw] runners_token
+#   @return [String, nil]
+#
+# @!attribute [rw] saml_group_links
+#   @return [Hash, nil]
+#
+# @!attribute [rw] service_access_tokens_expiration_enforced
+#   @return [String, nil]
+#
+# @!attribute [rw] share_with_group_lock
+#   @return [String, nil]
+#
+# @!attribute [rw] shared_projects
+#   @return [Hash, nil]
+#
+# @!attribute [rw] shared_runners_minutes_limit
+#   @return [String, nil]
+#
+# @!attribute [rw] shared_runners_setting
+#   @return [String, nil]
+#
+# @!attribute [rw] shared_with_groups
+#   @return [String, nil]
+#
+# @!attribute [rw] show_diff_preview_in_email
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] statistics
+#   @return [Hash, nil]
+#
+# @!attribute [rw] subgroup_creation_level
+#   @return [String, nil]
+#
+# @!attribute [rw] two_factor_grace_period
+#   @return [String, nil]
+#
+# @!attribute [rw] unique_project_download_limit
+#   @return [String, nil]
+#
+# @!attribute [rw] unique_project_download_limit_alertlist
+#   @return [String, nil]
+#
+# @!attribute [rw] unique_project_download_limit_allowlist
+#   @return [String, nil]
+#
+# @!attribute [rw] unique_project_download_limit_interval_in_seconds
+#   @return [String, nil]
+#
+# @!attribute [rw] visibility
+#   @return [String, nil]
+#
+# @!attribute [rw] web_based_commit_signing_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
+#
+# @!attribute [rw] wiki_access_level
+#   @return [String, nil]
 ApiEntitiesGroupDetailCreateData = Struct.new(
   :group_id,
   :project_id,
+  :allowed_email_domains_list,
+  :archived,
+  :auto_ban_user_on_excessive_projects_download,
+  :auto_devops_enabled,
+  :auto_duo_code_review_enabled,
+  :avatar_url,
+  :created_at,
+  :custom_attributes,
+  :default_branch,
+  :default_branch_protection,
+  :default_branch_protection_defaults,
+  :description,
+  :duo_core_features_enabled,
+  :duo_features_enabled,
+  :emails_disabled,
+  :emails_enabled,
+  :enabled_git_access_protocol,
+  :extra_shared_runners_minutes_limit,
+  :file_template_project_id,
+  :full_name,
+  :full_path,
+  :id,
+  :ip_restriction_ranges,
+  :ldap_access,
+  :ldap_cn,
+  :ldap_group_links,
+  :lfs_enabled,
+  :lock_duo_features_enabled,
+  :lock_math_rendering_limits_enabled,
+  :marked_for_deletion_on,
+  :math_rendering_limits_enabled,
+  :max_artifacts_size,
+  :membership_lock,
+  :mentions_disabled,
+  :name,
+  :organization_id,
+  :parent_id,
+  :path,
+  :prevent_forking_outside_group,
+  :prevent_sharing_groups_outside_hierarchy,
+  :project_creation_level,
+  :projects,
+  :repository_storage,
+  :request_access_enabled,
+  :require_two_factor_authentication,
+  :root_storage_statistics,
+  :runners_token,
+  :saml_group_links,
+  :service_access_tokens_expiration_enforced,
+  :share_with_group_lock,
+  :shared_projects,
+  :shared_runners_minutes_limit,
+  :shared_runners_setting,
+  :shared_with_groups,
+  :show_diff_preview_in_email,
+  :statistics,
+  :subgroup_creation_level,
+  :two_factor_grace_period,
+  :unique_project_download_limit,
+  :unique_project_download_limit_alertlist,
+  :unique_project_download_limit_allowlist,
+  :unique_project_download_limit_interval_in_seconds,
+  :visibility,
+  :web_based_commit_signing_enabled,
+  :web_url,
+  :wiki_access_level,
   keyword_init: true
 )
 
@@ -5873,7 +9220,7 @@ ApiEntitiesGroupDetailCreateData = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] custom_header
+# @!attribute [rw] custom_headers
 #   @return [Array, nil]
 #
 # @!attribute [rw] custom_webhook_template
@@ -5891,47 +9238,47 @@ ApiEntitiesGroupDetailCreateData = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] merge_requests_event
+# @!attribute [rw] merge_requests_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] push_event
+# @!attribute [rw] push_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] push_events_branch_filter
 #   @return [String, nil]
 #
-# @!attribute [rw] repository_update_event
+# @!attribute [rw] repository_update_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] tag_push_event
+# @!attribute [rw] tag_push_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] url
 #   @return [String, nil]
 #
-# @!attribute [rw] url_variable
+# @!attribute [rw] url_variables
 #   @return [Array, nil]
 ApiEntitiesHook = Struct.new(
   :alert_status,
   :branch_filter_strategy,
   :created_at,
-  :custom_header,
+  :custom_headers,
   :custom_webhook_template,
   :description,
   :disabled_until,
   :enable_ssl_verification,
   :id,
-  :merge_requests_event,
+  :merge_requests_events,
   :name,
-  :push_event,
+  :push_events,
   :push_events_branch_filter,
-  :repository_update_event,
-  :tag_push_event,
+  :repository_update_events,
+  :tag_push_events,
   :url,
-  :url_variable,
+  :url_variables,
   keyword_init: true
 )
 
@@ -5955,7 +9302,7 @@ ApiEntitiesHookLoadMatch = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] custom_header
+# @!attribute [rw] custom_headers
 #   @return [Array, nil]
 #
 # @!attribute [rw] custom_webhook_template
@@ -5973,47 +9320,47 @@ ApiEntitiesHookLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] merge_requests_event
+# @!attribute [rw] merge_requests_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] push_event
+# @!attribute [rw] push_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] push_events_branch_filter
 #   @return [String, nil]
 #
-# @!attribute [rw] repository_update_event
+# @!attribute [rw] repository_update_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] tag_push_event
+# @!attribute [rw] tag_push_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] url
 #   @return [String, nil]
 #
-# @!attribute [rw] url_variable
+# @!attribute [rw] url_variables
 #   @return [Array, nil]
 ApiEntitiesHookListMatch = Struct.new(
   :alert_status,
   :branch_filter_strategy,
   :created_at,
-  :custom_header,
+  :custom_headers,
   :custom_webhook_template,
   :description,
   :disabled_until,
   :enable_ssl_verification,
   :id,
-  :merge_requests_event,
+  :merge_requests_events,
   :name,
-  :push_event,
+  :push_events,
   :push_events_branch_filter,
-  :repository_update_event,
-  :tag_push_event,
+  :repository_update_events,
+  :tag_push_events,
   :url,
-  :url_variable,
+  :url_variables,
   keyword_init: true
 )
 
@@ -6028,7 +9375,7 @@ ApiEntitiesHookListMatch = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] custom_header
+# @!attribute [rw] custom_headers
 #   @return [Array, nil]
 #
 # @!attribute [rw] custom_webhook_template
@@ -6046,47 +9393,47 @@ ApiEntitiesHookListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] merge_requests_event
+# @!attribute [rw] merge_requests_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] push_event
+# @!attribute [rw] push_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] push_events_branch_filter
 #   @return [String, nil]
 #
-# @!attribute [rw] repository_update_event
+# @!attribute [rw] repository_update_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] tag_push_event
+# @!attribute [rw] tag_push_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] url
 #   @return [String, nil]
 #
-# @!attribute [rw] url_variable
+# @!attribute [rw] url_variables
 #   @return [Array, nil]
 ApiEntitiesHookCreateData = Struct.new(
   :alert_status,
   :branch_filter_strategy,
   :created_at,
-  :custom_header,
+  :custom_headers,
   :custom_webhook_template,
   :description,
   :disabled_until,
   :enable_ssl_verification,
   :id,
-  :merge_requests_event,
+  :merge_requests_events,
   :name,
-  :push_event,
+  :push_events,
   :push_events_branch_filter,
-  :repository_update_event,
-  :tag_push_event,
+  :repository_update_events,
+  :tag_push_events,
   :url,
-  :url_variable,
+  :url_variables,
   keyword_init: true
 )
 
@@ -6094,111 +9441,78 @@ ApiEntitiesHookCreateData = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
-ApiEntitiesHookUpdateData = Struct.new(
-  :id,
-  keyword_init: true
-)
-
-# ApiEntitiesIntegration entity data model.
 #
-# @!attribute [rw] active
-#   @return [Boolean, nil]
+# @!attribute [rw] alert_status
+#   @return [Object, nil]
 #
-# @!attribute [rw] alert_event
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] comment_on_event_enabled
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] commit_event
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] confidential_issues_event
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] confidential_note_event
-#   @return [Boolean, nil]
+# @!attribute [rw] branch_filter_strategy
+#   @return [String, nil]
 #
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] deployment_event
-#   @return [Boolean, nil]
+# @!attribute [rw] custom_headers
+#   @return [Array, nil]
 #
-# @!attribute [rw] id
-#   @return [Integer, nil]
-#
-# @!attribute [rw] incident_event
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] inherited
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] issues_event
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] job_event
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] merge_requests_event
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] note_event
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] pipeline_event
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] property
-#   @return [Hash, nil]
-#
-# @!attribute [rw] push_event
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] slug
-#   @return [Integer, nil]
-#
-# @!attribute [rw] tag_push_event
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] title
+# @!attribute [rw] custom_webhook_template
 #   @return [String, nil]
 #
-# @!attribute [rw] updated_at
+# @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] vulnerability_event
+# @!attribute [rw] disabled_until
+#   @return [String, nil]
+#
+# @!attribute [rw] enable_ssl_verification
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] wiki_page_event
+# @!attribute [rw] merge_requests_events
 #   @return [Boolean, nil]
-ApiEntitiesIntegration = Struct.new(
-  :active,
-  :alert_event,
-  :comment_on_event_enabled,
-  :commit_event,
-  :confidential_issues_event,
-  :confidential_note_event,
-  :created_at,
-  :deployment_event,
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] push_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] push_events_branch_filter
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_update_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] tag_push_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
+#
+# @!attribute [rw] url_variables
+#   @return [Array, nil]
+ApiEntitiesHookUpdateData = Struct.new(
   :id,
-  :incident_event,
-  :inherited,
-  :issues_event,
-  :job_event,
-  :merge_requests_event,
-  :note_event,
-  :pipeline_event,
-  :property,
-  :push_event,
-  :slug,
-  :tag_push_event,
-  :title,
-  :updated_at,
-  :vulnerability_event,
-  :wiki_page_event,
+  :alert_status,
+  :branch_filter_strategy,
+  :created_at,
+  :custom_headers,
+  :custom_webhook_template,
+  :description,
+  :disabled_until,
+  :enable_ssl_verification,
+  :merge_requests_events,
+  :name,
+  :push_events,
+  :push_events_branch_filter,
+  :repository_update_events,
+  :tag_push_events,
+  :url,
+  :url_variables,
   keyword_init: true
 )
+
+# ApiEntitiesIntegration entity data model.
+class ApiEntitiesIntegration
+end
 
 # Request payload for ApiEntitiesIntegration#load.
 #
@@ -6226,58 +9540,58 @@ ApiEntitiesIntegrationLoadMatch = Struct.new(
 # @!attribute [rw] active
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] alert_event
+# @!attribute [rw] alert_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] comment_on_event_enabled
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] commit_event
+# @!attribute [rw] commit_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] confidential_issues_event
+# @!attribute [rw] confidential_issues_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] confidential_note_event
+# @!attribute [rw] confidential_note_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] deployment_event
+# @!attribute [rw] deployment_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] incident_event
+# @!attribute [rw] incident_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] inherited
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] issues_event
+# @!attribute [rw] issues_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] job_event
+# @!attribute [rw] job_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] merge_requests_event
+# @!attribute [rw] merge_requests_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] note_event
+# @!attribute [rw] note_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] pipeline_event
+# @!attribute [rw] pipeline_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] push_event
+# @!attribute [rw] push_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] slug
 #   @return [Integer, nil]
 #
-# @!attribute [rw] tag_push_event
+# @!attribute [rw] tag_push_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] title
@@ -6286,35 +9600,35 @@ ApiEntitiesIntegrationLoadMatch = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 #
-# @!attribute [rw] vulnerability_event
+# @!attribute [rw] vulnerability_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] wiki_page_event
+# @!attribute [rw] wiki_page_events
 #   @return [Boolean, nil]
 ApiEntitiesIntegrationBasic = Struct.new(
   :active,
-  :alert_event,
+  :alert_events,
   :comment_on_event_enabled,
-  :commit_event,
-  :confidential_issues_event,
-  :confidential_note_event,
+  :commit_events,
+  :confidential_issues_events,
+  :confidential_note_events,
   :created_at,
-  :deployment_event,
+  :deployment_events,
   :id,
-  :incident_event,
+  :incident_events,
   :inherited,
-  :issues_event,
-  :job_event,
-  :merge_requests_event,
-  :note_event,
-  :pipeline_event,
-  :push_event,
+  :issues_events,
+  :job_events,
+  :merge_requests_events,
+  :note_events,
+  :pipeline_events,
+  :push_events,
   :slug,
-  :tag_push_event,
+  :tag_push_events,
   :title,
   :updated_at,
-  :vulnerability_event,
-  :wiki_page_event,
+  :vulnerability_events,
+  :wiki_page_events,
   keyword_init: true
 )
 
@@ -6338,9 +9652,101 @@ ApiEntitiesIntegrationBasicListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] active
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] alert_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] comment_on_event_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] commit_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] confidential_issues_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] confidential_note_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] deployment_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] incident_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] inherited
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] issues_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] job_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] merge_requests_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] note_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] pipeline_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] push_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] slug
+#   @return [Integer, nil]
+#
+# @!attribute [rw] tag_push_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] vulnerability_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] wiki_page_events
+#   @return [Boolean, nil]
 ApiEntitiesIntegrationBasicUpdateData = Struct.new(
   :group_id,
   :project_id,
+  :active,
+  :alert_events,
+  :comment_on_event_enabled,
+  :commit_events,
+  :confidential_issues_events,
+  :confidential_note_events,
+  :created_at,
+  :deployment_events,
+  :id,
+  :incident_events,
+  :inherited,
+  :issues_events,
+  :job_events,
+  :merge_requests_events,
+  :note_events,
+  :pipeline_events,
+  :push_events,
+  :slug,
+  :tag_push_events,
+  :title,
+  :updated_at,
+  :vulnerability_events,
+  :wiki_page_events,
   keyword_init: true
 )
 
@@ -6397,9 +9803,37 @@ ApiEntitiesInvitationListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] created_by_name
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String, nil]
+#
+# @!attribute [rw] invite_email
+#   @return [String, nil]
+#
+# @!attribute [rw] invite_token
+#   @return [String, nil]
+#
+# @!attribute [rw] user_name
+#   @return [String, nil]
 ApiEntitiesInvitationCreateData = Struct.new(
   :group_id,
   :project_id,
+  :access_level,
+  :created_at,
+  :created_by_name,
+  :expires_at,
+  :invite_email,
+  :invite_token,
+  :user_name,
   keyword_init: true
 )
 
@@ -6413,10 +9847,38 @@ ApiEntitiesInvitationCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] created_by_name
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String, nil]
+#
+# @!attribute [rw] invite_email
+#   @return [String, nil]
+#
+# @!attribute [rw] invite_token
+#   @return [String, nil]
+#
+# @!attribute [rw] user_name
+#   @return [String, nil]
 ApiEntitiesInvitationUpdateData = Struct.new(
   :group_id,
   :id,
   :project_id,
+  :access_level,
+  :created_at,
+  :created_by_name,
+  :expires_at,
+  :invite_email,
+  :invite_token,
+  :user_name,
   keyword_init: true
 )
 
@@ -6468,16 +9930,35 @@ ApiEntitiesIssuableTimeStatLoadMatch = Struct.new(
 #
 # @!attribute [rw] merge_request_id
 #   @return [String, nil]
+#
+# @!attribute [rw] human_time_estimate
+#   @return [String, nil]
+#
+# @!attribute [rw] human_total_time_spent
+#   @return [String, nil]
+#
+# @!attribute [rw] time_estimate
+#   @return [Integer, nil]
+#
+# @!attribute [rw] total_time_spent
+#   @return [Integer, nil]
 ApiEntitiesIssuableTimeStatCreateData = Struct.new(
   :issue_id,
   :project_id,
   :merge_request_id,
+  :human_time_estimate,
+  :human_total_time_spent,
+  :time_estimate,
+  :total_time_spent,
   keyword_init: true
 )
 
 # ApiEntitiesIssue entity data model.
 #
 # @!attribute [rw] assignee
+#   @return [Hash, nil]
+#
+# @!attribute [rw] assignees
 #   @return [Hash, nil]
 #
 # @!attribute [rw] author
@@ -6504,7 +9985,7 @@ ApiEntitiesIssuableTimeStatCreateData = Struct.new(
 # @!attribute [rw] discussion_locked
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] downvote
+# @!attribute [rw] downvotes
 #   @return [String, nil]
 #
 # @!attribute [rw] due_date
@@ -6516,7 +9997,7 @@ ApiEntitiesIssuableTimeStatCreateData = Struct.new(
 # @!attribute [rw] epic_iid
 #   @return [String, nil]
 #
-# @!attribute [rw] has_task
+# @!attribute [rw] has_tasks
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] health_status
@@ -6540,10 +10021,10 @@ ApiEntitiesIssuableTimeStatCreateData = Struct.new(
 # @!attribute [rw] iteration
 #   @return [Hash, nil]
 #
-# @!attribute [rw] label
+# @!attribute [rw] labels
 #   @return [Array, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] merge_requests_count
@@ -6558,7 +10039,7 @@ ApiEntitiesIssuableTimeStatCreateData = Struct.new(
 # @!attribute [rw] project_id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] reference
+# @!attribute [rw] references
 #   @return [Hash, nil]
 #
 # @!attribute [rw] service_desk_reply_to
@@ -6579,7 +10060,7 @@ ApiEntitiesIssuableTimeStatCreateData = Struct.new(
 # @!attribute [rw] task_status
 #   @return [String, nil]
 #
-# @!attribute [rw] time_stat
+# @!attribute [rw] time_stats
 #   @return [Hash, nil]
 #
 # @!attribute [rw] title
@@ -6591,7 +10072,7 @@ ApiEntitiesIssuableTimeStatCreateData = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 #
-# @!attribute [rw] upvote
+# @!attribute [rw] upvotes
 #   @return [String, nil]
 #
 # @!attribute [rw] user_notes_count
@@ -6604,6 +10085,7 @@ ApiEntitiesIssuableTimeStatCreateData = Struct.new(
 #   @return [String, nil]
 ApiEntitiesIssue = Struct.new(
   :assignee,
+  :assignees,
   :author,
   :blocking_issues_count,
   :closed_at,
@@ -6612,11 +10094,11 @@ ApiEntitiesIssue = Struct.new(
   :created_at,
   :description,
   :discussion_locked,
-  :downvote,
+  :downvotes,
   :due_date,
   :epic,
   :epic_iid,
-  :has_task,
+  :has_tasks,
   :health_status,
   :id,
   :iid,
@@ -6624,24 +10106,24 @@ ApiEntitiesIssue = Struct.new(
   :imported_from,
   :issue_type,
   :iteration,
-  :label,
-  :link,
+  :labels,
+  :links,
   :merge_requests_count,
   :milestone,
   :moved_to_id,
   :project_id,
-  :reference,
+  :references,
   :service_desk_reply_to,
   :severity,
   :state,
   :subscribed,
   :task_completion_status,
   :task_status,
-  :time_stat,
+  :time_stats,
   :title,
   :type,
   :updated_at,
-  :upvote,
+  :upvotes,
   :user_notes_count,
   :web_url,
   :weight,
@@ -6681,9 +10163,177 @@ ApiEntitiesIssueListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] assignee
+#   @return [Hash, nil]
+#
+# @!attribute [rw] assignees
+#   @return [Hash, nil]
+#
+# @!attribute [rw] author
+#   @return [Hash, nil]
+#
+# @!attribute [rw] blocking_issues_count
+#   @return [String, nil]
+#
+# @!attribute [rw] closed_at
+#   @return [String, nil]
+#
+# @!attribute [rw] closed_by
+#   @return [Hash, nil]
+#
+# @!attribute [rw] confidential
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] discussion_locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] downvotes
+#   @return [String, nil]
+#
+# @!attribute [rw] due_date
+#   @return [String, nil]
+#
+# @!attribute [rw] epic
+#   @return [Hash, nil]
+#
+# @!attribute [rw] epic_iid
+#   @return [String, nil]
+#
+# @!attribute [rw] has_tasks
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] health_status
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] iid
+#   @return [Integer, nil]
+#
+# @!attribute [rw] imported
+#   @return [String, nil]
+#
+# @!attribute [rw] imported_from
+#   @return [String, nil]
+#
+# @!attribute [rw] issue_type
+#   @return [String, nil]
+#
+# @!attribute [rw] iteration
+#   @return [Hash, nil]
+#
+# @!attribute [rw] labels
+#   @return [Array, nil]
+#
+# @!attribute [rw] links
+#   @return [Hash, nil]
+#
+# @!attribute [rw] merge_requests_count
+#   @return [String, nil]
+#
+# @!attribute [rw] milestone
+#   @return [Hash, nil]
+#
+# @!attribute [rw] moved_to_id
+#   @return [String, nil]
+#
+# @!attribute [rw] references
+#   @return [Hash, nil]
+#
+# @!attribute [rw] service_desk_reply_to
+#   @return [String, nil]
+#
+# @!attribute [rw] severity
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] subscribed
+#   @return [String, nil]
+#
+# @!attribute [rw] task_completion_status
+#   @return [String, nil]
+#
+# @!attribute [rw] task_status
+#   @return [String, nil]
+#
+# @!attribute [rw] time_stats
+#   @return [Hash, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] type
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] upvotes
+#   @return [String, nil]
+#
+# @!attribute [rw] user_notes_count
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
+#
+# @!attribute [rw] weight
+#   @return [String, nil]
 ApiEntitiesIssueCreateData = Struct.new(
   :issue_id,
   :project_id,
+  :assignee,
+  :assignees,
+  :author,
+  :blocking_issues_count,
+  :closed_at,
+  :closed_by,
+  :confidential,
+  :created_at,
+  :description,
+  :discussion_locked,
+  :downvotes,
+  :due_date,
+  :epic,
+  :epic_iid,
+  :has_tasks,
+  :health_status,
+  :id,
+  :iid,
+  :imported,
+  :imported_from,
+  :issue_type,
+  :iteration,
+  :labels,
+  :links,
+  :merge_requests_count,
+  :milestone,
+  :moved_to_id,
+  :references,
+  :service_desk_reply_to,
+  :severity,
+  :state,
+  :subscribed,
+  :task_completion_status,
+  :task_status,
+  :time_stats,
+  :title,
+  :type,
+  :updated_at,
+  :upvotes,
+  :user_notes_count,
+  :web_url,
+  :weight,
   keyword_init: true
 )
 
@@ -6697,10 +10347,174 @@ ApiEntitiesIssueCreateData = Struct.new(
 #
 # @!attribute [rw] issue_id
 #   @return [String, nil]
+#
+# @!attribute [rw] assignee
+#   @return [Hash, nil]
+#
+# @!attribute [rw] assignees
+#   @return [Hash, nil]
+#
+# @!attribute [rw] author
+#   @return [Hash, nil]
+#
+# @!attribute [rw] blocking_issues_count
+#   @return [String, nil]
+#
+# @!attribute [rw] closed_at
+#   @return [String, nil]
+#
+# @!attribute [rw] closed_by
+#   @return [Hash, nil]
+#
+# @!attribute [rw] confidential
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] discussion_locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] downvotes
+#   @return [String, nil]
+#
+# @!attribute [rw] due_date
+#   @return [String, nil]
+#
+# @!attribute [rw] epic
+#   @return [Hash, nil]
+#
+# @!attribute [rw] epic_iid
+#   @return [String, nil]
+#
+# @!attribute [rw] has_tasks
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] health_status
+#   @return [String, nil]
+#
+# @!attribute [rw] iid
+#   @return [Integer, nil]
+#
+# @!attribute [rw] imported
+#   @return [String, nil]
+#
+# @!attribute [rw] imported_from
+#   @return [String, nil]
+#
+# @!attribute [rw] issue_type
+#   @return [String, nil]
+#
+# @!attribute [rw] iteration
+#   @return [Hash, nil]
+#
+# @!attribute [rw] labels
+#   @return [Array, nil]
+#
+# @!attribute [rw] links
+#   @return [Hash, nil]
+#
+# @!attribute [rw] merge_requests_count
+#   @return [String, nil]
+#
+# @!attribute [rw] milestone
+#   @return [Hash, nil]
+#
+# @!attribute [rw] moved_to_id
+#   @return [String, nil]
+#
+# @!attribute [rw] references
+#   @return [Hash, nil]
+#
+# @!attribute [rw] service_desk_reply_to
+#   @return [String, nil]
+#
+# @!attribute [rw] severity
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] subscribed
+#   @return [String, nil]
+#
+# @!attribute [rw] task_completion_status
+#   @return [String, nil]
+#
+# @!attribute [rw] task_status
+#   @return [String, nil]
+#
+# @!attribute [rw] time_stats
+#   @return [Hash, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] type
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] upvotes
+#   @return [String, nil]
+#
+# @!attribute [rw] user_notes_count
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
+#
+# @!attribute [rw] weight
+#   @return [String, nil]
 ApiEntitiesIssueUpdateData = Struct.new(
   :id,
   :project_id,
   :issue_id,
+  :assignee,
+  :assignees,
+  :author,
+  :blocking_issues_count,
+  :closed_at,
+  :closed_by,
+  :confidential,
+  :created_at,
+  :description,
+  :discussion_locked,
+  :downvotes,
+  :due_date,
+  :epic,
+  :epic_iid,
+  :has_tasks,
+  :health_status,
+  :iid,
+  :imported,
+  :imported_from,
+  :issue_type,
+  :iteration,
+  :labels,
+  :links,
+  :merge_requests_count,
+  :milestone,
+  :moved_to_id,
+  :references,
+  :service_desk_reply_to,
+  :severity,
+  :state,
+  :subscribed,
+  :task_completion_status,
+  :task_status,
+  :time_stats,
+  :title,
+  :type,
+  :updated_at,
+  :upvotes,
+  :user_notes_count,
+  :web_url,
+  :weight,
   keyword_init: true
 )
 
@@ -6745,15 +10559,27 @@ ApiEntitiesIssueLinkLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] link_type
+#   @return [String, nil]
+#
+# @!attribute [rw] source_issue
+#   @return [Hash, nil]
+#
+# @!attribute [rw] target_issue
+#   @return [Hash, nil]
 ApiEntitiesIssueLinkCreateData = Struct.new(
   :issue_id,
   :project_id,
+  :link_type,
+  :source_issue,
+  :target_issue,
   keyword_init: true
 )
 
 # ApiEntitiesLicense entity data model.
 #
-# @!attribute [rw] condition
+# @!attribute [rw] conditions
 #   @return [Array, nil]
 #
 # @!attribute [rw] content
@@ -6768,7 +10594,7 @@ ApiEntitiesIssueLinkCreateData = Struct.new(
 # @!attribute [rw] key
 #   @return [String, nil]
 #
-# @!attribute [rw] limitation
+# @!attribute [rw] limitations
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
@@ -6777,7 +10603,7 @@ ApiEntitiesIssueLinkCreateData = Struct.new(
 # @!attribute [rw] nickname
 #   @return [String, nil]
 #
-# @!attribute [rw] permission
+# @!attribute [rw] permissions
 #   @return [Array, nil]
 #
 # @!attribute [rw] popular
@@ -6786,15 +10612,15 @@ ApiEntitiesIssueLinkCreateData = Struct.new(
 # @!attribute [rw] source_url
 #   @return [String, nil]
 ApiEntitiesLicense = Struct.new(
-  :condition,
+  :conditions,
   :content,
   :description,
   :html_url,
   :key,
-  :limitation,
+  :limitations,
   :name,
   :nickname,
-  :permission,
+  :permissions,
   :popular,
   :source_url,
   keyword_init: true
@@ -6880,7 +10706,7 @@ ApiEntitiesMarkdownUploadAdminListMatch = Struct.new(
 # @!attribute [rw] created_by
 #   @return [Hash, nil]
 #
-# @!attribute [rw] custom_attribute
+# @!attribute [rw] custom_attributes
 #   @return [Array, nil]
 #
 # @!attribute [rw] email
@@ -6939,7 +10765,7 @@ ApiEntitiesMember = Struct.new(
   :avatar_url,
   :created_at,
   :created_by,
-  :custom_attribute,
+  :custom_attributes,
   :email,
   :expires_at,
   :group_saml_identity,
@@ -7004,10 +10830,102 @@ ApiEntitiesMemberListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] created_by
+#   @return [Hash, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] email
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String, nil]
+#
+# @!attribute [rw] group_saml_identity
+#   @return [Hash, nil]
+#
+# @!attribute [rw] group_scim_identity
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] is_using_seat
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] member_role
+#   @return [Hash, nil]
+#
+# @!attribute [rw] membership_state
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] override
+#   @return [String, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] value
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesMemberCreateData = Struct.new(
   :group_id,
   :member_id,
   :project_id,
+  :access_level,
+  :avatar_path,
+  :avatar_url,
+  :created_at,
+  :created_by,
+  :custom_attributes,
+  :email,
+  :expires_at,
+  :group_saml_identity,
+  :group_scim_identity,
+  :id,
+  :is_using_seat,
+  :key,
+  :locked,
+  :member_role,
+  :membership_state,
+  :name,
+  :override,
+  :public_email,
+  :state,
+  :username,
+  :value,
+  :web_url,
   keyword_init: true
 )
 
@@ -7021,10 +10939,98 @@ ApiEntitiesMemberCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] created_by
+#   @return [Hash, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] email
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String, nil]
+#
+# @!attribute [rw] group_saml_identity
+#   @return [Hash, nil]
+#
+# @!attribute [rw] group_scim_identity
+#   @return [Hash, nil]
+#
+# @!attribute [rw] is_using_seat
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] member_role
+#   @return [Hash, nil]
+#
+# @!attribute [rw] membership_state
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] override
+#   @return [String, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] value
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesMemberUpdateData = Struct.new(
   :group_id,
   :id,
   :project_id,
+  :access_level,
+  :avatar_path,
+  :avatar_url,
+  :created_at,
+  :created_by,
+  :custom_attributes,
+  :email,
+  :expires_at,
+  :group_saml_identity,
+  :group_scim_identity,
+  :is_using_seat,
+  :key,
+  :locked,
+  :member_role,
+  :membership_state,
+  :name,
+  :override,
+  :public_email,
+  :state,
+  :username,
+  :value,
+  :web_url,
   keyword_init: true
 )
 
@@ -7055,6 +11061,9 @@ ApiEntitiesMemberRemoveMatch = Struct.new(
 # @!attribute [rw] assignee
 #   @return [Hash, nil]
 #
+# @!attribute [rw] assignees
+#   @return [Hash, nil]
+#
 # @!attribute [rw] author
 #   @return [Hash, nil]
 #
@@ -7082,7 +11091,7 @@ ApiEntitiesMemberRemoveMatch = Struct.new(
 # @!attribute [rw] detailed_merge_status
 #   @return [String, nil]
 #
-# @!attribute [rw] diff_ref
+# @!attribute [rw] diff_refs
 #   @return [Hash, nil]
 #
 # @!attribute [rw] discussion_locked
@@ -7091,7 +11100,7 @@ ApiEntitiesMemberRemoveMatch = Struct.new(
 # @!attribute [rw] diverged_commits_count
 #   @return [String, nil]
 #
-# @!attribute [rw] downvote
+# @!attribute [rw] downvotes
 #   @return [String, nil]
 #
 # @!attribute [rw] draft
@@ -7106,7 +11115,7 @@ ApiEntitiesMemberRemoveMatch = Struct.new(
 # @!attribute [rw] force_remove_source_branch
 #   @return [String, nil]
 #
-# @!attribute [rw] has_conflict
+# @!attribute [rw] has_conflicts
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] head_pipeline
@@ -7124,7 +11133,7 @@ ApiEntitiesMemberRemoveMatch = Struct.new(
 # @!attribute [rw] imported_from
 #   @return [String, nil]
 #
-# @!attribute [rw] label
+# @!attribute [rw] labels
 #   @return [String, nil]
 #
 # @!attribute [rw] latest_build_finished_at
@@ -7148,7 +11157,7 @@ ApiEntitiesMemberRemoveMatch = Struct.new(
 # @!attribute [rw] merge_user
 #   @return [Hash, nil]
 #
-# @!attribute [rw] merge_when_pipeline_succeed
+# @!attribute [rw] merge_when_pipeline_succeeds
 #   @return [String, nil]
 #
 # @!attribute [rw] merged_at
@@ -7175,7 +11184,10 @@ ApiEntitiesMemberRemoveMatch = Struct.new(
 # @!attribute [rw] reference
 #   @return [String, nil]
 #
-# @!attribute [rw] reviewer
+# @!attribute [rw] references
+#   @return [Hash, nil]
+#
+# @!attribute [rw] reviewers
 #   @return [Hash, nil]
 #
 # @!attribute [rw] sha
@@ -7214,7 +11226,7 @@ ApiEntitiesMemberRemoveMatch = Struct.new(
 # @!attribute [rw] task_completion_status
 #   @return [String, nil]
 #
-# @!attribute [rw] time_stat
+# @!attribute [rw] time_stats
 #   @return [Hash, nil]
 #
 # @!attribute [rw] title
@@ -7226,7 +11238,7 @@ ApiEntitiesMemberRemoveMatch = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 #
-# @!attribute [rw] upvote
+# @!attribute [rw] upvotes
 #   @return [String, nil]
 #
 # @!attribute [rw] user
@@ -7245,6 +11257,7 @@ ApiEntitiesMerge = Struct.new(
   :allow_maintainer_to_push,
   :approvals_before_merge,
   :assignee,
+  :assignees,
   :author,
   :blocking_discussions_resolved,
   :changes_count,
@@ -7254,21 +11267,21 @@ ApiEntitiesMerge = Struct.new(
   :description,
   :description_html,
   :detailed_merge_status,
-  :diff_ref,
+  :diff_refs,
   :discussion_locked,
   :diverged_commits_count,
-  :downvote,
+  :downvotes,
   :draft,
   :first_contribution,
   :first_deployed_to_production_at,
   :force_remove_source_branch,
-  :has_conflict,
+  :has_conflicts,
   :head_pipeline,
   :id,
   :iid,
   :imported,
   :imported_from,
-  :label,
+  :labels,
   :latest_build_finished_at,
   :latest_build_started_at,
   :merge_after,
@@ -7276,7 +11289,7 @@ ApiEntitiesMerge = Struct.new(
   :merge_error,
   :merge_status,
   :merge_user,
-  :merge_when_pipeline_succeed,
+  :merge_when_pipeline_succeeds,
   :merged_at,
   :merged_by,
   :milestone,
@@ -7285,7 +11298,8 @@ ApiEntitiesMerge = Struct.new(
   :project_id,
   :rebase_in_progress,
   :reference,
-  :reviewer,
+  :references,
+  :reviewers,
   :sha,
   :should_remove_source_branch,
   :source_branch,
@@ -7298,11 +11312,11 @@ ApiEntitiesMerge = Struct.new(
   :target_branch,
   :target_project_id,
   :task_completion_status,
-  :time_stat,
+  :time_stats,
   :title,
   :title_html,
   :updated_at,
-  :upvote,
+  :upvotes,
   :user,
   :user_notes_count,
   :web_url,
@@ -7330,9 +11344,277 @@ ApiEntitiesMergeLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] allow_collaboration
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] allow_maintainer_to_push
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] approvals_before_merge
+#   @return [String, nil]
+#
+# @!attribute [rw] assignee
+#   @return [Hash, nil]
+#
+# @!attribute [rw] assignees
+#   @return [Hash, nil]
+#
+# @!attribute [rw] author
+#   @return [Hash, nil]
+#
+# @!attribute [rw] blocking_discussions_resolved
+#   @return [String, nil]
+#
+# @!attribute [rw] changes_count
+#   @return [String, nil]
+#
+# @!attribute [rw] closed_at
+#   @return [String, nil]
+#
+# @!attribute [rw] closed_by
+#   @return [Hash, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] description_html
+#   @return [String, nil]
+#
+# @!attribute [rw] detailed_merge_status
+#   @return [String, nil]
+#
+# @!attribute [rw] diff_refs
+#   @return [Hash, nil]
+#
+# @!attribute [rw] discussion_locked
+#   @return [String, nil]
+#
+# @!attribute [rw] diverged_commits_count
+#   @return [String, nil]
+#
+# @!attribute [rw] downvotes
+#   @return [String, nil]
+#
+# @!attribute [rw] draft
+#   @return [String, nil]
+#
+# @!attribute [rw] first_contribution
+#   @return [String, nil]
+#
+# @!attribute [rw] first_deployed_to_production_at
+#   @return [String, nil]
+#
+# @!attribute [rw] force_remove_source_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] has_conflicts
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] head_pipeline
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] iid
+#   @return [Integer, nil]
+#
+# @!attribute [rw] imported
+#   @return [String, nil]
+#
+# @!attribute [rw] imported_from
+#   @return [String, nil]
+#
+# @!attribute [rw] labels
+#   @return [String, nil]
+#
+# @!attribute [rw] latest_build_finished_at
+#   @return [String, nil]
+#
+# @!attribute [rw] latest_build_started_at
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_after
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_commit_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_error
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_status
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_user
+#   @return [Hash, nil]
+#
+# @!attribute [rw] merge_when_pipeline_succeeds
+#   @return [String, nil]
+#
+# @!attribute [rw] merged_at
+#   @return [String, nil]
+#
+# @!attribute [rw] merged_by
+#   @return [Hash, nil]
+#
+# @!attribute [rw] milestone
+#   @return [Hash, nil]
+#
+# @!attribute [rw] pipeline
+#   @return [Hash, nil]
+#
+# @!attribute [rw] prepared_at
+#   @return [String, nil]
+#
+# @!attribute [rw] rebase_in_progress
+#   @return [String, nil]
+#
+# @!attribute [rw] reference
+#   @return [String, nil]
+#
+# @!attribute [rw] references
+#   @return [Hash, nil]
+#
+# @!attribute [rw] reviewers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] sha
+#   @return [String, nil]
+#
+# @!attribute [rw] should_remove_source_branch
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] source_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] source_project_id
+#   @return [String, nil]
+#
+# @!attribute [rw] squash
+#   @return [String, nil]
+#
+# @!attribute [rw] squash_commit_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] squash_on_merge
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] subscribed
+#   @return [String, nil]
+#
+# @!attribute [rw] target_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] target_project_id
+#   @return [String, nil]
+#
+# @!attribute [rw] task_completion_status
+#   @return [String, nil]
+#
+# @!attribute [rw] time_stats
+#   @return [Hash, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] title_html
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] upvotes
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
+#
+# @!attribute [rw] user_notes_count
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
+#
+# @!attribute [rw] work_in_progress
+#   @return [String, nil]
 ApiEntitiesMergeCreateData = Struct.new(
   :merge_request_id,
   :project_id,
+  :allow_collaboration,
+  :allow_maintainer_to_push,
+  :approvals_before_merge,
+  :assignee,
+  :assignees,
+  :author,
+  :blocking_discussions_resolved,
+  :changes_count,
+  :closed_at,
+  :closed_by,
+  :created_at,
+  :description,
+  :description_html,
+  :detailed_merge_status,
+  :diff_refs,
+  :discussion_locked,
+  :diverged_commits_count,
+  :downvotes,
+  :draft,
+  :first_contribution,
+  :first_deployed_to_production_at,
+  :force_remove_source_branch,
+  :has_conflicts,
+  :head_pipeline,
+  :id,
+  :iid,
+  :imported,
+  :imported_from,
+  :labels,
+  :latest_build_finished_at,
+  :latest_build_started_at,
+  :merge_after,
+  :merge_commit_sha,
+  :merge_error,
+  :merge_status,
+  :merge_user,
+  :merge_when_pipeline_succeeds,
+  :merged_at,
+  :merged_by,
+  :milestone,
+  :pipeline,
+  :prepared_at,
+  :rebase_in_progress,
+  :reference,
+  :references,
+  :reviewers,
+  :sha,
+  :should_remove_source_branch,
+  :source_branch,
+  :source_project_id,
+  :squash,
+  :squash_commit_sha,
+  :squash_on_merge,
+  :state,
+  :subscribed,
+  :target_branch,
+  :target_project_id,
+  :task_completion_status,
+  :time_stats,
+  :title,
+  :title_html,
+  :updated_at,
+  :upvotes,
+  :user,
+  :user_notes_count,
+  :web_url,
+  :work_in_progress,
   keyword_init: true
 )
 
@@ -7346,31 +11628,291 @@ ApiEntitiesMergeCreateData = Struct.new(
 #
 # @!attribute [rw] merge_request_iid
 #   @return [Object, nil]
+#
+# @!attribute [rw] allow_collaboration
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] allow_maintainer_to_push
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] approvals_before_merge
+#   @return [String, nil]
+#
+# @!attribute [rw] assignee
+#   @return [Hash, nil]
+#
+# @!attribute [rw] assignees
+#   @return [Hash, nil]
+#
+# @!attribute [rw] author
+#   @return [Hash, nil]
+#
+# @!attribute [rw] blocking_discussions_resolved
+#   @return [String, nil]
+#
+# @!attribute [rw] changes_count
+#   @return [String, nil]
+#
+# @!attribute [rw] closed_at
+#   @return [String, nil]
+#
+# @!attribute [rw] closed_by
+#   @return [Hash, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] description_html
+#   @return [String, nil]
+#
+# @!attribute [rw] detailed_merge_status
+#   @return [String, nil]
+#
+# @!attribute [rw] diff_refs
+#   @return [Hash, nil]
+#
+# @!attribute [rw] discussion_locked
+#   @return [String, nil]
+#
+# @!attribute [rw] diverged_commits_count
+#   @return [String, nil]
+#
+# @!attribute [rw] downvotes
+#   @return [String, nil]
+#
+# @!attribute [rw] draft
+#   @return [String, nil]
+#
+# @!attribute [rw] first_contribution
+#   @return [String, nil]
+#
+# @!attribute [rw] first_deployed_to_production_at
+#   @return [String, nil]
+#
+# @!attribute [rw] force_remove_source_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] has_conflicts
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] head_pipeline
+#   @return [Hash, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] iid
+#   @return [Integer, nil]
+#
+# @!attribute [rw] imported
+#   @return [String, nil]
+#
+# @!attribute [rw] imported_from
+#   @return [String, nil]
+#
+# @!attribute [rw] labels
+#   @return [String, nil]
+#
+# @!attribute [rw] latest_build_finished_at
+#   @return [String, nil]
+#
+# @!attribute [rw] latest_build_started_at
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_after
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_commit_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_error
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_status
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_user
+#   @return [Hash, nil]
+#
+# @!attribute [rw] merge_when_pipeline_succeeds
+#   @return [String, nil]
+#
+# @!attribute [rw] merged_at
+#   @return [String, nil]
+#
+# @!attribute [rw] merged_by
+#   @return [Hash, nil]
+#
+# @!attribute [rw] milestone
+#   @return [Hash, nil]
+#
+# @!attribute [rw] pipeline
+#   @return [Hash, nil]
+#
+# @!attribute [rw] prepared_at
+#   @return [String, nil]
+#
+# @!attribute [rw] rebase_in_progress
+#   @return [String, nil]
+#
+# @!attribute [rw] reference
+#   @return [String, nil]
+#
+# @!attribute [rw] references
+#   @return [Hash, nil]
+#
+# @!attribute [rw] reviewers
+#   @return [Hash, nil]
+#
+# @!attribute [rw] sha
+#   @return [String, nil]
+#
+# @!attribute [rw] should_remove_source_branch
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] source_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] source_project_id
+#   @return [String, nil]
+#
+# @!attribute [rw] squash
+#   @return [String, nil]
+#
+# @!attribute [rw] squash_commit_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] squash_on_merge
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] subscribed
+#   @return [String, nil]
+#
+# @!attribute [rw] target_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] target_project_id
+#   @return [String, nil]
+#
+# @!attribute [rw] task_completion_status
+#   @return [String, nil]
+#
+# @!attribute [rw] time_stats
+#   @return [Hash, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] title_html
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] upvotes
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
+#
+# @!attribute [rw] user_notes_count
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
+#
+# @!attribute [rw] work_in_progress
+#   @return [String, nil]
 ApiEntitiesMergeUpdateData = Struct.new(
   :merge_request_id,
   :project_id,
   :merge_request_iid,
+  :allow_collaboration,
+  :allow_maintainer_to_push,
+  :approvals_before_merge,
+  :assignee,
+  :assignees,
+  :author,
+  :blocking_discussions_resolved,
+  :changes_count,
+  :closed_at,
+  :closed_by,
+  :created_at,
+  :description,
+  :description_html,
+  :detailed_merge_status,
+  :diff_refs,
+  :discussion_locked,
+  :diverged_commits_count,
+  :downvotes,
+  :draft,
+  :first_contribution,
+  :first_deployed_to_production_at,
+  :force_remove_source_branch,
+  :has_conflicts,
+  :head_pipeline,
+  :id,
+  :iid,
+  :imported,
+  :imported_from,
+  :labels,
+  :latest_build_finished_at,
+  :latest_build_started_at,
+  :merge_after,
+  :merge_commit_sha,
+  :merge_error,
+  :merge_status,
+  :merge_user,
+  :merge_when_pipeline_succeeds,
+  :merged_at,
+  :merged_by,
+  :milestone,
+  :pipeline,
+  :prepared_at,
+  :rebase_in_progress,
+  :reference,
+  :references,
+  :reviewers,
+  :sha,
+  :should_remove_source_branch,
+  :source_branch,
+  :source_project_id,
+  :squash,
+  :squash_commit_sha,
+  :squash_on_merge,
+  :state,
+  :subscribed,
+  :target_branch,
+  :target_project_id,
+  :task_completion_status,
+  :time_stats,
+  :title,
+  :title_html,
+  :updated_at,
+  :upvotes,
+  :user,
+  :user_notes_count,
+  :web_url,
+  :work_in_progress,
   keyword_init: true
 )
 
 # ApiEntitiesMergeRequestApproval entity data model.
 #
-# @!attribute [rw] approved
-#   @return [Boolean, nil]
+# @!attribute [rw] approved_at
+#   @return [String, nil]
 #
-# @!attribute [rw] approved_by
+# @!attribute [rw] user
 #   @return [Hash, nil]
-#
-# @!attribute [rw] user_can_approve
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] user_has_approved
-#   @return [Boolean, nil]
 ApiEntitiesMergeRequestApproval = Struct.new(
-  :approved,
-  :approved_by,
-  :user_can_approve,
-  :user_has_approved,
+  :approved_at,
+  :user,
   keyword_init: true
 )
 
@@ -7394,9 +11936,17 @@ ApiEntitiesMergeRequestApprovalLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] approved_at
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
 ApiEntitiesMergeRequestApprovalCreateData = Struct.new(
   :merge_request_id,
   :project_id,
+  :approved_at,
+  :user,
   keyword_init: true
 )
 
@@ -7412,6 +11962,9 @@ ApiEntitiesMergeRequestApprovalCreateData = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] assignee
+#   @return [Hash, nil]
+#
+# @!attribute [rw] assignees
 #   @return [Hash, nil]
 #
 # @!attribute [rw] author
@@ -7441,7 +11994,7 @@ ApiEntitiesMergeRequestApprovalCreateData = Struct.new(
 # @!attribute [rw] discussion_locked
 #   @return [String, nil]
 #
-# @!attribute [rw] downvote
+# @!attribute [rw] downvotes
 #   @return [String, nil]
 #
 # @!attribute [rw] draft
@@ -7450,7 +12003,7 @@ ApiEntitiesMergeRequestApprovalCreateData = Struct.new(
 # @!attribute [rw] force_remove_source_branch
 #   @return [String, nil]
 #
-# @!attribute [rw] has_conflict
+# @!attribute [rw] has_conflicts
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] id
@@ -7465,7 +12018,7 @@ ApiEntitiesMergeRequestApprovalCreateData = Struct.new(
 # @!attribute [rw] imported_from
 #   @return [String, nil]
 #
-# @!attribute [rw] label
+# @!attribute [rw] labels
 #   @return [String, nil]
 #
 # @!attribute [rw] merge_after
@@ -7480,7 +12033,7 @@ ApiEntitiesMergeRequestApprovalCreateData = Struct.new(
 # @!attribute [rw] merge_user
 #   @return [Hash, nil]
 #
-# @!attribute [rw] merge_when_pipeline_succeed
+# @!attribute [rw] merge_when_pipeline_succeeds
 #   @return [String, nil]
 #
 # @!attribute [rw] merged_at
@@ -7501,7 +12054,10 @@ ApiEntitiesMergeRequestApprovalCreateData = Struct.new(
 # @!attribute [rw] reference
 #   @return [String, nil]
 #
-# @!attribute [rw] reviewer
+# @!attribute [rw] references
+#   @return [Hash, nil]
+#
+# @!attribute [rw] reviewers
 #   @return [Hash, nil]
 #
 # @!attribute [rw] sha
@@ -7537,7 +12093,7 @@ ApiEntitiesMergeRequestApprovalCreateData = Struct.new(
 # @!attribute [rw] task_completion_status
 #   @return [String, nil]
 #
-# @!attribute [rw] time_stat
+# @!attribute [rw] time_stats
 #   @return [Hash, nil]
 #
 # @!attribute [rw] title
@@ -7549,7 +12105,7 @@ ApiEntitiesMergeRequestApprovalCreateData = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 #
-# @!attribute [rw] upvote
+# @!attribute [rw] upvotes
 #   @return [String, nil]
 #
 # @!attribute [rw] user_notes_count
@@ -7565,6 +12121,7 @@ ApiEntitiesMergeRequestBasic = Struct.new(
   :allow_maintainer_to_push,
   :approvals_before_merge,
   :assignee,
+  :assignees,
   :author,
   :blocking_discussions_resolved,
   :closed_at,
@@ -7574,27 +12131,28 @@ ApiEntitiesMergeRequestBasic = Struct.new(
   :description_html,
   :detailed_merge_status,
   :discussion_locked,
-  :downvote,
+  :downvotes,
   :draft,
   :force_remove_source_branch,
-  :has_conflict,
+  :has_conflicts,
   :id,
   :iid,
   :imported,
   :imported_from,
-  :label,
+  :labels,
   :merge_after,
   :merge_commit_sha,
   :merge_status,
   :merge_user,
-  :merge_when_pipeline_succeed,
+  :merge_when_pipeline_succeeds,
   :merged_at,
   :merged_by,
   :milestone,
   :prepared_at,
   :project_id,
   :reference,
-  :reviewer,
+  :references,
+  :reviewers,
   :sha,
   :should_remove_source_branch,
   :source_branch,
@@ -7606,11 +12164,11 @@ ApiEntitiesMergeRequestBasic = Struct.new(
   :target_branch,
   :target_project_id,
   :task_completion_status,
-  :time_stat,
+  :time_stats,
   :title,
   :title_html,
   :updated_at,
-  :upvote,
+  :upvotes,
   :user_notes_count,
   :web_url,
   :work_in_progress,
@@ -7665,13 +12223,16 @@ ApiEntitiesMergeRequestBasicListMatch = Struct.new(
 # @!attribute [rw] assignee
 #   @return [Hash, nil]
 #
+# @!attribute [rw] assignees
+#   @return [Hash, nil]
+#
 # @!attribute [rw] author
 #   @return [Hash, nil]
 #
 # @!attribute [rw] blocking_discussions_resolved
 #   @return [String, nil]
 #
-# @!attribute [rw] change
+# @!attribute [rw] changes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] changes_count
@@ -7695,7 +12256,7 @@ ApiEntitiesMergeRequestBasicListMatch = Struct.new(
 # @!attribute [rw] detailed_merge_status
 #   @return [String, nil]
 #
-# @!attribute [rw] diff_ref
+# @!attribute [rw] diff_refs
 #   @return [Hash, nil]
 #
 # @!attribute [rw] discussion_locked
@@ -7704,7 +12265,7 @@ ApiEntitiesMergeRequestBasicListMatch = Struct.new(
 # @!attribute [rw] diverged_commits_count
 #   @return [String, nil]
 #
-# @!attribute [rw] downvote
+# @!attribute [rw] downvotes
 #   @return [String, nil]
 #
 # @!attribute [rw] draft
@@ -7719,7 +12280,7 @@ ApiEntitiesMergeRequestBasicListMatch = Struct.new(
 # @!attribute [rw] force_remove_source_branch
 #   @return [String, nil]
 #
-# @!attribute [rw] has_conflict
+# @!attribute [rw] has_conflicts
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] head_pipeline
@@ -7737,7 +12298,7 @@ ApiEntitiesMergeRequestBasicListMatch = Struct.new(
 # @!attribute [rw] imported_from
 #   @return [String, nil]
 #
-# @!attribute [rw] label
+# @!attribute [rw] labels
 #   @return [String, nil]
 #
 # @!attribute [rw] latest_build_finished_at
@@ -7761,7 +12322,7 @@ ApiEntitiesMergeRequestBasicListMatch = Struct.new(
 # @!attribute [rw] merge_user
 #   @return [Hash, nil]
 #
-# @!attribute [rw] merge_when_pipeline_succeed
+# @!attribute [rw] merge_when_pipeline_succeeds
 #   @return [String, nil]
 #
 # @!attribute [rw] merged_at
@@ -7791,7 +12352,10 @@ ApiEntitiesMergeRequestBasicListMatch = Struct.new(
 # @!attribute [rw] reference
 #   @return [String, nil]
 #
-# @!attribute [rw] reviewer
+# @!attribute [rw] references
+#   @return [Hash, nil]
+#
+# @!attribute [rw] reviewers
 #   @return [Hash, nil]
 #
 # @!attribute [rw] sha
@@ -7830,7 +12394,7 @@ ApiEntitiesMergeRequestBasicListMatch = Struct.new(
 # @!attribute [rw] task_completion_status
 #   @return [String, nil]
 #
-# @!attribute [rw] time_stat
+# @!attribute [rw] time_stats
 #   @return [Hash, nil]
 #
 # @!attribute [rw] title
@@ -7842,7 +12406,7 @@ ApiEntitiesMergeRequestBasicListMatch = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 #
-# @!attribute [rw] upvote
+# @!attribute [rw] upvotes
 #   @return [String, nil]
 #
 # @!attribute [rw] user
@@ -7861,9 +12425,10 @@ ApiEntitiesMergeRequestChange = Struct.new(
   :allow_maintainer_to_push,
   :approvals_before_merge,
   :assignee,
+  :assignees,
   :author,
   :blocking_discussions_resolved,
-  :change,
+  :changes,
   :changes_count,
   :closed_at,
   :closed_by,
@@ -7871,21 +12436,21 @@ ApiEntitiesMergeRequestChange = Struct.new(
   :description,
   :description_html,
   :detailed_merge_status,
-  :diff_ref,
+  :diff_refs,
   :discussion_locked,
   :diverged_commits_count,
-  :downvote,
+  :downvotes,
   :draft,
   :first_contribution,
   :first_deployed_to_production_at,
   :force_remove_source_branch,
-  :has_conflict,
+  :has_conflicts,
   :head_pipeline,
   :id,
   :iid,
   :imported,
   :imported_from,
-  :label,
+  :labels,
   :latest_build_finished_at,
   :latest_build_started_at,
   :merge_after,
@@ -7893,7 +12458,7 @@ ApiEntitiesMergeRequestChange = Struct.new(
   :merge_error,
   :merge_status,
   :merge_user,
-  :merge_when_pipeline_succeed,
+  :merge_when_pipeline_succeeds,
   :merged_at,
   :merged_by,
   :milestone,
@@ -7903,7 +12468,8 @@ ApiEntitiesMergeRequestChange = Struct.new(
   :project_id,
   :rebase_in_progress,
   :reference,
-  :reviewer,
+  :references,
+  :reviewers,
   :sha,
   :should_remove_source_branch,
   :source_branch,
@@ -7916,11 +12482,11 @@ ApiEntitiesMergeRequestChange = Struct.new(
   :target_branch,
   :target_project_id,
   :task_completion_status,
-  :time_stat,
+  :time_stats,
   :title,
   :title_html,
   :updated_at,
-  :upvote,
+  :upvotes,
   :user,
   :user_notes_count,
   :web_url,
@@ -8000,13 +12566,13 @@ ApiEntitiesMergeRequestDiffListMatch = Struct.new(
 # @!attribute [rw] base_commit_sha
 #   @return [String, nil]
 #
-# @!attribute [rw] commit
+# @!attribute [rw] commits
 #   @return [Hash, nil]
 #
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] diff
+# @!attribute [rw] diffs
 #   @return [Hash, nil]
 #
 # @!attribute [rw] head_commit_sha
@@ -8031,9 +12597,9 @@ ApiEntitiesMergeRequestDiffListMatch = Struct.new(
 #   @return [String, nil]
 ApiEntitiesMergeRequestDiffFull = Struct.new(
   :base_commit_sha,
-  :commit,
+  :commits,
   :created_at,
-  :diff,
+  :diffs,
   :head_commit_sha,
   :id,
   :merge_request_id,
@@ -8063,18 +12629,46 @@ ApiEntitiesMergeRequestDiffFullLoadMatch = Struct.new(
 
 # ApiEntitiesMergeRequestReviewer entity data model.
 #
-# @!attribute [rw] created_at
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] public_email
 #   @return [String, nil]
 #
 # @!attribute [rw] state
 #   @return [String, nil]
 #
-# @!attribute [rw] user
-#   @return [Hash, nil]
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesMergeRequestReviewer = Struct.new(
-  :created_at,
+  :avatar_path,
+  :avatar_url,
+  :custom_attributes,
+  :id,
+  :locked,
+  :name,
+  :public_email,
   :state,
-  :user,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -8140,9 +12734,33 @@ ApiEntitiesMetricImageListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] file_path
+#   @return [String, nil]
+#
+# @!attribute [rw] filename
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
+#
+# @!attribute [rw] url_text
+#   @return [String, nil]
 ApiEntitiesMetricImageCreateData = Struct.new(
   :alert_management_alert_id,
   :project_id,
+  :created_at,
+  :file_path,
+  :filename,
+  :id,
+  :url,
+  :url_text,
   keyword_init: true
 )
 
@@ -8156,23 +12774,75 @@ ApiEntitiesMetricImageCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] file_path
+#   @return [String, nil]
+#
+# @!attribute [rw] filename
+#   @return [String, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
+#
+# @!attribute [rw] url_text
+#   @return [String, nil]
 ApiEntitiesMetricImageUpdateData = Struct.new(
   :alert_management_alert_id,
   :id,
   :project_id,
+  :created_at,
+  :file_path,
+  :filename,
+  :url,
+  :url_text,
   keyword_init: true
 )
 
 # ApiEntitiesMrNote entity data model.
 #
-# @!attribute [rw] author
-#   @return [Hash, nil]
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
 #
-# @!attribute [rw] note
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
 #   @return [String, nil]
 ApiEntitiesMrNote = Struct.new(
-  :author,
-  :note,
+  :avatar_path,
+  :avatar_url,
+  :custom_attributes,
+  :id,
+  :locked,
+  :name,
+  :public_email,
+  :state,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -8224,7 +12894,7 @@ ApiEntitiesMrNoteLoadMatch = Struct.new(
 # @!attribute [rw] max_seats_used_changed_at
 #   @return [String, nil]
 #
-# @!attribute [rw] members_count_with_descendant
+# @!attribute [rw] members_count_with_descendants
 #   @return [Integer, nil]
 #
 # @!attribute [rw] name
@@ -8271,7 +12941,7 @@ ApiEntitiesNamespace = Struct.new(
   :kind,
   :max_seats_used,
   :max_seats_used_changed_at,
-  :members_count_with_descendant,
+  :members_count_with_descendants,
   :name,
   :parent_id,
   :path,
@@ -8330,7 +13000,7 @@ ApiEntitiesNamespaceLoadMatch = Struct.new(
 # @!attribute [rw] max_seats_used_changed_at
 #   @return [String, nil]
 #
-# @!attribute [rw] members_count_with_descendant
+# @!attribute [rw] members_count_with_descendants
 #   @return [Integer, nil]
 #
 # @!attribute [rw] name
@@ -8377,7 +13047,7 @@ ApiEntitiesNamespaceListMatch = Struct.new(
   :kind,
   :max_seats_used,
   :max_seats_used_changed_at,
-  :members_count_with_descendant,
+  :members_count_with_descendants,
   :name,
   :parent_id,
   :path,
@@ -8396,21 +13066,109 @@ ApiEntitiesNamespaceListMatch = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] additional_purchased_storage_ends_on
+#   @return [String, nil]
+#
+# @!attribute [rw] additional_purchased_storage_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] billable_members_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] end_date
+#   @return [String, nil]
+#
+# @!attribute [rw] extra_shared_runners_minutes_limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] full_path
+#   @return [String, nil]
+#
+# @!attribute [rw] kind
+#   @return [String, nil]
+#
+# @!attribute [rw] max_seats_used
+#   @return [Integer, nil]
+#
+# @!attribute [rw] max_seats_used_changed_at
+#   @return [String, nil]
+#
+# @!attribute [rw] members_count_with_descendants
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] plan
+#   @return [String, nil]
+#
+# @!attribute [rw] projects_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] root_repository_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] seats_in_use
+#   @return [Integer, nil]
+#
+# @!attribute [rw] shared_runners_minutes_limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] trial
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] trial_ends_on
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesNamespaceUpdateData = Struct.new(
   :id,
+  :additional_purchased_storage_ends_on,
+  :additional_purchased_storage_size,
+  :avatar_url,
+  :billable_members_count,
+  :end_date,
+  :extra_shared_runners_minutes_limit,
+  :full_path,
+  :kind,
+  :max_seats_used,
+  :max_seats_used_changed_at,
+  :members_count_with_descendants,
+  :name,
+  :parent_id,
+  :path,
+  :plan,
+  :projects_count,
+  :root_repository_size,
+  :seats_in_use,
+  :shared_runners_minutes_limit,
+  :trial,
+  :trial_ends_on,
+  :web_url,
   keyword_init: true
 )
 
 # ApiEntitiesNamespaceExistence entity data model.
 #
-# @!attribute [rw] exist
+# @!attribute [rw] exists
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] suggest
+# @!attribute [rw] suggests
 #   @return [Array, nil]
 ApiEntitiesNamespaceExistence = Struct.new(
-  :exist,
-  :suggest,
+  :exists,
+  :suggests,
   keyword_init: true
 )
 
@@ -8469,25 +13227,37 @@ ApiEntitiesNamespacesStorageLimitExclusionLoadMatch = Struct.new(
 #
 # @!attribute [rw] namespace_id
 #   @return [String]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] namespace_name
+#   @return [String, nil]
+#
+# @!attribute [rw] reason
+#   @return [String, nil]
 ApiEntitiesNamespacesStorageLimitExclusionCreateData = Struct.new(
   :namespace_id,
+  :id,
+  :namespace_name,
+  :reason,
   keyword_init: true
 )
 
 # ApiEntitiesNpmPackage entity data model.
 #
-# @!attribute [rw] dist_tag
+# @!attribute [rw] disttags
 #   @return [Hash, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] version
+# @!attribute [rw] versions
 #   @return [Hash, nil]
 ApiEntitiesNpmPackage = Struct.new(
-  :dist_tag,
+  :disttags,
   :name,
-  :version,
+  :versions,
   keyword_init: true
 )
 
@@ -8505,13 +13275,8 @@ ApiEntitiesNpmPackageLoadMatch = Struct.new(
 )
 
 # ApiEntitiesNpmPackageTag entity data model.
-#
-# @!attribute [rw] dist_tag
-#   @return [Hash, nil]
-ApiEntitiesNpmPackageTag = Struct.new(
-  :dist_tag,
-  keyword_init: true
-)
+class ApiEntitiesNpmPackageTag
+end
 
 # Request payload for ApiEntitiesNpmPackageTag#load.
 #
@@ -8528,10 +13293,10 @@ ApiEntitiesNpmPackageTagLoadMatch = Struct.new(
 
 # ApiEntitiesNugetPackagesVersion entity data model.
 #
-# @!attribute [rw] version
+# @!attribute [rw] versions
 #   @return [Array, nil]
 ApiEntitiesNugetPackagesVersion = Struct.new(
-  :version,
+  :versions,
   keyword_init: true
 )
 
@@ -8546,34 +13311,34 @@ ApiEntitiesNugetPackagesVersionListMatch = Struct.new(
 
 # ApiEntitiesNugetSearchResult entity data model.
 #
-# @!attribute [rw] author
+# @!attribute [rw] authors
 #   @return [String, nil]
 #
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] icon_url
+# @!attribute [rw] iconUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] license_url
+# @!attribute [rw] licenseUrl
 #   @return [String, nil]
 #
-# @!attribute [rw] project_url
+# @!attribute [rw] projectUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] summary
 #   @return [String, nil]
 #
-# @!attribute [rw] tag
+# @!attribute [rw] tags
 #   @return [String, nil]
 #
 # @!attribute [rw] title
 #   @return [String, nil]
 #
-# @!attribute [rw] total_download
+# @!attribute [rw] totalDownloads
 #   @return [Integer, nil]
 #
 # @!attribute [rw] type
@@ -8584,20 +13349,24 @@ ApiEntitiesNugetPackagesVersionListMatch = Struct.new(
 #
 # @!attribute [rw] version
 #   @return [String, nil]
+#
+# @!attribute [rw] versions
+#   @return [Hash, nil]
 ApiEntitiesNugetSearchResult = Struct.new(
-  :author,
+  :authors,
   :description,
-  :icon_url,
+  :iconUrl,
   :id,
-  :license_url,
-  :project_url,
+  :licenseUrl,
+  :projectUrl,
   :summary,
-  :tag,
+  :tags,
   :title,
-  :total_download,
+  :totalDownloads,
   :type,
   :verified,
   :version,
+  :versions,
   keyword_init: true
 )
 
@@ -8616,13 +13385,13 @@ ApiEntitiesNugetSearchResultListMatch = Struct.new(
 
 # ApiEntitiesNugetServiceIndex entity data model.
 #
-# @!attribute [rw] resource
+# @!attribute [rw] resources
 #   @return [Array, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 ApiEntitiesNugetServiceIndex = Struct.new(
-  :resource,
+  :resources,
   :version,
   keyword_init: true
 )
@@ -8662,7 +13431,7 @@ end
 # @!attribute [rw] last_downloaded_at
 #   @return [String, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] name
@@ -8674,6 +13443,9 @@ end
 # @!attribute [rw] pipeline
 #   @return [Hash, nil]
 #
+# @!attribute [rw] pipelines
+#   @return [Hash, nil]
+#
 # @!attribute [rw] project_id
 #   @return [Integer, nil]
 #
@@ -8683,25 +13455,30 @@ end
 # @!attribute [rw] status
 #   @return [String, nil]
 #
-# @!attribute [rw] tag
+# @!attribute [rw] tags
 #   @return [String, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
+#
+# @!attribute [rw] versions
+#   @return [Hash, nil]
 ApiEntitiesPackage = Struct.new(
   :conan_package_name,
   :created_at,
   :id,
   :last_downloaded_at,
-  :link,
+  :links,
   :name,
   :package_type,
   :pipeline,
+  :pipelines,
   :project_id,
   :project_path,
   :status,
-  :tag,
+  :tags,
   :version,
+  :versions,
   keyword_init: true
 )
 
@@ -8754,7 +13531,7 @@ ApiEntitiesPackageListMatch = Struct.new(
 # @!attribute [rw] package_id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] pipeline
+# @!attribute [rw] pipelines
 #   @return [Hash, nil]
 #
 # @!attribute [rw] size
@@ -8767,7 +13544,7 @@ ApiEntitiesPackageFile = Struct.new(
   :file_sha256,
   :id,
   :package_id,
-  :pipeline,
+  :pipelines,
   :size,
   keyword_init: true
 )
@@ -8787,49 +13564,45 @@ ApiEntitiesPackageFileListMatch = Struct.new(
 
 # ApiEntitiesPackagePipeline entity data model.
 #
-# @!attribute [rw] created_at
+# @!attribute [rw] avatar_path
 #   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] iid
-#   @return [Integer, nil]
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
 #
-# @!attribute [rw] project_id
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ref
+# @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] sha
+# @!attribute [rw] public_email
 #   @return [String, nil]
 #
-# @!attribute [rw] source
+# @!attribute [rw] state
 #   @return [String, nil]
 #
-# @!attribute [rw] status
+# @!attribute [rw] username
 #   @return [String, nil]
-#
-# @!attribute [rw] updated_at
-#   @return [String, nil]
-#
-# @!attribute [rw] user
-#   @return [Hash, nil]
 #
 # @!attribute [rw] web_url
 #   @return [String, nil]
 ApiEntitiesPackagePipeline = Struct.new(
-  :created_at,
+  :avatar_path,
+  :avatar_url,
+  :custom_attributes,
   :id,
-  :iid,
-  :project_id,
-  :ref,
-  :sha,
-  :source,
-  :status,
-  :updated_at,
-  :user,
+  :locked,
+  :name,
+  :public_email,
+  :state,
+  :username,
   :web_url,
   keyword_init: true
 )
@@ -8848,13 +13621,8 @@ ApiEntitiesPackagePipelineLoadMatch = Struct.new(
 )
 
 # ApiEntitiesPackagesConanFilesList entity data model.
-#
-# @!attribute [rw] file
-#   @return [Hash, nil]
-ApiEntitiesPackagesConanFilesList = Struct.new(
-  :file,
-  keyword_init: true
-)
+class ApiEntitiesPackagesConanFilesList
+end
 
 # Request payload for ApiEntitiesPackagesConanFilesList#load.
 #
@@ -8898,13 +13666,8 @@ ApiEntitiesPackagesConanFilesListLoadMatch = Struct.new(
 )
 
 # ApiEntitiesPackagesConanPackageManifest entity data model.
-#
-# @!attribute [rw] package_url
-#   @return [Hash, nil]
-ApiEntitiesPackagesConanPackageManifest = Struct.new(
-  :package_url,
-  keyword_init: true
-)
+class ApiEntitiesPackagesConanPackageManifest
+end
 
 # Request payload for ApiEntitiesPackagesConanPackageManifest#load.
 #
@@ -8982,13 +13745,8 @@ ApiEntitiesPackagesConanPackageRevisionListMatch = Struct.new(
 )
 
 # ApiEntitiesPackagesConanPackageSnapshot entity data model.
-#
-# @!attribute [rw] package_snapshot
-#   @return [Hash, nil]
-ApiEntitiesPackagesConanPackageSnapshot = Struct.new(
-  :package_snapshot,
-  keyword_init: true
-)
+class ApiEntitiesPackagesConanPackageSnapshot
+end
 
 # Request payload for ApiEntitiesPackagesConanPackageSnapshot#load.
 #
@@ -9020,13 +13778,8 @@ ApiEntitiesPackagesConanPackageSnapshotLoadMatch = Struct.new(
 )
 
 # ApiEntitiesPackagesConanRecipeManifest entity data model.
-#
-# @!attribute [rw] recipe_url
-#   @return [Hash, nil]
-ApiEntitiesPackagesConanRecipeManifest = Struct.new(
-  :recipe_url,
-  keyword_init: true
-)
+class ApiEntitiesPackagesConanRecipeManifest
+end
 
 # Request payload for ApiEntitiesPackagesConanRecipeManifest#load.
 #
@@ -9092,13 +13845,8 @@ ApiEntitiesPackagesConanRecipeRevisionListMatch = Struct.new(
 )
 
 # ApiEntitiesPackagesConanRecipeSnapshot entity data model.
-#
-# @!attribute [rw] recipe_snapshot
-#   @return [Hash, nil]
-ApiEntitiesPackagesConanRecipeSnapshot = Struct.new(
-  :recipe_snapshot,
-  keyword_init: true
-)
+class ApiEntitiesPackagesConanRecipeSnapshot
+end
 
 # Request payload for ApiEntitiesPackagesConanRecipeSnapshot#load.
 #
@@ -9172,13 +13920,8 @@ ApiEntitiesPackagesConanRevisionLoadMatch = Struct.new(
 )
 
 # ApiEntitiesPackagesConanUploadUrl entity data model.
-#
-# @!attribute [rw] upload_url
-#   @return [Hash, nil]
-ApiEntitiesPackagesConanUploadUrl = Struct.new(
-  :upload_url,
-  keyword_init: true
-)
+class ApiEntitiesPackagesConanUploadUrl
+end
 
 # Request payload for ApiEntitiesPackagesConanUploadUrl#create.
 #
@@ -9211,13 +13954,13 @@ ApiEntitiesPackagesConanUploadUrlCreateData = Struct.new(
 
 # ApiEntitiesPackagesDebianDistribution entity data model.
 #
-# @!attribute [rw] architecture
+# @!attribute [rw] architectures
 #   @return [Array, nil]
 #
 # @!attribute [rw] codename
 #   @return [String, nil]
 #
-# @!attribute [rw] component
+# @!attribute [rw] components
 #   @return [Array, nil]
 #
 # @!attribute [rw] description
@@ -9235,21 +13978,21 @@ ApiEntitiesPackagesConanUploadUrlCreateData = Struct.new(
 # @!attribute [rw] suite
 #   @return [String, nil]
 #
-# @!attribute [rw] valid_time_duration_second
+# @!attribute [rw] valid_time_duration_seconds
 #   @return [Integer, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 ApiEntitiesPackagesDebianDistribution = Struct.new(
-  :architecture,
+  :architectures,
   :codename,
-  :component,
+  :components,
   :description,
   :id,
   :label,
   :origin,
   :suite,
-  :valid_time_duration_second,
+  :valid_time_duration_seconds,
   :version,
   keyword_init: true
 )
@@ -9295,9 +14038,49 @@ ApiEntitiesPackagesDebianDistributionListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] architectures
+#   @return [Array, nil]
+#
+# @!attribute [rw] codename
+#   @return [String, nil]
+#
+# @!attribute [rw] components
+#   @return [Array, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] label
+#   @return [String, nil]
+#
+# @!attribute [rw] origin
+#   @return [String, nil]
+#
+# @!attribute [rw] suite
+#   @return [String, nil]
+#
+# @!attribute [rw] valid_time_duration_seconds
+#   @return [Integer, nil]
+#
+# @!attribute [rw] version
+#   @return [String, nil]
 ApiEntitiesPackagesDebianDistributionCreateData = Struct.new(
   :group_id,
   :project_id,
+  :architectures,
+  :codename,
+  :components,
+  :description,
+  :id,
+  :label,
+  :origin,
+  :suite,
+  :valid_time_duration_seconds,
+  :version,
   keyword_init: true
 )
 
@@ -9311,10 +14094,46 @@ ApiEntitiesPackagesDebianDistributionCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] architectures
+#   @return [Array, nil]
+#
+# @!attribute [rw] codename
+#   @return [String, nil]
+#
+# @!attribute [rw] components
+#   @return [Array, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] label
+#   @return [String, nil]
+#
+# @!attribute [rw] origin
+#   @return [String, nil]
+#
+# @!attribute [rw] suite
+#   @return [String, nil]
+#
+# @!attribute [rw] valid_time_duration_seconds
+#   @return [Integer, nil]
+#
+# @!attribute [rw] version
+#   @return [String, nil]
 ApiEntitiesPackagesDebianDistributionUpdateData = Struct.new(
   :group_id,
   :id,
   :project_id,
+  :architectures,
+  :codename,
+  :components,
+  :description,
+  :label,
+  :origin,
+  :suite,
+  :valid_time_duration_seconds,
+  :version,
   keyword_init: true
 )
 
@@ -9324,12 +14143,21 @@ ApiEntitiesPackagesDebianDistributionUpdateData = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] certificate
-#   @return [Hash, nil]
+#   @return [String, nil]
+#
+# @!attribute [rw] certificate_text
+#   @return [String, nil]
 #
 # @!attribute [rw] domain
 #   @return [String, nil]
 #
 # @!attribute [rw] enabled_until
+#   @return [String, nil]
+#
+# @!attribute [rw] expired
+#   @return [String, nil]
+#
+# @!attribute [rw] subject
 #   @return [String, nil]
 #
 # @!attribute [rw] url
@@ -9343,8 +14171,11 @@ ApiEntitiesPackagesDebianDistributionUpdateData = Struct.new(
 ApiEntitiesPagesDomain = Struct.new(
   :auto_ssl_enabled,
   :certificate,
+  :certificate_text,
   :domain,
   :enabled_until,
+  :expired,
+  :subject,
   :url,
   :verification_code,
   :verified,
@@ -9377,8 +14208,48 @@ ApiEntitiesPagesDomainListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] auto_ssl_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] certificate
+#   @return [String, nil]
+#
+# @!attribute [rw] certificate_text
+#   @return [String, nil]
+#
+# @!attribute [rw] domain
+#   @return [String, nil]
+#
+# @!attribute [rw] enabled_until
+#   @return [String, nil]
+#
+# @!attribute [rw] expired
+#   @return [String, nil]
+#
+# @!attribute [rw] subject
+#   @return [String, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
+#
+# @!attribute [rw] verification_code
+#   @return [String, nil]
+#
+# @!attribute [rw] verified
+#   @return [Boolean, nil]
 ApiEntitiesPagesDomainCreateData = Struct.new(
   :project_id,
+  :auto_ssl_enabled,
+  :certificate,
+  :certificate_text,
+  :domain,
+  :enabled_until,
+  :expired,
+  :subject,
+  :url,
+  :verification_code,
+  :verified,
   keyword_init: true
 )
 
@@ -9389,83 +14260,75 @@ ApiEntitiesPagesDomainCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] auto_ssl_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] certificate
+#   @return [String, nil]
+#
+# @!attribute [rw] certificate_text
+#   @return [String, nil]
+#
+# @!attribute [rw] domain
+#   @return [String, nil]
+#
+# @!attribute [rw] enabled_until
+#   @return [String, nil]
+#
+# @!attribute [rw] expired
+#   @return [String, nil]
+#
+# @!attribute [rw] subject
+#   @return [String, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
+#
+# @!attribute [rw] verification_code
+#   @return [String, nil]
+#
+# @!attribute [rw] verified
+#   @return [Boolean, nil]
 ApiEntitiesPagesDomainUpdateData = Struct.new(
   :domain_id,
   :project_id,
+  :auto_ssl_enabled,
+  :certificate,
+  :certificate_text,
+  :domain,
+  :enabled_until,
+  :expired,
+  :subject,
+  :url,
+  :verification_code,
+  :verified,
   keyword_init: true
 )
 
 # ApiEntitiesPagesDomainBasic entity data model.
 #
-# @!attribute [rw] auto_ssl_enabled
+# @!attribute [rw] expiration
 #   @return [String, nil]
 #
-# @!attribute [rw] certificate_expiration
-#   @return [Hash, nil]
-#
-# @!attribute [rw] domain
+# @!attribute [rw] expired
 #   @return [String, nil]
-#
-# @!attribute [rw] enabled_until
-#   @return [String, nil]
-#
-# @!attribute [rw] project_id
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
-#
-# @!attribute [rw] verification_code
-#   @return [String, nil]
-#
-# @!attribute [rw] verified
-#   @return [Boolean, nil]
 ApiEntitiesPagesDomainBasic = Struct.new(
-  :auto_ssl_enabled,
-  :certificate_expiration,
-  :domain,
-  :enabled_until,
-  :project_id,
-  :url,
-  :verification_code,
-  :verified,
+  :expiration,
+  :expired,
   keyword_init: true
 )
 
 # Request payload for ApiEntitiesPagesDomainBasic#load.
 #
-# @!attribute [rw] auto_ssl_enabled
+# @!attribute [rw] expiration
 #   @return [String, nil]
 #
-# @!attribute [rw] certificate_expiration
-#   @return [Hash, nil]
-#
-# @!attribute [rw] domain
+# @!attribute [rw] expired
 #   @return [String, nil]
-#
-# @!attribute [rw] enabled_until
-#   @return [String, nil]
-#
-# @!attribute [rw] project_id
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
-#
-# @!attribute [rw] verification_code
-#   @return [String, nil]
-#
-# @!attribute [rw] verified
-#   @return [Boolean, nil]
 ApiEntitiesPagesDomainBasicLoadMatch = Struct.new(
-  :auto_ssl_enabled,
-  :certificate_expiration,
-  :domain,
-  :enabled_until,
-  :project_id,
-  :url,
-  :verification_code,
-  :verified,
+  :expiration,
+  :expired,
   keyword_init: true
 )
 
@@ -9495,7 +14358,7 @@ ApiEntitiesPagesDomainBasicLoadMatch = Struct.new(
 # @!attribute [rw] revoked
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] scope
+# @!attribute [rw] scopes
 #   @return [Array, nil]
 #
 # @!attribute [rw] user_id
@@ -9509,7 +14372,7 @@ ApiEntitiesPersonalAccessToken = Struct.new(
   :last_used_at,
   :name,
   :revoked,
-  :scope,
+  :scopes,
   :user_id,
   keyword_init: true
 )
@@ -9540,7 +14403,7 @@ ApiEntitiesPersonalAccessToken = Struct.new(
 # @!attribute [rw] revoked
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] scope
+# @!attribute [rw] scopes
 #   @return [Array, nil]
 #
 # @!attribute [rw] user_id
@@ -9554,7 +14417,7 @@ ApiEntitiesPersonalAccessTokenListMatch = Struct.new(
   :last_used_at,
   :name,
   :revoked,
-  :scope,
+  :scopes,
   :user_id,
   keyword_init: true
 )
@@ -9579,7 +14442,7 @@ ApiEntitiesPersonalAccessTokenListMatch = Struct.new(
 # @!attribute [rw] last_used_at
 #   @return [String, nil]
 #
-# @!attribute [rw] last_used_ip
+# @!attribute [rw] last_used_ips
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
@@ -9588,7 +14451,7 @@ ApiEntitiesPersonalAccessTokenListMatch = Struct.new(
 # @!attribute [rw] revoked
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] scope
+# @!attribute [rw] scopes
 #   @return [Array, nil]
 #
 # @!attribute [rw] user_id
@@ -9600,10 +14463,10 @@ ApiEntitiesPersonalAccessTokenWithLastUsedIp = Struct.new(
   :expires_at,
   :id,
   :last_used_at,
-  :last_used_ip,
+  :last_used_ips,
   :name,
   :revoked,
-  :scope,
+  :scopes,
   :user_id,
   keyword_init: true
 )
@@ -9637,7 +14500,7 @@ ApiEntitiesPersonalAccessTokenWithLastUsedIpLoadMatch = Struct.new(
 # @!attribute [rw] last_used_at
 #   @return [String, nil]
 #
-# @!attribute [rw] last_used_ip
+# @!attribute [rw] last_used_ips
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
@@ -9646,7 +14509,7 @@ ApiEntitiesPersonalAccessTokenWithLastUsedIpLoadMatch = Struct.new(
 # @!attribute [rw] revoked
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] scope
+# @!attribute [rw] scopes
 #   @return [Array, nil]
 #
 # @!attribute [rw] user_id
@@ -9658,10 +14521,10 @@ ApiEntitiesPersonalAccessTokenWithLastUsedIpListMatch = Struct.new(
   :expires_at,
   :id,
   :last_used_at,
-  :last_used_ip,
+  :last_used_ips,
   :name,
   :revoked,
-  :scope,
+  :scopes,
   :user_id,
   keyword_init: true
 )
@@ -9692,7 +14555,7 @@ ApiEntitiesPersonalAccessTokenWithLastUsedIpListMatch = Struct.new(
 # @!attribute [rw] revoked
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] scope
+# @!attribute [rw] scopes
 #   @return [Array, nil]
 #
 # @!attribute [rw] token
@@ -9709,7 +14572,7 @@ ApiEntitiesPersonalAccessTokenWithToken = Struct.new(
   :last_used_at,
   :name,
   :revoked,
-  :scope,
+  :scopes,
   :token,
   :user_id,
   keyword_init: true
@@ -9719,8 +14582,52 @@ ApiEntitiesPersonalAccessTokenWithToken = Struct.new(
 #
 # @!attribute [rw] personal_access_token_id
 #   @return [String, nil]
+#
+# @!attribute [rw] active
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] last_used_at
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] revoked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] scopes
+#   @return [Array, nil]
+#
+# @!attribute [rw] token
+#   @return [String, nil]
+#
+# @!attribute [rw] user_id
+#   @return [Integer, nil]
 ApiEntitiesPersonalAccessTokenWithTokenCreateData = Struct.new(
   :personal_access_token_id,
+  :active,
+  :created_at,
+  :description,
+  :expires_at,
+  :id,
+  :last_used_at,
+  :name,
+  :revoked,
+  :scopes,
+  :token,
+  :user_id,
   keyword_init: true
 )
 
@@ -9735,11 +14642,11 @@ ApiEntitiesPersonalAccessTokenWithTokenCreateData = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] file
-#   @return [Array, nil]
-#
 # @!attribute [rw] file_name
 #   @return [String, nil]
+#
+# @!attribute [rw] files
+#   @return [Array, nil]
 #
 # @!attribute [rw] http_url_to_repo
 #   @return [String, nil]
@@ -9780,8 +14687,8 @@ ApiEntitiesPersonalSnippet = Struct.new(
   :author,
   :created_at,
   :description,
-  :file,
   :file_name,
+  :files,
   :http_url_to_repo,
   :id,
   :imported,
@@ -9817,11 +14724,11 @@ ApiEntitiesPersonalSnippetLoadMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] file
-#   @return [Array, nil]
-#
 # @!attribute [rw] file_name
 #   @return [String, nil]
+#
+# @!attribute [rw] files
+#   @return [Array, nil]
 #
 # @!attribute [rw] http_url_to_repo
 #   @return [String, nil]
@@ -9862,8 +14769,8 @@ ApiEntitiesPersonalSnippetListMatch = Struct.new(
   :author,
   :created_at,
   :description,
-  :file,
   :file_name,
+  :files,
   :http_url_to_repo,
   :id,
   :imported,
@@ -9890,11 +14797,11 @@ ApiEntitiesPersonalSnippetListMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] file
-#   @return [Array, nil]
-#
 # @!attribute [rw] file_name
 #   @return [String, nil]
+#
+# @!attribute [rw] files
+#   @return [Array, nil]
 #
 # @!attribute [rw] http_url_to_repo
 #   @return [String, nil]
@@ -9935,8 +14842,8 @@ ApiEntitiesPersonalSnippetCreateData = Struct.new(
   :author,
   :created_at,
   :description,
-  :file,
   :file_name,
+  :files,
   :http_url_to_repo,
   :id,
   :imported,
@@ -9956,301 +14863,86 @@ ApiEntitiesPersonalSnippetCreateData = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] author
+#   @return [Hash, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] file_name
+#   @return [String, nil]
+#
+# @!attribute [rw] files
+#   @return [Array, nil]
+#
+# @!attribute [rw] http_url_to_repo
+#   @return [String, nil]
+#
+# @!attribute [rw] imported
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] imported_from
+#   @return [String, nil]
+#
+# @!attribute [rw] project_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] raw_url
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_storage
+#   @return [String, nil]
+#
+# @!attribute [rw] ssh_url_to_repo
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] visibility
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesPersonalSnippetUpdateData = Struct.new(
   :id,
+  :author,
+  :created_at,
+  :description,
+  :file_name,
+  :files,
+  :http_url_to_repo,
+  :imported,
+  :imported_from,
+  :project_id,
+  :raw_url,
+  :repository_storage,
+  :ssh_url_to_repo,
+  :title,
+  :updated_at,
+  :visibility,
+  :web_url,
   keyword_init: true
 )
 
 # ApiEntitiesPlanLimit entity data model.
-#
-# @!attribute [rw] ci_active_job
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_instance_level_variable
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_needs_size_limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_pipeline_schedule
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_pipeline_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_project_subscription
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_registered_group_runner
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_registered_project_runner
-#   @return [Integer, nil]
-#
-# @!attribute [rw] conan_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] dotenv_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] dotenv_variable
-#   @return [Integer, nil]
-#
-# @!attribute [rw] enforcement_limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] generic_packages_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] helm_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] limits_history
-#   @return [Hash, nil]
-#
-# @!attribute [rw] maven_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] notification_limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] npm_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] nuget_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] pipeline_hierarchy_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] pypi_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] storage_size_limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] terraform_module_max_file_size
-#   @return [Integer, nil]
-ApiEntitiesPlanLimit = Struct.new(
-  :ci_active_job,
-  :ci_instance_level_variable,
-  :ci_needs_size_limit,
-  :ci_pipeline_schedule,
-  :ci_pipeline_size,
-  :ci_project_subscription,
-  :ci_registered_group_runner,
-  :ci_registered_project_runner,
-  :conan_max_file_size,
-  :dotenv_size,
-  :dotenv_variable,
-  :enforcement_limit,
-  :generic_packages_max_file_size,
-  :helm_max_file_size,
-  :limits_history,
-  :maven_max_file_size,
-  :notification_limit,
-  :npm_max_file_size,
-  :nuget_max_file_size,
-  :pipeline_hierarchy_size,
-  :pypi_max_file_size,
-  :storage_size_limit,
-  :terraform_module_max_file_size,
-  keyword_init: true
-)
+class ApiEntitiesPlanLimit
+end
 
 # Request payload for ApiEntitiesPlanLimit#load.
-#
-# @!attribute [rw] ci_active_job
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_instance_level_variable
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_needs_size_limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_pipeline_schedule
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_pipeline_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_project_subscription
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_registered_group_runner
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_registered_project_runner
-#   @return [Integer, nil]
-#
-# @!attribute [rw] conan_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] dotenv_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] dotenv_variable
-#   @return [Integer, nil]
-#
-# @!attribute [rw] enforcement_limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] generic_packages_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] helm_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] limits_history
-#   @return [Hash, nil]
-#
-# @!attribute [rw] maven_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] notification_limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] npm_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] nuget_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] pipeline_hierarchy_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] pypi_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] storage_size_limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] terraform_module_max_file_size
-#   @return [Integer, nil]
-ApiEntitiesPlanLimitLoadMatch = Struct.new(
-  :ci_active_job,
-  :ci_instance_level_variable,
-  :ci_needs_size_limit,
-  :ci_pipeline_schedule,
-  :ci_pipeline_size,
-  :ci_project_subscription,
-  :ci_registered_group_runner,
-  :ci_registered_project_runner,
-  :conan_max_file_size,
-  :dotenv_size,
-  :dotenv_variable,
-  :enforcement_limit,
-  :generic_packages_max_file_size,
-  :helm_max_file_size,
-  :limits_history,
-  :maven_max_file_size,
-  :notification_limit,
-  :npm_max_file_size,
-  :nuget_max_file_size,
-  :pipeline_hierarchy_size,
-  :pypi_max_file_size,
-  :storage_size_limit,
-  :terraform_module_max_file_size,
-  keyword_init: true
-)
+class ApiEntitiesPlanLimitLoadMatch
+end
 
 # Request payload for ApiEntitiesPlanLimit#update.
-#
-# @!attribute [rw] ci_active_job
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_instance_level_variable
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_needs_size_limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_pipeline_schedule
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_pipeline_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_project_subscription
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_registered_group_runner
-#   @return [Integer, nil]
-#
-# @!attribute [rw] ci_registered_project_runner
-#   @return [Integer, nil]
-#
-# @!attribute [rw] conan_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] dotenv_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] dotenv_variable
-#   @return [Integer, nil]
-#
-# @!attribute [rw] enforcement_limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] generic_packages_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] helm_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] limits_history
-#   @return [Hash, nil]
-#
-# @!attribute [rw] maven_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] notification_limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] npm_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] nuget_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] pipeline_hierarchy_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] pypi_max_file_size
-#   @return [Integer, nil]
-#
-# @!attribute [rw] storage_size_limit
-#   @return [Integer, nil]
-#
-# @!attribute [rw] terraform_module_max_file_size
-#   @return [Integer, nil]
-ApiEntitiesPlanLimitUpdateData = Struct.new(
-  :ci_active_job,
-  :ci_instance_level_variable,
-  :ci_needs_size_limit,
-  :ci_pipeline_schedule,
-  :ci_pipeline_size,
-  :ci_project_subscription,
-  :ci_registered_group_runner,
-  :ci_registered_project_runner,
-  :conan_max_file_size,
-  :dotenv_size,
-  :dotenv_variable,
-  :enforcement_limit,
-  :generic_packages_max_file_size,
-  :helm_max_file_size,
-  :limits_history,
-  :maven_max_file_size,
-  :notification_limit,
-  :npm_max_file_size,
-  :nuget_max_file_size,
-  :pipeline_hierarchy_size,
-  :pypi_max_file_size,
-  :storage_size_limit,
-  :terraform_module_max_file_size,
-  keyword_init: true
-)
+class ApiEntitiesPlanLimitUpdateData
+end
 
 # ApiEntitiesProject entity data model.
 #
@@ -10269,7 +14961,7 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] archived
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] auto_cancel_pending_pipeline
+# @!attribute [rw] auto_cancel_pending_pipelines
 #   @return [String, nil]
 #
 # @!attribute [rw] auto_devops_deploy_strategy
@@ -10281,7 +14973,7 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] auto_duo_code_review_enabled
 #   @return [String, nil]
 #
-# @!attribute [rw] autoclose_referenced_issue
+# @!attribute [rw] autoclose_referenced_issues
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] avatar_url
@@ -10308,7 +15000,7 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] ci_default_git_depth
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ci_delete_pipelines_in_second
+# @!attribute [rw] ci_delete_pipelines_in_seconds
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ci_forward_deployment_enabled
@@ -10317,7 +15009,7 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] ci_forward_deployment_rollback_allowed
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] ci_id_token_sub_claim_component
+# @!attribute [rw] ci_id_token_sub_claim_components
 #   @return [Array, nil]
 #
 # @!attribute [rw] ci_job_token_scope_enabled
@@ -10332,10 +15024,10 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] ci_restrict_pipeline_cancellation_role
 #   @return [String, nil]
 #
-# @!attribute [rw] ci_separated_cache
+# @!attribute [rw] ci_separated_caches
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] compliance_framework
+# @!attribute [rw] compliance_frameworks
 #   @return [String, nil]
 #
 # @!attribute [rw] container_expiration_policy
@@ -10356,7 +15048,7 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] creator_id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] custom_attribute
+# @!attribute [rw] custom_attributes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] default_branch
@@ -10380,7 +15072,7 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] empty_repo
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] enforce_auth_checks_on_upload
+# @!attribute [rw] enforce_auth_checks_on_uploads
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] environments_access_level
@@ -10455,7 +15147,7 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] license_url
 #   @return [String, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] marked_for_deletion_at
@@ -10500,10 +15192,10 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] mirror
 #   @return [String, nil]
 #
-# @!attribute [rw] mirror_overwrites_diverged_branch
+# @!attribute [rw] mirror_overwrites_diverged_branches
 #   @return [String, nil]
 #
-# @!attribute [rw] mirror_trigger_build
+# @!attribute [rw] mirror_trigger_builds
 #   @return [String, nil]
 #
 # @!attribute [rw] mirror_user_id
@@ -10536,10 +15228,10 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] only_allow_merge_if_all_status_checks_passed
 #   @return [String, nil]
 #
-# @!attribute [rw] only_allow_merge_if_pipeline_succeed
+# @!attribute [rw] only_allow_merge_if_pipeline_succeeds
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] only_mirror_protected_branch
+# @!attribute [rw] only_mirror_protected_branches
 #   @return [String, nil]
 #
 # @!attribute [rw] open_issues_count
@@ -10572,7 +15264,7 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] printing_merge_request_link_enabled
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] public_job
+# @!attribute [rw] public_jobs
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] readme_url
@@ -10602,13 +15294,13 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] requirements_enabled
 #   @return [String, nil]
 #
-# @!attribute [rw] resolve_outdated_diff_discussion
+# @!attribute [rw] resolve_outdated_diff_discussions
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] resource_group_default_process_mode
 #   @return [String, nil]
 #
-# @!attribute [rw] restrict_user_defined_variable
+# @!attribute [rw] restrict_user_defined_variables
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] runner_token_expiration_interval
@@ -10635,7 +15327,7 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] shared_runners_enabled
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] shared_with_group
+# @!attribute [rw] shared_with_groups
 #   @return [Array, nil]
 #
 # @!attribute [rw] show_diff_preview_in_email
@@ -10662,7 +15354,7 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] star_count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] statistic
+# @!attribute [rw] statistics
 #   @return [Hash, nil]
 #
 # @!attribute [rw] suggestion_commit_message
@@ -10671,7 +15363,7 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] tag_list
 #   @return [Array, nil]
 #
-# @!attribute [rw] topic
+# @!attribute [rw] topics
 #   @return [Array, nil]
 #
 # @!attribute [rw] updated_at
@@ -10680,7 +15372,7 @@ ApiEntitiesPlanLimitUpdateData = Struct.new(
 # @!attribute [rw] visibility
 #   @return [String, nil]
 #
-# @!attribute [rw] warn_about_potentially_unwanted_character
+# @!attribute [rw] warn_about_potentially_unwanted_characters
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] web_based_commit_signing_enabled
@@ -10700,11 +15392,11 @@ ApiEntitiesProject = Struct.new(
   :analytics_access_level,
   :approvals_before_merge,
   :archived,
-  :auto_cancel_pending_pipeline,
+  :auto_cancel_pending_pipelines,
   :auto_devops_deploy_strategy,
   :auto_devops_enabled,
   :auto_duo_code_review_enabled,
-  :autoclose_referenced_issue,
+  :autoclose_referenced_issues,
   :avatar_url,
   :build_git_strategy,
   :build_timeout,
@@ -10713,23 +15405,23 @@ ApiEntitiesProject = Struct.new(
   :ci_allow_fork_pipelines_to_run_in_parent_project,
   :ci_config_path,
   :ci_default_git_depth,
-  :ci_delete_pipelines_in_second,
+  :ci_delete_pipelines_in_seconds,
   :ci_forward_deployment_enabled,
   :ci_forward_deployment_rollback_allowed,
-  :ci_id_token_sub_claim_component,
+  :ci_id_token_sub_claim_components,
   :ci_job_token_scope_enabled,
   :ci_pipeline_variables_minimum_override_role,
   :ci_push_repository_for_job_token_allowed,
   :ci_restrict_pipeline_cancellation_role,
-  :ci_separated_cache,
-  :compliance_framework,
+  :ci_separated_caches,
+  :compliance_frameworks,
   :container_expiration_policy,
   :container_registry_access_level,
   :container_registry_enabled,
   :container_registry_image_prefix,
   :created_at,
   :creator_id,
-  :custom_attribute,
+  :custom_attributes,
   :default_branch,
   :description,
   :description_html,
@@ -10737,7 +15429,7 @@ ApiEntitiesProject = Struct.new(
   :emails_disabled,
   :emails_enabled,
   :empty_repo,
-  :enforce_auth_checks_on_upload,
+  :enforce_auth_checks_on_uploads,
   :environments_access_level,
   :external_authorization_classification_label,
   :feature_flags_access_level,
@@ -10762,7 +15454,7 @@ ApiEntitiesProject = Struct.new(
   :lfs_enabled,
   :license,
   :license_url,
-  :link,
+  :links,
   :marked_for_deletion_at,
   :marked_for_deletion_on,
   :max_artifacts_size,
@@ -10777,8 +15469,8 @@ ApiEntitiesProject = Struct.new(
   :merge_trains_enabled,
   :merge_trains_skip_train_allowed,
   :mirror,
-  :mirror_overwrites_diverged_branch,
-  :mirror_trigger_build,
+  :mirror_overwrites_diverged_branches,
+  :mirror_trigger_builds,
   :mirror_user_id,
   :model_experiments_access_level,
   :model_registry_access_level,
@@ -10789,8 +15481,8 @@ ApiEntitiesProject = Struct.new(
   :namespace,
   :only_allow_merge_if_all_discussions_are_resolved,
   :only_allow_merge_if_all_status_checks_passed,
-  :only_allow_merge_if_pipeline_succeed,
-  :only_mirror_protected_branch,
+  :only_allow_merge_if_pipeline_succeeds,
+  :only_mirror_protected_branches,
   :open_issues_count,
   :owner,
   :package_registry_access_level,
@@ -10801,7 +15493,7 @@ ApiEntitiesProject = Struct.new(
   :pre_receive_secret_detection_enabled,
   :prevent_merge_without_jira_issue,
   :printing_merge_request_link_enabled,
-  :public_job,
+  :public_jobs,
   :readme_url,
   :releases_access_level,
   :remove_source_branch_after_merge,
@@ -10811,9 +15503,9 @@ ApiEntitiesProject = Struct.new(
   :request_access_enabled,
   :requirements_access_level,
   :requirements_enabled,
-  :resolve_outdated_diff_discussion,
+  :resolve_outdated_diff_discussions,
   :resource_group_default_process_mode,
-  :restrict_user_defined_variable,
+  :restrict_user_defined_variables,
   :runner_token_expiration_interval,
   :runners_token,
   :secret_push_protection_enabled,
@@ -10822,7 +15514,7 @@ ApiEntitiesProject = Struct.new(
   :service_desk_address,
   :service_desk_enabled,
   :shared_runners_enabled,
-  :shared_with_group,
+  :shared_with_groups,
   :show_diff_preview_in_email,
   :snippets_access_level,
   :snippets_enabled,
@@ -10831,13 +15523,13 @@ ApiEntitiesProject = Struct.new(
   :squash_option,
   :ssh_url_to_repo,
   :star_count,
-  :statistic,
+  :statistics,
   :suggestion_commit_message,
   :tag_list,
-  :topic,
+  :topics,
   :updated_at,
   :visibility,
-  :warn_about_potentially_unwanted_character,
+  :warn_about_potentially_unwanted_characters,
   :web_based_commit_signing_enabled,
   :web_url,
   :wiki_access_level,
@@ -10868,10 +15560,598 @@ ApiEntitiesProjectListMatch = Struct.new(
 #
 # @!attribute [rw] user_id
 #   @return [String, nil]
+#
+# @!attribute [rw] allow_merge_on_skipped_pipeline
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] allow_pipeline_trigger_approve_deployment
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] analytics_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] approvals_before_merge
+#   @return [String, nil]
+#
+# @!attribute [rw] archived
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] auto_cancel_pending_pipelines
+#   @return [String, nil]
+#
+# @!attribute [rw] auto_devops_deploy_strategy
+#   @return [String, nil]
+#
+# @!attribute [rw] auto_devops_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] auto_duo_code_review_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] autoclose_referenced_issues
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] build_git_strategy
+#   @return [String, nil]
+#
+# @!attribute [rw] build_timeout
+#   @return [Integer, nil]
+#
+# @!attribute [rw] builds_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] can_create_merge_request_in
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ci_allow_fork_pipelines_to_run_in_parent_project
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ci_config_path
+#   @return [String, nil]
+#
+# @!attribute [rw] ci_default_git_depth
+#   @return [Integer, nil]
+#
+# @!attribute [rw] ci_delete_pipelines_in_seconds
+#   @return [Integer, nil]
+#
+# @!attribute [rw] ci_forward_deployment_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ci_forward_deployment_rollback_allowed
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ci_id_token_sub_claim_components
+#   @return [Array, nil]
+#
+# @!attribute [rw] ci_job_token_scope_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ci_pipeline_variables_minimum_override_role
+#   @return [String, nil]
+#
+# @!attribute [rw] ci_push_repository_for_job_token_allowed
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ci_restrict_pipeline_cancellation_role
+#   @return [String, nil]
+#
+# @!attribute [rw] ci_separated_caches
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] compliance_frameworks
+#   @return [String, nil]
+#
+# @!attribute [rw] container_expiration_policy
+#   @return [Hash, nil]
+#
+# @!attribute [rw] container_registry_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] container_registry_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] container_registry_image_prefix
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] creator_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] description_html
+#   @return [String, nil]
+#
+# @!attribute [rw] duo_remote_flows_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] emails_disabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] emails_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] empty_repo
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] enforce_auth_checks_on_uploads
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] environments_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] external_authorization_classification_label
+#   @return [String, nil]
+#
+# @!attribute [rw] feature_flags_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] forked_from_project
+#   @return [Hash, nil]
+#
+# @!attribute [rw] forking_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] forks_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] group_runners_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] http_url_to_repo
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] import_error
+#   @return [String, nil]
+#
+# @!attribute [rw] import_status
+#   @return [String, nil]
+#
+# @!attribute [rw] import_type
+#   @return [String, nil]
+#
+# @!attribute [rw] import_url
+#   @return [String, nil]
+#
+# @!attribute [rw] infrastructure_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] issue_branch_template
+#   @return [String, nil]
+#
+# @!attribute [rw] issues_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] issues_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] issues_template
+#   @return [String, nil]
+#
+# @!attribute [rw] jobs_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] keep_latest_artifact
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] last_activity_at
+#   @return [String, nil]
+#
+# @!attribute [rw] lfs_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] license
+#   @return [Hash, nil]
+#
+# @!attribute [rw] license_url
+#   @return [String, nil]
+#
+# @!attribute [rw] links
+#   @return [Hash, nil]
+#
+# @!attribute [rw] marked_for_deletion_at
+#   @return [String, nil]
+#
+# @!attribute [rw] marked_for_deletion_on
+#   @return [String, nil]
+#
+# @!attribute [rw] max_artifacts_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] merge_commit_template
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_method
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_pipelines_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_request_title_regex
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_request_title_regex_description
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_requests_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_requests_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] merge_requests_template
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_trains_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_trains_skip_train_allowed
+#   @return [String, nil]
+#
+# @!attribute [rw] mirror
+#   @return [String, nil]
+#
+# @!attribute [rw] mirror_overwrites_diverged_branches
+#   @return [String, nil]
+#
+# @!attribute [rw] mirror_trigger_builds
+#   @return [String, nil]
+#
+# @!attribute [rw] mirror_user_id
+#   @return [String, nil]
+#
+# @!attribute [rw] model_experiments_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] model_registry_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] monitor_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] mr_default_target_self
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] name_with_namespace
+#   @return [String, nil]
+#
+# @!attribute [rw] namespace
+#   @return [Hash, nil]
+#
+# @!attribute [rw] only_allow_merge_if_all_discussions_are_resolved
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] only_allow_merge_if_all_status_checks_passed
+#   @return [String, nil]
+#
+# @!attribute [rw] only_allow_merge_if_pipeline_succeeds
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] only_mirror_protected_branches
+#   @return [String, nil]
+#
+# @!attribute [rw] open_issues_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] owner
+#   @return [Hash, nil]
+#
+# @!attribute [rw] package_registry_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] packages_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] pages_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] path_with_namespace
+#   @return [String, nil]
+#
+# @!attribute [rw] pre_receive_secret_detection_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] prevent_merge_without_jira_issue
+#   @return [String, nil]
+#
+# @!attribute [rw] printing_merge_request_link_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] public_jobs
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] readme_url
+#   @return [String, nil]
+#
+# @!attribute [rw] releases_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] remove_source_branch_after_merge
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] repository_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_object_format
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_storage
+#   @return [String, nil]
+#
+# @!attribute [rw] request_access_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] requirements_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] requirements_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] resolve_outdated_diff_discussions
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] resource_group_default_process_mode
+#   @return [String, nil]
+#
+# @!attribute [rw] restrict_user_defined_variables
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] runner_token_expiration_interval
+#   @return [Integer, nil]
+#
+# @!attribute [rw] runners_token
+#   @return [String, nil]
+#
+# @!attribute [rw] secret_push_protection_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] security_and_compliance_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] security_and_compliance_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] service_desk_address
+#   @return [String, nil]
+#
+# @!attribute [rw] service_desk_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] shared_runners_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] shared_with_groups
+#   @return [Array, nil]
+#
+# @!attribute [rw] show_diff_preview_in_email
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] snippets_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] snippets_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] spp_repository_pipeline_access
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] squash_commit_template
+#   @return [String, nil]
+#
+# @!attribute [rw] squash_option
+#   @return [String, nil]
+#
+# @!attribute [rw] ssh_url_to_repo
+#   @return [String, nil]
+#
+# @!attribute [rw] star_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] statistics
+#   @return [Hash, nil]
+#
+# @!attribute [rw] suggestion_commit_message
+#   @return [String, nil]
+#
+# @!attribute [rw] tag_list
+#   @return [Array, nil]
+#
+# @!attribute [rw] topics
+#   @return [Array, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] visibility
+#   @return [String, nil]
+#
+# @!attribute [rw] warn_about_potentially_unwanted_characters
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] web_based_commit_signing_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
+#
+# @!attribute [rw] wiki_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] wiki_enabled
+#   @return [Boolean, nil]
 ApiEntitiesProjectCreateData = Struct.new(
   :forked_from_id,
   :project_id,
   :user_id,
+  :allow_merge_on_skipped_pipeline,
+  :allow_pipeline_trigger_approve_deployment,
+  :analytics_access_level,
+  :approvals_before_merge,
+  :archived,
+  :auto_cancel_pending_pipelines,
+  :auto_devops_deploy_strategy,
+  :auto_devops_enabled,
+  :auto_duo_code_review_enabled,
+  :autoclose_referenced_issues,
+  :avatar_url,
+  :build_git_strategy,
+  :build_timeout,
+  :builds_access_level,
+  :can_create_merge_request_in,
+  :ci_allow_fork_pipelines_to_run_in_parent_project,
+  :ci_config_path,
+  :ci_default_git_depth,
+  :ci_delete_pipelines_in_seconds,
+  :ci_forward_deployment_enabled,
+  :ci_forward_deployment_rollback_allowed,
+  :ci_id_token_sub_claim_components,
+  :ci_job_token_scope_enabled,
+  :ci_pipeline_variables_minimum_override_role,
+  :ci_push_repository_for_job_token_allowed,
+  :ci_restrict_pipeline_cancellation_role,
+  :ci_separated_caches,
+  :compliance_frameworks,
+  :container_expiration_policy,
+  :container_registry_access_level,
+  :container_registry_enabled,
+  :container_registry_image_prefix,
+  :created_at,
+  :creator_id,
+  :custom_attributes,
+  :default_branch,
+  :description,
+  :description_html,
+  :duo_remote_flows_enabled,
+  :emails_disabled,
+  :emails_enabled,
+  :empty_repo,
+  :enforce_auth_checks_on_uploads,
+  :environments_access_level,
+  :external_authorization_classification_label,
+  :feature_flags_access_level,
+  :forked_from_project,
+  :forking_access_level,
+  :forks_count,
+  :group_runners_enabled,
+  :http_url_to_repo,
+  :id,
+  :import_error,
+  :import_status,
+  :import_type,
+  :import_url,
+  :infrastructure_access_level,
+  :issue_branch_template,
+  :issues_access_level,
+  :issues_enabled,
+  :issues_template,
+  :jobs_enabled,
+  :keep_latest_artifact,
+  :last_activity_at,
+  :lfs_enabled,
+  :license,
+  :license_url,
+  :links,
+  :marked_for_deletion_at,
+  :marked_for_deletion_on,
+  :max_artifacts_size,
+  :merge_commit_template,
+  :merge_method,
+  :merge_pipelines_enabled,
+  :merge_request_title_regex,
+  :merge_request_title_regex_description,
+  :merge_requests_access_level,
+  :merge_requests_enabled,
+  :merge_requests_template,
+  :merge_trains_enabled,
+  :merge_trains_skip_train_allowed,
+  :mirror,
+  :mirror_overwrites_diverged_branches,
+  :mirror_trigger_builds,
+  :mirror_user_id,
+  :model_experiments_access_level,
+  :model_registry_access_level,
+  :monitor_access_level,
+  :mr_default_target_self,
+  :name,
+  :name_with_namespace,
+  :namespace,
+  :only_allow_merge_if_all_discussions_are_resolved,
+  :only_allow_merge_if_all_status_checks_passed,
+  :only_allow_merge_if_pipeline_succeeds,
+  :only_mirror_protected_branches,
+  :open_issues_count,
+  :owner,
+  :package_registry_access_level,
+  :packages_enabled,
+  :pages_access_level,
+  :path,
+  :path_with_namespace,
+  :pre_receive_secret_detection_enabled,
+  :prevent_merge_without_jira_issue,
+  :printing_merge_request_link_enabled,
+  :public_jobs,
+  :readme_url,
+  :releases_access_level,
+  :remove_source_branch_after_merge,
+  :repository_access_level,
+  :repository_object_format,
+  :repository_storage,
+  :request_access_enabled,
+  :requirements_access_level,
+  :requirements_enabled,
+  :resolve_outdated_diff_discussions,
+  :resource_group_default_process_mode,
+  :restrict_user_defined_variables,
+  :runner_token_expiration_interval,
+  :runners_token,
+  :secret_push_protection_enabled,
+  :security_and_compliance_access_level,
+  :security_and_compliance_enabled,
+  :service_desk_address,
+  :service_desk_enabled,
+  :shared_runners_enabled,
+  :shared_with_groups,
+  :show_diff_preview_in_email,
+  :snippets_access_level,
+  :snippets_enabled,
+  :spp_repository_pipeline_access,
+  :squash_commit_template,
+  :squash_option,
+  :ssh_url_to_repo,
+  :star_count,
+  :statistics,
+  :suggestion_commit_message,
+  :tag_list,
+  :topics,
+  :updated_at,
+  :visibility,
+  :warn_about_potentially_unwanted_characters,
+  :web_based_commit_signing_enabled,
+  :web_url,
+  :wiki_access_level,
+  :wiki_enabled,
   keyword_init: true
 )
 
@@ -10882,18 +16162,606 @@ ApiEntitiesProjectCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] allow_merge_on_skipped_pipeline
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] allow_pipeline_trigger_approve_deployment
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] analytics_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] approvals_before_merge
+#   @return [String, nil]
+#
+# @!attribute [rw] archived
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] auto_cancel_pending_pipelines
+#   @return [String, nil]
+#
+# @!attribute [rw] auto_devops_deploy_strategy
+#   @return [String, nil]
+#
+# @!attribute [rw] auto_devops_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] auto_duo_code_review_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] autoclose_referenced_issues
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] build_git_strategy
+#   @return [String, nil]
+#
+# @!attribute [rw] build_timeout
+#   @return [Integer, nil]
+#
+# @!attribute [rw] builds_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] can_create_merge_request_in
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ci_allow_fork_pipelines_to_run_in_parent_project
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ci_config_path
+#   @return [String, nil]
+#
+# @!attribute [rw] ci_default_git_depth
+#   @return [Integer, nil]
+#
+# @!attribute [rw] ci_delete_pipelines_in_seconds
+#   @return [Integer, nil]
+#
+# @!attribute [rw] ci_forward_deployment_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ci_forward_deployment_rollback_allowed
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ci_id_token_sub_claim_components
+#   @return [Array, nil]
+#
+# @!attribute [rw] ci_job_token_scope_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ci_pipeline_variables_minimum_override_role
+#   @return [String, nil]
+#
+# @!attribute [rw] ci_push_repository_for_job_token_allowed
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] ci_restrict_pipeline_cancellation_role
+#   @return [String, nil]
+#
+# @!attribute [rw] ci_separated_caches
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] compliance_frameworks
+#   @return [String, nil]
+#
+# @!attribute [rw] container_expiration_policy
+#   @return [Hash, nil]
+#
+# @!attribute [rw] container_registry_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] container_registry_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] container_registry_image_prefix
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] creator_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Hash, nil]
+#
+# @!attribute [rw] default_branch
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] description_html
+#   @return [String, nil]
+#
+# @!attribute [rw] duo_remote_flows_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] emails_disabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] emails_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] empty_repo
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] enforce_auth_checks_on_uploads
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] environments_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] external_authorization_classification_label
+#   @return [String, nil]
+#
+# @!attribute [rw] feature_flags_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] forked_from_project
+#   @return [Hash, nil]
+#
+# @!attribute [rw] forking_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] forks_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] group_runners_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] http_url_to_repo
+#   @return [String, nil]
+#
+# @!attribute [rw] import_error
+#   @return [String, nil]
+#
+# @!attribute [rw] import_status
+#   @return [String, nil]
+#
+# @!attribute [rw] import_type
+#   @return [String, nil]
+#
+# @!attribute [rw] import_url
+#   @return [String, nil]
+#
+# @!attribute [rw] infrastructure_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] issue_branch_template
+#   @return [String, nil]
+#
+# @!attribute [rw] issues_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] issues_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] issues_template
+#   @return [String, nil]
+#
+# @!attribute [rw] jobs_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] keep_latest_artifact
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] last_activity_at
+#   @return [String, nil]
+#
+# @!attribute [rw] lfs_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] license
+#   @return [Hash, nil]
+#
+# @!attribute [rw] license_url
+#   @return [String, nil]
+#
+# @!attribute [rw] links
+#   @return [Hash, nil]
+#
+# @!attribute [rw] marked_for_deletion_at
+#   @return [String, nil]
+#
+# @!attribute [rw] marked_for_deletion_on
+#   @return [String, nil]
+#
+# @!attribute [rw] max_artifacts_size
+#   @return [Integer, nil]
+#
+# @!attribute [rw] merge_commit_template
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_method
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_pipelines_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_request_title_regex
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_request_title_regex_description
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_requests_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_requests_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] merge_requests_template
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_trains_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] merge_trains_skip_train_allowed
+#   @return [String, nil]
+#
+# @!attribute [rw] mirror
+#   @return [String, nil]
+#
+# @!attribute [rw] mirror_overwrites_diverged_branches
+#   @return [String, nil]
+#
+# @!attribute [rw] mirror_trigger_builds
+#   @return [String, nil]
+#
+# @!attribute [rw] mirror_user_id
+#   @return [String, nil]
+#
+# @!attribute [rw] model_experiments_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] model_registry_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] monitor_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] mr_default_target_self
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] name_with_namespace
+#   @return [String, nil]
+#
+# @!attribute [rw] namespace
+#   @return [Hash, nil]
+#
+# @!attribute [rw] only_allow_merge_if_all_discussions_are_resolved
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] only_allow_merge_if_all_status_checks_passed
+#   @return [String, nil]
+#
+# @!attribute [rw] only_allow_merge_if_pipeline_succeeds
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] only_mirror_protected_branches
+#   @return [String, nil]
+#
+# @!attribute [rw] open_issues_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] owner
+#   @return [Hash, nil]
+#
+# @!attribute [rw] package_registry_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] packages_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] pages_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] path
+#   @return [String, nil]
+#
+# @!attribute [rw] path_with_namespace
+#   @return [String, nil]
+#
+# @!attribute [rw] pre_receive_secret_detection_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] prevent_merge_without_jira_issue
+#   @return [String, nil]
+#
+# @!attribute [rw] printing_merge_request_link_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] public_jobs
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] readme_url
+#   @return [String, nil]
+#
+# @!attribute [rw] releases_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] remove_source_branch_after_merge
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] repository_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_object_format
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_storage
+#   @return [String, nil]
+#
+# @!attribute [rw] request_access_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] requirements_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] requirements_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] resolve_outdated_diff_discussions
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] resource_group_default_process_mode
+#   @return [String, nil]
+#
+# @!attribute [rw] restrict_user_defined_variables
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] runner_token_expiration_interval
+#   @return [Integer, nil]
+#
+# @!attribute [rw] runners_token
+#   @return [String, nil]
+#
+# @!attribute [rw] secret_push_protection_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] security_and_compliance_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] security_and_compliance_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] service_desk_address
+#   @return [String, nil]
+#
+# @!attribute [rw] service_desk_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] shared_runners_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] shared_with_groups
+#   @return [Array, nil]
+#
+# @!attribute [rw] show_diff_preview_in_email
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] snippets_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] snippets_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] spp_repository_pipeline_access
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] squash_commit_template
+#   @return [String, nil]
+#
+# @!attribute [rw] squash_option
+#   @return [String, nil]
+#
+# @!attribute [rw] ssh_url_to_repo
+#   @return [String, nil]
+#
+# @!attribute [rw] star_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] statistics
+#   @return [Hash, nil]
+#
+# @!attribute [rw] suggestion_commit_message
+#   @return [String, nil]
+#
+# @!attribute [rw] tag_list
+#   @return [Array, nil]
+#
+# @!attribute [rw] topics
+#   @return [Array, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] visibility
+#   @return [String, nil]
+#
+# @!attribute [rw] warn_about_potentially_unwanted_characters
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] web_based_commit_signing_enabled
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
+#
+# @!attribute [rw] wiki_access_level
+#   @return [String, nil]
+#
+# @!attribute [rw] wiki_enabled
+#   @return [Boolean, nil]
 ApiEntitiesProjectUpdateData = Struct.new(
   :id,
   :project_id,
+  :allow_merge_on_skipped_pipeline,
+  :allow_pipeline_trigger_approve_deployment,
+  :analytics_access_level,
+  :approvals_before_merge,
+  :archived,
+  :auto_cancel_pending_pipelines,
+  :auto_devops_deploy_strategy,
+  :auto_devops_enabled,
+  :auto_duo_code_review_enabled,
+  :autoclose_referenced_issues,
+  :avatar_url,
+  :build_git_strategy,
+  :build_timeout,
+  :builds_access_level,
+  :can_create_merge_request_in,
+  :ci_allow_fork_pipelines_to_run_in_parent_project,
+  :ci_config_path,
+  :ci_default_git_depth,
+  :ci_delete_pipelines_in_seconds,
+  :ci_forward_deployment_enabled,
+  :ci_forward_deployment_rollback_allowed,
+  :ci_id_token_sub_claim_components,
+  :ci_job_token_scope_enabled,
+  :ci_pipeline_variables_minimum_override_role,
+  :ci_push_repository_for_job_token_allowed,
+  :ci_restrict_pipeline_cancellation_role,
+  :ci_separated_caches,
+  :compliance_frameworks,
+  :container_expiration_policy,
+  :container_registry_access_level,
+  :container_registry_enabled,
+  :container_registry_image_prefix,
+  :created_at,
+  :creator_id,
+  :custom_attributes,
+  :default_branch,
+  :description,
+  :description_html,
+  :duo_remote_flows_enabled,
+  :emails_disabled,
+  :emails_enabled,
+  :empty_repo,
+  :enforce_auth_checks_on_uploads,
+  :environments_access_level,
+  :external_authorization_classification_label,
+  :feature_flags_access_level,
+  :forked_from_project,
+  :forking_access_level,
+  :forks_count,
+  :group_runners_enabled,
+  :http_url_to_repo,
+  :import_error,
+  :import_status,
+  :import_type,
+  :import_url,
+  :infrastructure_access_level,
+  :issue_branch_template,
+  :issues_access_level,
+  :issues_enabled,
+  :issues_template,
+  :jobs_enabled,
+  :keep_latest_artifact,
+  :last_activity_at,
+  :lfs_enabled,
+  :license,
+  :license_url,
+  :links,
+  :marked_for_deletion_at,
+  :marked_for_deletion_on,
+  :max_artifacts_size,
+  :merge_commit_template,
+  :merge_method,
+  :merge_pipelines_enabled,
+  :merge_request_title_regex,
+  :merge_request_title_regex_description,
+  :merge_requests_access_level,
+  :merge_requests_enabled,
+  :merge_requests_template,
+  :merge_trains_enabled,
+  :merge_trains_skip_train_allowed,
+  :mirror,
+  :mirror_overwrites_diverged_branches,
+  :mirror_trigger_builds,
+  :mirror_user_id,
+  :model_experiments_access_level,
+  :model_registry_access_level,
+  :monitor_access_level,
+  :mr_default_target_self,
+  :name,
+  :name_with_namespace,
+  :namespace,
+  :only_allow_merge_if_all_discussions_are_resolved,
+  :only_allow_merge_if_all_status_checks_passed,
+  :only_allow_merge_if_pipeline_succeeds,
+  :only_mirror_protected_branches,
+  :open_issues_count,
+  :owner,
+  :package_registry_access_level,
+  :packages_enabled,
+  :pages_access_level,
+  :path,
+  :path_with_namespace,
+  :pre_receive_secret_detection_enabled,
+  :prevent_merge_without_jira_issue,
+  :printing_merge_request_link_enabled,
+  :public_jobs,
+  :readme_url,
+  :releases_access_level,
+  :remove_source_branch_after_merge,
+  :repository_access_level,
+  :repository_object_format,
+  :repository_storage,
+  :request_access_enabled,
+  :requirements_access_level,
+  :requirements_enabled,
+  :resolve_outdated_diff_discussions,
+  :resource_group_default_process_mode,
+  :restrict_user_defined_variables,
+  :runner_token_expiration_interval,
+  :runners_token,
+  :secret_push_protection_enabled,
+  :security_and_compliance_access_level,
+  :security_and_compliance_enabled,
+  :service_desk_address,
+  :service_desk_enabled,
+  :shared_runners_enabled,
+  :shared_with_groups,
+  :show_diff_preview_in_email,
+  :snippets_access_level,
+  :snippets_enabled,
+  :spp_repository_pipeline_access,
+  :squash_commit_template,
+  :squash_option,
+  :ssh_url_to_repo,
+  :star_count,
+  :statistics,
+  :suggestion_commit_message,
+  :tag_list,
+  :topics,
+  :updated_at,
+  :visibility,
+  :warn_about_potentially_unwanted_characters,
+  :web_based_commit_signing_enabled,
+  :web_url,
+  :wiki_access_level,
+  :wiki_enabled,
   keyword_init: true
 )
 
 # ApiEntitiesProjectDailyStatistic entity data model.
 #
-# @!attribute [rw] fetch
-#   @return [Hash, nil]
+# @!attribute [rw] days
+#   @return [Array, nil]
+#
+# @!attribute [rw] total
+#   @return [Integer, nil]
 ApiEntitiesProjectDailyStatistic = Struct.new(
-  :fetch,
+  :days,
+  :total,
   keyword_init: true
 )
 
@@ -10908,42 +16776,14 @@ ApiEntitiesProjectDailyStatisticLoadMatch = Struct.new(
 
 # ApiEntitiesProjectExportStatus entity data model.
 #
-# @!attribute [rw] created_at
+# @!attribute [rw] api_url
 #   @return [String, nil]
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] export_status
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [Integer, nil]
-#
-# @!attribute [rw] link
-#   @return [Hash, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] name_with_namespace
-#   @return [String, nil]
-#
-# @!attribute [rw] path
-#   @return [String, nil]
-#
-# @!attribute [rw] path_with_namespace
+# @!attribute [rw] web_url
 #   @return [String, nil]
 ApiEntitiesProjectExportStatus = Struct.new(
-  :created_at,
-  :description,
-  :export_status,
-  :id,
-  :link,
-  :name,
-  :name_with_namespace,
-  :path,
-  :path_with_namespace,
+  :api_url,
+  :web_url,
   keyword_init: true
 )
 
@@ -10977,22 +16817,22 @@ ApiEntitiesProjectGroupLinkCreateData = Struct.new(
 # @!attribute [rw] branch_filter_strategy
 #   @return [String, nil]
 #
-# @!attribute [rw] confidential_issues_event
+# @!attribute [rw] confidential_issues_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] confidential_note_event
+# @!attribute [rw] confidential_note_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] custom_header
+# @!attribute [rw] custom_headers
 #   @return [Array, nil]
 #
 # @!attribute [rw] custom_webhook_template
 #   @return [String, nil]
 #
-# @!attribute [rw] deployment_event
+# @!attribute [rw] deployment_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] description
@@ -11001,104 +16841,104 @@ ApiEntitiesProjectGroupLinkCreateData = Struct.new(
 # @!attribute [rw] disabled_until
 #   @return [String, nil]
 #
-# @!attribute [rw] emoji_event
+# @!attribute [rw] emoji_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] enable_ssl_verification
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] feature_flag_event
+# @!attribute [rw] feature_flag_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] issues_event
+# @!attribute [rw] issues_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] job_event
+# @!attribute [rw] job_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] merge_requests_event
+# @!attribute [rw] merge_requests_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] milestone_event
+# @!attribute [rw] milestone_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] note_event
+# @!attribute [rw] note_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] pipeline_event
+# @!attribute [rw] pipeline_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
 #
-# @!attribute [rw] push_event
+# @!attribute [rw] push_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] push_events_branch_filter
 #   @return [String, nil]
 #
-# @!attribute [rw] releases_event
+# @!attribute [rw] releases_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] repository_update_event
+# @!attribute [rw] repository_update_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] resource_access_token_event
+# @!attribute [rw] resource_access_token_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] tag_push_event
+# @!attribute [rw] tag_push_events
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] url
 #   @return [String, nil]
 #
-# @!attribute [rw] url_variable
+# @!attribute [rw] url_variables
 #   @return [Array, nil]
 #
-# @!attribute [rw] vulnerability_event
+# @!attribute [rw] vulnerability_events
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] wiki_page_event
+# @!attribute [rw] wiki_page_events
 #   @return [Boolean, nil]
 ApiEntitiesProjectHook = Struct.new(
   :alert_status,
   :branch_filter_strategy,
-  :confidential_issues_event,
-  :confidential_note_event,
+  :confidential_issues_events,
+  :confidential_note_events,
   :created_at,
-  :custom_header,
+  :custom_headers,
   :custom_webhook_template,
-  :deployment_event,
+  :deployment_events,
   :description,
   :disabled_until,
-  :emoji_event,
+  :emoji_events,
   :enable_ssl_verification,
-  :feature_flag_event,
+  :feature_flag_events,
   :id,
-  :issues_event,
-  :job_event,
-  :merge_requests_event,
-  :milestone_event,
+  :issues_events,
+  :job_events,
+  :merge_requests_events,
+  :milestone_events,
   :name,
-  :note_event,
-  :pipeline_event,
+  :note_events,
+  :pipeline_events,
   :project_id,
-  :push_event,
+  :push_events,
   :push_events_branch_filter,
-  :releases_event,
-  :repository_update_event,
-  :resource_access_token_event,
-  :tag_push_event,
+  :releases_events,
+  :repository_update_events,
+  :resource_access_token_events,
+  :tag_push_events,
   :url,
-  :url_variable,
-  :vulnerability_event,
-  :wiki_page_event,
+  :url_variables,
+  :vulnerability_events,
+  :wiki_page_events,
   keyword_init: true
 )
 
@@ -11128,8 +16968,132 @@ ApiEntitiesProjectHookListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] alert_status
+#   @return [Object, nil]
+#
+# @!attribute [rw] branch_filter_strategy
+#   @return [String, nil]
+#
+# @!attribute [rw] confidential_issues_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] confidential_note_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_headers
+#   @return [Array, nil]
+#
+# @!attribute [rw] custom_webhook_template
+#   @return [String, nil]
+#
+# @!attribute [rw] deployment_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] disabled_until
+#   @return [String, nil]
+#
+# @!attribute [rw] emoji_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] enable_ssl_verification
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] feature_flag_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] issues_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] job_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] merge_requests_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] milestone_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] note_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] pipeline_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] push_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] push_events_branch_filter
+#   @return [String, nil]
+#
+# @!attribute [rw] releases_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] repository_update_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] resource_access_token_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] tag_push_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
+#
+# @!attribute [rw] url_variables
+#   @return [Array, nil]
+#
+# @!attribute [rw] vulnerability_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] wiki_page_events
+#   @return [Boolean, nil]
 ApiEntitiesProjectHookCreateData = Struct.new(
   :project_id,
+  :alert_status,
+  :branch_filter_strategy,
+  :confidential_issues_events,
+  :confidential_note_events,
+  :created_at,
+  :custom_headers,
+  :custom_webhook_template,
+  :deployment_events,
+  :description,
+  :disabled_until,
+  :emoji_events,
+  :enable_ssl_verification,
+  :feature_flag_events,
+  :id,
+  :issues_events,
+  :job_events,
+  :merge_requests_events,
+  :milestone_events,
+  :name,
+  :note_events,
+  :pipeline_events,
+  :push_events,
+  :push_events_branch_filter,
+  :releases_events,
+  :repository_update_events,
+  :resource_access_token_events,
+  :tag_push_events,
+  :url,
+  :url_variables,
+  :vulnerability_events,
+  :wiki_page_events,
   keyword_init: true
 )
 
@@ -11140,9 +17104,129 @@ ApiEntitiesProjectHookCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] alert_status
+#   @return [Object, nil]
+#
+# @!attribute [rw] branch_filter_strategy
+#   @return [String, nil]
+#
+# @!attribute [rw] confidential_issues_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] confidential_note_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_headers
+#   @return [Array, nil]
+#
+# @!attribute [rw] custom_webhook_template
+#   @return [String, nil]
+#
+# @!attribute [rw] deployment_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] disabled_until
+#   @return [String, nil]
+#
+# @!attribute [rw] emoji_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] enable_ssl_verification
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] feature_flag_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] issues_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] job_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] merge_requests_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] milestone_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] note_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] pipeline_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] push_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] push_events_branch_filter
+#   @return [String, nil]
+#
+# @!attribute [rw] releases_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] repository_update_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] resource_access_token_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] tag_push_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
+#
+# @!attribute [rw] url_variables
+#   @return [Array, nil]
+#
+# @!attribute [rw] vulnerability_events
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] wiki_page_events
+#   @return [Boolean, nil]
 ApiEntitiesProjectHookUpdateData = Struct.new(
   :id,
   :project_id,
+  :alert_status,
+  :branch_filter_strategy,
+  :confidential_issues_events,
+  :confidential_note_events,
+  :created_at,
+  :custom_headers,
+  :custom_webhook_template,
+  :deployment_events,
+  :description,
+  :disabled_until,
+  :emoji_events,
+  :enable_ssl_verification,
+  :feature_flag_events,
+  :issues_events,
+  :job_events,
+  :merge_requests_events,
+  :milestone_events,
+  :name,
+  :note_events,
+  :pipeline_events,
+  :push_events,
+  :push_events_branch_filter,
+  :releases_events,
+  :repository_update_events,
+  :resource_access_token_events,
+  :tag_push_events,
+  :url,
+  :url_variables,
+  :vulnerability_events,
+  :wiki_page_events,
   keyword_init: true
 )
 
@@ -11284,11 +17368,11 @@ ApiEntitiesProjectRepositoryStorageLoadMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] file
-#   @return [Array, nil]
-#
 # @!attribute [rw] file_name
 #   @return [String, nil]
+#
+# @!attribute [rw] files
+#   @return [Array, nil]
 #
 # @!attribute [rw] http_url_to_repo
 #   @return [String, nil]
@@ -11329,8 +17413,8 @@ ApiEntitiesProjectSnippet = Struct.new(
   :author,
   :created_at,
   :description,
-  :file,
   :file_name,
+  :files,
   :http_url_to_repo,
   :id,
   :imported,
@@ -11384,8 +17468,72 @@ ApiEntitiesProjectSnippetListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] author
+#   @return [Hash, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] file_name
+#   @return [String, nil]
+#
+# @!attribute [rw] files
+#   @return [Array, nil]
+#
+# @!attribute [rw] http_url_to_repo
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] imported
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] imported_from
+#   @return [String, nil]
+#
+# @!attribute [rw] raw_url
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_storage
+#   @return [String, nil]
+#
+# @!attribute [rw] ssh_url_to_repo
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] visibility
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesProjectSnippetCreateData = Struct.new(
   :project_id,
+  :author,
+  :created_at,
+  :description,
+  :file_name,
+  :files,
+  :http_url_to_repo,
+  :id,
+  :imported,
+  :imported_from,
+  :raw_url,
+  :repository_storage,
+  :ssh_url_to_repo,
+  :title,
+  :updated_at,
+  :visibility,
+  :web_url,
   keyword_init: true
 )
 
@@ -11396,9 +17544,69 @@ ApiEntitiesProjectSnippetCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] author
+#   @return [Hash, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] file_name
+#   @return [String, nil]
+#
+# @!attribute [rw] files
+#   @return [Array, nil]
+#
+# @!attribute [rw] http_url_to_repo
+#   @return [String, nil]
+#
+# @!attribute [rw] imported
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] imported_from
+#   @return [String, nil]
+#
+# @!attribute [rw] raw_url
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_storage
+#   @return [String, nil]
+#
+# @!attribute [rw] ssh_url_to_repo
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] visibility
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesProjectSnippetUpdateData = Struct.new(
   :id,
   :project_id,
+  :author,
+  :created_at,
+  :description,
+  :file_name,
+  :files,
+  :http_url_to_repo,
+  :imported,
+  :imported_from,
+  :raw_url,
+  :repository_storage,
+  :ssh_url_to_repo,
+  :title,
+  :updated_at,
+  :visibility,
+  :web_url,
   keyword_init: true
 )
 
@@ -11432,7 +17640,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] archived
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] auto_cancel_pending_pipeline
+# @!attribute [rw] auto_cancel_pending_pipelines
 #   @return [String, nil]
 #
 # @!attribute [rw] auto_devops_deploy_strategy
@@ -11444,7 +17652,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] auto_duo_code_review_enabled
 #   @return [String, nil]
 #
-# @!attribute [rw] autoclose_referenced_issue
+# @!attribute [rw] autoclose_referenced_issues
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] avatar_url
@@ -11471,7 +17679,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] ci_default_git_depth
 #   @return [Integer, nil]
 #
-# @!attribute [rw] ci_delete_pipelines_in_second
+# @!attribute [rw] ci_delete_pipelines_in_seconds
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ci_forward_deployment_enabled
@@ -11480,7 +17688,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] ci_forward_deployment_rollback_allowed
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] ci_id_token_sub_claim_component
+# @!attribute [rw] ci_id_token_sub_claim_components
 #   @return [Array, nil]
 #
 # @!attribute [rw] ci_job_token_scope_enabled
@@ -11495,10 +17703,10 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] ci_restrict_pipeline_cancellation_role
 #   @return [String, nil]
 #
-# @!attribute [rw] ci_separated_cache
+# @!attribute [rw] ci_separated_caches
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] compliance_framework
+# @!attribute [rw] compliance_frameworks
 #   @return [String, nil]
 #
 # @!attribute [rw] container_expiration_policy
@@ -11519,7 +17727,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] creator_id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] custom_attribute
+# @!attribute [rw] custom_attributes
 #   @return [Hash, nil]
 #
 # @!attribute [rw] default_branch
@@ -11543,7 +17751,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] empty_repo
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] enforce_auth_checks_on_upload
+# @!attribute [rw] enforce_auth_checks_on_uploads
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] environments_access_level
@@ -11618,7 +17826,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] license_url
 #   @return [String, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] marked_for_deletion_at
@@ -11663,10 +17871,10 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] mirror
 #   @return [String, nil]
 #
-# @!attribute [rw] mirror_overwrites_diverged_branch
+# @!attribute [rw] mirror_overwrites_diverged_branches
 #   @return [String, nil]
 #
-# @!attribute [rw] mirror_trigger_build
+# @!attribute [rw] mirror_trigger_builds
 #   @return [String, nil]
 #
 # @!attribute [rw] mirror_user_id
@@ -11699,10 +17907,10 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] only_allow_merge_if_all_status_checks_passed
 #   @return [String, nil]
 #
-# @!attribute [rw] only_allow_merge_if_pipeline_succeed
+# @!attribute [rw] only_allow_merge_if_pipeline_succeeds
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] only_mirror_protected_branch
+# @!attribute [rw] only_mirror_protected_branches
 #   @return [String, nil]
 #
 # @!attribute [rw] open_issues_count
@@ -11726,7 +17934,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] path_with_namespace
 #   @return [String, nil]
 #
-# @!attribute [rw] permission
+# @!attribute [rw] permissions
 #   @return [Hash, nil]
 #
 # @!attribute [rw] pre_receive_secret_detection_enabled
@@ -11738,7 +17946,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] printing_merge_request_link_enabled
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] public_job
+# @!attribute [rw] public_jobs
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] readme_url
@@ -11768,13 +17976,13 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] requirements_enabled
 #   @return [String, nil]
 #
-# @!attribute [rw] resolve_outdated_diff_discussion
+# @!attribute [rw] resolve_outdated_diff_discussions
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] resource_group_default_process_mode
 #   @return [String, nil]
 #
-# @!attribute [rw] restrict_user_defined_variable
+# @!attribute [rw] restrict_user_defined_variables
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] runner_token_expiration_interval
@@ -11801,7 +18009,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] shared_runners_enabled
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] shared_with_group
+# @!attribute [rw] shared_with_groups
 #   @return [Array, nil]
 #
 # @!attribute [rw] show_diff_preview_in_email
@@ -11828,7 +18036,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] star_count
 #   @return [Integer, nil]
 #
-# @!attribute [rw] statistic
+# @!attribute [rw] statistics
 #   @return [Hash, nil]
 #
 # @!attribute [rw] suggestion_commit_message
@@ -11837,7 +18045,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] tag_list
 #   @return [Array, nil]
 #
-# @!attribute [rw] topic
+# @!attribute [rw] topics
 #   @return [Array, nil]
 #
 # @!attribute [rw] updated_at
@@ -11846,7 +18054,7 @@ ApiEntitiesProjectUploadCreateData = Struct.new(
 # @!attribute [rw] visibility
 #   @return [String, nil]
 #
-# @!attribute [rw] warn_about_potentially_unwanted_character
+# @!attribute [rw] warn_about_potentially_unwanted_characters
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] web_based_commit_signing_enabled
@@ -11866,11 +18074,11 @@ ApiEntitiesProjectWithAccess = Struct.new(
   :analytics_access_level,
   :approvals_before_merge,
   :archived,
-  :auto_cancel_pending_pipeline,
+  :auto_cancel_pending_pipelines,
   :auto_devops_deploy_strategy,
   :auto_devops_enabled,
   :auto_duo_code_review_enabled,
-  :autoclose_referenced_issue,
+  :autoclose_referenced_issues,
   :avatar_url,
   :build_git_strategy,
   :build_timeout,
@@ -11879,23 +18087,23 @@ ApiEntitiesProjectWithAccess = Struct.new(
   :ci_allow_fork_pipelines_to_run_in_parent_project,
   :ci_config_path,
   :ci_default_git_depth,
-  :ci_delete_pipelines_in_second,
+  :ci_delete_pipelines_in_seconds,
   :ci_forward_deployment_enabled,
   :ci_forward_deployment_rollback_allowed,
-  :ci_id_token_sub_claim_component,
+  :ci_id_token_sub_claim_components,
   :ci_job_token_scope_enabled,
   :ci_pipeline_variables_minimum_override_role,
   :ci_push_repository_for_job_token_allowed,
   :ci_restrict_pipeline_cancellation_role,
-  :ci_separated_cache,
-  :compliance_framework,
+  :ci_separated_caches,
+  :compliance_frameworks,
   :container_expiration_policy,
   :container_registry_access_level,
   :container_registry_enabled,
   :container_registry_image_prefix,
   :created_at,
   :creator_id,
-  :custom_attribute,
+  :custom_attributes,
   :default_branch,
   :description,
   :description_html,
@@ -11903,7 +18111,7 @@ ApiEntitiesProjectWithAccess = Struct.new(
   :emails_disabled,
   :emails_enabled,
   :empty_repo,
-  :enforce_auth_checks_on_upload,
+  :enforce_auth_checks_on_uploads,
   :environments_access_level,
   :external_authorization_classification_label,
   :feature_flags_access_level,
@@ -11928,7 +18136,7 @@ ApiEntitiesProjectWithAccess = Struct.new(
   :lfs_enabled,
   :license,
   :license_url,
-  :link,
+  :links,
   :marked_for_deletion_at,
   :marked_for_deletion_on,
   :max_artifacts_size,
@@ -11943,8 +18151,8 @@ ApiEntitiesProjectWithAccess = Struct.new(
   :merge_trains_enabled,
   :merge_trains_skip_train_allowed,
   :mirror,
-  :mirror_overwrites_diverged_branch,
-  :mirror_trigger_build,
+  :mirror_overwrites_diverged_branches,
+  :mirror_trigger_builds,
   :mirror_user_id,
   :model_experiments_access_level,
   :model_registry_access_level,
@@ -11955,8 +18163,8 @@ ApiEntitiesProjectWithAccess = Struct.new(
   :namespace,
   :only_allow_merge_if_all_discussions_are_resolved,
   :only_allow_merge_if_all_status_checks_passed,
-  :only_allow_merge_if_pipeline_succeed,
-  :only_mirror_protected_branch,
+  :only_allow_merge_if_pipeline_succeeds,
+  :only_mirror_protected_branches,
   :open_issues_count,
   :owner,
   :package_registry_access_level,
@@ -11964,11 +18172,11 @@ ApiEntitiesProjectWithAccess = Struct.new(
   :pages_access_level,
   :path,
   :path_with_namespace,
-  :permission,
+  :permissions,
   :pre_receive_secret_detection_enabled,
   :prevent_merge_without_jira_issue,
   :printing_merge_request_link_enabled,
-  :public_job,
+  :public_jobs,
   :readme_url,
   :releases_access_level,
   :remove_source_branch_after_merge,
@@ -11978,9 +18186,9 @@ ApiEntitiesProjectWithAccess = Struct.new(
   :request_access_enabled,
   :requirements_access_level,
   :requirements_enabled,
-  :resolve_outdated_diff_discussion,
+  :resolve_outdated_diff_discussions,
   :resource_group_default_process_mode,
-  :restrict_user_defined_variable,
+  :restrict_user_defined_variables,
   :runner_token_expiration_interval,
   :runners_token,
   :secret_push_protection_enabled,
@@ -11989,7 +18197,7 @@ ApiEntitiesProjectWithAccess = Struct.new(
   :service_desk_address,
   :service_desk_enabled,
   :shared_runners_enabled,
-  :shared_with_group,
+  :shared_with_groups,
   :show_diff_preview_in_email,
   :snippets_access_level,
   :snippets_enabled,
@@ -11998,13 +18206,13 @@ ApiEntitiesProjectWithAccess = Struct.new(
   :squash_option,
   :ssh_url_to_repo,
   :star_count,
-  :statistic,
+  :statistics,
   :suggestion_commit_message,
   :tag_list,
-  :topic,
+  :topics,
   :updated_at,
   :visibility,
-  :warn_about_potentially_unwanted_character,
+  :warn_about_potentially_unwanted_characters,
   :web_based_commit_signing_enabled,
   :web_url,
   :wiki_access_level,
@@ -12059,8 +18267,24 @@ ApiEntitiesProjectsContainerRegistryProtectionRuleListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] minimum_access_level_for_delete
+#   @return [String, nil]
+#
+# @!attribute [rw] minimum_access_level_for_push
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_path_pattern
+#   @return [String, nil]
 ApiEntitiesProjectsContainerRegistryProtectionRuleCreateData = Struct.new(
   :project_id,
+  :id,
+  :minimum_access_level_for_delete,
+  :minimum_access_level_for_push,
+  :repository_path_pattern,
   keyword_init: true
 )
 
@@ -12071,9 +18295,21 @@ ApiEntitiesProjectsContainerRegistryProtectionRuleCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] minimum_access_level_for_delete
+#   @return [String, nil]
+#
+# @!attribute [rw] minimum_access_level_for_push
+#   @return [String, nil]
+#
+# @!attribute [rw] repository_path_pattern
+#   @return [String, nil]
 ApiEntitiesProjectsContainerRegistryProtectionRuleUpdateData = Struct.new(
   :id,
   :project_id,
+  :minimum_access_level_for_delete,
+  :minimum_access_level_for_push,
+  :repository_path_pattern,
   keyword_init: true
 )
 
@@ -12119,8 +18355,28 @@ ApiEntitiesProjectsPackagesProtectionRuleListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] minimum_access_level_for_delete
+#   @return [String, nil]
+#
+# @!attribute [rw] minimum_access_level_for_push
+#   @return [String, nil]
+#
+# @!attribute [rw] package_name_pattern
+#   @return [String, nil]
+#
+# @!attribute [rw] package_type
+#   @return [String, nil]
 ApiEntitiesProjectsPackagesProtectionRuleCreateData = Struct.new(
   :project_id,
+  :id,
+  :minimum_access_level_for_delete,
+  :minimum_access_level_for_push,
+  :package_name_pattern,
+  :package_type,
   keyword_init: true
 )
 
@@ -12131,9 +18387,25 @@ ApiEntitiesProjectsPackagesProtectionRuleCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] minimum_access_level_for_delete
+#   @return [String, nil]
+#
+# @!attribute [rw] minimum_access_level_for_push
+#   @return [String, nil]
+#
+# @!attribute [rw] package_name_pattern
+#   @return [String, nil]
+#
+# @!attribute [rw] package_type
+#   @return [String, nil]
 ApiEntitiesProjectsPackagesProtectionRuleUpdateData = Struct.new(
   :id,
   :project_id,
+  :minimum_access_level_for_delete,
+  :minimum_access_level_for_push,
+  :package_name_pattern,
+  :package_type,
   keyword_init: true
 )
 
@@ -12216,8 +18488,32 @@ ApiEntitiesProjectsTopicCreateData = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] organization_id
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
+#
+# @!attribute [rw] total_projects_count
+#   @return [String, nil]
 ApiEntitiesProjectsTopicUpdateData = Struct.new(
   :id,
+  :avatar_url,
+  :description,
+  :name,
+  :organization_id,
+  :title,
+  :total_projects_count,
   keyword_init: true
 )
 
@@ -12235,26 +18531,26 @@ ApiEntitiesProjectsTopicUpdateData = Struct.new(
 # @!attribute [rw] inherited
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] merge_access_level
+# @!attribute [rw] merge_access_levels
 #   @return [Array, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] push_access_level
+# @!attribute [rw] push_access_levels
 #   @return [Array, nil]
 #
-# @!attribute [rw] unprotect_access_level
+# @!attribute [rw] unprotect_access_levels
 #   @return [Array, nil]
 ApiEntitiesProtectedBranch = Struct.new(
   :allow_force_push,
   :code_owner_approval_required,
   :id,
   :inherited,
-  :merge_access_level,
+  :merge_access_levels,
   :name,
-  :push_access_level,
-  :unprotect_access_level,
+  :push_access_levels,
+  :unprotect_access_levels,
   keyword_init: true
 )
 
@@ -12284,8 +18580,40 @@ ApiEntitiesProtectedBranchListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] allow_force_push
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] code_owner_approval_required
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] inherited
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] merge_access_levels
+#   @return [Array, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] push_access_levels
+#   @return [Array, nil]
+#
+# @!attribute [rw] unprotect_access_levels
+#   @return [Array, nil]
 ApiEntitiesProtectedBranchCreateData = Struct.new(
   :project_id,
+  :allow_force_push,
+  :code_owner_approval_required,
+  :id,
+  :inherited,
+  :merge_access_levels,
+  :name,
+  :push_access_levels,
+  :unprotect_access_levels,
   keyword_init: true
 )
 
@@ -12296,22 +18624,74 @@ ApiEntitiesProtectedBranchCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] allow_force_push
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] code_owner_approval_required
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] inherited
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] merge_access_levels
+#   @return [Array, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] push_access_levels
+#   @return [Array, nil]
+#
+# @!attribute [rw] unprotect_access_levels
+#   @return [Array, nil]
 ApiEntitiesProtectedBranchUpdateData = Struct.new(
   :id,
   :project_id,
+  :allow_force_push,
+  :code_owner_approval_required,
+  :inherited,
+  :merge_access_levels,
+  :name,
+  :push_access_levels,
+  :unprotect_access_levels,
   keyword_init: true
 )
 
 # ApiEntitiesProtectedTag entity data model.
 #
-# @!attribute [rw] create_access_level
+# @!attribute [rw] access_level
+#   @return [Integer, nil]
+#
+# @!attribute [rw] access_level_description
+#   @return [String, nil]
+#
+# @!attribute [rw] create_access_levels
 #   @return [Hash, nil]
+#
+# @!attribute [rw] deploy_key_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] group_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
+#
+# @!attribute [rw] user_id
+#   @return [Integer, nil]
 ApiEntitiesProtectedTag = Struct.new(
-  :create_access_level,
+  :access_level,
+  :access_level_description,
+  :create_access_levels,
+  :deploy_key_id,
+  :group_id,
+  :id,
   :name,
+  :user_id,
   keyword_init: true
 )
 
@@ -12341,8 +18721,40 @@ ApiEntitiesProtectedTagListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] access_level
+#   @return [Integer, nil]
+#
+# @!attribute [rw] access_level_description
+#   @return [String, nil]
+#
+# @!attribute [rw] create_access_levels
+#   @return [Hash, nil]
+#
+# @!attribute [rw] deploy_key_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] group_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] user_id
+#   @return [Integer, nil]
 ApiEntitiesProtectedTagCreateData = Struct.new(
   :project_id,
+  :access_level,
+  :access_level_description,
+  :create_access_levels,
+  :deploy_key_id,
+  :group_id,
+  :id,
+  :name,
+  :user_id,
   keyword_init: true
 )
 
@@ -12389,6 +18801,9 @@ ApiEntitiesPublicGroupDetailListMatch = Struct.new(
 # @!attribute [rw] assignee
 #   @return [Hash, nil]
 #
+# @!attribute [rw] assignees
+#   @return [Hash, nil]
+#
 # @!attribute [rw] author
 #   @return [Hash, nil]
 #
@@ -12413,7 +18828,7 @@ ApiEntitiesPublicGroupDetailListMatch = Struct.new(
 # @!attribute [rw] discussion_locked
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] downvote
+# @!attribute [rw] downvotes
 #   @return [String, nil]
 #
 # @!attribute [rw] due_date
@@ -12425,7 +18840,7 @@ ApiEntitiesPublicGroupDetailListMatch = Struct.new(
 # @!attribute [rw] epic_iid
 #   @return [String, nil]
 #
-# @!attribute [rw] has_task
+# @!attribute [rw] has_tasks
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] health_status
@@ -12452,11 +18867,8 @@ ApiEntitiesPublicGroupDetailListMatch = Struct.new(
 # @!attribute [rw] iteration
 #   @return [Hash, nil]
 #
-# @!attribute [rw] label
+# @!attribute [rw] labels
 #   @return [Array, nil]
-#
-# @!attribute [rw] link
-#   @return [Hash, nil]
 #
 # @!attribute [rw] link_created_at
 #   @return [String, nil]
@@ -12466,6 +18878,9 @@ ApiEntitiesPublicGroupDetailListMatch = Struct.new(
 #
 # @!attribute [rw] link_updated_at
 #   @return [String, nil]
+#
+# @!attribute [rw] links
+#   @return [Hash, nil]
 #
 # @!attribute [rw] merge_requests_count
 #   @return [String, nil]
@@ -12479,7 +18894,7 @@ ApiEntitiesPublicGroupDetailListMatch = Struct.new(
 # @!attribute [rw] project_id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] reference
+# @!attribute [rw] references
 #   @return [Hash, nil]
 #
 # @!attribute [rw] service_desk_reply_to
@@ -12500,7 +18915,7 @@ ApiEntitiesPublicGroupDetailListMatch = Struct.new(
 # @!attribute [rw] task_status
 #   @return [String, nil]
 #
-# @!attribute [rw] time_stat
+# @!attribute [rw] time_stats
 #   @return [Hash, nil]
 #
 # @!attribute [rw] title
@@ -12512,7 +18927,7 @@ ApiEntitiesPublicGroupDetailListMatch = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 #
-# @!attribute [rw] upvote
+# @!attribute [rw] upvotes
 #   @return [String, nil]
 #
 # @!attribute [rw] user_notes_count
@@ -12525,6 +18940,7 @@ ApiEntitiesPublicGroupDetailListMatch = Struct.new(
 #   @return [String, nil]
 ApiEntitiesRelatedIssue = Struct.new(
   :assignee,
+  :assignees,
   :author,
   :blocking_issues_count,
   :closed_at,
@@ -12533,11 +18949,11 @@ ApiEntitiesRelatedIssue = Struct.new(
   :created_at,
   :description,
   :discussion_locked,
-  :downvote,
+  :downvotes,
   :due_date,
   :epic,
   :epic_iid,
-  :has_task,
+  :has_tasks,
   :health_status,
   :id,
   :iid,
@@ -12546,27 +18962,27 @@ ApiEntitiesRelatedIssue = Struct.new(
   :issue_link_id,
   :issue_type,
   :iteration,
-  :label,
-  :link,
+  :labels,
   :link_created_at,
   :link_type,
   :link_updated_at,
+  :links,
   :merge_requests_count,
   :milestone,
   :moved_to_id,
   :project_id,
-  :reference,
+  :references,
   :service_desk_reply_to,
   :severity,
   :state,
   :subscribed,
   :task_completion_status,
   :task_status,
-  :time_stat,
+  :time_stats,
   :title,
   :type,
   :updated_at,
-  :upvote,
+  :upvotes,
   :user_notes_count,
   :web_url,
   :weight,
@@ -12596,7 +19012,7 @@ end
 
 # ApiEntitiesRelease entity data model.
 #
-# @!attribute [rw] asset
+# @!attribute [rw] assets
 #   @return [Hash, nil]
 #
 # @!attribute [rw] author
@@ -12617,13 +19033,13 @@ end
 # @!attribute [rw] description_html
 #   @return [String, nil]
 #
-# @!attribute [rw] evidence
+# @!attribute [rw] evidences
 #   @return [Hash, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
 #
-# @!attribute [rw] milestone
+# @!attribute [rw] milestones
 #   @return [Hash, nil]
 #
 # @!attribute [rw] name
@@ -12641,16 +19057,16 @@ end
 # @!attribute [rw] upcoming_release
 #   @return [Boolean, nil]
 ApiEntitiesRelease = Struct.new(
-  :asset,
+  :assets,
   :author,
   :commit,
   :commit_path,
   :created_at,
   :description,
   :description_html,
-  :evidence,
-  :link,
-  :milestone,
+  :evidences,
+  :links,
+  :milestones,
   :name,
   :released_at,
   :tag_name,
@@ -12692,9 +19108,65 @@ ApiEntitiesReleaseListMatch = Struct.new(
 #
 # @!attribute [rw] tag_name
 #   @return [Object, nil]
+#
+# @!attribute [rw] assets
+#   @return [Hash, nil]
+#
+# @!attribute [rw] author
+#   @return [Hash, nil]
+#
+# @!attribute [rw] commit
+#   @return [Hash, nil]
+#
+# @!attribute [rw] commit_path
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] description_html
+#   @return [String, nil]
+#
+# @!attribute [rw] evidences
+#   @return [Hash, nil]
+#
+# @!attribute [rw] links
+#   @return [Hash, nil]
+#
+# @!attribute [rw] milestones
+#   @return [Hash, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] released_at
+#   @return [String, nil]
+#
+# @!attribute [rw] tag_path
+#   @return [String, nil]
+#
+# @!attribute [rw] upcoming_release
+#   @return [Boolean, nil]
 ApiEntitiesReleaseCreateData = Struct.new(
   :project_id,
   :tag_name,
+  :assets,
+  :author,
+  :commit,
+  :commit_path,
+  :created_at,
+  :description,
+  :description_html,
+  :evidences,
+  :links,
+  :milestones,
+  :name,
+  :released_at,
+  :tag_path,
+  :upcoming_release,
   keyword_init: true
 )
 
@@ -12705,9 +19177,69 @@ ApiEntitiesReleaseCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] assets
+#   @return [Hash, nil]
+#
+# @!attribute [rw] author
+#   @return [Hash, nil]
+#
+# @!attribute [rw] commit
+#   @return [Hash, nil]
+#
+# @!attribute [rw] commit_path
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] description_html
+#   @return [String, nil]
+#
+# @!attribute [rw] evidences
+#   @return [Hash, nil]
+#
+# @!attribute [rw] links
+#   @return [Hash, nil]
+#
+# @!attribute [rw] milestones
+#   @return [Hash, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] released_at
+#   @return [String, nil]
+#
+# @!attribute [rw] tag_name
+#   @return [String, nil]
+#
+# @!attribute [rw] tag_path
+#   @return [String, nil]
+#
+# @!attribute [rw] upcoming_release
+#   @return [Boolean, nil]
 ApiEntitiesReleaseUpdateData = Struct.new(
   :id,
   :project_id,
+  :assets,
+  :author,
+  :commit,
+  :commit_path,
+  :created_at,
+  :description,
+  :description_html,
+  :evidences,
+  :links,
+  :milestones,
+  :name,
+  :released_at,
+  :tag_name,
+  :tag_path,
+  :upcoming_release,
   keyword_init: true
 )
 
@@ -12773,9 +19305,29 @@ ApiEntitiesReleasesLinkListMatch = Struct.new(
 #
 # @!attribute [rw] release_id
 #   @return [String]
+#
+# @!attribute [rw] direct_asset_url
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] link_type
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
 ApiEntitiesReleasesLinkCreateData = Struct.new(
   :project_id,
   :release_id,
+  :direct_asset_url,
+  :id,
+  :link_type,
+  :name,
+  :url,
   keyword_init: true
 )
 
@@ -12789,10 +19341,26 @@ ApiEntitiesReleasesLinkCreateData = Struct.new(
 #
 # @!attribute [rw] release_id
 #   @return [String]
+#
+# @!attribute [rw] direct_asset_url
+#   @return [String, nil]
+#
+# @!attribute [rw] link_type
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
 ApiEntitiesReleasesLinkUpdateData = Struct.new(
   :id,
   :project_id,
   :release_id,
+  :direct_asset_url,
+  :link_type,
+  :name,
+  :url,
   keyword_init: true
 )
 
@@ -12804,13 +19372,13 @@ ApiEntitiesReleasesLinkUpdateData = Struct.new(
 # @!attribute [rw] enabled
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] host_key
+# @!attribute [rw] host_keys
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] keep_divergent_ref
+# @!attribute [rw] keep_divergent_refs
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] last_error
@@ -12828,7 +19396,7 @@ ApiEntitiesReleasesLinkUpdateData = Struct.new(
 # @!attribute [rw] mirror_branch_regex
 #   @return [String, nil]
 #
-# @!attribute [rw] only_protected_branch
+# @!attribute [rw] only_protected_branches
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] update_status
@@ -12839,15 +19407,15 @@ ApiEntitiesReleasesLinkUpdateData = Struct.new(
 ApiEntitiesRemoteMirror = Struct.new(
   :auth_method,
   :enabled,
-  :host_key,
+  :host_keys,
   :id,
-  :keep_divergent_ref,
+  :keep_divergent_refs,
   :last_error,
   :last_successful_update_at,
   :last_update_at,
   :last_update_started_at,
   :mirror_branch_regex,
-  :only_protected_branch,
+  :only_protected_branches,
   :update_status,
   :url,
   keyword_init: true
@@ -12879,8 +19447,60 @@ ApiEntitiesRemoteMirrorListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] auth_method
+#   @return [String, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] host_keys
+#   @return [Array, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] keep_divergent_refs
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] last_error
+#   @return [Integer, nil]
+#
+# @!attribute [rw] last_successful_update_at
+#   @return [String, nil]
+#
+# @!attribute [rw] last_update_at
+#   @return [String, nil]
+#
+# @!attribute [rw] last_update_started_at
+#   @return [String, nil]
+#
+# @!attribute [rw] mirror_branch_regex
+#   @return [String, nil]
+#
+# @!attribute [rw] only_protected_branches
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] update_status
+#   @return [String, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
 ApiEntitiesRemoteMirrorCreateData = Struct.new(
   :project_id,
+  :auth_method,
+  :enabled,
+  :host_keys,
+  :id,
+  :keep_divergent_refs,
+  :last_error,
+  :last_successful_update_at,
+  :last_update_at,
+  :last_update_started_at,
+  :mirror_branch_regex,
+  :only_protected_branches,
+  :update_status,
+  :url,
   keyword_init: true
 )
 
@@ -12891,15 +19511,63 @@ ApiEntitiesRemoteMirrorCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] auth_method
+#   @return [String, nil]
+#
+# @!attribute [rw] enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] host_keys
+#   @return [Array, nil]
+#
+# @!attribute [rw] keep_divergent_refs
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] last_error
+#   @return [Integer, nil]
+#
+# @!attribute [rw] last_successful_update_at
+#   @return [String, nil]
+#
+# @!attribute [rw] last_update_at
+#   @return [String, nil]
+#
+# @!attribute [rw] last_update_started_at
+#   @return [String, nil]
+#
+# @!attribute [rw] mirror_branch_regex
+#   @return [String, nil]
+#
+# @!attribute [rw] only_protected_branches
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] update_status
+#   @return [String, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
 ApiEntitiesRemoteMirrorUpdateData = Struct.new(
   :id,
   :project_id,
+  :auth_method,
+  :enabled,
+  :host_keys,
+  :keep_divergent_refs,
+  :last_error,
+  :last_successful_update_at,
+  :last_update_at,
+  :last_update_started_at,
+  :mirror_branch_regex,
+  :only_protected_branches,
+  :update_status,
+  :url,
   keyword_init: true
 )
 
 # ApiEntitiesRepositoryHealth entity data model.
 #
-# @!attribute [rw] alternate
+# @!attribute [rw] alternates
 #   @return [Hash, nil]
 #
 # @!attribute [rw] bitmap
@@ -12920,10 +19588,10 @@ ApiEntitiesRemoteMirrorUpdateData = Struct.new(
 # @!attribute [rw] multi_pack_index_bitmap
 #   @return [Hash, nil]
 #
-# @!attribute [rw] object
+# @!attribute [rw] objects
 #   @return [Hash, nil]
 #
-# @!attribute [rw] reference
+# @!attribute [rw] references
 #   @return [Hash, nil]
 #
 # @!attribute [rw] size
@@ -12932,15 +19600,15 @@ ApiEntitiesRemoteMirrorUpdateData = Struct.new(
 # @!attribute [rw] updated_at
 #   @return [String, nil]
 ApiEntitiesRepositoryHealth = Struct.new(
-  :alternate,
+  :alternates,
   :bitmap,
   :commit_graph,
   :is_object_pool,
   :last_full_repack,
   :multi_pack_index,
   :multi_pack_index_bitmap,
-  :object,
-  :reference,
+  :objects,
+  :references,
   :size,
   :updated_at,
   keyword_init: true
@@ -12990,7 +19658,7 @@ ApiEntitiesRepositoryHealthLoadMatch = Struct.new(
 # @!attribute [rw] revoked
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] scope
+# @!attribute [rw] scopes
 #   @return [Array, nil]
 #
 # @!attribute [rw] token
@@ -13010,7 +19678,7 @@ ApiEntitiesResourceAccessTokenWithToken = Struct.new(
   :resource_id,
   :resource_type,
   :revoked,
-  :scope,
+  :scopes,
   :token,
   :user_id,
   keyword_init: true
@@ -13023,9 +19691,65 @@ ApiEntitiesResourceAccessTokenWithToken = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] access_level
+#   @return [Integer, nil]
+#
+# @!attribute [rw] active
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] last_used_at
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] resource_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] resource_type
+#   @return [String, nil]
+#
+# @!attribute [rw] revoked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] scopes
+#   @return [Array, nil]
+#
+# @!attribute [rw] token
+#   @return [String, nil]
+#
+# @!attribute [rw] user_id
+#   @return [Integer, nil]
 ApiEntitiesResourceAccessTokenWithTokenCreateData = Struct.new(
   :group_id,
   :project_id,
+  :access_level,
+  :active,
+  :created_at,
+  :description,
+  :expires_at,
+  :id,
+  :last_used_at,
+  :name,
+  :resource_id,
+  :resource_type,
+  :revoked,
+  :scopes,
+  :token,
+  :user_id,
   keyword_init: true
 )
 
@@ -13115,11 +19839,11 @@ ApiEntitiesResourceMilestoneEventListMatch = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] file
-#   @return [Array, nil]
-#
 # @!attribute [rw] file_name
 #   @return [String, nil]
+#
+# @!attribute [rw] files
+#   @return [Array, nil]
 #
 # @!attribute [rw] http_url_to_repo
 #   @return [String, nil]
@@ -13160,8 +19884,8 @@ ApiEntitiesSnippet = Struct.new(
   :author,
   :created_at,
   :description,
-  :file,
   :file_name,
+  :files,
   :http_url_to_repo,
   :id,
   :imported,
@@ -13188,11 +19912,11 @@ ApiEntitiesSnippet = Struct.new(
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] file
-#   @return [Array, nil]
-#
 # @!attribute [rw] file_name
 #   @return [String, nil]
+#
+# @!attribute [rw] files
+#   @return [Array, nil]
 #
 # @!attribute [rw] http_url_to_repo
 #   @return [String, nil]
@@ -13233,8 +19957,8 @@ ApiEntitiesSnippetListMatch = Struct.new(
   :author,
   :created_at,
   :description,
-  :file,
   :file_name,
+  :files,
   :http_url_to_repo,
   :id,
   :imported,
@@ -13252,38 +19976,190 @@ ApiEntitiesSnippetListMatch = Struct.new(
 
 # ApiEntitiesSshKeyWithUser entity data model.
 #
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] bio
+#   @return [String, nil]
+#
+# @!attribute [rw] bot
+#   @return [String, nil]
+#
+# @!attribute [rw] can_create_group
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] can_create_project
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] color_scheme_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] commit_email
+#   @return [String, nil]
+#
+# @!attribute [rw] confirmed_at
+#   @return [String, nil]
+#
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] expires_at
+# @!attribute [rw] current_sign_in_at
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] discord
+#   @return [String, nil]
+#
+# @!attribute [rw] email
+#   @return [String, nil]
+#
+# @!attribute [rw] external
+#   @return [String, nil]
+#
+# @!attribute [rw] extra_shared_runners_minutes_limit
+#   @return [String, nil]
+#
+# @!attribute [rw] followers
+#   @return [String, nil]
+#
+# @!attribute [rw] following
+#   @return [String, nil]
+#
+# @!attribute [rw] github
 #   @return [String, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] key
-#   @return [String, nil]
-#
-# @!attribute [rw] last_used_at
-#   @return [String, nil]
-#
-# @!attribute [rw] title
-#   @return [String, nil]
-#
-# @!attribute [rw] usage_type
-#   @return [String, nil]
-#
-# @!attribute [rw] user
+# @!attribute [rw] identities
 #   @return [Hash, nil]
+#
+# @!attribute [rw] is_followed
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] job_title
+#   @return [String, nil]
+#
+# @!attribute [rw] last_activity_on
+#   @return [String, nil]
+#
+# @!attribute [rw] last_sign_in_at
+#   @return [String, nil]
+#
+# @!attribute [rw] linkedin
+#   @return [String, nil]
+#
+# @!attribute [rw] local_time
+#   @return [String, nil]
+#
+# @!attribute [rw] location
+#   @return [String, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] organization
+#   @return [String, nil]
+#
+# @!attribute [rw] preferred_language
+#   @return [String, nil]
+#
+# @!attribute [rw] private_profile
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] projects_limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] pronouns
+#   @return [String, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] scim_identities
+#   @return [Hash, nil]
+#
+# @!attribute [rw] shared_runners_minutes_limit
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] theme_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] twitter
+#   @return [String, nil]
+#
+# @!attribute [rw] two_factor_enabled
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
+#
+# @!attribute [rw] website_url
+#   @return [String, nil]
+#
+# @!attribute [rw] work_information
+#   @return [String, nil]
 ApiEntitiesSshKeyWithUser = Struct.new(
+  :avatar_path,
+  :avatar_url,
+  :bio,
+  :bot,
+  :can_create_group,
+  :can_create_project,
+  :color_scheme_id,
+  :commit_email,
+  :confirmed_at,
   :created_at,
-  :expires_at,
+  :current_sign_in_at,
+  :custom_attributes,
+  :discord,
+  :email,
+  :external,
+  :extra_shared_runners_minutes_limit,
+  :followers,
+  :following,
+  :github,
   :id,
-  :key,
-  :last_used_at,
-  :title,
-  :usage_type,
-  :user,
+  :identities,
+  :is_followed,
+  :job_title,
+  :last_activity_on,
+  :last_sign_in_at,
+  :linkedin,
+  :local_time,
+  :location,
+  :locked,
+  :name,
+  :organization,
+  :preferred_language,
+  :private_profile,
+  :projects_limit,
+  :pronouns,
+  :public_email,
+  :scim_identities,
+  :shared_runners_minutes_limit,
+  :state,
+  :theme_id,
+  :twitter,
+  :two_factor_enabled,
+  :username,
+  :web_url,
+  :website_url,
+  :work_information,
   keyword_init: true
 )
 
@@ -13333,8 +20209,36 @@ ApiEntitiesSuggestion = Struct.new(
 #
 # @!attribute [rw] suggestion_id
 #   @return [String, nil]
+#
+# @!attribute [rw] appliable
+#   @return [String, nil]
+#
+# @!attribute [rw] applied
+#   @return [String, nil]
+#
+# @!attribute [rw] from_content
+#   @return [String, nil]
+#
+# @!attribute [rw] from_line
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] to_content
+#   @return [String, nil]
+#
+# @!attribute [rw] to_line
+#   @return [String, nil]
 ApiEntitiesSuggestionUpdateData = Struct.new(
   :suggestion_id,
+  :appliable,
+  :applied,
+  :from_content,
+  :from_line,
+  :id,
+  :to_content,
+  :to_line,
   keyword_init: true
 )
 
@@ -13367,7 +20271,7 @@ ApiEntitiesSuggestionUpdateData = Struct.new(
 # @!attribute [rw] starts_at
 #   @return [String, nil]
 #
-# @!attribute [rw] target_access_level
+# @!attribute [rw] target_access_levels
 #   @return [String, nil]
 #
 # @!attribute [rw] target_path
@@ -13385,7 +20289,7 @@ ApiEntitiesSystemBroadcastMessage = Struct.new(
   :id,
   :message,
   :starts_at,
-  :target_access_level,
+  :target_access_levels,
   :target_path,
   :theme,
   keyword_init: true
@@ -13429,7 +20333,7 @@ ApiEntitiesSystemBroadcastMessageLoadMatch = Struct.new(
 # @!attribute [rw] starts_at
 #   @return [String, nil]
 #
-# @!attribute [rw] target_access_level
+# @!attribute [rw] target_access_levels
 #   @return [String, nil]
 #
 # @!attribute [rw] target_path
@@ -13447,7 +20351,7 @@ ApiEntitiesSystemBroadcastMessageCreateData = Struct.new(
   :id,
   :message,
   :starts_at,
-  :target_access_level,
+  :target_access_levels,
   :target_path,
   :theme,
   keyword_init: true
@@ -13457,8 +20361,52 @@ ApiEntitiesSystemBroadcastMessageCreateData = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] active
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] broadcast_type
+#   @return [String, nil]
+#
+# @!attribute [rw] color
+#   @return [String, nil]
+#
+# @!attribute [rw] dismissable
+#   @return [String, nil]
+#
+# @!attribute [rw] ends_at
+#   @return [String, nil]
+#
+# @!attribute [rw] font
+#   @return [String, nil]
+#
+# @!attribute [rw] message
+#   @return [String, nil]
+#
+# @!attribute [rw] starts_at
+#   @return [String, nil]
+#
+# @!attribute [rw] target_access_levels
+#   @return [String, nil]
+#
+# @!attribute [rw] target_path
+#   @return [String, nil]
+#
+# @!attribute [rw] theme
+#   @return [String, nil]
 ApiEntitiesSystemBroadcastMessageUpdateData = Struct.new(
   :id,
+  :active,
+  :broadcast_type,
+  :color,
+  :dismissable,
+  :ends_at,
+  :font,
+  :message,
+  :starts_at,
+  :target_access_levels,
+  :target_path,
+  :theme,
   keyword_init: true
 )
 
@@ -13530,8 +20478,36 @@ ApiEntitiesTagListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] commit
+#   @return [Hash, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] message
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] protected
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] release
+#   @return [Hash, nil]
+#
+# @!attribute [rw] target
+#   @return [String, nil]
 ApiEntitiesTagCreateData = Struct.new(
   :project_id,
+  :commit,
+  :created_at,
+  :message,
+  :name,
+  :protected,
+  :release,
+  :target,
   keyword_init: true
 )
 
@@ -13589,7 +20565,7 @@ ApiEntitiesTemplatesListLoadMatch = Struct.new(
 
 # ApiEntitiesTerraformModuleVersion entity data model.
 #
-# @!attribute [rw] module
+# @!attribute [rw] modules
 #   @return [String, nil]
 #
 # @!attribute [rw] name
@@ -13598,25 +20574,33 @@ ApiEntitiesTemplatesListLoadMatch = Struct.new(
 # @!attribute [rw] provider
 #   @return [String, nil]
 #
+# @!attribute [rw] providers
+#   @return [String, nil]
+#
 # @!attribute [rw] root
 #   @return [String, nil]
 #
 # @!attribute [rw] source
 #   @return [String, nil]
 #
-# @!attribute [rw] submodule
+# @!attribute [rw] submodules
 #   @return [String, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
+#
+# @!attribute [rw] versions
+#   @return [String, nil]
 ApiEntitiesTerraformModuleVersion = Struct.new(
-  :module,
+  :modules,
   :name,
   :provider,
+  :providers,
   :root,
   :source,
-  :submodule,
+  :submodules,
   :version,
+  :versions,
   keyword_init: true
 )
 
@@ -13694,8 +20678,17 @@ ApiEntitiesTreeObjectLoadMatch = Struct.new(
 
 # ApiEntitiesTrigger entity data model.
 #
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
 # @!attribute [rw] created_at
 #   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
 #
 # @!attribute [rw] description
 #   @return [String, nil]
@@ -13709,23 +20702,50 @@ ApiEntitiesTreeObjectLoadMatch = Struct.new(
 # @!attribute [rw] last_used
 #   @return [String, nil]
 #
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
 # @!attribute [rw] owner
 #   @return [Hash, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
 #
 # @!attribute [rw] token
 #   @return [String, nil]
 #
 # @!attribute [rw] updated_at
 #   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesTrigger = Struct.new(
+  :avatar_path,
+  :avatar_url,
   :created_at,
+  :custom_attributes,
   :description,
   :expires_at,
   :id,
   :last_used,
+  :locked,
+  :name,
   :owner,
+  :public_email,
+  :state,
   :token,
   :updated_at,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -13755,8 +20775,76 @@ ApiEntitiesTriggerListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] last_used
+#   @return [String, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] owner
+#   @return [Hash, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] token
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesTriggerCreateData = Struct.new(
   :project_id,
+  :avatar_path,
+  :avatar_url,
+  :created_at,
+  :custom_attributes,
+  :description,
+  :expires_at,
+  :id,
+  :last_used,
+  :locked,
+  :name,
+  :owner,
+  :public_email,
+  :state,
+  :token,
+  :updated_at,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -13767,9 +20855,73 @@ ApiEntitiesTriggerCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] avatar_path
+#   @return [String, nil]
+#
+# @!attribute [rw] avatar_url
+#   @return [String, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] custom_attributes
+#   @return [Array, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] expires_at
+#   @return [String, nil]
+#
+# @!attribute [rw] last_used
+#   @return [String, nil]
+#
+# @!attribute [rw] locked
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] owner
+#   @return [Hash, nil]
+#
+# @!attribute [rw] public_email
+#   @return [String, nil]
+#
+# @!attribute [rw] state
+#   @return [String, nil]
+#
+# @!attribute [rw] token
+#   @return [String, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] username
+#   @return [String, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
 ApiEntitiesTriggerUpdateData = Struct.new(
   :id,
   :project_id,
+  :avatar_path,
+  :avatar_url,
+  :created_at,
+  :custom_attributes,
+  :description,
+  :expires_at,
+  :last_used,
+  :locked,
+  :name,
+  :owner,
+  :public_email,
+  :state,
+  :token,
+  :updated_at,
+  :username,
+  :web_url,
   keyword_init: true
 )
 
@@ -13809,51 +20961,51 @@ ApiEntitiesUserAgentDetailLoadMatch = Struct.new(
 
 # ApiEntitiesUserCount entity data model.
 #
-# @!attribute [rw] assigned_issue
+# @!attribute [rw] assigned_issues
 #   @return [Integer, nil]
 #
-# @!attribute [rw] assigned_merge_request
+# @!attribute [rw] assigned_merge_requests
 #   @return [Integer, nil]
 #
-# @!attribute [rw] merge_request
+# @!attribute [rw] merge_requests
 #   @return [Integer, nil]
 #
-# @!attribute [rw] review_requested_merge_request
+# @!attribute [rw] review_requested_merge_requests
 #   @return [Integer, nil]
 #
-# @!attribute [rw] todo
+# @!attribute [rw] todos
 #   @return [Integer, nil]
 ApiEntitiesUserCount = Struct.new(
-  :assigned_issue,
-  :assigned_merge_request,
-  :merge_request,
-  :review_requested_merge_request,
-  :todo,
+  :assigned_issues,
+  :assigned_merge_requests,
+  :merge_requests,
+  :review_requested_merge_requests,
+  :todos,
   keyword_init: true
 )
 
 # Request payload for ApiEntitiesUserCount#load.
 #
-# @!attribute [rw] assigned_issue
+# @!attribute [rw] assigned_issues
 #   @return [Integer, nil]
 #
-# @!attribute [rw] assigned_merge_request
+# @!attribute [rw] assigned_merge_requests
 #   @return [Integer, nil]
 #
-# @!attribute [rw] merge_request
+# @!attribute [rw] merge_requests
 #   @return [Integer, nil]
 #
-# @!attribute [rw] review_requested_merge_request
+# @!attribute [rw] review_requested_merge_requests
 #   @return [Integer, nil]
 #
-# @!attribute [rw] todo
+# @!attribute [rw] todos
 #   @return [Integer, nil]
 ApiEntitiesUserCountLoadMatch = Struct.new(
-  :assigned_issue,
-  :assigned_merge_request,
-  :merge_request,
-  :review_requested_merge_request,
-  :todo,
+  :assigned_issues,
+  :assigned_merge_requests,
+  :merge_requests,
+  :review_requested_merge_requests,
+  :todos,
   keyword_init: true
 )
 
@@ -13892,7 +21044,7 @@ ApiEntitiesUserCountLoadMatch = Struct.new(
 # @!attribute [rw] current_sign_in_at
 #   @return [String, nil]
 #
-# @!attribute [rw] custom_attribute
+# @!attribute [rw] custom_attributes
 #   @return [Array, nil]
 #
 # @!attribute [rw] discord
@@ -13907,7 +21059,7 @@ ApiEntitiesUserCountLoadMatch = Struct.new(
 # @!attribute [rw] extra_shared_runners_minutes_limit
 #   @return [String, nil]
 #
-# @!attribute [rw] follower
+# @!attribute [rw] followers
 #   @return [String, nil]
 #
 # @!attribute [rw] following
@@ -13919,7 +21071,7 @@ ApiEntitiesUserCountLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] identity
+# @!attribute [rw] identities
 #   @return [Hash, nil]
 #
 # @!attribute [rw] is_followed
@@ -13964,13 +21116,13 @@ ApiEntitiesUserCountLoadMatch = Struct.new(
 # @!attribute [rw] projects_limit
 #   @return [Integer, nil]
 #
-# @!attribute [rw] pronoun
+# @!attribute [rw] pronouns
 #   @return [String, nil]
 #
 # @!attribute [rw] public_email
 #   @return [String, nil]
 #
-# @!attribute [rw] scim_identity
+# @!attribute [rw] scim_identities
 #   @return [Hash, nil]
 #
 # @!attribute [rw] shared_runners_minutes_limit
@@ -14014,16 +21166,16 @@ ApiEntitiesUserPublic = Struct.new(
   :confirmed_at,
   :created_at,
   :current_sign_in_at,
-  :custom_attribute,
+  :custom_attributes,
   :discord,
   :email,
   :external,
   :extra_shared_runners_minutes_limit,
-  :follower,
+  :followers,
   :following,
   :github,
   :id,
-  :identity,
+  :identities,
   :is_followed,
   :job_title,
   :key,
@@ -14038,9 +21190,9 @@ ApiEntitiesUserPublic = Struct.new(
   :preferred_language,
   :private_profile,
   :projects_limit,
-  :pronoun,
+  :pronouns,
   :public_email,
-  :scim_identity,
+  :scim_identities,
   :shared_runners_minutes_limit,
   :state,
   :theme_id,
@@ -14107,37 +21259,8 @@ ApiEntitiesWikiAttachmentCreateData = Struct.new(
 )
 
 # ApiEntitiesWikiPage entity data model.
-#
-# @!attribute [rw] content
-#   @return [String, nil]
-#
-# @!attribute [rw] encoding
-#   @return [String, nil]
-#
-# @!attribute [rw] format
-#   @return [String, nil]
-#
-# @!attribute [rw] front_matter
-#   @return [Hash, nil]
-#
-# @!attribute [rw] slug
-#   @return [String, nil]
-#
-# @!attribute [rw] title
-#   @return [String, nil]
-#
-# @!attribute [rw] wiki_page_meta_id
-#   @return [Integer, nil]
-ApiEntitiesWikiPage = Struct.new(
-  :content,
-  :encoding,
-  :format,
-  :front_matter,
-  :slug,
-  :title,
-  :wiki_page_meta_id,
-  keyword_init: true
-)
+class ApiEntitiesWikiPage
+end
 
 # Request payload for ApiEntitiesWikiPage#load.
 #
@@ -14874,7 +21997,7 @@ EeApiEntitiesApprovalStateCreateData = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
-# @!attribute [rw] detail
+# @!attribute [rw] details
 #   @return [String, nil]
 #
 # @!attribute [rw] entity_id
@@ -14891,7 +22014,7 @@ EeApiEntitiesApprovalStateCreateData = Struct.new(
 EeApiEntitiesAuditEvent = Struct.new(
   :author_id,
   :created_at,
-  :detail,
+  :details,
   :entity_id,
   :entity_type,
   :event_name,
@@ -14931,34 +22054,18 @@ EeApiEntitiesAuditEventListMatch = Struct.new(
 
 # EeApiEntitiesBillableMembership entity data model.
 #
-# @!attribute [rw] access_level
-#   @return [Hash, nil]
-#
-# @!attribute [rw] created_at
+# @!attribute [rw] custom_role
 #   @return [String, nil]
 #
-# @!attribute [rw] expires_at
+# @!attribute [rw] integer_value
 #   @return [String, nil]
 #
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] source_full_name
-#   @return [String, nil]
-#
-# @!attribute [rw] source_id
-#   @return [String, nil]
-#
-# @!attribute [rw] source_members_url
+# @!attribute [rw] string_value
 #   @return [String, nil]
 EeApiEntitiesBillableMembership = Struct.new(
-  :access_level,
-  :created_at,
-  :expires_at,
-  :id,
-  :source_full_name,
-  :source_id,
-  :source_members_url,
+  :custom_role,
+  :integer_value,
+  :string_value,
   keyword_init: true
 )
 
@@ -15058,7 +22165,7 @@ EeApiEntitiesBillableMembershipLoadMatch = Struct.new(
 # @!attribute [rw] cursor_last_event_timestamp
 #   @return [String, nil]
 #
-# @!attribute [rw] db_replication_lag_second
+# @!attribute [rw] db_replication_lag_seconds
 #   @return [String, nil]
 #
 # @!attribute [rw] dependency_proxy_blobs_checksum_failed_count
@@ -15304,7 +22411,7 @@ EeApiEntitiesBillableMembershipLoadMatch = Struct.new(
 # @!attribute [rw] lfs_objects_verified_in_percentage
 #   @return [String, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] merge_request_diffs_checksum_failed_count
@@ -15346,7 +22453,7 @@ EeApiEntitiesBillableMembershipLoadMatch = Struct.new(
 # @!attribute [rw] missing_oauth_application
 #   @return [String, nil]
 #
-# @!attribute [rw] namespace
+# @!attribute [rw] namespaces
 #   @return [Hash, nil]
 #
 # @!attribute [rw] package_files_checksum_failed_count
@@ -15541,7 +22648,7 @@ EeApiEntitiesBillableMembershipLoadMatch = Struct.new(
 # @!attribute [rw] replication_slots_count
 #   @return [String, nil]
 #
-# @!attribute [rw] replication_slots_max_retained_wal_byte
+# @!attribute [rw] replication_slots_max_retained_wal_bytes
 #   @return [String, nil]
 #
 # @!attribute [rw] replication_slots_used_count
@@ -15604,7 +22711,7 @@ EeApiEntitiesBillableMembershipLoadMatch = Struct.new(
 # @!attribute [rw] snippet_repositories_verified_in_percentage
 #   @return [String, nil]
 #
-# @!attribute [rw] storage_shard
+# @!attribute [rw] storage_shards
 #   @return [Hash, nil]
 #
 # @!attribute [rw] storage_shards_match
@@ -15715,7 +22822,7 @@ EeApiEntitiesGeoNodeStatus = Struct.new(
   :container_repositories_verified_in_percentage,
   :cursor_last_event_id,
   :cursor_last_event_timestamp,
-  :db_replication_lag_second,
+  :db_replication_lag_seconds,
   :dependency_proxy_blobs_checksum_failed_count,
   :dependency_proxy_blobs_checksum_total_count,
   :dependency_proxy_blobs_checksummed_count,
@@ -15797,7 +22904,7 @@ EeApiEntitiesGeoNodeStatus = Struct.new(
   :lfs_objects_verification_total_count,
   :lfs_objects_verified_count,
   :lfs_objects_verified_in_percentage,
-  :link,
+  :links,
   :merge_request_diffs_checksum_failed_count,
   :merge_request_diffs_checksum_total_count,
   :merge_request_diffs_checksummed_count,
@@ -15811,7 +22918,7 @@ EeApiEntitiesGeoNodeStatus = Struct.new(
   :merge_request_diffs_verified_count,
   :merge_request_diffs_verified_in_percentage,
   :missing_oauth_application,
-  :namespace,
+  :namespaces,
   :package_files_checksum_failed_count,
   :package_files_checksum_total_count,
   :package_files_checksummed_count,
@@ -15876,7 +22983,7 @@ EeApiEntitiesGeoNodeStatus = Struct.new(
   :proxy_local_requests_event_count_weekly,
   :proxy_remote_requests_event_count_weekly,
   :replication_slots_count,
-  :replication_slots_max_retained_wal_byte,
+  :replication_slots_max_retained_wal_bytes,
   :replication_slots_used_count,
   :replication_slots_used_in_percentage,
   :repositories_checked_count,
@@ -15897,7 +23004,7 @@ EeApiEntitiesGeoNodeStatus = Struct.new(
   :snippet_repositories_verification_total_count,
   :snippet_repositories_verified_count,
   :snippet_repositories_verified_in_percentage,
-  :storage_shard,
+  :storage_shards,
   :storage_shards_match,
   :terraform_state_versions_checksum_failed_count,
   :terraform_state_versions_checksum_total_count,
@@ -16011,7 +23118,7 @@ EeApiEntitiesGeoNodeStatus = Struct.new(
 # @!attribute [rw] cursor_last_event_timestamp
 #   @return [String, nil]
 #
-# @!attribute [rw] db_replication_lag_second
+# @!attribute [rw] db_replication_lag_seconds
 #   @return [String, nil]
 #
 # @!attribute [rw] dependency_proxy_blobs_checksum_failed_count
@@ -16257,7 +23364,7 @@ EeApiEntitiesGeoNodeStatus = Struct.new(
 # @!attribute [rw] lfs_objects_verified_in_percentage
 #   @return [String, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] merge_request_diffs_checksum_failed_count
@@ -16299,7 +23406,7 @@ EeApiEntitiesGeoNodeStatus = Struct.new(
 # @!attribute [rw] missing_oauth_application
 #   @return [String, nil]
 #
-# @!attribute [rw] namespace
+# @!attribute [rw] namespaces
 #   @return [Hash, nil]
 #
 # @!attribute [rw] package_files_checksum_failed_count
@@ -16494,7 +23601,7 @@ EeApiEntitiesGeoNodeStatus = Struct.new(
 # @!attribute [rw] replication_slots_count
 #   @return [String, nil]
 #
-# @!attribute [rw] replication_slots_max_retained_wal_byte
+# @!attribute [rw] replication_slots_max_retained_wal_bytes
 #   @return [String, nil]
 #
 # @!attribute [rw] replication_slots_used_count
@@ -16557,7 +23664,7 @@ EeApiEntitiesGeoNodeStatus = Struct.new(
 # @!attribute [rw] snippet_repositories_verified_in_percentage
 #   @return [String, nil]
 #
-# @!attribute [rw] storage_shard
+# @!attribute [rw] storage_shards
 #   @return [Hash, nil]
 #
 # @!attribute [rw] storage_shards_match
@@ -16668,7 +23775,7 @@ EeApiEntitiesGeoNodeStatusCreateData = Struct.new(
   :container_repositories_verified_in_percentage,
   :cursor_last_event_id,
   :cursor_last_event_timestamp,
-  :db_replication_lag_second,
+  :db_replication_lag_seconds,
   :dependency_proxy_blobs_checksum_failed_count,
   :dependency_proxy_blobs_checksum_total_count,
   :dependency_proxy_blobs_checksummed_count,
@@ -16750,7 +23857,7 @@ EeApiEntitiesGeoNodeStatusCreateData = Struct.new(
   :lfs_objects_verification_total_count,
   :lfs_objects_verified_count,
   :lfs_objects_verified_in_percentage,
-  :link,
+  :links,
   :merge_request_diffs_checksum_failed_count,
   :merge_request_diffs_checksum_total_count,
   :merge_request_diffs_checksummed_count,
@@ -16764,7 +23871,7 @@ EeApiEntitiesGeoNodeStatusCreateData = Struct.new(
   :merge_request_diffs_verified_count,
   :merge_request_diffs_verified_in_percentage,
   :missing_oauth_application,
-  :namespace,
+  :namespaces,
   :package_files_checksum_failed_count,
   :package_files_checksum_total_count,
   :package_files_checksummed_count,
@@ -16829,7 +23936,7 @@ EeApiEntitiesGeoNodeStatusCreateData = Struct.new(
   :proxy_local_requests_event_count_weekly,
   :proxy_remote_requests_event_count_weekly,
   :replication_slots_count,
-  :replication_slots_max_retained_wal_byte,
+  :replication_slots_max_retained_wal_bytes,
   :replication_slots_used_count,
   :replication_slots_used_in_percentage,
   :repositories_checked_count,
@@ -16850,7 +23957,7 @@ EeApiEntitiesGeoNodeStatusCreateData = Struct.new(
   :snippet_repositories_verification_total_count,
   :snippet_repositories_verified_count,
   :snippet_repositories_verified_in_percentage,
-  :storage_shard,
+  :storage_shards,
   :storage_shards_match,
   :terraform_state_versions_checksum_failed_count,
   :terraform_state_versions_checksum_total_count,
@@ -16883,10 +23990,10 @@ EeApiEntitiesGeoNodeStatusCreateData = Struct.new(
 
 # EeApiEntitiesGeoPipelineRef entity data model.
 #
-# @!attribute [rw] pipeline_ref
+# @!attribute [rw] pipeline_refs
 #   @return [Array, nil]
 EeApiEntitiesGeoPipelineRef = Struct.new(
-  :pipeline_ref,
+  :pipeline_refs,
   keyword_init: true
 )
 
@@ -16935,9 +24042,33 @@ EeApiEntitiesIssuableMetricImage = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] file_path
+#   @return [String, nil]
+#
+# @!attribute [rw] filename
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
+#
+# @!attribute [rw] url_text
+#   @return [String, nil]
 EeApiEntitiesIssuableMetricImageCreateData = Struct.new(
   :issue_id,
   :project_id,
+  :created_at,
+  :file_path,
+  :filename,
+  :id,
+  :url,
+  :url_text,
   keyword_init: true
 )
 
@@ -16951,10 +24082,30 @@ EeApiEntitiesIssuableMetricImageCreateData = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] file_path
+#   @return [String, nil]
+#
+# @!attribute [rw] filename
+#   @return [String, nil]
+#
+# @!attribute [rw] url
+#   @return [String, nil]
+#
+# @!attribute [rw] url_text
+#   @return [String, nil]
 EeApiEntitiesIssuableMetricImageUpdateData = Struct.new(
   :id,
   :issue_id,
   :project_id,
+  :created_at,
+  :file_path,
+  :filename,
+  :url,
+  :url_text,
   keyword_init: true
 )
 
@@ -16989,13 +24140,13 @@ EeApiEntitiesIssuableMetricImageRemoveMatch = Struct.new(
 # @!attribute [rw] code_owner
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] contains_hidden_group
+# @!attribute [rw] contains_hidden_groups
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] eligible_approver
+# @!attribute [rw] eligible_approvers
 #   @return [Array, nil]
 #
-# @!attribute [rw] group
+# @!attribute [rw] groups
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -17019,16 +24170,16 @@ EeApiEntitiesIssuableMetricImageRemoveMatch = Struct.new(
 # @!attribute [rw] source_rule
 #   @return [Hash, nil]
 #
-# @!attribute [rw] user
+# @!attribute [rw] users
 #   @return [Array, nil]
 EeApiEntitiesMergeRequestApprovalState = Struct.new(
   :approvals_required,
   :approved,
   :approved_by,
   :code_owner,
-  :contains_hidden_group,
-  :eligible_approver,
-  :group,
+  :contains_hidden_groups,
+  :eligible_approvers,
+  :groups,
   :id,
   :name,
   :overridden,
@@ -17036,7 +24187,7 @@ EeApiEntitiesMergeRequestApprovalState = Struct.new(
   :rule_type,
   :section,
   :source_rule,
-  :user,
+  :users,
   keyword_init: true
 )
 
@@ -17087,8 +24238,24 @@ EeApiEntitiesSshCertificateListMatch = Struct.new(
 #
 # @!attribute [rw] group_id
 #   @return [String]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] key
+#   @return [String, nil]
+#
+# @!attribute [rw] title
+#   @return [String, nil]
 EeApiEntitiesSshCertificateCreateData = Struct.new(
   :group_id,
+  :created_at,
+  :id,
+  :key,
+  :title,
   keyword_init: true
 )
 
@@ -17733,42 +24900,42 @@ MergeRequestRemoveMatch = Struct.new(
 
 # Metadata entity data model.
 #
-# @!attribute [rw] enterprise
+# @!attribute [rw] enabled
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] kas
-#   @return [Hash, nil]
+# @!attribute [rw] externalK8sProxyUrl
+#   @return [String, nil]
 #
-# @!attribute [rw] revision
+# @!attribute [rw] externalUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 Metadata = Struct.new(
-  :enterprise,
-  :kas,
-  :revision,
+  :enabled,
+  :externalK8sProxyUrl,
+  :externalUrl,
   :version,
   keyword_init: true
 )
 
 # Request payload for Metadata#load.
 #
-# @!attribute [rw] enterprise
+# @!attribute [rw] enabled
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] kas
-#   @return [Hash, nil]
+# @!attribute [rw] externalK8sProxyUrl
+#   @return [String, nil]
 #
-# @!attribute [rw] revision
+# @!attribute [rw] externalUrl
 #   @return [String, nil]
 #
 # @!attribute [rw] version
 #   @return [String, nil]
 MetadataLoadMatch = Struct.new(
-  :enterprise,
-  :kas,
-  :revision,
+  :enabled,
+  :externalK8sProxyUrl,
+  :externalUrl,
   :version,
   keyword_init: true
 )
@@ -17929,34 +25096,70 @@ NugetUpdateData = Struct.new(
 
 # NugetPackage entity data model.
 #
-# @!attribute [rw] catalog_entry
-#   @return [Hash, nil]
+# @!attribute [rw] authors
+#   @return [String, nil]
 #
 # @!attribute [rw] count
 #   @return [Integer, nil]
 #
+# @!attribute [rw] dependencyGroups
+#   @return [Array, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] iconUrl
+#   @return [String, nil]
+#
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] item
+# @!attribute [rw] items
 #   @return [Array, nil]
+#
+# @!attribute [rw] licenseUrl
+#   @return [String, nil]
 #
 # @!attribute [rw] lower
 #   @return [String, nil]
 #
-# @!attribute [rw] package_content
+# @!attribute [rw] packageContent
+#   @return [String, nil]
+#
+# @!attribute [rw] projectUrl
+#   @return [String, nil]
+#
+# @!attribute [rw] published
+#   @return [String, nil]
+#
+# @!attribute [rw] summary
+#   @return [String, nil]
+#
+# @!attribute [rw] tags
 #   @return [String, nil]
 #
 # @!attribute [rw] upper
 #   @return [String, nil]
+#
+# @!attribute [rw] version
+#   @return [String, nil]
 NugetPackage = Struct.new(
-  :catalog_entry,
+  :authors,
   :count,
+  :dependencyGroups,
+  :description,
+  :iconUrl,
   :id,
-  :item,
+  :items,
+  :licenseUrl,
   :lower,
-  :package_content,
+  :packageContent,
+  :projectUrl,
+  :published,
+  :summary,
+  :tags,
   :upper,
+  :version,
   keyword_init: true
 )
 
@@ -17990,8 +25193,72 @@ NugetPackageListMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] authors
+#   @return [String, nil]
+#
+# @!attribute [rw] count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] dependencyGroups
+#   @return [Array, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] iconUrl
+#   @return [String, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] items
+#   @return [Array, nil]
+#
+# @!attribute [rw] licenseUrl
+#   @return [String, nil]
+#
+# @!attribute [rw] lower
+#   @return [String, nil]
+#
+# @!attribute [rw] packageContent
+#   @return [String, nil]
+#
+# @!attribute [rw] projectUrl
+#   @return [String, nil]
+#
+# @!attribute [rw] published
+#   @return [String, nil]
+#
+# @!attribute [rw] summary
+#   @return [String, nil]
+#
+# @!attribute [rw] tags
+#   @return [String, nil]
+#
+# @!attribute [rw] upper
+#   @return [String, nil]
+#
+# @!attribute [rw] version
+#   @return [String, nil]
 NugetPackageUpdateData = Struct.new(
   :project_id,
+  :authors,
+  :count,
+  :dependencyGroups,
+  :description,
+  :iconUrl,
+  :id,
+  :items,
+  :licenseUrl,
+  :lower,
+  :packageContent,
+  :projectUrl,
+  :published,
+  :summary,
+  :tags,
+  :upper,
+  :version,
   keyword_init: true
 )
 
@@ -18181,7 +25448,7 @@ PersonalAccessTokenRemoveMatch = Struct.new(
 # @!attribute [rw] web_url
 #   @return [String, nil]
 #
-# @!attribute [rw] yaml_error
+# @!attribute [rw] yaml_errors
 #   @return [String, nil]
 Project = Struct.new(
   :before_sha,
@@ -18205,7 +25472,7 @@ Project = Struct.new(
   :updated_at,
   :user,
   :web_url,
-  :yaml_error,
+  :yaml_errors,
   keyword_init: true
 )
 
@@ -18290,6 +25557,66 @@ ProjectLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
+#
+# @!attribute [rw] before_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] committed_at
+#   @return [String, nil]
+#
+# @!attribute [rw] coverage
+#   @return [Float, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] detailed_status
+#   @return [Hash, nil]
+#
+# @!attribute [rw] duration
+#   @return [Integer, nil]
+#
+# @!attribute [rw] finished_at
+#   @return [String, nil]
+#
+# @!attribute [rw] iid
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] queued_duration
+#   @return [Integer, nil]
+#
+# @!attribute [rw] ref
+#   @return [String, nil]
+#
+# @!attribute [rw] sha
+#   @return [String, nil]
+#
+# @!attribute [rw] source
+#   @return [String, nil]
+#
+# @!attribute [rw] started_at
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] tag
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
+#
+# @!attribute [rw] yaml_errors
+#   @return [String, nil]
 ProjectCreateData = Struct.new(
   :event_id,
   :hook_id,
@@ -18300,6 +25627,26 @@ ProjectCreateData = Struct.new(
   :merge_request_id,
   :pipeline_schedule_id,
   :project_id,
+  :before_sha,
+  :committed_at,
+  :coverage,
+  :created_at,
+  :detailed_status,
+  :duration,
+  :finished_at,
+  :iid,
+  :name,
+  :queued_duration,
+  :ref,
+  :sha,
+  :source,
+  :started_at,
+  :status,
+  :tag,
+  :updated_at,
+  :user,
+  :web_url,
+  :yaml_errors,
   keyword_init: true
 )
 
@@ -18328,6 +25675,69 @@ ProjectCreateData = Struct.new(
 #
 # @!attribute [rw] pipeline_id
 #   @return [String, nil]
+#
+# @!attribute [rw] before_sha
+#   @return [String, nil]
+#
+# @!attribute [rw] committed_at
+#   @return [String, nil]
+#
+# @!attribute [rw] coverage
+#   @return [Float, nil]
+#
+# @!attribute [rw] created_at
+#   @return [String, nil]
+#
+# @!attribute [rw] detailed_status
+#   @return [Hash, nil]
+#
+# @!attribute [rw] duration
+#   @return [Integer, nil]
+#
+# @!attribute [rw] finished_at
+#   @return [String, nil]
+#
+# @!attribute [rw] iid
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] project_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] queued_duration
+#   @return [Integer, nil]
+#
+# @!attribute [rw] ref
+#   @return [String, nil]
+#
+# @!attribute [rw] sha
+#   @return [String, nil]
+#
+# @!attribute [rw] source
+#   @return [String, nil]
+#
+# @!attribute [rw] started_at
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] tag
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] updated_at
+#   @return [String, nil]
+#
+# @!attribute [rw] user
+#   @return [Hash, nil]
+#
+# @!attribute [rw] web_url
+#   @return [String, nil]
+#
+# @!attribute [rw] yaml_errors
+#   @return [String, nil]
 ProjectUpdateData = Struct.new(
   :hook_id,
   :id,
@@ -18337,6 +25747,27 @@ ProjectUpdateData = Struct.new(
   :merge_request_id,
   :file_path,
   :pipeline_id,
+  :before_sha,
+  :committed_at,
+  :coverage,
+  :created_at,
+  :detailed_status,
+  :duration,
+  :finished_at,
+  :iid,
+  :name,
+  :project_id,
+  :queued_duration,
+  :ref,
+  :sha,
+  :source,
+  :started_at,
+  :status,
+  :tag,
+  :updated_at,
+  :user,
+  :web_url,
+  :yaml_errors,
   keyword_init: true
 )
 
@@ -19000,7 +26431,7 @@ SnippetRemoveMatch = Struct.new(
 # @!attribute [rw] avatar_url
 #   @return [String, nil]
 #
-# @!attribute [rw] custom_attribute
+# @!attribute [rw] custom_attributes
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -19026,7 +26457,7 @@ SnippetRemoveMatch = Struct.new(
 Starrer = Struct.new(
   :avatar_path,
   :avatar_url,
-  :custom_attribute,
+  :custom_attributes,
   :id,
   :locked,
   :name,
@@ -19213,7 +26644,7 @@ TerraformStateRemoveMatch = Struct.new(
 # @!attribute [rw] suite_error
 #   @return [String, nil]
 #
-# @!attribute [rw] test_case
+# @!attribute [rw] test_cases
 #   @return [Array, nil]
 #
 # @!attribute [rw] total_count
@@ -19228,7 +26659,7 @@ TestReport = Struct.new(
   :skipped_count,
   :success_count,
   :suite_error,
-  :test_case,
+  :test_cases,
   :total_count,
   :total_time,
   keyword_init: true
@@ -19249,13 +26680,13 @@ TestReportListMatch = Struct.new(
 
 # TestReportSummary entity data model.
 #
-# @!attribute [rw] test_suite
+# @!attribute [rw] test_suites
 #   @return [Hash, nil]
 #
 # @!attribute [rw] total
 #   @return [Hash, nil]
 TestReportSummary = Struct.new(
-  :test_suite,
+  :test_suites,
   :total,
   keyword_init: true
 )
@@ -19319,7 +26750,7 @@ end
 # @!attribute [rw] avatar_url
 #   @return [String, nil]
 #
-# @!attribute [rw] custom_attribute
+# @!attribute [rw] custom_attributes
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
@@ -19345,7 +26776,7 @@ end
 User = Struct.new(
   :avatar_path,
   :avatar_url,
-  :custom_attribute,
+  :custom_attributes,
   :id,
   :locked,
   :name,

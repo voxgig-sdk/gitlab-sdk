@@ -60,7 +60,7 @@ func TestApiEntitiesMergeEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesMergeRef01Data = core.ToMapAny(apiEntitiesMergeRef01DataResult)
+		apiEntitiesMergeRef01Data = core.ToMapAny(entityData(apiEntitiesMergeRef01DataResult))
 		if apiEntitiesMergeRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -82,7 +82,7 @@ func TestApiEntitiesMergeEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesMergeRef01ResdataUp0 := core.ToMapAny(apiEntitiesMergeRef01ResdataUp0Result)
+		apiEntitiesMergeRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesMergeRef01ResdataUp0Result))
 		if apiEntitiesMergeRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -101,7 +101,7 @@ func TestApiEntitiesMergeEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesMergeRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesMergeRef01DataDt0Loaded)
+		apiEntitiesMergeRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesMergeRef01DataDt0Loaded))
 		if apiEntitiesMergeRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

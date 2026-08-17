@@ -63,7 +63,7 @@ describe('ApiEntitiesPackagePipelineEntity', async () => {
     const api_entities_package_pipeline_ref01_ent = client.ApiEntitiesPackagePipeline()
     const api_entities_package_pipeline_ref01_match_dt0: any = {}
     api_entities_package_pipeline_ref01_match_dt0.id = api_entities_package_pipeline_ref01_data.id
-    const api_entities_package_pipeline_ref01_data_dt0 = await api_entities_package_pipeline_ref01_ent.load(api_entities_package_pipeline_ref01_match_dt0)
+    const api_entities_package_pipeline_ref01_data_dt0 = (await api_entities_package_pipeline_ref01_ent.load(api_entities_package_pipeline_ref01_match_dt0)).data()
     assert(api_entities_package_pipeline_ref01_data_dt0.id === api_entities_package_pipeline_ref01_data.id)
 
 

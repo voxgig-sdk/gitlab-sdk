@@ -62,7 +62,7 @@ describe('ApiEntitiesApplicationStatisticEntity', async () => {
     // LOAD
     const api_entities_application_statistic_ref01_ent = client.ApiEntitiesApplicationStatistic()
     const api_entities_application_statistic_ref01_match_dt0: any = {}
-    const api_entities_application_statistic_ref01_data_dt0 = await api_entities_application_statistic_ref01_ent.load(api_entities_application_statistic_ref01_match_dt0)
+    const api_entities_application_statistic_ref01_data_dt0 = (await api_entities_application_statistic_ref01_ent.load(api_entities_application_statistic_ref01_match_dt0)).data()
     assert(null != api_entities_application_statistic_ref01_data_dt0)
 
 

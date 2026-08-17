@@ -52,7 +52,7 @@ class NugetEntityTest extends TestCase
         ];
 
         $nuget_ref01_resdata_up0_result = $nuget_ref01_ent->update($nuget_ref01_data_up0_up, null);
-        $nuget_ref01_resdata_up0 = Helpers::to_map($nuget_ref01_resdata_up0_result);
+        $nuget_ref01_resdata_up0 = Helpers::to_map(is_object($nuget_ref01_resdata_up0_result) && method_exists($nuget_ref01_resdata_up0_result, 'data_get') ? $nuget_ref01_resdata_up0_result->data_get() : $nuget_ref01_resdata_up0_result);
         $this->assertNotNull($nuget_ref01_resdata_up0);
 
     }

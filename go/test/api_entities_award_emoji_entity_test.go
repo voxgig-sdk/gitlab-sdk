@@ -51,7 +51,7 @@ func TestApiEntitiesAwardEmojiEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -113,7 +113,7 @@ func TestApiEntitiesAwardEmojiEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesAwardEmojiRef01Data = core.ToMapAny(apiEntitiesAwardEmojiRef01DataResult)
+		apiEntitiesAwardEmojiRef01Data = core.ToMapAny(entityData(apiEntitiesAwardEmojiRef01DataResult))
 		if apiEntitiesAwardEmojiRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -149,7 +149,7 @@ func TestApiEntitiesAwardEmojiEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesAwardEmojiRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesAwardEmojiRef01DataDt0Loaded)
+		apiEntitiesAwardEmojiRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesAwardEmojiRef01DataDt0Loaded))
 		if apiEntitiesAwardEmojiRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

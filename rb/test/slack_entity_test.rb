@@ -37,7 +37,7 @@ class SlackEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.slack"), "slack_ref01"))
 
     slack_ref01_data_result = slack_ref01_ent.create(slack_ref01_data, nil)
-    slack_ref01_data = Helpers.to_map(slack_ref01_data_result)
+    slack_ref01_data = Helpers.to_map(slack_ref01_data_result.respond_to?(:data_get) ? slack_ref01_data_result.data_get : slack_ref01_data_result)
     assert !slack_ref01_data.nil?
 
   end

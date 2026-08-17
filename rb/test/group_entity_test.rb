@@ -38,7 +38,7 @@ class GroupEntityTest < Minitest::Test
     group_ref01_data["secret"] = setup[:idmap]["secret01"]
 
     group_ref01_data_result = group_ref01_ent.create(group_ref01_data, nil)
-    group_ref01_data = Helpers.to_map(group_ref01_data_result)
+    group_ref01_data = Helpers.to_map(group_ref01_data_result.respond_to?(:data_get) ? group_ref01_data_result.data_get : group_ref01_data_result)
     assert !group_ref01_data.nil?
 
     # UPDATE
@@ -46,7 +46,7 @@ class GroupEntityTest < Minitest::Test
     }
 
     group_ref01_resdata_up0_result = group_ref01_ent.update(group_ref01_data_up0_up, nil)
-    group_ref01_resdata_up0 = Helpers.to_map(group_ref01_resdata_up0_result)
+    group_ref01_resdata_up0 = Helpers.to_map(group_ref01_resdata_up0_result.respond_to?(:data_get) ? group_ref01_resdata_up0_result.data_get : group_ref01_resdata_up0_result)
     assert !group_ref01_resdata_up0.nil?
 
     # LOAD
@@ -54,11 +54,6 @@ class GroupEntityTest < Minitest::Test
     group_ref01_data_dt0_loaded = group_ref01_ent.load(group_ref01_match_dt0, nil)
     assert !group_ref01_data_dt0_loaded.nil?
 
-    # REMOVE
-    group_ref01_match_rm0 = {
-      "id" => group_ref01_data["id"],
-    }
-    group_ref01_ent.remove(group_ref01_match_rm0, nil)
 
   end
 end

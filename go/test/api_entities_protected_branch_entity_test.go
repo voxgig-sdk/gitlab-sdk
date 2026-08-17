@@ -52,7 +52,7 @@ func TestApiEntitiesProtectedBranchEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -108,7 +108,7 @@ func TestApiEntitiesProtectedBranchEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesProtectedBranchRef01Data = core.ToMapAny(apiEntitiesProtectedBranchRef01DataResult)
+		apiEntitiesProtectedBranchRef01Data = core.ToMapAny(entityData(apiEntitiesProtectedBranchRef01DataResult))
 		if apiEntitiesProtectedBranchRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -149,7 +149,7 @@ func TestApiEntitiesProtectedBranchEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesProtectedBranchRef01ResdataUp0 := core.ToMapAny(apiEntitiesProtectedBranchRef01ResdataUp0Result)
+		apiEntitiesProtectedBranchRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesProtectedBranchRef01ResdataUp0Result))
 		if apiEntitiesProtectedBranchRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -168,7 +168,7 @@ func TestApiEntitiesProtectedBranchEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesProtectedBranchRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesProtectedBranchRef01DataDt0Loaded)
+		apiEntitiesProtectedBranchRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesProtectedBranchRef01DataDt0Loaded))
 		if apiEntitiesProtectedBranchRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

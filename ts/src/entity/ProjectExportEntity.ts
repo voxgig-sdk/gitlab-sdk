@@ -37,7 +37,7 @@ class ProjectExportEntity extends GitlabEntityBase<ProjectExport> {
 
 
 
-  async load(this: any, reqmatch?: ProjectExportLoadMatch, ctrl?: Control): Promise<ProjectExport> {
+  async load(this: any, reqmatch?: ProjectExportLoadMatch, ctrl?: Control): Promise<ProjectExportEntity> {
 
     const utility = this._utility
 
@@ -128,7 +128,15 @@ class ProjectExportEntity extends GitlabEntityBase<ProjectExport> {
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 
@@ -151,7 +159,7 @@ class ProjectExportEntity extends GitlabEntityBase<ProjectExport> {
 
 
 
-  async create(this: any, reqdata?: ProjectExportCreateData, ctrl?: Control): Promise<ProjectExport> {
+  async create(this: any, reqdata?: ProjectExportCreateData, ctrl?: Control): Promise<ProjectExportEntity> {
 
     const utility = this._utility
     const {
@@ -237,7 +245,15 @@ class ProjectExportEntity extends GitlabEntityBase<ProjectExport> {
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 

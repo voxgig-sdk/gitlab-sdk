@@ -49,7 +49,7 @@ describe("ProjectsJobTokenScopeEntity", function()
 
     local projects_job_token_scope_ref01_resdata_up0_result, err = projects_job_token_scope_ref01_ent:update(projects_job_token_scope_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local projects_job_token_scope_ref01_resdata_up0 = helpers.to_map(projects_job_token_scope_ref01_resdata_up0_result)
+    local projects_job_token_scope_ref01_resdata_up0 = helpers.to_map(type(projects_job_token_scope_ref01_resdata_up0_result) == 'table' and projects_job_token_scope_ref01_resdata_up0_result.data_get and projects_job_token_scope_ref01_resdata_up0_result:data_get() or projects_job_token_scope_ref01_resdata_up0_result)
     assert.is_not_nil(projects_job_token_scope_ref01_resdata_up0)
 
   end)

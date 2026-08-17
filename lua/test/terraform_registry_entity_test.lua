@@ -51,7 +51,7 @@ describe("TerraformRegistryEntity", function()
 
     local terraform_registry_ref01_resdata_up0_result, err = terraform_registry_ref01_ent:update(terraform_registry_ref01_data_up0_up, nil)
     assert.is_nil(err)
-    local terraform_registry_ref01_resdata_up0 = helpers.to_map(terraform_registry_ref01_resdata_up0_result)
+    local terraform_registry_ref01_resdata_up0 = helpers.to_map(type(terraform_registry_ref01_resdata_up0_result) == 'table' and terraform_registry_ref01_resdata_up0_result.data_get and terraform_registry_ref01_resdata_up0_result:data_get() or terraform_registry_ref01_resdata_up0_result)
     assert.is_not_nil(terraform_registry_ref01_resdata_up0)
 
     -- LOAD

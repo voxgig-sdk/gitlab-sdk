@@ -37,7 +37,7 @@ class ApiEntitiesContainerRegistryTagEntity extends GitlabEntityBase<ApiEntities
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesContainerRegistryTagListMatch, ctrl?: Control): Promise<ApiEntitiesContainerRegistryTag[]> {
+  async list(this: any, reqmatch?: ApiEntitiesContainerRegistryTagListMatch, ctrl?: Control): Promise<ApiEntitiesContainerRegistryTagEntity[]> {
 
     const utility = this._utility
 

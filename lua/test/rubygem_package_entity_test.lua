@@ -42,7 +42,7 @@ describe("RubygemPackageEntity", function()
 
     local rubygem_package_ref01_data_result, err = rubygem_package_ref01_ent:create(rubygem_package_ref01_data, nil)
     assert.is_nil(err)
-    rubygem_package_ref01_data = helpers.to_map(rubygem_package_ref01_data_result)
+    rubygem_package_ref01_data = helpers.to_map(type(rubygem_package_ref01_data_result) == 'table' and rubygem_package_ref01_data_result.data_get and rubygem_package_ref01_data_result:data_get() or rubygem_package_ref01_data_result)
     assert.is_not_nil(rubygem_package_ref01_data)
 
     -- LOAD

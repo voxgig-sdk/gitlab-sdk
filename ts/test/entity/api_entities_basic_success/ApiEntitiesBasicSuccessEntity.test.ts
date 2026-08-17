@@ -62,7 +62,7 @@ describe('ApiEntitiesBasicSuccessEntity', async () => {
     const api_entities_basic_success_ref01_ent = client.ApiEntitiesBasicSuccess()
     let api_entities_basic_success_ref01_data = setup.data.new.api_entities_basic_success['api_entities_basic_success_ref01']
 
-    api_entities_basic_success_ref01_data = await api_entities_basic_success_ref01_ent.create(api_entities_basic_success_ref01_data)
+    api_entities_basic_success_ref01_data = (await api_entities_basic_success_ref01_ent.create(api_entities_basic_success_ref01_data)).data()
     assert(null != api_entities_basic_success_ref01_data)
 
 

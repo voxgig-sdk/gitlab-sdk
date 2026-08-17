@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -55,7 +55,7 @@ class TestApiEntitiesErrorTrackingProjectSettingEntity:
         api_entities_error_tracking_project_setting_ref01_markdef_up0_value = "Mark01-api_entities_error_tracking_project_setting_ref01_" + str(setup["now"])
         api_entities_error_tracking_project_setting_ref01_data_up0_up[api_entities_error_tracking_project_setting_ref01_markdef_up0_name] = api_entities_error_tracking_project_setting_ref01_markdef_up0_value
 
-        api_entities_error_tracking_project_setting_ref01_resdata_up0 = helpers.to_map(api_entities_error_tracking_project_setting_ref01_ent.update(api_entities_error_tracking_project_setting_ref01_data_up0_up, None))
+        api_entities_error_tracking_project_setting_ref01_resdata_up0 = helpers.to_map(runner.entity_data(api_entities_error_tracking_project_setting_ref01_ent.update(api_entities_error_tracking_project_setting_ref01_data_up0_up, None)))
         assert api_entities_error_tracking_project_setting_ref01_resdata_up0 is not None
         assert api_entities_error_tracking_project_setting_ref01_resdata_up0[api_entities_error_tracking_project_setting_ref01_markdef_up0_name] == api_entities_error_tracking_project_setting_ref01_markdef_up0_value
 

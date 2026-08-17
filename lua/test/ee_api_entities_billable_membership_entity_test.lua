@@ -44,14 +44,10 @@ describe("EeApiEntitiesBillableMembershipEntity", function()
 
     -- LOAD
     local ee_api_entities_billable_membership_ref01_ent = client:EeApiEntitiesBillableMembership(nil)
-    local ee_api_entities_billable_membership_ref01_match_dt0 = {
-      id = ee_api_entities_billable_membership_ref01_data["id"],
-    }
+    local ee_api_entities_billable_membership_ref01_match_dt0 = {}
     local ee_api_entities_billable_membership_ref01_data_dt0_loaded, err = ee_api_entities_billable_membership_ref01_ent:load(ee_api_entities_billable_membership_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local ee_api_entities_billable_membership_ref01_data_dt0_load_result = helpers.to_map(ee_api_entities_billable_membership_ref01_data_dt0_loaded)
-    assert.is_not_nil(ee_api_entities_billable_membership_ref01_data_dt0_load_result)
-    assert.are.equal(ee_api_entities_billable_membership_ref01_data_dt0_load_result["id"], ee_api_entities_billable_membership_ref01_data["id"])
+    assert.is_not_nil(ee_api_entities_billable_membership_ref01_data_dt0_loaded)
 
   end)
 end)

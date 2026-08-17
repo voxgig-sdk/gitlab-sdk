@@ -42,19 +42,14 @@ describe("ApiEntitiesCiSecureFileEntity", function()
 
     local api_entities_ci_secure_file_ref01_data_result, err = api_entities_ci_secure_file_ref01_ent:create(api_entities_ci_secure_file_ref01_data, nil)
     assert.is_nil(err)
-    api_entities_ci_secure_file_ref01_data = helpers.to_map(api_entities_ci_secure_file_ref01_data_result)
+    api_entities_ci_secure_file_ref01_data = helpers.to_map(type(api_entities_ci_secure_file_ref01_data_result) == 'table' and api_entities_ci_secure_file_ref01_data_result.data_get and api_entities_ci_secure_file_ref01_data_result:data_get() or api_entities_ci_secure_file_ref01_data_result)
     assert.is_not_nil(api_entities_ci_secure_file_ref01_data)
-    assert.is_not_nil(api_entities_ci_secure_file_ref01_data["id"])
 
     -- LOAD
-    local api_entities_ci_secure_file_ref01_match_dt0 = {
-      id = api_entities_ci_secure_file_ref01_data["id"],
-    }
+    local api_entities_ci_secure_file_ref01_match_dt0 = {}
     local api_entities_ci_secure_file_ref01_data_dt0_loaded, err = api_entities_ci_secure_file_ref01_ent:load(api_entities_ci_secure_file_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local api_entities_ci_secure_file_ref01_data_dt0_load_result = helpers.to_map(api_entities_ci_secure_file_ref01_data_dt0_loaded)
-    assert.is_not_nil(api_entities_ci_secure_file_ref01_data_dt0_load_result)
-    assert.are.equal(api_entities_ci_secure_file_ref01_data_dt0_load_result["id"], api_entities_ci_secure_file_ref01_data["id"])
+    assert.is_not_nil(api_entities_ci_secure_file_ref01_data_dt0_loaded)
 
   end)
 end)

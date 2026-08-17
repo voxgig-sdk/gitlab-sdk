@@ -37,7 +37,7 @@ class ApiEntitiesBulkImportsExportStatusEntity extends GitlabEntityBase<ApiEntit
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesBulkImportsExportStatusListMatch, ctrl?: Control): Promise<ApiEntitiesBulkImportsExportStatus[]> {
+  async list(this: any, reqmatch?: ApiEntitiesBulkImportsExportStatusListMatch, ctrl?: Control): Promise<ApiEntitiesBulkImportsExportStatusEntity[]> {
 
     const utility = this._utility
 

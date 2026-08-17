@@ -63,7 +63,7 @@ describe('ApiEntitiesUserWithAdminEntity', async () => {
     const api_entities_user_with_admin_ref01_ent = client.ApiEntitiesUserWithAdmin()
     const api_entities_user_with_admin_ref01_match: any = {}
 
-    const api_entities_user_with_admin_ref01_list = await api_entities_user_with_admin_ref01_ent.list(api_entities_user_with_admin_ref01_match)
+    const api_entities_user_with_admin_ref01_list = (await api_entities_user_with_admin_ref01_ent.list(api_entities_user_with_admin_ref01_match)).map((e: any) => e.data())
 
 
   })

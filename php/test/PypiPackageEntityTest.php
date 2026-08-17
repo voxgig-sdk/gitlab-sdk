@@ -46,7 +46,7 @@ class PypiPackageEntityTest extends TestCase
         $pypi_package_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $pypi_package_ref01_data_result = $pypi_package_ref01_ent->create($pypi_package_ref01_data, null);
-        $pypi_package_ref01_data = Helpers::to_map($pypi_package_ref01_data_result);
+        $pypi_package_ref01_data = Helpers::to_map(is_object($pypi_package_ref01_data_result) && method_exists($pypi_package_ref01_data_result, 'data_get') ? $pypi_package_ref01_data_result->data_get() : $pypi_package_ref01_data_result);
         $this->assertNotNull($pypi_package_ref01_data);
 
         // LOAD

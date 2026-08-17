@@ -44,7 +44,7 @@ class ContainerRegistryEventEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.container_registry_event"), "container_registry_event_ref01"));
 
         $container_registry_event_ref01_data_result = $container_registry_event_ref01_ent->create($container_registry_event_ref01_data, null);
-        $container_registry_event_ref01_data = Helpers::to_map($container_registry_event_ref01_data_result);
+        $container_registry_event_ref01_data = Helpers::to_map(is_object($container_registry_event_ref01_data_result) && method_exists($container_registry_event_ref01_data_result, 'data_get') ? $container_registry_event_ref01_data_result->data_get() : $container_registry_event_ref01_data_result);
         $this->assertNotNull($container_registry_event_ref01_data);
 
     }

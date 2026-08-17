@@ -64,7 +64,7 @@ describe('ApiEntitiesNamespaceExistenceEntity', async () => {
     const api_entities_namespace_existence_ref01_match: any = {}
     api_entities_namespace_existence_ref01_match['namespace_id'] = setup.idmap['namespace01']
 
-    const api_entities_namespace_existence_ref01_list = await api_entities_namespace_existence_ref01_ent.list(api_entities_namespace_existence_ref01_match)
+    const api_entities_namespace_existence_ref01_list = (await api_entities_namespace_existence_ref01_ent.list(api_entities_namespace_existence_ref01_match)).map((e: any) => e.data())
 
 
   })

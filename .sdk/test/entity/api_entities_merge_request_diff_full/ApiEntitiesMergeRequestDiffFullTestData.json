@@ -3,9 +3,9 @@
     "api_entities_merge_request_diff_full": {
       "API_ENTITIES_MERGE_REQUEST_DIFF_FULL00": {
         "base_commit_sha": "s6e",
-        "commit": {},
+        "commits": {},
         "created_at": "s70",
-        "diff": {},
+        "diffs": {},
         "head_commit_sha": "s72",
         "id": "API_ENTITIES_MERGE_REQUEST_DIFF_FULL00",
         "merge_request_id": "MERGE_REQUEST01",
@@ -18,9 +18,9 @@
       },
       "API_ENTITIES_MERGE_REQUEST_DIFF_FULL01": {
         "base_commit_sha": "sdc",
-        "commit": {},
+        "commits": {},
         "created_at": "sde",
-        "diff": {},
+        "diffs": {},
         "head_commit_sha": "se0",
         "id": "API_ENTITIES_MERGE_REQUEST_DIFF_FULL01",
         "merge_request_id": "MERGE_REQUEST01",
@@ -33,9 +33,9 @@
       },
       "API_ENTITIES_MERGE_REQUEST_DIFF_FULL02": {
         "base_commit_sha": "s14a",
-        "commit": {},
+        "commits": {},
         "created_at": "s14c",
-        "diff": {},
+        "diffs": {},
         "head_commit_sha": "s14e",
         "id": "API_ENTITIES_MERGE_REQUEST_DIFF_FULL02",
         "merge_request_id": "MERGE_REQUEST01",
@@ -52,9 +52,9 @@
     "api_entities_merge_request_diff_full": {
       "api_entities_merge_request_diff_full_ref01": {
         "base_commit_sha": "s1b8",
-        "commit": {},
+        "commits": {},
         "created_at": "s1ba",
-        "diff": {},
+        "diffs": {},
         "head_commit_sha": "s1bc",
         "merge_request_id": "MERGE_REQUEST01",
         "patch_id_sha": "s1bf",

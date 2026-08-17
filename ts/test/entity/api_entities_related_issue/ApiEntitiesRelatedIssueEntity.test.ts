@@ -65,7 +65,7 @@ describe('ApiEntitiesRelatedIssueEntity', async () => {
     api_entities_related_issue_ref01_match['issue_id'] = setup.idmap['issue01']
     api_entities_related_issue_ref01_match['project_id'] = setup.idmap['project01']
 
-    const api_entities_related_issue_ref01_list = await api_entities_related_issue_ref01_ent.list(api_entities_related_issue_ref01_match)
+    const api_entities_related_issue_ref01_list = (await api_entities_related_issue_ref01_ent.list(api_entities_related_issue_ref01_match)).map((e: any) => e.data())
 
 
   })

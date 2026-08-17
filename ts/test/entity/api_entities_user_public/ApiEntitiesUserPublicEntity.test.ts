@@ -64,7 +64,7 @@ describe('ApiEntitiesUserPublicEntity', async () => {
     const api_entities_user_public_ref01_match: any = {}
     api_entities_user_public_ref01_match['group_id'] = setup.idmap['group01']
 
-    const api_entities_user_public_ref01_list = await api_entities_user_public_ref01_ent.list(api_entities_user_public_ref01_match)
+    const api_entities_user_public_ref01_list = (await api_entities_user_public_ref01_ent.list(api_entities_user_public_ref01_match)).map((e: any) => e.data())
 
 
   })

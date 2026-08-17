@@ -37,7 +37,7 @@ class ApiEntitiesMergeRequestDiffEntity extends GitlabEntityBase<ApiEntitiesMerg
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesMergeRequestDiffListMatch, ctrl?: Control): Promise<ApiEntitiesMergeRequestDiff[]> {
+  async list(this: any, reqmatch?: ApiEntitiesMergeRequestDiffListMatch, ctrl?: Control): Promise<ApiEntitiesMergeRequestDiffEntity[]> {
 
     const utility = this._utility
 

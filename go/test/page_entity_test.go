@@ -68,7 +68,7 @@ func TestPageEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		pageRef01ResdataUp0 := core.ToMapAny(pageRef01ResdataUp0Result)
+		pageRef01ResdataUp0 := core.ToMapAny(entityData(pageRef01ResdataUp0Result))
 		if pageRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

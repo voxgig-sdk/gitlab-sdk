@@ -65,7 +65,7 @@ describe('ApiEntitiesMergeRequestDiffEntity', async () => {
     api_entities_merge_request_diff_ref01_match['merge_request_id'] = setup.idmap['merge_request01']
     api_entities_merge_request_diff_ref01_match['project_id'] = setup.idmap['project01']
 
-    const api_entities_merge_request_diff_ref01_list = await api_entities_merge_request_diff_ref01_ent.list(api_entities_merge_request_diff_ref01_match)
+    const api_entities_merge_request_diff_ref01_list = (await api_entities_merge_request_diff_ref01_ent.list(api_entities_merge_request_diff_ref01_match)).map((e: any) => e.data())
 
 
   })

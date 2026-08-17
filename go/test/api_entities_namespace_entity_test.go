@@ -52,7 +52,7 @@ func TestApiEntitiesNamespaceEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -134,7 +134,7 @@ func TestApiEntitiesNamespaceEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesNamespaceRef01ResdataUp0 := core.ToMapAny(apiEntitiesNamespaceRef01ResdataUp0Result)
+		apiEntitiesNamespaceRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesNamespaceRef01ResdataUp0Result))
 		if apiEntitiesNamespaceRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -153,7 +153,7 @@ func TestApiEntitiesNamespaceEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesNamespaceRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesNamespaceRef01DataDt0Loaded)
+		apiEntitiesNamespaceRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesNamespaceRef01DataDt0Loaded))
 		if apiEntitiesNamespaceRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

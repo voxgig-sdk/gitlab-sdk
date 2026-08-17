@@ -38,7 +38,7 @@ class ApiEntitiesNamespacesStorageLimitExclusionEntityTest < Minitest::Test
     api_entities_namespaces_storage_limit_exclusion_ref01_data["namespace_id"] = setup[:idmap]["namespace01"]
 
     api_entities_namespaces_storage_limit_exclusion_ref01_data_result = api_entities_namespaces_storage_limit_exclusion_ref01_ent.create(api_entities_namespaces_storage_limit_exclusion_ref01_data, nil)
-    api_entities_namespaces_storage_limit_exclusion_ref01_data = Helpers.to_map(api_entities_namespaces_storage_limit_exclusion_ref01_data_result)
+    api_entities_namespaces_storage_limit_exclusion_ref01_data = Helpers.to_map(api_entities_namespaces_storage_limit_exclusion_ref01_data_result.respond_to?(:data_get) ? api_entities_namespaces_storage_limit_exclusion_ref01_data_result.data_get : api_entities_namespaces_storage_limit_exclusion_ref01_data_result)
     assert !api_entities_namespaces_storage_limit_exclusion_ref01_data.nil?
     assert !api_entities_namespaces_storage_limit_exclusion_ref01_data["id"].nil?
 
@@ -47,7 +47,7 @@ class ApiEntitiesNamespacesStorageLimitExclusionEntityTest < Minitest::Test
       "id" => api_entities_namespaces_storage_limit_exclusion_ref01_data["id"],
     }
     api_entities_namespaces_storage_limit_exclusion_ref01_data_dt0_loaded = api_entities_namespaces_storage_limit_exclusion_ref01_ent.load(api_entities_namespaces_storage_limit_exclusion_ref01_match_dt0, nil)
-    api_entities_namespaces_storage_limit_exclusion_ref01_data_dt0_load_result = Helpers.to_map(api_entities_namespaces_storage_limit_exclusion_ref01_data_dt0_loaded)
+    api_entities_namespaces_storage_limit_exclusion_ref01_data_dt0_load_result = Helpers.to_map(api_entities_namespaces_storage_limit_exclusion_ref01_data_dt0_loaded.respond_to?(:data_get) ? api_entities_namespaces_storage_limit_exclusion_ref01_data_dt0_loaded.data_get : api_entities_namespaces_storage_limit_exclusion_ref01_data_dt0_loaded)
     assert !api_entities_namespaces_storage_limit_exclusion_ref01_data_dt0_load_result.nil?
     assert_equal api_entities_namespaces_storage_limit_exclusion_ref01_data_dt0_load_result["id"], api_entities_namespaces_storage_limit_exclusion_ref01_data["id"]
 

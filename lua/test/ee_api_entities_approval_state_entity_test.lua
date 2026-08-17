@@ -43,7 +43,7 @@ describe("EeApiEntitiesApprovalStateEntity", function()
 
     local ee_api_entities_approval_state_ref01_data_result, err = ee_api_entities_approval_state_ref01_ent:create(ee_api_entities_approval_state_ref01_data, nil)
     assert.is_nil(err)
-    ee_api_entities_approval_state_ref01_data = helpers.to_map(ee_api_entities_approval_state_ref01_data_result)
+    ee_api_entities_approval_state_ref01_data = helpers.to_map(type(ee_api_entities_approval_state_ref01_data_result) == 'table' and ee_api_entities_approval_state_ref01_data_result.data_get and ee_api_entities_approval_state_ref01_data_result:data_get() or ee_api_entities_approval_state_ref01_data_result)
     assert.is_not_nil(ee_api_entities_approval_state_ref01_data)
 
   end)

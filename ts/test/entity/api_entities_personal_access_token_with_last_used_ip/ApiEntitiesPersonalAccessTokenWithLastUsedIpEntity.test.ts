@@ -63,13 +63,13 @@ describe('ApiEntitiesPersonalAccessTokenWithLastUsedIpEntity', async () => {
     const api_entities_personal_access_token_with_last_used_ip_ref01_ent = client.ApiEntitiesPersonalAccessTokenWithLastUsedIp()
     const api_entities_personal_access_token_with_last_used_ip_ref01_match: any = {}
 
-    const api_entities_personal_access_token_with_last_used_ip_ref01_list = await api_entities_personal_access_token_with_last_used_ip_ref01_ent.list(api_entities_personal_access_token_with_last_used_ip_ref01_match)
+    const api_entities_personal_access_token_with_last_used_ip_ref01_list = (await api_entities_personal_access_token_with_last_used_ip_ref01_ent.list(api_entities_personal_access_token_with_last_used_ip_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const api_entities_personal_access_token_with_last_used_ip_ref01_match_dt0: any = {}
     api_entities_personal_access_token_with_last_used_ip_ref01_match_dt0.id = api_entities_personal_access_token_with_last_used_ip_ref01_data.id
-    const api_entities_personal_access_token_with_last_used_ip_ref01_data_dt0 = await api_entities_personal_access_token_with_last_used_ip_ref01_ent.load(api_entities_personal_access_token_with_last_used_ip_ref01_match_dt0)
+    const api_entities_personal_access_token_with_last_used_ip_ref01_data_dt0 = (await api_entities_personal_access_token_with_last_used_ip_ref01_ent.load(api_entities_personal_access_token_with_last_used_ip_ref01_match_dt0)).data()
     assert(api_entities_personal_access_token_with_last_used_ip_ref01_data_dt0.id === api_entities_personal_access_token_with_last_used_ip_ref01_data.id)
 
 

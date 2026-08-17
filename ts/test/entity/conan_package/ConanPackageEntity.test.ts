@@ -68,7 +68,7 @@ describe('ConanPackageEntity', async () => {
     conan_package_ref01_data_up0 ['package_version'] = setup.idmap['package_version']
     conan_package_ref01_data_up0 ['recipe_revision'] = setup.idmap['recipe_revision']
 
-    const conan_package_ref01_resdata_up0 = await conan_package_ref01_ent.update(conan_package_ref01_data_up0)
+    const conan_package_ref01_resdata_up0 = (await conan_package_ref01_ent.update(conan_package_ref01_data_up0)).data()
     assert(null != conan_package_ref01_resdata_up0)
 
 

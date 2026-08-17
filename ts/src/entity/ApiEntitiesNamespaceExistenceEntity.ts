@@ -37,7 +37,7 @@ class ApiEntitiesNamespaceExistenceEntity extends GitlabEntityBase<ApiEntitiesNa
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesNamespaceExistenceListMatch, ctrl?: Control): Promise<ApiEntitiesNamespaceExistence[]> {
+  async list(this: any, reqmatch?: ApiEntitiesNamespaceExistenceListMatch, ctrl?: Control): Promise<ApiEntitiesNamespaceExistenceEntity[]> {
 
     const utility = this._utility
 

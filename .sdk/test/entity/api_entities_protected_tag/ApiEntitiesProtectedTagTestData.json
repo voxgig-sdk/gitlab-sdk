@@ -2,30 +2,50 @@
   "existing": {
     "api_entities_protected_tag": {
       "API_ENTITIES_PROTECTED_TAG00": {
-        "create_access_level": {},
-        "name": "s15",
-        "project_id": "PROJECT01",
-        "id": "API_ENTITIES_PROTECTED_TAG00"
+        "access_level": "s50",
+        "access_level_description": "s51",
+        "create_access_levels": {},
+        "deploy_key_id": "DEPLOY_KEY01",
+        "group_id": "GROUP01",
+        "id": "API_ENTITIES_PROTECTED_TAG00",
+        "name": "s56",
+        "user_id": "USER01",
+        "project_id": "PROJECT01"
       },
       "API_ENTITIES_PROTECTED_TAG01": {
-        "create_access_level": {},
-        "name": "s29",
-        "project_id": "PROJECT01",
-        "id": "API_ENTITIES_PROTECTED_TAG01"
+        "access_level": "sa0",
+        "access_level_description": "sa1",
+        "create_access_levels": {},
+        "deploy_key_id": "DEPLOY_KEY01",
+        "group_id": "GROUP01",
+        "id": "API_ENTITIES_PROTECTED_TAG01",
+        "name": "sa6",
+        "user_id": "USER01",
+        "project_id": "PROJECT01"
       },
       "API_ENTITIES_PROTECTED_TAG02": {
-        "create_access_level": {},
-        "name": "s3d",
-        "project_id": "PROJECT01",
-        "id": "API_ENTITIES_PROTECTED_TAG02"
+        "access_level": "sf0",
+        "access_level_description": "sf1",
+        "create_access_levels": {},
+        "deploy_key_id": "DEPLOY_KEY01",
+        "group_id": "GROUP01",
+        "id": "API_ENTITIES_PROTECTED_TAG02",
+        "name": "sf6",
+        "user_id": "USER01",
+        "project_id": "PROJECT01"
       }
     }
   },
   "new": {
     "api_entities_protected_tag": {
       "api_entities_protected_tag_ref01": {
-        "create_access_level": {},
-        "name": "s51"
+        "access_level": "s140",
+        "access_level_description": "s141",
+        "create_access_levels": {},
+        "deploy_key_id": "DEPLOY_KEY01",
+        "group_id": "GROUP01",
+        "name": "s146",
+        "user_id": "USER01"
       }
     }
   }

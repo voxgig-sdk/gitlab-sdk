@@ -1298,7 +1298,7 @@ $api_entities_access_requester = $client->ApiEntitiesAccessRequester();
 | --- | --- | --- | --- |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
-| `custom_attribute` | `array` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `id` | `int` | No |  |
 | `key` | `string` | No |  |
 | `locked` | `bool` | No |  |
@@ -1387,11 +1387,11 @@ $api_entities_appearance = $client->ApiEntitiesAppearance();
 | `header_logo` | `string` | No |  |
 | `header_message` | `string` | No |  |
 | `logo` | `string` | No |  |
-| `member_guideline` | `string` | No |  |
+| `member_guidelines` | `string` | No |  |
 | `message_background_color` | `string` | No |  |
 | `message_font_color` | `string` | No |  |
-| `new_project_guideline` | `string` | No |  |
-| `profile_image_guideline` | `string` | No |  |
+| `new_project_guidelines` | `string` | No |  |
+| `profile_image_guidelines` | `string` | No |  |
 | `pwa_description` | `string` | No |  |
 | `pwa_icon` | `string` | No |  |
 | `pwa_name` | `string` | No |  |
@@ -1514,17 +1514,17 @@ $api_entities_application_statistic = $client->ApiEntitiesApplicationStatistic()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_user` | `int` | No |  |
-| `fork` | `int` | No |  |
-| `group` | `int` | No |  |
-| `issue` | `int` | No |  |
-| `merge_request` | `int` | No |  |
-| `milestone` | `int` | No |  |
-| `note` | `int` | No |  |
-| `project` | `int` | No |  |
-| `snippet` | `int` | No |  |
-| `ssh_key` | `int` | No |  |
-| `user` | `int` | No |  |
+| `active_users` | `int` | No |  |
+| `forks` | `int` | No |  |
+| `groups` | `int` | No |  |
+| `issues` | `int` | No |  |
+| `merge_requests` | `int` | No |  |
+| `milestones` | `int` | No |  |
+| `notes` | `int` | No |  |
+| `projects` | `int` | No |  |
+| `snippets` | `int` | No |  |
+| `ssh_keys` | `int` | No |  |
+| `users` | `int` | No |  |
 
 ### Operations
 
@@ -1686,14 +1686,22 @@ $api_entities_award_emoji = $client->ApiEntitiesAwardEmoji();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
 | `awardable_id` | `int` | No |  |
 | `awardable_type` | `string` | No |  |
 | `created_at` | `string` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `id` | `int` | No |  |
+| `locked` | `bool` | No |  |
 | `name` | `string` | No |  |
+| `public_email` | `string` | No |  |
+| `state` | `string` | No |  |
 | `updated_at` | `string` | No |  |
 | `url` | `string` | No |  |
 | `user` | `array` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -1954,7 +1962,7 @@ $api_entities_basic_project_detail = $client->ApiEntitiesBasicProjectDetail();
 | --- | --- | --- | --- |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attribute` | `array` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `forks_count` | `int` | No |  |
@@ -1973,7 +1981,7 @@ $api_entities_basic_project_detail = $client->ApiEntitiesBasicProjectDetail();
 | `ssh_url_to_repo` | `string` | No |  |
 | `star_count` | `int` | No |  |
 | `tag_list` | `array` | No |  |
-| `topic` | `array` | No |  |
+| `topics` | `array` | No |  |
 | `visibility` | `string` | No |  |
 | `web_url` | `string` | No |  |
 
@@ -2169,6 +2177,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 
 ```php
 $result = $client->ApiEntitiesBatchedBackgroundMigration()->update([
+  "id" => "api_entities_batched_background_migration_id",
   "batched_background_migration_id" => "batched_background_migration_id",
   // Fields to update
 ]);
@@ -2214,14 +2223,28 @@ $api_entities_branch = $client->ApiEntitiesBranch();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `author_email` | `string` | No |  |
+| `author_name` | `string` | No |  |
+| `authored_date` | `string` | No |  |
 | `can_push` | `bool` | No |  |
 | `commit` | `array` | No |  |
+| `committed_date` | `string` | No |  |
+| `committer_email` | `string` | No |  |
+| `committer_name` | `string` | No |  |
+| `created_at` | `string` | No |  |
 | `default` | `bool` | No |  |
 | `developers_can_merge` | `bool` | No |  |
 | `developers_can_push` | `bool` | No |  |
+| `extended_trailers` | `array` | No |  |
+| `id` | `string` | No |  |
 | `merged` | `bool` | No |  |
+| `message` | `string` | No |  |
 | `name` | `string` | No |  |
+| `parent_ids` | `array` | No |  |
 | `protected` | `bool` | No |  |
+| `short_id` | `string` | No |  |
+| `title` | `string` | No |  |
+| `trailers` | `array` | No |  |
 | `web_url` | `string` | No |  |
 
 ### Operations
@@ -2258,6 +2281,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 
 ```php
 $result = $client->ApiEntitiesBranch()->update([
+  "id" => "api_entities_branch_id",
   "branch_id" => "branch_id",
   "project_id" => "project_id",
   // Fields to update
@@ -2311,18 +2335,18 @@ $api_entities_bulk_import = $client->ApiEntitiesBulkImport();
 | `destination_namespace` | `string` | No |  |
 | `destination_slug` | `string` | No |  |
 | `entity_type` | `string` | No |  |
-| `failure` | `array` | No |  |
-| `has_failure` | `bool` | No |  |
+| `failures` | `array` | No |  |
+| `has_failures` | `bool` | No |  |
 | `id` | `int` | No |  |
-| `migrate_membership` | `bool` | No |  |
-| `migrate_project` | `bool` | No |  |
+| `migrate_memberships` | `bool` | No |  |
+| `migrate_projects` | `bool` | No |  |
 | `namespace_id` | `int` | No |  |
 | `parent_id` | `int` | No |  |
 | `project_id` | `int` | No |  |
 | `source_full_path` | `string` | No |  |
 | `source_type` | `string` | No |  |
 | `source_url` | `string` | No |  |
-| `stat` | `array` | No |  |
+| `stats` | `array` | No |  |
 | `status` | `string` | No |  |
 | `updated_at` | `string` | No |  |
 
@@ -2450,8 +2474,8 @@ $api_entities_bulk_imports_export_status = $client->ApiEntitiesBulkImportsExport
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `batch` | `array` | No |  |
 | `batched` | `bool` | No |  |
+| `batches` | `array` | No |  |
 | `batches_count` | `int` | No |  |
 | `error` | `string` | No |  |
 | `relation` | `string` | No |  |
@@ -2509,7 +2533,7 @@ $api_entities_changelog = $client->ApiEntitiesChangelog();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `note` | `string` | No |  |
+| `notes` | `string` | No |  |
 
 ### Operations
 
@@ -2683,7 +2707,7 @@ $api_entities_ci_job = $client->ApiEntitiesCiJob();
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
 | `archived` | `bool` | No |  |
-| `artifact` | `array` | No |  |
+| `artifacts` | `array` | No |  |
 | `artifacts_expire_at` | `string` | No |  |
 | `artifacts_file` | `array` | No |  |
 | `commit` | `array` | No |  |
@@ -2938,16 +2962,16 @@ $api_entities_ci_lint_result = $client->ApiEntitiesCiLintResult();
 | `blob` | `string` | No |  |
 | `context_project` | `string` | No |  |
 | `context_sha` | `string` | No |  |
-| `error` | `array` | No |  |
+| `errors` | `array` | No |  |
 | `extra` | `array` | No |  |
-| `include` | `array` | No |  |
-| `job` | `array` | No |  |
+| `includes` | `array` | No |  |
+| `jobs` | `array` | No |  |
 | `location` | `string` | No |  |
 | `merged_yaml` | `string` | No |  |
 | `raw` | `string` | No |  |
 | `type` | `string` | No |  |
 | `valid` | `bool` | No |  |
-| `warning` | `array` | No |  |
+| `warnings` | `array` | No |  |
 
 ### Operations
 
@@ -3132,7 +3156,7 @@ $api_entities_ci_pipeline_schedule = $client->ApiEntitiesCiPipelineSchedule();
 | `cron_timezone` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `input` | `array` | No |  |
+| `inputs` | `array` | No |  |
 | `next_run_at` | `string` | No |  |
 | `owner` | `array` | No |  |
 | `ref` | `string` | No |  |
@@ -3194,13 +3218,13 @@ $api_entities_ci_pipeline_schedule_detail = $client->ApiEntitiesCiPipelineSchedu
 | `cron_timezone` | `string` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
-| `input` | `array` | No |  |
+| `inputs` | `array` | No |  |
 | `last_pipeline` | `array` | No |  |
 | `next_run_at` | `string` | No |  |
 | `owner` | `array` | No |  |
 | `ref` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `variable` | `array` | No |  |
+| `variables` | `array` | No |  |
 
 ### Operations
 
@@ -3397,19 +3421,16 @@ $api_entities_ci_runner = $client->ApiEntitiesCiRunner();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active` | `bool` | No |  |
-| `created_at` | `string` | No |  |
-| `created_by` | `array` | No |  |
-| `description` | `string` | No |  |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `id` | `int` | No |  |
-| `ip_address` | `string` | No |  |
-| `is_shared` | `bool` | No |  |
-| `job_execution_status` | `string` | No |  |
+| `locked` | `bool` | No |  |
 | `name` | `string` | No |  |
-| `online` | `bool` | No |  |
-| `paused` | `bool` | No |  |
-| `runner_type` | `string` | No |  |
-| `status` | `string` | No |  |
+| `public_email` | `string` | No |  |
+| `state` | `string` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -3478,7 +3499,7 @@ $api_entities_ci_runner_detail = $client->ApiEntitiesCiRunnerDetail();
 | `created_at` | `string` | No |  |
 | `created_by` | `array` | No |  |
 | `description` | `string` | No |  |
-| `group` | `array` | No |  |
+| `groups` | `array` | No |  |
 | `id` | `int` | No |  |
 | `ip_address` | `string` | No |  |
 | `is_shared` | `bool` | No |  |
@@ -3490,7 +3511,7 @@ $api_entities_ci_runner_detail = $client->ApiEntitiesCiRunnerDetail();
 | `online` | `bool` | No |  |
 | `paused` | `bool` | No |  |
 | `platform` | `string` | No |  |
-| `project` | `array` | No |  |
+| `projects` | `array` | No |  |
 | `revision` | `string` | No |  |
 | `run_untagged` | `string` | No |  |
 | `runner_type` | `string` | No |  |
@@ -3664,19 +3685,6 @@ Return the entity name.
 $api_entities_ci_secure_file = $client->ApiEntitiesCiSecureFile();
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `checksum` | `string` | No |  |
-| `checksum_algorithm` | `string` | No |  |
-| `created_at` | `string` | No |  |
-| `expires_at` | `string` | No |  |
-| `file_extension` | `string` | No |  |
-| `id` | `int` | No |  |
-| `metadata` | `array` | No |  |
-| `name` | `string` | No |  |
-
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -3835,7 +3843,7 @@ $api_entities_cluster = $client->ApiEntitiesCluster();
 | `management_project` | `array` | No |  |
 | `name` | `string` | No |  |
 | `namespace_per_environment` | `string` | No |  |
-| `platform_kubernete` | `array` | No |  |
+| `platform_kubernetes` | `array` | No |  |
 | `platform_type` | `string` | No |  |
 | `provider_gcp` | `array` | No |  |
 | `provider_type` | `string` | No |  |
@@ -3930,7 +3938,7 @@ $api_entities_cluster_group = $client->ApiEntitiesClusterGroup();
 | `management_project` | `array` | No |  |
 | `name` | `string` | No |  |
 | `namespace_per_environment` | `string` | No |  |
-| `platform_kubernete` | `array` | No |  |
+| `platform_kubernetes` | `array` | No |  |
 | `platform_type` | `string` | No |  |
 | `provider_gcp` | `array` | No |  |
 | `provider_type` | `string` | No |  |
@@ -4018,7 +4026,7 @@ $api_entities_cluster_project = $client->ApiEntitiesClusterProject();
 | `management_project` | `array` | No |  |
 | `name` | `string` | No |  |
 | `namespace_per_environment` | `string` | No |  |
-| `platform_kubernete` | `array` | No |  |
+| `platform_kubernetes` | `array` | No |  |
 | `platform_type` | `string` | No |  |
 | `project` | `array` | No |  |
 | `provider_gcp` | `array` | No |  |
@@ -4097,12 +4105,13 @@ $api_entities_clusters_agent = $client->ApiEntitiesClustersAgent();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `config_project` | `array` | No |  |
 | `created_at` | `string` | No |  |
-| `created_by_user_id` | `string` | No |  |
-| `id` | `string` | No |  |
-| `is_receptive` | `bool` | No |  |
+| `description` | `string` | No |  |
+| `id` | `int` | No |  |
 | `name` | `string` | No |  |
+| `name_with_namespace` | `string` | No |  |
+| `path` | `string` | No |  |
+| `path_with_namespace` | `string` | No |  |
 
 ### Operations
 
@@ -4337,13 +4346,13 @@ $api_entities_commit = $client->ApiEntitiesCommit();
 | `committer_email` | `string` | No |  |
 | `committer_name` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `extended_trailer` | `array` | No |  |
+| `extended_trailers` | `array` | No |  |
 | `id` | `string` | No |  |
 | `message` | `string` | No |  |
-| `parent_id` | `array` | No |  |
+| `parent_ids` | `array` | No |  |
 | `short_id` | `string` | No |  |
 | `title` | `string` | No |  |
-| `trailer` | `array` | No |  |
+| `trailers` | `array` | No |  |
 | `web_url` | `string` | No |  |
 
 ### Operations
@@ -4413,17 +4422,17 @@ $api_entities_commit_detail = $client->ApiEntitiesCommitDetail();
 | `committer_email` | `string` | No |  |
 | `committer_name` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `extended_trailer` | `array` | No |  |
+| `extended_trailers` | `array` | No |  |
 | `id` | `string` | No |  |
 | `last_pipeline` | `array` | No |  |
 | `message` | `string` | No |  |
-| `parent_id` | `array` | No |  |
+| `parent_ids` | `array` | No |  |
 | `project_id` | `int` | No |  |
 | `short_id` | `string` | No |  |
-| `stat` | `array` | No |  |
+| `stats` | `array` | No |  |
 | `status` | `string` | No |  |
 | `title` | `string` | No |  |
-| `trailer` | `array` | No |  |
+| `trailers` | `array` | No |  |
 | `web_url` | `string` | No |  |
 
 ### Operations
@@ -4499,11 +4508,21 @@ $api_entities_commit_note = $client->ApiEntitiesCommitNote();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `author` | `array` | No |  |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
+| `custom_attributes` | `array` | No |  |
+| `id` | `int` | No |  |
 | `line` | `int` | No |  |
 | `line_type` | `string` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `string` | No |  |
 | `note` | `string` | No |  |
 | `path` | `string` | No |  |
+| `public_email` | `string` | No |  |
+| `state` | `string` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -4674,18 +4693,26 @@ $api_entities_commit_status = $client->ApiEntitiesCommitStatus();
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
 | `author` | `array` | No |  |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
 | `coverage` | `float` | No |  |
 | `created_at` | `string` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `description` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `int` | No |  |
+| `locked` | `bool` | No |  |
 | `name` | `string` | No |  |
 | `pipeline_id` | `int` | No |  |
+| `public_email` | `string` | No |  |
 | `ref` | `string` | No |  |
 | `sha` | `string` | No |  |
 | `started_at` | `string` | No |  |
+| `state` | `string` | No |  |
 | `status` | `string` | No |  |
 | `target_url` | `string` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -4749,9 +4776,10 @@ $api_entities_compare = $client->ApiEntitiesCompare();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `commit` | `array` | No |  |
+| `commits` | `array` | No |  |
 | `compare_same_ref` | `bool` | No |  |
 | `compare_timeout` | `bool` | No |  |
-| `diff` | `array` | No |  |
+| `diffs` | `array` | No |  |
 | `web_url` | `string` | No |  |
 
 ### Operations
@@ -4814,7 +4842,7 @@ $api_entities_container_registry_repository = $client->ApiEntitiesContainerRegis
 | `project_id` | `int` | No |  |
 | `size` | `int` | No |  |
 | `status` | `string` | No |  |
-| `tag` | `array` | No |  |
+| `tags` | `array` | No |  |
 | `tags_count` | `int` | No |  |
 
 ### Operations
@@ -4988,9 +5016,9 @@ $api_entities_contributor = $client->ApiEntitiesContributor();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addition` | `int` | No |  |
-| `commit` | `int` | No |  |
-| `deletion` | `int` | No |  |
+| `additions` | `int` | No |  |
+| `commits` | `int` | No |  |
+| `deletions` | `int` | No |  |
 | `email` | `string` | No |  |
 | `name` | `string` | No |  |
 
@@ -5213,7 +5241,7 @@ $api_entities_deploy_token = $client->ApiEntitiesDeployToken();
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `array` | No |  |
+| `scopes` | `array` | No |  |
 | `username` | `string` | No |  |
 
 ### Operations
@@ -5382,8 +5410,8 @@ $api_entities_deployment_extended = $client->ApiEntitiesDeploymentExtended();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `approval` | `array` | No |  |
 | `approval_summary` | `array` | No |  |
+| `approvals` | `array` | No |  |
 | `created_at` | `string` | No |  |
 | `deployable` | `array` | No |  |
 | `environment` | `array` | No |  |
@@ -5517,7 +5545,7 @@ $api_entities_dictionary_table = $client->ApiEntitiesDictionaryTable();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `feature_category` | `array` | No |  |
+| `feature_categories` | `array` | No |  |
 | `table_name` | `string` | No |  |
 
 ### Operations
@@ -5640,8 +5668,8 @@ $api_entities_discovered_cluster = $client->ApiEntitiesDiscoveredCluster();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `group` | `string` | No |  |
-| `project` | `string` | No |  |
+| `groups` | `string` | No |  |
+| `projects` | `string` | No |  |
 
 ### Operations
 
@@ -6090,7 +6118,7 @@ $api_entities_feature = $client->ApiEntitiesFeature();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `definition` | `array` | No |  |
-| `gate` | `array` | No |  |
+| `gates` | `array` | No |  |
 | `name` | `string` | No |  |
 | `state` | `string` | No |  |
 
@@ -6159,7 +6187,7 @@ $api_entities_feature_definition = $client->ApiEntitiesFeatureDefinition();
 | `group` | `string` | No |  |
 | `intended_to_rollout_by` | `string` | No |  |
 | `introduced_by_url` | `string` | No |  |
-| `log_state_change` | `string` | No |  |
+| `log_state_changes` | `string` | No |  |
 | `milestone` | `string` | No |  |
 | `name` | `string` | No |  |
 | `rollout_issue_url` | `string` | No |  |
@@ -6218,10 +6246,13 @@ $api_entities_feature_flag = $client->ApiEntitiesFeatureFlag();
 | `active` | `bool` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
+| `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `scope` | `string` | No |  |
-| `strategy` | `array` | No |  |
+| `parameters` | `string` | No |  |
+| `scopes` | `array` | No |  |
+| `strategies` | `array` | No |  |
 | `updated_at` | `string` | No |  |
+| `user_list` | `array` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations
@@ -6312,7 +6343,7 @@ $api_entities_feature_flag_user_list = $client->ApiEntitiesFeatureFlagUserList()
 | `path` | `string` | No |  |
 | `project_id` | `int` | No |  |
 | `updated_at` | `string` | No |  |
-| `user_xid` | `string` | No |  |
+| `user_xids` | `string` | No |  |
 
 ### Operations
 
@@ -6535,8 +6566,8 @@ $api_entities_go_module_version = $client->ApiEntitiesGoModuleVersion();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `time` | `string` | No |  |
-| `version` | `string` | No |  |
+| `Time` | `string` | No |  |
+| `Version` | `string` | No |  |
 
 ### Operations
 
@@ -6593,10 +6624,10 @@ $api_entities_group = $client->ApiEntitiesGroup();
 | `auto_duo_code_review_enabled` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attribute` | `array` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `default_branch` | `string` | No |  |
 | `default_branch_protection` | `string` | No |  |
-| `default_branch_protection_default` | `string` | No |  |
+| `default_branch_protection_defaults` | `string` | No |  |
 | `description` | `string` | No |  |
 | `duo_core_features_enabled` | `bool` | No |  |
 | `duo_features_enabled` | `string` | No |  |
@@ -6608,7 +6639,7 @@ $api_entities_group = $client->ApiEntitiesGroup();
 | `id` | `string` | No |  |
 | `ldap_access` | `string` | No |  |
 | `ldap_cn` | `string` | No |  |
-| `ldap_group_link` | `array` | No |  |
+| `ldap_group_links` | `array` | No |  |
 | `lfs_enabled` | `string` | No |  |
 | `lock_duo_features_enabled` | `string` | No |  |
 | `lock_math_rendering_limits_enabled` | `bool` | No |  |
@@ -6624,12 +6655,12 @@ $api_entities_group = $client->ApiEntitiesGroup();
 | `repository_storage` | `string` | No |  |
 | `request_access_enabled` | `string` | No |  |
 | `require_two_factor_authentication` | `string` | No |  |
-| `root_storage_statistic` | `array` | No |  |
-| `saml_group_link` | `array` | No |  |
+| `root_storage_statistics` | `array` | No |  |
+| `saml_group_links` | `array` | No |  |
 | `share_with_group_lock` | `string` | No |  |
 | `shared_runners_setting` | `string` | No |  |
 | `show_diff_preview_in_email` | `bool` | No |  |
-| `statistic` | `array` | No |  |
+| `statistics` | `array` | No |  |
 | `subgroup_creation_level` | `string` | No |  |
 | `two_factor_grace_period` | `string` | No |  |
 | `visibility` | `string` | No |  |
@@ -6722,10 +6753,10 @@ $api_entities_group_detail = $client->ApiEntitiesGroupDetail();
 | `auto_duo_code_review_enabled` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attribute` | `array` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `default_branch` | `string` | No |  |
 | `default_branch_protection` | `string` | No |  |
-| `default_branch_protection_default` | `string` | No |  |
+| `default_branch_protection_defaults` | `string` | No |  |
 | `description` | `string` | No |  |
 | `duo_core_features_enabled` | `bool` | No |  |
 | `duo_features_enabled` | `string` | No |  |
@@ -6737,10 +6768,10 @@ $api_entities_group_detail = $client->ApiEntitiesGroupDetail();
 | `full_name` | `string` | No |  |
 | `full_path` | `string` | No |  |
 | `id` | `string` | No |  |
-| `ip_restriction_range` | `string` | No |  |
+| `ip_restriction_ranges` | `string` | No |  |
 | `ldap_access` | `string` | No |  |
 | `ldap_cn` | `string` | No |  |
-| `ldap_group_link` | `array` | No |  |
+| `ldap_group_links` | `array` | No |  |
 | `lfs_enabled` | `string` | No |  |
 | `lock_duo_features_enabled` | `string` | No |  |
 | `lock_math_rendering_limits_enabled` | `bool` | No |  |
@@ -6755,28 +6786,28 @@ $api_entities_group_detail = $client->ApiEntitiesGroupDetail();
 | `path` | `string` | No |  |
 | `prevent_forking_outside_group` | `string` | No |  |
 | `prevent_sharing_groups_outside_hierarchy` | `string` | No |  |
-| `project` | `array` | No |  |
 | `project_creation_level` | `string` | No |  |
+| `projects` | `array` | No |  |
 | `repository_storage` | `string` | No |  |
 | `request_access_enabled` | `string` | No |  |
 | `require_two_factor_authentication` | `string` | No |  |
-| `root_storage_statistic` | `array` | No |  |
+| `root_storage_statistics` | `array` | No |  |
 | `runners_token` | `string` | No |  |
-| `saml_group_link` | `array` | No |  |
+| `saml_group_links` | `array` | No |  |
 | `service_access_tokens_expiration_enforced` | `string` | No |  |
 | `share_with_group_lock` | `string` | No |  |
-| `shared_project` | `array` | No |  |
+| `shared_projects` | `array` | No |  |
 | `shared_runners_minutes_limit` | `string` | No |  |
 | `shared_runners_setting` | `string` | No |  |
-| `shared_with_group` | `string` | No |  |
+| `shared_with_groups` | `string` | No |  |
 | `show_diff_preview_in_email` | `bool` | No |  |
-| `statistic` | `array` | No |  |
+| `statistics` | `array` | No |  |
 | `subgroup_creation_level` | `string` | No |  |
 | `two_factor_grace_period` | `string` | No |  |
 | `unique_project_download_limit` | `string` | No |  |
 | `unique_project_download_limit_alertlist` | `string` | No |  |
 | `unique_project_download_limit_allowlist` | `string` | No |  |
-| `unique_project_download_limit_interval_in_second` | `string` | No |  |
+| `unique_project_download_limit_interval_in_seconds` | `string` | No |  |
 | `visibility` | `string` | No |  |
 | `web_based_commit_signing_enabled` | `string` | No |  |
 | `web_url` | `string` | No |  |
@@ -6845,20 +6876,20 @@ $api_entities_hook = $client->ApiEntitiesHook();
 | `alert_status` | `mixed` | No |  |
 | `branch_filter_strategy` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_header` | `array` | No |  |
+| `custom_headers` | `array` | No |  |
 | `custom_webhook_template` | `string` | No |  |
 | `description` | `string` | No |  |
 | `disabled_until` | `string` | No |  |
 | `enable_ssl_verification` | `bool` | No |  |
 | `id` | `string` | No |  |
-| `merge_requests_event` | `bool` | No |  |
+| `merge_requests_events` | `bool` | No |  |
 | `name` | `string` | No |  |
-| `push_event` | `bool` | No |  |
+| `push_events` | `bool` | No |  |
 | `push_events_branch_filter` | `string` | No |  |
-| `repository_update_event` | `bool` | No |  |
-| `tag_push_event` | `bool` | No |  |
+| `repository_update_events` | `bool` | No |  |
+| `tag_push_events` | `bool` | No |  |
 | `url` | `string` | No |  |
-| `url_variable` | `array` | No |  |
+| `url_variables` | `array` | No |  |
 
 ### Operations
 
@@ -6934,35 +6965,6 @@ Return the entity name.
 $api_entities_integration = $client->ApiEntitiesIntegration();
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `active` | `bool` | No |  |
-| `alert_event` | `bool` | No |  |
-| `comment_on_event_enabled` | `bool` | No |  |
-| `commit_event` | `bool` | No |  |
-| `confidential_issues_event` | `bool` | No |  |
-| `confidential_note_event` | `bool` | No |  |
-| `created_at` | `string` | No |  |
-| `deployment_event` | `bool` | No |  |
-| `id` | `int` | No |  |
-| `incident_event` | `bool` | No |  |
-| `inherited` | `bool` | No |  |
-| `issues_event` | `bool` | No |  |
-| `job_event` | `bool` | No |  |
-| `merge_requests_event` | `bool` | No |  |
-| `note_event` | `bool` | No |  |
-| `pipeline_event` | `bool` | No |  |
-| `property` | `array` | No |  |
-| `push_event` | `bool` | No |  |
-| `slug` | `int` | No |  |
-| `tag_push_event` | `bool` | No |  |
-| `title` | `string` | No |  |
-| `updated_at` | `string` | No |  |
-| `vulnerability_event` | `bool` | No |  |
-| `wiki_page_event` | `bool` | No |  |
-
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -7014,28 +7016,28 @@ $api_entities_integration_basic = $client->ApiEntitiesIntegrationBasic();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `active` | `bool` | No |  |
-| `alert_event` | `bool` | No |  |
+| `alert_events` | `bool` | No |  |
 | `comment_on_event_enabled` | `bool` | No |  |
-| `commit_event` | `bool` | No |  |
-| `confidential_issues_event` | `bool` | No |  |
-| `confidential_note_event` | `bool` | No |  |
+| `commit_events` | `bool` | No |  |
+| `confidential_issues_events` | `bool` | No |  |
+| `confidential_note_events` | `bool` | No |  |
 | `created_at` | `string` | No |  |
-| `deployment_event` | `bool` | No |  |
+| `deployment_events` | `bool` | No |  |
 | `id` | `int` | No |  |
-| `incident_event` | `bool` | No |  |
+| `incident_events` | `bool` | No |  |
 | `inherited` | `bool` | No |  |
-| `issues_event` | `bool` | No |  |
-| `job_event` | `bool` | No |  |
-| `merge_requests_event` | `bool` | No |  |
-| `note_event` | `bool` | No |  |
-| `pipeline_event` | `bool` | No |  |
-| `push_event` | `bool` | No |  |
+| `issues_events` | `bool` | No |  |
+| `job_events` | `bool` | No |  |
+| `merge_requests_events` | `bool` | No |  |
+| `note_events` | `bool` | No |  |
+| `pipeline_events` | `bool` | No |  |
+| `push_events` | `bool` | No |  |
 | `slug` | `int` | No |  |
-| `tag_push_event` | `bool` | No |  |
+| `tag_push_events` | `bool` | No |  |
 | `title` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `vulnerability_event` | `bool` | No |  |
-| `wiki_page_event` | `bool` | No |  |
+| `vulnerability_events` | `bool` | No |  |
+| `wiki_page_events` | `bool` | No |  |
 
 ### Operations
 
@@ -7241,6 +7243,7 @@ $api_entities_issue = $client->ApiEntitiesIssue();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `assignee` | `array` | No |  |
+| `assignees` | `array` | No |  |
 | `author` | `array` | No |  |
 | `blocking_issues_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
@@ -7249,11 +7252,11 @@ $api_entities_issue = $client->ApiEntitiesIssue();
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `discussion_locked` | `bool` | No |  |
-| `downvote` | `string` | No |  |
+| `downvotes` | `string` | No |  |
 | `due_date` | `string` | No |  |
 | `epic` | `array` | No |  |
 | `epic_iid` | `string` | No |  |
-| `has_task` | `bool` | No |  |
+| `has_tasks` | `bool` | No |  |
 | `health_status` | `string` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
@@ -7261,24 +7264,24 @@ $api_entities_issue = $client->ApiEntitiesIssue();
 | `imported_from` | `string` | No |  |
 | `issue_type` | `string` | No |  |
 | `iteration` | `array` | No |  |
-| `label` | `array` | No |  |
-| `link` | `array` | No |  |
+| `labels` | `array` | No |  |
+| `links` | `array` | No |  |
 | `merge_requests_count` | `string` | No |  |
 | `milestone` | `array` | No |  |
 | `moved_to_id` | `string` | No |  |
 | `project_id` | `int` | No |  |
-| `reference` | `array` | No |  |
+| `references` | `array` | No |  |
 | `service_desk_reply_to` | `string` | No |  |
 | `severity` | `string` | No |  |
 | `state` | `string` | No |  |
 | `subscribed` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
 | `task_status` | `string` | No |  |
-| `time_stat` | `array` | No |  |
+| `time_stats` | `array` | No |  |
 | `title` | `string` | No |  |
 | `type` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `upvote` | `string` | No |  |
+| `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
 | `web_url` | `string` | No |  |
 | `weight` | `string` | No |  |
@@ -7428,15 +7431,15 @@ $api_entities_license = $client->ApiEntitiesLicense();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `condition` | `array` | No |  |
+| `conditions` | `array` | No |  |
 | `content` | `string` | No |  |
 | `description` | `string` | No |  |
 | `html_url` | `string` | No |  |
 | `key` | `string` | No |  |
-| `limitation` | `array` | No |  |
+| `limitations` | `array` | No |  |
 | `name` | `string` | No |  |
 | `nickname` | `string` | No |  |
-| `permission` | `array` | No |  |
+| `permissions` | `array` | No |  |
 | `popular` | `bool` | No |  |
 | `source_url` | `string` | No |  |
 
@@ -7598,7 +7601,7 @@ $api_entities_member = $client->ApiEntitiesMember();
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `created_by` | `array` | No |  |
-| `custom_attribute` | `array` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `email` | `string` | No |  |
 | `expires_at` | `string` | No |  |
 | `group_saml_identity` | `array` | No |  |
@@ -7707,6 +7710,7 @@ $api_entities_merge = $client->ApiEntitiesMerge();
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `string` | No |  |
 | `assignee` | `array` | No |  |
+| `assignees` | `array` | No |  |
 | `author` | `array` | No |  |
 | `blocking_discussions_resolved` | `string` | No |  |
 | `changes_count` | `string` | No |  |
@@ -7716,21 +7720,21 @@ $api_entities_merge = $client->ApiEntitiesMerge();
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
 | `detailed_merge_status` | `string` | No |  |
-| `diff_ref` | `array` | No |  |
+| `diff_refs` | `array` | No |  |
 | `discussion_locked` | `string` | No |  |
 | `diverged_commits_count` | `string` | No |  |
-| `downvote` | `string` | No |  |
+| `downvotes` | `string` | No |  |
 | `draft` | `string` | No |  |
 | `first_contribution` | `string` | No |  |
 | `first_deployed_to_production_at` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
-| `has_conflict` | `bool` | No |  |
+| `has_conflicts` | `bool` | No |  |
 | `head_pipeline` | `array` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `string` | No |  |
 | `imported_from` | `string` | No |  |
-| `label` | `string` | No |  |
+| `labels` | `string` | No |  |
 | `latest_build_finished_at` | `string` | No |  |
 | `latest_build_started_at` | `string` | No |  |
 | `merge_after` | `string` | No |  |
@@ -7738,7 +7742,7 @@ $api_entities_merge = $client->ApiEntitiesMerge();
 | `merge_error` | `string` | No |  |
 | `merge_status` | `string` | No |  |
 | `merge_user` | `array` | No |  |
-| `merge_when_pipeline_succeed` | `string` | No |  |
+| `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
 | `merged_by` | `array` | No |  |
 | `milestone` | `array` | No |  |
@@ -7747,7 +7751,8 @@ $api_entities_merge = $client->ApiEntitiesMerge();
 | `project_id` | `int` | No |  |
 | `rebase_in_progress` | `string` | No |  |
 | `reference` | `string` | No |  |
-| `reviewer` | `array` | No |  |
+| `references` | `array` | No |  |
+| `reviewers` | `array` | No |  |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `string` | No |  |
@@ -7760,11 +7765,11 @@ $api_entities_merge = $client->ApiEntitiesMerge();
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stat` | `array` | No |  |
+| `time_stats` | `array` | No |  |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `upvote` | `string` | No |  |
+| `upvotes` | `string` | No |  |
 | `user` | `array` | No |  |
 | `user_notes_count` | `string` | No |  |
 | `web_url` | `string` | No |  |
@@ -7841,10 +7846,8 @@ $api_entities_merge_request_approval = $client->ApiEntitiesMergeRequestApproval(
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `approved` | `bool` | No |  |
-| `approved_by` | `array` | No |  |
-| `user_can_approve` | `bool` | No |  |
-| `user_has_approved` | `bool` | No |  |
+| `approved_at` | `string` | No |  |
+| `user` | `array` | No |  |
 
 ### Operations
 
@@ -7911,6 +7914,7 @@ $api_entities_merge_request_basic = $client->ApiEntitiesMergeRequestBasic();
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `string` | No |  |
 | `assignee` | `array` | No |  |
+| `assignees` | `array` | No |  |
 | `author` | `array` | No |  |
 | `blocking_discussions_resolved` | `string` | No |  |
 | `closed_at` | `string` | No |  |
@@ -7920,27 +7924,28 @@ $api_entities_merge_request_basic = $client->ApiEntitiesMergeRequestBasic();
 | `description_html` | `string` | No |  |
 | `detailed_merge_status` | `string` | No |  |
 | `discussion_locked` | `string` | No |  |
-| `downvote` | `string` | No |  |
+| `downvotes` | `string` | No |  |
 | `draft` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
-| `has_conflict` | `bool` | No |  |
+| `has_conflicts` | `bool` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `string` | No |  |
 | `imported_from` | `string` | No |  |
-| `label` | `string` | No |  |
+| `labels` | `string` | No |  |
 | `merge_after` | `string` | No |  |
 | `merge_commit_sha` | `string` | No |  |
 | `merge_status` | `string` | No |  |
 | `merge_user` | `array` | No |  |
-| `merge_when_pipeline_succeed` | `string` | No |  |
+| `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
 | `merged_by` | `array` | No |  |
 | `milestone` | `array` | No |  |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `int` | No |  |
 | `reference` | `string` | No |  |
-| `reviewer` | `array` | No |  |
+| `references` | `array` | No |  |
+| `reviewers` | `array` | No |  |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `string` | No |  |
@@ -7952,11 +7957,11 @@ $api_entities_merge_request_basic = $client->ApiEntitiesMergeRequestBasic();
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stat` | `array` | No |  |
+| `time_stats` | `array` | No |  |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `upvote` | `string` | No |  |
+| `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
 | `web_url` | `string` | No |  |
 | `work_in_progress` | `string` | No |  |
@@ -8023,9 +8028,10 @@ $api_entities_merge_request_change = $client->ApiEntitiesMergeRequestChange();
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `string` | No |  |
 | `assignee` | `array` | No |  |
+| `assignees` | `array` | No |  |
 | `author` | `array` | No |  |
 | `blocking_discussions_resolved` | `string` | No |  |
-| `change` | `array` | No |  |
+| `changes` | `array` | No |  |
 | `changes_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
 | `closed_by` | `array` | No |  |
@@ -8033,21 +8039,21 @@ $api_entities_merge_request_change = $client->ApiEntitiesMergeRequestChange();
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
 | `detailed_merge_status` | `string` | No |  |
-| `diff_ref` | `array` | No |  |
+| `diff_refs` | `array` | No |  |
 | `discussion_locked` | `string` | No |  |
 | `diverged_commits_count` | `string` | No |  |
-| `downvote` | `string` | No |  |
+| `downvotes` | `string` | No |  |
 | `draft` | `string` | No |  |
 | `first_contribution` | `string` | No |  |
 | `first_deployed_to_production_at` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
-| `has_conflict` | `bool` | No |  |
+| `has_conflicts` | `bool` | No |  |
 | `head_pipeline` | `array` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `string` | No |  |
 | `imported_from` | `string` | No |  |
-| `label` | `string` | No |  |
+| `labels` | `string` | No |  |
 | `latest_build_finished_at` | `string` | No |  |
 | `latest_build_started_at` | `string` | No |  |
 | `merge_after` | `string` | No |  |
@@ -8055,7 +8061,7 @@ $api_entities_merge_request_change = $client->ApiEntitiesMergeRequestChange();
 | `merge_error` | `string` | No |  |
 | `merge_status` | `string` | No |  |
 | `merge_user` | `array` | No |  |
-| `merge_when_pipeline_succeed` | `string` | No |  |
+| `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
 | `merged_by` | `array` | No |  |
 | `milestone` | `array` | No |  |
@@ -8065,7 +8071,8 @@ $api_entities_merge_request_change = $client->ApiEntitiesMergeRequestChange();
 | `project_id` | `int` | No |  |
 | `rebase_in_progress` | `string` | No |  |
 | `reference` | `string` | No |  |
-| `reviewer` | `array` | No |  |
+| `references` | `array` | No |  |
+| `reviewers` | `array` | No |  |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `string` | No |  |
@@ -8078,11 +8085,11 @@ $api_entities_merge_request_change = $client->ApiEntitiesMergeRequestChange();
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stat` | `array` | No |  |
+| `time_stats` | `array` | No |  |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `upvote` | `string` | No |  |
+| `upvotes` | `string` | No |  |
 | `user` | `array` | No |  |
 | `user_notes_count` | `string` | No |  |
 | `web_url` | `string` | No |  |
@@ -8199,9 +8206,9 @@ $api_entities_merge_request_diff_full = $client->ApiEntitiesMergeRequestDiffFull
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `base_commit_sha` | `string` | No |  |
-| `commit` | `array` | No |  |
+| `commits` | `array` | No |  |
 | `created_at` | `string` | No |  |
-| `diff` | `array` | No |  |
+| `diffs` | `array` | No |  |
 | `head_commit_sha` | `string` | No |  |
 | `id` | `string` | No |  |
 | `merge_request_id` | `string` | No |  |
@@ -8260,9 +8267,16 @@ $api_entities_merge_request_reviewer = $client->ApiEntitiesMergeRequestReviewer(
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created_at` | `string` | No |  |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
+| `custom_attributes` | `array` | No |  |
+| `id` | `int` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `string` | No |  |
+| `public_email` | `string` | No |  |
 | `state` | `string` | No |  |
-| `user` | `array` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -8395,8 +8409,16 @@ $api_entities_mr_note = $client->ApiEntitiesMrNote();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `array` | No |  |
-| `note` | `string` | No |  |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
+| `custom_attributes` | `array` | No |  |
+| `id` | `int` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `string` | No |  |
+| `public_email` | `string` | No |  |
+| `state` | `string` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -8459,7 +8481,7 @@ $api_entities_namespace = $client->ApiEntitiesNamespace();
 | `kind` | `string` | No |  |
 | `max_seats_used` | `int` | No |  |
 | `max_seats_used_changed_at` | `string` | No |  |
-| `members_count_with_descendant` | `int` | No |  |
+| `members_count_with_descendants` | `int` | No |  |
 | `name` | `string` | No |  |
 | `parent_id` | `int` | No |  |
 | `path` | `string` | No |  |
@@ -8541,8 +8563,8 @@ $api_entities_namespace_existence = $client->ApiEntitiesNamespaceExistence();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `exist` | `bool` | No |  |
-| `suggest` | `array` | No |  |
+| `exists` | `bool` | No |  |
+| `suggests` | `array` | No |  |
 
 ### Operations
 
@@ -8659,9 +8681,9 @@ $api_entities_npm_package = $client->ApiEntitiesNpmPackage();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dist_tag` | `array` | No |  |
+| `disttags` | `array` | No |  |
 | `name` | `string` | No |  |
-| `version` | `array` | No |  |
+| `versions` | `array` | No |  |
 
 ### Operations
 
@@ -8708,12 +8730,6 @@ Return the entity name.
 ```php
 $api_entities_npm_package_tag = $client->ApiEntitiesNpmPackageTag();
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `dist_tag` | `array` | No |  |
 
 ### Operations
 
@@ -8765,7 +8781,7 @@ $api_entities_nuget_packages_version = $client->ApiEntitiesNugetPackagesVersion(
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `version` | `array` | No |  |
+| `versions` | `array` | No |  |
 
 ### Operations
 
@@ -8817,19 +8833,20 @@ $api_entities_nuget_search_result = $client->ApiEntitiesNugetSearchResult();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `string` | No |  |
+| `authors` | `string` | No |  |
 | `description` | `string` | No |  |
-| `icon_url` | `string` | No |  |
+| `iconUrl` | `string` | No |  |
 | `id` | `string` | No |  |
-| `license_url` | `string` | No |  |
-| `project_url` | `string` | No |  |
+| `licenseUrl` | `string` | No |  |
+| `projectUrl` | `string` | No |  |
 | `summary` | `string` | No |  |
-| `tag` | `string` | No |  |
+| `tags` | `string` | No |  |
 | `title` | `string` | No |  |
-| `total_download` | `int` | No |  |
+| `totalDownloads` | `int` | No |  |
 | `type` | `string` | No |  |
 | `verified` | `bool` | No |  |
 | `version` | `string` | No |  |
+| `versions` | `array` | No |  |
 
 ### Operations
 
@@ -8881,7 +8898,7 @@ $api_entities_nuget_service_index = $client->ApiEntitiesNugetServiceIndex();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `resource` | `array` | No |  |
+| `resources` | `array` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations
@@ -8985,15 +9002,17 @@ $api_entities_package = $client->ApiEntitiesPackage();
 | `created_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `last_downloaded_at` | `string` | No |  |
-| `link` | `array` | No |  |
+| `links` | `array` | No |  |
 | `name` | `string` | No |  |
 | `package_type` | `string` | No |  |
 | `pipeline` | `array` | No |  |
+| `pipelines` | `array` | No |  |
 | `project_id` | `int` | No |  |
 | `project_path` | `string` | No |  |
 | `status` | `string` | No |  |
-| `tag` | `string` | No |  |
+| `tags` | `string` | No |  |
 | `version` | `string` | No |  |
+| `versions` | `array` | No |  |
 
 ### Operations
 
@@ -9060,7 +9079,7 @@ $api_entities_package_file = $client->ApiEntitiesPackageFile();
 | `file_sha256` | `string` | No |  |
 | `id` | `int` | No |  |
 | `package_id` | `int` | No |  |
-| `pipeline` | `array` | No |  |
+| `pipelines` | `array` | No |  |
 | `size` | `int` | No |  |
 
 ### Operations
@@ -9113,16 +9132,15 @@ $api_entities_package_pipeline = $client->ApiEntitiesPackagePipeline();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created_at` | `string` | No |  |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `id` | `int` | No |  |
-| `iid` | `int` | No |  |
-| `project_id` | `int` | No |  |
-| `ref` | `string` | No |  |
-| `sha` | `string` | No |  |
-| `source` | `string` | No |  |
-| `status` | `string` | No |  |
-| `updated_at` | `string` | No |  |
-| `user` | `array` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `string` | No |  |
+| `public_email` | `string` | No |  |
+| `state` | `string` | No |  |
+| `username` | `string` | No |  |
 | `web_url` | `string` | No |  |
 
 ### Operations
@@ -9171,12 +9189,6 @@ Return the entity name.
 $api_entities_packages_conan_files_list = $client->ApiEntitiesPackagesConanFilesList();
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `file` | `array` | No |  |
-
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -9222,12 +9234,6 @@ Return the entity name.
 ```php
 $api_entities_packages_conan_package_manifest = $client->ApiEntitiesPackagesConanPackageManifest();
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `package_url` | `array` | No |  |
 
 ### Operations
 
@@ -9328,12 +9334,6 @@ Return the entity name.
 $api_entities_packages_conan_package_snapshot = $client->ApiEntitiesPackagesConanPackageSnapshot();
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `package_snapshot` | `array` | No |  |
-
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -9379,12 +9379,6 @@ Return the entity name.
 ```php
 $api_entities_packages_conan_recipe_manifest = $client->ApiEntitiesPackagesConanRecipeManifest();
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `recipe_url` | `array` | No |  |
 
 ### Operations
 
@@ -9485,12 +9479,6 @@ Return the entity name.
 $api_entities_packages_conan_recipe_snapshot = $client->ApiEntitiesPackagesConanRecipeSnapshot();
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `recipe_snapshot` | `array` | No |  |
-
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -9590,12 +9578,6 @@ Return the entity name.
 $api_entities_packages_conan_upload_url = $client->ApiEntitiesPackagesConanUploadUrl();
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `upload_url` | `array` | No |  |
-
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -9651,15 +9633,15 @@ $api_entities_packages_debian_distribution = $client->ApiEntitiesPackagesDebianD
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `architecture` | `array` | No |  |
+| `architectures` | `array` | No |  |
 | `codename` | `string` | No |  |
-| `component` | `array` | No |  |
+| `components` | `array` | No |  |
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `label` | `string` | No |  |
 | `origin` | `string` | No |  |
 | `suite` | `string` | No |  |
-| `valid_time_duration_second` | `int` | No |  |
+| `valid_time_duration_seconds` | `int` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations
@@ -9741,9 +9723,12 @@ $api_entities_pages_domain = $client->ApiEntitiesPagesDomain();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `auto_ssl_enabled` | `string` | No |  |
-| `certificate` | `array` | No |  |
+| `certificate` | `string` | No |  |
+| `certificate_text` | `string` | No |  |
 | `domain` | `string` | No |  |
 | `enabled_until` | `string` | No |  |
+| `expired` | `string` | No |  |
+| `subject` | `string` | No |  |
 | `url` | `string` | No |  |
 | `verification_code` | `string` | No |  |
 | `verified` | `bool` | No |  |
@@ -9828,14 +9813,8 @@ $api_entities_pages_domain_basic = $client->ApiEntitiesPagesDomainBasic();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `auto_ssl_enabled` | `string` | No |  |
-| `certificate_expiration` | `array` | No |  |
-| `domain` | `string` | No |  |
-| `enabled_until` | `string` | No |  |
-| `project_id` | `string` | No |  |
-| `url` | `string` | No |  |
-| `verification_code` | `string` | No |  |
-| `verified` | `bool` | No |  |
+| `expiration` | `string` | No |  |
+| `expired` | `string` | No |  |
 
 ### Operations
 
@@ -9895,7 +9874,7 @@ $api_entities_personal_access_token = $client->ApiEntitiesPersonalAccessToken();
 | `last_used_at` | `string` | No |  |
 | `name` | `string` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `array` | No |  |
+| `scopes` | `array` | No |  |
 | `user_id` | `int` | No |  |
 
 ### Operations
@@ -9954,10 +9933,10 @@ $api_entities_personal_access_token_with_last_used_ip = $client->ApiEntitiesPers
 | `expires_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `last_used_at` | `string` | No |  |
-| `last_used_ip` | `array` | No |  |
+| `last_used_ips` | `array` | No |  |
 | `name` | `string` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `array` | No |  |
+| `scopes` | `array` | No |  |
 | `user_id` | `int` | No |  |
 
 ### Operations
@@ -10026,7 +10005,7 @@ $api_entities_personal_access_token_with_token = $client->ApiEntitiesPersonalAcc
 | `last_used_at` | `string` | No |  |
 | `name` | `string` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `array` | No |  |
+| `scopes` | `array` | No |  |
 | `token` | `string` | No |  |
 | `user_id` | `int` | No |  |
 
@@ -10084,8 +10063,8 @@ $api_entities_personal_snippet = $client->ApiEntitiesPersonalSnippet();
 | `author` | `array` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
-| `file` | `array` | No |  |
 | `file_name` | `string` | No |  |
+| `files` | `array` | No |  |
 | `http_url_to_repo` | `string` | No |  |
 | `id` | `int` | No |  |
 | `imported` | `bool` | No |  |
@@ -10173,34 +10152,6 @@ Return the entity name.
 $api_entities_plan_limit = $client->ApiEntitiesPlanLimit();
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `ci_active_job` | `int` | No |  |
-| `ci_instance_level_variable` | `int` | No |  |
-| `ci_needs_size_limit` | `int` | No |  |
-| `ci_pipeline_schedule` | `int` | No |  |
-| `ci_pipeline_size` | `int` | No |  |
-| `ci_project_subscription` | `int` | No |  |
-| `ci_registered_group_runner` | `int` | No |  |
-| `ci_registered_project_runner` | `int` | No |  |
-| `conan_max_file_size` | `int` | No |  |
-| `dotenv_size` | `int` | No |  |
-| `dotenv_variable` | `int` | No |  |
-| `enforcement_limit` | `int` | No |  |
-| `generic_packages_max_file_size` | `int` | No |  |
-| `helm_max_file_size` | `int` | No |  |
-| `limits_history` | `array` | No |  |
-| `maven_max_file_size` | `int` | No |  |
-| `notification_limit` | `int` | No |  |
-| `npm_max_file_size` | `int` | No |  |
-| `nuget_max_file_size` | `int` | No |  |
-| `pipeline_hierarchy_size` | `int` | No |  |
-| `pypi_max_file_size` | `int` | No |  |
-| `storage_size_limit` | `int` | No |  |
-| `terraform_module_max_file_size` | `int` | No |  |
-
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -10266,11 +10217,11 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `analytics_access_level` | `string` | No |  |
 | `approvals_before_merge` | `string` | No |  |
 | `archived` | `bool` | No |  |
-| `auto_cancel_pending_pipeline` | `string` | No |  |
+| `auto_cancel_pending_pipelines` | `string` | No |  |
 | `auto_devops_deploy_strategy` | `string` | No |  |
 | `auto_devops_enabled` | `bool` | No |  |
 | `auto_duo_code_review_enabled` | `string` | No |  |
-| `autoclose_referenced_issue` | `bool` | No |  |
+| `autoclose_referenced_issues` | `bool` | No |  |
 | `avatar_url` | `string` | No |  |
 | `build_git_strategy` | `string` | No |  |
 | `build_timeout` | `int` | No |  |
@@ -10279,23 +10230,23 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `bool` | No |  |
 | `ci_config_path` | `string` | No |  |
 | `ci_default_git_depth` | `int` | No |  |
-| `ci_delete_pipelines_in_second` | `int` | No |  |
+| `ci_delete_pipelines_in_seconds` | `int` | No |  |
 | `ci_forward_deployment_enabled` | `bool` | No |  |
 | `ci_forward_deployment_rollback_allowed` | `bool` | No |  |
-| `ci_id_token_sub_claim_component` | `array` | No |  |
+| `ci_id_token_sub_claim_components` | `array` | No |  |
 | `ci_job_token_scope_enabled` | `bool` | No |  |
 | `ci_pipeline_variables_minimum_override_role` | `string` | No |  |
 | `ci_push_repository_for_job_token_allowed` | `bool` | No |  |
 | `ci_restrict_pipeline_cancellation_role` | `string` | No |  |
-| `ci_separated_cache` | `bool` | No |  |
-| `compliance_framework` | `string` | No |  |
+| `ci_separated_caches` | `bool` | No |  |
+| `compliance_frameworks` | `string` | No |  |
 | `container_expiration_policy` | `array` | No |  |
 | `container_registry_access_level` | `string` | No |  |
 | `container_registry_enabled` | `bool` | No |  |
 | `container_registry_image_prefix` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `creator_id` | `int` | No |  |
-| `custom_attribute` | `array` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -10303,7 +10254,7 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `emails_disabled` | `bool` | No |  |
 | `emails_enabled` | `bool` | No |  |
 | `empty_repo` | `bool` | No |  |
-| `enforce_auth_checks_on_upload` | `bool` | No |  |
+| `enforce_auth_checks_on_uploads` | `bool` | No |  |
 | `environments_access_level` | `string` | No |  |
 | `external_authorization_classification_label` | `string` | No |  |
 | `feature_flags_access_level` | `string` | No |  |
@@ -10328,7 +10279,7 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `lfs_enabled` | `bool` | No |  |
 | `license` | `array` | No |  |
 | `license_url` | `string` | No |  |
-| `link` | `array` | No |  |
+| `links` | `array` | No |  |
 | `marked_for_deletion_at` | `string` | No |  |
 | `marked_for_deletion_on` | `string` | No |  |
 | `max_artifacts_size` | `int` | No |  |
@@ -10343,8 +10294,8 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `merge_trains_enabled` | `string` | No |  |
 | `merge_trains_skip_train_allowed` | `string` | No |  |
 | `mirror` | `string` | No |  |
-| `mirror_overwrites_diverged_branch` | `string` | No |  |
-| `mirror_trigger_build` | `string` | No |  |
+| `mirror_overwrites_diverged_branches` | `string` | No |  |
+| `mirror_trigger_builds` | `string` | No |  |
 | `mirror_user_id` | `string` | No |  |
 | `model_experiments_access_level` | `string` | No |  |
 | `model_registry_access_level` | `string` | No |  |
@@ -10355,8 +10306,8 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `namespace` | `array` | No |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `bool` | No |  |
 | `only_allow_merge_if_all_status_checks_passed` | `string` | No |  |
-| `only_allow_merge_if_pipeline_succeed` | `bool` | No |  |
-| `only_mirror_protected_branch` | `string` | No |  |
+| `only_allow_merge_if_pipeline_succeeds` | `bool` | No |  |
+| `only_mirror_protected_branches` | `string` | No |  |
 | `open_issues_count` | `int` | No |  |
 | `owner` | `array` | No |  |
 | `package_registry_access_level` | `string` | No |  |
@@ -10367,7 +10318,7 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `pre_receive_secret_detection_enabled` | `bool` | No |  |
 | `prevent_merge_without_jira_issue` | `string` | No |  |
 | `printing_merge_request_link_enabled` | `bool` | No |  |
-| `public_job` | `bool` | No |  |
+| `public_jobs` | `bool` | No |  |
 | `readme_url` | `string` | No |  |
 | `releases_access_level` | `string` | No |  |
 | `remove_source_branch_after_merge` | `bool` | No |  |
@@ -10377,9 +10328,9 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `request_access_enabled` | `bool` | No |  |
 | `requirements_access_level` | `string` | No |  |
 | `requirements_enabled` | `string` | No |  |
-| `resolve_outdated_diff_discussion` | `bool` | No |  |
+| `resolve_outdated_diff_discussions` | `bool` | No |  |
 | `resource_group_default_process_mode` | `string` | No |  |
-| `restrict_user_defined_variable` | `bool` | No |  |
+| `restrict_user_defined_variables` | `bool` | No |  |
 | `runner_token_expiration_interval` | `int` | No |  |
 | `runners_token` | `string` | No |  |
 | `secret_push_protection_enabled` | `bool` | No |  |
@@ -10388,7 +10339,7 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `service_desk_address` | `string` | No |  |
 | `service_desk_enabled` | `bool` | No |  |
 | `shared_runners_enabled` | `bool` | No |  |
-| `shared_with_group` | `array` | No |  |
+| `shared_with_groups` | `array` | No |  |
 | `show_diff_preview_in_email` | `bool` | No |  |
 | `snippets_access_level` | `string` | No |  |
 | `snippets_enabled` | `bool` | No |  |
@@ -10397,13 +10348,13 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `squash_option` | `string` | No |  |
 | `ssh_url_to_repo` | `string` | No |  |
 | `star_count` | `int` | No |  |
-| `statistic` | `array` | No |  |
+| `statistics` | `array` | No |  |
 | `suggestion_commit_message` | `string` | No |  |
 | `tag_list` | `array` | No |  |
-| `topic` | `array` | No |  |
+| `topics` | `array` | No |  |
 | `updated_at` | `string` | No |  |
 | `visibility` | `string` | No |  |
-| `warn_about_potentially_unwanted_character` | `bool` | No |  |
+| `warn_about_potentially_unwanted_characters` | `bool` | No |  |
 | `web_based_commit_signing_enabled` | `string` | No |  |
 | `web_url` | `string` | No |  |
 | `wiki_access_level` | `string` | No |  |
@@ -10478,7 +10429,8 @@ $api_entities_project_daily_statistic = $client->ApiEntitiesProjectDailyStatisti
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fetch` | `array` | No |  |
+| `days` | `array` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 
@@ -10530,15 +10482,8 @@ $api_entities_project_export_status = $client->ApiEntitiesProjectExportStatus();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created_at` | `string` | No |  |
-| `description` | `string` | No |  |
-| `export_status` | `string` | No |  |
-| `id` | `int` | No |  |
-| `link` | `array` | No |  |
-| `name` | `string` | No |  |
-| `name_with_namespace` | `string` | No |  |
-| `path` | `string` | No |  |
-| `path_with_namespace` | `string` | No |  |
+| `api_url` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -10640,36 +10585,36 @@ $api_entities_project_hook = $client->ApiEntitiesProjectHook();
 | --- | --- | --- | --- |
 | `alert_status` | `mixed` | No |  |
 | `branch_filter_strategy` | `string` | No |  |
-| `confidential_issues_event` | `bool` | No |  |
-| `confidential_note_event` | `bool` | No |  |
+| `confidential_issues_events` | `bool` | No |  |
+| `confidential_note_events` | `bool` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_header` | `array` | No |  |
+| `custom_headers` | `array` | No |  |
 | `custom_webhook_template` | `string` | No |  |
-| `deployment_event` | `bool` | No |  |
+| `deployment_events` | `bool` | No |  |
 | `description` | `string` | No |  |
 | `disabled_until` | `string` | No |  |
-| `emoji_event` | `bool` | No |  |
+| `emoji_events` | `bool` | No |  |
 | `enable_ssl_verification` | `bool` | No |  |
-| `feature_flag_event` | `bool` | No |  |
+| `feature_flag_events` | `bool` | No |  |
 | `id` | `string` | No |  |
-| `issues_event` | `bool` | No |  |
-| `job_event` | `bool` | No |  |
-| `merge_requests_event` | `bool` | No |  |
-| `milestone_event` | `bool` | No |  |
+| `issues_events` | `bool` | No |  |
+| `job_events` | `bool` | No |  |
+| `merge_requests_events` | `bool` | No |  |
+| `milestone_events` | `bool` | No |  |
 | `name` | `string` | No |  |
-| `note_event` | `bool` | No |  |
-| `pipeline_event` | `bool` | No |  |
+| `note_events` | `bool` | No |  |
+| `pipeline_events` | `bool` | No |  |
 | `project_id` | `string` | No |  |
-| `push_event` | `bool` | No |  |
+| `push_events` | `bool` | No |  |
 | `push_events_branch_filter` | `string` | No |  |
-| `releases_event` | `bool` | No |  |
-| `repository_update_event` | `bool` | No |  |
-| `resource_access_token_event` | `bool` | No |  |
-| `tag_push_event` | `bool` | No |  |
+| `releases_events` | `bool` | No |  |
+| `repository_update_events` | `bool` | No |  |
+| `resource_access_token_events` | `bool` | No |  |
+| `tag_push_events` | `bool` | No |  |
 | `url` | `string` | No |  |
-| `url_variable` | `array` | No |  |
-| `vulnerability_event` | `bool` | No |  |
-| `wiki_page_event` | `bool` | No |  |
+| `url_variables` | `array` | No |  |
+| `vulnerability_events` | `bool` | No |  |
+| `wiki_page_events` | `bool` | No |  |
 
 ### Operations
 
@@ -10929,8 +10874,8 @@ $api_entities_project_snippet = $client->ApiEntitiesProjectSnippet();
 | `author` | `array` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
-| `file` | `array` | No |  |
 | `file_name` | `string` | No |  |
+| `files` | `array` | No |  |
 | `http_url_to_repo` | `string` | No |  |
 | `id` | `int` | No |  |
 | `imported` | `bool` | No |  |
@@ -11077,11 +11022,11 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `analytics_access_level` | `string` | No |  |
 | `approvals_before_merge` | `string` | No |  |
 | `archived` | `bool` | No |  |
-| `auto_cancel_pending_pipeline` | `string` | No |  |
+| `auto_cancel_pending_pipelines` | `string` | No |  |
 | `auto_devops_deploy_strategy` | `string` | No |  |
 | `auto_devops_enabled` | `bool` | No |  |
 | `auto_duo_code_review_enabled` | `string` | No |  |
-| `autoclose_referenced_issue` | `bool` | No |  |
+| `autoclose_referenced_issues` | `bool` | No |  |
 | `avatar_url` | `string` | No |  |
 | `build_git_strategy` | `string` | No |  |
 | `build_timeout` | `int` | No |  |
@@ -11090,23 +11035,23 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `ci_allow_fork_pipelines_to_run_in_parent_project` | `bool` | No |  |
 | `ci_config_path` | `string` | No |  |
 | `ci_default_git_depth` | `int` | No |  |
-| `ci_delete_pipelines_in_second` | `int` | No |  |
+| `ci_delete_pipelines_in_seconds` | `int` | No |  |
 | `ci_forward_deployment_enabled` | `bool` | No |  |
 | `ci_forward_deployment_rollback_allowed` | `bool` | No |  |
-| `ci_id_token_sub_claim_component` | `array` | No |  |
+| `ci_id_token_sub_claim_components` | `array` | No |  |
 | `ci_job_token_scope_enabled` | `bool` | No |  |
 | `ci_pipeline_variables_minimum_override_role` | `string` | No |  |
 | `ci_push_repository_for_job_token_allowed` | `bool` | No |  |
 | `ci_restrict_pipeline_cancellation_role` | `string` | No |  |
-| `ci_separated_cache` | `bool` | No |  |
-| `compliance_framework` | `string` | No |  |
+| `ci_separated_caches` | `bool` | No |  |
+| `compliance_frameworks` | `string` | No |  |
 | `container_expiration_policy` | `array` | No |  |
 | `container_registry_access_level` | `string` | No |  |
 | `container_registry_enabled` | `bool` | No |  |
 | `container_registry_image_prefix` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `creator_id` | `int` | No |  |
-| `custom_attribute` | `array` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -11114,7 +11059,7 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `emails_disabled` | `bool` | No |  |
 | `emails_enabled` | `bool` | No |  |
 | `empty_repo` | `bool` | No |  |
-| `enforce_auth_checks_on_upload` | `bool` | No |  |
+| `enforce_auth_checks_on_uploads` | `bool` | No |  |
 | `environments_access_level` | `string` | No |  |
 | `external_authorization_classification_label` | `string` | No |  |
 | `feature_flags_access_level` | `string` | No |  |
@@ -11139,7 +11084,7 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `lfs_enabled` | `bool` | No |  |
 | `license` | `array` | No |  |
 | `license_url` | `string` | No |  |
-| `link` | `array` | No |  |
+| `links` | `array` | No |  |
 | `marked_for_deletion_at` | `string` | No |  |
 | `marked_for_deletion_on` | `string` | No |  |
 | `max_artifacts_size` | `int` | No |  |
@@ -11154,8 +11099,8 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `merge_trains_enabled` | `string` | No |  |
 | `merge_trains_skip_train_allowed` | `string` | No |  |
 | `mirror` | `string` | No |  |
-| `mirror_overwrites_diverged_branch` | `string` | No |  |
-| `mirror_trigger_build` | `string` | No |  |
+| `mirror_overwrites_diverged_branches` | `string` | No |  |
+| `mirror_trigger_builds` | `string` | No |  |
 | `mirror_user_id` | `string` | No |  |
 | `model_experiments_access_level` | `string` | No |  |
 | `model_registry_access_level` | `string` | No |  |
@@ -11166,8 +11111,8 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `namespace` | `array` | No |  |
 | `only_allow_merge_if_all_discussions_are_resolved` | `bool` | No |  |
 | `only_allow_merge_if_all_status_checks_passed` | `string` | No |  |
-| `only_allow_merge_if_pipeline_succeed` | `bool` | No |  |
-| `only_mirror_protected_branch` | `string` | No |  |
+| `only_allow_merge_if_pipeline_succeeds` | `bool` | No |  |
+| `only_mirror_protected_branches` | `string` | No |  |
 | `open_issues_count` | `int` | No |  |
 | `owner` | `array` | No |  |
 | `package_registry_access_level` | `string` | No |  |
@@ -11175,11 +11120,11 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `pages_access_level` | `string` | No |  |
 | `path` | `string` | No |  |
 | `path_with_namespace` | `string` | No |  |
-| `permission` | `array` | No |  |
+| `permissions` | `array` | No |  |
 | `pre_receive_secret_detection_enabled` | `bool` | No |  |
 | `prevent_merge_without_jira_issue` | `string` | No |  |
 | `printing_merge_request_link_enabled` | `bool` | No |  |
-| `public_job` | `bool` | No |  |
+| `public_jobs` | `bool` | No |  |
 | `readme_url` | `string` | No |  |
 | `releases_access_level` | `string` | No |  |
 | `remove_source_branch_after_merge` | `bool` | No |  |
@@ -11189,9 +11134,9 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `request_access_enabled` | `bool` | No |  |
 | `requirements_access_level` | `string` | No |  |
 | `requirements_enabled` | `string` | No |  |
-| `resolve_outdated_diff_discussion` | `bool` | No |  |
+| `resolve_outdated_diff_discussions` | `bool` | No |  |
 | `resource_group_default_process_mode` | `string` | No |  |
-| `restrict_user_defined_variable` | `bool` | No |  |
+| `restrict_user_defined_variables` | `bool` | No |  |
 | `runner_token_expiration_interval` | `int` | No |  |
 | `runners_token` | `string` | No |  |
 | `secret_push_protection_enabled` | `bool` | No |  |
@@ -11200,7 +11145,7 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `service_desk_address` | `string` | No |  |
 | `service_desk_enabled` | `bool` | No |  |
 | `shared_runners_enabled` | `bool` | No |  |
-| `shared_with_group` | `array` | No |  |
+| `shared_with_groups` | `array` | No |  |
 | `show_diff_preview_in_email` | `bool` | No |  |
 | `snippets_access_level` | `string` | No |  |
 | `snippets_enabled` | `bool` | No |  |
@@ -11209,13 +11154,13 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `squash_option` | `string` | No |  |
 | `ssh_url_to_repo` | `string` | No |  |
 | `star_count` | `int` | No |  |
-| `statistic` | `array` | No |  |
+| `statistics` | `array` | No |  |
 | `suggestion_commit_message` | `string` | No |  |
 | `tag_list` | `array` | No |  |
-| `topic` | `array` | No |  |
+| `topics` | `array` | No |  |
 | `updated_at` | `string` | No |  |
 | `visibility` | `string` | No |  |
-| `warn_about_potentially_unwanted_character` | `bool` | No |  |
+| `warn_about_potentially_unwanted_characters` | `bool` | No |  |
 | `web_based_commit_signing_enabled` | `string` | No |  |
 | `web_url` | `string` | No |  |
 | `wiki_access_level` | `string` | No |  |
@@ -11510,10 +11455,10 @@ $api_entities_protected_branch = $client->ApiEntitiesProtectedBranch();
 | `code_owner_approval_required` | `bool` | No |  |
 | `id` | `int` | No |  |
 | `inherited` | `bool` | No |  |
-| `merge_access_level` | `array` | No |  |
+| `merge_access_levels` | `array` | No |  |
 | `name` | `string` | No |  |
-| `push_access_level` | `array` | No |  |
-| `unprotect_access_level` | `array` | No |  |
+| `push_access_levels` | `array` | No |  |
+| `unprotect_access_levels` | `array` | No |  |
 
 ### Operations
 
@@ -11595,8 +11540,14 @@ $api_entities_protected_tag = $client->ApiEntitiesProtectedTag();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `create_access_level` | `array` | No |  |
+| `access_level` | `int` | No |  |
+| `access_level_description` | `string` | No |  |
+| `create_access_levels` | `array` | No |  |
+| `deploy_key_id` | `int` | No |  |
+| `group_id` | `int` | No |  |
+| `id` | `int` | No |  |
 | `name` | `string` | No |  |
+| `user_id` | `int` | No |  |
 
 ### Operations
 
@@ -11724,6 +11675,7 @@ $api_entities_related_issue = $client->ApiEntitiesRelatedIssue();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `assignee` | `array` | No |  |
+| `assignees` | `array` | No |  |
 | `author` | `array` | No |  |
 | `blocking_issues_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
@@ -11732,11 +11684,11 @@ $api_entities_related_issue = $client->ApiEntitiesRelatedIssue();
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `discussion_locked` | `bool` | No |  |
-| `downvote` | `string` | No |  |
+| `downvotes` | `string` | No |  |
 | `due_date` | `string` | No |  |
 | `epic` | `array` | No |  |
 | `epic_iid` | `string` | No |  |
-| `has_task` | `bool` | No |  |
+| `has_tasks` | `bool` | No |  |
 | `health_status` | `string` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
@@ -11745,27 +11697,27 @@ $api_entities_related_issue = $client->ApiEntitiesRelatedIssue();
 | `issue_link_id` | `string` | No |  |
 | `issue_type` | `string` | No |  |
 | `iteration` | `array` | No |  |
-| `label` | `array` | No |  |
-| `link` | `array` | No |  |
+| `labels` | `array` | No |  |
 | `link_created_at` | `string` | No |  |
 | `link_type` | `string` | No |  |
 | `link_updated_at` | `string` | No |  |
+| `links` | `array` | No |  |
 | `merge_requests_count` | `string` | No |  |
 | `milestone` | `array` | No |  |
 | `moved_to_id` | `string` | No |  |
 | `project_id` | `int` | No |  |
-| `reference` | `array` | No |  |
+| `references` | `array` | No |  |
 | `service_desk_reply_to` | `string` | No |  |
 | `severity` | `string` | No |  |
 | `state` | `string` | No |  |
 | `subscribed` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
 | `task_status` | `string` | No |  |
-| `time_stat` | `array` | No |  |
+| `time_stats` | `array` | No |  |
 | `title` | `string` | No |  |
 | `type` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `upvote` | `string` | No |  |
+| `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
 | `web_url` | `string` | No |  |
 | `weight` | `string` | No |  |
@@ -11867,16 +11819,16 @@ $api_entities_release = $client->ApiEntitiesRelease();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `asset` | `array` | No |  |
+| `assets` | `array` | No |  |
 | `author` | `array` | No |  |
 | `commit` | `array` | No |  |
 | `commit_path` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
-| `evidence` | `array` | No |  |
-| `link` | `array` | No |  |
-| `milestone` | `array` | No |  |
+| `evidences` | `array` | No |  |
+| `links` | `array` | No |  |
+| `milestones` | `array` | No |  |
 | `name` | `string` | No |  |
 | `released_at` | `string` | No |  |
 | `tag_name` | `string` | No |  |
@@ -12053,15 +12005,15 @@ $api_entities_remote_mirror = $client->ApiEntitiesRemoteMirror();
 | --- | --- | --- | --- |
 | `auth_method` | `string` | No |  |
 | `enabled` | `bool` | No |  |
-| `host_key` | `array` | No |  |
+| `host_keys` | `array` | No |  |
 | `id` | `int` | No |  |
-| `keep_divergent_ref` | `bool` | No |  |
+| `keep_divergent_refs` | `bool` | No |  |
 | `last_error` | `int` | No |  |
 | `last_successful_update_at` | `string` | No |  |
 | `last_update_at` | `string` | No |  |
 | `last_update_started_at` | `string` | No |  |
 | `mirror_branch_regex` | `string` | No |  |
-| `only_protected_branch` | `bool` | No |  |
+| `only_protected_branches` | `bool` | No |  |
 | `update_status` | `string` | No |  |
 | `url` | `string` | No |  |
 
@@ -12145,15 +12097,15 @@ $api_entities_repository_health = $client->ApiEntitiesRepositoryHealth();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `alternate` | `array` | No |  |
+| `alternates` | `array` | No |  |
 | `bitmap` | `array` | No |  |
 | `commit_graph` | `array` | No |  |
 | `is_object_pool` | `bool` | No |  |
 | `last_full_repack` | `array` | No |  |
 | `multi_pack_index` | `array` | No |  |
 | `multi_pack_index_bitmap` | `array` | No |  |
-| `object` | `array` | No |  |
-| `reference` | `array` | No |  |
+| `objects` | `array` | No |  |
+| `references` | `array` | No |  |
 | `size` | `int` | No |  |
 | `updated_at` | `string` | No |  |
 
@@ -12218,7 +12170,7 @@ $api_entities_resource_access_token_with_token = $client->ApiEntitiesResourceAcc
 | `resource_id` | `int` | No |  |
 | `resource_type` | `string` | No |  |
 | `revoked` | `bool` | No |  |
-| `scope` | `array` | No |  |
+| `scopes` | `array` | No |  |
 | `token` | `string` | No |  |
 | `user_id` | `int` | No |  |
 
@@ -12343,8 +12295,8 @@ $api_entities_snippet = $client->ApiEntitiesSnippet();
 | `author` | `array` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
-| `file` | `array` | No |  |
 | `file_name` | `string` | No |  |
+| `files` | `array` | No |  |
 | `http_url_to_repo` | `string` | No |  |
 | `id` | `int` | No |  |
 | `imported` | `bool` | No |  |
@@ -12408,14 +12360,52 @@ $api_entities_ssh_key_with_user = $client->ApiEntitiesSshKeyWithUser();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
+| `bio` | `string` | No |  |
+| `bot` | `string` | No |  |
+| `can_create_group` | `bool` | No |  |
+| `can_create_project` | `bool` | No |  |
+| `color_scheme_id` | `int` | No |  |
+| `commit_email` | `string` | No |  |
+| `confirmed_at` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `expires_at` | `string` | No |  |
+| `current_sign_in_at` | `string` | No |  |
+| `custom_attributes` | `array` | No |  |
+| `discord` | `string` | No |  |
+| `email` | `string` | No |  |
+| `external` | `string` | No |  |
+| `extra_shared_runners_minutes_limit` | `string` | No |  |
+| `followers` | `string` | No |  |
+| `following` | `string` | No |  |
+| `github` | `string` | No |  |
 | `id` | `int` | No |  |
-| `key` | `string` | No |  |
-| `last_used_at` | `string` | No |  |
-| `title` | `string` | No |  |
-| `usage_type` | `string` | No |  |
-| `user` | `array` | No |  |
+| `identities` | `array` | No |  |
+| `is_followed` | `bool` | No |  |
+| `job_title` | `string` | No |  |
+| `last_activity_on` | `string` | No |  |
+| `last_sign_in_at` | `string` | No |  |
+| `linkedin` | `string` | No |  |
+| `local_time` | `string` | No |  |
+| `location` | `string` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `string` | No |  |
+| `organization` | `string` | No |  |
+| `preferred_language` | `string` | No |  |
+| `private_profile` | `bool` | No |  |
+| `projects_limit` | `int` | No |  |
+| `pronouns` | `string` | No |  |
+| `public_email` | `string` | No |  |
+| `scim_identities` | `array` | No |  |
+| `shared_runners_minutes_limit` | `string` | No |  |
+| `state` | `string` | No |  |
+| `theme_id` | `int` | No |  |
+| `twitter` | `string` | No |  |
+| `two_factor_enabled` | `bool` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
+| `website_url` | `string` | No |  |
+| `work_information` | `string` | No |  |
 
 ### Operations
 
@@ -12536,7 +12526,7 @@ $api_entities_system_broadcast_message = $client->ApiEntitiesSystemBroadcastMess
 | `id` | `string` | No |  |
 | `message` | `string` | No |  |
 | `starts_at` | `string` | No |  |
-| `target_access_level` | `string` | No |  |
+| `target_access_levels` | `string` | No |  |
 | `target_path` | `string` | No |  |
 | `theme` | `string` | No |  |
 
@@ -12800,13 +12790,15 @@ $api_entities_terraform_module_version = $client->ApiEntitiesTerraformModuleVers
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `module` | `string` | No |  |
+| `modules` | `string` | No |  |
 | `name` | `string` | No |  |
 | `provider` | `string` | No |  |
+| `providers` | `string` | No |  |
 | `root` | `string` | No |  |
 | `source` | `string` | No |  |
-| `submodule` | `string` | No |  |
+| `submodules` | `string` | No |  |
 | `version` | `string` | No |  |
+| `versions` | `string` | No |  |
 
 ### Operations
 
@@ -12922,14 +12914,23 @@ $api_entities_trigger = $client->ApiEntitiesTrigger();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `avatar_path` | `string` | No |  |
+| `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `description` | `string` | No |  |
 | `expires_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `last_used` | `string` | No |  |
+| `locked` | `bool` | No |  |
+| `name` | `string` | No |  |
 | `owner` | `array` | No |  |
+| `public_email` | `string` | No |  |
+| `state` | `string` | No |  |
 | `token` | `string` | No |  |
 | `updated_at` | `string` | No |  |
+| `username` | `string` | No |  |
+| `web_url` | `string` | No |  |
 
 ### Operations
 
@@ -13065,11 +13066,11 @@ $api_entities_user_count = $client->ApiEntitiesUserCount();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assigned_issue` | `int` | No |  |
-| `assigned_merge_request` | `int` | No |  |
-| `merge_request` | `int` | No |  |
-| `review_requested_merge_request` | `int` | No |  |
-| `todo` | `int` | No |  |
+| `assigned_issues` | `int` | No |  |
+| `assigned_merge_requests` | `int` | No |  |
+| `merge_requests` | `int` | No |  |
+| `review_requested_merge_requests` | `int` | No |  |
+| `todos` | `int` | No |  |
 
 ### Operations
 
@@ -13132,16 +13133,16 @@ $api_entities_user_public = $client->ApiEntitiesUserPublic();
 | `confirmed_at` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `current_sign_in_at` | `string` | No |  |
-| `custom_attribute` | `array` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `discord` | `string` | No |  |
 | `email` | `string` | No |  |
 | `external` | `string` | No |  |
 | `extra_shared_runners_minutes_limit` | `string` | No |  |
-| `follower` | `string` | No |  |
+| `followers` | `string` | No |  |
 | `following` | `string` | No |  |
 | `github` | `string` | No |  |
 | `id` | `int` | No |  |
-| `identity` | `array` | No |  |
+| `identities` | `array` | No |  |
 | `is_followed` | `bool` | No |  |
 | `job_title` | `string` | No |  |
 | `key` | `string` | No |  |
@@ -13156,9 +13157,9 @@ $api_entities_user_public = $client->ApiEntitiesUserPublic();
 | `preferred_language` | `string` | No |  |
 | `private_profile` | `bool` | No |  |
 | `projects_limit` | `int` | No |  |
-| `pronoun` | `string` | No |  |
+| `pronouns` | `string` | No |  |
 | `public_email` | `string` | No |  |
-| `scim_identity` | `array` | No |  |
+| `scim_identities` | `array` | No |  |
 | `shared_runners_minutes_limit` | `string` | No |  |
 | `state` | `string` | No |  |
 | `theme_id` | `int` | No |  |
@@ -13315,18 +13316,6 @@ Return the entity name.
 ```php
 $api_entities_wiki_page = $client->ApiEntitiesWikiPage();
 ```
-
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `content` | `string` | No |  |
-| `encoding` | `string` | No |  |
-| `format` | `string` | No |  |
-| `front_matter` | `array` | No |  |
-| `slug` | `string` | No |  |
-| `title` | `string` | No |  |
-| `wiki_page_meta_id` | `int` | No |  |
 
 ### Operations
 
@@ -14565,7 +14554,7 @@ $ee_api_entities_audit_event = $client->EeApiEntitiesAuditEvent();
 | --- | --- | --- | --- |
 | `author_id` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `detail` | `string` | No |  |
+| `details` | `string` | No |  |
 | `entity_id` | `string` | No |  |
 | `entity_type` | `string` | No |  |
 | `event_name` | `string` | No |  |
@@ -14629,13 +14618,9 @@ $ee_api_entities_billable_membership = $client->EeApiEntitiesBillableMembership(
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `access_level` | `array` | No |  |
-| `created_at` | `string` | No |  |
-| `expires_at` | `string` | No |  |
-| `id` | `string` | No |  |
-| `source_full_name` | `string` | No |  |
-| `source_id` | `string` | No |  |
-| `source_members_url` | `string` | No |  |
+| `custom_role` | `string` | No |  |
+| `integer_value` | `string` | No |  |
+| `string_value` | `string` | No |  |
 
 ### Operations
 
@@ -14714,7 +14699,7 @@ $ee_api_entities_geo_node_status = $client->EeApiEntitiesGeoNodeStatus();
 | `container_repositories_verified_in_percentage` | `string` | No |  |
 | `cursor_last_event_id` | `string` | No |  |
 | `cursor_last_event_timestamp` | `string` | No |  |
-| `db_replication_lag_second` | `string` | No |  |
+| `db_replication_lag_seconds` | `string` | No |  |
 | `dependency_proxy_blobs_checksum_failed_count` | `string` | No |  |
 | `dependency_proxy_blobs_checksum_total_count` | `string` | No |  |
 | `dependency_proxy_blobs_checksummed_count` | `string` | No |  |
@@ -14796,7 +14781,7 @@ $ee_api_entities_geo_node_status = $client->EeApiEntitiesGeoNodeStatus();
 | `lfs_objects_verification_total_count` | `string` | No |  |
 | `lfs_objects_verified_count` | `string` | No |  |
 | `lfs_objects_verified_in_percentage` | `string` | No |  |
-| `link` | `array` | No |  |
+| `links` | `array` | No |  |
 | `merge_request_diffs_checksum_failed_count` | `string` | No |  |
 | `merge_request_diffs_checksum_total_count` | `string` | No |  |
 | `merge_request_diffs_checksummed_count` | `string` | No |  |
@@ -14810,7 +14795,7 @@ $ee_api_entities_geo_node_status = $client->EeApiEntitiesGeoNodeStatus();
 | `merge_request_diffs_verified_count` | `string` | No |  |
 | `merge_request_diffs_verified_in_percentage` | `string` | No |  |
 | `missing_oauth_application` | `string` | No |  |
-| `namespace` | `array` | No |  |
+| `namespaces` | `array` | No |  |
 | `package_files_checksum_failed_count` | `string` | No |  |
 | `package_files_checksum_total_count` | `string` | No |  |
 | `package_files_checksummed_count` | `string` | No |  |
@@ -14875,7 +14860,7 @@ $ee_api_entities_geo_node_status = $client->EeApiEntitiesGeoNodeStatus();
 | `proxy_local_requests_event_count_weekly` | `string` | No |  |
 | `proxy_remote_requests_event_count_weekly` | `string` | No |  |
 | `replication_slots_count` | `string` | No |  |
-| `replication_slots_max_retained_wal_byte` | `string` | No |  |
+| `replication_slots_max_retained_wal_bytes` | `string` | No |  |
 | `replication_slots_used_count` | `string` | No |  |
 | `replication_slots_used_in_percentage` | `string` | No |  |
 | `repositories_checked_count` | `string` | No |  |
@@ -14896,7 +14881,7 @@ $ee_api_entities_geo_node_status = $client->EeApiEntitiesGeoNodeStatus();
 | `snippet_repositories_verification_total_count` | `string` | No |  |
 | `snippet_repositories_verified_count` | `string` | No |  |
 | `snippet_repositories_verified_in_percentage` | `string` | No |  |
-| `storage_shard` | `array` | No |  |
+| `storage_shards` | `array` | No |  |
 | `storage_shards_match` | `string` | No |  |
 | `terraform_state_versions_checksum_failed_count` | `string` | No |  |
 | `terraform_state_versions_checksum_total_count` | `string` | No |  |
@@ -14976,7 +14961,7 @@ $ee_api_entities_geo_pipeline_ref = $client->EeApiEntitiesGeoPipelineRef();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `pipeline_ref` | `array` | No |  |
+| `pipeline_refs` | `array` | No |  |
 
 ### Operations
 
@@ -15113,9 +15098,9 @@ $ee_api_entities_merge_request_approval_state = $client->EeApiEntitiesMergeReque
 | `approved` | `bool` | No |  |
 | `approved_by` | `array` | No |  |
 | `code_owner` | `bool` | No |  |
-| `contains_hidden_group` | `bool` | No |  |
-| `eligible_approver` | `array` | No |  |
-| `group` | `array` | No |  |
+| `contains_hidden_groups` | `bool` | No |  |
+| `eligible_approvers` | `array` | No |  |
+| `groups` | `array` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
 | `overridden` | `bool` | No |  |
@@ -15123,7 +15108,7 @@ $ee_api_entities_merge_request_approval_state = $client->EeApiEntitiesMergeReque
 | `rule_type` | `string` | No |  |
 | `section` | `string` | No |  |
 | `source_rule` | `array` | No |  |
-| `user` | `array` | No |  |
+| `users` | `array` | No |  |
 
 ### Operations
 
@@ -16528,9 +16513,9 @@ $metadata = $client->Metadata();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enterprise` | `bool` | No |  |
-| `kas` | `array` | No |  |
-| `revision` | `string` | No |  |
+| `enabled` | `bool` | No |  |
+| `externalK8sProxyUrl` | `string` | No |  |
+| `externalUrl` | `string` | No |  |
 | `version` | `string` | No |  |
 
 ### Operations
@@ -16909,13 +16894,22 @@ $nuget_package = $client->NugetPackage();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `catalog_entry` | `array` | No |  |
+| `authors` | `string` | No |  |
 | `count` | `int` | No |  |
+| `dependencyGroups` | `array` | No |  |
+| `description` | `string` | No |  |
+| `iconUrl` | `string` | No |  |
 | `id` | `string` | No |  |
-| `item` | `array` | No |  |
+| `items` | `array` | No |  |
+| `licenseUrl` | `string` | No |  |
 | `lower` | `string` | No |  |
-| `package_content` | `string` | No |  |
+| `packageContent` | `string` | No |  |
+| `projectUrl` | `string` | No |  |
+| `published` | `string` | No |  |
+| `summary` | `string` | No |  |
+| `tags` | `string` | No |  |
 | `upper` | `string` | No |  |
+| `version` | `string` | No |  |
 
 ### Operations
 
@@ -17233,7 +17227,7 @@ $project = $client->Project();
 | `updated_at` | `string` | No |  |
 | `user` | `array` | No |  |
 | `web_url` | `string` | No |  |
-| `yaml_error` | `string` | No |  |
+| `yaml_errors` | `string` | No |  |
 
 ### Operations
 
@@ -18549,7 +18543,7 @@ $starrer = $client->Starrer();
 | --- | --- | --- | --- |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
-| `custom_attribute` | `array` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `id` | `int` | No |  |
 | `locked` | `bool` | No |  |
 | `name` | `string` | No |  |
@@ -18829,7 +18823,7 @@ $test_report = $client->TestReport();
 | `skipped_count` | `int` | No |  |
 | `success_count` | `int` | No |  |
 | `suite_error` | `string` | No |  |
-| `test_case` | `array` | No |  |
+| `test_cases` | `array` | No |  |
 | `total_count` | `int` | No |  |
 | `total_time` | `int` | No |  |
 
@@ -18883,7 +18877,7 @@ $test_report_summary = $client->TestReportSummary();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `test_suite` | `array` | No |  |
+| `test_suites` | `array` | No |  |
 | `total` | `array` | No |  |
 
 ### Operations
@@ -19085,7 +19079,7 @@ $user = $client->User();
 | --- | --- | --- | --- |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
-| `custom_attribute` | `array` | No |  |
+| `custom_attributes` | `array` | No |  |
 | `id` | `int` | No |  |
 | `locked` | `bool` | No |  |
 | `name` | `string` | No |  |

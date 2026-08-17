@@ -44,7 +44,7 @@ class UsageDataEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.usage_data"), "usage_data_ref01"));
 
         $usage_data_ref01_data_result = $usage_data_ref01_ent->create($usage_data_ref01_data, null);
-        $usage_data_ref01_data = Helpers::to_map($usage_data_ref01_data_result);
+        $usage_data_ref01_data = Helpers::to_map(is_object($usage_data_ref01_data_result) && method_exists($usage_data_ref01_data_result, 'data_get') ? $usage_data_ref01_data_result->data_get() : $usage_data_ref01_data_result);
         $this->assertNotNull($usage_data_ref01_data);
 
         // LOAD

@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -45,14 +45,14 @@ class TestGroupEntity:
             vs.getpath(setup["data"], "new.group"), "group_ref01"))
         group_ref01_data["secret"] = setup["idmap"]["secret01"]
 
-        group_ref01_data = helpers.to_map(group_ref01_ent.create(group_ref01_data, None))
+        group_ref01_data = helpers.to_map(runner.entity_data(group_ref01_ent.create(group_ref01_data, None)))
         assert group_ref01_data is not None
 
         # UPDATE
         group_ref01_data_up0_up = {
         }
 
-        group_ref01_resdata_up0 = helpers.to_map(group_ref01_ent.update(group_ref01_data_up0_up, None))
+        group_ref01_resdata_up0 = helpers.to_map(runner.entity_data(group_ref01_ent.update(group_ref01_data_up0_up, None)))
         assert group_ref01_resdata_up0 is not None
 
         # LOAD
@@ -60,11 +60,6 @@ class TestGroupEntity:
         group_ref01_data_dt0_loaded = group_ref01_ent.load(group_ref01_match_dt0, None)
         assert group_ref01_data_dt0_loaded is not None
 
-        # REMOVE
-        group_ref01_match_rm0 = {
-            "id": group_ref01_data["id"],
-        }
-        group_ref01_ent.remove(group_ref01_match_rm0, None)
 
 
 

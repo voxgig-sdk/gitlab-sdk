@@ -64,7 +64,7 @@ describe('EeApiEntitiesIssuableMetricImageEntity', async () => {
     ee_api_entities_issuable_metric_image_ref01_data['issue_id'] = setup.idmap['issue01']
     ee_api_entities_issuable_metric_image_ref01_data['project_id'] = setup.idmap['project01']
 
-    ee_api_entities_issuable_metric_image_ref01_data = await ee_api_entities_issuable_metric_image_ref01_ent.create(ee_api_entities_issuable_metric_image_ref01_data)
+    ee_api_entities_issuable_metric_image_ref01_data = (await ee_api_entities_issuable_metric_image_ref01_ent.create(ee_api_entities_issuable_metric_image_ref01_data)).data()
     assert(null != ee_api_entities_issuable_metric_image_ref01_data.id)
 
 
@@ -77,7 +77,7 @@ describe('EeApiEntitiesIssuableMetricImageEntity', async () => {
     const ee_api_entities_issuable_metric_image_ref01_markdef_up0 = { name: 'created_at', value: 'Mark01-ee_api_entities_issuable_metric_image_ref01_' + setup.now }
     ;(ee_api_entities_issuable_metric_image_ref01_data_up0 as any)[ee_api_entities_issuable_metric_image_ref01_markdef_up0.name] = ee_api_entities_issuable_metric_image_ref01_markdef_up0.value
 
-    const ee_api_entities_issuable_metric_image_ref01_resdata_up0 = await ee_api_entities_issuable_metric_image_ref01_ent.update(ee_api_entities_issuable_metric_image_ref01_data_up0)
+    const ee_api_entities_issuable_metric_image_ref01_resdata_up0 = (await ee_api_entities_issuable_metric_image_ref01_ent.update(ee_api_entities_issuable_metric_image_ref01_data_up0)).data()
     assert(ee_api_entities_issuable_metric_image_ref01_resdata_up0.id === ee_api_entities_issuable_metric_image_ref01_data_up0.id)
 
     assert((ee_api_entities_issuable_metric_image_ref01_resdata_up0 as any)[ee_api_entities_issuable_metric_image_ref01_markdef_up0.name] === ee_api_entities_issuable_metric_image_ref01_markdef_up0.value)

@@ -45,7 +45,7 @@ class ComposerEntityTest extends TestCase
         $composer_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $composer_ref01_data_result = $composer_ref01_ent->create($composer_ref01_data, null);
-        $composer_ref01_data = Helpers::to_map($composer_ref01_data_result);
+        $composer_ref01_data = Helpers::to_map(is_object($composer_ref01_data_result) && method_exists($composer_ref01_data_result, 'data_get') ? $composer_ref01_data_result->data_get() : $composer_ref01_data_result);
         $this->assertNotNull($composer_ref01_data);
 
     }

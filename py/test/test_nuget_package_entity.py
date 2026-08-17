@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -42,8 +42,8 @@ class TestNugetPackageEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from config import make_config
-        cfg = make_config()
+        from gitlab_sdk.config import shared_config
+        cfg = shared_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = GitlabSDK.test(
                 seed, {"feature": {"streaming": {"active": True}}})
@@ -94,11 +94,11 @@ class TestNugetPackageEntity:
             "id": nuget_package_ref01_data["id"],
         }
 
-        nuget_package_ref01_markdef_up0_name = "lower"
+        nuget_package_ref01_markdef_up0_name = "authors"
         nuget_package_ref01_markdef_up0_value = "Mark01-nuget_package_ref01_" + str(setup["now"])
         nuget_package_ref01_data_up0_up[nuget_package_ref01_markdef_up0_name] = nuget_package_ref01_markdef_up0_value
 
-        nuget_package_ref01_resdata_up0 = helpers.to_map(nuget_package_ref01_ent.update(nuget_package_ref01_data_up0_up, None))
+        nuget_package_ref01_resdata_up0 = helpers.to_map(runner.entity_data(nuget_package_ref01_ent.update(nuget_package_ref01_data_up0_up, None)))
         assert nuget_package_ref01_resdata_up0 is not None
         assert nuget_package_ref01_resdata_up0["id"] == nuget_package_ref01_data_up0_up["id"]
         assert nuget_package_ref01_resdata_up0[nuget_package_ref01_markdef_up0_name] == nuget_package_ref01_markdef_up0_value
@@ -108,7 +108,7 @@ class TestNugetPackageEntity:
             "id": nuget_package_ref01_data["id"],
         }
         nuget_package_ref01_data_dt0_loaded = nuget_package_ref01_ent.load(nuget_package_ref01_match_dt0, None)
-        nuget_package_ref01_data_dt0_load_result = helpers.to_map(nuget_package_ref01_data_dt0_loaded)
+        nuget_package_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(nuget_package_ref01_data_dt0_loaded))
         assert nuget_package_ref01_data_dt0_load_result is not None
         assert nuget_package_ref01_data_dt0_load_result["id"] == nuget_package_ref01_data["id"]
 

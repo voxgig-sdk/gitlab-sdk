@@ -56,7 +56,7 @@ class ApiEntitiesErrorTrackingProjectSettingEntityTest extends TestCase
         $api_entities_error_tracking_project_setting_ref01_data_up0_up[$api_entities_error_tracking_project_setting_ref01_markdef_up0_name] = $api_entities_error_tracking_project_setting_ref01_markdef_up0_value;
 
         $api_entities_error_tracking_project_setting_ref01_resdata_up0_result = $api_entities_error_tracking_project_setting_ref01_ent->update($api_entities_error_tracking_project_setting_ref01_data_up0_up, null);
-        $api_entities_error_tracking_project_setting_ref01_resdata_up0 = Helpers::to_map($api_entities_error_tracking_project_setting_ref01_resdata_up0_result);
+        $api_entities_error_tracking_project_setting_ref01_resdata_up0 = Helpers::to_map(is_object($api_entities_error_tracking_project_setting_ref01_resdata_up0_result) && method_exists($api_entities_error_tracking_project_setting_ref01_resdata_up0_result, 'data_get') ? $api_entities_error_tracking_project_setting_ref01_resdata_up0_result->data_get() : $api_entities_error_tracking_project_setting_ref01_resdata_up0_result);
         $this->assertNotNull($api_entities_error_tracking_project_setting_ref01_resdata_up0);
         $this->assertEquals($api_entities_error_tracking_project_setting_ref01_resdata_up0[$api_entities_error_tracking_project_setting_ref01_markdef_up0_name], $api_entities_error_tracking_project_setting_ref01_markdef_up0_value);
 

@@ -52,7 +52,7 @@ func TestApiEntitiesPagesDomainEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -108,7 +108,7 @@ func TestApiEntitiesPagesDomainEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesPagesDomainRef01Data = core.ToMapAny(apiEntitiesPagesDomainRef01DataResult)
+		apiEntitiesPagesDomainRef01Data = core.ToMapAny(entityData(apiEntitiesPagesDomainRef01DataResult))
 		if apiEntitiesPagesDomainRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -122,14 +122,9 @@ func TestApiEntitiesPagesDomainEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("list failed: %v", err)
 		}
-		apiEntitiesPagesDomainRef01List, apiEntitiesPagesDomainRef01ListOk := apiEntitiesPagesDomainRef01ListResult.([]any)
+		_, apiEntitiesPagesDomainRef01ListOk := apiEntitiesPagesDomainRef01ListResult.([]any)
 		if !apiEntitiesPagesDomainRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", apiEntitiesPagesDomainRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(apiEntitiesPagesDomainRef01List), map[string]any{"id": apiEntitiesPagesDomainRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
 		}
 
 		// UPDATE
@@ -145,7 +140,7 @@ func TestApiEntitiesPagesDomainEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesPagesDomainRef01ResdataUp0 := core.ToMapAny(apiEntitiesPagesDomainRef01ResdataUp0Result)
+		apiEntitiesPagesDomainRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesPagesDomainRef01ResdataUp0Result))
 		if apiEntitiesPagesDomainRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

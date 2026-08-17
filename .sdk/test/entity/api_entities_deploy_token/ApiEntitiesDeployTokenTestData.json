@@ -7,7 +7,7 @@
         "id": "API_ENTITIES_DEPLOY_TOKEN00",
         "name": "s49",
         "revoked": true,
-        "scope": [],
+        "scopes": [],
         "username": "s4c",
         "group_id": "GROUP01",
         "project_id": "PROJECT01"
@@ -18,7 +18,7 @@
         "id": "API_ENTITIES_DEPLOY_TOKEN01",
         "name": "s8f",
         "revoked": true,
-        "scope": [],
+        "scopes": [],
         "username": "s92",
         "group_id": "GROUP01",
         "project_id": "PROJECT01"
@@ -29,7 +29,7 @@
         "id": "API_ENTITIES_DEPLOY_TOKEN02",
         "name": "sd5",
         "revoked": true,
-        "scope": [],
+        "scopes": [],
         "username": "sd8",
         "group_id": "GROUP01",
         "project_id": "PROJECT01"
@@ -43,7 +43,7 @@
         "expires_at": "s119",
         "name": "s11b",
         "revoked": true,
-        "scope": [],
+        "scopes": [],
         "username": "s11e"
       }
     }

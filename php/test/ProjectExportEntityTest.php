@@ -44,7 +44,7 @@ class ProjectExportEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.project_export"), "project_export_ref01"));
 
         $project_export_ref01_data_result = $project_export_ref01_ent->create($project_export_ref01_data, null);
-        $project_export_ref01_data = Helpers::to_map($project_export_ref01_data_result);
+        $project_export_ref01_data = Helpers::to_map(is_object($project_export_ref01_data_result) && method_exists($project_export_ref01_data_result, 'data_get') ? $project_export_ref01_data_result->data_get() : $project_export_ref01_data_result);
         $this->assertNotNull($project_export_ref01_data);
 
         // LOAD

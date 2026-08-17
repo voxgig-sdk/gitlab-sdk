@@ -38,7 +38,7 @@ class GeoEntityTest < Minitest::Test
     geo_ref01_data["replicable_name"] = setup[:idmap]["replicable_name01"]
 
     geo_ref01_data_result = geo_ref01_ent.create(geo_ref01_data, nil)
-    geo_ref01_data = Helpers.to_map(geo_ref01_data_result)
+    geo_ref01_data = Helpers.to_map(geo_ref01_data_result.respond_to?(:data_get) ? geo_ref01_data_result.data_get : geo_ref01_data_result)
     assert !geo_ref01_data.nil?
 
     # LOAD

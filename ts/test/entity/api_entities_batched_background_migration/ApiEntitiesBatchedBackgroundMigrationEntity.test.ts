@@ -63,7 +63,7 @@ describe('ApiEntitiesBatchedBackgroundMigrationEntity', async () => {
     const api_entities_batched_background_migration_ref01_ent = client.ApiEntitiesBatchedBackgroundMigration()
     const api_entities_batched_background_migration_ref01_match: any = {}
 
-    const api_entities_batched_background_migration_ref01_list = await api_entities_batched_background_migration_ref01_ent.list(api_entities_batched_background_migration_ref01_match)
+    const api_entities_batched_background_migration_ref01_list = (await api_entities_batched_background_migration_ref01_ent.list(api_entities_batched_background_migration_ref01_match)).map((e: any) => e.data())
 
 
     // UPDATE
@@ -73,7 +73,7 @@ describe('ApiEntitiesBatchedBackgroundMigrationEntity', async () => {
     const api_entities_batched_background_migration_ref01_markdef_up0 = { name: 'column_name', value: 'Mark01-api_entities_batched_background_migration_ref01_' + setup.now }
     ;(api_entities_batched_background_migration_ref01_data_up0 as any)[api_entities_batched_background_migration_ref01_markdef_up0.name] = api_entities_batched_background_migration_ref01_markdef_up0.value
 
-    const api_entities_batched_background_migration_ref01_resdata_up0 = await api_entities_batched_background_migration_ref01_ent.update(api_entities_batched_background_migration_ref01_data_up0)
+    const api_entities_batched_background_migration_ref01_resdata_up0 = (await api_entities_batched_background_migration_ref01_ent.update(api_entities_batched_background_migration_ref01_data_up0)).data()
     assert(api_entities_batched_background_migration_ref01_resdata_up0.id === api_entities_batched_background_migration_ref01_data_up0.id)
 
     assert((api_entities_batched_background_migration_ref01_resdata_up0 as any)[api_entities_batched_background_migration_ref01_markdef_up0.name] === api_entities_batched_background_migration_ref01_markdef_up0.value)
@@ -82,7 +82,7 @@ describe('ApiEntitiesBatchedBackgroundMigrationEntity', async () => {
     // LOAD
     const api_entities_batched_background_migration_ref01_match_dt0: any = {}
     api_entities_batched_background_migration_ref01_match_dt0.id = api_entities_batched_background_migration_ref01_data.id
-    const api_entities_batched_background_migration_ref01_data_dt0 = await api_entities_batched_background_migration_ref01_ent.load(api_entities_batched_background_migration_ref01_match_dt0)
+    const api_entities_batched_background_migration_ref01_data_dt0 = (await api_entities_batched_background_migration_ref01_ent.load(api_entities_batched_background_migration_ref01_match_dt0)).data()
     assert(api_entities_batched_background_migration_ref01_data_dt0.id === api_entities_batched_background_migration_ref01_data.id)
 
 

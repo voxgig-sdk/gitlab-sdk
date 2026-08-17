@@ -45,7 +45,7 @@ class PypiEntityTest extends TestCase
         $pypi_ref01_data["project_id"] = $setup["idmap"]["project01"];
 
         $pypi_ref01_data_result = $pypi_ref01_ent->create($pypi_ref01_data, null);
-        $pypi_ref01_data = Helpers::to_map($pypi_ref01_data_result);
+        $pypi_ref01_data = Helpers::to_map(is_object($pypi_ref01_data_result) && method_exists($pypi_ref01_data_result, 'data_get') ? $pypi_ref01_data_result->data_get() : $pypi_ref01_data_result);
         $this->assertNotNull($pypi_ref01_data);
 
     }

@@ -43,7 +43,7 @@ describe("PypiPackageEntity", function()
 
     local pypi_package_ref01_data_result, err = pypi_package_ref01_ent:create(pypi_package_ref01_data, nil)
     assert.is_nil(err)
-    pypi_package_ref01_data = helpers.to_map(pypi_package_ref01_data_result)
+    pypi_package_ref01_data = helpers.to_map(type(pypi_package_ref01_data_result) == 'table' and pypi_package_ref01_data_result.data_get and pypi_package_ref01_data_result:data_get() or pypi_package_ref01_data_result)
     assert.is_not_nil(pypi_package_ref01_data)
 
     -- LOAD

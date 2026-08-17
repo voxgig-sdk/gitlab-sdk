@@ -68,7 +68,7 @@ describe('ApiEntitiesPackagesConanRecipeRevisionEntity', async () => {
     api_entities_packages_conan_recipe_revision_ref01_match['package_version'] = setup.idmap['package_version01']
     api_entities_packages_conan_recipe_revision_ref01_match['project_id'] = setup.idmap['project01']
 
-    const api_entities_packages_conan_recipe_revision_ref01_list = await api_entities_packages_conan_recipe_revision_ref01_ent.list(api_entities_packages_conan_recipe_revision_ref01_match)
+    const api_entities_packages_conan_recipe_revision_ref01_list = (await api_entities_packages_conan_recipe_revision_ref01_ent.list(api_entities_packages_conan_recipe_revision_ref01_match)).map((e: any) => e.data())
 
 
   })

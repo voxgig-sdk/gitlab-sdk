@@ -68,7 +68,7 @@ func TestProjectsJobTokenScopeEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		projectsJobTokenScopeRef01ResdataUp0 := core.ToMapAny(projectsJobTokenScopeRef01ResdataUp0Result)
+		projectsJobTokenScopeRef01ResdataUp0 := core.ToMapAny(entityData(projectsJobTokenScopeRef01ResdataUp0Result))
 		if projectsJobTokenScopeRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}

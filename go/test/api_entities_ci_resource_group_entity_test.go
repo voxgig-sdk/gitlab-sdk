@@ -52,7 +52,7 @@ func TestApiEntitiesCiResourceGroupEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -137,7 +137,7 @@ func TestApiEntitiesCiResourceGroupEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesCiResourceGroupRef01ResdataUp0 := core.ToMapAny(apiEntitiesCiResourceGroupRef01ResdataUp0Result)
+		apiEntitiesCiResourceGroupRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesCiResourceGroupRef01ResdataUp0Result))
 		if apiEntitiesCiResourceGroupRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -156,7 +156,7 @@ func TestApiEntitiesCiResourceGroupEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesCiResourceGroupRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesCiResourceGroupRef01DataDt0Loaded)
+		apiEntitiesCiResourceGroupRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesCiResourceGroupRef01DataDt0Loaded))
 		if apiEntitiesCiResourceGroupRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

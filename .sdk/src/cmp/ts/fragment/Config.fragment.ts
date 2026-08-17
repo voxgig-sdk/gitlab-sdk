@@ -19,7 +19,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Gitlab',
   }
 
 
@@ -29,9 +29,9 @@ class Config {
 
 
   options = {
-    base: '$$main.kit.info.servers.0.url$$',
+    base: 'BASEURL',
 
-    'AUTHBLOCK'headers: 'HEADERS',
+    'SERVERBLOCK''AUTHBLOCK'headers: 'HEADERS',
 
     entity: {
       // #EntityConfigs

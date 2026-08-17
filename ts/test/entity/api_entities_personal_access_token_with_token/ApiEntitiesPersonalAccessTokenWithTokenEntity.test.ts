@@ -62,7 +62,7 @@ describe('ApiEntitiesPersonalAccessTokenWithTokenEntity', async () => {
     const api_entities_personal_access_token_with_token_ref01_ent = client.ApiEntitiesPersonalAccessTokenWithToken()
     let api_entities_personal_access_token_with_token_ref01_data = setup.data.new.api_entities_personal_access_token_with_token['api_entities_personal_access_token_with_token_ref01']
 
-    api_entities_personal_access_token_with_token_ref01_data = await api_entities_personal_access_token_with_token_ref01_ent.create(api_entities_personal_access_token_with_token_ref01_data)
+    api_entities_personal_access_token_with_token_ref01_data = (await api_entities_personal_access_token_with_token_ref01_ent.create(api_entities_personal_access_token_with_token_ref01_data)).data()
     assert(null != api_entities_personal_access_token_with_token_ref01_data.id)
 
 

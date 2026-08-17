@@ -51,7 +51,7 @@ func TestApiEntitiesDeployKeysProjectEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -107,7 +107,7 @@ func TestApiEntitiesDeployKeysProjectEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesDeployKeysProjectRef01Data = core.ToMapAny(apiEntitiesDeployKeysProjectRef01DataResult)
+		apiEntitiesDeployKeysProjectRef01Data = core.ToMapAny(entityData(apiEntitiesDeployKeysProjectRef01DataResult))
 		if apiEntitiesDeployKeysProjectRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -142,7 +142,7 @@ func TestApiEntitiesDeployKeysProjectEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesDeployKeysProjectRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesDeployKeysProjectRef01DataDt0Loaded)
+		apiEntitiesDeployKeysProjectRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesDeployKeysProjectRef01DataDt0Loaded))
 		if apiEntitiesDeployKeysProjectRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

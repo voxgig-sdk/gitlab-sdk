@@ -64,7 +64,7 @@ describe('ApiEntitiesBasicProjectDetailEntity', async () => {
     api_entities_basic_project_detail_ref01_data['project_id'] = setup.idmap['project01']
     api_entities_basic_project_detail_ref01_data['user_id'] = setup.idmap['user01']
 
-    api_entities_basic_project_detail_ref01_data = await api_entities_basic_project_detail_ref01_ent.create(api_entities_basic_project_detail_ref01_data)
+    api_entities_basic_project_detail_ref01_data = (await api_entities_basic_project_detail_ref01_ent.create(api_entities_basic_project_detail_ref01_data)).data()
     assert(null != api_entities_basic_project_detail_ref01_data.id)
 
 
@@ -72,7 +72,7 @@ describe('ApiEntitiesBasicProjectDetailEntity', async () => {
     const api_entities_basic_project_detail_ref01_match: any = {}
     api_entities_basic_project_detail_ref01_match['project_id'] = setup.idmap['project01']
 
-    const api_entities_basic_project_detail_ref01_list = await api_entities_basic_project_detail_ref01_ent.list(api_entities_basic_project_detail_ref01_match)
+    const api_entities_basic_project_detail_ref01_list = (await api_entities_basic_project_detail_ref01_ent.list(api_entities_basic_project_detail_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(api_entities_basic_project_detail_ref01_list, { id: api_entities_basic_project_detail_ref01_data.id })))
 

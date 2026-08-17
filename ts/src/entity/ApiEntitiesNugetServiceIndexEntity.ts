@@ -37,7 +37,7 @@ class ApiEntitiesNugetServiceIndexEntity extends GitlabEntityBase<ApiEntitiesNug
 
 
 
-  async list(this: any, reqmatch?: ApiEntitiesNugetServiceIndexListMatch, ctrl?: Control): Promise<ApiEntitiesNugetServiceIndex[]> {
+  async list(this: any, reqmatch?: ApiEntitiesNugetServiceIndexListMatch, ctrl?: Control): Promise<ApiEntitiesNugetServiceIndexEntity[]> {
 
     const utility = this._utility
 

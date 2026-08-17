@@ -8,9 +8,13 @@ import {
   Fragment,
   Line,
   cmp,
+  configDefinition,
+  configReprSetting,
   each,
   isAuthActive,
+  isConfigData,
   resolveAuthPrefix,
+  serverVariables,
 } from '@voxgig/sdkgen'
 
 
@@ -25,6 +29,7 @@ import {
 import {
   clean,
   formatLuaTable,
+  luaLongString,
 } from './utility_lua'
 
 
@@ -46,16 +51,70 @@ const Config = cmp(async function Config(props: any) {
   let baseUrl = ''
   try { baseUrl = getModelPath(model, `main.${KIT}.info.servers.0.url`) } catch (_e) { }
 
+  // Templated server URL: emit the spec's server-variable defaults so the
+  // runtime can substitute {name} placeholders in base (see make_options).
+  const svars = serverVariables(model)
+  const serverBlock = 0 === svars.length ? '' :
+    '      server = {\n' +
+    svars.map((v: any) => `        [${JSON.stringify(v.name)}] = ${JSON.stringify(v.dflt)},\n`).join('') +
+    '      },\n'
+
   const authBlock = authActive
     ? `      auth = {
         prefix = "${authPrefix}",
       },\n`
     : ''
 
+  // The same config as an OBJECT, built by the shared helper so this target's
+  // literal and the data that replaces it above the threshold are the same
+  // config by construction. The JSON is what the threshold is measured on -
+  // emitted source size varies by language, the model does not.
+  const { json: configJson } = configDefinition(model)
+  const asData = isConfigData(configJson, configReprSetting(model))
+
   File({ name: 'config.' + target.ext }, () => {
 
     Content(`-- ${model.const.Name} SDK configuration
 
+`)
+
+    // ABOVE THE THRESHOLD: emit the model as DATA.
+    //
+    // A table constructor makes the Lua parser emit a SETTABLE per entry and
+    // the VM run them all on every load; a long-bracket string is one token,
+    // and dkjson's decoder builds the table from it.
+    //
+    // dkjson is already a runtime dependency - `utility/fetcher.lua` decodes
+    // every HTTP response with it - so this adds nothing to the SDK.
+    //
+    // Null handling agrees between the branches by construction: dkjson maps
+    // JSON null to nil, and assigning nil to a table key removes it, which is
+    // exactly what the literal branch does when `formatLuaTable` emits `nil`.
+    if (asData) {
+      Content(`local json = require("dkjson")
+
+
+-- THE API MODEL, EMBEDDED AS DATA (sdkgen rung L1).
+--
+-- Emitted only above a size threshold, or when \`main.kit.config.repr\` pins
+-- it: for a small model the table literal is smaller and far easier to read
+-- when debugging.
+local CONFIG_DATA = ${luaLongString(configJson)}
+
+
+-- Parse a fresh, fully materialised config table. Every call re-parses, so
+-- prefer require("config_shared") unless you need a private copy you intend
+-- to mutate.
+local function make_config()
+  return json.decode(CONFIG_DATA)
+end
+`)
+    }
+    else {
+
+    Content(`-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -73,7 +132,7 @@ local function make_config()
     Content(`    },
     options = {
       base = "${baseUrl}",
-${authBlock}      headers = ${formatLuaTable(headers, 3)},
+${serverBlock}${authBlock}      headers = ${formatLuaTable(headers, 3)},
       entity = {
 `)
 
@@ -90,10 +149,13 @@ ${authBlock}      headers = ${formatLuaTable(headers, 3)},
         name: n.name,
         op: n.op,
         relations: n.relations,
-      }), a), {}), 2)},
+      }, true), a), {}), 2)},
   }
 end
+`)
+    }
 
+    Content(`
 
 local function make_feature(name)
   local features = require("features")
@@ -112,6 +174,32 @@ end
 
 
 return make_config
+`)
+  })
+
+  // A sibling module rather than a member of `config`: `config` returns a
+  // bare function (`require("config")()`), and turning it into a table would
+  // change its observable type for any consumer holding it as a factory.
+  File({ name: 'config_shared.' + target.ext }, () => {
+    Content(`-- ${model.const.Name} SDK shared configuration
+
+local make_config = require("config")
+
+local value = nil
+
+
+-- Return the config for this Lua state, built once on first use. The SDK
+-- reads the config on every request and never writes to it, so one instance
+-- is shared by every client rather than rebuilt per client.
+--
+-- The returned table is shared: treat it as read-only. Callers that need to
+-- mutate should use require("config")(), which always returns a fresh copy.
+return function()
+  if value == nil then
+    value = make_config()
+  end
+  return value
+end
 `)
   })
 })

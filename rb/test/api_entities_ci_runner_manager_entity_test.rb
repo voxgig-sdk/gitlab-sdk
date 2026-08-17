@@ -45,7 +45,7 @@ class ApiEntitiesCiRunnerManagerEntityTest < Minitest::Test
       "id" => api_entities_ci_runner_manager_ref01_data["id"],
     }
     api_entities_ci_runner_manager_ref01_data_dt0_loaded = api_entities_ci_runner_manager_ref01_ent.load(api_entities_ci_runner_manager_ref01_match_dt0, nil)
-    api_entities_ci_runner_manager_ref01_data_dt0_load_result = Helpers.to_map(api_entities_ci_runner_manager_ref01_data_dt0_loaded)
+    api_entities_ci_runner_manager_ref01_data_dt0_load_result = Helpers.to_map(api_entities_ci_runner_manager_ref01_data_dt0_loaded.respond_to?(:data_get) ? api_entities_ci_runner_manager_ref01_data_dt0_loaded.data_get : api_entities_ci_runner_manager_ref01_data_dt0_loaded)
     assert !api_entities_ci_runner_manager_ref01_data_dt0_load_result.nil?
     assert_equal api_entities_ci_runner_manager_ref01_data_dt0_load_result["id"], api_entities_ci_runner_manager_ref01_data["id"]
 

@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk import GitlabSDK
-from core import helpers
+from gitlab_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -46,7 +46,7 @@ class TestRemoteMirrorEntity:
         remote_mirror_ref01_data["mirror_id"] = setup["idmap"]["mirror01"]
         remote_mirror_ref01_data["project_id"] = setup["idmap"]["project01"]
 
-        remote_mirror_ref01_data = helpers.to_map(remote_mirror_ref01_ent.create(remote_mirror_ref01_data, None))
+        remote_mirror_ref01_data = helpers.to_map(runner.entity_data(remote_mirror_ref01_ent.create(remote_mirror_ref01_data, None)))
         assert remote_mirror_ref01_data is not None
 
         # LOAD
@@ -54,11 +54,6 @@ class TestRemoteMirrorEntity:
         remote_mirror_ref01_data_dt0_loaded = remote_mirror_ref01_ent.load(remote_mirror_ref01_match_dt0, None)
         assert remote_mirror_ref01_data_dt0_loaded is not None
 
-        # REMOVE
-        remote_mirror_ref01_match_rm0 = {
-            "id": remote_mirror_ref01_data["id"],
-        }
-        remote_mirror_ref01_ent.remove(remote_mirror_ref01_match_rm0, None)
 
 
 

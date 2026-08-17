@@ -39,7 +39,7 @@ describe("EeApiEntitiesSshCertificateEntity", function()
     assert.are.equal(3, #seen)
 
     -- Inbound: streaming active -> yields each item from the feature.
-    local config = require("config")()
+    local config = require("config_shared")()
     if type(config.feature) == "table" and config.feature.streaming ~= nil then
       local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
       local got = {}
@@ -83,7 +83,7 @@ describe("EeApiEntitiesSshCertificateEntity", function()
 
     local ee_api_entities_ssh_certificate_ref01_data_result, err = ee_api_entities_ssh_certificate_ref01_ent:create(ee_api_entities_ssh_certificate_ref01_data, nil)
     assert.is_nil(err)
-    ee_api_entities_ssh_certificate_ref01_data = helpers.to_map(ee_api_entities_ssh_certificate_ref01_data_result)
+    ee_api_entities_ssh_certificate_ref01_data = helpers.to_map(type(ee_api_entities_ssh_certificate_ref01_data_result) == 'table' and ee_api_entities_ssh_certificate_ref01_data_result.data_get and ee_api_entities_ssh_certificate_ref01_data_result:data_get() or ee_api_entities_ssh_certificate_ref01_data_result)
     assert.is_not_nil(ee_api_entities_ssh_certificate_ref01_data)
     assert.is_not_nil(ee_api_entities_ssh_certificate_ref01_data["id"])
 

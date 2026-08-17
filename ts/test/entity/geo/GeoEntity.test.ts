@@ -63,7 +63,7 @@ describe('GeoEntity', async () => {
     let geo_ref01_data = setup.data.new.geo['geo_ref01']
     geo_ref01_data['replicable_name'] = setup.idmap['replicable_name01']
 
-    geo_ref01_data = await geo_ref01_ent.create(geo_ref01_data)
+    geo_ref01_data = (await geo_ref01_ent.create(geo_ref01_data)).data()
     assert(null != geo_ref01_data)
 
 

@@ -10,7 +10,7 @@
         "path": "s5f",
         "project_id": "PROJECT01",
         "updated_at": "s61",
-        "user_xid": "s62"
+        "user_xids": "s62"
       },
       "API_ENTITIES_FEATURE_FLAG_USER_LIST01": {
         "created_at": "sb4",
@@ -21,7 +21,7 @@
         "path": "sb9",
         "project_id": "PROJECT01",
         "updated_at": "sbb",
-        "user_xid": "sbc"
+        "user_xids": "sbc"
       },
       "API_ENTITIES_FEATURE_FLAG_USER_LIST02": {
         "created_at": "s10e",
@@ -32,7 +32,7 @@
         "path": "s113",
         "project_id": "PROJECT01",
         "updated_at": "s115",
-        "user_xid": "s116"
+        "user_xids": "s116"
       }
     }
   },
@@ -46,7 +46,7 @@
         "path": "s16d",
         "project_id": "PROJECT01",
         "updated_at": "s16f",
-        "user_xid": "s170"
+        "user_xids": "s170"
       }
     }
   }

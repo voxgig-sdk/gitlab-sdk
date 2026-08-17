@@ -52,7 +52,7 @@ func TestApiEntitiesFreezePeriodEntity(t *testing.T) {
 
 		// Inbound: streaming active -> yields each item from the feature iterator.
 		hasStreaming := false
-		if fm, ok := core.MakeConfig()["feature"].(map[string]any); ok {
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
 			_, hasStreaming = fm["streaming"]
 		}
 		if hasStreaming {
@@ -108,7 +108,7 @@ func TestApiEntitiesFreezePeriodEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("create failed: %v", err)
 		}
-		apiEntitiesFreezePeriodRef01Data = core.ToMapAny(apiEntitiesFreezePeriodRef01DataResult)
+		apiEntitiesFreezePeriodRef01Data = core.ToMapAny(entityData(apiEntitiesFreezePeriodRef01DataResult))
 		if apiEntitiesFreezePeriodRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
@@ -149,7 +149,7 @@ func TestApiEntitiesFreezePeriodEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("update failed: %v", err)
 		}
-		apiEntitiesFreezePeriodRef01ResdataUp0 := core.ToMapAny(apiEntitiesFreezePeriodRef01ResdataUp0Result)
+		apiEntitiesFreezePeriodRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesFreezePeriodRef01ResdataUp0Result))
 		if apiEntitiesFreezePeriodRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
@@ -168,7 +168,7 @@ func TestApiEntitiesFreezePeriodEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		apiEntitiesFreezePeriodRef01DataDt0LoadResult := core.ToMapAny(apiEntitiesFreezePeriodRef01DataDt0Loaded)
+		apiEntitiesFreezePeriodRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesFreezePeriodRef01DataDt0Loaded))
 		if apiEntitiesFreezePeriodRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

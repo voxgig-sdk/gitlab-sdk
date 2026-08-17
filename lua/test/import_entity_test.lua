@@ -41,7 +41,7 @@ describe("ImportEntity", function()
 
     local import_ref01_data_result, err = import_ref01_ent:create(import_ref01_data, nil)
     assert.is_nil(err)
-    import_ref01_data = helpers.to_map(import_ref01_data_result)
+    import_ref01_data = helpers.to_map(type(import_ref01_data_result) == 'table' and import_ref01_data_result.data_get and import_ref01_data_result:data_get() or import_ref01_data_result)
     assert.is_not_nil(import_ref01_data)
 
   end)

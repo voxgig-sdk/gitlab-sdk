@@ -41,7 +41,7 @@ describe("ProjectEntityEntity", function()
 
     local project_entity_ref01_data_result, err = project_entity_ref01_ent:create(project_entity_ref01_data, nil)
     assert.is_nil(err)
-    project_entity_ref01_data = helpers.to_map(project_entity_ref01_data_result)
+    project_entity_ref01_data = helpers.to_map(type(project_entity_ref01_data_result) == 'table' and project_entity_ref01_data_result.data_get and project_entity_ref01_data_result:data_get() or project_entity_ref01_data_result)
     assert.is_not_nil(project_entity_ref01_data)
 
   end)
