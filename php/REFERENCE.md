@@ -1318,6 +1318,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesAccessRequester()->create([
+  "group_id" => null, // string
 ]);
 ```
 
@@ -1514,17 +1515,17 @@ $api_entities_application_statistic = $client->ApiEntitiesApplicationStatistic()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_users` | `int` | No |  |
-| `forks` | `int` | No |  |
-| `groups` | `int` | No |  |
-| `issues` | `int` | No |  |
-| `merge_requests` | `int` | No |  |
-| `milestones` | `int` | No |  |
-| `notes` | `int` | No |  |
-| `projects` | `int` | No |  |
-| `snippets` | `int` | No |  |
-| `ssh_keys` | `int` | No |  |
-| `users` | `int` | No |  |
+| `active_users` | `int` | No | Number of active users |
+| `forks` | `int` | No | Approximate number of repo forks |
+| `groups` | `int` | No | Approximate number of projects |
+| `issues` | `int` | No | Approximate number of issues |
+| `merge_requests` | `int` | No | Approximate number of merge requests |
+| `milestones` | `int` | No | Approximate number of milestones |
+| `notes` | `int` | No | Approximate number of notes |
+| `projects` | `int` | No | Approximate number of projects |
+| `snippets` | `int` | No | Approximate number of snippets |
+| `ssh_keys` | `int` | No | Approximate number of SSH keys |
+| `users` | `int` | No | Approximate number of users |
 
 ### Operations
 
@@ -1699,7 +1700,7 @@ $api_entities_award_emoji = $client->ApiEntitiesAwardEmoji();
 | `state` | `string` | No |  |
 | `updated_at` | `string` | No |  |
 | `url` | `string` | No |  |
-| `user` | `array` | No |  |
+| `user` | `array` | No | API_Entities_UserBasic model |
 | `username` | `string` | No |  |
 | `web_url` | `string` | No |  |
 
@@ -1711,6 +1712,8 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesAwardEmoji()->create([
+  "epic_id" => null, // string
+  "group_id" => null, // string
 ]);
 ```
 
@@ -1786,6 +1789,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesBadge()->create([
+  "group_id" => null, // string
 ]);
 ```
 
@@ -1869,7 +1873,7 @@ $api_entities_basic_badge_detail = $client->ApiEntitiesBasicBadgeDetail();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesBasicBadgeDetail()->load();
+$result = $client->ApiEntitiesBasicBadgeDetail()->load(["group_id" => "group_id"]);
 ```
 
 ### Common Methods
@@ -1962,7 +1966,7 @@ $api_entities_basic_project_detail = $client->ApiEntitiesBasicProjectDetail();
 | --- | --- | --- | --- |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attributes` | `array` | No |  |
+| `custom_attributes` | `array` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `forks_count` | `int` | No |  |
@@ -2227,7 +2231,7 @@ $api_entities_branch = $client->ApiEntitiesBranch();
 | `author_name` | `string` | No |  |
 | `authored_date` | `string` | No |  |
 | `can_push` | `bool` | No |  |
-| `commit` | `array` | No |  |
+| `commit` | `array` | No | API_Entities_Commit model |
 | `committed_date` | `string` | No |  |
 | `committer_email` | `string` | No |  |
 | `committer_name` | `string` | No |  |
@@ -2586,19 +2590,19 @@ $api_entities_ci_bridge = $client->ApiEntitiesCiBridge();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
-| `commit` | `array` | No |  |
+| `commit` | `array` | No | API_Entities_Commit model |
 | `coverage` | `float` | No |  |
 | `created_at` | `string` | No |  |
-| `downstream_pipeline` | `array` | No |  |
-| `duration` | `float` | No |  |
+| `downstream_pipeline` | `array` | No | API_Entities_Ci_PipelineBasic model |
+| `duration` | `float` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `array` | No |  |
+| `pipeline` | `array` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `array` | No |  |
-| `queued_duration` | `float` | No |  |
+| `queued_duration` | `float` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -2710,10 +2714,10 @@ $api_entities_ci_job = $client->ApiEntitiesCiJob();
 | `artifacts` | `array` | No |  |
 | `artifacts_expire_at` | `string` | No |  |
 | `artifacts_file` | `array` | No |  |
-| `commit` | `array` | No |  |
+| `commit` | `array` | No | API_Entities_Commit model |
 | `coverage` | `float` | No |  |
 | `created_at` | `string` | No |  |
-| `duration` | `float` | No |  |
+| `duration` | `float` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `file_format` | `string` | No |  |
@@ -2722,12 +2726,12 @@ $api_entities_ci_job = $client->ApiEntitiesCiJob();
 | `finished_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `array` | No |  |
+| `pipeline` | `array` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `array` | No |  |
-| `queued_duration` | `float` | No |  |
+| `queued_duration` | `float` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
-| `runner` | `array` | No |  |
-| `runner_manager` | `array` | No |  |
+| `runner` | `array` | No | API_Entities_Ci_Runner model |
+| `runner_manager` | `array` | No | API_Entities_Ci_RunnerManager model |
 | `size` | `int` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -2807,18 +2811,18 @@ $api_entities_ci_job_basic = $client->ApiEntitiesCiJobBasic();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
-| `commit` | `array` | No |  |
+| `commit` | `array` | No | API_Entities_Commit model |
 | `coverage` | `float` | No |  |
 | `created_at` | `string` | No |  |
-| `duration` | `float` | No |  |
+| `duration` | `float` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `array` | No |  |
+| `pipeline` | `array` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `array` | No |  |
-| `queued_duration` | `float` | No |  |
+| `queued_duration` | `float` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -2889,18 +2893,18 @@ $api_entities_ci_job_basic_with_project = $client->ApiEntitiesCiJobBasicWithProj
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
-| `commit` | `array` | No |  |
+| `commit` | `array` | No | API_Entities_Commit model |
 | `coverage` | `float` | No |  |
 | `created_at` | `string` | No |  |
-| `duration` | `float` | No |  |
+| `duration` | `float` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `array` | No |  |
+| `pipeline` | `array` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `array` | No |  |
-| `queued_duration` | `float` | No |  |
+| `queued_duration` | `float` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -3158,7 +3162,7 @@ $api_entities_ci_pipeline_schedule = $client->ApiEntitiesCiPipelineSchedule();
 | `id` | `int` | No |  |
 | `inputs` | `array` | No |  |
 | `next_run_at` | `string` | No |  |
-| `owner` | `array` | No |  |
+| `owner` | `array` | No | API_Entities_UserBasic model |
 | `ref` | `string` | No |  |
 | `updated_at` | `string` | No |  |
 
@@ -3219,12 +3223,12 @@ $api_entities_ci_pipeline_schedule_detail = $client->ApiEntitiesCiPipelineSchedu
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `inputs` | `array` | No |  |
-| `last_pipeline` | `array` | No |  |
+| `last_pipeline` | `array` | No | API_Entities_Ci_PipelineBasic model |
 | `next_run_at` | `string` | No |  |
-| `owner` | `array` | No |  |
+| `owner` | `array` | No | API_Entities_UserBasic model |
 | `ref` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `variables` | `array` | No |  |
+| `variables` | `array` | No | API_Entities_Ci_Variable model |
 
 ### Operations
 
@@ -3449,7 +3453,7 @@ $result = $client->ApiEntitiesCiRunner()->create([
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesCiRunner()->load();
+$result = $client->ApiEntitiesCiRunner()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -3497,9 +3501,9 @@ $api_entities_ci_runner_detail = $client->ApiEntitiesCiRunnerDetail();
 | `architecture` | `string` | No |  |
 | `contacted_at` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `created_by` | `array` | No |  |
+| `created_by` | `array` | No | API_Entities_UserBasic model |
 | `description` | `string` | No |  |
-| `groups` | `array` | No |  |
+| `groups` | `array` | No | API_Entities_BasicGroupDetails model |
 | `id` | `int` | No |  |
 | `ip_address` | `string` | No |  |
 | `is_shared` | `bool` | No |  |
@@ -3511,7 +3515,7 @@ $api_entities_ci_runner_detail = $client->ApiEntitiesCiRunnerDetail();
 | `online` | `bool` | No |  |
 | `paused` | `bool` | No |  |
 | `platform` | `string` | No |  |
-| `projects` | `array` | No |  |
+| `projects` | `array` | No | API_Entities_BasicProjectDetails model |
 | `revision` | `string` | No |  |
 | `run_untagged` | `string` | No |  |
 | `runner_type` | `string` | No |  |
@@ -3763,6 +3767,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesCiVariable()->create([
+  "group_id" => null, // string
 ]);
 ```
 
@@ -3779,7 +3784,7 @@ $results = $client->ApiEntitiesCiVariable()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesCiVariable()->load(["id" => "api_entities_ci_variable_id"]);
+$result = $client->ApiEntitiesCiVariable()->load(["id" => "api_entities_ci_variable_id", "project_id" => "project_id"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -3847,7 +3852,7 @@ $api_entities_cluster = $client->ApiEntitiesCluster();
 | `platform_type` | `string` | No |  |
 | `provider_gcp` | `array` | No |  |
 | `provider_type` | `string` | No |  |
-| `user` | `array` | No |  |
+| `user` | `array` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -3932,7 +3937,7 @@ $api_entities_cluster_group = $client->ApiEntitiesClusterGroup();
 | `domain` | `string` | No |  |
 | `enabled` | `bool` | No |  |
 | `environment_scope` | `string` | No |  |
-| `group` | `array` | No |  |
+| `group` | `array` | No | API_Entities_BasicGroupDetails model |
 | `id` | `string` | No |  |
 | `managed` | `string` | No |  |
 | `management_project` | `array` | No |  |
@@ -3942,7 +3947,7 @@ $api_entities_cluster_group = $client->ApiEntitiesClusterGroup();
 | `platform_type` | `string` | No |  |
 | `provider_gcp` | `array` | No |  |
 | `provider_type` | `string` | No |  |
-| `user` | `array` | No |  |
+| `user` | `array` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -4028,10 +4033,10 @@ $api_entities_cluster_project = $client->ApiEntitiesClusterProject();
 | `namespace_per_environment` | `string` | No |  |
 | `platform_kubernetes` | `array` | No |  |
 | `platform_type` | `string` | No |  |
-| `project` | `array` | No |  |
+| `project` | `array` | No | API_Entities_BasicProjectDetails model |
 | `provider_gcp` | `array` | No |  |
 | `provider_type` | `string` | No |  |
-| `user` | `array` | No |  |
+| `user` | `array` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -4424,7 +4429,7 @@ $api_entities_commit_detail = $client->ApiEntitiesCommitDetail();
 | `created_at` | `string` | No |  |
 | `extended_trailers` | `array` | No |  |
 | `id` | `string` | No |  |
-| `last_pipeline` | `array` | No |  |
+| `last_pipeline` | `array` | No | API_Entities_Ci_PipelineBasic model |
 | `message` | `string` | No |  |
 | `parent_ids` | `array` | No |  |
 | `project_id` | `int` | No |  |
@@ -4507,7 +4512,7 @@ $api_entities_commit_note = $client->ApiEntitiesCommitNote();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `array` | No |  |
+| `author` | `array` | No | API_Entities_UserBasic model |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
@@ -4692,7 +4697,7 @@ $api_entities_commit_status = $client->ApiEntitiesCommitStatus();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
-| `author` | `array` | No |  |
+| `author` | `array` | No | API_Entities_UserBasic model |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `coverage` | `float` | No |  |
@@ -4775,7 +4780,7 @@ $api_entities_compare = $client->ApiEntitiesCompare();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `commit` | `array` | No |  |
+| `commit` | `array` | No | API_Entities_Commit model |
 | `commits` | `array` | No |  |
 | `compare_same_ref` | `bool` | No |  |
 | `compare_timeout` | `bool` | No |  |
@@ -4842,7 +4847,7 @@ $api_entities_container_registry_repository = $client->ApiEntitiesContainerRegis
 | `project_id` | `int` | No |  |
 | `size` | `int` | No |  |
 | `status` | `string` | No |  |
-| `tags` | `array` | No |  |
+| `tags` | `array` | No | API_Entities_ContainerRegistry_Tag model |
 | `tags_count` | `int` | No |  |
 
 ### Operations
@@ -5306,6 +5311,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesDeployTokenWithToken()->create([
+  "group_id" => null, // string
 ]);
 ```
 
@@ -5350,15 +5356,15 @@ $api_entities_deployment = $client->ApiEntitiesDeployment();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `created_at` | `string` | No |  |
-| `deployable` | `array` | No |  |
-| `environment` | `array` | No |  |
+| `deployable` | `array` | No | API_Entities_Ci_Job model |
+| `environment` | `array` | No | API_Entities_EnvironmentBasic model |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `ref` | `string` | No |  |
 | `sha` | `string` | No |  |
 | `status` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `user` | `array` | No |  |
+| `user` | `array` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -5411,10 +5417,10 @@ $api_entities_deployment_extended = $client->ApiEntitiesDeploymentExtended();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `approval_summary` | `array` | No |  |
-| `approvals` | `array` | No |  |
+| `approvals` | `array` | No | API_Entities_Deployments_Approval model |
 | `created_at` | `string` | No |  |
-| `deployable` | `array` | No |  |
-| `environment` | `array` | No |  |
+| `deployable` | `array` | No | API_Entities_Ci_Job model |
+| `environment` | `array` | No | API_Entities_EnvironmentBasic model |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `pending_approval_count` | `int` | No |  |
@@ -5422,7 +5428,7 @@ $api_entities_deployment_extended = $client->ApiEntitiesDeploymentExtended();
 | `sha` | `string` | No |  |
 | `status` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `user` | `array` | No |  |
+| `user` | `array` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -5815,16 +5821,16 @@ $api_entities_environment = $client->ApiEntitiesEnvironment();
 | --- | --- | --- | --- |
 | `auto_stop_at` | `string` | No |  |
 | `auto_stop_setting` | `string` | No |  |
-| `cluster_agent` | `array` | No |  |
+| `cluster_agent` | `array` | No | API_Entities_Clusters_Agent model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `external_url` | `string` | No |  |
 | `flux_resource_path` | `string` | No |  |
 | `id` | `int` | No |  |
 | `kubernetes_namespace` | `string` | No |  |
-| `last_deployment` | `array` | No |  |
+| `last_deployment` | `array` | No | API_Entities_Deployment model |
 | `name` | `string` | No |  |
-| `project` | `array` | No |  |
+| `project` | `array` | No | API_Entities_BasicProjectDetails model |
 | `slug` | `string` | No |  |
 | `state` | `string` | No |  |
 | `tier` | `string` | No |  |
@@ -6043,7 +6049,7 @@ $api_entities_event = $client->ApiEntitiesEvent();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action_name` | `string` | No |  |
-| `author` | `array` | No |  |
+| `author` | `array` | No | API_Entities_UserBasic model |
 | `author_id` | `int` | No |  |
 | `author_username` | `string` | No |  |
 | `created_at` | `string` | No |  |
@@ -6057,7 +6063,7 @@ $api_entities_event = $client->ApiEntitiesEvent();
 | `target_iid` | `int` | No |  |
 | `target_title` | `string` | No |  |
 | `target_type` | `string` | No |  |
-| `wiki_page` | `array` | No |  |
+| `wiki_page` | `array` | No | API_Entities_WikiPageBasic model |
 
 ### Operations
 
@@ -6117,7 +6123,7 @@ $api_entities_feature = $client->ApiEntitiesFeature();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `definition` | `array` | No |  |
+| `definition` | `array` | No | API_Entities_Feature_Definition model |
 | `gates` | `array` | No |  |
 | `name` | `string` | No |  |
 | `state` | `string` | No |  |
@@ -6624,12 +6630,12 @@ $api_entities_group = $client->ApiEntitiesGroup();
 | `auto_duo_code_review_enabled` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attributes` | `array` | No |  |
+| `custom_attributes` | `array` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `default_branch_protection` | `string` | No |  |
 | `default_branch_protection_defaults` | `string` | No |  |
 | `description` | `string` | No |  |
-| `duo_core_features_enabled` | `bool` | No |  |
+| `duo_core_features_enabled` | `bool` | No | [Experimental] Indicates whether GitLab Duo Core features are enabled for the group |
 | `duo_features_enabled` | `string` | No |  |
 | `emails_disabled` | `bool` | No |  |
 | `emails_enabled` | `bool` | No |  |
@@ -6753,12 +6759,12 @@ $api_entities_group_detail = $client->ApiEntitiesGroupDetail();
 | `auto_duo_code_review_enabled` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attributes` | `array` | No |  |
+| `custom_attributes` | `array` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `default_branch_protection` | `string` | No |  |
 | `default_branch_protection_defaults` | `string` | No |  |
 | `description` | `string` | No |  |
-| `duo_core_features_enabled` | `bool` | No |  |
+| `duo_core_features_enabled` | `bool` | No | [Experimental] Indicates whether GitLab Duo Core features are enabled for the group |
 | `duo_features_enabled` | `string` | No |  |
 | `emails_disabled` | `bool` | No |  |
 | `emails_enabled` | `bool` | No |  |
@@ -6787,7 +6793,7 @@ $api_entities_group_detail = $client->ApiEntitiesGroupDetail();
 | `prevent_forking_outside_group` | `string` | No |  |
 | `prevent_sharing_groups_outside_hierarchy` | `string` | No |  |
 | `project_creation_level` | `string` | No |  |
-| `projects` | `array` | No |  |
+| `projects` | `array` | No | API_Entities_Project model |
 | `repository_storage` | `string` | No |  |
 | `request_access_enabled` | `string` | No |  |
 | `require_two_factor_authentication` | `string` | No |  |
@@ -6796,7 +6802,7 @@ $api_entities_group_detail = $client->ApiEntitiesGroupDetail();
 | `saml_group_links` | `array` | No |  |
 | `service_access_tokens_expiration_enforced` | `string` | No |  |
 | `share_with_group_lock` | `string` | No |  |
-| `shared_projects` | `array` | No |  |
+| `shared_projects` | `array` | No | API_Entities_Project model |
 | `shared_runners_minutes_limit` | `string` | No |  |
 | `shared_runners_setting` | `string` | No |  |
 | `shared_with_groups` | `string` | No |  |
@@ -6972,7 +6978,7 @@ $api_entities_integration = $client->ApiEntitiesIntegration();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesIntegration()->load(["id" => "api_entities_integration_id"]);
+$result = $client->ApiEntitiesIntegration()->load(["id" => "api_entities_integration_id", "group_id" => "group_id"]);
 ```
 
 ### Common Methods
@@ -7055,6 +7061,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 
 ```php
 $result = $client->ApiEntitiesIntegrationBasic()->update([
+  "group_id" => "group_id",
   // Fields to update
 ]);
 ```
@@ -7115,6 +7122,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesInvitation()->create([
+  "group_id" => null, // string
 ]);
 ```
 
@@ -7242,12 +7250,12 @@ $api_entities_issue = $client->ApiEntitiesIssue();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assignee` | `array` | No |  |
-| `assignees` | `array` | No |  |
-| `author` | `array` | No |  |
+| `assignee` | `array` | No | API_Entities_UserBasic model |
+| `assignees` | `array` | No | API_Entities_UserBasic model |
+| `author` | `array` | No | API_Entities_UserBasic model |
 | `blocking_issues_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `array` | No |  |
+| `closed_by` | `array` | No | API_Entities_UserBasic model |
 | `confidential` | `bool` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
@@ -7272,14 +7280,14 @@ $api_entities_issue = $client->ApiEntitiesIssue();
 | `project_id` | `int` | No |  |
 | `references` | `array` | No |  |
 | `service_desk_reply_to` | `string` | No |  |
-| `severity` | `string` | No |  |
+| `severity` | `string` | No | One of ["UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"] |
 | `state` | `string` | No |  |
 | `subscribed` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
 | `task_status` | `string` | No |  |
-| `time_stats` | `array` | No |  |
+| `time_stats` | `array` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
-| `type` | `string` | No |  |
+| `type` | `string` | No | One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK", "TICKET"] |
 | `updated_at` | `string` | No |  |
 | `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
@@ -7445,12 +7453,12 @@ $api_entities_license = $client->ApiEntitiesLicense();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$results = $client->ApiEntitiesLicense()->list();
+$result = $client->ApiEntitiesLicense()->load(["id" => "api_entities_license_id", "name" => "name", "type" => "type"]);
 ```
 
 ### Common Methods
@@ -7600,7 +7608,7 @@ $api_entities_member = $client->ApiEntitiesMember();
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `created_by` | `array` | No |  |
+| `created_by` | `array` | No | API_Entities_UserBasic model |
 | `custom_attributes` | `array` | No |  |
 | `email` | `string` | No |  |
 | `expires_at` | `string` | No |  |
@@ -7628,6 +7636,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesMember()->create([
+  "group_id" => null, // string
 ]);
 ```
 
@@ -7644,7 +7653,7 @@ $results = $client->ApiEntitiesMember()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesMember()->load(["id" => "api_entities_member_id"]);
+$result = $client->ApiEntitiesMember()->load(["id" => "api_entities_member_id", "group_id" => "group_id"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -7709,13 +7718,13 @@ $api_entities_merge = $client->ApiEntitiesMerge();
 | `allow_collaboration` | `bool` | No |  |
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `string` | No |  |
-| `assignee` | `array` | No |  |
-| `assignees` | `array` | No |  |
-| `author` | `array` | No |  |
+| `assignee` | `array` | No | API_Entities_UserBasic model |
+| `assignees` | `array` | No | API_Entities_UserBasic model |
+| `author` | `array` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `string` | No |  |
 | `changes_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `array` | No |  |
+| `closed_by` | `array` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -7729,7 +7738,7 @@ $api_entities_merge = $client->ApiEntitiesMerge();
 | `first_deployed_to_production_at` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
 | `has_conflicts` | `bool` | No |  |
-| `head_pipeline` | `array` | No |  |
+| `head_pipeline` | `array` | No | API_Entities_Ci_Pipeline model |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `string` | No |  |
@@ -7741,18 +7750,18 @@ $api_entities_merge = $client->ApiEntitiesMerge();
 | `merge_commit_sha` | `string` | No |  |
 | `merge_error` | `string` | No |  |
 | `merge_status` | `string` | No |  |
-| `merge_user` | `array` | No |  |
+| `merge_user` | `array` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
-| `merged_by` | `array` | No |  |
+| `merged_by` | `array` | No | API_Entities_UserBasic model |
 | `milestone` | `array` | No |  |
-| `pipeline` | `array` | No |  |
+| `pipeline` | `array` | No | API_Entities_Ci_PipelineBasic model |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `int` | No |  |
 | `rebase_in_progress` | `string` | No |  |
 | `reference` | `string` | No |  |
 | `references` | `array` | No |  |
-| `reviewers` | `array` | No |  |
+| `reviewers` | `array` | No | API_Entities_UserBasic model |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `string` | No |  |
@@ -7765,7 +7774,7 @@ $api_entities_merge = $client->ApiEntitiesMerge();
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stats` | `array` | No |  |
+| `time_stats` | `array` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
@@ -7847,7 +7856,7 @@ $api_entities_merge_request_approval = $client->ApiEntitiesMergeRequestApproval(
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `approved_at` | `string` | No |  |
-| `user` | `array` | No |  |
+| `user` | `array` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -7913,12 +7922,12 @@ $api_entities_merge_request_basic = $client->ApiEntitiesMergeRequestBasic();
 | `allow_collaboration` | `bool` | No |  |
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `string` | No |  |
-| `assignee` | `array` | No |  |
-| `assignees` | `array` | No |  |
-| `author` | `array` | No |  |
+| `assignee` | `array` | No | API_Entities_UserBasic model |
+| `assignees` | `array` | No | API_Entities_UserBasic model |
+| `author` | `array` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `array` | No |  |
+| `closed_by` | `array` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -7936,16 +7945,16 @@ $api_entities_merge_request_basic = $client->ApiEntitiesMergeRequestBasic();
 | `merge_after` | `string` | No |  |
 | `merge_commit_sha` | `string` | No |  |
 | `merge_status` | `string` | No |  |
-| `merge_user` | `array` | No |  |
+| `merge_user` | `array` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
-| `merged_by` | `array` | No |  |
+| `merged_by` | `array` | No | API_Entities_UserBasic model |
 | `milestone` | `array` | No |  |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `int` | No |  |
 | `reference` | `string` | No |  |
 | `references` | `array` | No |  |
-| `reviewers` | `array` | No |  |
+| `reviewers` | `array` | No | API_Entities_UserBasic model |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `string` | No |  |
@@ -7957,7 +7966,7 @@ $api_entities_merge_request_basic = $client->ApiEntitiesMergeRequestBasic();
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stats` | `array` | No |  |
+| `time_stats` | `array` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
@@ -7981,7 +7990,7 @@ $results = $client->ApiEntitiesMergeRequestBasic()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesMergeRequestBasic()->load();
+$result = $client->ApiEntitiesMergeRequestBasic()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -8027,14 +8036,14 @@ $api_entities_merge_request_change = $client->ApiEntitiesMergeRequestChange();
 | `allow_collaboration` | `bool` | No |  |
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `string` | No |  |
-| `assignee` | `array` | No |  |
-| `assignees` | `array` | No |  |
-| `author` | `array` | No |  |
+| `assignee` | `array` | No | API_Entities_UserBasic model |
+| `assignees` | `array` | No | API_Entities_UserBasic model |
+| `author` | `array` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `string` | No |  |
-| `changes` | `array` | No |  |
+| `changes` | `array` | No | API_Entities_Diff model |
 | `changes_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `array` | No |  |
+| `closed_by` | `array` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -8048,7 +8057,7 @@ $api_entities_merge_request_change = $client->ApiEntitiesMergeRequestChange();
 | `first_deployed_to_production_at` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
 | `has_conflicts` | `bool` | No |  |
-| `head_pipeline` | `array` | No |  |
+| `head_pipeline` | `array` | No | API_Entities_Ci_Pipeline model |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `string` | No |  |
@@ -8060,19 +8069,19 @@ $api_entities_merge_request_change = $client->ApiEntitiesMergeRequestChange();
 | `merge_commit_sha` | `string` | No |  |
 | `merge_error` | `string` | No |  |
 | `merge_status` | `string` | No |  |
-| `merge_user` | `array` | No |  |
+| `merge_user` | `array` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
-| `merged_by` | `array` | No |  |
+| `merged_by` | `array` | No | API_Entities_UserBasic model |
 | `milestone` | `array` | No |  |
 | `overflow` | `string` | No |  |
-| `pipeline` | `array` | No |  |
+| `pipeline` | `array` | No | API_Entities_Ci_PipelineBasic model |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `int` | No |  |
 | `rebase_in_progress` | `string` | No |  |
 | `reference` | `string` | No |  |
 | `references` | `array` | No |  |
-| `reviewers` | `array` | No |  |
+| `reviewers` | `array` | No | API_Entities_UserBasic model |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `string` | No |  |
@@ -8085,7 +8094,7 @@ $api_entities_merge_request_change = $client->ApiEntitiesMergeRequestChange();
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stats` | `array` | No |  |
+| `time_stats` | `array` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
@@ -8206,9 +8215,9 @@ $api_entities_merge_request_diff_full = $client->ApiEntitiesMergeRequestDiffFull
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `base_commit_sha` | `string` | No |  |
-| `commits` | `array` | No |  |
+| `commits` | `array` | No | API_Entities_Commit model |
 | `created_at` | `string` | No |  |
-| `diffs` | `array` | No |  |
+| `diffs` | `array` | No | API_Entities_Diff model |
 | `head_commit_sha` | `string` | No |  |
 | `id` | `string` | No |  |
 | `merge_request_id` | `string` | No |  |
@@ -9005,8 +9014,8 @@ $api_entities_package = $client->ApiEntitiesPackage();
 | `links` | `array` | No |  |
 | `name` | `string` | No |  |
 | `package_type` | `string` | No |  |
-| `pipeline` | `array` | No |  |
-| `pipelines` | `array` | No |  |
+| `pipeline` | `array` | No | API_Entities_Package_Pipeline model |
+| `pipelines` | `array` | No | API_Entities_Package_Pipeline model |
 | `project_id` | `int` | No |  |
 | `project_path` | `string` | No |  |
 | `status` | `string` | No |  |
@@ -9079,7 +9088,7 @@ $api_entities_package_file = $client->ApiEntitiesPackageFile();
 | `file_sha256` | `string` | No |  |
 | `id` | `int` | No |  |
 | `package_id` | `int` | No |  |
-| `pipelines` | `array` | No |  |
+| `pipelines` | `array` | No | API_Entities_Package_Pipeline model |
 | `size` | `int` | No |  |
 
 ### Operations
@@ -9285,8 +9294,8 @@ $api_entities_packages_conan_package_revision = $client->ApiEntitiesPackagesCona
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `string` | No |  |
-| `time` | `string` | No |  |
+| `revision` | `string` | No | The revision hash of the Conan recipe or package |
+| `time` | `string` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9430,8 +9439,8 @@ $api_entities_packages_conan_recipe_revision = $client->ApiEntitiesPackagesConan
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `string` | No |  |
-| `time` | `string` | No |  |
+| `revision` | `string` | No | The revision hash of the Conan recipe or package |
+| `time` | `string` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9529,8 +9538,8 @@ $api_entities_packages_conan_revision = $client->ApiEntitiesPackagesConanRevisio
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `string` | No |  |
-| `time` | `string` | No |  |
+| `revision` | `string` | No | The revision hash of the Conan recipe or package |
+| `time` | `string` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9652,6 +9661,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesPackagesDebianDistribution()->create([
+  "project_id" => null, // string
 ]);
 ```
 
@@ -10017,6 +10027,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesPersonalAccessTokenWithToken()->create([
+  "personal_access_token_id" => null, // string
 ]);
 ```
 
@@ -10060,7 +10071,7 @@ $api_entities_personal_snippet = $client->ApiEntitiesPersonalSnippet();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `array` | No |  |
+| `author` | `array` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `file_name` | `string` | No |  |
@@ -10246,7 +10257,7 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `container_registry_image_prefix` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `creator_id` | `int` | No |  |
-| `custom_attributes` | `array` | No |  |
+| `custom_attributes` | `array` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -10258,7 +10269,7 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `environments_access_level` | `string` | No |  |
 | `external_authorization_classification_label` | `string` | No |  |
 | `feature_flags_access_level` | `string` | No |  |
-| `forked_from_project` | `array` | No |  |
+| `forked_from_project` | `array` | No | API_Entities_BasicProjectDetails model |
 | `forking_access_level` | `string` | No |  |
 | `forks_count` | `int` | No |  |
 | `group_runners_enabled` | `bool` | No |  |
@@ -10309,7 +10320,7 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `only_allow_merge_if_pipeline_succeeds` | `bool` | No |  |
 | `only_mirror_protected_branches` | `string` | No |  |
 | `open_issues_count` | `int` | No |  |
-| `owner` | `array` | No |  |
+| `owner` | `array` | No | API_Entities_UserBasic model |
 | `package_registry_access_level` | `string` | No |  |
 | `packages_enabled` | `bool` | No |  |
 | `pages_access_level` | `string` | No |  |
@@ -10343,7 +10354,7 @@ $api_entities_project = $client->ApiEntitiesProject();
 | `show_diff_preview_in_email` | `bool` | No |  |
 | `snippets_access_level` | `string` | No |  |
 | `snippets_enabled` | `bool` | No |  |
-| `spp_repository_pipeline_access` | `bool` | No |  |
+| `spp_repository_pipeline_access` | `bool` | No | The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available. |
 | `squash_commit_template` | `string` | No |  |
 | `squash_option` | `string` | No |  |
 | `ssh_url_to_repo` | `string` | No |  |
@@ -10368,6 +10379,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesProject()->create([
+  "user_id" => null, // string
 ]);
 ```
 
@@ -10385,6 +10397,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 
 ```php
 $result = $client->ApiEntitiesProject()->update([
+  "id" => "id",
   // Fields to update
 ]);
 ```
@@ -10871,7 +10884,7 @@ $api_entities_project_snippet = $client->ApiEntitiesProjectSnippet();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `array` | No |  |
+| `author` | `array` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `file_name` | `string` | No |  |
@@ -11051,7 +11064,7 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `container_registry_image_prefix` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `creator_id` | `int` | No |  |
-| `custom_attributes` | `array` | No |  |
+| `custom_attributes` | `array` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -11063,7 +11076,7 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `environments_access_level` | `string` | No |  |
 | `external_authorization_classification_label` | `string` | No |  |
 | `feature_flags_access_level` | `string` | No |  |
-| `forked_from_project` | `array` | No |  |
+| `forked_from_project` | `array` | No | API_Entities_BasicProjectDetails model |
 | `forking_access_level` | `string` | No |  |
 | `forks_count` | `int` | No |  |
 | `group_runners_enabled` | `bool` | No |  |
@@ -11114,7 +11127,7 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `only_allow_merge_if_pipeline_succeeds` | `bool` | No |  |
 | `only_mirror_protected_branches` | `string` | No |  |
 | `open_issues_count` | `int` | No |  |
-| `owner` | `array` | No |  |
+| `owner` | `array` | No | API_Entities_UserBasic model |
 | `package_registry_access_level` | `string` | No |  |
 | `packages_enabled` | `bool` | No |  |
 | `pages_access_level` | `string` | No |  |
@@ -11149,7 +11162,7 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 | `show_diff_preview_in_email` | `bool` | No |  |
 | `snippets_access_level` | `string` | No |  |
 | `snippets_enabled` | `bool` | No |  |
-| `spp_repository_pipeline_access` | `bool` | No |  |
+| `spp_repository_pipeline_access` | `bool` | No | The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available. |
 | `squash_commit_template` | `string` | No |  |
 | `squash_option` | `string` | No |  |
 | `ssh_url_to_repo` | `string` | No |  |
@@ -11674,12 +11687,12 @@ $api_entities_related_issue = $client->ApiEntitiesRelatedIssue();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assignee` | `array` | No |  |
-| `assignees` | `array` | No |  |
-| `author` | `array` | No |  |
+| `assignee` | `array` | No | API_Entities_UserBasic model |
+| `assignees` | `array` | No | API_Entities_UserBasic model |
+| `author` | `array` | No | API_Entities_UserBasic model |
 | `blocking_issues_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `array` | No |  |
+| `closed_by` | `array` | No | API_Entities_UserBasic model |
 | `confidential` | `bool` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
@@ -11708,14 +11721,14 @@ $api_entities_related_issue = $client->ApiEntitiesRelatedIssue();
 | `project_id` | `int` | No |  |
 | `references` | `array` | No |  |
 | `service_desk_reply_to` | `string` | No |  |
-| `severity` | `string` | No |  |
+| `severity` | `string` | No | One of ["UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"] |
 | `state` | `string` | No |  |
 | `subscribed` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
 | `task_status` | `string` | No |  |
-| `time_stats` | `array` | No |  |
+| `time_stats` | `array` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
-| `type` | `string` | No |  |
+| `type` | `string` | No | One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK", "TICKET"] |
 | `updated_at` | `string` | No |  |
 | `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
@@ -11820,8 +11833,8 @@ $api_entities_release = $client->ApiEntitiesRelease();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `assets` | `array` | No |  |
-| `author` | `array` | No |  |
-| `commit` | `array` | No |  |
+| `author` | `array` | No | API_Entities_UserBasic model |
+| `commit` | `array` | No | API_Entities_Commit model |
 | `commit_path` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
@@ -12182,6 +12195,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesResourceAccessTokenWithToken()->create([
+  "group_id" => null, // string
 ]);
 ```
 
@@ -12232,7 +12246,7 @@ $api_entities_resource_milestone_event = $client->ApiEntitiesResourceMilestoneEv
 | `resource_id` | `int` | No |  |
 | `resource_type` | `string` | No |  |
 | `state` | `string` | No |  |
-| `user` | `array` | No |  |
+| `user` | `array` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -12292,7 +12306,7 @@ $api_entities_snippet = $client->ApiEntitiesSnippet();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `array` | No |  |
+| `author` | `array` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `file_name` | `string` | No |  |
@@ -12608,7 +12622,7 @@ $api_entities_tag = $client->ApiEntitiesTag();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `commit` | `array` | No |  |
+| `commit` | `array` | No | API_Entities_Commit model |
 | `created_at` | `string` | No |  |
 | `message` | `string` | No |  |
 | `name` | `string` | No |  |
@@ -12924,7 +12938,7 @@ $api_entities_trigger = $client->ApiEntitiesTrigger();
 | `last_used` | `string` | No |  |
 | `locked` | `bool` | No |  |
 | `name` | `string` | No |  |
-| `owner` | `array` | No |  |
+| `owner` | `array` | No | API_Entities_UserBasic model |
 | `public_email` | `string` | No |  |
 | `state` | `string` | No |  |
 | `token` | `string` | No |  |
@@ -13023,7 +13037,7 @@ $api_entities_user_agent_detail = $client->ApiEntitiesUserAgentDetail();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesUserAgentDetail()->load();
+$result = $client->ApiEntitiesUserAgentDetail()->load(["snippet_id" => "snippet_id"]);
 ```
 
 ### Common Methods
@@ -13278,6 +13292,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesWikiAttachment()->create([
+  "group_id" => null, // string
 ]);
 ```
 
@@ -13325,6 +13340,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesWikiPage()->create([
+  "group_id" => null, // string
 ]);
 ```
 
@@ -13861,7 +13877,7 @@ $composer_package = $client->ComposerPackage();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ComposerPackage()->load();
+$result = $client->ComposerPackage()->load(["group_id" => "group_id", "sha" => "sha"]);
 ```
 
 ### Common Methods
@@ -13953,7 +13969,7 @@ $conan_package = $client->ConanPackage();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ConanPackage()->load(["id" => "conan_package_id"]);
+$result = $client->ConanPackage()->load(["file_id" => "file_id", "file_name" => "file_name", "package_channel" => "package_channel", "package_username" => "package_username", "package_version" => "package_version", "recipe_revision" => "recipe_revision"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -13970,7 +13986,6 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 
 ```php
 $result = $client->ConanPackage()->update([
-  "id" => "conan_package_id",
   "file_name" => "file_name",
   "package_channel" => "package_channel",
   "package_username" => "package_username",
@@ -14122,7 +14137,7 @@ $custom_attribute = $client->CustomAttribute();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->CustomAttribute()->load(["id" => "custom_attribute_id"]);
+$result = $client->CustomAttribute()->load(["id" => "custom_attribute_id", "group_id" => "group_id"]);
 ```
 
 ### Common Methods
@@ -14264,7 +14279,7 @@ $debian_package = $client->DebianPackage();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->DebianPackage()->load(["id" => "debian_package_id"]);
+$result = $client->DebianPackage()->load(["id" => "debian_package_id", "distribution" => "distribution", "file_name" => "file_name", "letter" => "letter", "package_name" => "package_name", "package_version" => "package_version"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -16096,7 +16111,7 @@ $result = $client->Integration()->create([
 Remove the entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Integration()->remove();
+$result = $client->Integration()->remove(["group_id" => "group_id", "id" => "id"]);
 ```
 
 ### Common Methods
@@ -16926,7 +16941,7 @@ $results = $client->NugetPackage()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->NugetPackage()->load();
+$result = $client->NugetPackage()->load(["project_id" => "project_id"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -17211,13 +17226,13 @@ $project = $client->Project();
 | `coverage` | `float` | No |  |
 | `created_at` | `string` | No |  |
 | `detailed_status` | `array` | No |  |
-| `duration` | `int` | No |  |
+| `duration` | `int` | No | Time spent running in seconds |
 | `finished_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `name` | `string` | No |  |
 | `project_id` | `int` | No |  |
-| `queued_duration` | `int` | No |  |
+| `queued_duration` | `int` | No | Time spent enqueued in seconds |
 | `ref` | `string` | No |  |
 | `sha` | `string` | No |  |
 | `source` | `string` | No |  |
@@ -17225,7 +17240,7 @@ $project = $client->Project();
 | `status` | `string` | No |  |
 | `tag` | `bool` | No |  |
 | `updated_at` | `string` | No |  |
-| `user` | `array` | No |  |
+| `user` | `array` | No | API_Entities_UserBasic model |
 | `web_url` | `string` | No |  |
 | `yaml_errors` | `string` | No |  |
 
@@ -17871,7 +17886,7 @@ $result = $client->PypiPackage()->create([
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->PypiPackage()->load();
+$result = $client->PypiPackage()->load(["project_id" => "project_id"]);
 ```
 
 ### Common Methods
@@ -18297,7 +18312,7 @@ $result = $client->Runner()->create([
 Remove the entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Runner()->remove();
+$result = $client->Runner()->remove(["id" => "id"]);
 ```
 
 ### Common Methods

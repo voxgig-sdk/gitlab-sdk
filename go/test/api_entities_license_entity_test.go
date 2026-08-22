@@ -24,54 +24,6 @@ func TestApiEntitiesLicenseEntity(t *testing.T) {
 		}
 	})
 
-	// Feature #4: the entity Stream(action, ...) method runs the op pipeline and
-	// returns a channel over result items. With the streaming feature active it
-	// yields the feature's incremental output; otherwise it falls back to the
-	// materialised list so Stream always yields.
-	t.Run("stream", func(t *testing.T) {
-		seed := map[string]any{
-			"entity": map[string]any{
-				"api_entities_license": map[string]any{
-					"s1": map[string]any{"id": "s1"},
-					"s2": map[string]any{"id": "s2"},
-					"s3": map[string]any{"id": "s3"},
-				},
-			},
-		}
-
-		// Fallback: streaming inactive -> yields the materialised list items.
-		base := sdk.TestSDK(seed, nil)
-		var seen []any
-		for item := range base.ApiEntitiesLicense(nil).Stream("list", nil, nil) {
-			seen = append(seen, item)
-		}
-		if len(seen) != 3 {
-			t.Fatalf("expected 3 streamed items, got %d", len(seen))
-		}
-
-		// Inbound: streaming active -> yields each item from the feature iterator.
-		hasStreaming := false
-		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
-			_, hasStreaming = fm["streaming"]
-		}
-		if hasStreaming {
-			streamSdk := sdk.TestSDK(seed, map[string]any{
-				"feature": map[string]any{"streaming": map[string]any{"active": true}},
-			})
-			var got []any
-			for item := range streamSdk.ApiEntitiesLicense(nil).Stream("list", nil, nil) {
-				if sub, ok := item.([]any); ok {
-					got = append(got, sub...)
-				} else {
-					got = append(got, item)
-				}
-			}
-			if len(got) != 3 {
-				t.Fatalf("expected 3 items via streaming feature, got %d", len(got))
-			}
-		}
-	})
-
 	t.Run("basic", func(t *testing.T) {
 		setup := api_entities_licenseBasicSetup(nil)
 		// Per-op sdk-test-control.json skip — basic test exercises a flow
@@ -80,7 +32,7 @@ func TestApiEntitiesLicenseEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{"load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "api_entities_license." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -107,20 +59,15 @@ func TestApiEntitiesLicenseEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = apiEntitiesLicenseRef01Data
 
-		// LIST
+		// LOAD
 		apiEntitiesLicenseRef01Ent := client.ApiEntitiesLicense(nil)
-		apiEntitiesLicenseRef01Match := map[string]any{
-			"name": setup.idmap["name01"],
-			"type": setup.idmap["type01"],
-		}
-
-		apiEntitiesLicenseRef01ListResult, err := apiEntitiesLicenseRef01Ent.List(apiEntitiesLicenseRef01Match, nil)
+		apiEntitiesLicenseRef01MatchDt0 := map[string]any{}
+		apiEntitiesLicenseRef01DataDt0Loaded, err := apiEntitiesLicenseRef01Ent.Load(apiEntitiesLicenseRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, apiEntitiesLicenseRef01ListOk := apiEntitiesLicenseRef01ListResult.([]any)
-		if !apiEntitiesLicenseRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", apiEntitiesLicenseRef01ListResult)
+		if apiEntitiesLicenseRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})
@@ -151,7 +98,7 @@ func api_entities_licenseBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap := vs.Transform(
-		[]any{"api_entities_license01", "api_entities_license02", "api_entities_license03", "template01", "template02", "template03", "name01", "type01"},
+		[]any{"api_entities_license01", "api_entities_license02", "api_entities_license03", "template01", "template02", "template03", "type01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

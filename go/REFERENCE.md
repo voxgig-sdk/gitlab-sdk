@@ -1338,6 +1338,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesAccessRequester(nil).Create(map[string]any{
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -1531,17 +1532,17 @@ fmt.Println(apiEntitiesApplicationStatistic.GetName()) // "api_entities_applicat
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_users` | `int` | No |  |
-| `forks` | `int` | No |  |
-| `groups` | `int` | No |  |
-| `issues` | `int` | No |  |
-| `merge_requests` | `int` | No |  |
-| `milestones` | `int` | No |  |
-| `notes` | `int` | No |  |
-| `projects` | `int` | No |  |
-| `snippets` | `int` | No |  |
-| `ssh_keys` | `int` | No |  |
-| `users` | `int` | No |  |
+| `active_users` | `int` | No | Number of active users |
+| `forks` | `int` | No | Approximate number of repo forks |
+| `groups` | `int` | No | Approximate number of projects |
+| `issues` | `int` | No | Approximate number of issues |
+| `merge_requests` | `int` | No | Approximate number of merge requests |
+| `milestones` | `int` | No | Approximate number of milestones |
+| `notes` | `int` | No | Approximate number of notes |
+| `projects` | `int` | No | Approximate number of projects |
+| `snippets` | `int` | No | Approximate number of snippets |
+| `ssh_keys` | `int` | No | Approximate number of SSH keys |
+| `users` | `int` | No | Approximate number of users |
 
 ### Operations
 
@@ -1713,7 +1714,7 @@ fmt.Println(apiEntitiesAwardEmoji.GetName()) // "api_entities_award_emoji"
 | `state` | `string` | No |  |
 | `updated_at` | `string` | No |  |
 | `url` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
+| `user` | `map[string]any` | No | API_Entities_UserBasic model |
 | `username` | `string` | No |  |
 | `web_url` | `string` | No |  |
 
@@ -1749,6 +1750,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesAwardEmoji(nil).Create(map[string]any{
+    "epic_id": "example_epic_id",
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -1831,6 +1834,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesBadge(nil).Create(map[string]any{
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -1901,7 +1905,7 @@ fmt.Println(apiEntitiesBasicBadgeDetail.GetName()) // "api_entities_basic_badge_
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesBasicBadgeDetail(nil).Load(nil, nil)
+result, err := client.ApiEntitiesBasicBadgeDetail(nil).Load(map[string]any{"group_id": "group_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -1992,7 +1996,7 @@ fmt.Println(apiEntitiesBasicProjectDetail.GetName()) // "api_entities_basic_proj
 | --- | --- | --- | --- |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attributes` | `map[string]any` | No |  |
+| `custom_attributes` | `map[string]any` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `forks_count` | `int` | No |  |
@@ -2265,7 +2269,7 @@ fmt.Println(apiEntitiesBranch.GetName()) // "api_entities_branch"
 | `author_name` | `string` | No |  |
 | `authored_date` | `string` | No |  |
 | `can_push` | `bool` | No |  |
-| `commit` | `map[string]any` | No |  |
+| `commit` | `map[string]any` | No | API_Entities_Commit model |
 | `committed_date` | `string` | No |  |
 | `committer_email` | `string` | No |  |
 | `committer_name` | `string` | No |  |
@@ -2639,19 +2643,19 @@ fmt.Println(apiEntitiesCiBridge.GetName()) // "api_entities_ci_bridge"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
-| `commit` | `map[string]any` | No |  |
+| `commit` | `map[string]any` | No | API_Entities_Commit model |
 | `coverage` | `float64` | No |  |
 | `created_at` | `string` | No |  |
-| `downstream_pipeline` | `map[string]any` | No |  |
-| `duration` | `float64` | No |  |
+| `downstream_pipeline` | `map[string]any` | No | API_Entities_Ci_PipelineBasic model |
+| `duration` | `float64` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `map[string]any` | No |  |
+| `pipeline` | `map[string]any` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `map[string]any` | No |  |
-| `queued_duration` | `float64` | No |  |
+| `queued_duration` | `float64` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -2761,10 +2765,10 @@ fmt.Println(apiEntitiesCiJob.GetName()) // "api_entities_ci_job"
 | `artifacts` | `[]any` | No |  |
 | `artifacts_expire_at` | `string` | No |  |
 | `artifacts_file` | `map[string]any` | No |  |
-| `commit` | `map[string]any` | No |  |
+| `commit` | `map[string]any` | No | API_Entities_Commit model |
 | `coverage` | `float64` | No |  |
 | `created_at` | `string` | No |  |
-| `duration` | `float64` | No |  |
+| `duration` | `float64` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `file_format` | `string` | No |  |
@@ -2773,12 +2777,12 @@ fmt.Println(apiEntitiesCiJob.GetName()) // "api_entities_ci_job"
 | `finished_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `map[string]any` | No |  |
+| `pipeline` | `map[string]any` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `map[string]any` | No |  |
-| `queued_duration` | `float64` | No |  |
+| `queued_duration` | `float64` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
-| `runner` | `map[string]any` | No |  |
-| `runner_manager` | `map[string]any` | No |  |
+| `runner` | `map[string]any` | No | API_Entities_Ci_Runner model |
+| `runner_manager` | `map[string]any` | No | API_Entities_Ci_RunnerManager model |
 | `size` | `int` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -2865,18 +2869,18 @@ fmt.Println(apiEntitiesCiJobBasic.GetName()) // "api_entities_ci_job_basic"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
-| `commit` | `map[string]any` | No |  |
+| `commit` | `map[string]any` | No | API_Entities_Commit model |
 | `coverage` | `float64` | No |  |
 | `created_at` | `string` | No |  |
-| `duration` | `float64` | No |  |
+| `duration` | `float64` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `map[string]any` | No |  |
+| `pipeline` | `map[string]any` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `map[string]any` | No |  |
-| `queued_duration` | `float64` | No |  |
+| `queued_duration` | `float64` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -2950,18 +2954,18 @@ fmt.Println(apiEntitiesCiJobBasicWithProject.GetName()) // "api_entities_ci_job_
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
-| `commit` | `map[string]any` | No |  |
+| `commit` | `map[string]any` | No | API_Entities_Commit model |
 | `coverage` | `float64` | No |  |
 | `created_at` | `string` | No |  |
-| `duration` | `float64` | No |  |
+| `duration` | `float64` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `map[string]any` | No |  |
+| `pipeline` | `map[string]any` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `map[string]any` | No |  |
-| `queued_duration` | `float64` | No |  |
+| `queued_duration` | `float64` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -3223,7 +3227,7 @@ fmt.Println(apiEntitiesCiPipelineSchedule.GetName()) // "api_entities_ci_pipelin
 | `id` | `int` | No |  |
 | `inputs` | `map[string]any` | No |  |
 | `next_run_at` | `string` | No |  |
-| `owner` | `map[string]any` | No |  |
+| `owner` | `map[string]any` | No | API_Entities_UserBasic model |
 | `ref` | `string` | No |  |
 | `updated_at` | `string` | No |  |
 
@@ -3283,12 +3287,12 @@ fmt.Println(apiEntitiesCiPipelineScheduleDetail.GetName()) // "api_entities_ci_p
 | `description` | `string` | No |  |
 | `id` | `int` | No |  |
 | `inputs` | `map[string]any` | No |  |
-| `last_pipeline` | `map[string]any` | No |  |
+| `last_pipeline` | `map[string]any` | No | API_Entities_Ci_PipelineBasic model |
 | `next_run_at` | `string` | No |  |
-| `owner` | `map[string]any` | No |  |
+| `owner` | `map[string]any` | No | API_Entities_UserBasic model |
 | `ref` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `variables` | `map[string]any` | No |  |
+| `variables` | `map[string]any` | No | API_Entities_Ci_Variable model |
 
 ### Operations
 
@@ -3516,7 +3520,7 @@ fmt.Println(apiEntitiesCiRunner.GetName()) // "api_entities_ci_runner"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesCiRunner(nil).Load(nil, nil)
+result, err := client.ApiEntitiesCiRunner(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -3577,9 +3581,9 @@ fmt.Println(apiEntitiesCiRunnerDetail.GetName()) // "api_entities_ci_runner_deta
 | `architecture` | `string` | No |  |
 | `contacted_at` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `created_by` | `map[string]any` | No |  |
+| `created_by` | `map[string]any` | No | API_Entities_UserBasic model |
 | `description` | `string` | No |  |
-| `groups` | `map[string]any` | No |  |
+| `groups` | `map[string]any` | No | API_Entities_BasicGroupDetails model |
 | `id` | `int` | No |  |
 | `ip_address` | `string` | No |  |
 | `is_shared` | `bool` | No |  |
@@ -3591,7 +3595,7 @@ fmt.Println(apiEntitiesCiRunnerDetail.GetName()) // "api_entities_ci_runner_deta
 | `online` | `bool` | No |  |
 | `paused` | `bool` | No |  |
 | `platform` | `string` | No |  |
-| `projects` | `map[string]any` | No |  |
+| `projects` | `map[string]any` | No | API_Entities_BasicProjectDetails model |
 | `revision` | `string` | No |  |
 | `run_untagged` | `string` | No |  |
 | `runner_type` | `string` | No |  |
@@ -3858,7 +3862,7 @@ fmt.Println(results)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesCiVariable(nil).Load(map[string]any{"id": "api_entities_ci_variable_id"}, nil)
+result, err := client.ApiEntitiesCiVariable(nil).Load(map[string]any{"id": "api_entities_ci_variable_id", "project_id": "project_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -3871,6 +3875,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCiVariable(nil).Create(map[string]any{
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -3942,7 +3947,7 @@ fmt.Println(apiEntitiesCluster.GetName()) // "api_entities_cluster"
 | `platform_type` | `string` | No |  |
 | `provider_gcp` | `map[string]any` | No |  |
 | `provider_type` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
+| `user` | `map[string]any` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -4038,7 +4043,7 @@ fmt.Println(apiEntitiesClusterGroup.GetName()) // "api_entities_cluster_group"
 | `domain` | `string` | No |  |
 | `enabled` | `bool` | No |  |
 | `environment_scope` | `string` | No |  |
-| `group` | `map[string]any` | No |  |
+| `group` | `map[string]any` | No | API_Entities_BasicGroupDetails model |
 | `id` | `string` | No |  |
 | `managed` | `string` | No |  |
 | `management_project` | `map[string]any` | No |  |
@@ -4048,7 +4053,7 @@ fmt.Println(apiEntitiesClusterGroup.GetName()) // "api_entities_cluster_group"
 | `platform_type` | `string` | No |  |
 | `provider_gcp` | `map[string]any` | No |  |
 | `provider_type` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
+| `user` | `map[string]any` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -4141,10 +4146,10 @@ fmt.Println(apiEntitiesClusterProject.GetName()) // "api_entities_cluster_projec
 | `namespace_per_environment` | `string` | No |  |
 | `platform_kubernetes` | `map[string]any` | No |  |
 | `platform_type` | `string` | No |  |
-| `project` | `map[string]any` | No |  |
+| `project` | `map[string]any` | No | API_Entities_BasicProjectDetails model |
 | `provider_gcp` | `map[string]any` | No |  |
 | `provider_type` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
+| `user` | `map[string]any` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -4547,7 +4552,7 @@ fmt.Println(apiEntitiesCommitDetail.GetName()) // "api_entities_commit_detail"
 | `created_at` | `string` | No |  |
 | `extended_trailers` | `map[string]any` | No |  |
 | `id` | `string` | No |  |
-| `last_pipeline` | `map[string]any` | No |  |
+| `last_pipeline` | `map[string]any` | No | API_Entities_Ci_PipelineBasic model |
 | `message` | `string` | No |  |
 | `parent_ids` | `[]any` | No |  |
 | `project_id` | `int` | No |  |
@@ -4637,7 +4642,7 @@ fmt.Println(apiEntitiesCommitNote.GetName()) // "api_entities_commit_note"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `map[string]any` | No |  |
+| `author` | `map[string]any` | No | API_Entities_UserBasic model |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
@@ -4823,7 +4828,7 @@ fmt.Println(apiEntitiesCommitStatus.GetName()) // "api_entities_commit_status"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
-| `author` | `map[string]any` | No |  |
+| `author` | `map[string]any` | No | API_Entities_UserBasic model |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `coverage` | `float64` | No |  |
@@ -4909,7 +4914,7 @@ fmt.Println(apiEntitiesCompare.GetName()) // "api_entities_compare"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `commit` | `map[string]any` | No |  |
+| `commit` | `map[string]any` | No | API_Entities_Commit model |
 | `commits` | `[]any` | No |  |
 | `compare_same_ref` | `bool` | No |  |
 | `compare_timeout` | `bool` | No |  |
@@ -4975,7 +4980,7 @@ fmt.Println(apiEntitiesContainerRegistryRepository.GetName()) // "api_entities_c
 | `project_id` | `int` | No |  |
 | `size` | `int` | No |  |
 | `status` | `string` | No |  |
-| `tags` | `map[string]any` | No |  |
+| `tags` | `map[string]any` | No | API_Entities_ContainerRegistry_Tag model |
 | `tags_count` | `int` | No |  |
 
 ### Operations
@@ -5456,6 +5461,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesDeployTokenWithToken(nil).Create(map[string]any{
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -5499,15 +5505,15 @@ fmt.Println(apiEntitiesDeployment.GetName()) // "api_entities_deployment"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `created_at` | `string` | No |  |
-| `deployable` | `map[string]any` | No |  |
-| `environment` | `map[string]any` | No |  |
+| `deployable` | `map[string]any` | No | API_Entities_Ci_Job model |
+| `environment` | `map[string]any` | No | API_Entities_EnvironmentBasic model |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `ref` | `string` | No |  |
 | `sha` | `string` | No |  |
 | `status` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
+| `user` | `map[string]any` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -5559,10 +5565,10 @@ fmt.Println(apiEntitiesDeploymentExtended.GetName()) // "api_entities_deployment
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `approval_summary` | `map[string]any` | No |  |
-| `approvals` | `map[string]any` | No |  |
+| `approvals` | `map[string]any` | No | API_Entities_Deployments_Approval model |
 | `created_at` | `string` | No |  |
-| `deployable` | `map[string]any` | No |  |
-| `environment` | `map[string]any` | No |  |
+| `deployable` | `map[string]any` | No | API_Entities_Ci_Job model |
+| `environment` | `map[string]any` | No | API_Entities_EnvironmentBasic model |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `pending_approval_count` | `int` | No |  |
@@ -5570,7 +5576,7 @@ fmt.Println(apiEntitiesDeploymentExtended.GetName()) // "api_entities_deployment
 | `sha` | `string` | No |  |
 | `status` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
+| `user` | `map[string]any` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -5981,16 +5987,16 @@ fmt.Println(apiEntitiesEnvironment.GetName()) // "api_entities_environment"
 | --- | --- | --- | --- |
 | `auto_stop_at` | `string` | No |  |
 | `auto_stop_setting` | `string` | No |  |
-| `cluster_agent` | `map[string]any` | No |  |
+| `cluster_agent` | `map[string]any` | No | API_Entities_Clusters_Agent model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `external_url` | `string` | No |  |
 | `flux_resource_path` | `string` | No |  |
 | `id` | `int` | No |  |
 | `kubernetes_namespace` | `string` | No |  |
-| `last_deployment` | `map[string]any` | No |  |
+| `last_deployment` | `map[string]any` | No | API_Entities_Deployment model |
 | `name` | `string` | No |  |
-| `project` | `map[string]any` | No |  |
+| `project` | `map[string]any` | No | API_Entities_BasicProjectDetails model |
 | `slug` | `string` | No |  |
 | `state` | `string` | No |  |
 | `tier` | `string` | No |  |
@@ -6226,7 +6232,7 @@ fmt.Println(apiEntitiesEvent.GetName()) // "api_entities_event"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action_name` | `string` | No |  |
-| `author` | `map[string]any` | No |  |
+| `author` | `map[string]any` | No | API_Entities_UserBasic model |
 | `author_id` | `int` | No |  |
 | `author_username` | `string` | No |  |
 | `created_at` | `string` | No |  |
@@ -6240,7 +6246,7 @@ fmt.Println(apiEntitiesEvent.GetName()) // "api_entities_event"
 | `target_iid` | `int` | No |  |
 | `target_title` | `string` | No |  |
 | `target_type` | `string` | No |  |
-| `wiki_page` | `map[string]any` | No |  |
+| `wiki_page` | `map[string]any` | No | API_Entities_WikiPageBasic model |
 
 ### Operations
 
@@ -6303,7 +6309,7 @@ fmt.Println(apiEntitiesFeature.GetName()) // "api_entities_feature"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `definition` | `map[string]any` | No |  |
+| `definition` | `map[string]any` | No | API_Entities_Feature_Definition model |
 | `gates` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
 | `state` | `string` | No |  |
@@ -6843,12 +6849,12 @@ fmt.Println(apiEntitiesGroup.GetName()) // "api_entities_group"
 | `auto_duo_code_review_enabled` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attributes` | `map[string]any` | No |  |
+| `custom_attributes` | `map[string]any` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `default_branch_protection` | `string` | No |  |
 | `default_branch_protection_defaults` | `string` | No |  |
 | `description` | `string` | No |  |
-| `duo_core_features_enabled` | `bool` | No |  |
+| `duo_core_features_enabled` | `bool` | No | [Experimental] Indicates whether GitLab Duo Core features are enabled for the group |
 | `duo_features_enabled` | `string` | No |  |
 | `emails_disabled` | `bool` | No |  |
 | `emails_enabled` | `bool` | No |  |
@@ -6983,12 +6989,12 @@ fmt.Println(apiEntitiesGroupDetail.GetName()) // "api_entities_group_detail"
 | `auto_duo_code_review_enabled` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attributes` | `map[string]any` | No |  |
+| `custom_attributes` | `map[string]any` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `default_branch_protection` | `string` | No |  |
 | `default_branch_protection_defaults` | `string` | No |  |
 | `description` | `string` | No |  |
-| `duo_core_features_enabled` | `bool` | No |  |
+| `duo_core_features_enabled` | `bool` | No | [Experimental] Indicates whether GitLab Duo Core features are enabled for the group |
 | `duo_features_enabled` | `string` | No |  |
 | `emails_disabled` | `bool` | No |  |
 | `emails_enabled` | `bool` | No |  |
@@ -7017,7 +7023,7 @@ fmt.Println(apiEntitiesGroupDetail.GetName()) // "api_entities_group_detail"
 | `prevent_forking_outside_group` | `string` | No |  |
 | `prevent_sharing_groups_outside_hierarchy` | `string` | No |  |
 | `project_creation_level` | `string` | No |  |
-| `projects` | `map[string]any` | No |  |
+| `projects` | `map[string]any` | No | API_Entities_Project model |
 | `repository_storage` | `string` | No |  |
 | `request_access_enabled` | `string` | No |  |
 | `require_two_factor_authentication` | `string` | No |  |
@@ -7026,7 +7032,7 @@ fmt.Println(apiEntitiesGroupDetail.GetName()) // "api_entities_group_detail"
 | `saml_group_links` | `map[string]any` | No |  |
 | `service_access_tokens_expiration_enforced` | `string` | No |  |
 | `share_with_group_lock` | `string` | No |  |
-| `shared_projects` | `map[string]any` | No |  |
+| `shared_projects` | `map[string]any` | No | API_Entities_Project model |
 | `shared_runners_minutes_limit` | `string` | No |  |
 | `shared_runners_setting` | `string` | No |  |
 | `shared_with_groups` | `string` | No |  |
@@ -7216,7 +7222,7 @@ fmt.Println(apiEntitiesIntegration.GetName()) // "api_entities_integration"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesIntegration(nil).Load(map[string]any{"id": "api_entities_integration_id"}, nil)
+result, err := client.ApiEntitiesIntegration(nil).Load(map[string]any{"id": "api_entities_integration_id", "group_id": "group_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -7302,6 +7308,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.ApiEntitiesIntegrationBasic(nil).Update(map[string]any{
+    "group_id": "group_id",
     // Fields to update
 }, nil)
 if err != nil {
@@ -7373,6 +7380,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesInvitation(nil).Create(map[string]any{
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -7498,12 +7506,12 @@ fmt.Println(apiEntitiesIssue.GetName()) // "api_entities_issue"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assignee` | `map[string]any` | No |  |
-| `assignees` | `map[string]any` | No |  |
-| `author` | `map[string]any` | No |  |
+| `assignee` | `map[string]any` | No | API_Entities_UserBasic model |
+| `assignees` | `map[string]any` | No | API_Entities_UserBasic model |
+| `author` | `map[string]any` | No | API_Entities_UserBasic model |
 | `blocking_issues_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `map[string]any` | No |  |
+| `closed_by` | `map[string]any` | No | API_Entities_UserBasic model |
 | `confidential` | `bool` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
@@ -7528,14 +7536,14 @@ fmt.Println(apiEntitiesIssue.GetName()) // "api_entities_issue"
 | `project_id` | `int` | No |  |
 | `references` | `map[string]any` | No |  |
 | `service_desk_reply_to` | `string` | No |  |
-| `severity` | `string` | No |  |
+| `severity` | `string` | No | One of ["UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"] |
 | `state` | `string` | No |  |
 | `subscribed` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
 | `task_status` | `string` | No |  |
-| `time_stats` | `map[string]any` | No |  |
+| `time_stats` | `map[string]any` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
-| `type` | `string` | No |  |
+| `type` | `string` | No | One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK", "TICKET"] |
 | `updated_at` | `string` | No |  |
 | `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
@@ -7715,16 +7723,16 @@ fmt.Println(apiEntitiesLicense.GetName()) // "api_entities_license"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns an array.
+Load a single entity matching the given criteria.
 
 ```go
-results, err := client.ApiEntitiesLicense(nil).List(nil, nil)
+result, err := client.ApiEntitiesLicense(nil).Load(map[string]any{"id": "api_entities_license_id", "name": "name", "type": "type"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(results)
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -7867,7 +7875,7 @@ fmt.Println(apiEntitiesMember.GetName()) // "api_entities_member"
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `created_by` | `map[string]any` | No |  |
+| `created_by` | `map[string]any` | No | API_Entities_UserBasic model |
 | `custom_attributes` | `[]any` | No |  |
 | `email` | `string` | No |  |
 | `expires_at` | `string` | No |  |
@@ -7906,7 +7914,7 @@ fmt.Println(results)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesMember(nil).Load(map[string]any{"id": "api_entities_member_id"}, nil)
+result, err := client.ApiEntitiesMember(nil).Load(map[string]any{"id": "api_entities_member_id", "group_id": "group_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -7919,6 +7927,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesMember(nil).Create(map[string]any{
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -7991,13 +8000,13 @@ fmt.Println(apiEntitiesMerge.GetName()) // "api_entities_merge"
 | `allow_collaboration` | `bool` | No |  |
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `string` | No |  |
-| `assignee` | `map[string]any` | No |  |
-| `assignees` | `map[string]any` | No |  |
-| `author` | `map[string]any` | No |  |
+| `assignee` | `map[string]any` | No | API_Entities_UserBasic model |
+| `assignees` | `map[string]any` | No | API_Entities_UserBasic model |
+| `author` | `map[string]any` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `string` | No |  |
 | `changes_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `map[string]any` | No |  |
+| `closed_by` | `map[string]any` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -8011,7 +8020,7 @@ fmt.Println(apiEntitiesMerge.GetName()) // "api_entities_merge"
 | `first_deployed_to_production_at` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
 | `has_conflicts` | `bool` | No |  |
-| `head_pipeline` | `map[string]any` | No |  |
+| `head_pipeline` | `map[string]any` | No | API_Entities_Ci_Pipeline model |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `string` | No |  |
@@ -8023,18 +8032,18 @@ fmt.Println(apiEntitiesMerge.GetName()) // "api_entities_merge"
 | `merge_commit_sha` | `string` | No |  |
 | `merge_error` | `string` | No |  |
 | `merge_status` | `string` | No |  |
-| `merge_user` | `map[string]any` | No |  |
+| `merge_user` | `map[string]any` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
-| `merged_by` | `map[string]any` | No |  |
+| `merged_by` | `map[string]any` | No | API_Entities_UserBasic model |
 | `milestone` | `map[string]any` | No |  |
-| `pipeline` | `map[string]any` | No |  |
+| `pipeline` | `map[string]any` | No | API_Entities_Ci_PipelineBasic model |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `int` | No |  |
 | `rebase_in_progress` | `string` | No |  |
 | `reference` | `string` | No |  |
 | `references` | `map[string]any` | No |  |
-| `reviewers` | `map[string]any` | No |  |
+| `reviewers` | `map[string]any` | No | API_Entities_UserBasic model |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `string` | No |  |
@@ -8047,7 +8056,7 @@ fmt.Println(apiEntitiesMerge.GetName()) // "api_entities_merge"
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stats` | `map[string]any` | No |  |
+| `time_stats` | `map[string]any` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
@@ -8136,7 +8145,7 @@ fmt.Println(apiEntitiesMergeRequestApproval.GetName()) // "api_entities_merge_re
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `approved_at` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
+| `user` | `map[string]any` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -8205,12 +8214,12 @@ fmt.Println(apiEntitiesMergeRequestBasic.GetName()) // "api_entities_merge_reque
 | `allow_collaboration` | `bool` | No |  |
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `string` | No |  |
-| `assignee` | `map[string]any` | No |  |
-| `assignees` | `map[string]any` | No |  |
-| `author` | `map[string]any` | No |  |
+| `assignee` | `map[string]any` | No | API_Entities_UserBasic model |
+| `assignees` | `map[string]any` | No | API_Entities_UserBasic model |
+| `author` | `map[string]any` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `map[string]any` | No |  |
+| `closed_by` | `map[string]any` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -8228,16 +8237,16 @@ fmt.Println(apiEntitiesMergeRequestBasic.GetName()) // "api_entities_merge_reque
 | `merge_after` | `string` | No |  |
 | `merge_commit_sha` | `string` | No |  |
 | `merge_status` | `string` | No |  |
-| `merge_user` | `map[string]any` | No |  |
+| `merge_user` | `map[string]any` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
-| `merged_by` | `map[string]any` | No |  |
+| `merged_by` | `map[string]any` | No | API_Entities_UserBasic model |
 | `milestone` | `map[string]any` | No |  |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `int` | No |  |
 | `reference` | `string` | No |  |
 | `references` | `map[string]any` | No |  |
-| `reviewers` | `map[string]any` | No |  |
+| `reviewers` | `map[string]any` | No | API_Entities_UserBasic model |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `string` | No |  |
@@ -8249,7 +8258,7 @@ fmt.Println(apiEntitiesMergeRequestBasic.GetName()) // "api_entities_merge_reque
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stats` | `map[string]any` | No |  |
+| `time_stats` | `map[string]any` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
@@ -8277,7 +8286,7 @@ fmt.Println(results)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesMergeRequestBasic(nil).Load(nil, nil)
+result, err := client.ApiEntitiesMergeRequestBasic(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -8322,14 +8331,14 @@ fmt.Println(apiEntitiesMergeRequestChange.GetName()) // "api_entities_merge_requ
 | `allow_collaboration` | `bool` | No |  |
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `string` | No |  |
-| `assignee` | `map[string]any` | No |  |
-| `assignees` | `map[string]any` | No |  |
-| `author` | `map[string]any` | No |  |
+| `assignee` | `map[string]any` | No | API_Entities_UserBasic model |
+| `assignees` | `map[string]any` | No | API_Entities_UserBasic model |
+| `author` | `map[string]any` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `string` | No |  |
-| `changes` | `map[string]any` | No |  |
+| `changes` | `map[string]any` | No | API_Entities_Diff model |
 | `changes_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `map[string]any` | No |  |
+| `closed_by` | `map[string]any` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -8343,7 +8352,7 @@ fmt.Println(apiEntitiesMergeRequestChange.GetName()) // "api_entities_merge_requ
 | `first_deployed_to_production_at` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
 | `has_conflicts` | `bool` | No |  |
-| `head_pipeline` | `map[string]any` | No |  |
+| `head_pipeline` | `map[string]any` | No | API_Entities_Ci_Pipeline model |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `string` | No |  |
@@ -8355,19 +8364,19 @@ fmt.Println(apiEntitiesMergeRequestChange.GetName()) // "api_entities_merge_requ
 | `merge_commit_sha` | `string` | No |  |
 | `merge_error` | `string` | No |  |
 | `merge_status` | `string` | No |  |
-| `merge_user` | `map[string]any` | No |  |
+| `merge_user` | `map[string]any` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
-| `merged_by` | `map[string]any` | No |  |
+| `merged_by` | `map[string]any` | No | API_Entities_UserBasic model |
 | `milestone` | `map[string]any` | No |  |
 | `overflow` | `string` | No |  |
-| `pipeline` | `map[string]any` | No |  |
+| `pipeline` | `map[string]any` | No | API_Entities_Ci_PipelineBasic model |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `int` | No |  |
 | `rebase_in_progress` | `string` | No |  |
 | `reference` | `string` | No |  |
 | `references` | `map[string]any` | No |  |
-| `reviewers` | `map[string]any` | No |  |
+| `reviewers` | `map[string]any` | No | API_Entities_UserBasic model |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `string` | No |  |
@@ -8380,7 +8389,7 @@ fmt.Println(apiEntitiesMergeRequestChange.GetName()) // "api_entities_merge_requ
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stats` | `map[string]any` | No |  |
+| `time_stats` | `map[string]any` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
@@ -8499,9 +8508,9 @@ fmt.Println(apiEntitiesMergeRequestDiffFull.GetName()) // "api_entities_merge_re
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `base_commit_sha` | `string` | No |  |
-| `commits` | `map[string]any` | No |  |
+| `commits` | `map[string]any` | No | API_Entities_Commit model |
 | `created_at` | `string` | No |  |
-| `diffs` | `map[string]any` | No |  |
+| `diffs` | `map[string]any` | No | API_Entities_Diff model |
 | `head_commit_sha` | `string` | No |  |
 | `id` | `string` | No |  |
 | `merge_request_id` | `string` | No |  |
@@ -9305,8 +9314,8 @@ fmt.Println(apiEntitiesPackage.GetName()) // "api_entities_package"
 | `links` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
 | `package_type` | `string` | No |  |
-| `pipeline` | `map[string]any` | No |  |
-| `pipelines` | `map[string]any` | No |  |
+| `pipeline` | `map[string]any` | No | API_Entities_Package_Pipeline model |
+| `pipelines` | `map[string]any` | No | API_Entities_Package_Pipeline model |
 | `project_id` | `int` | No |  |
 | `project_path` | `string` | No |  |
 | `status` | `string` | No |  |
@@ -9382,7 +9391,7 @@ fmt.Println(apiEntitiesPackageFile.GetName()) // "api_entities_package_file"
 | `file_sha256` | `string` | No |  |
 | `id` | `int` | No |  |
 | `package_id` | `int` | No |  |
-| `pipelines` | `map[string]any` | No |  |
+| `pipelines` | `map[string]any` | No | API_Entities_Package_Pipeline model |
 | `size` | `int` | No |  |
 
 ### Operations
@@ -9584,8 +9593,8 @@ fmt.Println(apiEntitiesPackagesConanPackageRevision.GetName()) // "api_entities_
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `string` | No |  |
-| `time` | `string` | No |  |
+| `revision` | `string` | No | The revision hash of the Conan recipe or package |
+| `time` | `string` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9726,8 +9735,8 @@ fmt.Println(apiEntitiesPackagesConanRecipeRevision.GetName()) // "api_entities_p
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `string` | No |  |
-| `time` | `string` | No |  |
+| `revision` | `string` | No | The revision hash of the Conan recipe or package |
+| `time` | `string` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9823,8 +9832,8 @@ fmt.Println(apiEntitiesPackagesConanRevision.GetName()) // "api_entities_package
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `string` | No |  |
-| `time` | `string` | No |  |
+| `revision` | `string` | No | The revision hash of the Conan recipe or package |
+| `time` | `string` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9968,6 +9977,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesPackagesDebianDistribution(nil).Create(map[string]any{
+    "project_id": "example_project_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -10332,6 +10342,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesPersonalAccessTokenWithToken(nil).Create(map[string]any{
+    "personal_access_token_id": "example_personal_access_token_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -10374,7 +10385,7 @@ fmt.Println(apiEntitiesPersonalSnippet.GetName()) // "api_entities_personal_snip
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `map[string]any` | No |  |
+| `author` | `map[string]any` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `file_name` | `string` | No |  |
@@ -10574,7 +10585,7 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `container_registry_image_prefix` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `creator_id` | `int` | No |  |
-| `custom_attributes` | `map[string]any` | No |  |
+| `custom_attributes` | `map[string]any` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -10586,7 +10597,7 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `environments_access_level` | `string` | No |  |
 | `external_authorization_classification_label` | `string` | No |  |
 | `feature_flags_access_level` | `string` | No |  |
-| `forked_from_project` | `map[string]any` | No |  |
+| `forked_from_project` | `map[string]any` | No | API_Entities_BasicProjectDetails model |
 | `forking_access_level` | `string` | No |  |
 | `forks_count` | `int` | No |  |
 | `group_runners_enabled` | `bool` | No |  |
@@ -10637,7 +10648,7 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `only_allow_merge_if_pipeline_succeeds` | `bool` | No |  |
 | `only_mirror_protected_branches` | `string` | No |  |
 | `open_issues_count` | `int` | No |  |
-| `owner` | `map[string]any` | No |  |
+| `owner` | `map[string]any` | No | API_Entities_UserBasic model |
 | `package_registry_access_level` | `string` | No |  |
 | `packages_enabled` | `bool` | No |  |
 | `pages_access_level` | `string` | No |  |
@@ -10671,7 +10682,7 @@ fmt.Println(apiEntitiesProject.GetName()) // "api_entities_project"
 | `show_diff_preview_in_email` | `bool` | No |  |
 | `snippets_access_level` | `string` | No |  |
 | `snippets_enabled` | `bool` | No |  |
-| `spp_repository_pipeline_access` | `bool` | No |  |
+| `spp_repository_pipeline_access` | `bool` | No | The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available. |
 | `squash_commit_template` | `string` | No |  |
 | `squash_option` | `string` | No |  |
 | `ssh_url_to_repo` | `string` | No |  |
@@ -10708,6 +10719,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesProject(nil).Create(map[string]any{
+    "user_id": "example_user_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -10721,6 +10733,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.ApiEntitiesProject(nil).Update(map[string]any{
+    "id": "id",
     // Fields to update
 }, nil)
 if err != nil {
@@ -11215,7 +11228,7 @@ fmt.Println(apiEntitiesProjectSnippet.GetName()) // "api_entities_project_snippe
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `map[string]any` | No |  |
+| `author` | `map[string]any` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `file_name` | `string` | No |  |
@@ -11405,7 +11418,7 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `container_registry_image_prefix` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `creator_id` | `int` | No |  |
-| `custom_attributes` | `map[string]any` | No |  |
+| `custom_attributes` | `map[string]any` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -11417,7 +11430,7 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `environments_access_level` | `string` | No |  |
 | `external_authorization_classification_label` | `string` | No |  |
 | `feature_flags_access_level` | `string` | No |  |
-| `forked_from_project` | `map[string]any` | No |  |
+| `forked_from_project` | `map[string]any` | No | API_Entities_BasicProjectDetails model |
 | `forking_access_level` | `string` | No |  |
 | `forks_count` | `int` | No |  |
 | `group_runners_enabled` | `bool` | No |  |
@@ -11468,7 +11481,7 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `only_allow_merge_if_pipeline_succeeds` | `bool` | No |  |
 | `only_mirror_protected_branches` | `string` | No |  |
 | `open_issues_count` | `int` | No |  |
-| `owner` | `map[string]any` | No |  |
+| `owner` | `map[string]any` | No | API_Entities_UserBasic model |
 | `package_registry_access_level` | `string` | No |  |
 | `packages_enabled` | `bool` | No |  |
 | `pages_access_level` | `string` | No |  |
@@ -11503,7 +11516,7 @@ fmt.Println(apiEntitiesProjectWithAccess.GetName()) // "api_entities_project_wit
 | `show_diff_preview_in_email` | `bool` | No |  |
 | `snippets_access_level` | `string` | No |  |
 | `snippets_enabled` | `bool` | No |  |
-| `spp_repository_pipeline_access` | `bool` | No |  |
+| `spp_repository_pipeline_access` | `bool` | No | The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available. |
 | `squash_commit_template` | `string` | No |  |
 | `squash_option` | `string` | No |  |
 | `ssh_url_to_repo` | `string` | No |  |
@@ -12065,12 +12078,12 @@ fmt.Println(apiEntitiesRelatedIssue.GetName()) // "api_entities_related_issue"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assignee` | `map[string]any` | No |  |
-| `assignees` | `map[string]any` | No |  |
-| `author` | `map[string]any` | No |  |
+| `assignee` | `map[string]any` | No | API_Entities_UserBasic model |
+| `assignees` | `map[string]any` | No | API_Entities_UserBasic model |
+| `author` | `map[string]any` | No | API_Entities_UserBasic model |
 | `blocking_issues_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `map[string]any` | No |  |
+| `closed_by` | `map[string]any` | No | API_Entities_UserBasic model |
 | `confidential` | `bool` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
@@ -12099,14 +12112,14 @@ fmt.Println(apiEntitiesRelatedIssue.GetName()) // "api_entities_related_issue"
 | `project_id` | `int` | No |  |
 | `references` | `map[string]any` | No |  |
 | `service_desk_reply_to` | `string` | No |  |
-| `severity` | `string` | No |  |
+| `severity` | `string` | No | One of ["UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"] |
 | `state` | `string` | No |  |
 | `subscribed` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
 | `task_status` | `string` | No |  |
-| `time_stats` | `map[string]any` | No |  |
+| `time_stats` | `map[string]any` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
-| `type` | `string` | No |  |
+| `type` | `string` | No | One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK", "TICKET"] |
 | `updated_at` | `string` | No |  |
 | `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
@@ -12209,8 +12222,8 @@ fmt.Println(apiEntitiesRelease.GetName()) // "api_entities_release"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `assets` | `map[string]any` | No |  |
-| `author` | `map[string]any` | No |  |
-| `commit` | `map[string]any` | No |  |
+| `author` | `map[string]any` | No | API_Entities_UserBasic model |
+| `commit` | `map[string]any` | No | API_Entities_Commit model |
 | `commit_path` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
@@ -12603,6 +12616,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesResourceAccessTokenWithToken(nil).Create(map[string]any{
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -12652,7 +12666,7 @@ fmt.Println(apiEntitiesResourceMilestoneEvent.GetName()) // "api_entities_resour
 | `resource_id` | `int` | No |  |
 | `resource_type` | `string` | No |  |
 | `state` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
+| `user` | `map[string]any` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -12715,7 +12729,7 @@ fmt.Println(apiEntitiesSnippet.GetName()) // "api_entities_snippet"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `map[string]any` | No |  |
+| `author` | `map[string]any` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `file_name` | `string` | No |  |
@@ -13039,7 +13053,7 @@ fmt.Println(apiEntitiesTag.GetName()) // "api_entities_tag"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `commit` | `map[string]any` | No |  |
+| `commit` | `map[string]any` | No | API_Entities_Commit model |
 | `created_at` | `string` | No |  |
 | `message` | `string` | No |  |
 | `name` | `string` | No |  |
@@ -13362,7 +13376,7 @@ fmt.Println(apiEntitiesTrigger.GetName()) // "api_entities_trigger"
 | `last_used` | `string` | No |  |
 | `locked` | `bool` | No |  |
 | `name` | `string` | No |  |
-| `owner` | `map[string]any` | No |  |
+| `owner` | `map[string]any` | No | API_Entities_UserBasic model |
 | `public_email` | `string` | No |  |
 | `state` | `string` | No |  |
 | `token` | `string` | No |  |
@@ -13472,7 +13486,7 @@ fmt.Println(apiEntitiesUserAgentDetail.GetName()) // "api_entities_user_agent_de
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesUserAgentDetail(nil).Load(nil, nil)
+result, err := client.ApiEntitiesUserAgentDetail(nil).Load(map[string]any{"snippet_id": "snippet_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -13723,6 +13737,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesWikiAttachment(nil).Create(map[string]any{
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -13781,6 +13796,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesWikiPage(nil).Create(map[string]any{
+    "group_id": "example_group_id",
 }, nil)
 if err != nil {
     panic(err)
@@ -14302,7 +14318,7 @@ fmt.Println(composerPackage.GetName()) // "composer_package"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ComposerPackage(nil).Load(nil, nil)
+result, err := client.ComposerPackage(nil).Load(map[string]any{"group_id": "group_id", "sha": "sha"}, nil)
 if err != nil {
     panic(err)
 }
@@ -14392,7 +14408,7 @@ fmt.Println(conanPackage.GetName()) // "conan_package"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ConanPackage(nil).Load(map[string]any{"id": "conan_package_id"}, nil)
+result, err := client.ConanPackage(nil).Load(map[string]any{"file_id": "file_id", "file_name": "file_name", "package_channel": "package_channel", "package_username": "package_username", "package_version": "package_version", "recipe_revision": "recipe_revision"}, nil)
 if err != nil {
     panic(err)
 }
@@ -14405,7 +14421,6 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.ConanPackage(nil).Update(map[string]any{
-    "id": "conan_package_id",
     "file_name": "file_name",
     "package_channel": "package_channel",
     "package_username": "package_username",
@@ -14566,7 +14581,7 @@ fmt.Println(customAttribute.GetName()) // "custom_attribute"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.CustomAttribute(nil).Load(map[string]any{"id": "custom_attribute_id"}, nil)
+result, err := client.CustomAttribute(nil).Load(map[string]any{"id": "custom_attribute_id", "group_id": "group_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -14705,7 +14720,7 @@ fmt.Println(debianPackage.GetName()) // "debian_package"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.DebianPackage(nil).Load(map[string]any{"id": "debian_package_id"}, nil)
+result, err := client.DebianPackage(nil).Load(map[string]any{"id": "debian_package_id", "distribution": "distribution", "file_name": "file_name", "letter": "letter", "package_name": "package_name", "package_version": "package_version"}, nil)
 if err != nil {
     panic(err)
 }
@@ -16580,7 +16595,7 @@ fmt.Println(result)
 Remove the entity matching the given criteria.
 
 ```go
-result, err := client.Integration(nil).Remove(nil, nil)
+result, err := client.Integration(nil).Remove(map[string]any{"group_id": "group_id", "id": "id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -17435,7 +17450,7 @@ fmt.Println(results)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.NugetPackage(nil).Load(nil, nil)
+result, err := client.NugetPackage(nil).Load(map[string]any{"project_id": "project_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -17735,13 +17750,13 @@ fmt.Println(project.GetName()) // "project"
 | `coverage` | `float64` | No |  |
 | `created_at` | `string` | No |  |
 | `detailed_status` | `map[string]any` | No |  |
-| `duration` | `int` | No |  |
+| `duration` | `int` | No | Time spent running in seconds |
 | `finished_at` | `string` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `name` | `string` | No |  |
 | `project_id` | `int` | No |  |
-| `queued_duration` | `int` | No |  |
+| `queued_duration` | `int` | No | Time spent enqueued in seconds |
 | `ref` | `string` | No |  |
 | `sha` | `string` | No |  |
 | `source` | `string` | No |  |
@@ -17749,7 +17764,7 @@ fmt.Println(project.GetName()) // "project"
 | `status` | `string` | No |  |
 | `tag` | `bool` | No |  |
 | `updated_at` | `string` | No |  |
-| `user` | `map[string]any` | No |  |
+| `user` | `map[string]any` | No | API_Entities_UserBasic model |
 | `web_url` | `string` | No |  |
 | `yaml_errors` | `string` | No |  |
 
@@ -18393,7 +18408,7 @@ fmt.Println(pypiPackage.GetName()) // "pypi_package"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.PypiPackage(nil).Load(nil, nil)
+result, err := client.PypiPackage(nil).Load(map[string]any{"project_id": "project_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -18849,7 +18864,7 @@ fmt.Println(result)
 Remove the entity matching the given criteria.
 
 ```go
-result, err := client.Runner(nil).Remove(nil, nil)
+result, err := client.Runner(nil).Remove(map[string]any{"id": "id"}, nil)
 if err != nil {
     panic(err)
 }

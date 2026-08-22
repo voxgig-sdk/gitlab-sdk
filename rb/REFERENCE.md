@@ -1319,6 +1319,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesAccessRequester.create({
+  "group_id" => "example_group_id", # String
 })
 ```
 
@@ -1515,17 +1516,17 @@ api_entities_application_statistic = client.ApiEntitiesApplicationStatistic
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_users` | `Integer` | No |  |
-| `forks` | `Integer` | No |  |
-| `groups` | `Integer` | No |  |
-| `issues` | `Integer` | No |  |
-| `merge_requests` | `Integer` | No |  |
-| `milestones` | `Integer` | No |  |
-| `notes` | `Integer` | No |  |
-| `projects` | `Integer` | No |  |
-| `snippets` | `Integer` | No |  |
-| `ssh_keys` | `Integer` | No |  |
-| `users` | `Integer` | No |  |
+| `active_users` | `Integer` | No | Number of active users |
+| `forks` | `Integer` | No | Approximate number of repo forks |
+| `groups` | `Integer` | No | Approximate number of projects |
+| `issues` | `Integer` | No | Approximate number of issues |
+| `merge_requests` | `Integer` | No | Approximate number of merge requests |
+| `milestones` | `Integer` | No | Approximate number of milestones |
+| `notes` | `Integer` | No | Approximate number of notes |
+| `projects` | `Integer` | No | Approximate number of projects |
+| `snippets` | `Integer` | No | Approximate number of snippets |
+| `ssh_keys` | `Integer` | No | Approximate number of SSH keys |
+| `users` | `Integer` | No | Approximate number of users |
 
 ### Operations
 
@@ -1700,7 +1701,7 @@ api_entities_award_emoji = client.ApiEntitiesAwardEmoji
 | `state` | `String` | No |  |
 | `updated_at` | `String` | No |  |
 | `url` | `String` | No |  |
-| `user` | `Hash` | No |  |
+| `user` | `Hash` | No | API_Entities_UserBasic model |
 | `username` | `String` | No |  |
 | `web_url` | `String` | No |  |
 
@@ -1712,6 +1713,8 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesAwardEmoji.create({
+  "epic_id" => "example_epic_id", # String
+  "group_id" => "example_group_id", # String
 })
 ```
 
@@ -1787,6 +1790,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesBadge.create({
+  "group_id" => "example_group_id", # String
 })
 ```
 
@@ -1870,7 +1874,7 @@ api_entities_basic_badge_detail = client.ApiEntitiesBasicBadgeDetail
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesBasicBadgeDetail.load()
+result = client.ApiEntitiesBasicBadgeDetail.load({ "group_id" => "group_id" })
 ```
 
 ### Common Methods
@@ -1963,7 +1967,7 @@ api_entities_basic_project_detail = client.ApiEntitiesBasicProjectDetail
 | --- | --- | --- | --- |
 | `avatar_url` | `String` | No |  |
 | `created_at` | `String` | No |  |
-| `custom_attributes` | `Hash` | No |  |
+| `custom_attributes` | `Hash` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `String` | No |  |
 | `description` | `String` | No |  |
 | `forks_count` | `Integer` | No |  |
@@ -2228,7 +2232,7 @@ api_entities_branch = client.ApiEntitiesBranch
 | `author_name` | `String` | No |  |
 | `authored_date` | `String` | No |  |
 | `can_push` | `Boolean` | No |  |
-| `commit` | `Hash` | No |  |
+| `commit` | `Hash` | No | API_Entities_Commit model |
 | `committed_date` | `String` | No |  |
 | `committer_email` | `String` | No |  |
 | `committer_name` | `String` | No |  |
@@ -2587,19 +2591,19 @@ api_entities_ci_bridge = client.ApiEntitiesCiBridge
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `Boolean` | No |  |
-| `commit` | `Hash` | No |  |
+| `commit` | `Hash` | No | API_Entities_Commit model |
 | `coverage` | `Float` | No |  |
 | `created_at` | `String` | No |  |
-| `downstream_pipeline` | `Hash` | No |  |
-| `duration` | `Float` | No |  |
+| `downstream_pipeline` | `Hash` | No | API_Entities_Ci_PipelineBasic model |
+| `duration` | `Float` | No | Time spent running |
 | `erased_at` | `String` | No |  |
 | `failure_reason` | `String` | No |  |
 | `finished_at` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `pipeline` | `Hash` | No |  |
+| `pipeline` | `Hash` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `Hash` | No |  |
-| `queued_duration` | `Float` | No |  |
+| `queued_duration` | `Float` | No | Time spent enqueued |
 | `ref` | `String` | No |  |
 | `stage` | `String` | No |  |
 | `started_at` | `String` | No |  |
@@ -2711,10 +2715,10 @@ api_entities_ci_job = client.ApiEntitiesCiJob
 | `artifacts` | `Array` | No |  |
 | `artifacts_expire_at` | `String` | No |  |
 | `artifacts_file` | `Hash` | No |  |
-| `commit` | `Hash` | No |  |
+| `commit` | `Hash` | No | API_Entities_Commit model |
 | `coverage` | `Float` | No |  |
 | `created_at` | `String` | No |  |
-| `duration` | `Float` | No |  |
+| `duration` | `Float` | No | Time spent running |
 | `erased_at` | `String` | No |  |
 | `failure_reason` | `String` | No |  |
 | `file_format` | `String` | No |  |
@@ -2723,12 +2727,12 @@ api_entities_ci_job = client.ApiEntitiesCiJob
 | `finished_at` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `pipeline` | `Hash` | No |  |
+| `pipeline` | `Hash` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `Hash` | No |  |
-| `queued_duration` | `Float` | No |  |
+| `queued_duration` | `Float` | No | Time spent enqueued |
 | `ref` | `String` | No |  |
-| `runner` | `Hash` | No |  |
-| `runner_manager` | `Hash` | No |  |
+| `runner` | `Hash` | No | API_Entities_Ci_Runner model |
+| `runner_manager` | `Hash` | No | API_Entities_Ci_RunnerManager model |
 | `size` | `Integer` | No |  |
 | `stage` | `String` | No |  |
 | `started_at` | `String` | No |  |
@@ -2808,18 +2812,18 @@ api_entities_ci_job_basic = client.ApiEntitiesCiJobBasic
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `Boolean` | No |  |
-| `commit` | `Hash` | No |  |
+| `commit` | `Hash` | No | API_Entities_Commit model |
 | `coverage` | `Float` | No |  |
 | `created_at` | `String` | No |  |
-| `duration` | `Float` | No |  |
+| `duration` | `Float` | No | Time spent running |
 | `erased_at` | `String` | No |  |
 | `failure_reason` | `String` | No |  |
 | `finished_at` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `pipeline` | `Hash` | No |  |
+| `pipeline` | `Hash` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `Hash` | No |  |
-| `queued_duration` | `Float` | No |  |
+| `queued_duration` | `Float` | No | Time spent enqueued |
 | `ref` | `String` | No |  |
 | `stage` | `String` | No |  |
 | `started_at` | `String` | No |  |
@@ -2890,18 +2894,18 @@ api_entities_ci_job_basic_with_project = client.ApiEntitiesCiJobBasicWithProject
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `Boolean` | No |  |
-| `commit` | `Hash` | No |  |
+| `commit` | `Hash` | No | API_Entities_Commit model |
 | `coverage` | `Float` | No |  |
 | `created_at` | `String` | No |  |
-| `duration` | `Float` | No |  |
+| `duration` | `Float` | No | Time spent running |
 | `erased_at` | `String` | No |  |
 | `failure_reason` | `String` | No |  |
 | `finished_at` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `pipeline` | `Hash` | No |  |
+| `pipeline` | `Hash` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `Hash` | No |  |
-| `queued_duration` | `Float` | No |  |
+| `queued_duration` | `Float` | No | Time spent enqueued |
 | `ref` | `String` | No |  |
 | `stage` | `String` | No |  |
 | `started_at` | `String` | No |  |
@@ -3159,7 +3163,7 @@ api_entities_ci_pipeline_schedule = client.ApiEntitiesCiPipelineSchedule
 | `id` | `Integer` | No |  |
 | `inputs` | `Hash` | No |  |
 | `next_run_at` | `String` | No |  |
-| `owner` | `Hash` | No |  |
+| `owner` | `Hash` | No | API_Entities_UserBasic model |
 | `ref` | `String` | No |  |
 | `updated_at` | `String` | No |  |
 
@@ -3220,12 +3224,12 @@ api_entities_ci_pipeline_schedule_detail = client.ApiEntitiesCiPipelineScheduleD
 | `description` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `inputs` | `Hash` | No |  |
-| `last_pipeline` | `Hash` | No |  |
+| `last_pipeline` | `Hash` | No | API_Entities_Ci_PipelineBasic model |
 | `next_run_at` | `String` | No |  |
-| `owner` | `Hash` | No |  |
+| `owner` | `Hash` | No | API_Entities_UserBasic model |
 | `ref` | `String` | No |  |
 | `updated_at` | `String` | No |  |
-| `variables` | `Hash` | No |  |
+| `variables` | `Hash` | No | API_Entities_Ci_Variable model |
 
 ### Operations
 
@@ -3450,7 +3454,7 @@ result = client.ApiEntitiesCiRunner.create({
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesCiRunner.load()
+result = client.ApiEntitiesCiRunner.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -3498,9 +3502,9 @@ api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerDetail
 | `architecture` | `String` | No |  |
 | `contacted_at` | `String` | No |  |
 | `created_at` | `String` | No |  |
-| `created_by` | `Hash` | No |  |
+| `created_by` | `Hash` | No | API_Entities_UserBasic model |
 | `description` | `String` | No |  |
-| `groups` | `Hash` | No |  |
+| `groups` | `Hash` | No | API_Entities_BasicGroupDetails model |
 | `id` | `Integer` | No |  |
 | `ip_address` | `String` | No |  |
 | `is_shared` | `Boolean` | No |  |
@@ -3512,7 +3516,7 @@ api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerDetail
 | `online` | `Boolean` | No |  |
 | `paused` | `Boolean` | No |  |
 | `platform` | `String` | No |  |
-| `projects` | `Hash` | No |  |
+| `projects` | `Hash` | No | API_Entities_BasicProjectDetails model |
 | `revision` | `String` | No |  |
 | `run_untagged` | `String` | No |  |
 | `runner_type` | `String` | No |  |
@@ -3764,6 +3768,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesCiVariable.create({
+  "group_id" => "example_group_id", # String
 })
 ```
 
@@ -3780,7 +3785,7 @@ results = client.ApiEntitiesCiVariable.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesCiVariable.load({ "id" => "api_entities_ci_variable_id" })
+result = client.ApiEntitiesCiVariable.load({ "id" => "api_entities_ci_variable_id", "project_id" => "project_id" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -3848,7 +3853,7 @@ api_entities_cluster = client.ApiEntitiesCluster
 | `platform_type` | `String` | No |  |
 | `provider_gcp` | `Hash` | No |  |
 | `provider_type` | `String` | No |  |
-| `user` | `Hash` | No |  |
+| `user` | `Hash` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -3933,7 +3938,7 @@ api_entities_cluster_group = client.ApiEntitiesClusterGroup
 | `domain` | `String` | No |  |
 | `enabled` | `Boolean` | No |  |
 | `environment_scope` | `String` | No |  |
-| `group` | `Hash` | No |  |
+| `group` | `Hash` | No | API_Entities_BasicGroupDetails model |
 | `id` | `String` | No |  |
 | `managed` | `String` | No |  |
 | `management_project` | `Hash` | No |  |
@@ -3943,7 +3948,7 @@ api_entities_cluster_group = client.ApiEntitiesClusterGroup
 | `platform_type` | `String` | No |  |
 | `provider_gcp` | `Hash` | No |  |
 | `provider_type` | `String` | No |  |
-| `user` | `Hash` | No |  |
+| `user` | `Hash` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -4029,10 +4034,10 @@ api_entities_cluster_project = client.ApiEntitiesClusterProject
 | `namespace_per_environment` | `String` | No |  |
 | `platform_kubernetes` | `Hash` | No |  |
 | `platform_type` | `String` | No |  |
-| `project` | `Hash` | No |  |
+| `project` | `Hash` | No | API_Entities_BasicProjectDetails model |
 | `provider_gcp` | `Hash` | No |  |
 | `provider_type` | `String` | No |  |
-| `user` | `Hash` | No |  |
+| `user` | `Hash` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -4425,7 +4430,7 @@ api_entities_commit_detail = client.ApiEntitiesCommitDetail
 | `created_at` | `String` | No |  |
 | `extended_trailers` | `Hash` | No |  |
 | `id` | `String` | No |  |
-| `last_pipeline` | `Hash` | No |  |
+| `last_pipeline` | `Hash` | No | API_Entities_Ci_PipelineBasic model |
 | `message` | `String` | No |  |
 | `parent_ids` | `Array` | No |  |
 | `project_id` | `Integer` | No |  |
@@ -4508,7 +4513,7 @@ api_entities_commit_note = client.ApiEntitiesCommitNote
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `Hash` | No |  |
+| `author` | `Hash` | No | API_Entities_UserBasic model |
 | `avatar_path` | `String` | No |  |
 | `avatar_url` | `String` | No |  |
 | `created_at` | `String` | No |  |
@@ -4693,7 +4698,7 @@ api_entities_commit_status = client.ApiEntitiesCommitStatus
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `Boolean` | No |  |
-| `author` | `Hash` | No |  |
+| `author` | `Hash` | No | API_Entities_UserBasic model |
 | `avatar_path` | `String` | No |  |
 | `avatar_url` | `String` | No |  |
 | `coverage` | `Float` | No |  |
@@ -4776,7 +4781,7 @@ api_entities_compare = client.ApiEntitiesCompare
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `commit` | `Hash` | No |  |
+| `commit` | `Hash` | No | API_Entities_Commit model |
 | `commits` | `Array` | No |  |
 | `compare_same_ref` | `Boolean` | No |  |
 | `compare_timeout` | `Boolean` | No |  |
@@ -4843,7 +4848,7 @@ api_entities_container_registry_repository = client.ApiEntitiesContainerRegistry
 | `project_id` | `Integer` | No |  |
 | `size` | `Integer` | No |  |
 | `status` | `String` | No |  |
-| `tags` | `Hash` | No |  |
+| `tags` | `Hash` | No | API_Entities_ContainerRegistry_Tag model |
 | `tags_count` | `Integer` | No |  |
 
 ### Operations
@@ -5307,6 +5312,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesDeployTokenWithToken.create({
+  "group_id" => "example_group_id", # String
 })
 ```
 
@@ -5351,15 +5357,15 @@ api_entities_deployment = client.ApiEntitiesDeployment
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `created_at` | `String` | No |  |
-| `deployable` | `Hash` | No |  |
-| `environment` | `Hash` | No |  |
+| `deployable` | `Hash` | No | API_Entities_Ci_Job model |
+| `environment` | `Hash` | No | API_Entities_EnvironmentBasic model |
 | `id` | `Integer` | No |  |
 | `iid` | `Integer` | No |  |
 | `ref` | `String` | No |  |
 | `sha` | `String` | No |  |
 | `status` | `String` | No |  |
 | `updated_at` | `String` | No |  |
-| `user` | `Hash` | No |  |
+| `user` | `Hash` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -5412,10 +5418,10 @@ api_entities_deployment_extended = client.ApiEntitiesDeploymentExtended
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `approval_summary` | `Hash` | No |  |
-| `approvals` | `Hash` | No |  |
+| `approvals` | `Hash` | No | API_Entities_Deployments_Approval model |
 | `created_at` | `String` | No |  |
-| `deployable` | `Hash` | No |  |
-| `environment` | `Hash` | No |  |
+| `deployable` | `Hash` | No | API_Entities_Ci_Job model |
+| `environment` | `Hash` | No | API_Entities_EnvironmentBasic model |
 | `id` | `Integer` | No |  |
 | `iid` | `Integer` | No |  |
 | `pending_approval_count` | `Integer` | No |  |
@@ -5423,7 +5429,7 @@ api_entities_deployment_extended = client.ApiEntitiesDeploymentExtended
 | `sha` | `String` | No |  |
 | `status` | `String` | No |  |
 | `updated_at` | `String` | No |  |
-| `user` | `Hash` | No |  |
+| `user` | `Hash` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -5816,16 +5822,16 @@ api_entities_environment = client.ApiEntitiesEnvironment
 | --- | --- | --- | --- |
 | `auto_stop_at` | `String` | No |  |
 | `auto_stop_setting` | `String` | No |  |
-| `cluster_agent` | `Hash` | No |  |
+| `cluster_agent` | `Hash` | No | API_Entities_Clusters_Agent model |
 | `created_at` | `String` | No |  |
 | `description` | `String` | No |  |
 | `external_url` | `String` | No |  |
 | `flux_resource_path` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `kubernetes_namespace` | `String` | No |  |
-| `last_deployment` | `Hash` | No |  |
+| `last_deployment` | `Hash` | No | API_Entities_Deployment model |
 | `name` | `String` | No |  |
-| `project` | `Hash` | No |  |
+| `project` | `Hash` | No | API_Entities_BasicProjectDetails model |
 | `slug` | `String` | No |  |
 | `state` | `String` | No |  |
 | `tier` | `String` | No |  |
@@ -6044,7 +6050,7 @@ api_entities_event = client.ApiEntitiesEvent
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action_name` | `String` | No |  |
-| `author` | `Hash` | No |  |
+| `author` | `Hash` | No | API_Entities_UserBasic model |
 | `author_id` | `Integer` | No |  |
 | `author_username` | `String` | No |  |
 | `created_at` | `String` | No |  |
@@ -6058,7 +6064,7 @@ api_entities_event = client.ApiEntitiesEvent
 | `target_iid` | `Integer` | No |  |
 | `target_title` | `String` | No |  |
 | `target_type` | `String` | No |  |
-| `wiki_page` | `Hash` | No |  |
+| `wiki_page` | `Hash` | No | API_Entities_WikiPageBasic model |
 
 ### Operations
 
@@ -6118,7 +6124,7 @@ api_entities_feature = client.ApiEntitiesFeature
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `definition` | `Hash` | No |  |
+| `definition` | `Hash` | No | API_Entities_Feature_Definition model |
 | `gates` | `Hash` | No |  |
 | `name` | `String` | No |  |
 | `state` | `String` | No |  |
@@ -6625,12 +6631,12 @@ api_entities_group = client.ApiEntitiesGroup
 | `auto_duo_code_review_enabled` | `String` | No |  |
 | `avatar_url` | `String` | No |  |
 | `created_at` | `String` | No |  |
-| `custom_attributes` | `Hash` | No |  |
+| `custom_attributes` | `Hash` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `String` | No |  |
 | `default_branch_protection` | `String` | No |  |
 | `default_branch_protection_defaults` | `String` | No |  |
 | `description` | `String` | No |  |
-| `duo_core_features_enabled` | `Boolean` | No |  |
+| `duo_core_features_enabled` | `Boolean` | No | [Experimental] Indicates whether GitLab Duo Core features are enabled for the group |
 | `duo_features_enabled` | `String` | No |  |
 | `emails_disabled` | `Boolean` | No |  |
 | `emails_enabled` | `Boolean` | No |  |
@@ -6754,12 +6760,12 @@ api_entities_group_detail = client.ApiEntitiesGroupDetail
 | `auto_duo_code_review_enabled` | `String` | No |  |
 | `avatar_url` | `String` | No |  |
 | `created_at` | `String` | No |  |
-| `custom_attributes` | `Hash` | No |  |
+| `custom_attributes` | `Hash` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `String` | No |  |
 | `default_branch_protection` | `String` | No |  |
 | `default_branch_protection_defaults` | `String` | No |  |
 | `description` | `String` | No |  |
-| `duo_core_features_enabled` | `Boolean` | No |  |
+| `duo_core_features_enabled` | `Boolean` | No | [Experimental] Indicates whether GitLab Duo Core features are enabled for the group |
 | `duo_features_enabled` | `String` | No |  |
 | `emails_disabled` | `Boolean` | No |  |
 | `emails_enabled` | `Boolean` | No |  |
@@ -6788,7 +6794,7 @@ api_entities_group_detail = client.ApiEntitiesGroupDetail
 | `prevent_forking_outside_group` | `String` | No |  |
 | `prevent_sharing_groups_outside_hierarchy` | `String` | No |  |
 | `project_creation_level` | `String` | No |  |
-| `projects` | `Hash` | No |  |
+| `projects` | `Hash` | No | API_Entities_Project model |
 | `repository_storage` | `String` | No |  |
 | `request_access_enabled` | `String` | No |  |
 | `require_two_factor_authentication` | `String` | No |  |
@@ -6797,7 +6803,7 @@ api_entities_group_detail = client.ApiEntitiesGroupDetail
 | `saml_group_links` | `Hash` | No |  |
 | `service_access_tokens_expiration_enforced` | `String` | No |  |
 | `share_with_group_lock` | `String` | No |  |
-| `shared_projects` | `Hash` | No |  |
+| `shared_projects` | `Hash` | No | API_Entities_Project model |
 | `shared_runners_minutes_limit` | `String` | No |  |
 | `shared_runners_setting` | `String` | No |  |
 | `shared_with_groups` | `String` | No |  |
@@ -6973,7 +6979,7 @@ api_entities_integration = client.ApiEntitiesIntegration
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesIntegration.load({ "id" => "api_entities_integration_id" })
+result = client.ApiEntitiesIntegration.load({ "id" => "api_entities_integration_id", "group_id" => "group_id" })
 ```
 
 ### Common Methods
@@ -7056,6 +7062,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 
 ```ruby
 result = client.ApiEntitiesIntegrationBasic.update({
+  "group_id" => "group_id",
   # Fields to update
 })
 ```
@@ -7116,6 +7123,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesInvitation.create({
+  "group_id" => "example_group_id", # String
 })
 ```
 
@@ -7243,12 +7251,12 @@ api_entities_issue = client.ApiEntitiesIssue
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assignee` | `Hash` | No |  |
-| `assignees` | `Hash` | No |  |
-| `author` | `Hash` | No |  |
+| `assignee` | `Hash` | No | API_Entities_UserBasic model |
+| `assignees` | `Hash` | No | API_Entities_UserBasic model |
+| `author` | `Hash` | No | API_Entities_UserBasic model |
 | `blocking_issues_count` | `String` | No |  |
 | `closed_at` | `String` | No |  |
-| `closed_by` | `Hash` | No |  |
+| `closed_by` | `Hash` | No | API_Entities_UserBasic model |
 | `confidential` | `Boolean` | No |  |
 | `created_at` | `String` | No |  |
 | `description` | `String` | No |  |
@@ -7273,14 +7281,14 @@ api_entities_issue = client.ApiEntitiesIssue
 | `project_id` | `Integer` | No |  |
 | `references` | `Hash` | No |  |
 | `service_desk_reply_to` | `String` | No |  |
-| `severity` | `String` | No |  |
+| `severity` | `String` | No | One of ["UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"] |
 | `state` | `String` | No |  |
 | `subscribed` | `String` | No |  |
 | `task_completion_status` | `String` | No |  |
 | `task_status` | `String` | No |  |
-| `time_stats` | `Hash` | No |  |
+| `time_stats` | `Hash` | No | API_Entities_IssuableTimeStats model |
 | `title` | `String` | No |  |
-| `type` | `String` | No |  |
+| `type` | `String` | No | One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK", "TICKET"] |
 | `updated_at` | `String` | No |  |
 | `upvotes` | `String` | No |  |
 | `user_notes_count` | `String` | No |  |
@@ -7446,12 +7454,12 @@ api_entities_license = client.ApiEntitiesLicense
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-results = client.ApiEntitiesLicense.list
+result = client.ApiEntitiesLicense.load({ "id" => "api_entities_license_id", "name" => "name", "type" => "type" })
 ```
 
 ### Common Methods
@@ -7601,7 +7609,7 @@ api_entities_member = client.ApiEntitiesMember
 | `avatar_path` | `String` | No |  |
 | `avatar_url` | `String` | No |  |
 | `created_at` | `String` | No |  |
-| `created_by` | `Hash` | No |  |
+| `created_by` | `Hash` | No | API_Entities_UserBasic model |
 | `custom_attributes` | `Array` | No |  |
 | `email` | `String` | No |  |
 | `expires_at` | `String` | No |  |
@@ -7629,6 +7637,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesMember.create({
+  "group_id" => "example_group_id", # String
 })
 ```
 
@@ -7645,7 +7654,7 @@ results = client.ApiEntitiesMember.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesMember.load({ "id" => "api_entities_member_id" })
+result = client.ApiEntitiesMember.load({ "id" => "api_entities_member_id", "group_id" => "group_id" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -7710,13 +7719,13 @@ api_entities_merge = client.ApiEntitiesMerge
 | `allow_collaboration` | `Boolean` | No |  |
 | `allow_maintainer_to_push` | `Boolean` | No |  |
 | `approvals_before_merge` | `String` | No |  |
-| `assignee` | `Hash` | No |  |
-| `assignees` | `Hash` | No |  |
-| `author` | `Hash` | No |  |
+| `assignee` | `Hash` | No | API_Entities_UserBasic model |
+| `assignees` | `Hash` | No | API_Entities_UserBasic model |
+| `author` | `Hash` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `String` | No |  |
 | `changes_count` | `String` | No |  |
 | `closed_at` | `String` | No |  |
-| `closed_by` | `Hash` | No |  |
+| `closed_by` | `Hash` | No | API_Entities_UserBasic model |
 | `created_at` | `String` | No |  |
 | `description` | `String` | No |  |
 | `description_html` | `String` | No |  |
@@ -7730,7 +7739,7 @@ api_entities_merge = client.ApiEntitiesMerge
 | `first_deployed_to_production_at` | `String` | No |  |
 | `force_remove_source_branch` | `String` | No |  |
 | `has_conflicts` | `Boolean` | No |  |
-| `head_pipeline` | `Hash` | No |  |
+| `head_pipeline` | `Hash` | No | API_Entities_Ci_Pipeline model |
 | `id` | `Integer` | No |  |
 | `iid` | `Integer` | No |  |
 | `imported` | `String` | No |  |
@@ -7742,18 +7751,18 @@ api_entities_merge = client.ApiEntitiesMerge
 | `merge_commit_sha` | `String` | No |  |
 | `merge_error` | `String` | No |  |
 | `merge_status` | `String` | No |  |
-| `merge_user` | `Hash` | No |  |
+| `merge_user` | `Hash` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `String` | No |  |
 | `merged_at` | `String` | No |  |
-| `merged_by` | `Hash` | No |  |
+| `merged_by` | `Hash` | No | API_Entities_UserBasic model |
 | `milestone` | `Hash` | No |  |
-| `pipeline` | `Hash` | No |  |
+| `pipeline` | `Hash` | No | API_Entities_Ci_PipelineBasic model |
 | `prepared_at` | `String` | No |  |
 | `project_id` | `Integer` | No |  |
 | `rebase_in_progress` | `String` | No |  |
 | `reference` | `String` | No |  |
 | `references` | `Hash` | No |  |
-| `reviewers` | `Hash` | No |  |
+| `reviewers` | `Hash` | No | API_Entities_UserBasic model |
 | `sha` | `String` | No |  |
 | `should_remove_source_branch` | `Boolean` | No |  |
 | `source_branch` | `String` | No |  |
@@ -7766,7 +7775,7 @@ api_entities_merge = client.ApiEntitiesMerge
 | `target_branch` | `String` | No |  |
 | `target_project_id` | `String` | No |  |
 | `task_completion_status` | `String` | No |  |
-| `time_stats` | `Hash` | No |  |
+| `time_stats` | `Hash` | No | API_Entities_IssuableTimeStats model |
 | `title` | `String` | No |  |
 | `title_html` | `String` | No |  |
 | `updated_at` | `String` | No |  |
@@ -7848,7 +7857,7 @@ api_entities_merge_request_approval = client.ApiEntitiesMergeRequestApproval
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `approved_at` | `String` | No |  |
-| `user` | `Hash` | No |  |
+| `user` | `Hash` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -7914,12 +7923,12 @@ api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic
 | `allow_collaboration` | `Boolean` | No |  |
 | `allow_maintainer_to_push` | `Boolean` | No |  |
 | `approvals_before_merge` | `String` | No |  |
-| `assignee` | `Hash` | No |  |
-| `assignees` | `Hash` | No |  |
-| `author` | `Hash` | No |  |
+| `assignee` | `Hash` | No | API_Entities_UserBasic model |
+| `assignees` | `Hash` | No | API_Entities_UserBasic model |
+| `author` | `Hash` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `String` | No |  |
 | `closed_at` | `String` | No |  |
-| `closed_by` | `Hash` | No |  |
+| `closed_by` | `Hash` | No | API_Entities_UserBasic model |
 | `created_at` | `String` | No |  |
 | `description` | `String` | No |  |
 | `description_html` | `String` | No |  |
@@ -7937,16 +7946,16 @@ api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic
 | `merge_after` | `String` | No |  |
 | `merge_commit_sha` | `String` | No |  |
 | `merge_status` | `String` | No |  |
-| `merge_user` | `Hash` | No |  |
+| `merge_user` | `Hash` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `String` | No |  |
 | `merged_at` | `String` | No |  |
-| `merged_by` | `Hash` | No |  |
+| `merged_by` | `Hash` | No | API_Entities_UserBasic model |
 | `milestone` | `Hash` | No |  |
 | `prepared_at` | `String` | No |  |
 | `project_id` | `Integer` | No |  |
 | `reference` | `String` | No |  |
 | `references` | `Hash` | No |  |
-| `reviewers` | `Hash` | No |  |
+| `reviewers` | `Hash` | No | API_Entities_UserBasic model |
 | `sha` | `String` | No |  |
 | `should_remove_source_branch` | `Boolean` | No |  |
 | `source_branch` | `String` | No |  |
@@ -7958,7 +7967,7 @@ api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic
 | `target_branch` | `String` | No |  |
 | `target_project_id` | `String` | No |  |
 | `task_completion_status` | `String` | No |  |
-| `time_stats` | `Hash` | No |  |
+| `time_stats` | `Hash` | No | API_Entities_IssuableTimeStats model |
 | `title` | `String` | No |  |
 | `title_html` | `String` | No |  |
 | `updated_at` | `String` | No |  |
@@ -7982,7 +7991,7 @@ results = client.ApiEntitiesMergeRequestBasic.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesMergeRequestBasic.load()
+result = client.ApiEntitiesMergeRequestBasic.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -8028,14 +8037,14 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange
 | `allow_collaboration` | `Boolean` | No |  |
 | `allow_maintainer_to_push` | `Boolean` | No |  |
 | `approvals_before_merge` | `String` | No |  |
-| `assignee` | `Hash` | No |  |
-| `assignees` | `Hash` | No |  |
-| `author` | `Hash` | No |  |
+| `assignee` | `Hash` | No | API_Entities_UserBasic model |
+| `assignees` | `Hash` | No | API_Entities_UserBasic model |
+| `author` | `Hash` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `String` | No |  |
-| `changes` | `Hash` | No |  |
+| `changes` | `Hash` | No | API_Entities_Diff model |
 | `changes_count` | `String` | No |  |
 | `closed_at` | `String` | No |  |
-| `closed_by` | `Hash` | No |  |
+| `closed_by` | `Hash` | No | API_Entities_UserBasic model |
 | `created_at` | `String` | No |  |
 | `description` | `String` | No |  |
 | `description_html` | `String` | No |  |
@@ -8049,7 +8058,7 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange
 | `first_deployed_to_production_at` | `String` | No |  |
 | `force_remove_source_branch` | `String` | No |  |
 | `has_conflicts` | `Boolean` | No |  |
-| `head_pipeline` | `Hash` | No |  |
+| `head_pipeline` | `Hash` | No | API_Entities_Ci_Pipeline model |
 | `id` | `Integer` | No |  |
 | `iid` | `Integer` | No |  |
 | `imported` | `String` | No |  |
@@ -8061,19 +8070,19 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange
 | `merge_commit_sha` | `String` | No |  |
 | `merge_error` | `String` | No |  |
 | `merge_status` | `String` | No |  |
-| `merge_user` | `Hash` | No |  |
+| `merge_user` | `Hash` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `String` | No |  |
 | `merged_at` | `String` | No |  |
-| `merged_by` | `Hash` | No |  |
+| `merged_by` | `Hash` | No | API_Entities_UserBasic model |
 | `milestone` | `Hash` | No |  |
 | `overflow` | `String` | No |  |
-| `pipeline` | `Hash` | No |  |
+| `pipeline` | `Hash` | No | API_Entities_Ci_PipelineBasic model |
 | `prepared_at` | `String` | No |  |
 | `project_id` | `Integer` | No |  |
 | `rebase_in_progress` | `String` | No |  |
 | `reference` | `String` | No |  |
 | `references` | `Hash` | No |  |
-| `reviewers` | `Hash` | No |  |
+| `reviewers` | `Hash` | No | API_Entities_UserBasic model |
 | `sha` | `String` | No |  |
 | `should_remove_source_branch` | `Boolean` | No |  |
 | `source_branch` | `String` | No |  |
@@ -8086,7 +8095,7 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange
 | `target_branch` | `String` | No |  |
 | `target_project_id` | `String` | No |  |
 | `task_completion_status` | `String` | No |  |
-| `time_stats` | `Hash` | No |  |
+| `time_stats` | `Hash` | No | API_Entities_IssuableTimeStats model |
 | `title` | `String` | No |  |
 | `title_html` | `String` | No |  |
 | `updated_at` | `String` | No |  |
@@ -8207,9 +8216,9 @@ api_entities_merge_request_diff_full = client.ApiEntitiesMergeRequestDiffFull
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `base_commit_sha` | `String` | No |  |
-| `commits` | `Hash` | No |  |
+| `commits` | `Hash` | No | API_Entities_Commit model |
 | `created_at` | `String` | No |  |
-| `diffs` | `Hash` | No |  |
+| `diffs` | `Hash` | No | API_Entities_Diff model |
 | `head_commit_sha` | `String` | No |  |
 | `id` | `String` | No |  |
 | `merge_request_id` | `String` | No |  |
@@ -9006,8 +9015,8 @@ api_entities_package = client.ApiEntitiesPackage
 | `links` | `Hash` | No |  |
 | `name` | `String` | No |  |
 | `package_type` | `String` | No |  |
-| `pipeline` | `Hash` | No |  |
-| `pipelines` | `Hash` | No |  |
+| `pipeline` | `Hash` | No | API_Entities_Package_Pipeline model |
+| `pipelines` | `Hash` | No | API_Entities_Package_Pipeline model |
 | `project_id` | `Integer` | No |  |
 | `project_path` | `String` | No |  |
 | `status` | `String` | No |  |
@@ -9080,7 +9089,7 @@ api_entities_package_file = client.ApiEntitiesPackageFile
 | `file_sha256` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `package_id` | `Integer` | No |  |
-| `pipelines` | `Hash` | No |  |
+| `pipelines` | `Hash` | No | API_Entities_Package_Pipeline model |
 | `size` | `Integer` | No |  |
 
 ### Operations
@@ -9286,8 +9295,8 @@ api_entities_packages_conan_package_revision = client.ApiEntitiesPackagesConanPa
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `String` | No |  |
-| `time` | `String` | No |  |
+| `revision` | `String` | No | The revision hash of the Conan recipe or package |
+| `time` | `String` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9431,8 +9440,8 @@ api_entities_packages_conan_recipe_revision = client.ApiEntitiesPackagesConanRec
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `String` | No |  |
-| `time` | `String` | No |  |
+| `revision` | `String` | No | The revision hash of the Conan recipe or package |
+| `time` | `String` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9530,8 +9539,8 @@ api_entities_packages_conan_revision = client.ApiEntitiesPackagesConanRevision
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `String` | No |  |
-| `time` | `String` | No |  |
+| `revision` | `String` | No | The revision hash of the Conan recipe or package |
+| `time` | `String` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9653,6 +9662,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesPackagesDebianDistribution.create({
+  "project_id" => "example_project_id", # String
 })
 ```
 
@@ -10018,6 +10028,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesPersonalAccessTokenWithToken.create({
+  "personal_access_token_id" => "example_personal_access_token_id", # String
 })
 ```
 
@@ -10061,7 +10072,7 @@ api_entities_personal_snippet = client.ApiEntitiesPersonalSnippet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `Hash` | No |  |
+| `author` | `Hash` | No | API_Entities_UserBasic model |
 | `created_at` | `String` | No |  |
 | `description` | `String` | No |  |
 | `file_name` | `String` | No |  |
@@ -10247,7 +10258,7 @@ api_entities_project = client.ApiEntitiesProject
 | `container_registry_image_prefix` | `String` | No |  |
 | `created_at` | `String` | No |  |
 | `creator_id` | `Integer` | No |  |
-| `custom_attributes` | `Hash` | No |  |
+| `custom_attributes` | `Hash` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `String` | No |  |
 | `description` | `String` | No |  |
 | `description_html` | `String` | No |  |
@@ -10259,7 +10270,7 @@ api_entities_project = client.ApiEntitiesProject
 | `environments_access_level` | `String` | No |  |
 | `external_authorization_classification_label` | `String` | No |  |
 | `feature_flags_access_level` | `String` | No |  |
-| `forked_from_project` | `Hash` | No |  |
+| `forked_from_project` | `Hash` | No | API_Entities_BasicProjectDetails model |
 | `forking_access_level` | `String` | No |  |
 | `forks_count` | `Integer` | No |  |
 | `group_runners_enabled` | `Boolean` | No |  |
@@ -10310,7 +10321,7 @@ api_entities_project = client.ApiEntitiesProject
 | `only_allow_merge_if_pipeline_succeeds` | `Boolean` | No |  |
 | `only_mirror_protected_branches` | `String` | No |  |
 | `open_issues_count` | `Integer` | No |  |
-| `owner` | `Hash` | No |  |
+| `owner` | `Hash` | No | API_Entities_UserBasic model |
 | `package_registry_access_level` | `String` | No |  |
 | `packages_enabled` | `Boolean` | No |  |
 | `pages_access_level` | `String` | No |  |
@@ -10344,7 +10355,7 @@ api_entities_project = client.ApiEntitiesProject
 | `show_diff_preview_in_email` | `Boolean` | No |  |
 | `snippets_access_level` | `String` | No |  |
 | `snippets_enabled` | `Boolean` | No |  |
-| `spp_repository_pipeline_access` | `Boolean` | No |  |
+| `spp_repository_pipeline_access` | `Boolean` | No | The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available. |
 | `squash_commit_template` | `String` | No |  |
 | `squash_option` | `String` | No |  |
 | `ssh_url_to_repo` | `String` | No |  |
@@ -10369,6 +10380,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesProject.create({
+  "user_id" => "example_user_id", # String
 })
 ```
 
@@ -10386,6 +10398,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 
 ```ruby
 result = client.ApiEntitiesProject.update({
+  "id" => "id",
   # Fields to update
 })
 ```
@@ -10872,7 +10885,7 @@ api_entities_project_snippet = client.ApiEntitiesProjectSnippet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `Hash` | No |  |
+| `author` | `Hash` | No | API_Entities_UserBasic model |
 | `created_at` | `String` | No |  |
 | `description` | `String` | No |  |
 | `file_name` | `String` | No |  |
@@ -11052,7 +11065,7 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess
 | `container_registry_image_prefix` | `String` | No |  |
 | `created_at` | `String` | No |  |
 | `creator_id` | `Integer` | No |  |
-| `custom_attributes` | `Hash` | No |  |
+| `custom_attributes` | `Hash` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `String` | No |  |
 | `description` | `String` | No |  |
 | `description_html` | `String` | No |  |
@@ -11064,7 +11077,7 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess
 | `environments_access_level` | `String` | No |  |
 | `external_authorization_classification_label` | `String` | No |  |
 | `feature_flags_access_level` | `String` | No |  |
-| `forked_from_project` | `Hash` | No |  |
+| `forked_from_project` | `Hash` | No | API_Entities_BasicProjectDetails model |
 | `forking_access_level` | `String` | No |  |
 | `forks_count` | `Integer` | No |  |
 | `group_runners_enabled` | `Boolean` | No |  |
@@ -11115,7 +11128,7 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess
 | `only_allow_merge_if_pipeline_succeeds` | `Boolean` | No |  |
 | `only_mirror_protected_branches` | `String` | No |  |
 | `open_issues_count` | `Integer` | No |  |
-| `owner` | `Hash` | No |  |
+| `owner` | `Hash` | No | API_Entities_UserBasic model |
 | `package_registry_access_level` | `String` | No |  |
 | `packages_enabled` | `Boolean` | No |  |
 | `pages_access_level` | `String` | No |  |
@@ -11150,7 +11163,7 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess
 | `show_diff_preview_in_email` | `Boolean` | No |  |
 | `snippets_access_level` | `String` | No |  |
 | `snippets_enabled` | `Boolean` | No |  |
-| `spp_repository_pipeline_access` | `Boolean` | No |  |
+| `spp_repository_pipeline_access` | `Boolean` | No | The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available. |
 | `squash_commit_template` | `String` | No |  |
 | `squash_option` | `String` | No |  |
 | `ssh_url_to_repo` | `String` | No |  |
@@ -11675,12 +11688,12 @@ api_entities_related_issue = client.ApiEntitiesRelatedIssue
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assignee` | `Hash` | No |  |
-| `assignees` | `Hash` | No |  |
-| `author` | `Hash` | No |  |
+| `assignee` | `Hash` | No | API_Entities_UserBasic model |
+| `assignees` | `Hash` | No | API_Entities_UserBasic model |
+| `author` | `Hash` | No | API_Entities_UserBasic model |
 | `blocking_issues_count` | `String` | No |  |
 | `closed_at` | `String` | No |  |
-| `closed_by` | `Hash` | No |  |
+| `closed_by` | `Hash` | No | API_Entities_UserBasic model |
 | `confidential` | `Boolean` | No |  |
 | `created_at` | `String` | No |  |
 | `description` | `String` | No |  |
@@ -11709,14 +11722,14 @@ api_entities_related_issue = client.ApiEntitiesRelatedIssue
 | `project_id` | `Integer` | No |  |
 | `references` | `Hash` | No |  |
 | `service_desk_reply_to` | `String` | No |  |
-| `severity` | `String` | No |  |
+| `severity` | `String` | No | One of ["UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"] |
 | `state` | `String` | No |  |
 | `subscribed` | `String` | No |  |
 | `task_completion_status` | `String` | No |  |
 | `task_status` | `String` | No |  |
-| `time_stats` | `Hash` | No |  |
+| `time_stats` | `Hash` | No | API_Entities_IssuableTimeStats model |
 | `title` | `String` | No |  |
-| `type` | `String` | No |  |
+| `type` | `String` | No | One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK", "TICKET"] |
 | `updated_at` | `String` | No |  |
 | `upvotes` | `String` | No |  |
 | `user_notes_count` | `String` | No |  |
@@ -11821,8 +11834,8 @@ api_entities_release = client.ApiEntitiesRelease
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `assets` | `Hash` | No |  |
-| `author` | `Hash` | No |  |
-| `commit` | `Hash` | No |  |
+| `author` | `Hash` | No | API_Entities_UserBasic model |
+| `commit` | `Hash` | No | API_Entities_Commit model |
 | `commit_path` | `String` | No |  |
 | `created_at` | `String` | No |  |
 | `description` | `String` | No |  |
@@ -12183,6 +12196,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesResourceAccessTokenWithToken.create({
+  "group_id" => "example_group_id", # String
 })
 ```
 
@@ -12233,7 +12247,7 @@ api_entities_resource_milestone_event = client.ApiEntitiesResourceMilestoneEvent
 | `resource_id` | `Integer` | No |  |
 | `resource_type` | `String` | No |  |
 | `state` | `String` | No |  |
-| `user` | `Hash` | No |  |
+| `user` | `Hash` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -12293,7 +12307,7 @@ api_entities_snippet = client.ApiEntitiesSnippet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `Hash` | No |  |
+| `author` | `Hash` | No | API_Entities_UserBasic model |
 | `created_at` | `String` | No |  |
 | `description` | `String` | No |  |
 | `file_name` | `String` | No |  |
@@ -12609,7 +12623,7 @@ api_entities_tag = client.ApiEntitiesTag
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `commit` | `Hash` | No |  |
+| `commit` | `Hash` | No | API_Entities_Commit model |
 | `created_at` | `String` | No |  |
 | `message` | `String` | No |  |
 | `name` | `String` | No |  |
@@ -12925,7 +12939,7 @@ api_entities_trigger = client.ApiEntitiesTrigger
 | `last_used` | `String` | No |  |
 | `locked` | `Boolean` | No |  |
 | `name` | `String` | No |  |
-| `owner` | `Hash` | No |  |
+| `owner` | `Hash` | No | API_Entities_UserBasic model |
 | `public_email` | `String` | No |  |
 | `state` | `String` | No |  |
 | `token` | `String` | No |  |
@@ -13024,7 +13038,7 @@ api_entities_user_agent_detail = client.ApiEntitiesUserAgentDetail
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesUserAgentDetail.load()
+result = client.ApiEntitiesUserAgentDetail.load({ "snippet_id" => "snippet_id" })
 ```
 
 ### Common Methods
@@ -13279,6 +13293,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesWikiAttachment.create({
+  "group_id" => "example_group_id", # String
 })
 ```
 
@@ -13326,6 +13341,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesWikiPage.create({
+  "group_id" => "example_group_id", # String
 })
 ```
 
@@ -13862,7 +13878,7 @@ composer_package = client.ComposerPackage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ComposerPackage.load()
+result = client.ComposerPackage.load({ "group_id" => "group_id", "sha" => "sha" })
 ```
 
 ### Common Methods
@@ -13954,7 +13970,7 @@ conan_package = client.ConanPackage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ConanPackage.load({ "id" => "conan_package_id" })
+result = client.ConanPackage.load({ "file_id" => "file_id", "file_name" => "file_name", "package_channel" => "package_channel", "package_username" => "package_username", "package_version" => "package_version", "recipe_revision" => "recipe_revision" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -13971,7 +13987,6 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 
 ```ruby
 result = client.ConanPackage.update({
-  "id" => "conan_package_id",
   "file_name" => "file_name",
   "package_channel" => "package_channel",
   "package_username" => "package_username",
@@ -14123,7 +14138,7 @@ custom_attribute = client.CustomAttribute
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.CustomAttribute.load({ "id" => "custom_attribute_id" })
+result = client.CustomAttribute.load({ "id" => "custom_attribute_id", "group_id" => "group_id" })
 ```
 
 ### Common Methods
@@ -14265,7 +14280,7 @@ debian_package = client.DebianPackage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.DebianPackage.load({ "id" => "debian_package_id" })
+result = client.DebianPackage.load({ "id" => "debian_package_id", "distribution" => "distribution", "file_name" => "file_name", "letter" => "letter", "package_name" => "package_name", "package_version" => "package_version" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -16097,7 +16112,7 @@ result = client.Integration.create({
 Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Integration.remove()
+result = client.Integration.remove({ "group_id" => "group_id", "id" => "id" })
 ```
 
 ### Common Methods
@@ -16927,7 +16942,7 @@ results = client.NugetPackage.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.NugetPackage.load()
+result = client.NugetPackage.load({ "project_id" => "project_id" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -17212,13 +17227,13 @@ project = client.Project
 | `coverage` | `Float` | No |  |
 | `created_at` | `String` | No |  |
 | `detailed_status` | `Hash` | No |  |
-| `duration` | `Integer` | No |  |
+| `duration` | `Integer` | No | Time spent running in seconds |
 | `finished_at` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `iid` | `Integer` | No |  |
 | `name` | `String` | No |  |
 | `project_id` | `Integer` | No |  |
-| `queued_duration` | `Integer` | No |  |
+| `queued_duration` | `Integer` | No | Time spent enqueued in seconds |
 | `ref` | `String` | No |  |
 | `sha` | `String` | No |  |
 | `source` | `String` | No |  |
@@ -17226,7 +17241,7 @@ project = client.Project
 | `status` | `String` | No |  |
 | `tag` | `Boolean` | No |  |
 | `updated_at` | `String` | No |  |
-| `user` | `Hash` | No |  |
+| `user` | `Hash` | No | API_Entities_UserBasic model |
 | `web_url` | `String` | No |  |
 | `yaml_errors` | `String` | No |  |
 
@@ -17872,7 +17887,7 @@ result = client.PypiPackage.create({
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.PypiPackage.load()
+result = client.PypiPackage.load({ "project_id" => "project_id" })
 ```
 
 ### Common Methods
@@ -18298,7 +18313,7 @@ result = client.Runner.create({
 Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Runner.remove()
+result = client.Runner.remove({ "id" => "id" })
 ```
 
 ### Common Methods

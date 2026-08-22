@@ -16,7 +16,7 @@ import type {
 
 import type {
   ApiEntitiesLicense,
-  ApiEntitiesLicenseListMatch,
+  ApiEntitiesLicenseLoadMatch,
 } from '../GitlabTypes'
 
 // TODO: needs Entity superclass
@@ -36,8 +36,7 @@ class ApiEntitiesLicenseEntity extends GitlabEntityBase<ApiEntitiesLicense> {
 
 
 
-
-  async list(this: any, reqmatch?: ApiEntitiesLicenseListMatch, ctrl?: Control): Promise<ApiEntitiesLicenseEntity[]> {
+  async load(this: any, reqmatch?: ApiEntitiesLicenseLoadMatch, ctrl?: Control): Promise<ApiEntitiesLicenseEntity> {
 
     const utility = this._utility
 
@@ -56,7 +55,7 @@ class ApiEntitiesLicenseEntity extends GitlabEntityBase<ApiEntitiesLicense> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -122,9 +121,21 @@ class ApiEntitiesLicenseEntity extends GitlabEntityBase<ApiEntitiesLicense> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 
@@ -138,11 +149,12 @@ class ApiEntitiesLicenseEntity extends GitlabEntityBase<ApiEntitiesLicense> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<ApiEntitiesLicense[]> return stays clean under strict null checks.
+        // Promise<ApiEntitiesLicense> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

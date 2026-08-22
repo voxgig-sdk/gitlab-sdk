@@ -13,7 +13,8 @@
         "permissions": [],
         "popular": false,
         "source_url": "s78",
-        "type": "TYPE01"
+        "type": "TYPE01",
+        "id": "API_ENTITIES_LICENSE00"
       },
       "API_ENTITIES_LICENSE01": {
         "conditions": [],
@@ -27,7 +28,8 @@
         "permissions": [],
         "popular": false,
         "source_url": "se6",
-        "type": "TYPE01"
+        "type": "TYPE01",
+        "id": "API_ENTITIES_LICENSE01"
       },
       "API_ENTITIES_LICENSE02": {
         "conditions": [],
@@ -41,7 +43,8 @@
         "permissions": [],
         "popular": false,
         "source_url": "s154",
-        "type": "TYPE01"
+        "type": "TYPE01",
+        "id": "API_ENTITIES_LICENSE02"
       }
     }
   },

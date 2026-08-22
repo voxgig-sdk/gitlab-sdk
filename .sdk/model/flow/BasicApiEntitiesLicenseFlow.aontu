@@ -7,17 +7,23 @@ main: kit: flow: BasicApiEntitiesLicenseFlow:
   name: "BasicApiEntitiesLicenseFlow",
   step: [
     {
+      input: {
+        ref: "api_entities_license_ref01",
+        srcdatavar: "api_entities_license_ref01_data",
+        suffix: "_dt0"
+      }
+
       match: {
-        name: "name01",
+        id: "api_entities_license01",
         type: "type01"
       }
 
-      op: "list",
+      op: "load",
       valid: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "api_entities_license_ref01"
+            mark: "Mark01-api_entities_license_ref01"
           }
         }
       ]

@@ -55,7 +55,7 @@ const utility_1 = require("../../utility");
     });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.GITLAB_TEST_LIVE;
-        for (const op of ['list']) {
+        for (const op of ['load']) {
             if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'api_entities_license.' + op, live))
                 return;
         }
@@ -72,12 +72,9 @@ const utility_1 = require("../../utility");
         const isempty = struct.isempty;
         const select = struct.select;
         let api_entities_license_ref01_data = Object.values(setup.data.existing.api_entities_license)[0];
-        // LIST
+        // LOAD: skipped — no entity id field and load requires path params.
+        // Entity-var is declared here so later flow steps still compile.
         const api_entities_license_ref01_ent = client.ApiEntitiesLicense();
-        const api_entities_license_ref01_match = {};
-        api_entities_license_ref01_match['name'] = setup.idmap['name01'];
-        api_entities_license_ref01_match['type'] = setup.idmap['type01'];
-        const api_entities_license_ref01_list = (await api_entities_license_ref01_ent.list(api_entities_license_ref01_match)).map((e) => e.data());
     });
 });
 function basicSetup(extra) {

@@ -18,51 +18,12 @@ class ApiEntitiesLicenseEntityTest extends TestCase
         $this->assertNotNull($ent);
     }
 
-    // Feature #4: the entity stream(action, ...) method runs the op pipeline
-    // and yields result items. With the streaming feature active it yields the
-    // feature's incremental output; otherwise it falls back to the materialised
-    // list so stream always yields.
-    public function test_stream(): void
-    {
-        $seed = [
-            "entity" => [
-                "api_entities_license" => [
-                    "s1" => ["id" => "s1"],
-                    "s2" => ["id" => "s2"],
-                    "s3" => ["id" => "s3"],
-                ],
-            ],
-        ];
-
-        // Fallback: streaming inactive -> yields the materialised list items.
-        $base = GitlabSDK::test($seed, null);
-        $seen = iterator_to_array($base->ApiEntitiesLicense(null)->stream("list", null, null), false);
-        $this->assertCount(3, $seen);
-
-        // Inbound: streaming active -> yields each item from the feature.
-        $cfg = GitlabConfig::shared_config();
-        if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
-            $sdk = GitlabSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
-            $got = [];
-            foreach ($sdk->ApiEntitiesLicense(null)->stream("list", null, null) as $item) {
-                if (is_array($item) && array_is_list($item)) {
-                    foreach ($item as $sub) {
-                        $got[] = $sub;
-                    }
-                } else {
-                    $got[] = $item;
-                }
-            }
-            $this->assertCount(3, $got);
-        }
-    }
-
     public function test_basic_flow(): void
     {
         $setup = api_entities_license_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach (["load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "api_entities_license." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -85,15 +46,11 @@ class ApiEntitiesLicenseEntityTest extends TestCase
             $api_entities_license_ref01_data = Helpers::to_map($api_entities_license_ref01_data_raw[0][1]);
         }
 
-        // LIST
+        // LOAD
         $api_entities_license_ref01_ent = $client->ApiEntitiesLicense(null);
-        $api_entities_license_ref01_match = [
-            "name" => $setup["idmap"]["name01"],
-            "type" => $setup["idmap"]["type01"],
-        ];
-
-        $api_entities_license_ref01_list_result = $api_entities_license_ref01_ent->list($api_entities_license_ref01_match, null);
-        $this->assertIsArray($api_entities_license_ref01_list_result);
+        $api_entities_license_ref01_match_dt0 = [];
+        $api_entities_license_ref01_data_dt0_loaded = $api_entities_license_ref01_ent->load($api_entities_license_ref01_match_dt0, null);
+        $this->assertNotNull($api_entities_license_ref01_data_dt0_loaded);
 
     }
 }
@@ -113,7 +70,7 @@ function api_entities_license_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_license01", "api_entities_license02", "api_entities_license03", "template01", "template02", "template03", "name01", "type01"] as $k) {
+    foreach (["api_entities_license01", "api_entities_license02", "api_entities_license03", "template01", "template02", "template03", "type01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

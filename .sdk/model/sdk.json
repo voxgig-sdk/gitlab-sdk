@@ -1,15 +1,6 @@
 {
-  "NAME": "GITLAB",
-  "Name": "Gitlab",
   "def": "gitlab-v4-swagger-2.0.yaml",
   "main": {
-    "api": {
-      "entity": {},
-      "guide": {}
-    },
-    "custom": {
-      "plurals": {}
-    },
     "def": {
       "desc": ""
     },
@@ -33,6 +24,7 @@
         "repr": "auto"
       },
       "contributor": {},
+      "docs": {},
       "entity": {
         "access_request": {
           "active": true,
@@ -1170,66 +1162,77 @@
               "active": true,
               "name": "active_users",
               "req": false,
+              "short": "Number of active users",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "forks",
               "req": false,
+              "short": "Approximate number of repo forks",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "groups",
               "req": false,
+              "short": "Approximate number of projects",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "issues",
               "req": false,
+              "short": "Approximate number of issues",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "merge_requests",
               "req": false,
+              "short": "Approximate number of merge requests",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "milestones",
               "req": false,
+              "short": "Approximate number of milestones",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "notes",
               "req": false,
+              "short": "Approximate number of notes",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "projects",
               "req": false,
+              "short": "Approximate number of projects",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "snippets",
               "req": false,
+              "short": "Approximate number of snippets",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "ssh_keys",
               "req": false,
+              "short": "Approximate number of SSH keys",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "users",
               "req": false,
+              "short": "Approximate number of users",
               "type": "`$INTEGER`"
             }
           ],
@@ -1554,6 +1557,7 @@
               "active": true,
               "name": "user",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -4164,6 +4168,7 @@
               "active": true,
               "name": "custom_attributes",
               "req": false,
+              "short": "API_Entities_CustomAttribute model",
               "type": "`$OBJECT`"
             },
             {
@@ -6069,6 +6074,7 @@
               "active": true,
               "name": "commit",
               "req": false,
+              "short": "API_Entities_Commit model",
               "type": "`$OBJECT`"
             },
             {
@@ -7582,6 +7588,7 @@
               "active": true,
               "name": "commit",
               "req": false,
+              "short": "API_Entities_Commit model",
               "type": "`$OBJECT`"
             },
             {
@@ -7600,12 +7607,14 @@
               "active": true,
               "name": "downstream_pipeline",
               "req": false,
+              "short": "API_Entities_Ci_PipelineBasic model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "duration",
               "req": false,
+              "short": "Time spent running",
               "type": "`$NUMBER`"
             },
             {
@@ -7642,6 +7651,7 @@
               "active": true,
               "name": "pipeline",
               "req": false,
+              "short": "API_Entities_Ci_PipelineBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -7654,6 +7664,7 @@
               "active": true,
               "name": "queued_duration",
               "req": false,
+              "short": "Time spent enqueued",
               "type": "`$NUMBER`"
             },
             {
@@ -7922,6 +7933,7 @@
               "active": true,
               "name": "commit",
               "req": false,
+              "short": "API_Entities_Commit model",
               "type": "`$OBJECT`"
             },
             {
@@ -7940,6 +7952,7 @@
               "active": true,
               "name": "duration",
               "req": false,
+              "short": "Time spent running",
               "type": "`$NUMBER`"
             },
             {
@@ -7994,6 +8007,7 @@
               "active": true,
               "name": "pipeline",
               "req": false,
+              "short": "API_Entities_Ci_PipelineBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -8006,6 +8020,7 @@
               "active": true,
               "name": "queued_duration",
               "req": false,
+              "short": "Time spent enqueued",
               "type": "`$NUMBER`"
             },
             {
@@ -8018,12 +8033,14 @@
               "active": true,
               "name": "runner",
               "req": false,
+              "short": "API_Entities_Ci_Runner model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "runner_manager",
               "req": false,
+              "short": "API_Entities_Ci_RunnerManager model",
               "type": "`$OBJECT`"
             },
             {
@@ -8654,6 +8671,7 @@
               "active": true,
               "name": "commit",
               "req": false,
+              "short": "API_Entities_Commit model",
               "type": "`$OBJECT`"
             },
             {
@@ -8672,6 +8690,7 @@
               "active": true,
               "name": "duration",
               "req": false,
+              "short": "Time spent running",
               "type": "`$NUMBER`"
             },
             {
@@ -8708,6 +8727,7 @@
               "active": true,
               "name": "pipeline",
               "req": false,
+              "short": "API_Entities_Ci_PipelineBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -8720,6 +8740,7 @@
               "active": true,
               "name": "queued_duration",
               "req": false,
+              "short": "Time spent enqueued",
               "type": "`$NUMBER`"
             },
             {
@@ -8947,6 +8968,7 @@
               "active": true,
               "name": "commit",
               "req": false,
+              "short": "API_Entities_Commit model",
               "type": "`$OBJECT`"
             },
             {
@@ -8965,6 +8987,7 @@
               "active": true,
               "name": "duration",
               "req": false,
+              "short": "Time spent running",
               "type": "`$NUMBER`"
             },
             {
@@ -9001,6 +9024,7 @@
               "active": true,
               "name": "pipeline",
               "req": false,
+              "short": "API_Entities_Ci_PipelineBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -9013,6 +9037,7 @@
               "active": true,
               "name": "queued_duration",
               "req": false,
+              "short": "Time spent enqueued",
               "type": "`$NUMBER`"
             },
             {
@@ -10221,6 +10246,7 @@
               "active": true,
               "name": "owner",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -10381,6 +10407,7 @@
               "active": true,
               "name": "last_pipeline",
               "req": false,
+              "short": "API_Entities_Ci_PipelineBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -10393,6 +10420,7 @@
               "active": true,
               "name": "owner",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -10411,6 +10439,7 @@
               "active": true,
               "name": "variables",
               "req": false,
+              "short": "API_Entities_Ci_Variable model",
               "type": "`$OBJECT`"
             }
           ],
@@ -11719,6 +11748,7 @@
               "active": true,
               "name": "created_by",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -11731,6 +11761,7 @@
               "active": true,
               "name": "groups",
               "req": false,
+              "short": "API_Entities_BasicGroupDetails model",
               "type": "`$OBJECT`"
             },
             {
@@ -11803,6 +11834,7 @@
               "active": true,
               "name": "projects",
               "req": false,
+              "short": "API_Entities_BasicProjectDetails model",
               "type": "`$OBJECT`"
             },
             {
@@ -13365,6 +13397,7 @@
               "active": true,
               "name": "user",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             }
           ],
@@ -13713,6 +13746,7 @@
               "active": true,
               "name": "group",
               "req": false,
+              "short": "API_Entities_BasicGroupDetails model",
               "type": "`$OBJECT`"
             },
             {
@@ -13773,6 +13807,7 @@
               "active": true,
               "name": "user",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             }
           ],
@@ -14055,6 +14090,7 @@
               "active": true,
               "name": "project",
               "req": false,
+              "short": "API_Entities_BasicProjectDetails model",
               "type": "`$OBJECT`"
             },
             {
@@ -14073,6 +14109,7 @@
               "active": true,
               "name": "user",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             }
           ],
@@ -15598,6 +15635,7 @@
               "active": true,
               "name": "last_pipeline",
               "req": false,
+              "short": "API_Entities_Ci_PipelineBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -15881,6 +15919,7 @@
               "active": true,
               "name": "author",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -16340,6 +16379,7 @@
               "active": true,
               "name": "author",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -16707,6 +16747,7 @@
               "active": true,
               "name": "commit",
               "req": false,
+              "short": "API_Entities_Commit model",
               "type": "`$OBJECT`"
             },
             {
@@ -16918,6 +16959,7 @@
               "active": true,
               "name": "tags",
               "req": false,
+              "short": "API_Entities_ContainerRegistry_Tag model",
               "type": "`$OBJECT`"
             },
             {
@@ -18653,12 +18695,14 @@
               "active": true,
               "name": "deployable",
               "req": false,
+              "short": "API_Entities_Ci_Job model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "environment",
               "req": false,
+              "short": "API_Entities_EnvironmentBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -18701,6 +18745,7 @@
               "active": true,
               "name": "user",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             }
           ],
@@ -18874,6 +18919,7 @@
               "active": true,
               "name": "approvals",
               "req": false,
+              "short": "API_Entities_Deployments_Approval model",
               "type": "`$OBJECT`"
             },
             {
@@ -18886,12 +18932,14 @@
               "active": true,
               "name": "deployable",
               "req": false,
+              "short": "API_Entities_Ci_Job model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "environment",
               "req": false,
+              "short": "API_Entities_EnvironmentBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -18940,6 +18988,7 @@
               "active": true,
               "name": "user",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             }
           ],
@@ -20012,6 +20061,7 @@
               "active": true,
               "name": "cluster_agent",
               "req": false,
+              "short": "API_Entities_Clusters_Agent model",
               "type": "`$OBJECT`"
             },
             {
@@ -20054,6 +20104,7 @@
               "active": true,
               "name": "last_deployment",
               "req": false,
+              "short": "API_Entities_Deployment model",
               "type": "`$OBJECT`"
             },
             {
@@ -20066,6 +20117,7 @@
               "active": true,
               "name": "project",
               "req": false,
+              "short": "API_Entities_BasicProjectDetails model",
               "type": "`$OBJECT`"
             },
             {
@@ -20808,6 +20860,7 @@
               "active": true,
               "name": "author",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -20892,6 +20945,7 @@
               "active": true,
               "name": "wiki_page",
               "req": false,
+              "short": "API_Entities_WikiPageBasic model",
               "type": "`$OBJECT`"
             }
           ],
@@ -21245,6 +21299,7 @@
               "active": true,
               "name": "definition",
               "req": false,
+              "short": "API_Entities_Feature_Definition model",
               "type": "`$OBJECT`"
             },
             {
@@ -22650,6 +22705,7 @@
               "active": true,
               "name": "custom_attributes",
               "req": false,
+              "short": "API_Entities_CustomAttribute model",
               "type": "`$OBJECT`"
             },
             {
@@ -22680,6 +22736,7 @@
               "active": true,
               "name": "duo_core_features_enabled",
               "req": false,
+              "short": "[Experimental] Indicates whether GitLab Duo Core features are enabled for the group",
               "type": "`$BOOLEAN`"
             },
             {
@@ -24162,6 +24219,7 @@
               "active": true,
               "name": "custom_attributes",
               "req": false,
+              "short": "API_Entities_CustomAttribute model",
               "type": "`$OBJECT`"
             },
             {
@@ -24192,6 +24250,7 @@
               "active": true,
               "name": "duo_core_features_enabled",
               "req": false,
+              "short": "[Experimental] Indicates whether GitLab Duo Core features are enabled for the group",
               "type": "`$BOOLEAN`"
             },
             {
@@ -24366,6 +24425,7 @@
               "active": true,
               "name": "projects",
               "req": false,
+              "short": "API_Entities_Project model",
               "type": "`$OBJECT`"
             },
             {
@@ -24420,6 +24480,7 @@
               "active": true,
               "name": "shared_projects",
               "req": false,
+              "short": "API_Entities_Project model",
               "type": "`$OBJECT`"
             },
             {
@@ -34495,18 +34556,21 @@
               "active": true,
               "name": "assignee",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "assignees",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "author",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -34525,6 +34589,7 @@
               "active": true,
               "name": "closed_by",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -34675,6 +34740,7 @@
               "active": true,
               "name": "severity",
               "req": false,
+              "short": "One of [\"UNKNOWN\", \"LOW\", \"MEDIUM\", \"HIGH\", \"CRITICAL\"]",
               "type": "`$STRING`"
             },
             {
@@ -34705,6 +34771,7 @@
               "active": true,
               "name": "time_stats",
               "req": false,
+              "short": "API_Entities_IssuableTimeStats model",
               "type": "`$OBJECT`"
             },
             {
@@ -34717,6 +34784,7 @@
               "active": true,
               "name": "type",
               "req": false,
+              "short": "One of [\"ISSUE\", \"INCIDENT\", \"TEST_CASE\", \"REQUIREMENT\", \"TASK\", \"TICKET\"]",
               "type": "`$STRING`"
             },
             {
@@ -36696,9 +36764,9 @@
           ],
           "name": "api_entities_license",
           "op": {
-            "list": {
+            "load": {
               "input": "data",
-              "name": "list",
+              "name": "load",
               "points": [
                 {
                   "active": true,
@@ -37066,6 +37134,7 @@
               "active": true,
               "name": "created_by",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -38276,18 +38345,21 @@
               "active": true,
               "name": "assignee",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "assignees",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "author",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -38312,6 +38384,7 @@
               "active": true,
               "name": "closed_by",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -38396,6 +38469,7 @@
               "active": true,
               "name": "head_pipeline",
               "req": false,
+              "short": "API_Entities_Ci_Pipeline model",
               "type": "`$OBJECT`"
             },
             {
@@ -38468,6 +38542,7 @@
               "active": true,
               "name": "merge_user",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -38486,6 +38561,7 @@
               "active": true,
               "name": "merged_by",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -38498,6 +38574,7 @@
               "active": true,
               "name": "pipeline",
               "req": false,
+              "short": "API_Entities_Ci_PipelineBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -38534,6 +38611,7 @@
               "active": true,
               "name": "reviewers",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -38612,6 +38690,7 @@
               "active": true,
               "name": "time_stats",
               "req": false,
+              "short": "API_Entities_IssuableTimeStats model",
               "type": "`$OBJECT`"
             },
             {
@@ -39017,6 +39096,7 @@
               "active": true,
               "name": "user",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             }
           ],
@@ -39236,18 +39316,21 @@
               "active": true,
               "name": "assignee",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "assignees",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "author",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -39266,6 +39349,7 @@
               "active": true,
               "name": "closed_by",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -39374,6 +39458,7 @@
               "active": true,
               "name": "merge_user",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -39392,6 +39477,7 @@
               "active": true,
               "name": "merged_by",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -39428,6 +39514,7 @@
               "active": true,
               "name": "reviewers",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -39500,6 +39587,7 @@
               "active": true,
               "name": "time_stats",
               "req": false,
+              "short": "API_Entities_IssuableTimeStats model",
               "type": "`$OBJECT`"
             },
             {
@@ -41644,18 +41732,21 @@
               "active": true,
               "name": "assignee",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "assignees",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "author",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -41668,6 +41759,7 @@
               "active": true,
               "name": "changes",
               "req": false,
+              "short": "API_Entities_Diff model",
               "type": "`$OBJECT`"
             },
             {
@@ -41686,6 +41778,7 @@
               "active": true,
               "name": "closed_by",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -41770,6 +41863,7 @@
               "active": true,
               "name": "head_pipeline",
               "req": false,
+              "short": "API_Entities_Ci_Pipeline model",
               "type": "`$OBJECT`"
             },
             {
@@ -41842,6 +41936,7 @@
               "active": true,
               "name": "merge_user",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -41860,6 +41955,7 @@
               "active": true,
               "name": "merged_by",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -41878,6 +41974,7 @@
               "active": true,
               "name": "pipeline",
               "req": false,
+              "short": "API_Entities_Ci_PipelineBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -41914,6 +42011,7 @@
               "active": true,
               "name": "reviewers",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -41992,6 +42090,7 @@
               "active": true,
               "name": "time_stats",
               "req": false,
+              "short": "API_Entities_IssuableTimeStats model",
               "type": "`$OBJECT`"
             },
             {
@@ -42299,6 +42398,7 @@
               "active": true,
               "name": "commits",
               "req": false,
+              "short": "API_Entities_Commit model",
               "type": "`$OBJECT`"
             },
             {
@@ -42311,6 +42411,7 @@
               "active": true,
               "name": "diffs",
               "req": false,
+              "short": "API_Entities_Diff model",
               "type": "`$OBJECT`"
             },
             {
@@ -44584,12 +44685,14 @@
               "active": true,
               "name": "pipeline",
               "req": false,
+              "short": "API_Entities_Package_Pipeline model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "pipelines",
               "req": false,
+              "short": "API_Entities_Package_Pipeline model",
               "type": "`$OBJECT`"
             },
             {
@@ -45018,6 +45121,7 @@
               "active": true,
               "name": "pipelines",
               "req": false,
+              "short": "API_Entities_Package_Pipeline model",
               "type": "`$OBJECT`"
             },
             {
@@ -45978,12 +46082,14 @@
               "active": true,
               "name": "revision",
               "req": false,
+              "short": "The revision hash of the Conan recipe or package",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "time",
               "req": false,
+              "short": "The UTC timestamp when the revision was created",
               "type": "`$STRING`"
             }
           ],
@@ -46693,12 +46799,14 @@
               "active": true,
               "name": "revision",
               "req": false,
+              "short": "The revision hash of the Conan recipe or package",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "time",
               "req": false,
+              "short": "The UTC timestamp when the revision was created",
               "type": "`$STRING`"
             }
           ],
@@ -46992,12 +47100,14 @@
               "active": true,
               "name": "revision",
               "req": false,
+              "short": "The revision hash of the Conan recipe or package",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "time",
               "req": false,
+              "short": "The UTC timestamp when the revision was created",
               "type": "`$STRING`"
             }
           ],
@@ -49482,6 +49592,7 @@
               "active": true,
               "name": "author",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -50092,6 +50203,7 @@
               "active": true,
               "name": "custom_attributes",
               "req": false,
+              "short": "API_Entities_CustomAttribute model",
               "type": "`$OBJECT`"
             },
             {
@@ -50164,6 +50276,7 @@
               "active": true,
               "name": "forked_from_project",
               "req": false,
+              "short": "API_Entities_BasicProjectDetails model",
               "type": "`$OBJECT`"
             },
             {
@@ -50470,6 +50583,7 @@
               "active": true,
               "name": "owner",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -50674,6 +50788,7 @@
               "active": true,
               "name": "spp_repository_pipeline_access",
               "req": false,
+              "short": "The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available.",
               "type": "`$BOOLEAN`"
             },
             {
@@ -55593,6 +55708,7 @@
               "active": true,
               "name": "author",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -56371,6 +56487,7 @@
               "active": true,
               "name": "custom_attributes",
               "req": false,
+              "short": "API_Entities_CustomAttribute model",
               "type": "`$OBJECT`"
             },
             {
@@ -56443,6 +56560,7 @@
               "active": true,
               "name": "forked_from_project",
               "req": false,
+              "short": "API_Entities_BasicProjectDetails model",
               "type": "`$OBJECT`"
             },
             {
@@ -56749,6 +56867,7 @@
               "active": true,
               "name": "owner",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -56959,6 +57078,7 @@
               "active": true,
               "name": "spp_repository_pipeline_access",
               "req": false,
+              "short": "The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available.",
               "type": "`$BOOLEAN`"
             },
             {
@@ -58717,18 +58837,21 @@
               "active": true,
               "name": "assignee",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "assignees",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "author",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -58747,6 +58870,7 @@
               "active": true,
               "name": "closed_by",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -58921,6 +59045,7 @@
               "active": true,
               "name": "severity",
               "req": false,
+              "short": "One of [\"UNKNOWN\", \"LOW\", \"MEDIUM\", \"HIGH\", \"CRITICAL\"]",
               "type": "`$STRING`"
             },
             {
@@ -58951,6 +59076,7 @@
               "active": true,
               "name": "time_stats",
               "req": false,
+              "short": "API_Entities_IssuableTimeStats model",
               "type": "`$OBJECT`"
             },
             {
@@ -58963,6 +59089,7 @@
               "active": true,
               "name": "type",
               "req": false,
+              "short": "One of [\"ISSUE\", \"INCIDENT\", \"TEST_CASE\", \"REQUIREMENT\", \"TASK\", \"TICKET\"]",
               "type": "`$STRING`"
             },
             {
@@ -59245,12 +59372,14 @@
               "active": true,
               "name": "author",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "commit",
               "req": false,
+              "short": "API_Entities_Commit model",
               "type": "`$OBJECT`"
             },
             {
@@ -60885,6 +61014,7 @@
               "active": true,
               "name": "user",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             }
           ],
@@ -61200,6 +61330,7 @@
               "active": true,
               "name": "author",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -62244,6 +62375,7 @@
               "active": true,
               "name": "commit",
               "req": false,
+              "short": "API_Entities_Commit model",
               "type": "`$OBJECT`"
             },
             {
@@ -63222,6 +63354,7 @@
               "active": true,
               "name": "owner",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -85254,6 +85387,7 @@
               "active": true,
               "name": "duration",
               "req": false,
+              "short": "Time spent running in seconds",
               "type": "`$INTEGER`"
             },
             {
@@ -85290,6 +85424,7 @@
               "active": true,
               "name": "queued_duration",
               "req": false,
+              "short": "Time spent enqueued in seconds",
               "type": "`$INTEGER`"
             },
             {
@@ -85338,6 +85473,7 @@
               "active": true,
               "name": "user",
               "req": false,
+              "short": "API_Entities_UserBasic model",
               "type": "`$OBJECT`"
             },
             {
@@ -94646,6 +94782,7 @@
       "feature": {
         "test": {
           "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
@@ -94706,6 +94843,8 @@
             }
           },
           "name": "test",
+          "origname": "",
+          "package": "@voxgig/sdkgen",
           "target": {
             "go": {
               "deps": {}
@@ -98900,18 +99039,22 @@
             {
               "active": true,
               "data": {},
-              "input": {},
+              "input": {
+                "ref": "api_entities_license_ref01",
+                "srcdatavar": "api_entities_license_ref01_data",
+                "suffix": "_dt0"
+              },
               "match": {
-                "name": "name01",
+                "id": "api_entities_license01",
                 "type": "type01"
               },
-              "op": "list",
+              "op": "load",
               "spec": [],
               "valid": [
                 {
-                  "apply": "ItemExists",
+                  "apply": "TextFieldMark",
                   "def": {
-                    "ref": "api_entities_license_ref01"
+                    "mark": "Mark01-api_entities_license_ref01"
                   }
                 }
               ]
@@ -105789,6 +105932,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -105807,12 +105951,14 @@
             "path": ""
           },
           "name": "go",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -105846,6 +105992,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -105862,12 +106009,14 @@
             "path": ""
           },
           "name": "go-cli",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "phase": {
             "agentguide": {
               "active": false
@@ -105917,6 +106066,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -105933,12 +106083,14 @@
             "path": ""
           },
           "name": "go-mcp",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "phase": {
             "agentguide": {
               "active": false
@@ -105988,6 +106140,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "--"
           },
@@ -106010,12 +106163,14 @@
             "path": ""
           },
           "name": "lua",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -106049,6 +106204,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
           },
@@ -106065,12 +106221,14 @@
             "path": ""
           },
           "name": "php",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -106104,6 +106262,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "#"
           },
@@ -106126,12 +106285,14 @@
             "path": ""
           },
           "name": "py",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -106165,6 +106326,7 @@
             "name": "",
             "url": ""
           },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "#"
           },
@@ -106192,12 +106354,14 @@
             "path": ""
           },
           "name": "rb",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -106264,12 +106428,14 @@
             "path": ""
           },
           "name": "ts",
+          "origname": "",
           "output": {
             "adopt": false,
             "path": "",
             "repo": "",
             "sdkrel": ""
           },
+          "package": "@voxgig/sdkgen",
           "publish": {
             "registry": {
               "active": false,
@@ -106307,8 +106473,5 @@
     }
   },
   "name": "gitlab",
-  "name-": "gitlab",
-  "name_": "gitlab",
-  "name__orig": "gitlab",
   "origin": "voxgig-sdk"
 }

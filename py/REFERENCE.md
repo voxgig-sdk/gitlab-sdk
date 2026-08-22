@@ -1311,6 +1311,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesAccessRequester().create({
+    "group_id": "example_group_id",  # str
 })
 ```
 
@@ -1319,7 +1320,7 @@ result = client.ApiEntitiesAccessRequester().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesAccessRequester().list()
+results = client.ApiEntitiesAccessRequester().list({"group_id": "example"})
 for api_entities_access_requester in results:
     print(api_entities_access_requester)
 ```
@@ -1508,17 +1509,17 @@ api_entities_application_statistic = client.ApiEntitiesApplicationStatistic()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_users` | `int` | No |  |
-| `forks` | `int` | No |  |
-| `groups` | `int` | No |  |
-| `issues` | `int` | No |  |
-| `merge_requests` | `int` | No |  |
-| `milestones` | `int` | No |  |
-| `notes` | `int` | No |  |
-| `projects` | `int` | No |  |
-| `snippets` | `int` | No |  |
-| `ssh_keys` | `int` | No |  |
-| `users` | `int` | No |  |
+| `active_users` | `int` | No | Number of active users |
+| `forks` | `int` | No | Approximate number of repo forks |
+| `groups` | `int` | No | Approximate number of projects |
+| `issues` | `int` | No | Approximate number of issues |
+| `merge_requests` | `int` | No | Approximate number of merge requests |
+| `milestones` | `int` | No | Approximate number of milestones |
+| `notes` | `int` | No | Approximate number of notes |
+| `projects` | `int` | No | Approximate number of projects |
+| `snippets` | `int` | No | Approximate number of snippets |
+| `ssh_keys` | `int` | No | Approximate number of SSH keys |
+| `users` | `int` | No | Approximate number of users |
 
 ### Operations
 
@@ -1690,7 +1691,7 @@ api_entities_award_emoji = client.ApiEntitiesAwardEmoji()
 | `state` | `str` | No |  |
 | `updated_at` | `str` | No |  |
 | `url` | `str` | No |  |
-| `user` | `dict` | No |  |
+| `user` | `dict` | No | API_Entities_UserBasic model |
 | `username` | `str` | No |  |
 | `web_url` | `str` | No |  |
 
@@ -1702,6 +1703,8 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesAwardEmoji().create({
+    "epic_id": "example_epic_id",  # str
+    "group_id": "example_group_id",  # str
 })
 ```
 
@@ -1710,7 +1713,7 @@ result = client.ApiEntitiesAwardEmoji().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesAwardEmoji().list()
+results = client.ApiEntitiesAwardEmoji().list({"epic_id": "example", "group_id": "example"})
 for api_entities_award_emoji in results:
     print(api_entities_award_emoji)
 ```
@@ -1778,6 +1781,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesBadge().create({
+    "group_id": "example_group_id",  # str
 })
 ```
 
@@ -1786,7 +1790,7 @@ result = client.ApiEntitiesBadge().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesBadge().list()
+results = client.ApiEntitiesBadge().list({"group_id": "example"})
 for api_entities_badge in results:
     print(api_entities_badge)
 ```
@@ -1862,7 +1866,7 @@ api_entities_basic_badge_detail = client.ApiEntitiesBasicBadgeDetail()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesBasicBadgeDetail().load()
+result = client.ApiEntitiesBasicBadgeDetail().load({"group_id": "group_id"})
 ```
 
 ### Common Methods
@@ -1953,7 +1957,7 @@ api_entities_basic_project_detail = client.ApiEntitiesBasicProjectDetail()
 | --- | --- | --- | --- |
 | `avatar_url` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `custom_attributes` | `dict` | No |  |
+| `custom_attributes` | `dict` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `str` | No |  |
 | `description` | `str` | No |  |
 | `forks_count` | `int` | No |  |
@@ -2220,7 +2224,7 @@ api_entities_branch = client.ApiEntitiesBranch()
 | `author_name` | `str` | No |  |
 | `authored_date` | `str` | No |  |
 | `can_push` | `bool` | No |  |
-| `commit` | `dict` | No |  |
+| `commit` | `dict` | No | API_Entities_Commit model |
 | `committed_date` | `str` | No |  |
 | `committer_email` | `str` | No |  |
 | `committer_name` | `str` | No |  |
@@ -2484,7 +2488,7 @@ api_entities_bulk_imports_export_status = client.ApiEntitiesBulkImportsExportSta
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesBulkImportsExportStatus().list()
+results = client.ApiEntitiesBulkImportsExportStatus().list({"group_id": "example"})
 for api_entities_bulk_imports_export_status in results:
     print(api_entities_bulk_imports_export_status)
 ```
@@ -2580,19 +2584,19 @@ api_entities_ci_bridge = client.ApiEntitiesCiBridge()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
-| `commit` | `dict` | No |  |
+| `commit` | `dict` | No | API_Entities_Commit model |
 | `coverage` | `float` | No |  |
 | `created_at` | `str` | No |  |
-| `downstream_pipeline` | `dict` | No |  |
-| `duration` | `float` | No |  |
+| `downstream_pipeline` | `dict` | No | API_Entities_Ci_PipelineBasic model |
+| `duration` | `float` | No | Time spent running |
 | `erased_at` | `str` | No |  |
 | `failure_reason` | `str` | No |  |
 | `finished_at` | `str` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
-| `pipeline` | `dict` | No |  |
+| `pipeline` | `dict` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `dict` | No |  |
-| `queued_duration` | `float` | No |  |
+| `queued_duration` | `float` | No | Time spent enqueued |
 | `ref` | `str` | No |  |
 | `stage` | `str` | No |  |
 | `started_at` | `str` | No |  |
@@ -2704,10 +2708,10 @@ api_entities_ci_job = client.ApiEntitiesCiJob()
 | `artifacts` | `list` | No |  |
 | `artifacts_expire_at` | `str` | No |  |
 | `artifacts_file` | `dict` | No |  |
-| `commit` | `dict` | No |  |
+| `commit` | `dict` | No | API_Entities_Commit model |
 | `coverage` | `float` | No |  |
 | `created_at` | `str` | No |  |
-| `duration` | `float` | No |  |
+| `duration` | `float` | No | Time spent running |
 | `erased_at` | `str` | No |  |
 | `failure_reason` | `str` | No |  |
 | `file_format` | `str` | No |  |
@@ -2716,12 +2720,12 @@ api_entities_ci_job = client.ApiEntitiesCiJob()
 | `finished_at` | `str` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
-| `pipeline` | `dict` | No |  |
+| `pipeline` | `dict` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `dict` | No |  |
-| `queued_duration` | `float` | No |  |
+| `queued_duration` | `float` | No | Time spent enqueued |
 | `ref` | `str` | No |  |
-| `runner` | `dict` | No |  |
-| `runner_manager` | `dict` | No |  |
+| `runner` | `dict` | No | API_Entities_Ci_Runner model |
+| `runner_manager` | `dict` | No | API_Entities_Ci_RunnerManager model |
 | `size` | `int` | No |  |
 | `stage` | `str` | No |  |
 | `started_at` | `str` | No |  |
@@ -2802,18 +2806,18 @@ api_entities_ci_job_basic = client.ApiEntitiesCiJobBasic()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
-| `commit` | `dict` | No |  |
+| `commit` | `dict` | No | API_Entities_Commit model |
 | `coverage` | `float` | No |  |
 | `created_at` | `str` | No |  |
-| `duration` | `float` | No |  |
+| `duration` | `float` | No | Time spent running |
 | `erased_at` | `str` | No |  |
 | `failure_reason` | `str` | No |  |
 | `finished_at` | `str` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
-| `pipeline` | `dict` | No |  |
+| `pipeline` | `dict` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `dict` | No |  |
-| `queued_duration` | `float` | No |  |
+| `queued_duration` | `float` | No | Time spent enqueued |
 | `ref` | `str` | No |  |
 | `stage` | `str` | No |  |
 | `started_at` | `str` | No |  |
@@ -2885,18 +2889,18 @@ api_entities_ci_job_basic_with_project = client.ApiEntitiesCiJobBasicWithProject
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
-| `commit` | `dict` | No |  |
+| `commit` | `dict` | No | API_Entities_Commit model |
 | `coverage` | `float` | No |  |
 | `created_at` | `str` | No |  |
-| `duration` | `float` | No |  |
+| `duration` | `float` | No | Time spent running |
 | `erased_at` | `str` | No |  |
 | `failure_reason` | `str` | No |  |
 | `finished_at` | `str` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
-| `pipeline` | `dict` | No |  |
+| `pipeline` | `dict` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `dict` | No |  |
-| `queued_duration` | `float` | No |  |
+| `queued_duration` | `float` | No | Time spent enqueued |
 | `ref` | `str` | No |  |
 | `stage` | `str` | No |  |
 | `started_at` | `str` | No |  |
@@ -3154,7 +3158,7 @@ api_entities_ci_pipeline_schedule = client.ApiEntitiesCiPipelineSchedule()
 | `id` | `int` | No |  |
 | `inputs` | `dict` | No |  |
 | `next_run_at` | `str` | No |  |
-| `owner` | `dict` | No |  |
+| `owner` | `dict` | No | API_Entities_UserBasic model |
 | `ref` | `str` | No |  |
 | `updated_at` | `str` | No |  |
 
@@ -3216,12 +3220,12 @@ api_entities_ci_pipeline_schedule_detail = client.ApiEntitiesCiPipelineScheduleD
 | `description` | `str` | No |  |
 | `id` | `int` | No |  |
 | `inputs` | `dict` | No |  |
-| `last_pipeline` | `dict` | No |  |
+| `last_pipeline` | `dict` | No | API_Entities_Ci_PipelineBasic model |
 | `next_run_at` | `str` | No |  |
-| `owner` | `dict` | No |  |
+| `owner` | `dict` | No | API_Entities_UserBasic model |
 | `ref` | `str` | No |  |
 | `updated_at` | `str` | No |  |
-| `variables` | `dict` | No |  |
+| `variables` | `dict` | No | API_Entities_Ci_Variable model |
 
 ### Operations
 
@@ -3445,7 +3449,7 @@ result = client.ApiEntitiesCiRunner().create({
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesCiRunner().load()
+result = client.ApiEntitiesCiRunner().load({"id": 1})
 ```
 
 ### Common Methods
@@ -3492,9 +3496,9 @@ api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerDetail()
 | `architecture` | `str` | No |  |
 | `contacted_at` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `created_by` | `dict` | No |  |
+| `created_by` | `dict` | No | API_Entities_UserBasic model |
 | `description` | `str` | No |  |
-| `groups` | `dict` | No |  |
+| `groups` | `dict` | No | API_Entities_BasicGroupDetails model |
 | `id` | `int` | No |  |
 | `ip_address` | `str` | No |  |
 | `is_shared` | `bool` | No |  |
@@ -3506,7 +3510,7 @@ api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerDetail()
 | `online` | `bool` | No |  |
 | `paused` | `bool` | No |  |
 | `platform` | `str` | No |  |
-| `projects` | `dict` | No |  |
+| `projects` | `dict` | No | API_Entities_BasicProjectDetails model |
 | `revision` | `str` | No |  |
 | `run_untagged` | `str` | No |  |
 | `runner_type` | `str` | No |  |
@@ -3754,6 +3758,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesCiVariable().create({
+    "group_id": "example_group_id",  # str
 })
 ```
 
@@ -3772,7 +3777,7 @@ for api_entities_ci_variable in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesCiVariable().load({"id": "api_entities_ci_variable_id"})
+result = client.ApiEntitiesCiVariable().load({"id": "api_entities_ci_variable_id", "project_id": "project_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -3839,7 +3844,7 @@ api_entities_cluster = client.ApiEntitiesCluster()
 | `platform_type` | `str` | No |  |
 | `provider_gcp` | `dict` | No |  |
 | `provider_type` | `str` | No |  |
-| `user` | `dict` | No |  |
+| `user` | `dict` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -3925,7 +3930,7 @@ api_entities_cluster_group = client.ApiEntitiesClusterGroup()
 | `domain` | `str` | No |  |
 | `enabled` | `bool` | No |  |
 | `environment_scope` | `str` | No |  |
-| `group` | `dict` | No |  |
+| `group` | `dict` | No | API_Entities_BasicGroupDetails model |
 | `id` | `str` | No |  |
 | `managed` | `str` | No |  |
 | `management_project` | `dict` | No |  |
@@ -3935,7 +3940,7 @@ api_entities_cluster_group = client.ApiEntitiesClusterGroup()
 | `platform_type` | `str` | No |  |
 | `provider_gcp` | `dict` | No |  |
 | `provider_type` | `str` | No |  |
-| `user` | `dict` | No |  |
+| `user` | `dict` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -4020,10 +4025,10 @@ api_entities_cluster_project = client.ApiEntitiesClusterProject()
 | `namespace_per_environment` | `str` | No |  |
 | `platform_kubernetes` | `dict` | No |  |
 | `platform_type` | `str` | No |  |
-| `project` | `dict` | No |  |
+| `project` | `dict` | No | API_Entities_BasicProjectDetails model |
 | `provider_gcp` | `dict` | No |  |
 | `provider_type` | `str` | No |  |
-| `user` | `dict` | No |  |
+| `user` | `dict` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -4412,7 +4417,7 @@ api_entities_commit_detail = client.ApiEntitiesCommitDetail()
 | `created_at` | `str` | No |  |
 | `extended_trailers` | `dict` | No |  |
 | `id` | `str` | No |  |
-| `last_pipeline` | `dict` | No |  |
+| `last_pipeline` | `dict` | No | API_Entities_Ci_PipelineBasic model |
 | `message` | `str` | No |  |
 | `parent_ids` | `list` | No |  |
 | `project_id` | `int` | No |  |
@@ -4494,7 +4499,7 @@ api_entities_commit_note = client.ApiEntitiesCommitNote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `dict` | No |  |
+| `author` | `dict` | No | API_Entities_UserBasic model |
 | `avatar_path` | `str` | No |  |
 | `avatar_url` | `str` | No |  |
 | `created_at` | `str` | No |  |
@@ -4678,7 +4683,7 @@ api_entities_commit_status = client.ApiEntitiesCommitStatus()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `bool` | No |  |
-| `author` | `dict` | No |  |
+| `author` | `dict` | No | API_Entities_UserBasic model |
 | `avatar_path` | `str` | No |  |
 | `avatar_url` | `str` | No |  |
 | `coverage` | `float` | No |  |
@@ -4762,7 +4767,7 @@ api_entities_compare = client.ApiEntitiesCompare()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `commit` | `dict` | No |  |
+| `commit` | `dict` | No | API_Entities_Commit model |
 | `commits` | `list` | No |  |
 | `compare_same_ref` | `bool` | No |  |
 | `compare_timeout` | `bool` | No |  |
@@ -4830,7 +4835,7 @@ api_entities_container_registry_repository = client.ApiEntitiesContainerRegistry
 | `project_id` | `int` | No |  |
 | `size` | `int` | No |  |
 | `status` | `str` | No |  |
-| `tags` | `dict` | No |  |
+| `tags` | `dict` | No | API_Entities_ContainerRegistry_Tag model |
 | `tags_count` | `int` | No |  |
 
 ### Operations
@@ -4840,7 +4845,7 @@ api_entities_container_registry_repository = client.ApiEntitiesContainerRegistry
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesContainerRegistryRepository().list()
+results = client.ApiEntitiesContainerRegistryRepository().list({"project_id": "example"})
 for api_entities_container_registry_repository in results:
     print(api_entities_container_registry_repository)
 ```
@@ -5297,6 +5302,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesDeployTokenWithToken().create({
+    "group_id": "example_group_id",  # str
 })
 ```
 
@@ -5340,15 +5346,15 @@ api_entities_deployment = client.ApiEntitiesDeployment()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `created_at` | `str` | No |  |
-| `deployable` | `dict` | No |  |
-| `environment` | `dict` | No |  |
+| `deployable` | `dict` | No | API_Entities_Ci_Job model |
+| `environment` | `dict` | No | API_Entities_EnvironmentBasic model |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `ref` | `str` | No |  |
 | `sha` | `str` | No |  |
 | `status` | `str` | No |  |
 | `updated_at` | `str` | No |  |
-| `user` | `dict` | No |  |
+| `user` | `dict` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -5402,10 +5408,10 @@ api_entities_deployment_extended = client.ApiEntitiesDeploymentExtended()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `approval_summary` | `dict` | No |  |
-| `approvals` | `dict` | No |  |
+| `approvals` | `dict` | No | API_Entities_Deployments_Approval model |
 | `created_at` | `str` | No |  |
-| `deployable` | `dict` | No |  |
-| `environment` | `dict` | No |  |
+| `deployable` | `dict` | No | API_Entities_Ci_Job model |
+| `environment` | `dict` | No | API_Entities_EnvironmentBasic model |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `pending_approval_count` | `int` | No |  |
@@ -5413,7 +5419,7 @@ api_entities_deployment_extended = client.ApiEntitiesDeploymentExtended()
 | `sha` | `str` | No |  |
 | `status` | `str` | No |  |
 | `updated_at` | `str` | No |  |
-| `user` | `dict` | No |  |
+| `user` | `dict` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -5804,16 +5810,16 @@ api_entities_environment = client.ApiEntitiesEnvironment()
 | --- | --- | --- | --- |
 | `auto_stop_at` | `str` | No |  |
 | `auto_stop_setting` | `str` | No |  |
-| `cluster_agent` | `dict` | No |  |
+| `cluster_agent` | `dict` | No | API_Entities_Clusters_Agent model |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
 | `external_url` | `str` | No |  |
 | `flux_resource_path` | `str` | No |  |
 | `id` | `int` | No |  |
 | `kubernetes_namespace` | `str` | No |  |
-| `last_deployment` | `dict` | No |  |
+| `last_deployment` | `dict` | No | API_Entities_Deployment model |
 | `name` | `str` | No |  |
-| `project` | `dict` | No |  |
+| `project` | `dict` | No | API_Entities_BasicProjectDetails model |
 | `slug` | `str` | No |  |
 | `state` | `str` | No |  |
 | `tier` | `str` | No |  |
@@ -6033,7 +6039,7 @@ api_entities_event = client.ApiEntitiesEvent()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action_name` | `str` | No |  |
-| `author` | `dict` | No |  |
+| `author` | `dict` | No | API_Entities_UserBasic model |
 | `author_id` | `int` | No |  |
 | `author_username` | `str` | No |  |
 | `created_at` | `str` | No |  |
@@ -6047,7 +6053,7 @@ api_entities_event = client.ApiEntitiesEvent()
 | `target_iid` | `int` | No |  |
 | `target_title` | `str` | No |  |
 | `target_type` | `str` | No |  |
-| `wiki_page` | `dict` | No |  |
+| `wiki_page` | `dict` | No | API_Entities_WikiPageBasic model |
 
 ### Operations
 
@@ -6108,7 +6114,7 @@ api_entities_feature = client.ApiEntitiesFeature()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `definition` | `dict` | No |  |
+| `definition` | `dict` | No | API_Entities_Feature_Definition model |
 | `gates` | `dict` | No |  |
 | `name` | `str` | No |  |
 | `state` | `str` | No |  |
@@ -6618,12 +6624,12 @@ api_entities_group = client.ApiEntitiesGroup()
 | `auto_duo_code_review_enabled` | `str` | No |  |
 | `avatar_url` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `custom_attributes` | `dict` | No |  |
+| `custom_attributes` | `dict` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `str` | No |  |
 | `default_branch_protection` | `str` | No |  |
 | `default_branch_protection_defaults` | `str` | No |  |
 | `description` | `str` | No |  |
-| `duo_core_features_enabled` | `bool` | No |  |
+| `duo_core_features_enabled` | `bool` | No | [Experimental] Indicates whether GitLab Duo Core features are enabled for the group |
 | `duo_features_enabled` | `str` | No |  |
 | `emails_disabled` | `bool` | No |  |
 | `emails_enabled` | `bool` | No |  |
@@ -6748,12 +6754,12 @@ api_entities_group_detail = client.ApiEntitiesGroupDetail()
 | `auto_duo_code_review_enabled` | `str` | No |  |
 | `avatar_url` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `custom_attributes` | `dict` | No |  |
+| `custom_attributes` | `dict` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `str` | No |  |
 | `default_branch_protection` | `str` | No |  |
 | `default_branch_protection_defaults` | `str` | No |  |
 | `description` | `str` | No |  |
-| `duo_core_features_enabled` | `bool` | No |  |
+| `duo_core_features_enabled` | `bool` | No | [Experimental] Indicates whether GitLab Duo Core features are enabled for the group |
 | `duo_features_enabled` | `str` | No |  |
 | `emails_disabled` | `bool` | No |  |
 | `emails_enabled` | `bool` | No |  |
@@ -6782,7 +6788,7 @@ api_entities_group_detail = client.ApiEntitiesGroupDetail()
 | `prevent_forking_outside_group` | `str` | No |  |
 | `prevent_sharing_groups_outside_hierarchy` | `str` | No |  |
 | `project_creation_level` | `str` | No |  |
-| `projects` | `dict` | No |  |
+| `projects` | `dict` | No | API_Entities_Project model |
 | `repository_storage` | `str` | No |  |
 | `request_access_enabled` | `str` | No |  |
 | `require_two_factor_authentication` | `str` | No |  |
@@ -6791,7 +6797,7 @@ api_entities_group_detail = client.ApiEntitiesGroupDetail()
 | `saml_group_links` | `dict` | No |  |
 | `service_access_tokens_expiration_enforced` | `str` | No |  |
 | `share_with_group_lock` | `str` | No |  |
-| `shared_projects` | `dict` | No |  |
+| `shared_projects` | `dict` | No | API_Entities_Project model |
 | `shared_runners_minutes_limit` | `str` | No |  |
 | `shared_runners_setting` | `str` | No |  |
 | `shared_with_groups` | `str` | No |  |
@@ -6967,7 +6973,7 @@ api_entities_integration = client.ApiEntitiesIntegration()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesIntegration().load({"id": "api_entities_integration_id"})
+result = client.ApiEntitiesIntegration().load({"id": "api_entities_integration_id", "group_id": "group_id"})
 ```
 
 ### Common Methods
@@ -7040,7 +7046,7 @@ api_entities_integration_basic = client.ApiEntitiesIntegrationBasic()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesIntegrationBasic().list()
+results = client.ApiEntitiesIntegrationBasic().list({"group_id": "example"})
 for api_entities_integration_basic in results:
     print(api_entities_integration_basic)
 ```
@@ -7051,6 +7057,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.ApiEntitiesIntegrationBasic().update({
+    "group_id": "group_id",
     # Fields to update
 })
 ```
@@ -7110,6 +7117,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesInvitation().create({
+    "group_id": "example_group_id",  # str
 })
 ```
 
@@ -7118,7 +7126,7 @@ result = client.ApiEntitiesInvitation().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesInvitation().list()
+results = client.ApiEntitiesInvitation().list({"group_id": "example"})
 for api_entities_invitation in results:
     print(api_entities_invitation)
 ```
@@ -7237,12 +7245,12 @@ api_entities_issue = client.ApiEntitiesIssue()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assignee` | `dict` | No |  |
-| `assignees` | `dict` | No |  |
-| `author` | `dict` | No |  |
+| `assignee` | `dict` | No | API_Entities_UserBasic model |
+| `assignees` | `dict` | No | API_Entities_UserBasic model |
+| `author` | `dict` | No | API_Entities_UserBasic model |
 | `blocking_issues_count` | `str` | No |  |
 | `closed_at` | `str` | No |  |
-| `closed_by` | `dict` | No |  |
+| `closed_by` | `dict` | No | API_Entities_UserBasic model |
 | `confidential` | `bool` | No |  |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
@@ -7267,14 +7275,14 @@ api_entities_issue = client.ApiEntitiesIssue()
 | `project_id` | `int` | No |  |
 | `references` | `dict` | No |  |
 | `service_desk_reply_to` | `str` | No |  |
-| `severity` | `str` | No |  |
+| `severity` | `str` | No | One of ["UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"] |
 | `state` | `str` | No |  |
 | `subscribed` | `str` | No |  |
 | `task_completion_status` | `str` | No |  |
 | `task_status` | `str` | No |  |
-| `time_stats` | `dict` | No |  |
+| `time_stats` | `dict` | No | API_Entities_IssuableTimeStats model |
 | `title` | `str` | No |  |
-| `type` | `str` | No |  |
+| `type` | `str` | No | One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK", "TICKET"] |
 | `updated_at` | `str` | No |  |
 | `upvotes` | `str` | No |  |
 | `user_notes_count` | `str` | No |  |
@@ -7440,14 +7448,12 @@ api_entities_license = client.ApiEntitiesLicense()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-results = client.ApiEntitiesLicense().list({"id": "example", "name": "example", "type": "example"})
-for api_entities_license in results:
-    print(api_entities_license)
+result = client.ApiEntitiesLicense().load({"id": "api_entities_license_id", "name": "name", "type": "type"})
 ```
 
 ### Common Methods
@@ -7548,7 +7554,7 @@ api_entities_markdown_upload_admin = client.ApiEntitiesMarkdownUploadAdmin()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesMarkdownUploadAdmin().list()
+results = client.ApiEntitiesMarkdownUploadAdmin().list({"group_id": "example"})
 for api_entities_markdown_upload_admin in results:
     print(api_entities_markdown_upload_admin)
 ```
@@ -7596,7 +7602,7 @@ api_entities_member = client.ApiEntitiesMember()
 | `avatar_path` | `str` | No |  |
 | `avatar_url` | `str` | No |  |
 | `created_at` | `str` | No |  |
-| `created_by` | `dict` | No |  |
+| `created_by` | `dict` | No | API_Entities_UserBasic model |
 | `custom_attributes` | `list` | No |  |
 | `email` | `str` | No |  |
 | `expires_at` | `str` | No |  |
@@ -7624,6 +7630,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesMember().create({
+    "group_id": "example_group_id",  # str
 })
 ```
 
@@ -7632,7 +7639,7 @@ result = client.ApiEntitiesMember().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesMember().list()
+results = client.ApiEntitiesMember().list({"group_id": "example"})
 for api_entities_member in results:
     print(api_entities_member)
 ```
@@ -7642,7 +7649,7 @@ for api_entities_member in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesMember().load({"id": "api_entities_member_id"})
+result = client.ApiEntitiesMember().load({"id": "api_entities_member_id", "group_id": "group_id"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -7706,13 +7713,13 @@ api_entities_merge = client.ApiEntitiesMerge()
 | `allow_collaboration` | `bool` | No |  |
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `str` | No |  |
-| `assignee` | `dict` | No |  |
-| `assignees` | `dict` | No |  |
-| `author` | `dict` | No |  |
+| `assignee` | `dict` | No | API_Entities_UserBasic model |
+| `assignees` | `dict` | No | API_Entities_UserBasic model |
+| `author` | `dict` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `str` | No |  |
 | `changes_count` | `str` | No |  |
 | `closed_at` | `str` | No |  |
-| `closed_by` | `dict` | No |  |
+| `closed_by` | `dict` | No | API_Entities_UserBasic model |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
 | `description_html` | `str` | No |  |
@@ -7726,7 +7733,7 @@ api_entities_merge = client.ApiEntitiesMerge()
 | `first_deployed_to_production_at` | `str` | No |  |
 | `force_remove_source_branch` | `str` | No |  |
 | `has_conflicts` | `bool` | No |  |
-| `head_pipeline` | `dict` | No |  |
+| `head_pipeline` | `dict` | No | API_Entities_Ci_Pipeline model |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `str` | No |  |
@@ -7738,18 +7745,18 @@ api_entities_merge = client.ApiEntitiesMerge()
 | `merge_commit_sha` | `str` | No |  |
 | `merge_error` | `str` | No |  |
 | `merge_status` | `str` | No |  |
-| `merge_user` | `dict` | No |  |
+| `merge_user` | `dict` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `str` | No |  |
 | `merged_at` | `str` | No |  |
-| `merged_by` | `dict` | No |  |
+| `merged_by` | `dict` | No | API_Entities_UserBasic model |
 | `milestone` | `dict` | No |  |
-| `pipeline` | `dict` | No |  |
+| `pipeline` | `dict` | No | API_Entities_Ci_PipelineBasic model |
 | `prepared_at` | `str` | No |  |
 | `project_id` | `int` | No |  |
 | `rebase_in_progress` | `str` | No |  |
 | `reference` | `str` | No |  |
 | `references` | `dict` | No |  |
-| `reviewers` | `dict` | No |  |
+| `reviewers` | `dict` | No | API_Entities_UserBasic model |
 | `sha` | `str` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `str` | No |  |
@@ -7762,7 +7769,7 @@ api_entities_merge = client.ApiEntitiesMerge()
 | `target_branch` | `str` | No |  |
 | `target_project_id` | `str` | No |  |
 | `task_completion_status` | `str` | No |  |
-| `time_stats` | `dict` | No |  |
+| `time_stats` | `dict` | No | API_Entities_IssuableTimeStats model |
 | `title` | `str` | No |  |
 | `title_html` | `str` | No |  |
 | `updated_at` | `str` | No |  |
@@ -7843,7 +7850,7 @@ api_entities_merge_request_approval = client.ApiEntitiesMergeRequestApproval()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `approved_at` | `str` | No |  |
-| `user` | `dict` | No |  |
+| `user` | `dict` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -7908,12 +7915,12 @@ api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic()
 | `allow_collaboration` | `bool` | No |  |
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `str` | No |  |
-| `assignee` | `dict` | No |  |
-| `assignees` | `dict` | No |  |
-| `author` | `dict` | No |  |
+| `assignee` | `dict` | No | API_Entities_UserBasic model |
+| `assignees` | `dict` | No | API_Entities_UserBasic model |
+| `author` | `dict` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `str` | No |  |
 | `closed_at` | `str` | No |  |
-| `closed_by` | `dict` | No |  |
+| `closed_by` | `dict` | No | API_Entities_UserBasic model |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
 | `description_html` | `str` | No |  |
@@ -7931,16 +7938,16 @@ api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic()
 | `merge_after` | `str` | No |  |
 | `merge_commit_sha` | `str` | No |  |
 | `merge_status` | `str` | No |  |
-| `merge_user` | `dict` | No |  |
+| `merge_user` | `dict` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `str` | No |  |
 | `merged_at` | `str` | No |  |
-| `merged_by` | `dict` | No |  |
+| `merged_by` | `dict` | No | API_Entities_UserBasic model |
 | `milestone` | `dict` | No |  |
 | `prepared_at` | `str` | No |  |
 | `project_id` | `int` | No |  |
 | `reference` | `str` | No |  |
 | `references` | `dict` | No |  |
-| `reviewers` | `dict` | No |  |
+| `reviewers` | `dict` | No | API_Entities_UserBasic model |
 | `sha` | `str` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `str` | No |  |
@@ -7952,7 +7959,7 @@ api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic()
 | `target_branch` | `str` | No |  |
 | `target_project_id` | `str` | No |  |
 | `task_completion_status` | `str` | No |  |
-| `time_stats` | `dict` | No |  |
+| `time_stats` | `dict` | No | API_Entities_IssuableTimeStats model |
 | `title` | `str` | No |  |
 | `title_html` | `str` | No |  |
 | `updated_at` | `str` | No |  |
@@ -7978,7 +7985,7 @@ for api_entities_merge_request_basic in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesMergeRequestBasic().load()
+result = client.ApiEntitiesMergeRequestBasic().load({"id": 1})
 ```
 
 ### Common Methods
@@ -8023,14 +8030,14 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `allow_collaboration` | `bool` | No |  |
 | `allow_maintainer_to_push` | `bool` | No |  |
 | `approvals_before_merge` | `str` | No |  |
-| `assignee` | `dict` | No |  |
-| `assignees` | `dict` | No |  |
-| `author` | `dict` | No |  |
+| `assignee` | `dict` | No | API_Entities_UserBasic model |
+| `assignees` | `dict` | No | API_Entities_UserBasic model |
+| `author` | `dict` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `str` | No |  |
-| `changes` | `dict` | No |  |
+| `changes` | `dict` | No | API_Entities_Diff model |
 | `changes_count` | `str` | No |  |
 | `closed_at` | `str` | No |  |
-| `closed_by` | `dict` | No |  |
+| `closed_by` | `dict` | No | API_Entities_UserBasic model |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
 | `description_html` | `str` | No |  |
@@ -8044,7 +8051,7 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `first_deployed_to_production_at` | `str` | No |  |
 | `force_remove_source_branch` | `str` | No |  |
 | `has_conflicts` | `bool` | No |  |
-| `head_pipeline` | `dict` | No |  |
+| `head_pipeline` | `dict` | No | API_Entities_Ci_Pipeline model |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `imported` | `str` | No |  |
@@ -8056,19 +8063,19 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `merge_commit_sha` | `str` | No |  |
 | `merge_error` | `str` | No |  |
 | `merge_status` | `str` | No |  |
-| `merge_user` | `dict` | No |  |
+| `merge_user` | `dict` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `str` | No |  |
 | `merged_at` | `str` | No |  |
-| `merged_by` | `dict` | No |  |
+| `merged_by` | `dict` | No | API_Entities_UserBasic model |
 | `milestone` | `dict` | No |  |
 | `overflow` | `str` | No |  |
-| `pipeline` | `dict` | No |  |
+| `pipeline` | `dict` | No | API_Entities_Ci_PipelineBasic model |
 | `prepared_at` | `str` | No |  |
 | `project_id` | `int` | No |  |
 | `rebase_in_progress` | `str` | No |  |
 | `reference` | `str` | No |  |
 | `references` | `dict` | No |  |
-| `reviewers` | `dict` | No |  |
+| `reviewers` | `dict` | No | API_Entities_UserBasic model |
 | `sha` | `str` | No |  |
 | `should_remove_source_branch` | `bool` | No |  |
 | `source_branch` | `str` | No |  |
@@ -8081,7 +8088,7 @@ api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `target_branch` | `str` | No |  |
 | `target_project_id` | `str` | No |  |
 | `task_completion_status` | `str` | No |  |
-| `time_stats` | `dict` | No |  |
+| `time_stats` | `dict` | No | API_Entities_IssuableTimeStats model |
 | `title` | `str` | No |  |
 | `title_html` | `str` | No |  |
 | `updated_at` | `str` | No |  |
@@ -8202,9 +8209,9 @@ api_entities_merge_request_diff_full = client.ApiEntitiesMergeRequestDiffFull()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `base_commit_sha` | `str` | No |  |
-| `commits` | `dict` | No |  |
+| `commits` | `dict` | No | API_Entities_Commit model |
 | `created_at` | `str` | No |  |
-| `diffs` | `dict` | No |  |
+| `diffs` | `dict` | No | API_Entities_Diff model |
 | `head_commit_sha` | `str` | No |  |
 | `id` | `str` | No |  |
 | `merge_request_id` | `str` | No |  |
@@ -8849,7 +8856,7 @@ api_entities_nuget_search_result = client.ApiEntitiesNugetSearchResult()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesNugetSearchResult().list()
+results = client.ApiEntitiesNugetSearchResult().list({"project_id": "example"})
 for api_entities_nuget_search_result in results:
     print(api_entities_nuget_search_result)
 ```
@@ -8903,7 +8910,7 @@ api_entities_nuget_service_index = client.ApiEntitiesNugetServiceIndex()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesNugetServiceIndex().list()
+results = client.ApiEntitiesNugetServiceIndex().list({"project_id": "example"})
 for api_entities_nuget_service_index in results:
     print(api_entities_nuget_service_index)
 ```
@@ -9000,8 +9007,8 @@ api_entities_package = client.ApiEntitiesPackage()
 | `links` | `dict` | No |  |
 | `name` | `str` | No |  |
 | `package_type` | `str` | No |  |
-| `pipeline` | `dict` | No |  |
-| `pipelines` | `dict` | No |  |
+| `pipeline` | `dict` | No | API_Entities_Package_Pipeline model |
+| `pipelines` | `dict` | No | API_Entities_Package_Pipeline model |
 | `project_id` | `int` | No |  |
 | `project_path` | `str` | No |  |
 | `status` | `str` | No |  |
@@ -9016,7 +9023,7 @@ api_entities_package = client.ApiEntitiesPackage()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesPackage().list()
+results = client.ApiEntitiesPackage().list({"group_id": "example"})
 for api_entities_package in results:
     print(api_entities_package)
 ```
@@ -9075,7 +9082,7 @@ api_entities_package_file = client.ApiEntitiesPackageFile()
 | `file_sha256` | `str` | No |  |
 | `id` | `int` | No |  |
 | `package_id` | `int` | No |  |
-| `pipelines` | `dict` | No |  |
+| `pipelines` | `dict` | No | API_Entities_Package_Pipeline model |
 | `size` | `int` | No |  |
 
 ### Operations
@@ -9279,8 +9286,8 @@ api_entities_packages_conan_package_revision = client.ApiEntitiesPackagesConanPa
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `str` | No |  |
-| `time` | `str` | No |  |
+| `revision` | `str` | No | The revision hash of the Conan recipe or package |
+| `time` | `str` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9423,8 +9430,8 @@ api_entities_packages_conan_recipe_revision = client.ApiEntitiesPackagesConanRec
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `str` | No |  |
-| `time` | `str` | No |  |
+| `revision` | `str` | No | The revision hash of the Conan recipe or package |
+| `time` | `str` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9522,8 +9529,8 @@ api_entities_packages_conan_revision = client.ApiEntitiesPackagesConanRevision()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `str` | No |  |
-| `time` | `str` | No |  |
+| `revision` | `str` | No | The revision hash of the Conan recipe or package |
+| `time` | `str` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9643,6 +9650,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesPackagesDebianDistribution().create({
+    "project_id": "example_project_id",  # str
 })
 ```
 
@@ -9651,7 +9659,7 @@ result = client.ApiEntitiesPackagesDebianDistribution().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesPackagesDebianDistribution().list()
+results = client.ApiEntitiesPackagesDebianDistribution().list({"project_id": "example"})
 for api_entities_packages_debian_distribution in results:
     print(api_entities_packages_debian_distribution)
 ```
@@ -10011,6 +10019,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesPersonalAccessTokenWithToken().create({
+    "personal_access_token_id": "example_personal_access_token_id",  # str
 })
 ```
 
@@ -10053,7 +10062,7 @@ api_entities_personal_snippet = client.ApiEntitiesPersonalSnippet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `dict` | No |  |
+| `author` | `dict` | No | API_Entities_UserBasic model |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
 | `file_name` | `str` | No |  |
@@ -10239,7 +10248,7 @@ api_entities_project = client.ApiEntitiesProject()
 | `container_registry_image_prefix` | `str` | No |  |
 | `created_at` | `str` | No |  |
 | `creator_id` | `int` | No |  |
-| `custom_attributes` | `dict` | No |  |
+| `custom_attributes` | `dict` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `str` | No |  |
 | `description` | `str` | No |  |
 | `description_html` | `str` | No |  |
@@ -10251,7 +10260,7 @@ api_entities_project = client.ApiEntitiesProject()
 | `environments_access_level` | `str` | No |  |
 | `external_authorization_classification_label` | `str` | No |  |
 | `feature_flags_access_level` | `str` | No |  |
-| `forked_from_project` | `dict` | No |  |
+| `forked_from_project` | `dict` | No | API_Entities_BasicProjectDetails model |
 | `forking_access_level` | `str` | No |  |
 | `forks_count` | `int` | No |  |
 | `group_runners_enabled` | `bool` | No |  |
@@ -10302,7 +10311,7 @@ api_entities_project = client.ApiEntitiesProject()
 | `only_allow_merge_if_pipeline_succeeds` | `bool` | No |  |
 | `only_mirror_protected_branches` | `str` | No |  |
 | `open_issues_count` | `int` | No |  |
-| `owner` | `dict` | No |  |
+| `owner` | `dict` | No | API_Entities_UserBasic model |
 | `package_registry_access_level` | `str` | No |  |
 | `packages_enabled` | `bool` | No |  |
 | `pages_access_level` | `str` | No |  |
@@ -10336,7 +10345,7 @@ api_entities_project = client.ApiEntitiesProject()
 | `show_diff_preview_in_email` | `bool` | No |  |
 | `snippets_access_level` | `str` | No |  |
 | `snippets_enabled` | `bool` | No |  |
-| `spp_repository_pipeline_access` | `bool` | No |  |
+| `spp_repository_pipeline_access` | `bool` | No | The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available. |
 | `squash_commit_template` | `str` | No |  |
 | `squash_option` | `str` | No |  |
 | `ssh_url_to_repo` | `str` | No |  |
@@ -10361,6 +10370,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesProject().create({
+    "user_id": "example_user_id",  # str
 })
 ```
 
@@ -10369,7 +10379,7 @@ result = client.ApiEntitiesProject().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesProject().list()
+results = client.ApiEntitiesProject().list({"project_id": "example"})
 for api_entities_project in results:
     print(api_entities_project)
 ```
@@ -10380,6 +10390,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.ApiEntitiesProject().update({
+    "id": "id",
     # Fields to update
 })
 ```
@@ -10862,7 +10873,7 @@ api_entities_project_snippet = client.ApiEntitiesProjectSnippet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `dict` | No |  |
+| `author` | `dict` | No | API_Entities_UserBasic model |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
 | `file_name` | `str` | No |  |
@@ -11042,7 +11053,7 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `container_registry_image_prefix` | `str` | No |  |
 | `created_at` | `str` | No |  |
 | `creator_id` | `int` | No |  |
-| `custom_attributes` | `dict` | No |  |
+| `custom_attributes` | `dict` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `str` | No |  |
 | `description` | `str` | No |  |
 | `description_html` | `str` | No |  |
@@ -11054,7 +11065,7 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `environments_access_level` | `str` | No |  |
 | `external_authorization_classification_label` | `str` | No |  |
 | `feature_flags_access_level` | `str` | No |  |
-| `forked_from_project` | `dict` | No |  |
+| `forked_from_project` | `dict` | No | API_Entities_BasicProjectDetails model |
 | `forking_access_level` | `str` | No |  |
 | `forks_count` | `int` | No |  |
 | `group_runners_enabled` | `bool` | No |  |
@@ -11105,7 +11116,7 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `only_allow_merge_if_pipeline_succeeds` | `bool` | No |  |
 | `only_mirror_protected_branches` | `str` | No |  |
 | `open_issues_count` | `int` | No |  |
-| `owner` | `dict` | No |  |
+| `owner` | `dict` | No | API_Entities_UserBasic model |
 | `package_registry_access_level` | `str` | No |  |
 | `packages_enabled` | `bool` | No |  |
 | `pages_access_level` | `str` | No |  |
@@ -11140,7 +11151,7 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `show_diff_preview_in_email` | `bool` | No |  |
 | `snippets_access_level` | `str` | No |  |
 | `snippets_enabled` | `bool` | No |  |
-| `spp_repository_pipeline_access` | `bool` | No |  |
+| `spp_repository_pipeline_access` | `bool` | No | The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available. |
 | `squash_commit_template` | `str` | No |  |
 | `squash_option` | `str` | No |  |
 | `ssh_url_to_repo` | `str` | No |  |
@@ -11668,12 +11679,12 @@ api_entities_related_issue = client.ApiEntitiesRelatedIssue()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assignee` | `dict` | No |  |
-| `assignees` | `dict` | No |  |
-| `author` | `dict` | No |  |
+| `assignee` | `dict` | No | API_Entities_UserBasic model |
+| `assignees` | `dict` | No | API_Entities_UserBasic model |
+| `author` | `dict` | No | API_Entities_UserBasic model |
 | `blocking_issues_count` | `str` | No |  |
 | `closed_at` | `str` | No |  |
-| `closed_by` | `dict` | No |  |
+| `closed_by` | `dict` | No | API_Entities_UserBasic model |
 | `confidential` | `bool` | No |  |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
@@ -11702,14 +11713,14 @@ api_entities_related_issue = client.ApiEntitiesRelatedIssue()
 | `project_id` | `int` | No |  |
 | `references` | `dict` | No |  |
 | `service_desk_reply_to` | `str` | No |  |
-| `severity` | `str` | No |  |
+| `severity` | `str` | No | One of ["UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"] |
 | `state` | `str` | No |  |
 | `subscribed` | `str` | No |  |
 | `task_completion_status` | `str` | No |  |
 | `task_status` | `str` | No |  |
-| `time_stats` | `dict` | No |  |
+| `time_stats` | `dict` | No | API_Entities_IssuableTimeStats model |
 | `title` | `str` | No |  |
-| `type` | `str` | No |  |
+| `type` | `str` | No | One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK", "TICKET"] |
 | `updated_at` | `str` | No |  |
 | `upvotes` | `str` | No |  |
 | `user_notes_count` | `str` | No |  |
@@ -11814,8 +11825,8 @@ api_entities_release = client.ApiEntitiesRelease()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `assets` | `dict` | No |  |
-| `author` | `dict` | No |  |
-| `commit` | `dict` | No |  |
+| `author` | `dict` | No | API_Entities_UserBasic model |
+| `commit` | `dict` | No | API_Entities_Commit model |
 | `commit_path` | `str` | No |  |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
@@ -11846,7 +11857,7 @@ result = client.ApiEntitiesRelease().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesRelease().list()
+results = client.ApiEntitiesRelease().list({"project_id": "example"})
 for api_entities_release in results:
     print(api_entities_release)
 ```
@@ -12178,6 +12189,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesResourceAccessTokenWithToken().create({
+    "group_id": "example_group_id",  # str
 })
 ```
 
@@ -12227,7 +12239,7 @@ api_entities_resource_milestone_event = client.ApiEntitiesResourceMilestoneEvent
 | `resource_id` | `int` | No |  |
 | `resource_type` | `str` | No |  |
 | `state` | `str` | No |  |
-| `user` | `dict` | No |  |
+| `user` | `dict` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -12288,7 +12300,7 @@ api_entities_snippet = client.ApiEntitiesSnippet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `dict` | No |  |
+| `author` | `dict` | No | API_Entities_UserBasic model |
 | `created_at` | `str` | No |  |
 | `description` | `str` | No |  |
 | `file_name` | `str` | No |  |
@@ -12602,7 +12614,7 @@ api_entities_tag = client.ApiEntitiesTag()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `commit` | `dict` | No |  |
+| `commit` | `dict` | No | API_Entities_Commit model |
 | `created_at` | `str` | No |  |
 | `message` | `str` | No |  |
 | `name` | `str` | No |  |
@@ -12917,7 +12929,7 @@ api_entities_trigger = client.ApiEntitiesTrigger()
 | `last_used` | `str` | No |  |
 | `locked` | `bool` | No |  |
 | `name` | `str` | No |  |
-| `owner` | `dict` | No |  |
+| `owner` | `dict` | No | API_Entities_UserBasic model |
 | `public_email` | `str` | No |  |
 | `state` | `str` | No |  |
 | `token` | `str` | No |  |
@@ -13017,7 +13029,7 @@ api_entities_user_agent_detail = client.ApiEntitiesUserAgentDetail()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesUserAgentDetail().load()
+result = client.ApiEntitiesUserAgentDetail().load({"snippet_id": "snippet_id"})
 ```
 
 ### Common Methods
@@ -13272,6 +13284,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesWikiAttachment().create({
+    "group_id": "example_group_id",  # str
 })
 ```
 
@@ -13318,6 +13331,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesWikiPage().create({
+    "group_id": "example_group_id",  # str
 })
 ```
 
@@ -13391,7 +13405,7 @@ api_entities_wiki_page_basic = client.ApiEntitiesWikiPageBasic()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesWikiPageBasic().list()
+results = client.ApiEntitiesWikiPageBasic().list({"group_id": "example"})
 for api_entities_wiki_page_basic in results:
     print(api_entities_wiki_page_basic)
 ```
@@ -13845,7 +13859,7 @@ composer_package = client.ComposerPackage()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ComposerPackage().load()
+result = client.ComposerPackage().load({"group_id": "group_id", "sha": "sha"})
 ```
 
 ### Common Methods
@@ -13935,7 +13949,7 @@ conan_package = client.ConanPackage()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ConanPackage().load({"id": "conan_package_id"})
+result = client.ConanPackage().load({"file_id": "file_id", "file_name": "file_name", "package_channel": "package_channel", "package_username": "package_username", "package_version": "package_version", "recipe_revision": "recipe_revision"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -13952,7 +13966,6 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.ConanPackage().update({
-    "id": "conan_package_id",
     "file_name": "file_name",
     "package_channel": "package_channel",
     "package_username": "package_username",
@@ -14101,7 +14114,7 @@ custom_attribute = client.CustomAttribute()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.CustomAttribute().load({"id": "custom_attribute_id"})
+result = client.CustomAttribute().load({"id": "custom_attribute_id", "group_id": "group_id"})
 ```
 
 ### Common Methods
@@ -14240,7 +14253,7 @@ debian_package = client.DebianPackage()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.DebianPackage().load({"id": "debian_package_id"})
+result = client.DebianPackage().load({"id": "debian_package_id", "distribution": "distribution", "file_name": "file_name", "letter": "letter", "package_name": "package_name", "package_version": "package_version"})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -14537,7 +14550,7 @@ ee_api_entities_audit_event = client.EeApiEntitiesAuditEvent()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.EeApiEntitiesAuditEvent().list()
+results = client.EeApiEntitiesAuditEvent().list({"group_id": "example"})
 for ee_api_entities_audit_event in results:
     print(ee_api_entities_audit_event)
 ```
@@ -16051,7 +16064,7 @@ result = client.Integration().create({
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.Integration().remove()
+result = client.Integration().remove({"group_id": "group_id", "id": "id"})
 ```
 
 ### Common Methods
@@ -16858,7 +16871,7 @@ nuget_package = client.NugetPackage()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.NugetPackage().list()
+results = client.NugetPackage().list({"project_id": "example"})
 for nuget_package in results:
     print(nuget_package)
 ```
@@ -16868,7 +16881,7 @@ for nuget_package in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.NugetPackage().load()
+result = client.NugetPackage().load({"project_id": "project_id"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -17150,13 +17163,13 @@ project = client.Project()
 | `coverage` | `float` | No |  |
 | `created_at` | `str` | No |  |
 | `detailed_status` | `dict` | No |  |
-| `duration` | `int` | No |  |
+| `duration` | `int` | No | Time spent running in seconds |
 | `finished_at` | `str` | No |  |
 | `id` | `int` | No |  |
 | `iid` | `int` | No |  |
 | `name` | `str` | No |  |
 | `project_id` | `int` | No |  |
-| `queued_duration` | `int` | No |  |
+| `queued_duration` | `int` | No | Time spent enqueued in seconds |
 | `ref` | `str` | No |  |
 | `sha` | `str` | No |  |
 | `source` | `str` | No |  |
@@ -17164,7 +17177,7 @@ project = client.Project()
 | `status` | `str` | No |  |
 | `tag` | `bool` | No |  |
 | `updated_at` | `str` | No |  |
-| `user` | `dict` | No |  |
+| `user` | `dict` | No | API_Entities_UserBasic model |
 | `web_url` | `str` | No |  |
 | `yaml_errors` | `str` | No |  |
 
@@ -17798,7 +17811,7 @@ result = client.PypiPackage().create({
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.PypiPackage().load()
+result = client.PypiPackage().load({"project_id": "project_id"})
 ```
 
 ### Common Methods
@@ -18216,7 +18229,7 @@ result = client.Runner().create({
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.Runner().remove()
+result = client.Runner().remove({"id": "id"})
 ```
 
 ### Common Methods

@@ -1998,7 +1998,7 @@ guide: {
 
   entity: api_entities_license: {
     path: "/api/v4/projects/{id}/templates/{type}/{name}": {
-      op: list: method: *GET
+      op: load: method: *GET
     }
   }
 

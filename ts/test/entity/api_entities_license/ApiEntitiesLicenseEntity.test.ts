@@ -39,7 +39,7 @@ describe('ApiEntitiesLicenseEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['list']) {
+    for (const op of ['load']) {
       if (maybeSkipControl(t, 'entityOp', 'api_entities_license.' + op, live)) return
     }
 
@@ -59,13 +59,9 @@ describe('ApiEntitiesLicenseEntity', async () => {
 
     let api_entities_license_ref01_data = Object.values(setup.data.existing.api_entities_license)[0] as any
 
-    // LIST
+    // LOAD: skipped — no entity id field and load requires path params.
+    // Entity-var is declared here so later flow steps still compile.
     const api_entities_license_ref01_ent = client.ApiEntitiesLicense()
-    const api_entities_license_ref01_match: any = {}
-    api_entities_license_ref01_match['name'] = setup.idmap['name01']
-    api_entities_license_ref01_match['type'] = setup.idmap['type01']
-
-    const api_entities_license_ref01_list = (await api_entities_license_ref01_ent.list(api_entities_license_ref01_match)).map((e: any) => e.data())
 
 
   })

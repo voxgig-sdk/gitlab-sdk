@@ -66,15 +66,13 @@ class ApiEntitiesAccessRequester
 /** Request payload for ApiEntitiesAccessRequester#list. */
 class ApiEntitiesAccessRequesterListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** Request payload for ApiEntitiesAccessRequester#create. */
 class ApiEntitiesAccessRequesterCreateData
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
     public ?string $avatar_path = null;
     public ?string $avatar_url = null;
     public ?array $custom_attributes = null;
@@ -300,25 +298,15 @@ class ApiEntitiesAwardEmojiLoadMatch
 /** Request payload for ApiEntitiesAwardEmoji#list. */
 class ApiEntitiesAwardEmojiListMatch
 {
-    public ?string $epic_id = null;
-    public ?string $group_id = null;
-    public ?string $note_id = null;
-    public ?string $issue_id = null;
-    public ?string $project_id = null;
-    public ?string $merge_request_id = null;
-    public ?string $snippet_id = null;
+    public string $epic_id;
+    public string $group_id;
 }
 
 /** Request payload for ApiEntitiesAwardEmoji#create. */
 class ApiEntitiesAwardEmojiCreateData
 {
-    public ?string $epic_id = null;
-    public ?string $group_id = null;
-    public ?string $note_id = null;
-    public ?string $issue_id = null;
-    public ?string $project_id = null;
-    public ?string $merge_request_id = null;
-    public ?string $snippet_id = null;
+    public string $epic_id;
+    public string $group_id;
     public ?string $avatar_path = null;
     public ?string $avatar_url = null;
     public ?int $awardable_id = null;
@@ -360,15 +348,13 @@ class ApiEntitiesBadgeLoadMatch
 /** Request payload for ApiEntitiesBadge#list. */
 class ApiEntitiesBadgeListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** Request payload for ApiEntitiesBadge#create. */
 class ApiEntitiesBadgeCreateData
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
     public ?string $id = null;
     public ?string $image_url = null;
     public ?string $kind = null;
@@ -405,8 +391,7 @@ class ApiEntitiesBasicBadgeDetail
 /** Request payload for ApiEntitiesBasicBadgeDetail#load. */
 class ApiEntitiesBasicBadgeDetailLoadMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** ApiEntitiesBasicGroupDetail entity data model. */
@@ -452,8 +437,30 @@ class ApiEntitiesBasicProjectDetail
 /** Request payload for ApiEntitiesBasicProjectDetail#list. */
 class ApiEntitiesBasicProjectDetailListMatch
 {
-    public ?string $user_id = null;
-    public ?string $project_id = null;
+    public ?string $avatar_url = null;
+    public ?string $created_at = null;
+    public ?array $custom_attributes = null;
+    public ?string $default_branch = null;
+    public ?string $description = null;
+    public ?int $forks_count = null;
+    public ?string $http_url_to_repo = null;
+    public ?int $id = null;
+    public ?string $last_activity_at = null;
+    public ?array $license = null;
+    public ?string $license_url = null;
+    public ?string $name = null;
+    public ?string $name_with_namespace = null;
+    public ?array $namespace = null;
+    public ?string $path = null;
+    public ?string $path_with_namespace = null;
+    public ?string $readme_url = null;
+    public ?string $repository_storage = null;
+    public ?string $ssh_url_to_repo = null;
+    public ?int $star_count = null;
+    public ?array $tag_list = null;
+    public ?array $topics = null;
+    public ?string $visibility = null;
+    public ?string $web_url = null;
 }
 
 /** Request payload for ApiEntitiesBasicProjectDetail#create. */
@@ -682,21 +689,39 @@ class ApiEntitiesBulkImport
 /** Request payload for ApiEntitiesBulkImport#load. */
 class ApiEntitiesBulkImportLoadMatch
 {
-    public ?string $bulk_import_id = null;
-    public ?string $entity_id = null;
-    public ?string $id = null;
+    public string $id;
 }
 
 /** Request payload for ApiEntitiesBulkImport#list. */
 class ApiEntitiesBulkImportListMatch
 {
-    public ?string $bulk_import_id = null;
+    public ?int $bulk_import_id = null;
+    public ?string $created_at = null;
+    public ?string $destination_full_path = null;
+    public ?string $destination_name = null;
+    public ?string $destination_namespace = null;
+    public ?string $destination_slug = null;
+    public ?string $entity_type = null;
+    public ?array $failures = null;
+    public ?bool $has_failures = null;
+    public ?int $id = null;
+    public ?bool $migrate_memberships = null;
+    public ?bool $migrate_projects = null;
+    public ?int $namespace_id = null;
+    public ?int $parent_id = null;
+    public ?int $project_id = null;
+    public ?string $source_full_path = null;
+    public ?string $source_type = null;
+    public ?string $source_url = null;
+    public ?array $stats = null;
+    public ?string $status = null;
+    public ?string $updated_at = null;
 }
 
 /** Request payload for ApiEntitiesBulkImport#create. */
 class ApiEntitiesBulkImportCreateData
 {
-    public ?string $bulk_import_id = null;
+    public ?int $bulk_import_id = null;
     public ?string $created_at = null;
     public ?string $destination_full_path = null;
     public ?string $destination_name = null;
@@ -753,8 +778,7 @@ class ApiEntitiesBulkImportsExportStatus
 /** Request payload for ApiEntitiesBulkImportsExportStatus#list. */
 class ApiEntitiesBulkImportsExportStatusListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** ApiEntitiesChangelog entity data model. */
@@ -859,9 +883,37 @@ class ApiEntitiesCiJobLoadMatch
 /** Request payload for ApiEntitiesCiJob#list. */
 class ApiEntitiesCiJobListMatch
 {
-    public ?string $pipeline_id = null;
-    public ?string $project_id = null;
-    public ?string $job_id = null;
+    public ?bool $allow_failure = null;
+    public ?bool $archived = null;
+    public ?array $artifacts = null;
+    public ?string $artifacts_expire_at = null;
+    public ?array $artifacts_file = null;
+    public ?array $commit = null;
+    public ?float $coverage = null;
+    public ?string $created_at = null;
+    public ?float $duration = null;
+    public ?string $erased_at = null;
+    public ?string $failure_reason = null;
+    public ?string $file_format = null;
+    public ?string $file_type = null;
+    public ?string $filename = null;
+    public ?string $finished_at = null;
+    public ?int $id = null;
+    public ?string $name = null;
+    public ?array $pipeline = null;
+    public ?array $project = null;
+    public ?float $queued_duration = null;
+    public ?string $ref = null;
+    public ?array $runner = null;
+    public ?array $runner_manager = null;
+    public ?int $size = null;
+    public ?string $stage = null;
+    public ?string $started_at = null;
+    public ?string $status = null;
+    public ?bool $tag = null;
+    public ?array $tag_list = null;
+    public ?array $user = null;
+    public ?string $web_url = null;
 }
 
 /** Request payload for ApiEntitiesCiJob#create. */
@@ -1173,9 +1225,6 @@ class ApiEntitiesCiResetTokenResult
 /** Request payload for ApiEntitiesCiResetTokenResult#create. */
 class ApiEntitiesCiResetTokenResultCreateData
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
-    public ?string $runner_id = null;
 }
 
 /** ApiEntitiesCiResourceGroup entity data model. */
@@ -1230,8 +1279,16 @@ class ApiEntitiesCiRunner
 /** Request payload for ApiEntitiesCiRunner#load. */
 class ApiEntitiesCiRunnerLoadMatch
 {
-    public ?string $project_id = null;
-    public ?string $group_id = null;
+    public ?string $avatar_path = null;
+    public ?string $avatar_url = null;
+    public ?array $custom_attributes = null;
+    public int $id;
+    public ?bool $locked = null;
+    public ?string $name = null;
+    public ?string $public_email = null;
+    public ?string $state = null;
+    public ?string $username = null;
+    public ?string $web_url = null;
 }
 
 /** Request payload for ApiEntitiesCiRunner#create. */
@@ -1385,9 +1442,8 @@ class ApiEntitiesCiVariable
 /** Request payload for ApiEntitiesCiVariable#load. */
 class ApiEntitiesCiVariableLoadMatch
 {
-    public ?string $id = null;
-    public ?string $project_id = null;
-    public ?string $group_id = null;
+    public string $id;
+    public string $project_id;
 }
 
 /** Request payload for ApiEntitiesCiVariable#list. */
@@ -1400,9 +1456,7 @@ class ApiEntitiesCiVariableListMatch
 /** Request payload for ApiEntitiesCiVariable#create. */
 class ApiEntitiesCiVariableCreateData
 {
-    public ?string $pipeline_schedule_id = null;
-    public ?string $project_id = null;
-    public ?string $group_id = null;
+    public string $group_id;
     public ?string $description = null;
     public ?string $environment_scope = null;
     public ?bool $hidden = null;
@@ -1461,8 +1515,21 @@ class ApiEntitiesClusterLoadMatch
 /** Request payload for ApiEntitiesCluster#list. */
 class ApiEntitiesClusterListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public ?string $cluster_type = null;
+    public ?string $created_at = null;
+    public ?string $domain = null;
+    public ?bool $enabled = null;
+    public ?string $environment_scope = null;
+    public ?string $id = null;
+    public ?string $managed = null;
+    public ?array $management_project = null;
+    public ?string $name = null;
+    public ?string $namespace_per_environment = null;
+    public ?array $platform_kubernetes = null;
+    public ?string $platform_type = null;
+    public ?array $provider_gcp = null;
+    public ?string $provider_type = null;
+    public ?array $user = null;
 }
 
 /** Request payload for ApiEntitiesCluster#create. */
@@ -2049,8 +2116,7 @@ class ApiEntitiesContainerRegistryRepositoryLoadMatch
 /** Request payload for ApiEntitiesContainerRegistryRepository#list. */
 class ApiEntitiesContainerRegistryRepositoryListMatch
 {
-    public ?string $project_id = null;
-    public ?string $group_id = null;
+    public string $project_id;
 }
 
 /** ApiEntitiesContainerRegistryTag entity data model. */
@@ -2140,8 +2206,6 @@ class ApiEntitiesDeployKeyListMatch
 /** Request payload for ApiEntitiesDeployKey#create. */
 class ApiEntitiesDeployKeyCreateData
 {
-    public ?string $deploy_key_id = null;
-    public ?string $project_id = null;
     public ?string $created_at = null;
     public ?string $expires_at = null;
     public ?string $fingerprint = null;
@@ -2243,8 +2307,13 @@ class ApiEntitiesDeployTokenLoadMatch
 /** Request payload for ApiEntitiesDeployToken#list. */
 class ApiEntitiesDeployTokenListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public ?bool $expired = null;
+    public ?string $expires_at = null;
+    public ?int $id = null;
+    public ?string $name = null;
+    public ?bool $revoked = null;
+    public ?array $scopes = null;
+    public ?string $username = null;
 }
 
 /** ApiEntitiesDeployTokenWithToken entity data model. */
@@ -2255,8 +2324,7 @@ class ApiEntitiesDeployTokenWithToken
 /** Request payload for ApiEntitiesDeployTokenWithToken#create. */
 class ApiEntitiesDeployTokenWithTokenCreateData
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** ApiEntitiesDeployment entity data model. */
@@ -2634,7 +2702,22 @@ class ApiEntitiesEventLoadMatch
 /** Request payload for ApiEntitiesEvent#list. */
 class ApiEntitiesEventListMatch
 {
-    public ?string $user_id = null;
+    public ?string $action_name = null;
+    public ?array $author = null;
+    public ?int $author_id = null;
+    public ?string $author_username = null;
+    public ?string $created_at = null;
+    public ?int $id = null;
+    public ?bool $imported = null;
+    public ?string $imported_from = null;
+    public ?array $note = null;
+    public ?int $project_id = null;
+    public ?array $push_data = null;
+    public ?int $target_id = null;
+    public ?int $target_iid = null;
+    public ?string $target_title = null;
+    public ?string $target_type = null;
+    public ?array $wiki_page = null;
 }
 
 /** ApiEntitiesFeature entity data model. */
@@ -2951,14 +3034,59 @@ class ApiEntitiesGroupLoadMatch
 /** Request payload for ApiEntitiesGroup#list. */
 class ApiEntitiesGroupListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public ?bool $archived = null;
+    public ?string $auto_devops_enabled = null;
+    public ?string $auto_duo_code_review_enabled = null;
+    public ?string $avatar_url = null;
+    public ?string $created_at = null;
+    public ?array $custom_attributes = null;
+    public ?string $default_branch = null;
+    public ?string $default_branch_protection = null;
+    public ?string $default_branch_protection_defaults = null;
+    public ?string $description = null;
+    public ?bool $duo_core_features_enabled = null;
+    public ?string $duo_features_enabled = null;
+    public ?bool $emails_disabled = null;
+    public ?bool $emails_enabled = null;
+    public ?string $file_template_project_id = null;
+    public ?string $full_name = null;
+    public ?string $full_path = null;
+    public ?string $id = null;
+    public ?string $ldap_access = null;
+    public ?string $ldap_cn = null;
+    public ?array $ldap_group_links = null;
+    public ?string $lfs_enabled = null;
+    public ?string $lock_duo_features_enabled = null;
+    public ?bool $lock_math_rendering_limits_enabled = null;
+    public ?string $marked_for_deletion_on = null;
+    public ?bool $math_rendering_limits_enabled = null;
+    public ?int $max_artifacts_size = null;
+    public ?string $mentions_disabled = null;
+    public ?string $name = null;
+    public ?string $organization_id = null;
+    public ?string $parent_id = null;
+    public ?string $path = null;
+    public ?string $project_creation_level = null;
+    public ?string $repository_storage = null;
+    public ?string $request_access_enabled = null;
+    public ?string $require_two_factor_authentication = null;
+    public ?array $root_storage_statistics = null;
+    public ?array $saml_group_links = null;
+    public ?string $share_with_group_lock = null;
+    public ?string $shared_runners_setting = null;
+    public ?bool $show_diff_preview_in_email = null;
+    public ?array $statistics = null;
+    public ?string $subgroup_creation_level = null;
+    public ?string $two_factor_grace_period = null;
+    public ?string $visibility = null;
+    public ?string $web_based_commit_signing_enabled = null;
+    public ?string $web_url = null;
+    public ?string $wiki_access_level = null;
 }
 
 /** Request payload for ApiEntitiesGroup#create. */
 class ApiEntitiesGroupCreateData
 {
-    public ?string $group_id = null;
     public ?bool $archived = null;
     public ?string $auto_devops_enabled = null;
     public ?string $auto_duo_code_review_enabled = null;
@@ -3314,10 +3442,8 @@ class ApiEntitiesIntegration
 /** Request payload for ApiEntitiesIntegration#load. */
 class ApiEntitiesIntegrationLoadMatch
 {
-    public ?string $group_id = null;
-    public ?string $id = null;
-    public ?string $project_id = null;
-    public ?string $slug = null;
+    public string $group_id;
+    public string $id;
 }
 
 /** ApiEntitiesIntegrationBasic entity data model. */
@@ -3351,15 +3477,13 @@ class ApiEntitiesIntegrationBasic
 /** Request payload for ApiEntitiesIntegrationBasic#list. */
 class ApiEntitiesIntegrationBasicListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** Request payload for ApiEntitiesIntegrationBasic#update. */
 class ApiEntitiesIntegrationBasicUpdateData
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
     public ?bool $active = null;
     public ?bool $alert_events = null;
     public ?bool $comment_on_event_enabled = null;
@@ -3400,15 +3524,13 @@ class ApiEntitiesInvitation
 /** Request payload for ApiEntitiesInvitation#list. */
 class ApiEntitiesInvitationListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** Request payload for ApiEntitiesInvitation#create. */
 class ApiEntitiesInvitationCreateData
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
     public ?string $access_level = null;
     public ?string $created_at = null;
     public ?string $created_by_name = null;
@@ -3520,8 +3642,49 @@ class ApiEntitiesIssueLoadMatch
 /** Request payload for ApiEntitiesIssue#list. */
 class ApiEntitiesIssueListMatch
 {
-    public ?string $project_id = null;
-    public ?string $group_id = null;
+    public ?array $assignee = null;
+    public ?array $assignees = null;
+    public ?array $author = null;
+    public ?string $blocking_issues_count = null;
+    public ?string $closed_at = null;
+    public ?array $closed_by = null;
+    public ?bool $confidential = null;
+    public ?string $created_at = null;
+    public ?string $description = null;
+    public ?bool $discussion_locked = null;
+    public ?string $downvotes = null;
+    public ?string $due_date = null;
+    public ?array $epic = null;
+    public ?string $epic_iid = null;
+    public ?bool $has_tasks = null;
+    public ?string $health_status = null;
+    public ?int $id = null;
+    public ?int $iid = null;
+    public ?string $imported = null;
+    public ?string $imported_from = null;
+    public ?string $issue_type = null;
+    public ?array $iteration = null;
+    public ?array $labels = null;
+    public ?array $links = null;
+    public ?string $merge_requests_count = null;
+    public ?array $milestone = null;
+    public ?string $moved_to_id = null;
+    public ?int $project_id = null;
+    public ?array $references = null;
+    public ?string $service_desk_reply_to = null;
+    public ?string $severity = null;
+    public ?string $state = null;
+    public ?string $subscribed = null;
+    public ?string $task_completion_status = null;
+    public ?string $task_status = null;
+    public ?array $time_stats = null;
+    public ?string $title = null;
+    public ?string $type = null;
+    public ?string $updated_at = null;
+    public ?string $upvotes = null;
+    public ?string $user_notes_count = null;
+    public ?string $web_url = null;
+    public ?string $weight = null;
 }
 
 /** Request payload for ApiEntitiesIssue#create. */
@@ -3664,8 +3827,8 @@ class ApiEntitiesLicense
     public ?string $source_url = null;
 }
 
-/** Request payload for ApiEntitiesLicense#list. */
-class ApiEntitiesLicenseListMatch
+/** Request payload for ApiEntitiesLicense#load. */
+class ApiEntitiesLicenseLoadMatch
 {
     public string $id;
     public string $name;
@@ -3695,8 +3858,7 @@ class ApiEntitiesMarkdownUploadAdmin
 /** Request payload for ApiEntitiesMarkdownUploadAdmin#list. */
 class ApiEntitiesMarkdownUploadAdminListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** ApiEntitiesMember entity data model. */
@@ -3730,25 +3892,20 @@ class ApiEntitiesMember
 /** Request payload for ApiEntitiesMember#load. */
 class ApiEntitiesMemberLoadMatch
 {
-    public ?string $group_id = null;
-    public ?string $id = null;
-    public ?string $user_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
+    public string $id;
 }
 
 /** Request payload for ApiEntitiesMember#list. */
 class ApiEntitiesMemberListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** Request payload for ApiEntitiesMember#create. */
 class ApiEntitiesMemberCreateData
 {
-    public ?string $group_id = null;
-    public ?string $member_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
     public ?string $access_level = null;
     public ?string $avatar_path = null;
     public ?string $avatar_url = null;
@@ -4126,9 +4283,61 @@ class ApiEntitiesMergeRequestBasic
 /** Request payload for ApiEntitiesMergeRequestBasic#load. */
 class ApiEntitiesMergeRequestBasicLoadMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
-    public ?string $issue_id = null;
+    public ?bool $allow_collaboration = null;
+    public ?bool $allow_maintainer_to_push = null;
+    public ?string $approvals_before_merge = null;
+    public ?array $assignee = null;
+    public ?array $assignees = null;
+    public ?array $author = null;
+    public ?string $blocking_discussions_resolved = null;
+    public ?string $closed_at = null;
+    public ?array $closed_by = null;
+    public ?string $created_at = null;
+    public ?string $description = null;
+    public ?string $description_html = null;
+    public ?string $detailed_merge_status = null;
+    public ?string $discussion_locked = null;
+    public ?string $downvotes = null;
+    public ?string $draft = null;
+    public ?string $force_remove_source_branch = null;
+    public ?bool $has_conflicts = null;
+    public int $id;
+    public ?int $iid = null;
+    public ?string $imported = null;
+    public ?string $imported_from = null;
+    public ?string $labels = null;
+    public ?string $merge_after = null;
+    public ?string $merge_commit_sha = null;
+    public ?string $merge_status = null;
+    public ?array $merge_user = null;
+    public ?string $merge_when_pipeline_succeeds = null;
+    public ?string $merged_at = null;
+    public ?array $merged_by = null;
+    public ?array $milestone = null;
+    public ?string $prepared_at = null;
+    public ?int $project_id = null;
+    public ?string $reference = null;
+    public ?array $references = null;
+    public ?array $reviewers = null;
+    public ?string $sha = null;
+    public ?bool $should_remove_source_branch = null;
+    public ?string $source_branch = null;
+    public ?string $source_project_id = null;
+    public ?string $squash = null;
+    public ?string $squash_commit_sha = null;
+    public ?string $squash_on_merge = null;
+    public ?string $state = null;
+    public ?string $target_branch = null;
+    public ?string $target_project_id = null;
+    public ?string $task_completion_status = null;
+    public ?array $time_stats = null;
+    public ?string $title = null;
+    public ?string $title_html = null;
+    public ?string $updated_at = null;
+    public ?string $upvotes = null;
+    public ?string $user_notes_count = null;
+    public ?string $web_url = null;
+    public ?string $work_in_progress = null;
 }
 
 /** Request payload for ApiEntitiesMergeRequestBasic#list. */
@@ -4495,8 +4704,9 @@ class ApiEntitiesNpmPackage
 /** Request payload for ApiEntitiesNpmPackage#load. */
 class ApiEntitiesNpmPackageLoadMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public ?array $disttags = null;
+    public ?string $name = null;
+    public ?array $versions = null;
 }
 
 /** ApiEntitiesNpmPackageTag entity data model. */
@@ -4507,8 +4717,6 @@ class ApiEntitiesNpmPackageTag
 /** Request payload for ApiEntitiesNpmPackageTag#load. */
 class ApiEntitiesNpmPackageTagLoadMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
 }
 
 /** ApiEntitiesNugetPackagesVersion entity data model. */
@@ -4545,8 +4753,7 @@ class ApiEntitiesNugetSearchResult
 /** Request payload for ApiEntitiesNugetSearchResult#list. */
 class ApiEntitiesNugetSearchResultListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $project_id;
 }
 
 /** ApiEntitiesNugetServiceIndex entity data model. */
@@ -4559,8 +4766,7 @@ class ApiEntitiesNugetServiceIndex
 /** Request payload for ApiEntitiesNugetServiceIndex#list. */
 class ApiEntitiesNugetServiceIndexListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $project_id;
 }
 
 /** ApiEntitiesOrganizationsOrganization entity data model. */
@@ -4603,8 +4809,7 @@ class ApiEntitiesPackageLoadMatch
 /** Request payload for ApiEntitiesPackage#list. */
 class ApiEntitiesPackageListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** ApiEntitiesPackageFile entity data model. */
@@ -4828,16 +5033,13 @@ class ApiEntitiesPackagesDebianDistributionLoadMatch
 /** Request payload for ApiEntitiesPackagesDebianDistribution#list. */
 class ApiEntitiesPackagesDebianDistributionListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
-    public mixed $codename = null;
+    public string $project_id;
 }
 
 /** Request payload for ApiEntitiesPackagesDebianDistribution#create. */
 class ApiEntitiesPackagesDebianDistributionCreateData
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $project_id;
     public ?array $architectures = null;
     public ?string $codename = null;
     public ?array $components = null;
@@ -5029,7 +5231,7 @@ class ApiEntitiesPersonalAccessTokenWithToken
 /** Request payload for ApiEntitiesPersonalAccessTokenWithToken#create. */
 class ApiEntitiesPersonalAccessTokenWithTokenCreateData
 {
-    public ?string $personal_access_token_id = null;
+    public string $personal_access_token_id;
     public ?bool $active = null;
     public ?string $created_at = null;
     public ?string $description = null;
@@ -5307,16 +5509,13 @@ class ApiEntitiesProject
 /** Request payload for ApiEntitiesProject#list. */
 class ApiEntitiesProjectListMatch
 {
-    public ?string $project_id = null;
-    public ?string $group_id = null;
+    public string $project_id;
 }
 
 /** Request payload for ApiEntitiesProject#create. */
 class ApiEntitiesProjectCreateData
 {
-    public ?string $forked_from_id = null;
-    public ?string $project_id = null;
-    public ?string $user_id = null;
+    public string $user_id;
     public ?bool $allow_merge_on_skipped_pipeline = null;
     public ?bool $allow_pipeline_trigger_approve_deployment = null;
     public ?string $analytics_access_level = null;
@@ -5469,8 +5668,7 @@ class ApiEntitiesProjectCreateData
 /** Request payload for ApiEntitiesProject#update. */
 class ApiEntitiesProjectUpdateData
 {
-    public ?string $id = null;
-    public ?string $project_id = null;
+    public string $id;
     public ?bool $allow_merge_on_skipped_pipeline = null;
     public ?bool $allow_pipeline_trigger_approve_deployment = null;
     public ?string $analytics_access_level = null;
@@ -6180,7 +6378,7 @@ class ApiEntitiesProjectsTopic
 /** Request payload for ApiEntitiesProjectsTopic#load. */
 class ApiEntitiesProjectsTopicLoadMatch
 {
-    public ?string $id = null;
+    public string $id;
 }
 
 /** Request payload for ApiEntitiesProjectsTopic#create. */
@@ -6417,8 +6615,7 @@ class ApiEntitiesReleaseLoadMatch
 /** Request payload for ApiEntitiesRelease#list. */
 class ApiEntitiesReleaseListMatch
 {
-    public ?string $project_id = null;
-    public ?string $group_id = null;
+    public string $project_id;
 }
 
 /** Request payload for ApiEntitiesRelease#create. */
@@ -6626,8 +6823,7 @@ class ApiEntitiesResourceAccessTokenWithToken
 /** Request payload for ApiEntitiesResourceAccessTokenWithToken#create. */
 class ApiEntitiesResourceAccessTokenWithTokenCreateData
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
     public ?int $access_level = null;
     public ?bool $active = null;
     public ?string $created_at = null;
@@ -6790,7 +6986,6 @@ class ApiEntitiesSuggestion
 /** Request payload for ApiEntitiesSuggestion#update. */
 class ApiEntitiesSuggestionUpdateData
 {
-    public ?string $suggestion_id = null;
     public ?string $appliable = null;
     public ?string $applied = null;
     public ?string $from_content = null;
@@ -6820,7 +7015,7 @@ class ApiEntitiesSystemBroadcastMessage
 /** Request payload for ApiEntitiesSystemBroadcastMessage#load. */
 class ApiEntitiesSystemBroadcastMessageLoadMatch
 {
-    public ?string $id = null;
+    public string $id;
 }
 
 /** Request payload for ApiEntitiesSystemBroadcastMessage#create. */
@@ -7068,9 +7263,7 @@ class ApiEntitiesUserAgentDetail
 /** Request payload for ApiEntitiesUserAgentDetail#load. */
 class ApiEntitiesUserAgentDetailLoadMatch
 {
-    public ?string $issue_id = null;
-    public ?string $project_id = null;
-    public ?string $snippet_id = null;
+    public string $snippet_id;
 }
 
 /** ApiEntitiesUserCount entity data model. */
@@ -7174,8 +7367,7 @@ class ApiEntitiesWikiAttachment
 /** Request payload for ApiEntitiesWikiAttachment#create. */
 class ApiEntitiesWikiAttachmentCreateData
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** ApiEntitiesWikiPage entity data model. */
@@ -7194,8 +7386,7 @@ class ApiEntitiesWikiPageLoadMatch
 /** Request payload for ApiEntitiesWikiPage#create. */
 class ApiEntitiesWikiPageCreateData
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** Request payload for ApiEntitiesWikiPage#update. */
@@ -7218,8 +7409,7 @@ class ApiEntitiesWikiPageBasic
 /** Request payload for ApiEntitiesWikiPageBasic#list. */
 class ApiEntitiesWikiPageBasicListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** Application entity data model. */
@@ -7345,9 +7535,8 @@ class ComposerPackage
 /** Request payload for ComposerPackage#load. */
 class ComposerPackageLoadMatch
 {
-    public ?string $project_id = null;
-    public ?string $group_id = null;
-    public mixed $sha = null;
+    public string $group_id;
+    public mixed $sha;
 }
 
 /** Conan entity data model. */
@@ -7373,20 +7562,12 @@ class ConanPackage
 /** Request payload for ConanPackage#load. */
 class ConanPackageLoadMatch
 {
-    public mixed $conan_package_reference = null;
-    public mixed $file_name = null;
-    public ?string $id = null;
-    public mixed $package_channel = null;
-    public mixed $package_name = null;
-    public mixed $package_revision = null;
-    public mixed $package_username = null;
-    public mixed $package_version = null;
-    public mixed $recipe_revision = null;
-    public ?string $conan_id = null;
-    public ?string $package_id = null;
-    public ?string $project_id = null;
-    public ?string $revision_id = null;
-    public ?string $file_id = null;
+    public string $file_id;
+    public mixed $file_name;
+    public mixed $package_channel;
+    public mixed $package_username;
+    public mixed $package_version;
+    public mixed $recipe_revision;
 }
 
 /** Request payload for ConanPackage#update. */
@@ -7455,9 +7636,8 @@ class CustomAttribute
 /** Request payload for CustomAttribute#load. */
 class CustomAttributeLoadMatch
 {
-    public ?string $group_id = null;
-    public ?string $id = null;
-    public ?string $project_id = null;
+    public string $group_id;
+    public string $id;
 }
 
 /** Debian entity data model. */
@@ -7493,17 +7673,12 @@ class DebianPackage
 /** Request payload for DebianPackage#load. */
 class DebianPackageLoadMatch
 {
-    public mixed $distribution = null;
-    public mixed $file_name = null;
-    public ?string $id = null;
-    public mixed $letter = null;
-    public mixed $package_name = null;
-    public mixed $package_version = null;
-    public ?string $project_id = null;
-    public mixed $architecture = null;
-    public ?string $distribution_id = null;
-    public mixed $file_sha256 = null;
-    public ?string $group_id = null;
+    public mixed $distribution;
+    public mixed $file_name;
+    public string $id;
+    public mixed $letter;
+    public mixed $package_name;
+    public mixed $package_version;
 }
 
 /** Request payload for DebianPackage#update. */
@@ -7596,8 +7771,7 @@ class EeApiEntitiesAuditEventLoadMatch
 /** Request payload for EeApiEntitiesAuditEvent#list. */
 class EeApiEntitiesAuditEventListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $group_id;
 }
 
 /** EeApiEntitiesBillableMembership entity data model. */
@@ -8333,7 +8507,6 @@ class GeoLoadMatch
 /** Request payload for Geo#create. */
 class GeoCreateData
 {
-    public ?string $node_proxy_id = null;
 }
 
 /** GoProxy entity data model. */
@@ -8492,16 +8665,13 @@ class Integration
 /** Request payload for Integration#create. */
 class IntegrationCreateData
 {
-    public ?string $project_id = null;
 }
 
 /** Request payload for Integration#remove. */
 class IntegrationRemoveMatch
 {
-    public ?string $group_id = null;
-    public ?string $id = null;
-    public ?string $project_id = null;
-    public ?string $slug = null;
+    public string $group_id;
+    public string $id;
 }
 
 /** Invitation entity data model. */
@@ -8554,7 +8724,6 @@ class JobLoadMatch
 /** Request payload for Job#create. */
 class JobCreateData
 {
-    public ?string $id = null;
 }
 
 /** Request payload for Job#update. */
@@ -8673,7 +8842,7 @@ class MlModelRegistryUpdateData
 }
 
 /** Namespace entity data model. */
-class Namespace
+class NamespaceType
 {
 }
 
@@ -8709,8 +8878,6 @@ class NpmPackageLoadMatch
 /** Request payload for NpmPackage#create. */
 class NpmPackageCreateData
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
 }
 
 /** Request payload for NpmPackage#update. */
@@ -8764,15 +8931,13 @@ class NugetPackage
 /** Request payload for NugetPackage#load. */
 class NugetPackageLoadMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $project_id;
 }
 
 /** Request payload for NugetPackage#list. */
 class NugetPackageListMatch
 {
-    public ?string $group_id = null;
-    public ?string $project_id = null;
+    public string $project_id;
 }
 
 /** Request payload for NugetPackage#update. */
@@ -9179,9 +9344,7 @@ class PypiPackage
 /** Request payload for PypiPackage#load. */
 class PypiPackageLoadMatch
 {
-    public ?string $group_id = null;
-    public mixed $sha256 = null;
-    public ?string $project_id = null;
+    public string $project_id;
 }
 
 /** Request payload for PypiPackage#create. */
@@ -9318,8 +9481,7 @@ class RunnerCreateData
 /** Request payload for Runner#remove. */
 class RunnerRemoveMatch
 {
-    public ?string $id = null;
-    public ?string $project_id = null;
+    public string $id;
 }
 
 /** Search entity data model. */

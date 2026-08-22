@@ -1316,6 +1316,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesAccessRequester():create({
+  group_id = --[[ string ]],
 })
 ```
 
@@ -1512,17 +1513,17 @@ local api_entities_application_statistic = client:ApiEntitiesApplicationStatisti
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_users` | `number` | No |  |
-| `forks` | `number` | No |  |
-| `groups` | `number` | No |  |
-| `issues` | `number` | No |  |
-| `merge_requests` | `number` | No |  |
-| `milestones` | `number` | No |  |
-| `notes` | `number` | No |  |
-| `projects` | `number` | No |  |
-| `snippets` | `number` | No |  |
-| `ssh_keys` | `number` | No |  |
-| `users` | `number` | No |  |
+| `active_users` | `number` | No | Number of active users |
+| `forks` | `number` | No | Approximate number of repo forks |
+| `groups` | `number` | No | Approximate number of projects |
+| `issues` | `number` | No | Approximate number of issues |
+| `merge_requests` | `number` | No | Approximate number of merge requests |
+| `milestones` | `number` | No | Approximate number of milestones |
+| `notes` | `number` | No | Approximate number of notes |
+| `projects` | `number` | No | Approximate number of projects |
+| `snippets` | `number` | No | Approximate number of snippets |
+| `ssh_keys` | `number` | No | Approximate number of SSH keys |
+| `users` | `number` | No | Approximate number of users |
 
 ### Operations
 
@@ -1697,7 +1698,7 @@ local api_entities_award_emoji = client:ApiEntitiesAwardEmoji(nil)
 | `state` | `string` | No |  |
 | `updated_at` | `string` | No |  |
 | `url` | `string` | No |  |
-| `user` | `table` | No |  |
+| `user` | `table` | No | API_Entities_UserBasic model |
 | `username` | `string` | No |  |
 | `web_url` | `string` | No |  |
 
@@ -1709,6 +1710,8 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesAwardEmoji():create({
+  epic_id = --[[ string ]],
+  group_id = --[[ string ]],
 })
 ```
 
@@ -1784,6 +1787,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesBadge():create({
+  group_id = --[[ string ]],
 })
 ```
 
@@ -1867,7 +1871,7 @@ local api_entities_basic_badge_detail = client:ApiEntitiesBasicBadgeDetail(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesBasicBadgeDetail():load()
+local result, err = client:ApiEntitiesBasicBadgeDetail():load({ group_id = "group_id" })
 ```
 
 ### Common Methods
@@ -1960,7 +1964,7 @@ local api_entities_basic_project_detail = client:ApiEntitiesBasicProjectDetail(n
 | --- | --- | --- | --- |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attributes` | `table` | No |  |
+| `custom_attributes` | `table` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `forks_count` | `number` | No |  |
@@ -2225,7 +2229,7 @@ local api_entities_branch = client:ApiEntitiesBranch(nil)
 | `author_name` | `string` | No |  |
 | `authored_date` | `string` | No |  |
 | `can_push` | `boolean` | No |  |
-| `commit` | `table` | No |  |
+| `commit` | `table` | No | API_Entities_Commit model |
 | `committed_date` | `string` | No |  |
 | `committer_email` | `string` | No |  |
 | `committer_name` | `string` | No |  |
@@ -2584,19 +2588,19 @@ local api_entities_ci_bridge = client:ApiEntitiesCiBridge(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `boolean` | No |  |
-| `commit` | `table` | No |  |
+| `commit` | `table` | No | API_Entities_Commit model |
 | `coverage` | `number` | No |  |
 | `created_at` | `string` | No |  |
-| `downstream_pipeline` | `table` | No |  |
-| `duration` | `number` | No |  |
+| `downstream_pipeline` | `table` | No | API_Entities_Ci_PipelineBasic model |
+| `duration` | `number` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `table` | No |  |
+| `pipeline` | `table` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `table` | No |  |
-| `queued_duration` | `number` | No |  |
+| `queued_duration` | `number` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -2708,10 +2712,10 @@ local api_entities_ci_job = client:ApiEntitiesCiJob(nil)
 | `artifacts` | `table` | No |  |
 | `artifacts_expire_at` | `string` | No |  |
 | `artifacts_file` | `table` | No |  |
-| `commit` | `table` | No |  |
+| `commit` | `table` | No | API_Entities_Commit model |
 | `coverage` | `number` | No |  |
 | `created_at` | `string` | No |  |
-| `duration` | `number` | No |  |
+| `duration` | `number` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `file_format` | `string` | No |  |
@@ -2720,12 +2724,12 @@ local api_entities_ci_job = client:ApiEntitiesCiJob(nil)
 | `finished_at` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `table` | No |  |
+| `pipeline` | `table` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `table` | No |  |
-| `queued_duration` | `number` | No |  |
+| `queued_duration` | `number` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
-| `runner` | `table` | No |  |
-| `runner_manager` | `table` | No |  |
+| `runner` | `table` | No | API_Entities_Ci_Runner model |
+| `runner_manager` | `table` | No | API_Entities_Ci_RunnerManager model |
 | `size` | `number` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -2805,18 +2809,18 @@ local api_entities_ci_job_basic = client:ApiEntitiesCiJobBasic(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `boolean` | No |  |
-| `commit` | `table` | No |  |
+| `commit` | `table` | No | API_Entities_Commit model |
 | `coverage` | `number` | No |  |
 | `created_at` | `string` | No |  |
-| `duration` | `number` | No |  |
+| `duration` | `number` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `table` | No |  |
+| `pipeline` | `table` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `table` | No |  |
-| `queued_duration` | `number` | No |  |
+| `queued_duration` | `number` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -2887,18 +2891,18 @@ local api_entities_ci_job_basic_with_project = client:ApiEntitiesCiJobBasicWithP
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `boolean` | No |  |
-| `commit` | `table` | No |  |
+| `commit` | `table` | No | API_Entities_Commit model |
 | `coverage` | `number` | No |  |
 | `created_at` | `string` | No |  |
-| `duration` | `number` | No |  |
+| `duration` | `number` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `table` | No |  |
+| `pipeline` | `table` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `table` | No |  |
-| `queued_duration` | `number` | No |  |
+| `queued_duration` | `number` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -3156,7 +3160,7 @@ local api_entities_ci_pipeline_schedule = client:ApiEntitiesCiPipelineSchedule(n
 | `id` | `number` | No |  |
 | `inputs` | `table` | No |  |
 | `next_run_at` | `string` | No |  |
-| `owner` | `table` | No |  |
+| `owner` | `table` | No | API_Entities_UserBasic model |
 | `ref` | `string` | No |  |
 | `updated_at` | `string` | No |  |
 
@@ -3217,12 +3221,12 @@ local api_entities_ci_pipeline_schedule_detail = client:ApiEntitiesCiPipelineSch
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
 | `inputs` | `table` | No |  |
-| `last_pipeline` | `table` | No |  |
+| `last_pipeline` | `table` | No | API_Entities_Ci_PipelineBasic model |
 | `next_run_at` | `string` | No |  |
-| `owner` | `table` | No |  |
+| `owner` | `table` | No | API_Entities_UserBasic model |
 | `ref` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `variables` | `table` | No |  |
+| `variables` | `table` | No | API_Entities_Ci_Variable model |
 
 ### Operations
 
@@ -3447,7 +3451,7 @@ local result, err = client:ApiEntitiesCiRunner():create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesCiRunner():load()
+local result, err = client:ApiEntitiesCiRunner():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -3495,9 +3499,9 @@ local api_entities_ci_runner_detail = client:ApiEntitiesCiRunnerDetail(nil)
 | `architecture` | `string` | No |  |
 | `contacted_at` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `created_by` | `table` | No |  |
+| `created_by` | `table` | No | API_Entities_UserBasic model |
 | `description` | `string` | No |  |
-| `groups` | `table` | No |  |
+| `groups` | `table` | No | API_Entities_BasicGroupDetails model |
 | `id` | `number` | No |  |
 | `ip_address` | `string` | No |  |
 | `is_shared` | `boolean` | No |  |
@@ -3509,7 +3513,7 @@ local api_entities_ci_runner_detail = client:ApiEntitiesCiRunnerDetail(nil)
 | `online` | `boolean` | No |  |
 | `paused` | `boolean` | No |  |
 | `platform` | `string` | No |  |
-| `projects` | `table` | No |  |
+| `projects` | `table` | No | API_Entities_BasicProjectDetails model |
 | `revision` | `string` | No |  |
 | `run_untagged` | `string` | No |  |
 | `runner_type` | `string` | No |  |
@@ -3761,6 +3765,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesCiVariable():create({
+  group_id = --[[ string ]],
 })
 ```
 
@@ -3777,7 +3782,7 @@ local results, err = client:ApiEntitiesCiVariable():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesCiVariable():load({ id = "api_entities_ci_variable_id" })
+local result, err = client:ApiEntitiesCiVariable():load({ id = "api_entities_ci_variable_id", project_id = "project_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -3845,7 +3850,7 @@ local api_entities_cluster = client:ApiEntitiesCluster(nil)
 | `platform_type` | `string` | No |  |
 | `provider_gcp` | `table` | No |  |
 | `provider_type` | `string` | No |  |
-| `user` | `table` | No |  |
+| `user` | `table` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -3930,7 +3935,7 @@ local api_entities_cluster_group = client:ApiEntitiesClusterGroup(nil)
 | `domain` | `string` | No |  |
 | `enabled` | `boolean` | No |  |
 | `environment_scope` | `string` | No |  |
-| `group` | `table` | No |  |
+| `group` | `table` | No | API_Entities_BasicGroupDetails model |
 | `id` | `string` | No |  |
 | `managed` | `string` | No |  |
 | `management_project` | `table` | No |  |
@@ -3940,7 +3945,7 @@ local api_entities_cluster_group = client:ApiEntitiesClusterGroup(nil)
 | `platform_type` | `string` | No |  |
 | `provider_gcp` | `table` | No |  |
 | `provider_type` | `string` | No |  |
-| `user` | `table` | No |  |
+| `user` | `table` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -4026,10 +4031,10 @@ local api_entities_cluster_project = client:ApiEntitiesClusterProject(nil)
 | `namespace_per_environment` | `string` | No |  |
 | `platform_kubernetes` | `table` | No |  |
 | `platform_type` | `string` | No |  |
-| `project` | `table` | No |  |
+| `project` | `table` | No | API_Entities_BasicProjectDetails model |
 | `provider_gcp` | `table` | No |  |
 | `provider_type` | `string` | No |  |
-| `user` | `table` | No |  |
+| `user` | `table` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -4422,7 +4427,7 @@ local api_entities_commit_detail = client:ApiEntitiesCommitDetail(nil)
 | `created_at` | `string` | No |  |
 | `extended_trailers` | `table` | No |  |
 | `id` | `string` | No |  |
-| `last_pipeline` | `table` | No |  |
+| `last_pipeline` | `table` | No | API_Entities_Ci_PipelineBasic model |
 | `message` | `string` | No |  |
 | `parent_ids` | `table` | No |  |
 | `project_id` | `number` | No |  |
@@ -4505,7 +4510,7 @@ local api_entities_commit_note = client:ApiEntitiesCommitNote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `table` | No |  |
+| `author` | `table` | No | API_Entities_UserBasic model |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
@@ -4690,7 +4695,7 @@ local api_entities_commit_status = client:ApiEntitiesCommitStatus(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `boolean` | No |  |
-| `author` | `table` | No |  |
+| `author` | `table` | No | API_Entities_UserBasic model |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `coverage` | `number` | No |  |
@@ -4773,7 +4778,7 @@ local api_entities_compare = client:ApiEntitiesCompare(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `commit` | `table` | No |  |
+| `commit` | `table` | No | API_Entities_Commit model |
 | `commits` | `table` | No |  |
 | `compare_same_ref` | `boolean` | No |  |
 | `compare_timeout` | `boolean` | No |  |
@@ -4840,7 +4845,7 @@ local api_entities_container_registry_repository = client:ApiEntitiesContainerRe
 | `project_id` | `number` | No |  |
 | `size` | `number` | No |  |
 | `status` | `string` | No |  |
-| `tags` | `table` | No |  |
+| `tags` | `table` | No | API_Entities_ContainerRegistry_Tag model |
 | `tags_count` | `number` | No |  |
 
 ### Operations
@@ -5304,6 +5309,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesDeployTokenWithToken():create({
+  group_id = --[[ string ]],
 })
 ```
 
@@ -5348,15 +5354,15 @@ local api_entities_deployment = client:ApiEntitiesDeployment(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `created_at` | `string` | No |  |
-| `deployable` | `table` | No |  |
-| `environment` | `table` | No |  |
+| `deployable` | `table` | No | API_Entities_Ci_Job model |
+| `environment` | `table` | No | API_Entities_EnvironmentBasic model |
 | `id` | `number` | No |  |
 | `iid` | `number` | No |  |
 | `ref` | `string` | No |  |
 | `sha` | `string` | No |  |
 | `status` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `user` | `table` | No |  |
+| `user` | `table` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -5409,10 +5415,10 @@ local api_entities_deployment_extended = client:ApiEntitiesDeploymentExtended(ni
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `approval_summary` | `table` | No |  |
-| `approvals` | `table` | No |  |
+| `approvals` | `table` | No | API_Entities_Deployments_Approval model |
 | `created_at` | `string` | No |  |
-| `deployable` | `table` | No |  |
-| `environment` | `table` | No |  |
+| `deployable` | `table` | No | API_Entities_Ci_Job model |
+| `environment` | `table` | No | API_Entities_EnvironmentBasic model |
 | `id` | `number` | No |  |
 | `iid` | `number` | No |  |
 | `pending_approval_count` | `number` | No |  |
@@ -5420,7 +5426,7 @@ local api_entities_deployment_extended = client:ApiEntitiesDeploymentExtended(ni
 | `sha` | `string` | No |  |
 | `status` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `user` | `table` | No |  |
+| `user` | `table` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -5813,16 +5819,16 @@ local api_entities_environment = client:ApiEntitiesEnvironment(nil)
 | --- | --- | --- | --- |
 | `auto_stop_at` | `string` | No |  |
 | `auto_stop_setting` | `string` | No |  |
-| `cluster_agent` | `table` | No |  |
+| `cluster_agent` | `table` | No | API_Entities_Clusters_Agent model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `external_url` | `string` | No |  |
 | `flux_resource_path` | `string` | No |  |
 | `id` | `number` | No |  |
 | `kubernetes_namespace` | `string` | No |  |
-| `last_deployment` | `table` | No |  |
+| `last_deployment` | `table` | No | API_Entities_Deployment model |
 | `name` | `string` | No |  |
-| `project` | `table` | No |  |
+| `project` | `table` | No | API_Entities_BasicProjectDetails model |
 | `slug` | `string` | No |  |
 | `state` | `string` | No |  |
 | `tier` | `string` | No |  |
@@ -6041,7 +6047,7 @@ local api_entities_event = client:ApiEntitiesEvent(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action_name` | `string` | No |  |
-| `author` | `table` | No |  |
+| `author` | `table` | No | API_Entities_UserBasic model |
 | `author_id` | `number` | No |  |
 | `author_username` | `string` | No |  |
 | `created_at` | `string` | No |  |
@@ -6055,7 +6061,7 @@ local api_entities_event = client:ApiEntitiesEvent(nil)
 | `target_iid` | `number` | No |  |
 | `target_title` | `string` | No |  |
 | `target_type` | `string` | No |  |
-| `wiki_page` | `table` | No |  |
+| `wiki_page` | `table` | No | API_Entities_WikiPageBasic model |
 
 ### Operations
 
@@ -6115,7 +6121,7 @@ local api_entities_feature = client:ApiEntitiesFeature(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `definition` | `table` | No |  |
+| `definition` | `table` | No | API_Entities_Feature_Definition model |
 | `gates` | `table` | No |  |
 | `name` | `string` | No |  |
 | `state` | `string` | No |  |
@@ -6622,12 +6628,12 @@ local api_entities_group = client:ApiEntitiesGroup(nil)
 | `auto_duo_code_review_enabled` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attributes` | `table` | No |  |
+| `custom_attributes` | `table` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `default_branch_protection` | `string` | No |  |
 | `default_branch_protection_defaults` | `string` | No |  |
 | `description` | `string` | No |  |
-| `duo_core_features_enabled` | `boolean` | No |  |
+| `duo_core_features_enabled` | `boolean` | No | [Experimental] Indicates whether GitLab Duo Core features are enabled for the group |
 | `duo_features_enabled` | `string` | No |  |
 | `emails_disabled` | `boolean` | No |  |
 | `emails_enabled` | `boolean` | No |  |
@@ -6751,12 +6757,12 @@ local api_entities_group_detail = client:ApiEntitiesGroupDetail(nil)
 | `auto_duo_code_review_enabled` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attributes` | `table` | No |  |
+| `custom_attributes` | `table` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `default_branch_protection` | `string` | No |  |
 | `default_branch_protection_defaults` | `string` | No |  |
 | `description` | `string` | No |  |
-| `duo_core_features_enabled` | `boolean` | No |  |
+| `duo_core_features_enabled` | `boolean` | No | [Experimental] Indicates whether GitLab Duo Core features are enabled for the group |
 | `duo_features_enabled` | `string` | No |  |
 | `emails_disabled` | `boolean` | No |  |
 | `emails_enabled` | `boolean` | No |  |
@@ -6785,7 +6791,7 @@ local api_entities_group_detail = client:ApiEntitiesGroupDetail(nil)
 | `prevent_forking_outside_group` | `string` | No |  |
 | `prevent_sharing_groups_outside_hierarchy` | `string` | No |  |
 | `project_creation_level` | `string` | No |  |
-| `projects` | `table` | No |  |
+| `projects` | `table` | No | API_Entities_Project model |
 | `repository_storage` | `string` | No |  |
 | `request_access_enabled` | `string` | No |  |
 | `require_two_factor_authentication` | `string` | No |  |
@@ -6794,7 +6800,7 @@ local api_entities_group_detail = client:ApiEntitiesGroupDetail(nil)
 | `saml_group_links` | `table` | No |  |
 | `service_access_tokens_expiration_enforced` | `string` | No |  |
 | `share_with_group_lock` | `string` | No |  |
-| `shared_projects` | `table` | No |  |
+| `shared_projects` | `table` | No | API_Entities_Project model |
 | `shared_runners_minutes_limit` | `string` | No |  |
 | `shared_runners_setting` | `string` | No |  |
 | `shared_with_groups` | `string` | No |  |
@@ -6970,7 +6976,7 @@ local api_entities_integration = client:ApiEntitiesIntegration(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesIntegration():load({ id = "api_entities_integration_id" })
+local result, err = client:ApiEntitiesIntegration():load({ id = "api_entities_integration_id", group_id = "group_id" })
 ```
 
 ### Common Methods
@@ -7053,6 +7059,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:ApiEntitiesIntegrationBasic():update({
+  group_id = "group_id",
   -- Fields to update
 })
 ```
@@ -7113,6 +7120,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesInvitation():create({
+  group_id = --[[ string ]],
 })
 ```
 
@@ -7240,12 +7248,12 @@ local api_entities_issue = client:ApiEntitiesIssue(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assignee` | `table` | No |  |
-| `assignees` | `table` | No |  |
-| `author` | `table` | No |  |
+| `assignee` | `table` | No | API_Entities_UserBasic model |
+| `assignees` | `table` | No | API_Entities_UserBasic model |
+| `author` | `table` | No | API_Entities_UserBasic model |
 | `blocking_issues_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `table` | No |  |
+| `closed_by` | `table` | No | API_Entities_UserBasic model |
 | `confidential` | `boolean` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
@@ -7270,14 +7278,14 @@ local api_entities_issue = client:ApiEntitiesIssue(nil)
 | `project_id` | `number` | No |  |
 | `references` | `table` | No |  |
 | `service_desk_reply_to` | `string` | No |  |
-| `severity` | `string` | No |  |
+| `severity` | `string` | No | One of ["UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"] |
 | `state` | `string` | No |  |
 | `subscribed` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
 | `task_status` | `string` | No |  |
-| `time_stats` | `table` | No |  |
+| `time_stats` | `table` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
-| `type` | `string` | No |  |
+| `type` | `string` | No | One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK", "TICKET"] |
 | `updated_at` | `string` | No |  |
 | `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
@@ -7443,12 +7451,12 @@ local api_entities_license = client:ApiEntitiesLicense(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+Load a single entity matching the given criteria.
 
 ```lua
-local results, err = client:ApiEntitiesLicense():list()
+local result, err = client:ApiEntitiesLicense():load({ id = "api_entities_license_id", name = "name", type = "type" })
 ```
 
 ### Common Methods
@@ -7598,7 +7606,7 @@ local api_entities_member = client:ApiEntitiesMember(nil)
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `created_by` | `table` | No |  |
+| `created_by` | `table` | No | API_Entities_UserBasic model |
 | `custom_attributes` | `table` | No |  |
 | `email` | `string` | No |  |
 | `expires_at` | `string` | No |  |
@@ -7626,6 +7634,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesMember():create({
+  group_id = --[[ string ]],
 })
 ```
 
@@ -7642,7 +7651,7 @@ local results, err = client:ApiEntitiesMember():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesMember():load({ id = "api_entities_member_id" })
+local result, err = client:ApiEntitiesMember():load({ id = "api_entities_member_id", group_id = "group_id" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -7707,13 +7716,13 @@ local api_entities_merge = client:ApiEntitiesMerge(nil)
 | `allow_collaboration` | `boolean` | No |  |
 | `allow_maintainer_to_push` | `boolean` | No |  |
 | `approvals_before_merge` | `string` | No |  |
-| `assignee` | `table` | No |  |
-| `assignees` | `table` | No |  |
-| `author` | `table` | No |  |
+| `assignee` | `table` | No | API_Entities_UserBasic model |
+| `assignees` | `table` | No | API_Entities_UserBasic model |
+| `author` | `table` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `string` | No |  |
 | `changes_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `table` | No |  |
+| `closed_by` | `table` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -7727,7 +7736,7 @@ local api_entities_merge = client:ApiEntitiesMerge(nil)
 | `first_deployed_to_production_at` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
 | `has_conflicts` | `boolean` | No |  |
-| `head_pipeline` | `table` | No |  |
+| `head_pipeline` | `table` | No | API_Entities_Ci_Pipeline model |
 | `id` | `number` | No |  |
 | `iid` | `number` | No |  |
 | `imported` | `string` | No |  |
@@ -7739,18 +7748,18 @@ local api_entities_merge = client:ApiEntitiesMerge(nil)
 | `merge_commit_sha` | `string` | No |  |
 | `merge_error` | `string` | No |  |
 | `merge_status` | `string` | No |  |
-| `merge_user` | `table` | No |  |
+| `merge_user` | `table` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
-| `merged_by` | `table` | No |  |
+| `merged_by` | `table` | No | API_Entities_UserBasic model |
 | `milestone` | `table` | No |  |
-| `pipeline` | `table` | No |  |
+| `pipeline` | `table` | No | API_Entities_Ci_PipelineBasic model |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `number` | No |  |
 | `rebase_in_progress` | `string` | No |  |
 | `reference` | `string` | No |  |
 | `references` | `table` | No |  |
-| `reviewers` | `table` | No |  |
+| `reviewers` | `table` | No | API_Entities_UserBasic model |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `boolean` | No |  |
 | `source_branch` | `string` | No |  |
@@ -7763,7 +7772,7 @@ local api_entities_merge = client:ApiEntitiesMerge(nil)
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stats` | `table` | No |  |
+| `time_stats` | `table` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
@@ -7845,7 +7854,7 @@ local api_entities_merge_request_approval = client:ApiEntitiesMergeRequestApprov
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `approved_at` | `string` | No |  |
-| `user` | `table` | No |  |
+| `user` | `table` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -7911,12 +7920,12 @@ local api_entities_merge_request_basic = client:ApiEntitiesMergeRequestBasic(nil
 | `allow_collaboration` | `boolean` | No |  |
 | `allow_maintainer_to_push` | `boolean` | No |  |
 | `approvals_before_merge` | `string` | No |  |
-| `assignee` | `table` | No |  |
-| `assignees` | `table` | No |  |
-| `author` | `table` | No |  |
+| `assignee` | `table` | No | API_Entities_UserBasic model |
+| `assignees` | `table` | No | API_Entities_UserBasic model |
+| `author` | `table` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `table` | No |  |
+| `closed_by` | `table` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -7934,16 +7943,16 @@ local api_entities_merge_request_basic = client:ApiEntitiesMergeRequestBasic(nil
 | `merge_after` | `string` | No |  |
 | `merge_commit_sha` | `string` | No |  |
 | `merge_status` | `string` | No |  |
-| `merge_user` | `table` | No |  |
+| `merge_user` | `table` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
-| `merged_by` | `table` | No |  |
+| `merged_by` | `table` | No | API_Entities_UserBasic model |
 | `milestone` | `table` | No |  |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `number` | No |  |
 | `reference` | `string` | No |  |
 | `references` | `table` | No |  |
-| `reviewers` | `table` | No |  |
+| `reviewers` | `table` | No | API_Entities_UserBasic model |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `boolean` | No |  |
 | `source_branch` | `string` | No |  |
@@ -7955,7 +7964,7 @@ local api_entities_merge_request_basic = client:ApiEntitiesMergeRequestBasic(nil
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stats` | `table` | No |  |
+| `time_stats` | `table` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
@@ -7979,7 +7988,7 @@ local results, err = client:ApiEntitiesMergeRequestBasic():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesMergeRequestBasic():load()
+local result, err = client:ApiEntitiesMergeRequestBasic():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -8025,14 +8034,14 @@ local api_entities_merge_request_change = client:ApiEntitiesMergeRequestChange(n
 | `allow_collaboration` | `boolean` | No |  |
 | `allow_maintainer_to_push` | `boolean` | No |  |
 | `approvals_before_merge` | `string` | No |  |
-| `assignee` | `table` | No |  |
-| `assignees` | `table` | No |  |
-| `author` | `table` | No |  |
+| `assignee` | `table` | No | API_Entities_UserBasic model |
+| `assignees` | `table` | No | API_Entities_UserBasic model |
+| `author` | `table` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `string` | No |  |
-| `changes` | `table` | No |  |
+| `changes` | `table` | No | API_Entities_Diff model |
 | `changes_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `table` | No |  |
+| `closed_by` | `table` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -8046,7 +8055,7 @@ local api_entities_merge_request_change = client:ApiEntitiesMergeRequestChange(n
 | `first_deployed_to_production_at` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
 | `has_conflicts` | `boolean` | No |  |
-| `head_pipeline` | `table` | No |  |
+| `head_pipeline` | `table` | No | API_Entities_Ci_Pipeline model |
 | `id` | `number` | No |  |
 | `iid` | `number` | No |  |
 | `imported` | `string` | No |  |
@@ -8058,19 +8067,19 @@ local api_entities_merge_request_change = client:ApiEntitiesMergeRequestChange(n
 | `merge_commit_sha` | `string` | No |  |
 | `merge_error` | `string` | No |  |
 | `merge_status` | `string` | No |  |
-| `merge_user` | `table` | No |  |
+| `merge_user` | `table` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
-| `merged_by` | `table` | No |  |
+| `merged_by` | `table` | No | API_Entities_UserBasic model |
 | `milestone` | `table` | No |  |
 | `overflow` | `string` | No |  |
-| `pipeline` | `table` | No |  |
+| `pipeline` | `table` | No | API_Entities_Ci_PipelineBasic model |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `number` | No |  |
 | `rebase_in_progress` | `string` | No |  |
 | `reference` | `string` | No |  |
 | `references` | `table` | No |  |
-| `reviewers` | `table` | No |  |
+| `reviewers` | `table` | No | API_Entities_UserBasic model |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `boolean` | No |  |
 | `source_branch` | `string` | No |  |
@@ -8083,7 +8092,7 @@ local api_entities_merge_request_change = client:ApiEntitiesMergeRequestChange(n
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stats` | `table` | No |  |
+| `time_stats` | `table` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
@@ -8204,9 +8213,9 @@ local api_entities_merge_request_diff_full = client:ApiEntitiesMergeRequestDiffF
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `base_commit_sha` | `string` | No |  |
-| `commits` | `table` | No |  |
+| `commits` | `table` | No | API_Entities_Commit model |
 | `created_at` | `string` | No |  |
-| `diffs` | `table` | No |  |
+| `diffs` | `table` | No | API_Entities_Diff model |
 | `head_commit_sha` | `string` | No |  |
 | `id` | `string` | No |  |
 | `merge_request_id` | `string` | No |  |
@@ -9003,8 +9012,8 @@ local api_entities_package = client:ApiEntitiesPackage(nil)
 | `links` | `table` | No |  |
 | `name` | `string` | No |  |
 | `package_type` | `string` | No |  |
-| `pipeline` | `table` | No |  |
-| `pipelines` | `table` | No |  |
+| `pipeline` | `table` | No | API_Entities_Package_Pipeline model |
+| `pipelines` | `table` | No | API_Entities_Package_Pipeline model |
 | `project_id` | `number` | No |  |
 | `project_path` | `string` | No |  |
 | `status` | `string` | No |  |
@@ -9077,7 +9086,7 @@ local api_entities_package_file = client:ApiEntitiesPackageFile(nil)
 | `file_sha256` | `string` | No |  |
 | `id` | `number` | No |  |
 | `package_id` | `number` | No |  |
-| `pipelines` | `table` | No |  |
+| `pipelines` | `table` | No | API_Entities_Package_Pipeline model |
 | `size` | `number` | No |  |
 
 ### Operations
@@ -9283,8 +9292,8 @@ local api_entities_packages_conan_package_revision = client:ApiEntitiesPackagesC
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `string` | No |  |
-| `time` | `string` | No |  |
+| `revision` | `string` | No | The revision hash of the Conan recipe or package |
+| `time` | `string` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9428,8 +9437,8 @@ local api_entities_packages_conan_recipe_revision = client:ApiEntitiesPackagesCo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `string` | No |  |
-| `time` | `string` | No |  |
+| `revision` | `string` | No | The revision hash of the Conan recipe or package |
+| `time` | `string` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9527,8 +9536,8 @@ local api_entities_packages_conan_revision = client:ApiEntitiesPackagesConanRevi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `string` | No |  |
-| `time` | `string` | No |  |
+| `revision` | `string` | No | The revision hash of the Conan recipe or package |
+| `time` | `string` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -9650,6 +9659,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesPackagesDebianDistribution():create({
+  project_id = --[[ string ]],
 })
 ```
 
@@ -10015,6 +10025,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesPersonalAccessTokenWithToken():create({
+  personal_access_token_id = --[[ string ]],
 })
 ```
 
@@ -10058,7 +10069,7 @@ local api_entities_personal_snippet = client:ApiEntitiesPersonalSnippet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `table` | No |  |
+| `author` | `table` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `file_name` | `string` | No |  |
@@ -10244,7 +10255,7 @@ local api_entities_project = client:ApiEntitiesProject(nil)
 | `container_registry_image_prefix` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `creator_id` | `number` | No |  |
-| `custom_attributes` | `table` | No |  |
+| `custom_attributes` | `table` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -10256,7 +10267,7 @@ local api_entities_project = client:ApiEntitiesProject(nil)
 | `environments_access_level` | `string` | No |  |
 | `external_authorization_classification_label` | `string` | No |  |
 | `feature_flags_access_level` | `string` | No |  |
-| `forked_from_project` | `table` | No |  |
+| `forked_from_project` | `table` | No | API_Entities_BasicProjectDetails model |
 | `forking_access_level` | `string` | No |  |
 | `forks_count` | `number` | No |  |
 | `group_runners_enabled` | `boolean` | No |  |
@@ -10307,7 +10318,7 @@ local api_entities_project = client:ApiEntitiesProject(nil)
 | `only_allow_merge_if_pipeline_succeeds` | `boolean` | No |  |
 | `only_mirror_protected_branches` | `string` | No |  |
 | `open_issues_count` | `number` | No |  |
-| `owner` | `table` | No |  |
+| `owner` | `table` | No | API_Entities_UserBasic model |
 | `package_registry_access_level` | `string` | No |  |
 | `packages_enabled` | `boolean` | No |  |
 | `pages_access_level` | `string` | No |  |
@@ -10341,7 +10352,7 @@ local api_entities_project = client:ApiEntitiesProject(nil)
 | `show_diff_preview_in_email` | `boolean` | No |  |
 | `snippets_access_level` | `string` | No |  |
 | `snippets_enabled` | `boolean` | No |  |
-| `spp_repository_pipeline_access` | `boolean` | No |  |
+| `spp_repository_pipeline_access` | `boolean` | No | The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available. |
 | `squash_commit_template` | `string` | No |  |
 | `squash_option` | `string` | No |  |
 | `ssh_url_to_repo` | `string` | No |  |
@@ -10366,6 +10377,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesProject():create({
+  user_id = --[[ string ]],
 })
 ```
 
@@ -10383,6 +10395,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:ApiEntitiesProject():update({
+  id = "id",
   -- Fields to update
 })
 ```
@@ -10869,7 +10882,7 @@ local api_entities_project_snippet = client:ApiEntitiesProjectSnippet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `table` | No |  |
+| `author` | `table` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `file_name` | `string` | No |  |
@@ -11049,7 +11062,7 @@ local api_entities_project_with_access = client:ApiEntitiesProjectWithAccess(nil
 | `container_registry_image_prefix` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `creator_id` | `number` | No |  |
-| `custom_attributes` | `table` | No |  |
+| `custom_attributes` | `table` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -11061,7 +11074,7 @@ local api_entities_project_with_access = client:ApiEntitiesProjectWithAccess(nil
 | `environments_access_level` | `string` | No |  |
 | `external_authorization_classification_label` | `string` | No |  |
 | `feature_flags_access_level` | `string` | No |  |
-| `forked_from_project` | `table` | No |  |
+| `forked_from_project` | `table` | No | API_Entities_BasicProjectDetails model |
 | `forking_access_level` | `string` | No |  |
 | `forks_count` | `number` | No |  |
 | `group_runners_enabled` | `boolean` | No |  |
@@ -11112,7 +11125,7 @@ local api_entities_project_with_access = client:ApiEntitiesProjectWithAccess(nil
 | `only_allow_merge_if_pipeline_succeeds` | `boolean` | No |  |
 | `only_mirror_protected_branches` | `string` | No |  |
 | `open_issues_count` | `number` | No |  |
-| `owner` | `table` | No |  |
+| `owner` | `table` | No | API_Entities_UserBasic model |
 | `package_registry_access_level` | `string` | No |  |
 | `packages_enabled` | `boolean` | No |  |
 | `pages_access_level` | `string` | No |  |
@@ -11147,7 +11160,7 @@ local api_entities_project_with_access = client:ApiEntitiesProjectWithAccess(nil
 | `show_diff_preview_in_email` | `boolean` | No |  |
 | `snippets_access_level` | `string` | No |  |
 | `snippets_enabled` | `boolean` | No |  |
-| `spp_repository_pipeline_access` | `boolean` | No |  |
+| `spp_repository_pipeline_access` | `boolean` | No | The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available. |
 | `squash_commit_template` | `string` | No |  |
 | `squash_option` | `string` | No |  |
 | `ssh_url_to_repo` | `string` | No |  |
@@ -11672,12 +11685,12 @@ local api_entities_related_issue = client:ApiEntitiesRelatedIssue(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assignee` | `table` | No |  |
-| `assignees` | `table` | No |  |
-| `author` | `table` | No |  |
+| `assignee` | `table` | No | API_Entities_UserBasic model |
+| `assignees` | `table` | No | API_Entities_UserBasic model |
+| `author` | `table` | No | API_Entities_UserBasic model |
 | `blocking_issues_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `table` | No |  |
+| `closed_by` | `table` | No | API_Entities_UserBasic model |
 | `confidential` | `boolean` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
@@ -11706,14 +11719,14 @@ local api_entities_related_issue = client:ApiEntitiesRelatedIssue(nil)
 | `project_id` | `number` | No |  |
 | `references` | `table` | No |  |
 | `service_desk_reply_to` | `string` | No |  |
-| `severity` | `string` | No |  |
+| `severity` | `string` | No | One of ["UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"] |
 | `state` | `string` | No |  |
 | `subscribed` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
 | `task_status` | `string` | No |  |
-| `time_stats` | `table` | No |  |
+| `time_stats` | `table` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
-| `type` | `string` | No |  |
+| `type` | `string` | No | One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK", "TICKET"] |
 | `updated_at` | `string` | No |  |
 | `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
@@ -11818,8 +11831,8 @@ local api_entities_release = client:ApiEntitiesRelease(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `assets` | `table` | No |  |
-| `author` | `table` | No |  |
-| `commit` | `table` | No |  |
+| `author` | `table` | No | API_Entities_UserBasic model |
+| `commit` | `table` | No | API_Entities_Commit model |
 | `commit_path` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
@@ -12180,6 +12193,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesResourceAccessTokenWithToken():create({
+  group_id = --[[ string ]],
 })
 ```
 
@@ -12230,7 +12244,7 @@ local api_entities_resource_milestone_event = client:ApiEntitiesResourceMileston
 | `resource_id` | `number` | No |  |
 | `resource_type` | `string` | No |  |
 | `state` | `string` | No |  |
-| `user` | `table` | No |  |
+| `user` | `table` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -12290,7 +12304,7 @@ local api_entities_snippet = client:ApiEntitiesSnippet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `table` | No |  |
+| `author` | `table` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `file_name` | `string` | No |  |
@@ -12606,7 +12620,7 @@ local api_entities_tag = client:ApiEntitiesTag(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `commit` | `table` | No |  |
+| `commit` | `table` | No | API_Entities_Commit model |
 | `created_at` | `string` | No |  |
 | `message` | `string` | No |  |
 | `name` | `string` | No |  |
@@ -12922,7 +12936,7 @@ local api_entities_trigger = client:ApiEntitiesTrigger(nil)
 | `last_used` | `string` | No |  |
 | `locked` | `boolean` | No |  |
 | `name` | `string` | No |  |
-| `owner` | `table` | No |  |
+| `owner` | `table` | No | API_Entities_UserBasic model |
 | `public_email` | `string` | No |  |
 | `state` | `string` | No |  |
 | `token` | `string` | No |  |
@@ -13021,7 +13035,7 @@ local api_entities_user_agent_detail = client:ApiEntitiesUserAgentDetail(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesUserAgentDetail():load()
+local result, err = client:ApiEntitiesUserAgentDetail():load({ snippet_id = "snippet_id" })
 ```
 
 ### Common Methods
@@ -13276,6 +13290,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesWikiAttachment():create({
+  group_id = --[[ string ]],
 })
 ```
 
@@ -13323,6 +13338,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesWikiPage():create({
+  group_id = --[[ string ]],
 })
 ```
 
@@ -13859,7 +13875,7 @@ local composer_package = client:ComposerPackage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ComposerPackage():load()
+local result, err = client:ComposerPackage():load({ group_id = "group_id", sha = "sha" })
 ```
 
 ### Common Methods
@@ -13951,7 +13967,7 @@ local conan_package = client:ConanPackage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ConanPackage():load({ id = "conan_package_id" })
+local result, err = client:ConanPackage():load({ file_id = "file_id", file_name = "file_name", package_channel = "package_channel", package_username = "package_username", package_version = "package_version", recipe_revision = "recipe_revision" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -13968,7 +13984,6 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:ConanPackage():update({
-  id = "conan_package_id",
   file_name = "file_name",
   package_channel = "package_channel",
   package_username = "package_username",
@@ -14120,7 +14135,7 @@ local custom_attribute = client:CustomAttribute(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:CustomAttribute():load({ id = "custom_attribute_id" })
+local result, err = client:CustomAttribute():load({ id = "custom_attribute_id", group_id = "group_id" })
 ```
 
 ### Common Methods
@@ -14262,7 +14277,7 @@ local debian_package = client:DebianPackage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:DebianPackage():load({ id = "debian_package_id" })
+local result, err = client:DebianPackage():load({ id = "debian_package_id", distribution = "distribution", file_name = "file_name", letter = "letter", package_name = "package_name", package_version = "package_version" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -16094,7 +16109,7 @@ local result, err = client:Integration():create({
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:Integration():remove()
+local result, err = client:Integration():remove({ group_id = "group_id", id = "id" })
 ```
 
 ### Common Methods
@@ -16924,7 +16939,7 @@ local results, err = client:NugetPackage():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:NugetPackage():load()
+local result, err = client:NugetPackage():load({ project_id = "project_id" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -17209,13 +17224,13 @@ local project = client:Project(nil)
 | `coverage` | `number` | No |  |
 | `created_at` | `string` | No |  |
 | `detailed_status` | `table` | No |  |
-| `duration` | `number` | No |  |
+| `duration` | `number` | No | Time spent running in seconds |
 | `finished_at` | `string` | No |  |
 | `id` | `number` | No |  |
 | `iid` | `number` | No |  |
 | `name` | `string` | No |  |
 | `project_id` | `number` | No |  |
-| `queued_duration` | `number` | No |  |
+| `queued_duration` | `number` | No | Time spent enqueued in seconds |
 | `ref` | `string` | No |  |
 | `sha` | `string` | No |  |
 | `source` | `string` | No |  |
@@ -17223,7 +17238,7 @@ local project = client:Project(nil)
 | `status` | `string` | No |  |
 | `tag` | `boolean` | No |  |
 | `updated_at` | `string` | No |  |
-| `user` | `table` | No |  |
+| `user` | `table` | No | API_Entities_UserBasic model |
 | `web_url` | `string` | No |  |
 | `yaml_errors` | `string` | No |  |
 
@@ -17869,7 +17884,7 @@ local result, err = client:PypiPackage():create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:PypiPackage():load()
+local result, err = client:PypiPackage():load({ project_id = "project_id" })
 ```
 
 ### Common Methods
@@ -18295,7 +18310,7 @@ local result, err = client:Runner():create({
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:Runner():remove()
+local result, err = client:Runner():remove({ id = "id" })
 ```
 
 ### Common Methods

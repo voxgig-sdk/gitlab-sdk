@@ -3538,6 +3538,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesAccessRequester().create({
+  group_id: 'example_group_id',
 })
 ```
 
@@ -3546,7 +3547,7 @@ const result = await client.ApiEntitiesAccessRequester().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesAccessRequester().list()
+const results = await client.ApiEntitiesAccessRequester().list({ group_id: "example" })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -3728,17 +3729,17 @@ const api_entities_application_statistic = client.ApiEntitiesApplicationStatisti
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_users` | `number` | No |  |
-| `forks` | `number` | No |  |
-| `groups` | `number` | No |  |
-| `issues` | `number` | No |  |
-| `merge_requests` | `number` | No |  |
-| `milestones` | `number` | No |  |
-| `notes` | `number` | No |  |
-| `projects` | `number` | No |  |
-| `snippets` | `number` | No |  |
-| `ssh_keys` | `number` | No |  |
-| `users` | `number` | No |  |
+| `active_users` | `number` | No | Number of active users |
+| `forks` | `number` | No | Approximate number of repo forks |
+| `groups` | `number` | No | Approximate number of projects |
+| `issues` | `number` | No | Approximate number of issues |
+| `merge_requests` | `number` | No | Approximate number of merge requests |
+| `milestones` | `number` | No | Approximate number of milestones |
+| `notes` | `number` | No | Approximate number of notes |
+| `projects` | `number` | No | Approximate number of projects |
+| `snippets` | `number` | No | Approximate number of snippets |
+| `ssh_keys` | `number` | No | Approximate number of SSH keys |
+| `users` | `number` | No | Approximate number of users |
 
 ### Operations
 
@@ -3907,7 +3908,7 @@ const api_entities_award_emoji = client.ApiEntitiesAwardEmoji()
 | `state` | `string` | No |  |
 | `updated_at` | `string` | No |  |
 | `url` | `string` | No |  |
-| `user` | `Record<string, any>` | No |  |
+| `user` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `username` | `string` | No |  |
 | `web_url` | `string` | No |  |
 
@@ -3919,6 +3920,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesAwardEmoji().create({
+  epic_id: 'example_epic_id',
+  group_id: 'example_group_id',
 })
 ```
 
@@ -3927,7 +3930,7 @@ const result = await client.ApiEntitiesAwardEmoji().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesAwardEmoji().list()
+const results = await client.ApiEntitiesAwardEmoji().list({ epic_id: "example", group_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -3992,6 +3995,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesBadge().create({
+  group_id: 'example_group_id',
 })
 ```
 
@@ -4000,7 +4004,7 @@ const result = await client.ApiEntitiesBadge().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesBadge().list()
+const results = await client.ApiEntitiesBadge().list({ group_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -4073,7 +4077,7 @@ const api_entities_basic_badge_detail = client.ApiEntitiesBasicBadgeDetail()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesBasicBadgeDetail().load()
+const result = await client.ApiEntitiesBasicBadgeDetail().load({ group_id: 'group_id' })
 ```
 
 ### Common Methods
@@ -4162,7 +4166,7 @@ const api_entities_basic_project_detail = client.ApiEntitiesBasicProjectDetail()
 | --- | --- | --- | --- |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attributes` | `Record<string, any>` | No |  |
+| `custom_attributes` | `Record<string, any>` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `forks_count` | `number` | No |  |
@@ -4419,7 +4423,7 @@ const api_entities_branch = client.ApiEntitiesBranch()
 | `author_name` | `string` | No |  |
 | `authored_date` | `string` | No |  |
 | `can_push` | `boolean` | No |  |
-| `commit` | `Record<string, any>` | No |  |
+| `commit` | `Record<string, any>` | No | API_Entities_Commit model |
 | `committed_date` | `string` | No |  |
 | `committer_email` | `string` | No |  |
 | `committer_name` | `string` | No |  |
@@ -4676,7 +4680,7 @@ const api_entities_bulk_imports_export_status = client.ApiEntitiesBulkImportsExp
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesBulkImportsExportStatus().list()
+const results = await client.ApiEntitiesBulkImportsExportStatus().list({ group_id: "example" })
 ```
 
 ### Common Methods
@@ -4768,19 +4772,19 @@ const api_entities_ci_bridge = client.ApiEntitiesCiBridge()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `boolean` | No |  |
-| `commit` | `Record<string, any>` | No |  |
+| `commit` | `Record<string, any>` | No | API_Entities_Commit model |
 | `coverage` | `number` | No |  |
 | `created_at` | `string` | No |  |
-| `downstream_pipeline` | `Record<string, any>` | No |  |
-| `duration` | `number` | No |  |
+| `downstream_pipeline` | `Record<string, any>` | No | API_Entities_Ci_PipelineBasic model |
+| `duration` | `number` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `Record<string, any>` | No |  |
+| `pipeline` | `Record<string, any>` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `Record<string, any>` | No |  |
-| `queued_duration` | `number` | No |  |
+| `queued_duration` | `number` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -4888,10 +4892,10 @@ const api_entities_ci_job = client.ApiEntitiesCiJob()
 | `artifacts` | `any[]` | No |  |
 | `artifacts_expire_at` | `string` | No |  |
 | `artifacts_file` | `Record<string, any>` | No |  |
-| `commit` | `Record<string, any>` | No |  |
+| `commit` | `Record<string, any>` | No | API_Entities_Commit model |
 | `coverage` | `number` | No |  |
 | `created_at` | `string` | No |  |
-| `duration` | `number` | No |  |
+| `duration` | `number` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `file_format` | `string` | No |  |
@@ -4900,12 +4904,12 @@ const api_entities_ci_job = client.ApiEntitiesCiJob()
 | `finished_at` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `Record<string, any>` | No |  |
+| `pipeline` | `Record<string, any>` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `Record<string, any>` | No |  |
-| `queued_duration` | `number` | No |  |
+| `queued_duration` | `number` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
-| `runner` | `Record<string, any>` | No |  |
-| `runner_manager` | `Record<string, any>` | No |  |
+| `runner` | `Record<string, any>` | No | API_Entities_Ci_Runner model |
+| `runner_manager` | `Record<string, any>` | No | API_Entities_Ci_RunnerManager model |
 | `size` | `number` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -4983,18 +4987,18 @@ const api_entities_ci_job_basic = client.ApiEntitiesCiJobBasic()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `boolean` | No |  |
-| `commit` | `Record<string, any>` | No |  |
+| `commit` | `Record<string, any>` | No | API_Entities_Commit model |
 | `coverage` | `number` | No |  |
 | `created_at` | `string` | No |  |
-| `duration` | `number` | No |  |
+| `duration` | `number` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `Record<string, any>` | No |  |
+| `pipeline` | `Record<string, any>` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `Record<string, any>` | No |  |
-| `queued_duration` | `number` | No |  |
+| `queued_duration` | `number` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -5063,18 +5067,18 @@ const api_entities_ci_job_basic_with_project = client.ApiEntitiesCiJobBasicWithP
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `boolean` | No |  |
-| `commit` | `Record<string, any>` | No |  |
+| `commit` | `Record<string, any>` | No | API_Entities_Commit model |
 | `coverage` | `number` | No |  |
 | `created_at` | `string` | No |  |
-| `duration` | `number` | No |  |
+| `duration` | `number` | No | Time spent running |
 | `erased_at` | `string` | No |  |
 | `failure_reason` | `string` | No |  |
 | `finished_at` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `pipeline` | `Record<string, any>` | No |  |
+| `pipeline` | `Record<string, any>` | No | API_Entities_Ci_PipelineBasic model |
 | `project` | `Record<string, any>` | No |  |
-| `queued_duration` | `number` | No |  |
+| `queued_duration` | `number` | No | Time spent enqueued |
 | `ref` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `started_at` | `string` | No |  |
@@ -5324,7 +5328,7 @@ const api_entities_ci_pipeline_schedule = client.ApiEntitiesCiPipelineSchedule()
 | `id` | `number` | No |  |
 | `inputs` | `Record<string, any>` | No |  |
 | `next_run_at` | `string` | No |  |
-| `owner` | `Record<string, any>` | No |  |
+| `owner` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `ref` | `string` | No |  |
 | `updated_at` | `string` | No |  |
 
@@ -5383,12 +5387,12 @@ const api_entities_ci_pipeline_schedule_detail = client.ApiEntitiesCiPipelineSch
 | `description` | `string` | No |  |
 | `id` | `number` | No |  |
 | `inputs` | `Record<string, any>` | No |  |
-| `last_pipeline` | `Record<string, any>` | No |  |
+| `last_pipeline` | `Record<string, any>` | No | API_Entities_Ci_PipelineBasic model |
 | `next_run_at` | `string` | No |  |
-| `owner` | `Record<string, any>` | No |  |
+| `owner` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `ref` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `variables` | `Record<string, any>` | No |  |
+| `variables` | `Record<string, any>` | No | API_Entities_Ci_Variable model |
 
 ### Operations
 
@@ -5607,7 +5611,7 @@ const result = await client.ApiEntitiesCiRunner().create({
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesCiRunner().load()
+const result = await client.ApiEntitiesCiRunner().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -5653,9 +5657,9 @@ const api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerDetail()
 | `architecture` | `string` | No |  |
 | `contacted_at` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `created_by` | `Record<string, any>` | No |  |
+| `created_by` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `description` | `string` | No |  |
-| `groups` | `Record<string, any>` | No |  |
+| `groups` | `Record<string, any>` | No | API_Entities_BasicGroupDetails model |
 | `id` | `number` | No |  |
 | `ip_address` | `string` | No |  |
 | `is_shared` | `boolean` | No |  |
@@ -5667,7 +5671,7 @@ const api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerDetail()
 | `online` | `boolean` | No |  |
 | `paused` | `boolean` | No |  |
 | `platform` | `string` | No |  |
-| `projects` | `Record<string, any>` | No |  |
+| `projects` | `Record<string, any>` | No | API_Entities_BasicProjectDetails model |
 | `revision` | `string` | No |  |
 | `run_untagged` | `string` | No |  |
 | `runner_type` | `string` | No |  |
@@ -5911,6 +5915,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCiVariable().create({
+  group_id: 'example_group_id',
 })
 ```
 
@@ -5927,7 +5932,7 @@ const results = await client.ApiEntitiesCiVariable().list({ pipeline_id: "exampl
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesCiVariable().load({ id: 'api_entities_ci_variable_id' })
+const result = await client.ApiEntitiesCiVariable().load({ id: 'api_entities_ci_variable_id', project_id: 'project_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -5993,7 +5998,7 @@ const api_entities_cluster = client.ApiEntitiesCluster()
 | `platform_type` | `string` | No |  |
 | `provider_gcp` | `Record<string, any>` | No |  |
 | `provider_type` | `string` | No |  |
-| `user` | `Record<string, any>` | No |  |
+| `user` | `Record<string, any>` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -6076,7 +6081,7 @@ const api_entities_cluster_group = client.ApiEntitiesClusterGroup()
 | `domain` | `string` | No |  |
 | `enabled` | `boolean` | No |  |
 | `environment_scope` | `string` | No |  |
-| `group` | `Record<string, any>` | No |  |
+| `group` | `Record<string, any>` | No | API_Entities_BasicGroupDetails model |
 | `id` | `string` | No |  |
 | `managed` | `string` | No |  |
 | `management_project` | `Record<string, any>` | No |  |
@@ -6086,7 +6091,7 @@ const api_entities_cluster_group = client.ApiEntitiesClusterGroup()
 | `platform_type` | `string` | No |  |
 | `provider_gcp` | `Record<string, any>` | No |  |
 | `provider_type` | `string` | No |  |
-| `user` | `Record<string, any>` | No |  |
+| `user` | `Record<string, any>` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -6170,10 +6175,10 @@ const api_entities_cluster_project = client.ApiEntitiesClusterProject()
 | `namespace_per_environment` | `string` | No |  |
 | `platform_kubernetes` | `Record<string, any>` | No |  |
 | `platform_type` | `string` | No |  |
-| `project` | `Record<string, any>` | No |  |
+| `project` | `Record<string, any>` | No | API_Entities_BasicProjectDetails model |
 | `provider_gcp` | `Record<string, any>` | No |  |
 | `provider_type` | `string` | No |  |
-| `user` | `Record<string, any>` | No |  |
+| `user` | `Record<string, any>` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -6554,7 +6559,7 @@ const api_entities_commit_detail = client.ApiEntitiesCommitDetail()
 | `created_at` | `string` | No |  |
 | `extended_trailers` | `Record<string, any>` | No |  |
 | `id` | `string` | No |  |
-| `last_pipeline` | `Record<string, any>` | No |  |
+| `last_pipeline` | `Record<string, any>` | No | API_Entities_Ci_PipelineBasic model |
 | `message` | `string` | No |  |
 | `parent_ids` | `any[]` | No |  |
 | `project_id` | `number` | No |  |
@@ -6635,7 +6640,7 @@ const api_entities_commit_note = client.ApiEntitiesCommitNote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `Record<string, any>` | No |  |
+| `author` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
@@ -6814,7 +6819,7 @@ const api_entities_commit_status = client.ApiEntitiesCommitStatus()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `allow_failure` | `boolean` | No |  |
-| `author` | `Record<string, any>` | No |  |
+| `author` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `coverage` | `number` | No |  |
@@ -6895,7 +6900,7 @@ const api_entities_compare = client.ApiEntitiesCompare()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `commit` | `Record<string, any>` | No |  |
+| `commit` | `Record<string, any>` | No | API_Entities_Commit model |
 | `commits` | `any[]` | No |  |
 | `compare_same_ref` | `boolean` | No |  |
 | `compare_timeout` | `boolean` | No |  |
@@ -6960,7 +6965,7 @@ const api_entities_container_registry_repository = client.ApiEntitiesContainerRe
 | `project_id` | `number` | No |  |
 | `size` | `number` | No |  |
 | `status` | `string` | No |  |
-| `tags` | `Record<string, any>` | No |  |
+| `tags` | `Record<string, any>` | No | API_Entities_ContainerRegistry_Tag model |
 | `tags_count` | `number` | No |  |
 
 ### Operations
@@ -6970,7 +6975,7 @@ const api_entities_container_registry_repository = client.ApiEntitiesContainerRe
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesContainerRegistryRepository().list()
+const results = await client.ApiEntitiesContainerRegistryRepository().list({ project_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -7410,6 +7415,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesDeployTokenWithToken().create({
+  group_id: 'example_group_id',
 })
 ```
 
@@ -7452,15 +7458,15 @@ const api_entities_deployment = client.ApiEntitiesDeployment()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `created_at` | `string` | No |  |
-| `deployable` | `Record<string, any>` | No |  |
-| `environment` | `Record<string, any>` | No |  |
+| `deployable` | `Record<string, any>` | No | API_Entities_Ci_Job model |
+| `environment` | `Record<string, any>` | No | API_Entities_EnvironmentBasic model |
 | `id` | `number` | No |  |
 | `iid` | `number` | No |  |
 | `ref` | `string` | No |  |
 | `sha` | `string` | No |  |
 | `status` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `user` | `Record<string, any>` | No |  |
+| `user` | `Record<string, any>` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -7511,10 +7517,10 @@ const api_entities_deployment_extended = client.ApiEntitiesDeploymentExtended()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `approval_summary` | `Record<string, any>` | No |  |
-| `approvals` | `Record<string, any>` | No |  |
+| `approvals` | `Record<string, any>` | No | API_Entities_Deployments_Approval model |
 | `created_at` | `string` | No |  |
-| `deployable` | `Record<string, any>` | No |  |
-| `environment` | `Record<string, any>` | No |  |
+| `deployable` | `Record<string, any>` | No | API_Entities_Ci_Job model |
+| `environment` | `Record<string, any>` | No | API_Entities_EnvironmentBasic model |
 | `id` | `number` | No |  |
 | `iid` | `number` | No |  |
 | `pending_approval_count` | `number` | No |  |
@@ -7522,7 +7528,7 @@ const api_entities_deployment_extended = client.ApiEntitiesDeploymentExtended()
 | `sha` | `string` | No |  |
 | `status` | `string` | No |  |
 | `updated_at` | `string` | No |  |
-| `user` | `Record<string, any>` | No |  |
+| `user` | `Record<string, any>` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -7903,16 +7909,16 @@ const api_entities_environment = client.ApiEntitiesEnvironment()
 | --- | --- | --- | --- |
 | `auto_stop_at` | `string` | No |  |
 | `auto_stop_setting` | `string` | No |  |
-| `cluster_agent` | `Record<string, any>` | No |  |
+| `cluster_agent` | `Record<string, any>` | No | API_Entities_Clusters_Agent model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `external_url` | `string` | No |  |
 | `flux_resource_path` | `string` | No |  |
 | `id` | `number` | No |  |
 | `kubernetes_namespace` | `string` | No |  |
-| `last_deployment` | `Record<string, any>` | No |  |
+| `last_deployment` | `Record<string, any>` | No | API_Entities_Deployment model |
 | `name` | `string` | No |  |
-| `project` | `Record<string, any>` | No |  |
+| `project` | `Record<string, any>` | No | API_Entities_BasicProjectDetails model |
 | `slug` | `string` | No |  |
 | `state` | `string` | No |  |
 | `tier` | `string` | No |  |
@@ -8125,7 +8131,7 @@ const api_entities_event = client.ApiEntitiesEvent()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `action_name` | `string` | No |  |
-| `author` | `Record<string, any>` | No |  |
+| `author` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `author_id` | `number` | No |  |
 | `author_username` | `string` | No |  |
 | `created_at` | `string` | No |  |
@@ -8139,7 +8145,7 @@ const api_entities_event = client.ApiEntitiesEvent()
 | `target_iid` | `number` | No |  |
 | `target_title` | `string` | No |  |
 | `target_type` | `string` | No |  |
-| `wiki_page` | `Record<string, any>` | No |  |
+| `wiki_page` | `Record<string, any>` | No | API_Entities_WikiPageBasic model |
 
 ### Operations
 
@@ -8197,7 +8203,7 @@ const api_entities_feature = client.ApiEntitiesFeature()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `definition` | `Record<string, any>` | No |  |
+| `definition` | `Record<string, any>` | No | API_Entities_Feature_Definition model |
 | `gates` | `Record<string, any>` | No |  |
 | `name` | `string` | No |  |
 | `state` | `string` | No |  |
@@ -8690,12 +8696,12 @@ const api_entities_group = client.ApiEntitiesGroup()
 | `auto_duo_code_review_enabled` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attributes` | `Record<string, any>` | No |  |
+| `custom_attributes` | `Record<string, any>` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `default_branch_protection` | `string` | No |  |
 | `default_branch_protection_defaults` | `string` | No |  |
 | `description` | `string` | No |  |
-| `duo_core_features_enabled` | `boolean` | No |  |
+| `duo_core_features_enabled` | `boolean` | No | [Experimental] Indicates whether GitLab Duo Core features are enabled for the group |
 | `duo_features_enabled` | `string` | No |  |
 | `emails_disabled` | `boolean` | No |  |
 | `emails_enabled` | `boolean` | No |  |
@@ -8817,12 +8823,12 @@ const api_entities_group_detail = client.ApiEntitiesGroupDetail()
 | `auto_duo_code_review_enabled` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `custom_attributes` | `Record<string, any>` | No |  |
+| `custom_attributes` | `Record<string, any>` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `default_branch_protection` | `string` | No |  |
 | `default_branch_protection_defaults` | `string` | No |  |
 | `description` | `string` | No |  |
-| `duo_core_features_enabled` | `boolean` | No |  |
+| `duo_core_features_enabled` | `boolean` | No | [Experimental] Indicates whether GitLab Duo Core features are enabled for the group |
 | `duo_features_enabled` | `string` | No |  |
 | `emails_disabled` | `boolean` | No |  |
 | `emails_enabled` | `boolean` | No |  |
@@ -8851,7 +8857,7 @@ const api_entities_group_detail = client.ApiEntitiesGroupDetail()
 | `prevent_forking_outside_group` | `string` | No |  |
 | `prevent_sharing_groups_outside_hierarchy` | `string` | No |  |
 | `project_creation_level` | `string` | No |  |
-| `projects` | `Record<string, any>` | No |  |
+| `projects` | `Record<string, any>` | No | API_Entities_Project model |
 | `repository_storage` | `string` | No |  |
 | `request_access_enabled` | `string` | No |  |
 | `require_two_factor_authentication` | `string` | No |  |
@@ -8860,7 +8866,7 @@ const api_entities_group_detail = client.ApiEntitiesGroupDetail()
 | `saml_group_links` | `Record<string, any>` | No |  |
 | `service_access_tokens_expiration_enforced` | `string` | No |  |
 | `share_with_group_lock` | `string` | No |  |
-| `shared_projects` | `Record<string, any>` | No |  |
+| `shared_projects` | `Record<string, any>` | No | API_Entities_Project model |
 | `shared_runners_minutes_limit` | `string` | No |  |
 | `shared_runners_setting` | `string` | No |  |
 | `shared_with_groups` | `string` | No |  |
@@ -9032,7 +9038,7 @@ const api_entities_integration = client.ApiEntitiesIntegration()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesIntegration().load({ id: 'api_entities_integration_id' })
+const result = await client.ApiEntitiesIntegration().load({ id: 'api_entities_integration_id', group_id: 'group_id' })
 ```
 
 ### Common Methods
@@ -9104,7 +9110,7 @@ const api_entities_integration_basic = client.ApiEntitiesIntegrationBasic()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesIntegrationBasic().list()
+const results = await client.ApiEntitiesIntegrationBasic().list({ group_id: "example" })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -9113,6 +9119,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.ApiEntitiesIntegrationBasic().update({
+  group_id: 'group_id',
   // Fields to update
 })
 ```
@@ -9171,6 +9178,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesInvitation().create({
+  group_id: 'example_group_id',
 })
 ```
 
@@ -9179,7 +9187,7 @@ const result = await client.ApiEntitiesInvitation().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesInvitation().list()
+const results = await client.ApiEntitiesInvitation().list({ group_id: "example" })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -9294,12 +9302,12 @@ const api_entities_issue = client.ApiEntitiesIssue()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assignee` | `Record<string, any>` | No |  |
-| `assignees` | `Record<string, any>` | No |  |
-| `author` | `Record<string, any>` | No |  |
+| `assignee` | `Record<string, any>` | No | API_Entities_UserBasic model |
+| `assignees` | `Record<string, any>` | No | API_Entities_UserBasic model |
+| `author` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `blocking_issues_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `Record<string, any>` | No |  |
+| `closed_by` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `confidential` | `boolean` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
@@ -9324,14 +9332,14 @@ const api_entities_issue = client.ApiEntitiesIssue()
 | `project_id` | `number` | No |  |
 | `references` | `Record<string, any>` | No |  |
 | `service_desk_reply_to` | `string` | No |  |
-| `severity` | `string` | No |  |
+| `severity` | `string` | No | One of ["UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"] |
 | `state` | `string` | No |  |
 | `subscribed` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
 | `task_status` | `string` | No |  |
-| `time_stats` | `Record<string, any>` | No |  |
+| `time_stats` | `Record<string, any>` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
-| `type` | `string` | No |  |
+| `type` | `string` | No | One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK", "TICKET"] |
 | `updated_at` | `string` | No |  |
 | `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
@@ -9493,12 +9501,12 @@ const api_entities_license = client.ApiEntitiesLicense()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Returns an array.
+Load a single entity matching the given criteria.
 
 ```ts
-const results = await client.ApiEntitiesLicense().list({ id: "example", name: "example", type: "example" })
+const result = await client.ApiEntitiesLicense().load({ id: 'api_entities_license_id', name: 'name', type: 'type' })
 ```
 
 ### Common Methods
@@ -9597,7 +9605,7 @@ const api_entities_markdown_upload_admin = client.ApiEntitiesMarkdownUploadAdmin
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesMarkdownUploadAdmin().list()
+const results = await client.ApiEntitiesMarkdownUploadAdmin().list({ group_id: "example" })
 ```
 
 ### Common Methods
@@ -9642,7 +9650,7 @@ const api_entities_member = client.ApiEntitiesMember()
 | `avatar_path` | `string` | No |  |
 | `avatar_url` | `string` | No |  |
 | `created_at` | `string` | No |  |
-| `created_by` | `Record<string, any>` | No |  |
+| `created_by` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `custom_attributes` | `any[]` | No |  |
 | `email` | `string` | No |  |
 | `expires_at` | `string` | No |  |
@@ -9670,6 +9678,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesMember().create({
+  group_id: 'example_group_id',
 })
 ```
 
@@ -9678,7 +9687,7 @@ const result = await client.ApiEntitiesMember().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesMember().list()
+const results = await client.ApiEntitiesMember().list({ group_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -9686,7 +9695,7 @@ const results = await client.ApiEntitiesMember().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesMember().load({ id: 'api_entities_member_id' })
+const result = await client.ApiEntitiesMember().load({ id: 'api_entities_member_id', group_id: 'group_id' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -9749,13 +9758,13 @@ const api_entities_merge = client.ApiEntitiesMerge()
 | `allow_collaboration` | `boolean` | No |  |
 | `allow_maintainer_to_push` | `boolean` | No |  |
 | `approvals_before_merge` | `string` | No |  |
-| `assignee` | `Record<string, any>` | No |  |
-| `assignees` | `Record<string, any>` | No |  |
-| `author` | `Record<string, any>` | No |  |
+| `assignee` | `Record<string, any>` | No | API_Entities_UserBasic model |
+| `assignees` | `Record<string, any>` | No | API_Entities_UserBasic model |
+| `author` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `string` | No |  |
 | `changes_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `Record<string, any>` | No |  |
+| `closed_by` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -9769,7 +9778,7 @@ const api_entities_merge = client.ApiEntitiesMerge()
 | `first_deployed_to_production_at` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
 | `has_conflicts` | `boolean` | No |  |
-| `head_pipeline` | `Record<string, any>` | No |  |
+| `head_pipeline` | `Record<string, any>` | No | API_Entities_Ci_Pipeline model |
 | `id` | `number` | No |  |
 | `iid` | `number` | No |  |
 | `imported` | `string` | No |  |
@@ -9781,18 +9790,18 @@ const api_entities_merge = client.ApiEntitiesMerge()
 | `merge_commit_sha` | `string` | No |  |
 | `merge_error` | `string` | No |  |
 | `merge_status` | `string` | No |  |
-| `merge_user` | `Record<string, any>` | No |  |
+| `merge_user` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
-| `merged_by` | `Record<string, any>` | No |  |
+| `merged_by` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `milestone` | `Record<string, any>` | No |  |
-| `pipeline` | `Record<string, any>` | No |  |
+| `pipeline` | `Record<string, any>` | No | API_Entities_Ci_PipelineBasic model |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `number` | No |  |
 | `rebase_in_progress` | `string` | No |  |
 | `reference` | `string` | No |  |
 | `references` | `Record<string, any>` | No |  |
-| `reviewers` | `Record<string, any>` | No |  |
+| `reviewers` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `boolean` | No |  |
 | `source_branch` | `string` | No |  |
@@ -9805,7 +9814,7 @@ const api_entities_merge = client.ApiEntitiesMerge()
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stats` | `Record<string, any>` | No |  |
+| `time_stats` | `Record<string, any>` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
@@ -9885,7 +9894,7 @@ const api_entities_merge_request_approval = client.ApiEntitiesMergeRequestApprov
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `approved_at` | `string` | No |  |
-| `user` | `Record<string, any>` | No |  |
+| `user` | `Record<string, any>` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -9949,12 +9958,12 @@ const api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic()
 | `allow_collaboration` | `boolean` | No |  |
 | `allow_maintainer_to_push` | `boolean` | No |  |
 | `approvals_before_merge` | `string` | No |  |
-| `assignee` | `Record<string, any>` | No |  |
-| `assignees` | `Record<string, any>` | No |  |
-| `author` | `Record<string, any>` | No |  |
+| `assignee` | `Record<string, any>` | No | API_Entities_UserBasic model |
+| `assignees` | `Record<string, any>` | No | API_Entities_UserBasic model |
+| `author` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `Record<string, any>` | No |  |
+| `closed_by` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -9972,16 +9981,16 @@ const api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic()
 | `merge_after` | `string` | No |  |
 | `merge_commit_sha` | `string` | No |  |
 | `merge_status` | `string` | No |  |
-| `merge_user` | `Record<string, any>` | No |  |
+| `merge_user` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
-| `merged_by` | `Record<string, any>` | No |  |
+| `merged_by` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `milestone` | `Record<string, any>` | No |  |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `number` | No |  |
 | `reference` | `string` | No |  |
 | `references` | `Record<string, any>` | No |  |
-| `reviewers` | `Record<string, any>` | No |  |
+| `reviewers` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `boolean` | No |  |
 | `source_branch` | `string` | No |  |
@@ -9993,7 +10002,7 @@ const api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic()
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stats` | `Record<string, any>` | No |  |
+| `time_stats` | `Record<string, any>` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
@@ -10017,7 +10026,7 @@ const results = await client.ApiEntitiesMergeRequestBasic().list({ project_id: "
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesMergeRequestBasic().load()
+const result = await client.ApiEntitiesMergeRequestBasic().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -10061,14 +10070,14 @@ const api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `allow_collaboration` | `boolean` | No |  |
 | `allow_maintainer_to_push` | `boolean` | No |  |
 | `approvals_before_merge` | `string` | No |  |
-| `assignee` | `Record<string, any>` | No |  |
-| `assignees` | `Record<string, any>` | No |  |
-| `author` | `Record<string, any>` | No |  |
+| `assignee` | `Record<string, any>` | No | API_Entities_UserBasic model |
+| `assignees` | `Record<string, any>` | No | API_Entities_UserBasic model |
+| `author` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `blocking_discussions_resolved` | `string` | No |  |
-| `changes` | `Record<string, any>` | No |  |
+| `changes` | `Record<string, any>` | No | API_Entities_Diff model |
 | `changes_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `Record<string, any>` | No |  |
+| `closed_by` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -10082,7 +10091,7 @@ const api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `first_deployed_to_production_at` | `string` | No |  |
 | `force_remove_source_branch` | `string` | No |  |
 | `has_conflicts` | `boolean` | No |  |
-| `head_pipeline` | `Record<string, any>` | No |  |
+| `head_pipeline` | `Record<string, any>` | No | API_Entities_Ci_Pipeline model |
 | `id` | `number` | No |  |
 | `iid` | `number` | No |  |
 | `imported` | `string` | No |  |
@@ -10094,19 +10103,19 @@ const api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `merge_commit_sha` | `string` | No |  |
 | `merge_error` | `string` | No |  |
 | `merge_status` | `string` | No |  |
-| `merge_user` | `Record<string, any>` | No |  |
+| `merge_user` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `merge_when_pipeline_succeeds` | `string` | No |  |
 | `merged_at` | `string` | No |  |
-| `merged_by` | `Record<string, any>` | No |  |
+| `merged_by` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `milestone` | `Record<string, any>` | No |  |
 | `overflow` | `string` | No |  |
-| `pipeline` | `Record<string, any>` | No |  |
+| `pipeline` | `Record<string, any>` | No | API_Entities_Ci_PipelineBasic model |
 | `prepared_at` | `string` | No |  |
 | `project_id` | `number` | No |  |
 | `rebase_in_progress` | `string` | No |  |
 | `reference` | `string` | No |  |
 | `references` | `Record<string, any>` | No |  |
-| `reviewers` | `Record<string, any>` | No |  |
+| `reviewers` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `sha` | `string` | No |  |
 | `should_remove_source_branch` | `boolean` | No |  |
 | `source_branch` | `string` | No |  |
@@ -10119,7 +10128,7 @@ const api_entities_merge_request_change = client.ApiEntitiesMergeRequestChange()
 | `target_branch` | `string` | No |  |
 | `target_project_id` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
-| `time_stats` | `Record<string, any>` | No |  |
+| `time_stats` | `Record<string, any>` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
 | `title_html` | `string` | No |  |
 | `updated_at` | `string` | No |  |
@@ -10236,9 +10245,9 @@ const api_entities_merge_request_diff_full = client.ApiEntitiesMergeRequestDiffF
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `base_commit_sha` | `string` | No |  |
-| `commits` | `Record<string, any>` | No |  |
+| `commits` | `Record<string, any>` | No | API_Entities_Commit model |
 | `created_at` | `string` | No |  |
-| `diffs` | `Record<string, any>` | No |  |
+| `diffs` | `Record<string, any>` | No | API_Entities_Diff model |
 | `head_commit_sha` | `string` | No |  |
 | `id` | `string` | No |  |
 | `merge_request_id` | `string` | No |  |
@@ -10865,7 +10874,7 @@ const api_entities_nuget_search_result = client.ApiEntitiesNugetSearchResult()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesNugetSearchResult().list()
+const results = await client.ApiEntitiesNugetSearchResult().list({ project_id: "example" })
 ```
 
 ### Common Methods
@@ -10916,7 +10925,7 @@ const api_entities_nuget_service_index = client.ApiEntitiesNugetServiceIndex()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesNugetServiceIndex().list()
+const results = await client.ApiEntitiesNugetServiceIndex().list({ project_id: "example" })
 ```
 
 ### Common Methods
@@ -11009,8 +11018,8 @@ const api_entities_package = client.ApiEntitiesPackage()
 | `links` | `Record<string, any>` | No |  |
 | `name` | `string` | No |  |
 | `package_type` | `string` | No |  |
-| `pipeline` | `Record<string, any>` | No |  |
-| `pipelines` | `Record<string, any>` | No |  |
+| `pipeline` | `Record<string, any>` | No | API_Entities_Package_Pipeline model |
+| `pipelines` | `Record<string, any>` | No | API_Entities_Package_Pipeline model |
 | `project_id` | `number` | No |  |
 | `project_path` | `string` | No |  |
 | `status` | `string` | No |  |
@@ -11025,7 +11034,7 @@ const api_entities_package = client.ApiEntitiesPackage()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesPackage().list()
+const results = await client.ApiEntitiesPackage().list({ group_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -11081,7 +11090,7 @@ const api_entities_package_file = client.ApiEntitiesPackageFile()
 | `file_sha256` | `string` | No |  |
 | `id` | `number` | No |  |
 | `package_id` | `number` | No |  |
-| `pipelines` | `Record<string, any>` | No |  |
+| `pipelines` | `Record<string, any>` | No | API_Entities_Package_Pipeline model |
 | `size` | `number` | No |  |
 
 ### Operations
@@ -11279,8 +11288,8 @@ const api_entities_packages_conan_package_revision = client.ApiEntitiesPackagesC
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `string` | No |  |
-| `time` | `string` | No |  |
+| `revision` | `string` | No | The revision hash of the Conan recipe or package |
+| `time` | `string` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -11418,8 +11427,8 @@ const api_entities_packages_conan_recipe_revision = client.ApiEntitiesPackagesCo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `string` | No |  |
-| `time` | `string` | No |  |
+| `revision` | `string` | No | The revision hash of the Conan recipe or package |
+| `time` | `string` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -11513,8 +11522,8 @@ const api_entities_packages_conan_revision = client.ApiEntitiesPackagesConanRevi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `revision` | `string` | No |  |
-| `time` | `string` | No |  |
+| `revision` | `string` | No | The revision hash of the Conan recipe or package |
+| `time` | `string` | No | The UTC timestamp when the revision was created |
 
 ### Operations
 
@@ -11632,6 +11641,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesPackagesDebianDistribution().create({
+  project_id: 'example_project_id',
 })
 ```
 
@@ -11640,7 +11650,7 @@ const result = await client.ApiEntitiesPackagesDebianDistribution().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesPackagesDebianDistribution().list()
+const results = await client.ApiEntitiesPackagesDebianDistribution().list({ project_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -11987,6 +11997,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesPersonalAccessTokenWithToken().create({
+  personal_access_token_id: 'example_personal_access_token_id',
 })
 ```
 
@@ -12028,7 +12039,7 @@ const api_entities_personal_snippet = client.ApiEntitiesPersonalSnippet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `Record<string, any>` | No |  |
+| `author` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `file_name` | `string` | No |  |
@@ -12210,7 +12221,7 @@ const api_entities_project = client.ApiEntitiesProject()
 | `container_registry_image_prefix` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `creator_id` | `number` | No |  |
-| `custom_attributes` | `Record<string, any>` | No |  |
+| `custom_attributes` | `Record<string, any>` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -12222,7 +12233,7 @@ const api_entities_project = client.ApiEntitiesProject()
 | `environments_access_level` | `string` | No |  |
 | `external_authorization_classification_label` | `string` | No |  |
 | `feature_flags_access_level` | `string` | No |  |
-| `forked_from_project` | `Record<string, any>` | No |  |
+| `forked_from_project` | `Record<string, any>` | No | API_Entities_BasicProjectDetails model |
 | `forking_access_level` | `string` | No |  |
 | `forks_count` | `number` | No |  |
 | `group_runners_enabled` | `boolean` | No |  |
@@ -12273,7 +12284,7 @@ const api_entities_project = client.ApiEntitiesProject()
 | `only_allow_merge_if_pipeline_succeeds` | `boolean` | No |  |
 | `only_mirror_protected_branches` | `string` | No |  |
 | `open_issues_count` | `number` | No |  |
-| `owner` | `Record<string, any>` | No |  |
+| `owner` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `package_registry_access_level` | `string` | No |  |
 | `packages_enabled` | `boolean` | No |  |
 | `pages_access_level` | `string` | No |  |
@@ -12307,7 +12318,7 @@ const api_entities_project = client.ApiEntitiesProject()
 | `show_diff_preview_in_email` | `boolean` | No |  |
 | `snippets_access_level` | `string` | No |  |
 | `snippets_enabled` | `boolean` | No |  |
-| `spp_repository_pipeline_access` | `boolean` | No |  |
+| `spp_repository_pipeline_access` | `boolean` | No | The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available. |
 | `squash_commit_template` | `string` | No |  |
 | `squash_option` | `string` | No |  |
 | `ssh_url_to_repo` | `string` | No |  |
@@ -12332,6 +12343,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesProject().create({
+  user_id: 'example_user_id',
 })
 ```
 
@@ -12340,7 +12352,7 @@ const result = await client.ApiEntitiesProject().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesProject().list()
+const results = await client.ApiEntitiesProject().list({ project_id: "example" })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -12349,6 +12361,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.ApiEntitiesProject().update({
+  id: 'id',
   // Fields to update
 })
 ```
@@ -12819,7 +12832,7 @@ const api_entities_project_snippet = client.ApiEntitiesProjectSnippet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `Record<string, any>` | No |  |
+| `author` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `file_name` | `string` | No |  |
@@ -12995,7 +13008,7 @@ const api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `container_registry_image_prefix` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `creator_id` | `number` | No |  |
-| `custom_attributes` | `Record<string, any>` | No |  |
+| `custom_attributes` | `Record<string, any>` | No | API_Entities_CustomAttribute model |
 | `default_branch` | `string` | No |  |
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
@@ -13007,7 +13020,7 @@ const api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `environments_access_level` | `string` | No |  |
 | `external_authorization_classification_label` | `string` | No |  |
 | `feature_flags_access_level` | `string` | No |  |
-| `forked_from_project` | `Record<string, any>` | No |  |
+| `forked_from_project` | `Record<string, any>` | No | API_Entities_BasicProjectDetails model |
 | `forking_access_level` | `string` | No |  |
 | `forks_count` | `number` | No |  |
 | `group_runners_enabled` | `boolean` | No |  |
@@ -13058,7 +13071,7 @@ const api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `only_allow_merge_if_pipeline_succeeds` | `boolean` | No |  |
 | `only_mirror_protected_branches` | `string` | No |  |
 | `open_issues_count` | `number` | No |  |
-| `owner` | `Record<string, any>` | No |  |
+| `owner` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `package_registry_access_level` | `string` | No |  |
 | `packages_enabled` | `boolean` | No |  |
 | `pages_access_level` | `string` | No |  |
@@ -13093,7 +13106,7 @@ const api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `show_diff_preview_in_email` | `boolean` | No |  |
 | `snippets_access_level` | `string` | No |  |
 | `snippets_enabled` | `boolean` | No |  |
-| `spp_repository_pipeline_access` | `boolean` | No |  |
+| `spp_repository_pipeline_access` | `boolean` | No | The spp_repository_pipeline_access setting is only visible if the security_orchestration_policies feature is available. |
 | `squash_commit_template` | `string` | No |  |
 | `squash_option` | `string` | No |  |
 | `ssh_url_to_repo` | `string` | No |  |
@@ -13604,12 +13617,12 @@ const api_entities_related_issue = client.ApiEntitiesRelatedIssue()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assignee` | `Record<string, any>` | No |  |
-| `assignees` | `Record<string, any>` | No |  |
-| `author` | `Record<string, any>` | No |  |
+| `assignee` | `Record<string, any>` | No | API_Entities_UserBasic model |
+| `assignees` | `Record<string, any>` | No | API_Entities_UserBasic model |
+| `author` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `blocking_issues_count` | `string` | No |  |
 | `closed_at` | `string` | No |  |
-| `closed_by` | `Record<string, any>` | No |  |
+| `closed_by` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `confidential` | `boolean` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
@@ -13638,14 +13651,14 @@ const api_entities_related_issue = client.ApiEntitiesRelatedIssue()
 | `project_id` | `number` | No |  |
 | `references` | `Record<string, any>` | No |  |
 | `service_desk_reply_to` | `string` | No |  |
-| `severity` | `string` | No |  |
+| `severity` | `string` | No | One of ["UNKNOWN", "LOW", "MEDIUM", "HIGH", "CRITICAL"] |
 | `state` | `string` | No |  |
 | `subscribed` | `string` | No |  |
 | `task_completion_status` | `string` | No |  |
 | `task_status` | `string` | No |  |
-| `time_stats` | `Record<string, any>` | No |  |
+| `time_stats` | `Record<string, any>` | No | API_Entities_IssuableTimeStats model |
 | `title` | `string` | No |  |
-| `type` | `string` | No |  |
+| `type` | `string` | No | One of ["ISSUE", "INCIDENT", "TEST_CASE", "REQUIREMENT", "TASK", "TICKET"] |
 | `updated_at` | `string` | No |  |
 | `upvotes` | `string` | No |  |
 | `user_notes_count` | `string` | No |  |
@@ -13746,8 +13759,8 @@ const api_entities_release = client.ApiEntitiesRelease()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `assets` | `Record<string, any>` | No |  |
-| `author` | `Record<string, any>` | No |  |
-| `commit` | `Record<string, any>` | No |  |
+| `author` | `Record<string, any>` | No | API_Entities_UserBasic model |
+| `commit` | `Record<string, any>` | No | API_Entities_Commit model |
 | `commit_path` | `string` | No |  |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
@@ -13778,7 +13791,7 @@ const result = await client.ApiEntitiesRelease().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesRelease().list()
+const results = await client.ApiEntitiesRelease().list({ project_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -14100,6 +14113,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesResourceAccessTokenWithToken().create({
+  group_id: 'example_group_id',
 })
 ```
 
@@ -14148,7 +14162,7 @@ const api_entities_resource_milestone_event = client.ApiEntitiesResourceMileston
 | `resource_id` | `number` | No |  |
 | `resource_type` | `string` | No |  |
 | `state` | `string` | No |  |
-| `user` | `Record<string, any>` | No |  |
+| `user` | `Record<string, any>` | No | API_Entities_UserBasic model |
 
 ### Operations
 
@@ -14206,7 +14220,7 @@ const api_entities_snippet = client.ApiEntitiesSnippet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `Record<string, any>` | No |  |
+| `author` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `created_at` | `string` | No |  |
 | `description` | `string` | No |  |
 | `file_name` | `string` | No |  |
@@ -14514,7 +14528,7 @@ const api_entities_tag = client.ApiEntitiesTag()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `commit` | `Record<string, any>` | No |  |
+| `commit` | `Record<string, any>` | No | API_Entities_Commit model |
 | `created_at` | `string` | No |  |
 | `message` | `string` | No |  |
 | `name` | `string` | No |  |
@@ -14820,7 +14834,7 @@ const api_entities_trigger = client.ApiEntitiesTrigger()
 | `last_used` | `string` | No |  |
 | `locked` | `boolean` | No |  |
 | `name` | `string` | No |  |
-| `owner` | `Record<string, any>` | No |  |
+| `owner` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `public_email` | `string` | No |  |
 | `state` | `string` | No |  |
 | `token` | `string` | No |  |
@@ -14917,7 +14931,7 @@ const api_entities_user_agent_detail = client.ApiEntitiesUserAgentDetail()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesUserAgentDetail().load()
+const result = await client.ApiEntitiesUserAgentDetail().load({ snippet_id: 'snippet_id' })
 ```
 
 ### Common Methods
@@ -15164,6 +15178,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesWikiAttachment().create({
+  group_id: 'example_group_id',
 })
 ```
 
@@ -15209,6 +15224,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesWikiPage().create({
+  group_id: 'example_group_id',
 })
 ```
 
@@ -15281,7 +15297,7 @@ const api_entities_wiki_page_basic = client.ApiEntitiesWikiPageBasic()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesWikiPageBasic().list()
+const results = await client.ApiEntitiesWikiPageBasic().list({ group_id: "example" })
 ```
 
 ### Common Methods
@@ -15723,7 +15739,7 @@ const composer_package = client.ComposerPackage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ComposerPackage().load()
+const result = await client.ComposerPackage().load({ group_id: 'group_id', sha: 'sha' })
 ```
 
 ### Common Methods
@@ -15811,7 +15827,7 @@ const conan_package = client.ConanPackage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ConanPackage().load({ id: 'conan_package_id' })
+const result = await client.ConanPackage().load({ file_id: 'file_id', file_name: 'file_name', package_channel: 'package_channel', package_username: 'package_username', package_version: 'package_version', recipe_revision: 'recipe_revision' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -15828,7 +15844,6 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.ConanPackage().update({
-  id: 'conan_package_id',
   file_name: 'file_name',
   package_channel: 'package_channel',
   package_username: 'package_username',
@@ -15974,7 +15989,7 @@ const custom_attribute = client.CustomAttribute()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.CustomAttribute().load({ id: 'custom_attribute_id' })
+const result = await client.CustomAttribute().load({ id: 'custom_attribute_id', group_id: 'group_id' })
 ```
 
 ### Common Methods
@@ -16110,7 +16125,7 @@ const debian_package = client.DebianPackage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.DebianPackage().load({ id: 'debian_package_id' })
+const result = await client.DebianPackage().load({ id: 'debian_package_id', distribution: 'distribution', file_name: 'file_name', letter: 'letter', package_name: 'package_name', package_version: 'package_version' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -16421,7 +16436,7 @@ const ee_api_entities_audit_event = client.EeApiEntitiesAuditEvent()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.EeApiEntitiesAuditEvent().list()
+const results = await client.EeApiEntitiesAuditEvent().list({ group_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -17995,7 +18010,7 @@ const result = await client.Integration().create({
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.Integration().remove()
+const result = await client.Integration().remove({ group_id: 'group_id', id: 'id' })
 ```
 
 ### Common Methods
@@ -18876,7 +18891,7 @@ const nuget_package = client.NugetPackage()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.NugetPackage().list()
+const results = await client.NugetPackage().list({ project_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -18884,7 +18899,7 @@ const results = await client.NugetPackage().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.NugetPackage().load()
+const result = await client.NugetPackage().load({ project_id: 'project_id' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -19199,13 +19214,13 @@ const project = client.Project()
 | `coverage` | `number` | No |  |
 | `created_at` | `string` | No |  |
 | `detailed_status` | `Record<string, any>` | No |  |
-| `duration` | `number` | No |  |
+| `duration` | `number` | No | Time spent running in seconds |
 | `finished_at` | `string` | No |  |
 | `id` | `number` | No |  |
 | `iid` | `number` | No |  |
 | `name` | `string` | No |  |
 | `project_id` | `number` | No |  |
-| `queued_duration` | `number` | No |  |
+| `queued_duration` | `number` | No | Time spent enqueued in seconds |
 | `ref` | `string` | No |  |
 | `sha` | `string` | No |  |
 | `source` | `string` | No |  |
@@ -19213,7 +19228,7 @@ const project = client.Project()
 | `status` | `string` | No |  |
 | `tag` | `boolean` | No |  |
 | `updated_at` | `string` | No |  |
-| `user` | `Record<string, any>` | No |  |
+| `user` | `Record<string, any>` | No | API_Entities_UserBasic model |
 | `web_url` | `string` | No |  |
 | `yaml_errors` | `string` | No |  |
 
@@ -19888,7 +19903,7 @@ const result = await client.PypiPackage().create({
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.PypiPackage().load()
+const result = await client.PypiPackage().load({ project_id: 'project_id' })
 ```
 
 ### Common Methods
@@ -20360,7 +20375,7 @@ const result = await client.Runner().create({
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.Runner().remove()
+const result = await client.Runner().remove({ id: 'id' })
 ```
 
 ### Common Methods

@@ -32,12 +32,10 @@ export interface ApiEntitiesAccessRequester {
     web_url?: string;
 }
 export interface ApiEntitiesAccessRequesterListMatch {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface ApiEntitiesAccessRequesterCreateData {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
     avatar_path?: string;
     avatar_url?: string;
     custom_attributes?: any[];
@@ -218,22 +216,12 @@ export interface ApiEntitiesAwardEmojiLoadMatch {
     snippet_id?: string;
 }
 export interface ApiEntitiesAwardEmojiListMatch {
-    epic_id?: string;
-    group_id?: string;
-    note_id?: string;
-    issue_id?: string;
-    project_id?: string;
-    merge_request_id?: string;
-    snippet_id?: string;
+    epic_id: string;
+    group_id: string;
 }
 export interface ApiEntitiesAwardEmojiCreateData {
-    epic_id?: string;
-    group_id?: string;
-    note_id?: string;
-    issue_id?: string;
-    project_id?: string;
-    merge_request_id?: string;
-    snippet_id?: string;
+    epic_id: string;
+    group_id: string;
     avatar_path?: string;
     avatar_url?: string;
     awardable_id?: number;
@@ -266,12 +254,10 @@ export interface ApiEntitiesBadgeLoadMatch {
     project_id?: string;
 }
 export interface ApiEntitiesBadgeListMatch {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface ApiEntitiesBadgeCreateData {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
     id?: string;
     image_url?: string;
     kind?: string;
@@ -299,8 +285,7 @@ export interface ApiEntitiesBasicBadgeDetail {
     rendered_link_url?: string;
 }
 export interface ApiEntitiesBasicBadgeDetailLoadMatch {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface ApiEntitiesBasicGroupDetail {
 }
@@ -334,8 +319,30 @@ export interface ApiEntitiesBasicProjectDetail {
     web_url?: string;
 }
 export interface ApiEntitiesBasicProjectDetailListMatch {
-    user_id?: string;
-    project_id?: string;
+    avatar_url?: string;
+    created_at?: string;
+    custom_attributes?: Record<string, any>;
+    default_branch?: string;
+    description?: string;
+    forks_count?: number;
+    http_url_to_repo?: string;
+    id?: number;
+    last_activity_at?: string;
+    license?: Record<string, any>;
+    license_url?: string;
+    name?: string;
+    name_with_namespace?: string;
+    namespace?: Record<string, any>;
+    path?: string;
+    path_with_namespace?: string;
+    readme_url?: string;
+    repository_storage?: string;
+    ssh_url_to_repo?: string;
+    star_count?: number;
+    tag_list?: any[];
+    topics?: any[];
+    visibility?: string;
+    web_url?: string;
 }
 export interface ApiEntitiesBasicProjectDetailCreateData {
     project_id: string;
@@ -516,15 +523,33 @@ export interface ApiEntitiesBulkImport {
     updated_at?: string;
 }
 export interface ApiEntitiesBulkImportLoadMatch {
-    bulk_import_id?: string;
-    entity_id?: string;
-    id?: string;
+    id: string;
 }
 export interface ApiEntitiesBulkImportListMatch {
-    bulk_import_id?: string;
+    bulk_import_id?: number;
+    created_at?: string;
+    destination_full_path?: string;
+    destination_name?: string;
+    destination_namespace?: string;
+    destination_slug?: string;
+    entity_type?: string;
+    failures?: any[];
+    has_failures?: boolean;
+    id?: number;
+    migrate_memberships?: boolean;
+    migrate_projects?: boolean;
+    namespace_id?: number;
+    parent_id?: number;
+    project_id?: number;
+    source_full_path?: string;
+    source_type?: string;
+    source_url?: string;
+    stats?: Record<string, any>;
+    status?: string;
+    updated_at?: string;
 }
 export interface ApiEntitiesBulkImportCreateData {
-    bulk_import_id?: string;
+    bulk_import_id?: number;
     created_at?: string;
     destination_full_path?: string;
     destination_name?: string;
@@ -569,8 +594,7 @@ export interface ApiEntitiesBulkImportsExportStatus {
     updated_at?: string;
 }
 export interface ApiEntitiesBulkImportsExportStatusListMatch {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface ApiEntitiesChangelog {
     notes?: string;
@@ -648,9 +672,37 @@ export interface ApiEntitiesCiJobLoadMatch {
     project_id: string;
 }
 export interface ApiEntitiesCiJobListMatch {
-    pipeline_id?: string;
-    project_id?: string;
-    job_id?: string;
+    allow_failure?: boolean;
+    archived?: boolean;
+    artifacts?: any[];
+    artifacts_expire_at?: string;
+    artifacts_file?: Record<string, any>;
+    commit?: Record<string, any>;
+    coverage?: number;
+    created_at?: string;
+    duration?: number;
+    erased_at?: string;
+    failure_reason?: string;
+    file_format?: string;
+    file_type?: string;
+    filename?: string;
+    finished_at?: string;
+    id?: number;
+    name?: string;
+    pipeline?: Record<string, any>;
+    project?: Record<string, any>;
+    queued_duration?: number;
+    ref?: string;
+    runner?: Record<string, any>;
+    runner_manager?: Record<string, any>;
+    size?: number;
+    stage?: string;
+    started_at?: string;
+    status?: string;
+    tag?: boolean;
+    tag_list?: any[];
+    user?: Record<string, any>;
+    web_url?: string;
 }
 export interface ApiEntitiesCiJobCreateData {
     job_id: string;
@@ -896,9 +948,6 @@ export interface ApiEntitiesCiPipelineScheduleDetailUpdateData {
 export interface ApiEntitiesCiResetTokenResult {
 }
 export interface ApiEntitiesCiResetTokenResultCreateData {
-    group_id?: string;
-    project_id?: string;
-    runner_id?: string;
 }
 export interface ApiEntitiesCiResourceGroup {
     created_at?: string;
@@ -935,8 +984,16 @@ export interface ApiEntitiesCiRunner {
     web_url?: string;
 }
 export interface ApiEntitiesCiRunnerLoadMatch {
-    project_id?: string;
-    group_id?: string;
+    avatar_path?: string;
+    avatar_url?: string;
+    custom_attributes?: any[];
+    id: number;
+    locked?: boolean;
+    name?: string;
+    public_email?: string;
+    state?: string;
+    username?: string;
+    web_url?: string;
 }
 export interface ApiEntitiesCiRunnerCreateData {
     project_id: string;
@@ -1051,18 +1108,15 @@ export interface ApiEntitiesCiVariable {
     variable_type?: string;
 }
 export interface ApiEntitiesCiVariableLoadMatch {
-    id?: string;
-    project_id?: string;
-    group_id?: string;
+    id: string;
+    project_id: string;
 }
 export interface ApiEntitiesCiVariableListMatch {
     pipeline_id: string;
     project_id: string;
 }
 export interface ApiEntitiesCiVariableCreateData {
-    pipeline_schedule_id?: string;
-    project_id?: string;
-    group_id?: string;
+    group_id: string;
     description?: string;
     environment_scope?: string;
     hidden?: boolean;
@@ -1109,8 +1163,21 @@ export interface ApiEntitiesClusterLoadMatch {
     id: string;
 }
 export interface ApiEntitiesClusterListMatch {
-    group_id?: string;
-    project_id?: string;
+    cluster_type?: string;
+    created_at?: string;
+    domain?: string;
+    enabled?: boolean;
+    environment_scope?: string;
+    id?: string;
+    managed?: string;
+    management_project?: Record<string, any>;
+    name?: string;
+    namespace_per_environment?: string;
+    platform_kubernetes?: Record<string, any>;
+    platform_type?: string;
+    provider_gcp?: Record<string, any>;
+    provider_type?: string;
+    user?: Record<string, any>;
 }
 export interface ApiEntitiesClusterCreateData {
     cluster_type?: string;
@@ -1574,8 +1641,7 @@ export interface ApiEntitiesContainerRegistryRepositoryLoadMatch {
     id: string;
 }
 export interface ApiEntitiesContainerRegistryRepositoryListMatch {
-    project_id?: string;
-    group_id?: string;
+    project_id: string;
 }
 export interface ApiEntitiesContainerRegistryTag {
     location?: string;
@@ -1638,8 +1704,6 @@ export interface ApiEntitiesDeployKeyListMatch {
     usage_type?: string;
 }
 export interface ApiEntitiesDeployKeyCreateData {
-    deploy_key_id?: string;
-    project_id?: string;
     created_at?: string;
     expires_at?: string;
     fingerprint?: string;
@@ -1717,14 +1781,18 @@ export interface ApiEntitiesDeployTokenLoadMatch {
     project_id?: string;
 }
 export interface ApiEntitiesDeployTokenListMatch {
-    group_id?: string;
-    project_id?: string;
+    expired?: boolean;
+    expires_at?: string;
+    id?: number;
+    name?: string;
+    revoked?: boolean;
+    scopes?: any[];
+    username?: string;
 }
 export interface ApiEntitiesDeployTokenWithToken {
 }
 export interface ApiEntitiesDeployTokenWithTokenCreateData {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface ApiEntitiesDeployment {
     created_at?: string;
@@ -2000,7 +2068,22 @@ export interface ApiEntitiesEventLoadMatch {
     project_id: string;
 }
 export interface ApiEntitiesEventListMatch {
-    user_id?: string;
+    action_name?: string;
+    author?: Record<string, any>;
+    author_id?: number;
+    author_username?: string;
+    created_at?: string;
+    id?: number;
+    imported?: boolean;
+    imported_from?: string;
+    note?: Record<string, any>;
+    project_id?: number;
+    push_data?: Record<string, any>;
+    target_id?: number;
+    target_iid?: number;
+    target_title?: string;
+    target_type?: string;
+    wiki_page?: Record<string, any>;
 }
 export interface ApiEntitiesFeature {
     definition?: Record<string, any>;
@@ -2236,11 +2319,56 @@ export interface ApiEntitiesGroupLoadMatch {
     project_id: string;
 }
 export interface ApiEntitiesGroupListMatch {
-    group_id?: string;
-    project_id?: string;
+    archived?: boolean;
+    auto_devops_enabled?: string;
+    auto_duo_code_review_enabled?: string;
+    avatar_url?: string;
+    created_at?: string;
+    custom_attributes?: Record<string, any>;
+    default_branch?: string;
+    default_branch_protection?: string;
+    default_branch_protection_defaults?: string;
+    description?: string;
+    duo_core_features_enabled?: boolean;
+    duo_features_enabled?: string;
+    emails_disabled?: boolean;
+    emails_enabled?: boolean;
+    file_template_project_id?: string;
+    full_name?: string;
+    full_path?: string;
+    id?: string;
+    ldap_access?: string;
+    ldap_cn?: string;
+    ldap_group_links?: Record<string, any>;
+    lfs_enabled?: string;
+    lock_duo_features_enabled?: string;
+    lock_math_rendering_limits_enabled?: boolean;
+    marked_for_deletion_on?: string;
+    math_rendering_limits_enabled?: boolean;
+    max_artifacts_size?: number;
+    mentions_disabled?: string;
+    name?: string;
+    organization_id?: string;
+    parent_id?: string;
+    path?: string;
+    project_creation_level?: string;
+    repository_storage?: string;
+    request_access_enabled?: string;
+    require_two_factor_authentication?: string;
+    root_storage_statistics?: Record<string, any>;
+    saml_group_links?: Record<string, any>;
+    share_with_group_lock?: string;
+    shared_runners_setting?: string;
+    show_diff_preview_in_email?: boolean;
+    statistics?: Record<string, any>;
+    subgroup_creation_level?: string;
+    two_factor_grace_period?: string;
+    visibility?: string;
+    web_based_commit_signing_enabled?: string;
+    web_url?: string;
+    wiki_access_level?: string;
 }
 export interface ApiEntitiesGroupCreateData {
-    group_id?: string;
     archived?: boolean;
     auto_devops_enabled?: string;
     auto_duo_code_review_enabled?: string;
@@ -2563,10 +2691,8 @@ export interface ApiEntitiesHookUpdateData {
 export interface ApiEntitiesIntegration {
 }
 export interface ApiEntitiesIntegrationLoadMatch {
-    group_id?: string;
-    id?: string;
-    project_id?: string;
-    slug?: string;
+    group_id: string;
+    id: string;
 }
 export interface ApiEntitiesIntegrationBasic {
     active?: boolean;
@@ -2594,12 +2720,10 @@ export interface ApiEntitiesIntegrationBasic {
     wiki_page_events?: boolean;
 }
 export interface ApiEntitiesIntegrationBasicListMatch {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface ApiEntitiesIntegrationBasicUpdateData {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
     active?: boolean;
     alert_events?: boolean;
     comment_on_event_enabled?: boolean;
@@ -2634,12 +2758,10 @@ export interface ApiEntitiesInvitation {
     user_name?: string;
 }
 export interface ApiEntitiesInvitationListMatch {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface ApiEntitiesInvitationCreateData {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
     access_level?: string;
     created_at?: string;
     created_by_name?: string;
@@ -2730,8 +2852,49 @@ export interface ApiEntitiesIssueLoadMatch {
     project_id?: string;
 }
 export interface ApiEntitiesIssueListMatch {
-    project_id?: string;
-    group_id?: string;
+    assignee?: Record<string, any>;
+    assignees?: Record<string, any>;
+    author?: Record<string, any>;
+    blocking_issues_count?: string;
+    closed_at?: string;
+    closed_by?: Record<string, any>;
+    confidential?: boolean;
+    created_at?: string;
+    description?: string;
+    discussion_locked?: boolean;
+    downvotes?: string;
+    due_date?: string;
+    epic?: Record<string, any>;
+    epic_iid?: string;
+    has_tasks?: boolean;
+    health_status?: string;
+    id?: number;
+    iid?: number;
+    imported?: string;
+    imported_from?: string;
+    issue_type?: string;
+    iteration?: Record<string, any>;
+    labels?: any[];
+    links?: Record<string, any>;
+    merge_requests_count?: string;
+    milestone?: Record<string, any>;
+    moved_to_id?: string;
+    project_id?: number;
+    references?: Record<string, any>;
+    service_desk_reply_to?: string;
+    severity?: string;
+    state?: string;
+    subscribed?: string;
+    task_completion_status?: string;
+    task_status?: string;
+    time_stats?: Record<string, any>;
+    title?: string;
+    type?: string;
+    updated_at?: string;
+    upvotes?: string;
+    user_notes_count?: string;
+    web_url?: string;
+    weight?: string;
 }
 export interface ApiEntitiesIssueCreateData {
     issue_id?: string;
@@ -2855,7 +3018,7 @@ export interface ApiEntitiesLicense {
     popular?: boolean;
     source_url?: string;
 }
-export interface ApiEntitiesLicenseListMatch {
+export interface ApiEntitiesLicenseLoadMatch {
     id: string;
     name: string;
     type: any;
@@ -2872,8 +3035,7 @@ export interface ApiEntitiesMarkdownUploadAdmin {
     uploaded_by?: Record<string, any>;
 }
 export interface ApiEntitiesMarkdownUploadAdminListMatch {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface ApiEntitiesMember {
     access_level?: string;
@@ -2901,19 +3063,14 @@ export interface ApiEntitiesMember {
     web_url?: string;
 }
 export interface ApiEntitiesMemberLoadMatch {
-    group_id?: string;
-    id?: string;
-    user_id?: string;
-    project_id?: string;
+    group_id: string;
+    id: string;
 }
 export interface ApiEntitiesMemberListMatch {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface ApiEntitiesMemberCreateData {
-    group_id?: string;
-    member_id?: string;
-    project_id?: string;
+    group_id: string;
     access_level?: string;
     avatar_path?: string;
     avatar_url?: string;
@@ -3258,9 +3415,61 @@ export interface ApiEntitiesMergeRequestBasic {
     work_in_progress?: string;
 }
 export interface ApiEntitiesMergeRequestBasicLoadMatch {
-    group_id?: string;
-    project_id?: string;
-    issue_id?: string;
+    allow_collaboration?: boolean;
+    allow_maintainer_to_push?: boolean;
+    approvals_before_merge?: string;
+    assignee?: Record<string, any>;
+    assignees?: Record<string, any>;
+    author?: Record<string, any>;
+    blocking_discussions_resolved?: string;
+    closed_at?: string;
+    closed_by?: Record<string, any>;
+    created_at?: string;
+    description?: string;
+    description_html?: string;
+    detailed_merge_status?: string;
+    discussion_locked?: string;
+    downvotes?: string;
+    draft?: string;
+    force_remove_source_branch?: string;
+    has_conflicts?: boolean;
+    id: number;
+    iid?: number;
+    imported?: string;
+    imported_from?: string;
+    labels?: string;
+    merge_after?: string;
+    merge_commit_sha?: string;
+    merge_status?: string;
+    merge_user?: Record<string, any>;
+    merge_when_pipeline_succeeds?: string;
+    merged_at?: string;
+    merged_by?: Record<string, any>;
+    milestone?: Record<string, any>;
+    prepared_at?: string;
+    project_id?: number;
+    reference?: string;
+    references?: Record<string, any>;
+    reviewers?: Record<string, any>;
+    sha?: string;
+    should_remove_source_branch?: boolean;
+    source_branch?: string;
+    source_project_id?: string;
+    squash?: string;
+    squash_commit_sha?: string;
+    squash_on_merge?: string;
+    state?: string;
+    target_branch?: string;
+    target_project_id?: string;
+    task_completion_status?: string;
+    time_stats?: Record<string, any>;
+    title?: string;
+    title_html?: string;
+    updated_at?: string;
+    upvotes?: string;
+    user_notes_count?: string;
+    web_url?: string;
+    work_in_progress?: string;
 }
 export interface ApiEntitiesMergeRequestBasicListMatch {
     deployment_id?: string;
@@ -3549,14 +3758,13 @@ export interface ApiEntitiesNpmPackage {
     versions?: Record<string, any>;
 }
 export interface ApiEntitiesNpmPackageLoadMatch {
-    group_id?: string;
-    project_id?: string;
+    disttags?: Record<string, any>;
+    name?: string;
+    versions?: Record<string, any>;
 }
 export interface ApiEntitiesNpmPackageTag {
 }
 export interface ApiEntitiesNpmPackageTagLoadMatch {
-    group_id?: string;
-    project_id?: string;
 }
 export interface ApiEntitiesNugetPackagesVersion {
     versions?: any[];
@@ -3581,16 +3789,14 @@ export interface ApiEntitiesNugetSearchResult {
     versions?: Record<string, any>;
 }
 export interface ApiEntitiesNugetSearchResultListMatch {
-    group_id?: string;
-    project_id?: string;
+    project_id: string;
 }
 export interface ApiEntitiesNugetServiceIndex {
     resources?: any[];
     version?: string;
 }
 export interface ApiEntitiesNugetServiceIndexListMatch {
-    group_id?: string;
-    project_id?: string;
+    project_id: string;
 }
 export interface ApiEntitiesOrganizationsOrganization {
 }
@@ -3618,8 +3824,7 @@ export interface ApiEntitiesPackageLoadMatch {
     project_id: string;
 }
 export interface ApiEntitiesPackageListMatch {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface ApiEntitiesPackageFile {
     created_at?: string;
@@ -3768,13 +3973,10 @@ export interface ApiEntitiesPackagesDebianDistributionLoadMatch {
     project_id?: string;
 }
 export interface ApiEntitiesPackagesDebianDistributionListMatch {
-    group_id?: string;
-    project_id?: string;
-    codename?: any;
+    project_id: string;
 }
 export interface ApiEntitiesPackagesDebianDistributionCreateData {
-    group_id?: string;
-    project_id?: string;
+    project_id: string;
     architectures?: any[];
     codename?: string;
     components?: any[];
@@ -3921,7 +4123,7 @@ export interface ApiEntitiesPersonalAccessTokenWithToken {
     user_id?: number;
 }
 export interface ApiEntitiesPersonalAccessTokenWithTokenCreateData {
-    personal_access_token_id?: string;
+    personal_access_token_id: string;
     active?: boolean;
     created_at?: string;
     description?: string;
@@ -4169,13 +4371,10 @@ export interface ApiEntitiesProject {
     wiki_enabled?: boolean;
 }
 export interface ApiEntitiesProjectListMatch {
-    project_id?: string;
-    group_id?: string;
+    project_id: string;
 }
 export interface ApiEntitiesProjectCreateData {
-    forked_from_id?: string;
-    project_id?: string;
-    user_id?: string;
+    user_id: string;
     allow_merge_on_skipped_pipeline?: boolean;
     allow_pipeline_trigger_approve_deployment?: boolean;
     analytics_access_level?: string;
@@ -4325,8 +4524,7 @@ export interface ApiEntitiesProjectCreateData {
     wiki_enabled?: boolean;
 }
 export interface ApiEntitiesProjectUpdateData {
-    id?: string;
-    project_id?: string;
+    id: string;
     allow_merge_on_skipped_pipeline?: boolean;
     allow_pipeline_trigger_approve_deployment?: boolean;
     analytics_access_level?: string;
@@ -4925,7 +5123,7 @@ export interface ApiEntitiesProjectsTopic {
     total_projects_count?: string;
 }
 export interface ApiEntitiesProjectsTopicLoadMatch {
-    id?: string;
+    id: string;
 }
 export interface ApiEntitiesProjectsTopicCreateData {
     avatar_url?: string;
@@ -5102,8 +5300,7 @@ export interface ApiEntitiesReleaseLoadMatch {
     project_id: string;
 }
 export interface ApiEntitiesReleaseListMatch {
-    project_id?: string;
-    group_id?: string;
+    project_id: string;
 }
 export interface ApiEntitiesReleaseCreateData {
     project_id: string;
@@ -5263,8 +5460,7 @@ export interface ApiEntitiesResourceAccessTokenWithToken {
     user_id?: number;
 }
 export interface ApiEntitiesResourceAccessTokenWithTokenCreateData {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
     access_level?: number;
     active?: boolean;
     created_at?: string;
@@ -5400,7 +5596,6 @@ export interface ApiEntitiesSuggestion {
     to_line?: string;
 }
 export interface ApiEntitiesSuggestionUpdateData {
-    suggestion_id?: string;
     appliable?: string;
     applied?: string;
     from_content?: string;
@@ -5424,7 +5619,7 @@ export interface ApiEntitiesSystemBroadcastMessage {
     theme?: string;
 }
 export interface ApiEntitiesSystemBroadcastMessageLoadMatch {
-    id?: string;
+    id: string;
 }
 export interface ApiEntitiesSystemBroadcastMessageCreateData {
     active?: boolean;
@@ -5603,9 +5798,7 @@ export interface ApiEntitiesUserAgentDetail {
     user_agent?: string;
 }
 export interface ApiEntitiesUserAgentDetailLoadMatch {
-    issue_id?: string;
-    project_id?: string;
-    snippet_id?: string;
+    snippet_id: string;
 }
 export interface ApiEntitiesUserCount {
     assigned_issues?: number;
@@ -5685,8 +5878,7 @@ export interface ApiEntitiesUserWithAdminListMatch {
 export interface ApiEntitiesWikiAttachment {
 }
 export interface ApiEntitiesWikiAttachmentCreateData {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface ApiEntitiesWikiPage {
 }
@@ -5696,8 +5888,7 @@ export interface ApiEntitiesWikiPageLoadMatch {
     project_id?: string;
 }
 export interface ApiEntitiesWikiPageCreateData {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface ApiEntitiesWikiPageUpdateData {
     group_id?: string;
@@ -5711,8 +5902,7 @@ export interface ApiEntitiesWikiPageBasic {
     wiki_page_meta_id?: number;
 }
 export interface ApiEntitiesWikiPageBasicListMatch {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface Application {
 }
@@ -5778,9 +5968,8 @@ export interface ComposerCreateData {
 export interface ComposerPackage {
 }
 export interface ComposerPackageLoadMatch {
-    project_id?: string;
-    group_id?: string;
-    sha?: any;
+    group_id: string;
+    sha: any;
 }
 export interface Conan {
 }
@@ -5794,20 +5983,12 @@ export interface ConanRemoveMatch {
 export interface ConanPackage {
 }
 export interface ConanPackageLoadMatch {
-    conan_package_reference?: any;
-    file_name?: any;
-    id?: string;
-    package_channel?: any;
-    package_name?: any;
-    package_revision?: any;
-    package_username?: any;
-    package_version?: any;
-    recipe_revision?: any;
-    conan_id?: string;
-    package_id?: string;
-    project_id?: string;
-    revision_id?: string;
-    file_id?: string;
+    file_id: string;
+    file_name: any;
+    package_channel: any;
+    package_username: any;
+    package_version: any;
+    recipe_revision: any;
 }
 export interface ConanPackageUpdateData {
     conan_package_reference?: any;
@@ -5852,9 +6033,8 @@ export interface CustomAttribute {
     value?: string;
 }
 export interface CustomAttributeLoadMatch {
-    group_id?: string;
-    id?: string;
-    project_id?: string;
+    group_id: string;
+    id: string;
 }
 export interface Debian {
 }
@@ -5872,17 +6052,12 @@ export interface DebianDistributionRemoveMatch {
 export interface DebianPackage {
 }
 export interface DebianPackageLoadMatch {
-    distribution?: any;
-    file_name?: any;
-    id?: string;
-    letter?: any;
-    package_name?: any;
-    package_version?: any;
-    project_id?: string;
-    architecture?: any;
-    distribution_id?: string;
-    file_sha256?: any;
-    group_id?: string;
+    distribution: any;
+    file_name: any;
+    id: string;
+    letter: any;
+    package_name: any;
+    package_version: any;
 }
 export interface DebianPackageUpdateData {
     file_name: any;
@@ -5935,8 +6110,7 @@ export interface EeApiEntitiesAuditEventLoadMatch {
     project_id?: string;
 }
 export interface EeApiEntitiesAuditEventListMatch {
-    group_id?: string;
-    project_id?: string;
+    group_id: string;
 }
 export interface EeApiEntitiesBillableMembership {
     custom_role?: string;
@@ -6570,7 +6744,6 @@ export interface GeoLoadMatch {
     [action: string]: any;
 }
 export interface GeoCreateData {
-    node_proxy_id?: string;
 }
 export interface GoProxy {
 }
@@ -6660,13 +6833,10 @@ export interface ImportCreateData {
 export interface Integration {
 }
 export interface IntegrationCreateData {
-    project_id?: string;
 }
 export interface IntegrationRemoveMatch {
-    group_id?: string;
-    id?: string;
-    project_id?: string;
-    slug?: string;
+    group_id: string;
+    id: string;
 }
 export interface Invitation {
 }
@@ -6694,7 +6864,6 @@ export interface JobLoadMatch {
     [action: string]: any;
 }
 export interface JobCreateData {
-    id?: string;
     $action?: string;
     [action: string]: any;
 }
@@ -6789,8 +6958,6 @@ export interface NpmPackageLoadMatch {
     project_id: string;
 }
 export interface NpmPackageCreateData {
-    group_id?: string;
-    project_id?: string;
 }
 export interface NpmPackageUpdateData {
     group_id?: string;
@@ -6826,12 +6993,10 @@ export interface NugetPackage {
     version?: string;
 }
 export interface NugetPackageLoadMatch {
-    group_id?: string;
-    project_id?: string;
+    project_id: string;
 }
 export interface NugetPackageListMatch {
-    group_id?: string;
-    project_id?: string;
+    project_id: string;
 }
 export interface NugetPackageUpdateData {
     project_id: string;
@@ -7118,9 +7283,7 @@ export interface PypiCreateData {
 export interface PypiPackage {
 }
 export interface PypiPackageLoadMatch {
-    group_id?: string;
-    sha256?: any;
-    project_id?: string;
+    project_id: string;
 }
 export interface PypiPackageCreateData {
     project_id: string;
@@ -7196,8 +7359,7 @@ export interface RunnerCreateData {
     [action: string]: any;
 }
 export interface RunnerRemoveMatch {
-    id?: string;
-    project_id?: string;
+    id: string;
     $action?: string;
     [action: string]: any;
 }

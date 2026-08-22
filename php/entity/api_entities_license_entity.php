@@ -242,22 +242,20 @@ class ApiEntitiesLicenseEntity
     }
 
     
-
-    
     /**
-     * List ApiEntitiesLicense items matching the given filter.
+     * Load a single ApiEntitiesLicense.
      *
-     * @param ApiEntitiesLicenseListMatch|array|null $reqmatch Match filter (any subset
-     *   of ApiEntitiesLicense fields) as an assoc-array; ApiEntitiesLicenseListMatch names the shape.
+     * @param ApiEntitiesLicenseLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed ApiEntitiesLicenseLoadMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return ApiEntitiesLicense[]|array A list of ApiEntitiesLicense items as assoc-arrays at
-     *   the SDK boundary; throws GitlabError on failure (item-5 convention).
+     * @return ApiEntitiesLicense|array The loaded ApiEntitiesLicense as an assoc-array at the
+     *   SDK boundary; throws GitlabError on failure (item-5 convention).
      */
-    public function list(?array $reqmatch = null, $ctrl = null): mixed
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
-            "opname" => "list",
+            "opname" => "load",
             "ctrl" => $ctrl,
             "match" => $this->_match,
             "data" => $this->_data,
@@ -269,11 +267,16 @@ class ApiEntitiesLicenseEntity
                 if ($ctx->result->resmatch) {
                     $this->_match = $ctx->result->resmatch;
                 }
+                if ($ctx->result->resdata) {
+                    $this->_data = GitlabHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
+                }
             }
         });
     }
 
 
+
+    
 
     
 

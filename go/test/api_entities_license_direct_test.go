@@ -11,16 +11,13 @@ import (
 )
 
 func TestApiEntitiesLicenseDirect(t *testing.T) {
-	t.Run("direct-list-api_entities_license", func(t *testing.T) {
-		setup := api_entities_licenseDirectSetup([]any{
-			map[string]any{"id": "direct01"},
-			map[string]any{"id": "direct02"},
-		})
+	t.Run("direct-load-api_entities_license", func(t *testing.T) {
+		setup := api_entities_licenseDirectSetup(map[string]any{"id": "direct01"})
 		_mode := "unit"
 		if setup.live {
 			_mode = "live"
 		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-api_entities_license", _mode); _shouldSkip {
+		if _shouldSkip, _reason := isControlSkipped("direct", "direct-load-api_entities_license", _mode); _shouldSkip {
 			if _reason == "" {
 				_reason = "skipped via sdk-test-control.json"
 			}
@@ -28,7 +25,7 @@ func TestApiEntitiesLicenseDirect(t *testing.T) {
 			return
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"api_entities_license01", "name01", "type01"} {
+			for _, _liveKey := range []string{"id01", "name01", "type01"} {
 				if v := setup.idmap[_liveKey]; v == nil {
 					t.Skipf("live test needs %s via *_ENTID env var (synthetic IDs only)", _liveKey)
 					return
@@ -38,19 +35,11 @@ func TestApiEntitiesLicenseDirect(t *testing.T) {
 		client := setup.client
 
 		params := map[string]any{}
+		query := map[string]any{}
 		if setup.live {
-			params["id"] = setup.idmap["api_entities_license01"]
 		} else {
 			params["id"] = "direct01"
-		}
-		if setup.live {
-			params["name"] = setup.idmap["name01"]
-		} else {
 			params["name"] = "direct02"
-		}
-		if setup.live {
-			params["type"] = setup.idmap["type01"]
-		} else {
 			params["type"] = "direct03"
 		}
 
@@ -58,17 +47,18 @@ func TestApiEntitiesLicenseDirect(t *testing.T) {
 			"path":   "api/v4/projects/{id}/templates/{type}/{name}",
 			"method": "GET",
 			"params": params,
+			"query":  query,
 		})
 		if setup.live {
-			// Live-mode leniency is a model decision
-			// (main.kit.test.live.strict): synthetic IDs 4xx constantly
-			// against an arbitrary public API, so the default SKIPS here.
-			// A project that owns its test server sets strict and FAILS.
+			// Live mode is lenient: synthetic IDs frequently 4xx. Skip
+			// rather than fail when the load endpoint isn't reachable with
+			// the IDs we can construct from setup.idmap — unless the model
+			// sets main.kit.test.live.strict.
 			if err != nil {
-				t.Skipf("list call failed (likely synthetic IDs against live API): %v", err)
+				t.Skipf("load call failed (likely synthetic IDs against live API): %v", err)
 			}
 			if result["ok"] != true {
-				t.Skipf("list call not ok (likely synthetic IDs against live API): %v", result)
+				t.Skipf("load call not ok (likely synthetic IDs against live API): %v", result)
 			}
 			status := core.ToInt(result["status"])
 			if status < 200 || status >= 300 {
@@ -84,15 +74,16 @@ func TestApiEntitiesLicenseDirect(t *testing.T) {
 			if core.ToInt(result["status"]) != 200 {
 				t.Fatalf("expected status 200, got %v", result["status"])
 			}
+			if result["data"] == nil {
+				t.Fatal("expected data to be non-nil")
+			}
 		}
 
 		if !setup.live {
-			if dataList, ok := result["data"].([]any); ok {
-				if len(dataList) != 2 {
-					t.Fatalf("expected 2 items, got %d", len(dataList))
+			if dataMap, ok := result["data"].(map[string]any); ok {
+				if dataMap["id"] != "direct01" {
+					t.Fatalf("expected data.id to be direct01, got %v", dataMap["id"])
 				}
-			} else {
-				t.Fatalf("expected data to be an array, got %T", result["data"])
 			}
 
 			if len(*setup.calls) != 1 {

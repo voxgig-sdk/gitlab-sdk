@@ -60,14 +60,15 @@ class ApiEntitiesAccessRequester(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesAccessRequesterListMatch(TypedDict, total=False):
+class ApiEntitiesAccessRequesterListMatch(TypedDict):
     group_id: str
-    project_id: str
 
 
-class ApiEntitiesAccessRequesterCreateData(TypedDict, total=False):
+class ApiEntitiesAccessRequesterCreateDataRequired(TypedDict):
     group_id: str
-    project_id: str
+
+
+class ApiEntitiesAccessRequesterCreateData(ApiEntitiesAccessRequesterCreateDataRequired, total=False):
     avatar_path: str
     avatar_url: str
     custom_attributes: list
@@ -268,24 +269,17 @@ class ApiEntitiesAwardEmojiLoadMatch(ApiEntitiesAwardEmojiLoadMatchRequired, tot
     snippet_id: str
 
 
-class ApiEntitiesAwardEmojiListMatch(TypedDict, total=False):
+class ApiEntitiesAwardEmojiListMatch(TypedDict):
     epic_id: str
     group_id: str
-    note_id: str
-    issue_id: str
-    project_id: str
-    merge_request_id: str
-    snippet_id: str
 
 
-class ApiEntitiesAwardEmojiCreateData(TypedDict, total=False):
+class ApiEntitiesAwardEmojiCreateDataRequired(TypedDict):
     epic_id: str
     group_id: str
-    note_id: str
-    issue_id: str
-    project_id: str
-    merge_request_id: str
-    snippet_id: str
+
+
+class ApiEntitiesAwardEmojiCreateData(ApiEntitiesAwardEmojiCreateDataRequired, total=False):
     avatar_path: str
     avatar_url: str
     awardable_id: int
@@ -323,14 +317,15 @@ class ApiEntitiesBadgeLoadMatch(ApiEntitiesBadgeLoadMatchRequired, total=False):
     project_id: str
 
 
-class ApiEntitiesBadgeListMatch(TypedDict, total=False):
+class ApiEntitiesBadgeListMatch(TypedDict):
     group_id: str
-    project_id: str
 
 
-class ApiEntitiesBadgeCreateData(TypedDict, total=False):
+class ApiEntitiesBadgeCreateDataRequired(TypedDict):
     group_id: str
-    project_id: str
+
+
+class ApiEntitiesBadgeCreateData(ApiEntitiesBadgeCreateDataRequired, total=False):
     id: str
     image_url: str
     kind: str
@@ -363,9 +358,8 @@ class ApiEntitiesBasicBadgeDetail(TypedDict, total=False):
     rendered_link_url: str
 
 
-class ApiEntitiesBasicBadgeDetailLoadMatch(TypedDict, total=False):
+class ApiEntitiesBasicBadgeDetailLoadMatch(TypedDict):
     group_id: str
-    project_id: str
 
 
 class ApiEntitiesBasicGroupDetail(TypedDict):
@@ -404,8 +398,30 @@ class ApiEntitiesBasicProjectDetail(TypedDict, total=False):
 
 
 class ApiEntitiesBasicProjectDetailListMatch(TypedDict, total=False):
-    user_id: str
-    project_id: str
+    avatar_url: str
+    created_at: str
+    custom_attributes: dict
+    default_branch: str
+    description: str
+    forks_count: int
+    http_url_to_repo: str
+    id: int
+    last_activity_at: str
+    license: dict
+    license_url: str
+    name: str
+    name_with_namespace: str
+    namespace: dict
+    path: str
+    path_with_namespace: str
+    readme_url: str
+    repository_storage: str
+    ssh_url_to_repo: str
+    star_count: int
+    tag_list: list
+    topics: list
+    visibility: str
+    web_url: str
 
 
 class ApiEntitiesBasicProjectDetailCreateDataRequired(TypedDict):
@@ -615,18 +631,36 @@ class ApiEntitiesBulkImport(TypedDict, total=False):
     updated_at: str
 
 
-class ApiEntitiesBulkImportLoadMatch(TypedDict, total=False):
-    bulk_import_id: str
-    entity_id: str
+class ApiEntitiesBulkImportLoadMatch(TypedDict):
     id: str
 
 
 class ApiEntitiesBulkImportListMatch(TypedDict, total=False):
-    bulk_import_id: str
+    bulk_import_id: int
+    created_at: str
+    destination_full_path: str
+    destination_name: str
+    destination_namespace: str
+    destination_slug: str
+    entity_type: str
+    failures: list
+    has_failures: bool
+    id: int
+    migrate_memberships: bool
+    migrate_projects: bool
+    namespace_id: int
+    parent_id: int
+    project_id: int
+    source_full_path: str
+    source_type: str
+    source_url: str
+    stats: dict
+    status: str
+    updated_at: str
 
 
 class ApiEntitiesBulkImportCreateData(TypedDict, total=False):
-    bulk_import_id: str
+    bulk_import_id: int
     created_at: str
     destination_full_path: str
     destination_name: str
@@ -674,9 +708,8 @@ class ApiEntitiesBulkImportsExportStatus(TypedDict, total=False):
     updated_at: str
 
 
-class ApiEntitiesBulkImportsExportStatusListMatch(TypedDict, total=False):
+class ApiEntitiesBulkImportsExportStatusListMatch(TypedDict):
     group_id: str
-    project_id: str
 
 
 class ApiEntitiesChangelog(TypedDict, total=False):
@@ -764,9 +797,37 @@ class ApiEntitiesCiJobLoadMatch(TypedDict):
 
 
 class ApiEntitiesCiJobListMatch(TypedDict, total=False):
-    pipeline_id: str
-    project_id: str
-    job_id: str
+    allow_failure: bool
+    archived: bool
+    artifacts: list
+    artifacts_expire_at: str
+    artifacts_file: dict
+    commit: dict
+    coverage: float
+    created_at: str
+    duration: float
+    erased_at: str
+    failure_reason: str
+    file_format: str
+    file_type: str
+    filename: str
+    finished_at: str
+    id: int
+    name: str
+    pipeline: dict
+    project: dict
+    queued_duration: float
+    ref: str
+    runner: dict
+    runner_manager: dict
+    size: int
+    stage: str
+    started_at: str
+    status: str
+    tag: bool
+    tag_list: list
+    user: dict
+    web_url: str
 
 
 class ApiEntitiesCiJobCreateDataRequired(TypedDict):
@@ -1056,10 +1117,8 @@ class ApiEntitiesCiResetTokenResult(TypedDict):
     pass
 
 
-class ApiEntitiesCiResetTokenResultCreateData(TypedDict, total=False):
-    group_id: str
-    project_id: str
-    runner_id: str
+class ApiEntitiesCiResetTokenResultCreateData(TypedDict):
+    pass
 
 
 class ApiEntitiesCiResourceGroup(TypedDict, total=False):
@@ -1104,9 +1163,20 @@ class ApiEntitiesCiRunner(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesCiRunnerLoadMatch(TypedDict, total=False):
-    project_id: str
-    group_id: str
+class ApiEntitiesCiRunnerLoadMatchRequired(TypedDict):
+    id: int
+
+
+class ApiEntitiesCiRunnerLoadMatch(ApiEntitiesCiRunnerLoadMatchRequired, total=False):
+    avatar_path: str
+    avatar_url: str
+    custom_attributes: list
+    locked: bool
+    name: str
+    public_email: str
+    state: str
+    username: str
+    web_url: str
 
 
 class ApiEntitiesCiRunnerCreateDataRequired(TypedDict):
@@ -1245,10 +1315,9 @@ class ApiEntitiesCiVariable(TypedDict, total=False):
     variable_type: str
 
 
-class ApiEntitiesCiVariableLoadMatch(TypedDict, total=False):
+class ApiEntitiesCiVariableLoadMatch(TypedDict):
     id: str
     project_id: str
-    group_id: str
 
 
 class ApiEntitiesCiVariableListMatch(TypedDict):
@@ -1256,10 +1325,11 @@ class ApiEntitiesCiVariableListMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesCiVariableCreateData(TypedDict, total=False):
-    pipeline_schedule_id: str
-    project_id: str
+class ApiEntitiesCiVariableCreateDataRequired(TypedDict):
     group_id: str
+
+
+class ApiEntitiesCiVariableCreateData(ApiEntitiesCiVariableCreateDataRequired, total=False):
     description: str
     environment_scope: str
     hidden: bool
@@ -1313,8 +1383,21 @@ class ApiEntitiesClusterLoadMatch(TypedDict):
 
 
 class ApiEntitiesClusterListMatch(TypedDict, total=False):
-    group_id: str
-    project_id: str
+    cluster_type: str
+    created_at: str
+    domain: str
+    enabled: bool
+    environment_scope: str
+    id: str
+    managed: str
+    management_project: dict
+    name: str
+    namespace_per_environment: str
+    platform_kubernetes: dict
+    platform_type: str
+    provider_gcp: dict
+    provider_type: str
+    user: dict
 
 
 class ApiEntitiesClusterCreateData(TypedDict, total=False):
@@ -1858,9 +1941,8 @@ class ApiEntitiesContainerRegistryRepositoryLoadMatch(TypedDict):
     id: str
 
 
-class ApiEntitiesContainerRegistryRepositoryListMatch(TypedDict, total=False):
+class ApiEntitiesContainerRegistryRepositoryListMatch(TypedDict):
     project_id: str
-    group_id: str
 
 
 class ApiEntitiesContainerRegistryTag(TypedDict, total=False):
@@ -1932,8 +2014,6 @@ class ApiEntitiesDeployKeyListMatch(TypedDict, total=False):
 
 
 class ApiEntitiesDeployKeyCreateData(TypedDict, total=False):
-    deploy_key_id: str
-    project_id: str
     created_at: str
     expires_at: str
     fingerprint: str
@@ -2028,17 +2108,21 @@ class ApiEntitiesDeployTokenLoadMatch(ApiEntitiesDeployTokenLoadMatchRequired, t
 
 
 class ApiEntitiesDeployTokenListMatch(TypedDict, total=False):
-    group_id: str
-    project_id: str
+    expired: bool
+    expires_at: str
+    id: int
+    name: str
+    revoked: bool
+    scopes: list
+    username: str
 
 
 class ApiEntitiesDeployTokenWithToken(TypedDict):
     pass
 
 
-class ApiEntitiesDeployTokenWithTokenCreateData(TypedDict, total=False):
+class ApiEntitiesDeployTokenWithTokenCreateData(TypedDict):
     group_id: str
-    project_id: str
 
 
 class ApiEntitiesDeployment(TypedDict, total=False):
@@ -2373,7 +2457,22 @@ class ApiEntitiesEventLoadMatch(TypedDict):
 
 
 class ApiEntitiesEventListMatch(TypedDict, total=False):
-    user_id: str
+    action_name: str
+    author: dict
+    author_id: int
+    author_username: str
+    created_at: str
+    id: int
+    imported: bool
+    imported_from: str
+    note: dict
+    project_id: int
+    push_data: dict
+    target_id: int
+    target_iid: int
+    target_title: str
+    target_type: str
+    wiki_page: dict
 
 
 class ApiEntitiesFeature(TypedDict, total=False):
@@ -2657,12 +2756,57 @@ class ApiEntitiesGroupLoadMatch(TypedDict):
 
 
 class ApiEntitiesGroupListMatch(TypedDict, total=False):
-    group_id: str
-    project_id: str
+    archived: bool
+    auto_devops_enabled: str
+    auto_duo_code_review_enabled: str
+    avatar_url: str
+    created_at: str
+    custom_attributes: dict
+    default_branch: str
+    default_branch_protection: str
+    default_branch_protection_defaults: str
+    description: str
+    duo_core_features_enabled: bool
+    duo_features_enabled: str
+    emails_disabled: bool
+    emails_enabled: bool
+    file_template_project_id: str
+    full_name: str
+    full_path: str
+    id: str
+    ldap_access: str
+    ldap_cn: str
+    ldap_group_links: dict
+    lfs_enabled: str
+    lock_duo_features_enabled: str
+    lock_math_rendering_limits_enabled: bool
+    marked_for_deletion_on: str
+    math_rendering_limits_enabled: bool
+    max_artifacts_size: int
+    mentions_disabled: str
+    name: str
+    organization_id: str
+    parent_id: str
+    path: str
+    project_creation_level: str
+    repository_storage: str
+    request_access_enabled: str
+    require_two_factor_authentication: str
+    root_storage_statistics: dict
+    saml_group_links: dict
+    share_with_group_lock: str
+    shared_runners_setting: str
+    show_diff_preview_in_email: bool
+    statistics: dict
+    subgroup_creation_level: str
+    two_factor_grace_period: str
+    visibility: str
+    web_based_commit_signing_enabled: str
+    web_url: str
+    wiki_access_level: str
 
 
 class ApiEntitiesGroupCreateData(TypedDict, total=False):
-    group_id: str
     archived: bool
     auto_devops_enabled: str
     auto_duo_code_review_enabled: str
@@ -3005,11 +3149,9 @@ class ApiEntitiesIntegration(TypedDict):
     pass
 
 
-class ApiEntitiesIntegrationLoadMatch(TypedDict, total=False):
+class ApiEntitiesIntegrationLoadMatch(TypedDict):
     group_id: str
     id: str
-    project_id: str
-    slug: str
 
 
 class ApiEntitiesIntegrationBasic(TypedDict, total=False):
@@ -3038,14 +3180,15 @@ class ApiEntitiesIntegrationBasic(TypedDict, total=False):
     wiki_page_events: bool
 
 
-class ApiEntitiesIntegrationBasicListMatch(TypedDict, total=False):
+class ApiEntitiesIntegrationBasicListMatch(TypedDict):
     group_id: str
-    project_id: str
 
 
-class ApiEntitiesIntegrationBasicUpdateData(TypedDict, total=False):
+class ApiEntitiesIntegrationBasicUpdateDataRequired(TypedDict):
     group_id: str
-    project_id: str
+
+
+class ApiEntitiesIntegrationBasicUpdateData(ApiEntitiesIntegrationBasicUpdateDataRequired, total=False):
     active: bool
     alert_events: bool
     comment_on_event_enabled: bool
@@ -3081,14 +3224,15 @@ class ApiEntitiesInvitation(TypedDict, total=False):
     user_name: str
 
 
-class ApiEntitiesInvitationListMatch(TypedDict, total=False):
+class ApiEntitiesInvitationListMatch(TypedDict):
     group_id: str
-    project_id: str
 
 
-class ApiEntitiesInvitationCreateData(TypedDict, total=False):
+class ApiEntitiesInvitationCreateDataRequired(TypedDict):
     group_id: str
-    project_id: str
+
+
+class ApiEntitiesInvitationCreateData(ApiEntitiesInvitationCreateDataRequired, total=False):
     access_level: str
     created_at: str
     created_by_name: str
@@ -3198,8 +3342,49 @@ class ApiEntitiesIssueLoadMatch(ApiEntitiesIssueLoadMatchRequired, total=False):
 
 
 class ApiEntitiesIssueListMatch(TypedDict, total=False):
-    project_id: str
-    group_id: str
+    assignee: dict
+    assignees: dict
+    author: dict
+    blocking_issues_count: str
+    closed_at: str
+    closed_by: dict
+    confidential: bool
+    created_at: str
+    description: str
+    discussion_locked: bool
+    downvotes: str
+    due_date: str
+    epic: dict
+    epic_iid: str
+    has_tasks: bool
+    health_status: str
+    id: int
+    iid: int
+    imported: str
+    imported_from: str
+    issue_type: str
+    iteration: dict
+    labels: list
+    links: dict
+    merge_requests_count: str
+    milestone: dict
+    moved_to_id: str
+    project_id: int
+    references: dict
+    service_desk_reply_to: str
+    severity: str
+    state: str
+    subscribed: str
+    task_completion_status: str
+    task_status: str
+    time_stats: dict
+    title: str
+    type: str
+    updated_at: str
+    upvotes: str
+    user_notes_count: str
+    web_url: str
+    weight: str
 
 
 class ApiEntitiesIssueCreateDataRequired(TypedDict):
@@ -3339,7 +3524,7 @@ class ApiEntitiesLicense(TypedDict, total=False):
     source_url: str
 
 
-class ApiEntitiesLicenseListMatch(TypedDict):
+class ApiEntitiesLicenseLoadMatch(TypedDict):
     id: str
     name: str
     type: Any
@@ -3361,9 +3546,8 @@ class ApiEntitiesMarkdownUploadAdmin(TypedDict, total=False):
     uploaded_by: dict
 
 
-class ApiEntitiesMarkdownUploadAdminListMatch(TypedDict, total=False):
+class ApiEntitiesMarkdownUploadAdminListMatch(TypedDict):
     group_id: str
-    project_id: str
 
 
 class ApiEntitiesMember(TypedDict, total=False):
@@ -3392,22 +3576,20 @@ class ApiEntitiesMember(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesMemberLoadMatch(TypedDict, total=False):
+class ApiEntitiesMemberLoadMatch(TypedDict):
     group_id: str
     id: str
-    user_id: str
-    project_id: str
 
 
-class ApiEntitiesMemberListMatch(TypedDict, total=False):
+class ApiEntitiesMemberListMatch(TypedDict):
     group_id: str
-    project_id: str
 
 
-class ApiEntitiesMemberCreateData(TypedDict, total=False):
+class ApiEntitiesMemberCreateDataRequired(TypedDict):
     group_id: str
-    member_id: str
-    project_id: str
+
+
+class ApiEntitiesMemberCreateData(ApiEntitiesMemberCreateDataRequired, total=False):
     access_level: str
     avatar_path: str
     avatar_url: str
@@ -3774,10 +3956,65 @@ class ApiEntitiesMergeRequestBasic(TypedDict, total=False):
     work_in_progress: str
 
 
-class ApiEntitiesMergeRequestBasicLoadMatch(TypedDict, total=False):
-    group_id: str
-    project_id: str
-    issue_id: str
+class ApiEntitiesMergeRequestBasicLoadMatchRequired(TypedDict):
+    id: int
+
+
+class ApiEntitiesMergeRequestBasicLoadMatch(ApiEntitiesMergeRequestBasicLoadMatchRequired, total=False):
+    allow_collaboration: bool
+    allow_maintainer_to_push: bool
+    approvals_before_merge: str
+    assignee: dict
+    assignees: dict
+    author: dict
+    blocking_discussions_resolved: str
+    closed_at: str
+    closed_by: dict
+    created_at: str
+    description: str
+    description_html: str
+    detailed_merge_status: str
+    discussion_locked: str
+    downvotes: str
+    draft: str
+    force_remove_source_branch: str
+    has_conflicts: bool
+    iid: int
+    imported: str
+    imported_from: str
+    labels: str
+    merge_after: str
+    merge_commit_sha: str
+    merge_status: str
+    merge_user: dict
+    merge_when_pipeline_succeeds: str
+    merged_at: str
+    merged_by: dict
+    milestone: dict
+    prepared_at: str
+    project_id: int
+    reference: str
+    references: dict
+    reviewers: dict
+    sha: str
+    should_remove_source_branch: bool
+    source_branch: str
+    source_project_id: str
+    squash: str
+    squash_commit_sha: str
+    squash_on_merge: str
+    state: str
+    target_branch: str
+    target_project_id: str
+    task_completion_status: str
+    time_stats: dict
+    title: str
+    title_html: str
+    updated_at: str
+    upvotes: str
+    user_notes_count: str
+    web_url: str
+    work_in_progress: str
 
 
 class ApiEntitiesMergeRequestBasicListMatchRequired(TypedDict):
@@ -4110,17 +4347,17 @@ class ApiEntitiesNpmPackage(TypedDict, total=False):
 
 
 class ApiEntitiesNpmPackageLoadMatch(TypedDict, total=False):
-    group_id: str
-    project_id: str
+    disttags: dict
+    name: str
+    versions: dict
 
 
 class ApiEntitiesNpmPackageTag(TypedDict):
     pass
 
 
-class ApiEntitiesNpmPackageTagLoadMatch(TypedDict, total=False):
-    group_id: str
-    project_id: str
+class ApiEntitiesNpmPackageTagLoadMatch(TypedDict):
+    pass
 
 
 class ApiEntitiesNugetPackagesVersion(TypedDict, total=False):
@@ -4148,8 +4385,7 @@ class ApiEntitiesNugetSearchResult(TypedDict, total=False):
     versions: dict
 
 
-class ApiEntitiesNugetSearchResultListMatch(TypedDict, total=False):
-    group_id: str
+class ApiEntitiesNugetSearchResultListMatch(TypedDict):
     project_id: str
 
 
@@ -4158,8 +4394,7 @@ class ApiEntitiesNugetServiceIndex(TypedDict, total=False):
     version: str
 
 
-class ApiEntitiesNugetServiceIndexListMatch(TypedDict, total=False):
-    group_id: str
+class ApiEntitiesNugetServiceIndexListMatch(TypedDict):
     project_id: str
 
 
@@ -4194,9 +4429,8 @@ class ApiEntitiesPackageLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesPackageListMatch(TypedDict, total=False):
+class ApiEntitiesPackageListMatch(TypedDict):
     group_id: str
-    project_id: str
 
 
 class ApiEntitiesPackageFile(TypedDict, total=False):
@@ -4399,15 +4633,15 @@ class ApiEntitiesPackagesDebianDistributionLoadMatch(ApiEntitiesPackagesDebianDi
     project_id: str
 
 
-class ApiEntitiesPackagesDebianDistributionListMatch(TypedDict, total=False):
-    group_id: str
+class ApiEntitiesPackagesDebianDistributionListMatch(TypedDict):
     project_id: str
-    codename: Any
 
 
-class ApiEntitiesPackagesDebianDistributionCreateData(TypedDict, total=False):
-    group_id: str
+class ApiEntitiesPackagesDebianDistributionCreateDataRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesPackagesDebianDistributionCreateData(ApiEntitiesPackagesDebianDistributionCreateDataRequired, total=False):
     architectures: list
     codename: str
     components: list
@@ -4577,8 +4811,11 @@ class ApiEntitiesPersonalAccessTokenWithToken(TypedDict, total=False):
     user_id: int
 
 
-class ApiEntitiesPersonalAccessTokenWithTokenCreateData(TypedDict, total=False):
+class ApiEntitiesPersonalAccessTokenWithTokenCreateDataRequired(TypedDict):
     personal_access_token_id: str
+
+
+class ApiEntitiesPersonalAccessTokenWithTokenCreateData(ApiEntitiesPersonalAccessTokenWithTokenCreateDataRequired, total=False):
     active: bool
     created_at: str
     description: str
@@ -4841,15 +5078,15 @@ class ApiEntitiesProject(TypedDict, total=False):
     wiki_enabled: bool
 
 
-class ApiEntitiesProjectListMatch(TypedDict, total=False):
+class ApiEntitiesProjectListMatch(TypedDict):
     project_id: str
-    group_id: str
 
 
-class ApiEntitiesProjectCreateData(TypedDict, total=False):
-    forked_from_id: str
-    project_id: str
+class ApiEntitiesProjectCreateDataRequired(TypedDict):
     user_id: str
+
+
+class ApiEntitiesProjectCreateData(ApiEntitiesProjectCreateDataRequired, total=False):
     allow_merge_on_skipped_pipeline: bool
     allow_pipeline_trigger_approve_deployment: bool
     analytics_access_level: str
@@ -4999,9 +5236,11 @@ class ApiEntitiesProjectCreateData(TypedDict, total=False):
     wiki_enabled: bool
 
 
-class ApiEntitiesProjectUpdateData(TypedDict, total=False):
+class ApiEntitiesProjectUpdateDataRequired(TypedDict):
     id: str
-    project_id: str
+
+
+class ApiEntitiesProjectUpdateData(ApiEntitiesProjectUpdateDataRequired, total=False):
     allow_merge_on_skipped_pipeline: bool
     allow_pipeline_trigger_approve_deployment: bool
     analytics_access_level: str
@@ -5665,7 +5904,7 @@ class ApiEntitiesProjectsTopic(TypedDict, total=False):
     total_projects_count: str
 
 
-class ApiEntitiesProjectsTopicLoadMatch(TypedDict, total=False):
+class ApiEntitiesProjectsTopicLoadMatch(TypedDict):
     id: str
 
 
@@ -5876,9 +6115,8 @@ class ApiEntitiesReleaseLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesReleaseListMatch(TypedDict, total=False):
+class ApiEntitiesReleaseListMatch(TypedDict):
     project_id: str
-    group_id: str
 
 
 class ApiEntitiesReleaseCreateDataRequired(TypedDict):
@@ -6071,9 +6309,11 @@ class ApiEntitiesResourceAccessTokenWithToken(TypedDict, total=False):
     user_id: int
 
 
-class ApiEntitiesResourceAccessTokenWithTokenCreateData(TypedDict, total=False):
+class ApiEntitiesResourceAccessTokenWithTokenCreateDataRequired(TypedDict):
     group_id: str
-    project_id: str
+
+
+class ApiEntitiesResourceAccessTokenWithTokenCreateData(ApiEntitiesResourceAccessTokenWithTokenCreateDataRequired, total=False):
     access_level: int
     active: bool
     created_at: str
@@ -6224,7 +6464,6 @@ class ApiEntitiesSuggestion(TypedDict, total=False):
 
 
 class ApiEntitiesSuggestionUpdateData(TypedDict, total=False):
-    suggestion_id: str
     appliable: str
     applied: str
     from_content: str
@@ -6249,7 +6488,7 @@ class ApiEntitiesSystemBroadcastMessage(TypedDict, total=False):
     theme: str
 
 
-class ApiEntitiesSystemBroadcastMessageLoadMatch(TypedDict, total=False):
+class ApiEntitiesSystemBroadcastMessageLoadMatch(TypedDict):
     id: str
 
 
@@ -6466,9 +6705,7 @@ class ApiEntitiesUserAgentDetail(TypedDict, total=False):
     user_agent: str
 
 
-class ApiEntitiesUserAgentDetailLoadMatch(TypedDict, total=False):
-    issue_id: str
-    project_id: str
+class ApiEntitiesUserAgentDetailLoadMatch(TypedDict):
     snippet_id: str
 
 
@@ -6557,9 +6794,8 @@ class ApiEntitiesWikiAttachment(TypedDict):
     pass
 
 
-class ApiEntitiesWikiAttachmentCreateData(TypedDict, total=False):
+class ApiEntitiesWikiAttachmentCreateData(TypedDict):
     group_id: str
-    project_id: str
 
 
 class ApiEntitiesWikiPage(TypedDict):
@@ -6575,9 +6811,8 @@ class ApiEntitiesWikiPageLoadMatch(ApiEntitiesWikiPageLoadMatchRequired, total=F
     project_id: str
 
 
-class ApiEntitiesWikiPageCreateData(TypedDict, total=False):
+class ApiEntitiesWikiPageCreateData(TypedDict):
     group_id: str
-    project_id: str
 
 
 class ApiEntitiesWikiPageUpdateDataRequired(TypedDict):
@@ -6596,9 +6831,8 @@ class ApiEntitiesWikiPageBasic(TypedDict, total=False):
     wiki_page_meta_id: int
 
 
-class ApiEntitiesWikiPageBasicListMatch(TypedDict, total=False):
+class ApiEntitiesWikiPageBasicListMatch(TypedDict):
     group_id: str
-    project_id: str
 
 
 class Application(TypedDict):
@@ -6711,8 +6945,7 @@ class ComposerPackage(TypedDict):
     pass
 
 
-class ComposerPackageLoadMatch(TypedDict, total=False):
-    project_id: str
+class ComposerPackageLoadMatch(TypedDict):
     group_id: str
     sha: Any
 
@@ -6736,21 +6969,13 @@ class ConanPackage(TypedDict):
     pass
 
 
-class ConanPackageLoadMatch(TypedDict, total=False):
-    conan_package_reference: Any
+class ConanPackageLoadMatch(TypedDict):
+    file_id: str
     file_name: Any
-    id: str
     package_channel: Any
-    package_name: Any
-    package_revision: Any
     package_username: Any
     package_version: Any
     recipe_revision: Any
-    conan_id: str
-    package_id: str
-    project_id: str
-    revision_id: str
-    file_id: str
 
 
 class ConanPackageUpdateDataRequired(TypedDict):
@@ -6814,10 +7039,9 @@ class CustomAttribute(TypedDict, total=False):
     value: str
 
 
-class CustomAttributeLoadMatch(TypedDict, total=False):
+class CustomAttributeLoadMatch(TypedDict):
     group_id: str
     id: str
-    project_id: str
 
 
 class Debian(TypedDict):
@@ -6846,18 +7070,13 @@ class DebianPackage(TypedDict):
     pass
 
 
-class DebianPackageLoadMatch(TypedDict, total=False):
+class DebianPackageLoadMatch(TypedDict):
     distribution: Any
     file_name: Any
     id: str
     letter: Any
     package_name: Any
     package_version: Any
-    project_id: str
-    architecture: Any
-    distribution_id: str
-    file_sha256: Any
-    group_id: str
 
 
 class DebianPackageUpdateData(TypedDict):
@@ -6932,9 +7151,8 @@ class EeApiEntitiesAuditEventLoadMatch(EeApiEntitiesAuditEventLoadMatchRequired,
     project_id: str
 
 
-class EeApiEntitiesAuditEventListMatch(TypedDict, total=False):
+class EeApiEntitiesAuditEventListMatch(TypedDict):
     group_id: str
-    project_id: str
 
 
 class EeApiEntitiesBillableMembership(TypedDict, total=False):
@@ -7614,8 +7832,8 @@ class GeoLoadMatch(TypedDict):
     replicable_name: Any
 
 
-class GeoCreateData(TypedDict, total=False):
-    node_proxy_id: str
+class GeoCreateData(TypedDict):
+    pass
 
 
 class GoProxy(TypedDict):
@@ -7752,15 +7970,13 @@ class Integration(TypedDict):
     pass
 
 
-class IntegrationCreateData(TypedDict, total=False):
-    project_id: str
+class IntegrationCreateData(TypedDict):
+    pass
 
 
-class IntegrationRemoveMatch(TypedDict, total=False):
+class IntegrationRemoveMatch(TypedDict):
     group_id: str
     id: str
-    project_id: str
-    slug: str
 
 
 class Invitation(TypedDict):
@@ -7802,8 +8018,8 @@ class JobLoadMatch(TypedDict):
     id: str
 
 
-class JobCreateData(TypedDict, total=False):
-    id: str
+class JobCreateData(TypedDict):
+    pass
 
 
 class JobUpdateData(TypedDict):
@@ -7923,9 +8139,8 @@ class NpmPackageLoadMatch(TypedDict):
     project_id: str
 
 
-class NpmPackageCreateData(TypedDict, total=False):
-    group_id: str
-    project_id: str
+class NpmPackageCreateData(TypedDict):
+    pass
 
 
 class NpmPackageUpdateDataRequired(TypedDict):
@@ -7973,13 +8188,11 @@ class NugetPackage(TypedDict, total=False):
     version: str
 
 
-class NugetPackageLoadMatch(TypedDict, total=False):
-    group_id: str
+class NugetPackageLoadMatch(TypedDict):
     project_id: str
 
 
-class NugetPackageListMatch(TypedDict, total=False):
-    group_id: str
+class NugetPackageListMatch(TypedDict):
     project_id: str
 
 
@@ -8335,9 +8548,7 @@ class PypiPackage(TypedDict):
     pass
 
 
-class PypiPackageLoadMatch(TypedDict, total=False):
-    group_id: str
-    sha256: Any
+class PypiPackageLoadMatch(TypedDict):
     project_id: str
 
 
@@ -8440,9 +8651,8 @@ class RunnerCreateData(TypedDict):
     pass
 
 
-class RunnerRemoveMatch(TypedDict, total=False):
+class RunnerRemoveMatch(TypedDict):
     id: str
-    project_id: str
 
 
 class Search(TypedDict):
