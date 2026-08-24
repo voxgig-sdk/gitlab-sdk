@@ -1,9 +1,0 @@
-# BasicProjectHookFlow
-
-main: kit: flow: BasicProjectHookFlow:
-{
-  entity: "project_hook",
-  kind: "basic",
-  name: "BasicProjectHookFlow",
-  "key$": "BasicProjectHookFlow"
-}

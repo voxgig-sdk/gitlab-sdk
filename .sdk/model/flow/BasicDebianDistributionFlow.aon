@@ -1,9 +1,0 @@
-# BasicDebianDistributionFlow
-
-main: kit: flow: BasicDebianDistributionFlow:
-{
-  entity: "debian_distribution",
-  kind: "basic",
-  name: "BasicDebianDistributionFlow",
-  "key$": "BasicDebianDistributionFlow"
-}

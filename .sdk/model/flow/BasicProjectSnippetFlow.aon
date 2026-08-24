@@ -1,9 +1,0 @@
-# BasicProjectSnippetFlow
-
-main: kit: flow: BasicProjectSnippetFlow:
-{
-  entity: "project_snippet",
-  kind: "basic",
-  name: "BasicProjectSnippetFlow",
-  "key$": "BasicProjectSnippetFlow"
-}

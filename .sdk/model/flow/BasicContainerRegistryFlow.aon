@@ -1,9 +1,0 @@
-# BasicContainerRegistryFlow
-
-main: kit: flow: BasicContainerRegistryFlow:
-{
-  entity: "container_registry",
-  kind: "basic",
-  name: "BasicContainerRegistryFlow",
-  "key$": "BasicContainerRegistryFlow"
-}

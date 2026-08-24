@@ -1,9 +1,0 @@
-# BasicClusterAgentFlow
-
-main: kit: flow: BasicClusterAgentFlow:
-{
-  entity: "cluster_agent",
-  kind: "basic",
-  name: "BasicClusterAgentFlow",
-  "key$": "BasicClusterAgentFlow"
-}

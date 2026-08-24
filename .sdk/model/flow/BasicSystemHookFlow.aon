@@ -1,9 +1,0 @@
-# BasicSystemHookFlow
-
-main: kit: flow: BasicSystemHookFlow:
-{
-  entity: "system_hook",
-  kind: "basic",
-  name: "BasicSystemHookFlow",
-  "key$": "BasicSystemHookFlow"
-}

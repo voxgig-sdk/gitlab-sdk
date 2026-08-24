@@ -1,9 +1,0 @@
-# BasicAccessRequestFlow
-
-main: kit: flow: BasicAccessRequestFlow:
-{
-  entity: "access_request",
-  kind: "basic",
-  name: "BasicAccessRequestFlow",
-  "key$": "BasicAccessRequestFlow"
-}

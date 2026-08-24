@@ -1,9 +1,0 @@
-# BasicTopicFlow
-
-main: kit: flow: BasicTopicFlow:
-{
-  entity: "topic",
-  kind: "basic",
-  name: "BasicTopicFlow",
-  "key$": "BasicTopicFlow"
-}

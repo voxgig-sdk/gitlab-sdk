@@ -1,9 +1,0 @@
-# BasicProtectedTagFlow
-
-main: kit: flow: BasicProtectedTagFlow:
-{
-  entity: "protected_tag",
-  kind: "basic",
-  name: "BasicProtectedTagFlow",
-  "key$": "BasicProtectedTagFlow"
-}

@@ -1,9 +1,0 @@
-# BasicConanFlow
-
-main: kit: flow: BasicConanFlow:
-{
-  entity: "conan",
-  kind: "basic",
-  name: "BasicConanFlow",
-  "key$": "BasicConanFlow"
-}

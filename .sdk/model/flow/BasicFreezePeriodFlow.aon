@@ -1,9 +1,0 @@
-# BasicFreezePeriodFlow
-
-main: kit: flow: BasicFreezePeriodFlow:
-{
-  entity: "freeze_period",
-  kind: "basic",
-  name: "BasicFreezePeriodFlow",
-  "key$": "BasicFreezePeriodFlow"
-}

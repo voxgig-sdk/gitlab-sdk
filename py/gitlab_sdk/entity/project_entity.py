@@ -6,14 +6,14 @@ from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 from gitlab_sdk.core import helpers
 from gitlab_sdk.gitlab_types import (
     Project,
-    ProjectLoadMatch,
+    ProjectListMatch,
     ProjectCreateData,
     ProjectUpdateData,
     ProjectRemoveMatch,
 )
 
 
-class ProjectEntityClient:
+class ProjectEntity:
 
     def __init__(self, client, entopts=None):
         if entopts is None:
@@ -57,7 +57,7 @@ class ProjectEntityClient:
         opts = {}
         for k, v in self._entopts.items():
             opts[k] = v
-        return ProjectEntityClient(self._client, opts)
+        return ProjectEntity(self._client, opts)
 
     def data_set(self, args=None):
         if args is not None:
@@ -179,15 +179,16 @@ class ProjectEntityClient:
                 yield item
 
     
-    def load(self, reqmatch=None, ctrl=None) -> Project:
+
+    
+    def list(self, reqmatch=None, ctrl=None) -> list[Project]:
         utility = self._utility
-        # reqmatch is optional: an entity with no id-like key loads with no
-        # match. Treat None as an empty match so client.Project().load()
-        # works with no args.
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Project().list() works with no args.
         if reqmatch is None:
             reqmatch = {}
         ctx = utility.make_context({
-            "opname": "load",
+            "opname": "list",
             "ctrl": ctrl,
             "match": self._match,
             "data": self._data,
@@ -198,14 +199,10 @@ class ProjectEntityClient:
             if ctx.result is not None:
                 if ctx.result.resmatch is not None:
                     self._match = ctx.result.resmatch
-                if ctx.result.resdata is not None:
-                    self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
 
         return self._run_op(ctx, post_done)
 
 
-
-    
 
     
     def create(self, reqdata: ProjectCreateData, ctrl=None) -> Project:

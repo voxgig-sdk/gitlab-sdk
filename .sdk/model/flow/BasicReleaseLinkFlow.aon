@@ -1,9 +1,0 @@
-# BasicReleaseLinkFlow
-
-main: kit: flow: BasicReleaseLinkFlow:
-{
-  entity: "release_link",
-  kind: "basic",
-  name: "BasicReleaseLinkFlow",
-  "key$": "BasicReleaseLinkFlow"
-}

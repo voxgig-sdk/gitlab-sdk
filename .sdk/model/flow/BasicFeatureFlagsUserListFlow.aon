@@ -1,9 +1,0 @@
-# BasicFeatureFlagsUserListFlow
-
-main: kit: flow: BasicFeatureFlagsUserListFlow:
-{
-  entity: "feature_flags_user_list",
-  kind: "basic",
-  name: "BasicFeatureFlagsUserListFlow",
-  "key$": "BasicFeatureFlagsUserListFlow"
-}

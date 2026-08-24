@@ -35,42 +35,41 @@ describe('ProjectDirect', async () => {
   })
 
 
-  test('direct-load-project', async (t: any) => {
-    const setup = directSetup({ id: 'direct01' })
-    if (maybeSkipControl(t, 'direct', 'direct-load-project', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["id01"])) return
+  test('direct-list-project', async (t: any) => {
+    const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
+    if (maybeSkipControl(t, 'direct', 'direct-list-project', setup.live)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
-    if (setup.live) {
-
-    } else {
-      params.id = 'direct01'
-    }
 
     const result: any = await client.direct({
-      path: 'api/v4/projects/{id}/issues_statistics',
+      path: 'api/v4/projects',
       method: 'GET',
       params,
       query,
     })
 
     if (setup.live) {
-      // Live mode is lenient: synthetic IDs frequently 4xx. Skip rather
-      // than fail when the load endpoint isn't reachable with the IDs we
-      // can construct from setup.idmap.
+      // Live mode is lenient: synthetic IDs frequently 4xx and the list-
+      // response shape varies wildly across public APIs. Skip rather than
+      // fail when the call doesn't return a usable list.
       if (!result.ok || result.status < 200 || result.status >= 300) {
+        return
+      }
+      const listArr = unwrapListData(result.data)
+      if (!Array.isArray(listArr)) {
         return
       }
     } else {
       assert(result.ok === true)
       assert(result.status === 200)
       assert(null != result.data)
-      assert(result.data.id === 'direct01')
+      const listArr = unwrapListData(result.data)
+      assert(Array.isArray(listArr))
+      assert(listArr!.length === 2)
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
-      assert(calls[0].url.includes('direct01'))
     }
   })
 

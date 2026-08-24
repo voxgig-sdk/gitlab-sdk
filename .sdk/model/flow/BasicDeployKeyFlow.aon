@@ -1,9 +1,0 @@
-# BasicDeployKeyFlow
-
-main: kit: flow: BasicDeployKeyFlow:
-{
-  entity: "deploy_key",
-  kind: "basic",
-  name: "BasicDeployKeyFlow",
-  "key$": "BasicDeployKeyFlow"
-}

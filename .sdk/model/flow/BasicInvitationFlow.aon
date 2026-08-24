@@ -1,9 +1,0 @@
-# BasicInvitationFlow
-
-main: kit: flow: BasicInvitationFlow:
-{
-  entity: "invitation",
-  kind: "basic",
-  name: "BasicInvitationFlow",
-  "key$": "BasicInvitationFlow"
-}

@@ -1,9 +1,0 @@
-# BasicFeatureFlow
-
-main: kit: flow: BasicFeatureFlow:
-{
-  entity: "feature",
-  kind: "basic",
-  name: "BasicFeatureFlow",
-  "key$": "BasicFeatureFlow"
-}

@@ -25,6 +25,54 @@ func TestProjectEntity(t *testing.T) {
 		}
 	})
 
+	// Feature #4: the entity Stream(action, ...) method runs the op pipeline and
+	// returns a channel over result items. With the streaming feature active it
+	// yields the feature's incremental output; otherwise it falls back to the
+	// materialised list so Stream always yields.
+	t.Run("stream", func(t *testing.T) {
+		seed := map[string]any{
+			"entity": map[string]any{
+				"project": map[string]any{
+					"s1": map[string]any{"id": "s1"},
+					"s2": map[string]any{"id": "s2"},
+					"s3": map[string]any{"id": "s3"},
+				},
+			},
+		}
+
+		// Fallback: streaming inactive -> yields the materialised list items.
+		base := sdk.TestSDK(seed, nil)
+		var seen []any
+		for item := range base.Project(nil).Stream("list", nil, nil) {
+			seen = append(seen, item)
+		}
+		if len(seen) != 3 {
+			t.Fatalf("expected 3 streamed items, got %d", len(seen))
+		}
+
+		// Inbound: streaming active -> yields each item from the feature iterator.
+		hasStreaming := false
+		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
+			_, hasStreaming = fm["streaming"]
+		}
+		if hasStreaming {
+			streamSdk := sdk.TestSDK(seed, map[string]any{
+				"feature": map[string]any{"streaming": map[string]any{"active": true}},
+			})
+			var got []any
+			for item := range streamSdk.Project(nil).Stream("list", nil, nil) {
+				if sub, ok := item.([]any); ok {
+					got = append(got, sub...)
+				} else {
+					got = append(got, item)
+				}
+			}
+			if len(got) != 3 {
+				t.Fatalf("expected 3 items via streaming feature, got %d", len(got))
+			}
+		}
+	})
+
 	t.Run("basic", func(t *testing.T) {
 		setup := projectBasicSetup(nil)
 		// Per-op sdk-test-control.json skip — basic test exercises a flow
@@ -33,7 +81,7 @@ func TestProjectEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "list", "update", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "project." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -54,10 +102,6 @@ func TestProjectEntity(t *testing.T) {
 		projectRef01Ent := client.Project(nil)
 		projectRef01Data := core.ToMapAny(vs.GetProp(
 			vs.GetPath([]any{"new", "project"}, setup.data), "project_ref01"))
-		projectRef01Data["hook_id"] = setup.idmap["hook01"]
-		projectRef01Data["merge_request_id"] = setup.idmap["merge_request01"]
-		projectRef01Data["pipeline_schedule_id"] = setup.idmap["pipeline_schedule01"]
-		projectRef01Data["secret"] = setup.idmap["secret01"]
 
 		projectRef01DataResult, err := projectRef01Ent.Create(projectRef01Data, nil)
 		if err != nil {
@@ -71,12 +115,29 @@ func TestProjectEntity(t *testing.T) {
 			t.Fatal("expected created entity to have an id")
 		}
 
+		// LIST
+		projectRef01Match := map[string]any{}
+
+		projectRef01ListResult, err := projectRef01Ent.List(projectRef01Match, nil)
+		if err != nil {
+			t.Fatalf("list failed: %v", err)
+		}
+		projectRef01List, projectRef01ListOk := projectRef01ListResult.([]any)
+		if !projectRef01ListOk {
+			t.Fatalf("expected list result to be an array, got %T", projectRef01ListResult)
+		}
+
+		foundItem := vs.Select(entityListToData(projectRef01List), map[string]any{"id": projectRef01Data["id"]})
+		if vs.IsEmpty(foundItem) {
+			t.Fatal("expected to find created entity in list")
+		}
+
 		// UPDATE
 		projectRef01DataUp0Up := map[string]any{
 			"id": projectRef01Data["id"],
 		}
 
-		projectRef01MarkdefUp0Name := "before_sha"
+		projectRef01MarkdefUp0Name := "analytics_access_level"
 		projectRef01MarkdefUp0Value := fmt.Sprintf("Mark01-project_ref01_%d", setup.now)
 		projectRef01DataUp0Up[projectRef01MarkdefUp0Name] = projectRef01MarkdefUp0Value
 
@@ -95,22 +156,6 @@ func TestProjectEntity(t *testing.T) {
 			t.Fatalf("expected %s to be updated, got %v", projectRef01MarkdefUp0Name, projectRef01ResdataUp0[projectRef01MarkdefUp0Name])
 		}
 
-		// LOAD
-		projectRef01MatchDt0 := map[string]any{
-			"id": projectRef01Data["id"],
-		}
-		projectRef01DataDt0Loaded, err := projectRef01Ent.Load(projectRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		projectRef01DataDt0LoadResult := core.ToMapAny(entityData(projectRef01DataDt0Loaded))
-		if projectRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if projectRef01DataDt0LoadResult["id"] != projectRef01Data["id"] {
-			t.Fatal("expected load result id to match")
-		}
-
 		// REMOVE
 		projectRef01MatchRm0 := map[string]any{
 			"id": projectRef01Data["id"],
@@ -118,6 +163,23 @@ func TestProjectEntity(t *testing.T) {
 		_, err = projectRef01Ent.Remove(projectRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
+		}
+
+		// LIST
+		projectRef01MatchRt0 := map[string]any{}
+
+		projectRef01ListRt0Result, err := projectRef01Ent.List(projectRef01MatchRt0, nil)
+		if err != nil {
+			t.Fatalf("list failed: %v", err)
+		}
+		projectRef01ListRt0, projectRef01ListRt0Ok := projectRef01ListRt0Result.([]any)
+		if !projectRef01ListRt0Ok {
+			t.Fatalf("expected list result to be an array, got %T", projectRef01ListRt0Result)
+		}
+
+		notFoundItem := vs.Select(entityListToData(projectRef01ListRt0), map[string]any{"id": projectRef01Data["id"]})
+		if !vs.IsEmpty(notFoundItem) {
+			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})
@@ -148,7 +210,7 @@ func projectBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap := vs.Transform(
-		[]any{"project01", "project02", "project03", "custom_attribute01", "custom_attribute02", "custom_attribute03", "hook01", "hook02", "hook03", "import_project_member01", "import_project_member02", "import_project_member03", "issue01", "issue02", "issue03", "artifact01", "artifact02", "artifact03", "job01", "job02", "job03", "merge_request01", "merge_request02", "merge_request03", "domain01", "domain02", "domain03", "pipeline_schedule01", "pipeline_schedule02", "pipeline_schedule03", "pipeline01", "pipeline02", "pipeline03", "protected_branch01", "protected_branch02", "protected_branch03", "rule01", "rule02", "rule03", "blob01", "blob02", "blob03", "file01", "file02", "file03", "share01", "share02", "share03", "trigger01", "trigger02", "trigger03", "upload01", "upload02", "upload03", "custom_header01", "custom_header02", "custom_header03", "event01", "event02", "event03", "test01", "test02", "test03", "url_variable01", "url_variable02", "url_variable03", "draft_note01", "draft_note02", "draft_note03", "variable01", "variable02", "variable03", "secret01"},
+		[]any{"project01", "project02", "project03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

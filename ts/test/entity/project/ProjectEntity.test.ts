@@ -39,7 +39,7 @@ describe('ProjectEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['create', 'update', 'load', 'remove']) {
+    for (const op of ['create', 'list', 'update', 'remove']) {
       if (maybeSkipControl(t, 'entityOp', 'project.' + op, live)) return
     }
 
@@ -61,20 +61,24 @@ describe('ProjectEntity', async () => {
     // CREATE
     const project_ref01_ent = client.Project()
     let project_ref01_data = setup.data.new.project['project_ref01']
-    project_ref01_data['hook_id'] = setup.idmap['hook01']
-    project_ref01_data['merge_request_id'] = setup.idmap['merge_request01']
-    project_ref01_data['pipeline_schedule_id'] = setup.idmap['pipeline_schedule01']
-    project_ref01_data['secret'] = setup.idmap['secret01']
 
     project_ref01_data = (await project_ref01_ent.create(project_ref01_data)).data()
     assert(null != project_ref01_data.id)
+
+
+    // LIST
+    const project_ref01_match: any = {}
+
+    const project_ref01_list = (await project_ref01_ent.list(project_ref01_match)).map((e: any) => e.data())
+
+    assert(!isempty(select(project_ref01_list, { id: project_ref01_data.id })))
 
 
     // UPDATE
     const project_ref01_data_up0: any = {}
     project_ref01_data_up0.id = project_ref01_data.id
 
-    const project_ref01_markdef_up0 = { name: 'before_sha', value: 'Mark01-project_ref01_' + setup.now }
+    const project_ref01_markdef_up0 = { name: 'analytics_access_level', value: 'Mark01-project_ref01_' + setup.now }
     ;(project_ref01_data_up0 as any)[project_ref01_markdef_up0.name] = project_ref01_markdef_up0.value
 
     const project_ref01_resdata_up0 = (await project_ref01_ent.update(project_ref01_data_up0)).data()
@@ -83,17 +87,18 @@ describe('ProjectEntity', async () => {
     assert((project_ref01_resdata_up0 as any)[project_ref01_markdef_up0.name] === project_ref01_markdef_up0.value)
 
 
-    // LOAD
-    const project_ref01_match_dt0: any = {}
-    project_ref01_match_dt0.id = project_ref01_data.id
-    const project_ref01_data_dt0 = (await project_ref01_ent.load(project_ref01_match_dt0)).data()
-    assert(project_ref01_data_dt0.id === project_ref01_data.id)
-
-
     // REMOVE
     const project_ref01_match_rm0: any = { id: project_ref01_data.id }
     await project_ref01_ent.remove(project_ref01_match_rm0)
   
+
+    // LIST
+    const project_ref01_match_rt0: any = {}
+
+    const project_ref01_list_rt0 = (await project_ref01_ent.list(project_ref01_match_rt0)).map((e: any) => e.data())
+
+    assert(isempty(select(project_ref01_list_rt0, { id: project_ref01_data.id })))
+
 
   })
 })
@@ -123,7 +128,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['project01','project02','project03','custom_attribute01','custom_attribute02','custom_attribute03','hook01','hook02','hook03','import_project_member01','import_project_member02','import_project_member03','issue01','issue02','issue03','artifact01','artifact02','artifact03','job01','job02','job03','merge_request01','merge_request02','merge_request03','domain01','domain02','domain03','pipeline_schedule01','pipeline_schedule02','pipeline_schedule03','pipeline01','pipeline02','pipeline03','protected_branch01','protected_branch02','protected_branch03','rule01','rule02','rule03','blob01','blob02','blob03','file01','file02','file03','share01','share02','share03','trigger01','trigger02','trigger03','upload01','upload02','upload03','hook01','hook02','hook03','custom_header01','custom_header02','custom_header03','hook01','hook02','hook03','event01','event02','event03','hook01','hook02','hook03','test01','test02','test03','hook01','hook02','hook03','url_variable01','url_variable02','url_variable03','merge_request01','merge_request02','merge_request03','draft_note01','draft_note02','draft_note03','pipeline_schedule01','pipeline_schedule02','pipeline_schedule03','variable01','variable02','variable03'],
+    ['project01','project02','project03'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',

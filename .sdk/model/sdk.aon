@@ -7,7 +7,7 @@
 # SDK Details.
 name: 'gitlab'
 origin: 'voxgig-sdk'
-def: 'gitlab-v4-swagger-2.0.yaml'
+def: 'gitlab-project-only.json'
 
 
 # API Information
@@ -34,8 +34,9 @@ def: 'gitlab-v4-swagger-2.0.yaml'
 @"flow/flow-index.aon"
 
 
-# Project overlay — user-owned, created once and never overwritten.
-#
-# LAST, deliberately: it may refine main.kit.target.<t>, and a target can only
-# be refined after target-index.aon has defined it.
-@"project.aon"
+# Seneca provider plugin generates out-of-tree into the sibling repo.
+main: kit: target: 'seneca-provider': output: {
+  path: '../../seneca/gitlab-provider'
+  sdkrel: '../../voxgig-sdk/gitlab-sdk'
+}
+

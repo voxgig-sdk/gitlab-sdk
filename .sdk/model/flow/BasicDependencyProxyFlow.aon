@@ -1,9 +1,0 @@
-# BasicDependencyProxyFlow
-
-main: kit: flow: BasicDependencyProxyFlow:
-{
-  entity: "dependency_proxy",
-  kind: "basic",
-  name: "BasicDependencyProxyFlow",
-  "key$": "BasicDependencyProxyFlow"
-}

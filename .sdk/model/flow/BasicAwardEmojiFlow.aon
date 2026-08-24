@@ -1,9 +1,0 @@
-# BasicAwardEmojiFlow
-
-main: kit: flow: BasicAwardEmojiFlow:
-{
-  entity: "award_emoji",
-  kind: "basic",
-  name: "BasicAwardEmojiFlow",
-  "key$": "BasicAwardEmojiFlow"
-}

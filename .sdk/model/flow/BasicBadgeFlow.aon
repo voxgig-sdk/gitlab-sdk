@@ -1,9 +1,0 @@
-# BasicBadgeFlow
-
-main: kit: flow: BasicBadgeFlow:
-{
-  entity: "badge",
-  kind: "basic",
-  name: "BasicBadgeFlow",
-  "key$": "BasicBadgeFlow"
-}

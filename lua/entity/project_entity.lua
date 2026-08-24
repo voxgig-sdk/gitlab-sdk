@@ -3,11 +3,11 @@
 local vs = require("utility.struct.struct")
 local helpers = require("core.helpers")
 
-local ProjectEntityClient = {}
-ProjectEntityClient.__index = ProjectEntityClient
+local ProjectEntity = {}
+ProjectEntity.__index = ProjectEntity
 
 
-function ProjectEntityClient.new(client, entopts)
+function ProjectEntity.new(client, entopts)
   entopts = entopts or {}
   if entopts["active"] == nil then
     entopts["active"] = true
@@ -17,7 +17,7 @@ function ProjectEntityClient.new(client, entopts)
     entopts["active"] = true
   end
 
-  local self = setmetatable({}, ProjectEntityClient)
+  local self = setmetatable({}, ProjectEntity)
   self._name = "project"
   self._client = client
   self._utility = client:get_utility()
@@ -37,34 +37,34 @@ function ProjectEntityClient.new(client, entopts)
 end
 
 
-function ProjectEntityClient:get_name()
+function ProjectEntity:get_name()
   return self._name
 end
 
 
-function ProjectEntityClient:make()
+function ProjectEntity:make()
   local opts = {}
   for k, v in pairs(self._entopts) do
     opts[k] = v
   end
-  return ProjectEntityClient.new(self._client, opts)
+  return ProjectEntity.new(self._client, opts)
 end
 
 
 -- Every operation resolves to the entity; `remove` additionally marks
 -- it. The instance KEEPS the data it held — a caller can still read what
 -- was deleted — but it is no longer a live record. See AGENTS.md.
-function ProjectEntityClient:mark_deleted()
+function ProjectEntity:mark_deleted()
   self._deleted = true
 end
 
 
-function ProjectEntityClient:deleted()
+function ProjectEntity:deleted()
   return true == self._deleted
 end
 
 
-function ProjectEntityClient:data_set(args)
+function ProjectEntity:data_set(args)
   if args ~= nil then
     self._data = helpers.to_map(vs.clone(args)) or {}
     self._utility.feature_hook(self._entctx, "SetData")
@@ -72,13 +72,13 @@ function ProjectEntityClient:data_set(args)
 end
 
 
-function ProjectEntityClient:data_get()
+function ProjectEntity:data_get()
   self._utility.feature_hook(self._entctx, "GetData")
   return vs.clone(self._data)
 end
 
 
-function ProjectEntityClient:match_set(args)
+function ProjectEntity:match_set(args)
   if args ~= nil then
     self._match = helpers.to_map(vs.clone(args)) or {}
     self._utility.feature_hook(self._entctx, "SetMatch")
@@ -86,7 +86,7 @@ function ProjectEntityClient:match_set(args)
 end
 
 
-function ProjectEntityClient:match_get()
+function ProjectEntity:match_get()
   self._utility.feature_hook(self._entctx, "GetMatch")
   return vs.clone(self._match)
 end
@@ -102,7 +102,7 @@ end
 --   - outbound (upload): an iterable `body` in callopts is attached to the
 --     request so the transport can stream the payload;
 --   - `ctrl` (pipeline control) and `signal` (cancellation) honoured.
-function ProjectEntityClient:stream(action, args, callopts)
+function ProjectEntity:stream(action, args, callopts)
   local utility = self._utility
   callopts = callopts or {}
   local signal = callopts["signal"]
@@ -230,14 +230,16 @@ end
 
 
 
----@param reqmatch ProjectLoadMatch
+
+
+---@param reqmatch ProjectListMatch
 ---@param ctrl? table
----@return Project
+---@return Project[]
 ---@return string? err
-function ProjectEntityClient:load(reqmatch, ctrl)
+function ProjectEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
-    opname = "load",
+    opname = "list",
     ctrl = ctrl,
     match = self._match,
     data = self._data,
@@ -249,14 +251,9 @@ function ProjectEntityClient:load(reqmatch, ctrl)
       if ctx.result.resmatch ~= nil then
         self._match = ctx.result.resmatch
       end
-      if ctx.result.resdata ~= nil then
-        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
-      end
     end
   end)
 end
-
-
 
 
 
@@ -265,7 +262,7 @@ end
 ---@param ctrl? table
 ---@return Project
 ---@return string? err
-function ProjectEntityClient:create(reqdata, ctrl)
+function ProjectEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
     opname = "create",
@@ -291,7 +288,7 @@ end
 ---@param ctrl? table
 ---@return Project
 ---@return string? err
-function ProjectEntityClient:update(reqdata, ctrl)
+function ProjectEntity:update(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
     opname = "update",
@@ -320,7 +317,7 @@ end
 ---@param ctrl? table
 ---@return Project
 ---@return string? err
-function ProjectEntityClient:remove(reqmatch, ctrl)
+function ProjectEntity:remove(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
     opname = "remove",
@@ -345,7 +342,7 @@ end
 
 
 
-function ProjectEntityClient:_run_op(ctx, post_done)
+function ProjectEntity:_run_op(ctx, post_done)
   local utility = self._utility
 
   utility.feature_hook(ctx, "PrePoint")
@@ -422,4 +419,4 @@ function ProjectEntityClient:_run_op(ctx, post_done)
 end
 
 
-return ProjectEntityClient
+return ProjectEntity

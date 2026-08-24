@@ -1,9 +1,0 @@
-# BasicPersonalAccessTokenFlow
-
-main: kit: flow: BasicPersonalAccessTokenFlow:
-{
-  entity: "personal_access_token",
-  kind: "basic",
-  name: "BasicPersonalAccessTokenFlow",
-  "key$": "BasicPersonalAccessTokenFlow"
-}

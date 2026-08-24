@@ -8,7 +8,7 @@ require_once __DIR__ . '/../core/Helpers.php';
 
 use Voxgig\Struct\Struct;
 
-class ProjectEntityClient
+class ProjectEntity
 {
     private string $_name;
     private $_client;
@@ -74,7 +74,7 @@ class ProjectEntityClient
     public function make(): self
     {
         $opts = $this->_entopts;
-        return new ProjectEntityClient($this->_client, $opts);
+        return new ProjectEntity($this->_client, $opts);
     }
 
     /**
@@ -242,20 +242,22 @@ class ProjectEntityClient
     }
 
     
+
+    
     /**
-     * Load a single Project.
+     * List Project items matching the given filter.
      *
-     * @param ProjectLoadMatch|array|null $reqmatch Match criteria (id/query
-     *   fields) as an assoc-array; a typed ProjectLoadMatch names the shape.
+     * @param ProjectListMatch|array|null $reqmatch Match filter (any subset
+     *   of Project fields) as an assoc-array; ProjectListMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return Project|array The loaded Project as an assoc-array at the
-     *   SDK boundary; throws GitlabError on failure (item-5 convention).
+     * @return Project[]|array A list of Project items as assoc-arrays at
+     *   the SDK boundary; throws GitlabError on failure (item-5 convention).
      */
-    public function load(?array $reqmatch = null, $ctrl = null): mixed
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
-            "opname" => "load",
+            "opname" => "list",
             "ctrl" => $ctrl,
             "match" => $this->_match,
             "data" => $this->_data,
@@ -267,16 +269,11 @@ class ProjectEntityClient
                 if ($ctx->result->resmatch) {
                     $this->_match = $ctx->result->resmatch;
                 }
-                if ($ctx->result->resdata) {
-                    $this->_data = GitlabHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
-                }
             }
         });
     }
 
 
-
-    
 
     
     /**

@@ -1,9 +1,0 @@
-# BasicIssueLinkFlow
-
-main: kit: flow: BasicIssueLinkFlow:
-{
-  entity: "issue_link",
-  kind: "basic",
-  name: "BasicIssueLinkFlow",
-  "key$": "BasicIssueLinkFlow"
-}

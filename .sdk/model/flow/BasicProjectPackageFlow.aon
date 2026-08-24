@@ -1,9 +1,0 @@
-# BasicProjectPackageFlow
-
-main: kit: flow: BasicProjectPackageFlow:
-{
-  entity: "project_package",
-  kind: "basic",
-  name: "BasicProjectPackageFlow",
-  "key$": "BasicProjectPackageFlow"
-}

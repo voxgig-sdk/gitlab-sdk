@@ -1,9 +1,0 @@
-# BasicCiVariableFlow
-
-main: kit: flow: BasicCiVariableFlow:
-{
-  entity: "ci_variable",
-  kind: "basic",
-  name: "BasicCiVariableFlow",
-  "key$": "BasicCiVariableFlow"
-}

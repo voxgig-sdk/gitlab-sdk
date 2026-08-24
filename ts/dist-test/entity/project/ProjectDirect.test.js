@@ -24,31 +24,28 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)('function' === typeof sdk.direct);
         (0, node_assert_1.default)('function' === typeof sdk.prepare);
     });
-    (0, node_test_1.test)('direct-load-project', async (t) => {
-        const setup = directSetup({ id: 'direct01' });
-        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-project', setup.live))
-            return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["id01"]))
+    (0, node_test_1.test)('direct-list-project', async (t) => {
+        const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }]);
+        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-project', setup.live))
             return;
         const { client, calls } = setup;
         const params = {};
         const query = {};
-        if (setup.live) {
-        }
-        else {
-            params.id = 'direct01';
-        }
         const result = await client.direct({
-            path: 'api/v4/projects/{id}/issues_statistics',
+            path: 'api/v4/projects',
             method: 'GET',
             params,
             query,
         });
         if (setup.live) {
-            // Live mode is lenient: synthetic IDs frequently 4xx. Skip rather
-            // than fail when the load endpoint isn't reachable with the IDs we
-            // can construct from setup.idmap.
+            // Live mode is lenient: synthetic IDs frequently 4xx and the list-
+            // response shape varies wildly across public APIs. Skip rather than
+            // fail when the call doesn't return a usable list.
             if (!result.ok || result.status < 200 || result.status >= 300) {
+                return;
+            }
+            const listArr = unwrapListData(result.data);
+            if (!Array.isArray(listArr)) {
                 return;
             }
         }
@@ -56,10 +53,11 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(result.ok === true);
             (0, node_assert_1.default)(result.status === 200);
             (0, node_assert_1.default)(null != result.data);
-            (0, node_assert_1.default)(result.data.id === 'direct01');
+            const listArr = unwrapListData(result.data);
+            (0, node_assert_1.default)(Array.isArray(listArr));
+            (0, node_assert_1.default)(listArr.length === 2);
             (0, node_assert_1.default)(calls.length === 1);
             (0, node_assert_1.default)(calls[0].init.method === 'GET');
-            (0, node_assert_1.default)(calls[0].url.includes('direct01'));
         }
     });
 });

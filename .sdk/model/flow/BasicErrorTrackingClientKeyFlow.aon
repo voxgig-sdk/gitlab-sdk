@@ -1,9 +1,0 @@
-# BasicErrorTrackingClientKeyFlow
-
-main: kit: flow: BasicErrorTrackingClientKeyFlow:
-{
-  entity: "error_tracking_client_key",
-  kind: "basic",
-  name: "BasicErrorTrackingClientKeyFlow",
-  "key$": "BasicErrorTrackingClientKeyFlow"
-}

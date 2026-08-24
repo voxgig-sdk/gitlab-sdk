@@ -6,7 +6,7 @@ import (
 	vs "github.com/voxgig-sdk/gitlab-sdk/go/utility/struct"
 )
 
-type ProjectEntityClient struct {
+type ProjectEntity struct {
 	name    string
 	client  *core.GitlabSDK
 	utility *core.Utility
@@ -17,7 +17,7 @@ type ProjectEntityClient struct {
 	deleted bool
 }
 
-func NewProjectEntityClient(client *core.GitlabSDK, entopts map[string]any) *ProjectEntityClient {
+func NewProjectEntity(client *core.GitlabSDK, entopts map[string]any) *ProjectEntity {
 	if entopts == nil {
 		entopts = map[string]any{}
 	}
@@ -29,7 +29,7 @@ func NewProjectEntityClient(client *core.GitlabSDK, entopts map[string]any) *Pro
 		entopts["active"] = true
 	}
 
-	e := &ProjectEntityClient{
+	e := &ProjectEntity{
 		name:    "project",
 		client:  client,
 		utility: client.GetUtility(),
@@ -48,32 +48,32 @@ func NewProjectEntityClient(client *core.GitlabSDK, entopts map[string]any) *Pro
 	return e
 }
 
-func (e *ProjectEntityClient) GetName() string { return e.name }
+func (e *ProjectEntity) GetName() string { return e.name }
 
 // Deleted marks this instance as removed. `Remove` resolves to the entity
 // like every other operation, and the instance KEEPS the data it held — a
 // caller can still read what was deleted — but it is no longer a live
 // record. See AGENTS.md "Entity operations return ENTITIES".
-func (e *ProjectEntityClient) MarkDeleted() {
+func (e *ProjectEntity) MarkDeleted() {
 	e.deleted = true
 }
 
 
 // Deleted reports whether a successful Remove has resolved on this instance.
-func (e *ProjectEntityClient) Deleted() bool {
+func (e *ProjectEntity) Deleted() bool {
 	return e.deleted
 }
 
 
-func (e *ProjectEntityClient) Make() core.Entity {
+func (e *ProjectEntity) Make() core.Entity {
 	opts := map[string]any{}
 	for k, v := range e.entopts {
 		opts[k] = v
 	}
-	return NewProjectEntityClient(e.client, opts)
+	return NewProjectEntity(e.client, opts)
 }
 
-func (e *ProjectEntityClient) Data(args ...any) any {
+func (e *ProjectEntity) Data(args ...any) any {
 	if len(args) > 0 && args[0] != nil {
 		e.data = core.ToMapAny(vs.Clone(args[0]))
 		if e.data == nil {
@@ -87,7 +87,7 @@ func (e *ProjectEntityClient) Data(args ...any) any {
 	return out
 }
 
-func (e *ProjectEntityClient) Match(args ...any) any {
+func (e *ProjectEntity) Match(args ...any) any {
 	if len(args) > 0 && args[0] != nil {
 		e.match = core.ToMapAny(vs.Clone(args[0]))
 		if e.match == nil {
@@ -105,7 +105,7 @@ func (e *ProjectEntityClient) Match(args ...any) any {
 // argument it returns the current data as an Project; with an argument it
 // sets the data and returns the stored value. It delegates to the untyped Data
 // (identical runtime) and converts at the typed boundary.
-func (e *ProjectEntityClient) DataTyped(data ...Project) Project {
+func (e *ProjectEntity) DataTyped(data ...Project) Project {
 	if len(data) > 0 {
 		return typedFrom[Project](e.Data(asMap(data[0])))
 	}
@@ -115,7 +115,7 @@ func (e *ProjectEntityClient) DataTyped(data ...Project) Project {
 // MatchTyped mirrors DataTyped for the entity's match filter. The match is a
 // partial of the entity, so it round-trips through Project (all fields
 // optional at the wire level).
-func (e *ProjectEntityClient) MatchTyped(match ...Project) Project {
+func (e *ProjectEntity) MatchTyped(match ...Project) Project {
 	if len(match) > 0 {
 		return typedFrom[Project](e.Match(asMap(match[0])))
 	}
@@ -131,7 +131,7 @@ func (e *ProjectEntityClient) MatchTyped(match ...Project) Project {
 //   - outbound (upload): a `body` in callopts is attached to the request so the
 //     transport can stream the payload;
 //   - `ctrl` (pipeline control) and `signal` (a done channel) are honoured.
-func (e *ProjectEntityClient) Stream(action string, args map[string]any, callopts map[string]any) <-chan any {
+func (e *ProjectEntity) Stream(action string, args map[string]any, callopts map[string]any) <-chan any {
 	out := make(chan any)
 
 	if callopts == nil {
@@ -255,11 +255,16 @@ func (e *ProjectEntityClient) Stream(action string, args map[string]any, callopt
 	return out
 }
 
+func (e *ProjectEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
+	return core.UnsupportedOp("load", e.name)
+}
 
-func (e *ProjectEntityClient) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+
+
+func (e *ProjectEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
-		"opname":   "load",
+		"opname":   "list",
 		"ctrl":     ctrl,
 		"match":    e.match,
 		"data":     e.data,
@@ -271,36 +276,25 @@ func (e *ProjectEntityClient) Load(reqmatch map[string]any, ctrl map[string]any)
 			if ctx.Result.Resmatch != nil {
 				e.match = ctx.Result.Resmatch
 			}
-			if ctx.Result.Resdata != nil {
-				e.data = core.ToMapAny(vs.Clone(ctx.Result.Resdata))
-				if e.data == nil {
-					e.data = map[string]any{}
-				}
-			}
 		}
 	})
 }
 
-// LoadTyped is the statically-typed variant of Load: it takes an
-// ProjectLoadMatch and returns an Project. It delegates to the untyped
-// Load (identical runtime) and converts at the typed boundary.
-func (e *ProjectEntityClient) LoadTyped(reqmatch ProjectLoadMatch, ctrl map[string]any) (Project, error) {
-	res, err := e.Load(asMap(reqmatch), ctrl)
+// ListTyped is the statically-typed variant of List: it takes an
+// ProjectListMatch and returns []Project. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *ProjectEntity) ListTyped(reqmatch ProjectListMatch, ctrl map[string]any) ([]Project, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
 	if err != nil {
-		return Project{}, err
+		return nil, err
 	}
-	return typedFrom[Project](res), nil
+	return typedSliceFrom[Project](res), nil
 }
 
 
 
-func (e *ProjectEntityClient) List(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("list", e.name)
-}
 
-
-
-func (e *ProjectEntityClient) Create(reqdata map[string]any, ctrl map[string]any) (any, error) {
+func (e *ProjectEntity) Create(reqdata map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
 		"opname":  "create",
@@ -325,7 +319,7 @@ func (e *ProjectEntityClient) Create(reqdata map[string]any, ctrl map[string]any
 // CreateTyped is the statically-typed variant of Create: it takes an
 // ProjectCreateData and returns an Project. It delegates to the untyped
 // Create (identical runtime) and converts at the typed boundary.
-func (e *ProjectEntityClient) CreateTyped(reqdata ProjectCreateData, ctrl map[string]any) (Project, error) {
+func (e *ProjectEntity) CreateTyped(reqdata ProjectCreateData, ctrl map[string]any) (Project, error) {
 	res, err := e.Create(asMap(reqdata), ctrl)
 	if err != nil {
 		return Project{}, err
@@ -336,7 +330,7 @@ func (e *ProjectEntityClient) CreateTyped(reqdata ProjectCreateData, ctrl map[st
 
 
 
-func (e *ProjectEntityClient) Update(reqdata map[string]any, ctrl map[string]any) (any, error) {
+func (e *ProjectEntity) Update(reqdata map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
 		"opname":  "update",
@@ -364,7 +358,7 @@ func (e *ProjectEntityClient) Update(reqdata map[string]any, ctrl map[string]any
 // UpdateTyped is the statically-typed variant of Update: it takes an
 // ProjectUpdateData and returns an Project. It delegates to the untyped
 // Update (identical runtime) and converts at the typed boundary.
-func (e *ProjectEntityClient) UpdateTyped(reqdata ProjectUpdateData, ctrl map[string]any) (Project, error) {
+func (e *ProjectEntity) UpdateTyped(reqdata ProjectUpdateData, ctrl map[string]any) (Project, error) {
 	res, err := e.Update(asMap(reqdata), ctrl)
 	if err != nil {
 		return Project{}, err
@@ -375,7 +369,7 @@ func (e *ProjectEntityClient) UpdateTyped(reqdata ProjectUpdateData, ctrl map[st
 
 
 
-func (e *ProjectEntityClient) Remove(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+func (e *ProjectEntity) Remove(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
 		"opname":   "remove",
@@ -403,7 +397,7 @@ func (e *ProjectEntityClient) Remove(reqmatch map[string]any, ctrl map[string]an
 // RemoveTyped is the statically-typed variant of Remove: it takes an
 // ProjectRemoveMatch and returns an Project. It delegates to the untyped
 // Remove (identical runtime) and converts at the typed boundary.
-func (e *ProjectEntityClient) RemoveTyped(reqmatch ProjectRemoveMatch, ctrl map[string]any) (Project, error) {
+func (e *ProjectEntity) RemoveTyped(reqmatch ProjectRemoveMatch, ctrl map[string]any) (Project, error) {
 	res, err := e.Remove(asMap(reqmatch), ctrl)
 	if err != nil {
 		return Project{}, err
@@ -413,7 +407,7 @@ func (e *ProjectEntityClient) RemoveTyped(reqmatch ProjectRemoveMatch, ctrl map[
 
 
 
-func (e *ProjectEntityClient) runOp(ctx *core.Context, postDone func()) (any, error) {
+func (e *ProjectEntity) runOp(ctx *core.Context, postDone func()) (any, error) {
 	utility := e.utility
 
 	utility.FeatureHook(ctx, "PrePoint")

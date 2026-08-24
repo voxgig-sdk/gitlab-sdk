@@ -1,9 +1,0 @@
-# BasicBranchFlow
-
-main: kit: flow: BasicBranchFlow:
-{
-  entity: "branch",
-  kind: "basic",
-  name: "BasicBranchFlow",
-  "key$": "BasicBranchFlow"
-}

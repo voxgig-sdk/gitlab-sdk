@@ -1,9 +1,0 @@
-# BasicWikiFlow
-
-main: kit: flow: BasicWikiFlow:
-{
-  entity: "wiki",
-  kind: "basic",
-  name: "BasicWikiFlow",
-  "key$": "BasicWikiFlow"
-}
