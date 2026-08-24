@@ -1,6 +1,15 @@
 {
+  "NAME": "GITLAB",
+  "Name": "Gitlab",
   "def": "gitlab-v4-swagger-2.0.yaml",
   "main": {
+    "api": {
+      "entity": {},
+      "guide": {}
+    },
+    "custom": {
+      "plurals": {}
+    },
     "def": {
       "desc": ""
     },
@@ -106473,5 +106482,8 @@
     }
   },
   "name": "gitlab",
+  "name-": "gitlab",
+  "name_": "gitlab",
+  "name__orig": "gitlab",
   "origin": "voxgig-sdk"
 }
