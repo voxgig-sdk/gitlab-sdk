@@ -2,16 +2,16 @@
   "existing": {
     "secure_file": {
       "SECURE_FILE00": {
-        "project_id": "PROJECT01",
-        "id": "SECURE_FILE00"
+        "id": "SECURE_FILE00",
+        "project_id": "PROJECT01"
       },
       "SECURE_FILE01": {
-        "project_id": "PROJECT01",
-        "id": "SECURE_FILE01"
+        "id": "SECURE_FILE01",
+        "project_id": "PROJECT01"
       },
       "SECURE_FILE02": {
-        "project_id": "PROJECT01",
-        "id": "SECURE_FILE02"
+        "id": "SECURE_FILE02",
+        "project_id": "PROJECT01"
       }
     }
   },

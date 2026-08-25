@@ -65,9 +65,13 @@ describe('IntegrationEntity', async () => {
     integration_ref01_data['project_id'] = setup.idmap['project01']
 
     integration_ref01_data = (await integration_ref01_ent.create(integration_ref01_data)).data()
-    assert(null != integration_ref01_data)
+    assert(null != integration_ref01_data.id)
 
 
+    // REMOVE
+    const integration_ref01_match_rm0: any = { id: integration_ref01_data.id }
+    await integration_ref01_ent.remove(integration_ref01_match_rm0)
+  
 
   })
 })

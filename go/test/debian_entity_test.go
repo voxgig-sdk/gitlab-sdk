@@ -62,6 +62,7 @@ func TestDebianEntity(t *testing.T) {
 		// UPDATE
 		debianRef01Ent := client.Debian(nil)
 		debianRef01DataUp0Up := map[string]any{
+			"id": debianRef01Data["id"],
 			"project_id": setup.idmap["project_id"],
 		}
 
@@ -72,6 +73,9 @@ func TestDebianEntity(t *testing.T) {
 		debianRef01ResdataUp0 := core.ToMapAny(entityData(debianRef01ResdataUp0Result))
 		if debianRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
+		}
+		if debianRef01ResdataUp0["id"] != debianRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
 		}
 
 	})

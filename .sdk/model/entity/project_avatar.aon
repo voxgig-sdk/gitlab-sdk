@@ -4,6 +4,19 @@ main: kit: entity: project_avatar: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "project_avatar"
   op: {
     load: {

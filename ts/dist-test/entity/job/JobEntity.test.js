@@ -75,11 +75,17 @@ const utility_1 = require("../../utility");
         const job_ref01_ent = client.Job();
         let job_ref01_data = setup.data.new.job['job_ref01'];
         job_ref01_data = (await job_ref01_ent.create(job_ref01_data)).data();
-        (0, node_assert_1.default)(null != job_ref01_data);
+        (0, node_assert_1.default)(null != job_ref01_data.id);
         // UPDATE
         const job_ref01_data_up0 = {};
+        job_ref01_data_up0.id = job_ref01_data.id;
         const job_ref01_resdata_up0 = (await job_ref01_ent.update(job_ref01_data_up0)).data();
-        (0, node_assert_1.default)(null != job_ref01_resdata_up0);
+        (0, node_assert_1.default)(job_ref01_resdata_up0.id === job_ref01_data_up0.id);
+        // LOAD
+        const job_ref01_match_dt0 = {};
+        job_ref01_match_dt0.id = job_ref01_data.id;
+        const job_ref01_data_dt0 = (await job_ref01_ent.load(job_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(job_ref01_data_dt0.id === job_ref01_data.id);
     });
 });
 function basicSetup(extra) {

@@ -2,6 +2,7 @@
   "existing": {
     "conan_package": {
       "CONAN_PACKAGE00": {
+        "id": "CONAN_PACKAGE00",
         "conan_package_reference": "CONAN_PACKAGE_REFERENCE01",
         "file_name": "FILE_NAME01",
         "package_channel": "PACKAGE_CHANNEL01",
@@ -14,10 +15,10 @@
         "package_id": "PACKAGE01",
         "project_id": "PROJECT01",
         "revision_id": "REVISION01",
-        "file_id": "FILE01",
-        "id": "CONAN_PACKAGE00"
+        "file_id": "FILE01"
       },
       "CONAN_PACKAGE01": {
+        "id": "CONAN_PACKAGE01",
         "conan_package_reference": "CONAN_PACKAGE_REFERENCE01",
         "file_name": "FILE_NAME01",
         "package_channel": "PACKAGE_CHANNEL01",
@@ -30,10 +31,10 @@
         "package_id": "PACKAGE01",
         "project_id": "PROJECT01",
         "revision_id": "REVISION01",
-        "file_id": "FILE01",
-        "id": "CONAN_PACKAGE01"
+        "file_id": "FILE01"
       },
       "CONAN_PACKAGE02": {
+        "id": "CONAN_PACKAGE02",
         "conan_package_reference": "CONAN_PACKAGE_REFERENCE01",
         "file_name": "FILE_NAME01",
         "package_channel": "PACKAGE_CHANNEL01",
@@ -46,8 +47,7 @@
         "package_id": "PACKAGE01",
         "project_id": "PROJECT01",
         "revision_id": "REVISION01",
-        "file_id": "FILE01",
-        "id": "CONAN_PACKAGE02"
+        "file_id": "FILE01"
       }
     }
   },

@@ -72,9 +72,12 @@ const utility_1 = require("../../utility");
         const isempty = struct.isempty;
         const select = struct.select;
         let package_file_ref01_data = Object.values(setup.data.existing.package_file)[0];
-        // LOAD: skipped — no entity id field and load requires path params.
-        // Entity-var is declared here so later flow steps still compile.
+        // LOAD
         const package_file_ref01_ent = client.PackageFile();
+        const package_file_ref01_match_dt0 = {};
+        package_file_ref01_match_dt0.id = package_file_ref01_data.id;
+        const package_file_ref01_data_dt0 = (await package_file_ref01_ent.load(package_file_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(package_file_ref01_data_dt0.id === package_file_ref01_data.id);
     });
 });
 function basicSetup(extra) {

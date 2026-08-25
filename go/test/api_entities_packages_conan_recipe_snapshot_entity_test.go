@@ -61,13 +61,19 @@ func TestApiEntitiesPackagesConanRecipeSnapshotEntity(t *testing.T) {
 
 		// LOAD
 		apiEntitiesPackagesConanRecipeSnapshotRef01Ent := client.ApiEntitiesPackagesConanRecipeSnapshot(nil)
-		apiEntitiesPackagesConanRecipeSnapshotRef01MatchDt0 := map[string]any{}
+		apiEntitiesPackagesConanRecipeSnapshotRef01MatchDt0 := map[string]any{
+			"id": apiEntitiesPackagesConanRecipeSnapshotRef01Data["id"],
+		}
 		apiEntitiesPackagesConanRecipeSnapshotRef01DataDt0Loaded, err := apiEntitiesPackagesConanRecipeSnapshotRef01Ent.Load(apiEntitiesPackagesConanRecipeSnapshotRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if apiEntitiesPackagesConanRecipeSnapshotRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		apiEntitiesPackagesConanRecipeSnapshotRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesPackagesConanRecipeSnapshotRef01DataDt0Loaded))
+		if apiEntitiesPackagesConanRecipeSnapshotRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if apiEntitiesPackagesConanRecipeSnapshotRef01DataDt0LoadResult["id"] != apiEntitiesPackagesConanRecipeSnapshotRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

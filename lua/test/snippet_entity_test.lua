@@ -44,10 +44,14 @@ describe("SnippetEntity", function()
 
     -- LOAD
     local snippet_ref01_ent = client:Snippet(nil)
-    local snippet_ref01_match_dt0 = {}
+    local snippet_ref01_match_dt0 = {
+      id = snippet_ref01_data["id"],
+    }
     local snippet_ref01_data_dt0_loaded, err = snippet_ref01_ent:load(snippet_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(snippet_ref01_data_dt0_loaded)
+    local snippet_ref01_data_dt0_load_result = helpers.to_map(type(snippet_ref01_data_dt0_loaded) == 'table' and snippet_ref01_data_dt0_loaded.data_get and snippet_ref01_data_dt0_loaded:data_get() or snippet_ref01_data_dt0_loaded)
+    assert.is_not_nil(snippet_ref01_data_dt0_load_result)
+    assert.are.equal(snippet_ref01_data_dt0_load_result["id"], snippet_ref01_data["id"])
 
   end)
 end)

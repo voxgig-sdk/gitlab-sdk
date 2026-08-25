@@ -48,12 +48,22 @@ class TestRemoteMirrorEntity:
 
         remote_mirror_ref01_data = helpers.to_map(runner.entity_data(remote_mirror_ref01_ent.create(remote_mirror_ref01_data, None)))
         assert remote_mirror_ref01_data is not None
+        assert remote_mirror_ref01_data["id"] is not None
 
         # LOAD
-        remote_mirror_ref01_match_dt0 = {}
+        remote_mirror_ref01_match_dt0 = {
+            "id": remote_mirror_ref01_data["id"],
+        }
         remote_mirror_ref01_data_dt0_loaded = remote_mirror_ref01_ent.load(remote_mirror_ref01_match_dt0, None)
-        assert remote_mirror_ref01_data_dt0_loaded is not None
+        remote_mirror_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(remote_mirror_ref01_data_dt0_loaded))
+        assert remote_mirror_ref01_data_dt0_load_result is not None
+        assert remote_mirror_ref01_data_dt0_load_result["id"] == remote_mirror_ref01_data["id"]
 
+        # REMOVE
+        remote_mirror_ref01_match_rm0 = {
+            "id": remote_mirror_ref01_data["id"],
+        }
+        remote_mirror_ref01_ent.remove(remote_mirror_ref01_match_rm0, None)
 
 
 

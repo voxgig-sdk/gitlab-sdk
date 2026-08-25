@@ -41,9 +41,13 @@ class RubygemEntityTest < Minitest::Test
 
     # LOAD
     rubygem_ref01_ent = client.Rubygem(nil)
-    rubygem_ref01_match_dt0 = {}
+    rubygem_ref01_match_dt0 = {
+      "id" => rubygem_ref01_data["id"],
+    }
     rubygem_ref01_data_dt0_loaded = rubygem_ref01_ent.load(rubygem_ref01_match_dt0, nil)
-    assert !rubygem_ref01_data_dt0_loaded.nil?
+    rubygem_ref01_data_dt0_load_result = Helpers.to_map(rubygem_ref01_data_dt0_loaded.respond_to?(:data_get) ? rubygem_ref01_data_dt0_loaded.data_get : rubygem_ref01_data_dt0_loaded)
+    assert !rubygem_ref01_data_dt0_load_result.nil?
+    assert_equal rubygem_ref01_data_dt0_load_result["id"], rubygem_ref01_data["id"]
 
   end
 end

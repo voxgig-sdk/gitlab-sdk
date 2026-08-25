@@ -66,7 +66,7 @@ describe('ApiEntitiesReleaseEntity', async () => {
     api_entities_release_ref01_data['tag_name'] = setup.idmap['tag_name01']
 
     api_entities_release_ref01_data = (await api_entities_release_ref01_ent.create(api_entities_release_ref01_data)).data()
-    assert(null != api_entities_release_ref01_data)
+    assert(null != api_entities_release_ref01_data.id)
 
 
     // LIST
@@ -75,19 +75,28 @@ describe('ApiEntitiesReleaseEntity', async () => {
 
     const api_entities_release_ref01_list = (await api_entities_release_ref01_ent.list(api_entities_release_ref01_match)).map((e: any) => e.data())
 
+    assert(!isempty(select(api_entities_release_ref01_list, { id: api_entities_release_ref01_data.id })))
+
 
     // UPDATE
     const api_entities_release_ref01_data_up0: any = {}
+    api_entities_release_ref01_data_up0.id = api_entities_release_ref01_data.id
     api_entities_release_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
 
     const api_entities_release_ref01_markdef_up0 = { name: 'commit_path', value: 'Mark01-api_entities_release_ref01_' + setup.now }
     ;(api_entities_release_ref01_data_up0 as any)[api_entities_release_ref01_markdef_up0.name] = api_entities_release_ref01_markdef_up0.value
 
     const api_entities_release_ref01_resdata_up0 = (await api_entities_release_ref01_ent.update(api_entities_release_ref01_data_up0)).data()
-    assert(null != api_entities_release_ref01_resdata_up0)
+    assert(api_entities_release_ref01_resdata_up0.id === api_entities_release_ref01_data_up0.id)
 
     assert((api_entities_release_ref01_resdata_up0 as any)[api_entities_release_ref01_markdef_up0.name] === api_entities_release_ref01_markdef_up0.value)
 
+
+    // LOAD
+    const api_entities_release_ref01_match_dt0: any = {}
+    api_entities_release_ref01_match_dt0.id = api_entities_release_ref01_data.id
+    const api_entities_release_ref01_data_dt0 = (await api_entities_release_ref01_ent.load(api_entities_release_ref01_match_dt0)).data()
+    assert(api_entities_release_ref01_data_dt0.id === api_entities_release_ref01_data.id)
 
 
   })

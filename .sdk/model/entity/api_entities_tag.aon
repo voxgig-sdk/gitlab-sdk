@@ -17,6 +17,11 @@ main: kit: entity: api_entities_tag: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "message"
       req: false
       type: "`$STRING`"
@@ -42,6 +47,11 @@ main: kit: entity: api_entities_tag: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "api_entities_tag"
   op: {

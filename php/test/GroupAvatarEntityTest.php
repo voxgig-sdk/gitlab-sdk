@@ -48,9 +48,13 @@ class GroupAvatarEntityTest extends TestCase
 
         // LOAD
         $group_avatar_ref01_ent = $client->GroupAvatar(null);
-        $group_avatar_ref01_match_dt0 = [];
+        $group_avatar_ref01_match_dt0 = [
+            "id" => $group_avatar_ref01_data["id"],
+        ];
         $group_avatar_ref01_data_dt0_loaded = $group_avatar_ref01_ent->load($group_avatar_ref01_match_dt0, null);
-        $this->assertNotNull($group_avatar_ref01_data_dt0_loaded);
+        $group_avatar_ref01_data_dt0_load_result = Helpers::to_map(is_object($group_avatar_ref01_data_dt0_loaded) && method_exists($group_avatar_ref01_data_dt0_loaded, 'data_get') ? $group_avatar_ref01_data_dt0_loaded->data_get() : $group_avatar_ref01_data_dt0_loaded);
+        $this->assertNotNull($group_avatar_ref01_data_dt0_load_result);
+        $this->assertEquals($group_avatar_ref01_data_dt0_load_result["id"], $group_avatar_ref01_data["id"]);
 
     }
 }

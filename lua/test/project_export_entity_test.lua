@@ -43,12 +43,17 @@ describe("ProjectExportEntity", function()
     assert.is_nil(err)
     project_export_ref01_data = helpers.to_map(type(project_export_ref01_data_result) == 'table' and project_export_ref01_data_result.data_get and project_export_ref01_data_result:data_get() or project_export_ref01_data_result)
     assert.is_not_nil(project_export_ref01_data)
+    assert.is_not_nil(project_export_ref01_data["id"])
 
     -- LOAD
-    local project_export_ref01_match_dt0 = {}
+    local project_export_ref01_match_dt0 = {
+      id = project_export_ref01_data["id"],
+    }
     local project_export_ref01_data_dt0_loaded, err = project_export_ref01_ent:load(project_export_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(project_export_ref01_data_dt0_loaded)
+    local project_export_ref01_data_dt0_load_result = helpers.to_map(type(project_export_ref01_data_dt0_loaded) == 'table' and project_export_ref01_data_dt0_loaded.data_get and project_export_ref01_data_dt0_loaded:data_get() or project_export_ref01_data_dt0_loaded)
+    assert.is_not_nil(project_export_ref01_data_dt0_load_result)
+    assert.are.equal(project_export_ref01_data_dt0_load_result["id"], project_export_ref01_data["id"])
 
   end)
 end)

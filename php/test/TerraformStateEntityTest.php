@@ -49,12 +49,22 @@ class TerraformStateEntityTest extends TestCase
         $terraform_state_ref01_data_result = $terraform_state_ref01_ent->create($terraform_state_ref01_data, null);
         $terraform_state_ref01_data = Helpers::to_map(is_object($terraform_state_ref01_data_result) && method_exists($terraform_state_ref01_data_result, 'data_get') ? $terraform_state_ref01_data_result->data_get() : $terraform_state_ref01_data_result);
         $this->assertNotNull($terraform_state_ref01_data);
+        $this->assertNotNull($terraform_state_ref01_data["id"]);
 
         // LOAD
-        $terraform_state_ref01_match_dt0 = [];
+        $terraform_state_ref01_match_dt0 = [
+            "id" => $terraform_state_ref01_data["id"],
+        ];
         $terraform_state_ref01_data_dt0_loaded = $terraform_state_ref01_ent->load($terraform_state_ref01_match_dt0, null);
-        $this->assertNotNull($terraform_state_ref01_data_dt0_loaded);
+        $terraform_state_ref01_data_dt0_load_result = Helpers::to_map(is_object($terraform_state_ref01_data_dt0_loaded) && method_exists($terraform_state_ref01_data_dt0_loaded, 'data_get') ? $terraform_state_ref01_data_dt0_loaded->data_get() : $terraform_state_ref01_data_dt0_loaded);
+        $this->assertNotNull($terraform_state_ref01_data_dt0_load_result);
+        $this->assertEquals($terraform_state_ref01_data_dt0_load_result["id"], $terraform_state_ref01_data["id"]);
 
+        // REMOVE
+        $terraform_state_ref01_match_rm0 = [
+            "id" => $terraform_state_ref01_data["id"],
+        ];
+        $terraform_state_ref01_ent->remove($terraform_state_ref01_match_rm0, null);
 
     }
 }

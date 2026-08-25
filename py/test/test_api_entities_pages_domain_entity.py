@@ -81,6 +81,7 @@ class TestApiEntitiesPagesDomainEntity:
 
         api_entities_pages_domain_ref01_data = helpers.to_map(runner.entity_data(api_entities_pages_domain_ref01_ent.create(api_entities_pages_domain_ref01_data, None)))
         assert api_entities_pages_domain_ref01_data is not None
+        assert api_entities_pages_domain_ref01_data["id"] is not None
 
         # LIST
         api_entities_pages_domain_ref01_match = {
@@ -90,8 +91,14 @@ class TestApiEntitiesPagesDomainEntity:
         api_entities_pages_domain_ref01_list_result = api_entities_pages_domain_ref01_ent.list(api_entities_pages_domain_ref01_match, None)
         assert isinstance(api_entities_pages_domain_ref01_list_result, list)
 
+        found_item = vs.select(
+            runner.entity_list_to_data(api_entities_pages_domain_ref01_list_result),
+            {"id": api_entities_pages_domain_ref01_data["id"]})
+        assert not vs.isempty(found_item)
+
         # UPDATE
         api_entities_pages_domain_ref01_data_up0_up = {
+            "id": api_entities_pages_domain_ref01_data["id"],
             "project_id": setup["idmap"]["project_id"],
         }
 
@@ -101,12 +108,17 @@ class TestApiEntitiesPagesDomainEntity:
 
         api_entities_pages_domain_ref01_resdata_up0 = helpers.to_map(runner.entity_data(api_entities_pages_domain_ref01_ent.update(api_entities_pages_domain_ref01_data_up0_up, None)))
         assert api_entities_pages_domain_ref01_resdata_up0 is not None
+        assert api_entities_pages_domain_ref01_resdata_up0["id"] == api_entities_pages_domain_ref01_data_up0_up["id"]
         assert api_entities_pages_domain_ref01_resdata_up0[api_entities_pages_domain_ref01_markdef_up0_name] == api_entities_pages_domain_ref01_markdef_up0_value
 
         # LOAD
-        api_entities_pages_domain_ref01_match_dt0 = {}
+        api_entities_pages_domain_ref01_match_dt0 = {
+            "id": api_entities_pages_domain_ref01_data["id"],
+        }
         api_entities_pages_domain_ref01_data_dt0_loaded = api_entities_pages_domain_ref01_ent.load(api_entities_pages_domain_ref01_match_dt0, None)
-        assert api_entities_pages_domain_ref01_data_dt0_loaded is not None
+        api_entities_pages_domain_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(api_entities_pages_domain_ref01_data_dt0_loaded))
+        assert api_entities_pages_domain_ref01_data_dt0_load_result is not None
+        assert api_entities_pages_domain_ref01_data_dt0_load_result["id"] == api_entities_pages_domain_ref01_data["id"]
 
 
 

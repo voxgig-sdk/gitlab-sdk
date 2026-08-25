@@ -518,6 +518,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -1215,6 +1216,7 @@ API path: `/api/v4/runners`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Load.
 
@@ -1227,6 +1229,7 @@ API path: `/api/v4/projects/{id}/secure_files`
 | `description` |  |
 | `environment_scope` |  |
 | `hidden` |  |
+| `id` |  |
 | `key` |  |
 | `masked` |  |
 | `protected` |  |
@@ -1700,6 +1703,7 @@ API path: `/api/v4/projects/{id}/deployments/{deployment_id}/approval`
 | Field | Description |
 | --- | --- |
 | `feature_categories` |  |
+| `id` |  |
 | `table_name` |  |
 
 Operations: Load.
@@ -1838,6 +1842,7 @@ API path: `/api/v4/events`
 | --- | --- |
 | `definition` | API_Entities_Feature_Definition model |
 | `gates` |  |
+| `id` |  |
 | `name` |  |
 | `state` |  |
 
@@ -2102,6 +2107,7 @@ API path: `/api/v4/hooks`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -2147,6 +2153,7 @@ API path: `/api/v4/groups/{id}/integrations`
 | `created_at` |  |
 | `created_by_name` |  |
 | `expires_at` |  |
+| `id` |  |
 | `invite_email` |  |
 | `invite_token` |  |
 | `user_name` |  |
@@ -2224,6 +2231,7 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/clone`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `link_type` |  |
 | `source_issue` |  |
 | `target_issue` |  |
@@ -2240,6 +2248,7 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/links`
 | `content` |  |
 | `description` |  |
 | `html_url` |  |
+| `id` |  |
 | `key` |  |
 | `limitations` |  |
 | `name` |  |
@@ -2882,6 +2891,7 @@ API path: `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -2936,6 +2946,7 @@ API path: `/api/v4/groups/{id}/-/debian_distributions`
 | `domain` |  |
 | `enabled_until` |  |
 | `expired` |  |
+| `id` |  |
 | `subject` |  |
 | `url` |  |
 | `verification_code` |  |
@@ -3681,6 +3692,7 @@ API path: `/api/v4/projects/import-relation`
 | `description` |  |
 | `description_html` |  |
 | `evidences` |  |
+| `id` |  |
 | `links` |  |
 | `milestones` |  |
 | `name` |  |
@@ -3913,6 +3925,7 @@ API path: `/api/v4/broadcast_messages`
 | --- | --- |
 | `commit` | API_Entities_Commit model |
 | `created_at` |  |
+| `id` |  |
 | `message` |  |
 | `name` |  |
 | `protected` |  |
@@ -4132,6 +4145,7 @@ API path: `/api/v4/groups/{id}/wikis`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4141,6 +4155,7 @@ API path: `/api/v4/applications/{id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4150,6 +4165,7 @@ API path: `/api/v4/groups/{id}/epics/{epic_iid}/notes/{note_id}/award_emoji/{awa
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4159,6 +4175,7 @@ API path: `/api/v4/groups/{id}/badges/{badge_id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4177,6 +4194,7 @@ API path: `/api/v4/projects/{id}/packages/cargo/config.json`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4186,6 +4204,7 @@ API path: `/api/v4/projects/{id}/variables/{key}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4195,6 +4214,7 @@ API path: `/api/v4/groups/{id}/clusters/{cluster_id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4222,6 +4242,7 @@ API path: `/api/v4/projects/{id}/packages/composer/archives/*package_name`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4231,6 +4252,7 @@ API path: `/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{packag
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load, Remove, Update.
 
@@ -4258,6 +4280,7 @@ API path: `/api/v4/container_registry_event/events`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `key` |  |
 | `value` |  |
 
@@ -4269,6 +4292,7 @@ API path: `/api/v4/groups/{id}/custom_attributes/{key}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Update.
 
@@ -4278,6 +4302,7 @@ API path: `/api/v4/projects/{id}/packages/debian/{file_name}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4287,6 +4312,7 @@ API path: `/api/v4/groups/{id}/-/debian_distributions/{codename}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load, Update.
 
@@ -4305,6 +4331,7 @@ API path: `/api/v4/groups/{id}/dependency_proxy/cache`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4314,6 +4341,7 @@ API path: `/api/v4/projects/{id}/deploy_keys/{key_id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4323,6 +4351,7 @@ API path: `/api/v4/groups/{id}/deploy_tokens/{token_id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4677,6 +4706,7 @@ API path: `/api/v4/groups/{id}/ssh_certificates`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Remove.
 
@@ -4686,6 +4716,7 @@ API path: `/api/v4/projects/{id}/environments/stop_stale`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4695,6 +4726,7 @@ API path: `/api/v4/projects/{id}/error_tracking/client_keys/{key_id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4704,6 +4736,7 @@ API path: `/api/v4/features/{name}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Load, Remove.
 
@@ -4713,6 +4746,7 @@ API path: `/api/v4/feature_flags/unleash/{project_id}/client/metrics`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4722,6 +4756,7 @@ API path: `/api/v4/projects/{id}/feature_flags_user_lists/{iid}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4758,6 +4793,7 @@ API path: `/api/v4/projects/{id}/packages/go/*module_name/@v/{module_version}.mo
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Load, Remove, Update.
 
@@ -4767,6 +4803,7 @@ API path: `/api/v4/groups/{id}/placeholder_reassignments`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -4776,6 +4813,7 @@ API path: `/api/v4/groups/{id}/avatar`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Load.
 
@@ -4803,6 +4841,7 @@ API path: `/api/v4/projects/{id}/packages/helm/api/{channel}/charts`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Remove, Update.
 
@@ -4821,6 +4860,7 @@ API path: `/api/v4/import/github/gists`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Remove.
 
@@ -4830,6 +4870,7 @@ API path: `/api/v4/projects/{id}/integrations/mattermost_slash_commands/trigger`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4839,6 +4880,7 @@ API path: `/api/v4/groups/{id}/invitations/{email}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4857,6 +4899,7 @@ API path: `/api/v4/issues_statistics`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Load, Patch, Update.
 
@@ -4875,6 +4918,7 @@ API path: `/api/v4/groups/{id}/-/packages/maven/*path/{file_name}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4884,6 +4928,7 @@ API path: `/api/v4/groups/{id}/members/{user_id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load, Remove, Update.
 
@@ -4924,6 +4969,7 @@ API path: `/api/v4/projects/{id}/packages/ml_models/{model_version_id}/files/(*p
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -4933,6 +4979,7 @@ API path: `/api/v4/namespaces/{id}/storage/limit_exclusion`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Update.
 
@@ -4985,6 +5032,7 @@ API path: `/api/v4/groups/{id}/-/packages/nuget/metadata/*package_name/index`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load, Remove.
 
@@ -5014,6 +5062,7 @@ API path: `/api/v4/projects/{id}/issues/{issue_iid}/participants`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -5054,6 +5103,7 @@ API path: `/api/v4/projects/{id}/hooks/{hook_id}/events/{hook_log_id}/resend`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -5072,6 +5122,7 @@ API path: `/api/v4/import/bitbucket_server`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Load.
 
@@ -5081,6 +5132,7 @@ API path: `/api/v4/projects/{id}/export`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -5121,6 +5173,7 @@ API path: `/api/v4/import/bitbucket`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -5130,6 +5183,7 @@ API path: `/api/v4/projects/{id}/packages/{package_id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -5148,6 +5202,7 @@ API path: `/api/v4/projects/{id}/job_token_scope/groups_allowlist/{target_group_
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -5175,6 +5230,7 @@ API path: `/api/v4/projects/{id}/packages/pypi/authorize`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load, Remove.
 
@@ -5184,6 +5240,7 @@ API path: `/api/v4/projects/{id}/releases/{tag_name}/downloads/*direct_asset_pat
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -5193,6 +5250,7 @@ API path: `/api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Load, Remove.
 
@@ -5220,6 +5278,7 @@ API path: `/api/v4/projects/{id}/packages/rpm/authorize`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -5238,6 +5297,7 @@ API path: `/api/v4/projects/{id}/packages/rubygems/api/v1/gems`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Remove.
 
@@ -5256,6 +5316,7 @@ API path: `/api/v4/search`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load, Remove.
 
@@ -5274,6 +5335,7 @@ API path: `/api/v4/slack/trigger`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load, Remove.
 
@@ -5302,6 +5364,7 @@ API path: `/api/v4/projects/{id}/starrers`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -5311,6 +5374,7 @@ API path: `/api/v4/hooks/{hook_id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -5320,6 +5384,7 @@ API path: `/api/v4/projects/{id}/repository/tags/{tag_name}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load, Update.
 
@@ -5329,6 +5394,7 @@ API path: `/api/v4/projects/{id}/packages/terraform/modules/{module_name}/{modul
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Load, Remove.
 
@@ -5367,6 +5433,7 @@ API path: `/api/v4/projects/{id}/pipelines/{pipeline_id}/test_report_summary`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -5376,6 +5443,7 @@ API path: `/api/v4/topics/{id}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Load.
 
@@ -5422,6 +5490,7 @@ API path: `/api/v4/web_commits/public_key`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Remove.
 
@@ -5441,6 +5510,12 @@ Create an instance: `local access_request = client:AccessRequest(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### AlertManagement
@@ -6754,6 +6829,12 @@ Create an instance: `local api_entities_ci_secure_file = client:ApiEntitiesCiSec
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -6789,6 +6870,7 @@ Create an instance: `local api_entities_ci_variable = client:ApiEntitiesCiVariab
 | `description` | `string` |  |
 | `environment_scope` | `string` |  |
 | `hidden` | `boolean` |  |
+| `id` | `string` |  |
 | `key` | `string` |  |
 | `masked` | `boolean` |  |
 | `protected` | `boolean` |  |
@@ -7740,6 +7822,7 @@ Create an instance: `local api_entities_dictionary_table = client:ApiEntitiesDic
 | Field | Type | Description |
 | --- | --- | --- |
 | `feature_categories` | `table` |  |
+| `id` | `string` |  |
 | `table_name` | `string` |  |
 
 #### Example: Load
@@ -8042,6 +8125,7 @@ Create an instance: `local api_entities_feature = client:ApiEntitiesFeature(nil)
 | --- | --- | --- |
 | `definition` | `table` | API_Entities_Feature_Definition model |
 | `gates` | `table` |  |
+| `id` | `string` |  |
 | `name` | `string` |  |
 | `state` | `string` |  |
 
@@ -8532,6 +8616,12 @@ Create an instance: `local api_entities_integration = client:ApiEntitiesIntegrat
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -8605,6 +8695,7 @@ Create an instance: `local api_entities_invitation = client:ApiEntitiesInvitatio
 | `created_at` | `string` |  |
 | `created_by_name` | `string` |  |
 | `expires_at` | `string` |  |
+| `id` | `string` |  |
 | `invite_email` | `string` |  |
 | `invite_token` | `string` |  |
 | `user_name` | `string` |  |
@@ -8756,6 +8847,7 @@ Create an instance: `local api_entities_issue_link = client:ApiEntitiesIssueLink
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `link_type` | `string` |  |
 | `source_issue` | `table` |  |
 | `target_issue` | `table` |  |
@@ -8794,6 +8886,7 @@ Create an instance: `local api_entities_license = client:ApiEntitiesLicense(nil)
 | `content` | `string` |  |
 | `description` | `string` |  |
 | `html_url` | `string` |  |
+| `id` | `string` |  |
 | `key` | `string` |  |
 | `limitations` | `table` |  |
 | `name` | `string` |  |
@@ -9882,6 +9975,12 @@ Create an instance: `local api_entities_packages_conan_recipe_snapshot = client:
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -10007,6 +10106,7 @@ Create an instance: `local api_entities_pages_domain = client:ApiEntitiesPagesDo
 | `domain` | `string` |  |
 | `enabled_until` | `string` |  |
 | `expired` | `string` |  |
+| `id` | `string` |  |
 | `subject` | `string` |  |
 | `url` | `string` |  |
 | `verification_code` | `string` |  |
@@ -11232,6 +11332,7 @@ Create an instance: `local api_entities_release = client:ApiEntitiesRelease(nil)
 | `description` | `string` |  |
 | `description_html` | `string` |  |
 | `evidences` | `table` |  |
+| `id` | `string` |  |
 | `links` | `table` |  |
 | `milestones` | `table` |  |
 | `name` | `string` |  |
@@ -11658,6 +11759,7 @@ Create an instance: `local api_entities_tag = client:ApiEntitiesTag(nil)`
 | --- | --- | --- |
 | `commit` | `table` | API_Entities_Commit model |
 | `created_at` | `string` |  |
+| `id` | `string` |  |
 | `message` | `string` |  |
 | `name` | `string` |  |
 | `protected` | `boolean` |  |
@@ -12082,6 +12184,12 @@ Create an instance: `local application = client:Application(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### AwardEmoji
 
@@ -12092,6 +12200,12 @@ Create an instance: `local award_emoji = client:AwardEmoji(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### Badge
@@ -12104,6 +12218,12 @@ Create an instance: `local badge = client:Badge(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### Branch
 
@@ -12114,6 +12234,12 @@ Create an instance: `local branch = client:Branch(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### CargoPackage
@@ -12143,6 +12269,12 @@ Create an instance: `local ci_variable = client:CiVariable(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### Cluster
 
@@ -12154,6 +12286,12 @@ Create an instance: `local cluster = client:Cluster(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### ClusterAgent
 
@@ -12164,6 +12302,12 @@ Create an instance: `local cluster_agent = client:ClusterAgent(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### Composer
@@ -12212,6 +12356,12 @@ Create an instance: `local conan = client:Conan(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### ConanPackage
 
@@ -12224,6 +12374,12 @@ Create an instance: `local conan_package = client:ConanPackage(nil)`
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -12275,6 +12431,7 @@ Create an instance: `local custom_attribute = client:CustomAttribute(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `key` | `string` |  |
 | `value` | `string` |  |
 
@@ -12295,6 +12452,12 @@ Create an instance: `local debian = client:Debian(nil)`
 | --- | --- |
 | `update(data)` | Update an existing entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### DebianDistribution
 
@@ -12305,6 +12468,12 @@ Create an instance: `local debian_distribution = client:DebianDistribution(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### DebianPackage
@@ -12317,6 +12486,12 @@ Create an instance: `local debian_package = client:DebianPackage(nil)`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -12346,6 +12521,12 @@ Create an instance: `local deploy_key = client:DeployKey(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### DeployToken
 
@@ -12357,6 +12538,12 @@ Create an instance: `local deploy_token = client:DeployToken(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### Deployment
 
@@ -12367,6 +12554,12 @@ Create an instance: `local deployment = client:Deployment(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### EeApiEntitiesApprovalState
@@ -12849,6 +13042,12 @@ Create an instance: `local environment = client:Environment(nil)`
 | `create(data)` | Create a new entity with the given data. |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Create
 
 ```lua
@@ -12868,6 +13067,12 @@ Create an instance: `local error_tracking_client_key = client:ErrorTrackingClien
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### Feature
 
@@ -12878,6 +13083,12 @@ Create an instance: `local feature = client:Feature(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### FeatureFlag
@@ -12891,6 +13102,12 @@ Create an instance: `local feature_flag = client:FeatureFlag(nil)`
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -12917,6 +13134,12 @@ Create an instance: `local feature_flags_user_list = client:FeatureFlagsUserList
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### FreezePeriod
 
@@ -12927,6 +13150,12 @@ Create an instance: `local freeze_period = client:FreezePeriod(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### GenericPackage
@@ -13002,6 +13231,12 @@ Create an instance: `local group = client:Group(nil)`
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -13027,6 +13262,12 @@ Create an instance: `local group_avatar = client:GroupAvatar(nil)`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -13044,6 +13285,12 @@ Create an instance: `local group_export = client:GroupExport(nil)`
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -13116,6 +13363,12 @@ Create an instance: `local hook = client:Hook(nil)`
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Create
 
 ```lua
@@ -13154,6 +13407,12 @@ Create an instance: `local integration = client:Integration(nil)`
 | `create(data)` | Create a new entity with the given data. |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Create
 
 ```lua
@@ -13172,6 +13431,12 @@ Create an instance: `local invitation = client:Invitation(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### IssueLink
 
@@ -13182,6 +13447,12 @@ Create an instance: `local issue_link = client:IssueLink(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### IssuesStatistic
@@ -13212,6 +13483,12 @@ Create an instance: `local job = client:Job(nil)`
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -13255,6 +13532,12 @@ Create an instance: `local member = client:Member(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### MergeRequest
 
@@ -13267,6 +13550,12 @@ Create an instance: `local merge_request = client:MergeRequest(nil)`
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -13348,6 +13637,12 @@ Create an instance: `local namespace = client:Namespace(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### Npm
 
@@ -13358,6 +13653,12 @@ Create an instance: `local npm = client:Npm(nil)`
 | Method | Description |
 | --- | --- |
 | `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### NpmPackage
@@ -13456,6 +13757,12 @@ Create an instance: `local package_file = client:PackageFile(nil)`
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -13515,6 +13822,12 @@ Create an instance: `local personal_access_token = client:PersonalAccessToken(ni
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### Project
@@ -13582,6 +13895,12 @@ Create an instance: `local project_avatar = client:ProjectAvatar(nil)`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -13618,6 +13937,12 @@ Create an instance: `local project_export = client:ProjectExport(nil)`
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -13642,6 +13967,12 @@ Create an instance: `local project_hook = client:ProjectHook(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### ProjectImport
@@ -13708,6 +14039,12 @@ Create an instance: `local project_package = client:ProjectPackage(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### ProjectSnippet
 
@@ -13718,6 +14055,12 @@ Create an instance: `local project_snippet = client:ProjectSnippet(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### ProjectsJobTokenScope
@@ -13741,6 +14084,12 @@ Create an instance: `local protected_tag = client:ProtectedTag(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### Pypi
@@ -13799,6 +14148,12 @@ Create an instance: `local release = client:Release(nil)`
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -13816,6 +14171,12 @@ Create an instance: `local release_link = client:ReleaseLink(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### RemoteMirror
 
@@ -13828,6 +14189,12 @@ Create an instance: `local remote_mirror = client:RemoteMirror(nil)`
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -13900,6 +14267,12 @@ Create an instance: `local rubygem = client:Rubygem(nil)`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -13944,6 +14317,12 @@ Create an instance: `local runner = client:Runner(nil)`
 | `create(data)` | Create a new entity with the given data. |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Create
 
 ```lua
@@ -13980,6 +14359,12 @@ Create an instance: `local secure_file = client:SecureFile(nil)`
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -14015,6 +14400,12 @@ Create an instance: `local snippet = client:Snippet(nil)`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -14065,6 +14456,12 @@ Create an instance: `local system_hook = client:SystemHook(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### Tag
 
@@ -14075,6 +14472,12 @@ Create an instance: `local tag = client:Tag(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ### TerraformRegistry
@@ -14087,6 +14490,12 @@ Create an instance: `local terraform_registry = client:TerraformRegistry(nil)`
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -14106,6 +14515,12 @@ Create an instance: `local terraform_state = client:TerraformState(nil)`
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -14187,6 +14602,12 @@ Create an instance: `local topic = client:Topic(nil)`
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 
 ### UnleashApi
 
@@ -14197,6 +14618,12 @@ Create an instance: `local unleash_api = client:UnleashApi(nil)`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 #### Example: Load
 
@@ -14288,6 +14715,12 @@ Create an instance: `local wiki = client:Wiki(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
 
 
 ## Advanced

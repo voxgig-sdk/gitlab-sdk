@@ -72,9 +72,12 @@ const utility_1 = require("../../utility");
         const isempty = struct.isempty;
         const select = struct.select;
         let release_ref01_data = Object.values(setup.data.existing.release)[0];
-        // LOAD: skipped — no entity id field and load requires path params.
-        // Entity-var is declared here so later flow steps still compile.
+        // LOAD
         const release_ref01_ent = client.Release();
+        const release_ref01_match_dt0 = {};
+        release_ref01_match_dt0.id = release_ref01_data.id;
+        const release_ref01_data_dt0 = (await release_ref01_ent.load(release_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(release_ref01_data_dt0.id === release_ref01_data.id);
     });
 });
 function basicSetup(extra) {

@@ -59,9 +59,12 @@ describe('ProjectAvatarEntity', async () => {
 
     let project_avatar_ref01_data = Object.values(setup.data.existing.project_avatar)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const project_avatar_ref01_ent = client.ProjectAvatar()
+    const project_avatar_ref01_match_dt0: any = {}
+    project_avatar_ref01_match_dt0.id = project_avatar_ref01_data.id
+    const project_avatar_ref01_data_dt0 = (await project_avatar_ref01_ent.load(project_avatar_ref01_match_dt0)).data()
+    assert(project_avatar_ref01_data_dt0.id === project_avatar_ref01_data.id)
 
 
   })

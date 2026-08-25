@@ -62,11 +62,18 @@ describe('DebianPackageEntity', async () => {
     // UPDATE
     const debian_package_ref01_ent = client.DebianPackage()
     const debian_package_ref01_data_up0: any = {}
+    debian_package_ref01_data_up0.id = debian_package_ref01_data.id
     debian_package_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
 
     const debian_package_ref01_resdata_up0 = (await debian_package_ref01_ent.update(debian_package_ref01_data_up0)).data()
-    assert(null != debian_package_ref01_resdata_up0)
+    assert(debian_package_ref01_resdata_up0.id === debian_package_ref01_data_up0.id)
 
+
+    // LOAD
+    const debian_package_ref01_match_dt0: any = {}
+    debian_package_ref01_match_dt0.id = debian_package_ref01_data.id
+    const debian_package_ref01_data_dt0 = (await debian_package_ref01_ent.load(debian_package_ref01_match_dt0)).data()
+    assert(debian_package_ref01_data_dt0.id === debian_package_ref01_data.id)
 
 
   })

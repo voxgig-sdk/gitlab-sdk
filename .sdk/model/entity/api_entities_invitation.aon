@@ -26,6 +26,11 @@ main: kit: entity: api_entities_invitation: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "invite_email"
       req: false
       type: "`$STRING`"
@@ -41,6 +46,11 @@ main: kit: entity: api_entities_invitation: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "api_entities_invitation"
   op: {

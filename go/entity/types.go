@@ -14,6 +14,7 @@ import (
 
 // AccessRequest is the typed data model for the access_request entity.
 type AccessRequest struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // AccessRequestRemoveMatch is the typed request payload for AccessRequest.RemoveTyped.
@@ -1307,6 +1308,7 @@ type ApiEntitiesCiRunnerRegistrationDetailCreateData struct {
 
 // ApiEntitiesCiSecureFile is the typed data model for the api_entities_ci_secure_file entity.
 type ApiEntitiesCiSecureFile struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ApiEntitiesCiSecureFileLoadMatch is the typed request payload for ApiEntitiesCiSecureFile.LoadTyped.
@@ -1318,6 +1320,7 @@ type ApiEntitiesCiSecureFileLoadMatch struct {
 // ApiEntitiesCiSecureFileCreateData is the typed request payload for ApiEntitiesCiSecureFile.CreateTyped.
 type ApiEntitiesCiSecureFileCreateData struct {
 	ProjectId string `json:"project_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // ApiEntitiesCiVariable is the typed data model for the api_entities_ci_variable entity.
@@ -1325,6 +1328,7 @@ type ApiEntitiesCiVariable struct {
 	Description *string `json:"description,omitempty"`
 	EnvironmentScope *string `json:"environment_scope,omitempty"`
 	Hidden *bool `json:"hidden,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Key *string `json:"key,omitempty"`
 	Masked *bool `json:"masked,omitempty"`
 	Protected *bool `json:"protected,omitempty"`
@@ -1351,6 +1355,7 @@ type ApiEntitiesCiVariableCreateData struct {
 	Description *string `json:"description,omitempty"`
 	EnvironmentScope *string `json:"environment_scope,omitempty"`
 	Hidden *bool `json:"hidden,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Key *string `json:"key,omitempty"`
 	Masked *bool `json:"masked,omitempty"`
 	Protected *bool `json:"protected,omitempty"`
@@ -2246,6 +2251,7 @@ type ApiEntitiesDeploymentsApprovalCreateData struct {
 // ApiEntitiesDictionaryTable is the typed data model for the api_entities_dictionary_table entity.
 type ApiEntitiesDictionaryTable struct {
 	FeatureCategories *[]any `json:"feature_categories,omitempty"`
+	Id *string `json:"id,omitempty"`
 	TableName *string `json:"table_name,omitempty"`
 }
 
@@ -2517,6 +2523,7 @@ type ApiEntitiesEventListMatch struct {
 type ApiEntitiesFeature struct {
 	Definition *map[string]any `json:"definition,omitempty"`
 	Gates *map[string]any `json:"gates,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	State *string `json:"state,omitempty"`
 }
@@ -2525,6 +2532,7 @@ type ApiEntitiesFeature struct {
 type ApiEntitiesFeatureListMatch struct {
 	Definition *map[string]any `json:"definition,omitempty"`
 	Gates *map[string]any `json:"gates,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	State *string `json:"state,omitempty"`
 }
@@ -3192,6 +3200,7 @@ type ApiEntitiesHookUpdateData struct {
 
 // ApiEntitiesIntegration is the typed data model for the api_entities_integration entity.
 type ApiEntitiesIntegration struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ApiEntitiesIntegrationLoadMatch is the typed request payload for ApiEntitiesIntegration.LoadTyped.
@@ -3266,6 +3275,7 @@ type ApiEntitiesInvitation struct {
 	CreatedAt *string `json:"created_at,omitempty"`
 	CreatedByName *string `json:"created_by_name,omitempty"`
 	ExpiresAt *string `json:"expires_at,omitempty"`
+	Id *string `json:"id,omitempty"`
 	InviteEmail *string `json:"invite_email,omitempty"`
 	InviteToken *string `json:"invite_token,omitempty"`
 	UserName *string `json:"user_name,omitempty"`
@@ -3283,6 +3293,7 @@ type ApiEntitiesInvitationCreateData struct {
 	CreatedAt *string `json:"created_at,omitempty"`
 	CreatedByName *string `json:"created_by_name,omitempty"`
 	ExpiresAt *string `json:"expires_at,omitempty"`
+	Id *string `json:"id,omitempty"`
 	InviteEmail *string `json:"invite_email,omitempty"`
 	InviteToken *string `json:"invite_token,omitempty"`
 	UserName *string `json:"user_name,omitempty"`
@@ -3526,6 +3537,7 @@ type ApiEntitiesIssueUpdateData struct {
 
 // ApiEntitiesIssueLink is the typed data model for the api_entities_issue_link entity.
 type ApiEntitiesIssueLink struct {
+	Id *string `json:"id,omitempty"`
 	LinkType *string `json:"link_type,omitempty"`
 	SourceIssue *map[string]any `json:"source_issue,omitempty"`
 	TargetIssue *map[string]any `json:"target_issue,omitempty"`
@@ -3542,6 +3554,7 @@ type ApiEntitiesIssueLinkLoadMatch struct {
 type ApiEntitiesIssueLinkCreateData struct {
 	IssueId string `json:"issue_id"`
 	ProjectId string `json:"project_id"`
+	Id *string `json:"id,omitempty"`
 	LinkType *string `json:"link_type,omitempty"`
 	SourceIssue *map[string]any `json:"source_issue,omitempty"`
 	TargetIssue *map[string]any `json:"target_issue,omitempty"`
@@ -3553,6 +3566,7 @@ type ApiEntitiesLicense struct {
 	Content *string `json:"content,omitempty"`
 	Description *string `json:"description,omitempty"`
 	HtmlUrl *string `json:"html_url,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Key *string `json:"key,omitempty"`
 	Limitations *[]any `json:"limitations,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -4619,6 +4633,7 @@ type ApiEntitiesPackagesConanRecipeRevisionListMatch struct {
 
 // ApiEntitiesPackagesConanRecipeSnapshot is the typed data model for the api_entities_packages_conan_recipe_snapshot entity.
 type ApiEntitiesPackagesConanRecipeSnapshot struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ApiEntitiesPackagesConanRecipeSnapshotLoadMatch is the typed request payload for ApiEntitiesPackagesConanRecipeSnapshot.LoadTyped.
@@ -4726,6 +4741,7 @@ type ApiEntitiesPagesDomain struct {
 	Domain *string `json:"domain,omitempty"`
 	EnabledUntil *string `json:"enabled_until,omitempty"`
 	Expired *string `json:"expired,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Subject *string `json:"subject,omitempty"`
 	Url *string `json:"url,omitempty"`
 	VerificationCode *string `json:"verification_code,omitempty"`
@@ -4752,6 +4768,7 @@ type ApiEntitiesPagesDomainCreateData struct {
 	Domain *string `json:"domain,omitempty"`
 	EnabledUntil *string `json:"enabled_until,omitempty"`
 	Expired *string `json:"expired,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Subject *string `json:"subject,omitempty"`
 	Url *string `json:"url,omitempty"`
 	VerificationCode *string `json:"verification_code,omitempty"`
@@ -4768,6 +4785,7 @@ type ApiEntitiesPagesDomainUpdateData struct {
 	Domain *string `json:"domain,omitempty"`
 	EnabledUntil *string `json:"enabled_until,omitempty"`
 	Expired *string `json:"expired,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Subject *string `json:"subject,omitempty"`
 	Url *string `json:"url,omitempty"`
 	VerificationCode *string `json:"verification_code,omitempty"`
@@ -6164,6 +6182,7 @@ type ApiEntitiesRelease struct {
 	Description *string `json:"description,omitempty"`
 	DescriptionHtml *string `json:"description_html,omitempty"`
 	Evidences *map[string]any `json:"evidences,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Links *map[string]any `json:"links,omitempty"`
 	Milestones *map[string]any `json:"milestones,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -6196,6 +6215,7 @@ type ApiEntitiesReleaseCreateData struct {
 	Description *string `json:"description,omitempty"`
 	DescriptionHtml *string `json:"description_html,omitempty"`
 	Evidences *map[string]any `json:"evidences,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Links *map[string]any `json:"links,omitempty"`
 	Milestones *map[string]any `json:"milestones,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -6598,6 +6618,7 @@ type ApiEntitiesSystemBroadcastMessageRemoveMatch struct {
 type ApiEntitiesTag struct {
 	Commit *map[string]any `json:"commit,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Message *string `json:"message,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Protected *bool `json:"protected,omitempty"`
@@ -6621,6 +6642,7 @@ type ApiEntitiesTagCreateData struct {
 	ProjectId string `json:"project_id"`
 	Commit *map[string]any `json:"commit,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Message *string `json:"message,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Protected *bool `json:"protected,omitempty"`
@@ -6916,6 +6938,7 @@ type ApiEntitiesWikiPageBasicListMatch struct {
 
 // Application is the typed data model for the application entity.
 type Application struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ApplicationRemoveMatch is the typed request payload for Application.RemoveTyped.
@@ -6925,6 +6948,7 @@ type ApplicationRemoveMatch struct {
 
 // AwardEmoji is the typed data model for the award_emoji entity.
 type AwardEmoji struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // AwardEmojiRemoveMatch is the typed request payload for AwardEmoji.RemoveTyped.
@@ -6941,6 +6965,7 @@ type AwardEmojiRemoveMatch struct {
 
 // Badge is the typed data model for the badge entity.
 type Badge struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // BadgeRemoveMatch is the typed request payload for Badge.RemoveTyped.
@@ -6952,6 +6977,7 @@ type BadgeRemoveMatch struct {
 
 // Branch is the typed data model for the branch entity.
 type Branch struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // BranchRemoveMatch is the typed request payload for Branch.RemoveTyped.
@@ -6971,6 +6997,7 @@ type CargoPackageLoadMatch struct {
 
 // CiVariable is the typed data model for the ci_variable entity.
 type CiVariable struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // CiVariableRemoveMatch is the typed request payload for CiVariable.RemoveTyped.
@@ -6982,6 +7009,7 @@ type CiVariableRemoveMatch struct {
 
 // Cluster is the typed data model for the cluster entity.
 type Cluster struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ClusterRemoveMatch is the typed request payload for Cluster.RemoveTyped.
@@ -6993,6 +7021,7 @@ type ClusterRemoveMatch struct {
 
 // ClusterAgent is the typed data model for the cluster_agent entity.
 type ClusterAgent struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ClusterAgentRemoveMatch is the typed request payload for ClusterAgent.RemoveTyped.
@@ -7023,6 +7052,7 @@ type ComposerPackageLoadMatch struct {
 
 // Conan is the typed data model for the conan entity.
 type Conan struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ConanRemoveMatch is the typed request payload for Conan.RemoveTyped.
@@ -7036,6 +7066,7 @@ type ConanRemoveMatch struct {
 
 // ConanPackage is the typed data model for the conan_package entity.
 type ConanPackage struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ConanPackageLoadMatch is the typed request payload for ConanPackage.LoadTyped.
@@ -7100,6 +7131,7 @@ type ContainerRegistryEventCreateData struct {
 
 // CustomAttribute is the typed data model for the custom_attribute entity.
 type CustomAttribute struct {
+	Id *string `json:"id,omitempty"`
 	Key *string `json:"key,omitempty"`
 	Value *string `json:"value,omitempty"`
 }
@@ -7112,6 +7144,7 @@ type CustomAttributeLoadMatch struct {
 
 // Debian is the typed data model for the debian entity.
 type Debian struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // DebianUpdateData is the typed request payload for Debian.UpdateTyped.
@@ -7122,6 +7155,7 @@ type DebianUpdateData struct {
 
 // DebianDistribution is the typed data model for the debian_distribution entity.
 type DebianDistribution struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // DebianDistributionRemoveMatch is the typed request payload for DebianDistribution.RemoveTyped.
@@ -7133,6 +7167,7 @@ type DebianDistributionRemoveMatch struct {
 
 // DebianPackage is the typed data model for the debian_package entity.
 type DebianPackage struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // DebianPackageLoadMatch is the typed request payload for DebianPackage.LoadTyped.
@@ -7149,6 +7184,7 @@ type DebianPackageLoadMatch struct {
 type DebianPackageUpdateData struct {
 	FileName any `json:"file_name"`
 	ProjectId string `json:"project_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // DependencyProxy is the typed data model for the dependency_proxy entity.
@@ -7162,6 +7198,7 @@ type DependencyProxyRemoveMatch struct {
 
 // DeployKey is the typed data model for the deploy_key entity.
 type DeployKey struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // DeployKeyRemoveMatch is the typed request payload for DeployKey.RemoveTyped.
@@ -7172,6 +7209,7 @@ type DeployKeyRemoveMatch struct {
 
 // DeployToken is the typed data model for the deploy_token entity.
 type DeployToken struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // DeployTokenRemoveMatch is the typed request payload for DeployToken.RemoveTyped.
@@ -7183,6 +7221,7 @@ type DeployTokenRemoveMatch struct {
 
 // Deployment is the typed data model for the deployment entity.
 type Deployment struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // DeploymentRemoveMatch is the typed request payload for Deployment.RemoveTyped.
@@ -7819,11 +7858,13 @@ type EeApiEntitiesSshCertificateCreateData struct {
 
 // Environment is the typed data model for the environment entity.
 type Environment struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // EnvironmentCreateData is the typed request payload for Environment.CreateTyped.
 type EnvironmentCreateData struct {
 	ProjectId string `json:"project_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // EnvironmentRemoveMatch is the typed request payload for Environment.RemoveTyped.
@@ -7834,6 +7875,7 @@ type EnvironmentRemoveMatch struct {
 
 // ErrorTrackingClientKey is the typed data model for the error_tracking_client_key entity.
 type ErrorTrackingClientKey struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ErrorTrackingClientKeyRemoveMatch is the typed request payload for ErrorTrackingClientKey.RemoveTyped.
@@ -7844,6 +7886,7 @@ type ErrorTrackingClientKeyRemoveMatch struct {
 
 // Feature is the typed data model for the feature entity.
 type Feature struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // FeatureRemoveMatch is the typed request payload for Feature.RemoveTyped.
@@ -7853,6 +7896,7 @@ type FeatureRemoveMatch struct {
 
 // FeatureFlag is the typed data model for the feature_flag entity.
 type FeatureFlag struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // FeatureFlagLoadMatch is the typed request payload for FeatureFlag.LoadTyped.
@@ -7863,6 +7907,7 @@ type FeatureFlagLoadMatch struct {
 // FeatureFlagCreateData is the typed request payload for FeatureFlag.CreateTyped.
 type FeatureFlagCreateData struct {
 	UnleashId string `json:"unleash_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // FeatureFlagRemoveMatch is the typed request payload for FeatureFlag.RemoveTyped.
@@ -7873,6 +7918,7 @@ type FeatureFlagRemoveMatch struct {
 
 // FeatureFlagsUserList is the typed data model for the feature_flags_user_list entity.
 type FeatureFlagsUserList struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // FeatureFlagsUserListRemoveMatch is the typed request payload for FeatureFlagsUserList.RemoveTyped.
@@ -7883,6 +7929,7 @@ type FeatureFlagsUserListRemoveMatch struct {
 
 // FreezePeriod is the typed data model for the freeze_period entity.
 type FreezePeriod struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // FreezePeriodRemoveMatch is the typed request payload for FreezePeriod.RemoveTyped.
@@ -7935,6 +7982,7 @@ type GoProxyLoadMatch struct {
 
 // Group is the typed data model for the group entity.
 type Group struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // GroupLoadMatch is the typed request payload for Group.LoadTyped.
@@ -7971,6 +8019,7 @@ type GroupRemoveMatch struct {
 
 // GroupAvatar is the typed data model for the group_avatar entity.
 type GroupAvatar struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // GroupAvatarLoadMatch is the typed request payload for GroupAvatar.LoadTyped.
@@ -7980,6 +8029,7 @@ type GroupAvatarLoadMatch struct {
 
 // GroupExport is the typed data model for the group_export entity.
 type GroupExport struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // GroupExportLoadMatch is the typed request payload for GroupExport.LoadTyped.
@@ -8021,6 +8071,7 @@ type HelmPackageCreateData struct {
 
 // Hook is the typed data model for the hook entity.
 type Hook struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // HookCreateData is the typed request payload for Hook.CreateTyped.
@@ -8050,10 +8101,12 @@ type ImportCreateData struct {
 
 // Integration is the typed data model for the integration entity.
 type Integration struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // IntegrationCreateData is the typed request payload for Integration.CreateTyped.
 type IntegrationCreateData struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // IntegrationRemoveMatch is the typed request payload for Integration.RemoveTyped.
@@ -8064,6 +8117,7 @@ type IntegrationRemoveMatch struct {
 
 // Invitation is the typed data model for the invitation entity.
 type Invitation struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // InvitationRemoveMatch is the typed request payload for Invitation.RemoveTyped.
@@ -8075,6 +8129,7 @@ type InvitationRemoveMatch struct {
 
 // IssueLink is the typed data model for the issue_link entity.
 type IssueLink struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // IssueLinkRemoveMatch is the typed request payload for IssueLink.RemoveTyped.
@@ -8094,6 +8149,7 @@ type IssuesStatisticLoadMatch struct {
 
 // Job is the typed data model for the job entity.
 type Job struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // JobLoadMatch is the typed request payload for Job.LoadTyped.
@@ -8103,6 +8159,7 @@ type JobLoadMatch struct {
 
 // JobCreateData is the typed request payload for Job.CreateTyped.
 type JobCreateData struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // JobUpdateData is the typed request payload for Job.UpdateTyped.
@@ -8129,6 +8186,7 @@ type MavenPackageUpdateData struct {
 
 // Member is the typed data model for the member entity.
 type Member struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // MemberRemoveMatch is the typed request payload for Member.RemoveTyped.
@@ -8140,6 +8198,7 @@ type MemberRemoveMatch struct {
 
 // MergeRequest is the typed data model for the merge_request entity.
 type MergeRequest struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // MergeRequestLoadMatch is the typed request payload for MergeRequest.LoadTyped.
@@ -8205,6 +8264,7 @@ type MlModelRegistryUpdateData struct {
 
 // Namespace is the typed data model for the namespace entity.
 type Namespace struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // NamespaceRemoveMatch is the typed request payload for Namespace.RemoveTyped.
@@ -8214,6 +8274,7 @@ type NamespaceRemoveMatch struct {
 
 // Npm is the typed data model for the npm entity.
 type Npm struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // NpmUpdateData is the typed request payload for Npm.UpdateTyped.
@@ -8316,6 +8377,7 @@ type NugetPackageRemoveMatch struct {
 
 // PackageFile is the typed data model for the package_file entity.
 type PackageFile struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // PackageFileLoadMatch is the typed request payload for PackageFile.LoadTyped.
@@ -8366,6 +8428,7 @@ type ParticipantListMatch struct {
 
 // PersonalAccessToken is the typed data model for the personal_access_token entity.
 type PersonalAccessToken struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // PersonalAccessTokenRemoveMatch is the typed request payload for PersonalAccessToken.RemoveTyped.
@@ -8506,6 +8569,7 @@ type ProjectRemoveMatch struct {
 
 // ProjectAvatar is the typed data model for the project_avatar entity.
 type ProjectAvatar struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ProjectAvatarLoadMatch is the typed request payload for ProjectAvatar.LoadTyped.
@@ -8523,6 +8587,7 @@ type ProjectEntityCreateData struct {
 
 // ProjectExport is the typed data model for the project_export entity.
 type ProjectExport struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ProjectExportLoadMatch is the typed request payload for ProjectExport.LoadTyped.
@@ -8537,6 +8602,7 @@ type ProjectExportCreateData struct {
 
 // ProjectHook is the typed data model for the project_hook entity.
 type ProjectHook struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ProjectHookRemoveMatch is the typed request payload for ProjectHook.RemoveTyped.
@@ -8589,6 +8655,7 @@ type ProjectImportEntityCreateData struct {
 
 // ProjectPackage is the typed data model for the project_package entity.
 type ProjectPackage struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ProjectPackageRemoveMatch is the typed request payload for ProjectPackage.RemoveTyped.
@@ -8599,6 +8666,7 @@ type ProjectPackageRemoveMatch struct {
 
 // ProjectSnippet is the typed data model for the project_snippet entity.
 type ProjectSnippet struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ProjectSnippetRemoveMatch is the typed request payload for ProjectSnippet.RemoveTyped.
@@ -8625,6 +8693,7 @@ type ProjectsJobTokenScopeRemoveMatch struct {
 
 // ProtectedTag is the typed data model for the protected_tag entity.
 type ProtectedTag struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ProtectedTagRemoveMatch is the typed request payload for ProtectedTag.RemoveTyped.
@@ -8658,6 +8727,7 @@ type PypiPackageCreateData struct {
 
 // Release is the typed data model for the release entity.
 type Release struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ReleaseLoadMatch is the typed request payload for Release.LoadTyped.
@@ -8673,6 +8743,7 @@ type ReleaseRemoveMatch struct {
 
 // ReleaseLink is the typed data model for the release_link entity.
 type ReleaseLink struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ReleaseLinkRemoveMatch is the typed request payload for ReleaseLink.RemoveTyped.
@@ -8684,6 +8755,7 @@ type ReleaseLinkRemoveMatch struct {
 
 // RemoteMirror is the typed data model for the remote_mirror entity.
 type RemoteMirror struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // RemoteMirrorLoadMatch is the typed request payload for RemoteMirror.LoadTyped.
@@ -8729,6 +8801,7 @@ type RpmPackageCreateData struct {
 
 // Rubygem is the typed data model for the rubygem entity.
 type Rubygem struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // RubygemLoadMatch is the typed request payload for Rubygem.LoadTyped.
@@ -8754,10 +8827,12 @@ type RubygemPackageCreateData struct {
 
 // Runner is the typed data model for the runner entity.
 type Runner struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // RunnerCreateData is the typed request payload for Runner.CreateTyped.
 type RunnerCreateData struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // RunnerRemoveMatch is the typed request payload for Runner.RemoveTyped.
@@ -8775,6 +8850,7 @@ type SearchLoadMatch struct {
 
 // SecureFile is the typed data model for the secure_file entity.
 type SecureFile struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // SecureFileLoadMatch is the typed request payload for SecureFile.LoadTyped.
@@ -8799,6 +8875,7 @@ type SlackCreateData struct {
 
 // Snippet is the typed data model for the snippet entity.
 type Snippet struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // SnippetLoadMatch is the typed request payload for Snippet.LoadTyped.
@@ -8834,6 +8911,7 @@ type StarrerListMatch struct {
 
 // SystemHook is the typed data model for the system_hook entity.
 type SystemHook struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // SystemHookRemoveMatch is the typed request payload for SystemHook.RemoveTyped.
@@ -8843,6 +8921,7 @@ type SystemHookRemoveMatch struct {
 
 // Tag is the typed data model for the tag entity.
 type Tag struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // TagRemoveMatch is the typed request payload for Tag.RemoveTyped.
@@ -8853,6 +8932,7 @@ type TagRemoveMatch struct {
 
 // TerraformRegistry is the typed data model for the terraform_registry entity.
 type TerraformRegistry struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // TerraformRegistryLoadMatch is the typed request payload for TerraformRegistry.LoadTyped.
@@ -8870,10 +8950,12 @@ type TerraformRegistryUpdateData struct {
 	ModuleId string `json:"module_id"`
 	ModuleSystem any `json:"module_system"`
 	ProjectId string `json:"project_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // TerraformState is the typed data model for the terraform_state entity.
 type TerraformState struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // TerraformStateLoadMatch is the typed request payload for TerraformState.LoadTyped.
@@ -8933,6 +9015,7 @@ type TestReportSummaryLoadMatch struct {
 
 // Topic is the typed data model for the topic entity.
 type Topic struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // TopicRemoveMatch is the typed request payload for Topic.RemoveTyped.
@@ -8942,6 +9025,7 @@ type TopicRemoveMatch struct {
 
 // UnleashApi is the typed data model for the unleash_api entity.
 type UnleashApi struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // UnleashApiLoadMatch is the typed request payload for UnleashApi.LoadTyped.
@@ -8990,6 +9074,7 @@ type WebCommitLoadMatch struct {
 
 // Wiki is the typed data model for the wiki entity.
 type Wiki struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // WikiRemoveMatch is the typed request payload for Wiki.RemoveTyped.

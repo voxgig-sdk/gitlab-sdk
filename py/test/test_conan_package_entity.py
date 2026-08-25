@@ -49,6 +49,7 @@ class TestConanPackageEntity:
         # UPDATE
         conan_package_ref01_ent = client.ConanPackage(None)
         conan_package_ref01_data_up0_up = {
+            "id": conan_package_ref01_data["id"],
             "file_id": setup["idmap"]["file_id"],
             "package_channel": setup["idmap"]["package_channel"],
             "package_username": setup["idmap"]["package_username"],
@@ -58,11 +59,16 @@ class TestConanPackageEntity:
 
         conan_package_ref01_resdata_up0 = helpers.to_map(runner.entity_data(conan_package_ref01_ent.update(conan_package_ref01_data_up0_up, None)))
         assert conan_package_ref01_resdata_up0 is not None
+        assert conan_package_ref01_resdata_up0["id"] == conan_package_ref01_data_up0_up["id"]
 
         # LOAD
-        conan_package_ref01_match_dt0 = {}
+        conan_package_ref01_match_dt0 = {
+            "id": conan_package_ref01_data["id"],
+        }
         conan_package_ref01_data_dt0_loaded = conan_package_ref01_ent.load(conan_package_ref01_match_dt0, None)
-        assert conan_package_ref01_data_dt0_loaded is not None
+        conan_package_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(conan_package_ref01_data_dt0_loaded))
+        assert conan_package_ref01_data_dt0_load_result is not None
+        assert conan_package_ref01_data_dt0_load_result["id"] == conan_package_ref01_data["id"]
 
 
 

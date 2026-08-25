@@ -76,7 +76,10 @@ const utility_1 = require("../../utility");
         let environment_ref01_data = setup.data.new.environment['environment_ref01'];
         environment_ref01_data['project_id'] = setup.idmap['project01'];
         environment_ref01_data = (await environment_ref01_ent.create(environment_ref01_data)).data();
-        (0, node_assert_1.default)(null != environment_ref01_data);
+        (0, node_assert_1.default)(null != environment_ref01_data.id);
+        // REMOVE
+        const environment_ref01_match_rm0 = { id: environment_ref01_data.id };
+        await environment_ref01_ent.remove(environment_ref01_match_rm0);
     });
 });
 function basicSetup(extra) {

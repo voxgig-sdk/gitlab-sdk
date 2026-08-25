@@ -44,10 +44,14 @@ describe("UnleashApiEntity", function()
 
     -- LOAD
     local unleash_api_ref01_ent = client:UnleashApi(nil)
-    local unleash_api_ref01_match_dt0 = {}
+    local unleash_api_ref01_match_dt0 = {
+      id = unleash_api_ref01_data["id"],
+    }
     local unleash_api_ref01_data_dt0_loaded, err = unleash_api_ref01_ent:load(unleash_api_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(unleash_api_ref01_data_dt0_loaded)
+    local unleash_api_ref01_data_dt0_load_result = helpers.to_map(type(unleash_api_ref01_data_dt0_loaded) == 'table' and unleash_api_ref01_data_dt0_loaded.data_get and unleash_api_ref01_data_dt0_loaded:data_get() or unleash_api_ref01_data_dt0_loaded)
+    assert.is_not_nil(unleash_api_ref01_data_dt0_load_result)
+    assert.are.equal(unleash_api_ref01_data_dt0_load_result["id"], unleash_api_ref01_data["id"])
 
   end)
 end)

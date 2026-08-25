@@ -77,7 +77,15 @@ const utility_1 = require("../../utility");
         remote_mirror_ref01_data['mirror_id'] = setup.idmap['mirror01'];
         remote_mirror_ref01_data['project_id'] = setup.idmap['project01'];
         remote_mirror_ref01_data = (await remote_mirror_ref01_ent.create(remote_mirror_ref01_data)).data();
-        (0, node_assert_1.default)(null != remote_mirror_ref01_data);
+        (0, node_assert_1.default)(null != remote_mirror_ref01_data.id);
+        // LOAD
+        const remote_mirror_ref01_match_dt0 = {};
+        remote_mirror_ref01_match_dt0.id = remote_mirror_ref01_data.id;
+        const remote_mirror_ref01_data_dt0 = (await remote_mirror_ref01_ent.load(remote_mirror_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(remote_mirror_ref01_data_dt0.id === remote_mirror_ref01_data.id);
+        // REMOVE
+        const remote_mirror_ref01_match_rm0 = { id: remote_mirror_ref01_data.id };
+        await remote_mirror_ref01_ent.remove(remote_mirror_ref01_match_rm0);
     });
 });
 function basicSetup(extra) {

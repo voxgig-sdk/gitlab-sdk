@@ -47,19 +47,31 @@ class TestGroupEntity:
 
         group_ref01_data = helpers.to_map(runner.entity_data(group_ref01_ent.create(group_ref01_data, None)))
         assert group_ref01_data is not None
+        assert group_ref01_data["id"] is not None
 
         # UPDATE
         group_ref01_data_up0_up = {
+            "id": group_ref01_data["id"],
         }
 
         group_ref01_resdata_up0 = helpers.to_map(runner.entity_data(group_ref01_ent.update(group_ref01_data_up0_up, None)))
         assert group_ref01_resdata_up0 is not None
+        assert group_ref01_resdata_up0["id"] == group_ref01_data_up0_up["id"]
 
         # LOAD
-        group_ref01_match_dt0 = {}
+        group_ref01_match_dt0 = {
+            "id": group_ref01_data["id"],
+        }
         group_ref01_data_dt0_loaded = group_ref01_ent.load(group_ref01_match_dt0, None)
-        assert group_ref01_data_dt0_loaded is not None
+        group_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(group_ref01_data_dt0_loaded))
+        assert group_ref01_data_dt0_load_result is not None
+        assert group_ref01_data_dt0_load_result["id"] == group_ref01_data["id"]
 
+        # REMOVE
+        group_ref01_match_rm0 = {
+            "id": group_ref01_data["id"],
+        }
+        group_ref01_ent.remove(group_ref01_match_rm0, None)
 
 
 

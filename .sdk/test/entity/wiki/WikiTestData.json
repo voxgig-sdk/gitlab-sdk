@@ -2,19 +2,19 @@
   "existing": {
     "wiki": {
       "WIKI00": {
+        "id": "WIKI00",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "WIKI00"
+        "project_id": "PROJECT01"
       },
       "WIKI01": {
+        "id": "WIKI01",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "WIKI01"
+        "project_id": "PROJECT01"
       },
       "WIKI02": {
+        "id": "WIKI02",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "WIKI02"
+        "project_id": "PROJECT01"
       }
     }
   },

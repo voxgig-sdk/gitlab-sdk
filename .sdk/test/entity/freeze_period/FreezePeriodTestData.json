@@ -2,16 +2,16 @@
   "existing": {
     "freeze_period": {
       "FREEZE_PERIOD00": {
-        "project_id": "PROJECT01",
-        "id": "FREEZE_PERIOD00"
+        "id": "FREEZE_PERIOD00",
+        "project_id": "PROJECT01"
       },
       "FREEZE_PERIOD01": {
-        "project_id": "PROJECT01",
-        "id": "FREEZE_PERIOD01"
+        "id": "FREEZE_PERIOD01",
+        "project_id": "PROJECT01"
       },
       "FREEZE_PERIOD02": {
-        "project_id": "PROJECT01",
-        "id": "FREEZE_PERIOD02"
+        "id": "FREEZE_PERIOD02",
+        "project_id": "PROJECT01"
       }
     }
   },

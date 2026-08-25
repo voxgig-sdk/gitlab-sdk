@@ -41,12 +41,22 @@ class RemoteMirrorEntityTest < Minitest::Test
     remote_mirror_ref01_data_result = remote_mirror_ref01_ent.create(remote_mirror_ref01_data, nil)
     remote_mirror_ref01_data = Helpers.to_map(remote_mirror_ref01_data_result.respond_to?(:data_get) ? remote_mirror_ref01_data_result.data_get : remote_mirror_ref01_data_result)
     assert !remote_mirror_ref01_data.nil?
+    assert !remote_mirror_ref01_data["id"].nil?
 
     # LOAD
-    remote_mirror_ref01_match_dt0 = {}
+    remote_mirror_ref01_match_dt0 = {
+      "id" => remote_mirror_ref01_data["id"],
+    }
     remote_mirror_ref01_data_dt0_loaded = remote_mirror_ref01_ent.load(remote_mirror_ref01_match_dt0, nil)
-    assert !remote_mirror_ref01_data_dt0_loaded.nil?
+    remote_mirror_ref01_data_dt0_load_result = Helpers.to_map(remote_mirror_ref01_data_dt0_loaded.respond_to?(:data_get) ? remote_mirror_ref01_data_dt0_loaded.data_get : remote_mirror_ref01_data_dt0_loaded)
+    assert !remote_mirror_ref01_data_dt0_load_result.nil?
+    assert_equal remote_mirror_ref01_data_dt0_load_result["id"], remote_mirror_ref01_data["id"]
 
+    # REMOVE
+    remote_mirror_ref01_match_rm0 = {
+      "id" => remote_mirror_ref01_data["id"],
+    }
+    remote_mirror_ref01_ent.remove(remote_mirror_ref01_match_rm0, nil)
 
   end
 end

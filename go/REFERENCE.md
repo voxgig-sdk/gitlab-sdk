@@ -1195,6 +1195,12 @@ accessRequest := client.AccessRequest(nil)
 fmt.Println(accessRequest.GetName()) // "access_request"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -3770,6 +3776,12 @@ apiEntitiesCiSecureFile := client.ApiEntitiesCiSecureFile(nil)
 fmt.Println(apiEntitiesCiSecureFile.GetName()) // "api_entities_ci_secure_file"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -3836,6 +3848,7 @@ fmt.Println(apiEntitiesCiVariable.GetName()) // "api_entities_ci_variable"
 | `description` | `string` | No |  |
 | `environment_scope` | `string` | No |  |
 | `hidden` | `bool` | No |  |
+| `id` | `string` | No |  |
 | `key` | `string` | No |  |
 | `masked` | `bool` | No |  |
 | `protected` | `bool` | No |  |
@@ -5706,6 +5719,7 @@ fmt.Println(apiEntitiesDictionaryTable.GetName()) // "api_entities_dictionary_ta
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `feature_categories` | `[]any` | No |  |
+| `id` | `string` | No |  |
 | `table_name` | `string` | No |  |
 
 ### Operations
@@ -6311,6 +6325,7 @@ fmt.Println(apiEntitiesFeature.GetName()) // "api_entities_feature"
 | --- | --- | --- | --- |
 | `definition` | `map[string]any` | No | API_Entities_Feature_Definition model |
 | `gates` | `map[string]any` | No |  |
+| `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `state` | `string` | No |  |
 
@@ -7215,6 +7230,12 @@ apiEntitiesIntegration := client.ApiEntitiesIntegration(nil)
 fmt.Println(apiEntitiesIntegration.GetName()) // "api_entities_integration"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -7356,6 +7377,7 @@ fmt.Println(apiEntitiesInvitation.GetName()) // "api_entities_invitation"
 | `created_at` | `string` | No |  |
 | `created_by_name` | `string` | No |  |
 | `expires_at` | `string` | No |  |
+| `id` | `string` | No |  |
 | `invite_email` | `string` | No |  |
 | `invite_token` | `string` | No |  |
 | `user_name` | `string` | No |  |
@@ -7641,6 +7663,7 @@ fmt.Println(apiEntitiesIssueLink.GetName()) // "api_entities_issue_link"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `link_type` | `string` | No |  |
 | `source_issue` | `map[string]any` | No |  |
 | `target_issue` | `map[string]any` | No |  |
@@ -7713,6 +7736,7 @@ fmt.Println(apiEntitiesLicense.GetName()) // "api_entities_license"
 | `content` | `string` | No |  |
 | `description` | `string` | No |  |
 | `html_url` | `string` | No |  |
+| `id` | `string` | No |  |
 | `key` | `string` | No |  |
 | `limitations` | `[]any` | No |  |
 | `name` | `string` | No |  |
@@ -9783,6 +9807,12 @@ apiEntitiesPackagesConanRecipeSnapshot := client.ApiEntitiesPackagesConanRecipeS
 fmt.Println(apiEntitiesPackagesConanRecipeSnapshot.GetName()) // "api_entities_packages_conan_recipe_snapshot"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -10041,6 +10071,7 @@ fmt.Println(apiEntitiesPagesDomain.GetName()) // "api_entities_pages_domain"
 | `domain` | `string` | No |  |
 | `enabled_until` | `string` | No |  |
 | `expired` | `string` | No |  |
+| `id` | `string` | No |  |
 | `subject` | `string` | No |  |
 | `url` | `string` | No |  |
 | `verification_code` | `string` | No |  |
@@ -10092,6 +10123,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.ApiEntitiesPagesDomain(nil).Update(map[string]any{
+    "id": "api_entities_pages_domain_id",
     "domain_id": "domain_id",
     "project_id": "project_id",
     // Fields to update
@@ -12229,6 +12261,7 @@ fmt.Println(apiEntitiesRelease.GetName()) // "api_entities_release"
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
 | `evidences` | `map[string]any` | No |  |
+| `id` | `string` | No |  |
 | `links` | `map[string]any` | No |  |
 | `milestones` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
@@ -13055,6 +13088,7 @@ fmt.Println(apiEntitiesTag.GetName()) // "api_entities_tag"
 | --- | --- | --- | --- |
 | `commit` | `map[string]any` | No | API_Entities_Commit model |
 | `created_at` | `string` | No |  |
+| `id` | `string` | No |  |
 | `message` | `string` | No |  |
 | `name` | `string` | No |  |
 | `protected` | `bool` | No |  |
@@ -13904,6 +13938,12 @@ application := client.Application(nil)
 fmt.Println(application.GetName()) // "application"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -13948,6 +13988,12 @@ Return the entity name.
 awardEmoji := client.AwardEmoji(nil)
 fmt.Println(awardEmoji.GetName()) // "award_emoji"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -13994,6 +14040,12 @@ badge := client.Badge(nil)
 fmt.Println(badge.GetName()) // "badge"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -14038,6 +14090,12 @@ Return the entity name.
 branch := client.Branch(nil)
 fmt.Println(branch.GetName()) // "branch"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -14129,6 +14187,12 @@ ciVariable := client.CiVariable(nil)
 fmt.Println(ciVariable.GetName()) // "ci_variable"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -14174,6 +14238,12 @@ cluster := client.Cluster(nil)
 fmt.Println(cluster.GetName()) // "cluster"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -14218,6 +14288,12 @@ Return the entity name.
 clusterAgent := client.ClusterAgent(nil)
 fmt.Println(clusterAgent.GetName()) // "cluster_agent"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -14356,6 +14432,12 @@ conan := client.Conan(nil)
 fmt.Println(conan.GetName()) // "conan"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -14400,6 +14482,12 @@ Return the entity name.
 conanPackage := client.ConanPackage(nil)
 fmt.Println(conanPackage.GetName()) // "conan_package"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -14571,6 +14659,7 @@ fmt.Println(customAttribute.GetName()) // "custom_attribute"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `key` | `string` | No |  |
 | `value` | `string` | No |  |
 
@@ -14618,6 +14707,12 @@ Return the entity name.
 debian := client.Debian(nil)
 fmt.Println(debian.GetName()) // "debian"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -14668,6 +14763,12 @@ debianDistribution := client.DebianDistribution(nil)
 fmt.Println(debianDistribution.GetName()) // "debian_distribution"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -14713,6 +14814,12 @@ debianPackage := client.DebianPackage(nil)
 fmt.Println(debianPackage.GetName()) // "debian_package"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -14733,6 +14840,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.DebianPackage(nil).Update(map[string]any{
+    "id": "debian_package_id",
     "file_name": "file_name",
     "project_id": "project_id",
     // Fields to update
@@ -14819,6 +14927,12 @@ deployKey := client.DeployKey(nil)
 fmt.Println(deployKey.GetName()) // "deploy_key"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -14864,6 +14978,12 @@ deployToken := client.DeployToken(nil)
 fmt.Println(deployToken.GetName()) // "deploy_token"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -14908,6 +15028,12 @@ Return the entity name.
 deployment := client.Deployment(nil)
 fmt.Println(deployment.GetName()) // "deployment"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15684,6 +15810,12 @@ environment := client.Environment(nil)
 fmt.Println(environment.GetName()) // "environment"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -15743,6 +15875,12 @@ errorTrackingClientKey := client.ErrorTrackingClientKey(nil)
 fmt.Println(errorTrackingClientKey.GetName()) // "error_tracking_client_key"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -15788,6 +15926,12 @@ feature := client.Feature(nil)
 fmt.Println(feature.GetName()) // "feature"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -15832,6 +15976,12 @@ Return the entity name.
 featureFlag := client.FeatureFlag(nil)
 fmt.Println(featureFlag.GetName()) // "feature_flag"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15904,6 +16054,12 @@ featureFlagsUserList := client.FeatureFlagsUserList(nil)
 fmt.Println(featureFlagsUserList.GetName()) // "feature_flags_user_list"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -15948,6 +16104,12 @@ Return the entity name.
 freezePeriod := client.FreezePeriod(nil)
 fmt.Println(freezePeriod.GetName()) // "freeze_period"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16159,6 +16321,12 @@ group := client.Group(nil)
 fmt.Println(group.GetName()) // "group"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -16245,6 +16413,12 @@ groupAvatar := client.GroupAvatar(nil)
 fmt.Println(groupAvatar.GetName()) // "group_avatar"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -16289,6 +16463,12 @@ Return the entity name.
 groupExport := client.GroupExport(nil)
 fmt.Println(groupExport.GetName()) // "group_export"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16454,6 +16634,12 @@ hook := client.Hook(nil)
 fmt.Println(hook.GetName()) // "hook"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -16575,6 +16761,12 @@ integration := client.Integration(nil)
 fmt.Println(integration.GetName()) // "integration"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -16633,6 +16825,12 @@ invitation := client.Invitation(nil)
 fmt.Println(invitation.GetName()) // "invitation"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -16677,6 +16875,12 @@ Return the entity name.
 issueLink := client.IssueLink(nil)
 fmt.Println(issueLink.GetName()) // "issue_link"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16767,6 +16971,12 @@ Return the entity name.
 job := client.Job(nil)
 fmt.Println(job.GetName()) // "job"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16902,6 +17112,12 @@ member := client.Member(nil)
 fmt.Println(member.GetName()) // "member"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -16946,6 +17162,12 @@ Return the entity name.
 mergeRequest := client.MergeRequest(nil)
 fmt.Println(mergeRequest.GetName()) // "merge_request"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -17183,6 +17405,12 @@ namespace := client.Namespace(nil)
 fmt.Println(namespace.GetName()) // "namespace"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -17227,6 +17455,12 @@ Return the entity name.
 npm := client.Npm(nil)
 fmt.Println(npm.GetName()) // "npm"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -17515,6 +17749,12 @@ packageFile := client.PackageFile(nil)
 fmt.Println(packageFile.GetName()) // "package_file"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -17696,6 +17936,12 @@ personalAccessToken := client.PersonalAccessToken(nil)
 fmt.Println(personalAccessToken.GetName()) // "personal_access_token"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -17854,6 +18100,12 @@ projectAvatar := client.ProjectAvatar(nil)
 fmt.Println(projectAvatar.GetName()) // "project_avatar"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -17945,6 +18197,12 @@ projectExport := client.ProjectExport(nil)
 fmt.Println(projectExport.GetName()) // "project_export"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -18003,6 +18261,12 @@ Return the entity name.
 projectHook := client.ProjectHook(nil)
 fmt.Println(projectHook.GetName()) // "project_hook"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18159,6 +18423,12 @@ projectPackage := client.ProjectPackage(nil)
 fmt.Println(projectPackage.GetName()) // "project_package"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -18203,6 +18473,12 @@ Return the entity name.
 projectSnippet := client.ProjectSnippet(nil)
 fmt.Println(projectSnippet.GetName()) // "project_snippet"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18308,6 +18584,12 @@ Return the entity name.
 protectedTag := client.ProtectedTag(nil)
 fmt.Println(protectedTag.GetName()) // "protected_tag"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18460,6 +18742,12 @@ release := client.Release(nil)
 fmt.Println(release.GetName()) // "release"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -18517,6 +18805,12 @@ releaseLink := client.ReleaseLink(nil)
 fmt.Println(releaseLink.GetName()) // "release_link"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -18561,6 +18855,12 @@ Return the entity name.
 remoteMirror := client.RemoteMirror(nil)
 fmt.Println(remoteMirror.GetName()) // "remote_mirror"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18740,6 +19040,12 @@ rubygem := client.Rubygem(nil)
 fmt.Println(rubygem.GetName()) // "rubygem"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -18844,6 +19150,12 @@ runner := client.Runner(nil)
 fmt.Println(runner.GetName()) // "runner"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -18947,6 +19259,12 @@ secureFile := client.SecureFile(nil)
 fmt.Println(secureFile.GetName()) // "secure_file"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -19049,6 +19367,12 @@ Return the entity name.
 snippet := client.Snippet(nil)
 fmt.Println(snippet.GetName()) // "snippet"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -19167,6 +19491,12 @@ systemHook := client.SystemHook(nil)
 fmt.Println(systemHook.GetName()) // "system_hook"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -19211,6 +19541,12 @@ Return the entity name.
 tag := client.Tag(nil)
 fmt.Println(tag.GetName()) // "tag"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -19257,6 +19593,12 @@ terraformRegistry := client.TerraformRegistry(nil)
 fmt.Println(terraformRegistry.GetName()) // "terraform_registry"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -19277,6 +19619,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.TerraformRegistry(nil).Update(map[string]any{
+    "id": "terraform_registry_id",
     "module_id": "module_id",
     "module_system": "module_system",
     "project_id": "project_id",
@@ -19318,6 +19661,12 @@ Return the entity name.
 terraformState := client.TerraformState(nil)
 fmt.Println(terraformState.GetName()) // "terraform_state"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -19501,6 +19850,12 @@ topic := client.Topic(nil)
 fmt.Println(topic.GetName()) // "topic"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
@@ -19545,6 +19900,12 @@ Return the entity name.
 unleashApi := client.UnleashApi(nil)
 fmt.Println(unleashApi.GetName()) // "unleash_api"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -19753,6 +20114,12 @@ Return the entity name.
 wiki := client.Wiki(nil)
 fmt.Println(wiki.GetName()) // "wiki"
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

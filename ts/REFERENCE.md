@@ -3413,6 +3413,12 @@ Alias for `GitlabSDK.test()`.
 const access_request = client.AccessRequest()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -5839,6 +5845,12 @@ Return a copy of the entity options.
 const api_entities_ci_secure_file = client.ApiEntitiesCiSecureFile()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -5900,6 +5912,7 @@ const api_entities_ci_variable = client.ApiEntitiesCiVariable()
 | `description` | `string` | No |  |
 | `environment_scope` | `string` | No |  |
 | `hidden` | `boolean` | No |  |
+| `id` | `string` | No |  |
 | `key` | `string` | No |  |
 | `masked` | `boolean` | No |  |
 | `protected` | `boolean` | No |  |
@@ -7648,6 +7661,7 @@ const api_entities_dictionary_table = client.ApiEntitiesDictionaryTable()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `feature_categories` | `any[]` | No |  |
+| `id` | `string` | No |  |
 | `table_name` | `string` | No |  |
 
 ### Operations
@@ -8205,6 +8219,7 @@ const api_entities_feature = client.ApiEntitiesFeature()
 | --- | --- | --- | --- |
 | `definition` | `Record<string, any>` | No | API_Entities_Feature_Definition model |
 | `gates` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `state` | `string` | No |  |
 
@@ -9031,6 +9046,12 @@ Return a copy of the entity options.
 const api_entities_integration = client.ApiEntitiesIntegration()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -9166,6 +9187,7 @@ const api_entities_invitation = client.ApiEntitiesInvitation()
 | `created_at` | `string` | No |  |
 | `created_by_name` | `string` | No |  |
 | `expires_at` | `string` | No |  |
+| `id` | `string` | No |  |
 | `invite_email` | `string` | No |  |
 | `invite_token` | `string` | No |  |
 | `user_name` | `string` | No |  |
@@ -9424,6 +9446,7 @@ const api_entities_issue_link = client.ApiEntitiesIssueLink()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `link_type` | `string` | No |  |
 | `source_issue` | `Record<string, any>` | No |  |
 | `target_issue` | `Record<string, any>` | No |  |
@@ -9491,6 +9514,7 @@ const api_entities_license = client.ApiEntitiesLicense()
 | `content` | `string` | No |  |
 | `description` | `string` | No |  |
 | `html_url` | `string` | No |  |
+| `id` | `string` | No |  |
 | `key` | `string` | No |  |
 | `limitations` | `any[]` | No |  |
 | `name` | `string` | No |  |
@@ -11474,6 +11498,12 @@ Return a copy of the entity options.
 const api_entities_packages_conan_recipe_snapshot = client.ApiEntitiesPackagesConanRecipeSnapshot()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -11716,6 +11746,7 @@ const api_entities_pages_domain = client.ApiEntitiesPagesDomain()
 | `domain` | `string` | No |  |
 | `enabled_until` | `string` | No |  |
 | `expired` | `string` | No |  |
+| `id` | `string` | No |  |
 | `subject` | `string` | No |  |
 | `url` | `string` | No |  |
 | `verification_code` | `string` | No |  |
@@ -11755,6 +11786,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.ApiEntitiesPagesDomain().update({
+  id: 'api_entities_pages_domain_id',
   domain_id: 'domain_id',
   project_id: 'project_id',
   // Fields to update
@@ -13766,6 +13798,7 @@ const api_entities_release = client.ApiEntitiesRelease()
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
 | `evidences` | `Record<string, any>` | No |  |
+| `id` | `string` | No |  |
 | `links` | `Record<string, any>` | No |  |
 | `milestones` | `Record<string, any>` | No |  |
 | `name` | `string` | No |  |
@@ -14530,6 +14563,7 @@ const api_entities_tag = client.ApiEntitiesTag()
 | --- | --- | --- | --- |
 | `commit` | `Record<string, any>` | No | API_Entities_Commit model |
 | `created_at` | `string` | No |  |
+| `id` | `string` | No |  |
 | `message` | `string` | No |  |
 | `name` | `string` | No |  |
 | `protected` | `boolean` | No |  |
@@ -15334,6 +15368,12 @@ Return a copy of the entity options.
 const application = client.Application()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -15377,6 +15417,12 @@ Return a copy of the entity options.
 ```ts
 const award_emoji = client.AwardEmoji()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15422,6 +15468,12 @@ Return a copy of the entity options.
 const badge = client.Badge()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -15465,6 +15517,12 @@ Return a copy of the entity options.
 ```ts
 const branch = client.Branch()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15554,6 +15612,12 @@ Return a copy of the entity options.
 const ci_variable = client.CiVariable()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -15598,6 +15662,12 @@ Return a copy of the entity options.
 const cluster = client.Cluster()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -15641,6 +15711,12 @@ Return a copy of the entity options.
 ```ts
 const cluster_agent = client.ClusterAgent()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15776,6 +15852,12 @@ Return a copy of the entity options.
 const conan = client.Conan()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -15819,6 +15901,12 @@ Return a copy of the entity options.
 ```ts
 const conan_package = client.ConanPackage()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15979,6 +16067,7 @@ const custom_attribute = client.CustomAttribute()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `key` | `string` | No |  |
 | `value` | `string` | No |  |
 
@@ -16025,6 +16114,12 @@ Return a copy of the entity options.
 ```ts
 const debian = client.Debian()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16074,6 +16169,12 @@ Return a copy of the entity options.
 const debian_distribution = client.DebianDistribution()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -16118,6 +16219,12 @@ Return a copy of the entity options.
 const debian_package = client.DebianPackage()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -16134,6 +16241,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.DebianPackage().update({
+  id: 'debian_package_id',
   file_name: 'file_name',
   project_id: 'project_id',
   // Fields to update
@@ -16238,6 +16346,12 @@ Return a copy of the entity options.
 const deploy_key = client.DeployKey()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -16282,6 +16396,12 @@ Return a copy of the entity options.
 const deploy_token = client.DeployToken()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -16325,6 +16445,12 @@ Return a copy of the entity options.
 ```ts
 const deployment = client.Deployment()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -17076,6 +17202,12 @@ Return a copy of the entity options.
 const environment = client.Environment()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Actions
 
 This entity exposes custom API actions in addition to the standard
@@ -17151,6 +17283,12 @@ Return a copy of the entity options.
 const error_tracking_client_key = client.ErrorTrackingClientKey()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -17195,6 +17333,12 @@ Return a copy of the entity options.
 const feature = client.Feature()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -17238,6 +17382,12 @@ Return a copy of the entity options.
 ```ts
 const feature_flag = client.FeatureFlag()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -17301,6 +17451,12 @@ Return a copy of the entity options.
 const feature_flags_user_list = client.FeatureFlagsUserList()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -17344,6 +17500,12 @@ Return a copy of the entity options.
 ```ts
 const freeze_period = client.FreezePeriod()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -17563,6 +17725,12 @@ Return a copy of the entity options.
 const group = client.Group()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Actions
 
 This entity exposes custom API actions in addition to the standard
@@ -17666,6 +17834,12 @@ Return a copy of the entity options.
 const group_avatar = client.GroupAvatar()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -17709,6 +17883,12 @@ Return a copy of the entity options.
 ```ts
 const group_export = client.GroupExport()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Actions
 
@@ -17883,6 +18063,12 @@ Return a copy of the entity options.
 const hook = client.Hook()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -17994,6 +18180,12 @@ Return a copy of the entity options.
 const integration = client.Integration()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -18047,6 +18239,12 @@ Return a copy of the entity options.
 const invitation = client.Invitation()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -18090,6 +18288,12 @@ Return a copy of the entity options.
 ```ts
 const issue_link = client.IssueLink()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18178,6 +18382,12 @@ Return a copy of the entity options.
 ```ts
 const job = client.Job()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Actions
 
@@ -18323,6 +18533,12 @@ Return a copy of the entity options.
 const member = client.Member()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -18366,6 +18582,12 @@ Return a copy of the entity options.
 ```ts
 const merge_request = client.MergeRequest()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Actions
 
@@ -18632,6 +18854,12 @@ Return a copy of the entity options.
 const namespace = client.Namespace()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Actions
 
 This entity exposes custom API actions in addition to the standard
@@ -18695,6 +18923,12 @@ Return a copy of the entity options.
 ```ts
 const npm = client.Npm()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18955,6 +19189,12 @@ Return a copy of the entity options.
 const package_file = client.PackageFile()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Actions
 
 This entity exposes custom API actions in addition to the standard
@@ -19140,6 +19380,12 @@ Return a copy of the entity options.
 ```ts
 const personal_access_token = client.PersonalAccessToken()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Actions
 
@@ -19338,6 +19584,12 @@ Return a copy of the entity options.
 const project_avatar = client.ProjectAvatar()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -19427,6 +19679,12 @@ Return a copy of the entity options.
 const project_export = client.ProjectExport()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Actions
 
 This entity exposes custom API actions in addition to the standard
@@ -19500,6 +19758,12 @@ Return a copy of the entity options.
 ```ts
 const project_hook = client.ProjectHook()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -19653,6 +19917,12 @@ Return a copy of the entity options.
 const project_package = client.ProjectPackage()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -19696,6 +19966,12 @@ Return a copy of the entity options.
 ```ts
 const project_snippet = client.ProjectSnippet()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -19795,6 +20071,12 @@ Return a copy of the entity options.
 ```ts
 const protected_tag = client.ProtectedTag()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -19940,6 +20222,12 @@ Return a copy of the entity options.
 const release = client.Release()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Actions
 
 This entity exposes custom API actions in addition to the standard
@@ -20012,6 +20300,12 @@ Return a copy of the entity options.
 const release_link = client.ReleaseLink()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -20055,6 +20349,12 @@ Return a copy of the entity options.
 ```ts
 const remote_mirror = client.RemoteMirror()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Actions
 
@@ -20240,6 +20540,12 @@ Return a copy of the entity options.
 const rubygem = client.Rubygem()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -20337,6 +20643,12 @@ Return a copy of the entity options.
 ```ts
 const runner = client.Runner()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Actions
 
@@ -20455,6 +20767,12 @@ Return a copy of the entity options.
 ```ts
 const secure_file = client.SecureFile()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Actions
 
@@ -20593,6 +20911,12 @@ Return a copy of the entity options.
 const snippet = client.Snippet()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Actions
 
 This entity exposes custom API actions in addition to the standard
@@ -20724,6 +21048,12 @@ Return a copy of the entity options.
 const system_hook = client.SystemHook()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -20767,6 +21097,12 @@ Return a copy of the entity options.
 ```ts
 const tag = client.Tag()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -20812,6 +21148,12 @@ Return a copy of the entity options.
 const terraform_registry = client.TerraformRegistry()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -20828,6 +21170,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.TerraformRegistry().update({
+  id: 'terraform_registry_id',
   module_id: 'module_id',
   module_system: 'module_system',
   project_id: 'project_id',
@@ -20868,6 +21211,12 @@ Return a copy of the entity options.
 ```ts
 const terraform_state = client.TerraformState()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -21040,6 +21389,12 @@ Return a copy of the entity options.
 const topic = client.Topic()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -21083,6 +21438,12 @@ Return a copy of the entity options.
 ```ts
 const unleash_api = client.UnleashApi()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Actions
 
@@ -21350,6 +21711,12 @@ Return a copy of the entity options.
 ```ts
 const wiki = client.Wiki()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

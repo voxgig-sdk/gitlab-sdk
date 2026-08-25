@@ -42,17 +42,23 @@ class DebianPackageEntityTest < Minitest::Test
     # UPDATE
     debian_package_ref01_ent = client.DebianPackage(nil)
     debian_package_ref01_data_up0_up = {
+      "id" => debian_package_ref01_data["id"],
       "project_id" => setup[:idmap]["project_id"],
     }
 
     debian_package_ref01_resdata_up0_result = debian_package_ref01_ent.update(debian_package_ref01_data_up0_up, nil)
     debian_package_ref01_resdata_up0 = Helpers.to_map(debian_package_ref01_resdata_up0_result.respond_to?(:data_get) ? debian_package_ref01_resdata_up0_result.data_get : debian_package_ref01_resdata_up0_result)
     assert !debian_package_ref01_resdata_up0.nil?
+    assert_equal debian_package_ref01_resdata_up0["id"], debian_package_ref01_data_up0_up["id"]
 
     # LOAD
-    debian_package_ref01_match_dt0 = {}
+    debian_package_ref01_match_dt0 = {
+      "id" => debian_package_ref01_data["id"],
+    }
     debian_package_ref01_data_dt0_loaded = debian_package_ref01_ent.load(debian_package_ref01_match_dt0, nil)
-    assert !debian_package_ref01_data_dt0_loaded.nil?
+    debian_package_ref01_data_dt0_load_result = Helpers.to_map(debian_package_ref01_data_dt0_loaded.respond_to?(:data_get) ? debian_package_ref01_data_dt0_loaded.data_get : debian_package_ref01_data_dt0_loaded)
+    assert !debian_package_ref01_data_dt0_load_result.nil?
+    assert_equal debian_package_ref01_data_dt0_load_result["id"], debian_package_ref01_data["id"]
 
   end
 end

@@ -45,6 +45,7 @@ describe("DebianPackageEntity", function()
     -- UPDATE
     local debian_package_ref01_ent = client:DebianPackage(nil)
     local debian_package_ref01_data_up0_up = {
+      id = debian_package_ref01_data["id"],
       ["project_id"] = setup.idmap["project_id"],
     }
 
@@ -52,12 +53,17 @@ describe("DebianPackageEntity", function()
     assert.is_nil(err)
     local debian_package_ref01_resdata_up0 = helpers.to_map(type(debian_package_ref01_resdata_up0_result) == 'table' and debian_package_ref01_resdata_up0_result.data_get and debian_package_ref01_resdata_up0_result:data_get() or debian_package_ref01_resdata_up0_result)
     assert.is_not_nil(debian_package_ref01_resdata_up0)
+    assert.are.equal(debian_package_ref01_resdata_up0["id"], debian_package_ref01_data_up0_up["id"])
 
     -- LOAD
-    local debian_package_ref01_match_dt0 = {}
+    local debian_package_ref01_match_dt0 = {
+      id = debian_package_ref01_data["id"],
+    }
     local debian_package_ref01_data_dt0_loaded, err = debian_package_ref01_ent:load(debian_package_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(debian_package_ref01_data_dt0_loaded)
+    local debian_package_ref01_data_dt0_load_result = helpers.to_map(type(debian_package_ref01_data_dt0_loaded) == 'table' and debian_package_ref01_data_dt0_loaded.data_get and debian_package_ref01_data_dt0_loaded:data_get() or debian_package_ref01_data_dt0_loaded)
+    assert.is_not_nil(debian_package_ref01_data_dt0_load_result)
+    assert.are.equal(debian_package_ref01_data_dt0_load_result["id"], debian_package_ref01_data["id"])
 
   end)
 end)

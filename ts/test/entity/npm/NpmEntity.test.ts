@@ -62,10 +62,11 @@ describe('NpmEntity', async () => {
     // UPDATE
     const npm_ref01_ent = client.Npm()
     const npm_ref01_data_up0: any = {}
+    npm_ref01_data_up0.id = npm_ref01_data.id
     npm_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
 
     const npm_ref01_resdata_up0 = (await npm_ref01_ent.update(npm_ref01_data_up0)).data()
-    assert(null != npm_ref01_resdata_up0)
+    assert(npm_ref01_resdata_up0.id === npm_ref01_data_up0.id)
 
 
   })

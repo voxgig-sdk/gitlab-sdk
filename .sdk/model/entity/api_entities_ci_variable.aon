@@ -21,6 +21,11 @@ main: kit: entity: api_entities_ci_variable: {
       type: "`$BOOLEAN`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "key"
       req: false
       type: "`$STRING`"
@@ -51,6 +56,11 @@ main: kit: entity: api_entities_ci_variable: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "api_entities_ci_variable"
   op: {

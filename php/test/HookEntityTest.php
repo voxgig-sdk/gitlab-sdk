@@ -47,15 +47,23 @@ class HookEntityTest extends TestCase
         $hook_ref01_data_result = $hook_ref01_ent->create($hook_ref01_data, null);
         $hook_ref01_data = Helpers::to_map(is_object($hook_ref01_data_result) && method_exists($hook_ref01_data_result, 'data_get') ? $hook_ref01_data_result->data_get() : $hook_ref01_data_result);
         $this->assertNotNull($hook_ref01_data);
+        $this->assertNotNull($hook_ref01_data["id"]);
 
         // UPDATE
         $hook_ref01_data_up0_up = [
+            "id" => $hook_ref01_data["id"],
         ];
 
         $hook_ref01_resdata_up0_result = $hook_ref01_ent->update($hook_ref01_data_up0_up, null);
         $hook_ref01_resdata_up0 = Helpers::to_map(is_object($hook_ref01_resdata_up0_result) && method_exists($hook_ref01_resdata_up0_result, 'data_get') ? $hook_ref01_resdata_up0_result->data_get() : $hook_ref01_resdata_up0_result);
         $this->assertNotNull($hook_ref01_resdata_up0);
+        $this->assertEquals($hook_ref01_resdata_up0["id"], $hook_ref01_data_up0_up["id"]);
 
+        // REMOVE
+        $hook_ref01_match_rm0 = [
+            "id" => $hook_ref01_data["id"],
+        ];
+        $hook_ref01_ent->remove($hook_ref01_match_rm0, null);
 
     }
 }

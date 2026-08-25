@@ -46,13 +46,24 @@ describe("TerraformStateEntity", function()
     assert.is_nil(err)
     terraform_state_ref01_data = helpers.to_map(type(terraform_state_ref01_data_result) == 'table' and terraform_state_ref01_data_result.data_get and terraform_state_ref01_data_result:data_get() or terraform_state_ref01_data_result)
     assert.is_not_nil(terraform_state_ref01_data)
+    assert.is_not_nil(terraform_state_ref01_data["id"])
 
     -- LOAD
-    local terraform_state_ref01_match_dt0 = {}
+    local terraform_state_ref01_match_dt0 = {
+      id = terraform_state_ref01_data["id"],
+    }
     local terraform_state_ref01_data_dt0_loaded, err = terraform_state_ref01_ent:load(terraform_state_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(terraform_state_ref01_data_dt0_loaded)
+    local terraform_state_ref01_data_dt0_load_result = helpers.to_map(type(terraform_state_ref01_data_dt0_loaded) == 'table' and terraform_state_ref01_data_dt0_loaded.data_get and terraform_state_ref01_data_dt0_loaded:data_get() or terraform_state_ref01_data_dt0_loaded)
+    assert.is_not_nil(terraform_state_ref01_data_dt0_load_result)
+    assert.are.equal(terraform_state_ref01_data_dt0_load_result["id"], terraform_state_ref01_data["id"])
 
+    -- REMOVE
+    local terraform_state_ref01_match_rm0 = {
+      id = terraform_state_ref01_data["id"],
+    }
+    local _, err = terraform_state_ref01_ent:remove(terraform_state_ref01_match_rm0, nil)
+    assert.is_nil(err)
 
   end)
 end)

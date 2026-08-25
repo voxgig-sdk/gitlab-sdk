@@ -39,11 +39,16 @@ class GroupExportEntityTest < Minitest::Test
     group_export_ref01_data_result = group_export_ref01_ent.create(group_export_ref01_data, nil)
     group_export_ref01_data = Helpers.to_map(group_export_ref01_data_result.respond_to?(:data_get) ? group_export_ref01_data_result.data_get : group_export_ref01_data_result)
     assert !group_export_ref01_data.nil?
+    assert !group_export_ref01_data["id"].nil?
 
     # LOAD
-    group_export_ref01_match_dt0 = {}
+    group_export_ref01_match_dt0 = {
+      "id" => group_export_ref01_data["id"],
+    }
     group_export_ref01_data_dt0_loaded = group_export_ref01_ent.load(group_export_ref01_match_dt0, nil)
-    assert !group_export_ref01_data_dt0_loaded.nil?
+    group_export_ref01_data_dt0_load_result = Helpers.to_map(group_export_ref01_data_dt0_loaded.respond_to?(:data_get) ? group_export_ref01_data_dt0_loaded.data_get : group_export_ref01_data_dt0_loaded)
+    assert !group_export_ref01_data_dt0_load_result.nil?
+    assert_equal group_export_ref01_data_dt0_load_result["id"], group_export_ref01_data["id"]
 
   end
 end

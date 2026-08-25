@@ -48,9 +48,13 @@ class TestProjectAvatarEntity:
 
         # LOAD
         project_avatar_ref01_ent = client.ProjectAvatar(None)
-        project_avatar_ref01_match_dt0 = {}
+        project_avatar_ref01_match_dt0 = {
+            "id": project_avatar_ref01_data["id"],
+        }
         project_avatar_ref01_data_dt0_loaded = project_avatar_ref01_ent.load(project_avatar_ref01_match_dt0, None)
-        assert project_avatar_ref01_data_dt0_loaded is not None
+        project_avatar_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(project_avatar_ref01_data_dt0_loaded))
+        assert project_avatar_ref01_data_dt0_load_result is not None
+        assert project_avatar_ref01_data_dt0_load_result["id"] == project_avatar_ref01_data["id"]
 
 
 

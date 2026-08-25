@@ -2,6 +2,7 @@
   "existing": {
     "debian_package": {
       "DEBIAN_PACKAGE00": {
+        "id": "DEBIAN_PACKAGE00",
         "distribution": "DISTRIBUTION01",
         "file_name": "FILE_NAME01",
         "letter": "LETTER01",
@@ -11,10 +12,10 @@
         "architecture": "ARCHITECTURE01",
         "distribution_id": "DISTRIBUTION01",
         "file_sha256": "FILE_SHA25601",
-        "group_id": "GROUP01",
-        "id": "DEBIAN_PACKAGE00"
+        "group_id": "GROUP01"
       },
       "DEBIAN_PACKAGE01": {
+        "id": "DEBIAN_PACKAGE01",
         "distribution": "DISTRIBUTION01",
         "file_name": "FILE_NAME01",
         "letter": "LETTER01",
@@ -24,10 +25,10 @@
         "architecture": "ARCHITECTURE01",
         "distribution_id": "DISTRIBUTION01",
         "file_sha256": "FILE_SHA25601",
-        "group_id": "GROUP01",
-        "id": "DEBIAN_PACKAGE01"
+        "group_id": "GROUP01"
       },
       "DEBIAN_PACKAGE02": {
+        "id": "DEBIAN_PACKAGE02",
         "distribution": "DISTRIBUTION01",
         "file_name": "FILE_NAME01",
         "letter": "LETTER01",
@@ -37,8 +38,7 @@
         "architecture": "ARCHITECTURE01",
         "distribution_id": "DISTRIBUTION01",
         "file_sha256": "FILE_SHA25601",
-        "group_id": "GROUP01",
-        "id": "DEBIAN_PACKAGE02"
+        "group_id": "GROUP01"
       }
     }
   },

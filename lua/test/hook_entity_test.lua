@@ -44,16 +44,25 @@ describe("HookEntity", function()
     assert.is_nil(err)
     hook_ref01_data = helpers.to_map(type(hook_ref01_data_result) == 'table' and hook_ref01_data_result.data_get and hook_ref01_data_result:data_get() or hook_ref01_data_result)
     assert.is_not_nil(hook_ref01_data)
+    assert.is_not_nil(hook_ref01_data["id"])
 
     -- UPDATE
     local hook_ref01_data_up0_up = {
+      id = hook_ref01_data["id"],
     }
 
     local hook_ref01_resdata_up0_result, err = hook_ref01_ent:update(hook_ref01_data_up0_up, nil)
     assert.is_nil(err)
     local hook_ref01_resdata_up0 = helpers.to_map(type(hook_ref01_resdata_up0_result) == 'table' and hook_ref01_resdata_up0_result.data_get and hook_ref01_resdata_up0_result:data_get() or hook_ref01_resdata_up0_result)
     assert.is_not_nil(hook_ref01_resdata_up0)
+    assert.are.equal(hook_ref01_resdata_up0["id"], hook_ref01_data_up0_up["id"])
 
+    -- REMOVE
+    local hook_ref01_match_rm0 = {
+      id = hook_ref01_data["id"],
+    }
+    local _, err = hook_ref01_ent:remove(hook_ref01_match_rm0, nil)
+    assert.is_nil(err)
 
   end)
 end)

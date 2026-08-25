@@ -63,7 +63,18 @@ func TestEnvironmentEntity(t *testing.T) {
 		if environmentRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if environmentRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
+		// REMOVE
+		environmentRef01MatchRm0 := map[string]any{
+			"id": environmentRef01Data["id"],
+		}
+		_, err = environmentRef01Ent.Remove(environmentRef01MatchRm0, nil)
+		if err != nil {
+			t.Fatalf("remove failed: %v", err)
+		}
 
 	})
 }

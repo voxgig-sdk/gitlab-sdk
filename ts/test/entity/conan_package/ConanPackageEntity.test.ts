@@ -62,6 +62,7 @@ describe('ConanPackageEntity', async () => {
     // UPDATE
     const conan_package_ref01_ent = client.ConanPackage()
     const conan_package_ref01_data_up0: any = {}
+    conan_package_ref01_data_up0.id = conan_package_ref01_data.id
     conan_package_ref01_data_up0 ['file_id'] = setup.idmap['file_id']
     conan_package_ref01_data_up0 ['package_channel'] = setup.idmap['package_channel']
     conan_package_ref01_data_up0 ['package_username'] = setup.idmap['package_username']
@@ -69,8 +70,14 @@ describe('ConanPackageEntity', async () => {
     conan_package_ref01_data_up0 ['recipe_revision'] = setup.idmap['recipe_revision']
 
     const conan_package_ref01_resdata_up0 = (await conan_package_ref01_ent.update(conan_package_ref01_data_up0)).data()
-    assert(null != conan_package_ref01_resdata_up0)
+    assert(conan_package_ref01_resdata_up0.id === conan_package_ref01_data_up0.id)
 
+
+    // LOAD
+    const conan_package_ref01_match_dt0: any = {}
+    conan_package_ref01_match_dt0.id = conan_package_ref01_data.id
+    const conan_package_ref01_data_dt0 = (await conan_package_ref01_ent.load(conan_package_ref01_match_dt0)).data()
+    assert(conan_package_ref01_data_dt0.id === conan_package_ref01_data.id)
 
 
   })

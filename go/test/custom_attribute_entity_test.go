@@ -61,13 +61,19 @@ func TestCustomAttributeEntity(t *testing.T) {
 
 		// LOAD
 		customAttributeRef01Ent := client.CustomAttribute(nil)
-		customAttributeRef01MatchDt0 := map[string]any{}
+		customAttributeRef01MatchDt0 := map[string]any{
+			"id": customAttributeRef01Data["id"],
+		}
 		customAttributeRef01DataDt0Loaded, err := customAttributeRef01Ent.Load(customAttributeRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if customAttributeRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		customAttributeRef01DataDt0LoadResult := core.ToMapAny(entityData(customAttributeRef01DataDt0Loaded))
+		if customAttributeRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if customAttributeRef01DataDt0LoadResult["id"] != customAttributeRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

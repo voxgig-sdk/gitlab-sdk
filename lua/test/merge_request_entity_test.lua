@@ -45,6 +45,7 @@ describe("MergeRequestEntity", function()
     -- UPDATE
     local merge_request_ref01_ent = client:MergeRequest(nil)
     local merge_request_ref01_data_up0_up = {
+      id = merge_request_ref01_data["id"],
       ["project_id"] = setup.idmap["project_id"],
     }
 
@@ -52,12 +53,17 @@ describe("MergeRequestEntity", function()
     assert.is_nil(err)
     local merge_request_ref01_resdata_up0 = helpers.to_map(type(merge_request_ref01_resdata_up0_result) == 'table' and merge_request_ref01_resdata_up0_result.data_get and merge_request_ref01_resdata_up0_result:data_get() or merge_request_ref01_resdata_up0_result)
     assert.is_not_nil(merge_request_ref01_resdata_up0)
+    assert.are.equal(merge_request_ref01_resdata_up0["id"], merge_request_ref01_data_up0_up["id"])
 
     -- LOAD
-    local merge_request_ref01_match_dt0 = {}
+    local merge_request_ref01_match_dt0 = {
+      id = merge_request_ref01_data["id"],
+    }
     local merge_request_ref01_data_dt0_loaded, err = merge_request_ref01_ent:load(merge_request_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(merge_request_ref01_data_dt0_loaded)
+    local merge_request_ref01_data_dt0_load_result = helpers.to_map(type(merge_request_ref01_data_dt0_loaded) == 'table' and merge_request_ref01_data_dt0_loaded.data_get and merge_request_ref01_data_dt0_loaded:data_get() or merge_request_ref01_data_dt0_loaded)
+    assert.is_not_nil(merge_request_ref01_data_dt0_load_result)
+    assert.are.equal(merge_request_ref01_data_dt0_load_result["id"], merge_request_ref01_data["id"])
 
   end)
 end)

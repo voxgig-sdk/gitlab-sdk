@@ -81,12 +81,18 @@ class TestApiEntitiesFeatureEntity:
 
         api_entities_feature_ref01_data = helpers.to_map(runner.entity_data(api_entities_feature_ref01_ent.create(api_entities_feature_ref01_data, None)))
         assert api_entities_feature_ref01_data is not None
+        assert api_entities_feature_ref01_data["id"] is not None
 
         # LIST
         api_entities_feature_ref01_match = {}
 
         api_entities_feature_ref01_list_result = api_entities_feature_ref01_ent.list(api_entities_feature_ref01_match, None)
         assert isinstance(api_entities_feature_ref01_list_result, list)
+
+        found_item = vs.select(
+            runner.entity_list_to_data(api_entities_feature_ref01_list_result),
+            {"id": api_entities_feature_ref01_data["id"]})
+        assert not vs.isempty(found_item)
 
 
 

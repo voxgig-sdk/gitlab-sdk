@@ -78,7 +78,15 @@ const utility_1 = require("../../utility");
         terraform_state_ref01_data['project_id'] = setup.idmap['project01'];
         terraform_state_ref01_data['state_id'] = setup.idmap['state01'];
         terraform_state_ref01_data = (await terraform_state_ref01_ent.create(terraform_state_ref01_data)).data();
-        (0, node_assert_1.default)(null != terraform_state_ref01_data);
+        (0, node_assert_1.default)(null != terraform_state_ref01_data.id);
+        // LOAD
+        const terraform_state_ref01_match_dt0 = {};
+        terraform_state_ref01_match_dt0.id = terraform_state_ref01_data.id;
+        const terraform_state_ref01_data_dt0 = (await terraform_state_ref01_ent.load(terraform_state_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(terraform_state_ref01_data_dt0.id === terraform_state_ref01_data.id);
+        // REMOVE
+        const terraform_state_ref01_match_rm0 = { id: terraform_state_ref01_data.id };
+        await terraform_state_ref01_ent.remove(terraform_state_ref01_match_rm0);
     });
 });
 function basicSetup(extra) {

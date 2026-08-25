@@ -63,8 +63,14 @@ describe('GroupExportEntity', async () => {
     let group_export_ref01_data = setup.data.new.group_export['group_export_ref01']
 
     group_export_ref01_data = (await group_export_ref01_ent.create(group_export_ref01_data)).data()
-    assert(null != group_export_ref01_data)
+    assert(null != group_export_ref01_data.id)
 
+
+    // LOAD
+    const group_export_ref01_match_dt0: any = {}
+    group_export_ref01_match_dt0.id = group_export_ref01_data.id
+    const group_export_ref01_data_dt0 = (await group_export_ref01_ent.load(group_export_ref01_match_dt0)).data()
+    assert(group_export_ref01_data_dt0.id === group_export_ref01_data.id)
 
 
   })

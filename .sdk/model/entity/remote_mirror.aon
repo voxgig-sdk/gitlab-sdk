@@ -4,6 +4,19 @@ main: kit: entity: remote_mirror: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "remote_mirror"
   op: {
     create: {

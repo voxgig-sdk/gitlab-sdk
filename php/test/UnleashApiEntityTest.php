@@ -48,9 +48,13 @@ class UnleashApiEntityTest extends TestCase
 
         // LOAD
         $unleash_api_ref01_ent = $client->UnleashApi(null);
-        $unleash_api_ref01_match_dt0 = [];
+        $unleash_api_ref01_match_dt0 = [
+            "id" => $unleash_api_ref01_data["id"],
+        ];
         $unleash_api_ref01_data_dt0_loaded = $unleash_api_ref01_ent->load($unleash_api_ref01_match_dt0, null);
-        $this->assertNotNull($unleash_api_ref01_data_dt0_loaded);
+        $unleash_api_ref01_data_dt0_load_result = Helpers::to_map(is_object($unleash_api_ref01_data_dt0_loaded) && method_exists($unleash_api_ref01_data_dt0_loaded, 'data_get') ? $unleash_api_ref01_data_dt0_loaded->data_get() : $unleash_api_ref01_data_dt0_loaded);
+        $this->assertNotNull($unleash_api_ref01_data_dt0_load_result);
+        $this->assertEquals($unleash_api_ref01_data_dt0_load_result["id"], $unleash_api_ref01_data["id"]);
 
     }
 }

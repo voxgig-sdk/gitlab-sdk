@@ -59,9 +59,12 @@ describe('CustomAttributeEntity', async () => {
 
     let custom_attribute_ref01_data = Object.values(setup.data.existing.custom_attribute)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const custom_attribute_ref01_ent = client.CustomAttribute()
+    const custom_attribute_ref01_match_dt0: any = {}
+    custom_attribute_ref01_match_dt0.id = custom_attribute_ref01_data.id
+    const custom_attribute_ref01_data_dt0 = (await custom_attribute_ref01_ent.load(custom_attribute_ref01_match_dt0)).data()
+    assert(custom_attribute_ref01_data_dt0.id === custom_attribute_ref01_data.id)
 
 
   })

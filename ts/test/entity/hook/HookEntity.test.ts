@@ -64,16 +64,21 @@ describe('HookEntity', async () => {
     hook_ref01_data['hook_id'] = setup.idmap['hook01']
 
     hook_ref01_data = (await hook_ref01_ent.create(hook_ref01_data)).data()
-    assert(null != hook_ref01_data)
+    assert(null != hook_ref01_data.id)
 
 
     // UPDATE
     const hook_ref01_data_up0: any = {}
+    hook_ref01_data_up0.id = hook_ref01_data.id
 
     const hook_ref01_resdata_up0 = (await hook_ref01_ent.update(hook_ref01_data_up0)).data()
-    assert(null != hook_ref01_resdata_up0)
+    assert(hook_ref01_resdata_up0.id === hook_ref01_data_up0.id)
 
 
+    // REMOVE
+    const hook_ref01_match_rm0: any = { id: hook_ref01_data.id }
+    await hook_ref01_ent.remove(hook_ref01_match_rm0)
+  
 
   })
 })

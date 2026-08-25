@@ -2,25 +2,25 @@
   "existing": {
     "conan": {
       "CONAN00": {
+        "id": "CONAN00",
         "package_channel": "PACKAGE_CHANNEL01",
         "package_name": "PACKAGE_NAME01",
         "package_username": "PACKAGE_USERNAME01",
-        "package_version": "PACKAGE_VERSION01",
-        "id": "CONAN00"
+        "package_version": "PACKAGE_VERSION01"
       },
       "CONAN01": {
+        "id": "CONAN01",
         "package_channel": "PACKAGE_CHANNEL01",
         "package_name": "PACKAGE_NAME01",
         "package_username": "PACKAGE_USERNAME01",
-        "package_version": "PACKAGE_VERSION01",
-        "id": "CONAN01"
+        "package_version": "PACKAGE_VERSION01"
       },
       "CONAN02": {
+        "id": "CONAN02",
         "package_channel": "PACKAGE_CHANNEL01",
         "package_name": "PACKAGE_NAME01",
         "package_username": "PACKAGE_USERNAME01",
-        "package_version": "PACKAGE_VERSION01",
-        "id": "CONAN02"
+        "package_version": "PACKAGE_VERSION01"
       }
     }
   },

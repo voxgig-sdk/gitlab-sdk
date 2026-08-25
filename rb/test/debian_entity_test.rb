@@ -42,12 +42,14 @@ class DebianEntityTest < Minitest::Test
     # UPDATE
     debian_ref01_ent = client.Debian(nil)
     debian_ref01_data_up0_up = {
+      "id" => debian_ref01_data["id"],
       "project_id" => setup[:idmap]["project_id"],
     }
 
     debian_ref01_resdata_up0_result = debian_ref01_ent.update(debian_ref01_data_up0_up, nil)
     debian_ref01_resdata_up0 = Helpers.to_map(debian_ref01_resdata_up0_result.respond_to?(:data_get) ? debian_ref01_resdata_up0_result.data_get : debian_ref01_resdata_up0_result)
     assert !debian_ref01_resdata_up0.nil?
+    assert_equal debian_ref01_resdata_up0["id"], debian_ref01_data_up0_up["id"]
 
   end
 end

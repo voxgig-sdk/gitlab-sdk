@@ -3,21 +3,21 @@
     "api_entities_dictionary_table": {
       "API_ENTITIES_DICTIONARY_TABLE00": {
         "feature_categories": [],
-        "table_name": "s15",
-        "databas_id": "DATABAS01",
-        "id": "API_ENTITIES_DICTIONARY_TABLE00"
+        "id": "API_ENTITIES_DICTIONARY_TABLE00",
+        "table_name": "s20",
+        "databas_id": "DATABAS01"
       },
       "API_ENTITIES_DICTIONARY_TABLE01": {
         "feature_categories": [],
-        "table_name": "s29",
-        "databas_id": "DATABAS01",
-        "id": "API_ENTITIES_DICTIONARY_TABLE01"
+        "id": "API_ENTITIES_DICTIONARY_TABLE01",
+        "table_name": "s3e",
+        "databas_id": "DATABAS01"
       },
       "API_ENTITIES_DICTIONARY_TABLE02": {
         "feature_categories": [],
-        "table_name": "s3d",
-        "databas_id": "DATABAS01",
-        "id": "API_ENTITIES_DICTIONARY_TABLE02"
+        "id": "API_ENTITIES_DICTIONARY_TABLE02",
+        "table_name": "s5c",
+        "databas_id": "DATABAS01"
       }
     }
   },
@@ -25,7 +25,7 @@
     "api_entities_dictionary_table": {
       "api_entities_dictionary_table_ref01": {
         "feature_categories": [],
-        "table_name": "s51"
+        "table_name": "s7a"
       }
     }
   }

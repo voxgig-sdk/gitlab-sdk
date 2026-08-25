@@ -48,9 +48,13 @@ class CustomAttributeEntityTest extends TestCase
 
         // LOAD
         $custom_attribute_ref01_ent = $client->CustomAttribute(null);
-        $custom_attribute_ref01_match_dt0 = [];
+        $custom_attribute_ref01_match_dt0 = [
+            "id" => $custom_attribute_ref01_data["id"],
+        ];
         $custom_attribute_ref01_data_dt0_loaded = $custom_attribute_ref01_ent->load($custom_attribute_ref01_match_dt0, null);
-        $this->assertNotNull($custom_attribute_ref01_data_dt0_loaded);
+        $custom_attribute_ref01_data_dt0_load_result = Helpers::to_map(is_object($custom_attribute_ref01_data_dt0_loaded) && method_exists($custom_attribute_ref01_data_dt0_loaded, 'data_get') ? $custom_attribute_ref01_data_dt0_loaded->data_get() : $custom_attribute_ref01_data_dt0_loaded);
+        $this->assertNotNull($custom_attribute_ref01_data_dt0_load_result);
+        $this->assertEquals($custom_attribute_ref01_data_dt0_load_result["id"], $custom_attribute_ref01_data["id"]);
 
     }
 }

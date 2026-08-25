@@ -44,10 +44,14 @@ describe("SecureFileEntity", function()
 
     -- LOAD
     local secure_file_ref01_ent = client:SecureFile(nil)
-    local secure_file_ref01_match_dt0 = {}
+    local secure_file_ref01_match_dt0 = {
+      id = secure_file_ref01_data["id"],
+    }
     local secure_file_ref01_data_dt0_loaded, err = secure_file_ref01_ent:load(secure_file_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(secure_file_ref01_data_dt0_loaded)
+    local secure_file_ref01_data_dt0_load_result = helpers.to_map(type(secure_file_ref01_data_dt0_loaded) == 'table' and secure_file_ref01_data_dt0_loaded.data_get and secure_file_ref01_data_dt0_loaded:data_get() or secure_file_ref01_data_dt0_loaded)
+    assert.is_not_nil(secure_file_ref01_data_dt0_load_result)
+    assert.are.equal(secure_file_ref01_data_dt0_load_result["id"], secure_file_ref01_data["id"])
 
   end)
 end)

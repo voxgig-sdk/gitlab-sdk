@@ -2,19 +2,19 @@
   "existing": {
     "debian_distribution": {
       "DEBIAN_DISTRIBUTION00": {
+        "id": "DEBIAN_DISTRIBUTION00",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "DEBIAN_DISTRIBUTION00"
+        "project_id": "PROJECT01"
       },
       "DEBIAN_DISTRIBUTION01": {
+        "id": "DEBIAN_DISTRIBUTION01",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "DEBIAN_DISTRIBUTION01"
+        "project_id": "PROJECT01"
       },
       "DEBIAN_DISTRIBUTION02": {
+        "id": "DEBIAN_DISTRIBUTION02",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "DEBIAN_DISTRIBUTION02"
+        "project_id": "PROJECT01"
       }
     }
   },

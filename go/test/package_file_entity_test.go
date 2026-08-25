@@ -61,13 +61,19 @@ func TestPackageFileEntity(t *testing.T) {
 
 		// LOAD
 		packageFileRef01Ent := client.PackageFile(nil)
-		packageFileRef01MatchDt0 := map[string]any{}
+		packageFileRef01MatchDt0 := map[string]any{
+			"id": packageFileRef01Data["id"],
+		}
 		packageFileRef01DataDt0Loaded, err := packageFileRef01Ent.Load(packageFileRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if packageFileRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		packageFileRef01DataDt0LoadResult := core.ToMapAny(entityData(packageFileRef01DataDt0Loaded))
+		if packageFileRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if packageFileRef01DataDt0LoadResult["id"] != packageFileRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

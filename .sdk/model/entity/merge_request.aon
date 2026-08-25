@@ -4,6 +4,19 @@ main: kit: entity: merge_request: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "merge_request"
   op: {
     load: {

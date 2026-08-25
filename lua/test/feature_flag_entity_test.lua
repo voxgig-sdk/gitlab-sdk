@@ -45,13 +45,24 @@ describe("FeatureFlagEntity", function()
     assert.is_nil(err)
     feature_flag_ref01_data = helpers.to_map(type(feature_flag_ref01_data_result) == 'table' and feature_flag_ref01_data_result.data_get and feature_flag_ref01_data_result:data_get() or feature_flag_ref01_data_result)
     assert.is_not_nil(feature_flag_ref01_data)
+    assert.is_not_nil(feature_flag_ref01_data["id"])
 
     -- LOAD
-    local feature_flag_ref01_match_dt0 = {}
+    local feature_flag_ref01_match_dt0 = {
+      id = feature_flag_ref01_data["id"],
+    }
     local feature_flag_ref01_data_dt0_loaded, err = feature_flag_ref01_ent:load(feature_flag_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(feature_flag_ref01_data_dt0_loaded)
+    local feature_flag_ref01_data_dt0_load_result = helpers.to_map(type(feature_flag_ref01_data_dt0_loaded) == 'table' and feature_flag_ref01_data_dt0_loaded.data_get and feature_flag_ref01_data_dt0_loaded:data_get() or feature_flag_ref01_data_dt0_loaded)
+    assert.is_not_nil(feature_flag_ref01_data_dt0_load_result)
+    assert.are.equal(feature_flag_ref01_data_dt0_load_result["id"], feature_flag_ref01_data["id"])
 
+    -- REMOVE
+    local feature_flag_ref01_match_rm0 = {
+      id = feature_flag_ref01_data["id"],
+    }
+    local _, err = feature_flag_ref01_ent:remove(feature_flag_ref01_match_rm0, nil)
+    assert.is_nil(err)
 
   end)
 end)

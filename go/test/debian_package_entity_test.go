@@ -62,6 +62,7 @@ func TestDebianPackageEntity(t *testing.T) {
 		// UPDATE
 		debianPackageRef01Ent := client.DebianPackage(nil)
 		debianPackageRef01DataUp0Up := map[string]any{
+			"id": debianPackageRef01Data["id"],
 			"project_id": setup.idmap["project_id"],
 		}
 
@@ -73,15 +74,24 @@ func TestDebianPackageEntity(t *testing.T) {
 		if debianPackageRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
+		if debianPackageRef01ResdataUp0["id"] != debianPackageRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
+		}
 
 		// LOAD
-		debianPackageRef01MatchDt0 := map[string]any{}
+		debianPackageRef01MatchDt0 := map[string]any{
+			"id": debianPackageRef01Data["id"],
+		}
 		debianPackageRef01DataDt0Loaded, err := debianPackageRef01Ent.Load(debianPackageRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if debianPackageRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		debianPackageRef01DataDt0LoadResult := core.ToMapAny(entityData(debianPackageRef01DataDt0Loaded))
+		if debianPackageRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if debianPackageRef01DataDt0LoadResult["id"] != debianPackageRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

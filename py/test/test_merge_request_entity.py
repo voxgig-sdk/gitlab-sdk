@@ -49,16 +49,22 @@ class TestMergeRequestEntity:
         # UPDATE
         merge_request_ref01_ent = client.MergeRequest(None)
         merge_request_ref01_data_up0_up = {
+            "id": merge_request_ref01_data["id"],
             "project_id": setup["idmap"]["project_id"],
         }
 
         merge_request_ref01_resdata_up0 = helpers.to_map(runner.entity_data(merge_request_ref01_ent.update(merge_request_ref01_data_up0_up, None)))
         assert merge_request_ref01_resdata_up0 is not None
+        assert merge_request_ref01_resdata_up0["id"] == merge_request_ref01_data_up0_up["id"]
 
         # LOAD
-        merge_request_ref01_match_dt0 = {}
+        merge_request_ref01_match_dt0 = {
+            "id": merge_request_ref01_data["id"],
+        }
         merge_request_ref01_data_dt0_loaded = merge_request_ref01_ent.load(merge_request_ref01_match_dt0, None)
-        assert merge_request_ref01_data_dt0_loaded is not None
+        merge_request_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(merge_request_ref01_data_dt0_loaded))
+        assert merge_request_ref01_data_dt0_load_result is not None
+        assert merge_request_ref01_data_dt0_load_result["id"] == merge_request_ref01_data["id"]
 
 
 

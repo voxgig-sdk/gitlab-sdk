@@ -64,9 +64,13 @@ describe('EnvironmentEntity', async () => {
     environment_ref01_data['project_id'] = setup.idmap['project01']
 
     environment_ref01_data = (await environment_ref01_ent.create(environment_ref01_data)).data()
-    assert(null != environment_ref01_data)
+    assert(null != environment_ref01_data.id)
 
 
+    // REMOVE
+    const environment_ref01_match_rm0: any = { id: environment_ref01_data.id }
+    await environment_ref01_ent.remove(environment_ref01_match_rm0)
+  
 
   })
 })

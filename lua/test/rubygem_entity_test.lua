@@ -44,10 +44,14 @@ describe("RubygemEntity", function()
 
     -- LOAD
     local rubygem_ref01_ent = client:Rubygem(nil)
-    local rubygem_ref01_match_dt0 = {}
+    local rubygem_ref01_match_dt0 = {
+      id = rubygem_ref01_data["id"],
+    }
     local rubygem_ref01_data_dt0_loaded, err = rubygem_ref01_ent:load(rubygem_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(rubygem_ref01_data_dt0_loaded)
+    local rubygem_ref01_data_dt0_load_result = helpers.to_map(type(rubygem_ref01_data_dt0_loaded) == 'table' and rubygem_ref01_data_dt0_loaded.data_get and rubygem_ref01_data_dt0_loaded:data_get() or rubygem_ref01_data_dt0_loaded)
+    assert.is_not_nil(rubygem_ref01_data_dt0_load_result)
+    assert.are.equal(rubygem_ref01_data_dt0_load_result["id"], rubygem_ref01_data["id"])
 
   end)
 end)

@@ -49,6 +49,7 @@ class TerraformRegistryEntityTest extends TestCase
         // UPDATE
         $terraform_registry_ref01_ent = $client->TerraformRegistry(null);
         $terraform_registry_ref01_data_up0_up = [
+            "id" => $terraform_registry_ref01_data["id"],
             "module_id" => $setup["idmap"]["module_id"],
             "project_id" => $setup["idmap"]["project_id"],
         ];
@@ -56,11 +57,16 @@ class TerraformRegistryEntityTest extends TestCase
         $terraform_registry_ref01_resdata_up0_result = $terraform_registry_ref01_ent->update($terraform_registry_ref01_data_up0_up, null);
         $terraform_registry_ref01_resdata_up0 = Helpers::to_map(is_object($terraform_registry_ref01_resdata_up0_result) && method_exists($terraform_registry_ref01_resdata_up0_result, 'data_get') ? $terraform_registry_ref01_resdata_up0_result->data_get() : $terraform_registry_ref01_resdata_up0_result);
         $this->assertNotNull($terraform_registry_ref01_resdata_up0);
+        $this->assertEquals($terraform_registry_ref01_resdata_up0["id"], $terraform_registry_ref01_data_up0_up["id"]);
 
         // LOAD
-        $terraform_registry_ref01_match_dt0 = [];
+        $terraform_registry_ref01_match_dt0 = [
+            "id" => $terraform_registry_ref01_data["id"],
+        ];
         $terraform_registry_ref01_data_dt0_loaded = $terraform_registry_ref01_ent->load($terraform_registry_ref01_match_dt0, null);
-        $this->assertNotNull($terraform_registry_ref01_data_dt0_loaded);
+        $terraform_registry_ref01_data_dt0_load_result = Helpers::to_map(is_object($terraform_registry_ref01_data_dt0_loaded) && method_exists($terraform_registry_ref01_data_dt0_loaded, 'data_get') ? $terraform_registry_ref01_data_dt0_loaded->data_get() : $terraform_registry_ref01_data_dt0_loaded);
+        $this->assertNotNull($terraform_registry_ref01_data_dt0_load_result);
+        $this->assertEquals($terraform_registry_ref01_data_dt0_load_result["id"], $terraform_registry_ref01_data["id"]);
 
     }
 }

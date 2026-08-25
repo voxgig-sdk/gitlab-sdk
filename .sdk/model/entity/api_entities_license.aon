@@ -26,6 +26,11 @@ main: kit: entity: api_entities_license: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "key"
       req: false
       type: "`$STRING`"
@@ -61,6 +66,11 @@ main: kit: entity: api_entities_license: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "api_entities_license"
   op: {

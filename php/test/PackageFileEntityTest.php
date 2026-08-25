@@ -48,9 +48,13 @@ class PackageFileEntityTest extends TestCase
 
         // LOAD
         $package_file_ref01_ent = $client->PackageFile(null);
-        $package_file_ref01_match_dt0 = [];
+        $package_file_ref01_match_dt0 = [
+            "id" => $package_file_ref01_data["id"],
+        ];
         $package_file_ref01_data_dt0_loaded = $package_file_ref01_ent->load($package_file_ref01_match_dt0, null);
-        $this->assertNotNull($package_file_ref01_data_dt0_loaded);
+        $package_file_ref01_data_dt0_load_result = Helpers::to_map(is_object($package_file_ref01_data_dt0_loaded) && method_exists($package_file_ref01_data_dt0_loaded, 'data_get') ? $package_file_ref01_data_dt0_loaded->data_get() : $package_file_ref01_data_dt0_loaded);
+        $this->assertNotNull($package_file_ref01_data_dt0_load_result);
+        $this->assertEquals($package_file_ref01_data_dt0_load_result["id"], $package_file_ref01_data["id"]);
 
     }
 }

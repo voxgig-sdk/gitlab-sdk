@@ -48,7 +48,13 @@ class TestIntegrationEntity:
 
         integration_ref01_data = helpers.to_map(runner.entity_data(integration_ref01_ent.create(integration_ref01_data, None)))
         assert integration_ref01_data is not None
+        assert integration_ref01_data["id"] is not None
 
+        # REMOVE
+        integration_ref01_match_rm0 = {
+            "id": integration_ref01_data["id"],
+        }
+        integration_ref01_ent.remove(integration_ref01_match_rm0, None)
 
 
 

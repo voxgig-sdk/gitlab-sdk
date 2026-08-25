@@ -2,16 +2,16 @@
   "existing": {
     "project_export": {
       "PROJECT_EXPORT00": {
-        "project_id": "PROJECT01",
-        "id": "PROJECT_EXPORT00"
+        "id": "PROJECT_EXPORT00",
+        "project_id": "PROJECT01"
       },
       "PROJECT_EXPORT01": {
-        "project_id": "PROJECT01",
-        "id": "PROJECT_EXPORT01"
+        "id": "PROJECT_EXPORT01",
+        "project_id": "PROJECT01"
       },
       "PROJECT_EXPORT02": {
-        "project_id": "PROJECT01",
-        "id": "PROJECT_EXPORT02"
+        "id": "PROJECT_EXPORT02",
+        "project_id": "PROJECT01"
       }
     }
   },

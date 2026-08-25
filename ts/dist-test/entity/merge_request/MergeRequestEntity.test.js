@@ -75,9 +75,15 @@ const utility_1 = require("../../utility");
         // UPDATE
         const merge_request_ref01_ent = client.MergeRequest();
         const merge_request_ref01_data_up0 = {};
+        merge_request_ref01_data_up0.id = merge_request_ref01_data.id;
         merge_request_ref01_data_up0['project_id'] = setup.idmap['project_id'];
         const merge_request_ref01_resdata_up0 = (await merge_request_ref01_ent.update(merge_request_ref01_data_up0)).data();
-        (0, node_assert_1.default)(null != merge_request_ref01_resdata_up0);
+        (0, node_assert_1.default)(merge_request_ref01_resdata_up0.id === merge_request_ref01_data_up0.id);
+        // LOAD
+        const merge_request_ref01_match_dt0 = {};
+        merge_request_ref01_match_dt0.id = merge_request_ref01_data.id;
+        const merge_request_ref01_data_dt0 = (await merge_request_ref01_ent.load(merge_request_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(merge_request_ref01_data_dt0.id === merge_request_ref01_data.id);
     });
 });
 function basicSetup(extra) {

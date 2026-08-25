@@ -41,9 +41,13 @@ class SecureFileEntityTest < Minitest::Test
 
     # LOAD
     secure_file_ref01_ent = client.SecureFile(nil)
-    secure_file_ref01_match_dt0 = {}
+    secure_file_ref01_match_dt0 = {
+      "id" => secure_file_ref01_data["id"],
+    }
     secure_file_ref01_data_dt0_loaded = secure_file_ref01_ent.load(secure_file_ref01_match_dt0, nil)
-    assert !secure_file_ref01_data_dt0_loaded.nil?
+    secure_file_ref01_data_dt0_load_result = Helpers.to_map(secure_file_ref01_data_dt0_loaded.respond_to?(:data_get) ? secure_file_ref01_data_dt0_loaded.data_get : secure_file_ref01_data_dt0_loaded)
+    assert !secure_file_ref01_data_dt0_load_result.nil?
+    assert_equal secure_file_ref01_data_dt0_load_result["id"], secure_file_ref01_data["id"]
 
   end
 end

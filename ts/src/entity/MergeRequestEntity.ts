@@ -45,7 +45,8 @@ class MergeRequestEntity extends GitlabEntityBase<MergeRequest> {
     const {
       makeContext,
       done,
-      error,
+      // The registry name is `makeError`; `error` is the local alias.
+      makeError: error,
       featureHook,
       makePoint,
       makeRequest,
@@ -168,7 +169,8 @@ class MergeRequestEntity extends GitlabEntityBase<MergeRequest> {
     const {
       makeContext,
       done,
-      error,
+      // The registry name is `makeError`; `error` is the local alias.
+      makeError: error,
       featureHook,
       makePoint,
       makeRequest,
@@ -300,7 +302,8 @@ class MergeRequestEntity extends GitlabEntityBase<MergeRequest> {
     const {
       makeContext,
       done,
-      error,
+      // The registry name is `makeError`; `error` is the local alias.
+      makeError: error,
       featureHook,
       makePoint,
       makeRequest,

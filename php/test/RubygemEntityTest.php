@@ -48,9 +48,13 @@ class RubygemEntityTest extends TestCase
 
         // LOAD
         $rubygem_ref01_ent = $client->Rubygem(null);
-        $rubygem_ref01_match_dt0 = [];
+        $rubygem_ref01_match_dt0 = [
+            "id" => $rubygem_ref01_data["id"],
+        ];
         $rubygem_ref01_data_dt0_loaded = $rubygem_ref01_ent->load($rubygem_ref01_match_dt0, null);
-        $this->assertNotNull($rubygem_ref01_data_dt0_loaded);
+        $rubygem_ref01_data_dt0_load_result = Helpers::to_map(is_object($rubygem_ref01_data_dt0_loaded) && method_exists($rubygem_ref01_data_dt0_loaded, 'data_get') ? $rubygem_ref01_data_dt0_loaded->data_get() : $rubygem_ref01_data_dt0_loaded);
+        $this->assertNotNull($rubygem_ref01_data_dt0_load_result);
+        $this->assertEquals($rubygem_ref01_data_dt0_load_result["id"], $rubygem_ref01_data["id"]);
 
     }
 }

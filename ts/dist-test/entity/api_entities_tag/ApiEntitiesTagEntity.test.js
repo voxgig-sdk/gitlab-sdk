@@ -76,11 +76,17 @@ const utility_1 = require("../../utility");
         let api_entities_tag_ref01_data = setup.data.new.api_entities_tag['api_entities_tag_ref01'];
         api_entities_tag_ref01_data['project_id'] = setup.idmap['project01'];
         api_entities_tag_ref01_data = (await api_entities_tag_ref01_ent.create(api_entities_tag_ref01_data)).data();
-        (0, node_assert_1.default)(null != api_entities_tag_ref01_data);
+        (0, node_assert_1.default)(null != api_entities_tag_ref01_data.id);
         // LIST
         const api_entities_tag_ref01_match = {};
         api_entities_tag_ref01_match['project_id'] = setup.idmap['project01'];
         const api_entities_tag_ref01_list = (await api_entities_tag_ref01_ent.list(api_entities_tag_ref01_match)).map((e) => e.data());
+        (0, node_assert_1.default)(!isempty(select(api_entities_tag_ref01_list, { id: api_entities_tag_ref01_data.id })));
+        // LOAD
+        const api_entities_tag_ref01_match_dt0 = {};
+        api_entities_tag_ref01_match_dt0.id = api_entities_tag_ref01_data.id;
+        const api_entities_tag_ref01_data_dt0 = (await api_entities_tag_ref01_ent.load(api_entities_tag_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(api_entities_tag_ref01_data_dt0.id === api_entities_tag_ref01_data.id);
     });
 });
 function basicSetup(extra) {

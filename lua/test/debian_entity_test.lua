@@ -45,6 +45,7 @@ describe("DebianEntity", function()
     -- UPDATE
     local debian_ref01_ent = client:Debian(nil)
     local debian_ref01_data_up0_up = {
+      id = debian_ref01_data["id"],
       ["project_id"] = setup.idmap["project_id"],
     }
 
@@ -52,6 +53,7 @@ describe("DebianEntity", function()
     assert.is_nil(err)
     local debian_ref01_resdata_up0 = helpers.to_map(type(debian_ref01_resdata_up0_result) == 'table' and debian_ref01_resdata_up0_result.data_get and debian_ref01_resdata_up0_result:data_get() or debian_ref01_resdata_up0_result)
     assert.is_not_nil(debian_ref01_resdata_up0)
+    assert.are.equal(debian_ref01_resdata_up0["id"], debian_ref01_data_up0_up["id"])
 
   end)
 end)

@@ -62,6 +62,7 @@ func TestTerraformRegistryEntity(t *testing.T) {
 		// UPDATE
 		terraformRegistryRef01Ent := client.TerraformRegistry(nil)
 		terraformRegistryRef01DataUp0Up := map[string]any{
+			"id": terraformRegistryRef01Data["id"],
 			"module_id": setup.idmap["module_id"],
 			"project_id": setup.idmap["project_id"],
 		}
@@ -74,15 +75,24 @@ func TestTerraformRegistryEntity(t *testing.T) {
 		if terraformRegistryRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
+		if terraformRegistryRef01ResdataUp0["id"] != terraformRegistryRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
+		}
 
 		// LOAD
-		terraformRegistryRef01MatchDt0 := map[string]any{}
+		terraformRegistryRef01MatchDt0 := map[string]any{
+			"id": terraformRegistryRef01Data["id"],
+		}
 		terraformRegistryRef01DataDt0Loaded, err := terraformRegistryRef01Ent.Load(terraformRegistryRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if terraformRegistryRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		terraformRegistryRef01DataDt0LoadResult := core.ToMapAny(entityData(terraformRegistryRef01DataDt0Loaded))
+		if terraformRegistryRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if terraformRegistryRef01DataDt0LoadResult["id"] != terraformRegistryRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

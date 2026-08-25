@@ -77,7 +77,12 @@ const utility_1 = require("../../utility");
         api_entities_issue_link_ref01_data['issue_id'] = setup.idmap['issue01'];
         api_entities_issue_link_ref01_data['project_id'] = setup.idmap['project01'];
         api_entities_issue_link_ref01_data = (await api_entities_issue_link_ref01_ent.create(api_entities_issue_link_ref01_data)).data();
-        (0, node_assert_1.default)(null != api_entities_issue_link_ref01_data);
+        (0, node_assert_1.default)(null != api_entities_issue_link_ref01_data.id);
+        // LOAD
+        const api_entities_issue_link_ref01_match_dt0 = {};
+        api_entities_issue_link_ref01_match_dt0.id = api_entities_issue_link_ref01_data.id;
+        const api_entities_issue_link_ref01_data_dt0 = (await api_entities_issue_link_ref01_ent.load(api_entities_issue_link_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(api_entities_issue_link_ref01_data_dt0.id === api_entities_issue_link_ref01_data.id);
     });
 });
 function basicSetup(extra) {

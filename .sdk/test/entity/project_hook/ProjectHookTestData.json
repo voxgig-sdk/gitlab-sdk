@@ -2,16 +2,16 @@
   "existing": {
     "project_hook": {
       "PROJECT_HOOK00": {
-        "project_id": "PROJECT01",
-        "id": "PROJECT_HOOK00"
+        "id": "PROJECT_HOOK00",
+        "project_id": "PROJECT01"
       },
       "PROJECT_HOOK01": {
-        "project_id": "PROJECT01",
-        "id": "PROJECT_HOOK01"
+        "id": "PROJECT_HOOK01",
+        "project_id": "PROJECT01"
       },
       "PROJECT_HOOK02": {
-        "project_id": "PROJECT01",
-        "id": "PROJECT_HOOK02"
+        "id": "PROJECT_HOOK02",
+        "project_id": "PROJECT01"
       }
     }
   },

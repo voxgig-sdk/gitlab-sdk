@@ -2,19 +2,19 @@
   "existing": {
     "cluster_agent": {
       "CLUSTER_AGENT00": {
+        "id": "CLUSTER_AGENT00",
         "project_id": "PROJECT01",
-        "token_id": "TOKEN01",
-        "id": "CLUSTER_AGENT00"
+        "token_id": "TOKEN01"
       },
       "CLUSTER_AGENT01": {
+        "id": "CLUSTER_AGENT01",
         "project_id": "PROJECT01",
-        "token_id": "TOKEN01",
-        "id": "CLUSTER_AGENT01"
+        "token_id": "TOKEN01"
       },
       "CLUSTER_AGENT02": {
+        "id": "CLUSTER_AGENT02",
         "project_id": "PROJECT01",
-        "token_id": "TOKEN01",
-        "id": "CLUSTER_AGENT02"
+        "token_id": "TOKEN01"
       }
     }
   },

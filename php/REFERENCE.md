@@ -1189,6 +1189,12 @@ Prepare a fetch definition without sending the request. Returns the
 $access_request = $client->AccessRequest();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -3689,6 +3695,12 @@ Return the entity name.
 $api_entities_ci_secure_file = $client->ApiEntitiesCiSecureFile();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -3752,6 +3764,7 @@ $api_entities_ci_variable = $client->ApiEntitiesCiVariable();
 | `description` | `string` | No |  |
 | `environment_scope` | `string` | No |  |
 | `hidden` | `bool` | No |  |
+| `id` | `string` | No |  |
 | `key` | `string` | No |  |
 | `masked` | `bool` | No |  |
 | `protected` | `bool` | No |  |
@@ -5552,6 +5565,7 @@ $api_entities_dictionary_table = $client->ApiEntitiesDictionaryTable();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `feature_categories` | `array` | No |  |
+| `id` | `string` | No |  |
 | `table_name` | `string` | No |  |
 
 ### Operations
@@ -6125,6 +6139,7 @@ $api_entities_feature = $client->ApiEntitiesFeature();
 | --- | --- | --- | --- |
 | `definition` | `array` | No | API_Entities_Feature_Definition model |
 | `gates` | `array` | No |  |
+| `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `state` | `string` | No |  |
 
@@ -6971,6 +6986,12 @@ Return the entity name.
 $api_entities_integration = $client->ApiEntitiesIntegration();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -7110,6 +7131,7 @@ $api_entities_invitation = $client->ApiEntitiesInvitation();
 | `created_at` | `string` | No |  |
 | `created_by_name` | `string` | No |  |
 | `expires_at` | `string` | No |  |
+| `id` | `string` | No |  |
 | `invite_email` | `string` | No |  |
 | `invite_token` | `string` | No |  |
 | `user_name` | `string` | No |  |
@@ -7374,6 +7396,7 @@ $api_entities_issue_link = $client->ApiEntitiesIssueLink();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `link_type` | `string` | No |  |
 | `source_issue` | `array` | No |  |
 | `target_issue` | `array` | No |  |
@@ -7443,6 +7466,7 @@ $api_entities_license = $client->ApiEntitiesLicense();
 | `content` | `string` | No |  |
 | `description` | `string` | No |  |
 | `html_url` | `string` | No |  |
+| `id` | `string` | No |  |
 | `key` | `string` | No |  |
 | `limitations` | `array` | No |  |
 | `name` | `string` | No |  |
@@ -9488,6 +9512,12 @@ Return the entity name.
 $api_entities_packages_conan_recipe_snapshot = $client->ApiEntitiesPackagesConanRecipeSnapshot();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -9738,6 +9768,7 @@ $api_entities_pages_domain = $client->ApiEntitiesPagesDomain();
 | `domain` | `string` | No |  |
 | `enabled_until` | `string` | No |  |
 | `expired` | `string` | No |  |
+| `id` | `string` | No |  |
 | `subject` | `string` | No |  |
 | `url` | `string` | No |  |
 | `verification_code` | `string` | No |  |
@@ -9777,6 +9808,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 
 ```php
 $result = $client->ApiEntitiesPagesDomain()->update([
+  "id" => "api_entities_pages_domain_id",
   "domain_id" => "domain_id",
   "project_id" => "project_id",
   // Fields to update
@@ -11840,6 +11872,7 @@ $api_entities_release = $client->ApiEntitiesRelease();
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
 | `evidences` | `array` | No |  |
+| `id` | `string` | No |  |
 | `links` | `array` | No |  |
 | `milestones` | `array` | No |  |
 | `name` | `string` | No |  |
@@ -12624,6 +12657,7 @@ $api_entities_tag = $client->ApiEntitiesTag();
 | --- | --- | --- | --- |
 | `commit` | `array` | No | API_Entities_Commit model |
 | `created_at` | `string` | No |  |
+| `id` | `string` | No |  |
 | `message` | `string` | No |  |
 | `name` | `string` | No |  |
 | `protected` | `bool` | No |  |
@@ -13454,6 +13488,12 @@ Return the entity name.
 $application = $client->Application();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -13499,6 +13539,12 @@ Return the entity name.
 ```php
 $award_emoji = $client->AwardEmoji();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -13546,6 +13592,12 @@ Return the entity name.
 $badge = $client->Badge();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -13591,6 +13643,12 @@ Return the entity name.
 ```php
 $branch = $client->Branch();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -13684,6 +13742,12 @@ Return the entity name.
 $ci_variable = $client->CiVariable();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -13730,6 +13794,12 @@ Return the entity name.
 $cluster = $client->Cluster();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -13775,6 +13845,12 @@ Return the entity name.
 ```php
 $cluster_agent = $client->ClusterAgent();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -13916,6 +13992,12 @@ Return the entity name.
 $conan = $client->Conan();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -13961,6 +14043,12 @@ Return the entity name.
 ```php
 $conan_package = $client->ConanPackage();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -14127,6 +14215,7 @@ $custom_attribute = $client->CustomAttribute();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `key` | `string` | No |  |
 | `value` | `string` | No |  |
 
@@ -14175,6 +14264,12 @@ Return the entity name.
 ```php
 $debian = $client->Debian();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -14226,6 +14321,12 @@ Return the entity name.
 $debian_distribution = $client->DebianDistribution();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -14272,6 +14373,12 @@ Return the entity name.
 $debian_package = $client->DebianPackage();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -14288,6 +14395,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 
 ```php
 $result = $client->DebianPackage()->update([
+  "id" => "debian_package_id",
   "file_name" => "file_name",
   "project_id" => "project_id",
   // Fields to update
@@ -14376,6 +14484,12 @@ Return the entity name.
 $deploy_key = $client->DeployKey();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -14422,6 +14536,12 @@ Return the entity name.
 $deploy_token = $client->DeployToken();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -14467,6 +14587,12 @@ Return the entity name.
 ```php
 $deployment = $client->Deployment();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15236,6 +15362,12 @@ Return the entity name.
 $environment = $client->Environment();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -15292,6 +15424,12 @@ Return the entity name.
 $error_tracking_client_key = $client->ErrorTrackingClientKey();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -15338,6 +15476,12 @@ Return the entity name.
 $feature = $client->Feature();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -15383,6 +15527,12 @@ Return the entity name.
 ```php
 $feature_flag = $client->FeatureFlag();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15448,6 +15598,12 @@ Return the entity name.
 $feature_flags_user_list = $client->FeatureFlagsUserList();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -15493,6 +15649,12 @@ Return the entity name.
 ```php
 $freeze_period = $client->FreezePeriod();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15700,6 +15862,12 @@ Return the entity name.
 $group = $client->Group();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -15775,6 +15943,12 @@ Return the entity name.
 $group_avatar = $client->GroupAvatar();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -15820,6 +15994,12 @@ Return the entity name.
 ```php
 $group_export = $client->GroupExport();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15980,6 +16160,12 @@ Return the entity name.
 $hook = $client->Hook();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -16095,6 +16281,12 @@ Return the entity name.
 $integration = $client->Integration();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -16150,6 +16342,12 @@ Return the entity name.
 $invitation = $client->Invitation();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -16195,6 +16393,12 @@ Return the entity name.
 ```php
 $issue_link = $client->IssueLink();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16287,6 +16491,12 @@ Return the entity name.
 ```php
 $job = $client->Job();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16412,6 +16622,12 @@ Return the entity name.
 $member = $client->Member();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -16457,6 +16673,12 @@ Return the entity name.
 ```php
 $merge_request = $client->MergeRequest();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16686,6 +16908,12 @@ Return the entity name.
 $namespace = $client->Namespace();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -16731,6 +16959,12 @@ Return the entity name.
 ```php
 $npm = $client->Npm();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16999,6 +17233,12 @@ Return the entity name.
 $package_file = $client->PackageFile();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -17171,6 +17411,12 @@ Return the entity name.
 $personal_access_token = $client->PersonalAccessToken();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -17319,6 +17565,12 @@ Return the entity name.
 $project_avatar = $client->ProjectAvatar();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -17412,6 +17664,12 @@ Return the entity name.
 $project_export = $client->ProjectExport();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -17467,6 +17725,12 @@ Return the entity name.
 ```php
 $project_hook = $client->ProjectHook();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -17626,6 +17890,12 @@ Return the entity name.
 $project_package = $client->ProjectPackage();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -17671,6 +17941,12 @@ Return the entity name.
 ```php
 $project_snippet = $client->ProjectSnippet();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -17774,6 +18050,12 @@ Return the entity name.
 ```php
 $protected_tag = $client->ProtectedTag();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -17925,6 +18207,12 @@ Return the entity name.
 $release = $client->Release();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -17979,6 +18267,12 @@ Return the entity name.
 $release_link = $client->ReleaseLink();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -18024,6 +18318,12 @@ Return the entity name.
 ```php
 $remote_mirror = $client->RemoteMirror();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18194,6 +18494,12 @@ Return the entity name.
 $rubygem = $client->Rubygem();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -18296,6 +18602,12 @@ Return the entity name.
 $runner = $client->Runner();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -18397,6 +18709,12 @@ Return the entity name.
 $secure_file = $client->SecureFile();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -18497,6 +18815,12 @@ Return the entity name.
 ```php
 $snippet = $client->Snippet();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18613,6 +18937,12 @@ Return the entity name.
 $system_hook = $client->SystemHook();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -18658,6 +18988,12 @@ Return the entity name.
 ```php
 $tag = $client->Tag();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18705,6 +19041,12 @@ Return the entity name.
 $terraform_registry = $client->TerraformRegistry();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -18721,6 +19063,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 
 ```php
 $result = $client->TerraformRegistry()->update([
+  "id" => "terraform_registry_id",
   "module_id" => "module_id",
   "module_system" => "module_system",
   "project_id" => "project_id",
@@ -18763,6 +19106,12 @@ Return the entity name.
 ```php
 $terraform_state = $client->TerraformState();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18941,6 +19290,12 @@ Return the entity name.
 $topic = $client->Topic();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -18986,6 +19341,12 @@ Return the entity name.
 ```php
 $unleash_api = $client->UnleashApi();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -19194,6 +19555,12 @@ Return the entity name.
 ```php
 $wiki = $client->Wiki();
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

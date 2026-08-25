@@ -2,16 +2,16 @@
   "existing": {
     "tag": {
       "TAG00": {
-        "project_id": "PROJECT01",
-        "id": "TAG00"
+        "id": "TAG00",
+        "project_id": "PROJECT01"
       },
       "TAG01": {
-        "project_id": "PROJECT01",
-        "id": "TAG01"
+        "id": "TAG01",
+        "project_id": "PROJECT01"
       },
       "TAG02": {
-        "project_id": "PROJECT01",
-        "id": "TAG02"
+        "id": "TAG02",
+        "project_id": "PROJECT01"
       }
     }
   },

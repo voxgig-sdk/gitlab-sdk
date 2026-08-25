@@ -4,6 +4,19 @@ main: kit: entity: conan: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "conan"
   op: {
     remove: {

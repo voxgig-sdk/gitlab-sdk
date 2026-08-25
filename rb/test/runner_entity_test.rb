@@ -40,7 +40,13 @@ class RunnerEntityTest < Minitest::Test
     runner_ref01_data_result = runner_ref01_ent.create(runner_ref01_data, nil)
     runner_ref01_data = Helpers.to_map(runner_ref01_data_result.respond_to?(:data_get) ? runner_ref01_data_result.data_get : runner_ref01_data_result)
     assert !runner_ref01_data.nil?
+    assert !runner_ref01_data["id"].nil?
 
+    # REMOVE
+    runner_ref01_match_rm0 = {
+      "id" => runner_ref01_data["id"],
+    }
+    runner_ref01_ent.remove(runner_ref01_match_rm0, nil)
 
   end
 end

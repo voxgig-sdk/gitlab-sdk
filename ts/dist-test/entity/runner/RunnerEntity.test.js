@@ -76,7 +76,10 @@ const utility_1 = require("../../utility");
         let runner_ref01_data = setup.data.new.runner['runner_ref01'];
         runner_ref01_data['project_id'] = setup.idmap['project01'];
         runner_ref01_data = (await runner_ref01_ent.create(runner_ref01_data)).data();
-        (0, node_assert_1.default)(null != runner_ref01_data);
+        (0, node_assert_1.default)(null != runner_ref01_data.id);
+        // REMOVE
+        const runner_ref01_match_rm0 = { id: runner_ref01_data.id };
+        await runner_ref01_ent.remove(runner_ref01_match_rm0);
     });
 });
 function basicSetup(extra) {

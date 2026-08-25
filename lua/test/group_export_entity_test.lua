@@ -43,12 +43,17 @@ describe("GroupExportEntity", function()
     assert.is_nil(err)
     group_export_ref01_data = helpers.to_map(type(group_export_ref01_data_result) == 'table' and group_export_ref01_data_result.data_get and group_export_ref01_data_result:data_get() or group_export_ref01_data_result)
     assert.is_not_nil(group_export_ref01_data)
+    assert.is_not_nil(group_export_ref01_data["id"])
 
     -- LOAD
-    local group_export_ref01_match_dt0 = {}
+    local group_export_ref01_match_dt0 = {
+      id = group_export_ref01_data["id"],
+    }
     local group_export_ref01_data_dt0_loaded, err = group_export_ref01_ent:load(group_export_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(group_export_ref01_data_dt0_loaded)
+    local group_export_ref01_data_dt0_load_result = helpers.to_map(type(group_export_ref01_data_dt0_loaded) == 'table' and group_export_ref01_data_dt0_loaded.data_get and group_export_ref01_data_dt0_loaded:data_get() or group_export_ref01_data_dt0_loaded)
+    assert.is_not_nil(group_export_ref01_data_dt0_load_result)
+    assert.are.equal(group_export_ref01_data_dt0_load_result["id"], group_export_ref01_data["id"])
 
   end)
 end)

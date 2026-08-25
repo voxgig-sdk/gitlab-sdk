@@ -4,6 +4,19 @@ main: kit: entity: feature_flags_user_list: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "feature_flags_user_list"
   op: {
     remove: {

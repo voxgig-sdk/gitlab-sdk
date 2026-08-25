@@ -59,9 +59,12 @@ describe('SecureFileEntity', async () => {
 
     let secure_file_ref01_data = Object.values(setup.data.existing.secure_file)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const secure_file_ref01_ent = client.SecureFile()
+    const secure_file_ref01_match_dt0: any = {}
+    secure_file_ref01_match_dt0.id = secure_file_ref01_data.id
+    const secure_file_ref01_data_dt0 = (await secure_file_ref01_ent.load(secure_file_ref01_match_dt0)).data()
+    assert(secure_file_ref01_data_dt0.id === secure_file_ref01_data.id)
 
 
   })

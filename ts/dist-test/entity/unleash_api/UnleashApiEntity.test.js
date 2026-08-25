@@ -72,9 +72,12 @@ const utility_1 = require("../../utility");
         const isempty = struct.isempty;
         const select = struct.select;
         let unleash_api_ref01_data = Object.values(setup.data.existing.unleash_api)[0];
-        // LOAD: skipped — no entity id field and load requires path params.
-        // Entity-var is declared here so later flow steps still compile.
+        // LOAD
         const unleash_api_ref01_ent = client.UnleashApi();
+        const unleash_api_ref01_match_dt0 = {};
+        unleash_api_ref01_match_dt0.id = unleash_api_ref01_data.id;
+        const unleash_api_ref01_data_dt0 = (await unleash_api_ref01_ent.load(unleash_api_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(unleash_api_ref01_data_dt0.id === unleash_api_ref01_data.id);
     });
 });
 function basicSetup(extra) {

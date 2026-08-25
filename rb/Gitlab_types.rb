@@ -9,8 +9,13 @@
 # annotations document the shapes. Do not edit by hand.
 
 # AccessRequest entity data model.
-class AccessRequest
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+AccessRequest = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for AccessRequest#remove.
 #
@@ -4048,8 +4053,13 @@ class ApiEntitiesCiRunnerRegistrationDetailCreateData
 end
 
 # ApiEntitiesCiSecureFile entity data model.
-class ApiEntitiesCiSecureFile
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ApiEntitiesCiSecureFile = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ApiEntitiesCiSecureFile#load.
 #
@@ -4068,8 +4078,12 @@ ApiEntitiesCiSecureFileLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 ApiEntitiesCiSecureFileCreateData = Struct.new(
   :project_id,
+  :id,
   keyword_init: true
 )
 
@@ -4083,6 +4097,9 @@ ApiEntitiesCiSecureFileCreateData = Struct.new(
 #
 # @!attribute [rw] hidden
 #   @return [Boolean, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 #
 # @!attribute [rw] key
 #   @return [String, nil]
@@ -4105,6 +4122,7 @@ ApiEntitiesCiVariable = Struct.new(
   :description,
   :environment_scope,
   :hidden,
+  :id,
   :key,
   :masked,
   :protected,
@@ -4154,6 +4172,9 @@ ApiEntitiesCiVariableListMatch = Struct.new(
 # @!attribute [rw] hidden
 #   @return [Boolean, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] key
 #   @return [String, nil]
 #
@@ -4176,6 +4197,7 @@ ApiEntitiesCiVariableCreateData = Struct.new(
   :description,
   :environment_scope,
   :hidden,
+  :id,
   :key,
   :masked,
   :protected,
@@ -6931,10 +6953,14 @@ ApiEntitiesDeploymentsApprovalCreateData = Struct.new(
 # @!attribute [rw] feature_categories
 #   @return [Array, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] table_name
 #   @return [String, nil]
 ApiEntitiesDictionaryTable = Struct.new(
   :feature_categories,
+  :id,
   :table_name,
   keyword_init: true
 )
@@ -7728,6 +7754,9 @@ ApiEntitiesEventListMatch = Struct.new(
 # @!attribute [rw] gates
 #   @return [Hash, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 #
@@ -7736,6 +7765,7 @@ ApiEntitiesEventListMatch = Struct.new(
 ApiEntitiesFeature = Struct.new(
   :definition,
   :gates,
+  :id,
   :name,
   :state,
   keyword_init: true
@@ -7749,6 +7779,9 @@ ApiEntitiesFeature = Struct.new(
 # @!attribute [rw] gates
 #   @return [Hash, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] name
 #   @return [String, nil]
 #
@@ -7757,6 +7790,7 @@ ApiEntitiesFeature = Struct.new(
 ApiEntitiesFeatureListMatch = Struct.new(
   :definition,
   :gates,
+  :id,
   :name,
   :state,
   keyword_init: true
@@ -10022,8 +10056,13 @@ ApiEntitiesHookUpdateData = Struct.new(
 )
 
 # ApiEntitiesIntegration entity data model.
-class ApiEntitiesIntegration
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ApiEntitiesIntegration = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ApiEntitiesIntegration#load.
 #
@@ -10259,6 +10298,9 @@ ApiEntitiesIntegrationBasicUpdateData = Struct.new(
 # @!attribute [rw] expires_at
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] invite_email
 #   @return [String, nil]
 #
@@ -10272,6 +10314,7 @@ ApiEntitiesInvitation = Struct.new(
   :created_at,
   :created_by_name,
   :expires_at,
+  :id,
   :invite_email,
   :invite_token,
   :user_name,
@@ -10304,6 +10347,9 @@ ApiEntitiesInvitationListMatch = Struct.new(
 # @!attribute [rw] expires_at
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] invite_email
 #   @return [String, nil]
 #
@@ -10318,6 +10364,7 @@ ApiEntitiesInvitationCreateData = Struct.new(
   :created_at,
   :created_by_name,
   :expires_at,
+  :id,
   :invite_email,
   :invite_token,
   :user_name,
@@ -11171,6 +11218,9 @@ ApiEntitiesIssueUpdateData = Struct.new(
 
 # ApiEntitiesIssueLink entity data model.
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] link_type
 #   @return [String, nil]
 #
@@ -11180,6 +11230,7 @@ ApiEntitiesIssueUpdateData = Struct.new(
 # @!attribute [rw] target_issue
 #   @return [Hash, nil]
 ApiEntitiesIssueLink = Struct.new(
+  :id,
   :link_type,
   :source_issue,
   :target_issue,
@@ -11211,6 +11262,9 @@ ApiEntitiesIssueLinkLoadMatch = Struct.new(
 # @!attribute [rw] project_id
 #   @return [String]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] link_type
 #   @return [String, nil]
 #
@@ -11222,6 +11276,7 @@ ApiEntitiesIssueLinkLoadMatch = Struct.new(
 ApiEntitiesIssueLinkCreateData = Struct.new(
   :issue_id,
   :project_id,
+  :id,
   :link_type,
   :source_issue,
   :target_issue,
@@ -11240,6 +11295,9 @@ ApiEntitiesIssueLinkCreateData = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] html_url
+#   @return [String, nil]
+#
+# @!attribute [rw] id
 #   @return [String, nil]
 #
 # @!attribute [rw] key
@@ -11267,6 +11325,7 @@ ApiEntitiesLicense = Struct.new(
   :content,
   :description,
   :html_url,
+  :id,
   :key,
   :limitations,
   :name,
@@ -14663,8 +14722,13 @@ ApiEntitiesPackagesConanRecipeRevisionListMatch = Struct.new(
 )
 
 # ApiEntitiesPackagesConanRecipeSnapshot entity data model.
-class ApiEntitiesPackagesConanRecipeSnapshot
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ApiEntitiesPackagesConanRecipeSnapshot = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ApiEntitiesPackagesConanRecipeSnapshot#load.
 #
@@ -14963,6 +15027,9 @@ ApiEntitiesPackagesDebianDistributionUpdateData = Struct.new(
 # @!attribute [rw] expired
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] subject
 #   @return [String, nil]
 #
@@ -14981,6 +15048,7 @@ ApiEntitiesPagesDomain = Struct.new(
   :domain,
   :enabled_until,
   :expired,
+  :id,
   :subject,
   :url,
   :verification_code,
@@ -15033,6 +15101,9 @@ ApiEntitiesPagesDomainListMatch = Struct.new(
 # @!attribute [rw] expired
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] subject
 #   @return [String, nil]
 #
@@ -15052,6 +15123,7 @@ ApiEntitiesPagesDomainCreateData = Struct.new(
   :domain,
   :enabled_until,
   :expired,
+  :id,
   :subject,
   :url,
   :verification_code,
@@ -15085,6 +15157,9 @@ ApiEntitiesPagesDomainCreateData = Struct.new(
 # @!attribute [rw] expired
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] subject
 #   @return [String, nil]
 #
@@ -15105,6 +15180,7 @@ ApiEntitiesPagesDomainUpdateData = Struct.new(
   :domain,
   :enabled_until,
   :expired,
+  :id,
   :subject,
   :url,
   :verification_code,
@@ -19826,6 +19902,9 @@ end
 # @!attribute [rw] evidences
 #   @return [Hash, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] links
 #   @return [Hash, nil]
 #
@@ -19855,6 +19934,7 @@ ApiEntitiesRelease = Struct.new(
   :description,
   :description_html,
   :evidences,
+  :id,
   :links,
   :milestones,
   :name,
@@ -19919,6 +19999,9 @@ ApiEntitiesReleaseListMatch = Struct.new(
 # @!attribute [rw] evidences
 #   @return [Hash, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] links
 #   @return [Hash, nil]
 #
@@ -19947,6 +20030,7 @@ ApiEntitiesReleaseCreateData = Struct.new(
   :description,
   :description_html,
   :evidences,
+  :id,
   :links,
   :milestones,
   :name,
@@ -21205,6 +21289,9 @@ ApiEntitiesSystemBroadcastMessageRemoveMatch = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] message
 #   @return [String, nil]
 #
@@ -21222,6 +21309,7 @@ ApiEntitiesSystemBroadcastMessageRemoveMatch = Struct.new(
 ApiEntitiesTag = Struct.new(
   :commit,
   :created_at,
+  :id,
   :message,
   :name,
   :protected,
@@ -21263,6 +21351,9 @@ ApiEntitiesTagListMatch = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] message
 #   @return [String, nil]
 #
@@ -21281,6 +21372,7 @@ ApiEntitiesTagCreateData = Struct.new(
   :project_id,
   :commit,
   :created_at,
+  :id,
   :message,
   :name,
   :protected,
@@ -22102,8 +22194,13 @@ ApiEntitiesWikiPageBasicListMatch = Struct.new(
 )
 
 # Application entity data model.
-class Application
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Application = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Application#remove.
 #
@@ -22115,8 +22212,13 @@ ApplicationRemoveMatch = Struct.new(
 )
 
 # AwardEmoji entity data model.
-class AwardEmoji
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+AwardEmoji = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for AwardEmoji#remove.
 #
@@ -22156,8 +22258,13 @@ AwardEmojiRemoveMatch = Struct.new(
 )
 
 # Badge entity data model.
-class Badge
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Badge = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Badge#remove.
 #
@@ -22177,8 +22284,13 @@ BadgeRemoveMatch = Struct.new(
 )
 
 # Branch entity data model.
-class Branch
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Branch = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Branch#remove.
 #
@@ -22207,8 +22319,13 @@ CargoPackageLoadMatch = Struct.new(
 )
 
 # CiVariable entity data model.
-class CiVariable
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+CiVariable = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for CiVariable#remove.
 #
@@ -22228,8 +22345,13 @@ CiVariableRemoveMatch = Struct.new(
 )
 
 # Cluster entity data model.
-class Cluster
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Cluster = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Cluster#remove.
 #
@@ -22249,8 +22371,13 @@ ClusterRemoveMatch = Struct.new(
 )
 
 # ClusterAgent entity data model.
-class ClusterAgent
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ClusterAgent = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ClusterAgent#remove.
 #
@@ -22300,8 +22427,13 @@ ComposerPackageLoadMatch = Struct.new(
 )
 
 # Conan entity data model.
-class Conan
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Conan = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Conan#remove.
 #
@@ -22329,8 +22461,13 @@ ConanRemoveMatch = Struct.new(
 )
 
 # ConanPackage entity data model.
-class ConanPackage
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ConanPackage = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ConanPackage#load.
 #
@@ -22494,12 +22631,16 @@ end
 
 # CustomAttribute entity data model.
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] key
 #   @return [String, nil]
 #
 # @!attribute [rw] value
 #   @return [String, nil]
 CustomAttribute = Struct.new(
+  :id,
   :key,
   :value,
   keyword_init: true
@@ -22519,8 +22660,13 @@ CustomAttributeLoadMatch = Struct.new(
 )
 
 # Debian entity data model.
-class Debian
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Debian = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Debian#update.
 #
@@ -22536,8 +22682,13 @@ DebianUpdateData = Struct.new(
 )
 
 # DebianDistribution entity data model.
-class DebianDistribution
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+DebianDistribution = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for DebianDistribution#remove.
 #
@@ -22557,8 +22708,13 @@ DebianDistributionRemoveMatch = Struct.new(
 )
 
 # DebianPackage entity data model.
-class DebianPackage
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+DebianPackage = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for DebianPackage#load.
 #
@@ -22596,9 +22752,13 @@ DebianPackageLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 DebianPackageUpdateData = Struct.new(
   :file_name,
   :project_id,
+  :id,
   keyword_init: true
 )
 
@@ -22616,8 +22776,13 @@ DependencyProxyRemoveMatch = Struct.new(
 )
 
 # DeployKey entity data model.
-class DeployKey
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+DeployKey = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for DeployKey#remove.
 #
@@ -22633,8 +22798,13 @@ DeployKeyRemoveMatch = Struct.new(
 )
 
 # DeployToken entity data model.
-class DeployToken
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+DeployToken = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for DeployToken#remove.
 #
@@ -22654,8 +22824,13 @@ DeployTokenRemoveMatch = Struct.new(
 )
 
 # Deployment entity data model.
-class Deployment
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Deployment = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Deployment#remove.
 #
@@ -24954,15 +25129,24 @@ EeApiEntitiesSshCertificateCreateData = Struct.new(
 )
 
 # Environment entity data model.
-class Environment
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Environment = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Environment#create.
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 EnvironmentCreateData = Struct.new(
   :project_id,
+  :id,
   keyword_init: true
 )
 
@@ -24980,8 +25164,13 @@ EnvironmentRemoveMatch = Struct.new(
 )
 
 # ErrorTrackingClientKey entity data model.
-class ErrorTrackingClientKey
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ErrorTrackingClientKey = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ErrorTrackingClientKey#remove.
 #
@@ -24997,8 +25186,13 @@ ErrorTrackingClientKeyRemoveMatch = Struct.new(
 )
 
 # Feature entity data model.
-class Feature
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Feature = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Feature#remove.
 #
@@ -25010,8 +25204,13 @@ FeatureRemoveMatch = Struct.new(
 )
 
 # FeatureFlag entity data model.
-class FeatureFlag
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+FeatureFlag = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for FeatureFlag#load.
 #
@@ -25026,8 +25225,12 @@ FeatureFlagLoadMatch = Struct.new(
 #
 # @!attribute [rw] unleash_id
 #   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 FeatureFlagCreateData = Struct.new(
   :unleash_id,
+  :id,
   keyword_init: true
 )
 
@@ -25045,8 +25248,13 @@ FeatureFlagRemoveMatch = Struct.new(
 )
 
 # FeatureFlagsUserList entity data model.
-class FeatureFlagsUserList
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+FeatureFlagsUserList = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for FeatureFlagsUserList#remove.
 #
@@ -25062,8 +25270,13 @@ FeatureFlagsUserListRemoveMatch = Struct.new(
 )
 
 # FreezePeriod entity data model.
-class FreezePeriod
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+FreezePeriod = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for FreezePeriod#remove.
 #
@@ -25155,8 +25368,13 @@ GoProxyLoadMatch = Struct.new(
 )
 
 # Group entity data model.
-class Group
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Group = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Group#load.
 #
@@ -25243,8 +25461,13 @@ GroupRemoveMatch = Struct.new(
 )
 
 # GroupAvatar entity data model.
-class GroupAvatar
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+GroupAvatar = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for GroupAvatar#load.
 #
@@ -25256,8 +25479,13 @@ GroupAvatarLoadMatch = Struct.new(
 )
 
 # GroupExport entity data model.
-class GroupExport
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+GroupExport = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for GroupExport#load.
 #
@@ -25328,8 +25556,13 @@ HelmPackageCreateData = Struct.new(
 )
 
 # Hook entity data model.
-class Hook
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Hook = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Hook#create.
 #
@@ -25375,12 +25608,22 @@ class ImportCreateData
 end
 
 # Integration entity data model.
-class Integration
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Integration = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Integration#create.
-class IntegrationCreateData
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+IntegrationCreateData = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Integration#remove.
 #
@@ -25396,8 +25639,13 @@ IntegrationRemoveMatch = Struct.new(
 )
 
 # Invitation entity data model.
-class Invitation
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Invitation = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Invitation#remove.
 #
@@ -25417,8 +25665,13 @@ InvitationRemoveMatch = Struct.new(
 )
 
 # IssueLink entity data model.
-class IssueLink
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+IssueLink = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for IssueLink#remove.
 #
@@ -25446,8 +25699,13 @@ class IssuesStatisticLoadMatch
 end
 
 # Job entity data model.
-class Job
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Job = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Job#load.
 #
@@ -25459,8 +25717,13 @@ JobLoadMatch = Struct.new(
 )
 
 # Request payload for Job#create.
-class JobCreateData
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+JobCreateData = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Job#update.
 #
@@ -25506,8 +25769,13 @@ MavenPackageUpdateData = Struct.new(
 )
 
 # Member entity data model.
-class Member
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Member = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Member#remove.
 #
@@ -25527,8 +25795,13 @@ MemberRemoveMatch = Struct.new(
 )
 
 # MergeRequest entity data model.
-class MergeRequest
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+MergeRequest = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for MergeRequest#load.
 #
@@ -25663,8 +25936,13 @@ MlModelRegistryUpdateData = Struct.new(
 )
 
 # Namespace entity data model.
-class Namespace
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Namespace = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Namespace#remove.
 #
@@ -25676,8 +25954,13 @@ NamespaceRemoveMatch = Struct.new(
 )
 
 # Npm entity data model.
-class Npm
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Npm = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Npm#update.
 #
@@ -25926,8 +26209,13 @@ NugetPackageRemoveMatch = Struct.new(
 )
 
 # PackageFile entity data model.
-class PackageFile
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+PackageFile = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for PackageFile#load.
 #
@@ -26025,8 +26313,13 @@ ParticipantListMatch = Struct.new(
 )
 
 # PersonalAccessToken entity data model.
-class PersonalAccessToken
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+PersonalAccessToken = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for PersonalAccessToken#remove.
 #
@@ -26507,8 +26800,13 @@ ProjectRemoveMatch = Struct.new(
 )
 
 # ProjectAvatar entity data model.
-class ProjectAvatar
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ProjectAvatar = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ProjectAvatar#load.
 #
@@ -26528,8 +26826,13 @@ class ProjectEntityCreateData
 end
 
 # ProjectExport entity data model.
-class ProjectExport
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ProjectExport = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ProjectExport#load.
 #
@@ -26550,8 +26853,13 @@ ProjectExportCreateData = Struct.new(
 )
 
 # ProjectHook entity data model.
-class ProjectHook
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ProjectHook = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ProjectHook#remove.
 #
@@ -26689,8 +26997,13 @@ ProjectImportEntityCreateData = Struct.new(
 )
 
 # ProjectPackage entity data model.
-class ProjectPackage
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ProjectPackage = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ProjectPackage#remove.
 #
@@ -26706,8 +27019,13 @@ ProjectPackageRemoveMatch = Struct.new(
 )
 
 # ProjectSnippet entity data model.
-class ProjectSnippet
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ProjectSnippet = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ProjectSnippet#remove.
 #
@@ -26753,8 +27071,13 @@ ProjectsJobTokenScopeRemoveMatch = Struct.new(
 )
 
 # ProtectedTag entity data model.
-class ProtectedTag
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ProtectedTag = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ProtectedTag#remove.
 #
@@ -26805,8 +27128,13 @@ PypiPackageCreateData = Struct.new(
 )
 
 # Release entity data model.
-class Release
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Release = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Release#load.
 #
@@ -26831,8 +27159,13 @@ ReleaseRemoveMatch = Struct.new(
 )
 
 # ReleaseLink entity data model.
-class ReleaseLink
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+ReleaseLink = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for ReleaseLink#remove.
 #
@@ -26852,8 +27185,13 @@ ReleaseLinkRemoveMatch = Struct.new(
 )
 
 # RemoteMirror entity data model.
-class RemoteMirror
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+RemoteMirror = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for RemoteMirror#load.
 #
@@ -26930,8 +27268,13 @@ RpmPackageCreateData = Struct.new(
 )
 
 # Rubygem entity data model.
-class Rubygem
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Rubygem = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Rubygem#load.
 #
@@ -26973,12 +27316,22 @@ RubygemPackageCreateData = Struct.new(
 )
 
 # Runner entity data model.
-class RunnerType
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+RunnerType = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Runner#create.
-class RunnerCreateData
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+RunnerCreateData = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Runner#remove.
 #
@@ -26998,8 +27351,13 @@ class SearchLoadMatch
 end
 
 # SecureFile entity data model.
-class SecureFile
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SecureFile = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for SecureFile#load.
 #
@@ -27036,8 +27394,13 @@ class SlackCreateData
 end
 
 # Snippet entity data model.
-class Snippet
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Snippet = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Snippet#load.
 #
@@ -27120,8 +27483,13 @@ StarrerListMatch = Struct.new(
 )
 
 # SystemHook entity data model.
-class SystemHook
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+SystemHook = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for SystemHook#remove.
 #
@@ -27133,8 +27501,13 @@ SystemHookRemoveMatch = Struct.new(
 )
 
 # Tag entity data model.
-class Tag
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Tag = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Tag#remove.
 #
@@ -27150,8 +27523,13 @@ TagRemoveMatch = Struct.new(
 )
 
 # TerraformRegistry entity data model.
-class TerraformRegistry
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+TerraformRegistry = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for TerraformRegistry#load.
 #
@@ -27192,16 +27570,25 @@ TerraformRegistryLoadMatch = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
 TerraformRegistryUpdateData = Struct.new(
   :module_id,
   :module_system,
   :project_id,
+  :id,
   keyword_init: true
 )
 
 # TerraformState entity data model.
-class TerraformState
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+TerraformState = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for TerraformState#load.
 #
@@ -27347,8 +27734,13 @@ TestReportSummaryLoadMatch = Struct.new(
 )
 
 # Topic entity data model.
-class Topic
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Topic = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Topic#remove.
 #
@@ -27360,8 +27752,13 @@ TopicRemoveMatch = Struct.new(
 )
 
 # UnleashApi entity data model.
-class UnleashApi
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+UnleashApi = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for UnleashApi#load.
 #
@@ -27447,8 +27844,13 @@ class WebCommitLoadMatch
 end
 
 # Wiki entity data model.
-class Wiki
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Wiki = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Wiki#remove.
 #

@@ -39,11 +39,16 @@ class ProjectExportEntityTest < Minitest::Test
     project_export_ref01_data_result = project_export_ref01_ent.create(project_export_ref01_data, nil)
     project_export_ref01_data = Helpers.to_map(project_export_ref01_data_result.respond_to?(:data_get) ? project_export_ref01_data_result.data_get : project_export_ref01_data_result)
     assert !project_export_ref01_data.nil?
+    assert !project_export_ref01_data["id"].nil?
 
     # LOAD
-    project_export_ref01_match_dt0 = {}
+    project_export_ref01_match_dt0 = {
+      "id" => project_export_ref01_data["id"],
+    }
     project_export_ref01_data_dt0_loaded = project_export_ref01_ent.load(project_export_ref01_match_dt0, nil)
-    assert !project_export_ref01_data_dt0_loaded.nil?
+    project_export_ref01_data_dt0_load_result = Helpers.to_map(project_export_ref01_data_dt0_loaded.respond_to?(:data_get) ? project_export_ref01_data_dt0_loaded.data_get : project_export_ref01_data_dt0_loaded)
+    assert !project_export_ref01_data_dt0_load_result.nil?
+    assert_equal project_export_ref01_data_dt0_load_result["id"], project_export_ref01_data["id"]
 
   end
 end

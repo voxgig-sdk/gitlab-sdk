@@ -41,12 +41,22 @@ class FeatureFlagEntityTest < Minitest::Test
     feature_flag_ref01_data_result = feature_flag_ref01_ent.create(feature_flag_ref01_data, nil)
     feature_flag_ref01_data = Helpers.to_map(feature_flag_ref01_data_result.respond_to?(:data_get) ? feature_flag_ref01_data_result.data_get : feature_flag_ref01_data_result)
     assert !feature_flag_ref01_data.nil?
+    assert !feature_flag_ref01_data["id"].nil?
 
     # LOAD
-    feature_flag_ref01_match_dt0 = {}
+    feature_flag_ref01_match_dt0 = {
+      "id" => feature_flag_ref01_data["id"],
+    }
     feature_flag_ref01_data_dt0_loaded = feature_flag_ref01_ent.load(feature_flag_ref01_match_dt0, nil)
-    assert !feature_flag_ref01_data_dt0_loaded.nil?
+    feature_flag_ref01_data_dt0_load_result = Helpers.to_map(feature_flag_ref01_data_dt0_loaded.respond_to?(:data_get) ? feature_flag_ref01_data_dt0_loaded.data_get : feature_flag_ref01_data_dt0_loaded)
+    assert !feature_flag_ref01_data_dt0_load_result.nil?
+    assert_equal feature_flag_ref01_data_dt0_load_result["id"], feature_flag_ref01_data["id"]
 
+    # REMOVE
+    feature_flag_ref01_match_rm0 = {
+      "id" => feature_flag_ref01_data["id"],
+    }
+    feature_flag_ref01_ent.remove(feature_flag_ref01_match_rm0, nil)
 
   end
 end

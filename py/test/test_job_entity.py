@@ -46,18 +46,25 @@ class TestJobEntity:
 
         job_ref01_data = helpers.to_map(runner.entity_data(job_ref01_ent.create(job_ref01_data, None)))
         assert job_ref01_data is not None
+        assert job_ref01_data["id"] is not None
 
         # UPDATE
         job_ref01_data_up0_up = {
+            "id": job_ref01_data["id"],
         }
 
         job_ref01_resdata_up0 = helpers.to_map(runner.entity_data(job_ref01_ent.update(job_ref01_data_up0_up, None)))
         assert job_ref01_resdata_up0 is not None
+        assert job_ref01_resdata_up0["id"] == job_ref01_data_up0_up["id"]
 
         # LOAD
-        job_ref01_match_dt0 = {}
+        job_ref01_match_dt0 = {
+            "id": job_ref01_data["id"],
+        }
         job_ref01_data_dt0_loaded = job_ref01_ent.load(job_ref01_match_dt0, None)
-        assert job_ref01_data_dt0_loaded is not None
+        job_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(job_ref01_data_dt0_loaded))
+        assert job_ref01_data_dt0_load_result is not None
+        assert job_ref01_data_dt0_load_result["id"] == job_ref01_data["id"]
 
 
 

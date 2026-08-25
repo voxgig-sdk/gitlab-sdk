@@ -44,10 +44,14 @@ describe("GroupAvatarEntity", function()
 
     -- LOAD
     local group_avatar_ref01_ent = client:GroupAvatar(nil)
-    local group_avatar_ref01_match_dt0 = {}
+    local group_avatar_ref01_match_dt0 = {
+      id = group_avatar_ref01_data["id"],
+    }
     local group_avatar_ref01_data_dt0_loaded, err = group_avatar_ref01_ent:load(group_avatar_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(group_avatar_ref01_data_dt0_loaded)
+    local group_avatar_ref01_data_dt0_load_result = helpers.to_map(type(group_avatar_ref01_data_dt0_loaded) == 'table' and group_avatar_ref01_data_dt0_loaded.data_get and group_avatar_ref01_data_dt0_loaded:data_get() or group_avatar_ref01_data_dt0_loaded)
+    assert.is_not_nil(group_avatar_ref01_data_dt0_load_result)
+    assert.are.equal(group_avatar_ref01_data_dt0_load_result["id"], group_avatar_ref01_data["id"])
 
   end)
 end)

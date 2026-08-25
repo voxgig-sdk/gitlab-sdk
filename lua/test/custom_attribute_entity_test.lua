@@ -44,10 +44,14 @@ describe("CustomAttributeEntity", function()
 
     -- LOAD
     local custom_attribute_ref01_ent = client:CustomAttribute(nil)
-    local custom_attribute_ref01_match_dt0 = {}
+    local custom_attribute_ref01_match_dt0 = {
+      id = custom_attribute_ref01_data["id"],
+    }
     local custom_attribute_ref01_data_dt0_loaded, err = custom_attribute_ref01_ent:load(custom_attribute_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(custom_attribute_ref01_data_dt0_loaded)
+    local custom_attribute_ref01_data_dt0_load_result = helpers.to_map(type(custom_attribute_ref01_data_dt0_loaded) == 'table' and custom_attribute_ref01_data_dt0_loaded.data_get and custom_attribute_ref01_data_dt0_loaded:data_get() or custom_attribute_ref01_data_dt0_loaded)
+    assert.is_not_nil(custom_attribute_ref01_data_dt0_load_result)
+    assert.are.equal(custom_attribute_ref01_data_dt0_load_result["id"], custom_attribute_ref01_data["id"])
 
   end)
 end)

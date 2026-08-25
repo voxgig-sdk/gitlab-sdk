@@ -49,17 +49,23 @@ class MergeRequestEntityTest extends TestCase
         // UPDATE
         $merge_request_ref01_ent = $client->MergeRequest(null);
         $merge_request_ref01_data_up0_up = [
+            "id" => $merge_request_ref01_data["id"],
             "project_id" => $setup["idmap"]["project_id"],
         ];
 
         $merge_request_ref01_resdata_up0_result = $merge_request_ref01_ent->update($merge_request_ref01_data_up0_up, null);
         $merge_request_ref01_resdata_up0 = Helpers::to_map(is_object($merge_request_ref01_resdata_up0_result) && method_exists($merge_request_ref01_resdata_up0_result, 'data_get') ? $merge_request_ref01_resdata_up0_result->data_get() : $merge_request_ref01_resdata_up0_result);
         $this->assertNotNull($merge_request_ref01_resdata_up0);
+        $this->assertEquals($merge_request_ref01_resdata_up0["id"], $merge_request_ref01_data_up0_up["id"]);
 
         // LOAD
-        $merge_request_ref01_match_dt0 = [];
+        $merge_request_ref01_match_dt0 = [
+            "id" => $merge_request_ref01_data["id"],
+        ];
         $merge_request_ref01_data_dt0_loaded = $merge_request_ref01_ent->load($merge_request_ref01_match_dt0, null);
-        $this->assertNotNull($merge_request_ref01_data_dt0_loaded);
+        $merge_request_ref01_data_dt0_load_result = Helpers::to_map(is_object($merge_request_ref01_data_dt0_loaded) && method_exists($merge_request_ref01_data_dt0_loaded, 'data_get') ? $merge_request_ref01_data_dt0_loaded->data_get() : $merge_request_ref01_data_dt0_loaded);
+        $this->assertNotNull($merge_request_ref01_data_dt0_load_result);
+        $this->assertEquals($merge_request_ref01_data_dt0_load_result["id"], $merge_request_ref01_data["id"]);
 
     }
 }

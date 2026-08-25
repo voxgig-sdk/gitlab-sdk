@@ -75,10 +75,16 @@ const utility_1 = require("../../utility");
         // UPDATE
         const terraform_registry_ref01_ent = client.TerraformRegistry();
         const terraform_registry_ref01_data_up0 = {};
+        terraform_registry_ref01_data_up0.id = terraform_registry_ref01_data.id;
         terraform_registry_ref01_data_up0['module_id'] = setup.idmap['module_id'];
         terraform_registry_ref01_data_up0['project_id'] = setup.idmap['project_id'];
         const terraform_registry_ref01_resdata_up0 = (await terraform_registry_ref01_ent.update(terraform_registry_ref01_data_up0)).data();
-        (0, node_assert_1.default)(null != terraform_registry_ref01_resdata_up0);
+        (0, node_assert_1.default)(terraform_registry_ref01_resdata_up0.id === terraform_registry_ref01_data_up0.id);
+        // LOAD
+        const terraform_registry_ref01_match_dt0 = {};
+        terraform_registry_ref01_match_dt0.id = terraform_registry_ref01_data.id;
+        const terraform_registry_ref01_data_dt0 = (await terraform_registry_ref01_ent.load(terraform_registry_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(terraform_registry_ref01_data_dt0.id === terraform_registry_ref01_data.id);
     });
 });
 function basicSetup(extra) {

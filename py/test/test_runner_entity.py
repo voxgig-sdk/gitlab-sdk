@@ -47,7 +47,13 @@ class TestRunnerEntity:
 
         runner_ref01_data = helpers.to_map(runner.entity_data(runner_ref01_ent.create(runner_ref01_data, None)))
         assert runner_ref01_data is not None
+        assert runner_ref01_data["id"] is not None
 
+        # REMOVE
+        runner_ref01_match_rm0 = {
+            "id": runner_ref01_data["id"],
+        }
+        runner_ref01_ent.remove(runner_ref01_match_rm0, None)
 
 
 

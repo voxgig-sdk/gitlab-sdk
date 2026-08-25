@@ -2,35 +2,35 @@
   "existing": {
     "api_entities_issue_link": {
       "API_ENTITIES_ISSUE_LINK00": {
-        "link_type": "s1e",
+        "id": "API_ENTITIES_ISSUE_LINK00",
+        "link_type": "s29",
         "source_issue": {},
         "target_issue": {},
         "issue_id": "ISSUE01",
-        "project_id": "PROJECT01",
-        "id": "API_ENTITIES_ISSUE_LINK00"
+        "project_id": "PROJECT01"
       },
       "API_ENTITIES_ISSUE_LINK01": {
-        "link_type": "s3c",
+        "id": "API_ENTITIES_ISSUE_LINK01",
+        "link_type": "s51",
         "source_issue": {},
         "target_issue": {},
         "issue_id": "ISSUE01",
-        "project_id": "PROJECT01",
-        "id": "API_ENTITIES_ISSUE_LINK01"
+        "project_id": "PROJECT01"
       },
       "API_ENTITIES_ISSUE_LINK02": {
-        "link_type": "s5a",
+        "id": "API_ENTITIES_ISSUE_LINK02",
+        "link_type": "s79",
         "source_issue": {},
         "target_issue": {},
         "issue_id": "ISSUE01",
-        "project_id": "PROJECT01",
-        "id": "API_ENTITIES_ISSUE_LINK02"
+        "project_id": "PROJECT01"
       }
     }
   },
   "new": {
     "api_entities_issue_link": {
       "api_entities_issue_link_ref01": {
-        "link_type": "s78",
+        "link_type": "sa1",
         "source_issue": {},
         "target_issue": {}
       }

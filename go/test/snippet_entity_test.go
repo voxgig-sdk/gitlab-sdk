@@ -61,13 +61,19 @@ func TestSnippetEntity(t *testing.T) {
 
 		// LOAD
 		snippetRef01Ent := client.Snippet(nil)
-		snippetRef01MatchDt0 := map[string]any{}
+		snippetRef01MatchDt0 := map[string]any{
+			"id": snippetRef01Data["id"],
+		}
 		snippetRef01DataDt0Loaded, err := snippetRef01Ent.Load(snippetRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if snippetRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		snippetRef01DataDt0LoadResult := core.ToMapAny(entityData(snippetRef01DataDt0Loaded))
+		if snippetRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if snippetRef01DataDt0LoadResult["id"] != snippetRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

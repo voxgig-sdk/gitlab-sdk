@@ -72,9 +72,12 @@ const utility_1 = require("../../utility");
         const isempty = struct.isempty;
         const select = struct.select;
         let rubygem_ref01_data = Object.values(setup.data.existing.rubygem)[0];
-        // LOAD: skipped — no entity id field and load requires path params.
-        // Entity-var is declared here so later flow steps still compile.
+        // LOAD
         const rubygem_ref01_ent = client.Rubygem();
+        const rubygem_ref01_match_dt0 = {};
+        rubygem_ref01_match_dt0.id = rubygem_ref01_data.id;
+        const rubygem_ref01_data_dt0 = (await rubygem_ref01_ent.load(rubygem_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(rubygem_ref01_data_dt0.id === rubygem_ref01_data.id);
     });
 });
 function basicSetup(extra) {

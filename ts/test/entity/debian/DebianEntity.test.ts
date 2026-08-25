@@ -62,10 +62,11 @@ describe('DebianEntity', async () => {
     // UPDATE
     const debian_ref01_ent = client.Debian()
     const debian_ref01_data_up0: any = {}
+    debian_ref01_data_up0.id = debian_ref01_data.id
     debian_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
 
     const debian_ref01_resdata_up0 = (await debian_ref01_ent.update(debian_ref01_data_up0)).data()
-    assert(null != debian_ref01_resdata_up0)
+    assert(debian_ref01_resdata_up0.id === debian_ref01_data_up0.id)
 
 
   })

@@ -59,9 +59,12 @@ describe('RubygemEntity', async () => {
 
     let rubygem_ref01_data = Object.values(setup.data.existing.rubygem)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const rubygem_ref01_ent = client.Rubygem()
+    const rubygem_ref01_match_dt0: any = {}
+    rubygem_ref01_match_dt0.id = rubygem_ref01_data.id
+    const rubygem_ref01_data_dt0 = (await rubygem_ref01_ent.load(rubygem_ref01_match_dt0)).data()
+    assert(rubygem_ref01_data_dt0.id === rubygem_ref01_data.id)
 
 
   })

@@ -2,16 +2,16 @@
   "existing": {
     "deployment": {
       "DEPLOYMENT00": {
-        "project_id": "PROJECT01",
-        "id": "DEPLOYMENT00"
+        "id": "DEPLOYMENT00",
+        "project_id": "PROJECT01"
       },
       "DEPLOYMENT01": {
-        "project_id": "PROJECT01",
-        "id": "DEPLOYMENT01"
+        "id": "DEPLOYMENT01",
+        "project_id": "PROJECT01"
       },
       "DEPLOYMENT02": {
-        "project_id": "PROJECT01",
-        "id": "DEPLOYMENT02"
+        "id": "DEPLOYMENT02",
+        "project_id": "PROJECT01"
       }
     }
   },

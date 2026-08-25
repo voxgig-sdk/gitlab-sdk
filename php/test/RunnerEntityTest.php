@@ -47,7 +47,13 @@ class RunnerEntityTest extends TestCase
         $runner_ref01_data_result = $runner_ref01_ent->create($runner_ref01_data, null);
         $runner_ref01_data = Helpers::to_map(is_object($runner_ref01_data_result) && method_exists($runner_ref01_data_result, 'data_get') ? $runner_ref01_data_result->data_get() : $runner_ref01_data_result);
         $this->assertNotNull($runner_ref01_data);
+        $this->assertNotNull($runner_ref01_data["id"]);
 
+        // REMOVE
+        $runner_ref01_match_rm0 = [
+            "id" => $runner_ref01_data["id"],
+        ];
+        $runner_ref01_ent->remove($runner_ref01_match_rm0, null);
 
     }
 }

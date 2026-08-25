@@ -2,22 +2,22 @@
   "existing": {
     "api_entities_integration": {
       "API_ENTITIES_INTEGRATION00": {
+        "id": "API_ENTITIES_INTEGRATION00",
         "group_id": "GROUP01",
         "project_id": "PROJECT01",
-        "slug": "SLUG01",
-        "id": "API_ENTITIES_INTEGRATION00"
+        "slug": "SLUG01"
       },
       "API_ENTITIES_INTEGRATION01": {
+        "id": "API_ENTITIES_INTEGRATION01",
         "group_id": "GROUP01",
         "project_id": "PROJECT01",
-        "slug": "SLUG01",
-        "id": "API_ENTITIES_INTEGRATION01"
+        "slug": "SLUG01"
       },
       "API_ENTITIES_INTEGRATION02": {
+        "id": "API_ENTITIES_INTEGRATION02",
         "group_id": "GROUP01",
         "project_id": "PROJECT01",
-        "slug": "SLUG01",
-        "id": "API_ENTITIES_INTEGRATION02"
+        "slug": "SLUG01"
       }
     }
   },

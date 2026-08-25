@@ -113,6 +113,9 @@ func TestApiEntitiesInvitationEntity(t *testing.T) {
 		if apiEntitiesInvitationRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if apiEntitiesInvitationRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 		// LIST
 		apiEntitiesInvitationRef01Match := map[string]any{
@@ -123,13 +126,19 @@ func TestApiEntitiesInvitationEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("list failed: %v", err)
 		}
-		_, apiEntitiesInvitationRef01ListOk := apiEntitiesInvitationRef01ListResult.([]any)
+		apiEntitiesInvitationRef01List, apiEntitiesInvitationRef01ListOk := apiEntitiesInvitationRef01ListResult.([]any)
 		if !apiEntitiesInvitationRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", apiEntitiesInvitationRef01ListResult)
 		}
 
+		foundItem := vs.Select(entityListToData(apiEntitiesInvitationRef01List), map[string]any{"id": apiEntitiesInvitationRef01Data["id"]})
+		if vs.IsEmpty(foundItem) {
+			t.Fatal("expected to find created entity in list")
+		}
+
 		// UPDATE
 		apiEntitiesInvitationRef01DataUp0Up := map[string]any{
+			"id": apiEntitiesInvitationRef01Data["id"],
 			"project_id": setup.idmap["project_id"],
 		}
 
@@ -144,6 +153,9 @@ func TestApiEntitiesInvitationEntity(t *testing.T) {
 		apiEntitiesInvitationRef01ResdataUp0 := core.ToMapAny(entityData(apiEntitiesInvitationRef01ResdataUp0Result))
 		if apiEntitiesInvitationRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
+		}
+		if apiEntitiesInvitationRef01ResdataUp0["id"] != apiEntitiesInvitationRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
 		}
 		if apiEntitiesInvitationRef01ResdataUp0[apiEntitiesInvitationRef01MarkdefUp0Name] != apiEntitiesInvitationRef01MarkdefUp0Value {
 			t.Fatalf("expected %s to be updated, got %v", apiEntitiesInvitationRef01MarkdefUp0Name, apiEntitiesInvitationRef01ResdataUp0[apiEntitiesInvitationRef01MarkdefUp0Name])

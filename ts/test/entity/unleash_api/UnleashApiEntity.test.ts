@@ -59,9 +59,12 @@ describe('UnleashApiEntity', async () => {
 
     let unleash_api_ref01_data = Object.values(setup.data.existing.unleash_api)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const unleash_api_ref01_ent = client.UnleashApi()
+    const unleash_api_ref01_match_dt0: any = {}
+    unleash_api_ref01_match_dt0.id = unleash_api_ref01_data.id
+    const unleash_api_ref01_data_dt0 = (await unleash_api_ref01_ent.load(unleash_api_ref01_match_dt0)).data()
+    assert(unleash_api_ref01_data_dt0.id === unleash_api_ref01_data.id)
 
 
   })

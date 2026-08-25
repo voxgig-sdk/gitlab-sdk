@@ -45,6 +45,7 @@ describe("NpmEntity", function()
     -- UPDATE
     local npm_ref01_ent = client:Npm(nil)
     local npm_ref01_data_up0_up = {
+      id = npm_ref01_data["id"],
       ["project_id"] = setup.idmap["project_id"],
     }
 
@@ -52,6 +53,7 @@ describe("NpmEntity", function()
     assert.is_nil(err)
     local npm_ref01_resdata_up0 = helpers.to_map(type(npm_ref01_resdata_up0_result) == 'table' and npm_ref01_resdata_up0_result.data_get and npm_ref01_resdata_up0_result:data_get() or npm_ref01_resdata_up0_result)
     assert.is_not_nil(npm_ref01_resdata_up0)
+    assert.are.equal(npm_ref01_resdata_up0["id"], npm_ref01_data_up0_up["id"])
 
   end)
 end)

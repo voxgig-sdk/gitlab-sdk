@@ -115,6 +115,9 @@ func TestApiEntitiesCiVariableEntity(t *testing.T) {
 		if apiEntitiesCiVariableRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if apiEntitiesCiVariableRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 		// LIST
 		apiEntitiesCiVariableRef01Match := map[string]any{
@@ -126,13 +129,19 @@ func TestApiEntitiesCiVariableEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("list failed: %v", err)
 		}
-		_, apiEntitiesCiVariableRef01ListOk := apiEntitiesCiVariableRef01ListResult.([]any)
+		apiEntitiesCiVariableRef01List, apiEntitiesCiVariableRef01ListOk := apiEntitiesCiVariableRef01ListResult.([]any)
 		if !apiEntitiesCiVariableRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", apiEntitiesCiVariableRef01ListResult)
 		}
 
+		foundItem := vs.Select(entityListToData(apiEntitiesCiVariableRef01List), map[string]any{"id": apiEntitiesCiVariableRef01Data["id"]})
+		if vs.IsEmpty(foundItem) {
+			t.Fatal("expected to find created entity in list")
+		}
+
 		// UPDATE
 		apiEntitiesCiVariableRef01DataUp0Up := map[string]any{
+			"id": apiEntitiesCiVariableRef01Data["id"],
 		}
 
 		apiEntitiesCiVariableRef01MarkdefUp0Name := "description"
@@ -147,18 +156,27 @@ func TestApiEntitiesCiVariableEntity(t *testing.T) {
 		if apiEntitiesCiVariableRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
+		if apiEntitiesCiVariableRef01ResdataUp0["id"] != apiEntitiesCiVariableRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
+		}
 		if apiEntitiesCiVariableRef01ResdataUp0[apiEntitiesCiVariableRef01MarkdefUp0Name] != apiEntitiesCiVariableRef01MarkdefUp0Value {
 			t.Fatalf("expected %s to be updated, got %v", apiEntitiesCiVariableRef01MarkdefUp0Name, apiEntitiesCiVariableRef01ResdataUp0[apiEntitiesCiVariableRef01MarkdefUp0Name])
 		}
 
 		// LOAD
-		apiEntitiesCiVariableRef01MatchDt0 := map[string]any{}
+		apiEntitiesCiVariableRef01MatchDt0 := map[string]any{
+			"id": apiEntitiesCiVariableRef01Data["id"],
+		}
 		apiEntitiesCiVariableRef01DataDt0Loaded, err := apiEntitiesCiVariableRef01Ent.Load(apiEntitiesCiVariableRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if apiEntitiesCiVariableRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		apiEntitiesCiVariableRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesCiVariableRef01DataDt0Loaded))
+		if apiEntitiesCiVariableRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if apiEntitiesCiVariableRef01DataDt0LoadResult["id"] != apiEntitiesCiVariableRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

@@ -16,8 +16,8 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class AccessRequest(TypedDict):
-    pass
+class AccessRequest(TypedDict, total=False):
+    id: str
 
 
 class AccessRequestRemoveMatchRequired(TypedDict):
@@ -1287,8 +1287,8 @@ class ApiEntitiesCiRunnerRegistrationDetailCreateData(TypedDict):
     pass
 
 
-class ApiEntitiesCiSecureFile(TypedDict):
-    pass
+class ApiEntitiesCiSecureFile(TypedDict, total=False):
+    id: str
 
 
 class ApiEntitiesCiSecureFileLoadMatchRequired(TypedDict):
@@ -1299,14 +1299,19 @@ class ApiEntitiesCiSecureFileLoadMatch(ApiEntitiesCiSecureFileLoadMatchRequired,
     id: str
 
 
-class ApiEntitiesCiSecureFileCreateData(TypedDict):
+class ApiEntitiesCiSecureFileCreateDataRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesCiSecureFileCreateData(ApiEntitiesCiSecureFileCreateDataRequired, total=False):
+    id: str
 
 
 class ApiEntitiesCiVariable(TypedDict, total=False):
     description: str
     environment_scope: str
     hidden: bool
+    id: str
     key: str
     masked: bool
     protected: bool
@@ -1333,6 +1338,7 @@ class ApiEntitiesCiVariableCreateData(ApiEntitiesCiVariableCreateDataRequired, t
     description: str
     environment_scope: str
     hidden: bool
+    id: str
     key: str
     masked: bool
     protected: bool
@@ -2215,6 +2221,7 @@ class ApiEntitiesDeploymentsApprovalCreateData(TypedDict):
 
 class ApiEntitiesDictionaryTable(TypedDict, total=False):
     feature_categories: list
+    id: str
     table_name: str
 
 
@@ -2478,6 +2485,7 @@ class ApiEntitiesEventListMatch(TypedDict, total=False):
 class ApiEntitiesFeature(TypedDict, total=False):
     definition: dict
     gates: dict
+    id: str
     name: str
     state: str
 
@@ -2485,6 +2493,7 @@ class ApiEntitiesFeature(TypedDict, total=False):
 class ApiEntitiesFeatureListMatch(TypedDict, total=False):
     definition: dict
     gates: dict
+    id: str
     name: str
     state: str
 
@@ -3145,8 +3154,8 @@ class ApiEntitiesHookUpdateData(ApiEntitiesHookUpdateDataRequired, total=False):
     url_variables: list
 
 
-class ApiEntitiesIntegration(TypedDict):
-    pass
+class ApiEntitiesIntegration(TypedDict, total=False):
+    id: str
 
 
 class ApiEntitiesIntegrationLoadMatch(TypedDict):
@@ -3219,6 +3228,7 @@ class ApiEntitiesInvitation(TypedDict, total=False):
     created_at: str
     created_by_name: str
     expires_at: str
+    id: str
     invite_email: str
     invite_token: str
     user_name: str
@@ -3237,6 +3247,7 @@ class ApiEntitiesInvitationCreateData(ApiEntitiesInvitationCreateDataRequired, t
     created_at: str
     created_by_name: str
     expires_at: str
+    id: str
     invite_email: str
     invite_token: str
     user_name: str
@@ -3488,6 +3499,7 @@ class ApiEntitiesIssueUpdateData(ApiEntitiesIssueUpdateDataRequired, total=False
 
 
 class ApiEntitiesIssueLink(TypedDict, total=False):
+    id: str
     link_type: str
     source_issue: dict
     target_issue: dict
@@ -3505,6 +3517,7 @@ class ApiEntitiesIssueLinkCreateDataRequired(TypedDict):
 
 
 class ApiEntitiesIssueLinkCreateData(ApiEntitiesIssueLinkCreateDataRequired, total=False):
+    id: str
     link_type: str
     source_issue: dict
     target_issue: dict
@@ -3515,6 +3528,7 @@ class ApiEntitiesLicense(TypedDict, total=False):
     content: str
     description: str
     html_url: str
+    id: str
     key: str
     limitations: list
     name: str
@@ -4562,8 +4576,8 @@ class ApiEntitiesPackagesConanRecipeRevisionListMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesPackagesConanRecipeSnapshot(TypedDict):
-    pass
+class ApiEntitiesPackagesConanRecipeSnapshot(TypedDict, total=False):
+    id: str
 
 
 class ApiEntitiesPackagesConanRecipeSnapshotLoadMatchRequired(TypedDict):
@@ -4679,6 +4693,7 @@ class ApiEntitiesPagesDomain(TypedDict, total=False):
     domain: str
     enabled_until: str
     expired: str
+    id: str
     subject: str
     url: str
     verification_code: str
@@ -4705,6 +4720,7 @@ class ApiEntitiesPagesDomainCreateData(ApiEntitiesPagesDomainCreateDataRequired,
     domain: str
     enabled_until: str
     expired: str
+    id: str
     subject: str
     url: str
     verification_code: str
@@ -4723,6 +4739,7 @@ class ApiEntitiesPagesDomainUpdateData(ApiEntitiesPagesDomainUpdateDataRequired,
     domain: str
     enabled_until: str
     expired: str
+    id: str
     subject: str
     url: str
     verification_code: str
@@ -6101,6 +6118,7 @@ class ApiEntitiesRelease(TypedDict, total=False):
     description: str
     description_html: str
     evidences: dict
+    id: str
     links: dict
     milestones: dict
     name: str
@@ -6133,6 +6151,7 @@ class ApiEntitiesReleaseCreateData(ApiEntitiesReleaseCreateDataRequired, total=F
     description: str
     description_html: str
     evidences: dict
+    id: str
     links: dict
     milestones: dict
     name: str
@@ -6532,6 +6551,7 @@ class ApiEntitiesSystemBroadcastMessageRemoveMatch(TypedDict):
 class ApiEntitiesTag(TypedDict, total=False):
     commit: dict
     created_at: str
+    id: str
     message: str
     name: str
     protected: bool
@@ -6555,6 +6575,7 @@ class ApiEntitiesTagCreateDataRequired(TypedDict):
 class ApiEntitiesTagCreateData(ApiEntitiesTagCreateDataRequired, total=False):
     commit: dict
     created_at: str
+    id: str
     message: str
     name: str
     protected: bool
@@ -6835,16 +6856,16 @@ class ApiEntitiesWikiPageBasicListMatch(TypedDict):
     group_id: str
 
 
-class Application(TypedDict):
-    pass
+class Application(TypedDict, total=False):
+    id: str
 
 
 class ApplicationRemoveMatch(TypedDict):
     id: str
 
 
-class AwardEmoji(TypedDict):
-    pass
+class AwardEmoji(TypedDict, total=False):
+    id: str
 
 
 class AwardEmojiRemoveMatchRequired(TypedDict):
@@ -6861,8 +6882,8 @@ class AwardEmojiRemoveMatch(AwardEmojiRemoveMatchRequired, total=False):
     snippet_id: str
 
 
-class Badge(TypedDict):
-    pass
+class Badge(TypedDict, total=False):
+    id: str
 
 
 class BadgeRemoveMatchRequired(TypedDict):
@@ -6874,8 +6895,8 @@ class BadgeRemoveMatch(BadgeRemoveMatchRequired, total=False):
     project_id: str
 
 
-class Branch(TypedDict):
-    pass
+class Branch(TypedDict, total=False):
+    id: str
 
 
 class BranchRemoveMatchRequired(TypedDict):
@@ -6894,8 +6915,8 @@ class CargoPackageLoadMatch(TypedDict):
     project_id: str
 
 
-class CiVariable(TypedDict):
-    pass
+class CiVariable(TypedDict, total=False):
+    id: str
 
 
 class CiVariableRemoveMatchRequired(TypedDict):
@@ -6907,8 +6928,8 @@ class CiVariableRemoveMatch(CiVariableRemoveMatchRequired, total=False):
     group_id: str
 
 
-class Cluster(TypedDict):
-    pass
+class Cluster(TypedDict, total=False):
+    id: str
 
 
 class ClusterRemoveMatchRequired(TypedDict):
@@ -6920,8 +6941,8 @@ class ClusterRemoveMatch(ClusterRemoveMatchRequired, total=False):
     project_id: str
 
 
-class ClusterAgent(TypedDict):
-    pass
+class ClusterAgent(TypedDict, total=False):
+    id: str
 
 
 class ClusterAgentRemoveMatchRequired(TypedDict):
@@ -6950,8 +6971,8 @@ class ComposerPackageLoadMatch(TypedDict):
     sha: Any
 
 
-class Conan(TypedDict):
-    pass
+class Conan(TypedDict, total=False):
+    id: str
 
 
 class ConanRemoveMatchRequired(TypedDict):
@@ -6965,8 +6986,8 @@ class ConanRemoveMatch(ConanRemoveMatchRequired, total=False):
     id: str
 
 
-class ConanPackage(TypedDict):
-    pass
+class ConanPackage(TypedDict, total=False):
+    id: str
 
 
 class ConanPackageLoadMatch(TypedDict):
@@ -7035,6 +7056,7 @@ class ContainerRegistryEventCreateData(TypedDict):
 
 
 class CustomAttribute(TypedDict, total=False):
+    id: str
     key: str
     value: str
 
@@ -7044,8 +7066,8 @@ class CustomAttributeLoadMatch(TypedDict):
     id: str
 
 
-class Debian(TypedDict):
-    pass
+class Debian(TypedDict, total=False):
+    id: str
 
 
 class DebianUpdateData(TypedDict):
@@ -7053,8 +7075,8 @@ class DebianUpdateData(TypedDict):
     project_id: str
 
 
-class DebianDistribution(TypedDict):
-    pass
+class DebianDistribution(TypedDict, total=False):
+    id: str
 
 
 class DebianDistributionRemoveMatchRequired(TypedDict):
@@ -7066,8 +7088,8 @@ class DebianDistributionRemoveMatch(DebianDistributionRemoveMatchRequired, total
     project_id: str
 
 
-class DebianPackage(TypedDict):
-    pass
+class DebianPackage(TypedDict, total=False):
+    id: str
 
 
 class DebianPackageLoadMatch(TypedDict):
@@ -7079,9 +7101,13 @@ class DebianPackageLoadMatch(TypedDict):
     package_version: Any
 
 
-class DebianPackageUpdateData(TypedDict):
+class DebianPackageUpdateDataRequired(TypedDict):
     file_name: Any
     project_id: str
+
+
+class DebianPackageUpdateData(DebianPackageUpdateDataRequired, total=False):
+    id: str
 
 
 class DependencyProxy(TypedDict):
@@ -7092,8 +7118,8 @@ class DependencyProxyRemoveMatch(TypedDict):
     group_id: str
 
 
-class DeployKey(TypedDict):
-    pass
+class DeployKey(TypedDict, total=False):
+    id: str
 
 
 class DeployKeyRemoveMatch(TypedDict):
@@ -7101,8 +7127,8 @@ class DeployKeyRemoveMatch(TypedDict):
     project_id: str
 
 
-class DeployToken(TypedDict):
-    pass
+class DeployToken(TypedDict, total=False):
+    id: str
 
 
 class DeployTokenRemoveMatchRequired(TypedDict):
@@ -7114,8 +7140,8 @@ class DeployTokenRemoveMatch(DeployTokenRemoveMatchRequired, total=False):
     project_id: str
 
 
-class Deployment(TypedDict):
-    pass
+class Deployment(TypedDict, total=False):
+    id: str
 
 
 class DeploymentRemoveMatch(TypedDict):
@@ -7742,12 +7768,16 @@ class EeApiEntitiesSshCertificateCreateData(EeApiEntitiesSshCertificateCreateDat
     title: str
 
 
-class Environment(TypedDict):
-    pass
+class Environment(TypedDict, total=False):
+    id: str
 
 
-class EnvironmentCreateData(TypedDict):
+class EnvironmentCreateDataRequired(TypedDict):
     project_id: str
+
+
+class EnvironmentCreateData(EnvironmentCreateDataRequired, total=False):
+    id: str
 
 
 class EnvironmentRemoveMatch(TypedDict):
@@ -7755,8 +7785,8 @@ class EnvironmentRemoveMatch(TypedDict):
     project_id: str
 
 
-class ErrorTrackingClientKey(TypedDict):
-    pass
+class ErrorTrackingClientKey(TypedDict, total=False):
+    id: str
 
 
 class ErrorTrackingClientKeyRemoveMatch(TypedDict):
@@ -7764,24 +7794,28 @@ class ErrorTrackingClientKeyRemoveMatch(TypedDict):
     project_id: str
 
 
-class Feature(TypedDict):
-    pass
+class Feature(TypedDict, total=False):
+    id: str
 
 
 class FeatureRemoveMatch(TypedDict):
     id: str
 
 
-class FeatureFlag(TypedDict):
-    pass
+class FeatureFlag(TypedDict, total=False):
+    id: str
 
 
 class FeatureFlagLoadMatch(TypedDict):
     project_id: str
 
 
-class FeatureFlagCreateData(TypedDict):
+class FeatureFlagCreateDataRequired(TypedDict):
     unleash_id: str
+
+
+class FeatureFlagCreateData(FeatureFlagCreateDataRequired, total=False):
+    id: str
 
 
 class FeatureFlagRemoveMatch(TypedDict):
@@ -7789,8 +7823,8 @@ class FeatureFlagRemoveMatch(TypedDict):
     project_id: str
 
 
-class FeatureFlagsUserList(TypedDict):
-    pass
+class FeatureFlagsUserList(TypedDict, total=False):
+    id: str
 
 
 class FeatureFlagsUserListRemoveMatch(TypedDict):
@@ -7798,8 +7832,8 @@ class FeatureFlagsUserListRemoveMatch(TypedDict):
     project_id: str
 
 
-class FreezePeriod(TypedDict):
-    pass
+class FreezePeriod(TypedDict, total=False):
+    id: str
 
 
 class FreezePeriodRemoveMatch(TypedDict):
@@ -7848,8 +7882,8 @@ class GoProxyLoadMatch(GoProxyLoadMatchRequired, total=False):
     module_version: Any
 
 
-class Group(TypedDict):
-    pass
+class Group(TypedDict, total=False):
+    id: str
 
 
 class GroupLoadMatchRequired(TypedDict):
@@ -7889,16 +7923,16 @@ class GroupRemoveMatch(GroupRemoveMatchRequired, total=False):
     user_id: str
 
 
-class GroupAvatar(TypedDict):
-    pass
+class GroupAvatar(TypedDict, total=False):
+    id: str
 
 
 class GroupAvatarLoadMatch(TypedDict):
     id: str
 
 
-class GroupExport(TypedDict):
-    pass
+class GroupExport(TypedDict, total=False):
+    id: str
 
 
 class GroupExportLoadMatch(TypedDict):
@@ -7940,8 +7974,8 @@ class HelmPackageCreateData(HelmPackageCreateDataRequired, total=False):
     api_id: str
 
 
-class Hook(TypedDict):
-    pass
+class Hook(TypedDict, total=False):
+    id: str
 
 
 class HookCreateData(TypedDict):
@@ -7966,12 +8000,12 @@ class ImportCreateData(TypedDict):
     pass
 
 
-class Integration(TypedDict):
-    pass
+class Integration(TypedDict, total=False):
+    id: str
 
 
-class IntegrationCreateData(TypedDict):
-    pass
+class IntegrationCreateData(TypedDict, total=False):
+    id: str
 
 
 class IntegrationRemoveMatch(TypedDict):
@@ -7979,8 +8013,8 @@ class IntegrationRemoveMatch(TypedDict):
     id: str
 
 
-class Invitation(TypedDict):
-    pass
+class Invitation(TypedDict, total=False):
+    id: str
 
 
 class InvitationRemoveMatchRequired(TypedDict):
@@ -7992,8 +8026,8 @@ class InvitationRemoveMatch(InvitationRemoveMatchRequired, total=False):
     project_id: str
 
 
-class IssueLink(TypedDict):
-    pass
+class IssueLink(TypedDict, total=False):
+    id: str
 
 
 class IssueLinkRemoveMatch(TypedDict):
@@ -8010,16 +8044,16 @@ class IssuesStatisticLoadMatch(TypedDict):
     pass
 
 
-class Job(TypedDict):
-    pass
+class Job(TypedDict, total=False):
+    id: str
 
 
 class JobLoadMatch(TypedDict):
     id: str
 
 
-class JobCreateData(TypedDict):
-    pass
+class JobCreateData(TypedDict, total=False):
+    id: str
 
 
 class JobUpdateData(TypedDict):
@@ -8044,8 +8078,8 @@ class MavenPackageUpdateData(TypedDict):
     project_id: str
 
 
-class Member(TypedDict):
-    pass
+class Member(TypedDict, total=False):
+    id: str
 
 
 class MemberRemoveMatchRequired(TypedDict):
@@ -8057,8 +8091,8 @@ class MemberRemoveMatch(MemberRemoveMatchRequired, total=False):
     project_id: str
 
 
-class MergeRequest(TypedDict):
-    pass
+class MergeRequest(TypedDict, total=False):
+    id: str
 
 
 class MergeRequestLoadMatch(TypedDict):
@@ -8114,16 +8148,16 @@ class MlModelRegistryUpdateData(TypedDict):
     project_id: str
 
 
-class Namespace(TypedDict):
-    pass
+class Namespace(TypedDict, total=False):
+    id: str
 
 
 class NamespaceRemoveMatch(TypedDict):
     id: str
 
 
-class Npm(TypedDict):
-    pass
+class Npm(TypedDict, total=False):
+    id: str
 
 
 class NpmUpdateData(TypedDict):
@@ -8223,8 +8257,8 @@ class NugetPackageRemoveMatch(TypedDict):
     project_id: str
 
 
-class PackageFile(TypedDict):
-    pass
+class PackageFile(TypedDict, total=False):
+    id: str
 
 
 class PackageFileLoadMatch(TypedDict):
@@ -8269,8 +8303,8 @@ class ParticipantListMatch(ParticipantListMatchRequired, total=False):
     merge_request_id: str
 
 
-class PersonalAccessToken(TypedDict):
-    pass
+class PersonalAccessToken(TypedDict, total=False):
+    id: str
 
 
 class PersonalAccessTokenRemoveMatch(TypedDict):
@@ -8415,8 +8449,8 @@ class ProjectRemoveMatch(ProjectRemoveMatchRequired, total=False):
     upload_id: str
 
 
-class ProjectAvatar(TypedDict):
-    pass
+class ProjectAvatar(TypedDict, total=False):
+    id: str
 
 
 class ProjectAvatarLoadMatch(TypedDict):
@@ -8431,8 +8465,8 @@ class ProjectEntityCreateData(TypedDict):
     pass
 
 
-class ProjectExport(TypedDict):
-    pass
+class ProjectExport(TypedDict, total=False):
+    id: str
 
 
 class ProjectExportLoadMatch(TypedDict):
@@ -8443,8 +8477,8 @@ class ProjectExportCreateData(TypedDict):
     id: str
 
 
-class ProjectHook(TypedDict):
-    pass
+class ProjectHook(TypedDict, total=False):
+    id: str
 
 
 class ProjectHookRemoveMatch(TypedDict):
@@ -8492,8 +8526,8 @@ class ProjectImportEntityCreateData(TypedDict, total=False):
     relation_type: str
 
 
-class ProjectPackage(TypedDict):
-    pass
+class ProjectPackage(TypedDict, total=False):
+    id: str
 
 
 class ProjectPackageRemoveMatch(TypedDict):
@@ -8501,8 +8535,8 @@ class ProjectPackageRemoveMatch(TypedDict):
     project_id: str
 
 
-class ProjectSnippet(TypedDict):
-    pass
+class ProjectSnippet(TypedDict, total=False):
+    id: str
 
 
 class ProjectSnippetRemoveMatch(TypedDict):
@@ -8527,8 +8561,8 @@ class ProjectsJobTokenScopeRemoveMatch(ProjectsJobTokenScopeRemoveMatchRequired,
     target_project_id: str
 
 
-class ProtectedTag(TypedDict):
-    pass
+class ProtectedTag(TypedDict, total=False):
+    id: str
 
 
 class ProtectedTagRemoveMatch(TypedDict):
@@ -8556,8 +8590,8 @@ class PypiPackageCreateData(TypedDict):
     project_id: str
 
 
-class Release(TypedDict):
-    pass
+class Release(TypedDict, total=False):
+    id: str
 
 
 class ReleaseLoadMatch(TypedDict):
@@ -8569,8 +8603,8 @@ class ReleaseRemoveMatch(TypedDict):
     project_id: str
 
 
-class ReleaseLink(TypedDict):
-    pass
+class ReleaseLink(TypedDict, total=False):
+    id: str
 
 
 class ReleaseLinkRemoveMatch(TypedDict):
@@ -8579,8 +8613,8 @@ class ReleaseLinkRemoveMatch(TypedDict):
     release_id: str
 
 
-class RemoteMirror(TypedDict):
-    pass
+class RemoteMirror(TypedDict, total=False):
+    id: str
 
 
 class RemoteMirrorLoadMatch(TypedDict):
@@ -8618,8 +8652,8 @@ class RpmPackageCreateData(TypedDict):
     project_id: str
 
 
-class Rubygem(TypedDict):
-    pass
+class Rubygem(TypedDict, total=False):
+    id: str
 
 
 class RubygemLoadMatch(TypedDict):
@@ -8643,12 +8677,12 @@ class RubygemPackageCreateData(TypedDict):
     project_id: str
 
 
-class Runner(TypedDict):
-    pass
+class Runner(TypedDict, total=False):
+    id: str
 
 
-class RunnerCreateData(TypedDict):
-    pass
+class RunnerCreateData(TypedDict, total=False):
+    id: str
 
 
 class RunnerRemoveMatch(TypedDict):
@@ -8663,8 +8697,8 @@ class SearchLoadMatch(TypedDict):
     pass
 
 
-class SecureFile(TypedDict):
-    pass
+class SecureFile(TypedDict, total=False):
+    id: str
 
 
 class SecureFileLoadMatch(TypedDict):
@@ -8685,8 +8719,8 @@ class SlackCreateData(TypedDict):
     pass
 
 
-class Snippet(TypedDict):
-    pass
+class Snippet(TypedDict, total=False):
+    id: str
 
 
 class SnippetLoadMatch(TypedDict):
@@ -8716,16 +8750,16 @@ class StarrerListMatch(TypedDict):
     project_id: str
 
 
-class SystemHook(TypedDict):
-    pass
+class SystemHook(TypedDict, total=False):
+    id: str
 
 
 class SystemHookRemoveMatch(TypedDict):
     id: str
 
 
-class Tag(TypedDict):
-    pass
+class Tag(TypedDict, total=False):
+    id: str
 
 
 class TagRemoveMatch(TypedDict):
@@ -8733,8 +8767,8 @@ class TagRemoveMatch(TypedDict):
     project_id: str
 
 
-class TerraformRegistry(TypedDict):
-    pass
+class TerraformRegistry(TypedDict, total=False):
+    id: str
 
 
 class TerraformRegistryLoadMatchRequired(TypedDict):
@@ -8749,14 +8783,18 @@ class TerraformRegistryLoadMatch(TerraformRegistryLoadMatchRequired, total=False
     v1_id: str
 
 
-class TerraformRegistryUpdateData(TypedDict):
+class TerraformRegistryUpdateDataRequired(TypedDict):
     module_id: str
     module_system: Any
     project_id: str
 
 
-class TerraformState(TypedDict):
-    pass
+class TerraformRegistryUpdateData(TerraformRegistryUpdateDataRequired, total=False):
+    id: str
+
+
+class TerraformState(TypedDict, total=False):
+    id: str
 
 
 class TerraformStateLoadMatchRequired(TypedDict):
@@ -8816,16 +8854,16 @@ class TestReportSummaryLoadMatch(TypedDict):
     project_id: str
 
 
-class Topic(TypedDict):
-    pass
+class Topic(TypedDict, total=False):
+    id: str
 
 
 class TopicRemoveMatch(TypedDict):
     id: str
 
 
-class UnleashApi(TypedDict):
-    pass
+class UnleashApi(TypedDict, total=False):
+    id: str
 
 
 class UnleashApiLoadMatch(TypedDict):
@@ -8869,8 +8907,8 @@ class WebCommitLoadMatch(TypedDict):
     pass
 
 
-class Wiki(TypedDict):
-    pass
+class Wiki(TypedDict, total=False):
+    id: str
 
 
 class WikiRemoveMatchRequired(TypedDict):

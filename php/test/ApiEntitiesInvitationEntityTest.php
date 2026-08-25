@@ -87,6 +87,7 @@ class ApiEntitiesInvitationEntityTest extends TestCase
         $api_entities_invitation_ref01_data_result = $api_entities_invitation_ref01_ent->create($api_entities_invitation_ref01_data, null);
         $api_entities_invitation_ref01_data = Helpers::to_map(is_object($api_entities_invitation_ref01_data_result) && method_exists($api_entities_invitation_ref01_data_result, 'data_get') ? $api_entities_invitation_ref01_data_result->data_get() : $api_entities_invitation_ref01_data_result);
         $this->assertNotNull($api_entities_invitation_ref01_data);
+        $this->assertNotNull($api_entities_invitation_ref01_data["id"]);
 
         // LIST
         $api_entities_invitation_ref01_match = [
@@ -96,8 +97,14 @@ class ApiEntitiesInvitationEntityTest extends TestCase
         $api_entities_invitation_ref01_list_result = $api_entities_invitation_ref01_ent->list($api_entities_invitation_ref01_match, null);
         $this->assertIsArray($api_entities_invitation_ref01_list_result);
 
+        $found_item = sdk_select(
+            Runner::entity_list_to_data($api_entities_invitation_ref01_list_result),
+            ["id" => $api_entities_invitation_ref01_data["id"]]);
+        $this->assertNotEmpty($found_item);
+
         // UPDATE
         $api_entities_invitation_ref01_data_up0_up = [
+            "id" => $api_entities_invitation_ref01_data["id"],
             "project_id" => $setup["idmap"]["project_id"],
         ];
 
@@ -108,6 +115,7 @@ class ApiEntitiesInvitationEntityTest extends TestCase
         $api_entities_invitation_ref01_resdata_up0_result = $api_entities_invitation_ref01_ent->update($api_entities_invitation_ref01_data_up0_up, null);
         $api_entities_invitation_ref01_resdata_up0 = Helpers::to_map(is_object($api_entities_invitation_ref01_resdata_up0_result) && method_exists($api_entities_invitation_ref01_resdata_up0_result, 'data_get') ? $api_entities_invitation_ref01_resdata_up0_result->data_get() : $api_entities_invitation_ref01_resdata_up0_result);
         $this->assertNotNull($api_entities_invitation_ref01_resdata_up0);
+        $this->assertEquals($api_entities_invitation_ref01_resdata_up0["id"], $api_entities_invitation_ref01_data_up0_up["id"]);
         $this->assertEquals($api_entities_invitation_ref01_resdata_up0[$api_entities_invitation_ref01_markdef_up0_name], $api_entities_invitation_ref01_markdef_up0_value);
 
     }

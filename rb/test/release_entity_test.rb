@@ -41,9 +41,13 @@ class ReleaseEntityTest < Minitest::Test
 
     # LOAD
     release_ref01_ent = client.Release(nil)
-    release_ref01_match_dt0 = {}
+    release_ref01_match_dt0 = {
+      "id" => release_ref01_data["id"],
+    }
     release_ref01_data_dt0_loaded = release_ref01_ent.load(release_ref01_match_dt0, nil)
-    assert !release_ref01_data_dt0_loaded.nil?
+    release_ref01_data_dt0_load_result = Helpers.to_map(release_ref01_data_dt0_loaded.respond_to?(:data_get) ? release_ref01_data_dt0_loaded.data_get : release_ref01_data_dt0_loaded)
+    assert !release_ref01_data_dt0_load_result.nil?
+    assert_equal release_ref01_data_dt0_load_result["id"], release_ref01_data["id"]
 
   end
 end

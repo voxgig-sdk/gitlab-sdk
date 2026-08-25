@@ -61,13 +61,19 @@ func TestApiEntitiesDictionaryTableEntity(t *testing.T) {
 
 		// LOAD
 		apiEntitiesDictionaryTableRef01Ent := client.ApiEntitiesDictionaryTable(nil)
-		apiEntitiesDictionaryTableRef01MatchDt0 := map[string]any{}
+		apiEntitiesDictionaryTableRef01MatchDt0 := map[string]any{
+			"id": apiEntitiesDictionaryTableRef01Data["id"],
+		}
 		apiEntitiesDictionaryTableRef01DataDt0Loaded, err := apiEntitiesDictionaryTableRef01Ent.Load(apiEntitiesDictionaryTableRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if apiEntitiesDictionaryTableRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		apiEntitiesDictionaryTableRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesDictionaryTableRef01DataDt0Loaded))
+		if apiEntitiesDictionaryTableRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if apiEntitiesDictionaryTableRef01DataDt0LoadResult["id"] != apiEntitiesDictionaryTableRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

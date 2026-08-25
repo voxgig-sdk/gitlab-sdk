@@ -2,67 +2,67 @@
   "existing": {
     "api_entities_ci_variable": {
       "API_ENTITIES_CI_VARIABLE00": {
-        "description": "s5a",
-        "environment_scope": "s5b",
+        "description": "s64",
+        "environment_scope": "s65",
         "hidden": true,
-        "key": "s5d",
-        "masked": true,
-        "protected": false,
-        "raw": true,
-        "value": "s61",
-        "variable_type": "s62",
+        "id": "API_ENTITIES_CI_VARIABLE00",
+        "key": "s68",
+        "masked": false,
+        "protected": true,
+        "raw": false,
+        "value": "s6c",
+        "variable_type": "s6d",
         "pipeline_schedule_id": "PIPELINE_SCHEDULE01",
         "project_id": "PROJECT01",
         "group_id": "GROUP01",
-        "pipeline_id": "PIPELINE01",
-        "id": "API_ENTITIES_CI_VARIABLE00"
+        "pipeline_id": "PIPELINE01"
       },
       "API_ENTITIES_CI_VARIABLE01": {
-        "description": "sb4",
-        "environment_scope": "sb5",
+        "description": "sc8",
+        "environment_scope": "sc9",
         "hidden": true,
-        "key": "sb7",
-        "masked": true,
-        "protected": false,
-        "raw": true,
-        "value": "sbb",
-        "variable_type": "sbc",
+        "id": "API_ENTITIES_CI_VARIABLE01",
+        "key": "scc",
+        "masked": false,
+        "protected": true,
+        "raw": false,
+        "value": "sd0",
+        "variable_type": "sd1",
         "pipeline_schedule_id": "PIPELINE_SCHEDULE01",
         "project_id": "PROJECT01",
         "group_id": "GROUP01",
-        "pipeline_id": "PIPELINE01",
-        "id": "API_ENTITIES_CI_VARIABLE01"
+        "pipeline_id": "PIPELINE01"
       },
       "API_ENTITIES_CI_VARIABLE02": {
-        "description": "s10e",
-        "environment_scope": "s10f",
+        "description": "s12c",
+        "environment_scope": "s12d",
         "hidden": true,
-        "key": "s111",
-        "masked": true,
-        "protected": false,
-        "raw": true,
-        "value": "s115",
-        "variable_type": "s116",
+        "id": "API_ENTITIES_CI_VARIABLE02",
+        "key": "s130",
+        "masked": false,
+        "protected": true,
+        "raw": false,
+        "value": "s134",
+        "variable_type": "s135",
         "pipeline_schedule_id": "PIPELINE_SCHEDULE01",
         "project_id": "PROJECT01",
         "group_id": "GROUP01",
-        "pipeline_id": "PIPELINE01",
-        "id": "API_ENTITIES_CI_VARIABLE02"
+        "pipeline_id": "PIPELINE01"
       }
     }
   },
   "new": {
     "api_entities_ci_variable": {
       "api_entities_ci_variable_ref01": {
-        "description": "s168",
-        "environment_scope": "s169",
+        "description": "s190",
+        "environment_scope": "s191",
         "hidden": true,
-        "key": "s16b",
-        "masked": true,
-        "protected": false,
-        "raw": true,
-        "value": "s16f",
-        "variable_type": "s170"
+        "key": "s194",
+        "masked": false,
+        "protected": true,
+        "raw": false,
+        "value": "s198",
+        "variable_type": "s199"
       }
     }
   }

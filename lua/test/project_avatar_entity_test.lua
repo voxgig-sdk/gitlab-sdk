@@ -44,10 +44,14 @@ describe("ProjectAvatarEntity", function()
 
     -- LOAD
     local project_avatar_ref01_ent = client:ProjectAvatar(nil)
-    local project_avatar_ref01_match_dt0 = {}
+    local project_avatar_ref01_match_dt0 = {
+      id = project_avatar_ref01_data["id"],
+    }
     local project_avatar_ref01_data_dt0_loaded, err = project_avatar_ref01_ent:load(project_avatar_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(project_avatar_ref01_data_dt0_loaded)
+    local project_avatar_ref01_data_dt0_load_result = helpers.to_map(type(project_avatar_ref01_data_dt0_loaded) == 'table' and project_avatar_ref01_data_dt0_loaded.data_get and project_avatar_ref01_data_dt0_loaded:data_get() or project_avatar_ref01_data_dt0_loaded)
+    assert.is_not_nil(project_avatar_ref01_data_dt0_load_result)
+    assert.are.equal(project_avatar_ref01_data_dt0_load_result["id"], project_avatar_ref01_data["id"])
 
   end)
 end)

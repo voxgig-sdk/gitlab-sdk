@@ -41,9 +41,13 @@ class SnippetEntityTest < Minitest::Test
 
     # LOAD
     snippet_ref01_ent = client.Snippet(nil)
-    snippet_ref01_match_dt0 = {}
+    snippet_ref01_match_dt0 = {
+      "id" => snippet_ref01_data["id"],
+    }
     snippet_ref01_data_dt0_loaded = snippet_ref01_ent.load(snippet_ref01_match_dt0, nil)
-    assert !snippet_ref01_data_dt0_loaded.nil?
+    snippet_ref01_data_dt0_load_result = Helpers.to_map(snippet_ref01_data_dt0_loaded.respond_to?(:data_get) ? snippet_ref01_data_dt0_loaded.data_get : snippet_ref01_data_dt0_loaded)
+    assert !snippet_ref01_data_dt0_load_result.nil?
+    assert_equal snippet_ref01_data_dt0_load_result["id"], snippet_ref01_data["id"]
 
   end
 end

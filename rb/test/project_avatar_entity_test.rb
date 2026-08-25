@@ -41,9 +41,13 @@ class ProjectAvatarEntityTest < Minitest::Test
 
     # LOAD
     project_avatar_ref01_ent = client.ProjectAvatar(nil)
-    project_avatar_ref01_match_dt0 = {}
+    project_avatar_ref01_match_dt0 = {
+      "id" => project_avatar_ref01_data["id"],
+    }
     project_avatar_ref01_data_dt0_loaded = project_avatar_ref01_ent.load(project_avatar_ref01_match_dt0, nil)
-    assert !project_avatar_ref01_data_dt0_loaded.nil?
+    project_avatar_ref01_data_dt0_load_result = Helpers.to_map(project_avatar_ref01_data_dt0_loaded.respond_to?(:data_get) ? project_avatar_ref01_data_dt0_loaded.data_get : project_avatar_ref01_data_dt0_loaded)
+    assert !project_avatar_ref01_data_dt0_load_result.nil?
+    assert_equal project_avatar_ref01_data_dt0_load_result["id"], project_avatar_ref01_data["id"]
 
   end
 end

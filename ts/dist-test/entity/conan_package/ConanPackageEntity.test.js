@@ -75,13 +75,19 @@ const utility_1 = require("../../utility");
         // UPDATE
         const conan_package_ref01_ent = client.ConanPackage();
         const conan_package_ref01_data_up0 = {};
+        conan_package_ref01_data_up0.id = conan_package_ref01_data.id;
         conan_package_ref01_data_up0['file_id'] = setup.idmap['file_id'];
         conan_package_ref01_data_up0['package_channel'] = setup.idmap['package_channel'];
         conan_package_ref01_data_up0['package_username'] = setup.idmap['package_username'];
         conan_package_ref01_data_up0['package_version'] = setup.idmap['package_version'];
         conan_package_ref01_data_up0['recipe_revision'] = setup.idmap['recipe_revision'];
         const conan_package_ref01_resdata_up0 = (await conan_package_ref01_ent.update(conan_package_ref01_data_up0)).data();
-        (0, node_assert_1.default)(null != conan_package_ref01_resdata_up0);
+        (0, node_assert_1.default)(conan_package_ref01_resdata_up0.id === conan_package_ref01_data_up0.id);
+        // LOAD
+        const conan_package_ref01_match_dt0 = {};
+        conan_package_ref01_match_dt0.id = conan_package_ref01_data.id;
+        const conan_package_ref01_data_dt0 = (await conan_package_ref01_ent.load(conan_package_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(conan_package_ref01_data_dt0.id === conan_package_ref01_data.id);
     });
 });
 function basicSetup(extra) {

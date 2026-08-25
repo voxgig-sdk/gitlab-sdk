@@ -72,9 +72,12 @@ const utility_1 = require("../../utility");
         const isempty = struct.isempty;
         const select = struct.select;
         let group_avatar_ref01_data = Object.values(setup.data.existing.group_avatar)[0];
-        // LOAD: skipped — no entity id field and load requires path params.
-        // Entity-var is declared here so later flow steps still compile.
+        // LOAD
         const group_avatar_ref01_ent = client.GroupAvatar();
+        const group_avatar_ref01_match_dt0 = {};
+        group_avatar_ref01_match_dt0.id = group_avatar_ref01_data.id;
+        const group_avatar_ref01_data_dt0 = (await group_avatar_ref01_ent.load(group_avatar_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(group_avatar_ref01_data_dt0.id === group_avatar_ref01_data.id);
     });
 });
 function basicSetup(extra) {

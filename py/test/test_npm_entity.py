@@ -49,11 +49,13 @@ class TestNpmEntity:
         # UPDATE
         npm_ref01_ent = client.Npm(None)
         npm_ref01_data_up0_up = {
+            "id": npm_ref01_data["id"],
             "project_id": setup["idmap"]["project_id"],
         }
 
         npm_ref01_resdata_up0 = helpers.to_map(runner.entity_data(npm_ref01_ent.update(npm_ref01_data_up0_up, None)))
         assert npm_ref01_resdata_up0 is not None
+        assert npm_ref01_resdata_up0["id"] == npm_ref01_data_up0_up["id"]
 
 
 

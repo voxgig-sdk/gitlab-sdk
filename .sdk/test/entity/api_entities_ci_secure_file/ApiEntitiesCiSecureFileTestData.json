@@ -2,16 +2,16 @@
   "existing": {
     "api_entities_ci_secure_file": {
       "API_ENTITIES_CI_SECURE_FILE00": {
-        "project_id": "PROJECT01",
-        "id": "API_ENTITIES_CI_SECURE_FILE00"
+        "id": "API_ENTITIES_CI_SECURE_FILE00",
+        "project_id": "PROJECT01"
       },
       "API_ENTITIES_CI_SECURE_FILE01": {
-        "project_id": "PROJECT01",
-        "id": "API_ENTITIES_CI_SECURE_FILE01"
+        "id": "API_ENTITIES_CI_SECURE_FILE01",
+        "project_id": "PROJECT01"
       },
       "API_ENTITIES_CI_SECURE_FILE02": {
-        "project_id": "PROJECT01",
-        "id": "API_ENTITIES_CI_SECURE_FILE02"
+        "id": "API_ENTITIES_CI_SECURE_FILE02",
+        "project_id": "PROJECT01"
       }
     }
   },

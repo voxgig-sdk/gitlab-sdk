@@ -40,11 +40,16 @@ class ApiEntitiesCiSecureFileEntityTest < Minitest::Test
     api_entities_ci_secure_file_ref01_data_result = api_entities_ci_secure_file_ref01_ent.create(api_entities_ci_secure_file_ref01_data, nil)
     api_entities_ci_secure_file_ref01_data = Helpers.to_map(api_entities_ci_secure_file_ref01_data_result.respond_to?(:data_get) ? api_entities_ci_secure_file_ref01_data_result.data_get : api_entities_ci_secure_file_ref01_data_result)
     assert !api_entities_ci_secure_file_ref01_data.nil?
+    assert !api_entities_ci_secure_file_ref01_data["id"].nil?
 
     # LOAD
-    api_entities_ci_secure_file_ref01_match_dt0 = {}
+    api_entities_ci_secure_file_ref01_match_dt0 = {
+      "id" => api_entities_ci_secure_file_ref01_data["id"],
+    }
     api_entities_ci_secure_file_ref01_data_dt0_loaded = api_entities_ci_secure_file_ref01_ent.load(api_entities_ci_secure_file_ref01_match_dt0, nil)
-    assert !api_entities_ci_secure_file_ref01_data_dt0_loaded.nil?
+    api_entities_ci_secure_file_ref01_data_dt0_load_result = Helpers.to_map(api_entities_ci_secure_file_ref01_data_dt0_loaded.respond_to?(:data_get) ? api_entities_ci_secure_file_ref01_data_dt0_loaded.data_get : api_entities_ci_secure_file_ref01_data_dt0_loaded)
+    assert !api_entities_ci_secure_file_ref01_data_dt0_load_result.nil?
+    assert_equal api_entities_ci_secure_file_ref01_data_dt0_load_result["id"], api_entities_ci_secure_file_ref01_data["id"]
 
   end
 end

@@ -61,13 +61,19 @@ func TestGroupAvatarEntity(t *testing.T) {
 
 		// LOAD
 		groupAvatarRef01Ent := client.GroupAvatar(nil)
-		groupAvatarRef01MatchDt0 := map[string]any{}
+		groupAvatarRef01MatchDt0 := map[string]any{
+			"id": groupAvatarRef01Data["id"],
+		}
 		groupAvatarRef01DataDt0Loaded, err := groupAvatarRef01Ent.Load(groupAvatarRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if groupAvatarRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		groupAvatarRef01DataDt0LoadResult := core.ToMapAny(entityData(groupAvatarRef01DataDt0Loaded))
+		if groupAvatarRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if groupAvatarRef01DataDt0LoadResult["id"] != groupAvatarRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

@@ -62,15 +62,24 @@ func TestProjectExportEntity(t *testing.T) {
 		if projectExportRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if projectExportRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 		// LOAD
-		projectExportRef01MatchDt0 := map[string]any{}
+		projectExportRef01MatchDt0 := map[string]any{
+			"id": projectExportRef01Data["id"],
+		}
 		projectExportRef01DataDt0Loaded, err := projectExportRef01Ent.Load(projectExportRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if projectExportRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		projectExportRef01DataDt0LoadResult := core.ToMapAny(entityData(projectExportRef01DataDt0Loaded))
+		if projectExportRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if projectExportRef01DataDt0LoadResult["id"] != projectExportRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

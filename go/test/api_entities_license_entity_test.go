@@ -61,13 +61,19 @@ func TestApiEntitiesLicenseEntity(t *testing.T) {
 
 		// LOAD
 		apiEntitiesLicenseRef01Ent := client.ApiEntitiesLicense(nil)
-		apiEntitiesLicenseRef01MatchDt0 := map[string]any{}
+		apiEntitiesLicenseRef01MatchDt0 := map[string]any{
+			"id": apiEntitiesLicenseRef01Data["id"],
+		}
 		apiEntitiesLicenseRef01DataDt0Loaded, err := apiEntitiesLicenseRef01Ent.Load(apiEntitiesLicenseRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if apiEntitiesLicenseRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		apiEntitiesLicenseRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesLicenseRef01DataDt0Loaded))
+		if apiEntitiesLicenseRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if apiEntitiesLicenseRef01DataDt0LoadResult["id"] != apiEntitiesLicenseRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

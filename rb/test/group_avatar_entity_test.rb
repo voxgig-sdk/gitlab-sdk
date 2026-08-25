@@ -41,9 +41,13 @@ class GroupAvatarEntityTest < Minitest::Test
 
     # LOAD
     group_avatar_ref01_ent = client.GroupAvatar(nil)
-    group_avatar_ref01_match_dt0 = {}
+    group_avatar_ref01_match_dt0 = {
+      "id" => group_avatar_ref01_data["id"],
+    }
     group_avatar_ref01_data_dt0_loaded = group_avatar_ref01_ent.load(group_avatar_ref01_match_dt0, nil)
-    assert !group_avatar_ref01_data_dt0_loaded.nil?
+    group_avatar_ref01_data_dt0_load_result = Helpers.to_map(group_avatar_ref01_data_dt0_loaded.respond_to?(:data_get) ? group_avatar_ref01_data_dt0_loaded.data_get : group_avatar_ref01_data_dt0_loaded)
+    assert !group_avatar_ref01_data_dt0_load_result.nil?
+    assert_equal group_avatar_ref01_data_dt0_load_result["id"], group_avatar_ref01_data["id"]
 
   end
 end

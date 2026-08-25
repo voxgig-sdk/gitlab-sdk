@@ -62,6 +62,7 @@ func TestNpmEntity(t *testing.T) {
 		// UPDATE
 		npmRef01Ent := client.Npm(nil)
 		npmRef01DataUp0Up := map[string]any{
+			"id": npmRef01Data["id"],
 			"project_id": setup.idmap["project_id"],
 		}
 
@@ -72,6 +73,9 @@ func TestNpmEntity(t *testing.T) {
 		npmRef01ResdataUp0 := core.ToMapAny(entityData(npmRef01ResdataUp0Result))
 		if npmRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
+		}
+		if npmRef01ResdataUp0["id"] != npmRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
 		}
 
 	})

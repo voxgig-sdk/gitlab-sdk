@@ -61,13 +61,19 @@ func TestUnleashApiEntity(t *testing.T) {
 
 		// LOAD
 		unleashApiRef01Ent := client.UnleashApi(nil)
-		unleashApiRef01MatchDt0 := map[string]any{}
+		unleashApiRef01MatchDt0 := map[string]any{
+			"id": unleashApiRef01Data["id"],
+		}
 		unleashApiRef01DataDt0Loaded, err := unleashApiRef01Ent.Load(unleashApiRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if unleashApiRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		unleashApiRef01DataDt0LoadResult := core.ToMapAny(entityData(unleashApiRef01DataDt0Loaded))
+		if unleashApiRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if unleashApiRef01DataDt0LoadResult["id"] != unleashApiRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

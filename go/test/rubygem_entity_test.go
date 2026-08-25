@@ -61,13 +61,19 @@ func TestRubygemEntity(t *testing.T) {
 
 		// LOAD
 		rubygemRef01Ent := client.Rubygem(nil)
-		rubygemRef01MatchDt0 := map[string]any{}
+		rubygemRef01MatchDt0 := map[string]any{
+			"id": rubygemRef01Data["id"],
+		}
 		rubygemRef01DataDt0Loaded, err := rubygemRef01Ent.Load(rubygemRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if rubygemRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		rubygemRef01DataDt0LoadResult := core.ToMapAny(entityData(rubygemRef01DataDt0Loaded))
+		if rubygemRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if rubygemRef01DataDt0LoadResult["id"] != rubygemRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

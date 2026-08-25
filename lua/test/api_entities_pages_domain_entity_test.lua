@@ -85,6 +85,7 @@ describe("ApiEntitiesPagesDomainEntity", function()
     assert.is_nil(err)
     api_entities_pages_domain_ref01_data = helpers.to_map(type(api_entities_pages_domain_ref01_data_result) == 'table' and api_entities_pages_domain_ref01_data_result.data_get and api_entities_pages_domain_ref01_data_result:data_get() or api_entities_pages_domain_ref01_data_result)
     assert.is_not_nil(api_entities_pages_domain_ref01_data)
+    assert.is_not_nil(api_entities_pages_domain_ref01_data["id"])
 
     -- LIST
     local api_entities_pages_domain_ref01_match = {
@@ -95,8 +96,14 @@ describe("ApiEntitiesPagesDomainEntity", function()
     assert.is_nil(err)
     assert.is_table(api_entities_pages_domain_ref01_list_result)
 
+    local found_item = vs.select(
+      runner.entity_list_to_data(api_entities_pages_domain_ref01_list_result),
+      { id = api_entities_pages_domain_ref01_data["id"] })
+    assert.is_false(vs.isempty(found_item))
+
     -- UPDATE
     local api_entities_pages_domain_ref01_data_up0_up = {
+      id = api_entities_pages_domain_ref01_data["id"],
       ["project_id"] = setup.idmap["project_id"],
     }
 
@@ -108,13 +115,18 @@ describe("ApiEntitiesPagesDomainEntity", function()
     assert.is_nil(err)
     local api_entities_pages_domain_ref01_resdata_up0 = helpers.to_map(type(api_entities_pages_domain_ref01_resdata_up0_result) == 'table' and api_entities_pages_domain_ref01_resdata_up0_result.data_get and api_entities_pages_domain_ref01_resdata_up0_result:data_get() or api_entities_pages_domain_ref01_resdata_up0_result)
     assert.is_not_nil(api_entities_pages_domain_ref01_resdata_up0)
+    assert.are.equal(api_entities_pages_domain_ref01_resdata_up0["id"], api_entities_pages_domain_ref01_data_up0_up["id"])
     assert.are.equal(api_entities_pages_domain_ref01_resdata_up0[api_entities_pages_domain_ref01_markdef_up0_name], api_entities_pages_domain_ref01_markdef_up0_value)
 
     -- LOAD
-    local api_entities_pages_domain_ref01_match_dt0 = {}
+    local api_entities_pages_domain_ref01_match_dt0 = {
+      id = api_entities_pages_domain_ref01_data["id"],
+    }
     local api_entities_pages_domain_ref01_data_dt0_loaded, err = api_entities_pages_domain_ref01_ent:load(api_entities_pages_domain_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(api_entities_pages_domain_ref01_data_dt0_loaded)
+    local api_entities_pages_domain_ref01_data_dt0_load_result = helpers.to_map(type(api_entities_pages_domain_ref01_data_dt0_loaded) == 'table' and api_entities_pages_domain_ref01_data_dt0_loaded.data_get and api_entities_pages_domain_ref01_data_dt0_loaded:data_get() or api_entities_pages_domain_ref01_data_dt0_loaded)
+    assert.is_not_nil(api_entities_pages_domain_ref01_data_dt0_load_result)
+    assert.are.equal(api_entities_pages_domain_ref01_data_dt0_load_result["id"], api_entities_pages_domain_ref01_data["id"])
 
   end)
 end)

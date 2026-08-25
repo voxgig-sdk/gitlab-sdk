@@ -46,11 +46,16 @@ class ProjectExportEntityTest extends TestCase
         $project_export_ref01_data_result = $project_export_ref01_ent->create($project_export_ref01_data, null);
         $project_export_ref01_data = Helpers::to_map(is_object($project_export_ref01_data_result) && method_exists($project_export_ref01_data_result, 'data_get') ? $project_export_ref01_data_result->data_get() : $project_export_ref01_data_result);
         $this->assertNotNull($project_export_ref01_data);
+        $this->assertNotNull($project_export_ref01_data["id"]);
 
         // LOAD
-        $project_export_ref01_match_dt0 = [];
+        $project_export_ref01_match_dt0 = [
+            "id" => $project_export_ref01_data["id"],
+        ];
         $project_export_ref01_data_dt0_loaded = $project_export_ref01_ent->load($project_export_ref01_match_dt0, null);
-        $this->assertNotNull($project_export_ref01_data_dt0_loaded);
+        $project_export_ref01_data_dt0_load_result = Helpers::to_map(is_object($project_export_ref01_data_dt0_loaded) && method_exists($project_export_ref01_data_dt0_loaded, 'data_get') ? $project_export_ref01_data_dt0_loaded->data_get() : $project_export_ref01_data_dt0_loaded);
+        $this->assertNotNull($project_export_ref01_data_dt0_load_result);
+        $this->assertEquals($project_export_ref01_data_dt0_load_result["id"], $project_export_ref01_data["id"]);
 
     }
 }

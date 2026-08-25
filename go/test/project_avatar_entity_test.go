@@ -61,13 +61,19 @@ func TestProjectAvatarEntity(t *testing.T) {
 
 		// LOAD
 		projectAvatarRef01Ent := client.ProjectAvatar(nil)
-		projectAvatarRef01MatchDt0 := map[string]any{}
+		projectAvatarRef01MatchDt0 := map[string]any{
+			"id": projectAvatarRef01Data["id"],
+		}
 		projectAvatarRef01DataDt0Loaded, err := projectAvatarRef01Ent.Load(projectAvatarRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if projectAvatarRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		projectAvatarRef01DataDt0LoadResult := core.ToMapAny(entityData(projectAvatarRef01DataDt0Loaded))
+		if projectAvatarRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if projectAvatarRef01DataDt0LoadResult["id"] != projectAvatarRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

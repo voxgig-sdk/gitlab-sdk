@@ -75,7 +75,12 @@ const utility_1 = require("../../utility");
         const group_export_ref01_ent = client.GroupExport();
         let group_export_ref01_data = setup.data.new.group_export['group_export_ref01'];
         group_export_ref01_data = (await group_export_ref01_ent.create(group_export_ref01_data)).data();
-        (0, node_assert_1.default)(null != group_export_ref01_data);
+        (0, node_assert_1.default)(null != group_export_ref01_data.id);
+        // LOAD
+        const group_export_ref01_match_dt0 = {};
+        group_export_ref01_match_dt0.id = group_export_ref01_data.id;
+        const group_export_ref01_data_dt0 = (await group_export_ref01_ent.load(group_export_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(group_export_ref01_data_dt0.id === group_export_ref01_data.id);
     });
 });
 function basicSetup(extra) {

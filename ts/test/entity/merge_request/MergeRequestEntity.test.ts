@@ -62,11 +62,18 @@ describe('MergeRequestEntity', async () => {
     // UPDATE
     const merge_request_ref01_ent = client.MergeRequest()
     const merge_request_ref01_data_up0: any = {}
+    merge_request_ref01_data_up0.id = merge_request_ref01_data.id
     merge_request_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
 
     const merge_request_ref01_resdata_up0 = (await merge_request_ref01_ent.update(merge_request_ref01_data_up0)).data()
-    assert(null != merge_request_ref01_resdata_up0)
+    assert(merge_request_ref01_resdata_up0.id === merge_request_ref01_data_up0.id)
 
+
+    // LOAD
+    const merge_request_ref01_match_dt0: any = {}
+    merge_request_ref01_match_dt0.id = merge_request_ref01_data.id
+    const merge_request_ref01_data_dt0 = (await merge_request_ref01_ent.load(merge_request_ref01_match_dt0)).data()
+    assert(merge_request_ref01_data_dt0.id === merge_request_ref01_data.id)
 
 
   })

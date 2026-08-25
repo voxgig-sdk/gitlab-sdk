@@ -59,9 +59,12 @@ describe('GroupAvatarEntity', async () => {
 
     let group_avatar_ref01_data = Object.values(setup.data.existing.group_avatar)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const group_avatar_ref01_ent = client.GroupAvatar()
+    const group_avatar_ref01_match_dt0: any = {}
+    group_avatar_ref01_match_dt0.id = group_avatar_ref01_data.id
+    const group_avatar_ref01_data_dt0 = (await group_avatar_ref01_ent.load(group_avatar_ref01_match_dt0)).data()
+    assert(group_avatar_ref01_data_dt0.id === group_avatar_ref01_data.id)
 
 
   })

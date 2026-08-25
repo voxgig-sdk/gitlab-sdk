@@ -41,9 +41,13 @@ class CustomAttributeEntityTest < Minitest::Test
 
     # LOAD
     custom_attribute_ref01_ent = client.CustomAttribute(nil)
-    custom_attribute_ref01_match_dt0 = {}
+    custom_attribute_ref01_match_dt0 = {
+      "id" => custom_attribute_ref01_data["id"],
+    }
     custom_attribute_ref01_data_dt0_loaded = custom_attribute_ref01_ent.load(custom_attribute_ref01_match_dt0, nil)
-    assert !custom_attribute_ref01_data_dt0_loaded.nil?
+    custom_attribute_ref01_data_dt0_load_result = Helpers.to_map(custom_attribute_ref01_data_dt0_loaded.respond_to?(:data_get) ? custom_attribute_ref01_data_dt0_loaded.data_get : custom_attribute_ref01_data_dt0_loaded)
+    assert !custom_attribute_ref01_data_dt0_load_result.nil?
+    assert_equal custom_attribute_ref01_data_dt0_load_result["id"], custom_attribute_ref01_data["id"]
 
   end
 end

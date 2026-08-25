@@ -47,14 +47,22 @@ class TestHookEntity:
 
         hook_ref01_data = helpers.to_map(runner.entity_data(hook_ref01_ent.create(hook_ref01_data, None)))
         assert hook_ref01_data is not None
+        assert hook_ref01_data["id"] is not None
 
         # UPDATE
         hook_ref01_data_up0_up = {
+            "id": hook_ref01_data["id"],
         }
 
         hook_ref01_resdata_up0 = helpers.to_map(runner.entity_data(hook_ref01_ent.update(hook_ref01_data_up0_up, None)))
         assert hook_ref01_resdata_up0 is not None
+        assert hook_ref01_resdata_up0["id"] == hook_ref01_data_up0_up["id"]
 
+        # REMOVE
+        hook_ref01_match_rm0 = {
+            "id": hook_ref01_data["id"],
+        }
+        hook_ref01_ent.remove(hook_ref01_match_rm0, None)
 
 
 

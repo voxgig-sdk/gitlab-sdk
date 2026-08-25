@@ -2,19 +2,19 @@
   "existing": {
     "badge": {
       "BADGE00": {
+        "id": "BADGE00",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "BADGE00"
+        "project_id": "PROJECT01"
       },
       "BADGE01": {
+        "id": "BADGE01",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "BADGE01"
+        "project_id": "PROJECT01"
       },
       "BADGE02": {
+        "id": "BADGE02",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "BADGE02"
+        "project_id": "PROJECT01"
       }
     }
   },

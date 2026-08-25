@@ -62,6 +62,7 @@ func TestMergeRequestEntity(t *testing.T) {
 		// UPDATE
 		mergeRequestRef01Ent := client.MergeRequest(nil)
 		mergeRequestRef01DataUp0Up := map[string]any{
+			"id": mergeRequestRef01Data["id"],
 			"project_id": setup.idmap["project_id"],
 		}
 
@@ -73,15 +74,24 @@ func TestMergeRequestEntity(t *testing.T) {
 		if mergeRequestRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
+		if mergeRequestRef01ResdataUp0["id"] != mergeRequestRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
+		}
 
 		// LOAD
-		mergeRequestRef01MatchDt0 := map[string]any{}
+		mergeRequestRef01MatchDt0 := map[string]any{
+			"id": mergeRequestRef01Data["id"],
+		}
 		mergeRequestRef01DataDt0Loaded, err := mergeRequestRef01Ent.Load(mergeRequestRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if mergeRequestRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		mergeRequestRef01DataDt0LoadResult := core.ToMapAny(entityData(mergeRequestRef01DataDt0Loaded))
+		if mergeRequestRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if mergeRequestRef01DataDt0LoadResult["id"] != mergeRequestRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

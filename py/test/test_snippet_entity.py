@@ -48,9 +48,13 @@ class TestSnippetEntity:
 
         # LOAD
         snippet_ref01_ent = client.Snippet(None)
-        snippet_ref01_match_dt0 = {}
+        snippet_ref01_match_dt0 = {
+            "id": snippet_ref01_data["id"],
+        }
         snippet_ref01_data_dt0_loaded = snippet_ref01_ent.load(snippet_ref01_match_dt0, None)
-        assert snippet_ref01_data_dt0_loaded is not None
+        snippet_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(snippet_ref01_data_dt0_loaded))
+        assert snippet_ref01_data_dt0_load_result is not None
+        assert snippet_ref01_data_dt0_load_result["id"] == snippet_ref01_data["id"]
 
 
 

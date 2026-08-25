@@ -75,9 +75,10 @@ const utility_1 = require("../../utility");
         // UPDATE
         const debian_ref01_ent = client.Debian();
         const debian_ref01_data_up0 = {};
+        debian_ref01_data_up0.id = debian_ref01_data.id;
         debian_ref01_data_up0['project_id'] = setup.idmap['project_id'];
         const debian_ref01_resdata_up0 = (await debian_ref01_ent.update(debian_ref01_data_up0)).data();
-        (0, node_assert_1.default)(null != debian_ref01_resdata_up0);
+        (0, node_assert_1.default)(debian_ref01_resdata_up0.id === debian_ref01_data_up0.id);
     });
 });
 function basicSetup(extra) {

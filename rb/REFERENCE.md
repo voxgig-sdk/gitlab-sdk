@@ -1190,6 +1190,12 @@ same parameters as `direct()`. Raises on error.
 access_request = client.AccessRequest
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -3690,6 +3696,12 @@ Return the entity name.
 api_entities_ci_secure_file = client.ApiEntitiesCiSecureFile
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl = nil) -> result`
@@ -3753,6 +3765,7 @@ api_entities_ci_variable = client.ApiEntitiesCiVariable
 | `description` | `String` | No |  |
 | `environment_scope` | `String` | No |  |
 | `hidden` | `Boolean` | No |  |
+| `id` | `String` | No |  |
 | `key` | `String` | No |  |
 | `masked` | `Boolean` | No |  |
 | `protected` | `Boolean` | No |  |
@@ -5553,6 +5566,7 @@ api_entities_dictionary_table = client.ApiEntitiesDictionaryTable
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `feature_categories` | `Array` | No |  |
+| `id` | `String` | No |  |
 | `table_name` | `String` | No |  |
 
 ### Operations
@@ -6126,6 +6140,7 @@ api_entities_feature = client.ApiEntitiesFeature
 | --- | --- | --- | --- |
 | `definition` | `Hash` | No | API_Entities_Feature_Definition model |
 | `gates` | `Hash` | No |  |
+| `id` | `String` | No |  |
 | `name` | `String` | No |  |
 | `state` | `String` | No |  |
 
@@ -6972,6 +6987,12 @@ Return the entity name.
 api_entities_integration = client.ApiEntitiesIntegration
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -7111,6 +7132,7 @@ api_entities_invitation = client.ApiEntitiesInvitation
 | `created_at` | `String` | No |  |
 | `created_by_name` | `String` | No |  |
 | `expires_at` | `String` | No |  |
+| `id` | `String` | No |  |
 | `invite_email` | `String` | No |  |
 | `invite_token` | `String` | No |  |
 | `user_name` | `String` | No |  |
@@ -7375,6 +7397,7 @@ api_entities_issue_link = client.ApiEntitiesIssueLink
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `String` | No |  |
 | `link_type` | `String` | No |  |
 | `source_issue` | `Hash` | No |  |
 | `target_issue` | `Hash` | No |  |
@@ -7444,6 +7467,7 @@ api_entities_license = client.ApiEntitiesLicense
 | `content` | `String` | No |  |
 | `description` | `String` | No |  |
 | `html_url` | `String` | No |  |
+| `id` | `String` | No |  |
 | `key` | `String` | No |  |
 | `limitations` | `Array` | No |  |
 | `name` | `String` | No |  |
@@ -9489,6 +9513,12 @@ Return the entity name.
 api_entities_packages_conan_recipe_snapshot = client.ApiEntitiesPackagesConanRecipeSnapshot
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -9739,6 +9769,7 @@ api_entities_pages_domain = client.ApiEntitiesPagesDomain
 | `domain` | `String` | No |  |
 | `enabled_until` | `String` | No |  |
 | `expired` | `String` | No |  |
+| `id` | `String` | No |  |
 | `subject` | `String` | No |  |
 | `url` | `String` | No |  |
 | `verification_code` | `String` | No |  |
@@ -9778,6 +9809,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 
 ```ruby
 result = client.ApiEntitiesPagesDomain.update({
+  "id" => "api_entities_pages_domain_id",
   "domain_id" => "domain_id",
   "project_id" => "project_id",
   # Fields to update
@@ -11841,6 +11873,7 @@ api_entities_release = client.ApiEntitiesRelease
 | `description` | `String` | No |  |
 | `description_html` | `String` | No |  |
 | `evidences` | `Hash` | No |  |
+| `id` | `String` | No |  |
 | `links` | `Hash` | No |  |
 | `milestones` | `Hash` | No |  |
 | `name` | `String` | No |  |
@@ -12625,6 +12658,7 @@ api_entities_tag = client.ApiEntitiesTag
 | --- | --- | --- | --- |
 | `commit` | `Hash` | No | API_Entities_Commit model |
 | `created_at` | `String` | No |  |
+| `id` | `String` | No |  |
 | `message` | `String` | No |  |
 | `name` | `String` | No |  |
 | `protected` | `Boolean` | No |  |
@@ -13455,6 +13489,12 @@ Return the entity name.
 application = client.Application
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -13500,6 +13540,12 @@ Return the entity name.
 ```ruby
 award_emoji = client.AwardEmoji
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -13547,6 +13593,12 @@ Return the entity name.
 badge = client.Badge
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -13592,6 +13644,12 @@ Return the entity name.
 ```ruby
 branch = client.Branch
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -13685,6 +13743,12 @@ Return the entity name.
 ci_variable = client.CiVariable
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -13731,6 +13795,12 @@ Return the entity name.
 cluster = client.Cluster
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -13776,6 +13846,12 @@ Return the entity name.
 ```ruby
 cluster_agent = client.ClusterAgent
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -13917,6 +13993,12 @@ Return the entity name.
 conan = client.Conan
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -13962,6 +14044,12 @@ Return the entity name.
 ```ruby
 conan_package = client.ConanPackage
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -14128,6 +14216,7 @@ custom_attribute = client.CustomAttribute
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `String` | No |  |
 | `key` | `String` | No |  |
 | `value` | `String` | No |  |
 
@@ -14176,6 +14265,12 @@ Return the entity name.
 ```ruby
 debian = client.Debian
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -14227,6 +14322,12 @@ Return the entity name.
 debian_distribution = client.DebianDistribution
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -14273,6 +14374,12 @@ Return the entity name.
 debian_package = client.DebianPackage
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -14289,6 +14396,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 
 ```ruby
 result = client.DebianPackage.update({
+  "id" => "debian_package_id",
   "file_name" => "file_name",
   "project_id" => "project_id",
   # Fields to update
@@ -14377,6 +14485,12 @@ Return the entity name.
 deploy_key = client.DeployKey
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -14423,6 +14537,12 @@ Return the entity name.
 deploy_token = client.DeployToken
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -14468,6 +14588,12 @@ Return the entity name.
 ```ruby
 deployment = client.Deployment
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -15237,6 +15363,12 @@ Return the entity name.
 environment = client.Environment
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl = nil) -> result`
@@ -15293,6 +15425,12 @@ Return the entity name.
 error_tracking_client_key = client.ErrorTrackingClientKey
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -15339,6 +15477,12 @@ Return the entity name.
 feature = client.Feature
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -15384,6 +15528,12 @@ Return the entity name.
 ```ruby
 feature_flag = client.FeatureFlag
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -15449,6 +15599,12 @@ Return the entity name.
 feature_flags_user_list = client.FeatureFlagsUserList
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -15494,6 +15650,12 @@ Return the entity name.
 ```ruby
 freeze_period = client.FreezePeriod
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -15701,6 +15863,12 @@ Return the entity name.
 group = client.Group
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl = nil) -> result`
@@ -15776,6 +15944,12 @@ Return the entity name.
 group_avatar = client.GroupAvatar
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -15821,6 +15995,12 @@ Return the entity name.
 ```ruby
 group_export = client.GroupExport
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -15981,6 +16161,12 @@ Return the entity name.
 hook = client.Hook
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl = nil) -> result`
@@ -16096,6 +16282,12 @@ Return the entity name.
 integration = client.Integration
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl = nil) -> result`
@@ -16151,6 +16343,12 @@ Return the entity name.
 invitation = client.Invitation
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -16196,6 +16394,12 @@ Return the entity name.
 ```ruby
 issue_link = client.IssueLink
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -16288,6 +16492,12 @@ Return the entity name.
 ```ruby
 job = client.Job
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -16413,6 +16623,12 @@ Return the entity name.
 member = client.Member
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -16458,6 +16674,12 @@ Return the entity name.
 ```ruby
 merge_request = client.MergeRequest
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -16687,6 +16909,12 @@ Return the entity name.
 namespace = client.Namespace
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -16732,6 +16960,12 @@ Return the entity name.
 ```ruby
 npm = client.Npm
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -17000,6 +17234,12 @@ Return the entity name.
 package_file = client.PackageFile
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -17172,6 +17412,12 @@ Return the entity name.
 personal_access_token = client.PersonalAccessToken
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -17320,6 +17566,12 @@ Return the entity name.
 project_avatar = client.ProjectAvatar
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -17413,6 +17665,12 @@ Return the entity name.
 project_export = client.ProjectExport
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl = nil) -> result`
@@ -17468,6 +17726,12 @@ Return the entity name.
 ```ruby
 project_hook = client.ProjectHook
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -17627,6 +17891,12 @@ Return the entity name.
 project_package = client.ProjectPackage
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -17672,6 +17942,12 @@ Return the entity name.
 ```ruby
 project_snippet = client.ProjectSnippet
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -17775,6 +18051,12 @@ Return the entity name.
 ```ruby
 protected_tag = client.ProtectedTag
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -17926,6 +18208,12 @@ Return the entity name.
 release = client.Release
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -17980,6 +18268,12 @@ Return the entity name.
 release_link = client.ReleaseLink
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -18025,6 +18319,12 @@ Return the entity name.
 ```ruby
 remote_mirror = client.RemoteMirror
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -18195,6 +18495,12 @@ Return the entity name.
 rubygem = client.Rubygem
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -18297,6 +18603,12 @@ Return the entity name.
 runner = client.Runner
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl = nil) -> result`
@@ -18398,6 +18710,12 @@ Return the entity name.
 secure_file = client.SecureFile
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -18498,6 +18816,12 @@ Return the entity name.
 ```ruby
 snippet = client.Snippet
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -18614,6 +18938,12 @@ Return the entity name.
 system_hook = client.SystemHook
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -18659,6 +18989,12 @@ Return the entity name.
 ```ruby
 tag = client.Tag
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -18706,6 +19042,12 @@ Return the entity name.
 terraform_registry = client.TerraformRegistry
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -18722,6 +19064,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 
 ```ruby
 result = client.TerraformRegistry.update({
+  "id" => "terraform_registry_id",
   "module_id" => "module_id",
   "module_system" => "module_system",
   "project_id" => "project_id",
@@ -18764,6 +19107,12 @@ Return the entity name.
 ```ruby
 terraform_state = client.TerraformState
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -18942,6 +19291,12 @@ Return the entity name.
 topic = client.Topic
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -18987,6 +19342,12 @@ Return the entity name.
 ```ruby
 unleash_api = client.UnleashApi
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 
@@ -19195,6 +19556,12 @@ Return the entity name.
 ```ruby
 wiki = client.Wiki
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
 
 ### Operations
 

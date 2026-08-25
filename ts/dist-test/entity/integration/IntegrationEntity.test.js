@@ -77,7 +77,10 @@ const utility_1 = require("../../utility");
         integration_ref01_data['group_id'] = setup.idmap['group01'];
         integration_ref01_data['project_id'] = setup.idmap['project01'];
         integration_ref01_data = (await integration_ref01_ent.create(integration_ref01_data)).data();
-        (0, node_assert_1.default)(null != integration_ref01_data);
+        (0, node_assert_1.default)(null != integration_ref01_data.id);
+        // REMOVE
+        const integration_ref01_match_rm0 = { id: integration_ref01_data.id };
+        await integration_ref01_ent.remove(integration_ref01_match_rm0);
     });
 });
 function basicSetup(extra) {

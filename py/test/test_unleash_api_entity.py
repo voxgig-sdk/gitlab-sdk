@@ -48,9 +48,13 @@ class TestUnleashApiEntity:
 
         # LOAD
         unleash_api_ref01_ent = client.UnleashApi(None)
-        unleash_api_ref01_match_dt0 = {}
+        unleash_api_ref01_match_dt0 = {
+            "id": unleash_api_ref01_data["id"],
+        }
         unleash_api_ref01_data_dt0_loaded = unleash_api_ref01_ent.load(unleash_api_ref01_match_dt0, None)
-        assert unleash_api_ref01_data_dt0_loaded is not None
+        unleash_api_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(unleash_api_ref01_data_dt0_loaded))
+        assert unleash_api_ref01_data_dt0_load_result is not None
+        assert unleash_api_ref01_data_dt0_load_result["id"] == unleash_api_ref01_data["id"]
 
 
 

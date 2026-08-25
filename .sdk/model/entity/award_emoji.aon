@@ -4,6 +4,19 @@ main: kit: entity: award_emoji: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "award_emoji"
   op: {
     remove: {

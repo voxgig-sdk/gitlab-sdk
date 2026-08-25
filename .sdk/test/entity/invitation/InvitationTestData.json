@@ -2,19 +2,19 @@
   "existing": {
     "invitation": {
       "INVITATION00": {
+        "id": "INVITATION00",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "INVITATION00"
+        "project_id": "PROJECT01"
       },
       "INVITATION01": {
+        "id": "INVITATION01",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "INVITATION01"
+        "project_id": "PROJECT01"
       },
       "INVITATION02": {
+        "id": "INVITATION02",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "INVITATION02"
+        "project_id": "PROJECT01"
       }
     }
   },

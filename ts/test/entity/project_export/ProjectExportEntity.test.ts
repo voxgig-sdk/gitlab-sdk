@@ -63,8 +63,14 @@ describe('ProjectExportEntity', async () => {
     let project_export_ref01_data = setup.data.new.project_export['project_export_ref01']
 
     project_export_ref01_data = (await project_export_ref01_ent.create(project_export_ref01_data)).data()
-    assert(null != project_export_ref01_data)
+    assert(null != project_export_ref01_data.id)
 
+
+    // LOAD
+    const project_export_ref01_match_dt0: any = {}
+    project_export_ref01_match_dt0.id = project_export_ref01_data.id
+    const project_export_ref01_data_dt0 = (await project_export_ref01_ent.load(project_export_ref01_match_dt0)).data()
+    assert(project_export_ref01_data_dt0.id === project_export_ref01_data.id)
 
 
   })

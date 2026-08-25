@@ -42,6 +42,7 @@ class ConanPackageEntityTest < Minitest::Test
     # UPDATE
     conan_package_ref01_ent = client.ConanPackage(nil)
     conan_package_ref01_data_up0_up = {
+      "id" => conan_package_ref01_data["id"],
       "file_id" => setup[:idmap]["file_id"],
       "package_channel" => setup[:idmap]["package_channel"],
       "package_username" => setup[:idmap]["package_username"],
@@ -52,11 +53,16 @@ class ConanPackageEntityTest < Minitest::Test
     conan_package_ref01_resdata_up0_result = conan_package_ref01_ent.update(conan_package_ref01_data_up0_up, nil)
     conan_package_ref01_resdata_up0 = Helpers.to_map(conan_package_ref01_resdata_up0_result.respond_to?(:data_get) ? conan_package_ref01_resdata_up0_result.data_get : conan_package_ref01_resdata_up0_result)
     assert !conan_package_ref01_resdata_up0.nil?
+    assert_equal conan_package_ref01_resdata_up0["id"], conan_package_ref01_data_up0_up["id"]
 
     # LOAD
-    conan_package_ref01_match_dt0 = {}
+    conan_package_ref01_match_dt0 = {
+      "id" => conan_package_ref01_data["id"],
+    }
     conan_package_ref01_data_dt0_loaded = conan_package_ref01_ent.load(conan_package_ref01_match_dt0, nil)
-    assert !conan_package_ref01_data_dt0_loaded.nil?
+    conan_package_ref01_data_dt0_load_result = Helpers.to_map(conan_package_ref01_data_dt0_loaded.respond_to?(:data_get) ? conan_package_ref01_data_dt0_loaded.data_get : conan_package_ref01_data_dt0_loaded)
+    assert !conan_package_ref01_data_dt0_load_result.nil?
+    assert_equal conan_package_ref01_data_dt0_load_result["id"], conan_package_ref01_data["id"]
 
   end
 end

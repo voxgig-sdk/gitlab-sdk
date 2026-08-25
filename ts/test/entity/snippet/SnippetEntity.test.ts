@@ -59,9 +59,12 @@ describe('SnippetEntity', async () => {
 
     let snippet_ref01_data = Object.values(setup.data.existing.snippet)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const snippet_ref01_ent = client.Snippet()
+    const snippet_ref01_match_dt0: any = {}
+    snippet_ref01_match_dt0.id = snippet_ref01_data.id
+    const snippet_ref01_data_dt0 = (await snippet_ref01_ent.load(snippet_ref01_match_dt0)).data()
+    assert(snippet_ref01_data_dt0.id === snippet_ref01_data.id)
 
 
   })

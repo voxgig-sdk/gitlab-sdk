@@ -49,16 +49,22 @@ class TestDebianPackageEntity:
         # UPDATE
         debian_package_ref01_ent = client.DebianPackage(None)
         debian_package_ref01_data_up0_up = {
+            "id": debian_package_ref01_data["id"],
             "project_id": setup["idmap"]["project_id"],
         }
 
         debian_package_ref01_resdata_up0 = helpers.to_map(runner.entity_data(debian_package_ref01_ent.update(debian_package_ref01_data_up0_up, None)))
         assert debian_package_ref01_resdata_up0 is not None
+        assert debian_package_ref01_resdata_up0["id"] == debian_package_ref01_data_up0_up["id"]
 
         # LOAD
-        debian_package_ref01_match_dt0 = {}
+        debian_package_ref01_match_dt0 = {
+            "id": debian_package_ref01_data["id"],
+        }
         debian_package_ref01_data_dt0_loaded = debian_package_ref01_ent.load(debian_package_ref01_match_dt0, None)
-        assert debian_package_ref01_data_dt0_loaded is not None
+        debian_package_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(debian_package_ref01_data_dt0_loaded))
+        assert debian_package_ref01_data_dt0_load_result is not None
+        assert debian_package_ref01_data_dt0_load_result["id"] == debian_package_ref01_data["id"]
 
 
 

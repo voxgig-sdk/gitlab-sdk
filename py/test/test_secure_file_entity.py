@@ -48,9 +48,13 @@ class TestSecureFileEntity:
 
         # LOAD
         secure_file_ref01_ent = client.SecureFile(None)
-        secure_file_ref01_match_dt0 = {}
+        secure_file_ref01_match_dt0 = {
+            "id": secure_file_ref01_data["id"],
+        }
         secure_file_ref01_data_dt0_loaded = secure_file_ref01_ent.load(secure_file_ref01_match_dt0, None)
-        assert secure_file_ref01_data_dt0_loaded is not None
+        secure_file_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(secure_file_ref01_data_dt0_loaded))
+        assert secure_file_ref01_data_dt0_load_result is not None
+        assert secure_file_ref01_data_dt0_load_result["id"] == secure_file_ref01_data["id"]
 
 
 

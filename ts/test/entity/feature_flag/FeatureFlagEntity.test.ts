@@ -65,10 +65,20 @@ describe('FeatureFlagEntity', async () => {
     feature_flag_ref01_data['unleash_id'] = setup.idmap['unleash01']
 
     feature_flag_ref01_data = (await feature_flag_ref01_ent.create(feature_flag_ref01_data)).data()
-    assert(null != feature_flag_ref01_data)
+    assert(null != feature_flag_ref01_data.id)
 
 
+    // LOAD
+    const feature_flag_ref01_match_dt0: any = {}
+    feature_flag_ref01_match_dt0.id = feature_flag_ref01_data.id
+    const feature_flag_ref01_data_dt0 = (await feature_flag_ref01_ent.load(feature_flag_ref01_match_dt0)).data()
+    assert(feature_flag_ref01_data_dt0.id === feature_flag_ref01_data.id)
 
+
+    // REMOVE
+    const feature_flag_ref01_match_rm0: any = { id: feature_flag_ref01_data.id }
+    await feature_flag_ref01_ent.remove(feature_flag_ref01_match_rm0)
+  
 
   })
 })

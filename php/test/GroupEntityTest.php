@@ -47,20 +47,32 @@ class GroupEntityTest extends TestCase
         $group_ref01_data_result = $group_ref01_ent->create($group_ref01_data, null);
         $group_ref01_data = Helpers::to_map(is_object($group_ref01_data_result) && method_exists($group_ref01_data_result, 'data_get') ? $group_ref01_data_result->data_get() : $group_ref01_data_result);
         $this->assertNotNull($group_ref01_data);
+        $this->assertNotNull($group_ref01_data["id"]);
 
         // UPDATE
         $group_ref01_data_up0_up = [
+            "id" => $group_ref01_data["id"],
         ];
 
         $group_ref01_resdata_up0_result = $group_ref01_ent->update($group_ref01_data_up0_up, null);
         $group_ref01_resdata_up0 = Helpers::to_map(is_object($group_ref01_resdata_up0_result) && method_exists($group_ref01_resdata_up0_result, 'data_get') ? $group_ref01_resdata_up0_result->data_get() : $group_ref01_resdata_up0_result);
         $this->assertNotNull($group_ref01_resdata_up0);
+        $this->assertEquals($group_ref01_resdata_up0["id"], $group_ref01_data_up0_up["id"]);
 
         // LOAD
-        $group_ref01_match_dt0 = [];
+        $group_ref01_match_dt0 = [
+            "id" => $group_ref01_data["id"],
+        ];
         $group_ref01_data_dt0_loaded = $group_ref01_ent->load($group_ref01_match_dt0, null);
-        $this->assertNotNull($group_ref01_data_dt0_loaded);
+        $group_ref01_data_dt0_load_result = Helpers::to_map(is_object($group_ref01_data_dt0_loaded) && method_exists($group_ref01_data_dt0_loaded, 'data_get') ? $group_ref01_data_dt0_loaded->data_get() : $group_ref01_data_dt0_loaded);
+        $this->assertNotNull($group_ref01_data_dt0_load_result);
+        $this->assertEquals($group_ref01_data_dt0_load_result["id"], $group_ref01_data["id"]);
 
+        // REMOVE
+        $group_ref01_match_rm0 = [
+            "id" => $group_ref01_data["id"],
+        ];
+        $group_ref01_ent->remove($group_ref01_match_rm0, null);
 
     }
 }

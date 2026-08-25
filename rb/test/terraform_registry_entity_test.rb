@@ -42,6 +42,7 @@ class TerraformRegistryEntityTest < Minitest::Test
     # UPDATE
     terraform_registry_ref01_ent = client.TerraformRegistry(nil)
     terraform_registry_ref01_data_up0_up = {
+      "id" => terraform_registry_ref01_data["id"],
       "module_id" => setup[:idmap]["module_id"],
       "project_id" => setup[:idmap]["project_id"],
     }
@@ -49,11 +50,16 @@ class TerraformRegistryEntityTest < Minitest::Test
     terraform_registry_ref01_resdata_up0_result = terraform_registry_ref01_ent.update(terraform_registry_ref01_data_up0_up, nil)
     terraform_registry_ref01_resdata_up0 = Helpers.to_map(terraform_registry_ref01_resdata_up0_result.respond_to?(:data_get) ? terraform_registry_ref01_resdata_up0_result.data_get : terraform_registry_ref01_resdata_up0_result)
     assert !terraform_registry_ref01_resdata_up0.nil?
+    assert_equal terraform_registry_ref01_resdata_up0["id"], terraform_registry_ref01_data_up0_up["id"]
 
     # LOAD
-    terraform_registry_ref01_match_dt0 = {}
+    terraform_registry_ref01_match_dt0 = {
+      "id" => terraform_registry_ref01_data["id"],
+    }
     terraform_registry_ref01_data_dt0_loaded = terraform_registry_ref01_ent.load(terraform_registry_ref01_match_dt0, nil)
-    assert !terraform_registry_ref01_data_dt0_loaded.nil?
+    terraform_registry_ref01_data_dt0_load_result = Helpers.to_map(terraform_registry_ref01_data_dt0_loaded.respond_to?(:data_get) ? terraform_registry_ref01_data_dt0_loaded.data_get : terraform_registry_ref01_data_dt0_loaded)
+    assert !terraform_registry_ref01_data_dt0_load_result.nil?
+    assert_equal terraform_registry_ref01_data_dt0_load_result["id"], terraform_registry_ref01_data["id"]
 
   end
 end

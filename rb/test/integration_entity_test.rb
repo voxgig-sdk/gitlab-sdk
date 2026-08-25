@@ -41,7 +41,13 @@ class IntegrationEntityTest < Minitest::Test
     integration_ref01_data_result = integration_ref01_ent.create(integration_ref01_data, nil)
     integration_ref01_data = Helpers.to_map(integration_ref01_data_result.respond_to?(:data_get) ? integration_ref01_data_result.data_get : integration_ref01_data_result)
     assert !integration_ref01_data.nil?
+    assert !integration_ref01_data["id"].nil?
 
+    # REMOVE
+    integration_ref01_match_rm0 = {
+      "id" => integration_ref01_data["id"],
+    }
+    integration_ref01_ent.remove(integration_ref01_match_rm0, nil)
 
   end
 end

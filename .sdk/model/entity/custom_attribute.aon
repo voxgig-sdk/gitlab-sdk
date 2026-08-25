@@ -6,6 +6,11 @@ main: kit: entity: custom_attribute: {
 
   fields: [
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "key"
       req: false
       type: "`$STRING`"
@@ -16,6 +21,11 @@ main: kit: entity: custom_attribute: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "custom_attribute"
   op: {

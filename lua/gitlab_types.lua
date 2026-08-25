@@ -7,6 +7,7 @@
 -- edit by hand.
 
 ---@class AccessRequest
+---@field id? string
 
 ---@class AccessRequestRemoveMatch
 ---@field group_id? string
@@ -1096,6 +1097,7 @@
 ---@class ApiEntitiesCiRunnerRegistrationDetailCreateData
 
 ---@class ApiEntitiesCiSecureFile
+---@field id? string
 
 ---@class ApiEntitiesCiSecureFileLoadMatch
 ---@field project_id string
@@ -1103,11 +1105,13 @@
 
 ---@class ApiEntitiesCiSecureFileCreateData
 ---@field project_id string
+---@field id? string
 
 ---@class ApiEntitiesCiVariable
 ---@field description? string
 ---@field environment_scope? string
 ---@field hidden? boolean
+---@field id? string
 ---@field key? string
 ---@field masked? boolean
 ---@field protected? boolean
@@ -1128,6 +1132,7 @@
 ---@field description? string
 ---@field environment_scope? string
 ---@field hidden? boolean
+---@field id? string
 ---@field key? string
 ---@field masked? boolean
 ---@field protected? boolean
@@ -1877,6 +1882,7 @@
 
 ---@class ApiEntitiesDictionaryTable
 ---@field feature_categories? table
+---@field id? string
 ---@field table_name? string
 
 ---@class ApiEntitiesDictionaryTableLoadMatch
@@ -2096,12 +2102,14 @@
 ---@class ApiEntitiesFeature
 ---@field definition? table
 ---@field gates? table
+---@field id? string
 ---@field name? string
 ---@field state? string
 
 ---@class ApiEntitiesFeatureListMatch
 ---@field definition? table
 ---@field gates? table
+---@field id? string
 ---@field name? string
 ---@field state? string
 
@@ -2697,6 +2705,7 @@
 ---@field url_variables? table
 
 ---@class ApiEntitiesIntegration
+---@field id? string
 
 ---@class ApiEntitiesIntegrationLoadMatch
 ---@field group_id string
@@ -2761,6 +2770,7 @@
 ---@field created_at? string
 ---@field created_by_name? string
 ---@field expires_at? string
+---@field id? string
 ---@field invite_email? string
 ---@field invite_token? string
 ---@field user_name? string
@@ -2774,6 +2784,7 @@
 ---@field created_at? string
 ---@field created_by_name? string
 ---@field expires_at? string
+---@field id? string
 ---@field invite_email? string
 ---@field invite_token? string
 ---@field user_name? string
@@ -2997,6 +3008,7 @@
 ---@field weight? string
 
 ---@class ApiEntitiesIssueLink
+---@field id? string
 ---@field link_type? string
 ---@field source_issue? table
 ---@field target_issue? table
@@ -3009,6 +3021,7 @@
 ---@class ApiEntitiesIssueLinkCreateData
 ---@field issue_id string
 ---@field project_id string
+---@field id? string
 ---@field link_type? string
 ---@field source_issue? table
 ---@field target_issue? table
@@ -3018,6 +3031,7 @@
 ---@field content? string
 ---@field description? string
 ---@field html_url? string
+---@field id? string
 ---@field key? string
 ---@field limitations? table
 ---@field name? string
@@ -3932,6 +3946,7 @@
 ---@field project_id string
 
 ---@class ApiEntitiesPackagesConanRecipeSnapshot
+---@field id? string
 
 ---@class ApiEntitiesPackagesConanRecipeSnapshotLoadMatch
 ---@field id? string
@@ -4017,6 +4032,7 @@
 ---@field domain? string
 ---@field enabled_until? string
 ---@field expired? string
+---@field id? string
 ---@field subject? string
 ---@field url? string
 ---@field verification_code? string
@@ -4037,6 +4053,7 @@
 ---@field domain? string
 ---@field enabled_until? string
 ---@field expired? string
+---@field id? string
 ---@field subject? string
 ---@field url? string
 ---@field verification_code? string
@@ -4051,6 +4068,7 @@
 ---@field domain? string
 ---@field enabled_until? string
 ---@field expired? string
+---@field id? string
 ---@field subject? string
 ---@field url? string
 ---@field verification_code? string
@@ -5295,6 +5313,7 @@
 ---@field description? string
 ---@field description_html? string
 ---@field evidences? table
+---@field id? string
 ---@field links? table
 ---@field milestones? table
 ---@field name? string
@@ -5321,6 +5340,7 @@
 ---@field description? string
 ---@field description_html? string
 ---@field evidences? table
+---@field id? string
 ---@field links? table
 ---@field milestones? table
 ---@field name? string
@@ -5663,6 +5683,7 @@
 ---@class ApiEntitiesTag
 ---@field commit? table
 ---@field created_at? string
+---@field id? string
 ---@field message? string
 ---@field name? string
 ---@field protected? boolean
@@ -5680,6 +5701,7 @@
 ---@field project_id string
 ---@field commit? table
 ---@field created_at? string
+---@field id? string
 ---@field message? string
 ---@field name? string
 ---@field protected? boolean
@@ -5913,11 +5935,13 @@
 ---@field group_id string
 
 ---@class Application
+---@field id? string
 
 ---@class ApplicationRemoveMatch
 ---@field id string
 
 ---@class AwardEmoji
+---@field id? string
 
 ---@class AwardEmojiRemoveMatch
 ---@field epic_id? string
@@ -5930,6 +5954,7 @@
 ---@field snippet_id? string
 
 ---@class Badge
+---@field id? string
 
 ---@class BadgeRemoveMatch
 ---@field group_id? string
@@ -5937,6 +5962,7 @@
 ---@field project_id? string
 
 ---@class Branch
+---@field id? string
 
 ---@class BranchRemoveMatch
 ---@field id? string
@@ -5948,6 +5974,7 @@
 ---@field project_id string
 
 ---@class CiVariable
+---@field id? string
 
 ---@class CiVariableRemoveMatch
 ---@field id string
@@ -5955,6 +5982,7 @@
 ---@field group_id? string
 
 ---@class Cluster
+---@field id? string
 
 ---@class ClusterRemoveMatch
 ---@field group_id? string
@@ -5962,6 +5990,7 @@
 ---@field project_id? string
 
 ---@class ClusterAgent
+---@field id? string
 
 ---@class ClusterAgentRemoveMatch
 ---@field id string
@@ -5980,6 +6009,7 @@
 ---@field sha any
 
 ---@class Conan
+---@field id? string
 
 ---@class ConanRemoveMatch
 ---@field id? string
@@ -5989,6 +6019,7 @@
 ---@field package_version any
 
 ---@class ConanPackage
+---@field id? string
 
 ---@class ConanPackageLoadMatch
 ---@field file_id string
@@ -6037,6 +6068,7 @@
 ---@class ContainerRegistryEventCreateData
 
 ---@class CustomAttribute
+---@field id? string
 ---@field key? string
 ---@field value? string
 
@@ -6045,12 +6077,14 @@
 ---@field id string
 
 ---@class Debian
+---@field id? string
 
 ---@class DebianUpdateData
 ---@field id string
 ---@field project_id string
 
 ---@class DebianDistribution
+---@field id? string
 
 ---@class DebianDistributionRemoveMatch
 ---@field group_id? string
@@ -6058,6 +6092,7 @@
 ---@field project_id? string
 
 ---@class DebianPackage
+---@field id? string
 
 ---@class DebianPackageLoadMatch
 ---@field distribution any
@@ -6070,6 +6105,7 @@
 ---@class DebianPackageUpdateData
 ---@field file_name any
 ---@field project_id string
+---@field id? string
 
 ---@class DependencyProxy
 
@@ -6077,12 +6113,14 @@
 ---@field group_id string
 
 ---@class DeployKey
+---@field id? string
 
 ---@class DeployKeyRemoveMatch
 ---@field id string
 ---@field project_id string
 
 ---@class DeployToken
+---@field id? string
 
 ---@class DeployTokenRemoveMatch
 ---@field group_id? string
@@ -6090,6 +6128,7 @@
 ---@field project_id? string
 
 ---@class Deployment
+---@field id? string
 
 ---@class DeploymentRemoveMatch
 ---@field id string
@@ -6682,44 +6721,52 @@
 ---@field title? string
 
 ---@class Environment
+---@field id? string
 
 ---@class EnvironmentCreateData
 ---@field project_id string
+---@field id? string
 
 ---@class EnvironmentRemoveMatch
 ---@field id string
 ---@field project_id string
 
 ---@class ErrorTrackingClientKey
+---@field id? string
 
 ---@class ErrorTrackingClientKeyRemoveMatch
 ---@field id string
 ---@field project_id string
 
 ---@class Feature
+---@field id? string
 
 ---@class FeatureRemoveMatch
 ---@field id string
 
 ---@class FeatureFlag
+---@field id? string
 
 ---@class FeatureFlagLoadMatch
 ---@field project_id string
 
 ---@class FeatureFlagCreateData
 ---@field unleash_id string
+---@field id? string
 
 ---@class FeatureFlagRemoveMatch
 ---@field id string
 ---@field project_id string
 
 ---@class FeatureFlagsUserList
+---@field id? string
 
 ---@class FeatureFlagsUserListRemoveMatch
 ---@field id string
 ---@field project_id string
 
 ---@class FreezePeriod
+---@field id? string
 
 ---@class FreezePeriodRemoveMatch
 ---@field id string
@@ -6752,6 +6799,7 @@
 ---@field project_id string
 
 ---@class Group
+---@field id? string
 
 ---@class GroupLoadMatch
 ---@field filename? any
@@ -6778,11 +6826,13 @@
 ---@field user_id? string
 
 ---@class GroupAvatar
+---@field id? string
 
 ---@class GroupAvatarLoadMatch
 ---@field id string
 
 ---@class GroupExport
+---@field id? string
 
 ---@class GroupExportLoadMatch
 ---@field group_id string
@@ -6808,6 +6858,7 @@
 ---@field api_id? string
 
 ---@class Hook
+---@field id? string
 
 ---@class HookCreateData
 ---@field id string
@@ -6825,14 +6876,17 @@
 ---@class ImportCreateData
 
 ---@class Integration
+---@field id? string
 
 ---@class IntegrationCreateData
+---@field id? string
 
 ---@class IntegrationRemoveMatch
 ---@field group_id string
 ---@field id string
 
 ---@class Invitation
+---@field id? string
 
 ---@class InvitationRemoveMatch
 ---@field group_id? string
@@ -6840,6 +6894,7 @@
 ---@field project_id? string
 
 ---@class IssueLink
+---@field id? string
 
 ---@class IssueLinkRemoveMatch
 ---@field id string
@@ -6851,11 +6906,13 @@
 ---@class IssuesStatisticLoadMatch
 
 ---@class Job
+---@field id? string
 
 ---@class JobLoadMatch
 ---@field id string
 
 ---@class JobCreateData
+---@field id? string
 
 ---@class JobUpdateData
 ---@field id string
@@ -6872,6 +6929,7 @@
 ---@field project_id string
 
 ---@class Member
+---@field id? string
 
 ---@class MemberRemoveMatch
 ---@field group_id? string
@@ -6879,6 +6937,7 @@
 ---@field project_id? string
 
 ---@class MergeRequest
+---@field id? string
 
 ---@class MergeRequestLoadMatch
 ---@field id string
@@ -6922,11 +6981,13 @@
 ---@field project_id string
 
 ---@class Namespace
+---@field id? string
 
 ---@class NamespaceRemoveMatch
 ---@field id string
 
 ---@class Npm
+---@field id? string
 
 ---@class NpmUpdateData
 ---@field id string
@@ -7001,6 +7062,7 @@
 ---@field project_id string
 
 ---@class PackageFile
+---@field id? string
 
 ---@class PackageFileLoadMatch
 ---@field id string
@@ -7033,6 +7095,7 @@
 ---@field merge_request_id? string
 
 ---@class PersonalAccessToken
+---@field id? string
 
 ---@class PersonalAccessTokenRemoveMatch
 ---@field id string
@@ -7159,6 +7222,7 @@
 ---@field upload_id? string
 
 ---@class ProjectAvatar
+---@field id? string
 
 ---@class ProjectAvatarLoadMatch
 ---@field id string
@@ -7168,6 +7232,7 @@
 ---@class ProjectEntityCreateData
 
 ---@class ProjectExport
+---@field id? string
 
 ---@class ProjectExportLoadMatch
 ---@field project_id string
@@ -7176,6 +7241,7 @@
 ---@field id string
 
 ---@class ProjectHook
+---@field id? string
 
 ---@class ProjectHookRemoveMatch
 ---@field id string
@@ -7216,12 +7282,14 @@
 ---@field relation_type? string
 
 ---@class ProjectPackage
+---@field id? string
 
 ---@class ProjectPackageRemoveMatch
 ---@field id string
 ---@field project_id string
 
 ---@class ProjectSnippet
+---@field id? string
 
 ---@class ProjectSnippetRemoveMatch
 ---@field id string
@@ -7238,6 +7306,7 @@
 ---@field target_project_id? string
 
 ---@class ProtectedTag
+---@field id? string
 
 ---@class ProtectedTagRemoveMatch
 ---@field id string
@@ -7257,6 +7326,7 @@
 ---@field project_id string
 
 ---@class Release
+---@field id? string
 
 ---@class ReleaseLoadMatch
 ---@field project_id string
@@ -7266,6 +7336,7 @@
 ---@field project_id string
 
 ---@class ReleaseLink
+---@field id? string
 
 ---@class ReleaseLinkRemoveMatch
 ---@field id string
@@ -7273,6 +7344,7 @@
 ---@field release_id string
 
 ---@class RemoteMirror
+---@field id? string
 
 ---@class RemoteMirrorLoadMatch
 ---@field id string
@@ -7300,6 +7372,7 @@
 ---@field project_id string
 
 ---@class Rubygem
+---@field id? string
 
 ---@class RubygemLoadMatch
 ---@field id string
@@ -7315,8 +7388,10 @@
 ---@field project_id string
 
 ---@class Runner
+---@field id? string
 
 ---@class RunnerCreateData
+---@field id? string
 
 ---@class RunnerRemoveMatch
 ---@field id string
@@ -7326,6 +7401,7 @@
 ---@class SearchLoadMatch
 
 ---@class SecureFile
+---@field id? string
 
 ---@class SecureFileLoadMatch
 ---@field id string
@@ -7340,6 +7416,7 @@
 ---@class SlackCreateData
 
 ---@class Snippet
+---@field id? string
 
 ---@class SnippetLoadMatch
 ---@field file_id string
@@ -7365,17 +7442,20 @@
 ---@field project_id string
 
 ---@class SystemHook
+---@field id? string
 
 ---@class SystemHookRemoveMatch
 ---@field id string
 
 ---@class Tag
+---@field id? string
 
 ---@class TagRemoveMatch
 ---@field id string
 ---@field project_id string
 
 ---@class TerraformRegistry
+---@field id? string
 
 ---@class TerraformRegistryLoadMatch
 ---@field module_id? string
@@ -7389,8 +7469,10 @@
 ---@field module_id string
 ---@field module_system any
 ---@field project_id string
+---@field id? string
 
 ---@class TerraformState
+---@field id? string
 
 ---@class TerraformStateLoadMatch
 ---@field project_id string
@@ -7434,11 +7516,13 @@
 ---@field project_id string
 
 ---@class Topic
+---@field id? string
 
 ---@class TopicRemoveMatch
 ---@field id string
 
 ---@class UnleashApi
+---@field id? string
 
 ---@class UnleashApiLoadMatch
 ---@field unleash_id string
@@ -7469,6 +7553,7 @@
 ---@class WebCommitLoadMatch
 
 ---@class Wiki
+---@field id? string
 
 ---@class WikiRemoveMatch
 ---@field group_id? string

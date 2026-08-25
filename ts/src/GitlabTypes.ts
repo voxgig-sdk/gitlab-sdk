@@ -6,6 +6,7 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface AccessRequest {
+  id?: string
 }
 
 export interface AccessRequestRemoveMatch {
@@ -1197,6 +1198,7 @@ export interface ApiEntitiesCiRunnerRegistrationDetailCreateData {
 }
 
 export interface ApiEntitiesCiSecureFile {
+  id?: string
 }
 
 export interface ApiEntitiesCiSecureFileLoadMatch {
@@ -1206,12 +1208,14 @@ export interface ApiEntitiesCiSecureFileLoadMatch {
 
 export interface ApiEntitiesCiSecureFileCreateData {
   project_id: string
+  id?: string
 }
 
 export interface ApiEntitiesCiVariable {
   description?: string
   environment_scope?: string
   hidden?: boolean
+  id?: string
   key?: string
   masked?: boolean
   protected?: boolean
@@ -1235,6 +1239,7 @@ export interface ApiEntitiesCiVariableCreateData {
   description?: string
   environment_scope?: string
   hidden?: boolean
+  id?: string
   key?: string
   masked?: boolean
   protected?: boolean
@@ -2057,6 +2062,7 @@ export interface ApiEntitiesDeploymentsApprovalCreateData {
 
 export interface ApiEntitiesDictionaryTable {
   feature_categories?: any[]
+  id?: string
   table_name?: string
 }
 
@@ -2302,6 +2308,7 @@ export interface ApiEntitiesEventListMatch {
 export interface ApiEntitiesFeature {
   definition?: Record<string, any>
   gates?: Record<string, any>
+  id?: string
   name?: string
   state?: string
 }
@@ -2309,6 +2316,7 @@ export interface ApiEntitiesFeature {
 export interface ApiEntitiesFeatureListMatch {
   definition?: Record<string, any>
   gates?: Record<string, any>
+  id?: string
   name?: string
   state?: string
 }
@@ -2940,6 +2948,7 @@ export interface ApiEntitiesHookUpdateData {
 }
 
 export interface ApiEntitiesIntegration {
+  id?: string
 }
 
 export interface ApiEntitiesIntegrationLoadMatch {
@@ -3009,6 +3018,7 @@ export interface ApiEntitiesInvitation {
   created_at?: string
   created_by_name?: string
   expires_at?: string
+  id?: string
   invite_email?: string
   invite_token?: string
   user_name?: string
@@ -3024,6 +3034,7 @@ export interface ApiEntitiesInvitationCreateData {
   created_at?: string
   created_by_name?: string
   expires_at?: string
+  id?: string
   invite_email?: string
   invite_token?: string
   user_name?: string
@@ -3257,6 +3268,7 @@ export interface ApiEntitiesIssueUpdateData {
 }
 
 export interface ApiEntitiesIssueLink {
+  id?: string
   link_type?: string
   source_issue?: Record<string, any>
   target_issue?: Record<string, any>
@@ -3271,6 +3283,7 @@ export interface ApiEntitiesIssueLinkLoadMatch {
 export interface ApiEntitiesIssueLinkCreateData {
   issue_id: string
   project_id: string
+  id?: string
   link_type?: string
   source_issue?: Record<string, any>
   target_issue?: Record<string, any>
@@ -3281,6 +3294,7 @@ export interface ApiEntitiesLicense {
   content?: string
   description?: string
   html_url?: string
+  id?: string
   key?: string
   limitations?: any[]
   name?: string
@@ -4271,6 +4285,7 @@ export interface ApiEntitiesPackagesConanRecipeRevisionListMatch {
 }
 
 export interface ApiEntitiesPackagesConanRecipeSnapshot {
+  id?: string
 }
 
 export interface ApiEntitiesPackagesConanRecipeSnapshotLoadMatch {
@@ -4367,6 +4382,7 @@ export interface ApiEntitiesPagesDomain {
   domain?: string
   enabled_until?: string
   expired?: string
+  id?: string
   subject?: string
   url?: string
   verification_code?: string
@@ -4390,6 +4406,7 @@ export interface ApiEntitiesPagesDomainCreateData {
   domain?: string
   enabled_until?: string
   expired?: string
+  id?: string
   subject?: string
   url?: string
   verification_code?: string
@@ -4405,6 +4422,7 @@ export interface ApiEntitiesPagesDomainUpdateData {
   domain?: string
   enabled_until?: string
   expired?: string
+  id?: string
   subject?: string
   url?: string
   verification_code?: string
@@ -5725,6 +5743,7 @@ export interface ApiEntitiesRelease {
   description?: string
   description_html?: string
   evidences?: Record<string, any>
+  id?: string
   links?: Record<string, any>
   milestones?: Record<string, any>
   name?: string
@@ -5754,6 +5773,7 @@ export interface ApiEntitiesReleaseCreateData {
   description?: string
   description_html?: string
   evidences?: Record<string, any>
+  id?: string
   links?: Record<string, any>
   milestones?: Record<string, any>
   name?: string
@@ -6126,6 +6146,7 @@ export interface ApiEntitiesSystemBroadcastMessageRemoveMatch {
 export interface ApiEntitiesTag {
   commit?: Record<string, any>
   created_at?: string
+  id?: string
   message?: string
   name?: string
   protected?: boolean
@@ -6146,6 +6167,7 @@ export interface ApiEntitiesTagCreateData {
   project_id: string
   commit?: Record<string, any>
   created_at?: string
+  id?: string
   message?: string
   name?: string
   protected?: boolean
@@ -6410,6 +6432,7 @@ export interface ApiEntitiesWikiPageBasicListMatch {
 }
 
 export interface Application {
+  id?: string
 }
 
 export interface ApplicationRemoveMatch {
@@ -6417,6 +6440,7 @@ export interface ApplicationRemoveMatch {
 }
 
 export interface AwardEmoji {
+  id?: string
 }
 
 export interface AwardEmojiRemoveMatch {
@@ -6431,6 +6455,7 @@ export interface AwardEmojiRemoveMatch {
 }
 
 export interface Badge {
+  id?: string
 }
 
 export interface BadgeRemoveMatch {
@@ -6440,6 +6465,7 @@ export interface BadgeRemoveMatch {
 }
 
 export interface Branch {
+  id?: string
 }
 
 export interface BranchRemoveMatch {
@@ -6455,6 +6481,7 @@ export interface CargoPackageLoadMatch {
 }
 
 export interface CiVariable {
+  id?: string
 }
 
 export interface CiVariableRemoveMatch {
@@ -6464,6 +6491,7 @@ export interface CiVariableRemoveMatch {
 }
 
 export interface Cluster {
+  id?: string
 }
 
 export interface ClusterRemoveMatch {
@@ -6473,6 +6501,7 @@ export interface ClusterRemoveMatch {
 }
 
 export interface ClusterAgent {
+  id?: string
 }
 
 export interface ClusterAgentRemoveMatch {
@@ -6497,6 +6526,7 @@ export interface ComposerPackageLoadMatch {
 }
 
 export interface Conan {
+  id?: string
 }
 
 export interface ConanRemoveMatch {
@@ -6508,6 +6538,7 @@ export interface ConanRemoveMatch {
 }
 
 export interface ConanPackage {
+  id?: string
 }
 
 export interface ConanPackageLoadMatch {
@@ -6564,6 +6595,7 @@ export interface ContainerRegistryEventCreateData {
 }
 
 export interface CustomAttribute {
+  id?: string
   key?: string
   value?: string
 }
@@ -6574,6 +6606,7 @@ export interface CustomAttributeLoadMatch {
 }
 
 export interface Debian {
+  id?: string
 }
 
 export interface DebianUpdateData {
@@ -6582,6 +6615,7 @@ export interface DebianUpdateData {
 }
 
 export interface DebianDistribution {
+  id?: string
 }
 
 export interface DebianDistributionRemoveMatch {
@@ -6591,6 +6625,7 @@ export interface DebianDistributionRemoveMatch {
 }
 
 export interface DebianPackage {
+  id?: string
 }
 
 export interface DebianPackageLoadMatch {
@@ -6605,6 +6640,7 @@ export interface DebianPackageLoadMatch {
 export interface DebianPackageUpdateData {
   file_name: any
   project_id: string
+  id?: string
 }
 
 export interface DependencyProxy {
@@ -6621,6 +6657,7 @@ export interface DependencyProxyRemoveMatch {
 }
 
 export interface DeployKey {
+  id?: string
 }
 
 export interface DeployKeyRemoveMatch {
@@ -6629,6 +6666,7 @@ export interface DeployKeyRemoveMatch {
 }
 
 export interface DeployToken {
+  id?: string
 }
 
 export interface DeployTokenRemoveMatch {
@@ -6638,6 +6676,7 @@ export interface DeployTokenRemoveMatch {
 }
 
 export interface Deployment {
+  id?: string
 }
 
 export interface DeploymentRemoveMatch {
@@ -7252,10 +7291,12 @@ export interface EeApiEntitiesSshCertificateCreateData {
 }
 
 export interface Environment {
+  id?: string
 }
 
 export interface EnvironmentCreateData {
   project_id: string
+  id?: string
 
   // Selects a custom action instead of the plain create:
   //   'stop_stale'
@@ -7276,6 +7317,7 @@ export interface EnvironmentRemoveMatch {
 }
 
 export interface ErrorTrackingClientKey {
+  id?: string
 }
 
 export interface ErrorTrackingClientKeyRemoveMatch {
@@ -7284,6 +7326,7 @@ export interface ErrorTrackingClientKeyRemoveMatch {
 }
 
 export interface Feature {
+  id?: string
 }
 
 export interface FeatureRemoveMatch {
@@ -7291,6 +7334,7 @@ export interface FeatureRemoveMatch {
 }
 
 export interface FeatureFlag {
+  id?: string
 }
 
 export interface FeatureFlagLoadMatch {
@@ -7299,6 +7343,7 @@ export interface FeatureFlagLoadMatch {
 
 export interface FeatureFlagCreateData {
   unleash_id: string
+  id?: string
 }
 
 export interface FeatureFlagRemoveMatch {
@@ -7307,6 +7352,7 @@ export interface FeatureFlagRemoveMatch {
 }
 
 export interface FeatureFlagsUserList {
+  id?: string
 }
 
 export interface FeatureFlagsUserListRemoveMatch {
@@ -7315,6 +7361,7 @@ export interface FeatureFlagsUserListRemoveMatch {
 }
 
 export interface FreezePeriod {
+  id?: string
 }
 
 export interface FreezePeriodRemoveMatch {
@@ -7363,6 +7410,7 @@ export interface GoProxyLoadMatch {
 }
 
 export interface Group {
+  id?: string
 }
 
 export interface GroupLoadMatch {
@@ -7406,6 +7454,7 @@ export interface GroupRemoveMatch {
 }
 
 export interface GroupAvatar {
+  id?: string
 }
 
 export interface GroupAvatarLoadMatch {
@@ -7413,6 +7462,7 @@ export interface GroupAvatarLoadMatch {
 }
 
 export interface GroupExport {
+  id?: string
 }
 
 export interface GroupExportLoadMatch {
@@ -7452,6 +7502,7 @@ export interface HelmPackageCreateData {
 }
 
 export interface Hook {
+  id?: string
 }
 
 export interface HookCreateData {
@@ -7475,9 +7526,11 @@ export interface ImportCreateData {
 }
 
 export interface Integration {
+  id?: string
 }
 
 export interface IntegrationCreateData {
+  id?: string
 }
 
 export interface IntegrationRemoveMatch {
@@ -7486,6 +7539,7 @@ export interface IntegrationRemoveMatch {
 }
 
 export interface Invitation {
+  id?: string
 }
 
 export interface InvitationRemoveMatch {
@@ -7495,6 +7549,7 @@ export interface InvitationRemoveMatch {
 }
 
 export interface IssueLink {
+  id?: string
 }
 
 export interface IssueLinkRemoveMatch {
@@ -7510,6 +7565,7 @@ export interface IssuesStatisticLoadMatch {
 }
 
 export interface Job {
+  id?: string
 }
 
 export interface JobLoadMatch {
@@ -7523,6 +7579,7 @@ export interface JobLoadMatch {
 }
 
 export interface JobCreateData {
+  id?: string
 
   // Selects a custom action instead of the plain create:
   //   'artifact' | 'artifact_authorize' | 'request'
@@ -7550,6 +7607,7 @@ export interface MavenPackageUpdateData {
 }
 
 export interface Member {
+  id?: string
 }
 
 export interface MemberRemoveMatch {
@@ -7559,6 +7617,7 @@ export interface MemberRemoveMatch {
 }
 
 export interface MergeRequest {
+  id?: string
 }
 
 export interface MergeRequestLoadMatch {
@@ -7637,6 +7696,7 @@ export interface MlModelRegistryUpdateData {
 }
 
 export interface Namespace {
+  id?: string
 }
 
 export interface NamespaceRemoveMatch {
@@ -7650,6 +7710,7 @@ export interface NamespaceRemoveMatch {
 }
 
 export interface Npm {
+  id?: string
 }
 
 export interface NpmUpdateData {
@@ -7738,6 +7799,7 @@ export interface NugetPackageRemoveMatch {
 }
 
 export interface PackageFile {
+  id?: string
 }
 
 export interface PackageFileLoadMatch {
@@ -7785,6 +7847,7 @@ export interface ParticipantListMatch {
 }
 
 export interface PersonalAccessToken {
+  id?: string
 }
 
 export interface PersonalAccessTokenRemoveMatch {
@@ -7942,6 +8005,7 @@ export interface ProjectRemoveMatch {
 }
 
 export interface ProjectAvatar {
+  id?: string
 }
 
 export interface ProjectAvatarLoadMatch {
@@ -7955,6 +8019,7 @@ export interface ProjectEntityCreateData {
 }
 
 export interface ProjectExport {
+  id?: string
 }
 
 export interface ProjectExportLoadMatch {
@@ -7972,6 +8037,7 @@ export interface ProjectExportCreateData {
 }
 
 export interface ProjectHook {
+  id?: string
 }
 
 export interface ProjectHookRemoveMatch {
@@ -8018,6 +8084,7 @@ export interface ProjectImportEntityCreateData {
 }
 
 export interface ProjectPackage {
+  id?: string
 }
 
 export interface ProjectPackageRemoveMatch {
@@ -8026,6 +8093,7 @@ export interface ProjectPackageRemoveMatch {
 }
 
 export interface ProjectSnippet {
+  id?: string
 }
 
 export interface ProjectSnippetRemoveMatch {
@@ -8047,6 +8115,7 @@ export interface ProjectsJobTokenScopeRemoveMatch {
 }
 
 export interface ProtectedTag {
+  id?: string
 }
 
 export interface ProtectedTagRemoveMatch {
@@ -8073,6 +8142,7 @@ export interface PypiPackageCreateData {
 }
 
 export interface Release {
+  id?: string
 }
 
 export interface ReleaseLoadMatch {
@@ -8091,6 +8161,7 @@ export interface ReleaseRemoveMatch {
 }
 
 export interface ReleaseLink {
+  id?: string
 }
 
 export interface ReleaseLinkRemoveMatch {
@@ -8100,6 +8171,7 @@ export interface ReleaseLinkRemoveMatch {
 }
 
 export interface RemoteMirror {
+  id?: string
 }
 
 export interface RemoteMirrorLoadMatch {
@@ -8148,6 +8220,7 @@ export interface RpmPackageCreateData {
 }
 
 export interface Rubygem {
+  id?: string
 }
 
 export interface RubygemLoadMatch {
@@ -8168,9 +8241,11 @@ export interface RubygemPackageCreateData {
 }
 
 export interface Runner {
+  id?: string
 }
 
 export interface RunnerCreateData {
+  id?: string
 
   // Selects a custom action instead of the plain create:
   //   'verify'
@@ -8196,6 +8271,7 @@ export interface SearchLoadMatch {
 }
 
 export interface SecureFile {
+  id?: string
 }
 
 export interface SecureFileLoadMatch {
@@ -8227,6 +8303,7 @@ export interface SlackCreateData {
 }
 
 export interface Snippet {
+  id?: string
 }
 
 export interface SnippetLoadMatch {
@@ -8263,6 +8340,7 @@ export interface StarrerListMatch {
 }
 
 export interface SystemHook {
+  id?: string
 }
 
 export interface SystemHookRemoveMatch {
@@ -8270,6 +8348,7 @@ export interface SystemHookRemoveMatch {
 }
 
 export interface Tag {
+  id?: string
 }
 
 export interface TagRemoveMatch {
@@ -8278,6 +8357,7 @@ export interface TagRemoveMatch {
 }
 
 export interface TerraformRegistry {
+  id?: string
 }
 
 export interface TerraformRegistryLoadMatch {
@@ -8293,9 +8373,11 @@ export interface TerraformRegistryUpdateData {
   module_id: string
   module_system: any
   project_id: string
+  id?: string
 }
 
 export interface TerraformState {
+  id?: string
 }
 
 export interface TerraformStateLoadMatch {
@@ -8347,6 +8429,7 @@ export interface TestReportSummaryLoadMatch {
 }
 
 export interface Topic {
+  id?: string
 }
 
 export interface TopicRemoveMatch {
@@ -8354,6 +8437,7 @@ export interface TopicRemoveMatch {
 }
 
 export interface UnleashApi {
+  id?: string
 }
 
 export interface UnleashApiLoadMatch {
@@ -8417,6 +8501,7 @@ export interface WebCommitLoadMatch {
 }
 
 export interface Wiki {
+  id?: string
 }
 
 export interface WikiRemoveMatch {

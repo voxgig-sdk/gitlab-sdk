@@ -112,6 +112,9 @@ func TestApiEntitiesPagesDomainEntity(t *testing.T) {
 		if apiEntitiesPagesDomainRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if apiEntitiesPagesDomainRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 		// LIST
 		apiEntitiesPagesDomainRef01Match := map[string]any{
@@ -122,13 +125,19 @@ func TestApiEntitiesPagesDomainEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("list failed: %v", err)
 		}
-		_, apiEntitiesPagesDomainRef01ListOk := apiEntitiesPagesDomainRef01ListResult.([]any)
+		apiEntitiesPagesDomainRef01List, apiEntitiesPagesDomainRef01ListOk := apiEntitiesPagesDomainRef01ListResult.([]any)
 		if !apiEntitiesPagesDomainRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", apiEntitiesPagesDomainRef01ListResult)
 		}
 
+		foundItem := vs.Select(entityListToData(apiEntitiesPagesDomainRef01List), map[string]any{"id": apiEntitiesPagesDomainRef01Data["id"]})
+		if vs.IsEmpty(foundItem) {
+			t.Fatal("expected to find created entity in list")
+		}
+
 		// UPDATE
 		apiEntitiesPagesDomainRef01DataUp0Up := map[string]any{
+			"id": apiEntitiesPagesDomainRef01Data["id"],
 			"project_id": setup.idmap["project_id"],
 		}
 
@@ -144,18 +153,27 @@ func TestApiEntitiesPagesDomainEntity(t *testing.T) {
 		if apiEntitiesPagesDomainRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
+		if apiEntitiesPagesDomainRef01ResdataUp0["id"] != apiEntitiesPagesDomainRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
+		}
 		if apiEntitiesPagesDomainRef01ResdataUp0[apiEntitiesPagesDomainRef01MarkdefUp0Name] != apiEntitiesPagesDomainRef01MarkdefUp0Value {
 			t.Fatalf("expected %s to be updated, got %v", apiEntitiesPagesDomainRef01MarkdefUp0Name, apiEntitiesPagesDomainRef01ResdataUp0[apiEntitiesPagesDomainRef01MarkdefUp0Name])
 		}
 
 		// LOAD
-		apiEntitiesPagesDomainRef01MatchDt0 := map[string]any{}
+		apiEntitiesPagesDomainRef01MatchDt0 := map[string]any{
+			"id": apiEntitiesPagesDomainRef01Data["id"],
+		}
 		apiEntitiesPagesDomainRef01DataDt0Loaded, err := apiEntitiesPagesDomainRef01Ent.Load(apiEntitiesPagesDomainRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if apiEntitiesPagesDomainRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		apiEntitiesPagesDomainRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesPagesDomainRef01DataDt0Loaded))
+		if apiEntitiesPagesDomainRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if apiEntitiesPagesDomainRef01DataDt0LoadResult["id"] != apiEntitiesPagesDomainRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

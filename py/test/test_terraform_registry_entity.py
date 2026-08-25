@@ -49,17 +49,23 @@ class TestTerraformRegistryEntity:
         # UPDATE
         terraform_registry_ref01_ent = client.TerraformRegistry(None)
         terraform_registry_ref01_data_up0_up = {
+            "id": terraform_registry_ref01_data["id"],
             "module_id": setup["idmap"]["module_id"],
             "project_id": setup["idmap"]["project_id"],
         }
 
         terraform_registry_ref01_resdata_up0 = helpers.to_map(runner.entity_data(terraform_registry_ref01_ent.update(terraform_registry_ref01_data_up0_up, None)))
         assert terraform_registry_ref01_resdata_up0 is not None
+        assert terraform_registry_ref01_resdata_up0["id"] == terraform_registry_ref01_data_up0_up["id"]
 
         # LOAD
-        terraform_registry_ref01_match_dt0 = {}
+        terraform_registry_ref01_match_dt0 = {
+            "id": terraform_registry_ref01_data["id"],
+        }
         terraform_registry_ref01_data_dt0_loaded = terraform_registry_ref01_ent.load(terraform_registry_ref01_match_dt0, None)
-        assert terraform_registry_ref01_data_dt0_loaded is not None
+        terraform_registry_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(terraform_registry_ref01_data_dt0_loaded))
+        assert terraform_registry_ref01_data_dt0_load_result is not None
+        assert terraform_registry_ref01_data_dt0_load_result["id"] == terraform_registry_ref01_data["id"]
 
 
 

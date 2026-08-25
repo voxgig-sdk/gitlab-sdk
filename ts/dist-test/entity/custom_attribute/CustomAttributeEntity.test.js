@@ -72,9 +72,12 @@ const utility_1 = require("../../utility");
         const isempty = struct.isempty;
         const select = struct.select;
         let custom_attribute_ref01_data = Object.values(setup.data.existing.custom_attribute)[0];
-        // LOAD: skipped — no entity id field and load requires path params.
-        // Entity-var is declared here so later flow steps still compile.
+        // LOAD
         const custom_attribute_ref01_ent = client.CustomAttribute();
+        const custom_attribute_ref01_match_dt0 = {};
+        custom_attribute_ref01_match_dt0.id = custom_attribute_ref01_data.id;
+        const custom_attribute_ref01_data_dt0 = (await custom_attribute_ref01_ent.load(custom_attribute_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(custom_attribute_ref01_data_dt0.id === custom_attribute_ref01_data.id);
     });
 });
 function basicSetup(extra) {

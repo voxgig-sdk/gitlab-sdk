@@ -2,19 +2,19 @@
   "existing": {
     "access_request": {
       "ACCESS_REQUEST00": {
+        "id": "ACCESS_REQUEST00",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "ACCESS_REQUEST00"
+        "project_id": "PROJECT01"
       },
       "ACCESS_REQUEST01": {
+        "id": "ACCESS_REQUEST01",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "ACCESS_REQUEST01"
+        "project_id": "PROJECT01"
       },
       "ACCESS_REQUEST02": {
+        "id": "ACCESS_REQUEST02",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "ACCESS_REQUEST02"
+        "project_id": "PROJECT01"
       }
     }
   },

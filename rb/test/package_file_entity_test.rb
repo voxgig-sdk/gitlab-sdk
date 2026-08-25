@@ -41,9 +41,13 @@ class PackageFileEntityTest < Minitest::Test
 
     # LOAD
     package_file_ref01_ent = client.PackageFile(nil)
-    package_file_ref01_match_dt0 = {}
+    package_file_ref01_match_dt0 = {
+      "id" => package_file_ref01_data["id"],
+    }
     package_file_ref01_data_dt0_loaded = package_file_ref01_ent.load(package_file_ref01_match_dt0, nil)
-    assert !package_file_ref01_data_dt0_loaded.nil?
+    package_file_ref01_data_dt0_load_result = Helpers.to_map(package_file_ref01_data_dt0_loaded.respond_to?(:data_get) ? package_file_ref01_data_dt0_loaded.data_get : package_file_ref01_data_dt0_loaded)
+    assert !package_file_ref01_data_dt0_load_result.nil?
+    assert_equal package_file_ref01_data_dt0_load_result["id"], package_file_ref01_data["id"]
 
   end
 end

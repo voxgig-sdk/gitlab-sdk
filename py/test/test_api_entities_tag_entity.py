@@ -81,6 +81,7 @@ class TestApiEntitiesTagEntity:
 
         api_entities_tag_ref01_data = helpers.to_map(runner.entity_data(api_entities_tag_ref01_ent.create(api_entities_tag_ref01_data, None)))
         assert api_entities_tag_ref01_data is not None
+        assert api_entities_tag_ref01_data["id"] is not None
 
         # LIST
         api_entities_tag_ref01_match = {
@@ -90,10 +91,19 @@ class TestApiEntitiesTagEntity:
         api_entities_tag_ref01_list_result = api_entities_tag_ref01_ent.list(api_entities_tag_ref01_match, None)
         assert isinstance(api_entities_tag_ref01_list_result, list)
 
+        found_item = vs.select(
+            runner.entity_list_to_data(api_entities_tag_ref01_list_result),
+            {"id": api_entities_tag_ref01_data["id"]})
+        assert not vs.isempty(found_item)
+
         # LOAD
-        api_entities_tag_ref01_match_dt0 = {}
+        api_entities_tag_ref01_match_dt0 = {
+            "id": api_entities_tag_ref01_data["id"],
+        }
         api_entities_tag_ref01_data_dt0_loaded = api_entities_tag_ref01_ent.load(api_entities_tag_ref01_match_dt0, None)
-        assert api_entities_tag_ref01_data_dt0_loaded is not None
+        api_entities_tag_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(api_entities_tag_ref01_data_dt0_loaded))
+        assert api_entities_tag_ref01_data_dt0_load_result is not None
+        assert api_entities_tag_ref01_data_dt0_load_result["id"] == api_entities_tag_ref01_data["id"]
 
 
 

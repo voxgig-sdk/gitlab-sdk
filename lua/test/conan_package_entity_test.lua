@@ -45,6 +45,7 @@ describe("ConanPackageEntity", function()
     -- UPDATE
     local conan_package_ref01_ent = client:ConanPackage(nil)
     local conan_package_ref01_data_up0_up = {
+      id = conan_package_ref01_data["id"],
       ["file_id"] = setup.idmap["file_id"],
       ["package_channel"] = setup.idmap["package_channel"],
       ["package_username"] = setup.idmap["package_username"],
@@ -56,12 +57,17 @@ describe("ConanPackageEntity", function()
     assert.is_nil(err)
     local conan_package_ref01_resdata_up0 = helpers.to_map(type(conan_package_ref01_resdata_up0_result) == 'table' and conan_package_ref01_resdata_up0_result.data_get and conan_package_ref01_resdata_up0_result:data_get() or conan_package_ref01_resdata_up0_result)
     assert.is_not_nil(conan_package_ref01_resdata_up0)
+    assert.are.equal(conan_package_ref01_resdata_up0["id"], conan_package_ref01_data_up0_up["id"])
 
     -- LOAD
-    local conan_package_ref01_match_dt0 = {}
+    local conan_package_ref01_match_dt0 = {
+      id = conan_package_ref01_data["id"],
+    }
     local conan_package_ref01_data_dt0_loaded, err = conan_package_ref01_ent:load(conan_package_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(conan_package_ref01_data_dt0_loaded)
+    local conan_package_ref01_data_dt0_load_result = helpers.to_map(type(conan_package_ref01_data_dt0_loaded) == 'table' and conan_package_ref01_data_dt0_loaded.data_get and conan_package_ref01_data_dt0_loaded:data_get() or conan_package_ref01_data_dt0_loaded)
+    assert.is_not_nil(conan_package_ref01_data_dt0_load_result)
+    assert.are.equal(conan_package_ref01_data_dt0_load_result["id"], conan_package_ref01_data["id"])
 
   end)
 end)

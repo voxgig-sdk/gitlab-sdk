@@ -49,12 +49,14 @@ class DebianEntityTest extends TestCase
         // UPDATE
         $debian_ref01_ent = $client->Debian(null);
         $debian_ref01_data_up0_up = [
+            "id" => $debian_ref01_data["id"],
             "project_id" => $setup["idmap"]["project_id"],
         ];
 
         $debian_ref01_resdata_up0_result = $debian_ref01_ent->update($debian_ref01_data_up0_up, null);
         $debian_ref01_resdata_up0 = Helpers::to_map(is_object($debian_ref01_resdata_up0_result) && method_exists($debian_ref01_resdata_up0_result, 'data_get') ? $debian_ref01_resdata_up0_result->data_get() : $debian_ref01_resdata_up0_result);
         $this->assertNotNull($debian_ref01_resdata_up0);
+        $this->assertEquals($debian_ref01_resdata_up0["id"], $debian_ref01_data_up0_up["id"]);
 
     }
 }

@@ -48,9 +48,13 @@ class TestCustomAttributeEntity:
 
         # LOAD
         custom_attribute_ref01_ent = client.CustomAttribute(None)
-        custom_attribute_ref01_match_dt0 = {}
+        custom_attribute_ref01_match_dt0 = {
+            "id": custom_attribute_ref01_data["id"],
+        }
         custom_attribute_ref01_data_dt0_loaded = custom_attribute_ref01_ent.load(custom_attribute_ref01_match_dt0, None)
-        assert custom_attribute_ref01_data_dt0_loaded is not None
+        custom_attribute_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(custom_attribute_ref01_data_dt0_loaded))
+        assert custom_attribute_ref01_data_dt0_load_result is not None
+        assert custom_attribute_ref01_data_dt0_load_result["id"] == custom_attribute_ref01_data["id"]
 
 
 

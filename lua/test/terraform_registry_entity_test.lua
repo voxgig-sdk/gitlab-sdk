@@ -45,6 +45,7 @@ describe("TerraformRegistryEntity", function()
     -- UPDATE
     local terraform_registry_ref01_ent = client:TerraformRegistry(nil)
     local terraform_registry_ref01_data_up0_up = {
+      id = terraform_registry_ref01_data["id"],
       ["module_id"] = setup.idmap["module_id"],
       ["project_id"] = setup.idmap["project_id"],
     }
@@ -53,12 +54,17 @@ describe("TerraformRegistryEntity", function()
     assert.is_nil(err)
     local terraform_registry_ref01_resdata_up0 = helpers.to_map(type(terraform_registry_ref01_resdata_up0_result) == 'table' and terraform_registry_ref01_resdata_up0_result.data_get and terraform_registry_ref01_resdata_up0_result:data_get() or terraform_registry_ref01_resdata_up0_result)
     assert.is_not_nil(terraform_registry_ref01_resdata_up0)
+    assert.are.equal(terraform_registry_ref01_resdata_up0["id"], terraform_registry_ref01_data_up0_up["id"])
 
     -- LOAD
-    local terraform_registry_ref01_match_dt0 = {}
+    local terraform_registry_ref01_match_dt0 = {
+      id = terraform_registry_ref01_data["id"],
+    }
     local terraform_registry_ref01_data_dt0_loaded, err = terraform_registry_ref01_ent:load(terraform_registry_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(terraform_registry_ref01_data_dt0_loaded)
+    local terraform_registry_ref01_data_dt0_load_result = helpers.to_map(type(terraform_registry_ref01_data_dt0_loaded) == 'table' and terraform_registry_ref01_data_dt0_loaded.data_get and terraform_registry_ref01_data_dt0_loaded:data_get() or terraform_registry_ref01_data_dt0_loaded)
+    assert.is_not_nil(terraform_registry_ref01_data_dt0_load_result)
+    assert.are.equal(terraform_registry_ref01_data_dt0_load_result["id"], terraform_registry_ref01_data["id"])
 
   end)
 end)

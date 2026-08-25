@@ -4,6 +4,19 @@ main: kit: entity: package_file: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "package_file"
   op: {
     load: {

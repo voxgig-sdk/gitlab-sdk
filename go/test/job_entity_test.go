@@ -62,9 +62,13 @@ func TestJobEntity(t *testing.T) {
 		if jobRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if jobRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 		// UPDATE
 		jobRef01DataUp0Up := map[string]any{
+			"id": jobRef01Data["id"],
 		}
 
 		jobRef01ResdataUp0Result, err := jobRef01Ent.Update(jobRef01DataUp0Up, nil)
@@ -75,15 +79,24 @@ func TestJobEntity(t *testing.T) {
 		if jobRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
+		if jobRef01ResdataUp0["id"] != jobRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
+		}
 
 		// LOAD
-		jobRef01MatchDt0 := map[string]any{}
+		jobRef01MatchDt0 := map[string]any{
+			"id": jobRef01Data["id"],
+		}
 		jobRef01DataDt0Loaded, err := jobRef01Ent.Load(jobRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if jobRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		jobRef01DataDt0LoadResult := core.ToMapAny(entityData(jobRef01DataDt0Loaded))
+		if jobRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if jobRef01DataDt0LoadResult["id"] != jobRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

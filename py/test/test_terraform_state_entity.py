@@ -49,12 +49,22 @@ class TestTerraformStateEntity:
 
         terraform_state_ref01_data = helpers.to_map(runner.entity_data(terraform_state_ref01_ent.create(terraform_state_ref01_data, None)))
         assert terraform_state_ref01_data is not None
+        assert terraform_state_ref01_data["id"] is not None
 
         # LOAD
-        terraform_state_ref01_match_dt0 = {}
+        terraform_state_ref01_match_dt0 = {
+            "id": terraform_state_ref01_data["id"],
+        }
         terraform_state_ref01_data_dt0_loaded = terraform_state_ref01_ent.load(terraform_state_ref01_match_dt0, None)
-        assert terraform_state_ref01_data_dt0_loaded is not None
+        terraform_state_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(terraform_state_ref01_data_dt0_loaded))
+        assert terraform_state_ref01_data_dt0_load_result is not None
+        assert terraform_state_ref01_data_dt0_load_result["id"] == terraform_state_ref01_data["id"]
 
+        # REMOVE
+        terraform_state_ref01_match_rm0 = {
+            "id": terraform_state_ref01_data["id"],
+        }
+        terraform_state_ref01_ent.remove(terraform_state_ref01_match_rm0, None)
 
 
 

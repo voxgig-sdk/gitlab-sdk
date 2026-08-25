@@ -2,19 +2,19 @@
   "existing": {
     "snippet": {
       "SNIPPET00": {
+        "id": "SNIPPET00",
         "file_id": "FILE01",
-        "file_path": "FILE_PATH01",
-        "id": "SNIPPET00"
+        "file_path": "FILE_PATH01"
       },
       "SNIPPET01": {
+        "id": "SNIPPET01",
         "file_id": "FILE01",
-        "file_path": "FILE_PATH01",
-        "id": "SNIPPET01"
+        "file_path": "FILE_PATH01"
       },
       "SNIPPET02": {
+        "id": "SNIPPET02",
         "file_id": "FILE01",
-        "file_path": "FILE_PATH01",
-        "id": "SNIPPET02"
+        "file_path": "FILE_PATH01"
       }
     }
   },

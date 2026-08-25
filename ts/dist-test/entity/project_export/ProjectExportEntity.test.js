@@ -75,7 +75,12 @@ const utility_1 = require("../../utility");
         const project_export_ref01_ent = client.ProjectExport();
         let project_export_ref01_data = setup.data.new.project_export['project_export_ref01'];
         project_export_ref01_data = (await project_export_ref01_ent.create(project_export_ref01_data)).data();
-        (0, node_assert_1.default)(null != project_export_ref01_data);
+        (0, node_assert_1.default)(null != project_export_ref01_data.id);
+        // LOAD
+        const project_export_ref01_match_dt0 = {};
+        project_export_ref01_match_dt0.id = project_export_ref01_data.id;
+        const project_export_ref01_data_dt0 = (await project_export_ref01_ent.load(project_export_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(project_export_ref01_data_dt0.id === project_export_ref01_data.id);
     });
 });
 function basicSetup(extra) {

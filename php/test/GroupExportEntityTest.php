@@ -46,11 +46,16 @@ class GroupExportEntityTest extends TestCase
         $group_export_ref01_data_result = $group_export_ref01_ent->create($group_export_ref01_data, null);
         $group_export_ref01_data = Helpers::to_map(is_object($group_export_ref01_data_result) && method_exists($group_export_ref01_data_result, 'data_get') ? $group_export_ref01_data_result->data_get() : $group_export_ref01_data_result);
         $this->assertNotNull($group_export_ref01_data);
+        $this->assertNotNull($group_export_ref01_data["id"]);
 
         // LOAD
-        $group_export_ref01_match_dt0 = [];
+        $group_export_ref01_match_dt0 = [
+            "id" => $group_export_ref01_data["id"],
+        ];
         $group_export_ref01_data_dt0_loaded = $group_export_ref01_ent->load($group_export_ref01_match_dt0, null);
-        $this->assertNotNull($group_export_ref01_data_dt0_loaded);
+        $group_export_ref01_data_dt0_load_result = Helpers::to_map(is_object($group_export_ref01_data_dt0_loaded) && method_exists($group_export_ref01_data_dt0_loaded, 'data_get') ? $group_export_ref01_data_dt0_loaded->data_get() : $group_export_ref01_data_dt0_loaded);
+        $this->assertNotNull($group_export_ref01_data_dt0_load_result);
+        $this->assertEquals($group_export_ref01_data_dt0_load_result["id"], $group_export_ref01_data["id"]);
 
     }
 }

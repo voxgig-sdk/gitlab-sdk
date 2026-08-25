@@ -48,6 +48,11 @@ main: kit: entity: api_entities_release: {
       type: "`$OBJECT`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "links"
       req: false
       type: "`$OBJECT`"
@@ -83,6 +88,11 @@ main: kit: entity: api_entities_release: {
       type: "`$BOOLEAN`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "api_entities_release"
   op: {

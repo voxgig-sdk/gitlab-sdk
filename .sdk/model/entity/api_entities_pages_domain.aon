@@ -36,6 +36,11 @@ main: kit: entity: api_entities_pages_domain: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "subject"
       req: false
       type: "`$STRING`"
@@ -56,6 +61,11 @@ main: kit: entity: api_entities_pages_domain: {
       type: "`$BOOLEAN`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "api_entities_pages_domain"
   op: {

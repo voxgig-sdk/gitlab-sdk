@@ -4,23 +4,23 @@
       "API_ENTITIES_FEATURE00": {
         "definition": {},
         "gates": {},
-        "name": "s2a",
-        "state": "s2b",
-        "id": "API_ENTITIES_FEATURE00"
+        "id": "API_ENTITIES_FEATURE00",
+        "name": "s35",
+        "state": "s36"
       },
       "API_ENTITIES_FEATURE01": {
         "definition": {},
         "gates": {},
-        "name": "s52",
-        "state": "s53",
-        "id": "API_ENTITIES_FEATURE01"
+        "id": "API_ENTITIES_FEATURE01",
+        "name": "s67",
+        "state": "s68"
       },
       "API_ENTITIES_FEATURE02": {
         "definition": {},
         "gates": {},
-        "name": "s7a",
-        "state": "s7b",
-        "id": "API_ENTITIES_FEATURE02"
+        "id": "API_ENTITIES_FEATURE02",
+        "name": "s99",
+        "state": "s9a"
       }
     }
   },
@@ -29,8 +29,8 @@
       "api_entities_feature_ref01": {
         "definition": {},
         "gates": {},
-        "name": "sa2",
-        "state": "sa3"
+        "name": "scb",
+        "state": "scc"
       }
     }
   }

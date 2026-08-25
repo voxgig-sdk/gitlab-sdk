@@ -86,6 +86,7 @@ describe("ApiEntitiesInvitationEntity", function()
     assert.is_nil(err)
     api_entities_invitation_ref01_data = helpers.to_map(type(api_entities_invitation_ref01_data_result) == 'table' and api_entities_invitation_ref01_data_result.data_get and api_entities_invitation_ref01_data_result:data_get() or api_entities_invitation_ref01_data_result)
     assert.is_not_nil(api_entities_invitation_ref01_data)
+    assert.is_not_nil(api_entities_invitation_ref01_data["id"])
 
     -- LIST
     local api_entities_invitation_ref01_match = {
@@ -96,8 +97,14 @@ describe("ApiEntitiesInvitationEntity", function()
     assert.is_nil(err)
     assert.is_table(api_entities_invitation_ref01_list_result)
 
+    local found_item = vs.select(
+      runner.entity_list_to_data(api_entities_invitation_ref01_list_result),
+      { id = api_entities_invitation_ref01_data["id"] })
+    assert.is_false(vs.isempty(found_item))
+
     -- UPDATE
     local api_entities_invitation_ref01_data_up0_up = {
+      id = api_entities_invitation_ref01_data["id"],
       ["project_id"] = setup.idmap["project_id"],
     }
 
@@ -109,6 +116,7 @@ describe("ApiEntitiesInvitationEntity", function()
     assert.is_nil(err)
     local api_entities_invitation_ref01_resdata_up0 = helpers.to_map(type(api_entities_invitation_ref01_resdata_up0_result) == 'table' and api_entities_invitation_ref01_resdata_up0_result.data_get and api_entities_invitation_ref01_resdata_up0_result:data_get() or api_entities_invitation_ref01_resdata_up0_result)
     assert.is_not_nil(api_entities_invitation_ref01_resdata_up0)
+    assert.are.equal(api_entities_invitation_ref01_resdata_up0["id"], api_entities_invitation_ref01_data_up0_up["id"])
     assert.are.equal(api_entities_invitation_ref01_resdata_up0[api_entities_invitation_ref01_markdef_up0_name], api_entities_invitation_ref01_markdef_up0_value)
 
   end)

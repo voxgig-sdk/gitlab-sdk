@@ -17,6 +17,11 @@ main: kit: entity: api_entities_feature: {
       type: "`$OBJECT`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "name"
       req: false
       type: "`$STRING`"
@@ -27,6 +32,11 @@ main: kit: entity: api_entities_feature: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "api_entities_feature"
   op: {

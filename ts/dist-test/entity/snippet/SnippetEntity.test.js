@@ -72,9 +72,12 @@ const utility_1 = require("../../utility");
         const isempty = struct.isempty;
         const select = struct.select;
         let snippet_ref01_data = Object.values(setup.data.existing.snippet)[0];
-        // LOAD: skipped — no entity id field and load requires path params.
-        // Entity-var is declared here so later flow steps still compile.
+        // LOAD
         const snippet_ref01_ent = client.Snippet();
+        const snippet_ref01_match_dt0 = {};
+        snippet_ref01_match_dt0.id = snippet_ref01_data.id;
+        const snippet_ref01_data_dt0 = (await snippet_ref01_ent.load(snippet_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(snippet_ref01_data_dt0.id === snippet_ref01_data.id);
     });
 });
 function basicSetup(extra) {

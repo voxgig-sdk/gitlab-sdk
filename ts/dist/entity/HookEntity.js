@@ -15,7 +15,9 @@ class HookEntity extends GitlabEntityBase_1.GitlabEntityBase {
     }
     async create(reqdata, ctrl) {
         const utility = this._utility;
-        const { makeContext, done, error, featureHook, makePoint, makeRequest, makeResponse, makeResult, makeSpec, } = utility;
+        const { makeContext, done, 
+        // The registry name is `makeError`; `error` is the local alias.
+        makeError: error, featureHook, makePoint, makeRequest, makeResponse, makeResult, makeSpec, } = utility;
         let fres = undefined;
         let ctx = makeContext({
             opname: 'create',
@@ -101,7 +103,9 @@ class HookEntity extends GitlabEntityBase_1.GitlabEntityBase {
     }
     async update(reqdata, ctrl) {
         const utility = this._utility;
-        const { makeContext, done, error, featureHook, makePoint, makeRequest, makeResponse, makeResult, makeSpec, } = utility;
+        const { makeContext, done, 
+        // The registry name is `makeError`; `error` is the local alias.
+        makeError: error, featureHook, makePoint, makeRequest, makeResponse, makeResult, makeSpec, } = utility;
         let fres = undefined;
         let ctx = makeContext({
             opname: 'update',
@@ -198,7 +202,9 @@ class HookEntity extends GitlabEntityBase_1.GitlabEntityBase {
     // against a signature that promised a record.
     async remove(reqmatch, ctrl) {
         const utility = this._utility;
-        const { makeContext, done, error, featureHook, makePoint, makeRequest, makeResponse, makeResult, makeSpec, } = utility;
+        const { makeContext, done, 
+        // The registry name is `makeError`; `error` is the local alias.
+        makeError: error, featureHook, makePoint, makeRequest, makeResponse, makeResult, makeSpec, } = utility;
         let fres = undefined;
         let ctx = makeContext({
             opname: 'remove',

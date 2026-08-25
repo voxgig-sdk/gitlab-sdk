@@ -47,7 +47,13 @@ class TestEnvironmentEntity:
 
         environment_ref01_data = helpers.to_map(runner.entity_data(environment_ref01_ent.create(environment_ref01_data, None)))
         assert environment_ref01_data is not None
+        assert environment_ref01_data["id"] is not None
 
+        # REMOVE
+        environment_ref01_match_rm0 = {
+            "id": environment_ref01_data["id"],
+        }
+        environment_ref01_ent.remove(environment_ref01_match_rm0, None)
 
 
 

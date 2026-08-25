@@ -42,17 +42,23 @@ class MergeRequestEntityTest < Minitest::Test
     # UPDATE
     merge_request_ref01_ent = client.MergeRequest(nil)
     merge_request_ref01_data_up0_up = {
+      "id" => merge_request_ref01_data["id"],
       "project_id" => setup[:idmap]["project_id"],
     }
 
     merge_request_ref01_resdata_up0_result = merge_request_ref01_ent.update(merge_request_ref01_data_up0_up, nil)
     merge_request_ref01_resdata_up0 = Helpers.to_map(merge_request_ref01_resdata_up0_result.respond_to?(:data_get) ? merge_request_ref01_resdata_up0_result.data_get : merge_request_ref01_resdata_up0_result)
     assert !merge_request_ref01_resdata_up0.nil?
+    assert_equal merge_request_ref01_resdata_up0["id"], merge_request_ref01_data_up0_up["id"]
 
     # LOAD
-    merge_request_ref01_match_dt0 = {}
+    merge_request_ref01_match_dt0 = {
+      "id" => merge_request_ref01_data["id"],
+    }
     merge_request_ref01_data_dt0_loaded = merge_request_ref01_ent.load(merge_request_ref01_match_dt0, nil)
-    assert !merge_request_ref01_data_dt0_loaded.nil?
+    merge_request_ref01_data_dt0_load_result = Helpers.to_map(merge_request_ref01_data_dt0_loaded.respond_to?(:data_get) ? merge_request_ref01_data_dt0_loaded.data_get : merge_request_ref01_data_dt0_loaded)
+    assert !merge_request_ref01_data_dt0_load_result.nil?
+    assert_equal merge_request_ref01_data_dt0_load_result["id"], merge_request_ref01_data["id"]
 
   end
 end

@@ -63,7 +63,18 @@ func TestRunnerEntity(t *testing.T) {
 		if runnerRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if runnerRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
+		// REMOVE
+		runnerRef01MatchRm0 := map[string]any{
+			"id": runnerRef01Data["id"],
+		}
+		_, err = runnerRef01Ent.Remove(runnerRef01MatchRm0, nil)
+		if err != nil {
+			t.Fatalf("remove failed: %v", err)
+		}
 
 	})
 }

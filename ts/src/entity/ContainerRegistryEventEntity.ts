@@ -44,7 +44,8 @@ class ContainerRegistryEventEntity extends GitlabEntityBase<ContainerRegistryEve
     const {
       makeContext,
       done,
-      error,
+      // The registry name is `makeError`; `error` is the local alias.
+      makeError: error,
       featureHook,
       makePoint,
       makeRequest,

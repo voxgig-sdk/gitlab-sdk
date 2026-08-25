@@ -76,12 +76,18 @@ class ApiEntitiesFeatureEntityTest < Minitest::Test
     api_entities_feature_ref01_data_result = api_entities_feature_ref01_ent.create(api_entities_feature_ref01_data, nil)
     api_entities_feature_ref01_data = Helpers.to_map(api_entities_feature_ref01_data_result.respond_to?(:data_get) ? api_entities_feature_ref01_data_result.data_get : api_entities_feature_ref01_data_result)
     assert !api_entities_feature_ref01_data.nil?
+    assert !api_entities_feature_ref01_data["id"].nil?
 
     # LIST
     api_entities_feature_ref01_match = {}
 
     api_entities_feature_ref01_list_result = api_entities_feature_ref01_ent.list(api_entities_feature_ref01_match, nil)
     assert api_entities_feature_ref01_list_result.is_a?(Array)
+
+    found_item = Vs.select(
+      Runner.entity_list_to_data(api_entities_feature_ref01_list_result),
+      { "id" => api_entities_feature_ref01_data["id"] })
+    assert !Vs.isempty(found_item)
 
   end
 end

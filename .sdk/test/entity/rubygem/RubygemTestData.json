@@ -2,16 +2,16 @@
   "existing": {
     "rubygem": {
       "RUBYGEM00": {
-        "project_id": "PROJECT01",
-        "id": "RUBYGEM00"
+        "id": "RUBYGEM00",
+        "project_id": "PROJECT01"
       },
       "RUBYGEM01": {
-        "project_id": "PROJECT01",
-        "id": "RUBYGEM01"
+        "id": "RUBYGEM01",
+        "project_id": "PROJECT01"
       },
       "RUBYGEM02": {
-        "project_id": "PROJECT01",
-        "id": "RUBYGEM02"
+        "id": "RUBYGEM02",
+        "project_id": "PROJECT01"
       }
     }
   },

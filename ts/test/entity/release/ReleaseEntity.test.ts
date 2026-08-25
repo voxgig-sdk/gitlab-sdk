@@ -59,9 +59,12 @@ describe('ReleaseEntity', async () => {
 
     let release_ref01_data = Object.values(setup.data.existing.release)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const release_ref01_ent = client.Release()
+    const release_ref01_match_dt0: any = {}
+    release_ref01_match_dt0.id = release_ref01_data.id
+    const release_ref01_data_dt0 = (await release_ref01_ent.load(release_ref01_match_dt0)).data()
+    assert(release_ref01_data_dt0.id === release_ref01_data.id)
 
 
   })

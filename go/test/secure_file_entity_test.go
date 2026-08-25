@@ -61,13 +61,19 @@ func TestSecureFileEntity(t *testing.T) {
 
 		// LOAD
 		secureFileRef01Ent := client.SecureFile(nil)
-		secureFileRef01MatchDt0 := map[string]any{}
+		secureFileRef01MatchDt0 := map[string]any{
+			"id": secureFileRef01Data["id"],
+		}
 		secureFileRef01DataDt0Loaded, err := secureFileRef01Ent.Load(secureFileRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if secureFileRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		secureFileRef01DataDt0LoadResult := core.ToMapAny(entityData(secureFileRef01DataDt0Loaded))
+		if secureFileRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if secureFileRef01DataDt0LoadResult["id"] != secureFileRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

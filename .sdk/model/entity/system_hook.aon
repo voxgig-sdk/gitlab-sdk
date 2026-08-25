@@ -4,6 +4,19 @@ main: kit: entity: system_hook: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "system_hook"
   op: {
     remove: {

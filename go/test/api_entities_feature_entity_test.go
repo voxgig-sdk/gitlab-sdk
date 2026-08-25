@@ -111,6 +111,9 @@ func TestApiEntitiesFeatureEntity(t *testing.T) {
 		if apiEntitiesFeatureRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if apiEntitiesFeatureRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 		// LIST
 		apiEntitiesFeatureRef01Match := map[string]any{}
@@ -119,9 +122,14 @@ func TestApiEntitiesFeatureEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("list failed: %v", err)
 		}
-		_, apiEntitiesFeatureRef01ListOk := apiEntitiesFeatureRef01ListResult.([]any)
+		apiEntitiesFeatureRef01List, apiEntitiesFeatureRef01ListOk := apiEntitiesFeatureRef01ListResult.([]any)
 		if !apiEntitiesFeatureRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", apiEntitiesFeatureRef01ListResult)
+		}
+
+		foundItem := vs.Select(entityListToData(apiEntitiesFeatureRef01List), map[string]any{"id": apiEntitiesFeatureRef01Data["id"]})
+		if vs.IsEmpty(foundItem) {
+			t.Fatal("expected to find created entity in list")
 		}
 
 	})

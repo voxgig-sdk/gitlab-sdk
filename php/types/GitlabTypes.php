@@ -15,6 +15,7 @@ declare(strict_types=1);
 /** AccessRequest entity data model. */
 class AccessRequest
 {
+    public ?string $id = null;
 }
 
 /** Request payload for AccessRequest#remove. */
@@ -1410,6 +1411,7 @@ class ApiEntitiesCiRunnerRegistrationDetailCreateData
 /** ApiEntitiesCiSecureFile entity data model. */
 class ApiEntitiesCiSecureFile
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ApiEntitiesCiSecureFile#load. */
@@ -1423,6 +1425,7 @@ class ApiEntitiesCiSecureFileLoadMatch
 class ApiEntitiesCiSecureFileCreateData
 {
     public string $project_id;
+    public ?string $id = null;
 }
 
 /** ApiEntitiesCiVariable entity data model. */
@@ -1431,6 +1434,7 @@ class ApiEntitiesCiVariable
     public ?string $description = null;
     public ?string $environment_scope = null;
     public ?bool $hidden = null;
+    public ?string $id = null;
     public ?string $key = null;
     public ?bool $masked = null;
     public ?bool $protected = null;
@@ -1460,6 +1464,7 @@ class ApiEntitiesCiVariableCreateData
     public ?string $description = null;
     public ?string $environment_scope = null;
     public ?bool $hidden = null;
+    public ?string $id = null;
     public ?string $key = null;
     public ?bool $masked = null;
     public ?bool $protected = null;
@@ -2428,6 +2433,7 @@ class ApiEntitiesDeploymentsApprovalCreateData
 class ApiEntitiesDictionaryTable
 {
     public ?array $feature_categories = null;
+    public ?string $id = null;
     public ?string $table_name = null;
 }
 
@@ -2725,6 +2731,7 @@ class ApiEntitiesFeature
 {
     public ?array $definition = null;
     public ?array $gates = null;
+    public ?string $id = null;
     public ?string $name = null;
     public ?string $state = null;
 }
@@ -2734,6 +2741,7 @@ class ApiEntitiesFeatureListMatch
 {
     public ?array $definition = null;
     public ?array $gates = null;
+    public ?string $id = null;
     public ?string $name = null;
     public ?string $state = null;
 }
@@ -3437,6 +3445,7 @@ class ApiEntitiesHookUpdateData
 /** ApiEntitiesIntegration entity data model. */
 class ApiEntitiesIntegration
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ApiEntitiesIntegration#load. */
@@ -3516,6 +3525,7 @@ class ApiEntitiesInvitation
     public ?string $created_at = null;
     public ?string $created_by_name = null;
     public ?string $expires_at = null;
+    public ?string $id = null;
     public ?string $invite_email = null;
     public ?string $invite_token = null;
     public ?string $user_name = null;
@@ -3535,6 +3545,7 @@ class ApiEntitiesInvitationCreateData
     public ?string $created_at = null;
     public ?string $created_by_name = null;
     public ?string $expires_at = null;
+    public ?string $id = null;
     public ?string $invite_email = null;
     public ?string $invite_token = null;
     public ?string $user_name = null;
@@ -3788,6 +3799,7 @@ class ApiEntitiesIssueUpdateData
 /** ApiEntitiesIssueLink entity data model. */
 class ApiEntitiesIssueLink
 {
+    public ?string $id = null;
     public ?string $link_type = null;
     public ?array $source_issue = null;
     public ?array $target_issue = null;
@@ -3806,6 +3818,7 @@ class ApiEntitiesIssueLinkCreateData
 {
     public string $issue_id;
     public string $project_id;
+    public ?string $id = null;
     public ?string $link_type = null;
     public ?array $source_issue = null;
     public ?array $target_issue = null;
@@ -3818,6 +3831,7 @@ class ApiEntitiesLicense
     public ?string $content = null;
     public ?string $description = null;
     public ?string $html_url = null;
+    public ?string $id = null;
     public ?string $key = null;
     public ?array $limitations = null;
     public ?string $name = null;
@@ -4960,6 +4974,7 @@ class ApiEntitiesPackagesConanRecipeRevisionListMatch
 /** ApiEntitiesPackagesConanRecipeSnapshot entity data model. */
 class ApiEntitiesPackagesConanRecipeSnapshot
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ApiEntitiesPackagesConanRecipeSnapshot#load. */
@@ -5078,6 +5093,7 @@ class ApiEntitiesPagesDomain
     public ?string $domain = null;
     public ?string $enabled_until = null;
     public ?string $expired = null;
+    public ?string $id = null;
     public ?string $subject = null;
     public ?string $url = null;
     public ?string $verification_code = null;
@@ -5107,6 +5123,7 @@ class ApiEntitiesPagesDomainCreateData
     public ?string $domain = null;
     public ?string $enabled_until = null;
     public ?string $expired = null;
+    public ?string $id = null;
     public ?string $subject = null;
     public ?string $url = null;
     public ?string $verification_code = null;
@@ -5124,6 +5141,7 @@ class ApiEntitiesPagesDomainUpdateData
     public ?string $domain = null;
     public ?string $enabled_until = null;
     public ?string $expired = null;
+    public ?string $id = null;
     public ?string $subject = null;
     public ?string $url = null;
     public ?string $verification_code = null;
@@ -6596,6 +6614,7 @@ class ApiEntitiesRelease
     public ?string $description = null;
     public ?string $description_html = null;
     public ?array $evidences = null;
+    public ?string $id = null;
     public ?array $links = null;
     public ?array $milestones = null;
     public ?string $name = null;
@@ -6631,6 +6650,7 @@ class ApiEntitiesReleaseCreateData
     public ?string $description = null;
     public ?string $description_html = null;
     public ?array $evidences = null;
+    public ?string $id = null;
     public ?array $links = null;
     public ?array $milestones = null;
     public ?string $name = null;
@@ -7063,6 +7083,7 @@ class ApiEntitiesTag
 {
     public ?array $commit = null;
     public ?string $created_at = null;
+    public ?string $id = null;
     public ?string $message = null;
     public ?string $name = null;
     public ?bool $protected = null;
@@ -7089,6 +7110,7 @@ class ApiEntitiesTagCreateData
     public string $project_id;
     public ?array $commit = null;
     public ?string $created_at = null;
+    public ?string $id = null;
     public ?string $message = null;
     public ?string $name = null;
     public ?bool $protected = null;
@@ -7415,6 +7437,7 @@ class ApiEntitiesWikiPageBasicListMatch
 /** Application entity data model. */
 class Application
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Application#remove. */
@@ -7426,6 +7449,7 @@ class ApplicationRemoveMatch
 /** AwardEmoji entity data model. */
 class AwardEmoji
 {
+    public ?string $id = null;
 }
 
 /** Request payload for AwardEmoji#remove. */
@@ -7444,6 +7468,7 @@ class AwardEmojiRemoveMatch
 /** Badge entity data model. */
 class Badge
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Badge#remove. */
@@ -7457,6 +7482,7 @@ class BadgeRemoveMatch
 /** Branch entity data model. */
 class Branch
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Branch#remove. */
@@ -7480,6 +7506,7 @@ class CargoPackageLoadMatch
 /** CiVariable entity data model. */
 class CiVariable
 {
+    public ?string $id = null;
 }
 
 /** Request payload for CiVariable#remove. */
@@ -7493,6 +7520,7 @@ class CiVariableRemoveMatch
 /** Cluster entity data model. */
 class Cluster
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Cluster#remove. */
@@ -7506,6 +7534,7 @@ class ClusterRemoveMatch
 /** ClusterAgent entity data model. */
 class ClusterAgent
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ClusterAgent#remove. */
@@ -7542,6 +7571,7 @@ class ComposerPackageLoadMatch
 /** Conan entity data model. */
 class Conan
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Conan#remove. */
@@ -7557,6 +7587,7 @@ class ConanRemoveMatch
 /** ConanPackage entity data model. */
 class ConanPackage
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ConanPackage#load. */
@@ -7629,6 +7660,7 @@ class ContainerRegistryEventCreateData
 /** CustomAttribute entity data model. */
 class CustomAttribute
 {
+    public ?string $id = null;
     public ?string $key = null;
     public ?string $value = null;
 }
@@ -7643,6 +7675,7 @@ class CustomAttributeLoadMatch
 /** Debian entity data model. */
 class Debian
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Debian#update. */
@@ -7655,6 +7688,7 @@ class DebianUpdateData
 /** DebianDistribution entity data model. */
 class DebianDistribution
 {
+    public ?string $id = null;
 }
 
 /** Request payload for DebianDistribution#remove. */
@@ -7668,6 +7702,7 @@ class DebianDistributionRemoveMatch
 /** DebianPackage entity data model. */
 class DebianPackage
 {
+    public ?string $id = null;
 }
 
 /** Request payload for DebianPackage#load. */
@@ -7686,6 +7721,7 @@ class DebianPackageUpdateData
 {
     public mixed $file_name;
     public string $project_id;
+    public ?string $id = null;
 }
 
 /** DependencyProxy entity data model. */
@@ -7702,6 +7738,7 @@ class DependencyProxyRemoveMatch
 /** DeployKey entity data model. */
 class DeployKey
 {
+    public ?string $id = null;
 }
 
 /** Request payload for DeployKey#remove. */
@@ -7714,6 +7751,7 @@ class DeployKeyRemoveMatch
 /** DeployToken entity data model. */
 class DeployToken
 {
+    public ?string $id = null;
 }
 
 /** Request payload for DeployToken#remove. */
@@ -7727,6 +7765,7 @@ class DeployTokenRemoveMatch
 /** Deployment entity data model. */
 class Deployment
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Deployment#remove. */
@@ -8385,12 +8424,14 @@ class EeApiEntitiesSshCertificateCreateData
 /** Environment entity data model. */
 class Environment
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Environment#create. */
 class EnvironmentCreateData
 {
     public string $project_id;
+    public ?string $id = null;
 }
 
 /** Request payload for Environment#remove. */
@@ -8403,6 +8444,7 @@ class EnvironmentRemoveMatch
 /** ErrorTrackingClientKey entity data model. */
 class ErrorTrackingClientKey
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ErrorTrackingClientKey#remove. */
@@ -8415,6 +8457,7 @@ class ErrorTrackingClientKeyRemoveMatch
 /** Feature entity data model. */
 class Feature
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Feature#remove. */
@@ -8426,6 +8469,7 @@ class FeatureRemoveMatch
 /** FeatureFlag entity data model. */
 class FeatureFlag
 {
+    public ?string $id = null;
 }
 
 /** Request payload for FeatureFlag#load. */
@@ -8438,6 +8482,7 @@ class FeatureFlagLoadMatch
 class FeatureFlagCreateData
 {
     public string $unleash_id;
+    public ?string $id = null;
 }
 
 /** Request payload for FeatureFlag#remove. */
@@ -8450,6 +8495,7 @@ class FeatureFlagRemoveMatch
 /** FeatureFlagsUserList entity data model. */
 class FeatureFlagsUserList
 {
+    public ?string $id = null;
 }
 
 /** Request payload for FeatureFlagsUserList#remove. */
@@ -8462,6 +8508,7 @@ class FeatureFlagsUserListRemoveMatch
 /** FreezePeriod entity data model. */
 class FreezePeriod
 {
+    public ?string $id = null;
 }
 
 /** Request payload for FreezePeriod#remove. */
@@ -8524,6 +8571,7 @@ class GoProxyLoadMatch
 /** Group entity data model. */
 class Group
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Group#load. */
@@ -8565,6 +8613,7 @@ class GroupRemoveMatch
 /** GroupAvatar entity data model. */
 class GroupAvatar
 {
+    public ?string $id = null;
 }
 
 /** Request payload for GroupAvatar#load. */
@@ -8576,6 +8625,7 @@ class GroupAvatarLoadMatch
 /** GroupExport entity data model. */
 class GroupExport
 {
+    public ?string $id = null;
 }
 
 /** Request payload for GroupExport#load. */
@@ -8625,6 +8675,7 @@ class HelmPackageCreateData
 /** Hook entity data model. */
 class Hook
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Hook#create. */
@@ -8660,11 +8711,13 @@ class ImportCreateData
 /** Integration entity data model. */
 class Integration
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Integration#create. */
 class IntegrationCreateData
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Integration#remove. */
@@ -8677,6 +8730,7 @@ class IntegrationRemoveMatch
 /** Invitation entity data model. */
 class Invitation
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Invitation#remove. */
@@ -8690,6 +8744,7 @@ class InvitationRemoveMatch
 /** IssueLink entity data model. */
 class IssueLink
 {
+    public ?string $id = null;
 }
 
 /** Request payload for IssueLink#remove. */
@@ -8713,6 +8768,7 @@ class IssuesStatisticLoadMatch
 /** Job entity data model. */
 class Job
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Job#load. */
@@ -8724,6 +8780,7 @@ class JobLoadMatch
 /** Request payload for Job#create. */
 class JobCreateData
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Job#update. */
@@ -8755,6 +8812,7 @@ class MavenPackageUpdateData
 /** Member entity data model. */
 class Member
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Member#remove. */
@@ -8768,6 +8826,7 @@ class MemberRemoveMatch
 /** MergeRequest entity data model. */
 class MergeRequest
 {
+    public ?string $id = null;
 }
 
 /** Request payload for MergeRequest#load. */
@@ -8844,6 +8903,7 @@ class MlModelRegistryUpdateData
 /** Namespace entity data model. */
 class NamespaceType
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Namespace#remove. */
@@ -8855,6 +8915,7 @@ class NamespaceRemoveMatch
 /** Npm entity data model. */
 class Npm
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Npm#update. */
@@ -8971,6 +9032,7 @@ class NugetPackageRemoveMatch
 /** PackageFile entity data model. */
 class PackageFile
 {
+    public ?string $id = null;
 }
 
 /** Request payload for PackageFile#load. */
@@ -9030,6 +9092,7 @@ class ParticipantListMatch
 /** PersonalAccessToken entity data model. */
 class PersonalAccessToken
 {
+    public ?string $id = null;
 }
 
 /** Request payload for PersonalAccessToken#remove. */
@@ -9177,6 +9240,7 @@ class ProjectRemoveMatch
 /** ProjectAvatar entity data model. */
 class ProjectAvatar
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ProjectAvatar#load. */
@@ -9198,6 +9262,7 @@ class ProjectEntityCreateData
 /** ProjectExport entity data model. */
 class ProjectExport
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ProjectExport#load. */
@@ -9215,6 +9280,7 @@ class ProjectExportCreateData
 /** ProjectHook entity data model. */
 class ProjectHook
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ProjectHook#remove. */
@@ -9273,6 +9339,7 @@ class ProjectImportEntityCreateData
 /** ProjectPackage entity data model. */
 class ProjectPackage
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ProjectPackage#remove. */
@@ -9285,6 +9352,7 @@ class ProjectPackageRemoveMatch
 /** ProjectSnippet entity data model. */
 class ProjectSnippet
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ProjectSnippet#remove. */
@@ -9316,6 +9384,7 @@ class ProjectsJobTokenScopeRemoveMatch
 /** ProtectedTag entity data model. */
 class ProtectedTag
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ProtectedTag#remove. */
@@ -9356,6 +9425,7 @@ class PypiPackageCreateData
 /** Release entity data model. */
 class Release
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Release#load. */
@@ -9374,6 +9444,7 @@ class ReleaseRemoveMatch
 /** ReleaseLink entity data model. */
 class ReleaseLink
 {
+    public ?string $id = null;
 }
 
 /** Request payload for ReleaseLink#remove. */
@@ -9387,6 +9458,7 @@ class ReleaseLinkRemoveMatch
 /** RemoteMirror entity data model. */
 class RemoteMirror
 {
+    public ?string $id = null;
 }
 
 /** Request payload for RemoteMirror#load. */
@@ -9441,6 +9513,7 @@ class RpmPackageCreateData
 /** Rubygem entity data model. */
 class Rubygem
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Rubygem#load. */
@@ -9471,11 +9544,13 @@ class RubygemPackageCreateData
 /** Runner entity data model. */
 class Runner
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Runner#create. */
 class RunnerCreateData
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Runner#remove. */
@@ -9497,6 +9572,7 @@ class SearchLoadMatch
 /** SecureFile entity data model. */
 class SecureFile
 {
+    public ?string $id = null;
 }
 
 /** Request payload for SecureFile#load. */
@@ -9526,6 +9602,7 @@ class SlackCreateData
 /** Snippet entity data model. */
 class Snippet
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Snippet#load. */
@@ -9566,6 +9643,7 @@ class StarrerListMatch
 /** SystemHook entity data model. */
 class SystemHook
 {
+    public ?string $id = null;
 }
 
 /** Request payload for SystemHook#remove. */
@@ -9577,6 +9655,7 @@ class SystemHookRemoveMatch
 /** Tag entity data model. */
 class Tag
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Tag#remove. */
@@ -9589,6 +9668,7 @@ class TagRemoveMatch
 /** TerraformRegistry entity data model. */
 class TerraformRegistry
 {
+    public ?string $id = null;
 }
 
 /** Request payload for TerraformRegistry#load. */
@@ -9608,11 +9688,13 @@ class TerraformRegistryUpdateData
     public string $module_id;
     public mixed $module_system;
     public string $project_id;
+    public ?string $id = null;
 }
 
 /** TerraformState entity data model. */
 class TerraformState
 {
+    public ?string $id = null;
 }
 
 /** Request payload for TerraformState#load. */
@@ -9680,6 +9762,7 @@ class TestReportSummaryLoadMatch
 /** Topic entity data model. */
 class Topic
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Topic#remove. */
@@ -9691,6 +9774,7 @@ class TopicRemoveMatch
 /** UnleashApi entity data model. */
 class UnleashApi
 {
+    public ?string $id = null;
 }
 
 /** Request payload for UnleashApi#load. */
@@ -9748,6 +9832,7 @@ class WebCommitLoadMatch
 /** Wiki entity data model. */
 class Wiki
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Wiki#remove. */

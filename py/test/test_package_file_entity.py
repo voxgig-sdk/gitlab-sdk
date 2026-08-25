@@ -48,9 +48,13 @@ class TestPackageFileEntity:
 
         # LOAD
         package_file_ref01_ent = client.PackageFile(None)
-        package_file_ref01_match_dt0 = {}
+        package_file_ref01_match_dt0 = {
+            "id": package_file_ref01_data["id"],
+        }
         package_file_ref01_data_dt0_loaded = package_file_ref01_ent.load(package_file_ref01_match_dt0, None)
-        assert package_file_ref01_data_dt0_loaded is not None
+        package_file_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(package_file_ref01_data_dt0_loaded))
+        assert package_file_ref01_data_dt0_load_result is not None
+        assert package_file_ref01_data_dt0_load_result["id"] == package_file_ref01_data["id"]
 
 
 

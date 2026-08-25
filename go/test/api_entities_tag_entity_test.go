@@ -111,6 +111,9 @@ func TestApiEntitiesTagEntity(t *testing.T) {
 		if apiEntitiesTagRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if apiEntitiesTagRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 		// LIST
 		apiEntitiesTagRef01Match := map[string]any{
@@ -121,19 +124,30 @@ func TestApiEntitiesTagEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("list failed: %v", err)
 		}
-		_, apiEntitiesTagRef01ListOk := apiEntitiesTagRef01ListResult.([]any)
+		apiEntitiesTagRef01List, apiEntitiesTagRef01ListOk := apiEntitiesTagRef01ListResult.([]any)
 		if !apiEntitiesTagRef01ListOk {
 			t.Fatalf("expected list result to be an array, got %T", apiEntitiesTagRef01ListResult)
 		}
 
+		foundItem := vs.Select(entityListToData(apiEntitiesTagRef01List), map[string]any{"id": apiEntitiesTagRef01Data["id"]})
+		if vs.IsEmpty(foundItem) {
+			t.Fatal("expected to find created entity in list")
+		}
+
 		// LOAD
-		apiEntitiesTagRef01MatchDt0 := map[string]any{}
+		apiEntitiesTagRef01MatchDt0 := map[string]any{
+			"id": apiEntitiesTagRef01Data["id"],
+		}
 		apiEntitiesTagRef01DataDt0Loaded, err := apiEntitiesTagRef01Ent.Load(apiEntitiesTagRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if apiEntitiesTagRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		apiEntitiesTagRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesTagRef01DataDt0Loaded))
+		if apiEntitiesTagRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if apiEntitiesTagRef01DataDt0LoadResult["id"] != apiEntitiesTagRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

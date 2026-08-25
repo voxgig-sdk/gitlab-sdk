@@ -1187,6 +1187,12 @@ same parameters as `direct()`.
 local access_request = client:AccessRequest(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -3687,6 +3693,12 @@ Return the entity name.
 local api_entities_ci_secure_file = client:ApiEntitiesCiSecureFile(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl) -> any, err`
@@ -3750,6 +3762,7 @@ local api_entities_ci_variable = client:ApiEntitiesCiVariable(nil)
 | `description` | `string` | No |  |
 | `environment_scope` | `string` | No |  |
 | `hidden` | `boolean` | No |  |
+| `id` | `string` | No |  |
 | `key` | `string` | No |  |
 | `masked` | `boolean` | No |  |
 | `protected` | `boolean` | No |  |
@@ -5550,6 +5563,7 @@ local api_entities_dictionary_table = client:ApiEntitiesDictionaryTable(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `feature_categories` | `table` | No |  |
+| `id` | `string` | No |  |
 | `table_name` | `string` | No |  |
 
 ### Operations
@@ -6123,6 +6137,7 @@ local api_entities_feature = client:ApiEntitiesFeature(nil)
 | --- | --- | --- | --- |
 | `definition` | `table` | No | API_Entities_Feature_Definition model |
 | `gates` | `table` | No |  |
+| `id` | `string` | No |  |
 | `name` | `string` | No |  |
 | `state` | `string` | No |  |
 
@@ -6969,6 +6984,12 @@ Return the entity name.
 local api_entities_integration = client:ApiEntitiesIntegration(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -7108,6 +7129,7 @@ local api_entities_invitation = client:ApiEntitiesInvitation(nil)
 | `created_at` | `string` | No |  |
 | `created_by_name` | `string` | No |  |
 | `expires_at` | `string` | No |  |
+| `id` | `string` | No |  |
 | `invite_email` | `string` | No |  |
 | `invite_token` | `string` | No |  |
 | `user_name` | `string` | No |  |
@@ -7372,6 +7394,7 @@ local api_entities_issue_link = client:ApiEntitiesIssueLink(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `link_type` | `string` | No |  |
 | `source_issue` | `table` | No |  |
 | `target_issue` | `table` | No |  |
@@ -7441,6 +7464,7 @@ local api_entities_license = client:ApiEntitiesLicense(nil)
 | `content` | `string` | No |  |
 | `description` | `string` | No |  |
 | `html_url` | `string` | No |  |
+| `id` | `string` | No |  |
 | `key` | `string` | No |  |
 | `limitations` | `table` | No |  |
 | `name` | `string` | No |  |
@@ -9486,6 +9510,12 @@ Return the entity name.
 local api_entities_packages_conan_recipe_snapshot = client:ApiEntitiesPackagesConanRecipeSnapshot(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -9736,6 +9766,7 @@ local api_entities_pages_domain = client:ApiEntitiesPagesDomain(nil)
 | `domain` | `string` | No |  |
 | `enabled_until` | `string` | No |  |
 | `expired` | `string` | No |  |
+| `id` | `string` | No |  |
 | `subject` | `string` | No |  |
 | `url` | `string` | No |  |
 | `verification_code` | `string` | No |  |
@@ -9775,6 +9806,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:ApiEntitiesPagesDomain():update({
+  id = "api_entities_pages_domain_id",
   domain_id = "domain_id",
   project_id = "project_id",
   -- Fields to update
@@ -11838,6 +11870,7 @@ local api_entities_release = client:ApiEntitiesRelease(nil)
 | `description` | `string` | No |  |
 | `description_html` | `string` | No |  |
 | `evidences` | `table` | No |  |
+| `id` | `string` | No |  |
 | `links` | `table` | No |  |
 | `milestones` | `table` | No |  |
 | `name` | `string` | No |  |
@@ -12622,6 +12655,7 @@ local api_entities_tag = client:ApiEntitiesTag(nil)
 | --- | --- | --- | --- |
 | `commit` | `table` | No | API_Entities_Commit model |
 | `created_at` | `string` | No |  |
+| `id` | `string` | No |  |
 | `message` | `string` | No |  |
 | `name` | `string` | No |  |
 | `protected` | `boolean` | No |  |
@@ -13452,6 +13486,12 @@ Return the entity name.
 local application = client:Application(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -13497,6 +13537,12 @@ Return the entity name.
 ```lua
 local award_emoji = client:AwardEmoji(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -13544,6 +13590,12 @@ Return the entity name.
 local badge = client:Badge(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -13589,6 +13641,12 @@ Return the entity name.
 ```lua
 local branch = client:Branch(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -13682,6 +13740,12 @@ Return the entity name.
 local ci_variable = client:CiVariable(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -13728,6 +13792,12 @@ Return the entity name.
 local cluster = client:Cluster(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -13773,6 +13843,12 @@ Return the entity name.
 ```lua
 local cluster_agent = client:ClusterAgent(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -13914,6 +13990,12 @@ Return the entity name.
 local conan = client:Conan(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -13959,6 +14041,12 @@ Return the entity name.
 ```lua
 local conan_package = client:ConanPackage(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -14125,6 +14213,7 @@ local custom_attribute = client:CustomAttribute(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `key` | `string` | No |  |
 | `value` | `string` | No |  |
 
@@ -14173,6 +14262,12 @@ Return the entity name.
 ```lua
 local debian = client:Debian(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -14224,6 +14319,12 @@ Return the entity name.
 local debian_distribution = client:DebianDistribution(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -14270,6 +14371,12 @@ Return the entity name.
 local debian_package = client:DebianPackage(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -14286,6 +14393,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:DebianPackage():update({
+  id = "debian_package_id",
   file_name = "file_name",
   project_id = "project_id",
   -- Fields to update
@@ -14374,6 +14482,12 @@ Return the entity name.
 local deploy_key = client:DeployKey(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -14420,6 +14534,12 @@ Return the entity name.
 local deploy_token = client:DeployToken(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -14465,6 +14585,12 @@ Return the entity name.
 ```lua
 local deployment = client:Deployment(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15234,6 +15360,12 @@ Return the entity name.
 local environment = client:Environment(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl) -> any, err`
@@ -15290,6 +15422,12 @@ Return the entity name.
 local error_tracking_client_key = client:ErrorTrackingClientKey(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -15336,6 +15474,12 @@ Return the entity name.
 local feature = client:Feature(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -15381,6 +15525,12 @@ Return the entity name.
 ```lua
 local feature_flag = client:FeatureFlag(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15446,6 +15596,12 @@ Return the entity name.
 local feature_flags_user_list = client:FeatureFlagsUserList(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -15491,6 +15647,12 @@ Return the entity name.
 ```lua
 local freeze_period = client:FreezePeriod(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15698,6 +15860,12 @@ Return the entity name.
 local group = client:Group(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl) -> any, err`
@@ -15773,6 +15941,12 @@ Return the entity name.
 local group_avatar = client:GroupAvatar(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -15818,6 +15992,12 @@ Return the entity name.
 ```lua
 local group_export = client:GroupExport(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -15978,6 +16158,12 @@ Return the entity name.
 local hook = client:Hook(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl) -> any, err`
@@ -16093,6 +16279,12 @@ Return the entity name.
 local integration = client:Integration(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl) -> any, err`
@@ -16148,6 +16340,12 @@ Return the entity name.
 local invitation = client:Invitation(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -16193,6 +16391,12 @@ Return the entity name.
 ```lua
 local issue_link = client:IssueLink(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16285,6 +16489,12 @@ Return the entity name.
 ```lua
 local job = client:Job(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16410,6 +16620,12 @@ Return the entity name.
 local member = client:Member(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -16455,6 +16671,12 @@ Return the entity name.
 ```lua
 local merge_request = client:MergeRequest(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16684,6 +16906,12 @@ Return the entity name.
 local namespace = client:Namespace(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -16729,6 +16957,12 @@ Return the entity name.
 ```lua
 local npm = client:Npm(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -16997,6 +17231,12 @@ Return the entity name.
 local package_file = client:PackageFile(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -17169,6 +17409,12 @@ Return the entity name.
 local personal_access_token = client:PersonalAccessToken(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -17317,6 +17563,12 @@ Return the entity name.
 local project_avatar = client:ProjectAvatar(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -17410,6 +17662,12 @@ Return the entity name.
 local project_export = client:ProjectExport(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl) -> any, err`
@@ -17465,6 +17723,12 @@ Return the entity name.
 ```lua
 local project_hook = client:ProjectHook(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -17624,6 +17888,12 @@ Return the entity name.
 local project_package = client:ProjectPackage(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -17669,6 +17939,12 @@ Return the entity name.
 ```lua
 local project_snippet = client:ProjectSnippet(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -17772,6 +18048,12 @@ Return the entity name.
 ```lua
 local protected_tag = client:ProtectedTag(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -17923,6 +18205,12 @@ Return the entity name.
 local release = client:Release(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -17977,6 +18265,12 @@ Return the entity name.
 local release_link = client:ReleaseLink(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -18022,6 +18316,12 @@ Return the entity name.
 ```lua
 local remote_mirror = client:RemoteMirror(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18192,6 +18492,12 @@ Return the entity name.
 local rubygem = client:Rubygem(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -18294,6 +18600,12 @@ Return the entity name.
 local runner = client:Runner(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl) -> any, err`
@@ -18395,6 +18707,12 @@ Return the entity name.
 local secure_file = client:SecureFile(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -18495,6 +18813,12 @@ Return the entity name.
 ```lua
 local snippet = client:Snippet(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18611,6 +18935,12 @@ Return the entity name.
 local system_hook = client:SystemHook(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -18656,6 +18986,12 @@ Return the entity name.
 ```lua
 local tag = client:Tag(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18703,6 +19039,12 @@ Return the entity name.
 local terraform_registry = client:TerraformRegistry(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -18719,6 +19061,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:TerraformRegistry():update({
+  id = "terraform_registry_id",
   module_id = "module_id",
   module_system = "module_system",
   project_id = "project_id",
@@ -18761,6 +19104,12 @@ Return the entity name.
 ```lua
 local terraform_state = client:TerraformState(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -18939,6 +19288,12 @@ Return the entity name.
 local topic = client:Topic(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -18984,6 +19339,12 @@ Return the entity name.
 ```lua
 local unleash_api = client:UnleashApi(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 
@@ -19192,6 +19553,12 @@ Return the entity name.
 ```lua
 local wiki = client:Wiki(nil)
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
 
 ### Operations
 

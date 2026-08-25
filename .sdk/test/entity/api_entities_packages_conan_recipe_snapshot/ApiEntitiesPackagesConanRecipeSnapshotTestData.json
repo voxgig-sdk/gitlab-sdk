@@ -2,25 +2,25 @@
   "existing": {
     "api_entities_packages_conan_recipe_snapshot": {
       "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT00": {
+        "id": "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT00",
         "package_channel": "PACKAGE_CHANNEL01",
         "package_name": "PACKAGE_NAME01",
         "package_username": "PACKAGE_USERNAME01",
-        "package_version": "PACKAGE_VERSION01",
-        "id": "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT00"
+        "package_version": "PACKAGE_VERSION01"
       },
       "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT01": {
+        "id": "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT01",
         "package_channel": "PACKAGE_CHANNEL01",
         "package_name": "PACKAGE_NAME01",
         "package_username": "PACKAGE_USERNAME01",
-        "package_version": "PACKAGE_VERSION01",
-        "id": "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT01"
+        "package_version": "PACKAGE_VERSION01"
       },
       "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT02": {
+        "id": "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT02",
         "package_channel": "PACKAGE_CHANNEL01",
         "package_name": "PACKAGE_NAME01",
         "package_username": "PACKAGE_USERNAME01",
-        "package_version": "PACKAGE_VERSION01",
-        "id": "API_ENTITIES_PACKAGES_CONAN_RECIPE_SNAPSHOT02"
+        "package_version": "PACKAGE_VERSION01"
       }
     }
   },

@@ -64,7 +64,18 @@ func TestIntegrationEntity(t *testing.T) {
 		if integrationRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if integrationRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
+		// REMOVE
+		integrationRef01MatchRm0 := map[string]any{
+			"id": integrationRef01Data["id"],
+		}
+		_, err = integrationRef01Ent.Remove(integrationRef01MatchRm0, nil)
+		if err != nil {
+			t.Fatalf("remove failed: %v", err)
+		}
 
 	})
 }

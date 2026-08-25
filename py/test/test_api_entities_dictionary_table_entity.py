@@ -48,9 +48,13 @@ class TestApiEntitiesDictionaryTableEntity:
 
         # LOAD
         api_entities_dictionary_table_ref01_ent = client.ApiEntitiesDictionaryTable(None)
-        api_entities_dictionary_table_ref01_match_dt0 = {}
+        api_entities_dictionary_table_ref01_match_dt0 = {
+            "id": api_entities_dictionary_table_ref01_data["id"],
+        }
         api_entities_dictionary_table_ref01_data_dt0_loaded = api_entities_dictionary_table_ref01_ent.load(api_entities_dictionary_table_ref01_match_dt0, None)
-        assert api_entities_dictionary_table_ref01_data_dt0_loaded is not None
+        api_entities_dictionary_table_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(api_entities_dictionary_table_ref01_data_dt0_loaded))
+        assert api_entities_dictionary_table_ref01_data_dt0_load_result is not None
+        assert api_entities_dictionary_table_ref01_data_dt0_load_result["id"] == api_entities_dictionary_table_ref01_data["id"]
 
 
 

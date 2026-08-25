@@ -1184,6 +1184,12 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 access_request = client.AccessRequest()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -3681,6 +3687,12 @@ Return the entity name.
 api_entities_ci_secure_file = client.ApiEntitiesCiSecureFile()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl=None) -> dict`
@@ -3743,6 +3755,7 @@ api_entities_ci_variable = client.ApiEntitiesCiVariable()
 | `description` | `str` | No |  |
 | `environment_scope` | `str` | No |  |
 | `hidden` | `bool` | No |  |
+| `id` | `str` | No |  |
 | `key` | `str` | No |  |
 | `masked` | `bool` | No |  |
 | `protected` | `bool` | No |  |
@@ -5541,6 +5554,7 @@ api_entities_dictionary_table = client.ApiEntitiesDictionaryTable()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `feature_categories` | `list` | No |  |
+| `id` | `str` | No |  |
 | `table_name` | `str` | No |  |
 
 ### Operations
@@ -6116,6 +6130,7 @@ api_entities_feature = client.ApiEntitiesFeature()
 | --- | --- | --- | --- |
 | `definition` | `dict` | No | API_Entities_Feature_Definition model |
 | `gates` | `dict` | No |  |
+| `id` | `str` | No |  |
 | `name` | `str` | No |  |
 | `state` | `str` | No |  |
 
@@ -6966,6 +6981,12 @@ Return the entity name.
 api_entities_integration = client.ApiEntitiesIntegration()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -7105,6 +7126,7 @@ api_entities_invitation = client.ApiEntitiesInvitation()
 | `created_at` | `str` | No |  |
 | `created_by_name` | `str` | No |  |
 | `expires_at` | `str` | No |  |
+| `id` | `str` | No |  |
 | `invite_email` | `str` | No |  |
 | `invite_token` | `str` | No |  |
 | `user_name` | `str` | No |  |
@@ -7370,6 +7392,7 @@ api_entities_issue_link = client.ApiEntitiesIssueLink()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `str` | No |  |
 | `link_type` | `str` | No |  |
 | `source_issue` | `dict` | No |  |
 | `target_issue` | `dict` | No |  |
@@ -7438,6 +7461,7 @@ api_entities_license = client.ApiEntitiesLicense()
 | `content` | `str` | No |  |
 | `description` | `str` | No |  |
 | `html_url` | `str` | No |  |
+| `id` | `str` | No |  |
 | `key` | `str` | No |  |
 | `limitations` | `list` | No |  |
 | `name` | `str` | No |  |
@@ -9480,6 +9504,12 @@ Return the entity name.
 api_entities_packages_conan_recipe_snapshot = client.ApiEntitiesPackagesConanRecipeSnapshot()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -9728,6 +9758,7 @@ api_entities_pages_domain = client.ApiEntitiesPagesDomain()
 | `domain` | `str` | No |  |
 | `enabled_until` | `str` | No |  |
 | `expired` | `str` | No |  |
+| `id` | `str` | No |  |
 | `subject` | `str` | No |  |
 | `url` | `str` | No |  |
 | `verification_code` | `str` | No |  |
@@ -9769,6 +9800,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.ApiEntitiesPagesDomain().update({
+    "id": "api_entities_pages_domain_id",
     "domain_id": "domain_id",
     "project_id": "project_id",
     # Fields to update
@@ -11832,6 +11864,7 @@ api_entities_release = client.ApiEntitiesRelease()
 | `description` | `str` | No |  |
 | `description_html` | `str` | No |  |
 | `evidences` | `dict` | No |  |
+| `id` | `str` | No |  |
 | `links` | `dict` | No |  |
 | `milestones` | `dict` | No |  |
 | `name` | `str` | No |  |
@@ -12616,6 +12649,7 @@ api_entities_tag = client.ApiEntitiesTag()
 | --- | --- | --- | --- |
 | `commit` | `dict` | No | API_Entities_Commit model |
 | `created_at` | `str` | No |  |
+| `id` | `str` | No |  |
 | `message` | `str` | No |  |
 | `name` | `str` | No |  |
 | `protected` | `bool` | No |  |
@@ -13445,6 +13479,12 @@ Return the entity name.
 application = client.Application()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -13489,6 +13529,12 @@ Return the entity name.
 ```python
 award_emoji = client.AwardEmoji()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -13535,6 +13581,12 @@ Return the entity name.
 badge = client.Badge()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -13579,6 +13631,12 @@ Return the entity name.
 ```python
 branch = client.Branch()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -13670,6 +13728,12 @@ Return the entity name.
 ci_variable = client.CiVariable()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -13715,6 +13779,12 @@ Return the entity name.
 cluster = client.Cluster()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -13759,6 +13829,12 @@ Return the entity name.
 ```python
 cluster_agent = client.ClusterAgent()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -13897,6 +13973,12 @@ Return the entity name.
 conan = client.Conan()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -13941,6 +14023,12 @@ Return the entity name.
 ```python
 conan_package = client.ConanPackage()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -14104,6 +14192,7 @@ custom_attribute = client.CustomAttribute()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `str` | No |  |
 | `key` | `str` | No |  |
 | `value` | `str` | No |  |
 
@@ -14151,6 +14240,12 @@ Return the entity name.
 ```python
 debian = client.Debian()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -14201,6 +14296,12 @@ Return the entity name.
 debian_distribution = client.DebianDistribution()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -14246,6 +14347,12 @@ Return the entity name.
 debian_package = client.DebianPackage()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -14262,6 +14369,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.DebianPackage().update({
+    "id": "debian_package_id",
     "file_name": "file_name",
     "project_id": "project_id",
     # Fields to update
@@ -14348,6 +14456,12 @@ Return the entity name.
 deploy_key = client.DeployKey()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -14393,6 +14507,12 @@ Return the entity name.
 deploy_token = client.DeployToken()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -14437,6 +14557,12 @@ Return the entity name.
 ```python
 deployment = client.Deployment()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -15205,6 +15331,12 @@ Return the entity name.
 environment = client.Environment()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl=None) -> dict`
@@ -15260,6 +15392,12 @@ Return the entity name.
 error_tracking_client_key = client.ErrorTrackingClientKey()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -15305,6 +15443,12 @@ Return the entity name.
 feature = client.Feature()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -15349,6 +15493,12 @@ Return the entity name.
 ```python
 feature_flag = client.FeatureFlag()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -15413,6 +15563,12 @@ Return the entity name.
 feature_flags_user_list = client.FeatureFlagsUserList()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -15457,6 +15613,12 @@ Return the entity name.
 ```python
 freeze_period = client.FreezePeriod()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -15660,6 +15822,12 @@ Return the entity name.
 group = client.Group()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl=None) -> dict`
@@ -15734,6 +15902,12 @@ Return the entity name.
 group_avatar = client.GroupAvatar()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -15778,6 +15952,12 @@ Return the entity name.
 ```python
 group_export = client.GroupExport()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -15935,6 +16115,12 @@ Return the entity name.
 hook = client.Hook()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl=None) -> dict`
@@ -16048,6 +16234,12 @@ Return the entity name.
 integration = client.Integration()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl=None) -> dict`
@@ -16102,6 +16294,12 @@ Return the entity name.
 invitation = client.Invitation()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -16146,6 +16344,12 @@ Return the entity name.
 ```python
 issue_link = client.IssueLink()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -16236,6 +16440,12 @@ Return the entity name.
 ```python
 job = client.Job()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -16359,6 +16569,12 @@ Return the entity name.
 member = client.Member()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -16403,6 +16619,12 @@ Return the entity name.
 ```python
 merge_request = client.MergeRequest()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -16628,6 +16850,12 @@ Return the entity name.
 namespace = client.Namespace()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -16672,6 +16900,12 @@ Return the entity name.
 ```python
 npm = client.Npm()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -16938,6 +17172,12 @@ Return the entity name.
 package_file = client.PackageFile()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -17109,6 +17349,12 @@ Return the entity name.
 personal_access_token = client.PersonalAccessToken()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -17255,6 +17501,12 @@ Return the entity name.
 project_avatar = client.ProjectAvatar()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -17346,6 +17598,12 @@ Return the entity name.
 project_export = client.ProjectExport()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl=None) -> dict`
@@ -17400,6 +17658,12 @@ Return the entity name.
 ```python
 project_hook = client.ProjectHook()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -17556,6 +17820,12 @@ Return the entity name.
 project_package = client.ProjectPackage()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -17600,6 +17870,12 @@ Return the entity name.
 ```python
 project_snippet = client.ProjectSnippet()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -17701,6 +17977,12 @@ Return the entity name.
 ```python
 protected_tag = client.ProtectedTag()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -17849,6 +18131,12 @@ Return the entity name.
 release = client.Release()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -17902,6 +18190,12 @@ Return the entity name.
 release_link = client.ReleaseLink()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -17946,6 +18240,12 @@ Return the entity name.
 ```python
 remote_mirror = client.RemoteMirror()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -18113,6 +18413,12 @@ Return the entity name.
 rubygem = client.Rubygem()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -18213,6 +18519,12 @@ Return the entity name.
 runner = client.Runner()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl=None) -> dict`
@@ -18312,6 +18624,12 @@ Return the entity name.
 secure_file = client.SecureFile()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -18410,6 +18728,12 @@ Return the entity name.
 ```python
 snippet = client.Snippet()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -18526,6 +18850,12 @@ Return the entity name.
 system_hook = client.SystemHook()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -18570,6 +18900,12 @@ Return the entity name.
 ```python
 tag = client.Tag()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -18616,6 +18952,12 @@ Return the entity name.
 terraform_registry = client.TerraformRegistry()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -18632,6 +18974,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.TerraformRegistry().update({
+    "id": "terraform_registry_id",
     "module_id": "module_id",
     "module_system": "module_system",
     "project_id": "project_id",
@@ -18673,6 +19016,12 @@ Return the entity name.
 ```python
 terraform_state = client.TerraformState()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -18850,6 +19199,12 @@ Return the entity name.
 topic = client.Topic()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -18894,6 +19249,12 @@ Return the entity name.
 ```python
 unleash_api = client.UnleashApi()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 
@@ -19100,6 +19461,12 @@ Return the entity name.
 ```python
 wiki = client.Wiki()
 ```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
 
 ### Operations
 

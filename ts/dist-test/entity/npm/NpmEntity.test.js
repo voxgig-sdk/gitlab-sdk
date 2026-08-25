@@ -75,9 +75,10 @@ const utility_1 = require("../../utility");
         // UPDATE
         const npm_ref01_ent = client.Npm();
         const npm_ref01_data_up0 = {};
+        npm_ref01_data_up0.id = npm_ref01_data.id;
         npm_ref01_data_up0['project_id'] = setup.idmap['project_id'];
         const npm_ref01_resdata_up0 = (await npm_ref01_ent.update(npm_ref01_data_up0)).data();
-        (0, node_assert_1.default)(null != npm_ref01_resdata_up0);
+        (0, node_assert_1.default)(npm_ref01_resdata_up0.id === npm_ref01_data_up0.id);
     });
 });
 function basicSetup(extra) {

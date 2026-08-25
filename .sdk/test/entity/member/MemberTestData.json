@@ -2,19 +2,19 @@
   "existing": {
     "member": {
       "MEMBER00": {
+        "id": "MEMBER00",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "MEMBER00"
+        "project_id": "PROJECT01"
       },
       "MEMBER01": {
+        "id": "MEMBER01",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "MEMBER01"
+        "project_id": "PROJECT01"
       },
       "MEMBER02": {
+        "id": "MEMBER02",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "MEMBER02"
+        "project_id": "PROJECT01"
       }
     }
   },

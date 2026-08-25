@@ -43,21 +43,28 @@ describe("JobEntity", function()
     assert.is_nil(err)
     job_ref01_data = helpers.to_map(type(job_ref01_data_result) == 'table' and job_ref01_data_result.data_get and job_ref01_data_result:data_get() or job_ref01_data_result)
     assert.is_not_nil(job_ref01_data)
+    assert.is_not_nil(job_ref01_data["id"])
 
     -- UPDATE
     local job_ref01_data_up0_up = {
+      id = job_ref01_data["id"],
     }
 
     local job_ref01_resdata_up0_result, err = job_ref01_ent:update(job_ref01_data_up0_up, nil)
     assert.is_nil(err)
     local job_ref01_resdata_up0 = helpers.to_map(type(job_ref01_resdata_up0_result) == 'table' and job_ref01_resdata_up0_result.data_get and job_ref01_resdata_up0_result:data_get() or job_ref01_resdata_up0_result)
     assert.is_not_nil(job_ref01_resdata_up0)
+    assert.are.equal(job_ref01_resdata_up0["id"], job_ref01_data_up0_up["id"])
 
     -- LOAD
-    local job_ref01_match_dt0 = {}
+    local job_ref01_match_dt0 = {
+      id = job_ref01_data["id"],
+    }
     local job_ref01_data_dt0_loaded, err = job_ref01_ent:load(job_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(job_ref01_data_dt0_loaded)
+    local job_ref01_data_dt0_load_result = helpers.to_map(type(job_ref01_data_dt0_loaded) == 'table' and job_ref01_data_dt0_loaded.data_get and job_ref01_data_dt0_loaded:data_get() or job_ref01_data_dt0_loaded)
+    assert.is_not_nil(job_ref01_data_dt0_load_result)
+    assert.are.equal(job_ref01_data_dt0_load_result["id"], job_ref01_data["id"])
 
   end)
 end)

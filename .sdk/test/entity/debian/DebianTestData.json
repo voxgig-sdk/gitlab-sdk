@@ -2,16 +2,16 @@
   "existing": {
     "debian": {
       "DEBIAN00": {
-        "project_id": "PROJECT01",
-        "id": "DEBIAN00"
+        "id": "DEBIAN00",
+        "project_id": "PROJECT01"
       },
       "DEBIAN01": {
-        "project_id": "PROJECT01",
-        "id": "DEBIAN01"
+        "id": "DEBIAN01",
+        "project_id": "PROJECT01"
       },
       "DEBIAN02": {
-        "project_id": "PROJECT01",
-        "id": "DEBIAN02"
+        "id": "DEBIAN02",
+        "project_id": "PROJECT01"
       }
     }
   },

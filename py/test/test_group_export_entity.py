@@ -46,11 +46,16 @@ class TestGroupExportEntity:
 
         group_export_ref01_data = helpers.to_map(runner.entity_data(group_export_ref01_ent.create(group_export_ref01_data, None)))
         assert group_export_ref01_data is not None
+        assert group_export_ref01_data["id"] is not None
 
         # LOAD
-        group_export_ref01_match_dt0 = {}
+        group_export_ref01_match_dt0 = {
+            "id": group_export_ref01_data["id"],
+        }
         group_export_ref01_data_dt0_loaded = group_export_ref01_ent.load(group_export_ref01_match_dt0, None)
-        assert group_export_ref01_data_dt0_loaded is not None
+        group_export_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(group_export_ref01_data_dt0_loaded))
+        assert group_export_ref01_data_dt0_load_result is not None
+        assert group_export_ref01_data_dt0_load_result["id"] == group_export_ref01_data["id"]
 
 
 

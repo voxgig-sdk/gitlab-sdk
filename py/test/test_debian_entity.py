@@ -49,11 +49,13 @@ class TestDebianEntity:
         # UPDATE
         debian_ref01_ent = client.Debian(None)
         debian_ref01_data_up0_up = {
+            "id": debian_ref01_data["id"],
             "project_id": setup["idmap"]["project_id"],
         }
 
         debian_ref01_resdata_up0 = helpers.to_map(runner.entity_data(debian_ref01_ent.update(debian_ref01_data_up0_up, None)))
         assert debian_ref01_resdata_up0 is not None
+        assert debian_ref01_resdata_up0["id"] == debian_ref01_data_up0_up["id"]
 
 
 

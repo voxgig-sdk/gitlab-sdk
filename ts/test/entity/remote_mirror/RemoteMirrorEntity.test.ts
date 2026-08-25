@@ -65,10 +65,20 @@ describe('RemoteMirrorEntity', async () => {
     remote_mirror_ref01_data['project_id'] = setup.idmap['project01']
 
     remote_mirror_ref01_data = (await remote_mirror_ref01_ent.create(remote_mirror_ref01_data)).data()
-    assert(null != remote_mirror_ref01_data)
+    assert(null != remote_mirror_ref01_data.id)
 
 
+    // LOAD
+    const remote_mirror_ref01_match_dt0: any = {}
+    remote_mirror_ref01_match_dt0.id = remote_mirror_ref01_data.id
+    const remote_mirror_ref01_data_dt0 = (await remote_mirror_ref01_ent.load(remote_mirror_ref01_match_dt0)).data()
+    assert(remote_mirror_ref01_data_dt0.id === remote_mirror_ref01_data.id)
 
+
+    // REMOVE
+    const remote_mirror_ref01_match_rm0: any = { id: remote_mirror_ref01_data.id }
+    await remote_mirror_ref01_ent.remove(remote_mirror_ref01_match_rm0)
+  
 
   })
 })

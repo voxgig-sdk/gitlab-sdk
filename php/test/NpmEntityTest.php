@@ -49,12 +49,14 @@ class NpmEntityTest extends TestCase
         // UPDATE
         $npm_ref01_ent = $client->Npm(null);
         $npm_ref01_data_up0_up = [
+            "id" => $npm_ref01_data["id"],
             "project_id" => $setup["idmap"]["project_id"],
         ];
 
         $npm_ref01_resdata_up0_result = $npm_ref01_ent->update($npm_ref01_data_up0_up, null);
         $npm_ref01_resdata_up0 = Helpers::to_map(is_object($npm_ref01_resdata_up0_result) && method_exists($npm_ref01_resdata_up0_result, 'data_get') ? $npm_ref01_resdata_up0_result->data_get() : $npm_ref01_resdata_up0_result);
         $this->assertNotNull($npm_ref01_resdata_up0);
+        $this->assertEquals($npm_ref01_resdata_up0["id"], $npm_ref01_data_up0_up["id"]);
 
     }
 }

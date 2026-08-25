@@ -44,7 +44,14 @@ describe("EnvironmentEntity", function()
     assert.is_nil(err)
     environment_ref01_data = helpers.to_map(type(environment_ref01_data_result) == 'table' and environment_ref01_data_result.data_get and environment_ref01_data_result:data_get() or environment_ref01_data_result)
     assert.is_not_nil(environment_ref01_data)
+    assert.is_not_nil(environment_ref01_data["id"])
 
+    -- REMOVE
+    local environment_ref01_match_rm0 = {
+      id = environment_ref01_data["id"],
+    }
+    local _, err = environment_ref01_ent:remove(environment_ref01_match_rm0, nil)
+    assert.is_nil(err)
 
   end)
 end)

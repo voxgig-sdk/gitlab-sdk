@@ -44,10 +44,14 @@ describe("PackageFileEntity", function()
 
     -- LOAD
     local package_file_ref01_ent = client:PackageFile(nil)
-    local package_file_ref01_match_dt0 = {}
+    local package_file_ref01_match_dt0 = {
+      id = package_file_ref01_data["id"],
+    }
     local package_file_ref01_data_dt0_loaded, err = package_file_ref01_ent:load(package_file_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(package_file_ref01_data_dt0_loaded)
+    local package_file_ref01_data_dt0_load_result = helpers.to_map(type(package_file_ref01_data_dt0_loaded) == 'table' and package_file_ref01_data_dt0_loaded.data_get and package_file_ref01_data_dt0_loaded:data_get() or package_file_ref01_data_dt0_loaded)
+    assert.is_not_nil(package_file_ref01_data_dt0_load_result)
+    assert.are.equal(package_file_ref01_data_dt0_load_result["id"], package_file_ref01_data["id"])
 
   end)
 end)

@@ -63,9 +63,13 @@ func TestGroupEntity(t *testing.T) {
 		if groupRef01Data == nil {
 			t.Fatal("expected create result to be a map")
 		}
+		if groupRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 		// UPDATE
 		groupRef01DataUp0Up := map[string]any{
+			"id": groupRef01Data["id"],
 		}
 
 		groupRef01ResdataUp0Result, err := groupRef01Ent.Update(groupRef01DataUp0Up, nil)
@@ -76,17 +80,34 @@ func TestGroupEntity(t *testing.T) {
 		if groupRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
+		if groupRef01ResdataUp0["id"] != groupRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
+		}
 
 		// LOAD
-		groupRef01MatchDt0 := map[string]any{}
+		groupRef01MatchDt0 := map[string]any{
+			"id": groupRef01Data["id"],
+		}
 		groupRef01DataDt0Loaded, err := groupRef01Ent.Load(groupRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if groupRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		groupRef01DataDt0LoadResult := core.ToMapAny(entityData(groupRef01DataDt0Loaded))
+		if groupRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if groupRef01DataDt0LoadResult["id"] != groupRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
+		// REMOVE
+		groupRef01MatchRm0 := map[string]any{
+			"id": groupRef01Data["id"],
+		}
+		_, err = groupRef01Ent.Remove(groupRef01MatchRm0, nil)
+		if err != nil {
+			t.Fatalf("remove failed: %v", err)
+		}
 
 	})
 }

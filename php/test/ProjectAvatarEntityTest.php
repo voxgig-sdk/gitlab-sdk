@@ -48,9 +48,13 @@ class ProjectAvatarEntityTest extends TestCase
 
         // LOAD
         $project_avatar_ref01_ent = $client->ProjectAvatar(null);
-        $project_avatar_ref01_match_dt0 = [];
+        $project_avatar_ref01_match_dt0 = [
+            "id" => $project_avatar_ref01_data["id"],
+        ];
         $project_avatar_ref01_data_dt0_loaded = $project_avatar_ref01_ent->load($project_avatar_ref01_match_dt0, null);
-        $this->assertNotNull($project_avatar_ref01_data_dt0_loaded);
+        $project_avatar_ref01_data_dt0_load_result = Helpers::to_map(is_object($project_avatar_ref01_data_dt0_loaded) && method_exists($project_avatar_ref01_data_dt0_loaded, 'data_get') ? $project_avatar_ref01_data_dt0_loaded->data_get() : $project_avatar_ref01_data_dt0_loaded);
+        $this->assertNotNull($project_avatar_ref01_data_dt0_load_result);
+        $this->assertEquals($project_avatar_ref01_data_dt0_load_result["id"], $project_avatar_ref01_data["id"]);
 
     }
 }

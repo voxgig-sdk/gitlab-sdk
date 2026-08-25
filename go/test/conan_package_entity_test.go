@@ -62,6 +62,7 @@ func TestConanPackageEntity(t *testing.T) {
 		// UPDATE
 		conanPackageRef01Ent := client.ConanPackage(nil)
 		conanPackageRef01DataUp0Up := map[string]any{
+			"id": conanPackageRef01Data["id"],
 			"file_id": setup.idmap["file_id"],
 			"package_channel": setup.idmap["package_channel"],
 			"package_username": setup.idmap["package_username"],
@@ -77,15 +78,24 @@ func TestConanPackageEntity(t *testing.T) {
 		if conanPackageRef01ResdataUp0 == nil {
 			t.Fatal("expected update result to be a map")
 		}
+		if conanPackageRef01ResdataUp0["id"] != conanPackageRef01DataUp0Up["id"] {
+			t.Fatal("expected update result id to match")
+		}
 
 		// LOAD
-		conanPackageRef01MatchDt0 := map[string]any{}
+		conanPackageRef01MatchDt0 := map[string]any{
+			"id": conanPackageRef01Data["id"],
+		}
 		conanPackageRef01DataDt0Loaded, err := conanPackageRef01Ent.Load(conanPackageRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if conanPackageRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		conanPackageRef01DataDt0LoadResult := core.ToMapAny(entityData(conanPackageRef01DataDt0Loaded))
+		if conanPackageRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if conanPackageRef01DataDt0LoadResult["id"] != conanPackageRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

@@ -46,19 +46,26 @@ class JobEntityTest extends TestCase
         $job_ref01_data_result = $job_ref01_ent->create($job_ref01_data, null);
         $job_ref01_data = Helpers::to_map(is_object($job_ref01_data_result) && method_exists($job_ref01_data_result, 'data_get') ? $job_ref01_data_result->data_get() : $job_ref01_data_result);
         $this->assertNotNull($job_ref01_data);
+        $this->assertNotNull($job_ref01_data["id"]);
 
         // UPDATE
         $job_ref01_data_up0_up = [
+            "id" => $job_ref01_data["id"],
         ];
 
         $job_ref01_resdata_up0_result = $job_ref01_ent->update($job_ref01_data_up0_up, null);
         $job_ref01_resdata_up0 = Helpers::to_map(is_object($job_ref01_resdata_up0_result) && method_exists($job_ref01_resdata_up0_result, 'data_get') ? $job_ref01_resdata_up0_result->data_get() : $job_ref01_resdata_up0_result);
         $this->assertNotNull($job_ref01_resdata_up0);
+        $this->assertEquals($job_ref01_resdata_up0["id"], $job_ref01_data_up0_up["id"]);
 
         // LOAD
-        $job_ref01_match_dt0 = [];
+        $job_ref01_match_dt0 = [
+            "id" => $job_ref01_data["id"],
+        ];
         $job_ref01_data_dt0_loaded = $job_ref01_ent->load($job_ref01_match_dt0, null);
-        $this->assertNotNull($job_ref01_data_dt0_loaded);
+        $job_ref01_data_dt0_load_result = Helpers::to_map(is_object($job_ref01_data_dt0_loaded) && method_exists($job_ref01_data_dt0_loaded, 'data_get') ? $job_ref01_data_dt0_loaded->data_get() : $job_ref01_data_dt0_loaded);
+        $this->assertNotNull($job_ref01_data_dt0_load_result);
+        $this->assertEquals($job_ref01_data_dt0_load_result["id"], $job_ref01_data["id"]);
 
     }
 }

@@ -2,19 +2,19 @@
   "existing": {
     "ci_variable": {
       "CI_VARIABLE00": {
+        "id": "CI_VARIABLE00",
         "project_id": "PROJECT01",
-        "group_id": "GROUP01",
-        "id": "CI_VARIABLE00"
+        "group_id": "GROUP01"
       },
       "CI_VARIABLE01": {
+        "id": "CI_VARIABLE01",
         "project_id": "PROJECT01",
-        "group_id": "GROUP01",
-        "id": "CI_VARIABLE01"
+        "group_id": "GROUP01"
       },
       "CI_VARIABLE02": {
+        "id": "CI_VARIABLE02",
         "project_id": "PROJECT01",
-        "group_id": "GROUP01",
-        "id": "CI_VARIABLE02"
+        "group_id": "GROUP01"
       }
     }
   },

@@ -45,13 +45,24 @@ describe("RemoteMirrorEntity", function()
     assert.is_nil(err)
     remote_mirror_ref01_data = helpers.to_map(type(remote_mirror_ref01_data_result) == 'table' and remote_mirror_ref01_data_result.data_get and remote_mirror_ref01_data_result:data_get() or remote_mirror_ref01_data_result)
     assert.is_not_nil(remote_mirror_ref01_data)
+    assert.is_not_nil(remote_mirror_ref01_data["id"])
 
     -- LOAD
-    local remote_mirror_ref01_match_dt0 = {}
+    local remote_mirror_ref01_match_dt0 = {
+      id = remote_mirror_ref01_data["id"],
+    }
     local remote_mirror_ref01_data_dt0_loaded, err = remote_mirror_ref01_ent:load(remote_mirror_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(remote_mirror_ref01_data_dt0_loaded)
+    local remote_mirror_ref01_data_dt0_load_result = helpers.to_map(type(remote_mirror_ref01_data_dt0_loaded) == 'table' and remote_mirror_ref01_data_dt0_loaded.data_get and remote_mirror_ref01_data_dt0_loaded:data_get() or remote_mirror_ref01_data_dt0_loaded)
+    assert.is_not_nil(remote_mirror_ref01_data_dt0_load_result)
+    assert.are.equal(remote_mirror_ref01_data_dt0_load_result["id"], remote_mirror_ref01_data["id"])
 
+    -- REMOVE
+    local remote_mirror_ref01_match_rm0 = {
+      id = remote_mirror_ref01_data["id"],
+    }
+    local _, err = remote_mirror_ref01_ent:remove(remote_mirror_ref01_match_rm0, nil)
+    assert.is_nil(err)
 
   end)
 end)

@@ -49,6 +49,7 @@ class ConanPackageEntityTest extends TestCase
         // UPDATE
         $conan_package_ref01_ent = $client->ConanPackage(null);
         $conan_package_ref01_data_up0_up = [
+            "id" => $conan_package_ref01_data["id"],
             "file_id" => $setup["idmap"]["file_id"],
             "package_channel" => $setup["idmap"]["package_channel"],
             "package_username" => $setup["idmap"]["package_username"],
@@ -59,11 +60,16 @@ class ConanPackageEntityTest extends TestCase
         $conan_package_ref01_resdata_up0_result = $conan_package_ref01_ent->update($conan_package_ref01_data_up0_up, null);
         $conan_package_ref01_resdata_up0 = Helpers::to_map(is_object($conan_package_ref01_resdata_up0_result) && method_exists($conan_package_ref01_resdata_up0_result, 'data_get') ? $conan_package_ref01_resdata_up0_result->data_get() : $conan_package_ref01_resdata_up0_result);
         $this->assertNotNull($conan_package_ref01_resdata_up0);
+        $this->assertEquals($conan_package_ref01_resdata_up0["id"], $conan_package_ref01_data_up0_up["id"]);
 
         // LOAD
-        $conan_package_ref01_match_dt0 = [];
+        $conan_package_ref01_match_dt0 = [
+            "id" => $conan_package_ref01_data["id"],
+        ];
         $conan_package_ref01_data_dt0_loaded = $conan_package_ref01_ent->load($conan_package_ref01_match_dt0, null);
-        $this->assertNotNull($conan_package_ref01_data_dt0_loaded);
+        $conan_package_ref01_data_dt0_load_result = Helpers::to_map(is_object($conan_package_ref01_data_dt0_loaded) && method_exists($conan_package_ref01_data_dt0_loaded, 'data_get') ? $conan_package_ref01_data_dt0_loaded->data_get() : $conan_package_ref01_data_dt0_loaded);
+        $this->assertNotNull($conan_package_ref01_data_dt0_load_result);
+        $this->assertEquals($conan_package_ref01_data_dt0_load_result["id"], $conan_package_ref01_data["id"]);
 
     }
 }

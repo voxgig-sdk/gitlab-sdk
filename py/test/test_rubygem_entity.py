@@ -48,9 +48,13 @@ class TestRubygemEntity:
 
         # LOAD
         rubygem_ref01_ent = client.Rubygem(None)
-        rubygem_ref01_match_dt0 = {}
+        rubygem_ref01_match_dt0 = {
+            "id": rubygem_ref01_data["id"],
+        }
         rubygem_ref01_data_dt0_loaded = rubygem_ref01_ent.load(rubygem_ref01_match_dt0, None)
-        assert rubygem_ref01_data_dt0_loaded is not None
+        rubygem_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(rubygem_ref01_data_dt0_loaded))
+        assert rubygem_ref01_data_dt0_load_result is not None
+        assert rubygem_ref01_data_dt0_load_result["id"] == rubygem_ref01_data["id"]
 
 
 

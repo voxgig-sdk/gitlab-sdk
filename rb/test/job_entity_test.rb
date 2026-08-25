@@ -39,19 +39,26 @@ class JobEntityTest < Minitest::Test
     job_ref01_data_result = job_ref01_ent.create(job_ref01_data, nil)
     job_ref01_data = Helpers.to_map(job_ref01_data_result.respond_to?(:data_get) ? job_ref01_data_result.data_get : job_ref01_data_result)
     assert !job_ref01_data.nil?
+    assert !job_ref01_data["id"].nil?
 
     # UPDATE
     job_ref01_data_up0_up = {
+      "id" => job_ref01_data["id"],
     }
 
     job_ref01_resdata_up0_result = job_ref01_ent.update(job_ref01_data_up0_up, nil)
     job_ref01_resdata_up0 = Helpers.to_map(job_ref01_resdata_up0_result.respond_to?(:data_get) ? job_ref01_resdata_up0_result.data_get : job_ref01_resdata_up0_result)
     assert !job_ref01_resdata_up0.nil?
+    assert_equal job_ref01_resdata_up0["id"], job_ref01_data_up0_up["id"]
 
     # LOAD
-    job_ref01_match_dt0 = {}
+    job_ref01_match_dt0 = {
+      "id" => job_ref01_data["id"],
+    }
     job_ref01_data_dt0_loaded = job_ref01_ent.load(job_ref01_match_dt0, nil)
-    assert !job_ref01_data_dt0_loaded.nil?
+    job_ref01_data_dt0_load_result = Helpers.to_map(job_ref01_data_dt0_loaded.respond_to?(:data_get) ? job_ref01_data_dt0_loaded.data_get : job_ref01_data_dt0_loaded)
+    assert !job_ref01_data_dt0_load_result.nil?
+    assert_equal job_ref01_data_dt0_load_result["id"], job_ref01_data["id"]
 
   end
 end

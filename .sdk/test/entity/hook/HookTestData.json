@@ -2,16 +2,16 @@
   "existing": {
     "hook": {
       "HOOK00": {
-        "key": "KEY01",
-        "id": "HOOK00"
+        "id": "HOOK00",
+        "key": "KEY01"
       },
       "HOOK01": {
-        "key": "KEY01",
-        "id": "HOOK01"
+        "id": "HOOK01",
+        "key": "KEY01"
       },
       "HOOK02": {
-        "key": "KEY01",
-        "id": "HOOK02"
+        "id": "HOOK02",
+        "key": "KEY01"
       }
     }
   },

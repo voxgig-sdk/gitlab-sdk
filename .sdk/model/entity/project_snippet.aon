@@ -4,6 +4,19 @@ main: kit: entity: project_snippet: {
 
   alias: field: {}
 
+  fields: [
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
   name: "project_snippet"
   op: {
     remove: {

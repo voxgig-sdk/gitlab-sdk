@@ -2,33 +2,33 @@
   "existing": {
     "custom_attribute": {
       "CUSTOM_ATTRIBUTE00": {
-        "key": "s14",
-        "value": "s15",
+        "id": "CUSTOM_ATTRIBUTE00",
+        "key": "s1f",
+        "value": "s20",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "CUSTOM_ATTRIBUTE00"
+        "project_id": "PROJECT01"
       },
       "CUSTOM_ATTRIBUTE01": {
-        "key": "s28",
-        "value": "s29",
+        "id": "CUSTOM_ATTRIBUTE01",
+        "key": "s3d",
+        "value": "s3e",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "CUSTOM_ATTRIBUTE01"
+        "project_id": "PROJECT01"
       },
       "CUSTOM_ATTRIBUTE02": {
-        "key": "s3c",
-        "value": "s3d",
+        "id": "CUSTOM_ATTRIBUTE02",
+        "key": "s5b",
+        "value": "s5c",
         "group_id": "GROUP01",
-        "project_id": "PROJECT01",
-        "id": "CUSTOM_ATTRIBUTE02"
+        "project_id": "PROJECT01"
       }
     }
   },
   "new": {
     "custom_attribute": {
       "custom_attribute_ref01": {
-        "key": "s50",
-        "value": "s51"
+        "key": "s79",
+        "value": "s7a"
       }
     }
   }
