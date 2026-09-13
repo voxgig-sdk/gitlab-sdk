@@ -1,6 +1,4 @@
 
-const envlocal = __dirname + '/../../../.env.local'
-require('dotenv').config({ quiet: true, path: [envlocal] })
 
 import Path from 'node:path'
 import * as Fs from 'node:fs'
@@ -13,7 +11,9 @@ import { GitlabSDK, BaseFeature, stdutil } from '../../..'
 
 import {
   envOverride,
+  liveClientOptions,
   liveDelay,
+  loadEnvLocal,
   makeCtrl,
   makeMatch,
   makeReqdata,
@@ -21,6 +21,13 @@ import {
   makeValid,
   maybeSkipControl,
 } from '../../utility'
+
+
+// AFTER the imports on purpose: TypeScript hoists `import` above any
+// statement in the emitted CommonJS, so a loader placed above them would
+// run only after every imported module had already been evaluated - and
+// anything reading process.env at module scope would miss these values.
+loadEnvLocal(__dirname + '/../../../.env.local')
 
 
 describe('RemoteMirrorEntity', async () => {
@@ -39,7 +46,7 @@ describe('RemoteMirrorEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['create', 'load', 'remove']) {
+    for (const op of ['load']) {
       if (maybeSkipControl(t, 'entityOp', 'remote_mirror.' + op, live)) return
     }
 
@@ -57,28 +64,15 @@ describe('RemoteMirrorEntity', async () => {
     const isempty = struct.isempty
     const select = struct.select
 
-
-    // CREATE
-    const remote_mirror_ref01_ent = client.RemoteMirror()
-    let remote_mirror_ref01_data = setup.data.new.remote_mirror['remote_mirror_ref01']
-    remote_mirror_ref01_data['mirror_id'] = setup.idmap['mirror01']
-    remote_mirror_ref01_data['project_id'] = setup.idmap['project01']
-
-    remote_mirror_ref01_data = (await remote_mirror_ref01_ent.create(remote_mirror_ref01_data)).data()
-    assert(null != remote_mirror_ref01_data.id)
-
+    let remote_mirror_ref01_data = Object.values(setup.data.existing.remote_mirror)[0] as any
 
     // LOAD
+    const remote_mirror_ref01_ent = client.RemoteMirror()
     const remote_mirror_ref01_match_dt0: any = {}
     remote_mirror_ref01_match_dt0.id = remote_mirror_ref01_data.id
     const remote_mirror_ref01_data_dt0 = (await remote_mirror_ref01_ent.load(remote_mirror_ref01_match_dt0)).data()
     assert(remote_mirror_ref01_data_dt0.id === remote_mirror_ref01_data.id)
 
-
-    // REMOVE
-    const remote_mirror_ref01_match_rm0: any = { id: remote_mirror_ref01_data.id }
-    await remote_mirror_ref01_ent.remove(remote_mirror_ref01_match_rm0)
-  
 
   })
 })
@@ -127,7 +121,7 @@ function basicSetup(extra?: any) {
     'GITLAB_TEST_REMOTE_MIRROR_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
     'GITLAB_TEST_EXPLAIN': 'FALSE',
-    'GITLAB_APIKEY': 'NONE',
+    'GITLAB_APIKEY': '',
   })
 
   idmap = env['GITLAB_TEST_REMOTE_MIRROR_ENTID']
@@ -136,10 +130,18 @@ function basicSetup(extra?: any) {
 
   if (live) {
     client = new GitlabSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
       {
         apikey: env.GITLAB_APIKEY,
       },
-      extra
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {}
     ]))
   }
 

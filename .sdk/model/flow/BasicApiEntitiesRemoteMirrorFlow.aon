@@ -12,7 +12,8 @@ main: kit: flow: BasicApiEntitiesRemoteMirrorFlow:
       }
 
       match: {
-        project_id: "project01"
+        project_id: "project01",
+        remote_mirror_id: "remote_mirror01"
       }
 
       op: "create"

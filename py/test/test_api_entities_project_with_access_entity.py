@@ -27,7 +27,7 @@ class TestApiEntitiesProjectWithAccessEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["load"]:
+        for _op in ["create", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "api_entities_project_with_access." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -39,15 +39,17 @@ class TestApiEntitiesProjectWithAccessEntity:
                         "set GITLAB_TEST_API_ENTITIES_PROJECT_WITH_ACCESS_ENTID JSON to run live")
         client = setup["client"]
 
-        # Bootstrap entity data from existing test data.
-        api_entities_project_with_access_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.api_entities_project_with_access")))
-        api_entities_project_with_access_ref01_data = None
-        if len(api_entities_project_with_access_ref01_data_raw) > 0:
-            api_entities_project_with_access_ref01_data = helpers.to_map(api_entities_project_with_access_ref01_data_raw[0][1])
+        # CREATE
+        api_entities_project_with_access_ref01_ent = client.ApiEntitiesProjectWithAccess(None)
+        api_entities_project_with_access_ref01_data = helpers.to_map(vs.getprop(
+            vs.getpath(setup["data"], "new.api_entities_project_with_access"), "api_entities_project_with_access_ref01"))
+        api_entities_project_with_access_ref01_data["project_id"] = setup["idmap"]["project01"]
+
+        api_entities_project_with_access_ref01_data = helpers.to_map(runner.entity_data(api_entities_project_with_access_ref01_ent.create(api_entities_project_with_access_ref01_data, None)))
+        assert api_entities_project_with_access_ref01_data is not None
+        assert api_entities_project_with_access_ref01_data["id"] is not None
 
         # LOAD
-        api_entities_project_with_access_ref01_ent = client.ApiEntitiesProjectWithAccess(None)
         api_entities_project_with_access_ref01_match_dt0 = {
             "id": api_entities_project_with_access_ref01_data["id"],
         }
@@ -74,7 +76,7 @@ def _api_entities_project_with_access_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["api_entities_project_with_access01", "api_entities_project_with_access02", "api_entities_project_with_access03"],
+        ["api_entities_project_with_access01", "api_entities_project_with_access02", "api_entities_project_with_access03", "project01", "project02", "project03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",
@@ -94,7 +96,7 @@ def _api_entities_project_with_access_basic_setup(extra):
         "GITLAB_TEST_API_ENTITIES_PROJECT_WITH_ACCESS_ENTID": idmap,
         "GITLAB_TEST_LIVE": "FALSE",
         "GITLAB_TEST_EXPLAIN": "FALSE",
-        "GITLAB_APIKEY": "NONE",
+        "GITLAB_APIKEY": "",
     })
 
     idmap_resolved = helpers.to_map(
@@ -104,6 +106,10 @@ def _api_entities_project_with_access_basic_setup(extra):
 
     if env.get("GITLAB_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
                 "apikey": env.get("GITLAB_APIKEY"),
             },

@@ -47,11 +47,16 @@ class GeoEntityTest extends TestCase
         $geo_ref01_data_result = $geo_ref01_ent->create($geo_ref01_data, null);
         $geo_ref01_data = Helpers::to_map(is_object($geo_ref01_data_result) && method_exists($geo_ref01_data_result, 'data_get') ? $geo_ref01_data_result->data_get() : $geo_ref01_data_result);
         $this->assertNotNull($geo_ref01_data);
+        $this->assertNotNull($geo_ref01_data["id"]);
 
         // LOAD
-        $geo_ref01_match_dt0 = [];
+        $geo_ref01_match_dt0 = [
+            "id" => $geo_ref01_data["id"],
+        ];
         $geo_ref01_data_dt0_loaded = $geo_ref01_ent->load($geo_ref01_match_dt0, null);
-        $this->assertNotNull($geo_ref01_data_dt0_loaded);
+        $geo_ref01_data_dt0_load_result = Helpers::to_map(is_object($geo_ref01_data_dt0_loaded) && method_exists($geo_ref01_data_dt0_loaded, 'data_get') ? $geo_ref01_data_dt0_loaded->data_get() : $geo_ref01_data_dt0_loaded);
+        $this->assertNotNull($geo_ref01_data_dt0_load_result);
+        $this->assertEquals($geo_ref01_data_dt0_load_result["id"], $geo_ref01_data["id"]);
 
     }
 }
@@ -85,7 +90,7 @@ function geo_basic_setup($extra)
         "GITLAB_TEST_GEO_ENTID" => $idmap,
         "GITLAB_TEST_LIVE" => "FALSE",
         "GITLAB_TEST_EXPLAIN" => "FALSE",
-        "GITLAB_APIKEY" => "NONE",
+        "GITLAB_APIKEY" => "",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,12 +101,27 @@ function geo_basic_setup($extra)
 
     if ($env["GITLAB_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
+            // FIRST, so the generated fields below win: sdk-test-control.json's
+            // test.client.options adds to the live client, it does not redirect it.
+            Runner::live_client_options(),
             [
                 "apikey" => $env["GITLAB_APIKEY"],
             ],
-            $extra ?? [],
+            // ismap, not a plain "?? []" default: an empty PHP array is a
+            // LIST, and a non-map later entry REPLACES the accumulated map in
+            // merge - so the no-extras call discarded live_client_options()
+            // and the apikey/server map above it.
+            Vs::ismap($extra) ? $extra : new \stdClass(),
         ]);
-        $client = new GitlabSDK(Helpers::to_map($merged_opts));
+        // "?? []" because merge legitimately answers with a stdClass when every
+        // contributing entry is an EMPTY map - an SDK with no apikey and no
+        // server variables generates an empty middle entry, so that is the
+        // common case, not the edge one. to_map returns null for a non-array by
+        // design, and the constructor takes a non-nullable array, so without the
+        // fallback every such SDK died on "must be of type array, null given"
+        // the moment live mode was switched on. Offline mode never reaches this
+        // branch, which is why the offline suite stayed green.
+        $client = new GitlabSDK(Helpers::to_map($merged_opts) ?? []);
     }
 
     $live = $env["GITLAB_TEST_LIVE"] === "TRUE";

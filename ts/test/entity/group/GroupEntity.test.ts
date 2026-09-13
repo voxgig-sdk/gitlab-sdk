@@ -1,6 +1,4 @@
 
-const envlocal = __dirname + '/../../../.env.local'
-require('dotenv').config({ quiet: true, path: [envlocal] })
 
 import Path from 'node:path'
 import * as Fs from 'node:fs'
@@ -13,7 +11,9 @@ import { GitlabSDK, BaseFeature, stdutil } from '../../..'
 
 import {
   envOverride,
+  liveClientOptions,
   liveDelay,
+  loadEnvLocal,
   makeCtrl,
   makeMatch,
   makeReqdata,
@@ -21,6 +21,13 @@ import {
   makeValid,
   maybeSkipControl,
 } from '../../utility'
+
+
+// AFTER the imports on purpose: TypeScript hoists `import` above any
+// statement in the emitted CommonJS, so a loader placed above them would
+// run only after every imported module had already been evaluated - and
+// anything reading process.env at module scope would miss these values.
+loadEnvLocal(__dirname + '/../../../.env.local')
 
 
 describe('GroupEntity', async () => {
@@ -115,7 +122,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['group01','group02','group03','billable_member01','billable_member02','billable_member03','custom_attribute01','custom_attribute02','custom_attribute03','member01','member02','member03','share01','share02','share03','ssh_certificate01','ssh_certificate02','ssh_certificate03','upload01','upload02','upload03'],
+    ['group01','group02','group03','billable_member01','billable_member02','billable_member03','custom_attribute01','custom_attribute02','custom_attribute03','share01','share02','share03','ssh_certificate01','ssh_certificate02','ssh_certificate03','upload01','upload02','upload03'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',
@@ -134,7 +141,7 @@ function basicSetup(extra?: any) {
     'GITLAB_TEST_GROUP_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
     'GITLAB_TEST_EXPLAIN': 'FALSE',
-    'GITLAB_APIKEY': 'NONE',
+    'GITLAB_APIKEY': '',
   })
 
   idmap = env['GITLAB_TEST_GROUP_ENTID']
@@ -143,10 +150,18 @@ function basicSetup(extra?: any) {
 
   if (live) {
     client = new GitlabSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
       {
         apikey: env.GITLAB_APIKEY,
       },
-      extra
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {}
     ]))
   }
 

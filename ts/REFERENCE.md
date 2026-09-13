@@ -3810,6 +3810,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesApplicationWithSecret().create({
+  post_api_v4_application: {},
 })
 ```
 
@@ -3860,7 +3861,7 @@ const api_entities_avatar = client.ApiEntitiesAvatar()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesAvatar().load()
+const result = await client.ApiEntitiesAvatar().load({ email: 'email' })
 ```
 
 ### Common Methods
@@ -3928,6 +3929,7 @@ Create a new entity with the given data.
 const result = await client.ApiEntitiesAwardEmoji().create({
   epic_id: 'example_epic_id',
   group_id: 'example_group_id',
+  post_api_v4_groups_id_epics_epic_iid_award_emoji: {},
 })
 ```
 
@@ -4002,6 +4004,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesBadge().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_badge: {},
 })
 ```
 
@@ -4083,7 +4086,7 @@ const api_entities_basic_badge_detail = client.ApiEntitiesBasicBadgeDetail()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesBasicBadgeDetail().load({ group_id: 'group_id' })
+const result = await client.ApiEntitiesBasicBadgeDetail().load({ image_url: 'image_url', link_url: 'link_url' })
 ```
 
 ### Common Methods
@@ -4129,6 +4132,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesBasicGroupDetail().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_job_token_scope_groups_allowlist: {},
 })
 ```
 
@@ -4204,6 +4208,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesBasicProjectDetail().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_job_token_scope_allowlist: {},
 })
 ```
 
@@ -4308,6 +4313,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesBasicSuccess().create({
+  post_api_v4_integrations_jira_connect_subscription: {},
 })
 ```
 
@@ -4458,6 +4464,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesBranch().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_repository_branch: {},
 })
 ```
 
@@ -4558,6 +4565,11 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesBulkImport().create({
+  configuration_access_token: 'example_configuration_access_token',
+  configuration_url: 'example_configuration_url',
+  entities_destination_namespace: 'example_entities_destination_namespace',
+  entities_source_full_path: 'example_entities_source_full_path',
+  entities_source_type: 'example_entities_source_type',
 })
 ```
 
@@ -4736,7 +4748,7 @@ const api_entities_changelog = client.ApiEntitiesChangelog()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesChangelog().load({ project_id: 'project_id' })
+const result = await client.ApiEntitiesChangelog().load({ project_id: 'project_id', version: 'version' })
 ```
 
 ### Common Methods
@@ -4852,6 +4864,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesCiCatalogResourcesVersion().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_catalog_publish: {},
 })
 ```
 
@@ -5023,6 +5036,7 @@ Create a new entity with the given data.
 const result = await client.ApiEntitiesCiJobBasic().create({
   job_id: 'example_job_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_jobs_job_id_play: {},
 })
 ```
 
@@ -5164,6 +5178,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesCiLintResult().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_ci_lint: {},
 })
 ```
 
@@ -5400,6 +5415,26 @@ const api_entities_ci_pipeline_schedule_detail = client.ApiEntitiesCiPipelineSch
 | `updated_at` | `string` | No |  |
 | `variables` | `Record<string, any>` | No | API_Entities_Ci_Variable model |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `play` | `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/play` | `client.ApiEntitiesCiPipelineScheduleDetail().create({ $action: 'play', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ApiEntitiesCiPipelineScheduleDetail record — check the API definition for its shape.
+
+```ts
+const result = await client.ApiEntitiesCiPipelineScheduleDetail().create({
+  $action: 'play',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -5428,6 +5463,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesCiPipelineScheduleDetail().update({
   pipeline_schedule_id: 'pipeline_schedule_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_pipeline_schedules_pipeline_schedule_id: {},
   // Fields to update
 })
 ```
@@ -5474,6 +5510,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCiResetTokenResult().create({
+  post_api_v4_runners_reset_authentication_token: {},
 })
 ```
 
@@ -5547,6 +5584,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesCiResourceGroup().update({
   id: 'api_entities_ci_resource_group_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_resource_groups_key: {},
   // Fields to update
 })
 ```
@@ -5609,6 +5647,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesCiRunner().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_runner: {},
 })
 ```
 
@@ -5617,7 +5656,7 @@ const result = await client.ApiEntitiesCiRunner().create({
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesCiRunner().load({ id: 1 })
+const result = await client.ApiEntitiesCiRunner().load()
 ```
 
 ### Common Methods
@@ -5702,6 +5741,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.ApiEntitiesCiRunnerDetail().update({
   id: 'api_entities_ci_runner_detail_id',
+  put_api_v4_runners_id: {},
   // Fields to update
 })
 ```
@@ -5808,6 +5848,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCiRunnerRegistrationDetail().create({
+  post_api_v4_runner: {},
 })
 ```
 
@@ -5860,6 +5901,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesCiSecureFile().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_secure_file: {},
 })
 ```
 
@@ -5929,6 +5971,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesCiVariable().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_variable: {},
 })
 ```
 
@@ -6021,6 +6064,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesCluster().create({
+  post_api_v4_admin_clusters_add: {},
 })
 ```
 
@@ -6047,6 +6091,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.ApiEntitiesCluster().update({
   id: 'api_entities_cluster_id',
+  put_api_v4_admin_clusters_cluster_id: {},
   // Fields to update
 })
 ```
@@ -6115,6 +6160,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesClusterGroup().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_clusters_user: {},
 })
 ```
 
@@ -6134,6 +6180,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesClusterGroup().update({
   cluster_id: 'cluster_id',
   group_id: 'group_id',
+  put_api_v4_groups_id_clusters_cluster_id: {},
   // Fields to update
 })
 ```
@@ -6202,6 +6249,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesClusterProject().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_clusters_user: {},
 })
 ```
 
@@ -6221,6 +6269,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesClusterProject().update({
   cluster_id: 'cluster_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_clusters_cluster_id: {},
   // Fields to update
 })
 ```
@@ -6280,6 +6329,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesClustersAgent().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_cluster_agent: {},
 })
 ```
 
@@ -6448,6 +6498,7 @@ Create a new entity with the given data.
 const result = await client.ApiEntitiesClustersAgentTokenWithToken().create({
   cluster_agent_id: 'example_cluster_agent_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_cluster_agents_agent_id_token: {},
 })
 ```
 
@@ -6592,6 +6643,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesCommitDetail().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_repository_commit: {},
 })
 ```
 
@@ -6611,6 +6663,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesCommitDetail().update({
   project_id: 'project_id',
   submodule: 'submodule',
+  put_api_v4_projects_id_repository_submodules_submodule: {},
   // Fields to update
 })
 ```
@@ -6680,6 +6733,7 @@ Create a new entity with the given data.
 const result = await client.ApiEntitiesCommitNote().create({
   project_id: 'example_project_id',
   sha: 'example_sha',
+  post_api_v4_projects_id_repository_commits_sha_comment: {},
 })
 ```
 
@@ -6864,6 +6918,7 @@ Create a new entity with the given data.
 const result = await client.ApiEntitiesCommitStatus().create({
   id: 'example_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_statuses_sha: {},
 })
 ```
 
@@ -6927,7 +6982,7 @@ const api_entities_compare = client.ApiEntitiesCompare()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesCompare().list({ project_id: "example" })
+const results = await client.ApiEntitiesCompare().list({ project_id: "example", from: "example", to: "example" })
 ```
 
 ### Common Methods
@@ -7220,6 +7275,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesDeployKey().create({
+  post_api_v4_deploy_key: {},
 })
 ```
 
@@ -7239,6 +7295,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesDeployKey().update({
   id: 'id',
   project_id: 'project_id',
+  put_api_v4_projects_id_deploy_keys_key_id: {},
   // Fields to update
 })
 ```
@@ -7303,6 +7360,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesDeployKeysProject().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_deploy_key: {},
 })
 ```
 
@@ -7429,6 +7487,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesDeployTokenWithToken().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_deploy_token: {},
 })
 ```
 
@@ -7552,6 +7611,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesDeploymentExtended().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_deployment: {},
 })
 ```
 
@@ -7571,6 +7631,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesDeploymentExtended().update({
   deployment_id: 'deployment_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_deployments_deployment_id: {},
   // Fields to update
 })
 ```
@@ -7619,6 +7680,7 @@ Create a new entity with the given data.
 const result = await client.ApiEntitiesDeploymentsApproval().create({
   deployment_id: 'example_deployment_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_deployments_deployment_id_approval: {},
 })
 ```
 
@@ -7790,7 +7852,7 @@ const api_entities_discovered_cluster = client.ApiEntitiesDiscoveredCluster()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesDiscoveredCluster().load()
+const result = await client.ApiEntitiesDiscoveredCluster().load({ group_id: 'group_id' })
 ```
 
 ### Common Methods
@@ -7841,6 +7903,26 @@ const api_entities_draft_note = client.ApiEntitiesDraftNote()
 | `position` | `Record<string, any>` | No |  |
 | `resolve_discussion` | `boolean` | No |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `publish` | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/{draft_note_id}/publish` | `client.ApiEntitiesDraftNote().update({ $action: 'publish', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ApiEntitiesDraftNote record — check the API definition for its shape.
+
+```ts
+const result = await client.ApiEntitiesDraftNote().update({
+  $action: 'publish',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -7851,6 +7933,7 @@ Create a new entity with the given data.
 const result = await client.ApiEntitiesDraftNote().create({
   merge_request_id: 'example_merge_request_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note: {},
 })
 ```
 
@@ -7879,6 +7962,7 @@ const result = await client.ApiEntitiesDraftNote().update({
   id: 'api_entities_draft_note_id',
   merge_request_id: 'merge_request_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_merge_requests_merge_request_iid_draft_notes_draft_note_id: {},
   // Fields to update
 })
 ```
@@ -7974,6 +8058,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesEnvironment().update({
   id: 'api_entities_environment_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_environments_environment_id: {},
   // Fields to update
 })
 ```
@@ -8102,6 +8187,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.ApiEntitiesErrorTrackingProjectSetting().update({
   project_id: 'project_id',
+  put_api_v4_projects_id_error_tracking_setting: {},
   // Fields to update
 })
 ```
@@ -8232,6 +8318,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesFeature().create({
   id: 'example_id',
+  post_api_v4_features_name: {},
 })
 ```
 
@@ -8361,6 +8448,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesFeatureFlag().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_feature_flag: {},
 })
 ```
 
@@ -8388,6 +8476,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesFeatureFlag().update({
   id: 'api_entities_feature_flag_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_feature_flags_feature_flag_name: {},
   // Fields to update
 })
 ```
@@ -8449,6 +8538,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesFeatureFlagUserList().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_feature_flags_user_list: {},
 })
 ```
 
@@ -8476,6 +8566,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesFeatureFlagUserList().update({
   iid: 'iid',
   project_id: 'project_id',
+  put_api_v4_projects_id_feature_flags_user_lists_iid: {},
   // Fields to update
 })
 ```
@@ -8534,6 +8625,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesFreezePeriod().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_freeze_period: {},
 })
 ```
 
@@ -8561,6 +8653,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesFreezePeriod().update({
   id: 'api_entities_freeze_period_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_freeze_periods_freeze_period_id: {},
   // Fields to update
 })
 ```
@@ -8665,7 +8758,7 @@ const api_entities_go_module_version = client.ApiEntitiesGoModuleVersion()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesGoModuleVersion().load({ module_version: 'module_version', project_id: 'project_id' })
+const result = await client.ApiEntitiesGoModuleVersion().load({ module_version: 'module_version', project_id: 'project_id', module_name: 'module_name' })
 ```
 
 ### Common Methods
@@ -8763,6 +8856,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesGroup().create({
+  post_api_v4_group: {},
 })
 ```
 
@@ -8789,6 +8883,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.ApiEntitiesGroup().update({
   id: 'id',
+  put_api_v4_groups_id: {},
   // Fields to update
 })
 ```
@@ -8898,6 +8993,28 @@ const api_entities_group_detail = client.ApiEntitiesGroupDetail()
 | `web_url` | `string` | No |  |
 | `wiki_access_level` | `string` | No |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `ldap_sync` | `/api/v4/groups/{id}/ldap_sync` | `client.ApiEntitiesGroupDetail().create({ $action: 'ldap_sync', ... })` |
+| `restore` | `/api/v4/groups/{id}/restore` | `client.ApiEntitiesGroupDetail().create({ $action: 'restore', ... })` |
+| `transfer` | `/api/v4/groups/{id}/transfer` | `client.ApiEntitiesGroupDetail().create({ $action: 'transfer', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ApiEntitiesGroupDetail record — check the API definition for its shape.
+
+```ts
+const result = await client.ApiEntitiesGroupDetail().create({
+  $action: 'ldap_sync',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -8982,6 +9099,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesHook().create({
+  post_api_v4_hook: {},
 })
 ```
 
@@ -9008,6 +9126,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.ApiEntitiesHook().update({
   id: 'api_entities_hook_id',
+  put_api_v4_hooks_hook_id: {},
   // Fields to update
 })
 ```
@@ -9141,6 +9260,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.ApiEntitiesIntegrationBasic().update({
   group_id: 'group_id',
+  put_api_v4_groups_id_integrations_apple_app_store: {},
   // Fields to update
 })
 ```
@@ -9201,6 +9321,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesInvitation().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_invitation: {},
 })
 ```
 
@@ -9461,6 +9582,7 @@ Create a new entity with the given data.
 const result = await client.ApiEntitiesIssueLink().create({
   issue_id: 'example_issue_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_issues_issue_iid_link: {},
 })
 ```
 
@@ -9575,6 +9697,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesMarkdown().create({
+  post_api_v4_markdown: {},
 })
 ```
 
@@ -9694,6 +9817,26 @@ const api_entities_member = client.ApiEntitiesMember()
 | `value` | `string` | No |  |
 | `web_url` | `string` | No |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `state` | `/api/v4/groups/{id}/members/{user_id}/state` | `client.ApiEntitiesMember().update({ $action: 'state', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ApiEntitiesMember record — check the API definition for its shape.
+
+```ts
+const result = await client.ApiEntitiesMember().update({
+  $action: 'state',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -9703,6 +9846,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesMember().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_member: {},
 })
 ```
 
@@ -9847,6 +9991,26 @@ const api_entities_merge = client.ApiEntitiesMerge()
 | `user_notes_count` | `string` | No |  |
 | `web_url` | `string` | No |  |
 | `work_in_progress` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `rebase` | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/rebase` | `client.ApiEntitiesMerge().update({ $action: 'rebase', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ApiEntitiesMerge record — check the API definition for its shape.
+
+```ts
+const result = await client.ApiEntitiesMerge().update({
+  $action: 'rebase',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -10050,7 +10214,7 @@ const results = await client.ApiEntitiesMergeRequestBasic().list({ project_id: "
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesMergeRequestBasic().load({ id: 1 })
+const result = await client.ApiEntitiesMergeRequestBasic().load()
 ```
 
 ### Common Methods
@@ -10404,6 +10568,7 @@ Create a new entity with the given data.
 const result = await client.ApiEntitiesMetricImage().create({
   alert_management_alert_id: 'example_alert_management_alert_id',
   project_id: 'example_project_id',
+  file: 'example_file',
 })
 ```
 
@@ -10574,6 +10739,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.ApiEntitiesNamespace().update({
   id: 'api_entities_namespace_id',
+  put_api_v4_namespaces_id: {},
   // Fields to update
 })
 ```
@@ -10681,6 +10847,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesNamespacesStorageLimitExclusion().create({
   namespace_id: 'example_namespace_id',
+  post_api_v4_namespaces_id_storage_limit_exclusion: {},
 })
 ```
 
@@ -10689,7 +10856,7 @@ const result = await client.ApiEntitiesNamespacesStorageLimitExclusion().create(
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesNamespacesStorageLimitExclusion().load({ id: 1 })
+const result = await client.ApiEntitiesNamespacesStorageLimitExclusion().load()
 ```
 
 ### Common Methods
@@ -10741,7 +10908,7 @@ const api_entities_npm_package = client.ApiEntitiesNpmPackage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesNpmPackage().load()
+const result = await client.ApiEntitiesNpmPackage().load({ package_name: 'package_name' })
 ```
 
 ### Common Methods
@@ -10785,7 +10952,7 @@ const api_entities_npm_package_tag = client.ApiEntitiesNpmPackageTag()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ApiEntitiesNpmPackageTag().load()
+const result = await client.ApiEntitiesNpmPackageTag().load({ package_name: 'package_name' })
 ```
 
 ### Common Methods
@@ -10835,7 +11002,7 @@ const api_entities_nuget_packages_version = client.ApiEntitiesNugetPackagesVersi
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesNugetPackagesVersion().list({ project_id: "example" })
+const results = await client.ApiEntitiesNugetPackagesVersion().list({ project_id: "example", package_name: "example" })
 ```
 
 ### Common Methods
@@ -10994,6 +11161,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesOrganizationsOrganization().create({
+  post_api_v4_organization: {},
 })
 ```
 
@@ -11672,6 +11840,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesPackagesDebianDistribution().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_debian_distribution: {},
 })
 ```
 
@@ -11761,6 +11930,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesPagesDomain().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_pages_domain: {},
 })
 ```
 
@@ -12030,6 +12200,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesPersonalAccessTokenWithToken().create({
   personal_access_token_id: 'example_personal_access_token_id',
+  post_api_v4_personal_access_tokens_id_rotate: {},
 })
 ```
 
@@ -12097,6 +12268,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesPersonalSnippet().create({
+  post_api_v4_snippet: {},
 })
 ```
 
@@ -12123,6 +12295,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.ApiEntitiesPersonalSnippet().update({
   id: 'api_entities_personal_snippet_id',
+  put_api_v4_snippets_id: {},
   // Fields to update
 })
 ```
@@ -12177,6 +12350,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.ApiEntitiesPlanLimit().update({
+  put_api_v4_application_plan_limit: {},
   // Fields to update
 })
 ```
@@ -12376,6 +12550,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesProject().create({
   user_id: 'example_user_id',
+  post_api_v4_projects_user_user_id: {},
 })
 ```
 
@@ -12394,6 +12569,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.ApiEntitiesProject().update({
   id: 'id',
+  put_api_v4_projects_id: {},
   // Fields to update
 })
 ```
@@ -12543,6 +12719,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesProjectGroupLink().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_share: {},
 })
 ```
 
@@ -12626,6 +12803,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesProjectHook().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_hook: {},
 })
 ```
 
@@ -12653,6 +12831,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesProjectHook().update({
   id: 'api_entities_project_hook_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_hooks_hook_id: {},
   // Fields to update
 })
 ```
@@ -12711,6 +12890,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesProjectImportStatus().create({
+  path: 'example_path',
 })
 ```
 
@@ -12891,6 +13071,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesProjectSnippet().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_snippet: {},
 })
 ```
 
@@ -12918,6 +13099,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesProjectSnippet().update({
   id: 'api_entities_project_snippet_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_snippets_snippet_id: {},
   // Fields to update
 })
 ```
@@ -12965,6 +13147,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesProjectUpload().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_upload: {},
 })
 ```
 
@@ -13155,7 +13338,39 @@ const api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 | `wiki_access_level` | `string` | No |  |
 | `wiki_enabled` | `boolean` | No |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `create_ci_config` | `/api/v4/projects/{id}/create_ci_config` | `client.ApiEntitiesProjectWithAccess().create({ $action: 'create_ci_config', ... })` |
+| `housekeeping` | `/api/v4/projects/{id}/housekeeping` | `client.ApiEntitiesProjectWithAccess().create({ $action: 'housekeeping', ... })` |
+| `repository_size` | `/api/v4/projects/{id}/repository_size` | `client.ApiEntitiesProjectWithAccess().create({ $action: 'repository_size', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ApiEntitiesProjectWithAccess record — check the API definition for its shape.
+
+```ts
+const result = await client.ApiEntitiesProjectWithAccess().create({
+  $action: 'create_ci_config',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.ApiEntitiesProjectWithAccess().create({
+  project_id: 'example_project_id',
+})
+```
 
 #### `load(match: object, ctrl?: object)`
 
@@ -13218,6 +13433,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesProjectsContainerRegistryProtectionRule().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_registry_protection_repository_rule: {},
 })
 ```
 
@@ -13237,6 +13453,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesProjectsContainerRegistryProtectionRule().update({
   id: 'id',
   project_id: 'project_id',
+  patch_api_v4_projects_id_registry_protection_repository_rules_protection_rule_id: {},
   // Fields to update
 })
 ```
@@ -13295,6 +13512,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesProjectsPackagesProtectionRule().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_packages_protection_rule: {},
 })
 ```
 
@@ -13314,6 +13532,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesProjectsPackagesProtectionRule().update({
   id: 'id',
   project_id: 'project_id',
+  patch_api_v4_projects_id_packages_protection_rules_package_protection_rule_id: {},
   // Fields to update
 })
 ```
@@ -13372,6 +13591,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesProjectsTopic().create({
+  post_api_v4_topic: {},
 })
 ```
 
@@ -13390,6 +13610,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.ApiEntitiesProjectsTopic().update({
   id: 'api_entities_projects_topic_id',
+  put_api_v4_topics_id: {},
   // Fields to update
 })
 ```
@@ -13450,6 +13671,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesProtectedBranch().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_protected_branch: {},
 })
 ```
 
@@ -13477,6 +13699,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesProtectedBranch().update({
   id: 'api_entities_protected_branch_id',
   project_id: 'project_id',
+  patch_api_v4_projects_id_protected_branches_name: {},
   // Fields to update
 })
 ```
@@ -13537,6 +13760,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesProtectedTag().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_protected_tag: {},
 })
 ```
 
@@ -13749,6 +13973,9 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesRelationImportTracker().create({
+  file: 'example_file',
+  path: 'example_path',
+  relation: 'example_relation',
 })
 ```
 
@@ -13843,6 +14070,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesRelease().update({
   id: 'api_entities_release_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_releases_tag_name: {},
   // Fields to update
 })
 ```
@@ -13901,6 +14129,7 @@ Create a new entity with the given data.
 const result = await client.ApiEntitiesReleasesLink().create({
   project_id: 'example_project_id',
   release_id: 'example_release_id',
+  post_api_v4_projects_id_releases_tag_name_assets_link: {},
 })
 ```
 
@@ -13929,6 +14158,7 @@ const result = await client.ApiEntitiesReleasesLink().update({
   id: 'api_entities_releases_link_id',
   project_id: 'project_id',
   release_id: 'release_id',
+  put_api_v4_projects_id_releases_tag_name_assets_links_link_id: {},
   // Fields to update
 })
 ```
@@ -13985,6 +14215,26 @@ const api_entities_remote_mirror = client.ApiEntitiesRemoteMirror()
 | `update_status` | `string` | No |  |
 | `url` | `string` | No |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `sync` | `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync` | `client.ApiEntitiesRemoteMirror().create({ $action: 'sync', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ApiEntitiesRemoteMirror record — check the API definition for its shape.
+
+```ts
+const result = await client.ApiEntitiesRemoteMirror().create({
+  $action: 'sync',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -13994,6 +14244,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesRemoteMirror().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_remote_mirror: {},
 })
 ```
 
@@ -14021,6 +14272,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesRemoteMirror().update({
   id: 'api_entities_remote_mirror_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_remote_mirrors_mirror_id: {},
   // Fields to update
 })
 ```
@@ -14147,6 +14399,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesResourceAccessTokenWithToken().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_access_tokens_self_rotate: {},
 })
 ```
 
@@ -14430,6 +14683,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.ApiEntitiesSuggestion().update({
+  put_api_v4_suggestions_batch_apply: {},
   // Fields to update
 })
 ```
@@ -14493,6 +14747,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ApiEntitiesSystemBroadcastMessage().create({
+  post_api_v4_broadcast_message: {},
 })
 ```
 
@@ -14519,6 +14774,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.ApiEntitiesSystemBroadcastMessage().update({
   id: 'api_entities_system_broadcast_message_id',
+  put_api_v4_broadcast_messages_id: {},
   // Fields to update
 })
 ```
@@ -14579,6 +14835,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesTag().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_repository_tag: {},
 })
 ```
 
@@ -14738,6 +14995,7 @@ const api_entities_terraform_module_version = client.ApiEntitiesTerraformModuleV
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `modules` | `string` | No |  |
 | `name` | `string` | No |  |
 | `provider` | `string` | No |  |
@@ -14885,6 +15143,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesTrigger().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_trigger: {},
 })
 ```
 
@@ -14912,6 +15171,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.ApiEntitiesTrigger().update({
   id: 'api_entities_trigger_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_triggers_trigger_id: {},
   // Fields to update
 })
 ```
@@ -15167,7 +15427,7 @@ const api_entities_user_with_admin = client.ApiEntitiesUserWithAdmin()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ApiEntitiesUserWithAdmin().list()
+const results = await client.ApiEntitiesUserWithAdmin().list({ fingerprint: "example" })
 ```
 
 ### Common Methods
@@ -15213,6 +15473,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesWikiAttachment().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_wikis_attachment: {},
 })
 ```
 
@@ -15259,6 +15520,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ApiEntitiesWikiPage().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_wiki: {},
 })
 ```
 
@@ -15771,6 +16033,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.Composer().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_packages_composer: {},
 })
 ```
 
@@ -15907,6 +16170,29 @@ const conan_package = client.ConanPackage()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `authorize` | `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/packages/{conan_package_reference}/revisions/{package_revision}/files/{file_name}/authorize` | `client.ConanPackage().update({ $action: 'authorize', ... })` |
+| `authorize` | `/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/files/{file_name}/authorize` | `client.ConanPackage().update({ $action: 'authorize', ... })` |
+| `authorize` | `/api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}/authorize` | `client.ConanPackage().update({ $action: 'authorize', ... })` |
+| `authorize` | `/api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}/authorize` | `client.ConanPackage().update({ $action: 'authorize', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+ConanPackage record — check the API definition for its shape.
+
+```ts
+const result = await client.ConanPackage().update({
+  $action: 'authorize',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -16121,6 +16407,26 @@ const debian = client.Debian()
 | --- | --- | --- | --- |
 | `id` | `string` | No |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `authorize` | `/api/v4/projects/{id}/packages/debian/{file_name}/authorize` | `client.Debian().update({ $action: 'authorize', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Debian record — check the API definition for its shape.
+
+```ts
+const result = await client.Debian().update({
+  $action: 'authorize',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `update(data: object, ctrl?: object)`
@@ -16131,6 +16437,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.Debian().update({
   id: 'id',
   project_id: 'project_id',
+  put_api_v4_projects_id_packages_debian_file_name: {},
   // Fields to update
 })
 ```
@@ -16232,20 +16539,7 @@ const debian_package = client.DebianPackage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.DebianPackage().load({ id: 'debian_package_id', distribution: 'distribution', file_name: 'file_name', letter: 'letter', package_name: 'package_name', package_version: 'package_version' })
-```
-
-#### `update(data: object, ctrl?: object)`
-
-Update an existing entity. The data must include the entity `id`.
-
-```ts
-const result = await client.DebianPackage().update({
-  id: 'debian_package_id',
-  file_name: 'file_name',
-  project_id: 'project_id',
-  // Fields to update
-})
+const result = await client.DebianPackage().load({ id: 'debian_package_id', distribution: 'distribution' })
 ```
 
 ### Common Methods
@@ -16506,6 +16800,7 @@ Create a new entity with the given data.
 const result = await client.EeApiEntitiesApprovalState().create({
   merge_request_id: 'example_merge_request_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_merge_requests_merge_request_iid_approval: {},
 })
 ```
 
@@ -16909,6 +17204,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.EeApiEntitiesGeoNodeStatus().create({
+  post_api_v4_geo_status: {},
 })
 ```
 
@@ -17017,6 +17313,7 @@ Create a new entity with the given data.
 const result = await client.EeApiEntitiesIssuableMetricImage().create({
   issue_id: 'example_issue_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_issues_issue_iid_metric_image: {},
 })
 ```
 
@@ -17037,6 +17334,7 @@ const result = await client.EeApiEntitiesIssuableMetricImage().update({
   id: 'id',
   issue_id: 'issue_id',
   project_id: 'project_id',
+  put_api_v4_projects_id_issues_issue_iid_metric_images_metric_image_id: {},
   // Fields to update
 })
 ```
@@ -17157,6 +17455,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.EeApiEntitiesSshCertificate().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_ssh_certificate: {},
 })
 ```
 
@@ -17238,6 +17537,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.Environment().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_environments_stop_stale: {},
 })
 ```
 
@@ -17558,7 +17858,7 @@ const generic_package = client.GenericPackage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GenericPackage().load({ file_name: 'file_name', generic_id: 'generic_id', project_id: 'project_id' })
+const result = await client.GenericPackage().load({ file_name: 'file_name', generic_id: 'generic_id', project_id: 'project_id', package_version: 'package_version' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -17608,6 +17908,12 @@ Return a copy of the entity options.
 const geo = client.Geo()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Actions
 
 This entity exposes custom API actions in addition to the standard
@@ -17636,6 +17942,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Geo().create({
+  post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack: {},
 })
 ```
 
@@ -17688,7 +17995,7 @@ const go_proxy = client.GoProxy()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GoProxy().load({ project_id: 'project_id' })
+const result = await client.GoProxy().load({ project_id: 'project_id', module_name: 'module_name' })
 ```
 
 ### Common Methods
@@ -17739,13 +18046,10 @@ remaining keys are sent as that action's payload.
 
 | Action | Route | Call |
 | --- | --- | --- |
-| `ldap_sync` | `/api/v4/groups/{id}/ldap_sync` | `client.Group().create({ $action: 'ldap_sync', ... })` |
 | `member_approve_all` | `/api/v4/groups/{id}/members/approve_all` | `client.Group().create({ $action: 'member_approve_all', ... })` |
 | `placeholder_reassignment` | `/api/v4/groups/{id}/placeholder_reassignments` | `client.Group().create({ $action: 'placeholder_reassignment', ... })` |
 | `placeholder_reassignment_authorize` | `/api/v4/groups/{id}/placeholder_reassignments/authorize` | `client.Group().create({ $action: 'placeholder_reassignment_authorize', ... })` |
-| `restore` | `/api/v4/groups/{id}/restore` | `client.Group().create({ $action: 'restore', ... })` |
 | `token_revoke` | `/api/v4/groups/{id}/tokens/revoke` | `client.Group().create({ $action: 'token_revoke', ... })` |
-| `transfer` | `/api/v4/groups/{id}/transfer` | `client.Group().create({ $action: 'transfer', ... })` |
 | `_search` | `/api/v4/groups/{id}/(-/)search` | `client.Group().load({ $action: '_search', ... })` |
 | `issues_statistic` | `/api/v4/groups/{id}/issues_statistics` | `client.Group().load({ $action: 'issues_statistic', ... })` |
 | `pending_member` | `/api/v4/groups/{id}/pending_members` | `client.Group().load({ $action: 'pending_member', ... })` |
@@ -17756,7 +18060,7 @@ Group record — check the API definition for its shape.
 
 ```ts
 const result = await client.Group().create({
-  $action: 'ldap_sync',
+  $action: 'member_approve_all',
   /* ...the action's own arguments */
 })
 ```
@@ -17796,6 +18100,8 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.Group().update({
   id: 'group_id',
+  key: 'key',
+  put_api_v4_groups_id_custom_attributes_key: {},
   // Fields to update
 })
 ```
@@ -17972,6 +18278,9 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.GroupImport().create({
+  file: 'example_file',
+  name: 'example_name',
+  path: 'example_path',
 })
 ```
 
@@ -18143,6 +18452,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Import().create({
+  post_api_v4_import_github_gist: {},
 })
 ```
 
@@ -18194,6 +18504,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Integration().create({
+  post_api_v4_integrations_slack_event: {},
 })
 ```
 
@@ -18421,6 +18732,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Job().create({
+  post_api_v4_jobs_request: {},
 })
 ```
 
@@ -18439,6 +18751,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.Job().update({
   id: 'job_id',
+  put_api_v4_jobs_id: {},
   // Fields to update
 })
 ```
@@ -18477,6 +18790,26 @@ Return a copy of the entity options.
 const maven_package = client.MavenPackage()
 ```
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `authorize` | `/api/v4/projects/{id}/packages/maven/*path/{file_name}/authorize` | `client.MavenPackage().update({ $action: 'authorize', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+MavenPackage record — check the API definition for its shape.
+
+```ts
+const result = await client.MavenPackage().update({
+  $action: 'authorize',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`
@@ -18484,7 +18817,7 @@ const maven_package = client.MavenPackage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.MavenPackage().load({ file_name: 'file_name' })
+const result = await client.MavenPackage().load({ file_name: 'file_name', path: 'path' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -18495,6 +18828,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.MavenPackage().update({
   file_name: 'file_name',
   project_id: 'project_id',
+  'put_api_v4_projects_id_packages_maven*path_file_name': {},
   // Fields to update
 })
 ```
@@ -18539,6 +18873,26 @@ const member = client.Member()
 | --- | --- | --- | --- |
 | `id` | `string` | No |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `approve` | `/api/v4/groups/{id}/members/{member_id}/approve` | `client.Member().update({ $action: 'approve', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Member record — check the API definition for its shape.
+
+```ts
+const result = await client.Member().update({
+  $action: 'approve',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `remove(match: object, ctrl?: object)`
@@ -18547,6 +18901,18 @@ Remove the entity matching the given criteria.
 
 ```ts
 const result = await client.Member().remove({ id: 'id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.Member().update({
+  group_id: 'group_id',
+  id: 'id',
+  // Fields to update
+})
 ```
 
 ### Common Methods
@@ -18601,7 +18967,6 @@ remaining keys are sent as that action's payload.
 | `raw_diff` | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/raw_diffs` | `client.MergeRequest().load({ $action: 'raw_diff', ... })` |
 | `related_issue` | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/related_issues` | `client.MergeRequest().load({ $action: 'related_issue', ... })` |
 | `context_commit` | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/context_commits` | `client.MergeRequest().remove({ $action: 'context_commit', ... })` |
-| `rebase` | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/rebase` | `client.MergeRequest().update({ $action: 'rebase', ... })` |
 | `reset_approval` | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/reset_approvals` | `client.MergeRequest().update({ $action: 'reset_approval', ... })` |
 
 An action returns that action's OWN response, which is not necessarily a
@@ -18760,6 +19125,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.Migration().create({
   timestamp: 'example_timestamp',
+  post_api_v4_admin_migrations_timestamp_mark: {},
 })
 ```
 
@@ -18940,6 +19306,7 @@ Update an existing entity. The data must include the entity `id`.
 const result = await client.Npm().update({
   id: 'id',
   project_id: 'project_id',
+  put_api_v4_projects_id_packages_npm_package_name: {},
   // Fields to update
 })
 ```
@@ -18994,7 +19361,7 @@ const result = await client.NpmPackage().create({
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.NpmPackage().load({ project_id: 'project_id' })
+const result = await client.NpmPackage().load({ project_id: 'project_id', file_name: 'file_name', package_name: 'package_name' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -19002,7 +19369,7 @@ const result = await client.NpmPackage().load({ project_id: 'project_id' })
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.NpmPackage().remove({ tag: 'tag' })
+const result = await client.NpmPackage().remove({ tag: 'tag', package_name: 'package_name' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -19059,6 +19426,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.Nuget().update({
   project_id: 'project_id',
+  put_api_v4_projects_id_packages_nuget: {},
   // Fields to update
 })
 ```
@@ -19125,7 +19493,7 @@ const nuget_package = client.NugetPackage()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.NugetPackage().list({ project_id: "example" })
+const results = await client.NugetPackage().list({ package_name: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -19141,7 +19509,7 @@ const result = await client.NugetPackage().load({ project_id: 'project_id' })
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.NugetPackage().remove({ project_id: 'project_id' })
+const result = await client.NugetPackage().remove({ project_id: 'project_id', package_name: 'package_name', package_version: 'package_version' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -19292,6 +19660,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.Page().update({
   project_id: 'project_id',
+  patch_api_v4_projects_id_page: {},
   // Fields to update
 })
 ```
@@ -19486,10 +19855,7 @@ remaining keys are sent as that action's payload.
 
 | Action | Route | Call |
 | --- | --- | --- |
-| `create_ci_config` | `/api/v4/projects/{id}/create_ci_config` | `client.Project().create({ $action: 'create_ci_config', ... })` |
-| `housekeeping` | `/api/v4/projects/{id}/housekeeping` | `client.Project().create({ $action: 'housekeeping', ... })` |
 | `repository_changelog` | `/api/v4/projects/{id}/repository/changelog` | `client.Project().create({ $action: 'repository_changelog', ... })` |
-| `repository_size` | `/api/v4/projects/{id}/repository_size` | `client.Project().create({ $action: 'repository_size', ... })` |
 | `upload_authorize` | `/api/v4/projects/{id}/uploads/authorize` | `client.Project().create({ $action: 'upload_authorize', ... })` |
 | `_search` | `/api/v4/projects/{id}/(-/)search` | `client.Project().load({ $action: '_search', ... })` |
 | `issues_statistic` | `/api/v4/projects/{id}/issues_statistics` | `client.Project().load({ $action: 'issues_statistic', ... })` |
@@ -19500,13 +19866,14 @@ remaining keys are sent as that action's payload.
 | `snapshot` | `/api/v4/projects/{id}/snapshot` | `client.Project().load({ $action: 'snapshot', ... })` |
 | `artifact` | `/api/v4/projects/{id}/artifacts` | `client.Project().remove({ $action: 'artifact', ... })` |
 | `fork` | `/api/v4/projects/{id}/fork` | `client.Project().remove({ $action: 'fork', ... })` |
+| `metadata` | `/api/v4/projects/{id}/pipelines/{pipeline_id}/metadata` | `client.Project().update({ $action: 'metadata', ... })` |
 
 An action returns that action's OWN response, which is not necessarily a
 Project record — check the API definition for its shape.
 
 ```ts
 const result = await client.Project().create({
-  $action: 'create_ci_config',
+  $action: 'repository_changelog',
   /* ...the action's own arguments */
 })
 ```
@@ -19642,6 +20009,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ProjectEntity().create({
+  post_api_v4_import_bitbucket_server: {},
 })
 ```
 
@@ -19714,6 +20082,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.ProjectExport().create({
   id: 'example_id',
+  post_api_v4_projects_id_export: {},
 })
 ```
 
@@ -19880,6 +20249,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ProjectImportEntity().create({
+  post_api_v4_import_bitbucket: {},
 })
 ```
 
@@ -20034,6 +20404,7 @@ Update an existing entity. The data must include the entity `id`.
 ```ts
 const result = await client.ProjectsJobTokenScope().update({
   project_id: 'project_id',
+  patch_api_v4_projects_id_job_token_scope: {},
   // Fields to update
 })
 ```
@@ -20131,6 +20502,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.Pypi().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_packages_pypi: {},
 })
 ```
 
@@ -20255,7 +20627,7 @@ const result = await client.Release().load({
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Release().load({ project_id: 'project_id' })
+const result = await client.Release().load({ project_id: 'project_id', suffix_path: 'suffix_path' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -20364,31 +20736,19 @@ remaining keys are sent as that action's payload.
 
 | Action | Route | Call |
 | --- | --- | --- |
-| `sync` | `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync` | `client.RemoteMirror().create({ $action: 'sync', ... })` |
 | `public_key` | `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/public_key` | `client.RemoteMirror().load({ $action: 'public_key', ... })` |
 
 An action returns that action's OWN response, which is not necessarily a
 RemoteMirror record — check the API definition for its shape.
 
 ```ts
-const result = await client.RemoteMirror().create({
-  $action: 'sync',
+const result = await client.RemoteMirror().load({
+  $action: 'public_key',
   /* ...the action's own arguments */
 })
 ```
 
 ### Operations
-
-#### `create(data: object, ctrl?: object)`
-
-Create a new entity with the given data.
-
-```ts
-const result = await client.RemoteMirror().create({
-  id: 'example_id',
-  project_id: 'example_project_id',
-})
-```
 
 #### `load(match: object, ctrl?: object)`
 
@@ -20503,7 +20863,7 @@ const result = await client.RpmPackage().create({
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.RpmPackage().load({ project_id: 'project_id' })
+const result = await client.RpmPackage().load({ project_id: 'project_id', file_name: 'file_name' })
 ```
 
 ### Common Methods
@@ -20679,6 +21039,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Runner().create({
+  post_api_v4_runners_verify: {},
 })
 ```
 
@@ -20731,7 +21092,7 @@ const search = client.Search()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Search().load()
+const result = await client.Search().load({ scope: 'scope', search: 'search' })
 ```
 
 ### Common Methods
@@ -20874,6 +21235,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Slack().create({
+  post_api_v4_slack_trigger: {},
 })
 ```
 
@@ -21218,6 +21580,27 @@ const terraform_state = client.TerraformState()
 | --- | --- | --- | --- |
 | `id` | `string` | No |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `lock` | `/api/v4/projects/{id}/terraform/state/{name}/lock` | `client.TerraformState().create({ $action: 'lock', ... })` |
+| `lock` | `/api/v4/projects/{id}/terraform/state/{name}/lock` | `client.TerraformState().remove({ $action: 'lock', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+TerraformState record — check the API definition for its shape.
+
+```ts
+const result = await client.TerraformState().create({
+  $action: 'lock',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `create(data: object, ctrl?: object)`
@@ -21226,6 +21609,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.TerraformState().create({
+  id: 'example_id',
   project_id: 'example_project_id',
 })
 ```
@@ -21544,6 +21928,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.UsageData().create({
+  post_api_v4_usage_data_increment_counter: {},
 })
 ```
 
@@ -21772,4 +22157,42 @@ const client = new GitlabSDK({
   }
 })
 ```
+
+
+### Configuring features
+
+Each feature is inactive until switched on, and an SDK with no feature
+configured does no feature work at all. Every option below keeps its default
+unless you name it.
+
+The array form of \`feature\` is significant: several features wrap the
+transport, and the order you list them in is the order they nest.
+
+#### `test`
+
+In-memory mock transport for testing without a live server.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.test.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Installs the BASE transport that the wrapping features wrap, so it must be
+  activated before them.
+- Inactive by default: leaving it out costs nothing at runtime.
 

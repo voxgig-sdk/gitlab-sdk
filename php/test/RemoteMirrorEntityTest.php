@@ -23,7 +23,7 @@ class RemoteMirrorEntityTest extends TestCase
         $setup = remote_mirror_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "load", "remove"] as $_op) {
+        foreach (["load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "remote_mirror." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -38,19 +38,16 @@ class RemoteMirrorEntityTest extends TestCase
         }
         $client = $setup["client"];
 
-        // CREATE
-        $remote_mirror_ref01_ent = $client->RemoteMirror(null);
-        $remote_mirror_ref01_data = Helpers::to_map(Vs::getprop(
-            Vs::getpath($setup["data"], "new.remote_mirror"), "remote_mirror_ref01"));
-        $remote_mirror_ref01_data["mirror_id"] = $setup["idmap"]["mirror01"];
-        $remote_mirror_ref01_data["project_id"] = $setup["idmap"]["project01"];
-
-        $remote_mirror_ref01_data_result = $remote_mirror_ref01_ent->create($remote_mirror_ref01_data, null);
-        $remote_mirror_ref01_data = Helpers::to_map(is_object($remote_mirror_ref01_data_result) && method_exists($remote_mirror_ref01_data_result, 'data_get') ? $remote_mirror_ref01_data_result->data_get() : $remote_mirror_ref01_data_result);
-        $this->assertNotNull($remote_mirror_ref01_data);
-        $this->assertNotNull($remote_mirror_ref01_data["id"]);
+        // Bootstrap entity data from existing test data.
+        $remote_mirror_ref01_data_raw = Vs::items(Helpers::to_map(
+            Vs::getpath($setup["data"], "existing.remote_mirror")));
+        $remote_mirror_ref01_data = null;
+        if (count($remote_mirror_ref01_data_raw) > 0) {
+            $remote_mirror_ref01_data = Helpers::to_map($remote_mirror_ref01_data_raw[0][1]);
+        }
 
         // LOAD
+        $remote_mirror_ref01_ent = $client->RemoteMirror(null);
         $remote_mirror_ref01_match_dt0 = [
             "id" => $remote_mirror_ref01_data["id"],
         ];
@@ -58,12 +55,6 @@ class RemoteMirrorEntityTest extends TestCase
         $remote_mirror_ref01_data_dt0_load_result = Helpers::to_map(is_object($remote_mirror_ref01_data_dt0_loaded) && method_exists($remote_mirror_ref01_data_dt0_loaded, 'data_get') ? $remote_mirror_ref01_data_dt0_loaded->data_get() : $remote_mirror_ref01_data_dt0_loaded);
         $this->assertNotNull($remote_mirror_ref01_data_dt0_load_result);
         $this->assertEquals($remote_mirror_ref01_data_dt0_load_result["id"], $remote_mirror_ref01_data["id"]);
-
-        // REMOVE
-        $remote_mirror_ref01_match_rm0 = [
-            "id" => $remote_mirror_ref01_data["id"],
-        ];
-        $remote_mirror_ref01_ent->remove($remote_mirror_ref01_match_rm0, null);
 
     }
 }
@@ -83,7 +74,7 @@ function remote_mirror_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["remote_mirror01", "remote_mirror02", "remote_mirror03", "project01", "project02", "project03", "mirror01"] as $k) {
+    foreach (["remote_mirror01", "remote_mirror02", "remote_mirror03", "project01", "project02", "project03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 
@@ -97,7 +88,7 @@ function remote_mirror_basic_setup($extra)
         "GITLAB_TEST_REMOTE_MIRROR_ENTID" => $idmap,
         "GITLAB_TEST_LIVE" => "FALSE",
         "GITLAB_TEST_EXPLAIN" => "FALSE",
-        "GITLAB_APIKEY" => "NONE",
+        "GITLAB_APIKEY" => "",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,12 +99,27 @@ function remote_mirror_basic_setup($extra)
 
     if ($env["GITLAB_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
+            // FIRST, so the generated fields below win: sdk-test-control.json's
+            // test.client.options adds to the live client, it does not redirect it.
+            Runner::live_client_options(),
             [
                 "apikey" => $env["GITLAB_APIKEY"],
             ],
-            $extra ?? [],
+            // ismap, not a plain "?? []" default: an empty PHP array is a
+            // LIST, and a non-map later entry REPLACES the accumulated map in
+            // merge - so the no-extras call discarded live_client_options()
+            // and the apikey/server map above it.
+            Vs::ismap($extra) ? $extra : new \stdClass(),
         ]);
-        $client = new GitlabSDK(Helpers::to_map($merged_opts));
+        // "?? []" because merge legitimately answers with a stdClass when every
+        // contributing entry is an EMPTY map - an SDK with no apikey and no
+        // server variables generates an empty middle entry, so that is the
+        // common case, not the edge one. to_map returns null for a non-array by
+        // design, and the constructor takes a non-nullable array, so without the
+        // fallback every such SDK died on "must be of type array, null given"
+        // the moment live mode was switched on. Offline mode never reaches this
+        // branch, which is why the offline suite stayed green.
+        $client = new GitlabSDK(Helpers::to_map($merged_opts) ?? []);
     }
 
     $live = $env["GITLAB_TEST_LIVE"] === "TRUE";

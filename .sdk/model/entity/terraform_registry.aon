@@ -15,6 +15,11 @@ main: kit: entity: terraform_registry: {
   id: {
     field: "id"
     name: "id"
+    parts: [
+      "module_name"
+      "module_system"
+    ]
+    sep: "/"
   }
 
   name: "terraform_registry"
@@ -68,24 +73,44 @@ main: kit: entity: terraform_registry: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/terraform/modules/{module_name}/{module_system}/*module_version"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "terraform"
-            "modules"
-            "{module_id}"
-            "{module_system}"
-            "*module_version"
-          ]
           rename: {
             param: {
               id: "project_id"
               module_name: "module_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "terraform"
+            }
+            {
+              lit: "modules"
+            }
+            {
+              var: "module_id"
+            }
+            {
+              var: "module_system"
+            }
+            {
+              lit: "*module_version"
+            }
+          ]
           select: {
             exist: [
               "module_id"
@@ -139,16 +164,34 @@ main: kit: entity: terraform_registry: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/terraform/modules/{module_name}/{module_system}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{id}"
-            "packages"
-            "terraform"
-            "modules"
-            "{module_name}"
-            "{module_system}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "terraform"
+            }
+            {
+              lit: "modules"
+            }
+            {
+              var: "module_name"
+            }
+            {
+              var: "module_system"
+            }
           ]
           select: {
             exist: [
@@ -200,24 +243,46 @@ main: kit: entity: terraform_registry: {
           }
           method: "GET"
           orig: "/api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}/*module_version/download"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "terraform"
-            "modules"
-            "v1"
-            "{v1_id}"
-            "{module_name}"
-            "{module_system}"
-            "*module_version"
-            "download"
-          ]
           rename: {
             param: {
               module_namespace: "v1_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "terraform"
+            }
+            {
+              lit: "modules"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              var: "v1_id"
+            }
+            {
+              var: "module_name"
+            }
+            {
+              var: "module_system"
+            }
+            {
+              lit: "*module_version"
+            }
+            {
+              lit: "download"
+            }
+          ]
           select: {
             exist: [
               "module_name"
@@ -268,24 +333,46 @@ main: kit: entity: terraform_registry: {
           }
           method: "GET"
           orig: "/api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}/*module_version/file"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "terraform"
-            "modules"
-            "v1"
-            "{v1_id}"
-            "{module_name}"
-            "{module_system}"
-            "*module_version"
-            "file"
-          ]
           rename: {
             param: {
               module_namespace: "v1_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "terraform"
+            }
+            {
+              lit: "modules"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              var: "v1_id"
+            }
+            {
+              var: "module_name"
+            }
+            {
+              var: "module_system"
+            }
+            {
+              lit: "*module_version"
+            }
+            {
+              lit: "file"
+            }
+          ]
           select: {
             exist: [
               "module_name"
@@ -327,23 +414,43 @@ main: kit: entity: terraform_registry: {
           }
           method: "GET"
           orig: "/api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}/download"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "terraform"
-            "modules"
-            "v1"
-            "{v1_id}"
-            "{module_name}"
-            "{module_system}"
-            "download"
-          ]
           rename: {
             param: {
               module_namespace: "v1_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "terraform"
+            }
+            {
+              lit: "modules"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              var: "v1_id"
+            }
+            {
+              var: "module_name"
+            }
+            {
+              var: "module_system"
+            }
+            {
+              lit: "download"
+            }
+          ]
           select: {
             exist: [
               "module_name"
@@ -407,25 +514,47 @@ main: kit: entity: terraform_registry: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/packages/terraform/modules/{module_name}/{module_system}/*module_version/file"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "terraform"
-            "modules"
-            "{module_id}"
-            "{module_system}"
-            "*module_version"
-            "file"
-          ]
           rename: {
             param: {
               id: "project_id"
               module_name: "module_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "terraform"
+            }
+            {
+              lit: "modules"
+            }
+            {
+              var: "module_id"
+            }
+            {
+              var: "module_system"
+            }
+            {
+              lit: "*module_version"
+            }
+            {
+              lit: "file"
+            }
+          ]
           select: {
             exist: [
               "file"
@@ -479,26 +608,50 @@ main: kit: entity: terraform_registry: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/packages/terraform/modules/{module_name}/{module_system}/*module_version/file/authorize"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "terraform"
-            "modules"
-            "{module_id}"
-            "{module_system}"
-            "*module_version"
-            "file"
-            "authorize"
-          ]
           rename: {
             param: {
               id: "project_id"
               module_name: "module_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "terraform"
+            }
+            {
+              lit: "modules"
+            }
+            {
+              var: "module_id"
+            }
+            {
+              var: "module_system"
+            }
+            {
+              lit: "*module_version"
+            }
+            {
+              lit: "file"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
           select: {
             exist: [
               "module_id"

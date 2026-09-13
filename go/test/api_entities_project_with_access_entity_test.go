@@ -32,7 +32,7 @@ func TestApiEntitiesProjectWithAccessEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"load"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "api_entities_project_with_access." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -49,18 +49,25 @@ func TestApiEntitiesProjectWithAccessEntity(t *testing.T) {
 		}
 		client := setup.client
 
-		// Bootstrap entity data from existing test data (no create step in flow).
-		apiEntitiesProjectWithAccessRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.api_entities_project_with_access", setup.data)))
-		var apiEntitiesProjectWithAccessRef01Data map[string]any
-		if len(apiEntitiesProjectWithAccessRef01DataRaw) > 0 {
-			apiEntitiesProjectWithAccessRef01Data = core.ToMapAny(apiEntitiesProjectWithAccessRef01DataRaw[0][1])
+		// CREATE
+		apiEntitiesProjectWithAccessRef01Ent := client.ApiEntitiesProjectWithAccess(nil)
+		apiEntitiesProjectWithAccessRef01Data := core.ToMapAny(vs.GetProp(
+			vs.GetPath(setup.data, []any{"new", "api_entities_project_with_access"}), "api_entities_project_with_access_ref01"))
+		apiEntitiesProjectWithAccessRef01Data["project_id"] = setup.idmap["project01"]
+
+		apiEntitiesProjectWithAccessRef01DataResult, err := apiEntitiesProjectWithAccessRef01Ent.Create(apiEntitiesProjectWithAccessRef01Data, nil)
+		if err != nil {
+			t.Fatalf("create failed: %v", err)
 		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = apiEntitiesProjectWithAccessRef01Data
+		apiEntitiesProjectWithAccessRef01Data = core.ToMapAny(entityData(apiEntitiesProjectWithAccessRef01DataResult))
+		if apiEntitiesProjectWithAccessRef01Data == nil {
+			t.Fatal("expected create result to be a map")
+		}
+		if apiEntitiesProjectWithAccessRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 		// LOAD
-		apiEntitiesProjectWithAccessRef01Ent := client.ApiEntitiesProjectWithAccess(nil)
 		apiEntitiesProjectWithAccessRef01MatchDt0 := map[string]any{
 			"id": apiEntitiesProjectWithAccessRef01Data["id"],
 		}
@@ -103,8 +110,8 @@ func api_entities_project_with_accessBasicSetup(extra map[string]any) *entityTes
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
-		[]any{"api_entities_project_with_access01", "api_entities_project_with_access02", "api_entities_project_with_access03"},
+	idmap, _ := vs.Transform(
+		[]any{"api_entities_project_with_access01", "api_entities_project_with_access02", "api_entities_project_with_access03", "project01", "project02", "project03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",
@@ -123,7 +130,7 @@ func api_entities_project_with_accessBasicSetup(extra map[string]any) *entityTes
 		"GITLAB_TEST_API_ENTITIES_PROJECT_WITH_ACCESS_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_API_ENTITIES_PROJECT_WITH_ACCESS_ENTID"])
@@ -132,11 +139,23 @@ func api_entities_project_with_accessBasicSetup(extra map[string]any) *entityTes
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

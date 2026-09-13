@@ -100,7 +100,7 @@ func TestApiEntitiesAwardEmojiEntity(t *testing.T) {
 		// CREATE
 		apiEntitiesAwardEmojiRef01Ent := client.ApiEntitiesAwardEmoji(nil)
 		apiEntitiesAwardEmojiRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "api_entities_award_emoji"}, setup.data), "api_entities_award_emoji_ref01"))
+			vs.GetPath(setup.data, []any{"new", "api_entities_award_emoji"}), "api_entities_award_emoji_ref01"))
 		apiEntitiesAwardEmojiRef01Data["epic_id"] = setup.idmap["epic01"]
 		apiEntitiesAwardEmojiRef01Data["group_id"] = setup.idmap["group01"]
 		apiEntitiesAwardEmojiRef01Data["issue_id"] = setup.idmap["issue01"]
@@ -184,7 +184,7 @@ func api_entities_award_emojiBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"api_entities_award_emoji01", "api_entities_award_emoji02", "api_entities_award_emoji03", "group01", "group02", "group03", "epic01", "epic02", "epic03", "project01", "project02", "project03", "issue01", "issue02", "issue03", "merge_request01", "merge_request02", "merge_request03", "snippet01", "snippet02", "snippet03", "note01", "note02", "note03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -204,7 +204,7 @@ func api_entities_award_emojiBasicSetup(extra map[string]any) *entityTestSetup {
 		"GITLAB_TEST_API_ENTITIES_AWARD_EMOJI_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_API_ENTITIES_AWARD_EMOJI_ENTID"])
@@ -213,11 +213,23 @@ func api_entities_award_emojiBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

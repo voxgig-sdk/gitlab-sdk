@@ -32,7 +32,7 @@ func TestRemoteMirrorEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "load", "remove"} {
+		for _, _op := range []string{"load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "remote_mirror." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -49,26 +49,18 @@ func TestRemoteMirrorEntity(t *testing.T) {
 		}
 		client := setup.client
 
-		// CREATE
-		remoteMirrorRef01Ent := client.RemoteMirror(nil)
-		remoteMirrorRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "remote_mirror"}, setup.data), "remote_mirror_ref01"))
-		remoteMirrorRef01Data["mirror_id"] = setup.idmap["mirror01"]
-		remoteMirrorRef01Data["project_id"] = setup.idmap["project01"]
-
-		remoteMirrorRef01DataResult, err := remoteMirrorRef01Ent.Create(remoteMirrorRef01Data, nil)
-		if err != nil {
-			t.Fatalf("create failed: %v", err)
+		// Bootstrap entity data from existing test data (no create step in flow).
+		remoteMirrorRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.remote_mirror")))
+		var remoteMirrorRef01Data map[string]any
+		if len(remoteMirrorRef01DataRaw) > 0 {
+			remoteMirrorRef01Data = core.ToMapAny(remoteMirrorRef01DataRaw[0][1])
 		}
-		remoteMirrorRef01Data = core.ToMapAny(entityData(remoteMirrorRef01DataResult))
-		if remoteMirrorRef01Data == nil {
-			t.Fatal("expected create result to be a map")
-		}
-		if remoteMirrorRef01Data["id"] == nil {
-			t.Fatal("expected created entity to have an id")
-		}
+		// Discard guards against Go's unused-var check when the flow's steps
+		// happen not to consume the bootstrap data (e.g. list-only flows).
+		_ = remoteMirrorRef01Data
 
 		// LOAD
+		remoteMirrorRef01Ent := client.RemoteMirror(nil)
 		remoteMirrorRef01MatchDt0 := map[string]any{
 			"id": remoteMirrorRef01Data["id"],
 		}
@@ -82,15 +74,6 @@ func TestRemoteMirrorEntity(t *testing.T) {
 		}
 		if remoteMirrorRef01DataDt0LoadResult["id"] != remoteMirrorRef01Data["id"] {
 			t.Fatal("expected load result id to match")
-		}
-
-		// REMOVE
-		remoteMirrorRef01MatchRm0 := map[string]any{
-			"id": remoteMirrorRef01Data["id"],
-		}
-		_, err = remoteMirrorRef01Ent.Remove(remoteMirrorRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
 		}
 
 	})
@@ -120,8 +103,8 @@ func remote_mirrorBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
-		[]any{"remote_mirror01", "remote_mirror02", "remote_mirror03", "project01", "project02", "project03", "mirror01"},
+	idmap, _ := vs.Transform(
+		[]any{"remote_mirror01", "remote_mirror02", "remote_mirror03", "project01", "project02", "project03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",
@@ -140,7 +123,7 @@ func remote_mirrorBasicSetup(extra map[string]any) *entityTestSetup {
 		"GITLAB_TEST_REMOTE_MIRROR_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_REMOTE_MIRROR_ENTID"])
@@ -149,11 +132,23 @@ func remote_mirrorBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

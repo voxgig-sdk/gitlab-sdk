@@ -149,7 +149,7 @@ def _api_entities_projects_container_registry_protection_rule_basic_setup(extra)
         "GITLAB_TEST_API_ENTITIES_PROJECTS_CONTAINER_REGISTRY_PROTECTION_RULE_ENTID": idmap,
         "GITLAB_TEST_LIVE": "FALSE",
         "GITLAB_TEST_EXPLAIN": "FALSE",
-        "GITLAB_APIKEY": "NONE",
+        "GITLAB_APIKEY": "",
     })
 
     idmap_resolved = helpers.to_map(
@@ -161,6 +161,10 @@ def _api_entities_projects_container_registry_protection_rule_basic_setup(extra)
 
     if env.get("GITLAB_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
                 "apikey": env.get("GITLAB_APIKEY"),
             },

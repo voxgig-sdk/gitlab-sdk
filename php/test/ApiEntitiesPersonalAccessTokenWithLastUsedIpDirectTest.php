@@ -123,15 +123,17 @@ function api_entities_personal_access_token_with_last_used_ip_direct_setup($mock
     $env = Runner::env_override([
         "GITLAB_TEST_API_ENTITIES_PERSONAL_ACCESS_TOKEN_WITH_LAST_USED_IP_ENTID" => [],
         "GITLAB_TEST_LIVE" => "FALSE",
-        "GITLAB_APIKEY" => "NONE",
+        "GITLAB_APIKEY" => "",
     ]);
 
     $live = $env["GITLAB_TEST_LIVE"] === "TRUE";
 
     if ($live) {
-        $merged_opts = [
+        // Merged so the generated fields win: sdk-test-control.json's
+        // test.client.options adds to the live client, it does not redirect it.
+        $merged_opts = array_merge(Runner::live_client_options(), [
             "apikey" => $env["GITLAB_APIKEY"],
-        ];
+        ]);
         $client = new GitlabSDK($merged_opts);
         return [
             "client" => $client,

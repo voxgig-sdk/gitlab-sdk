@@ -1599,6 +1599,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesApplicationWithSecret.create({
+  "post_api_v4_application" => {}, # Hash
 })
 ```
 
@@ -1651,7 +1652,7 @@ api_entities_avatar = client.ApiEntitiesAvatar
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesAvatar.load()
+result = client.ApiEntitiesAvatar.load({ "email" => "email" })
 ```
 
 ### Common Methods
@@ -1721,6 +1722,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ApiEntitiesAwardEmoji.create({
   "epic_id" => "example_epic_id", # String
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_epics_epic_iid_award_emoji" => {}, # Hash
 })
 ```
 
@@ -1797,6 +1799,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesBadge.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_badge" => {}, # Hash
 })
 ```
 
@@ -1880,7 +1883,7 @@ api_entities_basic_badge_detail = client.ApiEntitiesBasicBadgeDetail
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesBasicBadgeDetail.load({ "group_id" => "group_id" })
+result = client.ApiEntitiesBasicBadgeDetail.load({ "image_url" => "image_url", "link_url" => "link_url" })
 ```
 
 ### Common Methods
@@ -1928,6 +1931,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesBasicGroupDetail.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_job_token_scope_groups_allowlist" => {}, # Hash
 })
 ```
 
@@ -2005,6 +2009,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesBasicProjectDetail.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_job_token_scope_allowlist" => {}, # Hash
 })
 ```
 
@@ -2113,6 +2118,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesBasicSuccess.create({
+  "post_api_v4_integrations_jira_connect_subscription" => {}, # Hash
 })
 ```
 
@@ -2267,6 +2273,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesBranch.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_repository_branch" => {}, # Hash
 })
 ```
 
@@ -2369,6 +2376,11 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesBulkImport.create({
+  "configuration_access_token" => "example_configuration_access_token", # Object
+  "configuration_url" => "example_configuration_url", # Object
+  "entities_destination_namespace" => "example_entities_destination_namespace", # Object
+  "entities_source_full_path" => "example_entities_source_full_path", # Object
+  "entities_source_type" => "example_entities_source_type", # Object
 })
 ```
 
@@ -2553,7 +2565,7 @@ api_entities_changelog = client.ApiEntitiesChangelog
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesChangelog.load({ "project_id" => "project_id" })
+result = client.ApiEntitiesChangelog.load({ "project_id" => "project_id", "version" => "version" })
 ```
 
 ### Common Methods
@@ -2673,6 +2685,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesCiCatalogResourcesVersion.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_catalog_publish" => {}, # Hash
 })
 ```
 
@@ -2848,6 +2861,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ApiEntitiesCiJobBasic.create({
   "job_id" => "example_job_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_jobs_job_id_play" => {}, # Hash
 })
 ```
 
@@ -2993,6 +3007,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesCiLintResult.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_ci_lint" => {}, # Hash
 })
 ```
 
@@ -3265,6 +3280,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesCiPipelineScheduleDetail.update({
   "pipeline_schedule_id" => "pipeline_schedule_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_pipeline_schedules_pipeline_schedule_id" => {},
   # Fields to update
 })
 ```
@@ -3313,6 +3329,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesCiResetTokenResult.create({
+  "post_api_v4_runners_reset_authentication_token" => {}, # Hash
 })
 ```
 
@@ -3388,6 +3405,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesCiResourceGroup.update({
   "id" => "api_entities_ci_resource_group_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_resource_groups_key" => {},
   # Fields to update
 })
 ```
@@ -3452,6 +3470,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesCiRunner.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_runner" => {}, # Hash
 })
 ```
 
@@ -3460,7 +3479,7 @@ result = client.ApiEntitiesCiRunner.create({
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesCiRunner.load({ "id" => 1 })
+result = client.ApiEntitiesCiRunner.load()
 ```
 
 ### Common Methods
@@ -3547,6 +3566,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.ApiEntitiesCiRunnerDetail.update({
   "id" => "api_entities_ci_runner_detail_id",
+  "put_api_v4_runners_id" => {},
   # Fields to update
 })
 ```
@@ -3657,6 +3677,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesCiRunnerRegistrationDetail.create({
+  "post_api_v4_runner" => {}, # Hash
 })
 ```
 
@@ -3711,6 +3732,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesCiSecureFile.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_secure_file" => {}, # Hash
 })
 ```
 
@@ -3782,6 +3804,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesCiVariable.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_variable" => {}, # Hash
 })
 ```
 
@@ -3876,6 +3899,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesCluster.create({
+  "post_api_v4_admin_clusters_add" => {}, # Hash
 })
 ```
 
@@ -3902,6 +3926,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.ApiEntitiesCluster.update({
   "id" => "api_entities_cluster_id",
+  "put_api_v4_admin_clusters_cluster_id" => {},
   # Fields to update
 })
 ```
@@ -3972,6 +3997,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesClusterGroup.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_clusters_user" => {}, # Hash
 })
 ```
 
@@ -3991,6 +4017,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesClusterGroup.update({
   "cluster_id" => "cluster_id",
   "group_id" => "group_id",
+  "put_api_v4_groups_id_clusters_cluster_id" => {},
   # Fields to update
 })
 ```
@@ -4061,6 +4088,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesClusterProject.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_clusters_user" => {}, # Hash
 })
 ```
 
@@ -4080,6 +4108,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesClusterProject.update({
   "cluster_id" => "cluster_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_clusters_cluster_id" => {},
   # Fields to update
 })
 ```
@@ -4141,6 +4170,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesClustersAgent.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_cluster_agent" => {}, # Hash
 })
 ```
 
@@ -4315,6 +4345,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ApiEntitiesClustersAgentTokenWithToken.create({
   "cluster_agent_id" => "example_cluster_agent_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_cluster_agents_agent_id_token" => {}, # Hash
 })
 ```
 
@@ -4463,6 +4494,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesCommitDetail.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_repository_commit" => {}, # Hash
 })
 ```
 
@@ -4482,6 +4514,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesCommitDetail.update({
   "project_id" => "project_id",
   "submodule" => "submodule",
+  "put_api_v4_projects_id_repository_submodules_submodule" => {},
   # Fields to update
 })
 ```
@@ -4553,6 +4586,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ApiEntitiesCommitNote.create({
   "project_id" => "example_project_id", # String
   "sha" => "example_sha", # Object
+  "post_api_v4_projects_id_repository_commits_sha_comment" => {}, # Hash
 })
 ```
 
@@ -4743,6 +4777,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ApiEntitiesCommitStatus.create({
   "id" => "example_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_statuses_sha" => {}, # Hash
 })
 ```
 
@@ -5111,6 +5146,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesDeployKey.create({
+  "post_api_v4_deploy_key" => {}, # Hash
 })
 ```
 
@@ -5130,6 +5166,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesDeployKey.update({
   "id" => "id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_deploy_keys_key_id" => {},
   # Fields to update
 })
 ```
@@ -5196,6 +5233,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesDeployKeysProject.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_deploy_key" => {}, # Hash
 })
 ```
 
@@ -5326,6 +5364,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesDeployTokenWithToken.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_deploy_token" => {}, # Hash
 })
 ```
 
@@ -5453,6 +5492,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesDeploymentExtended.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_deployment" => {}, # Hash
 })
 ```
 
@@ -5472,6 +5512,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesDeploymentExtended.update({
   "deployment_id" => "deployment_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_deployments_deployment_id" => {},
   # Fields to update
 })
 ```
@@ -5522,6 +5563,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ApiEntitiesDeploymentsApproval.create({
   "deployment_id" => "example_deployment_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_deployments_deployment_id_approval" => {}, # Hash
 })
 ```
 
@@ -5699,7 +5741,7 @@ api_entities_discovered_cluster = client.ApiEntitiesDiscoveredCluster
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesDiscoveredCluster.load()
+result = client.ApiEntitiesDiscoveredCluster.load({ "group_id" => "group_id" })
 ```
 
 ### Common Methods
@@ -5762,6 +5804,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ApiEntitiesDraftNote.create({
   "merge_request_id" => "example_merge_request_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note" => {}, # Hash
 })
 ```
 
@@ -5790,6 +5833,7 @@ result = client.ApiEntitiesDraftNote.update({
   "id" => "api_entities_draft_note_id",
   "merge_request_id" => "merge_request_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_merge_requests_merge_request_iid_draft_notes_draft_note_id" => {},
   # Fields to update
 })
 ```
@@ -5887,6 +5931,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesEnvironment.update({
   "id" => "api_entities_environment_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_environments_environment_id" => {},
   # Fields to update
 })
 ```
@@ -6019,6 +6064,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.ApiEntitiesErrorTrackingProjectSetting.update({
   "project_id" => "project_id",
+  "put_api_v4_projects_id_error_tracking_setting" => {},
   # Fields to update
 })
 ```
@@ -6153,6 +6199,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesFeature.create({
   "id" => "example_id", # String
+  "post_api_v4_features_name" => {}, # Hash
 })
 ```
 
@@ -6286,6 +6333,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesFeatureFlag.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_feature_flag" => {}, # Hash
 })
 ```
 
@@ -6313,6 +6361,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesFeatureFlag.update({
   "id" => "api_entities_feature_flag_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_feature_flags_feature_flag_name" => {},
   # Fields to update
 })
 ```
@@ -6376,6 +6425,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesFeatureFlagUserList.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_feature_flags_user_list" => {}, # Hash
 })
 ```
 
@@ -6403,6 +6453,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesFeatureFlagUserList.update({
   "iid" => "iid",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_feature_flags_user_lists_iid" => {},
   # Fields to update
 })
 ```
@@ -6463,6 +6514,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesFreezePeriod.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_freeze_period" => {}, # Hash
 })
 ```
 
@@ -6490,6 +6542,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesFreezePeriod.update({
   "id" => "api_entities_freeze_period_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_freeze_periods_freeze_period_id" => {},
   # Fields to update
 })
 ```
@@ -6598,7 +6651,7 @@ api_entities_go_module_version = client.ApiEntitiesGoModuleVersion
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesGoModuleVersion.load({ "module_version" => "module_version", "project_id" => "project_id" })
+result = client.ApiEntitiesGoModuleVersion.load({ "module_version" => "module_version", "project_id" => "project_id", "module_name" => "module_name" })
 ```
 
 ### Common Methods
@@ -6698,6 +6751,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesGroup.create({
+  "post_api_v4_group" => {}, # Hash
 })
 ```
 
@@ -6724,6 +6778,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.ApiEntitiesGroup.update({
   "id" => "id",
+  "put_api_v4_groups_id" => {},
   # Fields to update
 })
 ```
@@ -6921,6 +6976,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesHook.create({
+  "post_api_v4_hook" => {}, # Hash
 })
 ```
 
@@ -6947,6 +7003,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.ApiEntitiesHook.update({
   "id" => "api_entities_hook_id",
+  "put_api_v4_hooks_hook_id" => {},
   # Fields to update
 })
 ```
@@ -7084,6 +7141,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.ApiEntitiesIntegrationBasic.update({
   "group_id" => "group_id",
+  "put_api_v4_groups_id_integrations_apple_app_store" => {},
   # Fields to update
 })
 ```
@@ -7146,6 +7204,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesInvitation.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_invitation" => {}, # Hash
 })
 ```
 
@@ -7412,6 +7471,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ApiEntitiesIssueLink.create({
   "issue_id" => "example_issue_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_issues_issue_iid_link" => {}, # Hash
 })
 ```
 
@@ -7530,6 +7590,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesMarkdown.create({
+  "post_api_v4_markdown" => {}, # Hash
 })
 ```
 
@@ -7662,6 +7723,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesMember.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_member" => {}, # Hash
 })
 ```
 
@@ -8015,7 +8077,7 @@ results = client.ApiEntitiesMergeRequestBasic.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesMergeRequestBasic.load({ "id" => 1 })
+result = client.ApiEntitiesMergeRequestBasic.load()
 ```
 
 ### Common Methods
@@ -8379,6 +8441,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ApiEntitiesMetricImage.create({
   "alert_management_alert_id" => "example_alert_management_alert_id", # String
   "project_id" => "example_project_id", # String
+  "file" => "example_file", # Object
 })
 ```
 
@@ -8553,6 +8616,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.ApiEntitiesNamespace.update({
   "id" => "api_entities_namespace_id",
+  "put_api_v4_namespaces_id" => {},
   # Fields to update
 })
 ```
@@ -8664,6 +8728,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesNamespacesStorageLimitExclusion.create({
   "namespace_id" => "example_namespace_id", # String
+  "post_api_v4_namespaces_id_storage_limit_exclusion" => {}, # Hash
 })
 ```
 
@@ -8672,7 +8737,7 @@ result = client.ApiEntitiesNamespacesStorageLimitExclusion.create({
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesNamespacesStorageLimitExclusion.load({ "id" => 1 })
+result = client.ApiEntitiesNamespacesStorageLimitExclusion.load()
 ```
 
 ### Common Methods
@@ -8726,7 +8791,7 @@ api_entities_npm_package = client.ApiEntitiesNpmPackage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesNpmPackage.load()
+result = client.ApiEntitiesNpmPackage.load({ "package_name" => "package_name" })
 ```
 
 ### Common Methods
@@ -8772,7 +8837,7 @@ api_entities_npm_package_tag = client.ApiEntitiesNpmPackageTag
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ApiEntitiesNpmPackageTag.load()
+result = client.ApiEntitiesNpmPackageTag.load({ "package_name" => "package_name" })
 ```
 
 ### Common Methods
@@ -8989,6 +9054,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesOrganizationsOrganization.create({
+  "post_api_v4_organization" => {}, # Hash
 })
 ```
 
@@ -9693,6 +9759,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesPackagesDebianDistribution.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_debian_distribution" => {}, # Hash
 })
 ```
 
@@ -9784,6 +9851,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesPagesDomain.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_pages_domain" => {}, # Hash
 })
 ```
 
@@ -10061,6 +10129,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesPersonalAccessTokenWithToken.create({
   "personal_access_token_id" => "example_personal_access_token_id", # String
+  "post_api_v4_personal_access_tokens_id_rotate" => {}, # Hash
 })
 ```
 
@@ -10130,6 +10199,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesPersonalSnippet.create({
+  "post_api_v4_snippet" => {}, # Hash
 })
 ```
 
@@ -10156,6 +10226,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.ApiEntitiesPersonalSnippet.update({
   "id" => "api_entities_personal_snippet_id",
+  "put_api_v4_snippets_id" => {},
   # Fields to update
 })
 ```
@@ -10212,6 +10283,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 
 ```ruby
 result = client.ApiEntitiesPlanLimit.update({
+  "put_api_v4_application_plan_limit" => {},
   # Fields to update
 })
 ```
@@ -10413,6 +10485,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesProject.create({
   "user_id" => "example_user_id", # String
+  "post_api_v4_projects_user_user_id" => {}, # Hash
 })
 ```
 
@@ -10431,6 +10504,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.ApiEntitiesProject.update({
   "id" => "id",
+  "put_api_v4_projects_id" => {},
   # Fields to update
 })
 ```
@@ -10586,6 +10660,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesProjectGroupLink.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_share" => {}, # Hash
 })
 ```
 
@@ -10671,6 +10746,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesProjectHook.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_hook" => {}, # Hash
 })
 ```
 
@@ -10698,6 +10774,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesProjectHook.update({
   "id" => "api_entities_project_hook_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_hooks_hook_id" => {},
   # Fields to update
 })
 ```
@@ -10758,6 +10835,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesProjectImportStatus.create({
+  "path" => "example_path", # String
 })
 ```
 
@@ -10944,6 +11022,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesProjectSnippet.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_snippet" => {}, # Hash
 })
 ```
 
@@ -10971,6 +11050,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesProjectSnippet.update({
   "id" => "api_entities_project_snippet_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_snippets_snippet_id" => {},
   # Fields to update
 })
 ```
@@ -11020,6 +11100,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesProjectUpload.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_upload" => {}, # Hash
 })
 ```
 
@@ -11214,6 +11295,16 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess
 
 ### Operations
 
+#### `create(reqdata, ctrl = nil) -> result`
+
+Create a new entity with the given data. Raises on error.
+
+```ruby
+result = client.ApiEntitiesProjectWithAccess.create({
+  "project_id" => "example_project_id", # String
+})
+```
+
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Raises on error.
@@ -11277,6 +11368,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesProjectsContainerRegistryProtectionRule.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_registry_protection_repository_rule" => {}, # Hash
 })
 ```
 
@@ -11296,6 +11388,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesProjectsContainerRegistryProtectionRule.update({
   "id" => "id",
   "project_id" => "project_id",
+  "patch_api_v4_projects_id_registry_protection_repository_rules_protection_rule_id" => {},
   # Fields to update
 })
 ```
@@ -11356,6 +11449,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesProjectsPackagesProtectionRule.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_packages_protection_rule" => {}, # Hash
 })
 ```
 
@@ -11375,6 +11469,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesProjectsPackagesProtectionRule.update({
   "id" => "id",
   "project_id" => "project_id",
+  "patch_api_v4_projects_id_packages_protection_rules_package_protection_rule_id" => {},
   # Fields to update
 })
 ```
@@ -11435,6 +11530,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesProjectsTopic.create({
+  "post_api_v4_topic" => {}, # Hash
 })
 ```
 
@@ -11453,6 +11549,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.ApiEntitiesProjectsTopic.update({
   "id" => "api_entities_projects_topic_id",
+  "put_api_v4_topics_id" => {},
   # Fields to update
 })
 ```
@@ -11515,6 +11612,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesProtectedBranch.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_protected_branch" => {}, # Hash
 })
 ```
 
@@ -11542,6 +11640,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesProtectedBranch.update({
   "id" => "api_entities_protected_branch_id",
   "project_id" => "project_id",
+  "patch_api_v4_projects_id_protected_branches_name" => {},
   # Fields to update
 })
 ```
@@ -11604,6 +11703,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesProtectedTag.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_protected_tag" => {}, # Hash
 })
 ```
 
@@ -11822,6 +11922,9 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesRelationImportTracker.create({
+  "file" => "example_file", # Object
+  "path" => "example_path", # String
+  "relation" => "example_relation", # Object
 })
 ```
 
@@ -11918,6 +12021,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesRelease.update({
   "id" => "api_entities_release_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_releases_tag_name" => {},
   # Fields to update
 })
 ```
@@ -11978,6 +12082,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ApiEntitiesReleasesLink.create({
   "project_id" => "example_project_id", # String
   "release_id" => "example_release_id", # String
+  "post_api_v4_projects_id_releases_tag_name_assets_link" => {}, # Hash
 })
 ```
 
@@ -12006,6 +12111,7 @@ result = client.ApiEntitiesReleasesLink.update({
   "id" => "api_entities_releases_link_id",
   "project_id" => "project_id",
   "release_id" => "release_id",
+  "put_api_v4_projects_id_releases_tag_name_assets_links_link_id" => {},
   # Fields to update
 })
 ```
@@ -12073,6 +12179,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesRemoteMirror.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_remote_mirror" => {}, # Hash
 })
 ```
 
@@ -12100,6 +12207,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesRemoteMirror.update({
   "id" => "api_entities_remote_mirror_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_remote_mirrors_mirror_id" => {},
   # Fields to update
 })
 ```
@@ -12230,6 +12338,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesResourceAccessTokenWithToken.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_access_tokens_self_rotate" => {}, # Hash
 })
 ```
 
@@ -12521,6 +12630,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 
 ```ruby
 result = client.ApiEntitiesSuggestion.update({
+  "put_api_v4_suggestions_batch_apply" => {},
   # Fields to update
 })
 ```
@@ -12586,6 +12696,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ApiEntitiesSystemBroadcastMessage.create({
+  "post_api_v4_broadcast_message" => {}, # Hash
 })
 ```
 
@@ -12612,6 +12723,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.ApiEntitiesSystemBroadcastMessage.update({
   "id" => "api_entities_system_broadcast_message_id",
+  "put_api_v4_broadcast_messages_id" => {},
   # Fields to update
 })
 ```
@@ -12674,6 +12786,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesTag.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_repository_tag" => {}, # Hash
 })
 ```
 
@@ -12839,6 +12952,7 @@ api_entities_terraform_module_version = client.ApiEntitiesTerraformModuleVersion
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `String` | No |  |
 | `modules` | `String` | No |  |
 | `name` | `String` | No |  |
 | `provider` | `String` | No |  |
@@ -12990,6 +13104,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesTrigger.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_trigger" => {}, # Hash
 })
 ```
 
@@ -13017,6 +13132,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.ApiEntitiesTrigger.update({
   "id" => "api_entities_trigger_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_triggers_trigger_id" => {},
   # Fields to update
 })
 ```
@@ -13328,6 +13444,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesWikiAttachment.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_wikis_attachment" => {}, # Hash
 })
 ```
 
@@ -13376,6 +13493,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ApiEntitiesWikiPage.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_wiki" => {}, # Hash
 })
 ```
 
@@ -13908,6 +14026,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.Composer.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_packages_composer" => {}, # Hash
 })
 ```
 
@@ -14282,6 +14401,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.Debian.update({
   "id" => "id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_packages_debian_file_name" => {},
   # Fields to update
 })
 ```
@@ -14387,20 +14507,7 @@ debian_package = client.DebianPackage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.DebianPackage.load({ "id" => "debian_package_id", "distribution" => "distribution", "file_name" => "file_name", "letter" => "letter", "package_name" => "package_name", "package_version" => "package_version" })
-```
-
-#### `update(reqdata, ctrl = nil) -> result`
-
-Update an existing entity. The data must include the entity `id`. Raises on error.
-
-```ruby
-result = client.DebianPackage.update({
-  "id" => "debian_package_id",
-  "file_name" => "file_name",
-  "project_id" => "project_id",
-  # Fields to update
-})
+result = client.DebianPackage.load({ "id" => "debian_package_id", "distribution" => "distribution" })
 ```
 
 ### Common Methods
@@ -14651,6 +14758,7 @@ Create a new entity with the given data. Raises on error.
 result = client.EeApiEntitiesApprovalState.create({
   "merge_request_id" => "example_merge_request_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_merge_requests_merge_request_iid_approval" => {}, # Hash
 })
 ```
 
@@ -15060,6 +15168,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.EeApiEntitiesGeoNodeStatus.create({
+  "post_api_v4_geo_status" => {}, # Hash
 })
 ```
 
@@ -15172,6 +15281,7 @@ Create a new entity with the given data. Raises on error.
 result = client.EeApiEntitiesIssuableMetricImage.create({
   "issue_id" => "example_issue_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_issues_issue_iid_metric_image" => {}, # Hash
 })
 ```
 
@@ -15192,6 +15302,7 @@ result = client.EeApiEntitiesIssuableMetricImage.update({
   "id" => "id",
   "issue_id" => "issue_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_issues_issue_iid_metric_images_metric_image_id" => {},
   # Fields to update
 })
 ```
@@ -15316,6 +15427,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.EeApiEntitiesSshCertificate.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_ssh_certificate" => {}, # Hash
 })
 ```
 
@@ -15378,6 +15490,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.Environment.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_environments_stop_stale" => {}, # Hash
 })
 ```
 
@@ -15710,7 +15823,7 @@ generic_package = client.GenericPackage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GenericPackage.load({ "file_name" => "file_name", "generic_id" => "generic_id", "project_id" => "project_id" })
+result = client.GenericPackage.load({ "file_name" => "file_name", "generic_id" => "generic_id", "project_id" => "project_id", "package_version" => "package_version" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -15762,6 +15875,12 @@ Return the entity name.
 geo = client.Geo
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `String` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl = nil) -> result`
@@ -15770,6 +15889,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Geo.create({
+  "post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack" => {}, # Hash
 })
 ```
 
@@ -15824,7 +15944,7 @@ go_proxy = client.GoProxy
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GoProxy.load({ "project_id" => "project_id" })
+result = client.GoProxy.load({ "project_id" => "project_id", "module_name" => "module_name" })
 ```
 
 ### Common Methods
@@ -15904,6 +16024,8 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.Group.update({
   "id" => "group_id",
+  "key" => "key",
+  "put_api_v4_groups_id_custom_attributes_key" => {},
   # Fields to update
 })
 ```
@@ -16066,6 +16188,9 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.GroupImport.create({
+  "file" => "example_file", # Object
+  "name" => "example_name", # String
+  "path" => "example_path", # String
 })
 ```
 
@@ -16243,6 +16368,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Import.create({
+  "post_api_v4_import_github_gist" => {}, # Hash
 })
 ```
 
@@ -16296,6 +16422,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Integration.create({
+  "post_api_v4_integrations_slack_event" => {}, # Hash
 })
 ```
 
@@ -16507,6 +16634,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Job.create({
+  "post_api_v4_jobs_request" => {}, # Hash
 })
 ```
 
@@ -16525,6 +16653,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.Job.update({
   "id" => "job_id",
+  "put_api_v4_jobs_id" => {},
   # Fields to update
 })
 ```
@@ -16572,7 +16701,7 @@ maven_package = client.MavenPackage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.MavenPackage.load({ "file_name" => "file_name" })
+result = client.MavenPackage.load({ "file_name" => "file_name", "path" => "path" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -16583,6 +16712,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.MavenPackage.update({
   "file_name" => "file_name",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_packages_maven*path_file_name" => {},
   # Fields to update
 })
 ```
@@ -16637,6 +16767,18 @@ Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
 result = client.Member.remove({ "id" => "id" })
+```
+
+#### `update(reqdata, ctrl = nil) -> result`
+
+Update an existing entity. The data must include the entity `id`. Raises on error.
+
+```ruby
+result = client.Member.update({
+  "group_id" => "group_id",
+  "id" => "id",
+  # Fields to update
+})
 ```
 
 ### Common Methods
@@ -16811,6 +16953,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.Migration.create({
   "timestamp" => "example_timestamp", # Object
+  "post_api_v4_admin_migrations_timestamp_mark" => {}, # Hash
 })
 ```
 
@@ -16977,6 +17120,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 result = client.Npm.update({
   "id" => "id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_packages_npm_package_name" => {},
   # Fields to update
 })
 ```
@@ -17033,7 +17177,7 @@ result = client.NpmPackage.create({
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.NpmPackage.load({ "project_id" => "project_id" })
+result = client.NpmPackage.load({ "project_id" => "project_id", "file_name" => "file_name", "package_name" => "package_name" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -17041,7 +17185,7 @@ result = client.NpmPackage.load({ "project_id" => "project_id" })
 Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.NpmPackage.remove({ "tag" => "tag" })
+result = client.NpmPackage.remove({ "tag" => "tag", "package_name" => "package_name" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -17100,6 +17244,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.Nuget.update({
   "project_id" => "project_id",
+  "put_api_v4_projects_id_packages_nuget" => {},
   # Fields to update
 })
 ```
@@ -17184,7 +17329,7 @@ result = client.NugetPackage.load({ "project_id" => "project_id" })
 Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.NugetPackage.remove({ "project_id" => "project_id" })
+result = client.NugetPackage.remove({ "project_id" => "project_id", "package_name" => "package_name", "package_version" => "package_version" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -17319,6 +17464,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.Page.update({
   "project_id" => "project_id",
+  "patch_api_v4_projects_id_page" => {},
   # Fields to update
 })
 ```
@@ -17626,6 +17772,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ProjectEntity.create({
+  "post_api_v4_import_bitbucket_server" => {}, # Hash
 })
 ```
 
@@ -17680,6 +17827,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.ProjectExport.create({
   "id" => "example_id", # String
+  "post_api_v4_projects_id_export" => {}, # Hash
 })
 ```
 
@@ -17852,6 +18000,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ProjectImportEntity.create({
+  "post_api_v4_import_bitbucket" => {}, # Hash
 })
 ```
 
@@ -18012,6 +18161,7 @@ Update an existing entity. The data must include the entity `id`. Raises on erro
 ```ruby
 result = client.ProjectsJobTokenScope.update({
   "project_id" => "project_id",
+  "patch_api_v4_projects_id_job_token_scope" => {},
   # Fields to update
 })
 ```
@@ -18113,6 +18263,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.Pypi.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_packages_pypi" => {}, # Hash
 })
 ```
 
@@ -18221,7 +18372,7 @@ release = client.Release
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Release.load({ "project_id" => "project_id" })
+result = client.Release.load({ "project_id" => "project_id", "suffix_path" => "suffix_path" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -18327,17 +18478,6 @@ remote_mirror = client.RemoteMirror
 | `id` | `String` | No |  |
 
 ### Operations
-
-#### `create(reqdata, ctrl = nil) -> result`
-
-Create a new entity with the given data. Raises on error.
-
-```ruby
-result = client.RemoteMirror.create({
-  "id" => "example_id", # String
-  "project_id" => "example_project_id", # String
-})
-```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
@@ -18456,7 +18596,7 @@ result = client.RpmPackage.create({
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.RpmPackage.load({ "project_id" => "project_id" })
+result = client.RpmPackage.load({ "project_id" => "project_id", "file_name" => "file_name" })
 ```
 
 ### Common Methods
@@ -18617,6 +18757,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Runner.create({
+  "post_api_v4_runners_verify" => {}, # Hash
 })
 ```
 
@@ -18671,7 +18812,7 @@ search = client.Search
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Search.load()
+result = client.Search.load({ "scope" => "scope", "search" => "search" })
 ```
 
 ### Common Methods
@@ -18778,6 +18919,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Slack.create({
+  "post_api_v4_slack_trigger" => {}, # Hash
 })
 ```
 
@@ -19122,6 +19264,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.TerraformState.create({
+  "id" => "example_id", # String
   "project_id" => "example_project_id", # String
 })
 ```
@@ -19403,6 +19546,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.UsageData.create({
+  "post_api_v4_usage_data_increment_counter" => {}, # Hash
 })
 ```
 
@@ -19619,4 +19763,42 @@ client = GitlabSDK.new({
   },
 })
 ```
+
+
+### Configuring features
+
+Each feature is inactive until switched on, and an SDK with no feature
+configured does no feature work at all. Every option below keeps its default
+unless you name it.
+
+The array form of \`feature\` is significant: several features wrap the
+transport, and the order you list them in is the order they nest.
+
+#### `test`
+
+In-memory mock transport for testing without a live server.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.test.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Installs the BASE transport that the wrapping features wrap, so it must be
+  activated before them.
+- Inactive by default: leaving it out costs nothing at runtime.
 

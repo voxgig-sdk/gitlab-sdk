@@ -6,6 +6,7 @@ main: kit: entity: api_entities_projects_container_registry_protection_rule: {
 
   fields: [
     {
+      format: "int32"
       name: "id"
       req: false
       type: "`$INTEGER`"
@@ -21,6 +22,7 @@ main: kit: entity: api_entities_projects_container_registry_protection_rule: {
       type: "`$STRING`"
     }
     {
+      format: "int32"
       name: "project_id"
       req: false
       type: "`$INTEGER`"
@@ -65,21 +67,37 @@ main: kit: entity: api_entities_projects_container_registry_protection_rule: {
           }
           method: "POST"
           orig: "/api/v4/projects/{id}/registry/protection/repository/rules"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "registry"
-            "protection"
-            "repository"
-            "rules"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "protection"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "rules"
+            }
+          ]
           select: {
             exist: [
               "post_api_v4_projects_id_registry_protection_repository_rule"
@@ -110,21 +128,37 @@ main: kit: entity: api_entities_projects_container_registry_protection_rule: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/registry/protection/repository/rules"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "registry"
-            "protection"
-            "repository"
-            "rules"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "protection"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "rules"
+            }
+          ]
           select: {
             exist: [
               "project_id"
@@ -170,23 +204,41 @@ main: kit: entity: api_entities_projects_container_registry_protection_rule: {
           }
           method: "PATCH"
           orig: "/api/v4/projects/{id}/registry/protection/repository/rules/{protection_rule_id}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "registry"
-            "protection"
-            "repository"
-            "rules"
-            "{id}"
-          ]
           rename: {
             param: {
               id: "project_id"
               protection_rule_id: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "protection"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "rules"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

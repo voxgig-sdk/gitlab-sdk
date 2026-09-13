@@ -16,7 +16,7 @@ class ApiEntitiesProjectWithAccessEntityTest < Minitest::Test
     setup = api_entities_project_with_access_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["load"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "api_entities_project_with_access." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -31,16 +31,18 @@ class ApiEntitiesProjectWithAccessEntityTest < Minitest::Test
     end
     client = setup[:client]
 
-    # Bootstrap entity data from existing test data.
-    api_entities_project_with_access_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.api_entities_project_with_access")))
-    api_entities_project_with_access_ref01_data = nil
-    if api_entities_project_with_access_ref01_data_raw.length > 0
-      api_entities_project_with_access_ref01_data = Helpers.to_map(api_entities_project_with_access_ref01_data_raw[0][1])
-    end
+    # CREATE
+    api_entities_project_with_access_ref01_ent = client.ApiEntitiesProjectWithAccess(nil)
+    api_entities_project_with_access_ref01_data = Helpers.to_map(Vs.getprop(
+      Vs.getpath(setup[:data], "new.api_entities_project_with_access"), "api_entities_project_with_access_ref01"))
+    api_entities_project_with_access_ref01_data["project_id"] = setup[:idmap]["project01"]
+
+    api_entities_project_with_access_ref01_data_result = api_entities_project_with_access_ref01_ent.create(api_entities_project_with_access_ref01_data, nil)
+    api_entities_project_with_access_ref01_data = Helpers.to_map(api_entities_project_with_access_ref01_data_result.respond_to?(:data_get) ? api_entities_project_with_access_ref01_data_result.data_get : api_entities_project_with_access_ref01_data_result)
+    assert !api_entities_project_with_access_ref01_data.nil?
+    assert !api_entities_project_with_access_ref01_data["id"].nil?
 
     # LOAD
-    api_entities_project_with_access_ref01_ent = client.ApiEntitiesProjectWithAccess(nil)
     api_entities_project_with_access_ref01_match_dt0 = {
       "id" => api_entities_project_with_access_ref01_data["id"],
     }
@@ -66,7 +68,7 @@ def api_entities_project_with_access_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["api_entities_project_with_access01", "api_entities_project_with_access02", "api_entities_project_with_access03"],
+    ["api_entities_project_with_access01", "api_entities_project_with_access02", "api_entities_project_with_access03", "project01", "project02", "project03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",
@@ -85,7 +87,7 @@ def api_entities_project_with_access_basic_setup(extra)
     "GITLAB_TEST_API_ENTITIES_PROJECT_WITH_ACCESS_ENTID" => idmap,
     "GITLAB_TEST_LIVE" => "FALSE",
     "GITLAB_TEST_EXPLAIN" => "FALSE",
-    "GITLAB_APIKEY" => "NONE",
+    "GITLAB_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -96,6 +98,9 @@ def api_entities_project_with_access_basic_setup(extra)
 
   if env["GITLAB_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["GITLAB_APIKEY"],
       },

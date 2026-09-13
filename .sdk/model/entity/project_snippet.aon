@@ -43,20 +43,32 @@ main: kit: entity: project_snippet: {
           }
           method: "DELETE"
           orig: "/api/v4/projects/{id}/snippets/{snippet_id}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "snippets"
-            "{id}"
-          ]
           rename: {
             param: {
               id: "project_id"
               snippet_id: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "snippets"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

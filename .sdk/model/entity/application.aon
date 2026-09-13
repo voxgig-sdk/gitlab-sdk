@@ -36,11 +36,19 @@ main: kit: entity: application: {
           }
           method: "DELETE"
           orig: "/api/v4/applications/{id}"
-          parts: [
-            "api"
-            "v4"
-            "applications"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "applications"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

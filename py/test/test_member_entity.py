@@ -27,7 +27,7 @@ class TestMemberEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in []:
+        for _op in ["update"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "member." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -45,6 +45,17 @@ class TestMemberEntity:
         member_ref01_data = None
         if len(member_ref01_data_raw) > 0:
             member_ref01_data = helpers.to_map(member_ref01_data_raw[0][1])
+
+        # UPDATE
+        member_ref01_ent = client.Member(None)
+        member_ref01_data_up0_up = {
+            "id": member_ref01_data["id"],
+            "group_id": setup["idmap"]["group_id"],
+        }
+
+        member_ref01_resdata_up0 = helpers.to_map(runner.entity_data(member_ref01_ent.update(member_ref01_data_up0_up, None)))
+        assert member_ref01_resdata_up0 is not None
+        assert member_ref01_resdata_up0["id"] == member_ref01_data_up0_up["id"]
 
 
 
@@ -84,16 +95,22 @@ def _member_basic_setup(extra):
         "GITLAB_TEST_MEMBER_ENTID": idmap,
         "GITLAB_TEST_LIVE": "FALSE",
         "GITLAB_TEST_EXPLAIN": "FALSE",
-        "GITLAB_APIKEY": "NONE",
+        "GITLAB_APIKEY": "",
     })
 
     idmap_resolved = helpers.to_map(
         env.get("GITLAB_TEST_MEMBER_ENTID"))
     if idmap_resolved is None:
         idmap_resolved = helpers.to_map(idmap)
+    if idmap_resolved.get("group_id") is None:
+        idmap_resolved["group_id"] = idmap_resolved.get("group01")
 
     if env.get("GITLAB_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
                 "apikey": env.get("GITLAB_APIKEY"),
             },

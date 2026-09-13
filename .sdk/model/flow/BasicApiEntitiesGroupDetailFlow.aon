@@ -12,8 +12,7 @@ main: kit: flow: BasicApiEntitiesGroupDetailFlow:
       }
 
       match: {
-        group_id: "group01",
-        project_id: "project01"
+        group_id: "group01"
       }
 
       op: "create"

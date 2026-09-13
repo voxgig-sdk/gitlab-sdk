@@ -45,12 +45,22 @@ main: kit: entity: group: {
           }
           method: "POST"
           orig: "/api/v4/groups/{id}/placeholder_reassignments"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "placeholder_reassignments"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "placeholder_reassignments"
+            }
           ]
           select: {
             "$action": "placeholder_reassignment"
@@ -87,13 +97,25 @@ main: kit: entity: group: {
           }
           method: "POST"
           orig: "/api/v4/groups/{id}/tokens/revoke"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "tokens"
-            "revoke"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "tokens"
+            }
+            {
+              lit: "revoke"
+            }
           ]
           select: {
             "$action": "token_revoke"
@@ -118,90 +140,28 @@ main: kit: entity: group: {
                 type: "`$STRING`"
               }
             ]
-            query: [
-              {
-                kind: "query"
-                name: "post_api_v4_groups_id_transfer"
-                orig: "post_api_v4_groups_id_transfer"
-                reqd: true
-                type: "`$OBJECT`"
-              }
-            ]
-          }
-          method: "POST"
-          orig: "/api/v4/groups/{id}/transfer"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "transfer"
-          ]
-          select: {
-            "$action": "transfer"
-            exist: [
-              "id"
-              "post_api_v4_groups_id_transfer"
-            ]
-          }
-          transform: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          args: {
-            params: [
-              {
-                kind: "param"
-                name: "id"
-                orig: "id"
-                reqd: true
-                type: "`$STRING`"
-              }
-            ]
-          }
-          method: "POST"
-          orig: "/api/v4/groups/{id}/ldap_sync"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "ldap_sync"
-          ]
-          select: {
-            "$action": "ldap_sync"
-            exist: [
-              "id"
-            ]
-          }
-          transform: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          args: {
-            params: [
-              {
-                kind: "param"
-                name: "id"
-                orig: "id"
-                reqd: true
-                type: "`$STRING`"
-              }
-            ]
           }
           method: "POST"
           orig: "/api/v4/groups/{id}/members/approve_all"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "members"
-            "approve_all"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "members"
+            }
+            {
+              lit: "approve_all"
+            }
           ]
           select: {
             "$action": "member_approve_all"
@@ -228,48 +188,28 @@ main: kit: entity: group: {
           }
           method: "POST"
           orig: "/api/v4/groups/{id}/placeholder_reassignments/authorize"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "placeholder_reassignments"
-            "authorize"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "placeholder_reassignments"
+            }
+            {
+              lit: "authorize"
+            }
           ]
           select: {
             "$action": "placeholder_reassignment_authorize"
-            exist: [
-              "id"
-            ]
-          }
-          transform: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          args: {
-            params: [
-              {
-                kind: "param"
-                name: "id"
-                orig: "id"
-                reqd: true
-                type: "`$STRING`"
-              }
-            ]
-          }
-          method: "POST"
-          orig: "/api/v4/groups/{id}/restore"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "restore"
-          ]
-          select: {
-            "$action": "restore"
             exist: [
               "id"
             ]
@@ -531,12 +471,22 @@ main: kit: entity: group: {
           }
           method: "GET"
           orig: "/api/v4/groups/{id}/issues_statistics"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "issues_statistics"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "issues_statistics"
+            }
           ]
           select: {
             "$action": "issues_statistic"
@@ -649,13 +599,25 @@ main: kit: entity: group: {
           }
           method: "GET"
           orig: "/api/v4/groups/{id}/(-/)search"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "(-"
-            ")search"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "(-"
+            }
+            {
+              lit: ")search"
+            }
           ]
           select: {
             "$action": "_search"
@@ -703,14 +665,28 @@ main: kit: entity: group: {
           }
           method: "GET"
           orig: "/api/v4/groups/{id}/uploads/{secret}/{filename}"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "uploads"
-            "{secret}"
-            "{filename}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              var: "secret"
+            }
+            {
+              var: "filename"
+            }
           ]
           select: {
             exist: [
@@ -756,12 +732,22 @@ main: kit: entity: group: {
           }
           method: "GET"
           orig: "/api/v4/groups/{id}/pending_members"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "pending_members"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pending_members"
+            }
           ]
           select: {
             "$action": "pending_member"
@@ -797,13 +783,25 @@ main: kit: entity: group: {
           }
           method: "GET"
           orig: "/api/v4/groups/{id}/uploads/{upload_id}"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "uploads"
-            "{upload_id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              var: "upload_id"
+            }
           ]
           select: {
             exist: [
@@ -830,12 +828,22 @@ main: kit: entity: group: {
           }
           method: "GET"
           orig: "/api/v4/groups/{id}/placeholder_reassignments"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "placeholder_reassignments"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "placeholder_reassignments"
+            }
           ]
           select: {
             "$action": "placeholder_reassignment"
@@ -881,14 +889,28 @@ main: kit: entity: group: {
           }
           method: "DELETE"
           orig: "/api/v4/groups/{id}/uploads/{secret}/{filename}"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "uploads"
-            "{secret}"
-            "{filename}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              var: "secret"
+            }
+            {
+              var: "filename"
+            }
           ]
           select: {
             exist: [
@@ -923,13 +945,25 @@ main: kit: entity: group: {
           }
           method: "DELETE"
           orig: "/api/v4/groups/{id}/share/{group_id}"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "share"
-            "{group_id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "share"
+            }
+            {
+              var: "group_id"
+            }
           ]
           select: {
             exist: [
@@ -963,13 +997,25 @@ main: kit: entity: group: {
           }
           method: "DELETE"
           orig: "/api/v4/groups/{id}/custom_attributes/{key}"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "custom_attributes"
-            "{key}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "custom_attributes"
+            }
+            {
+              var: "key"
+            }
           ]
           select: {
             exist: [
@@ -1003,13 +1049,25 @@ main: kit: entity: group: {
           }
           method: "DELETE"
           orig: "/api/v4/groups/{id}/ssh_certificates/{ssh_certificates_id}"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "ssh_certificates"
-            "{ssh_certificates_id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "ssh_certificates"
+            }
+            {
+              var: "ssh_certificates_id"
+            }
           ]
           select: {
             exist: [
@@ -1043,13 +1101,25 @@ main: kit: entity: group: {
           }
           method: "DELETE"
           orig: "/api/v4/groups/{id}/uploads/{upload_id}"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "uploads"
-            "{upload_id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              var: "upload_id"
+            }
           ]
           select: {
             exist: [
@@ -1083,13 +1153,25 @@ main: kit: entity: group: {
           }
           method: "DELETE"
           orig: "/api/v4/groups/{id}/billable_members/{user_id}"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "billable_members"
-            "{user_id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "billable_members"
+            }
+            {
+              var: "user_id"
+            }
           ]
           select: {
             exist: [
@@ -1116,11 +1198,19 @@ main: kit: entity: group: {
           }
           method: "DELETE"
           orig: "/api/v4/groups/{id}"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -1167,116 +1257,31 @@ main: kit: entity: group: {
           }
           method: "PUT"
           orig: "/api/v4/groups/{id}/custom_attributes/{key}"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "custom_attributes"
-            "{key}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "custom_attributes"
+            }
+            {
+              var: "key"
+            }
           ]
           select: {
             exist: [
               "id"
               "key"
               "put_api_v4_groups_id_custom_attributes_key"
-            ]
-          }
-          transform: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          args: {
-            params: [
-              {
-                kind: "param"
-                name: "id"
-                orig: "id"
-                reqd: true
-                type: "`$STRING`"
-              }
-              {
-                kind: "param"
-                name: "member_id"
-                orig: "user_id"
-                reqd: true
-                type: "`$STRING`"
-              }
-            ]
-            query: [
-              {
-                kind: "query"
-                name: "put_api_v4_groups_id_members_user_id_state"
-                orig: "put_api_v4_groups_id_members_user_id_state"
-                reqd: true
-                type: "`$OBJECT`"
-              }
-            ]
-          }
-          method: "PUT"
-          orig: "/api/v4/groups/{id}/members/{user_id}/state"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "members"
-            "{member_id}"
-            "state"
-          ]
-          rename: {
-            param: {
-              user_id: "member_id"
-            }
-          }
-          select: {
-            exist: [
-              "id"
-              "member_id"
-              "put_api_v4_groups_id_members_user_id_state"
-            ]
-          }
-          transform: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          args: {
-            params: [
-              {
-                kind: "param"
-                name: "id"
-                orig: "id"
-                reqd: true
-                type: "`$STRING`"
-              }
-              {
-                kind: "param"
-                name: "member_id"
-                orig: "member_id"
-                reqd: true
-                type: "`$STRING`"
-              }
-            ]
-          }
-          method: "PUT"
-          orig: "/api/v4/groups/{id}/members/{member_id}/approve"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "members"
-            "{member_id}"
-            "approve"
-          ]
-          select: {
-            exist: [
-              "id"
-              "member_id"
             ]
           }
           transform: {
@@ -1295,9 +1300,6 @@ main: kit: entity: group: {
       ]
       [
         "custom_attribute"
-      ]
-      [
-        "member"
       ]
       [
         "share"

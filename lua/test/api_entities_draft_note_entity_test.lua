@@ -154,7 +154,7 @@ function api_entities_draft_note_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "api_entities_draft_note01", "api_entities_draft_note02", "api_entities_draft_note03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03" },
+    { "api_entities_draft_note01", "api_entities_draft_note02", "api_entities_draft_note03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03", "draft_note01", "draft_note02", "draft_note03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",
@@ -173,7 +173,7 @@ function api_entities_draft_note_basic_setup(extra)
     ["GITLAB_TEST_API_ENTITIES_DRAFT_NOTE_ENTID"] = idmap,
     ["GITLAB_TEST_LIVE"] = "FALSE",
     ["GITLAB_TEST_EXPLAIN"] = "FALSE",
-    ["GITLAB_APIKEY"] = "NONE",
+    ["GITLAB_APIKEY"] = "",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -190,6 +190,9 @@ function api_entities_draft_note_basic_setup(extra)
 
   if env["GITLAB_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
         apikey = env["GITLAB_APIKEY"],
       },

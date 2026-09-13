@@ -8,6 +8,18 @@ main: kit: flow: BasicApiEntitiesProjectWithAccessFlow:
   step: [
     {
       input: {
+        ref: "api_entities_project_with_access_ref01"
+      }
+
+      match: {
+        project_id: "project01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
         ref: "api_entities_project_with_access_ref01",
         srcdatavar: "api_entities_project_with_access_ref01_data",
         suffix: "_dt0"

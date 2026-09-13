@@ -1596,6 +1596,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesApplicationWithSecret():create({
+  post_api_v4_application = --[[ table ]],
 })
 ```
 
@@ -1648,7 +1649,7 @@ local api_entities_avatar = client:ApiEntitiesAvatar(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesAvatar():load()
+local result, err = client:ApiEntitiesAvatar():load({ email = "email" })
 ```
 
 ### Common Methods
@@ -1718,6 +1719,7 @@ Create a new entity with the given data.
 local result, err = client:ApiEntitiesAwardEmoji():create({
   epic_id = --[[ string ]],
   group_id = --[[ string ]],
+  post_api_v4_groups_id_epics_epic_iid_award_emoji = --[[ table ]],
 })
 ```
 
@@ -1794,6 +1796,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesBadge():create({
   group_id = --[[ string ]],
+  post_api_v4_groups_id_badge = --[[ table ]],
 })
 ```
 
@@ -1877,7 +1880,7 @@ local api_entities_basic_badge_detail = client:ApiEntitiesBasicBadgeDetail(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesBasicBadgeDetail():load({ group_id = "group_id" })
+local result, err = client:ApiEntitiesBasicBadgeDetail():load({ image_url = "image_url", link_url = "link_url" })
 ```
 
 ### Common Methods
@@ -1925,6 +1928,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesBasicGroupDetail():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_job_token_scope_groups_allowlist = --[[ table ]],
 })
 ```
 
@@ -2002,6 +2006,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesBasicProjectDetail():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_job_token_scope_allowlist = --[[ table ]],
 })
 ```
 
@@ -2110,6 +2115,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesBasicSuccess():create({
+  post_api_v4_integrations_jira_connect_subscription = --[[ table ]],
 })
 ```
 
@@ -2264,6 +2270,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesBranch():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_repository_branch = --[[ table ]],
 })
 ```
 
@@ -2366,6 +2373,11 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesBulkImport():create({
+  configuration_access_token = --[[ any ]],
+  configuration_url = --[[ any ]],
+  entities_destination_namespace = --[[ any ]],
+  entities_source_full_path = --[[ any ]],
+  entities_source_type = --[[ any ]],
 })
 ```
 
@@ -2550,7 +2562,7 @@ local api_entities_changelog = client:ApiEntitiesChangelog(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesChangelog():load({ project_id = "project_id" })
+local result, err = client:ApiEntitiesChangelog():load({ project_id = "project_id", version = "version" })
 ```
 
 ### Common Methods
@@ -2670,6 +2682,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesCiCatalogResourcesVersion():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_catalog_publish = --[[ table ]],
 })
 ```
 
@@ -2845,6 +2858,7 @@ Create a new entity with the given data.
 local result, err = client:ApiEntitiesCiJobBasic():create({
   job_id = --[[ string ]],
   project_id = --[[ string ]],
+  post_api_v4_projects_id_jobs_job_id_play = --[[ table ]],
 })
 ```
 
@@ -2990,6 +3004,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesCiLintResult():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_ci_lint = --[[ table ]],
 })
 ```
 
@@ -3262,6 +3277,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesCiPipelineScheduleDetail():update({
   pipeline_schedule_id = "pipeline_schedule_id",
   project_id = "project_id",
+  put_api_v4_projects_id_pipeline_schedules_pipeline_schedule_id = {},
   -- Fields to update
 })
 ```
@@ -3310,6 +3326,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesCiResetTokenResult():create({
+  post_api_v4_runners_reset_authentication_token = --[[ table ]],
 })
 ```
 
@@ -3385,6 +3402,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesCiResourceGroup():update({
   id = "api_entities_ci_resource_group_id",
   project_id = "project_id",
+  put_api_v4_projects_id_resource_groups_key = {},
   -- Fields to update
 })
 ```
@@ -3449,6 +3467,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesCiRunner():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_runner = --[[ table ]],
 })
 ```
 
@@ -3457,7 +3476,7 @@ local result, err = client:ApiEntitiesCiRunner():create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesCiRunner():load({ id = 1 })
+local result, err = client:ApiEntitiesCiRunner():load()
 ```
 
 ### Common Methods
@@ -3544,6 +3563,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:ApiEntitiesCiRunnerDetail():update({
   id = "api_entities_ci_runner_detail_id",
+  put_api_v4_runners_id = {},
   -- Fields to update
 })
 ```
@@ -3654,6 +3674,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesCiRunnerRegistrationDetail():create({
+  post_api_v4_runner = --[[ table ]],
 })
 ```
 
@@ -3708,6 +3729,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesCiSecureFile():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_secure_file = --[[ table ]],
 })
 ```
 
@@ -3779,6 +3801,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesCiVariable():create({
   group_id = --[[ string ]],
+  post_api_v4_groups_id_variable = --[[ table ]],
 })
 ```
 
@@ -3873,6 +3896,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesCluster():create({
+  post_api_v4_admin_clusters_add = --[[ table ]],
 })
 ```
 
@@ -3899,6 +3923,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:ApiEntitiesCluster():update({
   id = "api_entities_cluster_id",
+  put_api_v4_admin_clusters_cluster_id = {},
   -- Fields to update
 })
 ```
@@ -3969,6 +3994,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesClusterGroup():create({
   group_id = --[[ string ]],
+  post_api_v4_groups_id_clusters_user = --[[ table ]],
 })
 ```
 
@@ -3988,6 +4014,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesClusterGroup():update({
   cluster_id = "cluster_id",
   group_id = "group_id",
+  put_api_v4_groups_id_clusters_cluster_id = {},
   -- Fields to update
 })
 ```
@@ -4058,6 +4085,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesClusterProject():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_clusters_user = --[[ table ]],
 })
 ```
 
@@ -4077,6 +4105,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesClusterProject():update({
   cluster_id = "cluster_id",
   project_id = "project_id",
+  put_api_v4_projects_id_clusters_cluster_id = {},
   -- Fields to update
 })
 ```
@@ -4138,6 +4167,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesClustersAgent():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_cluster_agent = --[[ table ]],
 })
 ```
 
@@ -4312,6 +4342,7 @@ Create a new entity with the given data.
 local result, err = client:ApiEntitiesClustersAgentTokenWithToken():create({
   cluster_agent_id = --[[ string ]],
   project_id = --[[ string ]],
+  post_api_v4_projects_id_cluster_agents_agent_id_token = --[[ table ]],
 })
 ```
 
@@ -4460,6 +4491,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesCommitDetail():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_repository_commit = --[[ table ]],
 })
 ```
 
@@ -4479,6 +4511,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesCommitDetail():update({
   project_id = "project_id",
   submodule = "submodule",
+  put_api_v4_projects_id_repository_submodules_submodule = {},
   -- Fields to update
 })
 ```
@@ -4550,6 +4583,7 @@ Create a new entity with the given data.
 local result, err = client:ApiEntitiesCommitNote():create({
   project_id = --[[ string ]],
   sha = --[[ any ]],
+  post_api_v4_projects_id_repository_commits_sha_comment = --[[ table ]],
 })
 ```
 
@@ -4740,6 +4774,7 @@ Create a new entity with the given data.
 local result, err = client:ApiEntitiesCommitStatus():create({
   id = --[[ string ]],
   project_id = --[[ string ]],
+  post_api_v4_projects_id_statuses_sha = --[[ table ]],
 })
 ```
 
@@ -5108,6 +5143,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesDeployKey():create({
+  post_api_v4_deploy_key = --[[ table ]],
 })
 ```
 
@@ -5127,6 +5163,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesDeployKey():update({
   id = "id",
   project_id = "project_id",
+  put_api_v4_projects_id_deploy_keys_key_id = {},
   -- Fields to update
 })
 ```
@@ -5193,6 +5230,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesDeployKeysProject():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_deploy_key = --[[ table ]],
 })
 ```
 
@@ -5323,6 +5361,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesDeployTokenWithToken():create({
   group_id = --[[ string ]],
+  post_api_v4_groups_id_deploy_token = --[[ table ]],
 })
 ```
 
@@ -5450,6 +5489,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesDeploymentExtended():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_deployment = --[[ table ]],
 })
 ```
 
@@ -5469,6 +5509,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesDeploymentExtended():update({
   deployment_id = "deployment_id",
   project_id = "project_id",
+  put_api_v4_projects_id_deployments_deployment_id = {},
   -- Fields to update
 })
 ```
@@ -5519,6 +5560,7 @@ Create a new entity with the given data.
 local result, err = client:ApiEntitiesDeploymentsApproval():create({
   deployment_id = --[[ string ]],
   project_id = --[[ string ]],
+  post_api_v4_projects_id_deployments_deployment_id_approval = --[[ table ]],
 })
 ```
 
@@ -5696,7 +5738,7 @@ local api_entities_discovered_cluster = client:ApiEntitiesDiscoveredCluster(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesDiscoveredCluster():load()
+local result, err = client:ApiEntitiesDiscoveredCluster():load({ group_id = "group_id" })
 ```
 
 ### Common Methods
@@ -5759,6 +5801,7 @@ Create a new entity with the given data.
 local result, err = client:ApiEntitiesDraftNote():create({
   merge_request_id = --[[ string ]],
   project_id = --[[ string ]],
+  post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note = --[[ table ]],
 })
 ```
 
@@ -5787,6 +5830,7 @@ local result, err = client:ApiEntitiesDraftNote():update({
   id = "api_entities_draft_note_id",
   merge_request_id = "merge_request_id",
   project_id = "project_id",
+  put_api_v4_projects_id_merge_requests_merge_request_iid_draft_notes_draft_note_id = {},
   -- Fields to update
 })
 ```
@@ -5884,6 +5928,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesEnvironment():update({
   id = "api_entities_environment_id",
   project_id = "project_id",
+  put_api_v4_projects_id_environments_environment_id = {},
   -- Fields to update
 })
 ```
@@ -6016,6 +6061,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:ApiEntitiesErrorTrackingProjectSetting():update({
   project_id = "project_id",
+  put_api_v4_projects_id_error_tracking_setting = {},
   -- Fields to update
 })
 ```
@@ -6150,6 +6196,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesFeature():create({
   id = --[[ string ]],
+  post_api_v4_features_name = --[[ table ]],
 })
 ```
 
@@ -6283,6 +6330,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesFeatureFlag():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_feature_flag = --[[ table ]],
 })
 ```
 
@@ -6310,6 +6358,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesFeatureFlag():update({
   id = "api_entities_feature_flag_id",
   project_id = "project_id",
+  put_api_v4_projects_id_feature_flags_feature_flag_name = {},
   -- Fields to update
 })
 ```
@@ -6373,6 +6422,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesFeatureFlagUserList():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_feature_flags_user_list = --[[ table ]],
 })
 ```
 
@@ -6400,6 +6450,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesFeatureFlagUserList():update({
   iid = "iid",
   project_id = "project_id",
+  put_api_v4_projects_id_feature_flags_user_lists_iid = {},
   -- Fields to update
 })
 ```
@@ -6460,6 +6511,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesFreezePeriod():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_freeze_period = --[[ table ]],
 })
 ```
 
@@ -6487,6 +6539,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesFreezePeriod():update({
   id = "api_entities_freeze_period_id",
   project_id = "project_id",
+  put_api_v4_projects_id_freeze_periods_freeze_period_id = {},
   -- Fields to update
 })
 ```
@@ -6595,7 +6648,7 @@ local api_entities_go_module_version = client:ApiEntitiesGoModuleVersion(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesGoModuleVersion():load({ module_version = "module_version", project_id = "project_id" })
+local result, err = client:ApiEntitiesGoModuleVersion():load({ module_version = "module_version", project_id = "project_id", module_name = "module_name" })
 ```
 
 ### Common Methods
@@ -6695,6 +6748,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesGroup():create({
+  post_api_v4_group = --[[ table ]],
 })
 ```
 
@@ -6721,6 +6775,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:ApiEntitiesGroup():update({
   id = "id",
+  put_api_v4_groups_id = {},
   -- Fields to update
 })
 ```
@@ -6918,6 +6973,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesHook():create({
+  post_api_v4_hook = --[[ table ]],
 })
 ```
 
@@ -6944,6 +7000,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:ApiEntitiesHook():update({
   id = "api_entities_hook_id",
+  put_api_v4_hooks_hook_id = {},
   -- Fields to update
 })
 ```
@@ -7081,6 +7138,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:ApiEntitiesIntegrationBasic():update({
   group_id = "group_id",
+  put_api_v4_groups_id_integrations_apple_app_store = {},
   -- Fields to update
 })
 ```
@@ -7143,6 +7201,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesInvitation():create({
   group_id = --[[ string ]],
+  post_api_v4_groups_id_invitation = --[[ table ]],
 })
 ```
 
@@ -7409,6 +7468,7 @@ Create a new entity with the given data.
 local result, err = client:ApiEntitiesIssueLink():create({
   issue_id = --[[ string ]],
   project_id = --[[ string ]],
+  post_api_v4_projects_id_issues_issue_iid_link = --[[ table ]],
 })
 ```
 
@@ -7527,6 +7587,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesMarkdown():create({
+  post_api_v4_markdown = --[[ table ]],
 })
 ```
 
@@ -7659,6 +7720,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesMember():create({
   group_id = --[[ string ]],
+  post_api_v4_groups_id_member = --[[ table ]],
 })
 ```
 
@@ -8012,7 +8074,7 @@ local results, err = client:ApiEntitiesMergeRequestBasic():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesMergeRequestBasic():load({ id = 1 })
+local result, err = client:ApiEntitiesMergeRequestBasic():load()
 ```
 
 ### Common Methods
@@ -8376,6 +8438,7 @@ Create a new entity with the given data.
 local result, err = client:ApiEntitiesMetricImage():create({
   alert_management_alert_id = --[[ string ]],
   project_id = --[[ string ]],
+  file = --[[ any ]],
 })
 ```
 
@@ -8550,6 +8613,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:ApiEntitiesNamespace():update({
   id = "api_entities_namespace_id",
+  put_api_v4_namespaces_id = {},
   -- Fields to update
 })
 ```
@@ -8661,6 +8725,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesNamespacesStorageLimitExclusion():create({
   namespace_id = --[[ string ]],
+  post_api_v4_namespaces_id_storage_limit_exclusion = --[[ table ]],
 })
 ```
 
@@ -8669,7 +8734,7 @@ local result, err = client:ApiEntitiesNamespacesStorageLimitExclusion():create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesNamespacesStorageLimitExclusion():load({ id = 1 })
+local result, err = client:ApiEntitiesNamespacesStorageLimitExclusion():load()
 ```
 
 ### Common Methods
@@ -8723,7 +8788,7 @@ local api_entities_npm_package = client:ApiEntitiesNpmPackage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesNpmPackage():load()
+local result, err = client:ApiEntitiesNpmPackage():load({ package_name = "package_name" })
 ```
 
 ### Common Methods
@@ -8769,7 +8834,7 @@ local api_entities_npm_package_tag = client:ApiEntitiesNpmPackageTag(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ApiEntitiesNpmPackageTag():load()
+local result, err = client:ApiEntitiesNpmPackageTag():load({ package_name = "package_name" })
 ```
 
 ### Common Methods
@@ -8986,6 +9051,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesOrganizationsOrganization():create({
+  post_api_v4_organization = --[[ table ]],
 })
 ```
 
@@ -9690,6 +9756,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesPackagesDebianDistribution():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_debian_distribution = --[[ table ]],
 })
 ```
 
@@ -9781,6 +9848,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesPagesDomain():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_pages_domain = --[[ table ]],
 })
 ```
 
@@ -10058,6 +10126,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesPersonalAccessTokenWithToken():create({
   personal_access_token_id = --[[ string ]],
+  post_api_v4_personal_access_tokens_id_rotate = --[[ table ]],
 })
 ```
 
@@ -10127,6 +10196,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesPersonalSnippet():create({
+  post_api_v4_snippet = --[[ table ]],
 })
 ```
 
@@ -10153,6 +10223,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:ApiEntitiesPersonalSnippet():update({
   id = "api_entities_personal_snippet_id",
+  put_api_v4_snippets_id = {},
   -- Fields to update
 })
 ```
@@ -10209,6 +10280,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:ApiEntitiesPlanLimit():update({
+  put_api_v4_application_plan_limit = {},
   -- Fields to update
 })
 ```
@@ -10410,6 +10482,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesProject():create({
   user_id = --[[ string ]],
+  post_api_v4_projects_user_user_id = --[[ table ]],
 })
 ```
 
@@ -10428,6 +10501,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:ApiEntitiesProject():update({
   id = "id",
+  put_api_v4_projects_id = {},
   -- Fields to update
 })
 ```
@@ -10583,6 +10657,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesProjectGroupLink():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_share = --[[ table ]],
 })
 ```
 
@@ -10668,6 +10743,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesProjectHook():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_hook = --[[ table ]],
 })
 ```
 
@@ -10695,6 +10771,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesProjectHook():update({
   id = "api_entities_project_hook_id",
   project_id = "project_id",
+  put_api_v4_projects_id_hooks_hook_id = {},
   -- Fields to update
 })
 ```
@@ -10755,6 +10832,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesProjectImportStatus():create({
+  path = --[[ string ]],
 })
 ```
 
@@ -10941,6 +11019,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesProjectSnippet():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_snippet = --[[ table ]],
 })
 ```
 
@@ -10968,6 +11047,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesProjectSnippet():update({
   id = "api_entities_project_snippet_id",
   project_id = "project_id",
+  put_api_v4_projects_id_snippets_snippet_id = {},
   -- Fields to update
 })
 ```
@@ -11017,6 +11097,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesProjectUpload():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_upload = --[[ table ]],
 })
 ```
 
@@ -11211,6 +11292,16 @@ local api_entities_project_with_access = client:ApiEntitiesProjectWithAccess(nil
 
 ### Operations
 
+#### `create(reqdata, ctrl) -> any, err`
+
+Create a new entity with the given data.
+
+```lua
+local result, err = client:ApiEntitiesProjectWithAccess():create({
+  project_id = --[[ string ]],
+})
+```
+
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria.
@@ -11274,6 +11365,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesProjectsContainerRegistryProtectionRule():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_registry_protection_repository_rule = --[[ table ]],
 })
 ```
 
@@ -11293,6 +11385,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesProjectsContainerRegistryProtectionRule():update({
   id = "id",
   project_id = "project_id",
+  patch_api_v4_projects_id_registry_protection_repository_rules_protection_rule_id = {},
   -- Fields to update
 })
 ```
@@ -11353,6 +11446,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesProjectsPackagesProtectionRule():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_packages_protection_rule = --[[ table ]],
 })
 ```
 
@@ -11372,6 +11466,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesProjectsPackagesProtectionRule():update({
   id = "id",
   project_id = "project_id",
+  patch_api_v4_projects_id_packages_protection_rules_package_protection_rule_id = {},
   -- Fields to update
 })
 ```
@@ -11432,6 +11527,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesProjectsTopic():create({
+  post_api_v4_topic = --[[ table ]],
 })
 ```
 
@@ -11450,6 +11546,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:ApiEntitiesProjectsTopic():update({
   id = "api_entities_projects_topic_id",
+  put_api_v4_topics_id = {},
   -- Fields to update
 })
 ```
@@ -11512,6 +11609,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesProtectedBranch():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_protected_branch = --[[ table ]],
 })
 ```
 
@@ -11539,6 +11637,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesProtectedBranch():update({
   id = "api_entities_protected_branch_id",
   project_id = "project_id",
+  patch_api_v4_projects_id_protected_branches_name = {},
   -- Fields to update
 })
 ```
@@ -11601,6 +11700,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesProtectedTag():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_protected_tag = --[[ table ]],
 })
 ```
 
@@ -11819,6 +11919,9 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesRelationImportTracker():create({
+  file = --[[ any ]],
+  path = --[[ string ]],
+  relation = --[[ any ]],
 })
 ```
 
@@ -11915,6 +12018,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesRelease():update({
   id = "api_entities_release_id",
   project_id = "project_id",
+  put_api_v4_projects_id_releases_tag_name = {},
   -- Fields to update
 })
 ```
@@ -11975,6 +12079,7 @@ Create a new entity with the given data.
 local result, err = client:ApiEntitiesReleasesLink():create({
   project_id = --[[ string ]],
   release_id = --[[ string ]],
+  post_api_v4_projects_id_releases_tag_name_assets_link = --[[ table ]],
 })
 ```
 
@@ -12003,6 +12108,7 @@ local result, err = client:ApiEntitiesReleasesLink():update({
   id = "api_entities_releases_link_id",
   project_id = "project_id",
   release_id = "release_id",
+  put_api_v4_projects_id_releases_tag_name_assets_links_link_id = {},
   -- Fields to update
 })
 ```
@@ -12070,6 +12176,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesRemoteMirror():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_remote_mirror = --[[ table ]],
 })
 ```
 
@@ -12097,6 +12204,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesRemoteMirror():update({
   id = "api_entities_remote_mirror_id",
   project_id = "project_id",
+  put_api_v4_projects_id_remote_mirrors_mirror_id = {},
   -- Fields to update
 })
 ```
@@ -12227,6 +12335,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesResourceAccessTokenWithToken():create({
   group_id = --[[ string ]],
+  post_api_v4_groups_id_access_tokens_self_rotate = --[[ table ]],
 })
 ```
 
@@ -12518,6 +12627,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:ApiEntitiesSuggestion():update({
+  put_api_v4_suggestions_batch_apply = {},
   -- Fields to update
 })
 ```
@@ -12583,6 +12693,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ApiEntitiesSystemBroadcastMessage():create({
+  post_api_v4_broadcast_message = --[[ table ]],
 })
 ```
 
@@ -12609,6 +12720,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:ApiEntitiesSystemBroadcastMessage():update({
   id = "api_entities_system_broadcast_message_id",
+  put_api_v4_broadcast_messages_id = {},
   -- Fields to update
 })
 ```
@@ -12671,6 +12783,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesTag():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_repository_tag = --[[ table ]],
 })
 ```
 
@@ -12836,6 +12949,7 @@ local api_entities_terraform_module_version = client:ApiEntitiesTerraformModuleV
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `modules` | `string` | No |  |
 | `name` | `string` | No |  |
 | `provider` | `string` | No |  |
@@ -12987,6 +13101,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesTrigger():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_trigger = --[[ table ]],
 })
 ```
 
@@ -13014,6 +13129,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:ApiEntitiesTrigger():update({
   id = "api_entities_trigger_id",
   project_id = "project_id",
+  put_api_v4_projects_id_triggers_trigger_id = {},
   -- Fields to update
 })
 ```
@@ -13325,6 +13441,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesWikiAttachment():create({
   group_id = --[[ string ]],
+  post_api_v4_groups_id_wikis_attachment = --[[ table ]],
 })
 ```
 
@@ -13373,6 +13490,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ApiEntitiesWikiPage():create({
   group_id = --[[ string ]],
+  post_api_v4_groups_id_wiki = --[[ table ]],
 })
 ```
 
@@ -13905,6 +14023,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:Composer():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_packages_composer = --[[ table ]],
 })
 ```
 
@@ -14279,6 +14398,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:Debian():update({
   id = "id",
   project_id = "project_id",
+  put_api_v4_projects_id_packages_debian_file_name = {},
   -- Fields to update
 })
 ```
@@ -14384,20 +14504,7 @@ local debian_package = client:DebianPackage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:DebianPackage():load({ id = "debian_package_id", distribution = "distribution", file_name = "file_name", letter = "letter", package_name = "package_name", package_version = "package_version" })
-```
-
-#### `update(reqdata, ctrl) -> any, err`
-
-Update an existing entity. The data must include the entity `id`.
-
-```lua
-local result, err = client:DebianPackage():update({
-  id = "debian_package_id",
-  file_name = "file_name",
-  project_id = "project_id",
-  -- Fields to update
-})
+local result, err = client:DebianPackage():load({ id = "debian_package_id", distribution = "distribution" })
 ```
 
 ### Common Methods
@@ -14648,6 +14755,7 @@ Create a new entity with the given data.
 local result, err = client:EeApiEntitiesApprovalState():create({
   merge_request_id = --[[ string ]],
   project_id = --[[ string ]],
+  post_api_v4_projects_id_merge_requests_merge_request_iid_approval = --[[ table ]],
 })
 ```
 
@@ -15057,6 +15165,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:EeApiEntitiesGeoNodeStatus():create({
+  post_api_v4_geo_status = --[[ table ]],
 })
 ```
 
@@ -15169,6 +15278,7 @@ Create a new entity with the given data.
 local result, err = client:EeApiEntitiesIssuableMetricImage():create({
   issue_id = --[[ string ]],
   project_id = --[[ string ]],
+  post_api_v4_projects_id_issues_issue_iid_metric_image = --[[ table ]],
 })
 ```
 
@@ -15189,6 +15299,7 @@ local result, err = client:EeApiEntitiesIssuableMetricImage():update({
   id = "id",
   issue_id = "issue_id",
   project_id = "project_id",
+  put_api_v4_projects_id_issues_issue_iid_metric_images_metric_image_id = {},
   -- Fields to update
 })
 ```
@@ -15313,6 +15424,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:EeApiEntitiesSshCertificate():create({
   group_id = --[[ string ]],
+  post_api_v4_groups_id_ssh_certificate = --[[ table ]],
 })
 ```
 
@@ -15375,6 +15487,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:Environment():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_environments_stop_stale = --[[ table ]],
 })
 ```
 
@@ -15707,7 +15820,7 @@ local generic_package = client:GenericPackage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GenericPackage():load({ file_name = "file_name", generic_id = "generic_id", project_id = "project_id" })
+local result, err = client:GenericPackage():load({ file_name = "file_name", generic_id = "generic_id", project_id = "project_id", package_version = "package_version" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -15759,6 +15872,12 @@ Return the entity name.
 local geo = client:Geo(nil)
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl) -> any, err`
@@ -15767,6 +15886,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:Geo():create({
+  post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack = --[[ table ]],
 })
 ```
 
@@ -15821,7 +15941,7 @@ local go_proxy = client:GoProxy(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GoProxy():load({ project_id = "project_id" })
+local result, err = client:GoProxy():load({ project_id = "project_id", module_name = "module_name" })
 ```
 
 ### Common Methods
@@ -15901,6 +16021,8 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:Group():update({
   id = "group_id",
+  key = "key",
+  put_api_v4_groups_id_custom_attributes_key = {},
   -- Fields to update
 })
 ```
@@ -16063,6 +16185,9 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:GroupImport():create({
+  file = --[[ any ]],
+  name = --[[ string ]],
+  path = --[[ string ]],
 })
 ```
 
@@ -16240,6 +16365,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:Import():create({
+  post_api_v4_import_github_gist = --[[ table ]],
 })
 ```
 
@@ -16293,6 +16419,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:Integration():create({
+  post_api_v4_integrations_slack_event = --[[ table ]],
 })
 ```
 
@@ -16504,6 +16631,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:Job():create({
+  post_api_v4_jobs_request = --[[ table ]],
 })
 ```
 
@@ -16522,6 +16650,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:Job():update({
   id = "job_id",
+  put_api_v4_jobs_id = {},
   -- Fields to update
 })
 ```
@@ -16569,7 +16698,7 @@ local maven_package = client:MavenPackage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:MavenPackage():load({ file_name = "file_name" })
+local result, err = client:MavenPackage():load({ file_name = "file_name", path = "path" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -16580,6 +16709,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:MavenPackage():update({
   file_name = "file_name",
   project_id = "project_id",
+  ["put_api_v4_projects_id_packages_maven*path_file_name"] = {},
   -- Fields to update
 })
 ```
@@ -16634,6 +16764,18 @@ Remove the entity matching the given criteria.
 
 ```lua
 local result, err = client:Member():remove({ id = "id" })
+```
+
+#### `update(reqdata, ctrl) -> any, err`
+
+Update an existing entity. The data must include the entity `id`.
+
+```lua
+local result, err = client:Member():update({
+  group_id = "group_id",
+  id = "id",
+  -- Fields to update
+})
 ```
 
 ### Common Methods
@@ -16808,6 +16950,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:Migration():create({
   timestamp = --[[ any ]],
+  post_api_v4_admin_migrations_timestamp_mark = --[[ table ]],
 })
 ```
 
@@ -16974,6 +17117,7 @@ Update an existing entity. The data must include the entity `id`.
 local result, err = client:Npm():update({
   id = "id",
   project_id = "project_id",
+  put_api_v4_projects_id_packages_npm_package_name = {},
   -- Fields to update
 })
 ```
@@ -17030,7 +17174,7 @@ local result, err = client:NpmPackage():create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:NpmPackage():load({ project_id = "project_id" })
+local result, err = client:NpmPackage():load({ project_id = "project_id", file_name = "file_name", package_name = "package_name" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -17038,7 +17182,7 @@ local result, err = client:NpmPackage():load({ project_id = "project_id" })
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:NpmPackage():remove({ tag = "tag" })
+local result, err = client:NpmPackage():remove({ tag = "tag", package_name = "package_name" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -17097,6 +17241,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:Nuget():update({
   project_id = "project_id",
+  put_api_v4_projects_id_packages_nuget = {},
   -- Fields to update
 })
 ```
@@ -17181,7 +17326,7 @@ local result, err = client:NugetPackage():load({ project_id = "project_id" })
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:NugetPackage():remove({ project_id = "project_id" })
+local result, err = client:NugetPackage():remove({ project_id = "project_id", package_name = "package_name", package_version = "package_version" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -17316,6 +17461,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:Page():update({
   project_id = "project_id",
+  patch_api_v4_projects_id_page = {},
   -- Fields to update
 })
 ```
@@ -17623,6 +17769,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ProjectEntity():create({
+  post_api_v4_import_bitbucket_server = --[[ table ]],
 })
 ```
 
@@ -17677,6 +17824,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:ProjectExport():create({
   id = --[[ string ]],
+  post_api_v4_projects_id_export = --[[ table ]],
 })
 ```
 
@@ -17849,6 +17997,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ProjectImportEntity():create({
+  post_api_v4_import_bitbucket = --[[ table ]],
 })
 ```
 
@@ -18009,6 +18158,7 @@ Update an existing entity. The data must include the entity `id`.
 ```lua
 local result, err = client:ProjectsJobTokenScope():update({
   project_id = "project_id",
+  patch_api_v4_projects_id_job_token_scope = {},
   -- Fields to update
 })
 ```
@@ -18110,6 +18260,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:Pypi():create({
   project_id = --[[ string ]],
+  post_api_v4_projects_id_packages_pypi = --[[ table ]],
 })
 ```
 
@@ -18218,7 +18369,7 @@ local release = client:Release(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Release():load({ project_id = "project_id" })
+local result, err = client:Release():load({ project_id = "project_id", suffix_path = "suffix_path" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -18324,17 +18475,6 @@ local remote_mirror = client:RemoteMirror(nil)
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `create(reqdata, ctrl) -> any, err`
-
-Create a new entity with the given data.
-
-```lua
-local result, err = client:RemoteMirror():create({
-  id = --[[ string ]],
-  project_id = --[[ string ]],
-})
-```
 
 #### `load(reqmatch, ctrl) -> any, err`
 
@@ -18453,7 +18593,7 @@ local result, err = client:RpmPackage():create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:RpmPackage():load({ project_id = "project_id" })
+local result, err = client:RpmPackage():load({ project_id = "project_id", file_name = "file_name" })
 ```
 
 ### Common Methods
@@ -18614,6 +18754,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:Runner():create({
+  post_api_v4_runners_verify = --[[ table ]],
 })
 ```
 
@@ -18668,7 +18809,7 @@ local search = client:Search(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Search():load()
+local result, err = client:Search():load({ scope = "scope", search = "search" })
 ```
 
 ### Common Methods
@@ -18775,6 +18916,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:Slack():create({
+  post_api_v4_slack_trigger = --[[ table ]],
 })
 ```
 
@@ -19119,6 +19261,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:TerraformState():create({
+  id = --[[ string ]],
   project_id = --[[ string ]],
 })
 ```
@@ -19400,6 +19543,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:UsageData():create({
+  post_api_v4_usage_data_increment_counter = --[[ table ]],
 })
 ```
 
@@ -19616,4 +19760,42 @@ local client = sdk.new({
   },
 })
 ```
+
+
+### Configuring features
+
+Each feature is inactive until switched on, and an SDK with no feature
+configured does no feature work at all. Every option below keeps its default
+unless you name it.
+
+The array form of \`feature\` is significant: several features wrap the
+transport, and the order you list them in is the order they nest.
+
+#### `test`
+
+In-memory mock transport for testing without a live server.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.test.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Installs the BASE transport that the wrapping features wrap, so it must be
+  activated before them.
+- Inactive by default: leaving it out costs nothing at runtime.
 

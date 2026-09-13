@@ -101,7 +101,7 @@ func TestApiEntitiesProjectsContainerRegistryProtectionRuleEntity(t *testing.T) 
 		// CREATE
 		apiEntitiesProjectsContainerRegistryProtectionRuleRef01Ent := client.ApiEntitiesProjectsContainerRegistryProtectionRule(nil)
 		apiEntitiesProjectsContainerRegistryProtectionRuleRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "api_entities_projects_container_registry_protection_rule"}, setup.data), "api_entities_projects_container_registry_protection_rule_ref01"))
+			vs.GetPath(setup.data, []any{"new", "api_entities_projects_container_registry_protection_rule"}), "api_entities_projects_container_registry_protection_rule_ref01"))
 		apiEntitiesProjectsContainerRegistryProtectionRuleRef01Data["project_id"] = setup.idmap["project01"]
 
 		apiEntitiesProjectsContainerRegistryProtectionRuleRef01DataResult, err := apiEntitiesProjectsContainerRegistryProtectionRuleRef01Ent.Create(apiEntitiesProjectsContainerRegistryProtectionRuleRef01Data, nil)
@@ -187,7 +187,7 @@ func api_entities_projects_container_registry_protection_ruleBasicSetup(extra ma
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"api_entities_projects_container_registry_protection_rule01", "api_entities_projects_container_registry_protection_rule02", "api_entities_projects_container_registry_protection_rule03", "project01", "project02", "project03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -207,7 +207,7 @@ func api_entities_projects_container_registry_protection_ruleBasicSetup(extra ma
 		"GITLAB_TEST_API_ENTITIES_PROJECTS_CONTAINER_REGISTRY_PROTECTION_RULE_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_API_ENTITIES_PROJECTS_CONTAINER_REGISTRY_PROTECTION_RULE_ENTID"])
@@ -220,11 +220,23 @@ func api_entities_projects_container_registry_protection_ruleBasicSetup(extra ma
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

@@ -37,10 +37,10 @@ local client = sdk.new({
 
 ### 3. Load an apientitiesbasicbadgedetail
 
-ApiEntitiesBasicBadgeDetail is nested under group, so provide the `group_id`.
+ApiEntitiesBasicBadgeDetail is nested under image_url, so provide the `image_url`.
 
 ```lua
-local apientitiesbasicbadgedetail, err = client:ApiEntitiesBasicBadgeDetail():load({ group_id = "example_group_id" })
+local apientitiesbasicbadgedetail, err = client:ApiEntitiesBasicBadgeDetail():load({ image_url = "example_image_url", link_url = "example_link_url" })
 if err then error(err) end
 print(apientitiesbasicbadgedetail)
 ```
@@ -1104,7 +1104,7 @@ API path: `/api/v4/projects/{id}/pipeline_schedules`
 
 Operations: Create, Load, Update.
 
-API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership`
+API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/play`
 
 #### ApiEntitiesCiResetTokenResult
 
@@ -3517,9 +3517,9 @@ API path: `/api/v4/projects/{id}/uploads`
 | `wiki_access_level` |  |
 | `wiki_enabled` |  |
 
-Operations: Load.
+Operations: Create, Load.
 
-API path: `/api/v4/projects/{id}`
+API path: `/api/v4/projects/{id}/housekeeping`
 
 #### ApiEntitiesProjectsContainerRegistryProtectionRule
 
@@ -3962,6 +3962,7 @@ API path: `/api/v4/projects/{id}/templates/{type}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `modules` |  |
 | `name` |  |
 | `provider` |  |
@@ -4296,7 +4297,7 @@ API path: `/api/v4/groups/{id}/custom_attributes/{key}`
 
 Operations: Update.
 
-API path: `/api/v4/projects/{id}/packages/debian/{file_name}`
+API path: `/api/v4/projects/{id}/packages/debian/{file_name}/authorize`
 
 #### DebianDistribution
 
@@ -4314,7 +4315,7 @@ API path: `/api/v4/groups/{id}/-/debian_distributions/{codename}`
 | --- | --- |
 | `id` |  |
 
-Operations: Load, Update.
+Operations: Load.
 
 API path: `/api/v4/groups/{id}/-/packages/debian/pool/{distribution}/{project_id}/{letter}/{package_name}/{package_version}/{file_name}`
 
@@ -4775,6 +4776,7 @@ API path: `/api/v4/projects/{id}/packages/generic/{package_name}/*package_versio
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Load.
 
@@ -4920,7 +4922,7 @@ API path: `/api/v4/groups/{id}/-/packages/maven/*path/{file_name}`
 | --- | --- |
 | `id` |  |
 
-Operations: Remove.
+Operations: Remove, Update.
 
 API path: `/api/v4/groups/{id}/members/{user_id}`
 
@@ -5252,9 +5254,9 @@ API path: `/api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, Load, Remove.
+Operations: Load, Remove.
 
-API path: `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync`
+API path: `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/public_key`
 
 #### Rpm
 
@@ -5709,6 +5711,7 @@ Create an instance: `local api_entities_application_with_secret = client:ApiEnti
 
 ```lua
 local api_entities_application_with_secret, err = client:ApiEntitiesApplicationWithSecret():create({
+  post_api_v4_application = {}, -- table
 })
 ```
 
@@ -5732,7 +5735,7 @@ Create an instance: `local api_entities_avatar = client:ApiEntitiesAvatar(nil)`
 #### Example: Load
 
 ```lua
-local api_entities_avatar, err = client:ApiEntitiesAvatar():load()
+local api_entities_avatar, err = client:ApiEntitiesAvatar():load({ email = "email" })
 ```
 
 
@@ -5787,6 +5790,7 @@ local api_entities_award_emojis, err = client:ApiEntitiesAwardEmoji():list()
 local api_entities_award_emoji, err = client:ApiEntitiesAwardEmoji():create({
   epic_id = "example_epic_id", -- string
   group_id = "example_group_id", -- string
+  post_api_v4_groups_id_epics_epic_iid_award_emoji = {}, -- table
 })
 ```
 
@@ -5833,6 +5837,7 @@ local api_entities_badges, err = client:ApiEntitiesBadge():list()
 ```lua
 local api_entities_badge, err = client:ApiEntitiesBadge():create({
   group_id = "example_group_id", -- string
+  post_api_v4_groups_id_badge = {}, -- table
 })
 ```
 
@@ -5860,7 +5865,7 @@ Create an instance: `local api_entities_basic_badge_detail = client:ApiEntitiesB
 #### Example: Load
 
 ```lua
-local api_entities_basic_badge_detail, err = client:ApiEntitiesBasicBadgeDetail():load({ group_id = "group_id" })
+local api_entities_basic_badge_detail, err = client:ApiEntitiesBasicBadgeDetail():load({ image_url = "image_url", link_url = "link_url" })
 ```
 
 
@@ -5879,6 +5884,7 @@ Create an instance: `local api_entities_basic_group_detail = client:ApiEntitiesB
 ```lua
 local api_entities_basic_group_detail, err = client:ApiEntitiesBasicGroupDetail():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_job_token_scope_groups_allowlist = {}, -- table
 })
 ```
 
@@ -5934,6 +5940,7 @@ local api_entities_basic_project_details, err = client:ApiEntitiesBasicProjectDe
 ```lua
 local api_entities_basic_project_detail, err = client:ApiEntitiesBasicProjectDetail():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_job_token_scope_allowlist = {}, -- table
 })
 ```
 
@@ -5976,6 +5983,7 @@ Create an instance: `local api_entities_basic_success = client:ApiEntitiesBasicS
 
 ```lua
 local api_entities_basic_success, err = client:ApiEntitiesBasicSuccess():create({
+  post_api_v4_integrations_jira_connect_subscription = {}, -- table
 })
 ```
 
@@ -6075,6 +6083,7 @@ local api_entities_branchs, err = client:ApiEntitiesBranch():list()
 ```lua
 local api_entities_branch, err = client:ApiEntitiesBranch():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_repository_branch = {}, -- table
 })
 ```
 
@@ -6133,6 +6142,11 @@ local api_entities_bulk_imports, err = client:ApiEntitiesBulkImport():list()
 
 ```lua
 local api_entities_bulk_import, err = client:ApiEntitiesBulkImport():create({
+  configuration_access_token = "example_configuration_access_token", -- any
+  configuration_url = "example_configuration_url", -- any
+  entities_destination_namespace = "example_entities_destination_namespace", -- any
+  entities_source_full_path = "example_entities_source_full_path", -- any
+  entities_source_type = "example_entities_source_type", -- any
 })
 ```
 
@@ -6214,7 +6228,7 @@ Create an instance: `local api_entities_changelog = client:ApiEntitiesChangelog(
 #### Example: Load
 
 ```lua
-local api_entities_changelog, err = client:ApiEntitiesChangelog():load({ project_id = "project_id" })
+local api_entities_changelog, err = client:ApiEntitiesChangelog():load({ project_id = "project_id", version = "version" })
 ```
 
 
@@ -6276,6 +6290,7 @@ Create an instance: `local api_entities_ci_catalog_resources_version = client:Ap
 ```lua
 local api_entities_ci_catalog_resources_version, err = client:ApiEntitiesCiCatalogResourcesVersion():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_catalog_publish = {}, -- table
 })
 ```
 
@@ -6398,6 +6413,7 @@ local api_entities_ci_job_basics, err = client:ApiEntitiesCiJobBasic():list()
 local api_entities_ci_job_basic, err = client:ApiEntitiesCiJobBasic():create({
   job_id = "example_job_id", -- string
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_jobs_job_id_play = {}, -- table
 })
 ```
 
@@ -6484,6 +6500,7 @@ local api_entities_ci_lint_results, err = client:ApiEntitiesCiLintResult():list(
 ```lua
 local api_entities_ci_lint_result, err = client:ApiEntitiesCiLintResult():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_ci_lint = {}, -- table
 })
 ```
 
@@ -6638,6 +6655,7 @@ Create an instance: `local api_entities_ci_reset_token_result = client:ApiEntiti
 
 ```lua
 local api_entities_ci_reset_token_result, err = client:ApiEntitiesCiResetTokenResult():create({
+  post_api_v4_runners_reset_authentication_token = {}, -- table
 })
 ```
 
@@ -6706,7 +6724,7 @@ Create an instance: `local api_entities_ci_runner = client:ApiEntitiesCiRunner(n
 #### Example: Load
 
 ```lua
-local api_entities_ci_runner, err = client:ApiEntitiesCiRunner():load({ id = 1 })
+local api_entities_ci_runner, err = client:ApiEntitiesCiRunner():load()
 ```
 
 #### Example: Create
@@ -6714,6 +6732,7 @@ local api_entities_ci_runner, err = client:ApiEntitiesCiRunner():load({ id = 1 }
 ```lua
 local api_entities_ci_runner, err = client:ApiEntitiesCiRunner():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_runner = {}, -- table
 })
 ```
 
@@ -6814,6 +6833,7 @@ Create an instance: `local api_entities_ci_runner_registration_detail = client:A
 
 ```lua
 local api_entities_ci_runner_registration_detail, err = client:ApiEntitiesCiRunnerRegistrationDetail():create({
+  post_api_v4_runner = {}, -- table
 })
 ```
 
@@ -6846,6 +6866,7 @@ local api_entities_ci_secure_file, err = client:ApiEntitiesCiSecureFile():load({
 ```lua
 local api_entities_ci_secure_file, err = client:ApiEntitiesCiSecureFile():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_secure_file = {}, -- table
 })
 ```
 
@@ -6895,6 +6916,7 @@ local api_entities_ci_variables, err = client:ApiEntitiesCiVariable():list()
 ```lua
 local api_entities_ci_variable, err = client:ApiEntitiesCiVariable():create({
   group_id = "example_group_id", -- string
+  post_api_v4_groups_id_variable = {}, -- table
 })
 ```
 
@@ -6948,6 +6970,7 @@ local api_entities_clusters, err = client:ApiEntitiesCluster():list()
 
 ```lua
 local api_entities_cluster, err = client:ApiEntitiesCluster():create({
+  post_api_v4_admin_clusters_add = {}, -- table
 })
 ```
 
@@ -6996,6 +7019,7 @@ local api_entities_cluster_group, err = client:ApiEntitiesClusterGroup():load({ 
 ```lua
 local api_entities_cluster_group, err = client:ApiEntitiesClusterGroup():create({
   group_id = "example_group_id", -- string
+  post_api_v4_groups_id_clusters_user = {}, -- table
 })
 ```
 
@@ -7044,6 +7068,7 @@ local api_entities_cluster_project, err = client:ApiEntitiesClusterProject():loa
 ```lua
 local api_entities_cluster_project, err = client:ApiEntitiesClusterProject():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_clusters_user = {}, -- table
 })
 ```
 
@@ -7082,6 +7107,7 @@ local api_entities_clusters_agent, err = client:ApiEntitiesClustersAgent():load(
 ```lua
 local api_entities_clusters_agent, err = client:ApiEntitiesClustersAgent():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_cluster_agent = {}, -- table
 })
 ```
 
@@ -7161,6 +7187,7 @@ Create an instance: `local api_entities_clusters_agent_token_with_token = client
 local api_entities_clusters_agent_token_with_token, err = client:ApiEntitiesClustersAgentTokenWithToken():create({
   cluster_agent_id = "example_cluster_agent_id", -- string
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_cluster_agents_agent_id_token = {}, -- table
 })
 ```
 
@@ -7258,6 +7285,7 @@ local api_entities_commit_detail, err = client:ApiEntitiesCommitDetail():load({ 
 ```lua
 local api_entities_commit_detail, err = client:ApiEntitiesCommitDetail():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_repository_commit = {}, -- table
 })
 ```
 
@@ -7306,6 +7334,7 @@ local api_entities_commit_notes, err = client:ApiEntitiesCommitNote():list()
 local api_entities_commit_note, err = client:ApiEntitiesCommitNote():create({
   project_id = "example_project_id", -- string
   sha = "example_sha", -- any
+  post_api_v4_projects_id_repository_commits_sha_comment = {}, -- table
 })
 ```
 
@@ -7408,6 +7437,7 @@ local api_entities_commit_statuss, err = client:ApiEntitiesCommitStatus():list()
 local api_entities_commit_status, err = client:ApiEntitiesCommitStatus():create({
   id = "example_id", -- string
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_statuses_sha = {}, -- table
 })
 ```
 
@@ -7601,6 +7631,7 @@ local api_entities_deploy_keys, err = client:ApiEntitiesDeployKey():list()
 
 ```lua
 local api_entities_deploy_key, err = client:ApiEntitiesDeployKey():create({
+  post_api_v4_deploy_key = {}, -- table
 })
 ```
 
@@ -7651,6 +7682,7 @@ local api_entities_deploy_keys_projects, err = client:ApiEntitiesDeployKeysProje
 ```lua
 local api_entities_deploy_keys_project, err = client:ApiEntitiesDeployKeysProject():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_deploy_key = {}, -- table
 })
 ```
 
@@ -7706,6 +7738,7 @@ Create an instance: `local api_entities_deploy_token_with_token = client:ApiEnti
 ```lua
 local api_entities_deploy_token_with_token, err = client:ApiEntitiesDeployTokenWithToken():create({
   group_id = "example_group_id", -- string
+  post_api_v4_groups_id_deploy_token = {}, -- table
 })
 ```
 
@@ -7783,6 +7816,7 @@ local api_entities_deployment_extended, err = client:ApiEntitiesDeploymentExtend
 ```lua
 local api_entities_deployment_extended, err = client:ApiEntitiesDeploymentExtended():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_deployment = {}, -- table
 })
 ```
 
@@ -7803,6 +7837,7 @@ Create an instance: `local api_entities_deployments_approval = client:ApiEntitie
 local api_entities_deployments_approval, err = client:ApiEntitiesDeploymentsApproval():create({
   deployment_id = "example_deployment_id", -- string
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_deployments_deployment_id_approval = {}, -- table
 })
 ```
 
@@ -7892,7 +7927,7 @@ Create an instance: `local api_entities_discovered_cluster = client:ApiEntitiesD
 #### Example: Load
 
 ```lua
-local api_entities_discovered_cluster, err = client:ApiEntitiesDiscoveredCluster():load()
+local api_entities_discovered_cluster, err = client:ApiEntitiesDiscoveredCluster():load({ group_id = "group_id" })
 ```
 
 
@@ -7941,6 +7976,7 @@ local api_entities_draft_notes, err = client:ApiEntitiesDraftNote():list()
 local api_entities_draft_note, err = client:ApiEntitiesDraftNote():create({
   merge_request_id = "example_merge_request_id", -- string
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note = {}, -- table
 })
 ```
 
@@ -8140,6 +8176,7 @@ local api_entities_features, err = client:ApiEntitiesFeature():list()
 ```lua
 local api_entities_feature, err = client:ApiEntitiesFeature():create({
   id = "example_id", -- string
+  post_api_v4_features_name = {}, -- table
 })
 ```
 
@@ -8222,6 +8259,7 @@ local api_entities_feature_flags, err = client:ApiEntitiesFeatureFlag():list()
 ```lua
 local api_entities_feature_flag, err = client:ApiEntitiesFeatureFlag():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_feature_flag = {}, -- table
 })
 ```
 
@@ -8270,6 +8308,7 @@ local api_entities_feature_flag_user_lists, err = client:ApiEntitiesFeatureFlagU
 ```lua
 local api_entities_feature_flag_user_list, err = client:ApiEntitiesFeatureFlagUserList():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_feature_flags_user_list = {}, -- table
 })
 ```
 
@@ -8315,6 +8354,7 @@ local api_entities_freeze_periods, err = client:ApiEntitiesFreezePeriod():list()
 ```lua
 local api_entities_freeze_period, err = client:ApiEntitiesFreezePeriod():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_freeze_period = {}, -- table
 })
 ```
 
@@ -8364,7 +8404,7 @@ Create an instance: `local api_entities_go_module_version = client:ApiEntitiesGo
 #### Example: Load
 
 ```lua
-local api_entities_go_module_version, err = client:ApiEntitiesGoModuleVersion():load({ module_version = "module_version", project_id = "project_id" })
+local api_entities_go_module_version, err = client:ApiEntitiesGoModuleVersion():load({ module_version = "module_version", project_id = "project_id", module_name = "module_name" })
 ```
 
 
@@ -8450,6 +8490,7 @@ local api_entities_groups, err = client:ApiEntitiesGroup():list()
 
 ```lua
 local api_entities_group, err = client:ApiEntitiesGroup():create({
+  post_api_v4_group = {}, -- table
 })
 ```
 
@@ -8602,6 +8643,7 @@ local api_entities_hooks, err = client:ApiEntitiesHook():list()
 
 ```lua
 local api_entities_hook, err = client:ApiEntitiesHook():create({
+  post_api_v4_hook = {}, -- table
 })
 ```
 
@@ -8711,6 +8753,7 @@ local api_entities_invitations, err = client:ApiEntitiesInvitation():list()
 ```lua
 local api_entities_invitation, err = client:ApiEntitiesInvitation():create({
   group_id = "example_group_id", -- string
+  post_api_v4_groups_id_invitation = {}, -- table
 })
 ```
 
@@ -8864,6 +8907,7 @@ local api_entities_issue_link, err = client:ApiEntitiesIssueLink():load({ id = "
 local api_entities_issue_link, err = client:ApiEntitiesIssueLink():create({
   issue_id = "example_issue_id", -- string
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_issues_issue_iid_link = {}, -- table
 })
 ```
 
@@ -8916,6 +8960,7 @@ Create an instance: `local api_entities_markdown = client:ApiEntitiesMarkdown(ni
 
 ```lua
 local api_entities_markdown, err = client:ApiEntitiesMarkdown():create({
+  post_api_v4_markdown = {}, -- table
 })
 ```
 
@@ -9006,6 +9051,7 @@ local api_entities_members, err = client:ApiEntitiesMember():list()
 ```lua
 local api_entities_member, err = client:ApiEntitiesMember():create({
   group_id = "example_group_id", -- string
+  post_api_v4_groups_id_member = {}, -- table
 })
 ```
 
@@ -9218,7 +9264,7 @@ Create an instance: `local api_entities_merge_request_basic = client:ApiEntities
 #### Example: Load
 
 ```lua
-local api_entities_merge_request_basic, err = client:ApiEntitiesMergeRequestBasic():load({ id = 1 })
+local api_entities_merge_request_basic, err = client:ApiEntitiesMergeRequestBasic():load()
 ```
 
 #### Example: List
@@ -9451,6 +9497,7 @@ local api_entities_metric_images, err = client:ApiEntitiesMetricImage():list()
 local api_entities_metric_image, err = client:ApiEntitiesMetricImage():create({
   alert_management_alert_id = "example_alert_management_alert_id", -- string
   project_id = "example_project_id", -- string
+  file = "example_file", -- any
 })
 ```
 
@@ -9587,7 +9634,7 @@ Create an instance: `local api_entities_namespaces_storage_limit_exclusion = cli
 #### Example: Load
 
 ```lua
-local api_entities_namespaces_storage_limit_exclusion, err = client:ApiEntitiesNamespacesStorageLimitExclusion():load({ id = 1 })
+local api_entities_namespaces_storage_limit_exclusion, err = client:ApiEntitiesNamespacesStorageLimitExclusion():load()
 ```
 
 #### Example: Create
@@ -9595,6 +9642,7 @@ local api_entities_namespaces_storage_limit_exclusion, err = client:ApiEntitiesN
 ```lua
 local api_entities_namespaces_storage_limit_exclusion, err = client:ApiEntitiesNamespacesStorageLimitExclusion():create({
   namespace_id = "example_namespace_id", -- string
+  post_api_v4_namespaces_id_storage_limit_exclusion = {}, -- table
 })
 ```
 
@@ -9620,7 +9668,7 @@ Create an instance: `local api_entities_npm_package = client:ApiEntitiesNpmPacka
 #### Example: Load
 
 ```lua
-local api_entities_npm_package, err = client:ApiEntitiesNpmPackage():load()
+local api_entities_npm_package, err = client:ApiEntitiesNpmPackage():load({ package_name = "package_name" })
 ```
 
 
@@ -9637,7 +9685,7 @@ Create an instance: `local api_entities_npm_package_tag = client:ApiEntitiesNpmP
 #### Example: Load
 
 ```lua
-local api_entities_npm_package_tag, err = client:ApiEntitiesNpmPackageTag():load()
+local api_entities_npm_package_tag, err = client:ApiEntitiesNpmPackageTag():load({ package_name = "package_name" })
 ```
 
 
@@ -9738,6 +9786,7 @@ Create an instance: `local api_entities_organizations_organization = client:ApiE
 
 ```lua
 local api_entities_organizations_organization, err = client:ApiEntitiesOrganizationsOrganization():create({
+  post_api_v4_organization = {}, -- table
 })
 ```
 
@@ -10079,6 +10128,7 @@ local api_entities_packages_debian_distributions, err = client:ApiEntitiesPackag
 ```lua
 local api_entities_packages_debian_distribution, err = client:ApiEntitiesPackagesDebianDistribution():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_debian_distribution = {}, -- table
 })
 ```
 
@@ -10129,6 +10179,7 @@ local api_entities_pages_domains, err = client:ApiEntitiesPagesDomain():list()
 ```lua
 local api_entities_pages_domain, err = client:ApiEntitiesPagesDomain():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_pages_domain = {}, -- table
 })
 ```
 
@@ -10260,6 +10311,7 @@ Create an instance: `local api_entities_personal_access_token_with_token = clien
 ```lua
 local api_entities_personal_access_token_with_token, err = client:ApiEntitiesPersonalAccessTokenWithToken():create({
   personal_access_token_id = "example_personal_access_token_id", -- string
+  post_api_v4_personal_access_tokens_id_rotate = {}, -- table
 })
 ```
 
@@ -10315,6 +10367,7 @@ local api_entities_personal_snippets, err = client:ApiEntitiesPersonalSnippet():
 
 ```lua
 local api_entities_personal_snippet, err = client:ApiEntitiesPersonalSnippet():create({
+  post_api_v4_snippet = {}, -- table
 })
 ```
 
@@ -10512,6 +10565,7 @@ local api_entities_projects, err = client:ApiEntitiesProject():list()
 ```lua
 local api_entities_project, err = client:ApiEntitiesProject():create({
   user_id = "example_user_id", -- string
+  post_api_v4_projects_user_user_id = {}, -- table
 })
 ```
 
@@ -10579,6 +10633,7 @@ Create an instance: `local api_entities_project_group_link = client:ApiEntitiesP
 ```lua
 local api_entities_project_group_link, err = client:ApiEntitiesProjectGroupLink():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_share = {}, -- table
 })
 ```
 
@@ -10650,6 +10705,7 @@ local api_entities_project_hooks, err = client:ApiEntitiesProjectHook():list()
 ```lua
 local api_entities_project_hook, err = client:ApiEntitiesProjectHook():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_hook = {}, -- table
 })
 ```
 
@@ -10687,6 +10743,7 @@ local api_entities_project_import_statuss, err = client:ApiEntitiesProjectImport
 
 ```lua
 local api_entities_project_import_status, err = client:ApiEntitiesProjectImportStatus():create({
+  path = "example_path", -- string
 })
 ```
 
@@ -10793,6 +10850,7 @@ local api_entities_project_snippets, err = client:ApiEntitiesProjectSnippet():li
 ```lua
 local api_entities_project_snippet, err = client:ApiEntitiesProjectSnippet():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_snippet = {}, -- table
 })
 ```
 
@@ -10812,6 +10870,7 @@ Create an instance: `local api_entities_project_upload = client:ApiEntitiesProje
 ```lua
 local api_entities_project_upload, err = client:ApiEntitiesProjectUpload():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_upload = {}, -- table
 })
 ```
 
@@ -10824,6 +10883,7 @@ Create an instance: `local api_entities_project_with_access = client:ApiEntities
 
 | Method | Description |
 | --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -10985,6 +11045,14 @@ Create an instance: `local api_entities_project_with_access = client:ApiEntities
 local api_entities_project_with_access, err = client:ApiEntitiesProjectWithAccess():load({ id = "api_entities_project_with_access_id" })
 ```
 
+#### Example: Create
+
+```lua
+local api_entities_project_with_access, err = client:ApiEntitiesProjectWithAccess():create({
+  project_id = "example_project_id", -- string
+})
+```
+
 
 ### ApiEntitiesProjectsContainerRegistryProtectionRule
 
@@ -11019,6 +11087,7 @@ local api_entities_projects_container_registry_protection_rules, err = client:Ap
 ```lua
 local api_entities_projects_container_registry_protection_rule, err = client:ApiEntitiesProjectsContainerRegistryProtectionRule():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_registry_protection_repository_rule = {}, -- table
 })
 ```
 
@@ -11057,6 +11126,7 @@ local api_entities_projects_packages_protection_rules, err = client:ApiEntitiesP
 ```lua
 local api_entities_projects_packages_protection_rule, err = client:ApiEntitiesProjectsPackagesProtectionRule():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_packages_protection_rule = {}, -- table
 })
 ```
 
@@ -11095,6 +11165,7 @@ local api_entities_projects_topic, err = client:ApiEntitiesProjectsTopic():load(
 
 ```lua
 local api_entities_projects_topic, err = client:ApiEntitiesProjectsTopic():create({
+  post_api_v4_topic = {}, -- table
 })
 ```
 
@@ -11142,6 +11213,7 @@ local api_entities_protected_branchs, err = client:ApiEntitiesProtectedBranch():
 ```lua
 local api_entities_protected_branch, err = client:ApiEntitiesProtectedBranch():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_protected_branch = {}, -- table
 })
 ```
 
@@ -11188,6 +11260,7 @@ local api_entities_protected_tags, err = client:ApiEntitiesProtectedTag():list()
 ```lua
 local api_entities_protected_tag, err = client:ApiEntitiesProtectedTag():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_protected_tag = {}, -- table
 })
 ```
 
@@ -11303,6 +11376,9 @@ Create an instance: `local api_entities_relation_import_tracker = client:ApiEnti
 
 ```lua
 local api_entities_relation_import_tracker, err = client:ApiEntitiesRelationImportTracker():create({
+  file = "example_file", -- any
+  path = "example_path", -- string
+  relation = "example_relation", -- any
 })
 ```
 
@@ -11403,6 +11479,7 @@ local api_entities_releases_links, err = client:ApiEntitiesReleasesLink():list()
 local api_entities_releases_link, err = client:ApiEntitiesReleasesLink():create({
   project_id = "example_project_id", -- string
   release_id = "example_release_id", -- string
+  post_api_v4_projects_id_releases_tag_name_assets_link = {}, -- table
 })
 ```
 
@@ -11455,6 +11532,7 @@ local api_entities_remote_mirrors, err = client:ApiEntitiesRemoteMirror():list()
 ```lua
 local api_entities_remote_mirror, err = client:ApiEntitiesRemoteMirror():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_remote_mirror = {}, -- table
 })
 ```
 
@@ -11526,6 +11604,7 @@ Create an instance: `local api_entities_resource_access_token_with_token = clien
 ```lua
 local api_entities_resource_access_token_with_token, err = client:ApiEntitiesResourceAccessTokenWithToken():create({
   group_id = "example_group_id", -- string
+  post_api_v4_groups_id_access_tokens_self_rotate = {}, -- table
 })
 ```
 
@@ -11737,6 +11816,7 @@ local api_entities_system_broadcast_message, err = client:ApiEntitiesSystemBroad
 
 ```lua
 local api_entities_system_broadcast_message, err = client:ApiEntitiesSystemBroadcastMessage():create({
+  post_api_v4_broadcast_message = {}, -- table
 })
 ```
 
@@ -11783,6 +11863,7 @@ local api_entities_tags, err = client:ApiEntitiesTag():list()
 ```lua
 local api_entities_tag, err = client:ApiEntitiesTag():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_repository_tag = {}, -- table
 })
 ```
 
@@ -11850,6 +11931,7 @@ Create an instance: `local api_entities_terraform_module_version = client:ApiEnt
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `modules` | `string` |  |
 | `name` | `string` |  |
 | `provider` | `string` |  |
@@ -11952,6 +12034,7 @@ local api_entities_triggers, err = client:ApiEntitiesTrigger():list()
 ```lua
 local api_entities_trigger, err = client:ApiEntitiesTrigger():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_trigger = {}, -- table
 })
 ```
 
@@ -12117,6 +12200,7 @@ Create an instance: `local api_entities_wiki_attachment = client:ApiEntitiesWiki
 ```lua
 local api_entities_wiki_attachment, err = client:ApiEntitiesWikiAttachment():create({
   group_id = "example_group_id", -- string
+  post_api_v4_groups_id_wikis_attachment = {}, -- table
 })
 ```
 
@@ -12144,6 +12228,7 @@ local api_entities_wiki_page, err = client:ApiEntitiesWikiPage():load({ slug = "
 ```lua
 local api_entities_wiki_page, err = client:ApiEntitiesWikiPage():create({
   group_id = "example_group_id", -- string
+  post_api_v4_groups_id_wiki = {}, -- table
 })
 ```
 
@@ -12325,6 +12410,7 @@ Create an instance: `local composer = client:Composer(nil)`
 ```lua
 local composer, err = client:Composer():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_packages_composer = {}, -- table
 })
 ```
 
@@ -12485,7 +12571,6 @@ Create an instance: `local debian_package = client:DebianPackage(nil)`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-| `update(data)` | Update an existing entity. |
 
 #### Fields
 
@@ -12496,7 +12581,7 @@ Create an instance: `local debian_package = client:DebianPackage(nil)`
 #### Example: Load
 
 ```lua
-local debian_package, err = client:DebianPackage():load({ id = "debian_package_id", distribution = "distribution", file_name = "file_name", letter = "letter", package_name = "package_name", package_version = "package_version" })
+local debian_package, err = client:DebianPackage():load({ id = "debian_package_id", distribution = "distribution" })
 ```
 
 
@@ -12578,6 +12663,7 @@ Create an instance: `local ee_api_entities_approval_state = client:EeApiEntities
 local ee_api_entities_approval_state, err = client:EeApiEntitiesApprovalState():create({
   merge_request_id = "example_merge_request_id", -- string
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_merge_requests_merge_request_iid_approval = {}, -- table
 })
 ```
 
@@ -12899,6 +12985,7 @@ Create an instance: `local ee_api_entities_geo_node_status = client:EeApiEntitie
 
 ```lua
 local ee_api_entities_geo_node_status, err = client:EeApiEntitiesGeoNodeStatus():create({
+  post_api_v4_geo_status = {}, -- table
 })
 ```
 
@@ -12955,6 +13042,7 @@ Create an instance: `local ee_api_entities_issuable_metric_image = client:EeApiE
 local ee_api_entities_issuable_metric_image, err = client:EeApiEntitiesIssuableMetricImage():create({
   issue_id = "example_issue_id", -- string
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_issues_issue_iid_metric_image = {}, -- table
 })
 ```
 
@@ -13027,6 +13115,7 @@ local ee_api_entities_ssh_certificates, err = client:EeApiEntitiesSshCertificate
 ```lua
 local ee_api_entities_ssh_certificate, err = client:EeApiEntitiesSshCertificate():create({
   group_id = "example_group_id", -- string
+  post_api_v4_groups_id_ssh_certificate = {}, -- table
 })
 ```
 
@@ -13053,6 +13142,7 @@ Create an instance: `local environment = client:Environment(nil)`
 ```lua
 local environment, err = client:Environment():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_environments_stop_stale = {}, -- table
 })
 ```
 
@@ -13172,7 +13262,7 @@ Create an instance: `local generic_package = client:GenericPackage(nil)`
 #### Example: Load
 
 ```lua
-local generic_package, err = client:GenericPackage():load({ file_name = "file_name", generic_id = "generic_id", project_id = "project_id" })
+local generic_package, err = client:GenericPackage():load({ file_name = "file_name", generic_id = "generic_id", project_id = "project_id", package_version = "package_version" })
 ```
 
 
@@ -13187,6 +13277,12 @@ Create an instance: `local geo = client:Geo(nil)`
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```lua
@@ -13197,6 +13293,7 @@ local geo, err = client:Geo():load({ replicable_id = "replicable_id", replicable
 
 ```lua
 local geo, err = client:Geo():create({
+  post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack = {}, -- table
 })
 ```
 
@@ -13214,7 +13311,7 @@ Create an instance: `local go_proxy = client:GoProxy(nil)`
 #### Example: Load
 
 ```lua
-local go_proxy, err = client:GoProxy():load({ project_id = "project_id" })
+local go_proxy, err = client:GoProxy():load({ project_id = "project_id", module_name = "module_name" })
 ```
 
 
@@ -13321,6 +13418,9 @@ Create an instance: `local group_import = client:GroupImport(nil)`
 
 ```lua
 local group_import, err = client:GroupImport():create({
+  file = "example_file", -- any
+  name = "example_name", -- string
+  path = "example_path", -- string
 })
 ```
 
@@ -13392,6 +13492,7 @@ Create an instance: `local import = client:Import(nil)`
 
 ```lua
 local import, err = client:Import():create({
+  post_api_v4_import_github_gist = {}, -- table
 })
 ```
 
@@ -13417,6 +13518,7 @@ Create an instance: `local integration = client:Integration(nil)`
 
 ```lua
 local integration, err = client:Integration():create({
+  post_api_v4_integrations_slack_event = {}, -- table
 })
 ```
 
@@ -13500,6 +13602,7 @@ local job, err = client:Job():load({ id = "job_id" })
 
 ```lua
 local job, err = client:Job():create({
+  post_api_v4_jobs_request = {}, -- table
 })
 ```
 
@@ -13518,7 +13621,7 @@ Create an instance: `local maven_package = client:MavenPackage(nil)`
 #### Example: Load
 
 ```lua
-local maven_package, err = client:MavenPackage():load({ file_name = "file_name" })
+local maven_package, err = client:MavenPackage():load({ file_name = "file_name", path = "path" })
 ```
 
 
@@ -13531,6 +13634,7 @@ Create an instance: `local member = client:Member(nil)`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
 
 #### Fields
 
@@ -13605,6 +13709,7 @@ Create an instance: `local migration = client:Migration(nil)`
 ```lua
 local migration, err = client:Migration():create({
   timestamp = "example_timestamp", -- any
+  post_api_v4_admin_migrations_timestamp_mark = {}, -- table
 })
 ```
 
@@ -13677,7 +13782,7 @@ Create an instance: `local npm_package = client:NpmPackage(nil)`
 #### Example: Load
 
 ```lua
-local npm_package, err = client:NpmPackage():load({ project_id = "project_id" })
+local npm_package, err = client:NpmPackage():load({ project_id = "project_id", file_name = "file_name", package_name = "package_name" })
 ```
 
 #### Example: Create
@@ -13922,6 +14027,7 @@ Create an instance: `local project_entity = client:ProjectEntity(nil)`
 
 ```lua
 local project_entity, err = client:ProjectEntity():create({
+  post_api_v4_import_bitbucket_server = {}, -- table
 })
 ```
 
@@ -13954,6 +14060,7 @@ local project_export, err = client:ProjectExport():load({ project_id = "project_
 ```lua
 local project_export, err = client:ProjectExport():create({
   id = "example_id", -- string
+  post_api_v4_projects_id_export = {}, -- table
 })
 ```
 
@@ -14025,6 +14132,7 @@ Create an instance: `local project_import_entity = client:ProjectImportEntity(ni
 
 ```lua
 local project_import_entity, err = client:ProjectImportEntity():create({
+  post_api_v4_import_bitbucket = {}, -- table
 })
 ```
 
@@ -14107,6 +14215,7 @@ Create an instance: `local pypi = client:Pypi(nil)`
 ```lua
 local pypi, err = client:Pypi():create({
   project_id = "example_project_id", -- string
+  post_api_v4_projects_id_packages_pypi = {}, -- table
 })
 ```
 
@@ -14157,7 +14266,7 @@ Create an instance: `local release = client:Release(nil)`
 #### Example: Load
 
 ```lua
-local release, err = client:Release():load({ project_id = "project_id" })
+local release, err = client:Release():load({ project_id = "project_id", suffix_path = "suffix_path" })
 ```
 
 
@@ -14186,7 +14295,6 @@ Create an instance: `local remote_mirror = client:RemoteMirror(nil)`
 
 | Method | Description |
 | --- | --- |
-| `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
@@ -14200,15 +14308,6 @@ Create an instance: `local remote_mirror = client:RemoteMirror(nil)`
 
 ```lua
 local remote_mirror, err = client:RemoteMirror():load({ id = "remote_mirror_id", project_id = "project_id" })
-```
-
-#### Example: Create
-
-```lua
-local remote_mirror, err = client:RemoteMirror():create({
-  id = "example_id", -- string
-  project_id = "example_project_id", -- string
-})
 ```
 
 
@@ -14245,7 +14344,7 @@ Create an instance: `local rpm_package = client:RpmPackage(nil)`
 #### Example: Load
 
 ```lua
-local rpm_package, err = client:RpmPackage():load({ project_id = "project_id" })
+local rpm_package, err = client:RpmPackage():load({ project_id = "project_id", file_name = "file_name" })
 ```
 
 #### Example: Create
@@ -14327,6 +14426,7 @@ Create an instance: `local runner = client:Runner(nil)`
 
 ```lua
 local runner, err = client:Runner():create({
+  post_api_v4_runners_verify = {}, -- table
 })
 ```
 
@@ -14344,7 +14444,7 @@ Create an instance: `local search = client:Search(nil)`
 #### Example: Load
 
 ```lua
-local search, err = client:Search():load()
+local search, err = client:Search():load({ scope = "scope", search = "search" })
 ```
 
 
@@ -14386,6 +14486,7 @@ Create an instance: `local slack = client:Slack(nil)`
 
 ```lua
 local slack, err = client:Slack():create({
+  post_api_v4_slack_trigger = {}, -- table
 })
 ```
 
@@ -14532,6 +14633,7 @@ local terraform_state, err = client:TerraformState():load({ id = "terraform_stat
 
 ```lua
 local terraform_state, err = client:TerraformState():create({
+  id = "example_id", -- string
   project_id = "example_project_id", -- string
 })
 ```
@@ -14653,6 +14755,7 @@ local usage_data, err = client:UsageData():load()
 
 ```lua
 local usage_data, err = client:UsageData():create({
+  post_api_v4_usage_data_increment_counter = {}, -- table
 })
 ```
 
@@ -14721,6 +14824,29 @@ Create an instance: `local wiki = client:Wiki(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

@@ -52,7 +52,7 @@ func TestEnvironmentEntity(t *testing.T) {
 		// CREATE
 		environmentRef01Ent := client.Environment(nil)
 		environmentRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "environment"}, setup.data), "environment_ref01"))
+			vs.GetPath(setup.data, []any{"new", "environment"}), "environment_ref01"))
 		environmentRef01Data["project_id"] = setup.idmap["project01"]
 
 		environmentRef01DataResult, err := environmentRef01Ent.Create(environmentRef01Data, nil)
@@ -103,7 +103,7 @@ func environmentBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"environment01", "environment02", "environment03", "project01", "project02", "project03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -123,7 +123,7 @@ func environmentBasicSetup(extra map[string]any) *entityTestSetup {
 		"GITLAB_TEST_ENVIRONMENT_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_ENVIRONMENT_ENTID"])
@@ -132,11 +132,23 @@ func environmentBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

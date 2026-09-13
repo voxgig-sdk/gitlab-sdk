@@ -34,12 +34,12 @@ client = GitlabSDK.new({
 
 ### 3. Load an apientitiesbasicbadgedetail
 
-ApiEntitiesBasicBadgeDetail is nested under group, so provide the `group_id`.
+ApiEntitiesBasicBadgeDetail is nested under image_url, so provide the `image_url`.
 
 ```ruby
 begin
   # load returns the ENTITY — call data_get for the ApiEntitiesBasicBadgeDetail record (raises on error).
-  apientitiesbasicbadgedetail = client.ApiEntitiesBasicBadgeDetail.load({ "group_id" => "example_group_id" })
+  apientitiesbasicbadgedetail = client.ApiEntitiesBasicBadgeDetail.load({ "image_url" => "example_image_url", "link_url" => "example_link_url" })
   puts apientitiesbasicbadgedetail
 rescue => err
   warn "load failed: #{err}"
@@ -1113,7 +1113,7 @@ API path: `/api/v4/projects/{id}/pipeline_schedules`
 
 Operations: Create, Load, Update.
 
-API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership`
+API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/play`
 
 #### ApiEntitiesCiResetTokenResult
 
@@ -3526,9 +3526,9 @@ API path: `/api/v4/projects/{id}/uploads`
 | `wiki_access_level` |  |
 | `wiki_enabled` |  |
 
-Operations: Load.
+Operations: Create, Load.
 
-API path: `/api/v4/projects/{id}`
+API path: `/api/v4/projects/{id}/housekeeping`
 
 #### ApiEntitiesProjectsContainerRegistryProtectionRule
 
@@ -3971,6 +3971,7 @@ API path: `/api/v4/projects/{id}/templates/{type}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `modules` |  |
 | `name` |  |
 | `provider` |  |
@@ -4305,7 +4306,7 @@ API path: `/api/v4/groups/{id}/custom_attributes/{key}`
 
 Operations: Update.
 
-API path: `/api/v4/projects/{id}/packages/debian/{file_name}`
+API path: `/api/v4/projects/{id}/packages/debian/{file_name}/authorize`
 
 #### DebianDistribution
 
@@ -4323,7 +4324,7 @@ API path: `/api/v4/groups/{id}/-/debian_distributions/{codename}`
 | --- | --- |
 | `id` |  |
 
-Operations: Load, Update.
+Operations: Load.
 
 API path: `/api/v4/groups/{id}/-/packages/debian/pool/{distribution}/{project_id}/{letter}/{package_name}/{package_version}/{file_name}`
 
@@ -4784,6 +4785,7 @@ API path: `/api/v4/projects/{id}/packages/generic/{package_name}/*package_versio
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Load.
 
@@ -4929,7 +4931,7 @@ API path: `/api/v4/groups/{id}/-/packages/maven/*path/{file_name}`
 | --- | --- |
 | `id` |  |
 
-Operations: Remove.
+Operations: Remove, Update.
 
 API path: `/api/v4/groups/{id}/members/{user_id}`
 
@@ -5261,9 +5263,9 @@ API path: `/api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, Load, Remove.
+Operations: Load, Remove.
 
-API path: `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync`
+API path: `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/public_key`
 
 #### Rpm
 
@@ -5722,6 +5724,7 @@ Create an instance: `api_entities_application_with_secret = client.ApiEntitiesAp
 
 ```ruby
 api_entities_application_with_secret = client.ApiEntitiesApplicationWithSecret.create({
+  "post_api_v4_application" => {}, # Hash
 })
 ```
 
@@ -5746,7 +5749,7 @@ Create an instance: `api_entities_avatar = client.ApiEntitiesAvatar`
 
 ```ruby
 # load returns the ENTITY — call data_get for the ApiEntitiesAvatar record (raises on error).
-api_entities_avatar = client.ApiEntitiesAvatar.load()
+api_entities_avatar = client.ApiEntitiesAvatar.load({ "email" => "email" })
 ```
 
 
@@ -5803,6 +5806,7 @@ api_entities_award_emojis = client.ApiEntitiesAwardEmoji.list
 api_entities_award_emoji = client.ApiEntitiesAwardEmoji.create({
   "epic_id" => "example_epic_id", # String
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_epics_epic_iid_award_emoji" => {}, # Hash
 })
 ```
 
@@ -5851,6 +5855,7 @@ api_entities_badges = client.ApiEntitiesBadge.list
 ```ruby
 api_entities_badge = client.ApiEntitiesBadge.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_badge" => {}, # Hash
 })
 ```
 
@@ -5879,7 +5884,7 @@ Create an instance: `api_entities_basic_badge_detail = client.ApiEntitiesBasicBa
 
 ```ruby
 # load returns the ENTITY — call data_get for the ApiEntitiesBasicBadgeDetail record (raises on error).
-api_entities_basic_badge_detail = client.ApiEntitiesBasicBadgeDetail.load({ "group_id" => "group_id" })
+api_entities_basic_badge_detail = client.ApiEntitiesBasicBadgeDetail.load({ "image_url" => "image_url", "link_url" => "link_url" })
 ```
 
 
@@ -5898,6 +5903,7 @@ Create an instance: `api_entities_basic_group_detail = client.ApiEntitiesBasicGr
 ```ruby
 api_entities_basic_group_detail = client.ApiEntitiesBasicGroupDetail.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_job_token_scope_groups_allowlist" => {}, # Hash
 })
 ```
 
@@ -5954,6 +5960,7 @@ api_entities_basic_project_details = client.ApiEntitiesBasicProjectDetail.list
 ```ruby
 api_entities_basic_project_detail = client.ApiEntitiesBasicProjectDetail.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_job_token_scope_allowlist" => {}, # Hash
 })
 ```
 
@@ -5997,6 +6004,7 @@ Create an instance: `api_entities_basic_success = client.ApiEntitiesBasicSuccess
 
 ```ruby
 api_entities_basic_success = client.ApiEntitiesBasicSuccess.create({
+  "post_api_v4_integrations_jira_connect_subscription" => {}, # Hash
 })
 ```
 
@@ -6100,6 +6108,7 @@ api_entities_branchs = client.ApiEntitiesBranch.list
 ```ruby
 api_entities_branch = client.ApiEntitiesBranch.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_repository_branch" => {}, # Hash
 })
 ```
 
@@ -6160,6 +6169,11 @@ api_entities_bulk_imports = client.ApiEntitiesBulkImport.list
 
 ```ruby
 api_entities_bulk_import = client.ApiEntitiesBulkImport.create({
+  "configuration_access_token" => "example_configuration_access_token", # Object
+  "configuration_url" => "example_configuration_url", # Object
+  "entities_destination_namespace" => "example_entities_destination_namespace", # Object
+  "entities_source_full_path" => "example_entities_source_full_path", # Object
+  "entities_source_type" => "example_entities_source_type", # Object
 })
 ```
 
@@ -6244,7 +6258,7 @@ Create an instance: `api_entities_changelog = client.ApiEntitiesChangelog`
 
 ```ruby
 # load returns the ENTITY — call data_get for the ApiEntitiesChangelog record (raises on error).
-api_entities_changelog = client.ApiEntitiesChangelog.load({ "project_id" => "project_id" })
+api_entities_changelog = client.ApiEntitiesChangelog.load({ "project_id" => "project_id", "version" => "version" })
 ```
 
 
@@ -6307,6 +6321,7 @@ Create an instance: `api_entities_ci_catalog_resources_version = client.ApiEntit
 ```ruby
 api_entities_ci_catalog_resources_version = client.ApiEntitiesCiCatalogResourcesVersion.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_catalog_publish" => {}, # Hash
 })
 ```
 
@@ -6432,6 +6447,7 @@ api_entities_ci_job_basics = client.ApiEntitiesCiJobBasic.list
 api_entities_ci_job_basic = client.ApiEntitiesCiJobBasic.create({
   "job_id" => "example_job_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_jobs_job_id_play" => {}, # Hash
 })
 ```
 
@@ -6520,6 +6536,7 @@ api_entities_ci_lint_results = client.ApiEntitiesCiLintResult.list
 ```ruby
 api_entities_ci_lint_result = client.ApiEntitiesCiLintResult.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_ci_lint" => {}, # Hash
 })
 ```
 
@@ -6678,6 +6695,7 @@ Create an instance: `api_entities_ci_reset_token_result = client.ApiEntitiesCiRe
 
 ```ruby
 api_entities_ci_reset_token_result = client.ApiEntitiesCiResetTokenResult.create({
+  "post_api_v4_runners_reset_authentication_token" => {}, # Hash
 })
 ```
 
@@ -6749,7 +6767,7 @@ Create an instance: `api_entities_ci_runner = client.ApiEntitiesCiRunner`
 
 ```ruby
 # load returns the ENTITY — call data_get for the ApiEntitiesCiRunner record (raises on error).
-api_entities_ci_runner = client.ApiEntitiesCiRunner.load({ "id" => 1 })
+api_entities_ci_runner = client.ApiEntitiesCiRunner.load()
 ```
 
 #### Example: Create
@@ -6757,6 +6775,7 @@ api_entities_ci_runner = client.ApiEntitiesCiRunner.load({ "id" => 1 })
 ```ruby
 api_entities_ci_runner = client.ApiEntitiesCiRunner.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_runner" => {}, # Hash
 })
 ```
 
@@ -6859,6 +6878,7 @@ Create an instance: `api_entities_ci_runner_registration_detail = client.ApiEnti
 
 ```ruby
 api_entities_ci_runner_registration_detail = client.ApiEntitiesCiRunnerRegistrationDetail.create({
+  "post_api_v4_runner" => {}, # Hash
 })
 ```
 
@@ -6892,6 +6912,7 @@ api_entities_ci_secure_file = client.ApiEntitiesCiSecureFile.load({ "id" => "api
 ```ruby
 api_entities_ci_secure_file = client.ApiEntitiesCiSecureFile.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_secure_file" => {}, # Hash
 })
 ```
 
@@ -6943,6 +6964,7 @@ api_entities_ci_variables = client.ApiEntitiesCiVariable.list
 ```ruby
 api_entities_ci_variable = client.ApiEntitiesCiVariable.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_variable" => {}, # Hash
 })
 ```
 
@@ -6998,6 +7020,7 @@ api_entities_clusters = client.ApiEntitiesCluster.list
 
 ```ruby
 api_entities_cluster = client.ApiEntitiesCluster.create({
+  "post_api_v4_admin_clusters_add" => {}, # Hash
 })
 ```
 
@@ -7047,6 +7070,7 @@ api_entities_cluster_group = client.ApiEntitiesClusterGroup.load({ "cluster_id" 
 ```ruby
 api_entities_cluster_group = client.ApiEntitiesClusterGroup.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_clusters_user" => {}, # Hash
 })
 ```
 
@@ -7096,6 +7120,7 @@ api_entities_cluster_project = client.ApiEntitiesClusterProject.load({ "cluster_
 ```ruby
 api_entities_cluster_project = client.ApiEntitiesClusterProject.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_clusters_user" => {}, # Hash
 })
 ```
 
@@ -7135,6 +7160,7 @@ api_entities_clusters_agent = client.ApiEntitiesClustersAgent.load({ "project_id
 ```ruby
 api_entities_clusters_agent = client.ApiEntitiesClustersAgent.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_cluster_agent" => {}, # Hash
 })
 ```
 
@@ -7216,6 +7242,7 @@ Create an instance: `api_entities_clusters_agent_token_with_token = client.ApiEn
 api_entities_clusters_agent_token_with_token = client.ApiEntitiesClustersAgentTokenWithToken.create({
   "cluster_agent_id" => "example_cluster_agent_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_cluster_agents_agent_id_token" => {}, # Hash
 })
 ```
 
@@ -7315,6 +7342,7 @@ api_entities_commit_detail = client.ApiEntitiesCommitDetail.load({ "project_id" 
 ```ruby
 api_entities_commit_detail = client.ApiEntitiesCommitDetail.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_repository_commit" => {}, # Hash
 })
 ```
 
@@ -7364,6 +7392,7 @@ api_entities_commit_notes = client.ApiEntitiesCommitNote.list
 api_entities_commit_note = client.ApiEntitiesCommitNote.create({
   "project_id" => "example_project_id", # String
   "sha" => "example_sha", # Object
+  "post_api_v4_projects_id_repository_commits_sha_comment" => {}, # Hash
 })
 ```
 
@@ -7469,6 +7498,7 @@ api_entities_commit_statuss = client.ApiEntitiesCommitStatus.list
 api_entities_commit_status = client.ApiEntitiesCommitStatus.create({
   "id" => "example_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_statuses_sha" => {}, # Hash
 })
 ```
 
@@ -7669,6 +7699,7 @@ api_entities_deploy_keys = client.ApiEntitiesDeployKey.list
 
 ```ruby
 api_entities_deploy_key = client.ApiEntitiesDeployKey.create({
+  "post_api_v4_deploy_key" => {}, # Hash
 })
 ```
 
@@ -7721,6 +7752,7 @@ api_entities_deploy_keys_projects = client.ApiEntitiesDeployKeysProject.list
 ```ruby
 api_entities_deploy_keys_project = client.ApiEntitiesDeployKeysProject.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_deploy_key" => {}, # Hash
 })
 ```
 
@@ -7778,6 +7810,7 @@ Create an instance: `api_entities_deploy_token_with_token = client.ApiEntitiesDe
 ```ruby
 api_entities_deploy_token_with_token = client.ApiEntitiesDeployTokenWithToken.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_deploy_token" => {}, # Hash
 })
 ```
 
@@ -7857,6 +7890,7 @@ api_entities_deployment_extended = client.ApiEntitiesDeploymentExtended.load({ "
 ```ruby
 api_entities_deployment_extended = client.ApiEntitiesDeploymentExtended.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_deployment" => {}, # Hash
 })
 ```
 
@@ -7877,6 +7911,7 @@ Create an instance: `api_entities_deployments_approval = client.ApiEntitiesDeplo
 api_entities_deployments_approval = client.ApiEntitiesDeploymentsApproval.create({
   "deployment_id" => "example_deployment_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_deployments_deployment_id_approval" => {}, # Hash
 })
 ```
 
@@ -7970,7 +8005,7 @@ Create an instance: `api_entities_discovered_cluster = client.ApiEntitiesDiscove
 
 ```ruby
 # load returns the ENTITY — call data_get for the ApiEntitiesDiscoveredCluster record (raises on error).
-api_entities_discovered_cluster = client.ApiEntitiesDiscoveredCluster.load()
+api_entities_discovered_cluster = client.ApiEntitiesDiscoveredCluster.load({ "group_id" => "group_id" })
 ```
 
 
@@ -8021,6 +8056,7 @@ api_entities_draft_notes = client.ApiEntitiesDraftNote.list
 api_entities_draft_note = client.ApiEntitiesDraftNote.create({
   "merge_request_id" => "example_merge_request_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note" => {}, # Hash
 })
 ```
 
@@ -8227,6 +8263,7 @@ api_entities_features = client.ApiEntitiesFeature.list
 ```ruby
 api_entities_feature = client.ApiEntitiesFeature.create({
   "id" => "example_id", # String
+  "post_api_v4_features_name" => {}, # Hash
 })
 ```
 
@@ -8312,6 +8349,7 @@ api_entities_feature_flags = client.ApiEntitiesFeatureFlag.list
 ```ruby
 api_entities_feature_flag = client.ApiEntitiesFeatureFlag.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_feature_flag" => {}, # Hash
 })
 ```
 
@@ -8362,6 +8400,7 @@ api_entities_feature_flag_user_lists = client.ApiEntitiesFeatureFlagUserList.lis
 ```ruby
 api_entities_feature_flag_user_list = client.ApiEntitiesFeatureFlagUserList.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_feature_flags_user_list" => {}, # Hash
 })
 ```
 
@@ -8409,6 +8448,7 @@ api_entities_freeze_periods = client.ApiEntitiesFreezePeriod.list
 ```ruby
 api_entities_freeze_period = client.ApiEntitiesFreezePeriod.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_freeze_period" => {}, # Hash
 })
 ```
 
@@ -8460,7 +8500,7 @@ Create an instance: `api_entities_go_module_version = client.ApiEntitiesGoModule
 
 ```ruby
 # load returns the ENTITY — call data_get for the ApiEntitiesGoModuleVersion record (raises on error).
-api_entities_go_module_version = client.ApiEntitiesGoModuleVersion.load({ "module_version" => "module_version", "project_id" => "project_id" })
+api_entities_go_module_version = client.ApiEntitiesGoModuleVersion.load({ "module_version" => "module_version", "project_id" => "project_id", "module_name" => "module_name" })
 ```
 
 
@@ -8548,6 +8588,7 @@ api_entities_groups = client.ApiEntitiesGroup.list
 
 ```ruby
 api_entities_group = client.ApiEntitiesGroup.create({
+  "post_api_v4_group" => {}, # Hash
 })
 ```
 
@@ -8703,6 +8744,7 @@ api_entities_hooks = client.ApiEntitiesHook.list
 
 ```ruby
 api_entities_hook = client.ApiEntitiesHook.create({
+  "post_api_v4_hook" => {}, # Hash
 })
 ```
 
@@ -8815,6 +8857,7 @@ api_entities_invitations = client.ApiEntitiesInvitation.list
 ```ruby
 api_entities_invitation = client.ApiEntitiesInvitation.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_invitation" => {}, # Hash
 })
 ```
 
@@ -8972,6 +9015,7 @@ api_entities_issue_link = client.ApiEntitiesIssueLink.load({ "id" => "api_entiti
 api_entities_issue_link = client.ApiEntitiesIssueLink.create({
   "issue_id" => "example_issue_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_issues_issue_iid_link" => {}, # Hash
 })
 ```
 
@@ -9025,6 +9069,7 @@ Create an instance: `api_entities_markdown = client.ApiEntitiesMarkdown`
 
 ```ruby
 api_entities_markdown = client.ApiEntitiesMarkdown.create({
+  "post_api_v4_markdown" => {}, # Hash
 })
 ```
 
@@ -9118,6 +9163,7 @@ api_entities_members = client.ApiEntitiesMember.list
 ```ruby
 api_entities_member = client.ApiEntitiesMember.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_member" => {}, # Hash
 })
 ```
 
@@ -9333,7 +9379,7 @@ Create an instance: `api_entities_merge_request_basic = client.ApiEntitiesMergeR
 
 ```ruby
 # load returns the ENTITY — call data_get for the ApiEntitiesMergeRequestBasic record (raises on error).
-api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic.load({ "id" => 1 })
+api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic.load()
 ```
 
 #### Example: List
@@ -9572,6 +9618,7 @@ api_entities_metric_images = client.ApiEntitiesMetricImage.list
 api_entities_metric_image = client.ApiEntitiesMetricImage.create({
   "alert_management_alert_id" => "example_alert_management_alert_id", # String
   "project_id" => "example_project_id", # String
+  "file" => "example_file", # Object
 })
 ```
 
@@ -9713,7 +9760,7 @@ Create an instance: `api_entities_namespaces_storage_limit_exclusion = client.Ap
 
 ```ruby
 # load returns the ENTITY — call data_get for the ApiEntitiesNamespacesStorageLimitExclusion record (raises on error).
-api_entities_namespaces_storage_limit_exclusion = client.ApiEntitiesNamespacesStorageLimitExclusion.load({ "id" => 1 })
+api_entities_namespaces_storage_limit_exclusion = client.ApiEntitiesNamespacesStorageLimitExclusion.load()
 ```
 
 #### Example: Create
@@ -9721,6 +9768,7 @@ api_entities_namespaces_storage_limit_exclusion = client.ApiEntitiesNamespacesSt
 ```ruby
 api_entities_namespaces_storage_limit_exclusion = client.ApiEntitiesNamespacesStorageLimitExclusion.create({
   "namespace_id" => "example_namespace_id", # String
+  "post_api_v4_namespaces_id_storage_limit_exclusion" => {}, # Hash
 })
 ```
 
@@ -9747,7 +9795,7 @@ Create an instance: `api_entities_npm_package = client.ApiEntitiesNpmPackage`
 
 ```ruby
 # load returns the ENTITY — call data_get for the ApiEntitiesNpmPackage record (raises on error).
-api_entities_npm_package = client.ApiEntitiesNpmPackage.load()
+api_entities_npm_package = client.ApiEntitiesNpmPackage.load({ "package_name" => "package_name" })
 ```
 
 
@@ -9765,7 +9813,7 @@ Create an instance: `api_entities_npm_package_tag = client.ApiEntitiesNpmPackage
 
 ```ruby
 # load returns the ENTITY — call data_get for the ApiEntitiesNpmPackageTag record (raises on error).
-api_entities_npm_package_tag = client.ApiEntitiesNpmPackageTag.load()
+api_entities_npm_package_tag = client.ApiEntitiesNpmPackageTag.load({ "package_name" => "package_name" })
 ```
 
 
@@ -9869,6 +9917,7 @@ Create an instance: `api_entities_organizations_organization = client.ApiEntitie
 
 ```ruby
 api_entities_organizations_organization = client.ApiEntitiesOrganizationsOrganization.create({
+  "post_api_v4_organization" => {}, # Hash
 })
 ```
 
@@ -10224,6 +10273,7 @@ api_entities_packages_debian_distributions = client.ApiEntitiesPackagesDebianDis
 ```ruby
 api_entities_packages_debian_distribution = client.ApiEntitiesPackagesDebianDistribution.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_debian_distribution" => {}, # Hash
 })
 ```
 
@@ -10276,6 +10326,7 @@ api_entities_pages_domains = client.ApiEntitiesPagesDomain.list
 ```ruby
 api_entities_pages_domain = client.ApiEntitiesPagesDomain.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_pages_domain" => {}, # Hash
 })
 ```
 
@@ -10411,6 +10462,7 @@ Create an instance: `api_entities_personal_access_token_with_token = client.ApiE
 ```ruby
 api_entities_personal_access_token_with_token = client.ApiEntitiesPersonalAccessTokenWithToken.create({
   "personal_access_token_id" => "example_personal_access_token_id", # String
+  "post_api_v4_personal_access_tokens_id_rotate" => {}, # Hash
 })
 ```
 
@@ -10468,6 +10520,7 @@ api_entities_personal_snippets = client.ApiEntitiesPersonalSnippet.list
 
 ```ruby
 api_entities_personal_snippet = client.ApiEntitiesPersonalSnippet.create({
+  "post_api_v4_snippet" => {}, # Hash
 })
 ```
 
@@ -10667,6 +10720,7 @@ api_entities_projects = client.ApiEntitiesProject.list
 ```ruby
 api_entities_project = client.ApiEntitiesProject.create({
   "user_id" => "example_user_id", # String
+  "post_api_v4_projects_user_user_id" => {}, # Hash
 })
 ```
 
@@ -10736,6 +10790,7 @@ Create an instance: `api_entities_project_group_link = client.ApiEntitiesProject
 ```ruby
 api_entities_project_group_link = client.ApiEntitiesProjectGroupLink.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_share" => {}, # Hash
 })
 ```
 
@@ -10809,6 +10864,7 @@ api_entities_project_hooks = client.ApiEntitiesProjectHook.list
 ```ruby
 api_entities_project_hook = client.ApiEntitiesProjectHook.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_hook" => {}, # Hash
 })
 ```
 
@@ -10847,6 +10903,7 @@ api_entities_project_import_statuss = client.ApiEntitiesProjectImportStatus.list
 
 ```ruby
 api_entities_project_import_status = client.ApiEntitiesProjectImportStatus.create({
+  "path" => "example_path", # String
 })
 ```
 
@@ -10957,6 +11014,7 @@ api_entities_project_snippets = client.ApiEntitiesProjectSnippet.list
 ```ruby
 api_entities_project_snippet = client.ApiEntitiesProjectSnippet.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_snippet" => {}, # Hash
 })
 ```
 
@@ -10976,6 +11034,7 @@ Create an instance: `api_entities_project_upload = client.ApiEntitiesProjectUplo
 ```ruby
 api_entities_project_upload = client.ApiEntitiesProjectUpload.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_upload" => {}, # Hash
 })
 ```
 
@@ -10988,6 +11047,7 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 
 | Method | Description |
 | --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -11150,6 +11210,14 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 api_entities_project_with_access = client.ApiEntitiesProjectWithAccess.load({ "id" => "api_entities_project_with_access_id" })
 ```
 
+#### Example: Create
+
+```ruby
+api_entities_project_with_access = client.ApiEntitiesProjectWithAccess.create({
+  "project_id" => "example_project_id", # String
+})
+```
+
 
 ### ApiEntitiesProjectsContainerRegistryProtectionRule
 
@@ -11185,6 +11253,7 @@ api_entities_projects_container_registry_protection_rules = client.ApiEntitiesPr
 ```ruby
 api_entities_projects_container_registry_protection_rule = client.ApiEntitiesProjectsContainerRegistryProtectionRule.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_registry_protection_repository_rule" => {}, # Hash
 })
 ```
 
@@ -11224,6 +11293,7 @@ api_entities_projects_packages_protection_rules = client.ApiEntitiesProjectsPack
 ```ruby
 api_entities_projects_packages_protection_rule = client.ApiEntitiesProjectsPackagesProtectionRule.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_packages_protection_rule" => {}, # Hash
 })
 ```
 
@@ -11263,6 +11333,7 @@ api_entities_projects_topic = client.ApiEntitiesProjectsTopic.load({ "id" => "ap
 
 ```ruby
 api_entities_projects_topic = client.ApiEntitiesProjectsTopic.create({
+  "post_api_v4_topic" => {}, # Hash
 })
 ```
 
@@ -11312,6 +11383,7 @@ api_entities_protected_branchs = client.ApiEntitiesProtectedBranch.list
 ```ruby
 api_entities_protected_branch = client.ApiEntitiesProtectedBranch.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_protected_branch" => {}, # Hash
 })
 ```
 
@@ -11360,6 +11432,7 @@ api_entities_protected_tags = client.ApiEntitiesProtectedTag.list
 ```ruby
 api_entities_protected_tag = client.ApiEntitiesProtectedTag.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_protected_tag" => {}, # Hash
 })
 ```
 
@@ -11477,6 +11550,9 @@ Create an instance: `api_entities_relation_import_tracker = client.ApiEntitiesRe
 
 ```ruby
 api_entities_relation_import_tracker = client.ApiEntitiesRelationImportTracker.create({
+  "file" => "example_file", # Object
+  "path" => "example_path", # String
+  "relation" => "example_relation", # Object
 })
 ```
 
@@ -11581,6 +11657,7 @@ api_entities_releases_links = client.ApiEntitiesReleasesLink.list
 api_entities_releases_link = client.ApiEntitiesReleasesLink.create({
   "project_id" => "example_project_id", # String
   "release_id" => "example_release_id", # String
+  "post_api_v4_projects_id_releases_tag_name_assets_link" => {}, # Hash
 })
 ```
 
@@ -11635,6 +11712,7 @@ api_entities_remote_mirrors = client.ApiEntitiesRemoteMirror.list
 ```ruby
 api_entities_remote_mirror = client.ApiEntitiesRemoteMirror.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_remote_mirror" => {}, # Hash
 })
 ```
 
@@ -11707,6 +11785,7 @@ Create an instance: `api_entities_resource_access_token_with_token = client.ApiE
 ```ruby
 api_entities_resource_access_token_with_token = client.ApiEntitiesResourceAccessTokenWithToken.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_access_tokens_self_rotate" => {}, # Hash
 })
 ```
 
@@ -11923,6 +12002,7 @@ api_entities_system_broadcast_message = client.ApiEntitiesSystemBroadcastMessage
 
 ```ruby
 api_entities_system_broadcast_message = client.ApiEntitiesSystemBroadcastMessage.create({
+  "post_api_v4_broadcast_message" => {}, # Hash
 })
 ```
 
@@ -11971,6 +12051,7 @@ api_entities_tags = client.ApiEntitiesTag.list
 ```ruby
 api_entities_tag = client.ApiEntitiesTag.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_repository_tag" => {}, # Hash
 })
 ```
 
@@ -12040,6 +12121,7 @@ Create an instance: `api_entities_terraform_module_version = client.ApiEntitiesT
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `String` |  |
 | `modules` | `String` |  |
 | `name` | `String` |  |
 | `provider` | `String` |  |
@@ -12147,6 +12229,7 @@ api_entities_triggers = client.ApiEntitiesTrigger.list
 ```ruby
 api_entities_trigger = client.ApiEntitiesTrigger.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_trigger" => {}, # Hash
 })
 ```
 
@@ -12316,6 +12399,7 @@ Create an instance: `api_entities_wiki_attachment = client.ApiEntitiesWikiAttach
 ```ruby
 api_entities_wiki_attachment = client.ApiEntitiesWikiAttachment.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_wikis_attachment" => {}, # Hash
 })
 ```
 
@@ -12344,6 +12428,7 @@ api_entities_wiki_page = client.ApiEntitiesWikiPage.load({ "slug" => "slug" })
 ```ruby
 api_entities_wiki_page = client.ApiEntitiesWikiPage.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_wiki" => {}, # Hash
 })
 ```
 
@@ -12527,6 +12612,7 @@ Create an instance: `composer = client.Composer`
 ```ruby
 composer = client.Composer.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_packages_composer" => {}, # Hash
 })
 ```
 
@@ -12690,7 +12776,6 @@ Create an instance: `debian_package = client.DebianPackage`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-| `update(data)` | Update an existing entity. |
 
 #### Fields
 
@@ -12702,7 +12787,7 @@ Create an instance: `debian_package = client.DebianPackage`
 
 ```ruby
 # load returns the ENTITY — call data_get for the DebianPackage record (raises on error).
-debian_package = client.DebianPackage.load({ "id" => "debian_package_id", "distribution" => "distribution", "file_name" => "file_name", "letter" => "letter", "package_name" => "package_name", "package_version" => "package_version" })
+debian_package = client.DebianPackage.load({ "id" => "debian_package_id", "distribution" => "distribution" })
 ```
 
 
@@ -12784,6 +12869,7 @@ Create an instance: `ee_api_entities_approval_state = client.EeApiEntitiesApprov
 ee_api_entities_approval_state = client.EeApiEntitiesApprovalState.create({
   "merge_request_id" => "example_merge_request_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_merge_requests_merge_request_iid_approval" => {}, # Hash
 })
 ```
 
@@ -13108,6 +13194,7 @@ Create an instance: `ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNo
 
 ```ruby
 ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNodeStatus.create({
+  "post_api_v4_geo_status" => {}, # Hash
 })
 ```
 
@@ -13165,6 +13252,7 @@ Create an instance: `ee_api_entities_issuable_metric_image = client.EeApiEntitie
 ee_api_entities_issuable_metric_image = client.EeApiEntitiesIssuableMetricImage.create({
   "issue_id" => "example_issue_id", # String
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_issues_issue_iid_metric_image" => {}, # Hash
 })
 ```
 
@@ -13239,6 +13327,7 @@ ee_api_entities_ssh_certificates = client.EeApiEntitiesSshCertificate.list
 ```ruby
 ee_api_entities_ssh_certificate = client.EeApiEntitiesSshCertificate.create({
   "group_id" => "example_group_id", # String
+  "post_api_v4_groups_id_ssh_certificate" => {}, # Hash
 })
 ```
 
@@ -13265,6 +13354,7 @@ Create an instance: `environment = client.Environment`
 ```ruby
 environment = client.Environment.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_environments_stop_stale" => {}, # Hash
 })
 ```
 
@@ -13386,7 +13476,7 @@ Create an instance: `generic_package = client.GenericPackage`
 
 ```ruby
 # load returns the ENTITY — call data_get for the GenericPackage record (raises on error).
-generic_package = client.GenericPackage.load({ "file_name" => "file_name", "generic_id" => "generic_id", "project_id" => "project_id" })
+generic_package = client.GenericPackage.load({ "file_name" => "file_name", "generic_id" => "generic_id", "project_id" => "project_id", "package_version" => "package_version" })
 ```
 
 
@@ -13401,6 +13491,12 @@ Create an instance: `geo = client.Geo`
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `String` |  |
+
 #### Example: Load
 
 ```ruby
@@ -13412,6 +13508,7 @@ geo = client.Geo.load({ "replicable_id" => "replicable_id", "replicable_name" =>
 
 ```ruby
 geo = client.Geo.create({
+  "post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack" => {}, # Hash
 })
 ```
 
@@ -13430,7 +13527,7 @@ Create an instance: `go_proxy = client.GoProxy`
 
 ```ruby
 # load returns the ENTITY — call data_get for the GoProxy record (raises on error).
-go_proxy = client.GoProxy.load({ "project_id" => "project_id" })
+go_proxy = client.GoProxy.load({ "project_id" => "project_id", "module_name" => "module_name" })
 ```
 
 
@@ -13540,6 +13637,9 @@ Create an instance: `group_import = client.GroupImport`
 
 ```ruby
 group_import = client.GroupImport.create({
+  "file" => "example_file", # Object
+  "name" => "example_name", # String
+  "path" => "example_path", # String
 })
 ```
 
@@ -13612,6 +13712,7 @@ Create an instance: `import = client.Import`
 
 ```ruby
 import = client.Import.create({
+  "post_api_v4_import_github_gist" => {}, # Hash
 })
 ```
 
@@ -13637,6 +13738,7 @@ Create an instance: `integration = client.Integration`
 
 ```ruby
 integration = client.Integration.create({
+  "post_api_v4_integrations_slack_event" => {}, # Hash
 })
 ```
 
@@ -13722,6 +13824,7 @@ job = client.Job.load({ "id" => "job_id" })
 
 ```ruby
 job = client.Job.create({
+  "post_api_v4_jobs_request" => {}, # Hash
 })
 ```
 
@@ -13741,7 +13844,7 @@ Create an instance: `maven_package = client.MavenPackage`
 
 ```ruby
 # load returns the ENTITY — call data_get for the MavenPackage record (raises on error).
-maven_package = client.MavenPackage.load({ "file_name" => "file_name" })
+maven_package = client.MavenPackage.load({ "file_name" => "file_name", "path" => "path" })
 ```
 
 
@@ -13754,6 +13857,7 @@ Create an instance: `member = client.Member`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
 
 #### Fields
 
@@ -13830,6 +13934,7 @@ Create an instance: `migration = client.Migration`
 ```ruby
 migration = client.Migration.create({
   "timestamp" => "example_timestamp", # Object
+  "post_api_v4_admin_migrations_timestamp_mark" => {}, # Hash
 })
 ```
 
@@ -13904,7 +14009,7 @@ Create an instance: `npm_package = client.NpmPackage`
 
 ```ruby
 # load returns the ENTITY — call data_get for the NpmPackage record (raises on error).
-npm_package = client.NpmPackage.load({ "project_id" => "project_id" })
+npm_package = client.NpmPackage.load({ "project_id" => "project_id", "file_name" => "file_name", "package_name" => "package_name" })
 ```
 
 #### Example: Create
@@ -14156,6 +14261,7 @@ Create an instance: `project_entity = client.ProjectEntity`
 
 ```ruby
 project_entity = client.ProjectEntity.create({
+  "post_api_v4_import_bitbucket_server" => {}, # Hash
 })
 ```
 
@@ -14189,6 +14295,7 @@ project_export = client.ProjectExport.load({ "project_id" => "project_id" })
 ```ruby
 project_export = client.ProjectExport.create({
   "id" => "example_id", # String
+  "post_api_v4_projects_id_export" => {}, # Hash
 })
 ```
 
@@ -14260,6 +14367,7 @@ Create an instance: `project_import_entity = client.ProjectImportEntity`
 
 ```ruby
 project_import_entity = client.ProjectImportEntity.create({
+  "post_api_v4_import_bitbucket" => {}, # Hash
 })
 ```
 
@@ -14342,6 +14450,7 @@ Create an instance: `pypi = client.Pypi`
 ```ruby
 pypi = client.Pypi.create({
   "project_id" => "example_project_id", # String
+  "post_api_v4_projects_id_packages_pypi" => {}, # Hash
 })
 ```
 
@@ -14394,7 +14503,7 @@ Create an instance: `release = client.Release`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Release record (raises on error).
-release = client.Release.load({ "project_id" => "project_id" })
+release = client.Release.load({ "project_id" => "project_id", "suffix_path" => "suffix_path" })
 ```
 
 
@@ -14423,7 +14532,6 @@ Create an instance: `remote_mirror = client.RemoteMirror`
 
 | Method | Description |
 | --- | --- |
-| `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
@@ -14438,15 +14546,6 @@ Create an instance: `remote_mirror = client.RemoteMirror`
 ```ruby
 # load returns the ENTITY — call data_get for the RemoteMirror record (raises on error).
 remote_mirror = client.RemoteMirror.load({ "id" => "remote_mirror_id", "project_id" => "project_id" })
-```
-
-#### Example: Create
-
-```ruby
-remote_mirror = client.RemoteMirror.create({
-  "id" => "example_id", # String
-  "project_id" => "example_project_id", # String
-})
 ```
 
 
@@ -14484,7 +14583,7 @@ Create an instance: `rpm_package = client.RpmPackage`
 
 ```ruby
 # load returns the ENTITY — call data_get for the RpmPackage record (raises on error).
-rpm_package = client.RpmPackage.load({ "project_id" => "project_id" })
+rpm_package = client.RpmPackage.load({ "project_id" => "project_id", "file_name" => "file_name" })
 ```
 
 #### Example: Create
@@ -14568,6 +14667,7 @@ Create an instance: `runner = client.Runner`
 
 ```ruby
 runner = client.Runner.create({
+  "post_api_v4_runners_verify" => {}, # Hash
 })
 ```
 
@@ -14586,7 +14686,7 @@ Create an instance: `search = client.Search`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Search record (raises on error).
-search = client.Search.load()
+search = client.Search.load({ "scope" => "scope", "search" => "search" })
 ```
 
 
@@ -14629,6 +14729,7 @@ Create an instance: `slack = client.Slack`
 
 ```ruby
 slack = client.Slack.create({
+  "post_api_v4_slack_trigger" => {}, # Hash
 })
 ```
 
@@ -14779,6 +14880,7 @@ terraform_state = client.TerraformState.load({ "id" => "terraform_state_id", "pr
 
 ```ruby
 terraform_state = client.TerraformState.create({
+  "id" => "example_id", # String
   "project_id" => "example_project_id", # String
 })
 ```
@@ -14904,6 +15006,7 @@ usage_data = client.UsageData.load()
 
 ```ruby
 usage_data = client.UsageData.create({
+  "post_api_v4_usage_data_increment_counter" => {}, # Hash
 })
 ```
 
@@ -14974,6 +15077,29 @@ Create an instance: `wiki = client.Wiki`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `String` |  |
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

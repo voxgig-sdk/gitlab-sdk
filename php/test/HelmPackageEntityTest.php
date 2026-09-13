@@ -73,7 +73,7 @@ function helm_package_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["helm_package01", "helm_package02", "helm_package03", "project01", "project02", "project03", "api01", "api02", "api03", "helm01", "helm02", "helm03", "chart01", "chart02", "chart03", "file_name01"] as $k) {
+    foreach (["helm_package01", "helm_package02", "helm_package03", "project01", "project02", "project03", "api01", "api02", "api03", "helm01", "helm02", "helm03", "file_name01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 
@@ -87,7 +87,7 @@ function helm_package_basic_setup($extra)
         "GITLAB_TEST_HELM_PACKAGE_ENTID" => $idmap,
         "GITLAB_TEST_LIVE" => "FALSE",
         "GITLAB_TEST_EXPLAIN" => "FALSE",
-        "GITLAB_APIKEY" => "NONE",
+        "GITLAB_APIKEY" => "",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,12 +98,27 @@ function helm_package_basic_setup($extra)
 
     if ($env["GITLAB_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
+            // FIRST, so the generated fields below win: sdk-test-control.json's
+            // test.client.options adds to the live client, it does not redirect it.
+            Runner::live_client_options(),
             [
                 "apikey" => $env["GITLAB_APIKEY"],
             ],
-            $extra ?? [],
+            // ismap, not a plain "?? []" default: an empty PHP array is a
+            // LIST, and a non-map later entry REPLACES the accumulated map in
+            // merge - so the no-extras call discarded live_client_options()
+            // and the apikey/server map above it.
+            Vs::ismap($extra) ? $extra : new \stdClass(),
         ]);
-        $client = new GitlabSDK(Helpers::to_map($merged_opts));
+        // "?? []" because merge legitimately answers with a stdClass when every
+        // contributing entry is an EMPTY map - an SDK with no apikey and no
+        // server variables generates an empty middle entry, so that is the
+        // common case, not the edge one. to_map returns null for a non-array by
+        // design, and the constructor takes a non-nullable array, so without the
+        // fallback every such SDK died on "must be of type array, null given"
+        // the moment live mode was switched on. Offline mode never reaches this
+        // branch, which is why the offline suite stayed green.
+        $client = new GitlabSDK(Helpers::to_map($merged_opts) ?? []);
     }
 
     $live = $env["GITLAB_TEST_LIVE"] === "TRUE";

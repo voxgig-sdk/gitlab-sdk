@@ -77,7 +77,7 @@ def api_entities_ci_catalog_resources_version_basic_setup(extra)
     "GITLAB_TEST_API_ENTITIES_CI_CATALOG_RESOURCES_VERSION_ENTID" => idmap,
     "GITLAB_TEST_LIVE" => "FALSE",
     "GITLAB_TEST_EXPLAIN" => "FALSE",
-    "GITLAB_APIKEY" => "NONE",
+    "GITLAB_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -88,6 +88,9 @@ def api_entities_ci_catalog_resources_version_basic_setup(extra)
 
   if env["GITLAB_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["GITLAB_APIKEY"],
       },

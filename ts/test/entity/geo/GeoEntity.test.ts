@@ -1,6 +1,4 @@
 
-const envlocal = __dirname + '/../../../.env.local'
-require('dotenv').config({ quiet: true, path: [envlocal] })
 
 import Path from 'node:path'
 import * as Fs from 'node:fs'
@@ -13,7 +11,9 @@ import { GitlabSDK, BaseFeature, stdutil } from '../../..'
 
 import {
   envOverride,
+  liveClientOptions,
   liveDelay,
+  loadEnvLocal,
   makeCtrl,
   makeMatch,
   makeReqdata,
@@ -21,6 +21,13 @@ import {
   makeValid,
   maybeSkipControl,
 } from '../../utility'
+
+
+// AFTER the imports on purpose: TypeScript hoists `import` above any
+// statement in the emitted CommonJS, so a loader placed above them would
+// run only after every imported module had already been evaluated - and
+// anything reading process.env at module scope would miss these values.
+loadEnvLocal(__dirname + '/../../../.env.local')
 
 
 describe('GeoEntity', async () => {
@@ -64,8 +71,14 @@ describe('GeoEntity', async () => {
     geo_ref01_data['replicable_name'] = setup.idmap['replicable_name01']
 
     geo_ref01_data = (await geo_ref01_ent.create(geo_ref01_data)).data()
-    assert(null != geo_ref01_data)
+    assert(null != geo_ref01_data.id)
 
+
+    // LOAD
+    const geo_ref01_match_dt0: any = {}
+    geo_ref01_match_dt0.id = geo_ref01_data.id
+    const geo_ref01_data_dt0 = (await geo_ref01_ent.load(geo_ref01_match_dt0)).data()
+    assert(geo_ref01_data_dt0.id === geo_ref01_data.id)
 
 
   })
@@ -115,7 +128,7 @@ function basicSetup(extra?: any) {
     'GITLAB_TEST_GEO_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
     'GITLAB_TEST_EXPLAIN': 'FALSE',
-    'GITLAB_APIKEY': 'NONE',
+    'GITLAB_APIKEY': '',
   })
 
   idmap = env['GITLAB_TEST_GEO_ENTID']
@@ -124,10 +137,18 @@ function basicSetup(extra?: any) {
 
   if (live) {
     client = new GitlabSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
       {
         apikey: env.GITLAB_APIKEY,
       },
-      extra
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {}
     ]))
   }
 

@@ -87,9 +87,13 @@ class ApiEntitiesTerraformModuleVersionEntityTest < Minitest::Test
     assert api_entities_terraform_module_version_ref01_list_result.is_a?(Array)
 
     # LOAD
-    api_entities_terraform_module_version_ref01_match_dt0 = {}
+    api_entities_terraform_module_version_ref01_match_dt0 = {
+      "id" => api_entities_terraform_module_version_ref01_data["id"],
+    }
     api_entities_terraform_module_version_ref01_data_dt0_loaded = api_entities_terraform_module_version_ref01_ent.load(api_entities_terraform_module_version_ref01_match_dt0, nil)
-    assert !api_entities_terraform_module_version_ref01_data_dt0_loaded.nil?
+    api_entities_terraform_module_version_ref01_data_dt0_load_result = Helpers.to_map(api_entities_terraform_module_version_ref01_data_dt0_loaded.respond_to?(:data_get) ? api_entities_terraform_module_version_ref01_data_dt0_loaded.data_get : api_entities_terraform_module_version_ref01_data_dt0_loaded)
+    assert !api_entities_terraform_module_version_ref01_data_dt0_load_result.nil?
+    assert_equal api_entities_terraform_module_version_ref01_data_dt0_load_result["id"], api_entities_terraform_module_version_ref01_data["id"]
 
   end
 end
@@ -127,7 +131,7 @@ def api_entities_terraform_module_version_basic_setup(extra)
     "GITLAB_TEST_API_ENTITIES_TERRAFORM_MODULE_VERSION_ENTID" => idmap,
     "GITLAB_TEST_LIVE" => "FALSE",
     "GITLAB_TEST_EXPLAIN" => "FALSE",
-    "GITLAB_APIKEY" => "NONE",
+    "GITLAB_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -138,6 +142,9 @@ def api_entities_terraform_module_version_basic_setup(extra)
 
   if env["GITLAB_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["GITLAB_APIKEY"],
       },

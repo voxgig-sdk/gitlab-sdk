@@ -1591,6 +1591,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesApplicationWithSecret().create({
+    "post_api_v4_application": {},  # dict
 })
 ```
 
@@ -1642,7 +1643,7 @@ api_entities_avatar = client.ApiEntitiesAvatar()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesAvatar().load()
+result = client.ApiEntitiesAvatar().load({"email": "email"})
 ```
 
 ### Common Methods
@@ -1711,6 +1712,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ApiEntitiesAwardEmoji().create({
     "epic_id": "example_epic_id",  # str
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_epics_epic_iid_award_emoji": {},  # dict
 })
 ```
 
@@ -1788,6 +1790,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesBadge().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_badge": {},  # dict
 })
 ```
 
@@ -1872,7 +1875,7 @@ api_entities_basic_badge_detail = client.ApiEntitiesBasicBadgeDetail()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesBasicBadgeDetail().load({"group_id": "group_id"})
+result = client.ApiEntitiesBasicBadgeDetail().load({"image_url": "image_url", "link_url": "link_url"})
 ```
 
 ### Common Methods
@@ -1919,6 +1922,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesBasicGroupDetail().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_job_token_scope_groups_allowlist": {},  # dict
 })
 ```
 
@@ -1995,6 +1999,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesBasicProjectDetail().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_job_token_scope_allowlist": {},  # dict
 })
 ```
 
@@ -2105,6 +2110,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesBasicSuccess().create({
+    "post_api_v4_integrations_jira_connect_subscription": {},  # dict
 })
 ```
 
@@ -2259,6 +2265,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesBranch().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_repository_branch": {},  # dict
 })
 ```
 
@@ -2362,6 +2369,11 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesBulkImport().create({
+    "configuration_access_token": "example_configuration_access_token",  # Any
+    "configuration_url": "example_configuration_url",  # Any
+    "entities_destination_namespace": "example_entities_destination_namespace",  # Any
+    "entities_source_full_path": "example_entities_source_full_path",  # Any
+    "entities_source_type": "example_entities_source_type",  # Any
 })
 ```
 
@@ -2547,7 +2559,7 @@ api_entities_changelog = client.ApiEntitiesChangelog()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesChangelog().load({"project_id": "project_id"})
+result = client.ApiEntitiesChangelog().load({"project_id": "project_id", "version": "version"})
 ```
 
 ### Common Methods
@@ -2667,6 +2679,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesCiCatalogResourcesVersion().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_catalog_publish": {},  # dict
 })
 ```
 
@@ -2842,6 +2855,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ApiEntitiesCiJobBasic().create({
     "job_id": "example_job_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_jobs_job_id_play": {},  # dict
 })
 ```
 
@@ -2987,6 +3001,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesCiLintResult().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_ci_lint": {},  # dict
 })
 ```
 
@@ -3261,6 +3276,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesCiPipelineScheduleDetail().update({
     "pipeline_schedule_id": "pipeline_schedule_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_pipeline_schedules_pipeline_schedule_id": {},
     # Fields to update
 })
 ```
@@ -3308,6 +3324,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesCiResetTokenResult().create({
+    "post_api_v4_runners_reset_authentication_token": {},  # dict
 })
 ```
 
@@ -3384,6 +3401,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesCiResourceGroup().update({
     "id": "api_entities_ci_resource_group_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_resource_groups_key": {},
     # Fields to update
 })
 ```
@@ -3447,6 +3465,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesCiRunner().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_runner": {},  # dict
 })
 ```
 
@@ -3455,7 +3474,7 @@ result = client.ApiEntitiesCiRunner().create({
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesCiRunner().load({"id": 1})
+result = client.ApiEntitiesCiRunner().load()
 ```
 
 ### Common Methods
@@ -3541,6 +3560,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.ApiEntitiesCiRunnerDetail().update({
     "id": "api_entities_ci_runner_detail_id",
+    "put_api_v4_runners_id": {},
     # Fields to update
 })
 ```
@@ -3649,6 +3669,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesCiRunnerRegistrationDetail().create({
+    "post_api_v4_runner": {},  # dict
 })
 ```
 
@@ -3702,6 +3723,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesCiSecureFile().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_secure_file": {},  # dict
 })
 ```
 
@@ -3772,6 +3794,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesCiVariable().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_variable": {},  # dict
 })
 ```
 
@@ -3867,6 +3890,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesCluster().create({
+    "post_api_v4_admin_clusters_add": {},  # dict
 })
 ```
 
@@ -3895,6 +3919,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.ApiEntitiesCluster().update({
     "id": "api_entities_cluster_id",
+    "put_api_v4_admin_clusters_cluster_id": {},
     # Fields to update
 })
 ```
@@ -3964,6 +3989,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesClusterGroup().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_clusters_user": {},  # dict
 })
 ```
 
@@ -3983,6 +4009,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesClusterGroup().update({
     "cluster_id": "cluster_id",
     "group_id": "group_id",
+    "put_api_v4_groups_id_clusters_cluster_id": {},
     # Fields to update
 })
 ```
@@ -4052,6 +4079,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesClusterProject().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_clusters_user": {},  # dict
 })
 ```
 
@@ -4071,6 +4099,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesClusterProject().update({
     "cluster_id": "cluster_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_clusters_cluster_id": {},
     # Fields to update
 })
 ```
@@ -4131,6 +4160,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesClustersAgent().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_cluster_agent": {},  # dict
 })
 ```
 
@@ -4302,6 +4332,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ApiEntitiesClustersAgentTokenWithToken().create({
     "cluster_agent_id": "example_cluster_agent_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_cluster_agents_agent_id_token": {},  # dict
 })
 ```
 
@@ -4450,6 +4481,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesCommitDetail().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_repository_commit": {},  # dict
 })
 ```
 
@@ -4469,6 +4501,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesCommitDetail().update({
     "project_id": "project_id",
     "submodule": "submodule",
+    "put_api_v4_projects_id_repository_submodules_submodule": {},
     # Fields to update
 })
 ```
@@ -4539,6 +4572,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ApiEntitiesCommitNote().create({
     "project_id": "example_project_id",  # str
     "sha": "example_sha",  # Any
+    "post_api_v4_projects_id_repository_commits_sha_comment": {},  # dict
 })
 ```
 
@@ -4728,6 +4762,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ApiEntitiesCommitStatus().create({
     "id": "example_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_statuses_sha": {},  # dict
 })
 ```
 
@@ -4794,7 +4829,7 @@ api_entities_compare = client.ApiEntitiesCompare()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesCompare().list({"project_id": "example"})
+results = client.ApiEntitiesCompare().list({"project_id": "example", "from": "example", "to": "example"})
 for api_entities_compare in results:
     print(api_entities_compare)
 ```
@@ -5098,6 +5133,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesDeployKey().create({
+    "post_api_v4_deploy_key": {},  # dict
 })
 ```
 
@@ -5119,6 +5155,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesDeployKey().update({
     "id": "id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_deploy_keys_key_id": {},
     # Fields to update
 })
 ```
@@ -5184,6 +5221,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesDeployKeysProject().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_deploy_key": {},  # dict
 })
 ```
 
@@ -5316,6 +5354,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesDeployTokenWithToken().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_deploy_token": {},  # dict
 })
 ```
 
@@ -5443,6 +5482,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesDeploymentExtended().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_deployment": {},  # dict
 })
 ```
 
@@ -5462,6 +5502,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesDeploymentExtended().update({
     "deployment_id": "deployment_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_deployments_deployment_id": {},
     # Fields to update
 })
 ```
@@ -5511,6 +5552,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ApiEntitiesDeploymentsApproval().create({
     "deployment_id": "example_deployment_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_deployments_deployment_id_approval": {},  # dict
 })
 ```
 
@@ -5687,7 +5729,7 @@ api_entities_discovered_cluster = client.ApiEntitiesDiscoveredCluster()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesDiscoveredCluster().load()
+result = client.ApiEntitiesDiscoveredCluster().load({"group_id": "group_id"})
 ```
 
 ### Common Methods
@@ -5749,6 +5791,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ApiEntitiesDraftNote().create({
     "merge_request_id": "example_merge_request_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note": {},  # dict
 })
 ```
 
@@ -5779,6 +5822,7 @@ result = client.ApiEntitiesDraftNote().update({
     "id": "api_entities_draft_note_id",
     "merge_request_id": "merge_request_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_merge_requests_merge_request_iid_draft_notes_draft_note_id": {},
     # Fields to update
 })
 ```
@@ -5877,6 +5921,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesEnvironment().update({
     "id": "api_entities_environment_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_environments_environment_id": {},
     # Fields to update
 })
 ```
@@ -6009,6 +6054,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.ApiEntitiesErrorTrackingProjectSetting().update({
     "project_id": "project_id",
+    "put_api_v4_projects_id_error_tracking_setting": {},
     # Fields to update
 })
 ```
@@ -6143,6 +6189,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesFeature().create({
     "id": "example_id",  # str
+    "post_api_v4_features_name": {},  # dict
 })
 ```
 
@@ -6278,6 +6325,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesFeatureFlag().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_feature_flag": {},  # dict
 })
 ```
 
@@ -6307,6 +6355,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesFeatureFlag().update({
     "id": "api_entities_feature_flag_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_feature_flags_feature_flag_name": {},
     # Fields to update
 })
 ```
@@ -6369,6 +6418,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesFeatureFlagUserList().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_feature_flags_user_list": {},  # dict
 })
 ```
 
@@ -6398,6 +6448,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesFeatureFlagUserList().update({
     "iid": "iid",
     "project_id": "project_id",
+    "put_api_v4_projects_id_feature_flags_user_lists_iid": {},
     # Fields to update
 })
 ```
@@ -6457,6 +6508,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesFreezePeriod().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_freeze_period": {},  # dict
 })
 ```
 
@@ -6486,6 +6538,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesFreezePeriod().update({
     "id": "api_entities_freeze_period_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_freeze_periods_freeze_period_id": {},
     # Fields to update
 })
 ```
@@ -6592,7 +6645,7 @@ api_entities_go_module_version = client.ApiEntitiesGoModuleVersion()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesGoModuleVersion().load({"module_version": "module_version", "project_id": "project_id"})
+result = client.ApiEntitiesGoModuleVersion().load({"module_version": "module_version", "project_id": "project_id", "module_name": "module_name"})
 ```
 
 ### Common Methods
@@ -6691,6 +6744,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesGroup().create({
+    "post_api_v4_group": {},  # dict
 })
 ```
 
@@ -6719,6 +6773,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.ApiEntitiesGroup().update({
     "id": "id",
+    "put_api_v4_groups_id": {},
     # Fields to update
 })
 ```
@@ -6914,6 +6969,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesHook().create({
+    "post_api_v4_hook": {},  # dict
 })
 ```
 
@@ -6942,6 +6998,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.ApiEntitiesHook().update({
     "id": "api_entities_hook_id",
+    "put_api_v4_hooks_hook_id": {},
     # Fields to update
 })
 ```
@@ -7079,6 +7136,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.ApiEntitiesIntegrationBasic().update({
     "group_id": "group_id",
+    "put_api_v4_groups_id_integrations_apple_app_store": {},
     # Fields to update
 })
 ```
@@ -7140,6 +7198,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesInvitation().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_invitation": {},  # dict
 })
 ```
 
@@ -7407,6 +7466,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ApiEntitiesIssueLink().create({
     "issue_id": "example_issue_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_issues_issue_iid_link": {},  # dict
 })
 ```
 
@@ -7523,6 +7583,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesMarkdown().create({
+    "post_api_v4_markdown": {},  # dict
 })
 ```
 
@@ -7655,6 +7716,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesMember().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_member": {},  # dict
 })
 ```
 
@@ -8009,7 +8071,7 @@ for api_entities_merge_request_basic in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesMergeRequestBasic().load({"id": 1})
+result = client.ApiEntitiesMergeRequestBasic().load()
 ```
 
 ### Common Methods
@@ -8370,6 +8432,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ApiEntitiesMetricImage().create({
     "alert_management_alert_id": "example_alert_management_alert_id",  # str
     "project_id": "example_project_id",  # str
+    "file": "example_file",  # Any
 })
 ```
 
@@ -8546,6 +8609,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.ApiEntitiesNamespace().update({
     "id": "api_entities_namespace_id",
+    "put_api_v4_namespaces_id": {},
     # Fields to update
 })
 ```
@@ -8657,6 +8721,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesNamespacesStorageLimitExclusion().create({
     "namespace_id": "example_namespace_id",  # str
+    "post_api_v4_namespaces_id_storage_limit_exclusion": {},  # dict
 })
 ```
 
@@ -8665,7 +8730,7 @@ result = client.ApiEntitiesNamespacesStorageLimitExclusion().create({
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesNamespacesStorageLimitExclusion().load({"id": 1})
+result = client.ApiEntitiesNamespacesStorageLimitExclusion().load()
 ```
 
 ### Common Methods
@@ -8718,7 +8783,7 @@ api_entities_npm_package = client.ApiEntitiesNpmPackage()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesNpmPackage().load()
+result = client.ApiEntitiesNpmPackage().load({"package_name": "package_name"})
 ```
 
 ### Common Methods
@@ -8763,7 +8828,7 @@ api_entities_npm_package_tag = client.ApiEntitiesNpmPackageTag()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ApiEntitiesNpmPackageTag().load()
+result = client.ApiEntitiesNpmPackageTag().load({"package_name": "package_name"})
 ```
 
 ### Common Methods
@@ -8814,7 +8879,7 @@ api_entities_nuget_packages_version = client.ApiEntitiesNugetPackagesVersion()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesNugetPackagesVersion().list({"project_id": "example"})
+results = client.ApiEntitiesNugetPackagesVersion().list({"project_id": "example", "package_name": "example"})
 for api_entities_nuget_packages_version in results:
     print(api_entities_nuget_packages_version)
 ```
@@ -8982,6 +9047,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesOrganizationsOrganization().create({
+    "post_api_v4_organization": {},  # dict
 })
 ```
 
@@ -9681,6 +9747,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesPackagesDebianDistribution().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_debian_distribution": {},  # dict
 })
 ```
 
@@ -9773,6 +9840,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesPagesDomain().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_pages_domain": {},  # dict
 })
 ```
 
@@ -10052,6 +10120,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesPersonalAccessTokenWithToken().create({
     "personal_access_token_id": "example_personal_access_token_id",  # str
+    "post_api_v4_personal_access_tokens_id_rotate": {},  # dict
 })
 ```
 
@@ -10120,6 +10189,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesPersonalSnippet().create({
+    "post_api_v4_snippet": {},  # dict
 })
 ```
 
@@ -10148,6 +10218,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.ApiEntitiesPersonalSnippet().update({
     "id": "api_entities_personal_snippet_id",
+    "put_api_v4_snippets_id": {},
     # Fields to update
 })
 ```
@@ -10203,6 +10274,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.ApiEntitiesPlanLimit().update({
+    "put_api_v4_application_plan_limit": {},
     # Fields to update
 })
 ```
@@ -10403,6 +10475,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesProject().create({
     "user_id": "example_user_id",  # str
+    "post_api_v4_projects_user_user_id": {},  # dict
 })
 ```
 
@@ -10423,6 +10496,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.ApiEntitiesProject().update({
     "id": "id",
+    "put_api_v4_projects_id": {},
     # Fields to update
 })
 ```
@@ -10575,6 +10649,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesProjectGroupLink().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_share": {},  # dict
 })
 ```
 
@@ -10659,6 +10734,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesProjectHook().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_hook": {},  # dict
 })
 ```
 
@@ -10688,6 +10764,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesProjectHook().update({
     "id": "api_entities_project_hook_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_hooks_hook_id": {},
     # Fields to update
 })
 ```
@@ -10747,6 +10824,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesProjectImportStatus().create({
+    "path": "example_path",  # str
 })
 ```
 
@@ -10932,6 +11010,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesProjectSnippet().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_snippet": {},  # dict
 })
 ```
 
@@ -10961,6 +11040,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesProjectSnippet().update({
     "id": "api_entities_project_snippet_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_snippets_snippet_id": {},
     # Fields to update
 })
 ```
@@ -11009,6 +11089,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesProjectUpload().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_upload": {},  # dict
 })
 ```
 
@@ -11202,6 +11283,16 @@ api_entities_project_with_access = client.ApiEntitiesProjectWithAccess()
 
 ### Operations
 
+#### `create(reqdata, ctrl=None) -> dict`
+
+Create a new entity with the given data. Returns the created entity data and raises on error.
+
+```python
+result = client.ApiEntitiesProjectWithAccess().create({
+    "project_id": "example_project_id",  # str
+})
+```
+
 #### `load(reqmatch, ctrl=None) -> dict`
 
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
@@ -11264,6 +11355,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesProjectsContainerRegistryProtectionRule().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_registry_protection_repository_rule": {},  # dict
 })
 ```
 
@@ -11285,6 +11377,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesProjectsContainerRegistryProtectionRule().update({
     "id": "id",
     "project_id": "project_id",
+    "patch_api_v4_projects_id_registry_protection_repository_rules_protection_rule_id": {},
     # Fields to update
 })
 ```
@@ -11344,6 +11437,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesProjectsPackagesProtectionRule().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_packages_protection_rule": {},  # dict
 })
 ```
 
@@ -11365,6 +11459,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesProjectsPackagesProtectionRule().update({
     "id": "id",
     "project_id": "project_id",
+    "patch_api_v4_projects_id_packages_protection_rules_package_protection_rule_id": {},
     # Fields to update
 })
 ```
@@ -11424,6 +11519,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesProjectsTopic().create({
+    "post_api_v4_topic": {},  # dict
 })
 ```
 
@@ -11442,6 +11538,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.ApiEntitiesProjectsTopic().update({
     "id": "api_entities_projects_topic_id",
+    "put_api_v4_topics_id": {},
     # Fields to update
 })
 ```
@@ -11503,6 +11600,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesProtectedBranch().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_protected_branch": {},  # dict
 })
 ```
 
@@ -11532,6 +11630,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesProtectedBranch().update({
     "id": "api_entities_protected_branch_id",
     "project_id": "project_id",
+    "patch_api_v4_projects_id_protected_branches_name": {},
     # Fields to update
 })
 ```
@@ -11593,6 +11692,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesProtectedTag().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_protected_tag": {},  # dict
 })
 ```
 
@@ -11814,6 +11914,9 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesRelationImportTracker().create({
+    "file": "example_file",  # Any
+    "path": "example_path",  # str
+    "relation": "example_relation",  # Any
 })
 ```
 
@@ -11911,6 +12014,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesRelease().update({
     "id": "api_entities_release_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_releases_tag_name": {},
     # Fields to update
 })
 ```
@@ -11970,6 +12074,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ApiEntitiesReleasesLink().create({
     "project_id": "example_project_id",  # str
     "release_id": "example_release_id",  # str
+    "post_api_v4_projects_id_releases_tag_name_assets_link": {},  # dict
 })
 ```
 
@@ -12000,6 +12105,7 @@ result = client.ApiEntitiesReleasesLink().update({
     "id": "api_entities_releases_link_id",
     "project_id": "project_id",
     "release_id": "release_id",
+    "put_api_v4_projects_id_releases_tag_name_assets_links_link_id": {},
     # Fields to update
 })
 ```
@@ -12066,6 +12172,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesRemoteMirror().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_remote_mirror": {},  # dict
 })
 ```
 
@@ -12095,6 +12202,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesRemoteMirror().update({
     "id": "api_entities_remote_mirror_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_remote_mirrors_mirror_id": {},
     # Fields to update
 })
 ```
@@ -12223,6 +12331,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesResourceAccessTokenWithToken().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_access_tokens_self_rotate": {},  # dict
 })
 ```
 
@@ -12514,6 +12623,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.ApiEntitiesSuggestion().update({
+    "put_api_v4_suggestions_batch_apply": {},
     # Fields to update
 })
 ```
@@ -12578,6 +12688,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ApiEntitiesSystemBroadcastMessage().create({
+    "post_api_v4_broadcast_message": {},  # dict
 })
 ```
 
@@ -12604,6 +12715,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.ApiEntitiesSystemBroadcastMessage().update({
     "id": "api_entities_system_broadcast_message_id",
+    "put_api_v4_broadcast_messages_id": {},
     # Fields to update
 })
 ```
@@ -12665,6 +12777,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesTag().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_repository_tag": {},  # dict
 })
 ```
 
@@ -12829,6 +12942,7 @@ api_entities_terraform_module_version = client.ApiEntitiesTerraformModuleVersion
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `str` | No |  |
 | `modules` | `str` | No |  |
 | `name` | `str` | No |  |
 | `provider` | `str` | No |  |
@@ -12980,6 +13094,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesTrigger().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_trigger": {},  # dict
 })
 ```
 
@@ -13009,6 +13124,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.ApiEntitiesTrigger().update({
     "id": "api_entities_trigger_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_triggers_trigger_id": {},
     # Fields to update
 })
 ```
@@ -13270,7 +13386,7 @@ api_entities_user_with_admin = client.ApiEntitiesUserWithAdmin()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ApiEntitiesUserWithAdmin().list()
+results = client.ApiEntitiesUserWithAdmin().list({"fingerprint": "example"})
 for api_entities_user_with_admin in results:
     print(api_entities_user_with_admin)
 ```
@@ -13319,6 +13435,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesWikiAttachment().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_wikis_attachment": {},  # dict
 })
 ```
 
@@ -13366,6 +13483,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ApiEntitiesWikiPage().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_wiki": {},  # dict
 })
 ```
 
@@ -13890,6 +14008,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.Composer().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_packages_composer": {},  # dict
 })
 ```
 
@@ -14257,6 +14376,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.Debian().update({
     "id": "id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_packages_debian_file_name": {},
     # Fields to update
 })
 ```
@@ -14360,20 +14480,7 @@ debian_package = client.DebianPackage()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.DebianPackage().load({"id": "debian_package_id", "distribution": "distribution", "file_name": "file_name", "letter": "letter", "package_name": "package_name", "package_version": "package_version"})
-```
-
-#### `update(reqdata, ctrl=None) -> dict`
-
-Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
-
-```python
-result = client.DebianPackage().update({
-    "id": "debian_package_id",
-    "file_name": "file_name",
-    "project_id": "project_id",
-    # Fields to update
-})
+result = client.DebianPackage().load({"id": "debian_package_id", "distribution": "distribution"})
 ```
 
 ### Common Methods
@@ -14619,6 +14726,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.EeApiEntitiesApprovalState().create({
     "merge_request_id": "example_merge_request_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_merge_requests_merge_request_iid_approval": {},  # dict
 })
 ```
 
@@ -15027,6 +15135,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.EeApiEntitiesGeoNodeStatus().create({
+    "post_api_v4_geo_status": {},  # dict
 })
 ```
 
@@ -15139,6 +15248,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.EeApiEntitiesIssuableMetricImage().create({
     "issue_id": "example_issue_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_issues_issue_iid_metric_image": {},  # dict
 })
 ```
 
@@ -15159,6 +15269,7 @@ result = client.EeApiEntitiesIssuableMetricImage().update({
     "id": "id",
     "issue_id": "issue_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_issues_issue_iid_metric_images_metric_image_id": {},
     # Fields to update
 })
 ```
@@ -15283,6 +15394,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.EeApiEntitiesSshCertificate().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_ssh_certificate": {},  # dict
 })
 ```
 
@@ -15346,6 +15458,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.Environment().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_environments_stop_stale": {},  # dict
 })
 ```
 
@@ -15672,7 +15785,7 @@ generic_package = client.GenericPackage()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GenericPackage().load({"file_name": "file_name", "generic_id": "generic_id", "project_id": "project_id"})
+result = client.GenericPackage().load({"file_name": "file_name", "generic_id": "generic_id", "project_id": "project_id", "package_version": "package_version"})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -15723,6 +15836,12 @@ Return the entity name.
 geo = client.Geo()
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `str` | No |  |
+
 ### Operations
 
 #### `create(reqdata, ctrl=None) -> dict`
@@ -15731,6 +15850,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Geo().create({
+    "post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack": {},  # dict
 })
 ```
 
@@ -15784,7 +15904,7 @@ go_proxy = client.GoProxy()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GoProxy().load({"project_id": "project_id"})
+result = client.GoProxy().load({"project_id": "project_id", "module_name": "module_name"})
 ```
 
 ### Common Methods
@@ -15863,6 +15983,8 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.Group().update({
     "id": "group_id",
+    "key": "key",
+    "put_api_v4_groups_id_custom_attributes_key": {},
     # Fields to update
 })
 ```
@@ -16022,6 +16144,9 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.GroupImport().create({
+    "file": "example_file",  # Any
+    "name": "example_name",  # str
+    "path": "example_path",  # str
 })
 ```
 
@@ -16196,6 +16321,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Import().create({
+    "post_api_v4_import_github_gist": {},  # dict
 })
 ```
 
@@ -16248,6 +16374,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Integration().create({
+    "post_api_v4_integrations_slack_event": {},  # dict
 })
 ```
 
@@ -16455,6 +16582,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Job().create({
+    "post_api_v4_jobs_request": {},  # dict
 })
 ```
 
@@ -16473,6 +16601,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.Job().update({
     "id": "job_id",
+    "put_api_v4_jobs_id": {},
     # Fields to update
 })
 ```
@@ -16519,7 +16648,7 @@ maven_package = client.MavenPackage()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.MavenPackage().load({"file_name": "file_name"})
+result = client.MavenPackage().load({"file_name": "file_name", "path": "path"})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -16530,6 +16659,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.MavenPackage().update({
     "file_name": "file_name",
     "project_id": "project_id",
+    "put_api_v4_projects_id_packages_maven*path_file_name": {},
     # Fields to update
 })
 ```
@@ -16583,6 +16713,18 @@ Remove the entity matching the given criteria. Raises on error.
 
 ```python
 result = client.Member().remove({"id": "id"})
+```
+
+#### `update(reqdata, ctrl=None) -> dict`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
+
+```python
+result = client.Member().update({
+    "group_id": "group_id",
+    "id": "id",
+    # Fields to update
+})
 ```
 
 ### Common Methods
@@ -16754,6 +16896,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.Migration().create({
     "timestamp": "example_timestamp",  # Any
+    "post_api_v4_admin_migrations_timestamp_mark": {},  # dict
 })
 ```
 
@@ -16917,6 +17060,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 result = client.Npm().update({
     "id": "id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_packages_npm_package_name": {},
     # Fields to update
 })
 ```
@@ -16972,7 +17116,7 @@ result = client.NpmPackage().create({
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.NpmPackage().load({"project_id": "project_id"})
+result = client.NpmPackage().load({"project_id": "project_id", "file_name": "file_name", "package_name": "package_name"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -16980,7 +17124,7 @@ result = client.NpmPackage().load({"project_id": "project_id"})
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.NpmPackage().remove({"tag": "tag"})
+result = client.NpmPackage().remove({"tag": "tag", "package_name": "package_name"})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -17038,6 +17182,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.Nuget().update({
     "project_id": "project_id",
+    "put_api_v4_projects_id_packages_nuget": {},
     # Fields to update
 })
 ```
@@ -17105,7 +17250,7 @@ nuget_package = client.NugetPackage()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.NugetPackage().list({"project_id": "example"})
+results = client.NugetPackage().list({"package_name": "example"})
 for nuget_package in results:
     print(nuget_package)
 ```
@@ -17123,7 +17268,7 @@ result = client.NugetPackage().load({"project_id": "project_id"})
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.NugetPackage().remove({"project_id": "project_id"})
+result = client.NugetPackage().remove({"project_id": "project_id", "package_name": "package_name", "package_version": "package_version"})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -17256,6 +17401,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.Page().update({
     "project_id": "project_id",
+    "patch_api_v4_projects_id_page": {},
     # Fields to update
 })
 ```
@@ -17560,6 +17706,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ProjectEntity().create({
+    "post_api_v4_import_bitbucket_server": {},  # dict
 })
 ```
 
@@ -17613,6 +17760,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.ProjectExport().create({
     "id": "example_id",  # str
+    "post_api_v4_projects_id_export": {},  # dict
 })
 ```
 
@@ -17782,6 +17930,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ProjectImportEntity().create({
+    "post_api_v4_import_bitbucket": {},  # dict
 })
 ```
 
@@ -17939,6 +18088,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 ```python
 result = client.ProjectsJobTokenScope().update({
     "project_id": "project_id",
+    "patch_api_v4_projects_id_job_token_scope": {},
     # Fields to update
 })
 ```
@@ -18038,6 +18188,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.Pypi().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_packages_pypi": {},  # dict
 })
 ```
 
@@ -18144,7 +18295,7 @@ release = client.Release()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Release().load({"project_id": "project_id"})
+result = client.Release().load({"project_id": "project_id", "suffix_path": "suffix_path"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -18248,17 +18399,6 @@ remote_mirror = client.RemoteMirror()
 | `id` | `str` | No |  |
 
 ### Operations
-
-#### `create(reqdata, ctrl=None) -> dict`
-
-Create a new entity with the given data. Returns the created entity data and raises on error.
-
-```python
-result = client.RemoteMirror().create({
-    "id": "example_id",  # str
-    "project_id": "example_project_id",  # str
-})
-```
 
 #### `load(reqmatch, ctrl=None) -> dict`
 
@@ -18375,7 +18515,7 @@ result = client.RpmPackage().create({
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.RpmPackage().load({"project_id": "project_id"})
+result = client.RpmPackage().load({"project_id": "project_id", "file_name": "file_name"})
 ```
 
 ### Common Methods
@@ -18533,6 +18673,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Runner().create({
+    "post_api_v4_runners_verify": {},  # dict
 })
 ```
 
@@ -18586,7 +18727,7 @@ search = client.Search()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Search().load()
+result = client.Search().load({"scope": "scope", "search": "search"})
 ```
 
 ### Common Methods
@@ -18691,6 +18832,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Slack().create({
+    "post_api_v4_slack_trigger": {},  # dict
 })
 ```
 
@@ -19031,6 +19173,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.TerraformState().create({
+    "id": "example_id",  # str
     "project_id": "example_project_id",  # str
 })
 ```
@@ -19309,6 +19452,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.UsageData().create({
+    "post_api_v4_usage_data_increment_counter": {},  # dict
 })
 ```
 
@@ -19523,4 +19667,42 @@ client = GitlabSDK({
     },
 })
 ```
+
+
+### Configuring features
+
+Each feature is inactive until switched on, and an SDK with no feature
+configured does no feature work at all. Every option below keeps its default
+unless you name it.
+
+The array form of \`feature\` is significant: several features wrap the
+transport, and the order you list them in is the order they nest.
+
+#### `test`
+
+In-memory mock transport for testing without a live server.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.test.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Installs the BASE transport that the wrapping features wrap, so it must be
+  activated before them.
+- Inactive by default: leaving it out costs nothing at runtime.
 

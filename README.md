@@ -10,6 +10,10 @@ Learn more about Voxgig SDKs at [voxgig.com/sdk](https://voxgig.com/sdk/).
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
+> **Features:** `test` — opt-in,
+> inactive until switched on, and configured per client. See the Features
+> section of any SDK README below for what each one does.
+
 ## Entities, not endpoints
 
 This SDK exposes the API as **276 semantic entities** that you
@@ -38,7 +42,7 @@ network, and no credentials:
 const client = GitlabSDK.test({
   entity: {
     api_entities_metric_image: {
-      test01: { id: 'test01', alert_management_alert_id: 'example_alert_management_alert_id', project_id: 'example_project_id' },
+      test01: { id: 'test01', alert_management_alert_id: 'example_alert_management_alert_id', project_id: 'example_project_id', file: 'example_file' },
     },
   },
 })
@@ -119,7 +123,8 @@ const client = new GitlabSDK({
 
 // Load a specific apientitiesbasicbadgedetail (returns a ApiEntitiesBasicBadgeDetail)
 const apientitiesbasicbadgedetail = await client.ApiEntitiesBasicBadgeDetail().load({
-  group_id: 'example_group_id',
+  image_url: 'example_image_url',
+  link_url: 'example_link_url',
 })
 console.log(apientitiesbasicbadgedetail)
 ```
@@ -302,7 +307,7 @@ The API exposes 276 entities:
 | **ApiEntitiesProjectRepositoryStorage** | The ApiEntitiesProjectRepositoryStorage entity (load). | `/api/v4/projects/{id}/storage` |
 | **ApiEntitiesProjectSnippet** | The ApiEntitiesProjectSnippet entity (create, list, load, update). | `/api/v4/projects/{id}/snippets/{snippet_id}/files/{ref}/{file_path}/raw` |
 | **ApiEntitiesProjectUpload** | The ApiEntitiesProjectUpload entity (create). | `/api/v4/projects/{id}/uploads` |
-| **ApiEntitiesProjectWithAccess** | The ApiEntitiesProjectWithAccess entity (load). | `/api/v4/projects/{id}` |
+| **ApiEntitiesProjectWithAccess** | The ApiEntitiesProjectWithAccess entity (create, load). | `/api/v4/projects/{id}` |
 | **ApiEntitiesProjectsContainerRegistryProtectionRule** | The ApiEntitiesProjectsContainerRegistryProtectionRule entity (create, list, update). | `/api/v4/projects/{id}/registry/protection/repository/rules` |
 | **ApiEntitiesProjectsPackagesProtectionRule** | The ApiEntitiesProjectsPackagesProtectionRule entity (create, list, update). | `/api/v4/projects/{id}/packages/protection/rules` |
 | **ApiEntitiesProjectsTopic** | The ApiEntitiesProjectsTopic entity (create, load, update). | `/api/v4/topics` |
@@ -351,7 +356,7 @@ The API exposes 276 entities:
 | **CustomAttribute** | The CustomAttribute entity (load). | `/api/v4/groups/{id}/custom_attributes/{key}` |
 | **Debian** | The Debian entity (update). | `/api/v4/projects/{id}/packages/debian/{file_name}` |
 | **DebianDistribution** | The DebianDistribution entity (remove). | `/api/v4/groups/{id}/-/debian_distributions/{codename}` |
-| **DebianPackage** | The DebianPackage entity (load, update). | `/api/v4/groups/{id}/-/packages/debian/pool/{distribution}/{project_id}/{letter}/{package_name}/{package_version}/{file_name}` |
+| **DebianPackage** | The DebianPackage entity (load). | `/api/v4/groups/{id}/-/packages/debian/pool/{distribution}/{project_id}/{letter}/{package_name}/{package_version}/{file_name}` |
 | **DependencyProxy** | The DependencyProxy entity (remove). | `/api/v4/groups/{id}/dependency_proxy/cache` |
 | **DeployKey** | The DeployKey entity (remove). | `/api/v4/projects/{id}/deploy_keys/{key_id}` |
 | **DeployToken** | The DeployToken entity (remove). | `/api/v4/groups/{id}/deploy_tokens/{token_id}` |
@@ -386,7 +391,7 @@ The API exposes 276 entities:
 | **IssuesStatistic** | The IssuesStatistic entity (load). | `/api/v4/issues_statistics` |
 | **Job** | The Job entity (create, load, patch, update). | `/api/v4/jobs/{id}/artifacts` |
 | **MavenPackage** | The MavenPackage entity (load, update). | `/api/v4/groups/{id}/-/packages/maven/*path/{file_name}` |
-| **Member** | The Member entity (remove). | `/api/v4/groups/{id}/members/{user_id}` |
+| **Member** | The Member entity (remove, update). | `/api/v4/groups/{id}/members/{member_id}/approve` |
 | **MergeRequest** | The MergeRequest entity (load, remove, update). | `/api/v4/projects/{id}/merge_requests/{merge_request_iid}/related_issues` |
 | **Metadata** | The Metadata entity (load). | `/api/v4/metadata` |
 | **Migration** | The Migration entity (create). | `/api/v4/admin/migrations/{timestamp}/mark` |
@@ -415,7 +420,7 @@ The API exposes 276 entities:
 | **PypiPackage** | The PypiPackage entity (create, load). | `/api/v4/groups/{id}/-/packages/pypi/files/{sha256}/*file_identifier` |
 | **Release** | The Release entity (load, remove). | `/api/v4/projects/{id}/releases/permalink/latest(/)(*suffix_path)` |
 | **ReleaseLink** | The ReleaseLink entity (remove). | `/api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}` |
-| **RemoteMirror** | The RemoteMirror entity (create, load, remove). | `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/public_key` |
+| **RemoteMirror** | The RemoteMirror entity (load, remove). | `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/public_key` |
 | **Rpm** | The Rpm entity (create). | `/api/v4/projects/{id}/packages/rpm` |
 | **RpmPackage** | The RpmPackage entity (create, load). | `/api/v4/projects/{id}/packages/rpm/*package_file_id/*file_name` |
 | **Rubygem** | The Rubygem entity (load). | `/api/v4/projects/{id}/packages/rubygems/{file_name}` |
@@ -480,7 +485,7 @@ client := sdk.NewGitlabSDK(map[string]any{
 
 // Load a specific apientitiesbasicbadgedetail
 apiEntitiesBasicBadgeDetail, err := client.ApiEntitiesBasicBadgeDetail(nil).Load(
-    map[string]any{"group_id": "example_group_id"}, nil,
+    map[string]any{"image_url": "example_image_url", "link_url": "example_link_url"}, nil,
 )
 if err != nil {
     panic(err)
@@ -612,6 +617,32 @@ forking the SDK.
 | **TestFeature** | In-memory mock transport for testing without a live server |
 
 Pass custom features via the `extend` option at construction time.
+
+## Customizing this SDK
+
+This repository contains its own generator (`.sdk/`), so the SDK is
+customizable without forking any upstream tool:
+
+- **The model** (`.sdk/model/`) declares everything this project owns:
+  package names, versions, active features, per-target settings. It is
+  written in [aontu](https://aontu.dev), a JSON-based
+  specification language designed for building ontologies: easy to edit
+  by hand, and files unify rather than override, so small declarations
+  compose into one model. Regeneration re-reads it every time.
+- **Templates** (`.sdk/tm/`) and **components** (`.sdk/src/cmp/`) are
+  the two layers of generation, copied into this repo: templates are the
+  literal per-language source, components generate the API-shaped parts.
+- **Regeneration merges.** By default, newly generated content is
+  three-way merged into existing files, so generator updates and local
+  edits usually converge without manual conflict handling. A project can
+  opt for plain overwrite instead.
+- **Custom features and entire custom targets** arrive through sdkgen
+  packages (`voxgig-sdkgen package add`), on the same rails as the
+  bundled languages, and `voxgig-sdkgen doctor` reports any drift from
+  what a resync would write.
+
+How-to: [customize and propagate templates](https://github.com/voxgig/sdkgen/blob/main/docs/how-to/customize-and-propagate-templates.md).
+The full story: [voxgig.com/sdk/custom](https://voxgig.com/sdk/custom).
 
 ## Per-language documentation
 

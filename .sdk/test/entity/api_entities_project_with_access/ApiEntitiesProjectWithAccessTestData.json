@@ -149,7 +149,8 @@
         "web_based_commit_signing_enabled": "s658",
         "web_url": "s659",
         "wiki_access_level": "s65a",
-        "wiki_enabled": false
+        "wiki_enabled": false,
+        "project_id": "PROJECT01"
       },
       "API_ENTITIES_PROJECT_WITH_ACCESS01": {
         "allow_merge_on_skipped_pipeline": true,
@@ -299,7 +300,8 @@
         "web_based_commit_signing_enabled": "sc20",
         "web_url": "sc21",
         "wiki_access_level": "sc22",
-        "wiki_enabled": false
+        "wiki_enabled": false,
+        "project_id": "PROJECT01"
       },
       "API_ENTITIES_PROJECT_WITH_ACCESS02": {
         "allow_merge_on_skipped_pipeline": true,
@@ -449,7 +451,8 @@
         "web_based_commit_signing_enabled": "s11e8",
         "web_url": "s11e9",
         "wiki_access_level": "s11ea",
-        "wiki_enabled": false
+        "wiki_enabled": false,
+        "project_id": "PROJECT01"
       }
     }
   },

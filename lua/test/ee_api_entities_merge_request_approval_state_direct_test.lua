@@ -82,7 +82,7 @@ function ee_api_entities_merge_request_approval_state_direct_setup(mockres)
   local env = runner.env_override({
     ["GITLAB_TEST_EE_API_ENTITIES_MERGE_REQUEST_APPROVAL_STATE_ENTID"] = {},
     ["GITLAB_TEST_LIVE"] = "FALSE",
-    ["GITLAB_APIKEY"] = "NONE",
+    ["GITLAB_APIKEY"] = "",
   })
 
   local live = env["GITLAB_TEST_LIVE"] == "TRUE"
@@ -91,6 +91,13 @@ function ee_api_entities_merge_request_approval_state_direct_setup(mockres)
     local merged_opts = {
       apikey = env["GITLAB_APIKEY"],
     }
+    -- sdk-test-control.json's test.client.options goes UNDER the generated
+    -- fields: it adds to the live client, it does not redirect it.
+    for _k, _v in pairs(runner.live_client_options()) do
+      if merged_opts[_k] == nil then
+        merged_opts[_k] = _v
+      end
+    end
     local client = sdk.new(merged_opts)
     return {
       client = client,

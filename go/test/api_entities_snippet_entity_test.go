@@ -98,7 +98,7 @@ func TestApiEntitiesSnippetEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		apiEntitiesSnippetRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.api_entities_snippet", setup.data)))
+		apiEntitiesSnippetRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.api_entities_snippet")))
 		var apiEntitiesSnippetRef01Data map[string]any
 		if len(apiEntitiesSnippetRef01DataRaw) > 0 {
 			apiEntitiesSnippetRef01Data = core.ToMapAny(apiEntitiesSnippetRef01DataRaw[0][1])
@@ -147,7 +147,7 @@ func api_entities_snippetBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"api_entities_snippet01", "api_entities_snippet02", "api_entities_snippet03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -167,7 +167,7 @@ func api_entities_snippetBasicSetup(extra map[string]any) *entityTestSetup {
 		"GITLAB_TEST_API_ENTITIES_SNIPPET_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_API_ENTITIES_SNIPPET_ENTID"])
@@ -176,11 +176,23 @@ func api_entities_snippetBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

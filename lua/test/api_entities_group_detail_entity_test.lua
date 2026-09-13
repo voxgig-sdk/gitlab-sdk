@@ -39,7 +39,6 @@ describe("ApiEntitiesGroupDetailEntity", function()
     local api_entities_group_detail_ref01_data = helpers.to_map(vs.getprop(
       vs.getpath(setup.data, "new.api_entities_group_detail"), "api_entities_group_detail_ref01"))
     api_entities_group_detail_ref01_data["group_id"] = setup.idmap["group01"]
-    api_entities_group_detail_ref01_data["project_id"] = setup.idmap["project01"]
 
     local api_entities_group_detail_ref01_data_result, err = api_entities_group_detail_ref01_ent:create(api_entities_group_detail_ref01_data, nil)
     assert.is_nil(err)
@@ -99,7 +98,7 @@ function api_entities_group_detail_basic_setup(extra)
     ["GITLAB_TEST_API_ENTITIES_GROUP_DETAIL_ENTID"] = idmap,
     ["GITLAB_TEST_LIVE"] = "FALSE",
     ["GITLAB_TEST_EXPLAIN"] = "FALSE",
-    ["GITLAB_APIKEY"] = "NONE",
+    ["GITLAB_APIKEY"] = "",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -110,6 +109,9 @@ function api_entities_group_detail_basic_setup(extra)
 
   if env["GITLAB_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
         apikey = env["GITLAB_APIKEY"],
       },

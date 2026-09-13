@@ -36,14 +36,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const envlocal = __dirname + '/../../../.env.local';
-require('dotenv').config({ quiet: true, path: [envlocal] });
 const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
+// AFTER the imports on purpose: TypeScript hoists `import` above any
+// statement in the emitted CommonJS, so a loader placed above them would
+// run only after every imported module had already been evaluated - and
+// anything reading process.env at module scope would miss these values.
+(0, utility_1.loadEnvLocal)(__dirname + '/../../../.env.local');
 (0, node_test_1.describe)('DebianPackageEntity', async () => {
     // Per-test live pacing. Delay is read from sdk-test-control.json's
     // `test.live.delayMs`; only sleeps when GITLAB_TEST_LIVE=TRUE.
@@ -55,7 +58,7 @@ const utility_1 = require("../../utility");
     });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.GITLAB_TEST_LIVE;
-        for (const op of ['update', 'load']) {
+        for (const op of ['load']) {
             if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'debian_package.' + op, live))
                 return;
         }
@@ -72,14 +75,8 @@ const utility_1 = require("../../utility");
         const isempty = struct.isempty;
         const select = struct.select;
         let debian_package_ref01_data = Object.values(setup.data.existing.debian_package)[0];
-        // UPDATE
-        const debian_package_ref01_ent = client.DebianPackage();
-        const debian_package_ref01_data_up0 = {};
-        debian_package_ref01_data_up0.id = debian_package_ref01_data.id;
-        debian_package_ref01_data_up0['project_id'] = setup.idmap['project_id'];
-        const debian_package_ref01_resdata_up0 = (await debian_package_ref01_ent.update(debian_package_ref01_data_up0)).data();
-        (0, node_assert_1.default)(debian_package_ref01_resdata_up0.id === debian_package_ref01_data_up0.id);
         // LOAD
+        const debian_package_ref01_ent = client.DebianPackage();
         const debian_package_ref01_match_dt0 = {};
         debian_package_ref01_match_dt0.id = debian_package_ref01_data.id;
         const debian_package_ref01_data_dt0 = (await debian_package_ref01_ent.load(debian_package_ref01_match_dt0)).data();
@@ -100,7 +97,7 @@ function basicSetup(extra) {
     const struct = client.utility().struct;
     const merge = struct.merge;
     const transform = struct.transform;
-    let idmap = transform(['debian_package01', 'debian_package02', 'debian_package03', 'group01', 'group02', 'group03', 'project01', 'project02', 'project03', 'pool01', 'pool02', 'pool03', 'group01', 'group02', 'group03', '*distribution01', '*distribution02', '*distribution03', 'project01', 'project02', 'project03', '*distribution01', '*distribution02', '*distribution03', 'project01', 'project02', 'project03', 'debian01', 'debian02', 'debian03', 'group01', 'group02', 'group03', '*distribution01', '*distribution02', '*distribution03', 'sha25601', 'sha25602', 'sha25603', 'project01', 'project02', 'project03', '*distribution01', '*distribution02', '*distribution03', 'sha25601', 'sha25602', 'sha25603'], {
+    let idmap = transform(['debian_package01', 'debian_package02', 'debian_package03', 'group01', 'group02', 'group03', 'project01', 'project02', 'project03', 'pool01', 'pool02', 'pool03', 'group01', 'group02', 'group03', '*distribution01', '*distribution02', '*distribution03', 'project01', 'project02', 'project03', '*distribution01', '*distribution02', '*distribution03', 'group01', 'group02', 'group03', '*distribution01', '*distribution02', '*distribution03', 'sha25601', 'sha25602', 'sha25603', 'project01', 'project02', 'project03', '*distribution01', '*distribution02', '*distribution03', 'sha25601', 'sha25602', 'sha25603'], {
         '`$PACK`': ['', {
                 '`$KEY`': '`$COPY`',
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
@@ -116,16 +113,24 @@ function basicSetup(extra) {
         'GITLAB_TEST_DEBIAN_PACKAGE_ENTID': idmap,
         'GITLAB_TEST_LIVE': 'FALSE',
         'GITLAB_TEST_EXPLAIN': 'FALSE',
-        'GITLAB_APIKEY': 'NONE',
+        'GITLAB_APIKEY': '',
     });
     idmap = env['GITLAB_TEST_DEBIAN_PACKAGE_ENTID'];
     const live = 'TRUE' === env.GITLAB_TEST_LIVE;
     if (live) {
         client = new __1.GitlabSDK(merge([
+            // FIRST, so the generated fields below win: sdk-test-control.json's
+            // test.client.options adds to the live client, it does not redirect it.
+            (0, utility_1.liveClientOptions)(),
             {
                 apikey: env.GITLAB_APIKEY,
             },
-            extra
+            // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+            // last entry is undefined, and basicSetup is normally called with no
+            // argument at all - so a bare 'extra' silently discarded the apikey
+            // and server values above and handed the SDK undefined. Harmless
+            // while there was nothing in that object; not harmless now.
+            extra || {}
         ]));
     }
     const setup = {

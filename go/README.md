@@ -1129,7 +1129,7 @@ API path: `/api/v4/projects/{id}/pipeline_schedules`
 
 Operations: Create, Load, Update.
 
-API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership`
+API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/play`
 
 #### ApiEntitiesCiResetTokenResult
 
@@ -3542,9 +3542,9 @@ API path: `/api/v4/projects/{id}/uploads`
 | `"wiki_access_level"` |  |
 | `"wiki_enabled"` |  |
 
-Operations: Load.
+Operations: Create, Load.
 
-API path: `/api/v4/projects/{id}`
+API path: `/api/v4/projects/{id}/housekeeping`
 
 #### ApiEntitiesProjectsContainerRegistryProtectionRule
 
@@ -3987,6 +3987,7 @@ API path: `/api/v4/projects/{id}/templates/{type}`
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 | `"modules"` |  |
 | `"name"` |  |
 | `"provider"` |  |
@@ -4321,7 +4322,7 @@ API path: `/api/v4/groups/{id}/custom_attributes/{key}`
 
 Operations: Update.
 
-API path: `/api/v4/projects/{id}/packages/debian/{file_name}`
+API path: `/api/v4/projects/{id}/packages/debian/{file_name}/authorize`
 
 #### DebianDistribution
 
@@ -4339,7 +4340,7 @@ API path: `/api/v4/groups/{id}/-/debian_distributions/{codename}`
 | --- | --- |
 | `"id"` |  |
 
-Operations: Load, Update.
+Operations: Load.
 
 API path: `/api/v4/groups/{id}/-/packages/debian/pool/{distribution}/{project_id}/{letter}/{package_name}/{package_version}/{file_name}`
 
@@ -4800,6 +4801,7 @@ API path: `/api/v4/projects/{id}/packages/generic/{package_name}/*package_versio
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 
 Operations: Create, Load.
 
@@ -4945,7 +4947,7 @@ API path: `/api/v4/groups/{id}/-/packages/maven/*path/{file_name}`
 | --- | --- |
 | `"id"` |  |
 
-Operations: Remove.
+Operations: Remove, Update.
 
 API path: `/api/v4/groups/{id}/members/{user_id}`
 
@@ -5277,9 +5279,9 @@ API path: `/api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}`
 | --- | --- |
 | `"id"` |  |
 
-Operations: Create, Load, Remove.
+Operations: Load, Remove.
 
-API path: `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync`
+API path: `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/public_key`
 
 #### Rpm
 
@@ -5758,6 +5760,7 @@ Create an instance: `apiEntitiesApplicationWithSecret := client.ApiEntitiesAppli
 
 ```go
 result, err := client.ApiEntitiesApplicationWithSecret(nil).Create(map[string]any{
+    "post_api_v4_application": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -5785,7 +5788,7 @@ Create an instance: `apiEntitiesAvatar := client.ApiEntitiesAvatar(nil)`
 #### Example: Load
 
 ```go
-apiEntitiesAvatar, err := client.ApiEntitiesAvatar(nil).Load(nil, nil)
+apiEntitiesAvatar, err := client.ApiEntitiesAvatar(nil).Load(map[string]any{"email": "email"}, nil)
 if err != nil {
     panic(err)
 }
@@ -5852,6 +5855,7 @@ fmt.Println(apiEntitiesAwardEmojis) // the array of records
 result, err := client.ApiEntitiesAwardEmoji(nil).Create(map[string]any{
     "epic_id": "example_epic_id",
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_epics_epic_iid_award_emoji": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -5910,6 +5914,7 @@ fmt.Println(apiEntitiesBadges) // the array of records
 ```go
 result, err := client.ApiEntitiesBadge(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_badge": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -5941,7 +5946,7 @@ Create an instance: `apiEntitiesBasicBadgeDetail := client.ApiEntitiesBasicBadge
 #### Example: Load
 
 ```go
-apiEntitiesBasicBadgeDetail, err := client.ApiEntitiesBasicBadgeDetail(nil).Load(map[string]any{"group_id": "group_id"}, nil)
+apiEntitiesBasicBadgeDetail, err := client.ApiEntitiesBasicBadgeDetail(nil).Load(map[string]any{"image_url": "image_url", "link_url": "link_url"}, nil)
 if err != nil {
     panic(err)
 }
@@ -5964,6 +5969,7 @@ Create an instance: `apiEntitiesBasicGroupDetail := client.ApiEntitiesBasicGroup
 ```go
 result, err := client.ApiEntitiesBasicGroupDetail(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_job_token_scope_groups_allowlist": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6027,6 +6033,7 @@ fmt.Println(apiEntitiesBasicProjectDetails) // the array of records
 ```go
 result, err := client.ApiEntitiesBasicProjectDetail(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_job_token_scope_allowlist": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6077,6 +6084,7 @@ Create an instance: `apiEntitiesBasicSuccess := client.ApiEntitiesBasicSuccess(n
 
 ```go
 result, err := client.ApiEntitiesBasicSuccess(nil).Create(map[string]any{
+    "post_api_v4_integrations_jira_connect_subscription": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6196,6 +6204,7 @@ fmt.Println(apiEntitiesBranchs) // the array of records
 ```go
 result, err := client.ApiEntitiesBranch(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_repository_branch": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6266,6 +6275,11 @@ fmt.Println(apiEntitiesBulkImports) // the array of records
 
 ```go
 result, err := client.ApiEntitiesBulkImport(nil).Create(map[string]any{
+    "configuration_access_token": "example_configuration_access_token",
+    "configuration_url": "example_configuration_url",
+    "entities_destination_namespace": "example_entities_destination_namespace",
+    "entities_source_full_path": "example_entities_source_full_path",
+    "entities_source_type": "example_entities_source_type",
 }, nil)
 if err != nil {
     panic(err)
@@ -6359,7 +6373,7 @@ Create an instance: `apiEntitiesChangelog := client.ApiEntitiesChangelog(nil)`
 #### Example: Load
 
 ```go
-apiEntitiesChangelog, err := client.ApiEntitiesChangelog(nil).Load(map[string]any{"project_id": "project_id"}, nil)
+apiEntitiesChangelog, err := client.ApiEntitiesChangelog(nil).Load(map[string]any{"project_id": "project_id", "version": "version"}, nil)
 if err != nil {
     panic(err)
 }
@@ -6429,6 +6443,7 @@ Create an instance: `apiEntitiesCiCatalogResourcesVersion := client.ApiEntitiesC
 ```go
 result, err := client.ApiEntitiesCiCatalogResourcesVersion(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_catalog_publish": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6571,6 +6586,7 @@ fmt.Println(apiEntitiesCiJobBasics) // the array of records
 result, err := client.ApiEntitiesCiJobBasic(nil).Create(map[string]any{
     "job_id": "example_job_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_jobs_job_id_play": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6669,6 +6685,7 @@ fmt.Println(apiEntitiesCiLintResults) // the array of records
 ```go
 result, err := client.ApiEntitiesCiLintResult(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_ci_lint": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6851,6 +6868,7 @@ Create an instance: `apiEntitiesCiResetTokenResult := client.ApiEntitiesCiResetT
 
 ```go
 result, err := client.ApiEntitiesCiResetTokenResult(nil).Create(map[string]any{
+    "post_api_v4_runners_reset_authentication_token": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6931,7 +6949,7 @@ Create an instance: `apiEntitiesCiRunner := client.ApiEntitiesCiRunner(nil)`
 #### Example: Load
 
 ```go
-apiEntitiesCiRunner, err := client.ApiEntitiesCiRunner(nil).Load(map[string]any{"id": 1}, nil)
+apiEntitiesCiRunner, err := client.ApiEntitiesCiRunner(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -6943,6 +6961,7 @@ fmt.Println(apiEntitiesCiRunner) // the loaded record
 ```go
 result, err := client.ApiEntitiesCiRunner(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_runner": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7055,6 +7074,7 @@ Create an instance: `apiEntitiesCiRunnerRegistrationDetail := client.ApiEntities
 
 ```go
 result, err := client.ApiEntitiesCiRunnerRegistrationDetail(nil).Create(map[string]any{
+    "post_api_v4_runner": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7095,6 +7115,7 @@ fmt.Println(apiEntitiesCiSecureFile) // the loaded record
 ```go
 result, err := client.ApiEntitiesCiSecureFile(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_secure_file": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7156,6 +7177,7 @@ fmt.Println(apiEntitiesCiVariables) // the array of records
 ```go
 result, err := client.ApiEntitiesCiVariable(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_variable": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7221,6 +7243,7 @@ fmt.Println(apiEntitiesClusters) // the array of records
 
 ```go
 result, err := client.ApiEntitiesCluster(nil).Create(map[string]any{
+    "post_api_v4_admin_clusters_add": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7277,6 +7300,7 @@ fmt.Println(apiEntitiesClusterGroup) // the loaded record
 ```go
 result, err := client.ApiEntitiesClusterGroup(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_clusters_user": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7333,6 +7357,7 @@ fmt.Println(apiEntitiesClusterProject) // the loaded record
 ```go
 result, err := client.ApiEntitiesClusterProject(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_clusters_user": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7379,6 +7404,7 @@ fmt.Println(apiEntitiesClustersAgent) // the loaded record
 ```go
 result, err := client.ApiEntitiesClustersAgent(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_cluster_agent": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7470,6 +7496,7 @@ Create an instance: `apiEntitiesClustersAgentTokenWithToken := client.ApiEntitie
 result, err := client.ApiEntitiesClustersAgentTokenWithToken(nil).Create(map[string]any{
     "cluster_agent_id": "example_cluster_agent_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_cluster_agents_agent_id_token": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7583,6 +7610,7 @@ fmt.Println(apiEntitiesCommitDetail) // the loaded record
 ```go
 result, err := client.ApiEntitiesCommitDetail(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_repository_commit": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7639,6 +7667,7 @@ fmt.Println(apiEntitiesCommitNotes) // the array of records
 result, err := client.ApiEntitiesCommitNote(nil).Create(map[string]any{
     "project_id": "example_project_id",
     "sha": "example_sha",
+    "post_api_v4_projects_id_repository_commits_sha_comment": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7757,6 +7786,7 @@ fmt.Println(apiEntitiesCommitStatuss) // the array of records
 result, err := client.ApiEntitiesCommitStatus(nil).Create(map[string]any{
     "id": "example_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_statuses_sha": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7982,6 +8012,7 @@ fmt.Println(apiEntitiesDeployKeys) // the array of records
 
 ```go
 result, err := client.ApiEntitiesDeployKey(nil).Create(map[string]any{
+    "post_api_v4_deploy_key": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -8044,6 +8075,7 @@ fmt.Println(apiEntitiesDeployKeysProjects) // the array of records
 ```go
 result, err := client.ApiEntitiesDeployKeysProject(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_deploy_key": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -8111,6 +8143,7 @@ Create an instance: `apiEntitiesDeployTokenWithToken := client.ApiEntitiesDeploy
 ```go
 result, err := client.ApiEntitiesDeployTokenWithToken(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_deploy_token": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -8200,6 +8233,7 @@ fmt.Println(apiEntitiesDeploymentExtended) // the loaded record
 ```go
 result, err := client.ApiEntitiesDeploymentExtended(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_deployment": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -8224,6 +8258,7 @@ Create an instance: `apiEntitiesDeploymentsApproval := client.ApiEntitiesDeploym
 result, err := client.ApiEntitiesDeploymentsApproval(nil).Create(map[string]any{
     "deployment_id": "example_deployment_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_deployments_deployment_id_approval": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -8329,7 +8364,7 @@ Create an instance: `apiEntitiesDiscoveredCluster := client.ApiEntitiesDiscovere
 #### Example: Load
 
 ```go
-apiEntitiesDiscoveredCluster, err := client.ApiEntitiesDiscoveredCluster(nil).Load(nil, nil)
+apiEntitiesDiscoveredCluster, err := client.ApiEntitiesDiscoveredCluster(nil).Load(map[string]any{"group_id": "group_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -8390,6 +8425,7 @@ fmt.Println(apiEntitiesDraftNotes) // the array of records
 result, err := client.ApiEntitiesDraftNote(nil).Create(map[string]any{
     "merge_request_id": "example_merge_request_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -8629,6 +8665,7 @@ fmt.Println(apiEntitiesFeatures) // the array of records
 ```go
 result, err := client.ApiEntitiesFeature(nil).Create(map[string]any{
     "id": "example_id",
+    "post_api_v4_features_name": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -8727,6 +8764,7 @@ fmt.Println(apiEntitiesFeatureFlags) // the array of records
 ```go
 result, err := client.ApiEntitiesFeatureFlag(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_feature_flag": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -8787,6 +8825,7 @@ fmt.Println(apiEntitiesFeatureFlagUserLists) // the array of records
 ```go
 result, err := client.ApiEntitiesFeatureFlagUserList(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_feature_flags_user_list": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -8844,6 +8883,7 @@ fmt.Println(apiEntitiesFreezePeriods) // the array of records
 ```go
 result, err := client.ApiEntitiesFreezePeriod(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_freeze_period": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -8901,7 +8941,7 @@ Create an instance: `apiEntitiesGoModuleVersion := client.ApiEntitiesGoModuleVer
 #### Example: Load
 
 ```go
-apiEntitiesGoModuleVersion, err := client.ApiEntitiesGoModuleVersion(nil).Load(map[string]any{"module_version": "module_version", "project_id": "project_id"}, nil)
+apiEntitiesGoModuleVersion, err := client.ApiEntitiesGoModuleVersion(nil).Load(map[string]any{"module_version": "module_version", "project_id": "project_id", "module_name": "module_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -8999,6 +9039,7 @@ fmt.Println(apiEntitiesGroups) // the array of records
 
 ```go
 result, err := client.ApiEntitiesGroup(nil).Create(map[string]any{
+    "post_api_v4_group": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -9171,6 +9212,7 @@ fmt.Println(apiEntitiesHooks) // the array of records
 
 ```go
 result, err := client.ApiEntitiesHook(nil).Create(map[string]any{
+    "post_api_v4_hook": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -9296,6 +9338,7 @@ fmt.Println(apiEntitiesInvitations) // the array of records
 ```go
 result, err := client.ApiEntitiesInvitation(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_invitation": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -9477,6 +9520,7 @@ fmt.Println(apiEntitiesIssueLink) // the loaded record
 result, err := client.ApiEntitiesIssueLink(nil).Create(map[string]any{
     "issue_id": "example_issue_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_issues_issue_iid_link": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -9537,6 +9581,7 @@ Create an instance: `apiEntitiesMarkdown := client.ApiEntitiesMarkdown(nil)`
 
 ```go
 result, err := client.ApiEntitiesMarkdown(nil).Create(map[string]any{
+    "post_api_v4_markdown": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -9643,6 +9688,7 @@ fmt.Println(apiEntitiesMembers) // the array of records
 ```go
 result, err := client.ApiEntitiesMember(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_member": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -9875,7 +9921,7 @@ Create an instance: `apiEntitiesMergeRequestBasic := client.ApiEntitiesMergeRequ
 #### Example: Load
 
 ```go
-apiEntitiesMergeRequestBasic, err := client.ApiEntitiesMergeRequestBasic(nil).Load(map[string]any{"id": 1}, nil)
+apiEntitiesMergeRequestBasic, err := client.ApiEntitiesMergeRequestBasic(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -10136,6 +10182,7 @@ fmt.Println(apiEntitiesMetricImages) // the array of records
 result, err := client.ApiEntitiesMetricImage(nil).Create(map[string]any{
     "alert_management_alert_id": "example_alert_management_alert_id",
     "project_id": "example_project_id",
+    "file": "example_file",
 }, nil)
 if err != nil {
     panic(err)
@@ -10292,7 +10339,7 @@ Create an instance: `apiEntitiesNamespacesStorageLimitExclusion := client.ApiEnt
 #### Example: Load
 
 ```go
-apiEntitiesNamespacesStorageLimitExclusion, err := client.ApiEntitiesNamespacesStorageLimitExclusion(nil).Load(map[string]any{"id": 1}, nil)
+apiEntitiesNamespacesStorageLimitExclusion, err := client.ApiEntitiesNamespacesStorageLimitExclusion(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -10304,6 +10351,7 @@ fmt.Println(apiEntitiesNamespacesStorageLimitExclusion) // the loaded record
 ```go
 result, err := client.ApiEntitiesNamespacesStorageLimitExclusion(nil).Create(map[string]any{
     "namespace_id": "example_namespace_id",
+    "post_api_v4_namespaces_id_storage_limit_exclusion": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -10333,7 +10381,7 @@ Create an instance: `apiEntitiesNpmPackage := client.ApiEntitiesNpmPackage(nil)`
 #### Example: Load
 
 ```go
-apiEntitiesNpmPackage, err := client.ApiEntitiesNpmPackage(nil).Load(nil, nil)
+apiEntitiesNpmPackage, err := client.ApiEntitiesNpmPackage(nil).Load(map[string]any{"package_name": "package_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -10354,7 +10402,7 @@ Create an instance: `apiEntitiesNpmPackageTag := client.ApiEntitiesNpmPackageTag
 #### Example: Load
 
 ```go
-apiEntitiesNpmPackageTag, err := client.ApiEntitiesNpmPackageTag(nil).Load(nil, nil)
+apiEntitiesNpmPackageTag, err := client.ApiEntitiesNpmPackageTag(nil).Load(map[string]any{"package_name": "package_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -10471,6 +10519,7 @@ Create an instance: `apiEntitiesOrganizationsOrganization := client.ApiEntitiesO
 
 ```go
 result, err := client.ApiEntitiesOrganizationsOrganization(nil).Create(map[string]any{
+    "post_api_v4_organization": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -10876,6 +10925,7 @@ fmt.Println(apiEntitiesPackagesDebianDistributions) // the array of records
 ```go
 result, err := client.ApiEntitiesPackagesDebianDistribution(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_debian_distribution": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -10938,6 +10988,7 @@ fmt.Println(apiEntitiesPagesDomains) // the array of records
 ```go
 result, err := client.ApiEntitiesPagesDomain(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_pages_domain": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11089,6 +11140,7 @@ Create an instance: `apiEntitiesPersonalAccessTokenWithToken := client.ApiEntiti
 ```go
 result, err := client.ApiEntitiesPersonalAccessTokenWithToken(nil).Create(map[string]any{
     "personal_access_token_id": "example_personal_access_token_id",
+    "post_api_v4_personal_access_tokens_id_rotate": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11156,6 +11208,7 @@ fmt.Println(apiEntitiesPersonalSnippets) // the array of records
 
 ```go
 result, err := client.ApiEntitiesPersonalSnippet(nil).Create(map[string]any{
+    "post_api_v4_snippet": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11365,6 +11418,7 @@ fmt.Println(apiEntitiesProjects) // the array of records
 ```go
 result, err := client.ApiEntitiesProject(nil).Create(map[string]any{
     "user_id": "example_user_id",
+    "post_api_v4_projects_user_user_id": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11444,6 +11498,7 @@ Create an instance: `apiEntitiesProjectGroupLink := client.ApiEntitiesProjectGro
 ```go
 result, err := client.ApiEntitiesProjectGroupLink(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_share": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11527,6 +11582,7 @@ fmt.Println(apiEntitiesProjectHooks) // the array of records
 ```go
 result, err := client.ApiEntitiesProjectHook(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_hook": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11572,6 +11628,7 @@ fmt.Println(apiEntitiesProjectImportStatuss) // the array of records
 
 ```go
 result, err := client.ApiEntitiesProjectImportStatus(nil).Create(map[string]any{
+    "path": "example_path",
 }, nil)
 if err != nil {
     panic(err)
@@ -11698,6 +11755,7 @@ fmt.Println(apiEntitiesProjectSnippets) // the array of records
 ```go
 result, err := client.ApiEntitiesProjectSnippet(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_snippet": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11721,6 +11779,7 @@ Create an instance: `apiEntitiesProjectUpload := client.ApiEntitiesProjectUpload
 ```go
 result, err := client.ApiEntitiesProjectUpload(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_upload": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11738,6 +11797,7 @@ Create an instance: `apiEntitiesProjectWithAccess := client.ApiEntitiesProjectWi
 | Method | Description |
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
 
 #### Fields
 
@@ -11902,6 +11962,18 @@ if err != nil {
 fmt.Println(apiEntitiesProjectWithAccess) // the loaded record
 ```
 
+#### Example: Create
+
+```go
+result, err := client.ApiEntitiesProjectWithAccess(nil).Create(map[string]any{
+    "project_id": "example_project_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
 
 ### ApiEntitiesProjectsContainerRegistryProtectionRule
 
@@ -11940,6 +12012,7 @@ fmt.Println(apiEntitiesProjectsContainerRegistryProtectionRules) // the array of
 ```go
 result, err := client.ApiEntitiesProjectsContainerRegistryProtectionRule(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_registry_protection_repository_rule": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11986,6 +12059,7 @@ fmt.Println(apiEntitiesProjectsPackagesProtectionRules) // the array of records
 ```go
 result, err := client.ApiEntitiesProjectsPackagesProtectionRule(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_packages_protection_rule": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12032,6 +12106,7 @@ fmt.Println(apiEntitiesProjectsTopic) // the loaded record
 
 ```go
 result, err := client.ApiEntitiesProjectsTopic(nil).Create(map[string]any{
+    "post_api_v4_topic": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12091,6 +12166,7 @@ fmt.Println(apiEntitiesProtectedBranchs) // the array of records
 ```go
 result, err := client.ApiEntitiesProtectedBranch(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_protected_branch": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12149,6 +12225,7 @@ fmt.Println(apiEntitiesProtectedTags) // the array of records
 ```go
 result, err := client.ApiEntitiesProtectedTag(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_protected_tag": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12276,6 +12353,9 @@ Create an instance: `apiEntitiesRelationImportTracker := client.ApiEntitiesRelat
 
 ```go
 result, err := client.ApiEntitiesRelationImportTracker(nil).Create(map[string]any{
+    "file": "example_file",
+    "path": "example_path",
+    "relation": "example_relation",
 }, nil)
 if err != nil {
     panic(err)
@@ -12400,6 +12480,7 @@ fmt.Println(apiEntitiesReleasesLinks) // the array of records
 result, err := client.ApiEntitiesReleasesLink(nil).Create(map[string]any{
     "project_id": "example_project_id",
     "release_id": "example_release_id",
+    "post_api_v4_projects_id_releases_tag_name_assets_link": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12464,6 +12545,7 @@ fmt.Println(apiEntitiesRemoteMirrors) // the array of records
 ```go
 result, err := client.ApiEntitiesRemoteMirror(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_remote_mirror": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12543,6 +12625,7 @@ Create an instance: `apiEntitiesResourceAccessTokenWithToken := client.ApiEntiti
 ```go
 result, err := client.ApiEntitiesResourceAccessTokenWithToken(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_access_tokens_self_rotate": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12778,6 +12861,7 @@ fmt.Println(apiEntitiesSystemBroadcastMessage) // the loaded record
 
 ```go
 result, err := client.ApiEntitiesSystemBroadcastMessage(nil).Create(map[string]any{
+    "post_api_v4_broadcast_message": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12836,6 +12920,7 @@ fmt.Println(apiEntitiesTags) // the array of records
 ```go
 result, err := client.ApiEntitiesTag(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_repository_tag": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12915,6 +13000,7 @@ Create an instance: `apiEntitiesTerraformModuleVersion := client.ApiEntitiesTerr
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `modules` | `string` |  |
 | `name` | `string` |  |
 | `provider` | `string` |  |
@@ -13037,6 +13123,7 @@ fmt.Println(apiEntitiesTriggers) // the array of records
 ```go
 result, err := client.ApiEntitiesTrigger(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_trigger": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -13222,6 +13309,7 @@ Create an instance: `apiEntitiesWikiAttachment := client.ApiEntitiesWikiAttachme
 ```go
 result, err := client.ApiEntitiesWikiAttachment(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_wikis_attachment": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -13257,6 +13345,7 @@ fmt.Println(apiEntitiesWikiPage) // the loaded record
 ```go
 result, err := client.ApiEntitiesWikiPage(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_wiki": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -13450,6 +13539,7 @@ Create an instance: `composer := client.Composer(nil)`
 ```go
 result, err := client.Composer(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_packages_composer": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -13630,7 +13720,6 @@ Create an instance: `debianPackage := client.DebianPackage(nil)`
 | Method | Description |
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
-| `Update(data, ctrl)` | Update an existing entity. |
 
 #### Fields
 
@@ -13641,7 +13730,7 @@ Create an instance: `debianPackage := client.DebianPackage(nil)`
 #### Example: Load
 
 ```go
-debianPackage, err := client.DebianPackage(nil).Load(map[string]any{"id": "debian_package_id", "distribution": "distribution", "file_name": "file_name", "letter": "letter", "package_name": "package_name", "package_version": "package_version"}, nil)
+debianPackage, err := client.DebianPackage(nil).Load(map[string]any{"id": "debian_package_id", "distribution": "distribution"}, nil)
 if err != nil {
     panic(err)
 }
@@ -13727,6 +13816,7 @@ Create an instance: `eeApiEntitiesApprovalState := client.EeApiEntitiesApprovalS
 result, err := client.EeApiEntitiesApprovalState(nil).Create(map[string]any{
     "merge_request_id": "example_merge_request_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_merge_requests_merge_request_iid_approval": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14064,6 +14154,7 @@ Create an instance: `eeApiEntitiesGeoNodeStatus := client.EeApiEntitiesGeoNodeSt
 
 ```go
 result, err := client.EeApiEntitiesGeoNodeStatus(nil).Create(map[string]any{
+    "post_api_v4_geo_status": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14128,6 +14219,7 @@ Create an instance: `eeApiEntitiesIssuableMetricImage := client.EeApiEntitiesIss
 result, err := client.EeApiEntitiesIssuableMetricImage(nil).Create(map[string]any{
     "issue_id": "example_issue_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_issues_issue_iid_metric_image": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14212,6 +14304,7 @@ fmt.Println(eeApiEntitiesSshCertificates) // the array of records
 ```go
 result, err := client.EeApiEntitiesSshCertificate(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_ssh_certificate": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14242,6 +14335,7 @@ Create an instance: `environment := client.Environment(nil)`
 ```go
 result, err := client.Environment(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_environments_stop_stale": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14373,7 +14467,7 @@ Create an instance: `genericPackage := client.GenericPackage(nil)`
 #### Example: Load
 
 ```go
-genericPackage, err := client.GenericPackage(nil).Load(map[string]any{"file_name": "file_name", "generic_id": "generic_id", "project_id": "project_id"}, nil)
+genericPackage, err := client.GenericPackage(nil).Load(map[string]any{"file_name": "file_name", "generic_id": "generic_id", "project_id": "project_id", "package_version": "package_version"}, nil)
 if err != nil {
     panic(err)
 }
@@ -14392,6 +14486,12 @@ Create an instance: `geo := client.Geo(nil)`
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 | `Create(data, ctrl)` | Create a new entity with the given data. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```go
@@ -14406,6 +14506,7 @@ fmt.Println(geo) // the loaded record
 
 ```go
 result, err := client.Geo(nil).Create(map[string]any{
+    "post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14427,7 +14528,7 @@ Create an instance: `goProxy := client.GoProxy(nil)`
 #### Example: Load
 
 ```go
-goProxy, err := client.GoProxy(nil).Load(map[string]any{"project_id": "project_id"}, nil)
+goProxy, err := client.GoProxy(nil).Load(map[string]any{"project_id": "project_id", "module_name": "module_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -14558,6 +14659,9 @@ Create an instance: `groupImport := client.GroupImport(nil)`
 
 ```go
 result, err := client.GroupImport(nil).Create(map[string]any{
+    "file": "example_file",
+    "name": "example_name",
+    "path": "example_path",
 }, nil)
 if err != nil {
     panic(err)
@@ -14645,6 +14749,7 @@ Create an instance: `import_ := client.Import(nil)`
 
 ```go
 result, err := client.Import(nil).Create(map[string]any{
+    "post_api_v4_import_github_gist": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14674,6 +14779,7 @@ Create an instance: `integration := client.Integration(nil)`
 
 ```go
 result, err := client.Integration(nil).Create(map[string]any{
+    "post_api_v4_integrations_slack_event": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14769,6 +14875,7 @@ fmt.Println(job) // the loaded record
 
 ```go
 result, err := client.Job(nil).Create(map[string]any{
+    "post_api_v4_jobs_request": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14791,7 +14898,7 @@ Create an instance: `mavenPackage := client.MavenPackage(nil)`
 #### Example: Load
 
 ```go
-mavenPackage, err := client.MavenPackage(nil).Load(map[string]any{"file_name": "file_name"}, nil)
+mavenPackage, err := client.MavenPackage(nil).Load(map[string]any{"file_name": "file_name", "path": "path"}, nil)
 if err != nil {
     panic(err)
 }
@@ -14807,6 +14914,7 @@ Create an instance: `member := client.Member(nil)`
 
 | Method | Description |
 | --- | --- |
+| `Update(data, ctrl)` | Update an existing entity. |
 | `Remove(match, ctrl)` | Remove the matching entity. |
 
 #### Fields
@@ -14890,6 +14998,7 @@ Create an instance: `migration := client.Migration(nil)`
 ```go
 result, err := client.Migration(nil).Create(map[string]any{
     "timestamp": "example_timestamp",
+    "post_api_v4_admin_migrations_timestamp_mark": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14970,7 +15079,7 @@ Create an instance: `npmPackage := client.NpmPackage(nil)`
 #### Example: Load
 
 ```go
-npmPackage, err := client.NpmPackage(nil).Load(map[string]any{"project_id": "project_id"}, nil)
+npmPackage, err := client.NpmPackage(nil).Load(map[string]any{"project_id": "project_id", "file_name": "file_name", "package_name": "package_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -15255,6 +15364,7 @@ Create an instance: `projectEntity := client.ProjectEntity(nil)`
 
 ```go
 result, err := client.ProjectEntity(nil).Create(map[string]any{
+    "post_api_v4_import_bitbucket_server": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -15295,6 +15405,7 @@ fmt.Println(projectExport) // the loaded record
 ```go
 result, err := client.ProjectExport(nil).Create(map[string]any{
     "id": "example_id",
+    "post_api_v4_projects_id_export": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -15374,6 +15485,7 @@ Create an instance: `projectImportEntity := client.ProjectImportEntity(nil)`
 
 ```go
 result, err := client.ProjectImportEntity(nil).Create(map[string]any{
+    "post_api_v4_import_bitbucket": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -15460,6 +15572,7 @@ Create an instance: `pypi := client.Pypi(nil)`
 ```go
 result, err := client.Pypi(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_packages_pypi": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -15522,7 +15635,7 @@ Create an instance: `release := client.Release(nil)`
 #### Example: Load
 
 ```go
-release, err := client.Release(nil).Load(map[string]any{"project_id": "project_id"}, nil)
+release, err := client.Release(nil).Load(map[string]any{"project_id": "project_id", "suffix_path": "suffix_path"}, nil)
 if err != nil {
     panic(err)
 }
@@ -15556,7 +15669,6 @@ Create an instance: `remoteMirror := client.RemoteMirror(nil)`
 | Method | Description |
 | --- | --- |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
 | `Remove(match, ctrl)` | Remove the matching entity. |
 
 #### Fields
@@ -15573,19 +15685,6 @@ if err != nil {
     panic(err)
 }
 fmt.Println(remoteMirror) // the loaded record
-```
-
-#### Example: Create
-
-```go
-result, err := client.RemoteMirror(nil).Create(map[string]any{
-    "id": "example_id",
-    "project_id": "example_project_id",
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
 ```
 
 
@@ -15626,7 +15725,7 @@ Create an instance: `rpmPackage := client.RpmPackage(nil)`
 #### Example: Load
 
 ```go
-rpmPackage, err := client.RpmPackage(nil).Load(map[string]any{"project_id": "project_id"}, nil)
+rpmPackage, err := client.RpmPackage(nil).Load(map[string]any{"project_id": "project_id", "file_name": "file_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -15728,6 +15827,7 @@ Create an instance: `runner := client.Runner(nil)`
 
 ```go
 result, err := client.Runner(nil).Create(map[string]any{
+    "post_api_v4_runners_verify": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -15749,7 +15849,7 @@ Create an instance: `search := client.Search(nil)`
 #### Example: Load
 
 ```go
-search, err := client.Search(nil).Load(nil, nil)
+search, err := client.Search(nil).Load(map[string]any{"scope": "scope", "search": "search"}, nil)
 if err != nil {
     panic(err)
 }
@@ -15799,6 +15899,7 @@ Create an instance: `slack := client.Slack(nil)`
 
 ```go
 result, err := client.Slack(nil).Create(map[string]any{
+    "post_api_v4_slack_trigger": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -15965,6 +16066,7 @@ fmt.Println(terraformState) // the loaded record
 
 ```go
 result, err := client.TerraformState(nil).Create(map[string]any{
+    "id": "example_id",
     "project_id": "example_project_id",
 }, nil)
 if err != nil {
@@ -16106,6 +16208,7 @@ fmt.Println(usageData) // the loaded record
 
 ```go
 result, err := client.UsageData(nil).Create(map[string]any{
+    "post_api_v4_usage_data_increment_counter": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -16186,6 +16289,29 @@ Create an instance: `wiki := client.Wiki(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

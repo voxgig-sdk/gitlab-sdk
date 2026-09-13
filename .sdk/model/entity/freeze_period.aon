@@ -43,20 +43,32 @@ main: kit: entity: freeze_period: {
           }
           method: "DELETE"
           orig: "/api/v4/projects/{id}/freeze_periods/{freeze_period_id}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "freeze_periods"
-            "{id}"
-          ]
           rename: {
             param: {
               freeze_period_id: "id"
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "freeze_periods"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

@@ -47,11 +47,16 @@ class TestGeoEntity:
 
         geo_ref01_data = helpers.to_map(runner.entity_data(geo_ref01_ent.create(geo_ref01_data, None)))
         assert geo_ref01_data is not None
+        assert geo_ref01_data["id"] is not None
 
         # LOAD
-        geo_ref01_match_dt0 = {}
+        geo_ref01_match_dt0 = {
+            "id": geo_ref01_data["id"],
+        }
         geo_ref01_data_dt0_loaded = geo_ref01_ent.load(geo_ref01_match_dt0, None)
-        assert geo_ref01_data_dt0_loaded is not None
+        geo_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(geo_ref01_data_dt0_loaded))
+        assert geo_ref01_data_dt0_load_result is not None
+        assert geo_ref01_data_dt0_load_result["id"] == geo_ref01_data["id"]
 
 
 
@@ -91,7 +96,7 @@ def _geo_basic_setup(extra):
         "GITLAB_TEST_GEO_ENTID": idmap,
         "GITLAB_TEST_LIVE": "FALSE",
         "GITLAB_TEST_EXPLAIN": "FALSE",
-        "GITLAB_APIKEY": "NONE",
+        "GITLAB_APIKEY": "",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +106,10 @@ def _geo_basic_setup(extra):
 
     if env.get("GITLAB_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
                 "apikey": env.get("GITLAB_APIKEY"),
             },

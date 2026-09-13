@@ -35,12 +35,12 @@ $client = new GitlabSDK([
 
 ### 3. Load an apientitiesbasicbadgedetail
 
-ApiEntitiesBasicBadgeDetail is nested under group, so provide the `group_id`.
+ApiEntitiesBasicBadgeDetail is nested under image_url, so provide the `image_url`.
 
 ```php
 try {
     // load() returns the ENTITY — call data_get() for the ApiEntitiesBasicBadgeDetail record (throws on error).
-    $apientitiesbasicbadgedetail = $client->ApiEntitiesBasicBadgeDetail()->load(["group_id" => "example_group_id"]);
+    $apientitiesbasicbadgedetail = $client->ApiEntitiesBasicBadgeDetail()->load(["image_url" => "example_image_url", "link_url" => "example_link_url"]);
     print_r($apientitiesbasicbadgedetail);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -1123,7 +1123,7 @@ API path: `/api/v4/projects/{id}/pipeline_schedules`
 
 Operations: Create, Load, Update.
 
-API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership`
+API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/play`
 
 #### ApiEntitiesCiResetTokenResult
 
@@ -3536,9 +3536,9 @@ API path: `/api/v4/projects/{id}/uploads`
 | `wiki_access_level` |  |
 | `wiki_enabled` |  |
 
-Operations: Load.
+Operations: Create, Load.
 
-API path: `/api/v4/projects/{id}`
+API path: `/api/v4/projects/{id}/housekeeping`
 
 #### ApiEntitiesProjectsContainerRegistryProtectionRule
 
@@ -3981,6 +3981,7 @@ API path: `/api/v4/projects/{id}/templates/{type}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `modules` |  |
 | `name` |  |
 | `provider` |  |
@@ -4315,7 +4316,7 @@ API path: `/api/v4/groups/{id}/custom_attributes/{key}`
 
 Operations: Update.
 
-API path: `/api/v4/projects/{id}/packages/debian/{file_name}`
+API path: `/api/v4/projects/{id}/packages/debian/{file_name}/authorize`
 
 #### DebianDistribution
 
@@ -4333,7 +4334,7 @@ API path: `/api/v4/groups/{id}/-/debian_distributions/{codename}`
 | --- | --- |
 | `id` |  |
 
-Operations: Load, Update.
+Operations: Load.
 
 API path: `/api/v4/groups/{id}/-/packages/debian/pool/{distribution}/{project_id}/{letter}/{package_name}/{package_version}/{file_name}`
 
@@ -4794,6 +4795,7 @@ API path: `/api/v4/projects/{id}/packages/generic/{package_name}/*package_versio
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Load.
 
@@ -4939,7 +4941,7 @@ API path: `/api/v4/groups/{id}/-/packages/maven/*path/{file_name}`
 | --- | --- |
 | `id` |  |
 
-Operations: Remove.
+Operations: Remove, Update.
 
 API path: `/api/v4/groups/{id}/members/{user_id}`
 
@@ -5271,9 +5273,9 @@ API path: `/api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, Load, Remove.
+Operations: Load, Remove.
 
-API path: `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync`
+API path: `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/public_key`
 
 #### Rpm
 
@@ -5732,6 +5734,7 @@ Create an instance: `$api_entities_application_with_secret = $client->ApiEntitie
 
 ```php
 $api_entities_application_with_secret = $client->ApiEntitiesApplicationWithSecret()->create([
+    "post_api_v4_application" => null, // array
 ]);
 ```
 
@@ -5756,7 +5759,7 @@ Create an instance: `$api_entities_avatar = $client->ApiEntitiesAvatar();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the ApiEntitiesAvatar record (throws on error).
-$api_entities_avatar = $client->ApiEntitiesAvatar()->load();
+$api_entities_avatar = $client->ApiEntitiesAvatar()->load(["email" => "email"]);
 ```
 
 
@@ -5813,6 +5816,7 @@ $api_entities_award_emojis = $client->ApiEntitiesAwardEmoji()->list();
 $api_entities_award_emoji = $client->ApiEntitiesAwardEmoji()->create([
     "epic_id" => null, // string
     "group_id" => null, // string
+    "post_api_v4_groups_id_epics_epic_iid_award_emoji" => null, // array
 ]);
 ```
 
@@ -5861,6 +5865,7 @@ $api_entities_badges = $client->ApiEntitiesBadge()->list();
 ```php
 $api_entities_badge = $client->ApiEntitiesBadge()->create([
     "group_id" => null, // string
+    "post_api_v4_groups_id_badge" => null, // array
 ]);
 ```
 
@@ -5889,7 +5894,7 @@ Create an instance: `$api_entities_basic_badge_detail = $client->ApiEntitiesBasi
 
 ```php
 // load() returns the ENTITY — call data_get() for the ApiEntitiesBasicBadgeDetail record (throws on error).
-$api_entities_basic_badge_detail = $client->ApiEntitiesBasicBadgeDetail()->load(["group_id" => "group_id"]);
+$api_entities_basic_badge_detail = $client->ApiEntitiesBasicBadgeDetail()->load(["image_url" => "image_url", "link_url" => "link_url"]);
 ```
 
 
@@ -5908,6 +5913,7 @@ Create an instance: `$api_entities_basic_group_detail = $client->ApiEntitiesBasi
 ```php
 $api_entities_basic_group_detail = $client->ApiEntitiesBasicGroupDetail()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_job_token_scope_groups_allowlist" => null, // array
 ]);
 ```
 
@@ -5964,6 +5970,7 @@ $api_entities_basic_project_details = $client->ApiEntitiesBasicProjectDetail()->
 ```php
 $api_entities_basic_project_detail = $client->ApiEntitiesBasicProjectDetail()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_job_token_scope_allowlist" => null, // array
 ]);
 ```
 
@@ -6007,6 +6014,7 @@ Create an instance: `$api_entities_basic_success = $client->ApiEntitiesBasicSucc
 
 ```php
 $api_entities_basic_success = $client->ApiEntitiesBasicSuccess()->create([
+    "post_api_v4_integrations_jira_connect_subscription" => null, // array
 ]);
 ```
 
@@ -6110,6 +6118,7 @@ $api_entities_branchs = $client->ApiEntitiesBranch()->list();
 ```php
 $api_entities_branch = $client->ApiEntitiesBranch()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_repository_branch" => null, // array
 ]);
 ```
 
@@ -6170,6 +6179,11 @@ $api_entities_bulk_imports = $client->ApiEntitiesBulkImport()->list();
 
 ```php
 $api_entities_bulk_import = $client->ApiEntitiesBulkImport()->create([
+    "configuration_access_token" => null, // mixed
+    "configuration_url" => null, // mixed
+    "entities_destination_namespace" => null, // mixed
+    "entities_source_full_path" => null, // mixed
+    "entities_source_type" => null, // mixed
 ]);
 ```
 
@@ -6254,7 +6268,7 @@ Create an instance: `$api_entities_changelog = $client->ApiEntitiesChangelog();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the ApiEntitiesChangelog record (throws on error).
-$api_entities_changelog = $client->ApiEntitiesChangelog()->load(["project_id" => "project_id"]);
+$api_entities_changelog = $client->ApiEntitiesChangelog()->load(["project_id" => "project_id", "version" => "version"]);
 ```
 
 
@@ -6317,6 +6331,7 @@ Create an instance: `$api_entities_ci_catalog_resources_version = $client->ApiEn
 ```php
 $api_entities_ci_catalog_resources_version = $client->ApiEntitiesCiCatalogResourcesVersion()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_catalog_publish" => null, // array
 ]);
 ```
 
@@ -6442,6 +6457,7 @@ $api_entities_ci_job_basics = $client->ApiEntitiesCiJobBasic()->list();
 $api_entities_ci_job_basic = $client->ApiEntitiesCiJobBasic()->create([
     "job_id" => null, // string
     "project_id" => null, // string
+    "post_api_v4_projects_id_jobs_job_id_play" => null, // array
 ]);
 ```
 
@@ -6530,6 +6546,7 @@ $api_entities_ci_lint_results = $client->ApiEntitiesCiLintResult()->list();
 ```php
 $api_entities_ci_lint_result = $client->ApiEntitiesCiLintResult()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_ci_lint" => null, // array
 ]);
 ```
 
@@ -6688,6 +6705,7 @@ Create an instance: `$api_entities_ci_reset_token_result = $client->ApiEntitiesC
 
 ```php
 $api_entities_ci_reset_token_result = $client->ApiEntitiesCiResetTokenResult()->create([
+    "post_api_v4_runners_reset_authentication_token" => null, // array
 ]);
 ```
 
@@ -6759,7 +6777,7 @@ Create an instance: `$api_entities_ci_runner = $client->ApiEntitiesCiRunner();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the ApiEntitiesCiRunner record (throws on error).
-$api_entities_ci_runner = $client->ApiEntitiesCiRunner()->load(["id" => 1]);
+$api_entities_ci_runner = $client->ApiEntitiesCiRunner()->load();
 ```
 
 #### Example: Create
@@ -6767,6 +6785,7 @@ $api_entities_ci_runner = $client->ApiEntitiesCiRunner()->load(["id" => 1]);
 ```php
 $api_entities_ci_runner = $client->ApiEntitiesCiRunner()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_runner" => null, // array
 ]);
 ```
 
@@ -6869,6 +6888,7 @@ Create an instance: `$api_entities_ci_runner_registration_detail = $client->ApiE
 
 ```php
 $api_entities_ci_runner_registration_detail = $client->ApiEntitiesCiRunnerRegistrationDetail()->create([
+    "post_api_v4_runner" => null, // array
 ]);
 ```
 
@@ -6902,6 +6922,7 @@ $api_entities_ci_secure_file = $client->ApiEntitiesCiSecureFile()->load(["id" =>
 ```php
 $api_entities_ci_secure_file = $client->ApiEntitiesCiSecureFile()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_secure_file" => null, // array
 ]);
 ```
 
@@ -6953,6 +6974,7 @@ $api_entities_ci_variables = $client->ApiEntitiesCiVariable()->list();
 ```php
 $api_entities_ci_variable = $client->ApiEntitiesCiVariable()->create([
     "group_id" => null, // string
+    "post_api_v4_groups_id_variable" => null, // array
 ]);
 ```
 
@@ -7008,6 +7030,7 @@ $api_entities_clusters = $client->ApiEntitiesCluster()->list();
 
 ```php
 $api_entities_cluster = $client->ApiEntitiesCluster()->create([
+    "post_api_v4_admin_clusters_add" => null, // array
 ]);
 ```
 
@@ -7057,6 +7080,7 @@ $api_entities_cluster_group = $client->ApiEntitiesClusterGroup()->load(["cluster
 ```php
 $api_entities_cluster_group = $client->ApiEntitiesClusterGroup()->create([
     "group_id" => null, // string
+    "post_api_v4_groups_id_clusters_user" => null, // array
 ]);
 ```
 
@@ -7106,6 +7130,7 @@ $api_entities_cluster_project = $client->ApiEntitiesClusterProject()->load(["clu
 ```php
 $api_entities_cluster_project = $client->ApiEntitiesClusterProject()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_clusters_user" => null, // array
 ]);
 ```
 
@@ -7145,6 +7170,7 @@ $api_entities_clusters_agent = $client->ApiEntitiesClustersAgent()->load(["proje
 ```php
 $api_entities_clusters_agent = $client->ApiEntitiesClustersAgent()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_cluster_agent" => null, // array
 ]);
 ```
 
@@ -7226,6 +7252,7 @@ Create an instance: `$api_entities_clusters_agent_token_with_token = $client->Ap
 $api_entities_clusters_agent_token_with_token = $client->ApiEntitiesClustersAgentTokenWithToken()->create([
     "cluster_agent_id" => null, // string
     "project_id" => null, // string
+    "post_api_v4_projects_id_cluster_agents_agent_id_token" => null, // array
 ]);
 ```
 
@@ -7325,6 +7352,7 @@ $api_entities_commit_detail = $client->ApiEntitiesCommitDetail()->load(["project
 ```php
 $api_entities_commit_detail = $client->ApiEntitiesCommitDetail()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_repository_commit" => null, // array
 ]);
 ```
 
@@ -7374,6 +7402,7 @@ $api_entities_commit_notes = $client->ApiEntitiesCommitNote()->list();
 $api_entities_commit_note = $client->ApiEntitiesCommitNote()->create([
     "project_id" => null, // string
     "sha" => null, // mixed
+    "post_api_v4_projects_id_repository_commits_sha_comment" => null, // array
 ]);
 ```
 
@@ -7479,6 +7508,7 @@ $api_entities_commit_statuss = $client->ApiEntitiesCommitStatus()->list();
 $api_entities_commit_status = $client->ApiEntitiesCommitStatus()->create([
     "id" => null, // string
     "project_id" => null, // string
+    "post_api_v4_projects_id_statuses_sha" => null, // array
 ]);
 ```
 
@@ -7679,6 +7709,7 @@ $api_entities_deploy_keys = $client->ApiEntitiesDeployKey()->list();
 
 ```php
 $api_entities_deploy_key = $client->ApiEntitiesDeployKey()->create([
+    "post_api_v4_deploy_key" => null, // array
 ]);
 ```
 
@@ -7731,6 +7762,7 @@ $api_entities_deploy_keys_projects = $client->ApiEntitiesDeployKeysProject()->li
 ```php
 $api_entities_deploy_keys_project = $client->ApiEntitiesDeployKeysProject()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_deploy_key" => null, // array
 ]);
 ```
 
@@ -7788,6 +7820,7 @@ Create an instance: `$api_entities_deploy_token_with_token = $client->ApiEntitie
 ```php
 $api_entities_deploy_token_with_token = $client->ApiEntitiesDeployTokenWithToken()->create([
     "group_id" => null, // string
+    "post_api_v4_groups_id_deploy_token" => null, // array
 ]);
 ```
 
@@ -7867,6 +7900,7 @@ $api_entities_deployment_extended = $client->ApiEntitiesDeploymentExtended()->lo
 ```php
 $api_entities_deployment_extended = $client->ApiEntitiesDeploymentExtended()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_deployment" => null, // array
 ]);
 ```
 
@@ -7887,6 +7921,7 @@ Create an instance: `$api_entities_deployments_approval = $client->ApiEntitiesDe
 $api_entities_deployments_approval = $client->ApiEntitiesDeploymentsApproval()->create([
     "deployment_id" => null, // string
     "project_id" => null, // string
+    "post_api_v4_projects_id_deployments_deployment_id_approval" => null, // array
 ]);
 ```
 
@@ -7980,7 +8015,7 @@ Create an instance: `$api_entities_discovered_cluster = $client->ApiEntitiesDisc
 
 ```php
 // load() returns the ENTITY — call data_get() for the ApiEntitiesDiscoveredCluster record (throws on error).
-$api_entities_discovered_cluster = $client->ApiEntitiesDiscoveredCluster()->load();
+$api_entities_discovered_cluster = $client->ApiEntitiesDiscoveredCluster()->load(["group_id" => "group_id"]);
 ```
 
 
@@ -8031,6 +8066,7 @@ $api_entities_draft_notes = $client->ApiEntitiesDraftNote()->list();
 $api_entities_draft_note = $client->ApiEntitiesDraftNote()->create([
     "merge_request_id" => null, // string
     "project_id" => null, // string
+    "post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note" => null, // array
 ]);
 ```
 
@@ -8237,6 +8273,7 @@ $api_entities_features = $client->ApiEntitiesFeature()->list();
 ```php
 $api_entities_feature = $client->ApiEntitiesFeature()->create([
     "id" => null, // string
+    "post_api_v4_features_name" => null, // array
 ]);
 ```
 
@@ -8322,6 +8359,7 @@ $api_entities_feature_flags = $client->ApiEntitiesFeatureFlag()->list();
 ```php
 $api_entities_feature_flag = $client->ApiEntitiesFeatureFlag()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_feature_flag" => null, // array
 ]);
 ```
 
@@ -8372,6 +8410,7 @@ $api_entities_feature_flag_user_lists = $client->ApiEntitiesFeatureFlagUserList(
 ```php
 $api_entities_feature_flag_user_list = $client->ApiEntitiesFeatureFlagUserList()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_feature_flags_user_list" => null, // array
 ]);
 ```
 
@@ -8419,6 +8458,7 @@ $api_entities_freeze_periods = $client->ApiEntitiesFreezePeriod()->list();
 ```php
 $api_entities_freeze_period = $client->ApiEntitiesFreezePeriod()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_freeze_period" => null, // array
 ]);
 ```
 
@@ -8470,7 +8510,7 @@ Create an instance: `$api_entities_go_module_version = $client->ApiEntitiesGoMod
 
 ```php
 // load() returns the ENTITY — call data_get() for the ApiEntitiesGoModuleVersion record (throws on error).
-$api_entities_go_module_version = $client->ApiEntitiesGoModuleVersion()->load(["module_version" => "module_version", "project_id" => "project_id"]);
+$api_entities_go_module_version = $client->ApiEntitiesGoModuleVersion()->load(["module_version" => "module_version", "project_id" => "project_id", "module_name" => "module_name"]);
 ```
 
 
@@ -8558,6 +8598,7 @@ $api_entities_groups = $client->ApiEntitiesGroup()->list();
 
 ```php
 $api_entities_group = $client->ApiEntitiesGroup()->create([
+    "post_api_v4_group" => null, // array
 ]);
 ```
 
@@ -8713,6 +8754,7 @@ $api_entities_hooks = $client->ApiEntitiesHook()->list();
 
 ```php
 $api_entities_hook = $client->ApiEntitiesHook()->create([
+    "post_api_v4_hook" => null, // array
 ]);
 ```
 
@@ -8825,6 +8867,7 @@ $api_entities_invitations = $client->ApiEntitiesInvitation()->list();
 ```php
 $api_entities_invitation = $client->ApiEntitiesInvitation()->create([
     "group_id" => null, // string
+    "post_api_v4_groups_id_invitation" => null, // array
 ]);
 ```
 
@@ -8982,6 +9025,7 @@ $api_entities_issue_link = $client->ApiEntitiesIssueLink()->load(["id" => "api_e
 $api_entities_issue_link = $client->ApiEntitiesIssueLink()->create([
     "issue_id" => null, // string
     "project_id" => null, // string
+    "post_api_v4_projects_id_issues_issue_iid_link" => null, // array
 ]);
 ```
 
@@ -9035,6 +9079,7 @@ Create an instance: `$api_entities_markdown = $client->ApiEntitiesMarkdown();`
 
 ```php
 $api_entities_markdown = $client->ApiEntitiesMarkdown()->create([
+    "post_api_v4_markdown" => null, // array
 ]);
 ```
 
@@ -9128,6 +9173,7 @@ $api_entities_members = $client->ApiEntitiesMember()->list();
 ```php
 $api_entities_member = $client->ApiEntitiesMember()->create([
     "group_id" => null, // string
+    "post_api_v4_groups_id_member" => null, // array
 ]);
 ```
 
@@ -9343,7 +9389,7 @@ Create an instance: `$api_entities_merge_request_basic = $client->ApiEntitiesMer
 
 ```php
 // load() returns the ENTITY — call data_get() for the ApiEntitiesMergeRequestBasic record (throws on error).
-$api_entities_merge_request_basic = $client->ApiEntitiesMergeRequestBasic()->load(["id" => 1]);
+$api_entities_merge_request_basic = $client->ApiEntitiesMergeRequestBasic()->load();
 ```
 
 #### Example: List
@@ -9582,6 +9628,7 @@ $api_entities_metric_images = $client->ApiEntitiesMetricImage()->list();
 $api_entities_metric_image = $client->ApiEntitiesMetricImage()->create([
     "alert_management_alert_id" => null, // string
     "project_id" => null, // string
+    "file" => null, // mixed
 ]);
 ```
 
@@ -9723,7 +9770,7 @@ Create an instance: `$api_entities_namespaces_storage_limit_exclusion = $client-
 
 ```php
 // load() returns the ENTITY — call data_get() for the ApiEntitiesNamespacesStorageLimitExclusion record (throws on error).
-$api_entities_namespaces_storage_limit_exclusion = $client->ApiEntitiesNamespacesStorageLimitExclusion()->load(["id" => 1]);
+$api_entities_namespaces_storage_limit_exclusion = $client->ApiEntitiesNamespacesStorageLimitExclusion()->load();
 ```
 
 #### Example: Create
@@ -9731,6 +9778,7 @@ $api_entities_namespaces_storage_limit_exclusion = $client->ApiEntitiesNamespace
 ```php
 $api_entities_namespaces_storage_limit_exclusion = $client->ApiEntitiesNamespacesStorageLimitExclusion()->create([
     "namespace_id" => null, // string
+    "post_api_v4_namespaces_id_storage_limit_exclusion" => null, // array
 ]);
 ```
 
@@ -9757,7 +9805,7 @@ Create an instance: `$api_entities_npm_package = $client->ApiEntitiesNpmPackage(
 
 ```php
 // load() returns the ENTITY — call data_get() for the ApiEntitiesNpmPackage record (throws on error).
-$api_entities_npm_package = $client->ApiEntitiesNpmPackage()->load();
+$api_entities_npm_package = $client->ApiEntitiesNpmPackage()->load(["package_name" => "package_name"]);
 ```
 
 
@@ -9775,7 +9823,7 @@ Create an instance: `$api_entities_npm_package_tag = $client->ApiEntitiesNpmPack
 
 ```php
 // load() returns the ENTITY — call data_get() for the ApiEntitiesNpmPackageTag record (throws on error).
-$api_entities_npm_package_tag = $client->ApiEntitiesNpmPackageTag()->load();
+$api_entities_npm_package_tag = $client->ApiEntitiesNpmPackageTag()->load(["package_name" => "package_name"]);
 ```
 
 
@@ -9879,6 +9927,7 @@ Create an instance: `$api_entities_organizations_organization = $client->ApiEnti
 
 ```php
 $api_entities_organizations_organization = $client->ApiEntitiesOrganizationsOrganization()->create([
+    "post_api_v4_organization" => null, // array
 ]);
 ```
 
@@ -10234,6 +10283,7 @@ $api_entities_packages_debian_distributions = $client->ApiEntitiesPackagesDebian
 ```php
 $api_entities_packages_debian_distribution = $client->ApiEntitiesPackagesDebianDistribution()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_debian_distribution" => null, // array
 ]);
 ```
 
@@ -10286,6 +10336,7 @@ $api_entities_pages_domains = $client->ApiEntitiesPagesDomain()->list();
 ```php
 $api_entities_pages_domain = $client->ApiEntitiesPagesDomain()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_pages_domain" => null, // array
 ]);
 ```
 
@@ -10421,6 +10472,7 @@ Create an instance: `$api_entities_personal_access_token_with_token = $client->A
 ```php
 $api_entities_personal_access_token_with_token = $client->ApiEntitiesPersonalAccessTokenWithToken()->create([
     "personal_access_token_id" => null, // string
+    "post_api_v4_personal_access_tokens_id_rotate" => null, // array
 ]);
 ```
 
@@ -10478,6 +10530,7 @@ $api_entities_personal_snippets = $client->ApiEntitiesPersonalSnippet()->list();
 
 ```php
 $api_entities_personal_snippet = $client->ApiEntitiesPersonalSnippet()->create([
+    "post_api_v4_snippet" => null, // array
 ]);
 ```
 
@@ -10677,6 +10730,7 @@ $api_entities_projects = $client->ApiEntitiesProject()->list();
 ```php
 $api_entities_project = $client->ApiEntitiesProject()->create([
     "user_id" => null, // string
+    "post_api_v4_projects_user_user_id" => null, // array
 ]);
 ```
 
@@ -10746,6 +10800,7 @@ Create an instance: `$api_entities_project_group_link = $client->ApiEntitiesProj
 ```php
 $api_entities_project_group_link = $client->ApiEntitiesProjectGroupLink()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_share" => null, // array
 ]);
 ```
 
@@ -10819,6 +10874,7 @@ $api_entities_project_hooks = $client->ApiEntitiesProjectHook()->list();
 ```php
 $api_entities_project_hook = $client->ApiEntitiesProjectHook()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_hook" => null, // array
 ]);
 ```
 
@@ -10857,6 +10913,7 @@ $api_entities_project_import_statuss = $client->ApiEntitiesProjectImportStatus()
 
 ```php
 $api_entities_project_import_status = $client->ApiEntitiesProjectImportStatus()->create([
+    "path" => null, // string
 ]);
 ```
 
@@ -10967,6 +11024,7 @@ $api_entities_project_snippets = $client->ApiEntitiesProjectSnippet()->list();
 ```php
 $api_entities_project_snippet = $client->ApiEntitiesProjectSnippet()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_snippet" => null, // array
 ]);
 ```
 
@@ -10986,6 +11044,7 @@ Create an instance: `$api_entities_project_upload = $client->ApiEntitiesProjectU
 ```php
 $api_entities_project_upload = $client->ApiEntitiesProjectUpload()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_upload" => null, // array
 ]);
 ```
 
@@ -10998,6 +11057,7 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 
 | Method | Description |
 | --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -11160,6 +11220,14 @@ Create an instance: `$api_entities_project_with_access = $client->ApiEntitiesPro
 $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess()->load(["id" => "api_entities_project_with_access_id"]);
 ```
 
+#### Example: Create
+
+```php
+$api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess()->create([
+    "project_id" => null, // string
+]);
+```
+
 
 ### ApiEntitiesProjectsContainerRegistryProtectionRule
 
@@ -11195,6 +11263,7 @@ $api_entities_projects_container_registry_protection_rules = $client->ApiEntitie
 ```php
 $api_entities_projects_container_registry_protection_rule = $client->ApiEntitiesProjectsContainerRegistryProtectionRule()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_registry_protection_repository_rule" => null, // array
 ]);
 ```
 
@@ -11234,6 +11303,7 @@ $api_entities_projects_packages_protection_rules = $client->ApiEntitiesProjectsP
 ```php
 $api_entities_projects_packages_protection_rule = $client->ApiEntitiesProjectsPackagesProtectionRule()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_packages_protection_rule" => null, // array
 ]);
 ```
 
@@ -11273,6 +11343,7 @@ $api_entities_projects_topic = $client->ApiEntitiesProjectsTopic()->load(["id" =
 
 ```php
 $api_entities_projects_topic = $client->ApiEntitiesProjectsTopic()->create([
+    "post_api_v4_topic" => null, // array
 ]);
 ```
 
@@ -11322,6 +11393,7 @@ $api_entities_protected_branchs = $client->ApiEntitiesProtectedBranch()->list();
 ```php
 $api_entities_protected_branch = $client->ApiEntitiesProtectedBranch()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_protected_branch" => null, // array
 ]);
 ```
 
@@ -11370,6 +11442,7 @@ $api_entities_protected_tags = $client->ApiEntitiesProtectedTag()->list();
 ```php
 $api_entities_protected_tag = $client->ApiEntitiesProtectedTag()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_protected_tag" => null, // array
 ]);
 ```
 
@@ -11487,6 +11560,9 @@ Create an instance: `$api_entities_relation_import_tracker = $client->ApiEntitie
 
 ```php
 $api_entities_relation_import_tracker = $client->ApiEntitiesRelationImportTracker()->create([
+    "file" => null, // mixed
+    "path" => null, // string
+    "relation" => null, // mixed
 ]);
 ```
 
@@ -11591,6 +11667,7 @@ $api_entities_releases_links = $client->ApiEntitiesReleasesLink()->list();
 $api_entities_releases_link = $client->ApiEntitiesReleasesLink()->create([
     "project_id" => null, // string
     "release_id" => null, // string
+    "post_api_v4_projects_id_releases_tag_name_assets_link" => null, // array
 ]);
 ```
 
@@ -11645,6 +11722,7 @@ $api_entities_remote_mirrors = $client->ApiEntitiesRemoteMirror()->list();
 ```php
 $api_entities_remote_mirror = $client->ApiEntitiesRemoteMirror()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_remote_mirror" => null, // array
 ]);
 ```
 
@@ -11717,6 +11795,7 @@ Create an instance: `$api_entities_resource_access_token_with_token = $client->A
 ```php
 $api_entities_resource_access_token_with_token = $client->ApiEntitiesResourceAccessTokenWithToken()->create([
     "group_id" => null, // string
+    "post_api_v4_groups_id_access_tokens_self_rotate" => null, // array
 ]);
 ```
 
@@ -11933,6 +12012,7 @@ $api_entities_system_broadcast_message = $client->ApiEntitiesSystemBroadcastMess
 
 ```php
 $api_entities_system_broadcast_message = $client->ApiEntitiesSystemBroadcastMessage()->create([
+    "post_api_v4_broadcast_message" => null, // array
 ]);
 ```
 
@@ -11981,6 +12061,7 @@ $api_entities_tags = $client->ApiEntitiesTag()->list();
 ```php
 $api_entities_tag = $client->ApiEntitiesTag()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_repository_tag" => null, // array
 ]);
 ```
 
@@ -12050,6 +12131,7 @@ Create an instance: `$api_entities_terraform_module_version = $client->ApiEntiti
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `modules` | `string` |  |
 | `name` | `string` |  |
 | `provider` | `string` |  |
@@ -12157,6 +12239,7 @@ $api_entities_triggers = $client->ApiEntitiesTrigger()->list();
 ```php
 $api_entities_trigger = $client->ApiEntitiesTrigger()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_trigger" => null, // array
 ]);
 ```
 
@@ -12326,6 +12409,7 @@ Create an instance: `$api_entities_wiki_attachment = $client->ApiEntitiesWikiAtt
 ```php
 $api_entities_wiki_attachment = $client->ApiEntitiesWikiAttachment()->create([
     "group_id" => null, // string
+    "post_api_v4_groups_id_wikis_attachment" => null, // array
 ]);
 ```
 
@@ -12354,6 +12438,7 @@ $api_entities_wiki_page = $client->ApiEntitiesWikiPage()->load(["slug" => "slug"
 ```php
 $api_entities_wiki_page = $client->ApiEntitiesWikiPage()->create([
     "group_id" => null, // string
+    "post_api_v4_groups_id_wiki" => null, // array
 ]);
 ```
 
@@ -12537,6 +12622,7 @@ Create an instance: `$composer = $client->Composer();`
 ```php
 $composer = $client->Composer()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_packages_composer" => null, // array
 ]);
 ```
 
@@ -12700,7 +12786,6 @@ Create an instance: `$debian_package = $client->DebianPackage();`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-| `update(data)` | Update an existing entity. |
 
 #### Fields
 
@@ -12712,7 +12797,7 @@ Create an instance: `$debian_package = $client->DebianPackage();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the DebianPackage record (throws on error).
-$debian_package = $client->DebianPackage()->load(["id" => "debian_package_id", "distribution" => "distribution", "file_name" => "file_name", "letter" => "letter", "package_name" => "package_name", "package_version" => "package_version"]);
+$debian_package = $client->DebianPackage()->load(["id" => "debian_package_id", "distribution" => "distribution"]);
 ```
 
 
@@ -12794,6 +12879,7 @@ Create an instance: `$ee_api_entities_approval_state = $client->EeApiEntitiesApp
 $ee_api_entities_approval_state = $client->EeApiEntitiesApprovalState()->create([
     "merge_request_id" => null, // string
     "project_id" => null, // string
+    "post_api_v4_projects_id_merge_requests_merge_request_iid_approval" => null, // array
 ]);
 ```
 
@@ -13118,6 +13204,7 @@ Create an instance: `$ee_api_entities_geo_node_status = $client->EeApiEntitiesGe
 
 ```php
 $ee_api_entities_geo_node_status = $client->EeApiEntitiesGeoNodeStatus()->create([
+    "post_api_v4_geo_status" => null, // array
 ]);
 ```
 
@@ -13175,6 +13262,7 @@ Create an instance: `$ee_api_entities_issuable_metric_image = $client->EeApiEnti
 $ee_api_entities_issuable_metric_image = $client->EeApiEntitiesIssuableMetricImage()->create([
     "issue_id" => null, // string
     "project_id" => null, // string
+    "post_api_v4_projects_id_issues_issue_iid_metric_image" => null, // array
 ]);
 ```
 
@@ -13249,6 +13337,7 @@ $ee_api_entities_ssh_certificates = $client->EeApiEntitiesSshCertificate()->list
 ```php
 $ee_api_entities_ssh_certificate = $client->EeApiEntitiesSshCertificate()->create([
     "group_id" => null, // string
+    "post_api_v4_groups_id_ssh_certificate" => null, // array
 ]);
 ```
 
@@ -13275,6 +13364,7 @@ Create an instance: `$environment = $client->Environment();`
 ```php
 $environment = $client->Environment()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_environments_stop_stale" => null, // array
 ]);
 ```
 
@@ -13396,7 +13486,7 @@ Create an instance: `$generic_package = $client->GenericPackage();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the GenericPackage record (throws on error).
-$generic_package = $client->GenericPackage()->load(["file_name" => "file_name", "generic_id" => "generic_id", "project_id" => "project_id"]);
+$generic_package = $client->GenericPackage()->load(["file_name" => "file_name", "generic_id" => "generic_id", "project_id" => "project_id", "package_version" => "package_version"]);
 ```
 
 
@@ -13411,6 +13501,12 @@ Create an instance: `$geo = $client->Geo();`
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```php
@@ -13422,6 +13518,7 @@ $geo = $client->Geo()->load(["replicable_id" => "replicable_id", "replicable_nam
 
 ```php
 $geo = $client->Geo()->create([
+    "post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack" => null, // array
 ]);
 ```
 
@@ -13440,7 +13537,7 @@ Create an instance: `$go_proxy = $client->GoProxy();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the GoProxy record (throws on error).
-$go_proxy = $client->GoProxy()->load(["project_id" => "project_id"]);
+$go_proxy = $client->GoProxy()->load(["project_id" => "project_id", "module_name" => "module_name"]);
 ```
 
 
@@ -13550,6 +13647,9 @@ Create an instance: `$group_import = $client->GroupImport();`
 
 ```php
 $group_import = $client->GroupImport()->create([
+    "file" => null, // mixed
+    "name" => null, // string
+    "path" => null, // string
 ]);
 ```
 
@@ -13622,6 +13722,7 @@ Create an instance: `$import = $client->Import();`
 
 ```php
 $import = $client->Import()->create([
+    "post_api_v4_import_github_gist" => null, // array
 ]);
 ```
 
@@ -13647,6 +13748,7 @@ Create an instance: `$integration = $client->Integration();`
 
 ```php
 $integration = $client->Integration()->create([
+    "post_api_v4_integrations_slack_event" => null, // array
 ]);
 ```
 
@@ -13732,6 +13834,7 @@ $job = $client->Job()->load(["id" => "job_id"]);
 
 ```php
 $job = $client->Job()->create([
+    "post_api_v4_jobs_request" => null, // array
 ]);
 ```
 
@@ -13751,7 +13854,7 @@ Create an instance: `$maven_package = $client->MavenPackage();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the MavenPackage record (throws on error).
-$maven_package = $client->MavenPackage()->load(["file_name" => "file_name"]);
+$maven_package = $client->MavenPackage()->load(["file_name" => "file_name", "path" => "path"]);
 ```
 
 
@@ -13764,6 +13867,7 @@ Create an instance: `$member = $client->Member();`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
 
 #### Fields
 
@@ -13840,6 +13944,7 @@ Create an instance: `$migration = $client->Migration();`
 ```php
 $migration = $client->Migration()->create([
     "timestamp" => null, // mixed
+    "post_api_v4_admin_migrations_timestamp_mark" => null, // array
 ]);
 ```
 
@@ -13914,7 +14019,7 @@ Create an instance: `$npm_package = $client->NpmPackage();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the NpmPackage record (throws on error).
-$npm_package = $client->NpmPackage()->load(["project_id" => "project_id"]);
+$npm_package = $client->NpmPackage()->load(["project_id" => "project_id", "file_name" => "file_name", "package_name" => "package_name"]);
 ```
 
 #### Example: Create
@@ -14166,6 +14271,7 @@ Create an instance: `$project_entity = $client->ProjectEntity();`
 
 ```php
 $project_entity = $client->ProjectEntity()->create([
+    "post_api_v4_import_bitbucket_server" => null, // array
 ]);
 ```
 
@@ -14199,6 +14305,7 @@ $project_export = $client->ProjectExport()->load(["project_id" => "project_id"])
 ```php
 $project_export = $client->ProjectExport()->create([
     "id" => null, // string
+    "post_api_v4_projects_id_export" => null, // array
 ]);
 ```
 
@@ -14270,6 +14377,7 @@ Create an instance: `$project_import_entity = $client->ProjectImportEntity();`
 
 ```php
 $project_import_entity = $client->ProjectImportEntity()->create([
+    "post_api_v4_import_bitbucket" => null, // array
 ]);
 ```
 
@@ -14352,6 +14460,7 @@ Create an instance: `$pypi = $client->Pypi();`
 ```php
 $pypi = $client->Pypi()->create([
     "project_id" => null, // string
+    "post_api_v4_projects_id_packages_pypi" => null, // array
 ]);
 ```
 
@@ -14404,7 +14513,7 @@ Create an instance: `$release = $client->Release();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Release record (throws on error).
-$release = $client->Release()->load(["project_id" => "project_id"]);
+$release = $client->Release()->load(["project_id" => "project_id", "suffix_path" => "suffix_path"]);
 ```
 
 
@@ -14433,7 +14542,6 @@ Create an instance: `$remote_mirror = $client->RemoteMirror();`
 
 | Method | Description |
 | --- | --- |
-| `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
@@ -14448,15 +14556,6 @@ Create an instance: `$remote_mirror = $client->RemoteMirror();`
 ```php
 // load() returns the ENTITY — call data_get() for the RemoteMirror record (throws on error).
 $remote_mirror = $client->RemoteMirror()->load(["id" => "remote_mirror_id", "project_id" => "project_id"]);
-```
-
-#### Example: Create
-
-```php
-$remote_mirror = $client->RemoteMirror()->create([
-    "id" => null, // string
-    "project_id" => null, // string
-]);
 ```
 
 
@@ -14494,7 +14593,7 @@ Create an instance: `$rpm_package = $client->RpmPackage();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the RpmPackage record (throws on error).
-$rpm_package = $client->RpmPackage()->load(["project_id" => "project_id"]);
+$rpm_package = $client->RpmPackage()->load(["project_id" => "project_id", "file_name" => "file_name"]);
 ```
 
 #### Example: Create
@@ -14578,6 +14677,7 @@ Create an instance: `$runner = $client->Runner();`
 
 ```php
 $runner = $client->Runner()->create([
+    "post_api_v4_runners_verify" => null, // array
 ]);
 ```
 
@@ -14596,7 +14696,7 @@ Create an instance: `$search = $client->Search();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Search record (throws on error).
-$search = $client->Search()->load();
+$search = $client->Search()->load(["scope" => "scope", "search" => "search"]);
 ```
 
 
@@ -14639,6 +14739,7 @@ Create an instance: `$slack = $client->Slack();`
 
 ```php
 $slack = $client->Slack()->create([
+    "post_api_v4_slack_trigger" => null, // array
 ]);
 ```
 
@@ -14789,6 +14890,7 @@ $terraform_state = $client->TerraformState()->load(["id" => "terraform_state_id"
 
 ```php
 $terraform_state = $client->TerraformState()->create([
+    "id" => null, // string
     "project_id" => null, // string
 ]);
 ```
@@ -14914,6 +15016,7 @@ $usage_data = $client->UsageData()->load();
 
 ```php
 $usage_data = $client->UsageData()->create([
+    "post_api_v4_usage_data_increment_counter" => null, // array
 ]);
 ```
 
@@ -14984,6 +15087,29 @@ Create an instance: `$wiki = $client->Wiki();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

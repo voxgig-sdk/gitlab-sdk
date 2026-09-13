@@ -98,7 +98,7 @@ func TestApiEntitiesTerraformModuleVersionEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		apiEntitiesTerraformModuleVersionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.api_entities_terraform_module_version", setup.data)))
+		apiEntitiesTerraformModuleVersionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.api_entities_terraform_module_version")))
 		var apiEntitiesTerraformModuleVersionRef01Data map[string]any
 		if len(apiEntitiesTerraformModuleVersionRef01DataRaw) > 0 {
 			apiEntitiesTerraformModuleVersionRef01Data = core.ToMapAny(apiEntitiesTerraformModuleVersionRef01DataRaw[0][1])
@@ -125,13 +125,19 @@ func TestApiEntitiesTerraformModuleVersionEntity(t *testing.T) {
 		}
 
 		// LOAD
-		apiEntitiesTerraformModuleVersionRef01MatchDt0 := map[string]any{}
+		apiEntitiesTerraformModuleVersionRef01MatchDt0 := map[string]any{
+			"id": apiEntitiesTerraformModuleVersionRef01Data["id"],
+		}
 		apiEntitiesTerraformModuleVersionRef01DataDt0Loaded, err := apiEntitiesTerraformModuleVersionRef01Ent.Load(apiEntitiesTerraformModuleVersionRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if apiEntitiesTerraformModuleVersionRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		apiEntitiesTerraformModuleVersionRef01DataDt0LoadResult := core.ToMapAny(entityData(apiEntitiesTerraformModuleVersionRef01DataDt0Loaded))
+		if apiEntitiesTerraformModuleVersionRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if apiEntitiesTerraformModuleVersionRef01DataDt0LoadResult["id"] != apiEntitiesTerraformModuleVersionRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})
@@ -161,7 +167,7 @@ func api_entities_terraform_module_versionBasicSetup(extra map[string]any) *enti
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"api_entities_terraform_module_version01", "api_entities_terraform_module_version02", "api_entities_terraform_module_version03", "v101", "v102", "v103", "module_name01", "module_system01", "module_namespace01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -181,7 +187,7 @@ func api_entities_terraform_module_versionBasicSetup(extra map[string]any) *enti
 		"GITLAB_TEST_API_ENTITIES_TERRAFORM_MODULE_VERSION_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_API_ENTITIES_TERRAFORM_MODULE_VERSION_ENTID"])
@@ -190,11 +196,23 @@ func api_entities_terraform_module_versionBasicSetup(extra map[string]any) *enti
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

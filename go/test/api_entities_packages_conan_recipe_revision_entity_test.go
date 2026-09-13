@@ -98,7 +98,7 @@ func TestApiEntitiesPackagesConanRecipeRevisionEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		apiEntitiesPackagesConanRecipeRevisionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.api_entities_packages_conan_recipe_revision", setup.data)))
+		apiEntitiesPackagesConanRecipeRevisionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.api_entities_packages_conan_recipe_revision")))
 		var apiEntitiesPackagesConanRecipeRevisionRef01Data map[string]any
 		if len(apiEntitiesPackagesConanRecipeRevisionRef01DataRaw) > 0 {
 			apiEntitiesPackagesConanRecipeRevisionRef01Data = core.ToMapAny(apiEntitiesPackagesConanRecipeRevisionRef01DataRaw[0][1])
@@ -153,7 +153,7 @@ func api_entities_packages_conan_recipe_revisionBasicSetup(extra map[string]any)
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"api_entities_packages_conan_recipe_revision01", "api_entities_packages_conan_recipe_revision02", "api_entities_packages_conan_recipe_revision03", "project01", "project02", "project03", "conan01", "conan02", "conan03", "package_channel01", "package_username01", "package_version01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -173,7 +173,7 @@ func api_entities_packages_conan_recipe_revisionBasicSetup(extra map[string]any)
 		"GITLAB_TEST_API_ENTITIES_PACKAGES_CONAN_RECIPE_REVISION_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_API_ENTITIES_PACKAGES_CONAN_RECIPE_REVISION_ENTID"])
@@ -182,11 +182,23 @@ func api_entities_packages_conan_recipe_revisionBasicSetup(extra map[string]any)
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

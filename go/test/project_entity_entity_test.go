@@ -52,7 +52,7 @@ func TestProjectEntityEntity(t *testing.T) {
 		// CREATE
 		projectEntityRef01Ent := client.ProjectEntity(nil)
 		projectEntityRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "project_entity"}, setup.data), "project_entity_ref01"))
+			vs.GetPath(setup.data, []any{"new", "project_entity"}), "project_entity_ref01"))
 
 		projectEntityRef01DataResult, err := projectEntityRef01Ent.Create(projectEntityRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func project_entityBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"project_entity01", "project_entity02", "project_entity03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -110,7 +110,7 @@ func project_entityBasicSetup(extra map[string]any) *entityTestSetup {
 		"GITLAB_TEST_PROJECT_ENTITY_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_PROJECT_ENTITY_ENTID"])
@@ -119,11 +119,23 @@ func project_entityBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

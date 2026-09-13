@@ -32,7 +32,7 @@ func TestDebianPackageEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"update", "load"} {
+		for _, _op := range []string{"load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "debian_package." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -50,7 +50,7 @@ func TestDebianPackageEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		debianPackageRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.debian_package", setup.data)))
+		debianPackageRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.debian_package")))
 		var debianPackageRef01Data map[string]any
 		if len(debianPackageRef01DataRaw) > 0 {
 			debianPackageRef01Data = core.ToMapAny(debianPackageRef01DataRaw[0][1])
@@ -59,26 +59,8 @@ func TestDebianPackageEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = debianPackageRef01Data
 
-		// UPDATE
-		debianPackageRef01Ent := client.DebianPackage(nil)
-		debianPackageRef01DataUp0Up := map[string]any{
-			"id": debianPackageRef01Data["id"],
-			"project_id": setup.idmap["project_id"],
-		}
-
-		debianPackageRef01ResdataUp0Result, err := debianPackageRef01Ent.Update(debianPackageRef01DataUp0Up, nil)
-		if err != nil {
-			t.Fatalf("update failed: %v", err)
-		}
-		debianPackageRef01ResdataUp0 := core.ToMapAny(entityData(debianPackageRef01ResdataUp0Result))
-		if debianPackageRef01ResdataUp0 == nil {
-			t.Fatal("expected update result to be a map")
-		}
-		if debianPackageRef01ResdataUp0["id"] != debianPackageRef01DataUp0Up["id"] {
-			t.Fatal("expected update result id to match")
-		}
-
 		// LOAD
+		debianPackageRef01Ent := client.DebianPackage(nil)
 		debianPackageRef01MatchDt0 := map[string]any{
 			"id": debianPackageRef01Data["id"],
 		}
@@ -121,8 +103,8 @@ func debian_packageBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
-		[]any{"debian_package01", "debian_package02", "debian_package03", "group01", "group02", "group03", "project01", "project02", "project03", "pool01", "pool02", "pool03", "*distribution01", "*distribution02", "*distribution03", "debian01", "debian02", "debian03", "sha25601", "sha25602", "sha25603"},
+	idmap, _ := vs.Transform(
+		[]any{"debian_package01", "debian_package02", "debian_package03", "group01", "group02", "group03", "project01", "project02", "project03", "pool01", "pool02", "pool03", "*distribution01", "*distribution02", "*distribution03", "sha25601", "sha25602", "sha25603"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",
@@ -141,24 +123,32 @@ func debian_packageBasicSetup(extra map[string]any) *entityTestSetup {
 		"GITLAB_TEST_DEBIAN_PACKAGE_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_DEBIAN_PACKAGE_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
-	// Add project_id alias for update test.
-	if idmapResolved["project_id"] == nil {
-		idmapResolved["project_id"] = idmapResolved["project01"]
-	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

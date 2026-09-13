@@ -36,7 +36,6 @@ class ApiEntitiesGroupDetailEntityTest < Minitest::Test
     api_entities_group_detail_ref01_data = Helpers.to_map(Vs.getprop(
       Vs.getpath(setup[:data], "new.api_entities_group_detail"), "api_entities_group_detail_ref01"))
     api_entities_group_detail_ref01_data["group_id"] = setup[:idmap]["group01"]
-    api_entities_group_detail_ref01_data["project_id"] = setup[:idmap]["project01"]
 
     api_entities_group_detail_ref01_data_result = api_entities_group_detail_ref01_ent.create(api_entities_group_detail_ref01_data, nil)
     api_entities_group_detail_ref01_data = Helpers.to_map(api_entities_group_detail_ref01_data_result.respond_to?(:data_get) ? api_entities_group_detail_ref01_data_result.data_get : api_entities_group_detail_ref01_data_result)
@@ -88,7 +87,7 @@ def api_entities_group_detail_basic_setup(extra)
     "GITLAB_TEST_API_ENTITIES_GROUP_DETAIL_ENTID" => idmap,
     "GITLAB_TEST_LIVE" => "FALSE",
     "GITLAB_TEST_EXPLAIN" => "FALSE",
-    "GITLAB_APIKEY" => "NONE",
+    "GITLAB_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -99,6 +98,9 @@ def api_entities_group_detail_basic_setup(extra)
 
   if env["GITLAB_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["GITLAB_APIKEY"],
       },

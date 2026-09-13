@@ -40,11 +40,16 @@ class GeoEntityTest < Minitest::Test
     geo_ref01_data_result = geo_ref01_ent.create(geo_ref01_data, nil)
     geo_ref01_data = Helpers.to_map(geo_ref01_data_result.respond_to?(:data_get) ? geo_ref01_data_result.data_get : geo_ref01_data_result)
     assert !geo_ref01_data.nil?
+    assert !geo_ref01_data["id"].nil?
 
     # LOAD
-    geo_ref01_match_dt0 = {}
+    geo_ref01_match_dt0 = {
+      "id" => geo_ref01_data["id"],
+    }
     geo_ref01_data_dt0_loaded = geo_ref01_ent.load(geo_ref01_match_dt0, nil)
-    assert !geo_ref01_data_dt0_loaded.nil?
+    geo_ref01_data_dt0_load_result = Helpers.to_map(geo_ref01_data_dt0_loaded.respond_to?(:data_get) ? geo_ref01_data_dt0_loaded.data_get : geo_ref01_data_dt0_loaded)
+    assert !geo_ref01_data_dt0_load_result.nil?
+    assert_equal geo_ref01_data_dt0_load_result["id"], geo_ref01_data["id"]
 
   end
 end
@@ -82,7 +87,7 @@ def geo_basic_setup(extra)
     "GITLAB_TEST_GEO_ENTID" => idmap,
     "GITLAB_TEST_LIVE" => "FALSE",
     "GITLAB_TEST_EXPLAIN" => "FALSE",
-    "GITLAB_APIKEY" => "NONE",
+    "GITLAB_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -93,6 +98,9 @@ def geo_basic_setup(extra)
 
   if env["GITLAB_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["GITLAB_APIKEY"],
       },

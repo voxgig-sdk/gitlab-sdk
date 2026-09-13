@@ -76,15 +76,17 @@ def api_entities_projects_container_registry_protection_rule_direct_setup(mockre
   env = Runner.env_override({
     "GITLAB_TEST_API_ENTITIES_PROJECTS_CONTAINER_REGISTRY_PROTECTION_RULE_ENTID" => {},
     "GITLAB_TEST_LIVE" => "FALSE",
-    "GITLAB_APIKEY" => "NONE",
+    "GITLAB_APIKEY" => "",
   })
 
   live = env["GITLAB_TEST_LIVE"] == "TRUE"
 
   if live
-    merged_opts = {
+    # Merged so the generated fields win: sdk-test-control.json's
+    # test.client.options adds to the live client, it does not redirect it.
+    merged_opts = Runner.live_client_options.merge({
       "apikey" => env["GITLAB_APIKEY"],
-    }
+    })
     client = GitlabSDK.new(merged_opts)
     return {
       client: client,

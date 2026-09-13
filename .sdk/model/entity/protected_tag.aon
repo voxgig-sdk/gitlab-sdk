@@ -44,20 +44,32 @@ main: kit: entity: protected_tag: {
           }
           method: "DELETE"
           orig: "/api/v4/projects/{id}/protected_tags/{name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "protected_tags"
-            "{id}"
-          ]
           rename: {
             param: {
               id: "project_id"
               name: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "protected_tags"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

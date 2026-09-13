@@ -23,7 +23,7 @@ class DebianPackageEntityTest extends TestCase
         $setup = debian_package_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["update", "load"] as $_op) {
+        foreach (["load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "debian_package." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -46,19 +46,8 @@ class DebianPackageEntityTest extends TestCase
             $debian_package_ref01_data = Helpers::to_map($debian_package_ref01_data_raw[0][1]);
         }
 
-        // UPDATE
-        $debian_package_ref01_ent = $client->DebianPackage(null);
-        $debian_package_ref01_data_up0_up = [
-            "id" => $debian_package_ref01_data["id"],
-            "project_id" => $setup["idmap"]["project_id"],
-        ];
-
-        $debian_package_ref01_resdata_up0_result = $debian_package_ref01_ent->update($debian_package_ref01_data_up0_up, null);
-        $debian_package_ref01_resdata_up0 = Helpers::to_map(is_object($debian_package_ref01_resdata_up0_result) && method_exists($debian_package_ref01_resdata_up0_result, 'data_get') ? $debian_package_ref01_resdata_up0_result->data_get() : $debian_package_ref01_resdata_up0_result);
-        $this->assertNotNull($debian_package_ref01_resdata_up0);
-        $this->assertEquals($debian_package_ref01_resdata_up0["id"], $debian_package_ref01_data_up0_up["id"]);
-
         // LOAD
+        $debian_package_ref01_ent = $client->DebianPackage(null);
         $debian_package_ref01_match_dt0 = [
             "id" => $debian_package_ref01_data["id"],
         ];
@@ -85,7 +74,7 @@ function debian_package_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["debian_package01", "debian_package02", "debian_package03", "group01", "group02", "group03", "project01", "project02", "project03", "pool01", "pool02", "pool03", "*distribution01", "*distribution02", "*distribution03", "debian01", "debian02", "debian03", "sha25601", "sha25602", "sha25603"] as $k) {
+    foreach (["debian_package01", "debian_package02", "debian_package03", "group01", "group02", "group03", "project01", "project02", "project03", "pool01", "pool02", "pool03", "*distribution01", "*distribution02", "*distribution03", "sha25601", "sha25602", "sha25603"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 
@@ -99,7 +88,7 @@ function debian_package_basic_setup($extra)
         "GITLAB_TEST_DEBIAN_PACKAGE_ENTID" => $idmap,
         "GITLAB_TEST_LIVE" => "FALSE",
         "GITLAB_TEST_EXPLAIN" => "FALSE",
-        "GITLAB_APIKEY" => "NONE",
+        "GITLAB_APIKEY" => "",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -107,18 +96,30 @@ function debian_package_basic_setup($extra)
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
-    if (!isset($idmap_resolved["project_id"])) {
-        $idmap_resolved["project_id"] = $idmap_resolved["project01"];
-    }
 
     if ($env["GITLAB_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
+            // FIRST, so the generated fields below win: sdk-test-control.json's
+            // test.client.options adds to the live client, it does not redirect it.
+            Runner::live_client_options(),
             [
                 "apikey" => $env["GITLAB_APIKEY"],
             ],
-            $extra ?? [],
+            // ismap, not a plain "?? []" default: an empty PHP array is a
+            // LIST, and a non-map later entry REPLACES the accumulated map in
+            // merge - so the no-extras call discarded live_client_options()
+            // and the apikey/server map above it.
+            Vs::ismap($extra) ? $extra : new \stdClass(),
         ]);
-        $client = new GitlabSDK(Helpers::to_map($merged_opts));
+        // "?? []" because merge legitimately answers with a stdClass when every
+        // contributing entry is an EMPTY map - an SDK with no apikey and no
+        // server variables generates an empty middle entry, so that is the
+        // common case, not the edge one. to_map returns null for a non-array by
+        // design, and the constructor takes a non-nullable array, so without the
+        // fallback every such SDK died on "must be of type array, null given"
+        // the moment live mode was switched on. Offline mode never reaches this
+        // branch, which is why the offline suite stayed green.
+        $client = new GitlabSDK(Helpers::to_map($merged_opts) ?? []);
     }
 
     $live = $env["GITLAB_TEST_LIVE"] === "TRUE";

@@ -16,6 +16,7 @@ main: kit: entity: api_entities_hook: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "created_at"
       req: false
       type: "`$STRING`"
@@ -36,6 +37,7 @@ main: kit: entity: api_entities_hook: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "disabled_until"
       req: false
       type: "`$STRING`"
@@ -116,10 +118,16 @@ main: kit: entity: api_entities_hook: {
           }
           method: "POST"
           orig: "/api/v4/hooks"
-          parts: [
-            "api"
-            "v4"
-            "hooks"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "hooks"
+            }
           ]
           select: {
             exist: [
@@ -159,10 +167,16 @@ main: kit: entity: api_entities_hook: {
           }
           method: "GET"
           orig: "/api/v4/hooks"
-          parts: [
-            "api"
-            "v4"
-            "hooks"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "hooks"
+            }
           ]
           select: {
             exist: [
@@ -194,17 +208,25 @@ main: kit: entity: api_entities_hook: {
           }
           method: "GET"
           orig: "/api/v4/hooks/{hook_id}"
-          parts: [
-            "api"
-            "v4"
-            "hooks"
-            "{id}"
-          ]
           rename: {
             param: {
               hook_id: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "hooks"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -243,17 +265,25 @@ main: kit: entity: api_entities_hook: {
           }
           method: "PUT"
           orig: "/api/v4/hooks/{hook_id}"
-          parts: [
-            "api"
-            "v4"
-            "hooks"
-            "{id}"
-          ]
           rename: {
             param: {
               hook_id: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "hooks"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

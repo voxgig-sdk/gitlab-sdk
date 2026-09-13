@@ -42,6 +42,8 @@
 
 ---@class ApiEntitiesAccessRequesterListMatch
 ---@field group_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesAccessRequesterCreateData
 ---@field group_id string
@@ -62,7 +64,9 @@
 ---@class ApiEntitiesAccessRequesterUpdateData
 ---@field access_request_id string
 ---@field group_id? string
+---@field put_api_v4_groups_id_access_requests_user_id_approve? table
 ---@field project_id? string
+---@field put_api_v4_projects_id_access_requests_user_id_approve? table
 ---@field avatar_path? string
 ---@field avatar_url? string
 ---@field custom_attributes? table
@@ -117,22 +121,25 @@
 
 ---@class ApiEntitiesAppearanceUpdateData
 ---@field description? string
----@field email_header_and_footer_enabled? string
----@field favicon? string
----@field footer_message? string
----@field header_logo? string
----@field header_message? string
----@field logo? string
+---@field email_header_and_footer_enabled? any
+---@field favicon? any
+---@field footer_message? any
+---@field header_logo? any
+---@field header_message? any
+---@field logo? any
+---@field member_guideline? any
+---@field message_background_color? any
+---@field message_font_color? any
+---@field new_project_guideline? any
+---@field profile_image_guideline? any
+---@field pwa_description? any
+---@field pwa_icon? any
+---@field pwa_name? any
+---@field pwa_short_name? any
+---@field title? string
 ---@field member_guidelines? string
----@field message_background_color? string
----@field message_font_color? string
 ---@field new_project_guidelines? string
 ---@field profile_image_guidelines? string
----@field pwa_description? string
----@field pwa_icon? string
----@field pwa_name? string
----@field pwa_short_name? string
----@field title? string
 
 ---@class ApiEntitiesApplication
 ---@field application_id? string
@@ -183,6 +190,7 @@
 ---@field secret? string
 
 ---@class ApiEntitiesApplicationWithSecretCreateData
+---@field post_api_v4_application table
 ---@field application_id? string
 ---@field application_name? string
 ---@field callback_url? string
@@ -194,7 +202,8 @@
 ---@field avatar_url? string
 
 ---@class ApiEntitiesAvatarLoadMatch
----@field avatar_url? string
+---@field email string
+---@field size? number
 
 ---@class ApiEntitiesAwardEmoji
 ---@field avatar_path? string
@@ -227,10 +236,13 @@
 ---@class ApiEntitiesAwardEmojiListMatch
 ---@field epic_id string
 ---@field group_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesAwardEmojiCreateData
 ---@field epic_id string
 ---@field group_id string
+---@field post_api_v4_groups_id_epics_epic_iid_award_emoji table
 ---@field avatar_path? string
 ---@field avatar_url? string
 ---@field awardable_id? number
@@ -264,9 +276,13 @@
 
 ---@class ApiEntitiesBadgeListMatch
 ---@field group_id string
+---@field name? string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesBadgeCreateData
 ---@field group_id string
+---@field post_api_v4_groups_id_badge table
 ---@field id? string
 ---@field image_url? string
 ---@field kind? string
@@ -278,7 +294,9 @@
 ---@class ApiEntitiesBadgeUpdateData
 ---@field group_id? string
 ---@field id string
+---@field put_api_v4_groups_id_badges_badge_id? table
 ---@field project_id? string
+---@field put_api_v4_projects_id_badges_badge_id? table
 ---@field image_url? string
 ---@field kind? string
 ---@field link_url? string
@@ -294,12 +312,16 @@
 ---@field rendered_link_url? string
 
 ---@class ApiEntitiesBasicBadgeDetailLoadMatch
----@field group_id string
+---@field group_id? string
+---@field image_url any
+---@field link_url any
+---@field project_id? string
 
 ---@class ApiEntitiesBasicGroupDetail
 
 ---@class ApiEntitiesBasicGroupDetailCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_job_token_scope_groups_allowlist table
 
 ---@class ApiEntitiesBasicProjectDetail
 ---@field avatar_url? string
@@ -328,33 +350,44 @@
 ---@field web_url? string
 
 ---@class ApiEntitiesBasicProjectDetailListMatch
----@field avatar_url? string
----@field created_at? string
----@field custom_attributes? table
----@field default_branch? string
----@field description? string
----@field forks_count? number
----@field http_url_to_repo? string
----@field id? number
----@field last_activity_at? string
----@field license? table
----@field license_url? string
----@field name? string
----@field name_with_namespace? string
----@field namespace? table
----@field path? string
----@field path_with_namespace? string
----@field readme_url? string
----@field repository_storage? string
----@field ssh_url_to_repo? string
----@field star_count? number
----@field tag_list? table
----@field topics? table
----@field visibility? string
----@field web_url? string
+---@field active? boolean
+---@field archived? boolean
+---@field id_after? any
+---@field id_before? any
+---@field imported? any
+---@field include_hidden? any
+---@field include_pending_delete? any
+---@field last_activity_after? any
+---@field last_activity_before? any
+---@field marked_for_deletion_on? any
+---@field membership? any
+---@field min_access_level? any
+---@field order_by? any
+---@field owned? any
+---@field page? number
+---@field per_page? number
+---@field repository_checksum_failed? any
+---@field repository_storage? any
+---@field search? any
+---@field search_namespace? any
+---@field simple? any
+---@field sort? any
+---@field starred? any
+---@field statistic? any
+---@field topic? any
+---@field topic_id? string
+---@field updated_after? any
+---@field updated_before? any
+---@field visibility? any
+---@field wiki_checksum_failed? any
+---@field with_custom_attribute? any
+---@field with_issues_enabled? any
+---@field with_merge_requests_enabled? any
+---@field with_programming_language? any
 
 ---@class ApiEntitiesBasicProjectDetailCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_job_token_scope_allowlist table
 ---@field avatar_url? string
 ---@field created_at? string
 ---@field custom_attributes? table
@@ -387,10 +420,14 @@
 ---@class ApiEntitiesBasicRefListMatch
 ---@field project_id string
 ---@field sha any
+---@field page? number
+---@field per_page? number
+---@field type? any
 
 ---@class ApiEntitiesBasicSuccess
 
 ---@class ApiEntitiesBasicSuccessCreateData
+---@field post_api_v4_integrations_jira_connect_subscription table
 
 ---@class ApiEntitiesBatchedBackgroundMigration
 ---@field column_name? string
@@ -403,18 +440,16 @@
 
 ---@class ApiEntitiesBatchedBackgroundMigrationLoadMatch
 ---@field id string
+---@field database? any
 
 ---@class ApiEntitiesBatchedBackgroundMigrationListMatch
----@field column_name? string
----@field created_at? string
----@field id? string
----@field job_class_name? string
----@field progress? number
----@field status? string
----@field table_name? string
+---@field database? any
+---@field job_class_name? any
 
 ---@class ApiEntitiesBatchedBackgroundMigrationUpdateData
 ---@field batched_background_migration_id string
+---@field put_api_v4_admin_batched_background_migrations_id_pause? table
+---@field put_api_v4_admin_batched_background_migrations_id_resume? table
 ---@field column_name? string
 ---@field created_at? string
 ---@field id? string
@@ -454,9 +489,16 @@
 
 ---@class ApiEntitiesBranchListMatch
 ---@field project_id string
+---@field page? number
+---@field page_token? any
+---@field per_page? number
+---@field regex? any
+---@field search? any
+---@field sort? any
 
 ---@class ApiEntitiesBranchCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_repository_branch table
 ---@field author_email? string
 ---@field author_name? string
 ---@field authored_date? string
@@ -484,6 +526,7 @@
 ---@class ApiEntitiesBranchUpdateData
 ---@field branch_id string
 ---@field project_id string
+---@field put_api_v4_projects_id_repository_branches_branch_protect? table
 ---@field author_email? string
 ---@field author_name? string
 ---@field authored_date? string
@@ -535,29 +578,21 @@
 ---@field id string
 
 ---@class ApiEntitiesBulkImportListMatch
----@field bulk_import_id? number
----@field created_at? string
----@field destination_full_path? string
----@field destination_name? string
----@field destination_namespace? string
----@field destination_slug? string
----@field entity_type? string
----@field failures? table
----@field has_failures? boolean
----@field id? number
----@field migrate_memberships? boolean
----@field migrate_projects? boolean
----@field namespace_id? number
----@field parent_id? number
----@field project_id? number
----@field source_full_path? string
----@field source_type? string
----@field source_url? string
----@field stats? table
----@field status? string
----@field updated_at? string
+---@field page? number
+---@field per_page? number
+---@field sort? any
+---@field status? any
 
 ---@class ApiEntitiesBulkImportCreateData
+---@field configuration_access_token any
+---@field configuration_url any
+---@field entities_destination_name? any
+---@field entities_destination_namespace any
+---@field entities_destination_slug? any
+---@field entities_migrate_membership? any
+---@field entities_migrate_project? any
+---@field entities_source_full_path any
+---@field entities_source_type any
 ---@field bulk_import_id? number
 ---@field created_at? string
 ---@field destination_full_path? string
@@ -604,12 +639,20 @@
 
 ---@class ApiEntitiesBulkImportsExportStatusListMatch
 ---@field group_id string
+---@field relation? any
 
 ---@class ApiEntitiesChangelog
 ---@field notes? string
 
 ---@class ApiEntitiesChangelogLoadMatch
 ---@field project_id string
+---@field config_file? any
+---@field config_file_ref? any
+---@field date? any
+---@field from? any
+---@field to? any
+---@field trailer? any
+---@field version any
 
 ---@class ApiEntitiesCiBridge
 ---@field allow_failure? boolean
@@ -637,11 +680,15 @@
 ---@class ApiEntitiesCiBridgeListMatch
 ---@field pipeline_id string
 ---@field project_id string
+---@field page? number
+---@field per_page? number
+---@field scope? any
 
 ---@class ApiEntitiesCiCatalogResourcesVersion
 
 ---@class ApiEntitiesCiCatalogResourcesVersionCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_catalog_publish table
 
 ---@class ApiEntitiesCiJob
 ---@field allow_failure? boolean
@@ -716,6 +763,7 @@
 ---@class ApiEntitiesCiJobCreateData
 ---@field job_id string
 ---@field project_id string
+---@field post_api_v4_projects_id_jobs_job_id_cancel? table
 ---@field allow_failure? boolean
 ---@field archived? boolean
 ---@field artifacts? table
@@ -773,10 +821,13 @@
 ---@class ApiEntitiesCiJobBasicListMatch
 ---@field key string
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesCiJobBasicCreateData
 ---@field job_id string
 ---@field project_id string
+---@field post_api_v4_projects_id_jobs_job_id_play table
 ---@field allow_failure? boolean
 ---@field commit? table
 ---@field coverage? number
@@ -822,6 +873,13 @@
 
 ---@class ApiEntitiesCiJobBasicWithProjectLoadMatch
 ---@field runner_id string
+---@field cursor? any
+---@field order_by? any
+---@field page? number
+---@field per_page? number
+---@field sort? any
+---@field status? any
+---@field system_id? string
 
 ---@class ApiEntitiesCiLintResult
 ---@field blob? string
@@ -840,9 +898,16 @@
 
 ---@class ApiEntitiesCiLintResultListMatch
 ---@field project_id string
+---@field content_ref? any
+---@field dry_run? any
+---@field dry_run_ref? any
+---@field include_job? any
+---@field ref? any
+---@field sha? any
 
 ---@class ApiEntitiesCiLintResultCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_ci_lint table
 ---@field blob? string
 ---@field context_project? string
 ---@field context_sha? string
@@ -862,8 +927,11 @@
 ---@class ApiEntitiesCiPipelineCreateData
 ---@field merge_request_id? string
 ---@field project_id string
+---@field post_api_v4_projects_id_merge_requests_merge_request_iid_pipeline? table
 ---@field ref_id? string
+---@field ["post_api_v4_projects_id(ref_ref)trigger_pipeline"]? table
 ---@field pipeline_id? string
+---@field post_api_v4_projects_id_pipeline? table
 
 ---@class ApiEntitiesCiPipelineBasic
 ---@field created_at? string
@@ -883,6 +951,22 @@
 
 ---@class ApiEntitiesCiPipelineBasicListMatch
 ---@field project_id string
+---@field created_after? any
+---@field created_before? any
+---@field name? string
+---@field order_by? any
+---@field page? number
+---@field per_page? number
+---@field ref? any
+---@field scope? any
+---@field sha? any
+---@field sort? any
+---@field source? any
+---@field status? any
+---@field updated_after? any
+---@field updated_before? any
+---@field username? string
+---@field yaml_error? any
 ---@field pipeline_schedule_id? string
 
 ---@class ApiEntitiesCiPipelineSchedule
@@ -900,6 +984,9 @@
 
 ---@class ApiEntitiesCiPipelineScheduleListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
+---@field scope? any
 
 ---@class ApiEntitiesCiPipelineScheduleDetail
 ---@field active? boolean
@@ -923,6 +1010,7 @@
 ---@class ApiEntitiesCiPipelineScheduleDetailCreateData
 ---@field pipeline_schedule_id? string
 ---@field project_id string
+---@field post_api_v4_projects_id_pipeline_schedule? table
 ---@field active? boolean
 ---@field created_at? string
 ---@field cron? string
@@ -940,6 +1028,7 @@
 ---@class ApiEntitiesCiPipelineScheduleDetailUpdateData
 ---@field pipeline_schedule_id string
 ---@field project_id string
+---@field put_api_v4_projects_id_pipeline_schedules_pipeline_schedule_id table
 ---@field active? boolean
 ---@field created_at? string
 ---@field cron? string
@@ -957,6 +1046,7 @@
 ---@class ApiEntitiesCiResetTokenResult
 
 ---@class ApiEntitiesCiResetTokenResultCreateData
+---@field post_api_v4_runners_reset_authentication_token table
 
 ---@class ApiEntitiesCiResourceGroup
 ---@field created_at? string
@@ -971,10 +1061,13 @@
 
 ---@class ApiEntitiesCiResourceGroupListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesCiResourceGroupUpdateData
 ---@field id string
 ---@field project_id string
+---@field put_api_v4_projects_id_resource_groups_key table
 ---@field created_at? string
 ---@field key? string
 ---@field process_mode? string
@@ -993,19 +1086,18 @@
 ---@field web_url? string
 
 ---@class ApiEntitiesCiRunnerLoadMatch
----@field avatar_path? string
----@field avatar_url? string
----@field custom_attributes? table
----@field id number
----@field locked? boolean
----@field name? string
----@field public_email? string
----@field state? string
----@field username? string
----@field web_url? string
+---@field page? number
+---@field paused? any
+---@field per_page? number
+---@field scope? any
+---@field status? any
+---@field tag_list? any
+---@field type? any
+---@field version_prefix? any
 
 ---@class ApiEntitiesCiRunnerCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_runner table
 ---@field avatar_path? string
 ---@field avatar_url? string
 ---@field custom_attributes? table
@@ -1050,6 +1142,7 @@
 
 ---@class ApiEntitiesCiRunnerDetailUpdateData
 ---@field id string
+---@field put_api_v4_runners_id table
 ---@field access_level? string
 ---@field active? boolean
 ---@field architecture? string
@@ -1095,16 +1188,20 @@
 ---@class ApiEntitiesCiRunnerRegistrationDetail
 
 ---@class ApiEntitiesCiRunnerRegistrationDetailCreateData
+---@field post_api_v4_runner table
 
 ---@class ApiEntitiesCiSecureFile
 ---@field id? string
 
 ---@class ApiEntitiesCiSecureFileLoadMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 ---@field id? string
 
 ---@class ApiEntitiesCiSecureFileCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_secure_file table
 ---@field id? string
 
 ---@class ApiEntitiesCiVariable
@@ -1122,6 +1219,7 @@
 ---@class ApiEntitiesCiVariableLoadMatch
 ---@field id string
 ---@field project_id string
+---@field filter_environment_scope? any
 
 ---@class ApiEntitiesCiVariableListMatch
 ---@field pipeline_id string
@@ -1129,6 +1227,7 @@
 
 ---@class ApiEntitiesCiVariableCreateData
 ---@field group_id string
+---@field post_api_v4_groups_id_variable table
 ---@field description? string
 ---@field environment_scope? string
 ---@field hidden? boolean
@@ -1144,7 +1243,11 @@
 ---@field id string
 ---@field pipeline_schedule_id? string
 ---@field project_id? string
+---@field put_api_v4_projects_id_pipeline_schedules_pipeline_schedule_id_variables_key? table
 ---@field group_id? string
+---@field put_api_v4_groups_id_variables_key? table
+---@field put_api_v4_projects_id_variables_key? table
+---@field put_api_v4_admin_ci_variables_key? table
 ---@field description? string
 ---@field environment_scope? string
 ---@field hidden? boolean
@@ -1193,6 +1296,7 @@
 ---@field user? table
 
 ---@class ApiEntitiesClusterCreateData
+---@field post_api_v4_admin_clusters_add table
 ---@field cluster_type? string
 ---@field created_at? string
 ---@field domain? string
@@ -1211,6 +1315,7 @@
 
 ---@class ApiEntitiesClusterUpdateData
 ---@field id string
+---@field put_api_v4_admin_clusters_cluster_id table
 ---@field cluster_type? string
 ---@field created_at? string
 ---@field domain? string
@@ -1250,6 +1355,7 @@
 
 ---@class ApiEntitiesClusterGroupCreateData
 ---@field group_id string
+---@field post_api_v4_groups_id_clusters_user table
 ---@field cluster_type? string
 ---@field created_at? string
 ---@field domain? string
@@ -1270,6 +1376,7 @@
 ---@class ApiEntitiesClusterGroupUpdateData
 ---@field cluster_id string
 ---@field group_id string
+---@field put_api_v4_groups_id_clusters_cluster_id table
 ---@field cluster_type? string
 ---@field created_at? string
 ---@field domain? string
@@ -1311,6 +1418,7 @@
 
 ---@class ApiEntitiesClusterProjectCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_clusters_user table
 ---@field cluster_type? string
 ---@field created_at? string
 ---@field domain? string
@@ -1331,6 +1439,7 @@
 ---@class ApiEntitiesClusterProjectUpdateData
 ---@field cluster_id string
 ---@field project_id string
+---@field put_api_v4_projects_id_clusters_cluster_id table
 ---@field cluster_type? string
 ---@field created_at? string
 ---@field domain? string
@@ -1359,10 +1468,13 @@
 
 ---@class ApiEntitiesClustersAgentLoadMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 ---@field agent_id? string
 
 ---@class ApiEntitiesClustersAgentCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_cluster_agent table
 ---@field created_at? string
 ---@field description? string
 ---@field id? number
@@ -1398,12 +1510,15 @@
 ---@class ApiEntitiesClustersAgentTokenBasicLoadMatch
 ---@field cluster_agent_id string
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesClustersAgentTokenWithToken
 
 ---@class ApiEntitiesClustersAgentTokenWithTokenCreateData
 ---@field cluster_agent_id string
 ---@field project_id string
+---@field post_api_v4_projects_id_cluster_agents_agent_id_token table
 
 ---@class ApiEntitiesCommit
 ---@field author_email? string
@@ -1424,12 +1539,28 @@
 
 ---@class ApiEntitiesCommitListMatch
 ---@field project_id string
+---@field all? any
+---@field author? any
+---@field first_parent? any
+---@field order? any
+---@field page? number
+---@field path? string
+---@field per_page? number
+---@field ref_name? any
+---@field since? any
+---@field trailer? any
+---@field until? any
+---@field with_stat? any
 ---@field merge_request_id? string
+---@field ref? any
 
 ---@class ApiEntitiesCommitCreateData
 ---@field merge_request_id? string
 ---@field project_id string
+---@field post_api_v4_projects_id_merge_requests_merge_request_iid_context_commit? table
 ---@field sha? any
+---@field post_api_v4_projects_id_repository_commits_sha_cherry_pick? table
+---@field post_api_v4_projects_id_repository_commits_sha_revert? table
 ---@field author_email? string
 ---@field author_name? string
 ---@field authored_date? string
@@ -1470,9 +1601,11 @@
 ---@class ApiEntitiesCommitDetailLoadMatch
 ---@field project_id string
 ---@field sha any
+---@field stat? any
 
 ---@class ApiEntitiesCommitDetailCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_repository_commit table
 ---@field author_email? string
 ---@field author_name? string
 ---@field authored_date? string
@@ -1495,6 +1628,7 @@
 ---@class ApiEntitiesCommitDetailUpdateData
 ---@field project_id string
 ---@field submodule any
+---@field put_api_v4_projects_id_repository_submodules_submodule table
 ---@field author_email? string
 ---@field author_name? string
 ---@field authored_date? string
@@ -1535,10 +1669,13 @@
 ---@class ApiEntitiesCommitNoteListMatch
 ---@field project_id string
 ---@field sha any
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesCommitNoteCreateData
 ---@field project_id string
 ---@field sha any
+---@field post_api_v4_projects_id_repository_commits_sha_comment table
 ---@field author? table
 ---@field avatar_path? string
 ---@field avatar_url? string
@@ -1562,6 +1699,7 @@
 ---@class ApiEntitiesCommitSequenceLoadMatch
 ---@field project_id string
 ---@field sha any
+---@field first_parent? any
 
 ---@class ApiEntitiesCommitSignature
 ---@field commit_source? string
@@ -1599,10 +1737,20 @@
 ---@class ApiEntitiesCommitStatusListMatch
 ---@field project_id string
 ---@field sha any
+---@field all? any
+---@field name? string
+---@field order_by? any
+---@field page? number
+---@field per_page? number
+---@field pipeline_id? string
+---@field ref? any
+---@field sort? any
+---@field stage? any
 
 ---@class ApiEntitiesCommitStatusCreateData
 ---@field id string
 ---@field project_id string
+---@field post_api_v4_projects_id_statuses_sha table
 ---@field allow_failure? boolean
 ---@field author? table
 ---@field avatar_path? string
@@ -1635,6 +1783,11 @@
 
 ---@class ApiEntitiesCompareListMatch
 ---@field project_id string
+---@field from any
+---@field from_project_id? string
+---@field straight? any
+---@field to any
+---@field unidiff? any
 
 ---@class ApiEntitiesContainerRegistryRepository
 ---@field cleanup_policy_started_at? string
@@ -1652,9 +1805,16 @@
 
 ---@class ApiEntitiesContainerRegistryRepositoryLoadMatch
 ---@field id string
+---@field size? number
+---@field tag? any
+---@field tags_count? number
 
 ---@class ApiEntitiesContainerRegistryRepositoryListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
+---@field tag? any
+---@field tags_count? number
 
 ---@class ApiEntitiesContainerRegistryTag
 ---@field location? string
@@ -1664,6 +1824,8 @@
 ---@class ApiEntitiesContainerRegistryTagListMatch
 ---@field project_id string
 ---@field repository_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesContainerRegistryTagDetail
 ---@field created_at? string
@@ -1689,6 +1851,11 @@
 
 ---@class ApiEntitiesContributorLoadMatch
 ---@field project_id string
+---@field order_by? any
+---@field page? number
+---@field per_page? number
+---@field ref? any
+---@field sort? any
 
 ---@class ApiEntitiesDeployKey
 ---@field created_at? string
@@ -1704,19 +1871,12 @@
 ---@field usage_type? string
 
 ---@class ApiEntitiesDeployKeyListMatch
----@field created_at? string
----@field expires_at? string
----@field fingerprint? string
----@field fingerprint_sha256? string
----@field id? number
----@field key? string
----@field last_used_at? string
----@field projects_with_readonly_access? table
----@field projects_with_write_access? table
----@field title? string
----@field usage_type? string
+---@field page? number
+---@field per_page? number
+---@field public? boolean
 
 ---@class ApiEntitiesDeployKeyCreateData
+---@field post_api_v4_deploy_key table
 ---@field created_at? string
 ---@field expires_at? string
 ---@field fingerprint? string
@@ -1732,6 +1892,7 @@
 ---@class ApiEntitiesDeployKeyUpdateData
 ---@field id string
 ---@field project_id string
+---@field put_api_v4_projects_id_deploy_keys_key_id table
 ---@field created_at? string
 ---@field expires_at? string
 ---@field fingerprint? string
@@ -1763,9 +1924,12 @@
 
 ---@class ApiEntitiesDeployKeysProjectListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesDeployKeysProjectCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_deploy_key table
 ---@field can_push? boolean
 ---@field created_at? string
 ---@field expires_at? string
@@ -1794,18 +1958,15 @@
 ---@field project_id? string
 
 ---@class ApiEntitiesDeployTokenListMatch
----@field expired? boolean
----@field expires_at? string
----@field id? number
----@field name? string
----@field revoked? boolean
----@field scopes? table
----@field username? string
+---@field active? boolean
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesDeployTokenWithToken
 
 ---@class ApiEntitiesDeployTokenWithTokenCreateData
 ---@field group_id string
+---@field post_api_v4_groups_id_deploy_token table
 
 ---@class ApiEntitiesDeployment
 ---@field created_at? string
@@ -1821,6 +1982,16 @@
 
 ---@class ApiEntitiesDeploymentListMatch
 ---@field project_id string
+---@field environment? any
+---@field finished_after? any
+---@field finished_before? any
+---@field order_by? any
+---@field page? number
+---@field per_page? number
+---@field sort? any
+---@field status? any
+---@field updated_after? any
+---@field updated_before? any
 
 ---@class ApiEntitiesDeploymentExtended
 ---@field approval_summary? table
@@ -1843,6 +2014,7 @@
 
 ---@class ApiEntitiesDeploymentExtendedCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_deployment table
 ---@field approval_summary? table
 ---@field approvals? table
 ---@field created_at? string
@@ -1860,6 +2032,7 @@
 ---@class ApiEntitiesDeploymentExtendedUpdateData
 ---@field deployment_id string
 ---@field project_id string
+---@field put_api_v4_projects_id_deployments_deployment_id table
 ---@field approval_summary? table
 ---@field approvals? table
 ---@field created_at? string
@@ -1879,6 +2052,7 @@
 ---@class ApiEntitiesDeploymentsApprovalCreateData
 ---@field deployment_id string
 ---@field project_id string
+---@field post_api_v4_projects_id_deployments_deployment_id_approval table
 
 ---@class ApiEntitiesDictionaryTable
 ---@field feature_categories? table
@@ -1905,18 +2079,23 @@
 ---@class ApiEntitiesDiffLoadMatch
 ---@field merge_request_id string
 ---@field project_id string
+---@field page? number
+---@field per_page? number
+---@field unidiff? any
 
 ---@class ApiEntitiesDiffListMatch
 ---@field project_id string
 ---@field sha any
+---@field page? number
+---@field per_page? number
+---@field unidiff? any
 
 ---@class ApiEntitiesDiscoveredCluster
 ---@field groups? string
 ---@field projects? string
 
 ---@class ApiEntitiesDiscoveredClusterLoadMatch
----@field groups? string
----@field projects? string
+---@field group_id string
 
 ---@class ApiEntitiesDraftNote
 ---@field author_id? number
@@ -1941,6 +2120,7 @@
 ---@class ApiEntitiesDraftNoteCreateData
 ---@field merge_request_id string
 ---@field project_id string
+---@field post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note table
 ---@field author_id? number
 ---@field commit_id? number
 ---@field discussion_id? number
@@ -1954,6 +2134,7 @@
 ---@field id string
 ---@field merge_request_id string
 ---@field project_id string
+---@field put_api_v4_projects_id_merge_requests_merge_request_iid_draft_notes_draft_note_id table
 ---@field author_id? number
 ---@field commit_id? number
 ---@field discussion_id? number
@@ -1986,10 +2167,17 @@
 
 ---@class ApiEntitiesEnvironmentListMatch
 ---@field project_id string
+---@field name? string
+---@field page? number
+---@field per_page? number
+---@field search? any
+---@field state? any
 
 ---@class ApiEntitiesEnvironmentCreateData
 ---@field environment_id? string
 ---@field project_id string
+---@field post_api_v4_projects_id_environments_environment_id_stop? table
+---@field post_api_v4_projects_id_environment? table
 ---@field auto_stop_at? string
 ---@field auto_stop_setting? string
 ---@field cluster_agent? table
@@ -2010,6 +2198,7 @@
 ---@class ApiEntitiesEnvironmentUpdateData
 ---@field id string
 ---@field project_id string
+---@field put_api_v4_projects_id_environments_environment_id table
 ---@field auto_stop_at? string
 ---@field auto_stop_setting? string
 ---@field cluster_agent? table
@@ -2054,6 +2243,7 @@
 
 ---@class ApiEntitiesErrorTrackingProjectSettingUpdateData
 ---@field project_id string
+---@field put_api_v4_projects_id_error_tracking_setting table
 ---@field active? boolean
 ---@field api_url? string
 ---@field integrated? boolean
@@ -2080,24 +2270,23 @@
 
 ---@class ApiEntitiesEventLoadMatch
 ---@field project_id string
+---@field action? any
+---@field after? any
+---@field before? any
+---@field page? number
+---@field per_page? number
+---@field sort? any
+---@field target_type? any
 
 ---@class ApiEntitiesEventListMatch
----@field action_name? string
----@field author? table
----@field author_id? number
----@field author_username? string
----@field created_at? string
----@field id? number
----@field imported? boolean
----@field imported_from? string
----@field note? table
----@field project_id? number
----@field push_data? table
----@field target_id? number
----@field target_iid? number
----@field target_title? string
----@field target_type? string
----@field wiki_page? table
+---@field action? any
+---@field after? any
+---@field before? any
+---@field page? number
+---@field per_page? number
+---@field scope? any
+---@field sort? any
+---@field target_type? any
 
 ---@class ApiEntitiesFeature
 ---@field definition? table
@@ -2115,6 +2304,7 @@
 
 ---@class ApiEntitiesFeatureCreateData
 ---@field id string
+---@field post_api_v4_features_name table
 ---@field definition? table
 ---@field gates? table
 ---@field name? string
@@ -2163,9 +2353,13 @@
 
 ---@class ApiEntitiesFeatureFlagListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
+---@field scope? any
 
 ---@class ApiEntitiesFeatureFlagCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_feature_flag table
 ---@field active? boolean
 ---@field created_at? string
 ---@field description? string
@@ -2181,6 +2375,7 @@
 ---@class ApiEntitiesFeatureFlagUpdateData
 ---@field id string
 ---@field project_id string
+---@field put_api_v4_projects_id_feature_flags_feature_flag_name table
 ---@field active? boolean
 ---@field created_at? string
 ---@field description? string
@@ -2209,9 +2404,13 @@
 
 ---@class ApiEntitiesFeatureFlagUserListListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
+---@field search? any
 
 ---@class ApiEntitiesFeatureFlagUserListCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_feature_flags_user_list table
 ---@field created_at? string
 ---@field edit_path? string
 ---@field id? number
@@ -2224,6 +2423,7 @@
 ---@class ApiEntitiesFeatureFlagUserListUpdateData
 ---@field iid any
 ---@field project_id string
+---@field put_api_v4_projects_id_feature_flags_user_lists_iid table
 ---@field created_at? string
 ---@field edit_path? string
 ---@field id? number
@@ -2246,9 +2446,12 @@
 
 ---@class ApiEntitiesFreezePeriodListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesFreezePeriodCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_freeze_period table
 ---@field created_at? string
 ---@field cron_timezone? string
 ---@field freeze_end? string
@@ -2259,6 +2462,7 @@
 ---@class ApiEntitiesFreezePeriodUpdateData
 ---@field id string
 ---@field project_id string
+---@field put_api_v4_projects_id_freeze_periods_freeze_period_id table
 ---@field created_at? string
 ---@field cron_timezone? string
 ---@field freeze_end? string
@@ -2280,6 +2484,7 @@
 ---@class ApiEntitiesGoModuleVersionLoadMatch
 ---@field module_version any
 ---@field project_id string
+---@field module_name any
 
 ---@class ApiEntitiesGroup
 ---@field archived? boolean
@@ -2333,58 +2538,29 @@
 
 ---@class ApiEntitiesGroupLoadMatch
 ---@field project_id string
+---@field search? any
 
 ---@class ApiEntitiesGroupListMatch
+---@field active? boolean
+---@field all_available? any
 ---@field archived? boolean
----@field auto_devops_enabled? string
----@field auto_duo_code_review_enabled? string
----@field avatar_url? string
----@field created_at? string
----@field custom_attributes? table
----@field default_branch? string
----@field default_branch_protection? string
----@field default_branch_protection_defaults? string
----@field description? string
----@field duo_core_features_enabled? boolean
----@field duo_features_enabled? string
----@field emails_disabled? boolean
----@field emails_enabled? boolean
----@field file_template_project_id? string
----@field full_name? string
----@field full_path? string
----@field id? string
----@field ldap_access? string
----@field ldap_cn? string
----@field ldap_group_links? table
----@field lfs_enabled? string
----@field lock_duo_features_enabled? string
----@field lock_math_rendering_limits_enabled? boolean
----@field marked_for_deletion_on? string
----@field math_rendering_limits_enabled? boolean
----@field max_artifacts_size? number
----@field mentions_disabled? string
----@field name? string
----@field organization_id? string
----@field parent_id? string
----@field path? string
----@field project_creation_level? string
----@field repository_storage? string
----@field request_access_enabled? string
----@field require_two_factor_authentication? string
----@field root_storage_statistics? table
----@field saml_group_links? table
----@field share_with_group_lock? string
----@field shared_runners_setting? string
----@field show_diff_preview_in_email? boolean
----@field statistics? table
----@field subgroup_creation_level? string
----@field two_factor_grace_period? string
----@field visibility? string
----@field web_based_commit_signing_enabled? string
----@field web_url? string
----@field wiki_access_level? string
+---@field marked_for_deletion_on? any
+---@field min_access_level? any
+---@field order_by? any
+---@field owned? any
+---@field page? number
+---@field per_page? number
+---@field repository_storage? any
+---@field search? any
+---@field skip_group? any
+---@field sort? any
+---@field statistic? any
+---@field top_level_only? any
+---@field visibility? any
+---@field with_custom_attribute? any
 
 ---@class ApiEntitiesGroupCreateData
+---@field post_api_v4_group table
 ---@field archived? boolean
 ---@field auto_devops_enabled? string
 ---@field auto_duo_code_review_enabled? string
@@ -2436,6 +2612,7 @@
 
 ---@class ApiEntitiesGroupUpdateData
 ---@field id string
+---@field put_api_v4_groups_id table
 ---@field archived? boolean
 ---@field auto_devops_enabled? string
 ---@field auto_duo_code_review_enabled? string
@@ -2554,9 +2731,12 @@
 
 ---@class ApiEntitiesGroupDetailLoadMatch
 ---@field id string
+---@field with_custom_attribute? any
+---@field with_project? any
 
 ---@class ApiEntitiesGroupDetailCreateData
 ---@field group_id string
+---@field post_api_v4_groups_id_share? table
 ---@field project_id? string
 ---@field allowed_email_domains_list? string
 ---@field archived? boolean
@@ -2648,25 +2828,11 @@
 ---@field id string
 
 ---@class ApiEntitiesHookListMatch
----@field alert_status? any
----@field branch_filter_strategy? string
----@field created_at? string
----@field custom_headers? table
----@field custom_webhook_template? string
----@field description? string
----@field disabled_until? string
----@field enable_ssl_verification? boolean
----@field id? string
----@field merge_requests_events? boolean
----@field name? string
----@field push_events? boolean
----@field push_events_branch_filter? string
----@field repository_update_events? boolean
----@field tag_push_events? boolean
----@field url? string
----@field url_variables? table
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesHookCreateData
+---@field post_api_v4_hook table
 ---@field alert_status? any
 ---@field branch_filter_strategy? string
 ---@field created_at? string
@@ -2687,6 +2853,7 @@
 
 ---@class ApiEntitiesHookUpdateData
 ---@field id string
+---@field put_api_v4_hooks_hook_id table
 ---@field alert_status? any
 ---@field branch_filter_strategy? string
 ---@field created_at? string
@@ -2741,6 +2908,7 @@
 
 ---@class ApiEntitiesIntegrationBasicUpdateData
 ---@field group_id string
+---@field put_api_v4_groups_id_integrations_apple_app_store table
 ---@field active? boolean
 ---@field alert_events? boolean
 ---@field comment_on_event_enabled? boolean
@@ -2777,9 +2945,13 @@
 
 ---@class ApiEntitiesInvitationListMatch
 ---@field group_id string
+---@field page? number
+---@field per_page? number
+---@field query? any
 
 ---@class ApiEntitiesInvitationCreateData
 ---@field group_id string
+---@field post_api_v4_groups_id_invitation table
 ---@field access_level? string
 ---@field created_at? string
 ---@field created_by_name? string
@@ -2792,7 +2964,9 @@
 ---@class ApiEntitiesInvitationUpdateData
 ---@field group_id? string
 ---@field id string
+---@field put_api_v4_groups_id_invitations_email? table
 ---@field project_id? string
+---@field put_api_v4_projects_id_invitations_email? table
 ---@field access_level? string
 ---@field created_at? string
 ---@field created_by_name? string
@@ -2815,7 +2989,11 @@
 ---@class ApiEntitiesIssuableTimeStatCreateData
 ---@field issue_id? string
 ---@field project_id string
+---@field post_api_v4_projects_id_issues_issue_iid_add_spent_time? table
+---@field post_api_v4_projects_id_issues_issue_iid_time_estimate? table
 ---@field merge_request_id? string
+---@field post_api_v4_projects_id_merge_requests_merge_request_iid_add_spent_time? table
+---@field post_api_v4_projects_id_merge_requests_merge_request_iid_time_estimate? table
 ---@field human_time_estimate? string
 ---@field human_total_time_spent? string
 ---@field time_estimate? number
@@ -2871,53 +3049,56 @@
 ---@field project_id? string
 
 ---@class ApiEntitiesIssueListMatch
----@field assignee? table
----@field assignees? table
----@field author? table
----@field blocking_issues_count? string
----@field closed_at? string
----@field closed_by? table
----@field confidential? boolean
----@field created_at? string
----@field description? string
----@field discussion_locked? boolean
----@field downvotes? string
----@field due_date? string
----@field epic? table
----@field epic_iid? string
----@field has_tasks? boolean
----@field health_status? string
----@field id? number
----@field iid? number
----@field imported? string
----@field imported_from? string
----@field issue_type? string
----@field iteration? table
----@field labels? table
----@field links? table
----@field merge_requests_count? string
----@field milestone? table
----@field moved_to_id? string
----@field project_id? number
----@field references? table
----@field service_desk_reply_to? string
----@field severity? string
----@field state? string
----@field subscribed? string
----@field task_completion_status? string
----@field task_status? string
----@field time_stats? table
----@field title? string
----@field type? string
----@field updated_at? string
----@field upvotes? string
----@field user_notes_count? string
----@field web_url? string
----@field weight? string
+---@field assignee_id? string
+---@field assignee_username? any
+---@field author_id? string
+---@field author_username? any
+---@field closed_by_id? string
+---@field confidential? any
+---@field created_after? any
+---@field created_before? any
+---@field due_date? any
+---@field epic_id? string
+---@field health_status? any
+---@field iid? any
+---@field in? any
+---@field issue_type? any
+---@field iteration_id? string
+---@field iteration_title? any
+---@field label? string
+---@field milestone? any
+---@field milestone_id? string
+---@field my_reaction_emoji? any
+---@field non_archived? any
+---@field not_assignee_id? string
+---@field not_assignee_username? any
+---@field not_author_id? string
+---@field not_author_username? any
+---@field not_iid? any
+---@field not_iteration_id? string
+---@field not_iteration_title? any
+---@field not_label? any
+---@field not_milestone? any
+---@field not_milestone_id? string
+---@field not_weight? any
+---@field order_by? any
+---@field page? number
+---@field per_page? number
+---@field scope? any
+---@field search? any
+---@field sort? any
+---@field state? any
+---@field updated_after? any
+---@field updated_before? any
+---@field weight? number
+---@field with_labels_detail? any
 
 ---@class ApiEntitiesIssueCreateData
 ---@field issue_id? string
 ---@field project_id string
+---@field post_api_v4_projects_id_issues_issue_iid_clone? table
+---@field post_api_v4_projects_id_issues_issue_iid_move? table
+---@field post_api_v4_projects_id_issue? table
 ---@field assignee? table
 ---@field assignees? table
 ---@field author? table
@@ -2964,7 +3145,9 @@
 ---@class ApiEntitiesIssueUpdateData
 ---@field id? string
 ---@field project_id string
+---@field put_api_v4_projects_id_issues_issue_iid? table
 ---@field issue_id? string
+---@field put_api_v4_projects_id_issues_issue_iid_reorder? table
 ---@field assignee? table
 ---@field assignees? table
 ---@field author? table
@@ -3021,6 +3204,7 @@
 ---@class ApiEntitiesIssueLinkCreateData
 ---@field issue_id string
 ---@field project_id string
+---@field post_api_v4_projects_id_issues_issue_iid_link table
 ---@field id? string
 ---@field link_type? string
 ---@field source_issue? table
@@ -3044,10 +3228,14 @@
 ---@field id string
 ---@field name string
 ---@field type any
+---@field fullname? any
+---@field project? any
+---@field source_template_project_id? string
 
 ---@class ApiEntitiesMarkdown
 
 ---@class ApiEntitiesMarkdownCreateData
+---@field post_api_v4_markdown table
 
 ---@class ApiEntitiesMarkdownUploadAdmin
 ---@field created_at? string
@@ -3058,6 +3246,8 @@
 
 ---@class ApiEntitiesMarkdownUploadAdminListMatch
 ---@field group_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesMember
 ---@field access_level? string
@@ -3090,9 +3280,17 @@
 
 ---@class ApiEntitiesMemberListMatch
 ---@field group_id string
+---@field page? number
+---@field per_page? number
+---@field query? any
+---@field show_seat_info? any
+---@field skip_user? any
+---@field user_id? string
+---@field with_saml_identity? any
 
 ---@class ApiEntitiesMemberCreateData
 ---@field group_id string
+---@field post_api_v4_groups_id_member table
 ---@field access_level? string
 ---@field avatar_path? string
 ---@field avatar_url? string
@@ -3120,7 +3318,9 @@
 ---@class ApiEntitiesMemberUpdateData
 ---@field group_id? string
 ---@field id string
+---@field put_api_v4_groups_id_members_user_id? table
 ---@field project_id? string
+---@field put_api_v4_projects_id_members_user_id? table
 ---@field access_level? string
 ---@field avatar_path? string
 ---@field avatar_url? string
@@ -3221,10 +3421,14 @@
 ---@class ApiEntitiesMergeLoadMatch
 ---@field merge_request_iid any
 ---@field project_id string
+---@field include_diverged_commits_count? number
+---@field include_rebase_in_progress? any
+---@field render_html? any
 
 ---@class ApiEntitiesMergeCreateData
 ---@field merge_request_id? string
 ---@field project_id string
+---@field post_api_v4_projects_id_merge_request? table
 ---@field allow_collaboration? boolean
 ---@field allow_maintainer_to_push? boolean
 ---@field approvals_before_merge? string
@@ -3296,7 +3500,9 @@
 ---@class ApiEntitiesMergeUpdateData
 ---@field merge_request_id? string
 ---@field project_id string
+---@field put_api_v4_projects_id_merge_requests_merge_request_iid_merge? table
 ---@field merge_request_iid? any
+---@field put_api_v4_projects_id_merge_requests_merge_request_iid? table
 ---@field allow_collaboration? boolean
 ---@field allow_maintainer_to_push? boolean
 ---@field approvals_before_merge? string
@@ -3376,6 +3582,7 @@
 ---@class ApiEntitiesMergeRequestApprovalCreateData
 ---@field merge_request_id string
 ---@field project_id string
+---@field post_api_v4_projects_id_merge_requests_merge_request_iid_approve? table
 ---@field approved_at? string
 ---@field user? table
 
@@ -3437,65 +3644,99 @@
 ---@field work_in_progress? string
 
 ---@class ApiEntitiesMergeRequestBasicLoadMatch
----@field allow_collaboration? boolean
----@field allow_maintainer_to_push? boolean
----@field approvals_before_merge? string
----@field assignee? table
----@field assignees? table
----@field author? table
----@field blocking_discussions_resolved? string
----@field closed_at? string
----@field closed_by? table
----@field created_at? string
----@field description? string
----@field description_html? string
----@field detailed_merge_status? string
----@field discussion_locked? string
----@field downvotes? string
----@field draft? string
----@field force_remove_source_branch? string
----@field has_conflicts? boolean
----@field id number
----@field iid? number
----@field imported? string
----@field imported_from? string
----@field labels? string
----@field merge_after? string
----@field merge_commit_sha? string
----@field merge_status? string
----@field merge_user? table
----@field merge_when_pipeline_succeeds? string
----@field merged_at? string
----@field merged_by? table
----@field milestone? table
----@field prepared_at? string
----@field project_id? number
----@field reference? string
----@field references? table
----@field reviewers? table
----@field sha? string
----@field should_remove_source_branch? boolean
----@field source_branch? string
+---@field approved? any
+---@field approved_by_id? string
+---@field approved_by_username? any
+---@field approver_id? string
+---@field assignee_id? string
+---@field assignee_username? any
+---@field author_id? string
+---@field author_username? any
+---@field created_after? any
+---@field created_before? any
+---@field deployed_after? any
+---@field deployed_before? any
+---@field environment? any
+---@field in? any
+---@field label? string
+---@field merge_user_id? string
+---@field merge_user_username? any
+---@field milestone? any
+---@field my_reaction_emoji? any
+---@field not_assignee_id? string
+---@field not_assignee_username? any
+---@field not_author_id? string
+---@field not_author_username? any
+---@field not_label? any
+---@field not_milestone? any
+---@field not_my_reaction_emoji? any
+---@field not_reviewer_id? string
+---@field not_reviewer_username? any
+---@field order_by? any
+---@field page? number
+---@field per_page? number
+---@field reviewer_id? string
+---@field reviewer_username? any
+---@field scope? any
+---@field search? any
+---@field sort? any
+---@field source_branch? any
 ---@field source_project_id? string
----@field squash? string
----@field squash_commit_sha? string
----@field squash_on_merge? string
----@field state? string
----@field target_branch? string
----@field target_project_id? string
----@field task_completion_status? string
----@field time_stats? table
----@field title? string
----@field title_html? string
----@field updated_at? string
----@field upvotes? string
----@field user_notes_count? string
----@field web_url? string
----@field work_in_progress? string
+---@field state? any
+---@field target_branch? any
+---@field updated_after? any
+---@field updated_before? any
+---@field view? any
+---@field wip? any
+---@field with_labels_detail? any
+---@field with_merge_status_recheck? any
 
 ---@class ApiEntitiesMergeRequestBasicListMatch
 ---@field deployment_id? string
 ---@field project_id string
+---@field approved? any
+---@field assignee_id? string
+---@field assignee_username? any
+---@field author_id? string
+---@field author_username? any
+---@field created_after? any
+---@field created_before? any
+---@field deployed_after? any
+---@field deployed_before? any
+---@field environment? any
+---@field in? any
+---@field label? string
+---@field merge_user_id? string
+---@field merge_user_username? any
+---@field milestone? any
+---@field my_reaction_emoji? any
+---@field not_assignee_id? string
+---@field not_assignee_username? any
+---@field not_author_id? string
+---@field not_author_username? any
+---@field not_label? any
+---@field not_milestone? any
+---@field not_my_reaction_emoji? any
+---@field not_reviewer_id? string
+---@field not_reviewer_username? any
+---@field order_by? any
+---@field page? number
+---@field per_page? number
+---@field reviewer_id? string
+---@field reviewer_username? any
+---@field scope? any
+---@field search? any
+---@field sort? any
+---@field source_branch? any
+---@field source_project_id? string
+---@field state? any
+---@field target_branch? any
+---@field updated_after? any
+---@field updated_before? any
+---@field view? any
+---@field wip? any
+---@field with_labels_detail? any
+---@field with_merge_status_recheck? any
 ---@field sha? any
 
 ---@class ApiEntitiesMergeRequestChange
@@ -3573,6 +3814,7 @@
 ---@class ApiEntitiesMergeRequestChangeLoadMatch
 ---@field merge_request_id string
 ---@field project_id string
+---@field unidiff? any
 
 ---@class ApiEntitiesMergeRequestDiff
 ---@field base_commit_sha? string
@@ -3588,6 +3830,8 @@
 ---@class ApiEntitiesMergeRequestDiffListMatch
 ---@field merge_request_id string
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesMergeRequestDiffFull
 ---@field base_commit_sha? string
@@ -3606,6 +3850,7 @@
 ---@field merge_request_id string
 ---@field project_id string
 ---@field version_id string
+---@field unidiff? any
 
 ---@class ApiEntitiesMergeRequestReviewer
 ---@field avatar_path? string
@@ -3638,22 +3883,23 @@
 ---@class ApiEntitiesMetricImageCreateData
 ---@field alert_management_alert_id string
 ---@field project_id string
+---@field file any
+---@field url? string
+---@field url_text? any
 ---@field created_at? string
 ---@field file_path? string
 ---@field filename? string
 ---@field id? number
----@field url? string
----@field url_text? string
 
 ---@class ApiEntitiesMetricImageUpdateData
 ---@field alert_management_alert_id string
 ---@field id string
 ---@field project_id string
+---@field url? string
+---@field url_text? any
 ---@field created_at? string
 ---@field file_path? string
 ---@field filename? string
----@field url? string
----@field url_text? string
 
 ---@class ApiEntitiesMrNote
 ---@field avatar_path? string
@@ -3670,6 +3916,8 @@
 ---@class ApiEntitiesMrNoteLoadMatch
 ---@field merge_request_id string
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesNamespace
 ---@field additional_purchased_storage_ends_on? string
@@ -3700,32 +3948,17 @@
 ---@field id string
 
 ---@class ApiEntitiesNamespaceListMatch
----@field additional_purchased_storage_ends_on? string
----@field additional_purchased_storage_size? number
----@field avatar_url? string
----@field billable_members_count? number
----@field end_date? string
----@field extra_shared_runners_minutes_limit? number
----@field full_path? string
----@field id? number
----@field kind? string
----@field max_seats_used? number
----@field max_seats_used_changed_at? string
----@field members_count_with_descendants? number
----@field name? string
----@field parent_id? number
----@field path? string
----@field plan? string
----@field projects_count? number
----@field root_repository_size? number
----@field seats_in_use? number
----@field shared_runners_minutes_limit? number
----@field trial? boolean
----@field trial_ends_on? string
----@field web_url? string
+---@field full_path_search? any
+---@field owned_only? any
+---@field page? number
+---@field per_page? number
+---@field requested_hosted_plan? any
+---@field search? any
+---@field top_level_only? any
 
 ---@class ApiEntitiesNamespaceUpdateData
 ---@field id string
+---@field put_api_v4_namespaces_id table
 ---@field additional_purchased_storage_ends_on? string
 ---@field additional_purchased_storage_size? number
 ---@field avatar_url? string
@@ -3755,6 +3988,7 @@
 
 ---@class ApiEntitiesNamespaceExistenceListMatch
 ---@field namespace_id string
+---@field parent_id? string
 
 ---@class ApiEntitiesNamespacesStorageLimitExclusion
 ---@field id? number
@@ -3763,13 +3997,12 @@
 ---@field reason? string
 
 ---@class ApiEntitiesNamespacesStorageLimitExclusionLoadMatch
----@field id number
----@field namespace_id? number
----@field namespace_name? string
----@field reason? string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesNamespacesStorageLimitExclusionCreateData
 ---@field namespace_id string
+---@field post_api_v4_namespaces_id_storage_limit_exclusion table
 ---@field id? number
 ---@field namespace_name? string
 ---@field reason? string
@@ -3780,19 +4013,23 @@
 ---@field versions? table
 
 ---@class ApiEntitiesNpmPackageLoadMatch
----@field disttags? table
----@field name? string
----@field versions? table
+---@field group_id? string
+---@field package_name any
+---@field project_id? string
 
 ---@class ApiEntitiesNpmPackageTag
 
 ---@class ApiEntitiesNpmPackageTagLoadMatch
+---@field group_id? string
+---@field package_name any
+---@field project_id? string
 
 ---@class ApiEntitiesNugetPackagesVersion
 ---@field versions? table
 
 ---@class ApiEntitiesNugetPackagesVersionListMatch
 ---@field project_id string
+---@field package_name any
 
 ---@class ApiEntitiesNugetSearchResult
 ---@field authors? string
@@ -3812,6 +4049,10 @@
 
 ---@class ApiEntitiesNugetSearchResultListMatch
 ---@field project_id string
+---@field prerelease? any
+---@field q? any
+---@field skip? number
+---@field take? any
 
 ---@class ApiEntitiesNugetServiceIndex
 ---@field resources? table
@@ -3823,6 +4064,7 @@
 ---@class ApiEntitiesOrganizationsOrganization
 
 ---@class ApiEntitiesOrganizationsOrganizationCreateData
+---@field post_api_v4_organization table
 
 ---@class ApiEntitiesPackage
 ---@field conan_package_name? string
@@ -3847,6 +4089,16 @@
 
 ---@class ApiEntitiesPackageListMatch
 ---@field group_id string
+---@field exclude_subgroup? any
+---@field include_versionless? any
+---@field order_by? any
+---@field package_name? any
+---@field package_type? any
+---@field package_version? any
+---@field page? number
+---@field per_page? number
+---@field sort? any
+---@field status? any
 
 ---@class ApiEntitiesPackageFile
 ---@field created_at? string
@@ -3862,6 +4114,10 @@
 ---@class ApiEntitiesPackageFileListMatch
 ---@field package_id string
 ---@field project_id string
+---@field order_by? any
+---@field page? number
+---@field per_page? number
+---@field sort? any
 
 ---@class ApiEntitiesPackagePipeline
 ---@field avatar_path? string
@@ -3878,6 +4134,9 @@
 ---@class ApiEntitiesPackagePipelineLoadMatch
 ---@field package_id string
 ---@field project_id string
+---@field cursor? any
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesPackagesConanFilesList
 
@@ -3997,9 +4256,21 @@
 
 ---@class ApiEntitiesPackagesDebianDistributionListMatch
 ---@field project_id string
+---@field architecture? any
+---@field codename? any
+---@field component? any
+---@field description? string
+---@field label? string
+---@field origin? any
+---@field page? number
+---@field per_page? number
+---@field suite? any
+---@field valid_time_duration_second? any
+---@field version? any
 
 ---@class ApiEntitiesPackagesDebianDistributionCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_debian_distribution table
 ---@field architectures? table
 ---@field codename? string
 ---@field components? table
@@ -4014,7 +4285,9 @@
 ---@class ApiEntitiesPackagesDebianDistributionUpdateData
 ---@field group_id? string
 ---@field id string
+---@field put_api_v4_groups_id_debian_distributions_codename? table
 ---@field project_id? string
+---@field put_api_v4_projects_id_debian_distributions_codename? table
 ---@field architectures? table
 ---@field codename? string
 ---@field components? table
@@ -4044,9 +4317,12 @@
 
 ---@class ApiEntitiesPagesDomainListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesPagesDomainCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_pages_domain table
 ---@field auto_ssl_enabled? string
 ---@field certificate? string
 ---@field certificate_text? string
@@ -4079,8 +4355,8 @@
 ---@field expired? string
 
 ---@class ApiEntitiesPagesDomainBasicLoadMatch
----@field expiration? string
----@field expired? string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesPersonalAccessToken
 ---@field active? boolean
@@ -4095,16 +4371,9 @@
 ---@field user_id? number
 
 ---@class ApiEntitiesPersonalAccessTokenListMatch
----@field active? boolean
----@field created_at? string
----@field description? string
----@field expires_at? string
----@field id? number
----@field last_used_at? string
----@field name? string
----@field revoked? boolean
----@field scopes? table
----@field user_id? number
+---@field min_access_level? any
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesPersonalAccessTokenWithLastUsedIp
 ---@field active? boolean
@@ -4123,17 +4392,19 @@
 ---@field id string
 
 ---@class ApiEntitiesPersonalAccessTokenWithLastUsedIpListMatch
----@field active? boolean
----@field created_at? string
----@field description? string
----@field expires_at? string
----@field id? number
----@field last_used_at? string
----@field last_used_ips? table
----@field name? string
----@field revoked? boolean
----@field scopes? table
----@field user_id? number
+---@field created_after? any
+---@field created_before? any
+---@field expires_after? any
+---@field expires_before? any
+---@field last_used_after? any
+---@field last_used_before? any
+---@field page? number
+---@field per_page? number
+---@field revoked? any
+---@field search? any
+---@field sort? any
+---@field state? any
+---@field user_id? string
 
 ---@class ApiEntitiesPersonalAccessTokenWithToken
 ---@field active? boolean
@@ -4150,6 +4421,7 @@
 
 ---@class ApiEntitiesPersonalAccessTokenWithTokenCreateData
 ---@field personal_access_token_id string
+---@field post_api_v4_personal_access_tokens_id_rotate table
 ---@field active? boolean
 ---@field created_at? string
 ---@field description? string
@@ -4185,25 +4457,13 @@
 ---@field id string
 
 ---@class ApiEntitiesPersonalSnippetListMatch
----@field author? table
----@field created_at? string
----@field description? string
----@field file_name? string
----@field files? table
----@field http_url_to_repo? string
----@field id? number
----@field imported? boolean
----@field imported_from? string
----@field project_id? number
----@field raw_url? string
----@field repository_storage? string
----@field ssh_url_to_repo? string
----@field title? string
----@field updated_at? string
----@field visibility? string
----@field web_url? string
+---@field created_after? any
+---@field created_before? any
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesPersonalSnippetCreateData
+---@field post_api_v4_snippet table
 ---@field author? table
 ---@field created_at? string
 ---@field description? string
@@ -4224,6 +4484,7 @@
 
 ---@class ApiEntitiesPersonalSnippetUpdateData
 ---@field id string
+---@field put_api_v4_snippets_id table
 ---@field author? table
 ---@field created_at? string
 ---@field description? string
@@ -4244,8 +4505,10 @@
 ---@class ApiEntitiesPlanLimit
 
 ---@class ApiEntitiesPlanLimitLoadMatch
+---@field plan_name? any
 
 ---@class ApiEntitiesPlanLimitUpdateData
+---@field put_api_v4_application_plan_limit table
 
 ---@class ApiEntitiesProject
 ---@field allow_merge_on_skipped_pipeline? boolean
@@ -4398,9 +4661,43 @@
 
 ---@class ApiEntitiesProjectListMatch
 ---@field project_id string
+---@field active? boolean
+---@field archived? boolean
+---@field id_after? any
+---@field id_before? any
+---@field imported? any
+---@field include_hidden? any
+---@field include_pending_delete? any
+---@field last_activity_after? any
+---@field last_activity_before? any
+---@field marked_for_deletion_on? any
+---@field membership? any
+---@field min_access_level? any
+---@field order_by? any
+---@field owned? any
+---@field page? number
+---@field per_page? number
+---@field repository_checksum_failed? any
+---@field repository_storage? any
+---@field search? any
+---@field search_namespace? any
+---@field simple? any
+---@field sort? any
+---@field starred? any
+---@field topic? any
+---@field topic_id? string
+---@field updated_after? any
+---@field updated_before? any
+---@field visibility? any
+---@field wiki_checksum_failed? any
+---@field with_custom_attribute? any
+---@field with_issues_enabled? any
+---@field with_merge_requests_enabled? any
+---@field with_programming_language? any
 
 ---@class ApiEntitiesProjectCreateData
 ---@field user_id string
+---@field post_api_v4_projects_user_user_id table
 ---@field allow_merge_on_skipped_pipeline? boolean
 ---@field allow_pipeline_trigger_approve_deployment? boolean
 ---@field analytics_access_level? string
@@ -4551,6 +4848,7 @@
 
 ---@class ApiEntitiesProjectUpdateData
 ---@field id string
+---@field put_api_v4_projects_id table
 ---@field allow_merge_on_skipped_pipeline? boolean
 ---@field allow_pipeline_trigger_approve_deployment? boolean
 ---@field analytics_access_level? string
@@ -4716,6 +5014,7 @@
 
 ---@class ApiEntitiesProjectGroupLinkCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_share table
 
 ---@class ApiEntitiesProjectHook
 ---@field alert_status? any
@@ -4757,9 +5056,12 @@
 
 ---@class ApiEntitiesProjectHookListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesProjectHookCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_hook table
 ---@field alert_status? any
 ---@field branch_filter_strategy? string
 ---@field confidential_issues_events? boolean
@@ -4795,6 +5097,7 @@
 ---@class ApiEntitiesProjectHookUpdateData
 ---@field id string
 ---@field project_id string
+---@field put_api_v4_projects_id_hooks_hook_id table
 ---@field alert_status? any
 ---@field branch_filter_strategy? string
 ---@field confidential_issues_events? boolean
@@ -4839,6 +5142,111 @@
 ---@field project_id string
 
 ---@class ApiEntitiesProjectImportStatusCreateData
+---@field file? any
+---@field file_etag? any
+---@field file_md5? any
+---@field file_name? any
+---@field file_path? any
+---@field file_remote_id? string
+---@field file_remote_url? any
+---@field file_sha1? any
+---@field file_sha256? any
+---@field file_size? any
+---@field file_type? any
+---@field name? string
+---@field namespace? any
+---@field override_params_allow_merge_on_skipped_pipeline? any
+---@field override_params_analytics_access_level? any
+---@field override_params_approvals_before_merge? any
+---@field override_params_auto_cancel_pending_pipeline? any
+---@field override_params_auto_devops_deploy_strategy? any
+---@field override_params_auto_devops_enabled? any
+---@field override_params_auto_duo_code_review_enabled? any
+---@field override_params_autoclose_referenced_issue? any
+---@field override_params_avatar? any
+---@field override_params_build_git_strategy? any
+---@field override_params_build_timeout? any
+---@field override_params_builds_access_level? any
+---@field override_params_ci_config_path? any
+---@field override_params_container_expiration_policy_attributes_cadence? any
+---@field override_params_container_expiration_policy_attributes_enabled? any
+---@field override_params_container_expiration_policy_attributes_keep_n? any
+---@field override_params_container_expiration_policy_attributes_name_regex? any
+---@field override_params_container_expiration_policy_attributes_name_regex_keep? any
+---@field override_params_container_expiration_policy_attributes_older_than? any
+---@field override_params_container_registry_access_level? any
+---@field override_params_container_registry_enabled? any
+---@field override_params_description? any
+---@field override_params_duo_remote_flows_enabled? any
+---@field override_params_emails_disabled? any
+---@field override_params_emails_enabled? any
+---@field override_params_enforce_auth_checks_on_upload? any
+---@field override_params_environments_access_level? any
+---@field override_params_external_authorization_classification_label? any
+---@field override_params_feature_flags_access_level? any
+---@field override_params_forking_access_level? any
+---@field override_params_group_runners_enabled? any
+---@field override_params_infrastructure_access_level? any
+---@field override_params_issue_branch_template? any
+---@field override_params_issues_access_level? any
+---@field override_params_issues_enabled? any
+---@field override_params_jobs_enabled? any
+---@field override_params_lfs_enabled? any
+---@field override_params_merge_commit_template? any
+---@field override_params_merge_method? any
+---@field override_params_merge_request_title_regex? any
+---@field override_params_merge_request_title_regex_description? any
+---@field override_params_merge_requests_access_level? any
+---@field override_params_merge_requests_enabled? any
+---@field override_params_mirror? any
+---@field override_params_mirror_trigger_build? any
+---@field override_params_model_experiments_access_level? any
+---@field override_params_model_registry_access_level? any
+---@field override_params_monitor_access_level? any
+---@field override_params_mr_default_target_self? any
+---@field override_params_only_allow_merge_if_all_discussions_are_resolved? any
+---@field override_params_only_allow_merge_if_all_status_checks_passed? any
+---@field override_params_only_allow_merge_if_pipeline_succeed? any
+---@field override_params_package_registry_access_level? any
+---@field override_params_packages_enabled? any
+---@field override_params_pages_access_level? any
+---@field override_params_prevent_merge_without_jira_issue? any
+---@field override_params_printing_merge_request_link_enabled? any
+---@field override_params_public_build? any
+---@field override_params_public_job? any
+---@field override_params_releases_access_level? any
+---@field override_params_remove_source_branch_after_merge? any
+---@field override_params_repository_access_level? any
+---@field override_params_repository_storage? any
+---@field override_params_request_access_enabled? any
+---@field override_params_requirements_access_level? any
+---@field override_params_resolve_outdated_diff_discussion? any
+---@field override_params_resource_group_default_process_mode? any
+---@field override_params_security_and_compliance_access_level? any
+---@field override_params_service_desk_enabled? any
+---@field override_params_shared_runners_enabled? any
+---@field override_params_show_default_award_emoji? any
+---@field override_params_show_diff_preview_in_email? any
+---@field override_params_snippets_access_level? any
+---@field override_params_snippets_enabled? any
+---@field override_params_spp_repository_pipeline_access? any
+---@field override_params_squash_commit_template? any
+---@field override_params_squash_option? any
+---@field override_params_suggestion_commit_message? any
+---@field override_params_tag_list? any
+---@field override_params_topic? any
+---@field override_params_visibility? any
+---@field override_params_warn_about_potentially_unwanted_character? any
+---@field override_params_wiki_access_level? any
+---@field override_params_wiki_enabled? any
+---@field overwrite? any
+---@field path string
+---@field access_key_id? string
+---@field bucket_name? any
+---@field file_key? any
+---@field region? any
+---@field secret_access_key? any
+---@field url? string
 ---@field created_at? string
 ---@field exception_class? string
 ---@field exception_message? string
@@ -4891,9 +5299,12 @@
 ---@field file_path? any
 ---@field project_id string
 ---@field snippet_id? string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesProjectSnippetCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_snippet table
 ---@field author? table
 ---@field created_at? string
 ---@field description? string
@@ -4914,6 +5325,7 @@
 ---@class ApiEntitiesProjectSnippetUpdateData
 ---@field id string
 ---@field project_id string
+---@field put_api_v4_projects_id_snippets_snippet_id table
 ---@field author? table
 ---@field created_at? string
 ---@field description? string
@@ -4934,6 +5346,7 @@
 
 ---@class ApiEntitiesProjectUploadCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_upload table
 
 ---@class ApiEntitiesProjectWithAccess
 ---@field allow_merge_on_skipped_pipeline? boolean
@@ -5087,6 +5500,161 @@
 
 ---@class ApiEntitiesProjectWithAccessLoadMatch
 ---@field id string
+---@field license? any
+---@field statistic? any
+---@field with_custom_attribute? any
+
+---@class ApiEntitiesProjectWithAccessCreateData
+---@field project_id string
+---@field post_api_v4_projects_id_housekeeping? table
+---@field allow_merge_on_skipped_pipeline? boolean
+---@field allow_pipeline_trigger_approve_deployment? boolean
+---@field analytics_access_level? string
+---@field approvals_before_merge? string
+---@field archived? boolean
+---@field auto_cancel_pending_pipelines? string
+---@field auto_devops_deploy_strategy? string
+---@field auto_devops_enabled? boolean
+---@field auto_duo_code_review_enabled? string
+---@field autoclose_referenced_issues? boolean
+---@field avatar_url? string
+---@field build_git_strategy? string
+---@field build_timeout? number
+---@field builds_access_level? string
+---@field can_create_merge_request_in? boolean
+---@field ci_allow_fork_pipelines_to_run_in_parent_project? boolean
+---@field ci_config_path? string
+---@field ci_default_git_depth? number
+---@field ci_delete_pipelines_in_seconds? number
+---@field ci_forward_deployment_enabled? boolean
+---@field ci_forward_deployment_rollback_allowed? boolean
+---@field ci_id_token_sub_claim_components? table
+---@field ci_job_token_scope_enabled? boolean
+---@field ci_pipeline_variables_minimum_override_role? string
+---@field ci_push_repository_for_job_token_allowed? boolean
+---@field ci_restrict_pipeline_cancellation_role? string
+---@field ci_separated_caches? boolean
+---@field compliance_frameworks? string
+---@field container_expiration_policy? table
+---@field container_registry_access_level? string
+---@field container_registry_enabled? boolean
+---@field container_registry_image_prefix? string
+---@field created_at? string
+---@field creator_id? number
+---@field custom_attributes? table
+---@field default_branch? string
+---@field description? string
+---@field description_html? string
+---@field duo_remote_flows_enabled? string
+---@field emails_disabled? boolean
+---@field emails_enabled? boolean
+---@field empty_repo? boolean
+---@field enforce_auth_checks_on_uploads? boolean
+---@field environments_access_level? string
+---@field external_authorization_classification_label? string
+---@field feature_flags_access_level? string
+---@field forked_from_project? table
+---@field forking_access_level? string
+---@field forks_count? number
+---@field group_runners_enabled? boolean
+---@field http_url_to_repo? string
+---@field id? number
+---@field import_error? string
+---@field import_status? string
+---@field import_type? string
+---@field import_url? string
+---@field infrastructure_access_level? string
+---@field issue_branch_template? string
+---@field issues_access_level? string
+---@field issues_enabled? boolean
+---@field issues_template? string
+---@field jobs_enabled? boolean
+---@field keep_latest_artifact? boolean
+---@field last_activity_at? string
+---@field lfs_enabled? boolean
+---@field license? table
+---@field license_url? string
+---@field links? table
+---@field marked_for_deletion_at? string
+---@field marked_for_deletion_on? string
+---@field max_artifacts_size? number
+---@field merge_commit_template? string
+---@field merge_method? string
+---@field merge_pipelines_enabled? string
+---@field merge_request_title_regex? string
+---@field merge_request_title_regex_description? string
+---@field merge_requests_access_level? string
+---@field merge_requests_enabled? boolean
+---@field merge_requests_template? string
+---@field merge_trains_enabled? string
+---@field merge_trains_skip_train_allowed? string
+---@field mirror? string
+---@field mirror_overwrites_diverged_branches? string
+---@field mirror_trigger_builds? string
+---@field mirror_user_id? string
+---@field model_experiments_access_level? string
+---@field model_registry_access_level? string
+---@field monitor_access_level? string
+---@field mr_default_target_self? boolean
+---@field name? string
+---@field name_with_namespace? string
+---@field namespace? table
+---@field only_allow_merge_if_all_discussions_are_resolved? boolean
+---@field only_allow_merge_if_all_status_checks_passed? string
+---@field only_allow_merge_if_pipeline_succeeds? boolean
+---@field only_mirror_protected_branches? string
+---@field open_issues_count? number
+---@field owner? table
+---@field package_registry_access_level? string
+---@field packages_enabled? boolean
+---@field pages_access_level? string
+---@field path? string
+---@field path_with_namespace? string
+---@field permissions? table
+---@field pre_receive_secret_detection_enabled? boolean
+---@field prevent_merge_without_jira_issue? string
+---@field printing_merge_request_link_enabled? boolean
+---@field public_jobs? boolean
+---@field readme_url? string
+---@field releases_access_level? string
+---@field remove_source_branch_after_merge? boolean
+---@field repository_access_level? string
+---@field repository_object_format? string
+---@field repository_storage? string
+---@field request_access_enabled? boolean
+---@field requirements_access_level? string
+---@field requirements_enabled? string
+---@field resolve_outdated_diff_discussions? boolean
+---@field resource_group_default_process_mode? string
+---@field restrict_user_defined_variables? boolean
+---@field runner_token_expiration_interval? number
+---@field runners_token? string
+---@field secret_push_protection_enabled? boolean
+---@field security_and_compliance_access_level? string
+---@field security_and_compliance_enabled? string
+---@field service_desk_address? string
+---@field service_desk_enabled? boolean
+---@field shared_runners_enabled? boolean
+---@field shared_with_groups? table
+---@field show_diff_preview_in_email? boolean
+---@field snippets_access_level? string
+---@field snippets_enabled? boolean
+---@field spp_repository_pipeline_access? boolean
+---@field squash_commit_template? string
+---@field squash_option? string
+---@field ssh_url_to_repo? string
+---@field star_count? number
+---@field statistics? table
+---@field suggestion_commit_message? string
+---@field tag_list? table
+---@field topics? table
+---@field updated_at? string
+---@field visibility? string
+---@field warn_about_potentially_unwanted_characters? boolean
+---@field web_based_commit_signing_enabled? string
+---@field web_url? string
+---@field wiki_access_level? string
+---@field wiki_enabled? boolean
 
 ---@class ApiEntitiesProjectsContainerRegistryProtectionRule
 ---@field id? number
@@ -5100,6 +5668,7 @@
 
 ---@class ApiEntitiesProjectsContainerRegistryProtectionRuleCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_registry_protection_repository_rule table
 ---@field id? number
 ---@field minimum_access_level_for_delete? string
 ---@field minimum_access_level_for_push? string
@@ -5108,6 +5677,7 @@
 ---@class ApiEntitiesProjectsContainerRegistryProtectionRuleUpdateData
 ---@field id string
 ---@field project_id string
+---@field patch_api_v4_projects_id_registry_protection_repository_rules_protection_rule_id table
 ---@field minimum_access_level_for_delete? string
 ---@field minimum_access_level_for_push? string
 ---@field repository_path_pattern? string
@@ -5125,6 +5695,7 @@
 
 ---@class ApiEntitiesProjectsPackagesProtectionRuleCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_packages_protection_rule table
 ---@field id? number
 ---@field minimum_access_level_for_delete? string
 ---@field minimum_access_level_for_push? string
@@ -5134,6 +5705,7 @@
 ---@class ApiEntitiesProjectsPackagesProtectionRuleUpdateData
 ---@field id string
 ---@field project_id string
+---@field patch_api_v4_projects_id_packages_protection_rules_package_protection_rule_id table
 ---@field minimum_access_level_for_delete? string
 ---@field minimum_access_level_for_push? string
 ---@field package_name_pattern? string
@@ -5152,6 +5724,7 @@
 ---@field id string
 
 ---@class ApiEntitiesProjectsTopicCreateData
+---@field post_api_v4_topic table
 ---@field avatar_url? string
 ---@field description? string
 ---@field id? string
@@ -5162,6 +5735,7 @@
 
 ---@class ApiEntitiesProjectsTopicUpdateData
 ---@field id string
+---@field put_api_v4_topics_id table
 ---@field avatar_url? string
 ---@field description? string
 ---@field name? string
@@ -5185,9 +5759,13 @@
 
 ---@class ApiEntitiesProtectedBranchListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
+---@field search? any
 
 ---@class ApiEntitiesProtectedBranchCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_protected_branch table
 ---@field allow_force_push? boolean
 ---@field code_owner_approval_required? boolean
 ---@field id? number
@@ -5200,6 +5778,7 @@
 ---@class ApiEntitiesProtectedBranchUpdateData
 ---@field id string
 ---@field project_id string
+---@field patch_api_v4_projects_id_protected_branches_name table
 ---@field allow_force_push? boolean
 ---@field code_owner_approval_required? boolean
 ---@field inherited? boolean
@@ -5224,9 +5803,12 @@
 
 ---@class ApiEntitiesProtectedTagListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesProtectedTagCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_protected_tag table
 ---@field access_level? number
 ---@field access_level_description? string
 ---@field create_access_levels? table
@@ -5246,6 +5828,13 @@
 
 ---@class ApiEntitiesPublicGroupDetailListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
+---@field search? any
+---@field shared_min_access_level? any
+---@field shared_visible_only? any
+---@field skip_group? any
+---@field with_shared? any
 
 ---@class ApiEntitiesRelatedIssue
 ---@field assignee? table
@@ -5303,6 +5892,19 @@
 ---@class ApiEntitiesRelationImportTracker
 
 ---@class ApiEntitiesRelationImportTrackerCreateData
+---@field file any
+---@field file_etag? any
+---@field file_md5? any
+---@field file_name? any
+---@field file_path? any
+---@field file_remote_id? string
+---@field file_remote_url? any
+---@field file_sha1? any
+---@field file_sha256? any
+---@field file_size? any
+---@field file_type? any
+---@field path string
+---@field relation any
 
 ---@class ApiEntitiesRelease
 ---@field assets? table
@@ -5325,12 +5927,21 @@
 ---@class ApiEntitiesReleaseLoadMatch
 ---@field id string
 ---@field project_id string
+---@field include_html_description? any
 
 ---@class ApiEntitiesReleaseListMatch
 ---@field project_id string
+---@field include_html_description? any
+---@field order_by? any
+---@field page? number
+---@field per_page? number
+---@field sort? any
+---@field updated_after? any
+---@field updated_before? any
 
 ---@class ApiEntitiesReleaseCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_release? table
 ---@field tag_name? any
 ---@field assets? table
 ---@field author? table
@@ -5351,6 +5962,7 @@
 ---@class ApiEntitiesReleaseUpdateData
 ---@field id string
 ---@field project_id string
+---@field put_api_v4_projects_id_releases_tag_name table
 ---@field assets? table
 ---@field author? table
 ---@field commit? table
@@ -5382,10 +5994,13 @@
 ---@class ApiEntitiesReleasesLinkListMatch
 ---@field project_id string
 ---@field release_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesReleasesLinkCreateData
 ---@field project_id string
 ---@field release_id string
+---@field post_api_v4_projects_id_releases_tag_name_assets_link table
 ---@field direct_asset_url? string
 ---@field id? number
 ---@field link_type? string
@@ -5396,6 +6011,7 @@
 ---@field id string
 ---@field project_id string
 ---@field release_id string
+---@field put_api_v4_projects_id_releases_tag_name_assets_links_link_id table
 ---@field direct_asset_url? string
 ---@field link_type? string
 ---@field name? string
@@ -5422,9 +6038,12 @@
 
 ---@class ApiEntitiesRemoteMirrorListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesRemoteMirrorCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_remote_mirror table
 ---@field auth_method? string
 ---@field enabled? boolean
 ---@field host_keys? table
@@ -5442,6 +6061,7 @@
 ---@class ApiEntitiesRemoteMirrorUpdateData
 ---@field id string
 ---@field project_id string
+---@field put_api_v4_projects_id_remote_mirrors_mirror_id table
 ---@field auth_method? string
 ---@field enabled? boolean
 ---@field host_keys? table
@@ -5470,6 +6090,7 @@
 
 ---@class ApiEntitiesRepositoryHealthLoadMatch
 ---@field project_id string
+---@field generate? any
 
 ---@class ApiEntitiesResourceAccessTokenWithToken
 ---@field access_level? number
@@ -5489,6 +6110,7 @@
 
 ---@class ApiEntitiesResourceAccessTokenWithTokenCreateData
 ---@field group_id string
+---@field post_api_v4_groups_id_access_tokens_self_rotate table
 ---@field access_level? number
 ---@field active? boolean
 ---@field created_at? string
@@ -5523,6 +6145,8 @@
 ---@class ApiEntitiesResourceMilestoneEventListMatch
 ---@field issue_id? string
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 ---@field merge_request_id? string
 
 ---@class ApiEntitiesSnippet
@@ -5545,23 +6169,10 @@
 ---@field web_url? string
 
 ---@class ApiEntitiesSnippetListMatch
----@field author? table
----@field created_at? string
----@field description? string
----@field file_name? string
----@field files? table
----@field http_url_to_repo? string
----@field id? number
----@field imported? boolean
----@field imported_from? string
----@field project_id? number
----@field raw_url? string
----@field repository_storage? string
----@field ssh_url_to_repo? string
----@field title? string
----@field updated_at? string
----@field visibility? string
----@field web_url? string
+---@field created_after? any
+---@field created_before? any
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesSshKeyWithUser
 ---@field avatar_path? string
@@ -5624,6 +6235,7 @@
 ---@field to_line? string
 
 ---@class ApiEntitiesSuggestionUpdateData
+---@field put_api_v4_suggestions_batch_apply table
 ---@field appliable? string
 ---@field applied? string
 ---@field from_content? string
@@ -5650,6 +6262,7 @@
 ---@field id string
 
 ---@class ApiEntitiesSystemBroadcastMessageCreateData
+---@field post_api_v4_broadcast_message table
 ---@field active? boolean
 ---@field broadcast_type? string
 ---@field color? string
@@ -5665,6 +6278,7 @@
 
 ---@class ApiEntitiesSystemBroadcastMessageUpdateData
 ---@field id string
+---@field put_api_v4_broadcast_messages_id table
 ---@field active? boolean
 ---@field broadcast_type? string
 ---@field color? string
@@ -5696,9 +6310,16 @@
 
 ---@class ApiEntitiesTagListMatch
 ---@field project_id string
+---@field order_by? any
+---@field page? number
+---@field page_token? any
+---@field per_page? number
+---@field search? any
+---@field sort? any
 
 ---@class ApiEntitiesTagCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_repository_tag table
 ---@field commit? table
 ---@field created_at? string
 ---@field id? string
@@ -5723,8 +6344,11 @@
 ---@class ApiEntitiesTemplatesListLoadMatch
 ---@field project_id string
 ---@field type any
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesTerraformModuleVersion
+---@field id? string
 ---@field modules? string
 ---@field name? string
 ---@field provider? string
@@ -5739,6 +6363,7 @@
 ---@field module_name any
 ---@field module_system any
 ---@field v1_id? string
+---@field module_version? any
 ---@field module_namespace? any
 
 ---@class ApiEntitiesTerraformModuleVersionListMatch
@@ -5755,6 +6380,13 @@
 
 ---@class ApiEntitiesTreeObjectLoadMatch
 ---@field project_id string
+---@field page? number
+---@field page_token? any
+---@field pagination? any
+---@field path? string
+---@field per_page? number
+---@field recursive? any
+---@field ref? any
 
 ---@class ApiEntitiesTrigger
 ---@field avatar_path? string
@@ -5781,9 +6413,12 @@
 
 ---@class ApiEntitiesTriggerListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class ApiEntitiesTriggerCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_trigger table
 ---@field avatar_path? string
 ---@field avatar_url? string
 ---@field created_at? string
@@ -5805,6 +6440,7 @@
 ---@class ApiEntitiesTriggerUpdateData
 ---@field id string
 ---@field project_id string
+---@field put_api_v4_projects_id_triggers_trigger_id table
 ---@field avatar_path? string
 ---@field avatar_url? string
 ---@field created_at? string
@@ -5896,34 +6532,47 @@
 
 ---@class ApiEntitiesUserPublicListMatch
 ---@field group_id string
+---@field active? boolean
+---@field blocked? boolean
+---@field created_after? any
+---@field created_before? any
+---@field page? number
+---@field per_page? number
+---@field search? any
+---@field username? string
 
 ---@class ApiEntitiesUserWithAdmin
 ---@field key? string
 ---@field value? string
 
 ---@class ApiEntitiesUserWithAdminListMatch
----@field key? string
----@field value? string
+---@field fingerprint any
 
 ---@class ApiEntitiesWikiAttachment
 
 ---@class ApiEntitiesWikiAttachmentCreateData
 ---@field group_id string
+---@field post_api_v4_groups_id_wikis_attachment table
 
 ---@class ApiEntitiesWikiPage
 
 ---@class ApiEntitiesWikiPageLoadMatch
 ---@field group_id? string
 ---@field slug string
+---@field render_html? any
+---@field version? any
 ---@field project_id? string
 
 ---@class ApiEntitiesWikiPageCreateData
 ---@field group_id string
+---@field post_api_v4_groups_id_wiki table
 
 ---@class ApiEntitiesWikiPageUpdateData
 ---@field group_id? string
 ---@field slug string
+---@field put_api_v4_groups_id_wikis_slug? table
 ---@field project_id? string
+---@field put_api_v4_projects_id_wikis_slug? table
 
 ---@class ApiEntitiesWikiPageBasic
 ---@field format? string
@@ -5933,6 +6582,7 @@
 
 ---@class ApiEntitiesWikiPageBasicListMatch
 ---@field group_id string
+---@field with_content? any
 
 ---@class Application
 ---@field id? string
@@ -5979,6 +6629,7 @@
 ---@class CiVariableRemoveMatch
 ---@field id string
 ---@field project_id? string
+---@field filter_environment_scope? any
 ---@field group_id? string
 
 ---@class Cluster
@@ -6001,6 +6652,7 @@
 
 ---@class ComposerCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_packages_composer table
 
 ---@class ComposerPackage
 
@@ -6039,11 +6691,17 @@
 ---@field package_username any
 ---@field package_version any
 ---@field recipe_revision? any
+---@field put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name? table
 ---@field conan_id? string
 ---@field package_id? string
 ---@field project_id? string
 ---@field revision_id? string
+---@field put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_packages_conan_package_reference_revisions_package_revision_files_file_name? table
+---@field put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name? table
 ---@field file_id? string
+---@field put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_files_file_name? table
+---@field put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_export_file_name? table
+---@field put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_export_file_name? table
 
 ---@class ConanPackageRemoveMatch
 ---@field conan_id string
@@ -6061,6 +6719,11 @@
 ---@class ContainerRegistryRemoveMatch
 ---@field project_id string
 ---@field repository_id string
+---@field keep_n? any
+---@field name_regex? any
+---@field name_regex_delete? any
+---@field name_regex_keep? any
+---@field older_than? any
 ---@field tag_name? any
 
 ---@class ContainerRegistryEvent
@@ -6082,6 +6745,7 @@
 ---@class DebianUpdateData
 ---@field id string
 ---@field project_id string
+---@field put_api_v4_projects_id_packages_debian_file_name table
 
 ---@class DebianDistribution
 ---@field id? string
@@ -6089,6 +6753,14 @@
 ---@class DebianDistributionRemoveMatch
 ---@field group_id? string
 ---@field id string
+---@field architecture? any
+---@field component? any
+---@field description? string
+---@field label? string
+---@field origin? any
+---@field suite? any
+---@field valid_time_duration_second? any
+---@field version? any
 ---@field project_id? string
 
 ---@class DebianPackage
@@ -6096,16 +6768,16 @@
 
 ---@class DebianPackageLoadMatch
 ---@field distribution any
----@field file_name any
----@field id string
----@field letter any
----@field package_name any
----@field package_version any
-
----@class DebianPackageUpdateData
----@field file_name any
----@field project_id string
+---@field file_name? any
 ---@field id? string
+---@field letter? any
+---@field package_name? any
+---@field package_version? any
+---@field project_id? string
+---@field architecture? any
+---@field distribution_id? string
+---@field file_sha256? any
+---@field group_id? string
 
 ---@class DependencyProxy
 
@@ -6139,6 +6811,7 @@
 ---@class EeApiEntitiesApprovalStateCreateData
 ---@field merge_request_id string
 ---@field project_id string
+---@field post_api_v4_projects_id_merge_requests_merge_request_iid_approval table
 
 ---@class EeApiEntitiesAuditEvent
 ---@field author_id? string
@@ -6156,6 +6829,10 @@
 
 ---@class EeApiEntitiesAuditEventListMatch
 ---@field group_id string
+---@field created_after? any
+---@field created_before? any
+---@field page? number
+---@field per_page? number
 
 ---@class EeApiEntitiesBillableMembership
 ---@field custom_role? string
@@ -6165,6 +6842,8 @@
 ---@class EeApiEntitiesBillableMembershipLoadMatch
 ---@field billable_member_id string
 ---@field group_id string
+---@field page? number
+---@field per_page? number
 
 ---@class EeApiEntitiesGeoNodeStatus
 ---@field ci_secure_files_checksum_failed_count? string
@@ -6406,6 +7085,7 @@
 ---@field version? string
 
 ---@class EeApiEntitiesGeoNodeStatusCreateData
+---@field post_api_v4_geo_status table
 ---@field ci_secure_files_checksum_failed_count? string
 ---@field ci_secure_files_checksum_total_count? string
 ---@field ci_secure_files_checksummed_count? string
@@ -6661,6 +7341,7 @@
 ---@class EeApiEntitiesIssuableMetricImageCreateData
 ---@field issue_id string
 ---@field project_id string
+---@field post_api_v4_projects_id_issues_issue_iid_metric_image table
 ---@field created_at? string
 ---@field file_path? string
 ---@field filename? string
@@ -6672,6 +7353,7 @@
 ---@field id string
 ---@field issue_id string
 ---@field project_id string
+---@field put_api_v4_projects_id_issues_issue_iid_metric_images_metric_image_id table
 ---@field created_at? string
 ---@field file_path? string
 ---@field filename? string
@@ -6712,9 +7394,12 @@
 
 ---@class EeApiEntitiesSshCertificateListMatch
 ---@field group_id string
+---@field page? number
+---@field per_page? number
 
 ---@class EeApiEntitiesSshCertificateCreateData
 ---@field group_id string
+---@field post_api_v4_groups_id_ssh_certificate table
 ---@field created_at? string
 ---@field id? number
 ---@field key? string
@@ -6725,6 +7410,7 @@
 
 ---@class EnvironmentCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_environments_stop_stale table
 ---@field id? string
 
 ---@class EnvironmentRemoveMatch
@@ -6749,9 +7435,13 @@
 
 ---@class FeatureFlagLoadMatch
 ---@field project_id string
+---@field app_name? any
+---@field instance_id? string
 
 ---@class FeatureFlagCreateData
 ---@field unleash_id string
+---@field post_api_v4_feature_flags_unleash_project_id_client_metric? table
+---@field post_api_v4_feature_flags_unleash_project_id_client_register? table
 ---@field id? string
 
 ---@class FeatureFlagRemoveMatch
@@ -6778,25 +7468,33 @@
 ---@field file_name any
 ---@field generic_id string
 ---@field project_id string
+---@field package_version any
+---@field path? string
 
 ---@class GenericPackageUpdateData
 ---@field file_name any
 ---@field generic_id string
 ---@field project_id string
+---@field ["put_api_v4_projects_id_packages_generic_package_name*package_version(*path)_file_name"]? table
+---@field ["put_api_v4_projects_id_packages_generic_package_name*package_version(*path)_file_name_authorize"]? table
 
 ---@class Geo
+---@field id? string
 
 ---@class GeoLoadMatch
 ---@field replicable_id string
 ---@field replicable_name any
 
 ---@class GeoCreateData
+---@field post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack table
+---@field id? string
 
 ---@class GoProxy
 
 ---@class GoProxyLoadMatch
 ---@field module_version? any
 ---@field project_id string
+---@field module_name any
 
 ---@class Group
 ---@field id? string
@@ -6809,11 +7507,13 @@
 
 ---@class GroupCreateData
 ---@field id string
+---@field post_api_v4_groups_id_placeholder_reassignment? table
+---@field post_api_v4_groups_id_tokens_revoke? table
 
 ---@class GroupUpdateData
 ---@field id string
----@field key? string
----@field member_id? string
+---@field key string
+---@field put_api_v4_groups_id_custom_attributes_key table
 
 ---@class GroupRemoveMatch
 ---@field filename? any
@@ -6836,6 +7536,9 @@
 
 ---@class GroupExportLoadMatch
 ---@field group_id string
+---@field batch_number? number
+---@field batched? any
+---@field relation? any
 
 ---@class GroupExportCreateData
 ---@field id string
@@ -6843,6 +7546,11 @@
 ---@class GroupImport
 
 ---@class GroupImportCreateData
+---@field file any
+---@field name string
+---@field organization_id? string
+---@field parent_id? string
+---@field path string
 
 ---@class HelmPackage
 
@@ -6855,6 +7563,7 @@
 ---@class HelmPackageCreateData
 ---@field channel? any
 ---@field project_id string
+---@field post_api_v4_projects_id_packages_helm_api_channel_chart? table
 ---@field api_id? string
 
 ---@class Hook
@@ -6866,6 +7575,8 @@
 ---@class HookUpdateData
 ---@field id string
 ---@field key string
+---@field put_api_v4_hooks_hook_id_custom_headers_key? table
+---@field put_api_v4_hooks_hook_id_url_variables_key? table
 
 ---@class HookRemoveMatch
 ---@field id string
@@ -6874,11 +7585,13 @@
 ---@class Import
 
 ---@class ImportCreateData
+---@field post_api_v4_import_github_gist table
 
 ---@class Integration
 ---@field id? string
 
 ---@class IntegrationCreateData
+---@field post_api_v4_integrations_slack_event table
 ---@field id? string
 
 ---@class IntegrationRemoveMatch
@@ -6904,36 +7617,81 @@
 ---@class IssuesStatistic
 
 ---@class IssuesStatisticLoadMatch
+---@field assignee_id? string
+---@field assignee_username? any
+---@field author_id? string
+---@field author_username? any
+---@field confidential? any
+---@field created_after? any
+---@field created_before? any
+---@field epic_id? string
+---@field health_status? any
+---@field iid? any
+---@field in? any
+---@field iteration_id? string
+---@field iteration_title? any
+---@field label? string
+---@field milestone? any
+---@field milestone_id? string
+---@field my_reaction_emoji? any
+---@field not_assignee_id? string
+---@field not_assignee_username? any
+---@field not_author_id? string
+---@field not_author_username? any
+---@field not_iid? any
+---@field not_iteration_id? string
+---@field not_iteration_title? any
+---@field not_label? any
+---@field not_milestone? any
+---@field not_milestone_id? string
+---@field not_weight? any
+---@field scope? any
+---@field search? any
+---@field updated_after? any
+---@field updated_before? any
+---@field weight? number
 
 ---@class Job
 ---@field id? string
 
 ---@class JobLoadMatch
 ---@field id string
+---@field direct_download? any
+---@field token? string
 
 ---@class JobCreateData
+---@field post_api_v4_jobs_request table
 ---@field id? string
 
 ---@class JobUpdateData
 ---@field id string
+---@field put_api_v4_jobs_id table
 
 ---@class MavenPackage
 
 ---@class MavenPackageLoadMatch
 ---@field file_name any
 ---@field group_id? string
+---@field path string
 ---@field project_id? string
 
 ---@class MavenPackageUpdateData
 ---@field file_name any
 ---@field project_id string
+---@field ["put_api_v4_projects_id_packages_maven*path_file_name"] table
 
 ---@class Member
 ---@field id? string
 
+---@class MemberUpdateData
+---@field group_id string
+---@field id string
+
 ---@class MemberRemoveMatch
 ---@field group_id? string
 ---@field id string
+---@field skip_subresource? any
+---@field unassign_issuable? any
 ---@field project_id? string
 
 ---@class MergeRequest
@@ -6942,6 +7700,8 @@
 ---@class MergeRequestLoadMatch
 ---@field id string
 ---@field project_id string
+---@field page? number
+---@field per_page? number
 
 ---@class MergeRequestUpdateData
 ---@field id string
@@ -6967,6 +7727,7 @@
 
 ---@class MigrationCreateData
 ---@field timestamp any
+---@field post_api_v4_admin_migrations_timestamp_mark table
 
 ---@class MlModelRegistry
 
@@ -6974,11 +7735,15 @@
 ---@field file_name any
 ---@field ml_model_id string
 ---@field project_id string
+---@field path? string
+---@field status? any
 
 ---@class MlModelRegistryUpdateData
 ---@field file_name any
 ---@field ml_model_id string
 ---@field project_id string
+---@field ["put_api_v4_projects_id_packages_ml_models_model_version_id_files(*path)_file_name"]? table
+---@field ["put_api_v4_projects_id_packages_ml_models_model_version_id_files(*path)_file_name_authorize"]? table
 
 ---@class Namespace
 ---@field id? string
@@ -6992,28 +7757,36 @@
 ---@class NpmUpdateData
 ---@field id string
 ---@field project_id string
+---@field put_api_v4_projects_id_packages_npm_package_name table
 
 ---@class NpmPackage
 
 ---@class NpmPackageLoadMatch
 ---@field project_id string
+---@field file_name any
+---@field package_name any
 
 ---@class NpmPackageCreateData
 
 ---@class NpmPackageUpdateData
 ---@field group_id? string
 ---@field tag any
+---@field ["put_api_v4_groups_id_packages_npm_package*package_name_dist_tags_tag"]? table
 ---@field project_id? string
+---@field ["put_api_v4_projects_id_packages_npm_package*package_name_dist_tags_tag"]? table
+---@field ["put_api_v4_packages_npm_package*package_name_dist_tags_tag"]? table
 
 ---@class NpmPackageRemoveMatch
 ---@field group_id? string
 ---@field tag any
+---@field package_name any
 ---@field project_id? string
 
 ---@class Nuget
 
 ---@class NugetUpdateData
 ---@field project_id string
+---@field put_api_v4_projects_id_packages_nuget table
 
 ---@class NugetPackage
 ---@field authors? string
@@ -7037,10 +7810,14 @@
 ---@field project_id string
 
 ---@class NugetPackageListMatch
----@field project_id string
+---@field group_id? string
+---@field package_name any
+---@field project_id? string
 
 ---@class NugetPackageUpdateData
 ---@field project_id string
+---@field put_api_v4_projects_id_packages_nuget_symbolpackage? table
+---@field put_api_v4_projects_id_packages_nuget_v2? table
 ---@field authors? string
 ---@field count? number
 ---@field dependencyGroups? table
@@ -7060,6 +7837,8 @@
 
 ---@class NugetPackageRemoveMatch
 ---@field project_id string
+---@field package_name any
+---@field package_version any
 
 ---@class PackageFile
 ---@field id? string
@@ -7081,6 +7860,7 @@
 
 ---@class PageUpdateData
 ---@field project_id string
+---@field patch_api_v4_projects_id_page table
 
 ---@class PageRemoveMatch
 ---@field project_id string
@@ -7127,9 +7907,19 @@
 ---@class ProjectLoadMatch
 ---@field artifact_id? string
 ---@field id string
+---@field artifact_path? any
+---@field job? any
+---@field job_token? any
 ---@field file_path? any
+---@field range_end? any
+---@field range_start? any
+---@field ref? any
 ---@field hook_id? string
+---@field page? number
+---@field per_page? number
+---@field status? any
 ---@field job_id? string
+---@field lfs? any
 ---@field ref_name? any
 ---@field filename? any
 ---@field secret? any
@@ -7143,10 +7933,10 @@
 ---@field hook_id? string
 ---@field id string
 ---@field file_path? any
+---@field post_api_v4_projects_id_repository_files_file_path? table
 ---@field trigger? any
 ---@field issue_id? string
 ---@field merge_request_id? string
----@field pipeline_schedule_id? string
 ---@field project_id? string
 ---@field before_sha? string
 ---@field committed_at? string
@@ -7173,11 +7963,13 @@
 ---@field hook_id? string
 ---@field id string
 ---@field key? string
+---@field put_api_v4_projects_id_hooks_hook_id_custom_headers_key? table
+---@field put_api_v4_projects_id_hooks_hook_id_url_variables_key? table
 ---@field domain? any
----@field draft_note_id? string
----@field merge_request_id? string
+---@field put_api_v4_projects_id_pages_domains_domain? table
 ---@field file_path? any
----@field pipeline_id? string
+---@field put_api_v4_projects_id_repository_files_file_path? table
+---@field put_api_v4_projects_id_custom_attributes_key? table
 ---@field before_sha? string
 ---@field committed_at? string
 ---@field coverage? number
@@ -7203,6 +7995,11 @@
 ---@class ProjectRemoveMatch
 ---@field file_path? any
 ---@field id string
+---@field author_email? any
+---@field author_name? any
+---@field branch? any
+---@field commit_message? any
+---@field start_branch? any
 ---@field draft_note_id? string
 ---@field merge_request_id? string
 ---@field filename? any
@@ -7230,15 +8027,20 @@
 ---@class ProjectEntity
 
 ---@class ProjectEntityCreateData
+---@field post_api_v4_import_bitbucket_server table
 
 ---@class ProjectExport
 ---@field id? string
 
 ---@class ProjectExportLoadMatch
 ---@field project_id string
+---@field batch_number? number
+---@field batched? any
+---@field relation? any
 
 ---@class ProjectExportCreateData
 ---@field id string
+---@field post_api_v4_projects_id_export table
 
 ---@class ProjectHook
 ---@field id? string
@@ -7267,6 +8069,7 @@
 ---@field relation_type? string
 
 ---@class ProjectImportEntityCreateData
+---@field post_api_v4_import_bitbucket table
 ---@field forked? boolean
 ---@field full_name? string
 ---@field full_path? string
@@ -7299,6 +8102,7 @@
 
 ---@class ProjectsJobTokenScopeUpdateData
 ---@field project_id string
+---@field patch_api_v4_projects_id_job_token_scope table
 
 ---@class ProjectsJobTokenScopeRemoveMatch
 ---@field project_id string
@@ -7316,6 +8120,7 @@
 
 ---@class PypiCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_packages_pypi table
 
 ---@class PypiPackage
 
@@ -7330,6 +8135,7 @@
 
 ---@class ReleaseLoadMatch
 ---@field project_id string
+---@field suffix_path any
 
 ---@class ReleaseRemoveMatch
 ---@field id string
@@ -7350,10 +8156,6 @@
 ---@field id string
 ---@field project_id string
 
----@class RemoteMirrorCreateData
----@field id string
----@field project_id string
-
 ---@class RemoteMirrorRemoveMatch
 ---@field id string
 ---@field project_id string
@@ -7367,6 +8169,8 @@
 
 ---@class RpmPackageLoadMatch
 ---@field project_id string
+---@field file_name any
+---@field package_file_id? string
 
 ---@class RpmPackageCreateData
 ---@field project_id string
@@ -7383,14 +8187,17 @@
 ---@class RubygemPackageLoadMatch
 ---@field file_name? any
 ---@field project_id string
+---@field gem? any
 
 ---@class RubygemPackageCreateData
 ---@field project_id string
+---@field post_api_v4_projects_id_packages_rubygems_api_v1_gem? table
 
 ---@class Runner
 ---@field id? string
 
 ---@class RunnerCreateData
+---@field post_api_v4_runners_verify table
 ---@field id? string
 
 ---@class RunnerRemoveMatch
@@ -7399,6 +8206,13 @@
 ---@class Search
 
 ---@class SearchLoadMatch
+---@field confidential? any
+---@field field? any
+---@field page? number
+---@field per_page? number
+---@field scope any
+---@field search any
+---@field state? any
 
 ---@class SecureFile
 ---@field id? string
@@ -7414,6 +8228,7 @@
 ---@class Slack
 
 ---@class SlackCreateData
+---@field post_api_v4_slack_trigger table
 
 ---@class Snippet
 ---@field id? string
@@ -7440,6 +8255,9 @@
 
 ---@class StarrerListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
+---@field search? any
 
 ---@class SystemHook
 ---@field id? string
@@ -7461,6 +8279,8 @@
 ---@field module_id? string
 ---@field module_system any
 ---@field project_id? string
+---@field module_version? any
+---@field terraform_get? any
 ---@field id? string
 ---@field module_name? any
 ---@field v1_id? string
@@ -7469,6 +8289,9 @@
 ---@field module_id string
 ---@field module_system any
 ---@field project_id string
+---@field file? any
+---@field module_version? any
+---@field ["put_api_v4_projects_id_packages_terraform_modules_module_name_module_system*module_version_file_authorize"]? table
 ---@field id? string
 
 ---@class TerraformState
@@ -7481,12 +8304,10 @@
 ---@field id? string
 
 ---@class TerraformStateCreateData
----@field name? string
+---@field id string
 ---@field project_id string
----@field id? string
 
 ---@class TerraformStateRemoveMatch
----@field name? string
 ---@field project_id string
 ---@field serial? any
 ---@field state_id? string
@@ -7526,12 +8347,16 @@
 
 ---@class UnleashApiLoadMatch
 ---@field unleash_id string
+---@field app_name? any
+---@field instance_id? string
 
 ---@class UsageData
 
 ---@class UsageDataLoadMatch
+---@field include_path? any
 
 ---@class UsageDataCreateData
+---@field post_api_v4_usage_data_increment_counter table
 
 ---@class User
 ---@field avatar_path? string
@@ -7547,6 +8372,10 @@
 
 ---@class UserListMatch
 ---@field project_id string
+---@field page? number
+---@field per_page? number
+---@field search? any
+---@field skip_user? any
 
 ---@class WebCommit
 

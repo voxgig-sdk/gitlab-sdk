@@ -518,6 +518,11 @@ guide: {
       op: load: method: *GET
       op: update: method: *PUT
     }
+    path: "/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/play": {
+      action: "play": {}
+      rename: param: "id": *"project_id"
+      op: create: method: *POST
+    }
     path: "/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership": {
       rename: param: "id": *"project_id"
       op: create: method: *POST
@@ -1011,6 +1016,12 @@ guide: {
       op: update: method: *PUT
       op: update: transform: res: *("`body.position`")|top
     }
+    path: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/{draft_note_id}/publish": {
+      action: "publish": {}
+      rename: param: "id": *"project_id"
+      rename: param: "merge_request_iid": *"merge_request_id"
+      op: update: method: *PUT
+    }
   }
 
   entity: api_entities_environment: {
@@ -1186,11 +1197,26 @@ guide: {
     path: "/api/v4/groups/{id}": {
       op: load: method: *GET
     }
+    path: "/api/v4/groups/{id}/ldap_sync": {
+      action: "ldap_sync": {}
+      rename: param: "id": *"group_id"
+      op: create: method: *POST
+    }
     path: "/api/v4/groups/{id}/projects/{project_id}": {
       rename: param: "id": *"group_id"
       op: create: method: *POST
     }
+    path: "/api/v4/groups/{id}/restore": {
+      action: "restore": {}
+      rename: param: "id": *"group_id"
+      op: create: method: *POST
+    }
     path: "/api/v4/groups/{id}/share": {
+      rename: param: "id": *"group_id"
+      op: create: method: *POST
+    }
+    path: "/api/v4/groups/{id}/transfer": {
+      action: "transfer": {}
       rename: param: "id": *"group_id"
       op: create: method: *POST
     }
@@ -2049,6 +2075,12 @@ guide: {
       op: create: method: *POST
       op: remove: method: *DELETE
     }
+    path: "/api/v4/groups/{id}/members/{user_id}/state": {
+      action: "state": {}
+      rename: param: "id": *"group_id"
+      rename: param: "user_id": *"member_id"
+      op: update: method: *PUT
+    }
     path: "/api/v4/projects/{id}/members": {
       rename: param: "id": *"project_id"
       op: create: method: *POST
@@ -2086,6 +2118,12 @@ guide: {
       op: create: method: *POST
     }
     path: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/merge": {
+      rename: param: "id": *"project_id"
+      rename: param: "merge_request_iid": *"merge_request_id"
+      op: update: method: *PUT
+    }
+    path: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/rebase": {
+      action: "rebase": {}
       rename: param: "id": *"project_id"
       rename: param: "merge_request_iid": *"merge_request_id"
       op: update: method: *PUT
@@ -2755,6 +2793,21 @@ guide: {
     path: "/api/v4/projects/{id}": {
       op: load: method: *GET
     }
+    path: "/api/v4/projects/{id}/create_ci_config": {
+      action: "create_ci_config": {}
+      rename: param: "id": *"project_id"
+      op: create: method: *POST
+    }
+    path: "/api/v4/projects/{id}/housekeeping": {
+      action: "housekeeping": {}
+      rename: param: "id": *"project_id"
+      op: create: method: *POST
+    }
+    path: "/api/v4/projects/{id}/repository_size": {
+      action: "repository_size": {}
+      rename: param: "id": *"project_id"
+      op: create: method: *POST
+    }
   }
 
   entity: api_entities_projects_container_registry_protection_rule: {
@@ -2900,6 +2953,12 @@ guide: {
       rename: param: "mirror_id": *"id"
       op: load: method: *GET
       op: update: method: *PUT
+    }
+    path: "/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync": {
+      action: "sync": {}
+      rename: param: "id": *"project_id"
+      rename: param: "mirror_id": *"remote_mirror_id"
+      op: create: method: *POST
     }
   }
 
@@ -3327,6 +3386,7 @@ guide: {
       op: update: method: *PUT
     }
     path: "/api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}/authorize": {
+      action: "authorize": {}
       rename: param: "package_name": *"file_id"
       op: update: method: *PUT
     }
@@ -3364,6 +3424,7 @@ guide: {
       op: update: method: *PUT
     }
     path: "/api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}/authorize": {
+      action: "authorize": {}
       rename: param: "id": *"project_id"
       rename: param: "package_name": *"file_id"
       op: update: method: *PUT
@@ -3407,6 +3468,7 @@ guide: {
       op: update: method: *PUT
     }
     path: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/files/{file_name}/authorize": {
+      action: "authorize": {}
       rename: param: "id": *"project_id"
       rename: param: "package_name": *"conan_id"
       rename: param: "recipe_revision": *"revision_id"
@@ -3429,6 +3491,7 @@ guide: {
       op: update: method: *PUT
     }
     path: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/packages/{conan_package_reference}/revisions/{package_revision}/files/{file_name}/authorize": {
+      action: "authorize": {}
       rename: param: "conan_package_reference": *"package_id"
       rename: param: "id": *"project_id"
       rename: param: "package_name": *"conan_id"
@@ -3501,6 +3564,11 @@ guide: {
   entity: debian: {
     path: "/api/v4/projects/{id}/packages/debian/{file_name}": {
       rename: param: "file_name": *"id"
+      rename: param: "id": *"project_id"
+      op: update: method: *PUT
+    }
+    path: "/api/v4/projects/{id}/packages/debian/{file_name}/authorize": {
+      action: "authorize": {}
       rename: param: "id": *"project_id"
       op: update: method: *PUT
     }
@@ -3609,10 +3677,6 @@ guide: {
     }
     path: "/api/v4/projects/{id}/packages/debian/pool/{distribution}/{letter}/{package_name}/{package_version}/{file_name}": {
       op: load: method: *GET
-    }
-    path: "/api/v4/projects/{id}/packages/debian/{file_name}/authorize": {
-      rename: param: "id": *"project_id"
-      op: update: method: *PUT
     }
   }
 
@@ -3883,20 +3947,9 @@ guide: {
       action: "issues_statistic": {}
       op: load: method: *GET
     }
-    path: "/api/v4/groups/{id}/ldap_sync": {
-      action: "ldap_sync": {}
-      op: create: method: *POST
-    }
     path: "/api/v4/groups/{id}/members/approve_all": {
       action: "member_approve_all": {}
       op: create: method: *POST
-    }
-    path: "/api/v4/groups/{id}/members/{member_id}/approve": {
-      op: update: method: *PUT
-    }
-    path: "/api/v4/groups/{id}/members/{user_id}/state": {
-      rename: param: "user_id": *"member_id"
-      op: update: method: *PUT
     }
     path: "/api/v4/groups/{id}/pending_members": {
       action: "pending_member": {}
@@ -3911,10 +3964,6 @@ guide: {
       action: "placeholder_reassignment_authorize": {}
       op: create: method: *POST
     }
-    path: "/api/v4/groups/{id}/restore": {
-      action: "restore": {}
-      op: create: method: *POST
-    }
     path: "/api/v4/groups/{id}/share/{group_id}": {
       op: remove: method: *DELETE
     }
@@ -3923,10 +3972,6 @@ guide: {
     }
     path: "/api/v4/groups/{id}/tokens/revoke": {
       action: "token_revoke": {}
-      op: create: method: *POST
-    }
-    path: "/api/v4/groups/{id}/transfer": {
-      action: "transfer": {}
       op: create: method: *POST
     }
     path: "/api/v4/groups/{id}/uploads/{secret}/{filename}": {
@@ -4123,12 +4168,19 @@ guide: {
       op: update: method: *PUT
     }
     path: "/api/v4/projects/{id}/packages/maven/*path/{file_name}/authorize": {
+      action: "authorize": {}
       rename: param: "id": *"project_id"
       op: update: method: *PUT
     }
   }
 
   entity: member: {
+    path: "/api/v4/groups/{id}/members/{member_id}/approve": {
+      action: "approve": {}
+      rename: param: "id": *"group_id"
+      rename: param: "member_id": *"id"
+      op: update: method: *PUT
+    }
     path: "/api/v4/groups/{id}/members/{user_id}": {
       rename: param: "id": *"group_id"
       rename: param: "user_id": *"id"
@@ -4164,12 +4216,6 @@ guide: {
       rename: param: "id": *"project_id"
       rename: param: "merge_request_iid": *"id"
       op: load: method: *GET
-    }
-    path: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/rebase": {
-      action: "rebase": {}
-      rename: param: "id": *"project_id"
-      rename: param: "merge_request_iid": *"id"
-      op: update: method: *PUT
     }
     path: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/related_issues": {
       action: "related_issue": {}
@@ -4423,10 +4469,6 @@ guide: {
       action: "artifact": {}
       op: remove: method: *DELETE
     }
-    path: "/api/v4/projects/{id}/create_ci_config": {
-      action: "create_ci_config": {}
-      op: create: method: *POST
-    }
     path: "/api/v4/projects/{id}/custom_attributes/{key}": {
       op: remove: method: *DELETE
       op: update: method: *PUT
@@ -4452,10 +4494,6 @@ guide: {
     path: "/api/v4/projects/{id}/hooks/{hook_id}/url_variables/{key}": {
       op: remove: method: *DELETE
       op: update: method: *PUT
-    }
-    path: "/api/v4/projects/{id}/housekeeping": {
-      action: "housekeeping": {}
-      op: create: method: *POST
     }
     path: "/api/v4/projects/{id}/import_project_members/{project_id}": {
       op: create: method: *POST
@@ -4501,10 +4539,6 @@ guide: {
       rename: param: "merge_request_iid": *"merge_request_id"
       op: remove: method: *DELETE
     }
-    path: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/{draft_note_id}/publish": {
-      rename: param: "merge_request_iid": *"merge_request_id"
-      op: update: method: *PUT
-    }
     path: "/api/v4/projects/{id}/packages/protection/rules/{package_protection_rule_id}": {
       op: remove: method: *DELETE
     }
@@ -4519,9 +4553,6 @@ guide: {
     path: "/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}": {
       op: remove: method: *DELETE
     }
-    path: "/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/play": {
-      op: create: method: *POST
-    }
     path: "/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/variables/{key}": {
       op: remove: method: *DELETE
     }
@@ -4534,6 +4565,7 @@ guide: {
       op: remove: method: *DELETE
     }
     path: "/api/v4/projects/{id}/pipelines/{pipeline_id}/metadata": {
+      action: "metadata": {}
       op: update: method: *PUT
     }
     path: "/api/v4/projects/{id}/protected_branches/{name}": {
@@ -4569,10 +4601,6 @@ guide: {
     }
     path: "/api/v4/projects/{id}/repository/files/{file_path}/raw": {
       op: load: method: *GET
-    }
-    path: "/api/v4/projects/{id}/repository_size": {
-      action: "repository_size": {}
-      op: create: method: *POST
     }
     path: "/api/v4/projects/{id}/share/{group_id}": {
       op: remove: method: *DELETE
@@ -4773,12 +4801,6 @@ guide: {
       rename: param: "mirror_id": *"id"
       op: load: method: *GET
     }
-    path: "/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync": {
-      action: "sync": {}
-      rename: param: "id": *"project_id"
-      rename: param: "mirror_id": *"id"
-      op: create: method: *POST
-    }
   }
 
   entity: rpm: {
@@ -4961,6 +4983,7 @@ guide: {
       op: remove: method: *DELETE
     }
     path: "/api/v4/projects/{id}/terraform/state/{name}/lock": {
+      action: "lock": {}
       rename: param: "id": *"project_id"
       op: create: method: *POST
       op: remove: method: *DELETE

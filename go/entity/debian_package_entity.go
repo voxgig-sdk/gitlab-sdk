@@ -304,43 +304,9 @@ func (e *DebianPackageEntity) Create(_ map[string]any, _ map[string]any) (any, e
 }
 
 
-
-func (e *DebianPackageEntity) Update(reqdata map[string]any, ctrl map[string]any) (any, error) {
-	utility := e.utility
-	ctx := utility.MakeContext(map[string]any{
-		"opname":  "update",
-		"ctrl":    ctrl,
-		"match":   e.match,
-		"data":    e.data,
-		"reqdata": reqdata,
-	}, e.entctx)
-
-	return e.runOp(ctx, func() {
-		if ctx.Result != nil {
-			if ctx.Result.Resmatch != nil {
-				e.match = ctx.Result.Resmatch
-			}
-			if ctx.Result.Resdata != nil {
-				e.data = core.ToMapAny(vs.Clone(ctx.Result.Resdata))
-				if e.data == nil {
-					e.data = map[string]any{}
-				}
-			}
-		}
-	})
+func (e *DebianPackageEntity) Update(_ map[string]any, _ map[string]any) (any, error) {
+	return core.UnsupportedOp("update", e.name)
 }
-
-// UpdateTyped is the statically-typed variant of Update: it takes an
-// DebianPackageUpdateData and returns an DebianPackage. It delegates to the untyped
-// Update (identical runtime) and converts at the typed boundary.
-func (e *DebianPackageEntity) UpdateTyped(reqdata DebianPackageUpdateData, ctrl map[string]any) (DebianPackage, error) {
-	res, err := e.Update(asMap(reqdata), ctrl)
-	if err != nil {
-		return DebianPackage{}, err
-	}
-	return typedFrom[DebianPackage](res), nil
-}
-
 
 
 func (e *DebianPackageEntity) Remove(_ map[string]any, _ map[string]any) (any, error) {

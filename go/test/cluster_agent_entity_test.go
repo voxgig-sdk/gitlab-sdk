@@ -48,7 +48,7 @@ func TestClusterAgentEntity(t *testing.T) {
 			return
 		}
 		// Bootstrap entity data from existing test data (no create step in flow).
-		clusterAgentRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.cluster_agent", setup.data)))
+		clusterAgentRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.cluster_agent")))
 		var clusterAgentRef01Data map[string]any
 		if len(clusterAgentRef01DataRaw) > 0 {
 			clusterAgentRef01Data = core.ToMapAny(clusterAgentRef01DataRaw[0][1])
@@ -84,7 +84,7 @@ func cluster_agentBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"cluster_agent01", "cluster_agent02", "cluster_agent03", "project01", "project02", "project03", "token01", "token02", "token03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -104,7 +104,7 @@ func cluster_agentBasicSetup(extra map[string]any) *entityTestSetup {
 		"GITLAB_TEST_CLUSTER_AGENT_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_CLUSTER_AGENT_ENTID"])
@@ -113,11 +113,23 @@ func cluster_agentBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

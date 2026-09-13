@@ -44,12 +44,17 @@ describe("GeoEntity", function()
     assert.is_nil(err)
     geo_ref01_data = helpers.to_map(type(geo_ref01_data_result) == 'table' and geo_ref01_data_result.data_get and geo_ref01_data_result:data_get() or geo_ref01_data_result)
     assert.is_not_nil(geo_ref01_data)
+    assert.is_not_nil(geo_ref01_data["id"])
 
     -- LOAD
-    local geo_ref01_match_dt0 = {}
+    local geo_ref01_match_dt0 = {
+      id = geo_ref01_data["id"],
+    }
     local geo_ref01_data_dt0_loaded, err = geo_ref01_ent:load(geo_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(geo_ref01_data_dt0_loaded)
+    local geo_ref01_data_dt0_load_result = helpers.to_map(type(geo_ref01_data_dt0_loaded) == 'table' and geo_ref01_data_dt0_loaded.data_get and geo_ref01_data_dt0_loaded:data_get() or geo_ref01_data_dt0_loaded)
+    assert.is_not_nil(geo_ref01_data_dt0_load_result)
+    assert.are.equal(geo_ref01_data_dt0_load_result["id"], geo_ref01_data["id"])
 
   end)
 end)
@@ -93,7 +98,7 @@ function geo_basic_setup(extra)
     ["GITLAB_TEST_GEO_ENTID"] = idmap,
     ["GITLAB_TEST_LIVE"] = "FALSE",
     ["GITLAB_TEST_EXPLAIN"] = "FALSE",
-    ["GITLAB_APIKEY"] = "NONE",
+    ["GITLAB_APIKEY"] = "",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -104,6 +109,9 @@ function geo_basic_setup(extra)
 
   if env["GITLAB_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
         apikey = env["GITLAB_APIKEY"],
       },

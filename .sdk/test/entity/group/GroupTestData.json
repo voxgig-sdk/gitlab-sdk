@@ -9,8 +9,7 @@
         "group_id": "GROUP01",
         "key": "KEY01",
         "ssh_certificates_id": "SSH_CERTIFICATES01",
-        "user_id": "USER01",
-        "member_id": "MEMBER01"
+        "user_id": "USER01"
       },
       "GROUP01": {
         "id": "GROUP01",
@@ -20,8 +19,7 @@
         "group_id": "GROUP01",
         "key": "KEY01",
         "ssh_certificates_id": "SSH_CERTIFICATES01",
-        "user_id": "USER01",
-        "member_id": "MEMBER01"
+        "user_id": "USER01"
       },
       "GROUP02": {
         "id": "GROUP02",
@@ -31,8 +29,7 @@
         "group_id": "GROUP01",
         "key": "KEY01",
         "ssh_certificates_id": "SSH_CERTIFICATES01",
-        "user_id": "USER01",
-        "member_id": "MEMBER01"
+        "user_id": "USER01"
       }
     }
   },

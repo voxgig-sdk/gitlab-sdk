@@ -70,15 +70,18 @@ def _api_entities_merge_request_diff_full_direct_setup(mockres):
     env = runner.env_override({
         "GITLAB_TEST_API_ENTITIES_MERGE_REQUEST_DIFF_FULL_ENTID": {},
         "GITLAB_TEST_LIVE": "FALSE",
-        "GITLAB_APIKEY": "NONE",
+        "GITLAB_APIKEY": "",
     })
 
     live = env.get("GITLAB_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
             "apikey": env.get("GITLAB_APIKEY"),
-        }
+        })
         client = GitlabSDK(merged_opts)
         return {
             "client": client,

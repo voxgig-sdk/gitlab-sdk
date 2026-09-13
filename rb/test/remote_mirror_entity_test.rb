@@ -16,7 +16,7 @@ class RemoteMirrorEntityTest < Minitest::Test
     setup = remote_mirror_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "load", "remove"].each do |_op|
+    ["load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "remote_mirror." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -31,19 +31,16 @@ class RemoteMirrorEntityTest < Minitest::Test
     end
     client = setup[:client]
 
-    # CREATE
-    remote_mirror_ref01_ent = client.RemoteMirror(nil)
-    remote_mirror_ref01_data = Helpers.to_map(Vs.getprop(
-      Vs.getpath(setup[:data], "new.remote_mirror"), "remote_mirror_ref01"))
-    remote_mirror_ref01_data["mirror_id"] = setup[:idmap]["mirror01"]
-    remote_mirror_ref01_data["project_id"] = setup[:idmap]["project01"]
-
-    remote_mirror_ref01_data_result = remote_mirror_ref01_ent.create(remote_mirror_ref01_data, nil)
-    remote_mirror_ref01_data = Helpers.to_map(remote_mirror_ref01_data_result.respond_to?(:data_get) ? remote_mirror_ref01_data_result.data_get : remote_mirror_ref01_data_result)
-    assert !remote_mirror_ref01_data.nil?
-    assert !remote_mirror_ref01_data["id"].nil?
+    # Bootstrap entity data from existing test data.
+    remote_mirror_ref01_data_raw = Vs.items(Helpers.to_map(
+      Vs.getpath(setup[:data], "existing.remote_mirror")))
+    remote_mirror_ref01_data = nil
+    if remote_mirror_ref01_data_raw.length > 0
+      remote_mirror_ref01_data = Helpers.to_map(remote_mirror_ref01_data_raw[0][1])
+    end
 
     # LOAD
+    remote_mirror_ref01_ent = client.RemoteMirror(nil)
     remote_mirror_ref01_match_dt0 = {
       "id" => remote_mirror_ref01_data["id"],
     }
@@ -51,12 +48,6 @@ class RemoteMirrorEntityTest < Minitest::Test
     remote_mirror_ref01_data_dt0_load_result = Helpers.to_map(remote_mirror_ref01_data_dt0_loaded.respond_to?(:data_get) ? remote_mirror_ref01_data_dt0_loaded.data_get : remote_mirror_ref01_data_dt0_loaded)
     assert !remote_mirror_ref01_data_dt0_load_result.nil?
     assert_equal remote_mirror_ref01_data_dt0_load_result["id"], remote_mirror_ref01_data["id"]
-
-    # REMOVE
-    remote_mirror_ref01_match_rm0 = {
-      "id" => remote_mirror_ref01_data["id"],
-    }
-    remote_mirror_ref01_ent.remove(remote_mirror_ref01_match_rm0, nil)
 
   end
 end
@@ -75,7 +66,7 @@ def remote_mirror_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["remote_mirror01", "remote_mirror02", "remote_mirror03", "project01", "project02", "project03", "mirror01"],
+    ["remote_mirror01", "remote_mirror02", "remote_mirror03", "project01", "project02", "project03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",
@@ -94,7 +85,7 @@ def remote_mirror_basic_setup(extra)
     "GITLAB_TEST_REMOTE_MIRROR_ENTID" => idmap,
     "GITLAB_TEST_LIVE" => "FALSE",
     "GITLAB_TEST_EXPLAIN" => "FALSE",
-    "GITLAB_APIKEY" => "NONE",
+    "GITLAB_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,6 +96,9 @@ def remote_mirror_basic_setup(extra)
 
   if env["GITLAB_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["GITLAB_APIKEY"],
       },

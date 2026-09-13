@@ -78,6 +78,7 @@ class TestApiEntitiesRemoteMirrorEntity:
         api_entities_remote_mirror_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.api_entities_remote_mirror"), "api_entities_remote_mirror_ref01"))
         api_entities_remote_mirror_ref01_data["project_id"] = setup["idmap"]["project01"]
+        api_entities_remote_mirror_ref01_data["remote_mirror_id"] = setup["idmap"]["remote_mirror01"]
 
         api_entities_remote_mirror_ref01_data = helpers.to_map(runner.entity_data(api_entities_remote_mirror_ref01_ent.create(api_entities_remote_mirror_ref01_data, None)))
         assert api_entities_remote_mirror_ref01_data is not None
@@ -138,7 +139,7 @@ def _api_entities_remote_mirror_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["api_entities_remote_mirror01", "api_entities_remote_mirror02", "api_entities_remote_mirror03", "project01", "project02", "project03"],
+        ["api_entities_remote_mirror01", "api_entities_remote_mirror02", "api_entities_remote_mirror03", "project01", "project02", "project03", "remote_mirror01", "remote_mirror02", "remote_mirror03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",
@@ -158,7 +159,7 @@ def _api_entities_remote_mirror_basic_setup(extra):
         "GITLAB_TEST_API_ENTITIES_REMOTE_MIRROR_ENTID": idmap,
         "GITLAB_TEST_LIVE": "FALSE",
         "GITLAB_TEST_EXPLAIN": "FALSE",
-        "GITLAB_APIKEY": "NONE",
+        "GITLAB_APIKEY": "",
     })
 
     idmap_resolved = helpers.to_map(
@@ -170,6 +171,10 @@ def _api_entities_remote_mirror_basic_setup(extra):
 
     if env.get("GITLAB_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
                 "apikey": env.get("GITLAB_APIKEY"),
             },

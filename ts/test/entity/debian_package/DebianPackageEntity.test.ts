@@ -1,6 +1,4 @@
 
-const envlocal = __dirname + '/../../../.env.local'
-require('dotenv').config({ quiet: true, path: [envlocal] })
 
 import Path from 'node:path'
 import * as Fs from 'node:fs'
@@ -13,7 +11,9 @@ import { GitlabSDK, BaseFeature, stdutil } from '../../..'
 
 import {
   envOverride,
+  liveClientOptions,
   liveDelay,
+  loadEnvLocal,
   makeCtrl,
   makeMatch,
   makeReqdata,
@@ -21,6 +21,13 @@ import {
   makeValid,
   maybeSkipControl,
 } from '../../utility'
+
+
+// AFTER the imports on purpose: TypeScript hoists `import` above any
+// statement in the emitted CommonJS, so a loader placed above them would
+// run only after every imported module had already been evaluated - and
+// anything reading process.env at module scope would miss these values.
+loadEnvLocal(__dirname + '/../../../.env.local')
 
 
 describe('DebianPackageEntity', async () => {
@@ -39,7 +46,7 @@ describe('DebianPackageEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
-    for (const op of ['update', 'load']) {
+    for (const op of ['load']) {
       if (maybeSkipControl(t, 'entityOp', 'debian_package.' + op, live)) return
     }
 
@@ -59,17 +66,8 @@ describe('DebianPackageEntity', async () => {
 
     let debian_package_ref01_data = Object.values(setup.data.existing.debian_package)[0] as any
 
-    // UPDATE
-    const debian_package_ref01_ent = client.DebianPackage()
-    const debian_package_ref01_data_up0: any = {}
-    debian_package_ref01_data_up0.id = debian_package_ref01_data.id
-    debian_package_ref01_data_up0 ['project_id'] = setup.idmap['project_id']
-
-    const debian_package_ref01_resdata_up0 = (await debian_package_ref01_ent.update(debian_package_ref01_data_up0)).data()
-    assert(debian_package_ref01_resdata_up0.id === debian_package_ref01_data_up0.id)
-
-
     // LOAD
+    const debian_package_ref01_ent = client.DebianPackage()
     const debian_package_ref01_match_dt0: any = {}
     debian_package_ref01_match_dt0.id = debian_package_ref01_data.id
     const debian_package_ref01_data_dt0 = (await debian_package_ref01_ent.load(debian_package_ref01_match_dt0)).data()
@@ -104,7 +102,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['debian_package01','debian_package02','debian_package03','group01','group02','group03','project01','project02','project03','pool01','pool02','pool03','group01','group02','group03','*distribution01','*distribution02','*distribution03','project01','project02','project03','*distribution01','*distribution02','*distribution03','project01','project02','project03','debian01','debian02','debian03','group01','group02','group03','*distribution01','*distribution02','*distribution03','sha25601','sha25602','sha25603','project01','project02','project03','*distribution01','*distribution02','*distribution03','sha25601','sha25602','sha25603'],
+    ['debian_package01','debian_package02','debian_package03','group01','group02','group03','project01','project02','project03','pool01','pool02','pool03','group01','group02','group03','*distribution01','*distribution02','*distribution03','project01','project02','project03','*distribution01','*distribution02','*distribution03','group01','group02','group03','*distribution01','*distribution02','*distribution03','sha25601','sha25602','sha25603','project01','project02','project03','*distribution01','*distribution02','*distribution03','sha25601','sha25602','sha25603'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',
@@ -123,7 +121,7 @@ function basicSetup(extra?: any) {
     'GITLAB_TEST_DEBIAN_PACKAGE_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
     'GITLAB_TEST_EXPLAIN': 'FALSE',
-    'GITLAB_APIKEY': 'NONE',
+    'GITLAB_APIKEY': '',
   })
 
   idmap = env['GITLAB_TEST_DEBIAN_PACKAGE_ENTID']
@@ -132,10 +130,18 @@ function basicSetup(extra?: any) {
 
   if (live) {
     client = new GitlabSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
       {
         apikey: env.GITLAB_APIKEY,
       },
-      extra
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {}
     ]))
   }
 

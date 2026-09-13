@@ -16,7 +16,7 @@ class MemberEntityTest < Minitest::Test
     setup = member_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    [].each do |_op|
+    ["update"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "member." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -38,6 +38,18 @@ class MemberEntityTest < Minitest::Test
     if member_ref01_data_raw.length > 0
       member_ref01_data = Helpers.to_map(member_ref01_data_raw[0][1])
     end
+
+    # UPDATE
+    member_ref01_ent = client.Member(nil)
+    member_ref01_data_up0_up = {
+      "id" => member_ref01_data["id"],
+      "group_id" => setup[:idmap]["group_id"],
+    }
+
+    member_ref01_resdata_up0_result = member_ref01_ent.update(member_ref01_data_up0_up, nil)
+    member_ref01_resdata_up0 = Helpers.to_map(member_ref01_resdata_up0_result.respond_to?(:data_get) ? member_ref01_resdata_up0_result.data_get : member_ref01_resdata_up0_result)
+    assert !member_ref01_resdata_up0.nil?
+    assert_equal member_ref01_resdata_up0["id"], member_ref01_data_up0_up["id"]
 
   end
 end
@@ -75,7 +87,7 @@ def member_basic_setup(extra)
     "GITLAB_TEST_MEMBER_ENTID" => idmap,
     "GITLAB_TEST_LIVE" => "FALSE",
     "GITLAB_TEST_EXPLAIN" => "FALSE",
-    "GITLAB_APIKEY" => "NONE",
+    "GITLAB_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -83,9 +95,15 @@ def member_basic_setup(extra)
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
+  if idmap_resolved["group_id"].nil?
+    idmap_resolved["group_id"] = idmap_resolved["group01"]
+  end
 
   if env["GITLAB_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["GITLAB_APIKEY"],
       },

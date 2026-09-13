@@ -17,6 +17,7 @@ main: kit: entity: api_entities_deployment_extended: {
       type: "`$OBJECT`"
     }
     {
+      format: "date-time"
       name: "created_at"
       req: false
       type: "`$STRING`"
@@ -34,16 +35,19 @@ main: kit: entity: api_entities_deployment_extended: {
       type: "`$OBJECT`"
     }
     {
+      format: "int32"
       name: "id"
       req: false
       type: "`$INTEGER`"
     }
     {
+      format: "int32"
       name: "iid"
       req: false
       type: "`$INTEGER`"
     }
     {
+      format: "int32"
       name: "pending_approval_count"
       req: false
       type: "`$INTEGER`"
@@ -64,6 +68,7 @@ main: kit: entity: api_entities_deployment_extended: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "updated_at"
       req: false
       type: "`$STRING`"
@@ -109,18 +114,28 @@ main: kit: entity: api_entities_deployment_extended: {
           }
           method: "POST"
           orig: "/api/v4/projects/{id}/deployments"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "deployments"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "deployments"
+            }
+          ]
           select: {
             exist: [
               "post_api_v4_projects_id_deployment"
@@ -158,19 +173,31 @@ main: kit: entity: api_entities_deployment_extended: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/deployments/{deployment_id}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "deployments"
-            "{deployment_id}"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "deployment_id"
+            }
+          ]
           select: {
             exist: [
               "deployment_id"
@@ -217,19 +244,31 @@ main: kit: entity: api_entities_deployment_extended: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/deployments/{deployment_id}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "deployments"
-            "{deployment_id}"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "deployment_id"
+            }
+          ]
           select: {
             exist: [
               "deployment_id"

@@ -100,7 +100,7 @@ func TestApiEntitiesCommitStatusEntity(t *testing.T) {
 		// CREATE
 		apiEntitiesCommitStatusRef01Ent := client.ApiEntitiesCommitStatus(nil)
 		apiEntitiesCommitStatusRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "api_entities_commit_status"}, setup.data), "api_entities_commit_status_ref01"))
+			vs.GetPath(setup.data, []any{"new", "api_entities_commit_status"}), "api_entities_commit_status_ref01"))
 		apiEntitiesCommitStatusRef01Data["project_id"] = setup.idmap["project01"]
 		apiEntitiesCommitStatusRef01Data["sha"] = setup.idmap["sha01"]
 
@@ -163,7 +163,7 @@ func api_entities_commit_statusBasicSetup(extra map[string]any) *entityTestSetup
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"api_entities_commit_status01", "api_entities_commit_status02", "api_entities_commit_status03", "project01", "project02", "project03", "commit01", "commit02", "commit03", "sha01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -183,7 +183,7 @@ func api_entities_commit_statusBasicSetup(extra map[string]any) *entityTestSetup
 		"GITLAB_TEST_API_ENTITIES_COMMIT_STATUS_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_API_ENTITIES_COMMIT_STATUS_ENTID"])
@@ -192,11 +192,23 @@ func api_entities_commit_statusBasicSetup(extra map[string]any) *entityTestSetup
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

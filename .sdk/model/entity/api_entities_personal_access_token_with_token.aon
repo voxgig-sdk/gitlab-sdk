@@ -11,6 +11,7 @@ main: kit: entity: api_entities_personal_access_token_with_token: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "date-time"
       name: "created_at"
       req: false
       type: "`$STRING`"
@@ -21,16 +22,19 @@ main: kit: entity: api_entities_personal_access_token_with_token: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "expires_at"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "int32"
       name: "id"
       req: false
       type: "`$INTEGER`"
     }
     {
+      format: "date-time"
       name: "last_used_at"
       req: false
       type: "`$STRING`"
@@ -56,6 +60,7 @@ main: kit: entity: api_entities_personal_access_token_with_token: {
       type: "`$STRING`"
     }
     {
+      format: "int32"
       name: "user_id"
       req: false
       type: "`$INTEGER`"
@@ -95,18 +100,28 @@ main: kit: entity: api_entities_personal_access_token_with_token: {
           }
           method: "POST"
           orig: "/api/v4/personal_access_tokens/{id}/rotate"
-          parts: [
-            "api"
-            "v4"
-            "personal_access_tokens"
-            "{personal_access_token_id}"
-            "rotate"
-          ]
           rename: {
             param: {
               id: "personal_access_token_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "personal_access_tokens"
+            }
+            {
+              var: "personal_access_token_id"
+            }
+            {
+              lit: "rotate"
+            }
+          ]
           select: {
             exist: [
               "personal_access_token_id"
@@ -132,12 +147,22 @@ main: kit: entity: api_entities_personal_access_token_with_token: {
           }
           method: "POST"
           orig: "/api/v4/personal_access_tokens/self/rotate"
-          parts: [
-            "api"
-            "v4"
-            "personal_access_tokens"
-            "self"
-            "rotate"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "personal_access_tokens"
+            }
+            {
+              lit: "self"
+            }
+            {
+              lit: "rotate"
+            }
           ]
           select: {
             exist: [

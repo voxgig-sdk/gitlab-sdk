@@ -36,12 +36,22 @@ main: kit: entity: group_avatar: {
           }
           method: "GET"
           orig: "/api/v4/groups/{id}/avatar"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{id}"
-            "avatar"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "avatar"
+            }
           ]
           select: {
             exist: [

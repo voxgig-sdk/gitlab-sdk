@@ -52,7 +52,7 @@ func TestTerraformStateEntity(t *testing.T) {
 		// CREATE
 		terraformStateRef01Ent := client.TerraformState(nil)
 		terraformStateRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "terraform_state"}, setup.data), "terraform_state_ref01"))
+			vs.GetPath(setup.data, []any{"new", "terraform_state"}), "terraform_state_ref01"))
 		terraformStateRef01Data["name"] = setup.idmap["name01"]
 		terraformStateRef01Data["project_id"] = setup.idmap["project01"]
 		terraformStateRef01Data["state_id"] = setup.idmap["state01"]
@@ -121,7 +121,7 @@ func terraform_stateBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"terraform_state01", "terraform_state02", "terraform_state03", "project01", "project02", "project03", "state01", "state02", "state03", "version01", "version02", "version03", "name01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -141,7 +141,7 @@ func terraform_stateBasicSetup(extra map[string]any) *entityTestSetup {
 		"GITLAB_TEST_TERRAFORM_STATE_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_TERRAFORM_STATE_ENTID"])
@@ -150,11 +150,23 @@ func terraform_stateBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

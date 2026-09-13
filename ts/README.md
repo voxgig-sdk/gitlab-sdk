@@ -37,13 +37,14 @@ const client = new GitlabSDK({
 
 ### 3. Load an apientitiesbasicbadgedetail
 
-ApiEntitiesBasicBadgeDetail is nested under group, so provide the `group_id`.
+ApiEntitiesBasicBadgeDetail is nested under image_url, so provide the `image_url`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
   const apientitiesbasicbadgedetail = await client.ApiEntitiesBasicBadgeDetail().load({
-    group_id: 'example_group_id',
+    image_url: 'example_image_url',
+    link_url: 'example_link_url',
   })
   console.log(apientitiesbasicbadgedetail)
 } catch (err) {
@@ -1171,7 +1172,7 @@ API path: `/api/v4/projects/{id}/pipeline_schedules`
 
 Operations: create, load, update.
 
-API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership`
+API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/play`
 
 #### ApiEntitiesCiResetTokenResult
 
@@ -3584,9 +3585,9 @@ API path: `/api/v4/projects/{id}/uploads`
 | `wiki_access_level` |  |
 | `wiki_enabled` |  |
 
-Operations: load.
+Operations: create, load.
 
-API path: `/api/v4/projects/{id}`
+API path: `/api/v4/projects/{id}/housekeeping`
 
 #### ApiEntitiesProjectsContainerRegistryProtectionRule
 
@@ -4029,6 +4030,7 @@ API path: `/api/v4/projects/{id}/templates/{type}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `modules` |  |
 | `name` |  |
 | `provider` |  |
@@ -4363,7 +4365,7 @@ API path: `/api/v4/groups/{id}/custom_attributes/{key}`
 
 Operations: update.
 
-API path: `/api/v4/projects/{id}/packages/debian/{file_name}`
+API path: `/api/v4/projects/{id}/packages/debian/{file_name}/authorize`
 
 #### DebianDistribution
 
@@ -4381,7 +4383,7 @@ API path: `/api/v4/groups/{id}/-/debian_distributions/{codename}`
 | --- | --- |
 | `id` |  |
 
-Operations: load, update.
+Operations: load.
 
 API path: `/api/v4/groups/{id}/-/packages/debian/pool/{distribution}/{project_id}/{letter}/{package_name}/{package_version}/{file_name}`
 
@@ -4842,6 +4844,7 @@ API path: `/api/v4/projects/{id}/packages/generic/{package_name}/*package_versio
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: create, load.
 
@@ -4987,7 +4990,7 @@ API path: `/api/v4/groups/{id}/-/packages/maven/*path/{file_name}`
 | --- | --- |
 | `id` |  |
 
-Operations: remove.
+Operations: remove, update.
 
 API path: `/api/v4/groups/{id}/members/{user_id}`
 
@@ -5319,9 +5322,9 @@ API path: `/api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}`
 | --- | --- |
 | `id` |  |
 
-Operations: create, load, remove.
+Operations: load, remove.
 
-API path: `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync`
+API path: `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/public_key`
 
 #### Rpm
 
@@ -5776,6 +5779,7 @@ Create an instance: `const api_entities_application_with_secret = client.ApiEnti
 
 ```ts
 const api_entities_application_with_secret = await client.ApiEntitiesApplicationWithSecret().create({
+  post_api_v4_application: {},
 })
 ```
 
@@ -5799,7 +5803,7 @@ Create an instance: `const api_entities_avatar = client.ApiEntitiesAvatar()`
 #### Example: Load
 
 ```ts
-const api_entities_avatar = await client.ApiEntitiesAvatar().load()
+const api_entities_avatar = await client.ApiEntitiesAvatar().load({ email: 'email' })
 ```
 
 
@@ -5854,6 +5858,7 @@ const api_entities_award_emojis = await client.ApiEntitiesAwardEmoji().list({ ep
 const api_entities_award_emoji = await client.ApiEntitiesAwardEmoji().create({
   epic_id: 'example_epic_id',
   group_id: 'example_group_id',
+  post_api_v4_groups_id_epics_epic_iid_award_emoji: {},
 })
 ```
 
@@ -5900,6 +5905,7 @@ const api_entities_badges = await client.ApiEntitiesBadge().list({ group_id: "ex
 ```ts
 const api_entities_badge = await client.ApiEntitiesBadge().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_badge: {},
 })
 ```
 
@@ -5927,7 +5933,7 @@ Create an instance: `const api_entities_basic_badge_detail = client.ApiEntitiesB
 #### Example: Load
 
 ```ts
-const api_entities_basic_badge_detail = await client.ApiEntitiesBasicBadgeDetail().load({ group_id: 'group_id' })
+const api_entities_basic_badge_detail = await client.ApiEntitiesBasicBadgeDetail().load({ image_url: 'image_url', link_url: 'link_url' })
 ```
 
 
@@ -5946,6 +5952,7 @@ Create an instance: `const api_entities_basic_group_detail = client.ApiEntitiesB
 ```ts
 const api_entities_basic_group_detail = await client.ApiEntitiesBasicGroupDetail().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_job_token_scope_groups_allowlist: {},
 })
 ```
 
@@ -6001,6 +6008,7 @@ const api_entities_basic_project_details = await client.ApiEntitiesBasicProjectD
 ```ts
 const api_entities_basic_project_detail = await client.ApiEntitiesBasicProjectDetail().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_job_token_scope_allowlist: {},
 })
 ```
 
@@ -6043,6 +6051,7 @@ Create an instance: `const api_entities_basic_success = client.ApiEntitiesBasicS
 
 ```ts
 const api_entities_basic_success = await client.ApiEntitiesBasicSuccess().create({
+  post_api_v4_integrations_jira_connect_subscription: {},
 })
 ```
 
@@ -6142,6 +6151,7 @@ const api_entities_branchs = await client.ApiEntitiesBranch().list({ project_id:
 ```ts
 const api_entities_branch = await client.ApiEntitiesBranch().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_repository_branch: {},
 })
 ```
 
@@ -6200,6 +6210,11 @@ const api_entities_bulk_imports = await client.ApiEntitiesBulkImport().list()
 
 ```ts
 const api_entities_bulk_import = await client.ApiEntitiesBulkImport().create({
+  configuration_access_token: 'example_configuration_access_token',
+  configuration_url: 'example_configuration_url',
+  entities_destination_namespace: 'example_entities_destination_namespace',
+  entities_source_full_path: 'example_entities_source_full_path',
+  entities_source_type: 'example_entities_source_type',
 })
 ```
 
@@ -6281,7 +6296,7 @@ Create an instance: `const api_entities_changelog = client.ApiEntitiesChangelog(
 #### Example: Load
 
 ```ts
-const api_entities_changelog = await client.ApiEntitiesChangelog().load({ project_id: 'project_id' })
+const api_entities_changelog = await client.ApiEntitiesChangelog().load({ project_id: 'project_id', version: 'version' })
 ```
 
 
@@ -6343,6 +6358,7 @@ Create an instance: `const api_entities_ci_catalog_resources_version = client.Ap
 ```ts
 const api_entities_ci_catalog_resources_version = await client.ApiEntitiesCiCatalogResourcesVersion().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_catalog_publish: {},
 })
 ```
 
@@ -6465,6 +6481,7 @@ const api_entities_ci_job_basics = await client.ApiEntitiesCiJobBasic().list({ k
 const api_entities_ci_job_basic = await client.ApiEntitiesCiJobBasic().create({
   job_id: 'example_job_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_jobs_job_id_play: {},
 })
 ```
 
@@ -6551,6 +6568,7 @@ const api_entities_ci_lint_results = await client.ApiEntitiesCiLintResult().list
 ```ts
 const api_entities_ci_lint_result = await client.ApiEntitiesCiLintResult().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_ci_lint: {},
 })
 ```
 
@@ -6705,6 +6723,7 @@ Create an instance: `const api_entities_ci_reset_token_result = client.ApiEntiti
 
 ```ts
 const api_entities_ci_reset_token_result = await client.ApiEntitiesCiResetTokenResult().create({
+  post_api_v4_runners_reset_authentication_token: {},
 })
 ```
 
@@ -6773,7 +6792,7 @@ Create an instance: `const api_entities_ci_runner = client.ApiEntitiesCiRunner()
 #### Example: Load
 
 ```ts
-const api_entities_ci_runner = await client.ApiEntitiesCiRunner().load({ id: 1 })
+const api_entities_ci_runner = await client.ApiEntitiesCiRunner().load()
 ```
 
 #### Example: Create
@@ -6781,6 +6800,7 @@ const api_entities_ci_runner = await client.ApiEntitiesCiRunner().load({ id: 1 }
 ```ts
 const api_entities_ci_runner = await client.ApiEntitiesCiRunner().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_runner: {},
 })
 ```
 
@@ -6881,6 +6901,7 @@ Create an instance: `const api_entities_ci_runner_registration_detail = client.A
 
 ```ts
 const api_entities_ci_runner_registration_detail = await client.ApiEntitiesCiRunnerRegistrationDetail().create({
+  post_api_v4_runner: {},
 })
 ```
 
@@ -6913,6 +6934,7 @@ const api_entities_ci_secure_file = await client.ApiEntitiesCiSecureFile().load(
 ```ts
 const api_entities_ci_secure_file = await client.ApiEntitiesCiSecureFile().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_secure_file: {},
 })
 ```
 
@@ -6962,6 +6984,7 @@ const api_entities_ci_variables = await client.ApiEntitiesCiVariable().list({ pi
 ```ts
 const api_entities_ci_variable = await client.ApiEntitiesCiVariable().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_variable: {},
 })
 ```
 
@@ -7015,6 +7038,7 @@ const api_entities_clusters = await client.ApiEntitiesCluster().list()
 
 ```ts
 const api_entities_cluster = await client.ApiEntitiesCluster().create({
+  post_api_v4_admin_clusters_add: {},
 })
 ```
 
@@ -7063,6 +7087,7 @@ const api_entities_cluster_group = await client.ApiEntitiesClusterGroup().load({
 ```ts
 const api_entities_cluster_group = await client.ApiEntitiesClusterGroup().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_clusters_user: {},
 })
 ```
 
@@ -7111,6 +7136,7 @@ const api_entities_cluster_project = await client.ApiEntitiesClusterProject().lo
 ```ts
 const api_entities_cluster_project = await client.ApiEntitiesClusterProject().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_clusters_user: {},
 })
 ```
 
@@ -7149,6 +7175,7 @@ const api_entities_clusters_agent = await client.ApiEntitiesClustersAgent().load
 ```ts
 const api_entities_clusters_agent = await client.ApiEntitiesClustersAgent().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_cluster_agent: {},
 })
 ```
 
@@ -7228,6 +7255,7 @@ Create an instance: `const api_entities_clusters_agent_token_with_token = client
 const api_entities_clusters_agent_token_with_token = await client.ApiEntitiesClustersAgentTokenWithToken().create({
   cluster_agent_id: 'example_cluster_agent_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_cluster_agents_agent_id_token: {},
 })
 ```
 
@@ -7325,6 +7353,7 @@ const api_entities_commit_detail = await client.ApiEntitiesCommitDetail().load({
 ```ts
 const api_entities_commit_detail = await client.ApiEntitiesCommitDetail().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_repository_commit: {},
 })
 ```
 
@@ -7373,6 +7402,7 @@ const api_entities_commit_notes = await client.ApiEntitiesCommitNote().list({ pr
 const api_entities_commit_note = await client.ApiEntitiesCommitNote().create({
   project_id: 'example_project_id',
   sha: 'example_sha',
+  post_api_v4_projects_id_repository_commits_sha_comment: {},
 })
 ```
 
@@ -7475,6 +7505,7 @@ const api_entities_commit_statuss = await client.ApiEntitiesCommitStatus().list(
 const api_entities_commit_status = await client.ApiEntitiesCommitStatus().create({
   id: 'example_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_statuses_sha: {},
 })
 ```
 
@@ -7503,7 +7534,7 @@ Create an instance: `const api_entities_compare = client.ApiEntitiesCompare()`
 #### Example: List
 
 ```ts
-const api_entities_compares = await client.ApiEntitiesCompare().list({ project_id: "example" })
+const api_entities_compares = await client.ApiEntitiesCompare().list({ project_id: "example", from: "example", to: "example" })
 ```
 
 
@@ -7668,6 +7699,7 @@ const api_entities_deploy_keys = await client.ApiEntitiesDeployKey().list()
 
 ```ts
 const api_entities_deploy_key = await client.ApiEntitiesDeployKey().create({
+  post_api_v4_deploy_key: {},
 })
 ```
 
@@ -7718,6 +7750,7 @@ const api_entities_deploy_keys_projects = await client.ApiEntitiesDeployKeysProj
 ```ts
 const api_entities_deploy_keys_project = await client.ApiEntitiesDeployKeysProject().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_deploy_key: {},
 })
 ```
 
@@ -7773,6 +7806,7 @@ Create an instance: `const api_entities_deploy_token_with_token = client.ApiEnti
 ```ts
 const api_entities_deploy_token_with_token = await client.ApiEntitiesDeployTokenWithToken().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_deploy_token: {},
 })
 ```
 
@@ -7850,6 +7884,7 @@ const api_entities_deployment_extended = await client.ApiEntitiesDeploymentExten
 ```ts
 const api_entities_deployment_extended = await client.ApiEntitiesDeploymentExtended().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_deployment: {},
 })
 ```
 
@@ -7870,6 +7905,7 @@ Create an instance: `const api_entities_deployments_approval = client.ApiEntitie
 const api_entities_deployments_approval = await client.ApiEntitiesDeploymentsApproval().create({
   deployment_id: 'example_deployment_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_deployments_deployment_id_approval: {},
 })
 ```
 
@@ -7959,7 +7995,7 @@ Create an instance: `const api_entities_discovered_cluster = client.ApiEntitiesD
 #### Example: Load
 
 ```ts
-const api_entities_discovered_cluster = await client.ApiEntitiesDiscoveredCluster().load()
+const api_entities_discovered_cluster = await client.ApiEntitiesDiscoveredCluster().load({ group_id: 'group_id' })
 ```
 
 
@@ -8008,6 +8044,7 @@ const api_entities_draft_notes = await client.ApiEntitiesDraftNote().list({ merg
 const api_entities_draft_note = await client.ApiEntitiesDraftNote().create({
   merge_request_id: 'example_merge_request_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note: {},
 })
 ```
 
@@ -8207,6 +8244,7 @@ const api_entities_features = await client.ApiEntitiesFeature().list()
 ```ts
 const api_entities_feature = await client.ApiEntitiesFeature().create({
   id: 'example_id',
+  post_api_v4_features_name: {},
 })
 ```
 
@@ -8289,6 +8327,7 @@ const api_entities_feature_flags = await client.ApiEntitiesFeatureFlag().list({ 
 ```ts
 const api_entities_feature_flag = await client.ApiEntitiesFeatureFlag().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_feature_flag: {},
 })
 ```
 
@@ -8337,6 +8376,7 @@ const api_entities_feature_flag_user_lists = await client.ApiEntitiesFeatureFlag
 ```ts
 const api_entities_feature_flag_user_list = await client.ApiEntitiesFeatureFlagUserList().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_feature_flags_user_list: {},
 })
 ```
 
@@ -8382,6 +8422,7 @@ const api_entities_freeze_periods = await client.ApiEntitiesFreezePeriod().list(
 ```ts
 const api_entities_freeze_period = await client.ApiEntitiesFreezePeriod().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_freeze_period: {},
 })
 ```
 
@@ -8431,7 +8472,7 @@ Create an instance: `const api_entities_go_module_version = client.ApiEntitiesGo
 #### Example: Load
 
 ```ts
-const api_entities_go_module_version = await client.ApiEntitiesGoModuleVersion().load({ module_version: 'module_version', project_id: 'project_id' })
+const api_entities_go_module_version = await client.ApiEntitiesGoModuleVersion().load({ module_version: 'module_version', project_id: 'project_id', module_name: 'module_name' })
 ```
 
 
@@ -8517,6 +8558,7 @@ const api_entities_groups = await client.ApiEntitiesGroup().list()
 
 ```ts
 const api_entities_group = await client.ApiEntitiesGroup().create({
+  post_api_v4_group: {},
 })
 ```
 
@@ -8669,6 +8711,7 @@ const api_entities_hooks = await client.ApiEntitiesHook().list()
 
 ```ts
 const api_entities_hook = await client.ApiEntitiesHook().create({
+  post_api_v4_hook: {},
 })
 ```
 
@@ -8778,6 +8821,7 @@ const api_entities_invitations = await client.ApiEntitiesInvitation().list({ gro
 ```ts
 const api_entities_invitation = await client.ApiEntitiesInvitation().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_invitation: {},
 })
 ```
 
@@ -8931,6 +8975,7 @@ const api_entities_issue_link = await client.ApiEntitiesIssueLink().load({ id: '
 const api_entities_issue_link = await client.ApiEntitiesIssueLink().create({
   issue_id: 'example_issue_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_issues_issue_iid_link: {},
 })
 ```
 
@@ -8983,6 +9028,7 @@ Create an instance: `const api_entities_markdown = client.ApiEntitiesMarkdown()`
 
 ```ts
 const api_entities_markdown = await client.ApiEntitiesMarkdown().create({
+  post_api_v4_markdown: {},
 })
 ```
 
@@ -9073,6 +9119,7 @@ const api_entities_members = await client.ApiEntitiesMember().list({ group_id: "
 ```ts
 const api_entities_member = await client.ApiEntitiesMember().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_member: {},
 })
 ```
 
@@ -9285,7 +9332,7 @@ Create an instance: `const api_entities_merge_request_basic = client.ApiEntities
 #### Example: Load
 
 ```ts
-const api_entities_merge_request_basic = await client.ApiEntitiesMergeRequestBasic().load({ id: 1 })
+const api_entities_merge_request_basic = await client.ApiEntitiesMergeRequestBasic().load()
 ```
 
 #### Example: List
@@ -9518,6 +9565,7 @@ const api_entities_metric_images = await client.ApiEntitiesMetricImage().list({ 
 const api_entities_metric_image = await client.ApiEntitiesMetricImage().create({
   alert_management_alert_id: 'example_alert_management_alert_id',
   project_id: 'example_project_id',
+  file: 'example_file',
 })
 ```
 
@@ -9654,7 +9702,7 @@ Create an instance: `const api_entities_namespaces_storage_limit_exclusion = cli
 #### Example: Load
 
 ```ts
-const api_entities_namespaces_storage_limit_exclusion = await client.ApiEntitiesNamespacesStorageLimitExclusion().load({ id: 1 })
+const api_entities_namespaces_storage_limit_exclusion = await client.ApiEntitiesNamespacesStorageLimitExclusion().load()
 ```
 
 #### Example: Create
@@ -9662,6 +9710,7 @@ const api_entities_namespaces_storage_limit_exclusion = await client.ApiEntities
 ```ts
 const api_entities_namespaces_storage_limit_exclusion = await client.ApiEntitiesNamespacesStorageLimitExclusion().create({
   namespace_id: 'example_namespace_id',
+  post_api_v4_namespaces_id_storage_limit_exclusion: {},
 })
 ```
 
@@ -9687,7 +9736,7 @@ Create an instance: `const api_entities_npm_package = client.ApiEntitiesNpmPacka
 #### Example: Load
 
 ```ts
-const api_entities_npm_package = await client.ApiEntitiesNpmPackage().load()
+const api_entities_npm_package = await client.ApiEntitiesNpmPackage().load({ package_name: 'package_name' })
 ```
 
 
@@ -9704,7 +9753,7 @@ Create an instance: `const api_entities_npm_package_tag = client.ApiEntitiesNpmP
 #### Example: Load
 
 ```ts
-const api_entities_npm_package_tag = await client.ApiEntitiesNpmPackageTag().load()
+const api_entities_npm_package_tag = await client.ApiEntitiesNpmPackageTag().load({ package_name: 'package_name' })
 ```
 
 
@@ -9727,7 +9776,7 @@ Create an instance: `const api_entities_nuget_packages_version = client.ApiEntit
 #### Example: List
 
 ```ts
-const api_entities_nuget_packages_versions = await client.ApiEntitiesNugetPackagesVersion().list({ project_id: "example" })
+const api_entities_nuget_packages_versions = await client.ApiEntitiesNugetPackagesVersion().list({ project_id: "example", package_name: "example" })
 ```
 
 
@@ -9805,6 +9854,7 @@ Create an instance: `const api_entities_organizations_organization = client.ApiE
 
 ```ts
 const api_entities_organizations_organization = await client.ApiEntitiesOrganizationsOrganization().create({
+  post_api_v4_organization: {},
 })
 ```
 
@@ -10146,6 +10196,7 @@ const api_entities_packages_debian_distributions = await client.ApiEntitiesPacka
 ```ts
 const api_entities_packages_debian_distribution = await client.ApiEntitiesPackagesDebianDistribution().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_debian_distribution: {},
 })
 ```
 
@@ -10196,6 +10247,7 @@ const api_entities_pages_domains = await client.ApiEntitiesPagesDomain().list({ 
 ```ts
 const api_entities_pages_domain = await client.ApiEntitiesPagesDomain().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_pages_domain: {},
 })
 ```
 
@@ -10327,6 +10379,7 @@ Create an instance: `const api_entities_personal_access_token_with_token = clien
 ```ts
 const api_entities_personal_access_token_with_token = await client.ApiEntitiesPersonalAccessTokenWithToken().create({
   personal_access_token_id: 'example_personal_access_token_id',
+  post_api_v4_personal_access_tokens_id_rotate: {},
 })
 ```
 
@@ -10382,6 +10435,7 @@ const api_entities_personal_snippets = await client.ApiEntitiesPersonalSnippet()
 
 ```ts
 const api_entities_personal_snippet = await client.ApiEntitiesPersonalSnippet().create({
+  post_api_v4_snippet: {},
 })
 ```
 
@@ -10579,6 +10633,7 @@ const api_entities_projects = await client.ApiEntitiesProject().list({ project_i
 ```ts
 const api_entities_project = await client.ApiEntitiesProject().create({
   user_id: 'example_user_id',
+  post_api_v4_projects_user_user_id: {},
 })
 ```
 
@@ -10646,6 +10701,7 @@ Create an instance: `const api_entities_project_group_link = client.ApiEntitiesP
 ```ts
 const api_entities_project_group_link = await client.ApiEntitiesProjectGroupLink().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_share: {},
 })
 ```
 
@@ -10717,6 +10773,7 @@ const api_entities_project_hooks = await client.ApiEntitiesProjectHook().list({ 
 ```ts
 const api_entities_project_hook = await client.ApiEntitiesProjectHook().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_hook: {},
 })
 ```
 
@@ -10754,6 +10811,7 @@ const api_entities_project_import_statuss = await client.ApiEntitiesProjectImpor
 
 ```ts
 const api_entities_project_import_status = await client.ApiEntitiesProjectImportStatus().create({
+  path: 'example_path',
 })
 ```
 
@@ -10860,6 +10918,7 @@ const api_entities_project_snippets = await client.ApiEntitiesProjectSnippet().l
 ```ts
 const api_entities_project_snippet = await client.ApiEntitiesProjectSnippet().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_snippet: {},
 })
 ```
 
@@ -10879,6 +10938,7 @@ Create an instance: `const api_entities_project_upload = client.ApiEntitiesProje
 ```ts
 const api_entities_project_upload = await client.ApiEntitiesProjectUpload().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_upload: {},
 })
 ```
 
@@ -10891,6 +10951,7 @@ Create an instance: `const api_entities_project_with_access = client.ApiEntities
 
 | Method | Description |
 | --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -11052,6 +11113,14 @@ Create an instance: `const api_entities_project_with_access = client.ApiEntities
 const api_entities_project_with_access = await client.ApiEntitiesProjectWithAccess().load({ id: 'api_entities_project_with_access_id' })
 ```
 
+#### Example: Create
+
+```ts
+const api_entities_project_with_access = await client.ApiEntitiesProjectWithAccess().create({
+  project_id: 'example_project_id',
+})
+```
+
 
 ### ApiEntitiesProjectsContainerRegistryProtectionRule
 
@@ -11086,6 +11155,7 @@ const api_entities_projects_container_registry_protection_rules = await client.A
 ```ts
 const api_entities_projects_container_registry_protection_rule = await client.ApiEntitiesProjectsContainerRegistryProtectionRule().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_registry_protection_repository_rule: {},
 })
 ```
 
@@ -11124,6 +11194,7 @@ const api_entities_projects_packages_protection_rules = await client.ApiEntities
 ```ts
 const api_entities_projects_packages_protection_rule = await client.ApiEntitiesProjectsPackagesProtectionRule().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_packages_protection_rule: {},
 })
 ```
 
@@ -11162,6 +11233,7 @@ const api_entities_projects_topic = await client.ApiEntitiesProjectsTopic().load
 
 ```ts
 const api_entities_projects_topic = await client.ApiEntitiesProjectsTopic().create({
+  post_api_v4_topic: {},
 })
 ```
 
@@ -11209,6 +11281,7 @@ const api_entities_protected_branchs = await client.ApiEntitiesProtectedBranch()
 ```ts
 const api_entities_protected_branch = await client.ApiEntitiesProtectedBranch().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_protected_branch: {},
 })
 ```
 
@@ -11255,6 +11328,7 @@ const api_entities_protected_tags = await client.ApiEntitiesProtectedTag().list(
 ```ts
 const api_entities_protected_tag = await client.ApiEntitiesProtectedTag().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_protected_tag: {},
 })
 ```
 
@@ -11370,6 +11444,9 @@ Create an instance: `const api_entities_relation_import_tracker = client.ApiEnti
 
 ```ts
 const api_entities_relation_import_tracker = await client.ApiEntitiesRelationImportTracker().create({
+  file: 'example_file',
+  path: 'example_path',
+  relation: 'example_relation',
 })
 ```
 
@@ -11470,6 +11547,7 @@ const api_entities_releases_links = await client.ApiEntitiesReleasesLink().list(
 const api_entities_releases_link = await client.ApiEntitiesReleasesLink().create({
   project_id: 'example_project_id',
   release_id: 'example_release_id',
+  post_api_v4_projects_id_releases_tag_name_assets_link: {},
 })
 ```
 
@@ -11522,6 +11600,7 @@ const api_entities_remote_mirrors = await client.ApiEntitiesRemoteMirror().list(
 ```ts
 const api_entities_remote_mirror = await client.ApiEntitiesRemoteMirror().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_remote_mirror: {},
 })
 ```
 
@@ -11593,6 +11672,7 @@ Create an instance: `const api_entities_resource_access_token_with_token = clien
 ```ts
 const api_entities_resource_access_token_with_token = await client.ApiEntitiesResourceAccessTokenWithToken().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_access_tokens_self_rotate: {},
 })
 ```
 
@@ -11804,6 +11884,7 @@ const api_entities_system_broadcast_message = await client.ApiEntitiesSystemBroa
 
 ```ts
 const api_entities_system_broadcast_message = await client.ApiEntitiesSystemBroadcastMessage().create({
+  post_api_v4_broadcast_message: {},
 })
 ```
 
@@ -11850,6 +11931,7 @@ const api_entities_tags = await client.ApiEntitiesTag().list({ project_id: "exam
 ```ts
 const api_entities_tag = await client.ApiEntitiesTag().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_repository_tag: {},
 })
 ```
 
@@ -11917,6 +11999,7 @@ Create an instance: `const api_entities_terraform_module_version = client.ApiEnt
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `modules` | `string` |  |
 | `name` | `string` |  |
 | `provider` | `string` |  |
@@ -12019,6 +12102,7 @@ const api_entities_triggers = await client.ApiEntitiesTrigger().list({ project_i
 ```ts
 const api_entities_trigger = await client.ApiEntitiesTrigger().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_trigger: {},
 })
 ```
 
@@ -12165,7 +12249,7 @@ Create an instance: `const api_entities_user_with_admin = client.ApiEntitiesUser
 #### Example: List
 
 ```ts
-const api_entities_user_with_admins = await client.ApiEntitiesUserWithAdmin().list()
+const api_entities_user_with_admins = await client.ApiEntitiesUserWithAdmin().list({ fingerprint: "example" })
 ```
 
 
@@ -12184,6 +12268,7 @@ Create an instance: `const api_entities_wiki_attachment = client.ApiEntitiesWiki
 ```ts
 const api_entities_wiki_attachment = await client.ApiEntitiesWikiAttachment().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_wikis_attachment: {},
 })
 ```
 
@@ -12211,6 +12296,7 @@ const api_entities_wiki_page = await client.ApiEntitiesWikiPage().load({ slug: '
 ```ts
 const api_entities_wiki_page = await client.ApiEntitiesWikiPage().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_wiki: {},
 })
 ```
 
@@ -12392,6 +12478,7 @@ Create an instance: `const composer = client.Composer()`
 ```ts
 const composer = await client.Composer().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_packages_composer: {},
 })
 ```
 
@@ -12552,7 +12639,6 @@ Create an instance: `const debian_package = client.DebianPackage()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-| `update(data)` | Update an existing entity. |
 
 #### Fields
 
@@ -12563,7 +12649,7 @@ Create an instance: `const debian_package = client.DebianPackage()`
 #### Example: Load
 
 ```ts
-const debian_package = await client.DebianPackage().load({ id: 'debian_package_id', distribution: 'distribution', file_name: 'file_name', letter: 'letter', package_name: 'package_name', package_version: 'package_version' })
+const debian_package = await client.DebianPackage().load({ id: 'debian_package_id', distribution: 'distribution' })
 ```
 
 
@@ -12645,6 +12731,7 @@ Create an instance: `const ee_api_entities_approval_state = client.EeApiEntities
 const ee_api_entities_approval_state = await client.EeApiEntitiesApprovalState().create({
   merge_request_id: 'example_merge_request_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_merge_requests_merge_request_iid_approval: {},
 })
 ```
 
@@ -12966,6 +13053,7 @@ Create an instance: `const ee_api_entities_geo_node_status = client.EeApiEntitie
 
 ```ts
 const ee_api_entities_geo_node_status = await client.EeApiEntitiesGeoNodeStatus().create({
+  post_api_v4_geo_status: {},
 })
 ```
 
@@ -13022,6 +13110,7 @@ Create an instance: `const ee_api_entities_issuable_metric_image = client.EeApiE
 const ee_api_entities_issuable_metric_image = await client.EeApiEntitiesIssuableMetricImage().create({
   issue_id: 'example_issue_id',
   project_id: 'example_project_id',
+  post_api_v4_projects_id_issues_issue_iid_metric_image: {},
 })
 ```
 
@@ -13094,6 +13183,7 @@ const ee_api_entities_ssh_certificates = await client.EeApiEntitiesSshCertificat
 ```ts
 const ee_api_entities_ssh_certificate = await client.EeApiEntitiesSshCertificate().create({
   group_id: 'example_group_id',
+  post_api_v4_groups_id_ssh_certificate: {},
 })
 ```
 
@@ -13120,6 +13210,7 @@ Create an instance: `const environment = client.Environment()`
 ```ts
 const environment = await client.Environment().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_environments_stop_stale: {},
 })
 ```
 
@@ -13239,7 +13330,7 @@ Create an instance: `const generic_package = client.GenericPackage()`
 #### Example: Load
 
 ```ts
-const generic_package = await client.GenericPackage().load({ file_name: 'file_name', generic_id: 'generic_id', project_id: 'project_id' })
+const generic_package = await client.GenericPackage().load({ file_name: 'file_name', generic_id: 'generic_id', project_id: 'project_id', package_version: 'package_version' })
 ```
 
 
@@ -13254,6 +13345,12 @@ Create an instance: `const geo = client.Geo()`
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
 #### Example: Load
 
 ```ts
@@ -13264,6 +13361,7 @@ const geo = await client.Geo().load({ replicable_id: 'replicable_id', replicable
 
 ```ts
 const geo = await client.Geo().create({
+  post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack: {},
 })
 ```
 
@@ -13281,7 +13379,7 @@ Create an instance: `const go_proxy = client.GoProxy()`
 #### Example: Load
 
 ```ts
-const go_proxy = await client.GoProxy().load({ project_id: 'project_id' })
+const go_proxy = await client.GoProxy().load({ project_id: 'project_id', module_name: 'module_name' })
 ```
 
 
@@ -13388,6 +13486,9 @@ Create an instance: `const group_import = client.GroupImport()`
 
 ```ts
 const group_import = await client.GroupImport().create({
+  file: 'example_file',
+  name: 'example_name',
+  path: 'example_path',
 })
 ```
 
@@ -13459,6 +13560,7 @@ Create an instance: `const import_ = client.Import()`
 
 ```ts
 const import_ = await client.Import().create({
+  post_api_v4_import_github_gist: {},
 })
 ```
 
@@ -13484,6 +13586,7 @@ Create an instance: `const integration = client.Integration()`
 
 ```ts
 const integration = await client.Integration().create({
+  post_api_v4_integrations_slack_event: {},
 })
 ```
 
@@ -13567,6 +13670,7 @@ const job = await client.Job().load({ id: 'job_id' })
 
 ```ts
 const job = await client.Job().create({
+  post_api_v4_jobs_request: {},
 })
 ```
 
@@ -13585,7 +13689,7 @@ Create an instance: `const maven_package = client.MavenPackage()`
 #### Example: Load
 
 ```ts
-const maven_package = await client.MavenPackage().load({ file_name: 'file_name' })
+const maven_package = await client.MavenPackage().load({ file_name: 'file_name', path: 'path' })
 ```
 
 
@@ -13598,6 +13702,7 @@ Create an instance: `const member = client.Member()`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
 
 #### Fields
 
@@ -13672,6 +13777,7 @@ Create an instance: `const migration = client.Migration()`
 ```ts
 const migration = await client.Migration().create({
   timestamp: 'example_timestamp',
+  post_api_v4_admin_migrations_timestamp_mark: {},
 })
 ```
 
@@ -13744,7 +13850,7 @@ Create an instance: `const npm_package = client.NpmPackage()`
 #### Example: Load
 
 ```ts
-const npm_package = await client.NpmPackage().load({ project_id: 'project_id' })
+const npm_package = await client.NpmPackage().load({ project_id: 'project_id', file_name: 'file_name', package_name: 'package_name' })
 ```
 
 #### Example: Create
@@ -13809,7 +13915,7 @@ const nuget_package = await client.NugetPackage().load({ project_id: 'project_id
 #### Example: List
 
 ```ts
-const nuget_packages = await client.NugetPackage().list({ project_id: "example" })
+const nuget_packages = await client.NugetPackage().list({ package_name: "example" })
 ```
 
 
@@ -13989,6 +14095,7 @@ Create an instance: `const project_entity = client.ProjectEntity()`
 
 ```ts
 const project_entity = await client.ProjectEntity().create({
+  post_api_v4_import_bitbucket_server: {},
 })
 ```
 
@@ -14021,6 +14128,7 @@ const project_export = await client.ProjectExport().load({ project_id: 'project_
 ```ts
 const project_export = await client.ProjectExport().create({
   id: 'example_id',
+  post_api_v4_projects_id_export: {},
 })
 ```
 
@@ -14092,6 +14200,7 @@ Create an instance: `const project_import_entity = client.ProjectImportEntity()`
 
 ```ts
 const project_import_entity = await client.ProjectImportEntity().create({
+  post_api_v4_import_bitbucket: {},
 })
 ```
 
@@ -14174,6 +14283,7 @@ Create an instance: `const pypi = client.Pypi()`
 ```ts
 const pypi = await client.Pypi().create({
   project_id: 'example_project_id',
+  post_api_v4_projects_id_packages_pypi: {},
 })
 ```
 
@@ -14224,7 +14334,7 @@ Create an instance: `const release = client.Release()`
 #### Example: Load
 
 ```ts
-const release = await client.Release().load({ project_id: 'project_id' })
+const release = await client.Release().load({ project_id: 'project_id', suffix_path: 'suffix_path' })
 ```
 
 
@@ -14253,7 +14363,6 @@ Create an instance: `const remote_mirror = client.RemoteMirror()`
 
 | Method | Description |
 | --- | --- |
-| `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
@@ -14267,15 +14376,6 @@ Create an instance: `const remote_mirror = client.RemoteMirror()`
 
 ```ts
 const remote_mirror = await client.RemoteMirror().load({ id: 'remote_mirror_id', project_id: 'project_id' })
-```
-
-#### Example: Create
-
-```ts
-const remote_mirror = await client.RemoteMirror().create({
-  id: 'example_id',
-  project_id: 'example_project_id',
-})
 ```
 
 
@@ -14312,7 +14412,7 @@ Create an instance: `const rpm_package = client.RpmPackage()`
 #### Example: Load
 
 ```ts
-const rpm_package = await client.RpmPackage().load({ project_id: 'project_id' })
+const rpm_package = await client.RpmPackage().load({ project_id: 'project_id', file_name: 'file_name' })
 ```
 
 #### Example: Create
@@ -14394,6 +14494,7 @@ Create an instance: `const runner = client.Runner()`
 
 ```ts
 const runner = await client.Runner().create({
+  post_api_v4_runners_verify: {},
 })
 ```
 
@@ -14411,7 +14512,7 @@ Create an instance: `const search = client.Search()`
 #### Example: Load
 
 ```ts
-const search = await client.Search().load()
+const search = await client.Search().load({ scope: 'scope', search: 'search' })
 ```
 
 
@@ -14453,6 +14554,7 @@ Create an instance: `const slack = client.Slack()`
 
 ```ts
 const slack = await client.Slack().create({
+  post_api_v4_slack_trigger: {},
 })
 ```
 
@@ -14599,6 +14701,7 @@ const terraform_state = await client.TerraformState().load({ id: 'terraform_stat
 
 ```ts
 const terraform_state = await client.TerraformState().create({
+  id: 'example_id',
   project_id: 'example_project_id',
 })
 ```
@@ -14720,6 +14823,7 @@ const usage_data = await client.UsageData().load()
 
 ```ts
 const usage_data = await client.UsageData().create({
+  post_api_v4_usage_data_increment_counter: {},
 })
 ```
 
@@ -14788,6 +14892,29 @@ Create an instance: `const wiki = client.Wiki()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

@@ -77,7 +77,7 @@ function api_entities_projects_container_registry_protection_rule_direct_setup(m
   local env = runner.env_override({
     ["GITLAB_TEST_API_ENTITIES_PROJECTS_CONTAINER_REGISTRY_PROTECTION_RULE_ENTID"] = {},
     ["GITLAB_TEST_LIVE"] = "FALSE",
-    ["GITLAB_APIKEY"] = "NONE",
+    ["GITLAB_APIKEY"] = "",
   })
 
   local live = env["GITLAB_TEST_LIVE"] == "TRUE"
@@ -86,6 +86,13 @@ function api_entities_projects_container_registry_protection_rule_direct_setup(m
     local merged_opts = {
       apikey = env["GITLAB_APIKEY"],
     }
+    -- sdk-test-control.json's test.client.options goes UNDER the generated
+    -- fields: it adds to the live client, it does not redirect it.
+    for _k, _v in pairs(runner.live_client_options()) do
+      if merged_opts[_k] == nil then
+        merged_opts[_k] = _v
+      end
+    end
     local client = sdk.new(merged_opts)
     return {
       client = client,

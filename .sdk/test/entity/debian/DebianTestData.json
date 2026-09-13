@@ -3,14 +3,17 @@
     "debian": {
       "DEBIAN00": {
         "id": "DEBIAN00",
+        "file_name": "FILE_NAME01",
         "project_id": "PROJECT01"
       },
       "DEBIAN01": {
         "id": "DEBIAN01",
+        "file_name": "FILE_NAME01",
         "project_id": "PROJECT01"
       },
       "DEBIAN02": {
         "id": "DEBIAN02",
+        "file_name": "FILE_NAME01",
         "project_id": "PROJECT01"
       }
     }

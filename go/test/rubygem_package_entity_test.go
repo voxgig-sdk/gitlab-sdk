@@ -52,7 +52,7 @@ func TestRubygemPackageEntity(t *testing.T) {
 		// CREATE
 		rubygemPackageRef01Ent := client.RubygemPackage(nil)
 		rubygemPackageRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "rubygem_package"}, setup.data), "rubygem_package_ref01"))
+			vs.GetPath(setup.data, []any{"new", "rubygem_package"}), "rubygem_package_ref01"))
 		rubygemPackageRef01Data["project_id"] = setup.idmap["project01"]
 
 		rubygemPackageRef01DataResult, err := rubygemPackageRef01Ent.Create(rubygemPackageRef01Data, nil)
@@ -101,7 +101,7 @@ func rubygem_packageBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"rubygem_package01", "rubygem_package02", "rubygem_package03", "project01", "project02", "project03", "gem01", "gem02", "gem03", "marshal.4.801", "marshal.4.802", "marshal.4.803"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -121,7 +121,7 @@ func rubygem_packageBasicSetup(extra map[string]any) *entityTestSetup {
 		"GITLAB_TEST_RUBYGEM_PACKAGE_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_RUBYGEM_PACKAGE_ENTID"])
@@ -130,11 +130,23 @@ func rubygem_packageBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

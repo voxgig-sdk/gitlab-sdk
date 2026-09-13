@@ -21,6 +21,7 @@ main: kit: entity: api_entities_wiki_page_basic: {
       type: "`$STRING`"
     }
     {
+      format: "int32"
       name: "wiki_page_meta_id"
       req: false
       type: "`$INTEGER`"
@@ -55,18 +56,28 @@ main: kit: entity: api_entities_wiki_page_basic: {
           }
           method: "GET"
           orig: "/api/v4/groups/{id}/wikis"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{group_id}"
-            "wikis"
-          ]
           rename: {
             param: {
               id: "group_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "wikis"
+            }
+          ]
           select: {
             exist: [
               "group_id"
@@ -101,18 +112,28 @@ main: kit: entity: api_entities_wiki_page_basic: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/wikis"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "wikis"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "wikis"
+            }
+          ]
           select: {
             exist: [
               "project_id"

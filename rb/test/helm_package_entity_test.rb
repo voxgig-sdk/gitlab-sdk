@@ -65,7 +65,7 @@ def helm_package_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["helm_package01", "helm_package02", "helm_package03", "project01", "project02", "project03", "api01", "api02", "api03", "helm01", "helm02", "helm03", "chart01", "chart02", "chart03", "file_name01"],
+    ["helm_package01", "helm_package02", "helm_package03", "project01", "project02", "project03", "api01", "api02", "api03", "helm01", "helm02", "helm03", "file_name01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",
@@ -84,7 +84,7 @@ def helm_package_basic_setup(extra)
     "GITLAB_TEST_HELM_PACKAGE_ENTID" => idmap,
     "GITLAB_TEST_LIVE" => "FALSE",
     "GITLAB_TEST_EXPLAIN" => "FALSE",
-    "GITLAB_APIKEY" => "NONE",
+    "GITLAB_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,6 +95,9 @@ def helm_package_basic_setup(extra)
 
   if env["GITLAB_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["GITLAB_APIKEY"],
       },

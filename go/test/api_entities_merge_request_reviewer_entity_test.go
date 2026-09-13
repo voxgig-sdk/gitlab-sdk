@@ -50,7 +50,7 @@ func TestApiEntitiesMergeRequestReviewerEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		apiEntitiesMergeRequestReviewerRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.api_entities_merge_request_reviewer", setup.data)))
+		apiEntitiesMergeRequestReviewerRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.api_entities_merge_request_reviewer")))
 		var apiEntitiesMergeRequestReviewerRef01Data map[string]any
 		if len(apiEntitiesMergeRequestReviewerRef01DataRaw) > 0 {
 			apiEntitiesMergeRequestReviewerRef01Data = core.ToMapAny(apiEntitiesMergeRequestReviewerRef01DataRaw[0][1])
@@ -103,7 +103,7 @@ func api_entities_merge_request_reviewerBasicSetup(extra map[string]any) *entity
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"api_entities_merge_request_reviewer01", "api_entities_merge_request_reviewer02", "api_entities_merge_request_reviewer03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -123,7 +123,7 @@ func api_entities_merge_request_reviewerBasicSetup(extra map[string]any) *entity
 		"GITLAB_TEST_API_ENTITIES_MERGE_REQUEST_REVIEWER_ENTID": idmap,
 		"GITLAB_TEST_LIVE":      "FALSE",
 		"GITLAB_TEST_EXPLAIN":   "FALSE",
-		"GITLAB_APIKEY":         "NONE",
+		"GITLAB_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["GITLAB_TEST_API_ENTITIES_MERGE_REQUEST_REVIEWER_ENTID"])
@@ -132,11 +132,23 @@ func api_entities_merge_request_reviewerBasicSetup(extra map[string]any) *entity
 	}
 
 	if env["GITLAB_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["GITLAB_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewGitlabSDK(core.ToMapAny(mergedOpts))
 	}

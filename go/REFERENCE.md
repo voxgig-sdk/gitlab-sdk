@@ -1614,6 +1614,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesApplicationWithSecret(nil).Create(map[string]any{
+    "post_api_v4_application": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -1665,7 +1666,7 @@ fmt.Println(apiEntitiesAvatar.GetName()) // "api_entities_avatar"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesAvatar(nil).Load(nil, nil)
+result, err := client.ApiEntitiesAvatar(nil).Load(map[string]any{"email": "email"}, nil)
 if err != nil {
     panic(err)
 }
@@ -1758,6 +1759,7 @@ Create a new entity with the given data.
 result, err := client.ApiEntitiesAwardEmoji(nil).Create(map[string]any{
     "epic_id": "example_epic_id",
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_epics_epic_iid_award_emoji": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -1841,6 +1843,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesBadge(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_badge": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -1911,7 +1914,7 @@ fmt.Println(apiEntitiesBasicBadgeDetail.GetName()) // "api_entities_basic_badge_
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesBasicBadgeDetail(nil).Load(map[string]any{"group_id": "group_id"}, nil)
+result, err := client.ApiEntitiesBasicBadgeDetail(nil).Load(map[string]any{"image_url": "image_url", "link_url": "link_url"}, nil)
 if err != nil {
     panic(err)
 }
@@ -1958,6 +1961,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesBasicGroupDetail(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_job_token_scope_groups_allowlist": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -2046,6 +2050,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesBasicProjectDetail(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_job_token_scope_allowlist": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -2144,6 +2149,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesBasicSuccess(nil).Create(map[string]any{
+    "post_api_v4_integrations_jira_connect_subscription": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -2328,6 +2334,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesBranch(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_repository_branch": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -2441,6 +2448,11 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesBulkImport(nil).Create(map[string]any{
+    "configuration_access_token": "example_configuration_access_token",
+    "configuration_url": "example_configuration_url",
+    "entities_destination_namespace": "example_entities_destination_namespace",
+    "entities_source_full_path": "example_entities_source_full_path",
+    "entities_source_type": "example_entities_source_type",
 }, nil)
 if err != nil {
     panic(err)
@@ -2606,7 +2618,7 @@ fmt.Println(apiEntitiesChangelog.GetName()) // "api_entities_changelog"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesChangelog(nil).Load(map[string]any{"project_id": "project_id"}, nil)
+result, err := client.ApiEntitiesChangelog(nil).Load(map[string]any{"project_id": "project_id", "version": "version"}, nil)
 if err != nil {
     panic(err)
 }
@@ -2724,6 +2736,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesCiCatalogResourcesVersion(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_catalog_publish": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -2917,6 +2930,7 @@ Create a new entity with the given data.
 result, err := client.ApiEntitiesCiJobBasic(nil).Create(map[string]any{
     "job_id": "example_job_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_jobs_job_id_play": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -3064,6 +3078,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesCiLintResult(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_ci_lint": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -3336,6 +3351,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesCiPipelineScheduleDetail(nil).Update(map[string]any{
     "pipeline_schedule_id": "pipeline_schedule_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_pipeline_schedules_pipeline_schedule_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -3383,6 +3399,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCiResetTokenResult(nil).Create(map[string]any{
+    "post_api_v4_runners_reset_authentication_token": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -3465,6 +3482,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesCiResourceGroup(nil).Update(map[string]any{
     "id": "api_entities_ci_resource_group_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_resource_groups_key": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -3526,7 +3544,7 @@ fmt.Println(apiEntitiesCiRunner.GetName()) // "api_entities_ci_runner"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesCiRunner(nil).Load(map[string]any{"id": 1}, nil)
+result, err := client.ApiEntitiesCiRunner(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -3540,6 +3558,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesCiRunner(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_runner": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -3630,6 +3649,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.ApiEntitiesCiRunnerDetail(nil).Update(map[string]any{
     "id": "api_entities_ci_runner_detail_id",
+    "put_api_v4_runners_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -3738,6 +3758,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCiRunnerRegistrationDetail(nil).Create(map[string]any{
+    "post_api_v4_runner": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -3803,6 +3824,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesCiSecureFile(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_secure_file": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -3889,6 +3911,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesCiVariable(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_variable": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -3994,6 +4017,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesCluster(nil).Create(map[string]any{
+    "post_api_v4_admin_clusters_add": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -4008,6 +4032,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.ApiEntitiesCluster(nil).Update(map[string]any{
     "id": "api_entities_cluster_id",
+    "put_api_v4_admin_clusters_cluster_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -4089,6 +4114,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesClusterGroup(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_clusters_user": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -4104,6 +4130,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesClusterGroup(nil).Update(map[string]any{
     "cluster_id": "cluster_id",
     "group_id": "group_id",
+    "put_api_v4_groups_id_clusters_cluster_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -4185,6 +4212,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesClusterProject(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_clusters_user": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -4200,6 +4228,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesClusterProject(nil).Update(map[string]any{
     "cluster_id": "cluster_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_clusters_cluster_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -4272,6 +4301,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesClustersAgent(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_cluster_agent": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -4435,6 +4465,7 @@ Create a new entity with the given data.
 result, err := client.ApiEntitiesClustersAgentTokenWithToken(nil).Create(map[string]any{
     "cluster_agent_id": "example_cluster_agent_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_cluster_agents_agent_id_token": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -4597,6 +4628,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesCommitDetail(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_repository_commit": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -4612,6 +4644,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesCommitDetail(nil).Update(map[string]any{
     "project_id": "project_id",
     "submodule": "submodule",
+    "put_api_v4_projects_id_repository_submodules_submodule": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -4694,6 +4727,7 @@ Create a new entity with the given data.
 result, err := client.ApiEntitiesCommitNote(nil).Create(map[string]any{
     "project_id": "example_project_id",
     "sha": "example_sha",
+    "post_api_v4_projects_id_repository_commits_sha_comment": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -4885,6 +4919,7 @@ Create a new entity with the given data.
 result, err := client.ApiEntitiesCommitStatus(nil).Create(map[string]any{
     "id": "example_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_statuses_sha": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -5255,6 +5290,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesDeployKey(nil).Create(map[string]any{
+    "post_api_v4_deploy_key": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -5270,6 +5306,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesDeployKey(nil).Update(map[string]any{
     "id": "id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_deploy_keys_key_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -5359,6 +5396,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesDeployKeysProject(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_deploy_key": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -5475,6 +5513,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesDeployTokenWithToken(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_deploy_token": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -5612,6 +5651,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesDeploymentExtended(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_deployment": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -5627,6 +5667,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesDeploymentExtended(nil).Update(map[string]any{
     "deployment_id": "deployment_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_deployments_deployment_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -5676,6 +5717,7 @@ Create a new entity with the given data.
 result, err := client.ApiEntitiesDeploymentsApproval(nil).Create(map[string]any{
     "deployment_id": "example_deployment_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_deployments_deployment_id_approval": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -5854,7 +5896,7 @@ fmt.Println(apiEntitiesDiscoveredCluster.GetName()) // "api_entities_discovered_
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesDiscoveredCluster(nil).Load(nil, nil)
+result, err := client.ApiEntitiesDiscoveredCluster(nil).Load(map[string]any{"group_id": "group_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -5940,6 +5982,7 @@ Create a new entity with the given data.
 result, err := client.ApiEntitiesDraftNote(nil).Create(map[string]any{
     "merge_request_id": "example_merge_request_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -5956,6 +5999,7 @@ result, err := client.ApiEntitiesDraftNote(nil).Update(map[string]any{
     "id": "api_entities_draft_note_id",
     "merge_request_id": "merge_request_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_merge_requests_merge_request_iid_draft_notes_draft_note_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -6064,6 +6108,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesEnvironment(nil).Update(map[string]any{
     "id": "api_entities_environment_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_environments_environment_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -6202,6 +6247,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.ApiEntitiesErrorTrackingProjectSetting(nil).Update(map[string]any{
     "project_id": "project_id",
+    "put_api_v4_projects_id_error_tracking_setting": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -6350,6 +6396,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesFeature(nil).Create(map[string]any{
     "id": "example_id",
+    "post_api_v4_features_name": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6497,6 +6544,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesFeatureFlag(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_feature_flag": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6512,6 +6560,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesFeatureFlag(nil).Update(map[string]any{
     "id": "api_entities_feature_flag_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_feature_flags_feature_flag_name": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -6598,6 +6647,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesFeatureFlagUserList(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_feature_flags_user_list": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6613,6 +6663,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesFeatureFlagUserList(nil).Update(map[string]any{
     "iid": "iid",
     "project_id": "project_id",
+    "put_api_v4_projects_id_feature_flags_user_lists_iid": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -6696,6 +6747,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesFreezePeriod(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_freeze_period": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6711,6 +6763,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesFreezePeriod(nil).Update(map[string]any{
     "id": "api_entities_freeze_period_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_freeze_periods_freeze_period_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -6817,7 +6870,7 @@ fmt.Println(apiEntitiesGoModuleVersion.GetName()) // "api_entities_go_module_ver
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesGoModuleVersion(nil).Load(map[string]any{"module_version": "module_version", "project_id": "project_id"}, nil)
+result, err := client.ApiEntitiesGoModuleVersion(nil).Load(map[string]any{"module_version": "module_version", "project_id": "project_id", "module_name": "module_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -6940,6 +6993,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesGroup(nil).Create(map[string]any{
+    "post_api_v4_group": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -6954,6 +7008,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.ApiEntitiesGroup(nil).Update(map[string]any{
     "id": "id",
+    "put_api_v4_groups_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -7177,6 +7232,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesHook(nil).Create(map[string]any{
+    "post_api_v4_hook": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7191,6 +7247,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.ApiEntitiesHook(nil).Update(map[string]any{
     "id": "api_entities_hook_id",
+    "put_api_v4_hooks_hook_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -7330,6 +7387,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.ApiEntitiesIntegrationBasic(nil).Update(map[string]any{
     "group_id": "group_id",
+    "put_api_v4_groups_id_integrations_apple_app_store": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -7403,6 +7461,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesInvitation(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_invitation": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7690,6 +7749,7 @@ Create a new entity with the given data.
 result, err := client.ApiEntitiesIssueLink(nil).Create(map[string]any{
     "issue_id": "example_issue_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_issues_issue_iid_link": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7798,6 +7858,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesMarkdown(nil).Create(map[string]any{
+    "post_api_v4_markdown": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -7952,6 +8013,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesMember(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_member": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -8310,7 +8372,7 @@ fmt.Println(results)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesMergeRequestBasic(nil).Load(map[string]any{"id": 1}, nil)
+result, err := client.ApiEntitiesMergeRequestBasic(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -8681,6 +8743,7 @@ Create a new entity with the given data.
 result, err := client.ApiEntitiesMetricImage(nil).Create(map[string]any{
     "alert_management_alert_id": "example_alert_management_alert_id",
     "project_id": "example_project_id",
+    "file": "example_file",
 }, nil)
 if err != nil {
     panic(err)
@@ -8857,6 +8920,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.ApiEntitiesNamespace(nil).Update(map[string]any{
     "id": "api_entities_namespace_id",
+    "put_api_v4_namespaces_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -8964,7 +9028,7 @@ fmt.Println(apiEntitiesNamespacesStorageLimitExclusion.GetName()) // "api_entiti
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesNamespacesStorageLimitExclusion(nil).Load(map[string]any{"id": 1}, nil)
+result, err := client.ApiEntitiesNamespacesStorageLimitExclusion(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -8978,6 +9042,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesNamespacesStorageLimitExclusion(nil).Create(map[string]any{
     "namespace_id": "example_namespace_id",
+    "post_api_v4_namespaces_id_storage_limit_exclusion": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -9031,7 +9096,7 @@ fmt.Println(apiEntitiesNpmPackage.GetName()) // "api_entities_npm_package"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesNpmPackage(nil).Load(nil, nil)
+result, err := client.ApiEntitiesNpmPackage(nil).Load(map[string]any{"package_name": "package_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -9076,7 +9141,7 @@ fmt.Println(apiEntitiesNpmPackageTag.GetName()) // "api_entities_npm_package_tag
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ApiEntitiesNpmPackageTag(nil).Load(nil, nil)
+result, err := client.ApiEntitiesNpmPackageTag(nil).Load(map[string]any{"package_name": "package_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -9289,6 +9354,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesOrganizationsOrganization(nil).Create(map[string]any{
+    "post_api_v4_organization": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -10008,6 +10074,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesPackagesDebianDistribution(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_debian_distribution": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -10110,6 +10177,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesPagesDomain(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_pages_domain": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -10375,6 +10443,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesPersonalAccessTokenWithToken(nil).Create(map[string]any{
     "personal_access_token_id": "example_personal_access_token_id",
+    "post_api_v4_personal_access_tokens_id_rotate": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -10467,6 +10536,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesPersonalSnippet(nil).Create(map[string]any{
+    "post_api_v4_snippet": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -10481,6 +10551,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.ApiEntitiesPersonalSnippet(nil).Update(map[string]any{
     "id": "api_entities_personal_snippet_id",
+    "put_api_v4_snippets_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -10540,6 +10611,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.ApiEntitiesPlanLimit(nil).Update(map[string]any{
+    "put_api_v4_application_plan_limit": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -10752,6 +10824,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesProject(nil).Create(map[string]any{
     "user_id": "example_user_id",
+    "post_api_v4_projects_user_user_id": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -10766,6 +10839,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.ApiEntitiesProject(nil).Update(map[string]any{
     "id": "id",
+    "put_api_v4_projects_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -10918,6 +10992,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesProjectGroupLink(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_share": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11026,6 +11101,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesProjectHook(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_hook": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11041,6 +11117,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesProjectHook(nil).Update(map[string]any{
     "id": "api_entities_project_hook_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_hooks_hook_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -11112,6 +11189,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesProjectImportStatus(nil).Create(map[string]any{
+    "path": "example_path",
 }, nil)
 if err != nil {
     panic(err)
@@ -11311,6 +11389,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesProjectSnippet(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_snippet": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11326,6 +11405,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesProjectSnippet(nil).Update(map[string]any{
     "id": "api_entities_project_snippet_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_snippets_snippet_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -11374,6 +11454,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesProjectUpload(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_upload": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11579,6 +11660,20 @@ if err != nil {
 fmt.Println(result)
 ```
 
+#### `Create(reqdata, ctrl map[string]any) (any, error)`
+
+Create a new entity with the given data.
+
+```go
+result, err := client.ApiEntitiesProjectWithAccess(nil).Create(map[string]any{
+    "project_id": "example_project_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
 ### Common Methods
 
 #### `Data(args ...any) any`
@@ -11641,6 +11736,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesProjectsContainerRegistryProtectionRule(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_registry_protection_repository_rule": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11656,6 +11752,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesProjectsContainerRegistryProtectionRule(nil).Update(map[string]any{
     "id": "id",
     "project_id": "project_id",
+    "patch_api_v4_projects_id_registry_protection_repository_rules_protection_rule_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -11727,6 +11824,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesProjectsPackagesProtectionRule(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_packages_protection_rule": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11742,6 +11840,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesProjectsPackagesProtectionRule(nil).Update(map[string]any{
     "id": "id",
     "project_id": "project_id",
+    "patch_api_v4_projects_id_packages_protection_rules_package_protection_rule_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -11813,6 +11912,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesProjectsTopic(nil).Create(map[string]any{
+    "post_api_v4_topic": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11827,6 +11927,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.ApiEntitiesProjectsTopic(nil).Update(map[string]any{
     "id": "api_entities_projects_topic_id",
+    "put_api_v4_topics_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -11912,6 +12013,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesProtectedBranch(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_protected_branch": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -11927,6 +12029,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesProtectedBranch(nil).Update(map[string]any{
     "id": "api_entities_protected_branch_id",
     "project_id": "project_id",
+    "patch_api_v4_projects_id_protected_branches_name": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -12012,6 +12115,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesProtectedTag(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_protected_tag": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12211,6 +12315,9 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesRelationImportTracker(nil).Create(map[string]any{
+    "file": "example_file",
+    "path": "example_path",
+    "relation": "example_relation",
 }, nil)
 if err != nil {
     panic(err)
@@ -12318,6 +12425,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesRelease(nil).Update(map[string]any{
     "id": "api_entities_release_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_releases_tag_name": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -12401,6 +12509,7 @@ Create a new entity with the given data.
 result, err := client.ApiEntitiesReleasesLink(nil).Create(map[string]any{
     "project_id": "example_project_id",
     "release_id": "example_release_id",
+    "post_api_v4_projects_id_releases_tag_name_assets_link": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12417,6 +12526,7 @@ result, err := client.ApiEntitiesReleasesLink(nil).Update(map[string]any{
     "id": "api_entities_releases_link_id",
     "project_id": "project_id",
     "release_id": "release_id",
+    "put_api_v4_projects_id_releases_tag_name_assets_links_link_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -12507,6 +12617,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesRemoteMirror(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_remote_mirror": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12522,6 +12633,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesRemoteMirror(nil).Update(map[string]any{
     "id": "api_entities_remote_mirror_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_remote_mirrors_mirror_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -12650,6 +12762,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesResourceAccessTokenWithToken(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_access_tokens_self_rotate": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -12941,6 +13054,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.ApiEntitiesSuggestion(nil).Update(map[string]any{
+    "put_api_v4_suggestions_batch_apply": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -13017,6 +13131,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ApiEntitiesSystemBroadcastMessage(nil).Create(map[string]any{
+    "post_api_v4_broadcast_message": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -13031,6 +13146,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.ApiEntitiesSystemBroadcastMessage(nil).Update(map[string]any{
     "id": "api_entities_system_broadcast_message_id",
+    "put_api_v4_broadcast_messages_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -13128,6 +13244,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesTag(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_repository_tag": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -13274,6 +13391,7 @@ fmt.Println(apiEntitiesTerraformModuleVersion.GetName()) // "api_entities_terraf
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `modules` | `string` | No |  |
 | `name` | `string` | No |  |
 | `provider` | `string` | No |  |
@@ -13451,6 +13569,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesTrigger(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_trigger": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -13466,6 +13585,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.ApiEntitiesTrigger(nil).Update(map[string]any{
     "id": "api_entities_trigger_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_triggers_trigger_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -13772,6 +13892,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesWikiAttachment(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_wikis_attachment": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -13831,6 +13952,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ApiEntitiesWikiPage(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_wiki": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14349,6 +14471,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.Composer(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_packages_composer": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -14724,6 +14847,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.Debian(nil).Update(map[string]any{
     "id": "id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_packages_debian_file_name": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -14827,24 +14951,7 @@ fmt.Println(debianPackage.GetName()) // "debian_package"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.DebianPackage(nil).Load(map[string]any{"id": "debian_package_id", "distribution": "distribution", "file_name": "file_name", "letter": "letter", "package_name": "package_name", "package_version": "package_version"}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
-```
-
-#### `Update(reqdata, ctrl map[string]any) (any, error)`
-
-Update an existing entity. The data must include the entity `id`.
-
-```go
-result, err := client.DebianPackage(nil).Update(map[string]any{
-    "id": "debian_package_id",
-    "file_name": "file_name",
-    "project_id": "project_id",
-    // Fields to update
-}, nil)
+result, err := client.DebianPackage(nil).Load(map[string]any{"id": "debian_package_id", "distribution": "distribution"}, nil)
 if err != nil {
     panic(err)
 }
@@ -15090,6 +15197,7 @@ Create a new entity with the given data.
 result, err := client.EeApiEntitiesApprovalState(nil).Create(map[string]any{
     "merge_request_id": "example_merge_request_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_merge_requests_merge_request_iid_approval": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -15500,6 +15608,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.EeApiEntitiesGeoNodeStatus(nil).Create(map[string]any{
+    "post_api_v4_geo_status": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -15610,6 +15719,7 @@ Create a new entity with the given data.
 result, err := client.EeApiEntitiesIssuableMetricImage(nil).Create(map[string]any{
     "issue_id": "example_issue_id",
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_issues_issue_iid_metric_image": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -15626,6 +15736,7 @@ result, err := client.EeApiEntitiesIssuableMetricImage(nil).Update(map[string]an
     "id": "id",
     "issue_id": "issue_id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_issues_issue_iid_metric_images_metric_image_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -15772,6 +15883,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.EeApiEntitiesSshCertificate(nil).Create(map[string]any{
     "group_id": "example_group_id",
+    "post_api_v4_groups_id_ssh_certificate": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -15825,6 +15937,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.Environment(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_environments_stop_stale": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -16163,7 +16276,7 @@ fmt.Println(genericPackage.GetName()) // "generic_package"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GenericPackage(nil).Load(map[string]any{"file_name": "file_name", "generic_id": "generic_id", "project_id": "project_id"}, nil)
+result, err := client.GenericPackage(nil).Load(map[string]any{"file_name": "file_name", "generic_id": "generic_id", "project_id": "project_id", "package_version": "package_version"}, nil)
 if err != nil {
     panic(err)
 }
@@ -16218,6 +16331,12 @@ geo := client.Geo(nil)
 fmt.Println(geo.GetName()) // "geo"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -16238,6 +16357,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Geo(nil).Create(map[string]any{
+    "post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -16283,7 +16403,7 @@ fmt.Println(goProxy.GetName()) // "go_proxy"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GoProxy(nil).Load(map[string]any{"project_id": "project_id"}, nil)
+result, err := client.GoProxy(nil).Load(map[string]any{"project_id": "project_id", "module_name": "module_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -16362,6 +16482,8 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.Group(nil).Update(map[string]any{
     "id": "group_id",
+    "key": "key",
+    "put_api_v4_groups_id_custom_attributes_key": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -16537,6 +16659,9 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.GroupImport(nil).Create(map[string]any{
+    "file": "example_file",
+    "name": "example_name",
+    "path": "example_path",
 }, nil)
 if err != nil {
     panic(err)
@@ -16723,6 +16848,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Import(nil).Create(map[string]any{
+    "post_api_v4_import_github_gist": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -16775,6 +16901,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Integration(nil).Create(map[string]any{
+    "post_api_v4_integrations_slack_event": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -16998,6 +17125,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Job(nil).Create(map[string]any{
+    "post_api_v4_jobs_request": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -17012,6 +17140,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.Job(nil).Update(map[string]any{
     "id": "job_id",
+    "put_api_v4_jobs_id": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -17058,7 +17187,7 @@ fmt.Println(mavenPackage.GetName()) // "maven_package"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.MavenPackage(nil).Load(map[string]any{"file_name": "file_name"}, nil)
+result, err := client.MavenPackage(nil).Load(map[string]any{"file_name": "file_name", "path": "path"}, nil)
 if err != nil {
     panic(err)
 }
@@ -17073,6 +17202,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.MavenPackage(nil).Update(map[string]any{
     "file_name": "file_name",
     "project_id": "project_id",
+    "put_api_v4_projects_id_packages_maven*path_file_name": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -17119,6 +17249,22 @@ fmt.Println(member.GetName()) // "member"
 | `id` | `string` | No |  |
 
 ### Operations
+
+#### `Update(reqdata, ctrl map[string]any) (any, error)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```go
+result, err := client.Member(nil).Update(map[string]any{
+    "group_id": "group_id",
+    "id": "id",
+    // Fields to update
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
 
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -17305,6 +17451,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.Migration(nil).Create(map[string]any{
     "timestamp": "example_timestamp",
+    "post_api_v4_admin_migrations_timestamp_mark": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -17472,6 +17619,7 @@ Update an existing entity. The data must include the entity `id`.
 result, err := client.Npm(nil).Update(map[string]any{
     "id": "id",
     "project_id": "project_id",
+    "put_api_v4_projects_id_packages_npm_package_name": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -17518,7 +17666,7 @@ fmt.Println(npmPackage.GetName()) // "npm_package"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.NpmPackage(nil).Load(map[string]any{"project_id": "project_id"}, nil)
+result, err := client.NpmPackage(nil).Load(map[string]any{"project_id": "project_id", "file_name": "file_name", "package_name": "package_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -17558,7 +17706,7 @@ fmt.Println(result)
 Remove the entity matching the given criteria.
 
 ```go
-result, err := client.NpmPackage(nil).Remove(map[string]any{"tag": "tag"}, nil)
+result, err := client.NpmPackage(nil).Remove(map[string]any{"tag": "tag", "package_name": "package_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -17605,6 +17753,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.Nuget(nil).Update(map[string]any{
     "project_id": "project_id",
+    "put_api_v4_projects_id_packages_nuget": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -17711,7 +17860,7 @@ fmt.Println(result)
 Remove the entity matching the given criteria.
 
 ```go
-result, err := client.NugetPackage(nil).Remove(map[string]any{"project_id": "project_id"}, nil)
+result, err := client.NugetPackage(nil).Remove(map[string]any{"project_id": "project_id", "package_name": "package_name", "package_version": "package_version"}, nil)
 if err != nil {
     panic(err)
 }
@@ -17833,6 +17982,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.Page(nil).Update(map[string]any{
     "project_id": "project_id",
+    "patch_api_v4_projects_id_page": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -18159,6 +18309,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ProjectEntity(nil).Create(map[string]any{
+    "post_api_v4_import_bitbucket_server": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -18224,6 +18375,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.ProjectExport(nil).Create(map[string]any{
     "id": "example_id",
+    "post_api_v4_projects_id_export": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -18385,6 +18537,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ProjectImportEntity(nil).Create(map[string]any{
+    "post_api_v4_import_bitbucket": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -18534,6 +18687,7 @@ Update an existing entity. The data must include the entity `id`.
 ```go
 result, err := client.ProjectsJobTokenScope(nil).Update(map[string]any{
     "project_id": "project_id",
+    "patch_api_v4_projects_id_job_token_scope": map[string]any{},
     // Fields to update
 }, nil)
 if err != nil {
@@ -18645,6 +18799,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.Pypi(nil).Create(map[string]any{
     "project_id": "example_project_id",
+    "post_api_v4_projects_id_packages_pypi": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -18755,7 +18910,7 @@ fmt.Println(release.GetName()) // "release"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Release(nil).Load(map[string]any{"project_id": "project_id"}, nil)
+result, err := client.Release(nil).Load(map[string]any{"project_id": "project_id", "suffix_path": "suffix_path"}, nil)
 if err != nil {
     panic(err)
 }
@@ -18876,21 +19031,6 @@ if err != nil {
 fmt.Println(result)
 ```
 
-#### `Create(reqdata, ctrl map[string]any) (any, error)`
-
-Create a new entity with the given data.
-
-```go
-result, err := client.RemoteMirror(nil).Create(map[string]any{
-    "id": "example_id",
-    "project_id": "example_project_id",
-}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(result)
-```
-
 #### `Remove(reqmatch, ctrl map[string]any) (any, error)`
 
 Remove the entity matching the given criteria.
@@ -18988,7 +19128,7 @@ fmt.Println(rpmPackage.GetName()) // "rpm_package"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.RpmPackage(nil).Load(map[string]any{"project_id": "project_id"}, nil)
+result, err := client.RpmPackage(nil).Load(map[string]any{"project_id": "project_id", "file_name": "file_name"}, nil)
 if err != nil {
     panic(err)
 }
@@ -19164,6 +19304,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Runner(nil).Create(map[string]any{
+    "post_api_v4_runners_verify": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -19221,7 +19362,7 @@ fmt.Println(search.GetName()) // "search"
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Search(nil).Load(nil, nil)
+result, err := client.Search(nil).Load(map[string]any{"scope": "scope", "search": "search"}, nil)
 if err != nil {
     panic(err)
 }
@@ -19330,6 +19471,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Slack(nil).Create(map[string]any{
+    "post_api_v4_slack_trigger": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -19688,6 +19830,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.TerraformState(nil).Create(map[string]any{
+    "id": "example_id",
     "project_id": "example_project_id",
 }, nil)
 if err != nil {
@@ -19972,6 +20115,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.UsageData(nil).Create(map[string]any{
+    "post_api_v4_usage_data_increment_counter": map[string]any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -20175,4 +20319,42 @@ client := sdk.NewGitlabSDK(map[string]any{
     },
 })
 ```
+
+
+### Configuring features
+
+Each feature is inactive until switched on, and an SDK with no feature
+configured does no feature work at all. Every option below keeps its default
+unless you name it.
+
+The array form of \`feature\` is significant: several features wrap the
+transport, and the order you list them in is the order they nest.
+
+#### `test`
+
+In-memory mock transport for testing without a live server.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.test.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Installs the BASE transport that the wrapping features wrap, so it must be
+  activated before them.
+- Inactive by default: leaving it out costs nothing at runtime.
 

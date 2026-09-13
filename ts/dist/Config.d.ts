@@ -1,2 +1,3 @@
+declare const FEATURE_PLUGINS: Record<string, any[]>;
 declare const config: any;
-export { config };
+export { config, FEATURE_PLUGINS, };

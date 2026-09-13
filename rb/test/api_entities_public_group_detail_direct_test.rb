@@ -76,15 +76,17 @@ def api_entities_public_group_detail_direct_setup(mockres)
   env = Runner.env_override({
     "GITLAB_TEST_API_ENTITIES_PUBLIC_GROUP_DETAIL_ENTID" => {},
     "GITLAB_TEST_LIVE" => "FALSE",
-    "GITLAB_APIKEY" => "NONE",
+    "GITLAB_APIKEY" => "",
   })
 
   live = env["GITLAB_TEST_LIVE"] == "TRUE"
 
   if live
-    merged_opts = {
+    # Merged so the generated fields win: sdk-test-control.json's
+    # test.client.options adds to the live client, it does not redirect it.
+    merged_opts = Runner.live_client_options.merge({
       "apikey" => env["GITLAB_APIKEY"],
-    }
+    })
     client = GitlabSDK.new(merged_opts)
     return {
       client: client,

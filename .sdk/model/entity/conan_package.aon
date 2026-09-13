@@ -15,6 +15,12 @@ main: kit: entity: conan_package: {
   id: {
     field: "id"
     name: "id"
+    parts: [
+      "conan_package_reference"
+      "package_revision"
+      "file_name"
+    ]
+    sep: "/"
   }
 
   name: "conan_package"
@@ -100,24 +106,58 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{id}"
-            "packages"
-            "conan"
-            "v1"
-            "files"
-            "{package_name}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "{recipe_revision}"
-            "package"
-            "{conan_package_reference}"
-            "{package_revision}"
-            "{file_name}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "package_name"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "package"
+            }
+            {
+              var: "conan_package_reference"
+            }
+            {
+              var: "package_revision"
+            }
+            {
+              var: "file_name"
+            }
           ]
           select: {
             exist: [
@@ -215,28 +255,6 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/packages/{conan_package_reference}/revisions/{package_revision}/files/{file_name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "conans"
-            "{conan_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "revisions"
-            "{revision_id}"
-            "packages"
-            "{package_id}"
-            "revisions"
-            "{revision_id}"
-            "files"
-            "{file_name}"
-          ]
           rename: {
             param: {
               conan_package_reference: "package_id"
@@ -246,6 +264,68 @@ main: kit: entity: conan_package: {
               recipe_revision: "revision_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "revision_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              var: "package_id"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "revision_id"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_name"
+            }
+          ]
           select: {
             exist: [
               "conan_id"
@@ -334,22 +414,52 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "conan"
-            "v1"
-            "files"
-            "{package_name}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "{recipe_revision}"
-            "package"
-            "{conan_package_reference}"
-            "{package_revision}"
-            "{file_name}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "package_name"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "package"
+            }
+            {
+              var: "conan_package_reference"
+            }
+            {
+              var: "package_revision"
+            }
+            {
+              var: "file_name"
+            }
           ]
           select: {
             exist: [
@@ -430,24 +540,6 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/files/{file_name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "conans"
-            "{conan_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "revisions"
-            "{revision_id}"
-            "files"
-            "{file_name}"
-          ]
           rename: {
             param: {
               id: "project_id"
@@ -455,6 +547,56 @@ main: kit: entity: conan_package: {
               recipe_revision: "revision_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "revision_id"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_name"
+            }
+          ]
           select: {
             exist: [
               "conan_id"
@@ -533,29 +675,59 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v1"
-            "files"
-            "{file_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "{recipe_revision}"
-            "export"
-            "{file_name}"
-          ]
           rename: {
             param: {
               id: "project_id"
               package_name: "file_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "export"
+            }
+            {
+              var: "file_name"
+            }
+          ]
           select: {
             exist: [
               "file_id"
@@ -626,29 +798,59 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/search"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "conans"
-            "{conan_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "revisions"
-            "{recipe_revision}"
-            "search"
-          ]
           rename: {
             param: {
               id: "project_id"
               package_name: "conan_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "search"
+            }
+          ]
           select: {
             exist: [
               "conan_id"
@@ -719,26 +921,52 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "conan"
-            "v1"
-            "files"
-            "{file_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "{recipe_revision}"
-            "export"
-            "{file_name}"
-          ]
           rename: {
             param: {
               package_name: "file_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "export"
+            }
+            {
+              var: "file_name"
+            }
+          ]
           select: {
             exist: [
               "file_id"
@@ -800,27 +1028,53 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/search"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v1"
-            "conans"
-            "{conan_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "search"
-          ]
           rename: {
             param: {
               id: "project_id"
               package_name: "conan_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "search"
+            }
+          ]
           select: {
             exist: [
               "conan_id"
@@ -881,27 +1135,53 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/search"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "conans"
-            "{conan_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "search"
-          ]
           rename: {
             param: {
               id: "project_id"
               package_name: "conan_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "search"
+            }
+          ]
           select: {
             exist: [
               "conan_id"
@@ -955,24 +1235,46 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}/search"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "conan"
-            "v1"
-            "conans"
-            "{conan_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "search"
-          ]
           rename: {
             param: {
               package_name: "conan_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "search"
+            }
+          ]
           select: {
             exist: [
               "conan_id"
@@ -1018,22 +1320,40 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v1/conans/search"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v1"
-            "conans"
-            "search"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              lit: "search"
+            }
+          ]
           select: {
             exist: [
               "ignorecase"
@@ -1078,22 +1398,40 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v2/conans/search"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "conans"
-            "search"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              lit: "search"
+            }
+          ]
           select: {
             exist: [
               "ignorecase"
@@ -1129,14 +1467,28 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/packages/conan/v1/conans/search"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "conan"
-            "v1"
-            "conans"
-            "search"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              lit: "search"
+            }
           ]
           select: {
             exist: [
@@ -1163,21 +1515,37 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v1/ping"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v1"
-            "ping"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ping"
+            }
+          ]
           select: {
             exist: [
               "project_id"
@@ -1202,22 +1570,40 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v1/users/authenticate"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v1"
-            "users"
-            "authenticate"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "authenticate"
+            }
+          ]
           select: {
             exist: [
               "project_id"
@@ -1242,22 +1628,40 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v1/users/check_credentials"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v1"
-            "users"
-            "check_credentials"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "check_credentials"
+            }
+          ]
           select: {
             exist: [
               "project_id"
@@ -1282,22 +1686,40 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v2/users/authenticate"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "users"
-            "authenticate"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "authenticate"
+            }
+          ]
           select: {
             exist: [
               "project_id"
@@ -1322,22 +1744,40 @@ main: kit: entity: conan_package: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/packages/conan/v2/users/check_credentials"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "users"
-            "check_credentials"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "check_credentials"
+            }
+          ]
           select: {
             exist: [
               "project_id"
@@ -1351,13 +1791,25 @@ main: kit: entity: conan_package: {
         {
           method: "GET"
           orig: "/api/v4/packages/conan/v1/ping"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "conan"
-            "v1"
-            "ping"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ping"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -1367,14 +1819,28 @@ main: kit: entity: conan_package: {
         {
           method: "GET"
           orig: "/api/v4/packages/conan/v1/users/authenticate"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "conan"
-            "v1"
-            "users"
-            "authenticate"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "authenticate"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -1384,14 +1850,28 @@ main: kit: entity: conan_package: {
         {
           method: "GET"
           orig: "/api/v4/packages/conan/v1/users/check_credentials"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "conan"
-            "v1"
-            "users"
-            "check_credentials"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "users"
+            }
+            {
+              lit: "check_credentials"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -1473,26 +1953,6 @@ main: kit: entity: conan_package: {
           }
           method: "DELETE"
           orig: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/packages/{conan_package_reference}/revisions/{package_revision}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "conans"
-            "{conan_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "revisions"
-            "{revision_id}"
-            "packages"
-            "{package_id}"
-            "revisions"
-            "{package_revision}"
-          ]
           rename: {
             param: {
               conan_package_reference: "package_id"
@@ -1501,6 +1961,62 @@ main: kit: entity: conan_package: {
               recipe_revision: "revision_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "revision_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              var: "package_id"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "package_revision"
+            }
+          ]
           select: {
             exist: [
               "conan_id"
@@ -1572,28 +2088,56 @@ main: kit: entity: conan_package: {
           }
           method: "DELETE"
           orig: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "conans"
-            "{conan_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "revisions"
-            "{recipe_revision}"
-          ]
           rename: {
             param: {
               id: "project_id"
               package_name: "conan_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "recipe_revision"
+            }
+          ]
           select: {
             exist: [
               "conan_id"
@@ -1701,24 +2245,58 @@ main: kit: entity: conan_package: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{id}"
-            "packages"
-            "conan"
-            "v1"
-            "files"
-            "{package_name}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "{recipe_revision}"
-            "package"
-            "{conan_package_reference}"
-            "{package_revision}"
-            "{file_name}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "package_name"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "package"
+            }
+            {
+              var: "conan_package_reference"
+            }
+            {
+              var: "package_revision"
+            }
+            {
+              var: "file_name"
+            }
           ]
           select: {
             exist: [
@@ -1826,28 +2404,6 @@ main: kit: entity: conan_package: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/packages/{conan_package_reference}/revisions/{package_revision}/files/{file_name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "conans"
-            "{conan_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "revisions"
-            "{revision_id}"
-            "packages"
-            "{package_id}"
-            "revisions"
-            "{revision_id}"
-            "files"
-            "{file_name}"
-          ]
           rename: {
             param: {
               conan_package_reference: "package_id"
@@ -1857,6 +2413,68 @@ main: kit: entity: conan_package: {
               recipe_revision: "revision_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "revision_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              var: "package_id"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "revision_id"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_name"
+            }
+          ]
           select: {
             exist: [
               "conan_id"
@@ -1955,22 +2573,52 @@ main: kit: entity: conan_package: {
           }
           method: "PUT"
           orig: "/api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "conan"
-            "v1"
-            "files"
-            "{package_name}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "{recipe_revision}"
-            "package"
-            "{conan_package_reference}"
-            "{package_revision}"
-            "{file_name}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "package_name"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "package"
+            }
+            {
+              var: "conan_package_reference"
+            }
+            {
+              var: "package_revision"
+            }
+            {
+              var: "file_name"
+            }
           ]
           select: {
             exist: [
@@ -2068,26 +2716,6 @@ main: kit: entity: conan_package: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}/authorize"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v1"
-            "files"
-            "{file_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "{recipe_revision}"
-            "package"
-            "{package_id}"
-            "{package_revision}"
-            "{file_name}"
-            "authorize"
-          ]
           rename: {
             param: {
               conan_package_reference: "package_id"
@@ -2095,6 +2723,62 @@ main: kit: entity: conan_package: {
               package_name: "file_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "package"
+            }
+            {
+              var: "package_id"
+            }
+            {
+              var: "package_revision"
+            }
+            {
+              var: "file_name"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
           select: {
             exist: [
               "file_id"
@@ -2191,29 +2875,6 @@ main: kit: entity: conan_package: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/packages/{conan_package_reference}/revisions/{package_revision}/files/{file_name}/authorize"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "conans"
-            "{conan_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "revisions"
-            "{revision_id}"
-            "packages"
-            "{package_id}"
-            "revisions"
-            "{revision_id}"
-            "files"
-            "{file_name}"
-            "authorize"
-          ]
           rename: {
             param: {
               conan_package_reference: "package_id"
@@ -2223,7 +2884,73 @@ main: kit: entity: conan_package: {
               recipe_revision: "revision_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "revision_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              var: "package_id"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "revision_id"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_name"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
           select: {
+            "$action": "authorize"
             exist: [
               "conan_id"
               "file_name"
@@ -2311,24 +3038,6 @@ main: kit: entity: conan_package: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/files/{file_name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "conans"
-            "{conan_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "revisions"
-            "{revision_id}"
-            "files"
-            "{file_name}"
-          ]
           rename: {
             param: {
               id: "project_id"
@@ -2336,6 +3045,56 @@ main: kit: entity: conan_package: {
               recipe_revision: "revision_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "revision_id"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_name"
+            }
+          ]
           select: {
             exist: [
               "conan_id"
@@ -2424,30 +3183,62 @@ main: kit: entity: conan_package: {
           }
           method: "PUT"
           orig: "/api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}/authorize"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "conan"
-            "v1"
-            "files"
-            "{file_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "{recipe_revision}"
-            "package"
-            "{package_id}"
-            "{package_revision}"
-            "{file_name}"
-            "authorize"
-          ]
           rename: {
             param: {
               conan_package_reference: "package_id"
               package_name: "file_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "package"
+            }
+            {
+              var: "package_id"
+            }
+            {
+              var: "package_revision"
+            }
+            {
+              var: "file_name"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
           select: {
             exist: [
               "file_id"
@@ -2536,29 +3327,59 @@ main: kit: entity: conan_package: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v1"
-            "files"
-            "{file_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "{recipe_revision}"
-            "export"
-            "{file_name}"
-          ]
           rename: {
             param: {
               id: "project_id"
               package_name: "file_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "export"
+            }
+            {
+              var: "file_name"
+            }
+          ]
           select: {
             exist: [
               "file_id"
@@ -2638,25 +3459,6 @@ main: kit: entity: conan_package: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/files/{file_name}/authorize"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v2"
-            "conans"
-            "{conan_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "revisions"
-            "{revision_id}"
-            "files"
-            "{file_name}"
-            "authorize"
-          ]
           rename: {
             param: {
               id: "project_id"
@@ -2664,7 +3466,61 @@ main: kit: entity: conan_package: {
               recipe_revision: "revision_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "revision_id"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_name"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
           select: {
+            "$action": "authorize"
             exist: [
               "conan_id"
               "file_name"
@@ -2742,31 +3598,64 @@ main: kit: entity: conan_package: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}/authorize"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "packages"
-            "conan"
-            "v1"
-            "files"
-            "{file_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "{recipe_revision}"
-            "export"
-            "{file_name}"
-            "authorize"
-          ]
           rename: {
             param: {
               id: "project_id"
               package_name: "file_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "export"
+            }
+            {
+              var: "file_name"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
           select: {
+            "$action": "authorize"
             exist: [
               "file_id"
               "file_name"
@@ -2846,26 +3735,52 @@ main: kit: entity: conan_package: {
           }
           method: "PUT"
           orig: "/api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "conan"
-            "v1"
-            "files"
-            "{file_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "{recipe_revision}"
-            "export"
-            "{file_name}"
-          ]
           rename: {
             param: {
               package_name: "file_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "export"
+            }
+            {
+              var: "file_name"
+            }
+          ]
           select: {
             exist: [
               "file_id"
@@ -2937,28 +3852,57 @@ main: kit: entity: conan_package: {
           }
           method: "PUT"
           orig: "/api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}/authorize"
-          parts: [
-            "api"
-            "v4"
-            "packages"
-            "conan"
-            "v1"
-            "files"
-            "{file_id}"
-            "{package_version}"
-            "{package_username}"
-            "{package_channel}"
-            "{recipe_revision}"
-            "export"
-            "{file_name}"
-            "authorize"
-          ]
           rename: {
             param: {
               package_name: "file_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              var: "recipe_revision"
+            }
+            {
+              lit: "export"
+            }
+            {
+              var: "file_name"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
           select: {
+            "$action": "authorize"
             exist: [
               "file_id"
               "file_name"

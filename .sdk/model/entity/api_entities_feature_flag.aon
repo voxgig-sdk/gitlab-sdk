@@ -11,6 +11,7 @@ main: kit: entity: api_entities_feature_flag: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "date-time"
       name: "created_at"
       req: false
       type: "`$STRING`"
@@ -21,6 +22,7 @@ main: kit: entity: api_entities_feature_flag: {
       type: "`$STRING`"
     }
     {
+      format: "int32"
       name: "id"
       req: false
       type: "`$INTEGER`"
@@ -46,6 +48,7 @@ main: kit: entity: api_entities_feature_flag: {
       type: "`$OBJECT`"
     }
     {
+      format: "date-time"
       name: "updated_at"
       req: false
       type: "`$STRING`"
@@ -95,18 +98,28 @@ main: kit: entity: api_entities_feature_flag: {
           }
           method: "POST"
           orig: "/api/v4/projects/{id}/feature_flags"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "feature_flags"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "feature_flags"
+            }
+          ]
           select: {
             exist: [
               "post_api_v4_projects_id_feature_flag"
@@ -162,18 +175,28 @@ main: kit: entity: api_entities_feature_flag: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/feature_flags"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "feature_flags"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "feature_flags"
+            }
+          ]
           select: {
             exist: [
               "page"
@@ -213,20 +236,32 @@ main: kit: entity: api_entities_feature_flag: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/feature_flags/{feature_flag_name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "feature_flags"
-            "{id}"
-          ]
           rename: {
             param: {
               feature_flag_name: "id"
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "feature_flags"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -273,20 +308,32 @@ main: kit: entity: api_entities_feature_flag: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/feature_flags/{feature_flag_name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "feature_flags"
-            "{id}"
-          ]
           rename: {
             param: {
               feature_flag_name: "id"
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "feature_flags"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

@@ -41,12 +41,12 @@ client = GitlabSDK({
 
 ### 3. Load an apientitiesbasicbadgedetail
 
-ApiEntitiesBasicBadgeDetail is nested under group, so provide the `group_id`.
+ApiEntitiesBasicBadgeDetail is nested under image_url, so provide the `image_url`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    apientitiesbasicbadgedetail = client.ApiEntitiesBasicBadgeDetail().load({"group_id": "example_group_id"})
+    apientitiesbasicbadgedetail = client.ApiEntitiesBasicBadgeDetail().load({"image_url": "example_image_url", "link_url": "example_link_url"})
     print(apientitiesbasicbadgedetail)
 except Exception as err:
     print(f"load failed: {err}")
@@ -1119,7 +1119,7 @@ API path: `/api/v4/projects/{id}/pipeline_schedules`
 
 Operations: Create, Load, Update.
 
-API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership`
+API path: `/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/play`
 
 #### ApiEntitiesCiResetTokenResult
 
@@ -3532,9 +3532,9 @@ API path: `/api/v4/projects/{id}/uploads`
 | `wiki_access_level` |  |
 | `wiki_enabled` |  |
 
-Operations: Load.
+Operations: Create, Load.
 
-API path: `/api/v4/projects/{id}`
+API path: `/api/v4/projects/{id}/housekeeping`
 
 #### ApiEntitiesProjectsContainerRegistryProtectionRule
 
@@ -3977,6 +3977,7 @@ API path: `/api/v4/projects/{id}/templates/{type}`
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `modules` |  |
 | `name` |  |
 | `provider` |  |
@@ -4311,7 +4312,7 @@ API path: `/api/v4/groups/{id}/custom_attributes/{key}`
 
 Operations: Update.
 
-API path: `/api/v4/projects/{id}/packages/debian/{file_name}`
+API path: `/api/v4/projects/{id}/packages/debian/{file_name}/authorize`
 
 #### DebianDistribution
 
@@ -4329,7 +4330,7 @@ API path: `/api/v4/groups/{id}/-/debian_distributions/{codename}`
 | --- | --- |
 | `id` |  |
 
-Operations: Load, Update.
+Operations: Load.
 
 API path: `/api/v4/groups/{id}/-/packages/debian/pool/{distribution}/{project_id}/{letter}/{package_name}/{package_version}/{file_name}`
 
@@ -4790,6 +4791,7 @@ API path: `/api/v4/projects/{id}/packages/generic/{package_name}/*package_versio
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 
 Operations: Create, Load.
 
@@ -4935,7 +4937,7 @@ API path: `/api/v4/groups/{id}/-/packages/maven/*path/{file_name}`
 | --- | --- |
 | `id` |  |
 
-Operations: Remove.
+Operations: Remove, Update.
 
 API path: `/api/v4/groups/{id}/members/{user_id}`
 
@@ -5267,9 +5269,9 @@ API path: `/api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, Load, Remove.
+Operations: Load, Remove.
 
-API path: `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync`
+API path: `/api/v4/projects/{id}/remote_mirrors/{mirror_id}/public_key`
 
 #### Rpm
 
@@ -5724,6 +5726,7 @@ Create an instance: `api_entities_application_with_secret = client.ApiEntitiesAp
 
 ```python
 api_entities_application_with_secret = client.ApiEntitiesApplicationWithSecret().create({
+    "post_api_v4_application": {},  # dict
 })
 ```
 
@@ -5747,7 +5750,7 @@ Create an instance: `api_entities_avatar = client.ApiEntitiesAvatar()`
 #### Example: Load
 
 ```python
-api_entities_avatar = client.ApiEntitiesAvatar().load()
+api_entities_avatar = client.ApiEntitiesAvatar().load({"email": "email"})
 ```
 
 
@@ -5802,6 +5805,7 @@ api_entities_award_emojis = client.ApiEntitiesAwardEmoji().list({"epic_id": "exa
 api_entities_award_emoji = client.ApiEntitiesAwardEmoji().create({
     "epic_id": "example_epic_id",  # str
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_epics_epic_iid_award_emoji": {},  # dict
 })
 ```
 
@@ -5848,6 +5852,7 @@ api_entities_badges = client.ApiEntitiesBadge().list({"group_id": "example"})
 ```python
 api_entities_badge = client.ApiEntitiesBadge().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_badge": {},  # dict
 })
 ```
 
@@ -5875,7 +5880,7 @@ Create an instance: `api_entities_basic_badge_detail = client.ApiEntitiesBasicBa
 #### Example: Load
 
 ```python
-api_entities_basic_badge_detail = client.ApiEntitiesBasicBadgeDetail().load({"group_id": "group_id"})
+api_entities_basic_badge_detail = client.ApiEntitiesBasicBadgeDetail().load({"image_url": "image_url", "link_url": "link_url"})
 ```
 
 
@@ -5894,6 +5899,7 @@ Create an instance: `api_entities_basic_group_detail = client.ApiEntitiesBasicGr
 ```python
 api_entities_basic_group_detail = client.ApiEntitiesBasicGroupDetail().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_job_token_scope_groups_allowlist": {},  # dict
 })
 ```
 
@@ -5949,6 +5955,7 @@ api_entities_basic_project_details = client.ApiEntitiesBasicProjectDetail().list
 ```python
 api_entities_basic_project_detail = client.ApiEntitiesBasicProjectDetail().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_job_token_scope_allowlist": {},  # dict
 })
 ```
 
@@ -5991,6 +5998,7 @@ Create an instance: `api_entities_basic_success = client.ApiEntitiesBasicSuccess
 
 ```python
 api_entities_basic_success = client.ApiEntitiesBasicSuccess().create({
+    "post_api_v4_integrations_jira_connect_subscription": {},  # dict
 })
 ```
 
@@ -6090,6 +6098,7 @@ api_entities_branchs = client.ApiEntitiesBranch().list({"project_id": "example"}
 ```python
 api_entities_branch = client.ApiEntitiesBranch().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_repository_branch": {},  # dict
 })
 ```
 
@@ -6148,6 +6157,11 @@ api_entities_bulk_imports = client.ApiEntitiesBulkImport().list()
 
 ```python
 api_entities_bulk_import = client.ApiEntitiesBulkImport().create({
+    "configuration_access_token": "example_configuration_access_token",  # Any
+    "configuration_url": "example_configuration_url",  # Any
+    "entities_destination_namespace": "example_entities_destination_namespace",  # Any
+    "entities_source_full_path": "example_entities_source_full_path",  # Any
+    "entities_source_type": "example_entities_source_type",  # Any
 })
 ```
 
@@ -6229,7 +6243,7 @@ Create an instance: `api_entities_changelog = client.ApiEntitiesChangelog()`
 #### Example: Load
 
 ```python
-api_entities_changelog = client.ApiEntitiesChangelog().load({"project_id": "project_id"})
+api_entities_changelog = client.ApiEntitiesChangelog().load({"project_id": "project_id", "version": "version"})
 ```
 
 
@@ -6291,6 +6305,7 @@ Create an instance: `api_entities_ci_catalog_resources_version = client.ApiEntit
 ```python
 api_entities_ci_catalog_resources_version = client.ApiEntitiesCiCatalogResourcesVersion().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_catalog_publish": {},  # dict
 })
 ```
 
@@ -6413,6 +6428,7 @@ api_entities_ci_job_basics = client.ApiEntitiesCiJobBasic().list({"key": "exampl
 api_entities_ci_job_basic = client.ApiEntitiesCiJobBasic().create({
     "job_id": "example_job_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_jobs_job_id_play": {},  # dict
 })
 ```
 
@@ -6499,6 +6515,7 @@ api_entities_ci_lint_results = client.ApiEntitiesCiLintResult().list({"project_i
 ```python
 api_entities_ci_lint_result = client.ApiEntitiesCiLintResult().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_ci_lint": {},  # dict
 })
 ```
 
@@ -6653,6 +6670,7 @@ Create an instance: `api_entities_ci_reset_token_result = client.ApiEntitiesCiRe
 
 ```python
 api_entities_ci_reset_token_result = client.ApiEntitiesCiResetTokenResult().create({
+    "post_api_v4_runners_reset_authentication_token": {},  # dict
 })
 ```
 
@@ -6721,7 +6739,7 @@ Create an instance: `api_entities_ci_runner = client.ApiEntitiesCiRunner()`
 #### Example: Load
 
 ```python
-api_entities_ci_runner = client.ApiEntitiesCiRunner().load({"id": 1})
+api_entities_ci_runner = client.ApiEntitiesCiRunner().load()
 ```
 
 #### Example: Create
@@ -6729,6 +6747,7 @@ api_entities_ci_runner = client.ApiEntitiesCiRunner().load({"id": 1})
 ```python
 api_entities_ci_runner = client.ApiEntitiesCiRunner().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_runner": {},  # dict
 })
 ```
 
@@ -6829,6 +6848,7 @@ Create an instance: `api_entities_ci_runner_registration_detail = client.ApiEnti
 
 ```python
 api_entities_ci_runner_registration_detail = client.ApiEntitiesCiRunnerRegistrationDetail().create({
+    "post_api_v4_runner": {},  # dict
 })
 ```
 
@@ -6861,6 +6881,7 @@ api_entities_ci_secure_file = client.ApiEntitiesCiSecureFile().load({"id": "api_
 ```python
 api_entities_ci_secure_file = client.ApiEntitiesCiSecureFile().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_secure_file": {},  # dict
 })
 ```
 
@@ -6910,6 +6931,7 @@ api_entities_ci_variables = client.ApiEntitiesCiVariable().list({"pipeline_id": 
 ```python
 api_entities_ci_variable = client.ApiEntitiesCiVariable().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_variable": {},  # dict
 })
 ```
 
@@ -6963,6 +6985,7 @@ api_entities_clusters = client.ApiEntitiesCluster().list()
 
 ```python
 api_entities_cluster = client.ApiEntitiesCluster().create({
+    "post_api_v4_admin_clusters_add": {},  # dict
 })
 ```
 
@@ -7011,6 +7034,7 @@ api_entities_cluster_group = client.ApiEntitiesClusterGroup().load({"cluster_id"
 ```python
 api_entities_cluster_group = client.ApiEntitiesClusterGroup().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_clusters_user": {},  # dict
 })
 ```
 
@@ -7059,6 +7083,7 @@ api_entities_cluster_project = client.ApiEntitiesClusterProject().load({"cluster
 ```python
 api_entities_cluster_project = client.ApiEntitiesClusterProject().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_clusters_user": {},  # dict
 })
 ```
 
@@ -7097,6 +7122,7 @@ api_entities_clusters_agent = client.ApiEntitiesClustersAgent().load({"project_i
 ```python
 api_entities_clusters_agent = client.ApiEntitiesClustersAgent().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_cluster_agent": {},  # dict
 })
 ```
 
@@ -7176,6 +7202,7 @@ Create an instance: `api_entities_clusters_agent_token_with_token = client.ApiEn
 api_entities_clusters_agent_token_with_token = client.ApiEntitiesClustersAgentTokenWithToken().create({
     "cluster_agent_id": "example_cluster_agent_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_cluster_agents_agent_id_token": {},  # dict
 })
 ```
 
@@ -7273,6 +7300,7 @@ api_entities_commit_detail = client.ApiEntitiesCommitDetail().load({"project_id"
 ```python
 api_entities_commit_detail = client.ApiEntitiesCommitDetail().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_repository_commit": {},  # dict
 })
 ```
 
@@ -7321,6 +7349,7 @@ api_entities_commit_notes = client.ApiEntitiesCommitNote().list({"project_id": "
 api_entities_commit_note = client.ApiEntitiesCommitNote().create({
     "project_id": "example_project_id",  # str
     "sha": "example_sha",  # Any
+    "post_api_v4_projects_id_repository_commits_sha_comment": {},  # dict
 })
 ```
 
@@ -7423,6 +7452,7 @@ api_entities_commit_statuss = client.ApiEntitiesCommitStatus().list({"project_id
 api_entities_commit_status = client.ApiEntitiesCommitStatus().create({
     "id": "example_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_statuses_sha": {},  # dict
 })
 ```
 
@@ -7451,7 +7481,7 @@ Create an instance: `api_entities_compare = client.ApiEntitiesCompare()`
 #### Example: List
 
 ```python
-api_entities_compares = client.ApiEntitiesCompare().list({"project_id": "example"})
+api_entities_compares = client.ApiEntitiesCompare().list({"project_id": "example", "from": "example", "to": "example"})
 ```
 
 
@@ -7616,6 +7646,7 @@ api_entities_deploy_keys = client.ApiEntitiesDeployKey().list()
 
 ```python
 api_entities_deploy_key = client.ApiEntitiesDeployKey().create({
+    "post_api_v4_deploy_key": {},  # dict
 })
 ```
 
@@ -7666,6 +7697,7 @@ api_entities_deploy_keys_projects = client.ApiEntitiesDeployKeysProject().list({
 ```python
 api_entities_deploy_keys_project = client.ApiEntitiesDeployKeysProject().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_deploy_key": {},  # dict
 })
 ```
 
@@ -7721,6 +7753,7 @@ Create an instance: `api_entities_deploy_token_with_token = client.ApiEntitiesDe
 ```python
 api_entities_deploy_token_with_token = client.ApiEntitiesDeployTokenWithToken().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_deploy_token": {},  # dict
 })
 ```
 
@@ -7798,6 +7831,7 @@ api_entities_deployment_extended = client.ApiEntitiesDeploymentExtended().load({
 ```python
 api_entities_deployment_extended = client.ApiEntitiesDeploymentExtended().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_deployment": {},  # dict
 })
 ```
 
@@ -7818,6 +7852,7 @@ Create an instance: `api_entities_deployments_approval = client.ApiEntitiesDeplo
 api_entities_deployments_approval = client.ApiEntitiesDeploymentsApproval().create({
     "deployment_id": "example_deployment_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_deployments_deployment_id_approval": {},  # dict
 })
 ```
 
@@ -7907,7 +7942,7 @@ Create an instance: `api_entities_discovered_cluster = client.ApiEntitiesDiscove
 #### Example: Load
 
 ```python
-api_entities_discovered_cluster = client.ApiEntitiesDiscoveredCluster().load()
+api_entities_discovered_cluster = client.ApiEntitiesDiscoveredCluster().load({"group_id": "group_id"})
 ```
 
 
@@ -7956,6 +7991,7 @@ api_entities_draft_notes = client.ApiEntitiesDraftNote().list({"merge_request_id
 api_entities_draft_note = client.ApiEntitiesDraftNote().create({
     "merge_request_id": "example_merge_request_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note": {},  # dict
 })
 ```
 
@@ -8155,6 +8191,7 @@ api_entities_features = client.ApiEntitiesFeature().list()
 ```python
 api_entities_feature = client.ApiEntitiesFeature().create({
     "id": "example_id",  # str
+    "post_api_v4_features_name": {},  # dict
 })
 ```
 
@@ -8237,6 +8274,7 @@ api_entities_feature_flags = client.ApiEntitiesFeatureFlag().list({"project_id":
 ```python
 api_entities_feature_flag = client.ApiEntitiesFeatureFlag().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_feature_flag": {},  # dict
 })
 ```
 
@@ -8285,6 +8323,7 @@ api_entities_feature_flag_user_lists = client.ApiEntitiesFeatureFlagUserList().l
 ```python
 api_entities_feature_flag_user_list = client.ApiEntitiesFeatureFlagUserList().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_feature_flags_user_list": {},  # dict
 })
 ```
 
@@ -8330,6 +8369,7 @@ api_entities_freeze_periods = client.ApiEntitiesFreezePeriod().list({"project_id
 ```python
 api_entities_freeze_period = client.ApiEntitiesFreezePeriod().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_freeze_period": {},  # dict
 })
 ```
 
@@ -8379,7 +8419,7 @@ Create an instance: `api_entities_go_module_version = client.ApiEntitiesGoModule
 #### Example: Load
 
 ```python
-api_entities_go_module_version = client.ApiEntitiesGoModuleVersion().load({"module_version": "module_version", "project_id": "project_id"})
+api_entities_go_module_version = client.ApiEntitiesGoModuleVersion().load({"module_version": "module_version", "project_id": "project_id", "module_name": "module_name"})
 ```
 
 
@@ -8465,6 +8505,7 @@ api_entities_groups = client.ApiEntitiesGroup().list()
 
 ```python
 api_entities_group = client.ApiEntitiesGroup().create({
+    "post_api_v4_group": {},  # dict
 })
 ```
 
@@ -8617,6 +8658,7 @@ api_entities_hooks = client.ApiEntitiesHook().list()
 
 ```python
 api_entities_hook = client.ApiEntitiesHook().create({
+    "post_api_v4_hook": {},  # dict
 })
 ```
 
@@ -8726,6 +8768,7 @@ api_entities_invitations = client.ApiEntitiesInvitation().list({"group_id": "exa
 ```python
 api_entities_invitation = client.ApiEntitiesInvitation().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_invitation": {},  # dict
 })
 ```
 
@@ -8879,6 +8922,7 @@ api_entities_issue_link = client.ApiEntitiesIssueLink().load({"id": "api_entitie
 api_entities_issue_link = client.ApiEntitiesIssueLink().create({
     "issue_id": "example_issue_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_issues_issue_iid_link": {},  # dict
 })
 ```
 
@@ -8931,6 +8975,7 @@ Create an instance: `api_entities_markdown = client.ApiEntitiesMarkdown()`
 
 ```python
 api_entities_markdown = client.ApiEntitiesMarkdown().create({
+    "post_api_v4_markdown": {},  # dict
 })
 ```
 
@@ -9021,6 +9066,7 @@ api_entities_members = client.ApiEntitiesMember().list({"group_id": "example"})
 ```python
 api_entities_member = client.ApiEntitiesMember().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_member": {},  # dict
 })
 ```
 
@@ -9233,7 +9279,7 @@ Create an instance: `api_entities_merge_request_basic = client.ApiEntitiesMergeR
 #### Example: Load
 
 ```python
-api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic().load({"id": 1})
+api_entities_merge_request_basic = client.ApiEntitiesMergeRequestBasic().load()
 ```
 
 #### Example: List
@@ -9466,6 +9512,7 @@ api_entities_metric_images = client.ApiEntitiesMetricImage().list({"alert_manage
 api_entities_metric_image = client.ApiEntitiesMetricImage().create({
     "alert_management_alert_id": "example_alert_management_alert_id",  # str
     "project_id": "example_project_id",  # str
+    "file": "example_file",  # Any
 })
 ```
 
@@ -9602,7 +9649,7 @@ Create an instance: `api_entities_namespaces_storage_limit_exclusion = client.Ap
 #### Example: Load
 
 ```python
-api_entities_namespaces_storage_limit_exclusion = client.ApiEntitiesNamespacesStorageLimitExclusion().load({"id": 1})
+api_entities_namespaces_storage_limit_exclusion = client.ApiEntitiesNamespacesStorageLimitExclusion().load()
 ```
 
 #### Example: Create
@@ -9610,6 +9657,7 @@ api_entities_namespaces_storage_limit_exclusion = client.ApiEntitiesNamespacesSt
 ```python
 api_entities_namespaces_storage_limit_exclusion = client.ApiEntitiesNamespacesStorageLimitExclusion().create({
     "namespace_id": "example_namespace_id",  # str
+    "post_api_v4_namespaces_id_storage_limit_exclusion": {},  # dict
 })
 ```
 
@@ -9635,7 +9683,7 @@ Create an instance: `api_entities_npm_package = client.ApiEntitiesNpmPackage()`
 #### Example: Load
 
 ```python
-api_entities_npm_package = client.ApiEntitiesNpmPackage().load()
+api_entities_npm_package = client.ApiEntitiesNpmPackage().load({"package_name": "package_name"})
 ```
 
 
@@ -9652,7 +9700,7 @@ Create an instance: `api_entities_npm_package_tag = client.ApiEntitiesNpmPackage
 #### Example: Load
 
 ```python
-api_entities_npm_package_tag = client.ApiEntitiesNpmPackageTag().load()
+api_entities_npm_package_tag = client.ApiEntitiesNpmPackageTag().load({"package_name": "package_name"})
 ```
 
 
@@ -9675,7 +9723,7 @@ Create an instance: `api_entities_nuget_packages_version = client.ApiEntitiesNug
 #### Example: List
 
 ```python
-api_entities_nuget_packages_versions = client.ApiEntitiesNugetPackagesVersion().list({"project_id": "example"})
+api_entities_nuget_packages_versions = client.ApiEntitiesNugetPackagesVersion().list({"project_id": "example", "package_name": "example"})
 ```
 
 
@@ -9753,6 +9801,7 @@ Create an instance: `api_entities_organizations_organization = client.ApiEntitie
 
 ```python
 api_entities_organizations_organization = client.ApiEntitiesOrganizationsOrganization().create({
+    "post_api_v4_organization": {},  # dict
 })
 ```
 
@@ -10094,6 +10143,7 @@ api_entities_packages_debian_distributions = client.ApiEntitiesPackagesDebianDis
 ```python
 api_entities_packages_debian_distribution = client.ApiEntitiesPackagesDebianDistribution().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_debian_distribution": {},  # dict
 })
 ```
 
@@ -10144,6 +10194,7 @@ api_entities_pages_domains = client.ApiEntitiesPagesDomain().list({"project_id":
 ```python
 api_entities_pages_domain = client.ApiEntitiesPagesDomain().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_pages_domain": {},  # dict
 })
 ```
 
@@ -10275,6 +10326,7 @@ Create an instance: `api_entities_personal_access_token_with_token = client.ApiE
 ```python
 api_entities_personal_access_token_with_token = client.ApiEntitiesPersonalAccessTokenWithToken().create({
     "personal_access_token_id": "example_personal_access_token_id",  # str
+    "post_api_v4_personal_access_tokens_id_rotate": {},  # dict
 })
 ```
 
@@ -10330,6 +10382,7 @@ api_entities_personal_snippets = client.ApiEntitiesPersonalSnippet().list()
 
 ```python
 api_entities_personal_snippet = client.ApiEntitiesPersonalSnippet().create({
+    "post_api_v4_snippet": {},  # dict
 })
 ```
 
@@ -10527,6 +10580,7 @@ api_entities_projects = client.ApiEntitiesProject().list({"project_id": "example
 ```python
 api_entities_project = client.ApiEntitiesProject().create({
     "user_id": "example_user_id",  # str
+    "post_api_v4_projects_user_user_id": {},  # dict
 })
 ```
 
@@ -10594,6 +10648,7 @@ Create an instance: `api_entities_project_group_link = client.ApiEntitiesProject
 ```python
 api_entities_project_group_link = client.ApiEntitiesProjectGroupLink().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_share": {},  # dict
 })
 ```
 
@@ -10665,6 +10720,7 @@ api_entities_project_hooks = client.ApiEntitiesProjectHook().list({"project_id":
 ```python
 api_entities_project_hook = client.ApiEntitiesProjectHook().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_hook": {},  # dict
 })
 ```
 
@@ -10702,6 +10758,7 @@ api_entities_project_import_statuss = client.ApiEntitiesProjectImportStatus().li
 
 ```python
 api_entities_project_import_status = client.ApiEntitiesProjectImportStatus().create({
+    "path": "example_path",  # str
 })
 ```
 
@@ -10808,6 +10865,7 @@ api_entities_project_snippets = client.ApiEntitiesProjectSnippet().list({"projec
 ```python
 api_entities_project_snippet = client.ApiEntitiesProjectSnippet().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_snippet": {},  # dict
 })
 ```
 
@@ -10827,6 +10885,7 @@ Create an instance: `api_entities_project_upload = client.ApiEntitiesProjectUplo
 ```python
 api_entities_project_upload = client.ApiEntitiesProjectUpload().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_upload": {},  # dict
 })
 ```
 
@@ -10839,6 +10898,7 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 
 | Method | Description |
 | --- | --- |
+| `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -11000,6 +11060,14 @@ Create an instance: `api_entities_project_with_access = client.ApiEntitiesProjec
 api_entities_project_with_access = client.ApiEntitiesProjectWithAccess().load({"id": "api_entities_project_with_access_id"})
 ```
 
+#### Example: Create
+
+```python
+api_entities_project_with_access = client.ApiEntitiesProjectWithAccess().create({
+    "project_id": "example_project_id",  # str
+})
+```
+
 
 ### ApiEntitiesProjectsContainerRegistryProtectionRule
 
@@ -11034,6 +11102,7 @@ api_entities_projects_container_registry_protection_rules = client.ApiEntitiesPr
 ```python
 api_entities_projects_container_registry_protection_rule = client.ApiEntitiesProjectsContainerRegistryProtectionRule().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_registry_protection_repository_rule": {},  # dict
 })
 ```
 
@@ -11072,6 +11141,7 @@ api_entities_projects_packages_protection_rules = client.ApiEntitiesProjectsPack
 ```python
 api_entities_projects_packages_protection_rule = client.ApiEntitiesProjectsPackagesProtectionRule().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_packages_protection_rule": {},  # dict
 })
 ```
 
@@ -11110,6 +11180,7 @@ api_entities_projects_topic = client.ApiEntitiesProjectsTopic().load({"id": "api
 
 ```python
 api_entities_projects_topic = client.ApiEntitiesProjectsTopic().create({
+    "post_api_v4_topic": {},  # dict
 })
 ```
 
@@ -11157,6 +11228,7 @@ api_entities_protected_branchs = client.ApiEntitiesProtectedBranch().list({"proj
 ```python
 api_entities_protected_branch = client.ApiEntitiesProtectedBranch().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_protected_branch": {},  # dict
 })
 ```
 
@@ -11203,6 +11275,7 @@ api_entities_protected_tags = client.ApiEntitiesProtectedTag().list({"project_id
 ```python
 api_entities_protected_tag = client.ApiEntitiesProtectedTag().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_protected_tag": {},  # dict
 })
 ```
 
@@ -11318,6 +11391,9 @@ Create an instance: `api_entities_relation_import_tracker = client.ApiEntitiesRe
 
 ```python
 api_entities_relation_import_tracker = client.ApiEntitiesRelationImportTracker().create({
+    "file": "example_file",  # Any
+    "path": "example_path",  # str
+    "relation": "example_relation",  # Any
 })
 ```
 
@@ -11418,6 +11494,7 @@ api_entities_releases_links = client.ApiEntitiesReleasesLink().list({"project_id
 api_entities_releases_link = client.ApiEntitiesReleasesLink().create({
     "project_id": "example_project_id",  # str
     "release_id": "example_release_id",  # str
+    "post_api_v4_projects_id_releases_tag_name_assets_link": {},  # dict
 })
 ```
 
@@ -11470,6 +11547,7 @@ api_entities_remote_mirrors = client.ApiEntitiesRemoteMirror().list({"project_id
 ```python
 api_entities_remote_mirror = client.ApiEntitiesRemoteMirror().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_remote_mirror": {},  # dict
 })
 ```
 
@@ -11541,6 +11619,7 @@ Create an instance: `api_entities_resource_access_token_with_token = client.ApiE
 ```python
 api_entities_resource_access_token_with_token = client.ApiEntitiesResourceAccessTokenWithToken().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_access_tokens_self_rotate": {},  # dict
 })
 ```
 
@@ -11752,6 +11831,7 @@ api_entities_system_broadcast_message = client.ApiEntitiesSystemBroadcastMessage
 
 ```python
 api_entities_system_broadcast_message = client.ApiEntitiesSystemBroadcastMessage().create({
+    "post_api_v4_broadcast_message": {},  # dict
 })
 ```
 
@@ -11798,6 +11878,7 @@ api_entities_tags = client.ApiEntitiesTag().list({"project_id": "example"})
 ```python
 api_entities_tag = client.ApiEntitiesTag().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_repository_tag": {},  # dict
 })
 ```
 
@@ -11865,6 +11946,7 @@ Create an instance: `api_entities_terraform_module_version = client.ApiEntitiesT
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `str` |  |
 | `modules` | `str` |  |
 | `name` | `str` |  |
 | `provider` | `str` |  |
@@ -11967,6 +12049,7 @@ api_entities_triggers = client.ApiEntitiesTrigger().list({"project_id": "example
 ```python
 api_entities_trigger = client.ApiEntitiesTrigger().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_trigger": {},  # dict
 })
 ```
 
@@ -12113,7 +12196,7 @@ Create an instance: `api_entities_user_with_admin = client.ApiEntitiesUserWithAd
 #### Example: List
 
 ```python
-api_entities_user_with_admins = client.ApiEntitiesUserWithAdmin().list()
+api_entities_user_with_admins = client.ApiEntitiesUserWithAdmin().list({"fingerprint": "example"})
 ```
 
 
@@ -12132,6 +12215,7 @@ Create an instance: `api_entities_wiki_attachment = client.ApiEntitiesWikiAttach
 ```python
 api_entities_wiki_attachment = client.ApiEntitiesWikiAttachment().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_wikis_attachment": {},  # dict
 })
 ```
 
@@ -12159,6 +12243,7 @@ api_entities_wiki_page = client.ApiEntitiesWikiPage().load({"slug": "slug"})
 ```python
 api_entities_wiki_page = client.ApiEntitiesWikiPage().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_wiki": {},  # dict
 })
 ```
 
@@ -12340,6 +12425,7 @@ Create an instance: `composer = client.Composer()`
 ```python
 composer = client.Composer().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_packages_composer": {},  # dict
 })
 ```
 
@@ -12500,7 +12586,6 @@ Create an instance: `debian_package = client.DebianPackage()`
 | Method | Description |
 | --- | --- |
 | `load(match)` | Load a single entity by match criteria. |
-| `update(data)` | Update an existing entity. |
 
 #### Fields
 
@@ -12511,7 +12596,7 @@ Create an instance: `debian_package = client.DebianPackage()`
 #### Example: Load
 
 ```python
-debian_package = client.DebianPackage().load({"id": "debian_package_id", "distribution": "distribution", "file_name": "file_name", "letter": "letter", "package_name": "package_name", "package_version": "package_version"})
+debian_package = client.DebianPackage().load({"id": "debian_package_id", "distribution": "distribution"})
 ```
 
 
@@ -12593,6 +12678,7 @@ Create an instance: `ee_api_entities_approval_state = client.EeApiEntitiesApprov
 ee_api_entities_approval_state = client.EeApiEntitiesApprovalState().create({
     "merge_request_id": "example_merge_request_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_merge_requests_merge_request_iid_approval": {},  # dict
 })
 ```
 
@@ -12914,6 +13000,7 @@ Create an instance: `ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNo
 
 ```python
 ee_api_entities_geo_node_status = client.EeApiEntitiesGeoNodeStatus().create({
+    "post_api_v4_geo_status": {},  # dict
 })
 ```
 
@@ -12970,6 +13057,7 @@ Create an instance: `ee_api_entities_issuable_metric_image = client.EeApiEntitie
 ee_api_entities_issuable_metric_image = client.EeApiEntitiesIssuableMetricImage().create({
     "issue_id": "example_issue_id",  # str
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_issues_issue_iid_metric_image": {},  # dict
 })
 ```
 
@@ -13042,6 +13130,7 @@ ee_api_entities_ssh_certificates = client.EeApiEntitiesSshCertificate().list({"g
 ```python
 ee_api_entities_ssh_certificate = client.EeApiEntitiesSshCertificate().create({
     "group_id": "example_group_id",  # str
+    "post_api_v4_groups_id_ssh_certificate": {},  # dict
 })
 ```
 
@@ -13068,6 +13157,7 @@ Create an instance: `environment = client.Environment()`
 ```python
 environment = client.Environment().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_environments_stop_stale": {},  # dict
 })
 ```
 
@@ -13187,7 +13277,7 @@ Create an instance: `generic_package = client.GenericPackage()`
 #### Example: Load
 
 ```python
-generic_package = client.GenericPackage().load({"file_name": "file_name", "generic_id": "generic_id", "project_id": "project_id"})
+generic_package = client.GenericPackage().load({"file_name": "file_name", "generic_id": "generic_id", "project_id": "project_id", "package_version": "package_version"})
 ```
 
 
@@ -13202,6 +13292,12 @@ Create an instance: `geo = client.Geo()`
 | `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `str` |  |
+
 #### Example: Load
 
 ```python
@@ -13212,6 +13308,7 @@ geo = client.Geo().load({"replicable_id": "replicable_id", "replicable_name": "r
 
 ```python
 geo = client.Geo().create({
+    "post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack": {},  # dict
 })
 ```
 
@@ -13229,7 +13326,7 @@ Create an instance: `go_proxy = client.GoProxy()`
 #### Example: Load
 
 ```python
-go_proxy = client.GoProxy().load({"project_id": "project_id"})
+go_proxy = client.GoProxy().load({"project_id": "project_id", "module_name": "module_name"})
 ```
 
 
@@ -13336,6 +13433,9 @@ Create an instance: `group_import = client.GroupImport()`
 
 ```python
 group_import = client.GroupImport().create({
+    "file": "example_file",  # Any
+    "name": "example_name",  # str
+    "path": "example_path",  # str
 })
 ```
 
@@ -13407,6 +13507,7 @@ Create an instance: `import_ = client.Import()`
 
 ```python
 import_ = client.Import().create({
+    "post_api_v4_import_github_gist": {},  # dict
 })
 ```
 
@@ -13432,6 +13533,7 @@ Create an instance: `integration = client.Integration()`
 
 ```python
 integration = client.Integration().create({
+    "post_api_v4_integrations_slack_event": {},  # dict
 })
 ```
 
@@ -13515,6 +13617,7 @@ job = client.Job().load({"id": "job_id"})
 
 ```python
 job = client.Job().create({
+    "post_api_v4_jobs_request": {},  # dict
 })
 ```
 
@@ -13533,7 +13636,7 @@ Create an instance: `maven_package = client.MavenPackage()`
 #### Example: Load
 
 ```python
-maven_package = client.MavenPackage().load({"file_name": "file_name"})
+maven_package = client.MavenPackage().load({"file_name": "file_name", "path": "path"})
 ```
 
 
@@ -13546,6 +13649,7 @@ Create an instance: `member = client.Member()`
 | Method | Description |
 | --- | --- |
 | `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
 
 #### Fields
 
@@ -13620,6 +13724,7 @@ Create an instance: `migration = client.Migration()`
 ```python
 migration = client.Migration().create({
     "timestamp": "example_timestamp",  # Any
+    "post_api_v4_admin_migrations_timestamp_mark": {},  # dict
 })
 ```
 
@@ -13692,7 +13797,7 @@ Create an instance: `npm_package = client.NpmPackage()`
 #### Example: Load
 
 ```python
-npm_package = client.NpmPackage().load({"project_id": "project_id"})
+npm_package = client.NpmPackage().load({"project_id": "project_id", "file_name": "file_name", "package_name": "package_name"})
 ```
 
 #### Example: Create
@@ -13757,7 +13862,7 @@ nuget_package = client.NugetPackage().load({"project_id": "project_id"})
 #### Example: List
 
 ```python
-nuget_packages = client.NugetPackage().list({"project_id": "example"})
+nuget_packages = client.NugetPackage().list({"package_name": "example"})
 ```
 
 
@@ -13937,6 +14042,7 @@ Create an instance: `project_entity = client.ProjectEntity()`
 
 ```python
 project_entity = client.ProjectEntity().create({
+    "post_api_v4_import_bitbucket_server": {},  # dict
 })
 ```
 
@@ -13969,6 +14075,7 @@ project_export = client.ProjectExport().load({"project_id": "project_id"})
 ```python
 project_export = client.ProjectExport().create({
     "id": "example_id",  # str
+    "post_api_v4_projects_id_export": {},  # dict
 })
 ```
 
@@ -14040,6 +14147,7 @@ Create an instance: `project_import_entity = client.ProjectImportEntity()`
 
 ```python
 project_import_entity = client.ProjectImportEntity().create({
+    "post_api_v4_import_bitbucket": {},  # dict
 })
 ```
 
@@ -14122,6 +14230,7 @@ Create an instance: `pypi = client.Pypi()`
 ```python
 pypi = client.Pypi().create({
     "project_id": "example_project_id",  # str
+    "post_api_v4_projects_id_packages_pypi": {},  # dict
 })
 ```
 
@@ -14172,7 +14281,7 @@ Create an instance: `release = client.Release()`
 #### Example: Load
 
 ```python
-release = client.Release().load({"project_id": "project_id"})
+release = client.Release().load({"project_id": "project_id", "suffix_path": "suffix_path"})
 ```
 
 
@@ -14201,7 +14310,6 @@ Create an instance: `remote_mirror = client.RemoteMirror()`
 
 | Method | Description |
 | --- | --- |
-| `create(data)` | Create a new entity with the given data. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
@@ -14215,15 +14323,6 @@ Create an instance: `remote_mirror = client.RemoteMirror()`
 
 ```python
 remote_mirror = client.RemoteMirror().load({"id": "remote_mirror_id", "project_id": "project_id"})
-```
-
-#### Example: Create
-
-```python
-remote_mirror = client.RemoteMirror().create({
-    "id": "example_id",  # str
-    "project_id": "example_project_id",  # str
-})
 ```
 
 
@@ -14260,7 +14359,7 @@ Create an instance: `rpm_package = client.RpmPackage()`
 #### Example: Load
 
 ```python
-rpm_package = client.RpmPackage().load({"project_id": "project_id"})
+rpm_package = client.RpmPackage().load({"project_id": "project_id", "file_name": "file_name"})
 ```
 
 #### Example: Create
@@ -14342,6 +14441,7 @@ Create an instance: `runner = client.Runner()`
 
 ```python
 runner = client.Runner().create({
+    "post_api_v4_runners_verify": {},  # dict
 })
 ```
 
@@ -14359,7 +14459,7 @@ Create an instance: `search = client.Search()`
 #### Example: Load
 
 ```python
-search = client.Search().load()
+search = client.Search().load({"scope": "scope", "search": "search"})
 ```
 
 
@@ -14401,6 +14501,7 @@ Create an instance: `slack = client.Slack()`
 
 ```python
 slack = client.Slack().create({
+    "post_api_v4_slack_trigger": {},  # dict
 })
 ```
 
@@ -14547,6 +14648,7 @@ terraform_state = client.TerraformState().load({"id": "terraform_state_id", "pro
 
 ```python
 terraform_state = client.TerraformState().create({
+    "id": "example_id",  # str
     "project_id": "example_project_id",  # str
 })
 ```
@@ -14668,6 +14770,7 @@ usage_data = client.UsageData().load()
 
 ```python
 usage_data = client.UsageData().create({
+    "post_api_v4_usage_data_increment_counter": {},  # dict
 })
 ```
 
@@ -14736,6 +14839,29 @@ Create an instance: `wiki = client.Wiki()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `str` |  |
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

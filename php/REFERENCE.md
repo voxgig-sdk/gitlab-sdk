@@ -1598,6 +1598,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesApplicationWithSecret()->create([
+  "post_api_v4_application" => null, // array
 ]);
 ```
 
@@ -1650,7 +1651,7 @@ $api_entities_avatar = $client->ApiEntitiesAvatar();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesAvatar()->load();
+$result = $client->ApiEntitiesAvatar()->load(["email" => "email"]);
 ```
 
 ### Common Methods
@@ -1720,6 +1721,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ApiEntitiesAwardEmoji()->create([
   "epic_id" => null, // string
   "group_id" => null, // string
+  "post_api_v4_groups_id_epics_epic_iid_award_emoji" => null, // array
 ]);
 ```
 
@@ -1796,6 +1798,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesBadge()->create([
   "group_id" => null, // string
+  "post_api_v4_groups_id_badge" => null, // array
 ]);
 ```
 
@@ -1879,7 +1882,7 @@ $api_entities_basic_badge_detail = $client->ApiEntitiesBasicBadgeDetail();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesBasicBadgeDetail()->load(["group_id" => "group_id"]);
+$result = $client->ApiEntitiesBasicBadgeDetail()->load(["image_url" => "image_url", "link_url" => "link_url"]);
 ```
 
 ### Common Methods
@@ -1927,6 +1930,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesBasicGroupDetail()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_job_token_scope_groups_allowlist" => null, // array
 ]);
 ```
 
@@ -2004,6 +2008,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesBasicProjectDetail()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_job_token_scope_allowlist" => null, // array
 ]);
 ```
 
@@ -2112,6 +2117,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesBasicSuccess()->create([
+  "post_api_v4_integrations_jira_connect_subscription" => null, // array
 ]);
 ```
 
@@ -2266,6 +2272,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesBranch()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_repository_branch" => null, // array
 ]);
 ```
 
@@ -2368,6 +2375,11 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesBulkImport()->create([
+  "configuration_access_token" => null, // mixed
+  "configuration_url" => null, // mixed
+  "entities_destination_namespace" => null, // mixed
+  "entities_source_full_path" => null, // mixed
+  "entities_source_type" => null, // mixed
 ]);
 ```
 
@@ -2552,7 +2564,7 @@ $api_entities_changelog = $client->ApiEntitiesChangelog();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesChangelog()->load(["project_id" => "project_id"]);
+$result = $client->ApiEntitiesChangelog()->load(["project_id" => "project_id", "version" => "version"]);
 ```
 
 ### Common Methods
@@ -2672,6 +2684,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesCiCatalogResourcesVersion()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_catalog_publish" => null, // array
 ]);
 ```
 
@@ -2847,6 +2860,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ApiEntitiesCiJobBasic()->create([
   "job_id" => null, // string
   "project_id" => null, // string
+  "post_api_v4_projects_id_jobs_job_id_play" => null, // array
 ]);
 ```
 
@@ -2992,6 +3006,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesCiLintResult()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_ci_lint" => null, // array
 ]);
 ```
 
@@ -3264,6 +3279,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesCiPipelineScheduleDetail()->update([
   "pipeline_schedule_id" => "pipeline_schedule_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_pipeline_schedules_pipeline_schedule_id" => [],
   // Fields to update
 ]);
 ```
@@ -3312,6 +3328,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesCiResetTokenResult()->create([
+  "post_api_v4_runners_reset_authentication_token" => null, // array
 ]);
 ```
 
@@ -3387,6 +3404,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesCiResourceGroup()->update([
   "id" => "api_entities_ci_resource_group_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_resource_groups_key" => [],
   // Fields to update
 ]);
 ```
@@ -3451,6 +3469,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesCiRunner()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_runner" => null, // array
 ]);
 ```
 
@@ -3459,7 +3478,7 @@ $result = $client->ApiEntitiesCiRunner()->create([
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesCiRunner()->load(["id" => 1]);
+$result = $client->ApiEntitiesCiRunner()->load();
 ```
 
 ### Common Methods
@@ -3546,6 +3565,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->ApiEntitiesCiRunnerDetail()->update([
   "id" => "api_entities_ci_runner_detail_id",
+  "put_api_v4_runners_id" => [],
   // Fields to update
 ]);
 ```
@@ -3656,6 +3676,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesCiRunnerRegistrationDetail()->create([
+  "post_api_v4_runner" => null, // array
 ]);
 ```
 
@@ -3710,6 +3731,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesCiSecureFile()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_secure_file" => null, // array
 ]);
 ```
 
@@ -3781,6 +3803,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesCiVariable()->create([
   "group_id" => null, // string
+  "post_api_v4_groups_id_variable" => null, // array
 ]);
 ```
 
@@ -3875,6 +3898,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesCluster()->create([
+  "post_api_v4_admin_clusters_add" => null, // array
 ]);
 ```
 
@@ -3901,6 +3925,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->ApiEntitiesCluster()->update([
   "id" => "api_entities_cluster_id",
+  "put_api_v4_admin_clusters_cluster_id" => [],
   // Fields to update
 ]);
 ```
@@ -3971,6 +3996,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesClusterGroup()->create([
   "group_id" => null, // string
+  "post_api_v4_groups_id_clusters_user" => null, // array
 ]);
 ```
 
@@ -3990,6 +4016,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesClusterGroup()->update([
   "cluster_id" => "cluster_id",
   "group_id" => "group_id",
+  "put_api_v4_groups_id_clusters_cluster_id" => [],
   // Fields to update
 ]);
 ```
@@ -4060,6 +4087,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesClusterProject()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_clusters_user" => null, // array
 ]);
 ```
 
@@ -4079,6 +4107,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesClusterProject()->update([
   "cluster_id" => "cluster_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_clusters_cluster_id" => [],
   // Fields to update
 ]);
 ```
@@ -4140,6 +4169,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesClustersAgent()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_cluster_agent" => null, // array
 ]);
 ```
 
@@ -4314,6 +4344,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ApiEntitiesClustersAgentTokenWithToken()->create([
   "cluster_agent_id" => null, // string
   "project_id" => null, // string
+  "post_api_v4_projects_id_cluster_agents_agent_id_token" => null, // array
 ]);
 ```
 
@@ -4462,6 +4493,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesCommitDetail()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_repository_commit" => null, // array
 ]);
 ```
 
@@ -4481,6 +4513,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesCommitDetail()->update([
   "project_id" => "project_id",
   "submodule" => "submodule",
+  "put_api_v4_projects_id_repository_submodules_submodule" => [],
   // Fields to update
 ]);
 ```
@@ -4552,6 +4585,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ApiEntitiesCommitNote()->create([
   "project_id" => null, // string
   "sha" => null, // mixed
+  "post_api_v4_projects_id_repository_commits_sha_comment" => null, // array
 ]);
 ```
 
@@ -4742,6 +4776,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ApiEntitiesCommitStatus()->create([
   "id" => null, // string
   "project_id" => null, // string
+  "post_api_v4_projects_id_statuses_sha" => null, // array
 ]);
 ```
 
@@ -5110,6 +5145,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesDeployKey()->create([
+  "post_api_v4_deploy_key" => null, // array
 ]);
 ```
 
@@ -5129,6 +5165,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesDeployKey()->update([
   "id" => "id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_deploy_keys_key_id" => [],
   // Fields to update
 ]);
 ```
@@ -5195,6 +5232,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesDeployKeysProject()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_deploy_key" => null, // array
 ]);
 ```
 
@@ -5325,6 +5363,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesDeployTokenWithToken()->create([
   "group_id" => null, // string
+  "post_api_v4_groups_id_deploy_token" => null, // array
 ]);
 ```
 
@@ -5452,6 +5491,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesDeploymentExtended()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_deployment" => null, // array
 ]);
 ```
 
@@ -5471,6 +5511,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesDeploymentExtended()->update([
   "deployment_id" => "deployment_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_deployments_deployment_id" => [],
   // Fields to update
 ]);
 ```
@@ -5521,6 +5562,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ApiEntitiesDeploymentsApproval()->create([
   "deployment_id" => null, // string
   "project_id" => null, // string
+  "post_api_v4_projects_id_deployments_deployment_id_approval" => null, // array
 ]);
 ```
 
@@ -5698,7 +5740,7 @@ $api_entities_discovered_cluster = $client->ApiEntitiesDiscoveredCluster();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesDiscoveredCluster()->load();
+$result = $client->ApiEntitiesDiscoveredCluster()->load(["group_id" => "group_id"]);
 ```
 
 ### Common Methods
@@ -5761,6 +5803,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ApiEntitiesDraftNote()->create([
   "merge_request_id" => null, // string
   "project_id" => null, // string
+  "post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note" => null, // array
 ]);
 ```
 
@@ -5789,6 +5832,7 @@ $result = $client->ApiEntitiesDraftNote()->update([
   "id" => "api_entities_draft_note_id",
   "merge_request_id" => "merge_request_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_merge_requests_merge_request_iid_draft_notes_draft_note_id" => [],
   // Fields to update
 ]);
 ```
@@ -5886,6 +5930,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesEnvironment()->update([
   "id" => "api_entities_environment_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_environments_environment_id" => [],
   // Fields to update
 ]);
 ```
@@ -6018,6 +6063,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->ApiEntitiesErrorTrackingProjectSetting()->update([
   "project_id" => "project_id",
+  "put_api_v4_projects_id_error_tracking_setting" => [],
   // Fields to update
 ]);
 ```
@@ -6152,6 +6198,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesFeature()->create([
   "id" => null, // string
+  "post_api_v4_features_name" => null, // array
 ]);
 ```
 
@@ -6285,6 +6332,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesFeatureFlag()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_feature_flag" => null, // array
 ]);
 ```
 
@@ -6312,6 +6360,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesFeatureFlag()->update([
   "id" => "api_entities_feature_flag_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_feature_flags_feature_flag_name" => [],
   // Fields to update
 ]);
 ```
@@ -6375,6 +6424,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesFeatureFlagUserList()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_feature_flags_user_list" => null, // array
 ]);
 ```
 
@@ -6402,6 +6452,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesFeatureFlagUserList()->update([
   "iid" => "iid",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_feature_flags_user_lists_iid" => [],
   // Fields to update
 ]);
 ```
@@ -6462,6 +6513,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesFreezePeriod()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_freeze_period" => null, // array
 ]);
 ```
 
@@ -6489,6 +6541,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesFreezePeriod()->update([
   "id" => "api_entities_freeze_period_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_freeze_periods_freeze_period_id" => [],
   // Fields to update
 ]);
 ```
@@ -6597,7 +6650,7 @@ $api_entities_go_module_version = $client->ApiEntitiesGoModuleVersion();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesGoModuleVersion()->load(["module_version" => "module_version", "project_id" => "project_id"]);
+$result = $client->ApiEntitiesGoModuleVersion()->load(["module_version" => "module_version", "project_id" => "project_id", "module_name" => "module_name"]);
 ```
 
 ### Common Methods
@@ -6697,6 +6750,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesGroup()->create([
+  "post_api_v4_group" => null, // array
 ]);
 ```
 
@@ -6723,6 +6777,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->ApiEntitiesGroup()->update([
   "id" => "id",
+  "put_api_v4_groups_id" => [],
   // Fields to update
 ]);
 ```
@@ -6920,6 +6975,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesHook()->create([
+  "post_api_v4_hook" => null, // array
 ]);
 ```
 
@@ -6946,6 +7002,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->ApiEntitiesHook()->update([
   "id" => "api_entities_hook_id",
+  "put_api_v4_hooks_hook_id" => [],
   // Fields to update
 ]);
 ```
@@ -7083,6 +7140,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->ApiEntitiesIntegrationBasic()->update([
   "group_id" => "group_id",
+  "put_api_v4_groups_id_integrations_apple_app_store" => [],
   // Fields to update
 ]);
 ```
@@ -7145,6 +7203,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesInvitation()->create([
   "group_id" => null, // string
+  "post_api_v4_groups_id_invitation" => null, // array
 ]);
 ```
 
@@ -7411,6 +7470,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ApiEntitiesIssueLink()->create([
   "issue_id" => null, // string
   "project_id" => null, // string
+  "post_api_v4_projects_id_issues_issue_iid_link" => null, // array
 ]);
 ```
 
@@ -7529,6 +7589,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesMarkdown()->create([
+  "post_api_v4_markdown" => null, // array
 ]);
 ```
 
@@ -7661,6 +7722,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesMember()->create([
   "group_id" => null, // string
+  "post_api_v4_groups_id_member" => null, // array
 ]);
 ```
 
@@ -8014,7 +8076,7 @@ $results = $client->ApiEntitiesMergeRequestBasic()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesMergeRequestBasic()->load(["id" => 1]);
+$result = $client->ApiEntitiesMergeRequestBasic()->load();
 ```
 
 ### Common Methods
@@ -8378,6 +8440,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ApiEntitiesMetricImage()->create([
   "alert_management_alert_id" => null, // string
   "project_id" => null, // string
+  "file" => null, // mixed
 ]);
 ```
 
@@ -8552,6 +8615,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->ApiEntitiesNamespace()->update([
   "id" => "api_entities_namespace_id",
+  "put_api_v4_namespaces_id" => [],
   // Fields to update
 ]);
 ```
@@ -8663,6 +8727,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesNamespacesStorageLimitExclusion()->create([
   "namespace_id" => null, // string
+  "post_api_v4_namespaces_id_storage_limit_exclusion" => null, // array
 ]);
 ```
 
@@ -8671,7 +8736,7 @@ $result = $client->ApiEntitiesNamespacesStorageLimitExclusion()->create([
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesNamespacesStorageLimitExclusion()->load(["id" => 1]);
+$result = $client->ApiEntitiesNamespacesStorageLimitExclusion()->load();
 ```
 
 ### Common Methods
@@ -8725,7 +8790,7 @@ $api_entities_npm_package = $client->ApiEntitiesNpmPackage();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesNpmPackage()->load();
+$result = $client->ApiEntitiesNpmPackage()->load(["package_name" => "package_name"]);
 ```
 
 ### Common Methods
@@ -8771,7 +8836,7 @@ $api_entities_npm_package_tag = $client->ApiEntitiesNpmPackageTag();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ApiEntitiesNpmPackageTag()->load();
+$result = $client->ApiEntitiesNpmPackageTag()->load(["package_name" => "package_name"]);
 ```
 
 ### Common Methods
@@ -8988,6 +9053,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesOrganizationsOrganization()->create([
+  "post_api_v4_organization" => null, // array
 ]);
 ```
 
@@ -9692,6 +9758,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesPackagesDebianDistribution()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_debian_distribution" => null, // array
 ]);
 ```
 
@@ -9783,6 +9850,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesPagesDomain()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_pages_domain" => null, // array
 ]);
 ```
 
@@ -10060,6 +10128,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesPersonalAccessTokenWithToken()->create([
   "personal_access_token_id" => null, // string
+  "post_api_v4_personal_access_tokens_id_rotate" => null, // array
 ]);
 ```
 
@@ -10129,6 +10198,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesPersonalSnippet()->create([
+  "post_api_v4_snippet" => null, // array
 ]);
 ```
 
@@ -10155,6 +10225,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->ApiEntitiesPersonalSnippet()->update([
   "id" => "api_entities_personal_snippet_id",
+  "put_api_v4_snippets_id" => [],
   // Fields to update
 ]);
 ```
@@ -10211,6 +10282,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 
 ```php
 $result = $client->ApiEntitiesPlanLimit()->update([
+  "put_api_v4_application_plan_limit" => [],
   // Fields to update
 ]);
 ```
@@ -10412,6 +10484,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesProject()->create([
   "user_id" => null, // string
+  "post_api_v4_projects_user_user_id" => null, // array
 ]);
 ```
 
@@ -10430,6 +10503,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->ApiEntitiesProject()->update([
   "id" => "id",
+  "put_api_v4_projects_id" => [],
   // Fields to update
 ]);
 ```
@@ -10585,6 +10659,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesProjectGroupLink()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_share" => null, // array
 ]);
 ```
 
@@ -10670,6 +10745,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesProjectHook()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_hook" => null, // array
 ]);
 ```
 
@@ -10697,6 +10773,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesProjectHook()->update([
   "id" => "api_entities_project_hook_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_hooks_hook_id" => [],
   // Fields to update
 ]);
 ```
@@ -10757,6 +10834,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesProjectImportStatus()->create([
+  "path" => null, // string
 ]);
 ```
 
@@ -10943,6 +11021,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesProjectSnippet()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_snippet" => null, // array
 ]);
 ```
 
@@ -10970,6 +11049,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesProjectSnippet()->update([
   "id" => "api_entities_project_snippet_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_snippets_snippet_id" => [],
   // Fields to update
 ]);
 ```
@@ -11019,6 +11099,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesProjectUpload()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_upload" => null, // array
 ]);
 ```
 
@@ -11213,6 +11294,16 @@ $api_entities_project_with_access = $client->ApiEntitiesProjectWithAccess();
 
 ### Operations
 
+#### `create(array $reqdata, ?array $ctrl = null): mixed`
+
+Create a new entity with the given data. Throws on error.
+
+```php
+$result = $client->ApiEntitiesProjectWithAccess()->create([
+  "project_id" => null, // string
+]);
+```
+
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Throws on error.
@@ -11276,6 +11367,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesProjectsContainerRegistryProtectionRule()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_registry_protection_repository_rule" => null, // array
 ]);
 ```
 
@@ -11295,6 +11387,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesProjectsContainerRegistryProtectionRule()->update([
   "id" => "id",
   "project_id" => "project_id",
+  "patch_api_v4_projects_id_registry_protection_repository_rules_protection_rule_id" => [],
   // Fields to update
 ]);
 ```
@@ -11355,6 +11448,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesProjectsPackagesProtectionRule()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_packages_protection_rule" => null, // array
 ]);
 ```
 
@@ -11374,6 +11468,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesProjectsPackagesProtectionRule()->update([
   "id" => "id",
   "project_id" => "project_id",
+  "patch_api_v4_projects_id_packages_protection_rules_package_protection_rule_id" => [],
   // Fields to update
 ]);
 ```
@@ -11434,6 +11529,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesProjectsTopic()->create([
+  "post_api_v4_topic" => null, // array
 ]);
 ```
 
@@ -11452,6 +11548,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->ApiEntitiesProjectsTopic()->update([
   "id" => "api_entities_projects_topic_id",
+  "put_api_v4_topics_id" => [],
   // Fields to update
 ]);
 ```
@@ -11514,6 +11611,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesProtectedBranch()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_protected_branch" => null, // array
 ]);
 ```
 
@@ -11541,6 +11639,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesProtectedBranch()->update([
   "id" => "api_entities_protected_branch_id",
   "project_id" => "project_id",
+  "patch_api_v4_projects_id_protected_branches_name" => [],
   // Fields to update
 ]);
 ```
@@ -11603,6 +11702,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesProtectedTag()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_protected_tag" => null, // array
 ]);
 ```
 
@@ -11821,6 +11921,9 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesRelationImportTracker()->create([
+  "file" => null, // mixed
+  "path" => null, // string
+  "relation" => null, // mixed
 ]);
 ```
 
@@ -11917,6 +12020,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesRelease()->update([
   "id" => "api_entities_release_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_releases_tag_name" => [],
   // Fields to update
 ]);
 ```
@@ -11977,6 +12081,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ApiEntitiesReleasesLink()->create([
   "project_id" => null, // string
   "release_id" => null, // string
+  "post_api_v4_projects_id_releases_tag_name_assets_link" => null, // array
 ]);
 ```
 
@@ -12005,6 +12110,7 @@ $result = $client->ApiEntitiesReleasesLink()->update([
   "id" => "api_entities_releases_link_id",
   "project_id" => "project_id",
   "release_id" => "release_id",
+  "put_api_v4_projects_id_releases_tag_name_assets_links_link_id" => [],
   // Fields to update
 ]);
 ```
@@ -12072,6 +12178,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesRemoteMirror()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_remote_mirror" => null, // array
 ]);
 ```
 
@@ -12099,6 +12206,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesRemoteMirror()->update([
   "id" => "api_entities_remote_mirror_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_remote_mirrors_mirror_id" => [],
   // Fields to update
 ]);
 ```
@@ -12229,6 +12337,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesResourceAccessTokenWithToken()->create([
   "group_id" => null, // string
+  "post_api_v4_groups_id_access_tokens_self_rotate" => null, // array
 ]);
 ```
 
@@ -12520,6 +12629,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 
 ```php
 $result = $client->ApiEntitiesSuggestion()->update([
+  "put_api_v4_suggestions_batch_apply" => [],
   // Fields to update
 ]);
 ```
@@ -12585,6 +12695,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ApiEntitiesSystemBroadcastMessage()->create([
+  "post_api_v4_broadcast_message" => null, // array
 ]);
 ```
 
@@ -12611,6 +12722,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->ApiEntitiesSystemBroadcastMessage()->update([
   "id" => "api_entities_system_broadcast_message_id",
+  "put_api_v4_broadcast_messages_id" => [],
   // Fields to update
 ]);
 ```
@@ -12673,6 +12785,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesTag()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_repository_tag" => null, // array
 ]);
 ```
 
@@ -12838,6 +12951,7 @@ $api_entities_terraform_module_version = $client->ApiEntitiesTerraformModuleVers
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `modules` | `string` | No |  |
 | `name` | `string` | No |  |
 | `provider` | `string` | No |  |
@@ -12989,6 +13103,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesTrigger()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_trigger" => null, // array
 ]);
 ```
 
@@ -13016,6 +13131,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->ApiEntitiesTrigger()->update([
   "id" => "api_entities_trigger_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_triggers_trigger_id" => [],
   // Fields to update
 ]);
 ```
@@ -13327,6 +13443,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesWikiAttachment()->create([
   "group_id" => null, // string
+  "post_api_v4_groups_id_wikis_attachment" => null, // array
 ]);
 ```
 
@@ -13375,6 +13492,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ApiEntitiesWikiPage()->create([
   "group_id" => null, // string
+  "post_api_v4_groups_id_wiki" => null, // array
 ]);
 ```
 
@@ -13907,6 +14025,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->Composer()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_packages_composer" => null, // array
 ]);
 ```
 
@@ -14281,6 +14400,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->Debian()->update([
   "id" => "id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_packages_debian_file_name" => [],
   // Fields to update
 ]);
 ```
@@ -14386,20 +14506,7 @@ $debian_package = $client->DebianPackage();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->DebianPackage()->load(["id" => "debian_package_id", "distribution" => "distribution", "file_name" => "file_name", "letter" => "letter", "package_name" => "package_name", "package_version" => "package_version"]);
-```
-
-#### `update(array $reqdata, ?array $ctrl = null): mixed`
-
-Update an existing entity. The data must include the entity `id`. Throws on error.
-
-```php
-$result = $client->DebianPackage()->update([
-  "id" => "debian_package_id",
-  "file_name" => "file_name",
-  "project_id" => "project_id",
-  // Fields to update
-]);
+$result = $client->DebianPackage()->load(["id" => "debian_package_id", "distribution" => "distribution"]);
 ```
 
 ### Common Methods
@@ -14650,6 +14757,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->EeApiEntitiesApprovalState()->create([
   "merge_request_id" => null, // string
   "project_id" => null, // string
+  "post_api_v4_projects_id_merge_requests_merge_request_iid_approval" => null, // array
 ]);
 ```
 
@@ -15059,6 +15167,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->EeApiEntitiesGeoNodeStatus()->create([
+  "post_api_v4_geo_status" => null, // array
 ]);
 ```
 
@@ -15171,6 +15280,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->EeApiEntitiesIssuableMetricImage()->create([
   "issue_id" => null, // string
   "project_id" => null, // string
+  "post_api_v4_projects_id_issues_issue_iid_metric_image" => null, // array
 ]);
 ```
 
@@ -15191,6 +15301,7 @@ $result = $client->EeApiEntitiesIssuableMetricImage()->update([
   "id" => "id",
   "issue_id" => "issue_id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_issues_issue_iid_metric_images_metric_image_id" => [],
   // Fields to update
 ]);
 ```
@@ -15315,6 +15426,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->EeApiEntitiesSshCertificate()->create([
   "group_id" => null, // string
+  "post_api_v4_groups_id_ssh_certificate" => null, // array
 ]);
 ```
 
@@ -15377,6 +15489,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->Environment()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_environments_stop_stale" => null, // array
 ]);
 ```
 
@@ -15709,7 +15822,7 @@ $generic_package = $client->GenericPackage();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GenericPackage()->load(["file_name" => "file_name", "generic_id" => "generic_id", "project_id" => "project_id"]);
+$result = $client->GenericPackage()->load(["file_name" => "file_name", "generic_id" => "generic_id", "project_id" => "project_id", "package_version" => "package_version"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -15761,6 +15874,12 @@ Return the entity name.
 $geo = $client->Geo();
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
@@ -15769,6 +15888,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Geo()->create([
+  "post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack" => null, // array
 ]);
 ```
 
@@ -15823,7 +15943,7 @@ $go_proxy = $client->GoProxy();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GoProxy()->load(["project_id" => "project_id"]);
+$result = $client->GoProxy()->load(["project_id" => "project_id", "module_name" => "module_name"]);
 ```
 
 ### Common Methods
@@ -15903,6 +16023,8 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->Group()->update([
   "id" => "group_id",
+  "key" => "key",
+  "put_api_v4_groups_id_custom_attributes_key" => [],
   // Fields to update
 ]);
 ```
@@ -16065,6 +16187,9 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->GroupImport()->create([
+  "file" => null, // mixed
+  "name" => null, // string
+  "path" => null, // string
 ]);
 ```
 
@@ -16242,6 +16367,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Import()->create([
+  "post_api_v4_import_github_gist" => null, // array
 ]);
 ```
 
@@ -16295,6 +16421,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Integration()->create([
+  "post_api_v4_integrations_slack_event" => null, // array
 ]);
 ```
 
@@ -16506,6 +16633,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Job()->create([
+  "post_api_v4_jobs_request" => null, // array
 ]);
 ```
 
@@ -16524,6 +16652,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->Job()->update([
   "id" => "job_id",
+  "put_api_v4_jobs_id" => [],
   // Fields to update
 ]);
 ```
@@ -16571,7 +16700,7 @@ $maven_package = $client->MavenPackage();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->MavenPackage()->load(["file_name" => "file_name"]);
+$result = $client->MavenPackage()->load(["file_name" => "file_name", "path" => "path"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -16582,6 +16711,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->MavenPackage()->update([
   "file_name" => "file_name",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_packages_maven*path_file_name" => [],
   // Fields to update
 ]);
 ```
@@ -16636,6 +16766,18 @@ Remove the entity matching the given criteria. Throws on error.
 
 ```php
 $result = $client->Member()->remove(["id" => "id"]);
+```
+
+#### `update(array $reqdata, ?array $ctrl = null): mixed`
+
+Update an existing entity. The data must include the entity `id`. Throws on error.
+
+```php
+$result = $client->Member()->update([
+  "group_id" => "group_id",
+  "id" => "id",
+  // Fields to update
+]);
 ```
 
 ### Common Methods
@@ -16810,6 +16952,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->Migration()->create([
   "timestamp" => null, // mixed
+  "post_api_v4_admin_migrations_timestamp_mark" => null, // array
 ]);
 ```
 
@@ -16976,6 +17119,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 $result = $client->Npm()->update([
   "id" => "id",
   "project_id" => "project_id",
+  "put_api_v4_projects_id_packages_npm_package_name" => [],
   // Fields to update
 ]);
 ```
@@ -17032,7 +17176,7 @@ $result = $client->NpmPackage()->create([
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->NpmPackage()->load(["project_id" => "project_id"]);
+$result = $client->NpmPackage()->load(["project_id" => "project_id", "file_name" => "file_name", "package_name" => "package_name"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -17040,7 +17184,7 @@ $result = $client->NpmPackage()->load(["project_id" => "project_id"]);
 Remove the entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->NpmPackage()->remove(["tag" => "tag"]);
+$result = $client->NpmPackage()->remove(["tag" => "tag", "package_name" => "package_name"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -17099,6 +17243,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->Nuget()->update([
   "project_id" => "project_id",
+  "put_api_v4_projects_id_packages_nuget" => [],
   // Fields to update
 ]);
 ```
@@ -17183,7 +17328,7 @@ $result = $client->NugetPackage()->load(["project_id" => "project_id"]);
 Remove the entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->NugetPackage()->remove(["project_id" => "project_id"]);
+$result = $client->NugetPackage()->remove(["project_id" => "project_id", "package_name" => "package_name", "package_version" => "package_version"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -17318,6 +17463,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->Page()->update([
   "project_id" => "project_id",
+  "patch_api_v4_projects_id_page" => [],
   // Fields to update
 ]);
 ```
@@ -17625,6 +17771,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ProjectEntity()->create([
+  "post_api_v4_import_bitbucket_server" => null, // array
 ]);
 ```
 
@@ -17679,6 +17826,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->ProjectExport()->create([
   "id" => null, // string
+  "post_api_v4_projects_id_export" => null, // array
 ]);
 ```
 
@@ -17851,6 +17999,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ProjectImportEntity()->create([
+  "post_api_v4_import_bitbucket" => null, // array
 ]);
 ```
 
@@ -18011,6 +18160,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 ```php
 $result = $client->ProjectsJobTokenScope()->update([
   "project_id" => "project_id",
+  "patch_api_v4_projects_id_job_token_scope" => [],
   // Fields to update
 ]);
 ```
@@ -18112,6 +18262,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->Pypi()->create([
   "project_id" => null, // string
+  "post_api_v4_projects_id_packages_pypi" => null, // array
 ]);
 ```
 
@@ -18220,7 +18371,7 @@ $release = $client->Release();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Release()->load(["project_id" => "project_id"]);
+$result = $client->Release()->load(["project_id" => "project_id", "suffix_path" => "suffix_path"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -18326,17 +18477,6 @@ $remote_mirror = $client->RemoteMirror();
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `create(array $reqdata, ?array $ctrl = null): mixed`
-
-Create a new entity with the given data. Throws on error.
-
-```php
-$result = $client->RemoteMirror()->create([
-  "id" => null, // string
-  "project_id" => null, // string
-]);
-```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
@@ -18455,7 +18595,7 @@ $result = $client->RpmPackage()->create([
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->RpmPackage()->load(["project_id" => "project_id"]);
+$result = $client->RpmPackage()->load(["project_id" => "project_id", "file_name" => "file_name"]);
 ```
 
 ### Common Methods
@@ -18616,6 +18756,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Runner()->create([
+  "post_api_v4_runners_verify" => null, // array
 ]);
 ```
 
@@ -18670,7 +18811,7 @@ $search = $client->Search();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Search()->load();
+$result = $client->Search()->load(["scope" => "scope", "search" => "search"]);
 ```
 
 ### Common Methods
@@ -18777,6 +18918,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Slack()->create([
+  "post_api_v4_slack_trigger" => null, // array
 ]);
 ```
 
@@ -19121,6 +19263,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->TerraformState()->create([
+  "id" => null, // string
   "project_id" => null, // string
 ]);
 ```
@@ -19402,6 +19545,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->UsageData()->create([
+  "post_api_v4_usage_data_increment_counter" => null, // array
 ]);
 ```
 
@@ -19618,4 +19762,42 @@ $client = new GitlabSDK([
   ],
 ]);
 ```
+
+
+### Configuring features
+
+Each feature is inactive until switched on, and an SDK with no feature
+configured does no feature work at all. Every option below keeps its default
+unless you name it.
+
+The array form of \`feature\` is significant: several features wrap the
+transport, and the order you list them in is the order they nest.
+
+#### `test`
+
+In-memory mock transport for testing without a live server.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.test.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Installs the BASE transport that the wrapping features wrap, so it must be
+  activated before them.
+- Inactive by default: leaving it out costs nothing at runtime.
 

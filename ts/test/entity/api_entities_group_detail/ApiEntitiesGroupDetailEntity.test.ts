@@ -1,6 +1,4 @@
 
-const envlocal = __dirname + '/../../../.env.local'
-require('dotenv').config({ quiet: true, path: [envlocal] })
 
 import Path from 'node:path'
 import * as Fs from 'node:fs'
@@ -13,7 +11,9 @@ import { GitlabSDK, BaseFeature, stdutil } from '../../..'
 
 import {
   envOverride,
+  liveClientOptions,
   liveDelay,
+  loadEnvLocal,
   makeCtrl,
   makeMatch,
   makeReqdata,
@@ -21,6 +21,13 @@ import {
   makeValid,
   maybeSkipControl,
 } from '../../utility'
+
+
+// AFTER the imports on purpose: TypeScript hoists `import` above any
+// statement in the emitted CommonJS, so a loader placed above them would
+// run only after every imported module had already been evaluated - and
+// anything reading process.env at module scope would miss these values.
+loadEnvLocal(__dirname + '/../../../.env.local')
 
 
 describe('ApiEntitiesGroupDetailEntity', async () => {
@@ -62,7 +69,6 @@ describe('ApiEntitiesGroupDetailEntity', async () => {
     const api_entities_group_detail_ref01_ent = client.ApiEntitiesGroupDetail()
     let api_entities_group_detail_ref01_data = setup.data.new.api_entities_group_detail['api_entities_group_detail_ref01']
     api_entities_group_detail_ref01_data['group_id'] = setup.idmap['group01']
-    api_entities_group_detail_ref01_data['project_id'] = setup.idmap['project01']
 
     api_entities_group_detail_ref01_data = (await api_entities_group_detail_ref01_ent.create(api_entities_group_detail_ref01_data)).data()
     assert(null != api_entities_group_detail_ref01_data.id)
@@ -122,7 +128,7 @@ function basicSetup(extra?: any) {
     'GITLAB_TEST_API_ENTITIES_GROUP_DETAIL_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
     'GITLAB_TEST_EXPLAIN': 'FALSE',
-    'GITLAB_APIKEY': 'NONE',
+    'GITLAB_APIKEY': '',
   })
 
   idmap = env['GITLAB_TEST_API_ENTITIES_GROUP_DETAIL_ENTID']
@@ -131,10 +137,18 @@ function basicSetup(extra?: any) {
 
   if (live) {
     client = new GitlabSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
       {
         apikey: env.GITLAB_APIKEY,
       },
-      extra
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {}
     ]))
   }
 

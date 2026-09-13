@@ -28,6 +28,7 @@ main: kit: entity: api_entities_release: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "created_at"
       req: false
       type: "`$STRING`"
@@ -68,6 +69,7 @@ main: kit: entity: api_entities_release: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "released_at"
       req: false
       type: "`$STRING`"
@@ -122,18 +124,28 @@ main: kit: entity: api_entities_release: {
           }
           method: "POST"
           orig: "/api/v4/projects/{id}/releases"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "releases"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "releases"
+            }
+          ]
           select: {
             exist: [
               "post_api_v4_projects_id_release"
@@ -166,20 +178,34 @@ main: kit: entity: api_entities_release: {
           }
           method: "POST"
           orig: "/api/v4/projects/{id}/releases/{tag_name}/evidence"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "releases"
-            "{tag_name}"
-            "evidence"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "releases"
+            }
+            {
+              var: "tag_name"
+            }
+            {
+              lit: "evidence"
+            }
+          ]
           select: {
             exist: [
               "project_id"
@@ -263,18 +289,28 @@ main: kit: entity: api_entities_release: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/releases"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "releases"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "releases"
+            }
+          ]
           select: {
             exist: [
               "include_html_description"
@@ -338,18 +374,28 @@ main: kit: entity: api_entities_release: {
           }
           method: "GET"
           orig: "/api/v4/groups/{id}/releases"
-          parts: [
-            "api"
-            "v4"
-            "groups"
-            "{group_id}"
-            "releases"
-          ]
           rename: {
             param: {
               id: "group_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "releases"
+            }
+          ]
           select: {
             exist: [
               "group_id"
@@ -399,20 +445,32 @@ main: kit: entity: api_entities_release: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/releases/{tag_name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "releases"
-            "{id}"
-          ]
           rename: {
             param: {
               id: "project_id"
               tag_name: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "releases"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -460,20 +518,32 @@ main: kit: entity: api_entities_release: {
           }
           method: "PUT"
           orig: "/api/v4/projects/{id}/releases/{tag_name}"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "releases"
-            "{id}"
-          ]
           rename: {
             param: {
               id: "project_id"
               tag_name: "id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "releases"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

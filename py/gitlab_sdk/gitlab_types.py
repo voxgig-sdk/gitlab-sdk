@@ -60,8 +60,13 @@ class ApiEntitiesAccessRequester(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesAccessRequesterListMatch(TypedDict):
+class ApiEntitiesAccessRequesterListMatchRequired(TypedDict):
     group_id: str
+
+
+class ApiEntitiesAccessRequesterListMatch(ApiEntitiesAccessRequesterListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesAccessRequesterCreateDataRequired(TypedDict):
@@ -90,7 +95,9 @@ class ApiEntitiesAccessRequesterUpdateDataRequired(TypedDict):
 
 class ApiEntitiesAccessRequesterUpdateData(ApiEntitiesAccessRequesterUpdateDataRequired, total=False):
     group_id: str
+    put_api_v4_groups_id_access_requests_user_id_approve: dict
     project_id: str
+    put_api_v4_projects_id_access_requests_user_id_approve: dict
     avatar_path: str
     avatar_url: str
     custom_attributes: list
@@ -148,22 +155,25 @@ class ApiEntitiesAppearanceLoadMatch(TypedDict, total=False):
 
 class ApiEntitiesAppearanceUpdateData(TypedDict, total=False):
     description: str
-    email_header_and_footer_enabled: str
-    favicon: str
-    footer_message: str
-    header_logo: str
-    header_message: str
-    logo: str
+    email_header_and_footer_enabled: Any
+    favicon: Any
+    footer_message: Any
+    header_logo: Any
+    header_message: Any
+    logo: Any
+    member_guideline: Any
+    message_background_color: Any
+    message_font_color: Any
+    new_project_guideline: Any
+    profile_image_guideline: Any
+    pwa_description: Any
+    pwa_icon: Any
+    pwa_name: Any
+    pwa_short_name: Any
+    title: str
     member_guidelines: str
-    message_background_color: str
-    message_font_color: str
     new_project_guidelines: str
     profile_image_guidelines: str
-    pwa_description: str
-    pwa_icon: str
-    pwa_name: str
-    pwa_short_name: str
-    title: str
 
 
 class ApiEntitiesApplication(TypedDict, total=False):
@@ -219,7 +229,11 @@ class ApiEntitiesApplicationWithSecret(TypedDict, total=False):
     secret: str
 
 
-class ApiEntitiesApplicationWithSecretCreateData(TypedDict, total=False):
+class ApiEntitiesApplicationWithSecretCreateDataRequired(TypedDict):
+    post_api_v4_application: dict
+
+
+class ApiEntitiesApplicationWithSecretCreateData(ApiEntitiesApplicationWithSecretCreateDataRequired, total=False):
     application_id: str
     application_name: str
     callback_url: str
@@ -232,8 +246,12 @@ class ApiEntitiesAvatar(TypedDict, total=False):
     avatar_url: str
 
 
-class ApiEntitiesAvatarLoadMatch(TypedDict, total=False):
-    avatar_url: str
+class ApiEntitiesAvatarLoadMatchRequired(TypedDict):
+    email: str
+
+
+class ApiEntitiesAvatarLoadMatch(ApiEntitiesAvatarLoadMatchRequired, total=False):
+    size: int
 
 
 class ApiEntitiesAwardEmoji(TypedDict, total=False):
@@ -269,14 +287,20 @@ class ApiEntitiesAwardEmojiLoadMatch(ApiEntitiesAwardEmojiLoadMatchRequired, tot
     snippet_id: str
 
 
-class ApiEntitiesAwardEmojiListMatch(TypedDict):
+class ApiEntitiesAwardEmojiListMatchRequired(TypedDict):
     epic_id: str
     group_id: str
+
+
+class ApiEntitiesAwardEmojiListMatch(ApiEntitiesAwardEmojiListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesAwardEmojiCreateDataRequired(TypedDict):
     epic_id: str
     group_id: str
+    post_api_v4_groups_id_epics_epic_iid_award_emoji: dict
 
 
 class ApiEntitiesAwardEmojiCreateData(ApiEntitiesAwardEmojiCreateDataRequired, total=False):
@@ -317,12 +341,19 @@ class ApiEntitiesBadgeLoadMatch(ApiEntitiesBadgeLoadMatchRequired, total=False):
     project_id: str
 
 
-class ApiEntitiesBadgeListMatch(TypedDict):
+class ApiEntitiesBadgeListMatchRequired(TypedDict):
     group_id: str
+
+
+class ApiEntitiesBadgeListMatch(ApiEntitiesBadgeListMatchRequired, total=False):
+    name: str
+    page: int
+    per_page: int
 
 
 class ApiEntitiesBadgeCreateDataRequired(TypedDict):
     group_id: str
+    post_api_v4_groups_id_badge: dict
 
 
 class ApiEntitiesBadgeCreateData(ApiEntitiesBadgeCreateDataRequired, total=False):
@@ -341,7 +372,9 @@ class ApiEntitiesBadgeUpdateDataRequired(TypedDict):
 
 class ApiEntitiesBadgeUpdateData(ApiEntitiesBadgeUpdateDataRequired, total=False):
     group_id: str
+    put_api_v4_groups_id_badges_badge_id: dict
     project_id: str
+    put_api_v4_projects_id_badges_badge_id: dict
     image_url: str
     kind: str
     link_url: str
@@ -358,8 +391,14 @@ class ApiEntitiesBasicBadgeDetail(TypedDict, total=False):
     rendered_link_url: str
 
 
-class ApiEntitiesBasicBadgeDetailLoadMatch(TypedDict):
+class ApiEntitiesBasicBadgeDetailLoadMatchRequired(TypedDict):
+    image_url: Any
+    link_url: Any
+
+
+class ApiEntitiesBasicBadgeDetailLoadMatch(ApiEntitiesBasicBadgeDetailLoadMatchRequired, total=False):
     group_id: str
+    project_id: str
 
 
 class ApiEntitiesBasicGroupDetail(TypedDict):
@@ -368,6 +407,7 @@ class ApiEntitiesBasicGroupDetail(TypedDict):
 
 class ApiEntitiesBasicGroupDetailCreateData(TypedDict):
     project_id: str
+    post_api_v4_projects_id_job_token_scope_groups_allowlist: dict
 
 
 class ApiEntitiesBasicProjectDetail(TypedDict, total=False):
@@ -398,34 +438,45 @@ class ApiEntitiesBasicProjectDetail(TypedDict, total=False):
 
 
 class ApiEntitiesBasicProjectDetailListMatch(TypedDict, total=False):
-    avatar_url: str
-    created_at: str
-    custom_attributes: dict
-    default_branch: str
-    description: str
-    forks_count: int
-    http_url_to_repo: str
-    id: int
-    last_activity_at: str
-    license: dict
-    license_url: str
-    name: str
-    name_with_namespace: str
-    namespace: dict
-    path: str
-    path_with_namespace: str
-    readme_url: str
-    repository_storage: str
-    ssh_url_to_repo: str
-    star_count: int
-    tag_list: list
-    topics: list
-    visibility: str
-    web_url: str
+    active: bool
+    archived: bool
+    id_after: Any
+    id_before: Any
+    imported: Any
+    include_hidden: Any
+    include_pending_delete: Any
+    last_activity_after: Any
+    last_activity_before: Any
+    marked_for_deletion_on: Any
+    membership: Any
+    min_access_level: Any
+    order_by: Any
+    owned: Any
+    page: int
+    per_page: int
+    repository_checksum_failed: Any
+    repository_storage: Any
+    search: Any
+    search_namespace: Any
+    simple: Any
+    sort: Any
+    starred: Any
+    statistic: Any
+    topic: Any
+    topic_id: str
+    updated_after: Any
+    updated_before: Any
+    visibility: Any
+    wiki_checksum_failed: Any
+    with_custom_attribute: Any
+    with_issues_enabled: Any
+    with_merge_requests_enabled: Any
+    with_programming_language: Any
 
 
 class ApiEntitiesBasicProjectDetailCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_job_token_scope_allowlist: dict
 
 
 class ApiEntitiesBasicProjectDetailCreateData(ApiEntitiesBasicProjectDetailCreateDataRequired, total=False):
@@ -460,9 +511,15 @@ class ApiEntitiesBasicRef(TypedDict, total=False):
     type: str
 
 
-class ApiEntitiesBasicRefListMatch(TypedDict):
+class ApiEntitiesBasicRefListMatchRequired(TypedDict):
     project_id: str
     sha: Any
+
+
+class ApiEntitiesBasicRefListMatch(ApiEntitiesBasicRefListMatchRequired, total=False):
+    page: int
+    per_page: int
+    type: Any
 
 
 class ApiEntitiesBasicSuccess(TypedDict):
@@ -470,7 +527,7 @@ class ApiEntitiesBasicSuccess(TypedDict):
 
 
 class ApiEntitiesBasicSuccessCreateData(TypedDict):
-    pass
+    post_api_v4_integrations_jira_connect_subscription: dict
 
 
 class ApiEntitiesBatchedBackgroundMigration(TypedDict, total=False):
@@ -483,18 +540,17 @@ class ApiEntitiesBatchedBackgroundMigration(TypedDict, total=False):
     table_name: str
 
 
-class ApiEntitiesBatchedBackgroundMigrationLoadMatch(TypedDict):
+class ApiEntitiesBatchedBackgroundMigrationLoadMatchRequired(TypedDict):
     id: str
+
+
+class ApiEntitiesBatchedBackgroundMigrationLoadMatch(ApiEntitiesBatchedBackgroundMigrationLoadMatchRequired, total=False):
+    database: Any
 
 
 class ApiEntitiesBatchedBackgroundMigrationListMatch(TypedDict, total=False):
-    column_name: str
-    created_at: str
-    id: str
-    job_class_name: str
-    progress: float
-    status: str
-    table_name: str
+    database: Any
+    job_class_name: Any
 
 
 class ApiEntitiesBatchedBackgroundMigrationUpdateDataRequired(TypedDict):
@@ -502,6 +558,8 @@ class ApiEntitiesBatchedBackgroundMigrationUpdateDataRequired(TypedDict):
 
 
 class ApiEntitiesBatchedBackgroundMigrationUpdateData(ApiEntitiesBatchedBackgroundMigrationUpdateDataRequired, total=False):
+    put_api_v4_admin_batched_background_migrations_id_pause: dict
+    put_api_v4_admin_batched_background_migrations_id_resume: dict
     column_name: str
     created_at: str
     id: str
@@ -542,12 +600,22 @@ class ApiEntitiesBranchLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesBranchListMatch(TypedDict):
+class ApiEntitiesBranchListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesBranchListMatch(ApiEntitiesBranchListMatchRequired, total=False):
+    page: int
+    page_token: Any
+    per_page: int
+    regex: Any
+    search: Any
+    sort: Any
 
 
 class ApiEntitiesBranchCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_repository_branch: dict
 
 
 class ApiEntitiesBranchCreateData(ApiEntitiesBranchCreateDataRequired, total=False):
@@ -582,6 +650,7 @@ class ApiEntitiesBranchUpdateDataRequired(TypedDict):
 
 
 class ApiEntitiesBranchUpdateData(ApiEntitiesBranchUpdateDataRequired, total=False):
+    put_api_v4_projects_id_repository_branches_branch_protect: dict
     author_email: str
     author_name: str
     authored_date: str
@@ -636,30 +705,25 @@ class ApiEntitiesBulkImportLoadMatch(TypedDict):
 
 
 class ApiEntitiesBulkImportListMatch(TypedDict, total=False):
-    bulk_import_id: int
-    created_at: str
-    destination_full_path: str
-    destination_name: str
-    destination_namespace: str
-    destination_slug: str
-    entity_type: str
-    failures: list
-    has_failures: bool
-    id: int
-    migrate_memberships: bool
-    migrate_projects: bool
-    namespace_id: int
-    parent_id: int
-    project_id: int
-    source_full_path: str
-    source_type: str
-    source_url: str
-    stats: dict
-    status: str
-    updated_at: str
+    page: int
+    per_page: int
+    sort: Any
+    status: Any
 
 
-class ApiEntitiesBulkImportCreateData(TypedDict, total=False):
+class ApiEntitiesBulkImportCreateDataRequired(TypedDict):
+    configuration_access_token: Any
+    configuration_url: Any
+    entities_destination_namespace: Any
+    entities_source_full_path: Any
+    entities_source_type: Any
+
+
+class ApiEntitiesBulkImportCreateData(ApiEntitiesBulkImportCreateDataRequired, total=False):
+    entities_destination_name: Any
+    entities_destination_slug: Any
+    entities_migrate_membership: Any
+    entities_migrate_project: Any
     bulk_import_id: int
     created_at: str
     destination_full_path: str
@@ -708,16 +772,29 @@ class ApiEntitiesBulkImportsExportStatus(TypedDict, total=False):
     updated_at: str
 
 
-class ApiEntitiesBulkImportsExportStatusListMatch(TypedDict):
+class ApiEntitiesBulkImportsExportStatusListMatchRequired(TypedDict):
     group_id: str
+
+
+class ApiEntitiesBulkImportsExportStatusListMatch(ApiEntitiesBulkImportsExportStatusListMatchRequired, total=False):
+    relation: Any
 
 
 class ApiEntitiesChangelog(TypedDict, total=False):
     notes: str
 
 
-class ApiEntitiesChangelogLoadMatch(TypedDict):
+class ApiEntitiesChangelogLoadMatchRequired(TypedDict):
     project_id: str
+    version: Any
+
+
+class ApiEntitiesChangelogLoadMatch(ApiEntitiesChangelogLoadMatchRequired, total=False):
+    config_file: Any
+    config_file_ref: Any
+    date: Any
+    to: Any
+    trailer: Any
 
 
 class ApiEntitiesCiBridge(TypedDict, total=False):
@@ -744,9 +821,15 @@ class ApiEntitiesCiBridge(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesCiBridgeListMatch(TypedDict):
+class ApiEntitiesCiBridgeListMatchRequired(TypedDict):
     pipeline_id: str
     project_id: str
+
+
+class ApiEntitiesCiBridgeListMatch(ApiEntitiesCiBridgeListMatchRequired, total=False):
+    page: int
+    per_page: int
+    scope: Any
 
 
 class ApiEntitiesCiCatalogResourcesVersion(TypedDict):
@@ -755,6 +838,7 @@ class ApiEntitiesCiCatalogResourcesVersion(TypedDict):
 
 class ApiEntitiesCiCatalogResourcesVersionCreateData(TypedDict):
     project_id: str
+    post_api_v4_projects_id_catalog_publish: dict
 
 
 class ApiEntitiesCiJob(TypedDict, total=False):
@@ -836,6 +920,7 @@ class ApiEntitiesCiJobCreateDataRequired(TypedDict):
 
 
 class ApiEntitiesCiJobCreateData(ApiEntitiesCiJobCreateDataRequired, total=False):
+    post_api_v4_projects_id_jobs_job_id_cancel: dict
     allow_failure: bool
     archived: bool
     artifacts: list
@@ -892,14 +977,20 @@ class ApiEntitiesCiJobBasic(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesCiJobBasicListMatch(TypedDict):
+class ApiEntitiesCiJobBasicListMatchRequired(TypedDict):
     key: str
     project_id: str
+
+
+class ApiEntitiesCiJobBasicListMatch(ApiEntitiesCiJobBasicListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesCiJobBasicCreateDataRequired(TypedDict):
     job_id: str
     project_id: str
+    post_api_v4_projects_id_jobs_job_id_play: dict
 
 
 class ApiEntitiesCiJobBasicCreateData(ApiEntitiesCiJobBasicCreateDataRequired, total=False):
@@ -948,8 +1039,18 @@ class ApiEntitiesCiJobBasicWithProject(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesCiJobBasicWithProjectLoadMatch(TypedDict):
+class ApiEntitiesCiJobBasicWithProjectLoadMatchRequired(TypedDict):
     runner_id: str
+
+
+class ApiEntitiesCiJobBasicWithProjectLoadMatch(ApiEntitiesCiJobBasicWithProjectLoadMatchRequired, total=False):
+    cursor: Any
+    order_by: Any
+    page: int
+    per_page: int
+    sort: Any
+    status: Any
+    system_id: str
 
 
 class ApiEntitiesCiLintResult(TypedDict, total=False):
@@ -968,12 +1069,22 @@ class ApiEntitiesCiLintResult(TypedDict, total=False):
     warnings: list
 
 
-class ApiEntitiesCiLintResultListMatch(TypedDict):
+class ApiEntitiesCiLintResultListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesCiLintResultListMatch(ApiEntitiesCiLintResultListMatchRequired, total=False):
+    content_ref: Any
+    dry_run: Any
+    dry_run_ref: Any
+    include_job: Any
+    ref: Any
+    sha: Any
 
 
 class ApiEntitiesCiLintResultCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_ci_lint: dict
 
 
 class ApiEntitiesCiLintResultCreateData(ApiEntitiesCiLintResultCreateDataRequired, total=False):
@@ -1002,8 +1113,10 @@ class ApiEntitiesCiPipelineCreateDataRequired(TypedDict):
 
 class ApiEntitiesCiPipelineCreateData(ApiEntitiesCiPipelineCreateDataRequired, total=False):
     merge_request_id: str
+    post_api_v4_projects_id_merge_requests_merge_request_iid_pipeline: dict
     ref_id: str
     pipeline_id: str
+    post_api_v4_projects_id_pipeline: dict
 
 
 class ApiEntitiesCiPipelineBasic(TypedDict, total=False):
@@ -1029,6 +1142,22 @@ class ApiEntitiesCiPipelineBasicListMatchRequired(TypedDict):
 
 
 class ApiEntitiesCiPipelineBasicListMatch(ApiEntitiesCiPipelineBasicListMatchRequired, total=False):
+    created_after: Any
+    created_before: Any
+    name: str
+    order_by: Any
+    page: int
+    per_page: int
+    ref: Any
+    scope: Any
+    sha: Any
+    sort: Any
+    source: Any
+    status: Any
+    updated_after: Any
+    updated_before: Any
+    username: str
+    yaml_error: Any
     pipeline_schedule_id: str
 
 
@@ -1046,8 +1175,14 @@ class ApiEntitiesCiPipelineSchedule(TypedDict, total=False):
     updated_at: str
 
 
-class ApiEntitiesCiPipelineScheduleListMatch(TypedDict):
+class ApiEntitiesCiPipelineScheduleListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesCiPipelineScheduleListMatch(ApiEntitiesCiPipelineScheduleListMatchRequired, total=False):
+    page: int
+    per_page: int
+    scope: Any
 
 
 class ApiEntitiesCiPipelineScheduleDetail(TypedDict, total=False):
@@ -1077,6 +1212,7 @@ class ApiEntitiesCiPipelineScheduleDetailCreateDataRequired(TypedDict):
 
 class ApiEntitiesCiPipelineScheduleDetailCreateData(ApiEntitiesCiPipelineScheduleDetailCreateDataRequired, total=False):
     pipeline_schedule_id: str
+    post_api_v4_projects_id_pipeline_schedule: dict
     active: bool
     created_at: str
     cron: str
@@ -1095,6 +1231,7 @@ class ApiEntitiesCiPipelineScheduleDetailCreateData(ApiEntitiesCiPipelineSchedul
 class ApiEntitiesCiPipelineScheduleDetailUpdateDataRequired(TypedDict):
     pipeline_schedule_id: str
     project_id: str
+    put_api_v4_projects_id_pipeline_schedules_pipeline_schedule_id: dict
 
 
 class ApiEntitiesCiPipelineScheduleDetailUpdateData(ApiEntitiesCiPipelineScheduleDetailUpdateDataRequired, total=False):
@@ -1118,7 +1255,7 @@ class ApiEntitiesCiResetTokenResult(TypedDict):
 
 
 class ApiEntitiesCiResetTokenResultCreateData(TypedDict):
-    pass
+    post_api_v4_runners_reset_authentication_token: dict
 
 
 class ApiEntitiesCiResourceGroup(TypedDict, total=False):
@@ -1134,13 +1271,19 @@ class ApiEntitiesCiResourceGroupLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesCiResourceGroupListMatch(TypedDict):
+class ApiEntitiesCiResourceGroupListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesCiResourceGroupListMatch(ApiEntitiesCiResourceGroupListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesCiResourceGroupUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    put_api_v4_projects_id_resource_groups_key: dict
 
 
 class ApiEntitiesCiResourceGroupUpdateData(ApiEntitiesCiResourceGroupUpdateDataRequired, total=False):
@@ -1163,24 +1306,20 @@ class ApiEntitiesCiRunner(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesCiRunnerLoadMatchRequired(TypedDict):
-    id: int
-
-
-class ApiEntitiesCiRunnerLoadMatch(ApiEntitiesCiRunnerLoadMatchRequired, total=False):
-    avatar_path: str
-    avatar_url: str
-    custom_attributes: list
-    locked: bool
-    name: str
-    public_email: str
-    state: str
-    username: str
-    web_url: str
+class ApiEntitiesCiRunnerLoadMatch(TypedDict, total=False):
+    page: int
+    paused: Any
+    per_page: int
+    scope: Any
+    status: Any
+    tag_list: Any
+    type: Any
+    version_prefix: Any
 
 
 class ApiEntitiesCiRunnerCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_runner: dict
 
 
 class ApiEntitiesCiRunnerCreateData(ApiEntitiesCiRunnerCreateDataRequired, total=False):
@@ -1231,6 +1370,7 @@ class ApiEntitiesCiRunnerDetailLoadMatch(TypedDict):
 
 class ApiEntitiesCiRunnerDetailUpdateDataRequired(TypedDict):
     id: str
+    put_api_v4_runners_id: dict
 
 
 class ApiEntitiesCiRunnerDetailUpdateData(ApiEntitiesCiRunnerDetailUpdateDataRequired, total=False):
@@ -1284,7 +1424,7 @@ class ApiEntitiesCiRunnerRegistrationDetail(TypedDict):
 
 
 class ApiEntitiesCiRunnerRegistrationDetailCreateData(TypedDict):
-    pass
+    post_api_v4_runner: dict
 
 
 class ApiEntitiesCiSecureFile(TypedDict, total=False):
@@ -1296,11 +1436,14 @@ class ApiEntitiesCiSecureFileLoadMatchRequired(TypedDict):
 
 
 class ApiEntitiesCiSecureFileLoadMatch(ApiEntitiesCiSecureFileLoadMatchRequired, total=False):
+    page: int
+    per_page: int
     id: str
 
 
 class ApiEntitiesCiSecureFileCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_secure_file: dict
 
 
 class ApiEntitiesCiSecureFileCreateData(ApiEntitiesCiSecureFileCreateDataRequired, total=False):
@@ -1320,9 +1463,13 @@ class ApiEntitiesCiVariable(TypedDict, total=False):
     variable_type: str
 
 
-class ApiEntitiesCiVariableLoadMatch(TypedDict):
+class ApiEntitiesCiVariableLoadMatchRequired(TypedDict):
     id: str
     project_id: str
+
+
+class ApiEntitiesCiVariableLoadMatch(ApiEntitiesCiVariableLoadMatchRequired, total=False):
+    filter_environment_scope: Any
 
 
 class ApiEntitiesCiVariableListMatch(TypedDict):
@@ -1332,6 +1479,7 @@ class ApiEntitiesCiVariableListMatch(TypedDict):
 
 class ApiEntitiesCiVariableCreateDataRequired(TypedDict):
     group_id: str
+    post_api_v4_groups_id_variable: dict
 
 
 class ApiEntitiesCiVariableCreateData(ApiEntitiesCiVariableCreateDataRequired, total=False):
@@ -1354,7 +1502,11 @@ class ApiEntitiesCiVariableUpdateDataRequired(TypedDict):
 class ApiEntitiesCiVariableUpdateData(ApiEntitiesCiVariableUpdateDataRequired, total=False):
     pipeline_schedule_id: str
     project_id: str
+    put_api_v4_projects_id_pipeline_schedules_pipeline_schedule_id_variables_key: dict
     group_id: str
+    put_api_v4_groups_id_variables_key: dict
+    put_api_v4_projects_id_variables_key: dict
+    put_api_v4_admin_ci_variables_key: dict
     description: str
     environment_scope: str
     hidden: bool
@@ -1406,7 +1558,11 @@ class ApiEntitiesClusterListMatch(TypedDict, total=False):
     user: dict
 
 
-class ApiEntitiesClusterCreateData(TypedDict, total=False):
+class ApiEntitiesClusterCreateDataRequired(TypedDict):
+    post_api_v4_admin_clusters_add: dict
+
+
+class ApiEntitiesClusterCreateData(ApiEntitiesClusterCreateDataRequired, total=False):
     cluster_type: str
     created_at: str
     domain: str
@@ -1426,6 +1582,7 @@ class ApiEntitiesClusterCreateData(TypedDict, total=False):
 
 class ApiEntitiesClusterUpdateDataRequired(TypedDict):
     id: str
+    put_api_v4_admin_clusters_cluster_id: dict
 
 
 class ApiEntitiesClusterUpdateData(ApiEntitiesClusterUpdateDataRequired, total=False):
@@ -1471,6 +1628,7 @@ class ApiEntitiesClusterGroupLoadMatch(TypedDict):
 
 class ApiEntitiesClusterGroupCreateDataRequired(TypedDict):
     group_id: str
+    post_api_v4_groups_id_clusters_user: dict
 
 
 class ApiEntitiesClusterGroupCreateData(ApiEntitiesClusterGroupCreateDataRequired, total=False):
@@ -1495,6 +1653,7 @@ class ApiEntitiesClusterGroupCreateData(ApiEntitiesClusterGroupCreateDataRequire
 class ApiEntitiesClusterGroupUpdateDataRequired(TypedDict):
     cluster_id: str
     group_id: str
+    put_api_v4_groups_id_clusters_cluster_id: dict
 
 
 class ApiEntitiesClusterGroupUpdateData(ApiEntitiesClusterGroupUpdateDataRequired, total=False):
@@ -1542,6 +1701,7 @@ class ApiEntitiesClusterProjectLoadMatch(TypedDict):
 
 class ApiEntitiesClusterProjectCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_clusters_user: dict
 
 
 class ApiEntitiesClusterProjectCreateData(ApiEntitiesClusterProjectCreateDataRequired, total=False):
@@ -1566,6 +1726,7 @@ class ApiEntitiesClusterProjectCreateData(ApiEntitiesClusterProjectCreateDataReq
 class ApiEntitiesClusterProjectUpdateDataRequired(TypedDict):
     cluster_id: str
     project_id: str
+    put_api_v4_projects_id_clusters_cluster_id: dict
 
 
 class ApiEntitiesClusterProjectUpdateData(ApiEntitiesClusterProjectUpdateDataRequired, total=False):
@@ -1602,11 +1763,14 @@ class ApiEntitiesClustersAgentLoadMatchRequired(TypedDict):
 
 
 class ApiEntitiesClustersAgentLoadMatch(ApiEntitiesClustersAgentLoadMatchRequired, total=False):
+    page: int
+    per_page: int
     agent_id: str
 
 
 class ApiEntitiesClustersAgentCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_cluster_agent: dict
 
 
 class ApiEntitiesClustersAgentCreateData(ApiEntitiesClustersAgentCreateDataRequired, total=False):
@@ -1646,9 +1810,14 @@ class ApiEntitiesClustersAgentTokenBasic(TypedDict, total=False):
     status: str
 
 
-class ApiEntitiesClustersAgentTokenBasicLoadMatch(TypedDict):
+class ApiEntitiesClustersAgentTokenBasicLoadMatchRequired(TypedDict):
     cluster_agent_id: str
     project_id: str
+
+
+class ApiEntitiesClustersAgentTokenBasicLoadMatch(ApiEntitiesClustersAgentTokenBasicLoadMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesClustersAgentTokenWithToken(TypedDict):
@@ -1658,6 +1827,7 @@ class ApiEntitiesClustersAgentTokenWithToken(TypedDict):
 class ApiEntitiesClustersAgentTokenWithTokenCreateData(TypedDict):
     cluster_agent_id: str
     project_id: str
+    post_api_v4_projects_id_cluster_agents_agent_id_token: dict
 
 
 class ApiEntitiesCommit(TypedDict, total=False):
@@ -1683,7 +1853,20 @@ class ApiEntitiesCommitListMatchRequired(TypedDict):
 
 
 class ApiEntitiesCommitListMatch(ApiEntitiesCommitListMatchRequired, total=False):
+    all: Any
+    author: Any
+    first_parent: Any
+    order: Any
+    page: int
+    path: str
+    per_page: int
+    ref_name: Any
+    since: Any
+    trailer: Any
+    until: Any
+    with_stat: Any
     merge_request_id: str
+    ref: Any
 
 
 class ApiEntitiesCommitCreateDataRequired(TypedDict):
@@ -1692,7 +1875,10 @@ class ApiEntitiesCommitCreateDataRequired(TypedDict):
 
 class ApiEntitiesCommitCreateData(ApiEntitiesCommitCreateDataRequired, total=False):
     merge_request_id: str
+    post_api_v4_projects_id_merge_requests_merge_request_iid_context_commit: dict
     sha: Any
+    post_api_v4_projects_id_repository_commits_sha_cherry_pick: dict
+    post_api_v4_projects_id_repository_commits_sha_revert: dict
     author_email: str
     author_name: str
     authored_date: str
@@ -1732,13 +1918,18 @@ class ApiEntitiesCommitDetail(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesCommitDetailLoadMatch(TypedDict):
+class ApiEntitiesCommitDetailLoadMatchRequired(TypedDict):
     project_id: str
     sha: Any
 
 
+class ApiEntitiesCommitDetailLoadMatch(ApiEntitiesCommitDetailLoadMatchRequired, total=False):
+    stat: Any
+
+
 class ApiEntitiesCommitDetailCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_repository_commit: dict
 
 
 class ApiEntitiesCommitDetailCreateData(ApiEntitiesCommitDetailCreateDataRequired, total=False):
@@ -1765,6 +1956,7 @@ class ApiEntitiesCommitDetailCreateData(ApiEntitiesCommitDetailCreateDataRequire
 class ApiEntitiesCommitDetailUpdateDataRequired(TypedDict):
     project_id: str
     submodule: Any
+    put_api_v4_projects_id_repository_submodules_submodule: dict
 
 
 class ApiEntitiesCommitDetailUpdateData(ApiEntitiesCommitDetailUpdateDataRequired, total=False):
@@ -1807,14 +1999,20 @@ class ApiEntitiesCommitNote(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesCommitNoteListMatch(TypedDict):
+class ApiEntitiesCommitNoteListMatchRequired(TypedDict):
     project_id: str
     sha: Any
+
+
+class ApiEntitiesCommitNoteListMatch(ApiEntitiesCommitNoteListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesCommitNoteCreateDataRequired(TypedDict):
     project_id: str
     sha: Any
+    post_api_v4_projects_id_repository_commits_sha_comment: dict
 
 
 class ApiEntitiesCommitNoteCreateData(ApiEntitiesCommitNoteCreateDataRequired, total=False):
@@ -1840,9 +2038,13 @@ class ApiEntitiesCommitSequence(TypedDict, total=False):
     count: int
 
 
-class ApiEntitiesCommitSequenceLoadMatch(TypedDict):
+class ApiEntitiesCommitSequenceLoadMatchRequired(TypedDict):
     project_id: str
     sha: Any
+
+
+class ApiEntitiesCommitSequenceLoadMatch(ApiEntitiesCommitSequenceLoadMatchRequired, total=False):
+    first_parent: Any
 
 
 class ApiEntitiesCommitSignature(TypedDict, total=False):
@@ -1881,14 +2083,27 @@ class ApiEntitiesCommitStatus(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesCommitStatusListMatch(TypedDict):
+class ApiEntitiesCommitStatusListMatchRequired(TypedDict):
     project_id: str
     sha: Any
+
+
+class ApiEntitiesCommitStatusListMatch(ApiEntitiesCommitStatusListMatchRequired, total=False):
+    all: Any
+    name: str
+    order_by: Any
+    page: int
+    per_page: int
+    pipeline_id: str
+    ref: Any
+    sort: Any
+    stage: Any
 
 
 class ApiEntitiesCommitStatusCreateDataRequired(TypedDict):
     id: str
     project_id: str
+    post_api_v4_projects_id_statuses_sha: dict
 
 
 class ApiEntitiesCommitStatusCreateData(ApiEntitiesCommitStatusCreateDataRequired, total=False):
@@ -1924,8 +2139,15 @@ class ApiEntitiesCompare(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesCompareListMatch(TypedDict):
+class ApiEntitiesCompareListMatchRequired(TypedDict):
     project_id: str
+    to: Any
+
+
+class ApiEntitiesCompareListMatch(ApiEntitiesCompareListMatchRequired, total=False):
+    from_project_id: str
+    straight: Any
+    unidiff: Any
 
 
 class ApiEntitiesContainerRegistryRepository(TypedDict, total=False):
@@ -1943,12 +2165,25 @@ class ApiEntitiesContainerRegistryRepository(TypedDict, total=False):
     tags_count: int
 
 
-class ApiEntitiesContainerRegistryRepositoryLoadMatch(TypedDict):
+class ApiEntitiesContainerRegistryRepositoryLoadMatchRequired(TypedDict):
     id: str
 
 
-class ApiEntitiesContainerRegistryRepositoryListMatch(TypedDict):
+class ApiEntitiesContainerRegistryRepositoryLoadMatch(ApiEntitiesContainerRegistryRepositoryLoadMatchRequired, total=False):
+    size: int
+    tag: Any
+    tags_count: int
+
+
+class ApiEntitiesContainerRegistryRepositoryListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesContainerRegistryRepositoryListMatch(ApiEntitiesContainerRegistryRepositoryListMatchRequired, total=False):
+    page: int
+    per_page: int
+    tag: Any
+    tags_count: int
 
 
 class ApiEntitiesContainerRegistryTag(TypedDict, total=False):
@@ -1957,9 +2192,14 @@ class ApiEntitiesContainerRegistryTag(TypedDict, total=False):
     path: str
 
 
-class ApiEntitiesContainerRegistryTagListMatch(TypedDict):
+class ApiEntitiesContainerRegistryTagListMatchRequired(TypedDict):
     project_id: str
     repository_id: str
+
+
+class ApiEntitiesContainerRegistryTagListMatch(ApiEntitiesContainerRegistryTagListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesContainerRegistryTagDetail(TypedDict, total=False):
@@ -1987,8 +2227,16 @@ class ApiEntitiesContributor(TypedDict, total=False):
     name: str
 
 
-class ApiEntitiesContributorLoadMatch(TypedDict):
+class ApiEntitiesContributorLoadMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesContributorLoadMatch(ApiEntitiesContributorLoadMatchRequired, total=False):
+    order_by: Any
+    page: int
+    per_page: int
+    ref: Any
+    sort: Any
 
 
 class ApiEntitiesDeployKey(TypedDict, total=False):
@@ -2006,20 +2254,16 @@ class ApiEntitiesDeployKey(TypedDict, total=False):
 
 
 class ApiEntitiesDeployKeyListMatch(TypedDict, total=False):
-    created_at: str
-    expires_at: str
-    fingerprint: str
-    fingerprint_sha256: str
-    id: int
-    key: str
-    last_used_at: str
-    projects_with_readonly_access: dict
-    projects_with_write_access: dict
-    title: str
-    usage_type: str
+    page: int
+    per_page: int
+    public: bool
 
 
-class ApiEntitiesDeployKeyCreateData(TypedDict, total=False):
+class ApiEntitiesDeployKeyCreateDataRequired(TypedDict):
+    post_api_v4_deploy_key: dict
+
+
+class ApiEntitiesDeployKeyCreateData(ApiEntitiesDeployKeyCreateDataRequired, total=False):
     created_at: str
     expires_at: str
     fingerprint: str
@@ -2036,6 +2280,7 @@ class ApiEntitiesDeployKeyCreateData(TypedDict, total=False):
 class ApiEntitiesDeployKeyUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    put_api_v4_projects_id_deploy_keys_key_id: dict
 
 
 class ApiEntitiesDeployKeyUpdateData(ApiEntitiesDeployKeyUpdateDataRequired, total=False):
@@ -2071,12 +2316,18 @@ class ApiEntitiesDeployKeysProjectLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesDeployKeysProjectListMatch(TypedDict):
+class ApiEntitiesDeployKeysProjectListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesDeployKeysProjectListMatch(ApiEntitiesDeployKeysProjectListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesDeployKeysProjectCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_deploy_key: dict
 
 
 class ApiEntitiesDeployKeysProjectCreateData(ApiEntitiesDeployKeysProjectCreateDataRequired, total=False):
@@ -2114,13 +2365,9 @@ class ApiEntitiesDeployTokenLoadMatch(ApiEntitiesDeployTokenLoadMatchRequired, t
 
 
 class ApiEntitiesDeployTokenListMatch(TypedDict, total=False):
-    expired: bool
-    expires_at: str
-    id: int
-    name: str
-    revoked: bool
-    scopes: list
-    username: str
+    active: bool
+    page: int
+    per_page: int
 
 
 class ApiEntitiesDeployTokenWithToken(TypedDict):
@@ -2129,6 +2376,7 @@ class ApiEntitiesDeployTokenWithToken(TypedDict):
 
 class ApiEntitiesDeployTokenWithTokenCreateData(TypedDict):
     group_id: str
+    post_api_v4_groups_id_deploy_token: dict
 
 
 class ApiEntitiesDeployment(TypedDict, total=False):
@@ -2144,8 +2392,21 @@ class ApiEntitiesDeployment(TypedDict, total=False):
     user: dict
 
 
-class ApiEntitiesDeploymentListMatch(TypedDict):
+class ApiEntitiesDeploymentListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesDeploymentListMatch(ApiEntitiesDeploymentListMatchRequired, total=False):
+    environment: Any
+    finished_after: Any
+    finished_before: Any
+    order_by: Any
+    page: int
+    per_page: int
+    sort: Any
+    status: Any
+    updated_after: Any
+    updated_before: Any
 
 
 class ApiEntitiesDeploymentExtended(TypedDict, total=False):
@@ -2171,6 +2432,7 @@ class ApiEntitiesDeploymentExtendedLoadMatch(TypedDict):
 
 class ApiEntitiesDeploymentExtendedCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_deployment: dict
 
 
 class ApiEntitiesDeploymentExtendedCreateData(ApiEntitiesDeploymentExtendedCreateDataRequired, total=False):
@@ -2192,6 +2454,7 @@ class ApiEntitiesDeploymentExtendedCreateData(ApiEntitiesDeploymentExtendedCreat
 class ApiEntitiesDeploymentExtendedUpdateDataRequired(TypedDict):
     deployment_id: str
     project_id: str
+    put_api_v4_projects_id_deployments_deployment_id: dict
 
 
 class ApiEntitiesDeploymentExtendedUpdateData(ApiEntitiesDeploymentExtendedUpdateDataRequired, total=False):
@@ -2217,6 +2480,7 @@ class ApiEntitiesDeploymentsApproval(TypedDict):
 class ApiEntitiesDeploymentsApprovalCreateData(TypedDict):
     deployment_id: str
     project_id: str
+    post_api_v4_projects_id_deployments_deployment_id_approval: dict
 
 
 class ApiEntitiesDictionaryTable(TypedDict, total=False):
@@ -2244,14 +2508,26 @@ class ApiEntitiesDiff(TypedDict, total=False):
     too_large: bool
 
 
-class ApiEntitiesDiffLoadMatch(TypedDict):
+class ApiEntitiesDiffLoadMatchRequired(TypedDict):
     merge_request_id: str
     project_id: str
 
 
-class ApiEntitiesDiffListMatch(TypedDict):
+class ApiEntitiesDiffLoadMatch(ApiEntitiesDiffLoadMatchRequired, total=False):
+    page: int
+    per_page: int
+    unidiff: Any
+
+
+class ApiEntitiesDiffListMatchRequired(TypedDict):
     project_id: str
     sha: Any
+
+
+class ApiEntitiesDiffListMatch(ApiEntitiesDiffListMatchRequired, total=False):
+    page: int
+    per_page: int
+    unidiff: Any
 
 
 class ApiEntitiesDiscoveredCluster(TypedDict, total=False):
@@ -2259,9 +2535,8 @@ class ApiEntitiesDiscoveredCluster(TypedDict, total=False):
     projects: str
 
 
-class ApiEntitiesDiscoveredClusterLoadMatch(TypedDict, total=False):
-    groups: str
-    projects: str
+class ApiEntitiesDiscoveredClusterLoadMatch(TypedDict):
+    group_id: str
 
 
 class ApiEntitiesDraftNote(TypedDict, total=False):
@@ -2290,6 +2565,7 @@ class ApiEntitiesDraftNoteListMatch(TypedDict):
 class ApiEntitiesDraftNoteCreateDataRequired(TypedDict):
     merge_request_id: str
     project_id: str
+    post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note: dict
 
 
 class ApiEntitiesDraftNoteCreateData(ApiEntitiesDraftNoteCreateDataRequired, total=False):
@@ -2307,6 +2583,7 @@ class ApiEntitiesDraftNoteUpdateDataRequired(TypedDict):
     id: str
     merge_request_id: str
     project_id: str
+    put_api_v4_projects_id_merge_requests_merge_request_iid_draft_notes_draft_note_id: dict
 
 
 class ApiEntitiesDraftNoteUpdateData(ApiEntitiesDraftNoteUpdateDataRequired, total=False):
@@ -2343,8 +2620,16 @@ class ApiEntitiesEnvironmentLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesEnvironmentListMatch(TypedDict):
+class ApiEntitiesEnvironmentListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesEnvironmentListMatch(ApiEntitiesEnvironmentListMatchRequired, total=False):
+    name: str
+    page: int
+    per_page: int
+    search: Any
+    state: Any
 
 
 class ApiEntitiesEnvironmentCreateDataRequired(TypedDict):
@@ -2353,6 +2638,8 @@ class ApiEntitiesEnvironmentCreateDataRequired(TypedDict):
 
 class ApiEntitiesEnvironmentCreateData(ApiEntitiesEnvironmentCreateDataRequired, total=False):
     environment_id: str
+    post_api_v4_projects_id_environments_environment_id_stop: dict
+    post_api_v4_projects_id_environment: dict
     auto_stop_at: str
     auto_stop_setting: str
     cluster_agent: dict
@@ -2374,6 +2661,7 @@ class ApiEntitiesEnvironmentCreateData(ApiEntitiesEnvironmentCreateDataRequired,
 class ApiEntitiesEnvironmentUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    put_api_v4_projects_id_environments_environment_id: dict
 
 
 class ApiEntitiesEnvironmentUpdateData(ApiEntitiesEnvironmentUpdateDataRequired, total=False):
@@ -2430,6 +2718,7 @@ class ApiEntitiesErrorTrackingProjectSettingLoadMatch(TypedDict):
 
 class ApiEntitiesErrorTrackingProjectSettingUpdateDataRequired(TypedDict):
     project_id: str
+    put_api_v4_projects_id_error_tracking_setting: dict
 
 
 class ApiEntitiesErrorTrackingProjectSettingUpdateData(ApiEntitiesErrorTrackingProjectSettingUpdateDataRequired, total=False):
@@ -2459,27 +2748,29 @@ class ApiEntitiesEvent(TypedDict, total=False):
     wiki_page: dict
 
 
-class ApiEntitiesEventLoadMatch(TypedDict):
+class ApiEntitiesEventLoadMatchRequired(TypedDict):
     project_id: str
 
 
+class ApiEntitiesEventLoadMatch(ApiEntitiesEventLoadMatchRequired, total=False):
+    action: Any
+    after: Any
+    before: Any
+    page: int
+    per_page: int
+    sort: Any
+    target_type: Any
+
+
 class ApiEntitiesEventListMatch(TypedDict, total=False):
-    action_name: str
-    author: dict
-    author_id: int
-    author_username: str
-    created_at: str
-    id: int
-    imported: bool
-    imported_from: str
-    note: dict
-    project_id: int
-    push_data: dict
-    target_id: int
-    target_iid: int
-    target_title: str
-    target_type: str
-    wiki_page: dict
+    action: Any
+    after: Any
+    before: Any
+    page: int
+    per_page: int
+    scope: Any
+    sort: Any
+    target_type: Any
 
 
 class ApiEntitiesFeature(TypedDict, total=False):
@@ -2500,6 +2791,7 @@ class ApiEntitiesFeatureListMatch(TypedDict, total=False):
 
 class ApiEntitiesFeatureCreateDataRequired(TypedDict):
     id: str
+    post_api_v4_features_name: dict
 
 
 class ApiEntitiesFeatureCreateData(ApiEntitiesFeatureCreateDataRequired, total=False):
@@ -2554,12 +2846,19 @@ class ApiEntitiesFeatureFlagLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesFeatureFlagListMatch(TypedDict):
+class ApiEntitiesFeatureFlagListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesFeatureFlagListMatch(ApiEntitiesFeatureFlagListMatchRequired, total=False):
+    page: int
+    per_page: int
+    scope: Any
 
 
 class ApiEntitiesFeatureFlagCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_feature_flag: dict
 
 
 class ApiEntitiesFeatureFlagCreateData(ApiEntitiesFeatureFlagCreateDataRequired, total=False):
@@ -2579,6 +2878,7 @@ class ApiEntitiesFeatureFlagCreateData(ApiEntitiesFeatureFlagCreateDataRequired,
 class ApiEntitiesFeatureFlagUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    put_api_v4_projects_id_feature_flags_feature_flag_name: dict
 
 
 class ApiEntitiesFeatureFlagUpdateData(ApiEntitiesFeatureFlagUpdateDataRequired, total=False):
@@ -2611,12 +2911,19 @@ class ApiEntitiesFeatureFlagUserListLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesFeatureFlagUserListListMatch(TypedDict):
+class ApiEntitiesFeatureFlagUserListListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesFeatureFlagUserListListMatch(ApiEntitiesFeatureFlagUserListListMatchRequired, total=False):
+    page: int
+    per_page: int
+    search: Any
 
 
 class ApiEntitiesFeatureFlagUserListCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_feature_flags_user_list: dict
 
 
 class ApiEntitiesFeatureFlagUserListCreateData(ApiEntitiesFeatureFlagUserListCreateDataRequired, total=False):
@@ -2633,6 +2940,7 @@ class ApiEntitiesFeatureFlagUserListCreateData(ApiEntitiesFeatureFlagUserListCre
 class ApiEntitiesFeatureFlagUserListUpdateDataRequired(TypedDict):
     iid: Any
     project_id: str
+    put_api_v4_projects_id_feature_flags_user_lists_iid: dict
 
 
 class ApiEntitiesFeatureFlagUserListUpdateData(ApiEntitiesFeatureFlagUserListUpdateDataRequired, total=False):
@@ -2659,12 +2967,18 @@ class ApiEntitiesFreezePeriodLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesFreezePeriodListMatch(TypedDict):
+class ApiEntitiesFreezePeriodListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesFreezePeriodListMatch(ApiEntitiesFreezePeriodListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesFreezePeriodCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_freeze_period: dict
 
 
 class ApiEntitiesFreezePeriodCreateData(ApiEntitiesFreezePeriodCreateDataRequired, total=False):
@@ -2679,6 +2993,7 @@ class ApiEntitiesFreezePeriodCreateData(ApiEntitiesFreezePeriodCreateDataRequire
 class ApiEntitiesFreezePeriodUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    put_api_v4_projects_id_freeze_periods_freeze_period_id: dict
 
 
 class ApiEntitiesFreezePeriodUpdateData(ApiEntitiesFreezePeriodUpdateDataRequired, total=False):
@@ -2707,6 +3022,7 @@ class ApiEntitiesGoModuleVersion(TypedDict, total=False):
 class ApiEntitiesGoModuleVersionLoadMatch(TypedDict):
     module_version: Any
     project_id: str
+    module_name: Any
 
 
 class ApiEntitiesGroup(TypedDict, total=False):
@@ -2760,62 +3076,39 @@ class ApiEntitiesGroup(TypedDict, total=False):
     wiki_access_level: str
 
 
-class ApiEntitiesGroupLoadMatch(TypedDict):
+class ApiEntitiesGroupLoadMatchRequired(TypedDict):
     project_id: str
 
 
+class ApiEntitiesGroupLoadMatch(ApiEntitiesGroupLoadMatchRequired, total=False):
+    search: Any
+
+
 class ApiEntitiesGroupListMatch(TypedDict, total=False):
+    active: bool
+    all_available: Any
     archived: bool
-    auto_devops_enabled: str
-    auto_duo_code_review_enabled: str
-    avatar_url: str
-    created_at: str
-    custom_attributes: dict
-    default_branch: str
-    default_branch_protection: str
-    default_branch_protection_defaults: str
-    description: str
-    duo_core_features_enabled: bool
-    duo_features_enabled: str
-    emails_disabled: bool
-    emails_enabled: bool
-    file_template_project_id: str
-    full_name: str
-    full_path: str
-    id: str
-    ldap_access: str
-    ldap_cn: str
-    ldap_group_links: dict
-    lfs_enabled: str
-    lock_duo_features_enabled: str
-    lock_math_rendering_limits_enabled: bool
-    marked_for_deletion_on: str
-    math_rendering_limits_enabled: bool
-    max_artifacts_size: int
-    mentions_disabled: str
-    name: str
-    organization_id: str
-    parent_id: str
-    path: str
-    project_creation_level: str
-    repository_storage: str
-    request_access_enabled: str
-    require_two_factor_authentication: str
-    root_storage_statistics: dict
-    saml_group_links: dict
-    share_with_group_lock: str
-    shared_runners_setting: str
-    show_diff_preview_in_email: bool
-    statistics: dict
-    subgroup_creation_level: str
-    two_factor_grace_period: str
-    visibility: str
-    web_based_commit_signing_enabled: str
-    web_url: str
-    wiki_access_level: str
+    marked_for_deletion_on: Any
+    min_access_level: Any
+    order_by: Any
+    owned: Any
+    page: int
+    per_page: int
+    repository_storage: Any
+    search: Any
+    skip_group: Any
+    sort: Any
+    statistic: Any
+    top_level_only: Any
+    visibility: Any
+    with_custom_attribute: Any
 
 
-class ApiEntitiesGroupCreateData(TypedDict, total=False):
+class ApiEntitiesGroupCreateDataRequired(TypedDict):
+    post_api_v4_group: dict
+
+
+class ApiEntitiesGroupCreateData(ApiEntitiesGroupCreateDataRequired, total=False):
     archived: bool
     auto_devops_enabled: str
     auto_duo_code_review_enabled: str
@@ -2868,6 +3161,7 @@ class ApiEntitiesGroupCreateData(TypedDict, total=False):
 
 class ApiEntitiesGroupUpdateDataRequired(TypedDict):
     id: str
+    put_api_v4_groups_id: dict
 
 
 class ApiEntitiesGroupUpdateData(ApiEntitiesGroupUpdateDataRequired, total=False):
@@ -2989,8 +3283,13 @@ class ApiEntitiesGroupDetail(TypedDict, total=False):
     wiki_access_level: str
 
 
-class ApiEntitiesGroupDetailLoadMatch(TypedDict):
+class ApiEntitiesGroupDetailLoadMatchRequired(TypedDict):
     id: str
+
+
+class ApiEntitiesGroupDetailLoadMatch(ApiEntitiesGroupDetailLoadMatchRequired, total=False):
+    with_custom_attribute: Any
+    with_project: Any
 
 
 class ApiEntitiesGroupDetailCreateDataRequired(TypedDict):
@@ -2998,6 +3297,7 @@ class ApiEntitiesGroupDetailCreateDataRequired(TypedDict):
 
 
 class ApiEntitiesGroupDetailCreateData(ApiEntitiesGroupDetailCreateDataRequired, total=False):
+    post_api_v4_groups_id_share: dict
     project_id: str
     allowed_email_domains_list: str
     archived: bool
@@ -3092,26 +3392,15 @@ class ApiEntitiesHookLoadMatch(TypedDict):
 
 
 class ApiEntitiesHookListMatch(TypedDict, total=False):
-    alert_status: Any
-    branch_filter_strategy: str
-    created_at: str
-    custom_headers: list
-    custom_webhook_template: str
-    description: str
-    disabled_until: str
-    enable_ssl_verification: bool
-    id: str
-    merge_requests_events: bool
-    name: str
-    push_events: bool
-    push_events_branch_filter: str
-    repository_update_events: bool
-    tag_push_events: bool
-    url: str
-    url_variables: list
+    page: int
+    per_page: int
 
 
-class ApiEntitiesHookCreateData(TypedDict, total=False):
+class ApiEntitiesHookCreateDataRequired(TypedDict):
+    post_api_v4_hook: dict
+
+
+class ApiEntitiesHookCreateData(ApiEntitiesHookCreateDataRequired, total=False):
     alert_status: Any
     branch_filter_strategy: str
     created_at: str
@@ -3133,6 +3422,7 @@ class ApiEntitiesHookCreateData(TypedDict, total=False):
 
 class ApiEntitiesHookUpdateDataRequired(TypedDict):
     id: str
+    put_api_v4_hooks_hook_id: dict
 
 
 class ApiEntitiesHookUpdateData(ApiEntitiesHookUpdateDataRequired, total=False):
@@ -3195,6 +3485,7 @@ class ApiEntitiesIntegrationBasicListMatch(TypedDict):
 
 class ApiEntitiesIntegrationBasicUpdateDataRequired(TypedDict):
     group_id: str
+    put_api_v4_groups_id_integrations_apple_app_store: dict
 
 
 class ApiEntitiesIntegrationBasicUpdateData(ApiEntitiesIntegrationBasicUpdateDataRequired, total=False):
@@ -3234,12 +3525,19 @@ class ApiEntitiesInvitation(TypedDict, total=False):
     user_name: str
 
 
-class ApiEntitiesInvitationListMatch(TypedDict):
+class ApiEntitiesInvitationListMatchRequired(TypedDict):
     group_id: str
+
+
+class ApiEntitiesInvitationListMatch(ApiEntitiesInvitationListMatchRequired, total=False):
+    page: int
+    per_page: int
+    query: Any
 
 
 class ApiEntitiesInvitationCreateDataRequired(TypedDict):
     group_id: str
+    post_api_v4_groups_id_invitation: dict
 
 
 class ApiEntitiesInvitationCreateData(ApiEntitiesInvitationCreateDataRequired, total=False):
@@ -3259,7 +3557,9 @@ class ApiEntitiesInvitationUpdateDataRequired(TypedDict):
 
 class ApiEntitiesInvitationUpdateData(ApiEntitiesInvitationUpdateDataRequired, total=False):
     group_id: str
+    put_api_v4_groups_id_invitations_email: dict
     project_id: str
+    put_api_v4_projects_id_invitations_email: dict
     access_level: str
     created_at: str
     created_by_name: str
@@ -3291,7 +3591,11 @@ class ApiEntitiesIssuableTimeStatCreateDataRequired(TypedDict):
 
 class ApiEntitiesIssuableTimeStatCreateData(ApiEntitiesIssuableTimeStatCreateDataRequired, total=False):
     issue_id: str
+    post_api_v4_projects_id_issues_issue_iid_add_spent_time: dict
+    post_api_v4_projects_id_issues_issue_iid_time_estimate: dict
     merge_request_id: str
+    post_api_v4_projects_id_merge_requests_merge_request_iid_add_spent_time: dict
+    post_api_v4_projects_id_merge_requests_merge_request_iid_time_estimate: dict
     human_time_estimate: str
     human_total_time_spent: str
     time_estimate: int
@@ -3353,49 +3657,48 @@ class ApiEntitiesIssueLoadMatch(ApiEntitiesIssueLoadMatchRequired, total=False):
 
 
 class ApiEntitiesIssueListMatch(TypedDict, total=False):
-    assignee: dict
-    assignees: dict
-    author: dict
-    blocking_issues_count: str
-    closed_at: str
-    closed_by: dict
-    confidential: bool
-    created_at: str
-    description: str
-    discussion_locked: bool
-    downvotes: str
-    due_date: str
-    epic: dict
-    epic_iid: str
-    has_tasks: bool
-    health_status: str
-    id: int
-    iid: int
-    imported: str
-    imported_from: str
-    issue_type: str
-    iteration: dict
-    labels: list
-    links: dict
-    merge_requests_count: str
-    milestone: dict
-    moved_to_id: str
-    project_id: int
-    references: dict
-    service_desk_reply_to: str
-    severity: str
-    state: str
-    subscribed: str
-    task_completion_status: str
-    task_status: str
-    time_stats: dict
-    title: str
-    type: str
-    updated_at: str
-    upvotes: str
-    user_notes_count: str
-    web_url: str
-    weight: str
+    assignee_id: str
+    assignee_username: Any
+    author_id: str
+    author_username: Any
+    closed_by_id: str
+    confidential: Any
+    created_after: Any
+    created_before: Any
+    due_date: Any
+    epic_id: str
+    health_status: Any
+    iid: Any
+    issue_type: Any
+    iteration_id: str
+    iteration_title: Any
+    label: str
+    milestone: Any
+    milestone_id: str
+    my_reaction_emoji: Any
+    non_archived: Any
+    not_assignee_id: str
+    not_assignee_username: Any
+    not_author_id: str
+    not_author_username: Any
+    not_iid: Any
+    not_iteration_id: str
+    not_iteration_title: Any
+    not_label: Any
+    not_milestone: Any
+    not_milestone_id: str
+    not_weight: Any
+    order_by: Any
+    page: int
+    per_page: int
+    scope: Any
+    search: Any
+    sort: Any
+    state: Any
+    updated_after: Any
+    updated_before: Any
+    weight: float
+    with_labels_detail: Any
 
 
 class ApiEntitiesIssueCreateDataRequired(TypedDict):
@@ -3404,6 +3707,9 @@ class ApiEntitiesIssueCreateDataRequired(TypedDict):
 
 class ApiEntitiesIssueCreateData(ApiEntitiesIssueCreateDataRequired, total=False):
     issue_id: str
+    post_api_v4_projects_id_issues_issue_iid_clone: dict
+    post_api_v4_projects_id_issues_issue_iid_move: dict
+    post_api_v4_projects_id_issue: dict
     assignee: dict
     assignees: dict
     author: dict
@@ -3454,7 +3760,9 @@ class ApiEntitiesIssueUpdateDataRequired(TypedDict):
 
 class ApiEntitiesIssueUpdateData(ApiEntitiesIssueUpdateDataRequired, total=False):
     id: str
+    put_api_v4_projects_id_issues_issue_iid: dict
     issue_id: str
+    put_api_v4_projects_id_issues_issue_iid_reorder: dict
     assignee: dict
     assignees: dict
     author: dict
@@ -3514,6 +3822,7 @@ class ApiEntitiesIssueLinkLoadMatch(TypedDict):
 class ApiEntitiesIssueLinkCreateDataRequired(TypedDict):
     issue_id: str
     project_id: str
+    post_api_v4_projects_id_issues_issue_iid_link: dict
 
 
 class ApiEntitiesIssueLinkCreateData(ApiEntitiesIssueLinkCreateDataRequired, total=False):
@@ -3538,10 +3847,16 @@ class ApiEntitiesLicense(TypedDict, total=False):
     source_url: str
 
 
-class ApiEntitiesLicenseLoadMatch(TypedDict):
+class ApiEntitiesLicenseLoadMatchRequired(TypedDict):
     id: str
     name: str
     type: Any
+
+
+class ApiEntitiesLicenseLoadMatch(ApiEntitiesLicenseLoadMatchRequired, total=False):
+    fullname: Any
+    project: Any
+    source_template_project_id: str
 
 
 class ApiEntitiesMarkdown(TypedDict):
@@ -3549,7 +3864,7 @@ class ApiEntitiesMarkdown(TypedDict):
 
 
 class ApiEntitiesMarkdownCreateData(TypedDict):
-    pass
+    post_api_v4_markdown: dict
 
 
 class ApiEntitiesMarkdownUploadAdmin(TypedDict, total=False):
@@ -3560,8 +3875,13 @@ class ApiEntitiesMarkdownUploadAdmin(TypedDict, total=False):
     uploaded_by: dict
 
 
-class ApiEntitiesMarkdownUploadAdminListMatch(TypedDict):
+class ApiEntitiesMarkdownUploadAdminListMatchRequired(TypedDict):
     group_id: str
+
+
+class ApiEntitiesMarkdownUploadAdminListMatch(ApiEntitiesMarkdownUploadAdminListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesMember(TypedDict, total=False):
@@ -3595,12 +3915,23 @@ class ApiEntitiesMemberLoadMatch(TypedDict):
     id: str
 
 
-class ApiEntitiesMemberListMatch(TypedDict):
+class ApiEntitiesMemberListMatchRequired(TypedDict):
     group_id: str
+
+
+class ApiEntitiesMemberListMatch(ApiEntitiesMemberListMatchRequired, total=False):
+    page: int
+    per_page: int
+    query: Any
+    show_seat_info: Any
+    skip_user: Any
+    user_id: str
+    with_saml_identity: Any
 
 
 class ApiEntitiesMemberCreateDataRequired(TypedDict):
     group_id: str
+    post_api_v4_groups_id_member: dict
 
 
 class ApiEntitiesMemberCreateData(ApiEntitiesMemberCreateDataRequired, total=False):
@@ -3635,7 +3966,9 @@ class ApiEntitiesMemberUpdateDataRequired(TypedDict):
 
 class ApiEntitiesMemberUpdateData(ApiEntitiesMemberUpdateDataRequired, total=False):
     group_id: str
+    put_api_v4_groups_id_members_user_id: dict
     project_id: str
+    put_api_v4_projects_id_members_user_id: dict
     access_level: str
     avatar_path: str
     avatar_url: str
@@ -3736,9 +4069,15 @@ class ApiEntitiesMerge(TypedDict, total=False):
     work_in_progress: str
 
 
-class ApiEntitiesMergeLoadMatch(TypedDict):
+class ApiEntitiesMergeLoadMatchRequired(TypedDict):
     merge_request_iid: Any
     project_id: str
+
+
+class ApiEntitiesMergeLoadMatch(ApiEntitiesMergeLoadMatchRequired, total=False):
+    include_diverged_commits_count: int
+    include_rebase_in_progress: Any
+    render_html: Any
 
 
 class ApiEntitiesMergeCreateDataRequired(TypedDict):
@@ -3747,6 +4086,7 @@ class ApiEntitiesMergeCreateDataRequired(TypedDict):
 
 class ApiEntitiesMergeCreateData(ApiEntitiesMergeCreateDataRequired, total=False):
     merge_request_id: str
+    post_api_v4_projects_id_merge_request: dict
     allow_collaboration: bool
     allow_maintainer_to_push: bool
     approvals_before_merge: str
@@ -3822,7 +4162,9 @@ class ApiEntitiesMergeUpdateDataRequired(TypedDict):
 
 class ApiEntitiesMergeUpdateData(ApiEntitiesMergeUpdateDataRequired, total=False):
     merge_request_id: str
+    put_api_v4_projects_id_merge_requests_merge_request_iid_merge: dict
     merge_request_iid: Any
+    put_api_v4_projects_id_merge_requests_merge_request_iid: dict
     allow_collaboration: bool
     allow_maintainer_to_push: bool
     approvals_before_merge: str
@@ -3908,6 +4250,7 @@ class ApiEntitiesMergeRequestApprovalCreateDataRequired(TypedDict):
 
 
 class ApiEntitiesMergeRequestApprovalCreateData(ApiEntitiesMergeRequestApprovalCreateDataRequired, total=False):
+    post_api_v4_projects_id_merge_requests_merge_request_iid_approve: dict
     approved_at: str
     user: dict
 
@@ -3970,65 +4313,52 @@ class ApiEntitiesMergeRequestBasic(TypedDict, total=False):
     work_in_progress: str
 
 
-class ApiEntitiesMergeRequestBasicLoadMatchRequired(TypedDict):
-    id: int
-
-
-class ApiEntitiesMergeRequestBasicLoadMatch(ApiEntitiesMergeRequestBasicLoadMatchRequired, total=False):
-    allow_collaboration: bool
-    allow_maintainer_to_push: bool
-    approvals_before_merge: str
-    assignee: dict
-    assignees: dict
-    author: dict
-    blocking_discussions_resolved: str
-    closed_at: str
-    closed_by: dict
-    created_at: str
-    description: str
-    description_html: str
-    detailed_merge_status: str
-    discussion_locked: str
-    downvotes: str
-    draft: str
-    force_remove_source_branch: str
-    has_conflicts: bool
-    iid: int
-    imported: str
-    imported_from: str
-    labels: str
-    merge_after: str
-    merge_commit_sha: str
-    merge_status: str
-    merge_user: dict
-    merge_when_pipeline_succeeds: str
-    merged_at: str
-    merged_by: dict
-    milestone: dict
-    prepared_at: str
-    project_id: int
-    reference: str
-    references: dict
-    reviewers: dict
-    sha: str
-    should_remove_source_branch: bool
-    source_branch: str
+class ApiEntitiesMergeRequestBasicLoadMatch(TypedDict, total=False):
+    approved: Any
+    approved_by_id: str
+    approved_by_username: Any
+    approver_id: str
+    assignee_id: str
+    assignee_username: Any
+    author_id: str
+    author_username: Any
+    created_after: Any
+    created_before: Any
+    deployed_after: Any
+    deployed_before: Any
+    environment: Any
+    label: str
+    merge_user_id: str
+    merge_user_username: Any
+    milestone: Any
+    my_reaction_emoji: Any
+    not_assignee_id: str
+    not_assignee_username: Any
+    not_author_id: str
+    not_author_username: Any
+    not_label: Any
+    not_milestone: Any
+    not_my_reaction_emoji: Any
+    not_reviewer_id: str
+    not_reviewer_username: Any
+    order_by: Any
+    page: int
+    per_page: int
+    reviewer_id: str
+    reviewer_username: Any
+    scope: Any
+    search: Any
+    sort: Any
+    source_branch: Any
     source_project_id: str
-    squash: str
-    squash_commit_sha: str
-    squash_on_merge: str
-    state: str
-    target_branch: str
-    target_project_id: str
-    task_completion_status: str
-    time_stats: dict
-    title: str
-    title_html: str
-    updated_at: str
-    upvotes: str
-    user_notes_count: str
-    web_url: str
-    work_in_progress: str
+    state: Any
+    target_branch: Any
+    updated_after: Any
+    updated_before: Any
+    view: Any
+    wip: Any
+    with_labels_detail: Any
+    with_merge_status_recheck: Any
 
 
 class ApiEntitiesMergeRequestBasicListMatchRequired(TypedDict):
@@ -4037,6 +4367,48 @@ class ApiEntitiesMergeRequestBasicListMatchRequired(TypedDict):
 
 class ApiEntitiesMergeRequestBasicListMatch(ApiEntitiesMergeRequestBasicListMatchRequired, total=False):
     deployment_id: str
+    approved: Any
+    assignee_id: str
+    assignee_username: Any
+    author_id: str
+    author_username: Any
+    created_after: Any
+    created_before: Any
+    deployed_after: Any
+    deployed_before: Any
+    environment: Any
+    label: str
+    merge_user_id: str
+    merge_user_username: Any
+    milestone: Any
+    my_reaction_emoji: Any
+    not_assignee_id: str
+    not_assignee_username: Any
+    not_author_id: str
+    not_author_username: Any
+    not_label: Any
+    not_milestone: Any
+    not_my_reaction_emoji: Any
+    not_reviewer_id: str
+    not_reviewer_username: Any
+    order_by: Any
+    page: int
+    per_page: int
+    reviewer_id: str
+    reviewer_username: Any
+    scope: Any
+    search: Any
+    sort: Any
+    source_branch: Any
+    source_project_id: str
+    state: Any
+    target_branch: Any
+    updated_after: Any
+    updated_before: Any
+    view: Any
+    wip: Any
+    with_labels_detail: Any
+    with_merge_status_recheck: Any
     sha: Any
 
 
@@ -4113,9 +4485,13 @@ class ApiEntitiesMergeRequestChange(TypedDict, total=False):
     work_in_progress: str
 
 
-class ApiEntitiesMergeRequestChangeLoadMatch(TypedDict):
+class ApiEntitiesMergeRequestChangeLoadMatchRequired(TypedDict):
     merge_request_id: str
     project_id: str
+
+
+class ApiEntitiesMergeRequestChangeLoadMatch(ApiEntitiesMergeRequestChangeLoadMatchRequired, total=False):
+    unidiff: Any
 
 
 class ApiEntitiesMergeRequestDiff(TypedDict, total=False):
@@ -4130,9 +4506,14 @@ class ApiEntitiesMergeRequestDiff(TypedDict, total=False):
     state: str
 
 
-class ApiEntitiesMergeRequestDiffListMatch(TypedDict):
+class ApiEntitiesMergeRequestDiffListMatchRequired(TypedDict):
     merge_request_id: str
     project_id: str
+
+
+class ApiEntitiesMergeRequestDiffListMatch(ApiEntitiesMergeRequestDiffListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesMergeRequestDiffFull(TypedDict, total=False):
@@ -4149,10 +4530,14 @@ class ApiEntitiesMergeRequestDiffFull(TypedDict, total=False):
     state: str
 
 
-class ApiEntitiesMergeRequestDiffFullLoadMatch(TypedDict):
+class ApiEntitiesMergeRequestDiffFullLoadMatchRequired(TypedDict):
     merge_request_id: str
     project_id: str
     version_id: str
+
+
+class ApiEntitiesMergeRequestDiffFullLoadMatch(ApiEntitiesMergeRequestDiffFullLoadMatchRequired, total=False):
+    unidiff: Any
 
 
 class ApiEntitiesMergeRequestReviewer(TypedDict, total=False):
@@ -4190,15 +4575,16 @@ class ApiEntitiesMetricImageListMatch(TypedDict):
 class ApiEntitiesMetricImageCreateDataRequired(TypedDict):
     alert_management_alert_id: str
     project_id: str
+    file: Any
 
 
 class ApiEntitiesMetricImageCreateData(ApiEntitiesMetricImageCreateDataRequired, total=False):
+    url: str
+    url_text: Any
     created_at: str
     file_path: str
     filename: str
     id: int
-    url: str
-    url_text: str
 
 
 class ApiEntitiesMetricImageUpdateDataRequired(TypedDict):
@@ -4208,11 +4594,11 @@ class ApiEntitiesMetricImageUpdateDataRequired(TypedDict):
 
 
 class ApiEntitiesMetricImageUpdateData(ApiEntitiesMetricImageUpdateDataRequired, total=False):
+    url: str
+    url_text: Any
     created_at: str
     file_path: str
     filename: str
-    url: str
-    url_text: str
 
 
 class ApiEntitiesMrNote(TypedDict, total=False):
@@ -4228,9 +4614,14 @@ class ApiEntitiesMrNote(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesMrNoteLoadMatch(TypedDict):
+class ApiEntitiesMrNoteLoadMatchRequired(TypedDict):
     merge_request_id: str
     project_id: str
+
+
+class ApiEntitiesMrNoteLoadMatch(ApiEntitiesMrNoteLoadMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesNamespace(TypedDict, total=False):
@@ -4264,33 +4655,18 @@ class ApiEntitiesNamespaceLoadMatch(TypedDict):
 
 
 class ApiEntitiesNamespaceListMatch(TypedDict, total=False):
-    additional_purchased_storage_ends_on: str
-    additional_purchased_storage_size: int
-    avatar_url: str
-    billable_members_count: int
-    end_date: str
-    extra_shared_runners_minutes_limit: int
-    full_path: str
-    id: int
-    kind: str
-    max_seats_used: int
-    max_seats_used_changed_at: str
-    members_count_with_descendants: int
-    name: str
-    parent_id: int
-    path: str
-    plan: str
-    projects_count: int
-    root_repository_size: int
-    seats_in_use: int
-    shared_runners_minutes_limit: int
-    trial: bool
-    trial_ends_on: str
-    web_url: str
+    full_path_search: Any
+    owned_only: Any
+    page: int
+    per_page: int
+    requested_hosted_plan: Any
+    search: Any
+    top_level_only: Any
 
 
 class ApiEntitiesNamespaceUpdateDataRequired(TypedDict):
     id: str
+    put_api_v4_namespaces_id: dict
 
 
 class ApiEntitiesNamespaceUpdateData(ApiEntitiesNamespaceUpdateDataRequired, total=False):
@@ -4323,8 +4699,12 @@ class ApiEntitiesNamespaceExistence(TypedDict, total=False):
     suggests: list
 
 
-class ApiEntitiesNamespaceExistenceListMatch(TypedDict):
+class ApiEntitiesNamespaceExistenceListMatchRequired(TypedDict):
     namespace_id: str
+
+
+class ApiEntitiesNamespaceExistenceListMatch(ApiEntitiesNamespaceExistenceListMatchRequired, total=False):
+    parent_id: str
 
 
 class ApiEntitiesNamespacesStorageLimitExclusion(TypedDict, total=False):
@@ -4334,18 +4714,14 @@ class ApiEntitiesNamespacesStorageLimitExclusion(TypedDict, total=False):
     reason: str
 
 
-class ApiEntitiesNamespacesStorageLimitExclusionLoadMatchRequired(TypedDict):
-    id: int
-
-
-class ApiEntitiesNamespacesStorageLimitExclusionLoadMatch(ApiEntitiesNamespacesStorageLimitExclusionLoadMatchRequired, total=False):
-    namespace_id: int
-    namespace_name: str
-    reason: str
+class ApiEntitiesNamespacesStorageLimitExclusionLoadMatch(TypedDict, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesNamespacesStorageLimitExclusionCreateDataRequired(TypedDict):
     namespace_id: str
+    post_api_v4_namespaces_id_storage_limit_exclusion: dict
 
 
 class ApiEntitiesNamespacesStorageLimitExclusionCreateData(ApiEntitiesNamespacesStorageLimitExclusionCreateDataRequired, total=False):
@@ -4360,18 +4736,26 @@ class ApiEntitiesNpmPackage(TypedDict, total=False):
     versions: dict
 
 
-class ApiEntitiesNpmPackageLoadMatch(TypedDict, total=False):
-    disttags: dict
-    name: str
-    versions: dict
+class ApiEntitiesNpmPackageLoadMatchRequired(TypedDict):
+    package_name: Any
+
+
+class ApiEntitiesNpmPackageLoadMatch(ApiEntitiesNpmPackageLoadMatchRequired, total=False):
+    group_id: str
+    project_id: str
 
 
 class ApiEntitiesNpmPackageTag(TypedDict):
     pass
 
 
-class ApiEntitiesNpmPackageTagLoadMatch(TypedDict):
-    pass
+class ApiEntitiesNpmPackageTagLoadMatchRequired(TypedDict):
+    package_name: Any
+
+
+class ApiEntitiesNpmPackageTagLoadMatch(ApiEntitiesNpmPackageTagLoadMatchRequired, total=False):
+    group_id: str
+    project_id: str
 
 
 class ApiEntitiesNugetPackagesVersion(TypedDict, total=False):
@@ -4380,6 +4764,7 @@ class ApiEntitiesNugetPackagesVersion(TypedDict, total=False):
 
 class ApiEntitiesNugetPackagesVersionListMatch(TypedDict):
     project_id: str
+    package_name: Any
 
 
 class ApiEntitiesNugetSearchResult(TypedDict, total=False):
@@ -4399,8 +4784,15 @@ class ApiEntitiesNugetSearchResult(TypedDict, total=False):
     versions: dict
 
 
-class ApiEntitiesNugetSearchResultListMatch(TypedDict):
+class ApiEntitiesNugetSearchResultListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesNugetSearchResultListMatch(ApiEntitiesNugetSearchResultListMatchRequired, total=False):
+    prerelease: Any
+    q: Any
+    skip: int
+    take: Any
 
 
 class ApiEntitiesNugetServiceIndex(TypedDict, total=False):
@@ -4417,7 +4809,7 @@ class ApiEntitiesOrganizationsOrganization(TypedDict):
 
 
 class ApiEntitiesOrganizationsOrganizationCreateData(TypedDict):
-    pass
+    post_api_v4_organization: dict
 
 
 class ApiEntitiesPackage(TypedDict, total=False):
@@ -4443,8 +4835,21 @@ class ApiEntitiesPackageLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesPackageListMatch(TypedDict):
+class ApiEntitiesPackageListMatchRequired(TypedDict):
     group_id: str
+
+
+class ApiEntitiesPackageListMatch(ApiEntitiesPackageListMatchRequired, total=False):
+    exclude_subgroup: Any
+    include_versionless: Any
+    order_by: Any
+    package_name: Any
+    package_type: Any
+    package_version: Any
+    page: int
+    per_page: int
+    sort: Any
+    status: Any
 
 
 class ApiEntitiesPackageFile(TypedDict, total=False):
@@ -4459,9 +4864,16 @@ class ApiEntitiesPackageFile(TypedDict, total=False):
     size: int
 
 
-class ApiEntitiesPackageFileListMatch(TypedDict):
+class ApiEntitiesPackageFileListMatchRequired(TypedDict):
     package_id: str
     project_id: str
+
+
+class ApiEntitiesPackageFileListMatch(ApiEntitiesPackageFileListMatchRequired, total=False):
+    order_by: Any
+    page: int
+    per_page: int
+    sort: Any
 
 
 class ApiEntitiesPackagePipeline(TypedDict, total=False):
@@ -4477,9 +4889,15 @@ class ApiEntitiesPackagePipeline(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesPackagePipelineLoadMatch(TypedDict):
+class ApiEntitiesPackagePipelineLoadMatchRequired(TypedDict):
     package_id: str
     project_id: str
+
+
+class ApiEntitiesPackagePipelineLoadMatch(ApiEntitiesPackagePipelineLoadMatchRequired, total=False):
+    cursor: Any
+    page: int
+    per_page: int
 
 
 class ApiEntitiesPackagesConanFilesList(TypedDict):
@@ -4647,12 +5065,27 @@ class ApiEntitiesPackagesDebianDistributionLoadMatch(ApiEntitiesPackagesDebianDi
     project_id: str
 
 
-class ApiEntitiesPackagesDebianDistributionListMatch(TypedDict):
+class ApiEntitiesPackagesDebianDistributionListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesPackagesDebianDistributionListMatch(ApiEntitiesPackagesDebianDistributionListMatchRequired, total=False):
+    architecture: Any
+    codename: Any
+    component: Any
+    description: str
+    label: str
+    origin: Any
+    page: int
+    per_page: int
+    suite: Any
+    valid_time_duration_second: Any
+    version: Any
 
 
 class ApiEntitiesPackagesDebianDistributionCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_debian_distribution: dict
 
 
 class ApiEntitiesPackagesDebianDistributionCreateData(ApiEntitiesPackagesDebianDistributionCreateDataRequired, total=False):
@@ -4674,7 +5107,9 @@ class ApiEntitiesPackagesDebianDistributionUpdateDataRequired(TypedDict):
 
 class ApiEntitiesPackagesDebianDistributionUpdateData(ApiEntitiesPackagesDebianDistributionUpdateDataRequired, total=False):
     group_id: str
+    put_api_v4_groups_id_debian_distributions_codename: dict
     project_id: str
+    put_api_v4_projects_id_debian_distributions_codename: dict
     architectures: list
     codename: str
     components: list
@@ -4705,12 +5140,18 @@ class ApiEntitiesPagesDomainLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesPagesDomainListMatch(TypedDict):
+class ApiEntitiesPagesDomainListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesPagesDomainListMatch(ApiEntitiesPagesDomainListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesPagesDomainCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_pages_domain: dict
 
 
 class ApiEntitiesPagesDomainCreateData(ApiEntitiesPagesDomainCreateDataRequired, total=False):
@@ -4752,8 +5193,8 @@ class ApiEntitiesPagesDomainBasic(TypedDict, total=False):
 
 
 class ApiEntitiesPagesDomainBasicLoadMatch(TypedDict, total=False):
-    expiration: str
-    expired: str
+    page: int
+    per_page: int
 
 
 class ApiEntitiesPersonalAccessToken(TypedDict, total=False):
@@ -4770,16 +5211,9 @@ class ApiEntitiesPersonalAccessToken(TypedDict, total=False):
 
 
 class ApiEntitiesPersonalAccessTokenListMatch(TypedDict, total=False):
-    active: bool
-    created_at: str
-    description: str
-    expires_at: str
-    id: int
-    last_used_at: str
-    name: str
-    revoked: bool
-    scopes: list
-    user_id: int
+    min_access_level: Any
+    page: int
+    per_page: int
 
 
 class ApiEntitiesPersonalAccessTokenWithLastUsedIp(TypedDict, total=False):
@@ -4801,17 +5235,19 @@ class ApiEntitiesPersonalAccessTokenWithLastUsedIpLoadMatch(TypedDict):
 
 
 class ApiEntitiesPersonalAccessTokenWithLastUsedIpListMatch(TypedDict, total=False):
-    active: bool
-    created_at: str
-    description: str
-    expires_at: str
-    id: int
-    last_used_at: str
-    last_used_ips: list
-    name: str
-    revoked: bool
-    scopes: list
-    user_id: int
+    created_after: Any
+    created_before: Any
+    expires_after: Any
+    expires_before: Any
+    last_used_after: Any
+    last_used_before: Any
+    page: int
+    per_page: int
+    revoked: Any
+    search: Any
+    sort: Any
+    state: Any
+    user_id: str
 
 
 class ApiEntitiesPersonalAccessTokenWithToken(TypedDict, total=False):
@@ -4830,6 +5266,7 @@ class ApiEntitiesPersonalAccessTokenWithToken(TypedDict, total=False):
 
 class ApiEntitiesPersonalAccessTokenWithTokenCreateDataRequired(TypedDict):
     personal_access_token_id: str
+    post_api_v4_personal_access_tokens_id_rotate: dict
 
 
 class ApiEntitiesPersonalAccessTokenWithTokenCreateData(ApiEntitiesPersonalAccessTokenWithTokenCreateDataRequired, total=False):
@@ -4871,26 +5308,17 @@ class ApiEntitiesPersonalSnippetLoadMatch(TypedDict):
 
 
 class ApiEntitiesPersonalSnippetListMatch(TypedDict, total=False):
-    author: dict
-    created_at: str
-    description: str
-    file_name: str
-    files: list
-    http_url_to_repo: str
-    id: int
-    imported: bool
-    imported_from: str
-    project_id: int
-    raw_url: str
-    repository_storage: str
-    ssh_url_to_repo: str
-    title: str
-    updated_at: str
-    visibility: str
-    web_url: str
+    created_after: Any
+    created_before: Any
+    page: int
+    per_page: int
 
 
-class ApiEntitiesPersonalSnippetCreateData(TypedDict, total=False):
+class ApiEntitiesPersonalSnippetCreateDataRequired(TypedDict):
+    post_api_v4_snippet: dict
+
+
+class ApiEntitiesPersonalSnippetCreateData(ApiEntitiesPersonalSnippetCreateDataRequired, total=False):
     author: dict
     created_at: str
     description: str
@@ -4912,6 +5340,7 @@ class ApiEntitiesPersonalSnippetCreateData(TypedDict, total=False):
 
 class ApiEntitiesPersonalSnippetUpdateDataRequired(TypedDict):
     id: str
+    put_api_v4_snippets_id: dict
 
 
 class ApiEntitiesPersonalSnippetUpdateData(ApiEntitiesPersonalSnippetUpdateDataRequired, total=False):
@@ -4937,12 +5366,12 @@ class ApiEntitiesPlanLimit(TypedDict):
     pass
 
 
-class ApiEntitiesPlanLimitLoadMatch(TypedDict):
-    pass
+class ApiEntitiesPlanLimitLoadMatch(TypedDict, total=False):
+    plan_name: Any
 
 
 class ApiEntitiesPlanLimitUpdateData(TypedDict):
-    pass
+    put_api_v4_application_plan_limit: dict
 
 
 class ApiEntitiesProject(TypedDict, total=False):
@@ -5095,12 +5524,49 @@ class ApiEntitiesProject(TypedDict, total=False):
     wiki_enabled: bool
 
 
-class ApiEntitiesProjectListMatch(TypedDict):
+class ApiEntitiesProjectListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesProjectListMatch(ApiEntitiesProjectListMatchRequired, total=False):
+    active: bool
+    archived: bool
+    id_after: Any
+    id_before: Any
+    imported: Any
+    include_hidden: Any
+    include_pending_delete: Any
+    last_activity_after: Any
+    last_activity_before: Any
+    marked_for_deletion_on: Any
+    membership: Any
+    min_access_level: Any
+    order_by: Any
+    owned: Any
+    page: int
+    per_page: int
+    repository_checksum_failed: Any
+    repository_storage: Any
+    search: Any
+    search_namespace: Any
+    simple: Any
+    sort: Any
+    starred: Any
+    topic: Any
+    topic_id: str
+    updated_after: Any
+    updated_before: Any
+    visibility: Any
+    wiki_checksum_failed: Any
+    with_custom_attribute: Any
+    with_issues_enabled: Any
+    with_merge_requests_enabled: Any
+    with_programming_language: Any
 
 
 class ApiEntitiesProjectCreateDataRequired(TypedDict):
     user_id: str
+    post_api_v4_projects_user_user_id: dict
 
 
 class ApiEntitiesProjectCreateData(ApiEntitiesProjectCreateDataRequired, total=False):
@@ -5255,6 +5721,7 @@ class ApiEntitiesProjectCreateData(ApiEntitiesProjectCreateDataRequired, total=F
 
 class ApiEntitiesProjectUpdateDataRequired(TypedDict):
     id: str
+    put_api_v4_projects_id: dict
 
 
 class ApiEntitiesProjectUpdateData(ApiEntitiesProjectUpdateDataRequired, total=False):
@@ -5430,6 +5897,7 @@ class ApiEntitiesProjectGroupLink(TypedDict):
 
 class ApiEntitiesProjectGroupLinkCreateData(TypedDict):
     project_id: str
+    post_api_v4_projects_id_share: dict
 
 
 class ApiEntitiesProjectHook(TypedDict, total=False):
@@ -5472,12 +5940,18 @@ class ApiEntitiesProjectHookLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesProjectHookListMatch(TypedDict):
+class ApiEntitiesProjectHookListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesProjectHookListMatch(ApiEntitiesProjectHookListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesProjectHookCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_hook: dict
 
 
 class ApiEntitiesProjectHookCreateData(ApiEntitiesProjectHookCreateDataRequired, total=False):
@@ -5517,6 +5991,7 @@ class ApiEntitiesProjectHookCreateData(ApiEntitiesProjectHookCreateDataRequired,
 class ApiEntitiesProjectHookUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    put_api_v4_projects_id_hooks_hook_id: dict
 
 
 class ApiEntitiesProjectHookUpdateData(ApiEntitiesProjectHookUpdateDataRequired, total=False):
@@ -5566,7 +6041,115 @@ class ApiEntitiesProjectImportStatusListMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesProjectImportStatusCreateData(TypedDict, total=False):
+class ApiEntitiesProjectImportStatusCreateDataRequired(TypedDict):
+    path: str
+
+
+class ApiEntitiesProjectImportStatusCreateData(ApiEntitiesProjectImportStatusCreateDataRequired, total=False):
+    file: Any
+    file_etag: Any
+    file_md5: Any
+    file_name: Any
+    file_path: Any
+    file_remote_id: str
+    file_remote_url: Any
+    file_sha1: Any
+    file_sha256: Any
+    file_size: Any
+    file_type: Any
+    name: str
+    namespace: Any
+    override_params_allow_merge_on_skipped_pipeline: Any
+    override_params_analytics_access_level: Any
+    override_params_approvals_before_merge: Any
+    override_params_auto_cancel_pending_pipeline: Any
+    override_params_auto_devops_deploy_strategy: Any
+    override_params_auto_devops_enabled: Any
+    override_params_auto_duo_code_review_enabled: Any
+    override_params_autoclose_referenced_issue: Any
+    override_params_avatar: Any
+    override_params_build_git_strategy: Any
+    override_params_build_timeout: Any
+    override_params_builds_access_level: Any
+    override_params_ci_config_path: Any
+    override_params_container_expiration_policy_attributes_cadence: Any
+    override_params_container_expiration_policy_attributes_enabled: Any
+    override_params_container_expiration_policy_attributes_keep_n: Any
+    override_params_container_expiration_policy_attributes_name_regex: Any
+    override_params_container_expiration_policy_attributes_name_regex_keep: Any
+    override_params_container_expiration_policy_attributes_older_than: Any
+    override_params_container_registry_access_level: Any
+    override_params_container_registry_enabled: Any
+    override_params_description: Any
+    override_params_duo_remote_flows_enabled: Any
+    override_params_emails_disabled: Any
+    override_params_emails_enabled: Any
+    override_params_enforce_auth_checks_on_upload: Any
+    override_params_environments_access_level: Any
+    override_params_external_authorization_classification_label: Any
+    override_params_feature_flags_access_level: Any
+    override_params_forking_access_level: Any
+    override_params_group_runners_enabled: Any
+    override_params_infrastructure_access_level: Any
+    override_params_issue_branch_template: Any
+    override_params_issues_access_level: Any
+    override_params_issues_enabled: Any
+    override_params_jobs_enabled: Any
+    override_params_lfs_enabled: Any
+    override_params_merge_commit_template: Any
+    override_params_merge_method: Any
+    override_params_merge_request_title_regex: Any
+    override_params_merge_request_title_regex_description: Any
+    override_params_merge_requests_access_level: Any
+    override_params_merge_requests_enabled: Any
+    override_params_mirror: Any
+    override_params_mirror_trigger_build: Any
+    override_params_model_experiments_access_level: Any
+    override_params_model_registry_access_level: Any
+    override_params_monitor_access_level: Any
+    override_params_mr_default_target_self: Any
+    override_params_only_allow_merge_if_all_discussions_are_resolved: Any
+    override_params_only_allow_merge_if_all_status_checks_passed: Any
+    override_params_only_allow_merge_if_pipeline_succeed: Any
+    override_params_package_registry_access_level: Any
+    override_params_packages_enabled: Any
+    override_params_pages_access_level: Any
+    override_params_prevent_merge_without_jira_issue: Any
+    override_params_printing_merge_request_link_enabled: Any
+    override_params_public_build: Any
+    override_params_public_job: Any
+    override_params_releases_access_level: Any
+    override_params_remove_source_branch_after_merge: Any
+    override_params_repository_access_level: Any
+    override_params_repository_storage: Any
+    override_params_request_access_enabled: Any
+    override_params_requirements_access_level: Any
+    override_params_resolve_outdated_diff_discussion: Any
+    override_params_resource_group_default_process_mode: Any
+    override_params_security_and_compliance_access_level: Any
+    override_params_service_desk_enabled: Any
+    override_params_shared_runners_enabled: Any
+    override_params_show_default_award_emoji: Any
+    override_params_show_diff_preview_in_email: Any
+    override_params_snippets_access_level: Any
+    override_params_snippets_enabled: Any
+    override_params_spp_repository_pipeline_access: Any
+    override_params_squash_commit_template: Any
+    override_params_squash_option: Any
+    override_params_suggestion_commit_message: Any
+    override_params_tag_list: Any
+    override_params_topic: Any
+    override_params_visibility: Any
+    override_params_warn_about_potentially_unwanted_character: Any
+    override_params_wiki_access_level: Any
+    override_params_wiki_enabled: Any
+    overwrite: Any
+    access_key_id: str
+    bucket_name: Any
+    file_key: Any
+    region: Any
+    secret_access_key: Any
+    url: str
     created_at: str
     exception_class: str
     exception_message: str
@@ -5629,10 +6212,13 @@ class ApiEntitiesProjectSnippetListMatch(ApiEntitiesProjectSnippetListMatchRequi
     file_id: str
     file_path: Any
     snippet_id: str
+    page: int
+    per_page: int
 
 
 class ApiEntitiesProjectSnippetCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_snippet: dict
 
 
 class ApiEntitiesProjectSnippetCreateData(ApiEntitiesProjectSnippetCreateDataRequired, total=False):
@@ -5657,6 +6243,7 @@ class ApiEntitiesProjectSnippetCreateData(ApiEntitiesProjectSnippetCreateDataReq
 class ApiEntitiesProjectSnippetUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    put_api_v4_projects_id_snippets_snippet_id: dict
 
 
 class ApiEntitiesProjectSnippetUpdateData(ApiEntitiesProjectSnippetUpdateDataRequired, total=False):
@@ -5683,6 +6270,7 @@ class ApiEntitiesProjectUpload(TypedDict):
 
 class ApiEntitiesProjectUploadCreateData(TypedDict):
     project_id: str
+    post_api_v4_projects_id_upload: dict
 
 
 class ApiEntitiesProjectWithAccess(TypedDict, total=False):
@@ -5836,8 +6424,170 @@ class ApiEntitiesProjectWithAccess(TypedDict, total=False):
     wiki_enabled: bool
 
 
-class ApiEntitiesProjectWithAccessLoadMatch(TypedDict):
+class ApiEntitiesProjectWithAccessLoadMatchRequired(TypedDict):
     id: str
+
+
+class ApiEntitiesProjectWithAccessLoadMatch(ApiEntitiesProjectWithAccessLoadMatchRequired, total=False):
+    license: Any
+    statistic: Any
+    with_custom_attribute: Any
+
+
+class ApiEntitiesProjectWithAccessCreateDataRequired(TypedDict):
+    project_id: str
+
+
+class ApiEntitiesProjectWithAccessCreateData(ApiEntitiesProjectWithAccessCreateDataRequired, total=False):
+    post_api_v4_projects_id_housekeeping: dict
+    allow_merge_on_skipped_pipeline: bool
+    allow_pipeline_trigger_approve_deployment: bool
+    analytics_access_level: str
+    approvals_before_merge: str
+    archived: bool
+    auto_cancel_pending_pipelines: str
+    auto_devops_deploy_strategy: str
+    auto_devops_enabled: bool
+    auto_duo_code_review_enabled: str
+    autoclose_referenced_issues: bool
+    avatar_url: str
+    build_git_strategy: str
+    build_timeout: int
+    builds_access_level: str
+    can_create_merge_request_in: bool
+    ci_allow_fork_pipelines_to_run_in_parent_project: bool
+    ci_config_path: str
+    ci_default_git_depth: int
+    ci_delete_pipelines_in_seconds: int
+    ci_forward_deployment_enabled: bool
+    ci_forward_deployment_rollback_allowed: bool
+    ci_id_token_sub_claim_components: list
+    ci_job_token_scope_enabled: bool
+    ci_pipeline_variables_minimum_override_role: str
+    ci_push_repository_for_job_token_allowed: bool
+    ci_restrict_pipeline_cancellation_role: str
+    ci_separated_caches: bool
+    compliance_frameworks: str
+    container_expiration_policy: dict
+    container_registry_access_level: str
+    container_registry_enabled: bool
+    container_registry_image_prefix: str
+    created_at: str
+    creator_id: int
+    custom_attributes: dict
+    default_branch: str
+    description: str
+    description_html: str
+    duo_remote_flows_enabled: str
+    emails_disabled: bool
+    emails_enabled: bool
+    empty_repo: bool
+    enforce_auth_checks_on_uploads: bool
+    environments_access_level: str
+    external_authorization_classification_label: str
+    feature_flags_access_level: str
+    forked_from_project: dict
+    forking_access_level: str
+    forks_count: int
+    group_runners_enabled: bool
+    http_url_to_repo: str
+    id: int
+    import_error: str
+    import_status: str
+    import_type: str
+    import_url: str
+    infrastructure_access_level: str
+    issue_branch_template: str
+    issues_access_level: str
+    issues_enabled: bool
+    issues_template: str
+    jobs_enabled: bool
+    keep_latest_artifact: bool
+    last_activity_at: str
+    lfs_enabled: bool
+    license: dict
+    license_url: str
+    links: dict
+    marked_for_deletion_at: str
+    marked_for_deletion_on: str
+    max_artifacts_size: int
+    merge_commit_template: str
+    merge_method: str
+    merge_pipelines_enabled: str
+    merge_request_title_regex: str
+    merge_request_title_regex_description: str
+    merge_requests_access_level: str
+    merge_requests_enabled: bool
+    merge_requests_template: str
+    merge_trains_enabled: str
+    merge_trains_skip_train_allowed: str
+    mirror: str
+    mirror_overwrites_diverged_branches: str
+    mirror_trigger_builds: str
+    mirror_user_id: str
+    model_experiments_access_level: str
+    model_registry_access_level: str
+    monitor_access_level: str
+    mr_default_target_self: bool
+    name: str
+    name_with_namespace: str
+    namespace: dict
+    only_allow_merge_if_all_discussions_are_resolved: bool
+    only_allow_merge_if_all_status_checks_passed: str
+    only_allow_merge_if_pipeline_succeeds: bool
+    only_mirror_protected_branches: str
+    open_issues_count: int
+    owner: dict
+    package_registry_access_level: str
+    packages_enabled: bool
+    pages_access_level: str
+    path: str
+    path_with_namespace: str
+    permissions: dict
+    pre_receive_secret_detection_enabled: bool
+    prevent_merge_without_jira_issue: str
+    printing_merge_request_link_enabled: bool
+    public_jobs: bool
+    readme_url: str
+    releases_access_level: str
+    remove_source_branch_after_merge: bool
+    repository_access_level: str
+    repository_object_format: str
+    repository_storage: str
+    request_access_enabled: bool
+    requirements_access_level: str
+    requirements_enabled: str
+    resolve_outdated_diff_discussions: bool
+    resource_group_default_process_mode: str
+    restrict_user_defined_variables: bool
+    runner_token_expiration_interval: int
+    runners_token: str
+    secret_push_protection_enabled: bool
+    security_and_compliance_access_level: str
+    security_and_compliance_enabled: str
+    service_desk_address: str
+    service_desk_enabled: bool
+    shared_runners_enabled: bool
+    shared_with_groups: list
+    show_diff_preview_in_email: bool
+    snippets_access_level: str
+    snippets_enabled: bool
+    spp_repository_pipeline_access: bool
+    squash_commit_template: str
+    squash_option: str
+    ssh_url_to_repo: str
+    star_count: int
+    statistics: dict
+    suggestion_commit_message: str
+    tag_list: list
+    topics: list
+    updated_at: str
+    visibility: str
+    warn_about_potentially_unwanted_characters: bool
+    web_based_commit_signing_enabled: str
+    web_url: str
+    wiki_access_level: str
+    wiki_enabled: bool
 
 
 class ApiEntitiesProjectsContainerRegistryProtectionRule(TypedDict, total=False):
@@ -5854,6 +6604,7 @@ class ApiEntitiesProjectsContainerRegistryProtectionRuleListMatch(TypedDict):
 
 class ApiEntitiesProjectsContainerRegistryProtectionRuleCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_registry_protection_repository_rule: dict
 
 
 class ApiEntitiesProjectsContainerRegistryProtectionRuleCreateData(ApiEntitiesProjectsContainerRegistryProtectionRuleCreateDataRequired, total=False):
@@ -5866,6 +6617,7 @@ class ApiEntitiesProjectsContainerRegistryProtectionRuleCreateData(ApiEntitiesPr
 class ApiEntitiesProjectsContainerRegistryProtectionRuleUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    patch_api_v4_projects_id_registry_protection_repository_rules_protection_rule_id: dict
 
 
 class ApiEntitiesProjectsContainerRegistryProtectionRuleUpdateData(ApiEntitiesProjectsContainerRegistryProtectionRuleUpdateDataRequired, total=False):
@@ -5889,6 +6641,7 @@ class ApiEntitiesProjectsPackagesProtectionRuleListMatch(TypedDict):
 
 class ApiEntitiesProjectsPackagesProtectionRuleCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_packages_protection_rule: dict
 
 
 class ApiEntitiesProjectsPackagesProtectionRuleCreateData(ApiEntitiesProjectsPackagesProtectionRuleCreateDataRequired, total=False):
@@ -5902,6 +6655,7 @@ class ApiEntitiesProjectsPackagesProtectionRuleCreateData(ApiEntitiesProjectsPac
 class ApiEntitiesProjectsPackagesProtectionRuleUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    patch_api_v4_projects_id_packages_protection_rules_package_protection_rule_id: dict
 
 
 class ApiEntitiesProjectsPackagesProtectionRuleUpdateData(ApiEntitiesProjectsPackagesProtectionRuleUpdateDataRequired, total=False):
@@ -5925,7 +6679,11 @@ class ApiEntitiesProjectsTopicLoadMatch(TypedDict):
     id: str
 
 
-class ApiEntitiesProjectsTopicCreateData(TypedDict, total=False):
+class ApiEntitiesProjectsTopicCreateDataRequired(TypedDict):
+    post_api_v4_topic: dict
+
+
+class ApiEntitiesProjectsTopicCreateData(ApiEntitiesProjectsTopicCreateDataRequired, total=False):
     avatar_url: str
     description: str
     id: str
@@ -5937,6 +6695,7 @@ class ApiEntitiesProjectsTopicCreateData(TypedDict, total=False):
 
 class ApiEntitiesProjectsTopicUpdateDataRequired(TypedDict):
     id: str
+    put_api_v4_topics_id: dict
 
 
 class ApiEntitiesProjectsTopicUpdateData(ApiEntitiesProjectsTopicUpdateDataRequired, total=False):
@@ -5964,12 +6723,19 @@ class ApiEntitiesProtectedBranchLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesProtectedBranchListMatch(TypedDict):
+class ApiEntitiesProtectedBranchListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesProtectedBranchListMatch(ApiEntitiesProtectedBranchListMatchRequired, total=False):
+    page: int
+    per_page: int
+    search: Any
 
 
 class ApiEntitiesProtectedBranchCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_protected_branch: dict
 
 
 class ApiEntitiesProtectedBranchCreateData(ApiEntitiesProtectedBranchCreateDataRequired, total=False):
@@ -5986,6 +6752,7 @@ class ApiEntitiesProtectedBranchCreateData(ApiEntitiesProtectedBranchCreateDataR
 class ApiEntitiesProtectedBranchUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    patch_api_v4_projects_id_protected_branches_name: dict
 
 
 class ApiEntitiesProtectedBranchUpdateData(ApiEntitiesProtectedBranchUpdateDataRequired, total=False):
@@ -6014,12 +6781,18 @@ class ApiEntitiesProtectedTagLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesProtectedTagListMatch(TypedDict):
+class ApiEntitiesProtectedTagListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesProtectedTagListMatch(ApiEntitiesProtectedTagListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesProtectedTagCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_protected_tag: dict
 
 
 class ApiEntitiesProtectedTagCreateData(ApiEntitiesProtectedTagCreateDataRequired, total=False):
@@ -6042,8 +6815,18 @@ class ApiEntitiesPublicGroupDetail(TypedDict, total=False):
     web_url: str
 
 
-class ApiEntitiesPublicGroupDetailListMatch(TypedDict):
+class ApiEntitiesPublicGroupDetailListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesPublicGroupDetailListMatch(ApiEntitiesPublicGroupDetailListMatchRequired, total=False):
+    page: int
+    per_page: int
+    search: Any
+    shared_min_access_level: Any
+    shared_visible_only: Any
+    skip_group: Any
+    with_shared: Any
 
 
 class ApiEntitiesRelatedIssue(TypedDict, total=False):
@@ -6105,8 +6888,23 @@ class ApiEntitiesRelationImportTracker(TypedDict):
     pass
 
 
-class ApiEntitiesRelationImportTrackerCreateData(TypedDict):
-    pass
+class ApiEntitiesRelationImportTrackerCreateDataRequired(TypedDict):
+    file: Any
+    path: str
+    relation: Any
+
+
+class ApiEntitiesRelationImportTrackerCreateData(ApiEntitiesRelationImportTrackerCreateDataRequired, total=False):
+    file_etag: Any
+    file_md5: Any
+    file_name: Any
+    file_path: Any
+    file_remote_id: str
+    file_remote_url: Any
+    file_sha1: Any
+    file_sha256: Any
+    file_size: Any
+    file_type: Any
 
 
 class ApiEntitiesRelease(TypedDict, total=False):
@@ -6128,13 +6926,27 @@ class ApiEntitiesRelease(TypedDict, total=False):
     upcoming_release: bool
 
 
-class ApiEntitiesReleaseLoadMatch(TypedDict):
+class ApiEntitiesReleaseLoadMatchRequired(TypedDict):
     id: str
     project_id: str
 
 
-class ApiEntitiesReleaseListMatch(TypedDict):
+class ApiEntitiesReleaseLoadMatch(ApiEntitiesReleaseLoadMatchRequired, total=False):
+    include_html_description: Any
+
+
+class ApiEntitiesReleaseListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesReleaseListMatch(ApiEntitiesReleaseListMatchRequired, total=False):
+    include_html_description: Any
+    order_by: Any
+    page: int
+    per_page: int
+    sort: Any
+    updated_after: Any
+    updated_before: Any
 
 
 class ApiEntitiesReleaseCreateDataRequired(TypedDict):
@@ -6142,6 +6954,7 @@ class ApiEntitiesReleaseCreateDataRequired(TypedDict):
 
 
 class ApiEntitiesReleaseCreateData(ApiEntitiesReleaseCreateDataRequired, total=False):
+    post_api_v4_projects_id_release: dict
     tag_name: Any
     assets: dict
     author: dict
@@ -6163,6 +6976,7 @@ class ApiEntitiesReleaseCreateData(ApiEntitiesReleaseCreateDataRequired, total=F
 class ApiEntitiesReleaseUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    put_api_v4_projects_id_releases_tag_name: dict
 
 
 class ApiEntitiesReleaseUpdateData(ApiEntitiesReleaseUpdateDataRequired, total=False):
@@ -6197,14 +7011,20 @@ class ApiEntitiesReleasesLinkLoadMatch(TypedDict):
     release_id: str
 
 
-class ApiEntitiesReleasesLinkListMatch(TypedDict):
+class ApiEntitiesReleasesLinkListMatchRequired(TypedDict):
     project_id: str
     release_id: str
+
+
+class ApiEntitiesReleasesLinkListMatch(ApiEntitiesReleasesLinkListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesReleasesLinkCreateDataRequired(TypedDict):
     project_id: str
     release_id: str
+    post_api_v4_projects_id_releases_tag_name_assets_link: dict
 
 
 class ApiEntitiesReleasesLinkCreateData(ApiEntitiesReleasesLinkCreateDataRequired, total=False):
@@ -6219,6 +7039,7 @@ class ApiEntitiesReleasesLinkUpdateDataRequired(TypedDict):
     id: str
     project_id: str
     release_id: str
+    put_api_v4_projects_id_releases_tag_name_assets_links_link_id: dict
 
 
 class ApiEntitiesReleasesLinkUpdateData(ApiEntitiesReleasesLinkUpdateDataRequired, total=False):
@@ -6249,12 +7070,18 @@ class ApiEntitiesRemoteMirrorLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesRemoteMirrorListMatch(TypedDict):
+class ApiEntitiesRemoteMirrorListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesRemoteMirrorListMatch(ApiEntitiesRemoteMirrorListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesRemoteMirrorCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_remote_mirror: dict
 
 
 class ApiEntitiesRemoteMirrorCreateData(ApiEntitiesRemoteMirrorCreateDataRequired, total=False):
@@ -6276,6 +7103,7 @@ class ApiEntitiesRemoteMirrorCreateData(ApiEntitiesRemoteMirrorCreateDataRequire
 class ApiEntitiesRemoteMirrorUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    put_api_v4_projects_id_remote_mirrors_mirror_id: dict
 
 
 class ApiEntitiesRemoteMirrorUpdateData(ApiEntitiesRemoteMirrorUpdateDataRequired, total=False):
@@ -6307,8 +7135,12 @@ class ApiEntitiesRepositoryHealth(TypedDict, total=False):
     updated_at: str
 
 
-class ApiEntitiesRepositoryHealthLoadMatch(TypedDict):
+class ApiEntitiesRepositoryHealthLoadMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesRepositoryHealthLoadMatch(ApiEntitiesRepositoryHealthLoadMatchRequired, total=False):
+    generate: Any
 
 
 class ApiEntitiesResourceAccessTokenWithToken(TypedDict, total=False):
@@ -6330,6 +7162,7 @@ class ApiEntitiesResourceAccessTokenWithToken(TypedDict, total=False):
 
 class ApiEntitiesResourceAccessTokenWithTokenCreateDataRequired(TypedDict):
     group_id: str
+    post_api_v4_groups_id_access_tokens_self_rotate: dict
 
 
 class ApiEntitiesResourceAccessTokenWithTokenCreateData(ApiEntitiesResourceAccessTokenWithTokenCreateDataRequired, total=False):
@@ -6376,6 +7209,8 @@ class ApiEntitiesResourceMilestoneEventListMatchRequired(TypedDict):
 
 class ApiEntitiesResourceMilestoneEventListMatch(ApiEntitiesResourceMilestoneEventListMatchRequired, total=False):
     issue_id: str
+    page: int
+    per_page: int
     merge_request_id: str
 
 
@@ -6400,23 +7235,10 @@ class ApiEntitiesSnippet(TypedDict, total=False):
 
 
 class ApiEntitiesSnippetListMatch(TypedDict, total=False):
-    author: dict
-    created_at: str
-    description: str
-    file_name: str
-    files: list
-    http_url_to_repo: str
-    id: int
-    imported: bool
-    imported_from: str
-    project_id: int
-    raw_url: str
-    repository_storage: str
-    ssh_url_to_repo: str
-    title: str
-    updated_at: str
-    visibility: str
-    web_url: str
+    created_after: Any
+    created_before: Any
+    page: int
+    per_page: int
 
 
 class ApiEntitiesSshKeyWithUser(TypedDict, total=False):
@@ -6482,7 +7304,11 @@ class ApiEntitiesSuggestion(TypedDict, total=False):
     to_line: str
 
 
-class ApiEntitiesSuggestionUpdateData(TypedDict, total=False):
+class ApiEntitiesSuggestionUpdateDataRequired(TypedDict):
+    put_api_v4_suggestions_batch_apply: dict
+
+
+class ApiEntitiesSuggestionUpdateData(ApiEntitiesSuggestionUpdateDataRequired, total=False):
     appliable: str
     applied: str
     from_content: str
@@ -6511,7 +7337,11 @@ class ApiEntitiesSystemBroadcastMessageLoadMatch(TypedDict):
     id: str
 
 
-class ApiEntitiesSystemBroadcastMessageCreateData(TypedDict, total=False):
+class ApiEntitiesSystemBroadcastMessageCreateDataRequired(TypedDict):
+    post_api_v4_broadcast_message: dict
+
+
+class ApiEntitiesSystemBroadcastMessageCreateData(ApiEntitiesSystemBroadcastMessageCreateDataRequired, total=False):
     active: bool
     broadcast_type: str
     color: str
@@ -6528,6 +7358,7 @@ class ApiEntitiesSystemBroadcastMessageCreateData(TypedDict, total=False):
 
 class ApiEntitiesSystemBroadcastMessageUpdateDataRequired(TypedDict):
     id: str
+    put_api_v4_broadcast_messages_id: dict
 
 
 class ApiEntitiesSystemBroadcastMessageUpdateData(ApiEntitiesSystemBroadcastMessageUpdateDataRequired, total=False):
@@ -6564,12 +7395,22 @@ class ApiEntitiesTagLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesTagListMatch(TypedDict):
+class ApiEntitiesTagListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesTagListMatch(ApiEntitiesTagListMatchRequired, total=False):
+    order_by: Any
+    page: int
+    page_token: Any
+    per_page: int
+    search: Any
+    sort: Any
 
 
 class ApiEntitiesTagCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_repository_tag: dict
 
 
 class ApiEntitiesTagCreateData(ApiEntitiesTagCreateDataRequired, total=False):
@@ -6598,12 +7439,18 @@ class ApiEntitiesTemplatesList(TypedDict, total=False):
     name: str
 
 
-class ApiEntitiesTemplatesListLoadMatch(TypedDict):
+class ApiEntitiesTemplatesListLoadMatchRequired(TypedDict):
     project_id: str
     type: Any
 
 
+class ApiEntitiesTemplatesListLoadMatch(ApiEntitiesTemplatesListLoadMatchRequired, total=False):
+    page: int
+    per_page: int
+
+
 class ApiEntitiesTerraformModuleVersion(TypedDict, total=False):
+    id: str
     modules: str
     name: str
     provider: str
@@ -6622,6 +7469,7 @@ class ApiEntitiesTerraformModuleVersionLoadMatchRequired(TypedDict):
 
 class ApiEntitiesTerraformModuleVersionLoadMatch(ApiEntitiesTerraformModuleVersionLoadMatchRequired, total=False):
     v1_id: str
+    module_version: Any
     module_namespace: Any
 
 
@@ -6639,8 +7487,18 @@ class ApiEntitiesTreeObject(TypedDict, total=False):
     type: str
 
 
-class ApiEntitiesTreeObjectLoadMatch(TypedDict):
+class ApiEntitiesTreeObjectLoadMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesTreeObjectLoadMatch(ApiEntitiesTreeObjectLoadMatchRequired, total=False):
+    page: int
+    page_token: Any
+    pagination: Any
+    path: str
+    per_page: int
+    recursive: Any
+    ref: Any
 
 
 class ApiEntitiesTrigger(TypedDict, total=False):
@@ -6668,12 +7526,18 @@ class ApiEntitiesTriggerLoadMatch(TypedDict):
     project_id: str
 
 
-class ApiEntitiesTriggerListMatch(TypedDict):
+class ApiEntitiesTriggerListMatchRequired(TypedDict):
     project_id: str
+
+
+class ApiEntitiesTriggerListMatch(ApiEntitiesTriggerListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class ApiEntitiesTriggerCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_trigger: dict
 
 
 class ApiEntitiesTriggerCreateData(ApiEntitiesTriggerCreateDataRequired, total=False):
@@ -6699,6 +7563,7 @@ class ApiEntitiesTriggerCreateData(ApiEntitiesTriggerCreateDataRequired, total=F
 class ApiEntitiesTriggerUpdateDataRequired(TypedDict):
     id: str
     project_id: str
+    put_api_v4_projects_id_triggers_trigger_id: dict
 
 
 class ApiEntitiesTriggerUpdateData(ApiEntitiesTriggerUpdateDataRequired, total=False):
@@ -6797,8 +7662,19 @@ class ApiEntitiesUserPublic(TypedDict, total=False):
     work_information: str
 
 
-class ApiEntitiesUserPublicListMatch(TypedDict):
+class ApiEntitiesUserPublicListMatchRequired(TypedDict):
     group_id: str
+
+
+class ApiEntitiesUserPublicListMatch(ApiEntitiesUserPublicListMatchRequired, total=False):
+    active: bool
+    blocked: bool
+    created_after: Any
+    created_before: Any
+    page: int
+    per_page: int
+    search: Any
+    username: str
 
 
 class ApiEntitiesUserWithAdmin(TypedDict, total=False):
@@ -6806,9 +7682,8 @@ class ApiEntitiesUserWithAdmin(TypedDict, total=False):
     value: str
 
 
-class ApiEntitiesUserWithAdminListMatch(TypedDict, total=False):
-    key: str
-    value: str
+class ApiEntitiesUserWithAdminListMatch(TypedDict):
+    fingerprint: Any
 
 
 class ApiEntitiesWikiAttachment(TypedDict):
@@ -6817,6 +7692,7 @@ class ApiEntitiesWikiAttachment(TypedDict):
 
 class ApiEntitiesWikiAttachmentCreateData(TypedDict):
     group_id: str
+    post_api_v4_groups_id_wikis_attachment: dict
 
 
 class ApiEntitiesWikiPage(TypedDict):
@@ -6829,11 +7705,14 @@ class ApiEntitiesWikiPageLoadMatchRequired(TypedDict):
 
 class ApiEntitiesWikiPageLoadMatch(ApiEntitiesWikiPageLoadMatchRequired, total=False):
     group_id: str
+    render_html: Any
+    version: Any
     project_id: str
 
 
 class ApiEntitiesWikiPageCreateData(TypedDict):
     group_id: str
+    post_api_v4_groups_id_wiki: dict
 
 
 class ApiEntitiesWikiPageUpdateDataRequired(TypedDict):
@@ -6842,7 +7721,9 @@ class ApiEntitiesWikiPageUpdateDataRequired(TypedDict):
 
 class ApiEntitiesWikiPageUpdateData(ApiEntitiesWikiPageUpdateDataRequired, total=False):
     group_id: str
+    put_api_v4_groups_id_wikis_slug: dict
     project_id: str
+    put_api_v4_projects_id_wikis_slug: dict
 
 
 class ApiEntitiesWikiPageBasic(TypedDict, total=False):
@@ -6852,8 +7733,12 @@ class ApiEntitiesWikiPageBasic(TypedDict, total=False):
     wiki_page_meta_id: int
 
 
-class ApiEntitiesWikiPageBasicListMatch(TypedDict):
+class ApiEntitiesWikiPageBasicListMatchRequired(TypedDict):
     group_id: str
+
+
+class ApiEntitiesWikiPageBasicListMatch(ApiEntitiesWikiPageBasicListMatchRequired, total=False):
+    with_content: Any
 
 
 class Application(TypedDict, total=False):
@@ -6925,6 +7810,7 @@ class CiVariableRemoveMatchRequired(TypedDict):
 
 class CiVariableRemoveMatch(CiVariableRemoveMatchRequired, total=False):
     project_id: str
+    filter_environment_scope: Any
     group_id: str
 
 
@@ -6960,6 +7846,7 @@ class Composer(TypedDict):
 
 class ComposerCreateData(TypedDict):
     project_id: str
+    post_api_v4_projects_id_packages_composer: dict
 
 
 class ComposerPackage(TypedDict):
@@ -7012,11 +7899,17 @@ class ConanPackageUpdateData(ConanPackageUpdateDataRequired, total=False):
     package_name: Any
     package_revision: Any
     recipe_revision: Any
+    put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name: dict
     conan_id: str
     package_id: str
     project_id: str
     revision_id: str
+    put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_packages_conan_package_reference_revisions_package_revision_files_file_name: dict
+    put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name: dict
     file_id: str
+    put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_files_file_name: dict
+    put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_export_file_name: dict
+    put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_export_file_name: dict
 
 
 class ConanPackageRemoveMatchRequired(TypedDict):
@@ -7044,6 +7937,11 @@ class ContainerRegistryRemoveMatchRequired(TypedDict):
 
 
 class ContainerRegistryRemoveMatch(ContainerRegistryRemoveMatchRequired, total=False):
+    keep_n: Any
+    name_regex: Any
+    name_regex_delete: Any
+    name_regex_keep: Any
+    older_than: Any
     tag_name: Any
 
 
@@ -7073,6 +7971,7 @@ class Debian(TypedDict, total=False):
 class DebianUpdateData(TypedDict):
     id: str
     project_id: str
+    put_api_v4_projects_id_packages_debian_file_name: dict
 
 
 class DebianDistribution(TypedDict, total=False):
@@ -7085,6 +7984,14 @@ class DebianDistributionRemoveMatchRequired(TypedDict):
 
 class DebianDistributionRemoveMatch(DebianDistributionRemoveMatchRequired, total=False):
     group_id: str
+    architecture: Any
+    component: Any
+    description: str
+    label: str
+    origin: Any
+    suite: Any
+    valid_time_duration_second: Any
+    version: Any
     project_id: str
 
 
@@ -7092,22 +7999,21 @@ class DebianPackage(TypedDict, total=False):
     id: str
 
 
-class DebianPackageLoadMatch(TypedDict):
+class DebianPackageLoadMatchRequired(TypedDict):
     distribution: Any
+
+
+class DebianPackageLoadMatch(DebianPackageLoadMatchRequired, total=False):
     file_name: Any
     id: str
     letter: Any
     package_name: Any
     package_version: Any
-
-
-class DebianPackageUpdateDataRequired(TypedDict):
-    file_name: Any
     project_id: str
-
-
-class DebianPackageUpdateData(DebianPackageUpdateDataRequired, total=False):
-    id: str
+    architecture: Any
+    distribution_id: str
+    file_sha256: Any
+    group_id: str
 
 
 class DependencyProxy(TypedDict):
@@ -7156,6 +8062,7 @@ class EeApiEntitiesApprovalState(TypedDict):
 class EeApiEntitiesApprovalStateCreateData(TypedDict):
     merge_request_id: str
     project_id: str
+    post_api_v4_projects_id_merge_requests_merge_request_iid_approval: dict
 
 
 class EeApiEntitiesAuditEvent(TypedDict, total=False):
@@ -7177,8 +8084,15 @@ class EeApiEntitiesAuditEventLoadMatch(EeApiEntitiesAuditEventLoadMatchRequired,
     project_id: str
 
 
-class EeApiEntitiesAuditEventListMatch(TypedDict):
+class EeApiEntitiesAuditEventListMatchRequired(TypedDict):
     group_id: str
+
+
+class EeApiEntitiesAuditEventListMatch(EeApiEntitiesAuditEventListMatchRequired, total=False):
+    created_after: Any
+    created_before: Any
+    page: int
+    per_page: int
 
 
 class EeApiEntitiesBillableMembership(TypedDict, total=False):
@@ -7187,9 +8101,14 @@ class EeApiEntitiesBillableMembership(TypedDict, total=False):
     string_value: str
 
 
-class EeApiEntitiesBillableMembershipLoadMatch(TypedDict):
+class EeApiEntitiesBillableMembershipLoadMatchRequired(TypedDict):
     billable_member_id: str
     group_id: str
+
+
+class EeApiEntitiesBillableMembershipLoadMatch(EeApiEntitiesBillableMembershipLoadMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class EeApiEntitiesGeoNodeStatus(TypedDict, total=False):
@@ -7432,7 +8351,11 @@ class EeApiEntitiesGeoNodeStatus(TypedDict, total=False):
     version: str
 
 
-class EeApiEntitiesGeoNodeStatusCreateData(TypedDict, total=False):
+class EeApiEntitiesGeoNodeStatusCreateDataRequired(TypedDict):
+    post_api_v4_geo_status: dict
+
+
+class EeApiEntitiesGeoNodeStatusCreateData(EeApiEntitiesGeoNodeStatusCreateDataRequired, total=False):
     ci_secure_files_checksum_failed_count: str
     ci_secure_files_checksum_total_count: str
     ci_secure_files_checksummed_count: str
@@ -7692,6 +8615,7 @@ class EeApiEntitiesIssuableMetricImage(TypedDict, total=False):
 class EeApiEntitiesIssuableMetricImageCreateDataRequired(TypedDict):
     issue_id: str
     project_id: str
+    post_api_v4_projects_id_issues_issue_iid_metric_image: dict
 
 
 class EeApiEntitiesIssuableMetricImageCreateData(EeApiEntitiesIssuableMetricImageCreateDataRequired, total=False):
@@ -7707,6 +8631,7 @@ class EeApiEntitiesIssuableMetricImageUpdateDataRequired(TypedDict):
     id: str
     issue_id: str
     project_id: str
+    put_api_v4_projects_id_issues_issue_iid_metric_images_metric_image_id: dict
 
 
 class EeApiEntitiesIssuableMetricImageUpdateData(EeApiEntitiesIssuableMetricImageUpdateDataRequired, total=False):
@@ -7753,12 +8678,18 @@ class EeApiEntitiesSshCertificate(TypedDict, total=False):
     title: str
 
 
-class EeApiEntitiesSshCertificateListMatch(TypedDict):
+class EeApiEntitiesSshCertificateListMatchRequired(TypedDict):
     group_id: str
+
+
+class EeApiEntitiesSshCertificateListMatch(EeApiEntitiesSshCertificateListMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class EeApiEntitiesSshCertificateCreateDataRequired(TypedDict):
     group_id: str
+    post_api_v4_groups_id_ssh_certificate: dict
 
 
 class EeApiEntitiesSshCertificateCreateData(EeApiEntitiesSshCertificateCreateDataRequired, total=False):
@@ -7774,6 +8705,7 @@ class Environment(TypedDict, total=False):
 
 class EnvironmentCreateDataRequired(TypedDict):
     project_id: str
+    post_api_v4_projects_id_environments_stop_stale: dict
 
 
 class EnvironmentCreateData(EnvironmentCreateDataRequired, total=False):
@@ -7806,8 +8738,13 @@ class FeatureFlag(TypedDict, total=False):
     id: str
 
 
-class FeatureFlagLoadMatch(TypedDict):
+class FeatureFlagLoadMatchRequired(TypedDict):
     project_id: str
+
+
+class FeatureFlagLoadMatch(FeatureFlagLoadMatchRequired, total=False):
+    app_name: Any
+    instance_id: str
 
 
 class FeatureFlagCreateDataRequired(TypedDict):
@@ -7815,6 +8752,8 @@ class FeatureFlagCreateDataRequired(TypedDict):
 
 
 class FeatureFlagCreateData(FeatureFlagCreateDataRequired, total=False):
+    post_api_v4_feature_flags_unleash_project_id_client_metric: dict
+    post_api_v4_feature_flags_unleash_project_id_client_register: dict
     id: str
 
 
@@ -7845,10 +8784,15 @@ class GenericPackage(TypedDict):
     pass
 
 
-class GenericPackageLoadMatch(TypedDict):
+class GenericPackageLoadMatchRequired(TypedDict):
     file_name: Any
     generic_id: str
     project_id: str
+    package_version: Any
+
+
+class GenericPackageLoadMatch(GenericPackageLoadMatchRequired, total=False):
+    path: str
 
 
 class GenericPackageUpdateData(TypedDict):
@@ -7857,8 +8801,8 @@ class GenericPackageUpdateData(TypedDict):
     project_id: str
 
 
-class Geo(TypedDict):
-    pass
+class Geo(TypedDict, total=False):
+    id: str
 
 
 class GeoLoadMatch(TypedDict):
@@ -7866,8 +8810,12 @@ class GeoLoadMatch(TypedDict):
     replicable_name: Any
 
 
-class GeoCreateData(TypedDict):
-    pass
+class GeoCreateDataRequired(TypedDict):
+    post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack: dict
+
+
+class GeoCreateData(GeoCreateDataRequired, total=False):
+    id: str
 
 
 class GoProxy(TypedDict):
@@ -7876,6 +8824,7 @@ class GoProxy(TypedDict):
 
 class GoProxyLoadMatchRequired(TypedDict):
     project_id: str
+    module_name: Any
 
 
 class GoProxyLoadMatch(GoProxyLoadMatchRequired, total=False):
@@ -7896,17 +8845,19 @@ class GroupLoadMatch(GroupLoadMatchRequired, total=False):
     upload_id: str
 
 
-class GroupCreateData(TypedDict):
+class GroupCreateDataRequired(TypedDict):
     id: str
 
 
-class GroupUpdateDataRequired(TypedDict):
+class GroupCreateData(GroupCreateDataRequired, total=False):
+    post_api_v4_groups_id_placeholder_reassignment: dict
+    post_api_v4_groups_id_tokens_revoke: dict
+
+
+class GroupUpdateData(TypedDict):
     id: str
-
-
-class GroupUpdateData(GroupUpdateDataRequired, total=False):
     key: str
-    member_id: str
+    put_api_v4_groups_id_custom_attributes_key: dict
 
 
 class GroupRemoveMatchRequired(TypedDict):
@@ -7935,8 +8886,14 @@ class GroupExport(TypedDict, total=False):
     id: str
 
 
-class GroupExportLoadMatch(TypedDict):
+class GroupExportLoadMatchRequired(TypedDict):
     group_id: str
+
+
+class GroupExportLoadMatch(GroupExportLoadMatchRequired, total=False):
+    batch_number: int
+    batched: Any
+    relation: Any
 
 
 class GroupExportCreateData(TypedDict):
@@ -7947,8 +8904,15 @@ class GroupImport(TypedDict):
     pass
 
 
-class GroupImportCreateData(TypedDict):
-    pass
+class GroupImportCreateDataRequired(TypedDict):
+    file: Any
+    name: str
+    path: str
+
+
+class GroupImportCreateData(GroupImportCreateDataRequired, total=False):
+    organization_id: str
+    parent_id: str
 
 
 class HelmPackage(TypedDict):
@@ -7971,6 +8935,7 @@ class HelmPackageCreateDataRequired(TypedDict):
 
 class HelmPackageCreateData(HelmPackageCreateDataRequired, total=False):
     channel: Any
+    post_api_v4_projects_id_packages_helm_api_channel_chart: dict
     api_id: str
 
 
@@ -7982,9 +8947,14 @@ class HookCreateData(TypedDict):
     id: str
 
 
-class HookUpdateData(TypedDict):
+class HookUpdateDataRequired(TypedDict):
     id: str
     key: str
+
+
+class HookUpdateData(HookUpdateDataRequired, total=False):
+    put_api_v4_hooks_hook_id_custom_headers_key: dict
+    put_api_v4_hooks_hook_id_url_variables_key: dict
 
 
 class HookRemoveMatch(TypedDict):
@@ -7997,14 +8967,18 @@ class Import(TypedDict):
 
 
 class ImportCreateData(TypedDict):
-    pass
+    post_api_v4_import_github_gist: dict
 
 
 class Integration(TypedDict, total=False):
     id: str
 
 
-class IntegrationCreateData(TypedDict, total=False):
+class IntegrationCreateDataRequired(TypedDict):
+    post_api_v4_integrations_slack_event: dict
+
+
+class IntegrationCreateData(IntegrationCreateDataRequired, total=False):
     id: str
 
 
@@ -8040,24 +9014,65 @@ class IssuesStatistic(TypedDict):
     pass
 
 
-class IssuesStatisticLoadMatch(TypedDict):
-    pass
+class IssuesStatisticLoadMatch(TypedDict, total=False):
+    assignee_id: str
+    assignee_username: Any
+    author_id: str
+    author_username: Any
+    confidential: Any
+    created_after: Any
+    created_before: Any
+    epic_id: str
+    health_status: Any
+    iid: Any
+    iteration_id: str
+    iteration_title: Any
+    label: str
+    milestone: Any
+    milestone_id: str
+    my_reaction_emoji: Any
+    not_assignee_id: str
+    not_assignee_username: Any
+    not_author_id: str
+    not_author_username: Any
+    not_iid: Any
+    not_iteration_id: str
+    not_iteration_title: Any
+    not_label: Any
+    not_milestone: Any
+    not_milestone_id: str
+    not_weight: Any
+    scope: Any
+    search: Any
+    updated_after: Any
+    updated_before: Any
+    weight: float
 
 
 class Job(TypedDict, total=False):
     id: str
 
 
-class JobLoadMatch(TypedDict):
+class JobLoadMatchRequired(TypedDict):
     id: str
 
 
-class JobCreateData(TypedDict, total=False):
+class JobLoadMatch(JobLoadMatchRequired, total=False):
+    direct_download: Any
+    token: str
+
+
+class JobCreateDataRequired(TypedDict):
+    post_api_v4_jobs_request: dict
+
+
+class JobCreateData(JobCreateDataRequired, total=False):
     id: str
 
 
 class JobUpdateData(TypedDict):
     id: str
+    put_api_v4_jobs_id: dict
 
 
 class MavenPackage(TypedDict):
@@ -8066,6 +9081,7 @@ class MavenPackage(TypedDict):
 
 class MavenPackageLoadMatchRequired(TypedDict):
     file_name: Any
+    path: str
 
 
 class MavenPackageLoadMatch(MavenPackageLoadMatchRequired, total=False):
@@ -8082,12 +9098,19 @@ class Member(TypedDict, total=False):
     id: str
 
 
+class MemberUpdateData(TypedDict):
+    group_id: str
+    id: str
+
+
 class MemberRemoveMatchRequired(TypedDict):
     id: str
 
 
 class MemberRemoveMatch(MemberRemoveMatchRequired, total=False):
     group_id: str
+    skip_subresource: Any
+    unassign_issuable: Any
     project_id: str
 
 
@@ -8095,9 +9118,14 @@ class MergeRequest(TypedDict, total=False):
     id: str
 
 
-class MergeRequestLoadMatch(TypedDict):
+class MergeRequestLoadMatchRequired(TypedDict):
     id: str
     project_id: str
+
+
+class MergeRequestLoadMatch(MergeRequestLoadMatchRequired, total=False):
+    page: int
+    per_page: int
 
 
 class MergeRequestUpdateData(TypedDict):
@@ -8130,16 +9158,22 @@ class Migration(TypedDict):
 
 class MigrationCreateData(TypedDict):
     timestamp: Any
+    post_api_v4_admin_migrations_timestamp_mark: dict
 
 
 class MlModelRegistry(TypedDict):
     pass
 
 
-class MlModelRegistryLoadMatch(TypedDict):
+class MlModelRegistryLoadMatchRequired(TypedDict):
     file_name: Any
     ml_model_id: str
     project_id: str
+
+
+class MlModelRegistryLoadMatch(MlModelRegistryLoadMatchRequired, total=False):
+    path: str
+    status: Any
 
 
 class MlModelRegistryUpdateData(TypedDict):
@@ -8163,6 +9197,7 @@ class Npm(TypedDict, total=False):
 class NpmUpdateData(TypedDict):
     id: str
     project_id: str
+    put_api_v4_projects_id_packages_npm_package_name: dict
 
 
 class NpmPackage(TypedDict):
@@ -8171,6 +9206,8 @@ class NpmPackage(TypedDict):
 
 class NpmPackageLoadMatch(TypedDict):
     project_id: str
+    file_name: Any
+    package_name: Any
 
 
 class NpmPackageCreateData(TypedDict):
@@ -8188,6 +9225,7 @@ class NpmPackageUpdateData(NpmPackageUpdateDataRequired, total=False):
 
 class NpmPackageRemoveMatchRequired(TypedDict):
     tag: Any
+    package_name: Any
 
 
 class NpmPackageRemoveMatch(NpmPackageRemoveMatchRequired, total=False):
@@ -8201,6 +9239,7 @@ class Nuget(TypedDict):
 
 class NugetUpdateData(TypedDict):
     project_id: str
+    put_api_v4_projects_id_packages_nuget: dict
 
 
 class NugetPackage(TypedDict, total=False):
@@ -8226,7 +9265,12 @@ class NugetPackageLoadMatch(TypedDict):
     project_id: str
 
 
-class NugetPackageListMatch(TypedDict):
+class NugetPackageListMatchRequired(TypedDict):
+    package_name: Any
+
+
+class NugetPackageListMatch(NugetPackageListMatchRequired, total=False):
+    group_id: str
     project_id: str
 
 
@@ -8235,6 +9279,8 @@ class NugetPackageUpdateDataRequired(TypedDict):
 
 
 class NugetPackageUpdateData(NugetPackageUpdateDataRequired, total=False):
+    put_api_v4_projects_id_packages_nuget_symbolpackage: dict
+    put_api_v4_projects_id_packages_nuget_v2: dict
     authors: str
     count: int
     dependencyGroups: list
@@ -8255,6 +9301,8 @@ class NugetPackageUpdateData(NugetPackageUpdateDataRequired, total=False):
 
 class NugetPackageRemoveMatch(TypedDict):
     project_id: str
+    package_name: Any
+    package_version: Any
 
 
 class PackageFile(TypedDict, total=False):
@@ -8283,6 +9331,7 @@ class PageLoadMatch(TypedDict):
 
 class PageUpdateData(TypedDict):
     project_id: str
+    patch_api_v4_projects_id_page: dict
 
 
 class PageRemoveMatch(TypedDict):
@@ -8342,9 +9391,19 @@ class ProjectLoadMatchRequired(TypedDict):
 
 class ProjectLoadMatch(ProjectLoadMatchRequired, total=False):
     artifact_id: str
+    artifact_path: Any
+    job: Any
+    job_token: Any
     file_path: Any
+    range_end: Any
+    range_start: Any
+    ref: Any
     hook_id: str
+    page: int
+    per_page: int
+    status: Any
     job_id: str
+    lfs: Any
     ref_name: Any
     filename: Any
     secret: Any
@@ -8362,10 +9421,10 @@ class ProjectCreateData(ProjectCreateDataRequired, total=False):
     event_id: str
     hook_id: str
     file_path: Any
+    post_api_v4_projects_id_repository_files_file_path: dict
     trigger: Any
     issue_id: str
     merge_request_id: str
-    pipeline_schedule_id: str
     project_id: str
     before_sha: str
     committed_at: str
@@ -8396,11 +9455,13 @@ class ProjectUpdateDataRequired(TypedDict):
 class ProjectUpdateData(ProjectUpdateDataRequired, total=False):
     hook_id: str
     key: str
+    put_api_v4_projects_id_hooks_hook_id_custom_headers_key: dict
+    put_api_v4_projects_id_hooks_hook_id_url_variables_key: dict
     domain: Any
-    draft_note_id: str
-    merge_request_id: str
+    put_api_v4_projects_id_pages_domains_domain: dict
     file_path: Any
-    pipeline_id: str
+    put_api_v4_projects_id_repository_files_file_path: dict
+    put_api_v4_projects_id_custom_attributes_key: dict
     before_sha: str
     committed_at: str
     coverage: float
@@ -8430,6 +9491,11 @@ class ProjectRemoveMatchRequired(TypedDict):
 
 class ProjectRemoveMatch(ProjectRemoveMatchRequired, total=False):
     file_path: Any
+    author_email: Any
+    author_name: Any
+    branch: Any
+    commit_message: Any
+    start_branch: Any
     draft_note_id: str
     merge_request_id: str
     filename: Any
@@ -8462,19 +9528,26 @@ class ProjectEntity(TypedDict):
 
 
 class ProjectEntityCreateData(TypedDict):
-    pass
+    post_api_v4_import_bitbucket_server: dict
 
 
 class ProjectExport(TypedDict, total=False):
     id: str
 
 
-class ProjectExportLoadMatch(TypedDict):
+class ProjectExportLoadMatchRequired(TypedDict):
     project_id: str
+
+
+class ProjectExportLoadMatch(ProjectExportLoadMatchRequired, total=False):
+    batch_number: int
+    batched: Any
+    relation: Any
 
 
 class ProjectExportCreateData(TypedDict):
     id: str
+    post_api_v4_projects_id_export: dict
 
 
 class ProjectHook(TypedDict, total=False):
@@ -8510,7 +9583,11 @@ class ProjectImportEntity(TypedDict, total=False):
     relation_type: str
 
 
-class ProjectImportEntityCreateData(TypedDict, total=False):
+class ProjectImportEntityCreateDataRequired(TypedDict):
+    post_api_v4_import_bitbucket: dict
+
+
+class ProjectImportEntityCreateData(ProjectImportEntityCreateDataRequired, total=False):
     forked: bool
     full_name: str
     full_path: str
@@ -8550,6 +9627,7 @@ class ProjectsJobTokenScope(TypedDict):
 
 class ProjectsJobTokenScopeUpdateData(TypedDict):
     project_id: str
+    patch_api_v4_projects_id_job_token_scope: dict
 
 
 class ProjectsJobTokenScopeRemoveMatchRequired(TypedDict):
@@ -8576,6 +9654,7 @@ class Pypi(TypedDict):
 
 class PypiCreateData(TypedDict):
     project_id: str
+    post_api_v4_projects_id_packages_pypi: dict
 
 
 class PypiPackage(TypedDict):
@@ -8596,6 +9675,7 @@ class Release(TypedDict, total=False):
 
 class ReleaseLoadMatch(TypedDict):
     project_id: str
+    suffix_path: Any
 
 
 class ReleaseRemoveMatch(TypedDict):
@@ -8622,11 +9702,6 @@ class RemoteMirrorLoadMatch(TypedDict):
     project_id: str
 
 
-class RemoteMirrorCreateData(TypedDict):
-    id: str
-    project_id: str
-
-
 class RemoteMirrorRemoveMatch(TypedDict):
     id: str
     project_id: str
@@ -8644,8 +9719,13 @@ class RpmPackage(TypedDict):
     pass
 
 
-class RpmPackageLoadMatch(TypedDict):
+class RpmPackageLoadMatchRequired(TypedDict):
     project_id: str
+    file_name: Any
+
+
+class RpmPackageLoadMatch(RpmPackageLoadMatchRequired, total=False):
+    package_file_id: str
 
 
 class RpmPackageCreateData(TypedDict):
@@ -8671,17 +9751,26 @@ class RubygemPackageLoadMatchRequired(TypedDict):
 
 class RubygemPackageLoadMatch(RubygemPackageLoadMatchRequired, total=False):
     file_name: Any
+    gem: Any
 
 
-class RubygemPackageCreateData(TypedDict):
+class RubygemPackageCreateDataRequired(TypedDict):
     project_id: str
+
+
+class RubygemPackageCreateData(RubygemPackageCreateDataRequired, total=False):
+    post_api_v4_projects_id_packages_rubygems_api_v1_gem: dict
 
 
 class Runner(TypedDict, total=False):
     id: str
 
 
-class RunnerCreateData(TypedDict, total=False):
+class RunnerCreateDataRequired(TypedDict):
+    post_api_v4_runners_verify: dict
+
+
+class RunnerCreateData(RunnerCreateDataRequired, total=False):
     id: str
 
 
@@ -8693,8 +9782,17 @@ class Search(TypedDict):
     pass
 
 
-class SearchLoadMatch(TypedDict):
-    pass
+class SearchLoadMatchRequired(TypedDict):
+    scope: Any
+    search: Any
+
+
+class SearchLoadMatch(SearchLoadMatchRequired, total=False):
+    confidential: Any
+    field: Any
+    page: int
+    per_page: int
+    state: Any
 
 
 class SecureFile(TypedDict, total=False):
@@ -8716,7 +9814,7 @@ class Slack(TypedDict):
 
 
 class SlackCreateData(TypedDict):
-    pass
+    post_api_v4_slack_trigger: dict
 
 
 class Snippet(TypedDict, total=False):
@@ -8746,8 +9844,14 @@ class Starrer(TypedDict, total=False):
     web_url: str
 
 
-class StarrerListMatch(TypedDict):
+class StarrerListMatchRequired(TypedDict):
     project_id: str
+
+
+class StarrerListMatch(StarrerListMatchRequired, total=False):
+    page: int
+    per_page: int
+    search: Any
 
 
 class SystemHook(TypedDict, total=False):
@@ -8778,6 +9882,8 @@ class TerraformRegistryLoadMatchRequired(TypedDict):
 class TerraformRegistryLoadMatch(TerraformRegistryLoadMatchRequired, total=False):
     module_id: str
     project_id: str
+    module_version: Any
+    terraform_get: Any
     id: str
     module_name: Any
     v1_id: str
@@ -8790,6 +9896,8 @@ class TerraformRegistryUpdateDataRequired(TypedDict):
 
 
 class TerraformRegistryUpdateData(TerraformRegistryUpdateDataRequired, total=False):
+    file: Any
+    module_version: Any
     id: str
 
 
@@ -8807,13 +9915,9 @@ class TerraformStateLoadMatch(TerraformStateLoadMatchRequired, total=False):
     id: str
 
 
-class TerraformStateCreateDataRequired(TypedDict):
-    project_id: str
-
-
-class TerraformStateCreateData(TerraformStateCreateDataRequired, total=False):
-    name: str
+class TerraformStateCreateData(TypedDict):
     id: str
+    project_id: str
 
 
 class TerraformStateRemoveMatchRequired(TypedDict):
@@ -8821,7 +9925,6 @@ class TerraformStateRemoveMatchRequired(TypedDict):
 
 
 class TerraformStateRemoveMatch(TerraformStateRemoveMatchRequired, total=False):
-    name: str
     serial: Any
     state_id: str
     id: str
@@ -8866,20 +9969,25 @@ class UnleashApi(TypedDict, total=False):
     id: str
 
 
-class UnleashApiLoadMatch(TypedDict):
+class UnleashApiLoadMatchRequired(TypedDict):
     unleash_id: str
+
+
+class UnleashApiLoadMatch(UnleashApiLoadMatchRequired, total=False):
+    app_name: Any
+    instance_id: str
 
 
 class UsageData(TypedDict):
     pass
 
 
-class UsageDataLoadMatch(TypedDict):
-    pass
+class UsageDataLoadMatch(TypedDict, total=False):
+    include_path: Any
 
 
 class UsageDataCreateData(TypedDict):
-    pass
+    post_api_v4_usage_data_increment_counter: dict
 
 
 class User(TypedDict, total=False):
@@ -8895,8 +10003,15 @@ class User(TypedDict, total=False):
     web_url: str
 
 
-class UserListMatch(TypedDict):
+class UserListMatchRequired(TypedDict):
     project_id: str
+
+
+class UserListMatch(UserListMatchRequired, total=False):
+    page: int
+    per_page: int
+    search: Any
+    skip_user: Any
 
 
 class WebCommit(TypedDict):

@@ -177,6 +177,32 @@ class MemberEntity
   
 
   
+  # Update an existing Member.
+  #
+  # @param reqdata [MemberUpdateData, Hash, nil] body data
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Member, Hash] the updated Member; raises GitlabError on failure
+  def update(reqdata, ctrl = nil)
+    utility = @_utility
+    ctx = utility.make_context.call({
+      "opname" => "update",
+      "ctrl" => ctrl,
+      "match" => @_match,
+      "data" => @_data,
+      "reqdata" => reqdata,
+    }, @_entctx)
+
+    _run_op(ctx) do
+      if ctx.result
+        @_match = ctx.result.resmatch if ctx.result.resmatch
+        if ctx.result.resdata
+          @_data = GitlabHelpers.to_map(VoxgigStruct.clone(ctx.result.resdata)) || {}
+        end
+      end
+    end
+  end
+
+
 
   
   # Remove an Member matching the given criteria.

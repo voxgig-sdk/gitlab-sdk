@@ -19,7 +19,7 @@ describe("DebianPackageEntity", function()
     local setup = debian_package_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"update", "load"}) do
+    for _, _op in ipairs({"load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "debian_package." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -42,20 +42,8 @@ describe("DebianPackageEntity", function()
       debian_package_ref01_data = helpers.to_map(debian_package_ref01_data_raw[1][2])
     end
 
-    -- UPDATE
-    local debian_package_ref01_ent = client:DebianPackage(nil)
-    local debian_package_ref01_data_up0_up = {
-      id = debian_package_ref01_data["id"],
-      ["project_id"] = setup.idmap["project_id"],
-    }
-
-    local debian_package_ref01_resdata_up0_result, err = debian_package_ref01_ent:update(debian_package_ref01_data_up0_up, nil)
-    assert.is_nil(err)
-    local debian_package_ref01_resdata_up0 = helpers.to_map(type(debian_package_ref01_resdata_up0_result) == 'table' and debian_package_ref01_resdata_up0_result.data_get and debian_package_ref01_resdata_up0_result:data_get() or debian_package_ref01_resdata_up0_result)
-    assert.is_not_nil(debian_package_ref01_resdata_up0)
-    assert.are.equal(debian_package_ref01_resdata_up0["id"], debian_package_ref01_data_up0_up["id"])
-
     -- LOAD
+    local debian_package_ref01_ent = client:DebianPackage(nil)
     local debian_package_ref01_match_dt0 = {
       id = debian_package_ref01_data["id"],
     }
@@ -88,7 +76,7 @@ function debian_package_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "debian_package01", "debian_package02", "debian_package03", "group01", "group02", "group03", "project01", "project02", "project03", "pool01", "pool02", "pool03", "*distribution01", "*distribution02", "*distribution03", "debian01", "debian02", "debian03", "sha25601", "sha25602", "sha25603" },
+    { "debian_package01", "debian_package02", "debian_package03", "group01", "group02", "group03", "project01", "project02", "project03", "pool01", "pool02", "pool03", "*distribution01", "*distribution02", "*distribution03", "sha25601", "sha25602", "sha25603" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",
@@ -107,7 +95,7 @@ function debian_package_basic_setup(extra)
     ["GITLAB_TEST_DEBIAN_PACKAGE_ENTID"] = idmap,
     ["GITLAB_TEST_LIVE"] = "FALSE",
     ["GITLAB_TEST_EXPLAIN"] = "FALSE",
-    ["GITLAB_APIKEY"] = "NONE",
+    ["GITLAB_APIKEY"] = "",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -115,12 +103,12 @@ function debian_package_basic_setup(extra)
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
-  if idmap_resolved["project_id"] == nil then
-    idmap_resolved["project_id"] = idmap_resolved["project01"]
-  end
 
   if env["GITLAB_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
         apikey = env["GITLAB_APIKEY"],
       },

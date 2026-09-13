@@ -36,11 +36,19 @@ main: kit: entity: personal_access_token: {
           }
           method: "DELETE"
           orig: "/api/v4/personal_access_tokens/{id}"
-          parts: [
-            "api"
-            "v4"
-            "personal_access_tokens"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "personal_access_tokens"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -55,11 +63,19 @@ main: kit: entity: personal_access_token: {
         {
           method: "DELETE"
           orig: "/api/v4/personal_access_tokens/self"
-          parts: [
-            "api"
-            "v4"
-            "personal_access_tokens"
-            "self"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "personal_access_tokens"
+            }
+            {
+              lit: "self"
+            }
           ]
           select: {
             "$action": "self"

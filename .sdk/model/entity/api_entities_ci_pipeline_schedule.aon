@@ -11,6 +11,7 @@ main: kit: entity: api_entities_ci_pipeline_schedule: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "date-time"
       name: "created_at"
       req: false
       type: "`$STRING`"
@@ -31,6 +32,7 @@ main: kit: entity: api_entities_ci_pipeline_schedule: {
       type: "`$STRING`"
     }
     {
+      format: "int32"
       name: "id"
       req: false
       type: "`$INTEGER`"
@@ -41,6 +43,7 @@ main: kit: entity: api_entities_ci_pipeline_schedule: {
       type: "`$OBJECT`"
     }
     {
+      format: "date-time"
       name: "next_run_at"
       req: false
       type: "`$STRING`"
@@ -57,6 +60,7 @@ main: kit: entity: api_entities_ci_pipeline_schedule: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "updated_at"
       req: false
       type: "`$STRING`"
@@ -114,18 +118,28 @@ main: kit: entity: api_entities_ci_pipeline_schedule: {
           }
           method: "GET"
           orig: "/api/v4/projects/{id}/pipeline_schedules"
-          parts: [
-            "api"
-            "v4"
-            "projects"
-            "{project_id}"
-            "pipeline_schedules"
-          ]
           rename: {
             param: {
               id: "project_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "pipeline_schedules"
+            }
+          ]
           select: {
             exist: [
               "page"

@@ -61,6 +61,8 @@ type ApiEntitiesAccessRequester struct {
 // ApiEntitiesAccessRequesterListMatch is the typed request payload for ApiEntitiesAccessRequester.ListTyped.
 type ApiEntitiesAccessRequesterListMatch struct {
 	GroupId string `json:"group_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesAccessRequesterCreateData is the typed request payload for ApiEntitiesAccessRequester.CreateTyped.
@@ -85,7 +87,9 @@ type ApiEntitiesAccessRequesterCreateData struct {
 type ApiEntitiesAccessRequesterUpdateData struct {
 	AccessRequestId string `json:"access_request_id"`
 	GroupId *string `json:"group_id,omitempty"`
+	PutApiV4GroupsIdAccessRequestsUserIdApprove *map[string]any `json:"put_api_v4_groups_id_access_requests_user_id_approve,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
+	PutApiV4ProjectsIdAccessRequestsUserIdApprove *map[string]any `json:"put_api_v4_projects_id_access_requests_user_id_approve,omitempty"`
 	AvatarPath *string `json:"avatar_path,omitempty"`
 	AvatarUrl *string `json:"avatar_url,omitempty"`
 	CustomAttributes *[]any `json:"custom_attributes,omitempty"`
@@ -146,22 +150,25 @@ type ApiEntitiesAppearanceLoadMatch struct {
 // ApiEntitiesAppearanceUpdateData is the typed request payload for ApiEntitiesAppearance.UpdateTyped.
 type ApiEntitiesAppearanceUpdateData struct {
 	Description *string `json:"description,omitempty"`
-	EmailHeaderAndFooterEnabled *string `json:"email_header_and_footer_enabled,omitempty"`
-	Favicon *string `json:"favicon,omitempty"`
-	FooterMessage *string `json:"footer_message,omitempty"`
-	HeaderLogo *string `json:"header_logo,omitempty"`
-	HeaderMessage *string `json:"header_message,omitempty"`
-	Logo *string `json:"logo,omitempty"`
+	EmailHeaderAndFooterEnabled *any `json:"email_header_and_footer_enabled,omitempty"`
+	Favicon *any `json:"favicon,omitempty"`
+	FooterMessage *any `json:"footer_message,omitempty"`
+	HeaderLogo *any `json:"header_logo,omitempty"`
+	HeaderMessage *any `json:"header_message,omitempty"`
+	Logo *any `json:"logo,omitempty"`
+	MemberGuideline *any `json:"member_guideline,omitempty"`
+	MessageBackgroundColor *any `json:"message_background_color,omitempty"`
+	MessageFontColor *any `json:"message_font_color,omitempty"`
+	NewProjectGuideline *any `json:"new_project_guideline,omitempty"`
+	ProfileImageGuideline *any `json:"profile_image_guideline,omitempty"`
+	PwaDescription *any `json:"pwa_description,omitempty"`
+	PwaIcon *any `json:"pwa_icon,omitempty"`
+	PwaName *any `json:"pwa_name,omitempty"`
+	PwaShortName *any `json:"pwa_short_name,omitempty"`
+	Title *string `json:"title,omitempty"`
 	MemberGuidelines *string `json:"member_guidelines,omitempty"`
-	MessageBackgroundColor *string `json:"message_background_color,omitempty"`
-	MessageFontColor *string `json:"message_font_color,omitempty"`
 	NewProjectGuidelines *string `json:"new_project_guidelines,omitempty"`
 	ProfileImageGuidelines *string `json:"profile_image_guidelines,omitempty"`
-	PwaDescription *string `json:"pwa_description,omitempty"`
-	PwaIcon *string `json:"pwa_icon,omitempty"`
-	PwaName *string `json:"pwa_name,omitempty"`
-	PwaShortName *string `json:"pwa_short_name,omitempty"`
-	Title *string `json:"title,omitempty"`
 }
 
 // ApiEntitiesApplication is the typed data model for the api_entities_application entity.
@@ -224,6 +231,7 @@ type ApiEntitiesApplicationWithSecret struct {
 
 // ApiEntitiesApplicationWithSecretCreateData is the typed request payload for ApiEntitiesApplicationWithSecret.CreateTyped.
 type ApiEntitiesApplicationWithSecretCreateData struct {
+	PostApiV4Application map[string]any `json:"post_api_v4_application"`
 	ApplicationId *string `json:"application_id,omitempty"`
 	ApplicationName *string `json:"application_name,omitempty"`
 	CallbackUrl *string `json:"callback_url,omitempty"`
@@ -239,7 +247,8 @@ type ApiEntitiesAvatar struct {
 
 // ApiEntitiesAvatarLoadMatch is the typed request payload for ApiEntitiesAvatar.LoadTyped.
 type ApiEntitiesAvatarLoadMatch struct {
-	AvatarUrl *string `json:"avatar_url,omitempty"`
+	Email string `json:"email"`
+	Size *int `json:"size,omitempty"`
 }
 
 // ApiEntitiesAwardEmoji is the typed data model for the api_entities_award_emoji entity.
@@ -278,12 +287,15 @@ type ApiEntitiesAwardEmojiLoadMatch struct {
 type ApiEntitiesAwardEmojiListMatch struct {
 	EpicId string `json:"epic_id"`
 	GroupId string `json:"group_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesAwardEmojiCreateData is the typed request payload for ApiEntitiesAwardEmoji.CreateTyped.
 type ApiEntitiesAwardEmojiCreateData struct {
 	EpicId string `json:"epic_id"`
 	GroupId string `json:"group_id"`
+	PostApiV4GroupsIdEpicsEpicIidAwardEmoji map[string]any `json:"post_api_v4_groups_id_epics_epic_iid_award_emoji"`
 	AvatarPath *string `json:"avatar_path,omitempty"`
 	AvatarUrl *string `json:"avatar_url,omitempty"`
 	AwardableId *int `json:"awardable_id,omitempty"`
@@ -323,11 +335,15 @@ type ApiEntitiesBadgeLoadMatch struct {
 // ApiEntitiesBadgeListMatch is the typed request payload for ApiEntitiesBadge.ListTyped.
 type ApiEntitiesBadgeListMatch struct {
 	GroupId string `json:"group_id"`
+	Name *string `json:"name,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesBadgeCreateData is the typed request payload for ApiEntitiesBadge.CreateTyped.
 type ApiEntitiesBadgeCreateData struct {
 	GroupId string `json:"group_id"`
+	PostApiV4GroupsIdBadge map[string]any `json:"post_api_v4_groups_id_badge"`
 	Id *string `json:"id,omitempty"`
 	ImageUrl *string `json:"image_url,omitempty"`
 	Kind *string `json:"kind,omitempty"`
@@ -341,7 +357,9 @@ type ApiEntitiesBadgeCreateData struct {
 type ApiEntitiesBadgeUpdateData struct {
 	GroupId *string `json:"group_id,omitempty"`
 	Id string `json:"id"`
+	PutApiV4GroupsIdBadgesBadgeId *map[string]any `json:"put_api_v4_groups_id_badges_badge_id,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
+	PutApiV4ProjectsIdBadgesBadgeId *map[string]any `json:"put_api_v4_projects_id_badges_badge_id,omitempty"`
 	ImageUrl *string `json:"image_url,omitempty"`
 	Kind *string `json:"kind,omitempty"`
 	LinkUrl *string `json:"link_url,omitempty"`
@@ -361,7 +379,10 @@ type ApiEntitiesBasicBadgeDetail struct {
 
 // ApiEntitiesBasicBadgeDetailLoadMatch is the typed request payload for ApiEntitiesBasicBadgeDetail.LoadTyped.
 type ApiEntitiesBasicBadgeDetailLoadMatch struct {
-	GroupId string `json:"group_id"`
+	GroupId *string `json:"group_id,omitempty"`
+	ImageUrl any `json:"image_url"`
+	LinkUrl any `json:"link_url"`
+	ProjectId *string `json:"project_id,omitempty"`
 }
 
 // ApiEntitiesBasicGroupDetail is the typed data model for the api_entities_basic_group_detail entity.
@@ -371,6 +392,7 @@ type ApiEntitiesBasicGroupDetail struct {
 // ApiEntitiesBasicGroupDetailCreateData is the typed request payload for ApiEntitiesBasicGroupDetail.CreateTyped.
 type ApiEntitiesBasicGroupDetailCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdJobTokenScopeGroupsAllowlist map[string]any `json:"post_api_v4_projects_id_job_token_scope_groups_allowlist"`
 }
 
 // ApiEntitiesBasicProjectDetail is the typed data model for the api_entities_basic_project_detail entity.
@@ -403,35 +425,46 @@ type ApiEntitiesBasicProjectDetail struct {
 
 // ApiEntitiesBasicProjectDetailListMatch is the typed request payload for ApiEntitiesBasicProjectDetail.ListTyped.
 type ApiEntitiesBasicProjectDetailListMatch struct {
-	AvatarUrl *string `json:"avatar_url,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	CustomAttributes *map[string]any `json:"custom_attributes,omitempty"`
-	DefaultBranch *string `json:"default_branch,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ForksCount *int `json:"forks_count,omitempty"`
-	HttpUrlToRepo *string `json:"http_url_to_repo,omitempty"`
-	Id *int `json:"id,omitempty"`
-	LastActivityAt *string `json:"last_activity_at,omitempty"`
-	License *map[string]any `json:"license,omitempty"`
-	LicenseUrl *string `json:"license_url,omitempty"`
-	Name *string `json:"name,omitempty"`
-	NameWithNamespace *string `json:"name_with_namespace,omitempty"`
-	Namespace *map[string]any `json:"namespace,omitempty"`
-	Path *string `json:"path,omitempty"`
-	PathWithNamespace *string `json:"path_with_namespace,omitempty"`
-	ReadmeUrl *string `json:"readme_url,omitempty"`
-	RepositoryStorage *string `json:"repository_storage,omitempty"`
-	SshUrlToRepo *string `json:"ssh_url_to_repo,omitempty"`
-	StarCount *int `json:"star_count,omitempty"`
-	TagList *[]any `json:"tag_list,omitempty"`
-	Topics *[]any `json:"topics,omitempty"`
-	Visibility *string `json:"visibility,omitempty"`
-	WebUrl *string `json:"web_url,omitempty"`
+	Active *bool `json:"active,omitempty"`
+	Archived *bool `json:"archived,omitempty"`
+	IdAfter *any `json:"id_after,omitempty"`
+	IdBefore *any `json:"id_before,omitempty"`
+	Imported *any `json:"imported,omitempty"`
+	IncludeHidden *any `json:"include_hidden,omitempty"`
+	IncludePendingDelete *any `json:"include_pending_delete,omitempty"`
+	LastActivityAfter *any `json:"last_activity_after,omitempty"`
+	LastActivityBefore *any `json:"last_activity_before,omitempty"`
+	MarkedForDeletionOn *any `json:"marked_for_deletion_on,omitempty"`
+	Membership *any `json:"membership,omitempty"`
+	MinAccessLevel *any `json:"min_access_level,omitempty"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Owned *any `json:"owned,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	RepositoryChecksumFailed *any `json:"repository_checksum_failed,omitempty"`
+	RepositoryStorage *any `json:"repository_storage,omitempty"`
+	Search *any `json:"search,omitempty"`
+	SearchNamespace *any `json:"search_namespace,omitempty"`
+	Simple *any `json:"simple,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	Starred *any `json:"starred,omitempty"`
+	Statistic *any `json:"statistic,omitempty"`
+	Topic *any `json:"topic,omitempty"`
+	TopicId *string `json:"topic_id,omitempty"`
+	UpdatedAfter *any `json:"updated_after,omitempty"`
+	UpdatedBefore *any `json:"updated_before,omitempty"`
+	Visibility *any `json:"visibility,omitempty"`
+	WikiChecksumFailed *any `json:"wiki_checksum_failed,omitempty"`
+	WithCustomAttribute *any `json:"with_custom_attribute,omitempty"`
+	WithIssuesEnabled *any `json:"with_issues_enabled,omitempty"`
+	WithMergeRequestsEnabled *any `json:"with_merge_requests_enabled,omitempty"`
+	WithProgrammingLanguage *any `json:"with_programming_language,omitempty"`
 }
 
 // ApiEntitiesBasicProjectDetailCreateData is the typed request payload for ApiEntitiesBasicProjectDetail.CreateTyped.
 type ApiEntitiesBasicProjectDetailCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdJobTokenScopeAllowlist map[string]any `json:"post_api_v4_projects_id_job_token_scope_allowlist"`
 	AvatarUrl *string `json:"avatar_url,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	CustomAttributes *map[string]any `json:"custom_attributes,omitempty"`
@@ -468,6 +501,9 @@ type ApiEntitiesBasicRef struct {
 type ApiEntitiesBasicRefListMatch struct {
 	ProjectId string `json:"project_id"`
 	Sha any `json:"sha"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Type *any `json:"type,omitempty"`
 }
 
 // ApiEntitiesBasicSuccess is the typed data model for the api_entities_basic_success entity.
@@ -476,6 +512,7 @@ type ApiEntitiesBasicSuccess struct {
 
 // ApiEntitiesBasicSuccessCreateData is the typed request payload for ApiEntitiesBasicSuccess.CreateTyped.
 type ApiEntitiesBasicSuccessCreateData struct {
+	PostApiV4IntegrationsJiraConnectSubscription map[string]any `json:"post_api_v4_integrations_jira_connect_subscription"`
 }
 
 // ApiEntitiesBatchedBackgroundMigration is the typed data model for the api_entities_batched_background_migration entity.
@@ -492,22 +529,20 @@ type ApiEntitiesBatchedBackgroundMigration struct {
 // ApiEntitiesBatchedBackgroundMigrationLoadMatch is the typed request payload for ApiEntitiesBatchedBackgroundMigration.LoadTyped.
 type ApiEntitiesBatchedBackgroundMigrationLoadMatch struct {
 	Id string `json:"id"`
+	Database *any `json:"database,omitempty"`
 }
 
 // ApiEntitiesBatchedBackgroundMigrationListMatch is the typed request payload for ApiEntitiesBatchedBackgroundMigration.ListTyped.
 type ApiEntitiesBatchedBackgroundMigrationListMatch struct {
-	ColumnName *string `json:"column_name,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	Id *string `json:"id,omitempty"`
-	JobClassName *string `json:"job_class_name,omitempty"`
-	Progress *float64 `json:"progress,omitempty"`
-	Status *string `json:"status,omitempty"`
-	TableName *string `json:"table_name,omitempty"`
+	Database *any `json:"database,omitempty"`
+	JobClassName *any `json:"job_class_name,omitempty"`
 }
 
 // ApiEntitiesBatchedBackgroundMigrationUpdateData is the typed request payload for ApiEntitiesBatchedBackgroundMigration.UpdateTyped.
 type ApiEntitiesBatchedBackgroundMigrationUpdateData struct {
 	BatchedBackgroundMigrationId string `json:"batched_background_migration_id"`
+	PutApiV4AdminBatchedBackgroundMigrationsIdPause *map[string]any `json:"put_api_v4_admin_batched_background_migrations_id_pause,omitempty"`
+	PutApiV4AdminBatchedBackgroundMigrationsIdResume *map[string]any `json:"put_api_v4_admin_batched_background_migrations_id_resume,omitempty"`
 	ColumnName *string `json:"column_name,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -553,11 +588,18 @@ type ApiEntitiesBranchLoadMatch struct {
 // ApiEntitiesBranchListMatch is the typed request payload for ApiEntitiesBranch.ListTyped.
 type ApiEntitiesBranchListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PageToken *any `json:"page_token,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Regex *any `json:"regex,omitempty"`
+	Search *any `json:"search,omitempty"`
+	Sort *any `json:"sort,omitempty"`
 }
 
 // ApiEntitiesBranchCreateData is the typed request payload for ApiEntitiesBranch.CreateTyped.
 type ApiEntitiesBranchCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdRepositoryBranch map[string]any `json:"post_api_v4_projects_id_repository_branch"`
 	AuthorEmail *string `json:"author_email,omitempty"`
 	AuthorName *string `json:"author_name,omitempty"`
 	AuthoredDate *string `json:"authored_date,omitempty"`
@@ -587,6 +629,7 @@ type ApiEntitiesBranchCreateData struct {
 type ApiEntitiesBranchUpdateData struct {
 	BranchId string `json:"branch_id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdRepositoryBranchesBranchProtect *map[string]any `json:"put_api_v4_projects_id_repository_branches_branch_protect,omitempty"`
 	AuthorEmail *string `json:"author_email,omitempty"`
 	AuthorName *string `json:"author_name,omitempty"`
 	AuthoredDate *string `json:"authored_date,omitempty"`
@@ -644,31 +687,23 @@ type ApiEntitiesBulkImportLoadMatch struct {
 
 // ApiEntitiesBulkImportListMatch is the typed request payload for ApiEntitiesBulkImport.ListTyped.
 type ApiEntitiesBulkImportListMatch struct {
-	BulkImportId *int `json:"bulk_import_id,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	DestinationFullPath *string `json:"destination_full_path,omitempty"`
-	DestinationName *string `json:"destination_name,omitempty"`
-	DestinationNamespace *string `json:"destination_namespace,omitempty"`
-	DestinationSlug *string `json:"destination_slug,omitempty"`
-	EntityType *string `json:"entity_type,omitempty"`
-	Failures *[]any `json:"failures,omitempty"`
-	HasFailures *bool `json:"has_failures,omitempty"`
-	Id *int `json:"id,omitempty"`
-	MigrateMemberships *bool `json:"migrate_memberships,omitempty"`
-	MigrateProjects *bool `json:"migrate_projects,omitempty"`
-	NamespaceId *int `json:"namespace_id,omitempty"`
-	ParentId *int `json:"parent_id,omitempty"`
-	ProjectId *int `json:"project_id,omitempty"`
-	SourceFullPath *string `json:"source_full_path,omitempty"`
-	SourceType *string `json:"source_type,omitempty"`
-	SourceUrl *string `json:"source_url,omitempty"`
-	Stats *map[string]any `json:"stats,omitempty"`
-	Status *string `json:"status,omitempty"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	Status *any `json:"status,omitempty"`
 }
 
 // ApiEntitiesBulkImportCreateData is the typed request payload for ApiEntitiesBulkImport.CreateTyped.
 type ApiEntitiesBulkImportCreateData struct {
+	ConfigurationAccessToken any `json:"configuration_access_token"`
+	ConfigurationUrl any `json:"configuration_url"`
+	EntitiesDestinationName *any `json:"entities_destination_name,omitempty"`
+	EntitiesDestinationNamespace any `json:"entities_destination_namespace"`
+	EntitiesDestinationSlug *any `json:"entities_destination_slug,omitempty"`
+	EntitiesMigrateMembership *any `json:"entities_migrate_membership,omitempty"`
+	EntitiesMigrateProject *any `json:"entities_migrate_project,omitempty"`
+	EntitiesSourceFullPath any `json:"entities_source_full_path"`
+	EntitiesSourceType any `json:"entities_source_type"`
 	BulkImportId *int `json:"bulk_import_id,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	DestinationFullPath *string `json:"destination_full_path,omitempty"`
@@ -723,6 +758,7 @@ type ApiEntitiesBulkImportsExportStatus struct {
 // ApiEntitiesBulkImportsExportStatusListMatch is the typed request payload for ApiEntitiesBulkImportsExportStatus.ListTyped.
 type ApiEntitiesBulkImportsExportStatusListMatch struct {
 	GroupId string `json:"group_id"`
+	Relation *any `json:"relation,omitempty"`
 }
 
 // ApiEntitiesChangelog is the typed data model for the api_entities_changelog entity.
@@ -733,6 +769,13 @@ type ApiEntitiesChangelog struct {
 // ApiEntitiesChangelogLoadMatch is the typed request payload for ApiEntitiesChangelog.LoadTyped.
 type ApiEntitiesChangelogLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	ConfigFile *any `json:"config_file,omitempty"`
+	ConfigFileRef *any `json:"config_file_ref,omitempty"`
+	Date *any `json:"date,omitempty"`
+	From *any `json:"from,omitempty"`
+	To *any `json:"to,omitempty"`
+	Trailer *any `json:"trailer,omitempty"`
+	Version any `json:"version"`
 }
 
 // ApiEntitiesCiBridge is the typed data model for the api_entities_ci_bridge entity.
@@ -764,6 +807,9 @@ type ApiEntitiesCiBridge struct {
 type ApiEntitiesCiBridgeListMatch struct {
 	PipelineId string `json:"pipeline_id"`
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Scope *any `json:"scope,omitempty"`
 }
 
 // ApiEntitiesCiCatalogResourcesVersion is the typed data model for the api_entities_ci_catalog_resources_version entity.
@@ -773,6 +819,7 @@ type ApiEntitiesCiCatalogResourcesVersion struct {
 // ApiEntitiesCiCatalogResourcesVersionCreateData is the typed request payload for ApiEntitiesCiCatalogResourcesVersion.CreateTyped.
 type ApiEntitiesCiCatalogResourcesVersionCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdCatalogPublish map[string]any `json:"post_api_v4_projects_id_catalog_publish"`
 }
 
 // ApiEntitiesCiJob is the typed data model for the api_entities_ci_job entity.
@@ -855,6 +902,7 @@ type ApiEntitiesCiJobListMatch struct {
 type ApiEntitiesCiJobCreateData struct {
 	JobId string `json:"job_id"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdJobsJobIdCancel *map[string]any `json:"post_api_v4_projects_id_jobs_job_id_cancel,omitempty"`
 	AllowFailure *bool `json:"allow_failure,omitempty"`
 	Archived *bool `json:"archived,omitempty"`
 	Artifacts *[]any `json:"artifacts,omitempty"`
@@ -916,12 +964,15 @@ type ApiEntitiesCiJobBasic struct {
 type ApiEntitiesCiJobBasicListMatch struct {
 	Key string `json:"key"`
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesCiJobBasicCreateData is the typed request payload for ApiEntitiesCiJobBasic.CreateTyped.
 type ApiEntitiesCiJobBasicCreateData struct {
 	JobId string `json:"job_id"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdJobsJobIdPlay map[string]any `json:"post_api_v4_projects_id_jobs_job_id_play"`
 	AllowFailure *bool `json:"allow_failure,omitempty"`
 	Commit *map[string]any `json:"commit,omitempty"`
 	Coverage *float64 `json:"coverage,omitempty"`
@@ -971,6 +1022,13 @@ type ApiEntitiesCiJobBasicWithProject struct {
 // ApiEntitiesCiJobBasicWithProjectLoadMatch is the typed request payload for ApiEntitiesCiJobBasicWithProject.LoadTyped.
 type ApiEntitiesCiJobBasicWithProjectLoadMatch struct {
 	RunnerId string `json:"runner_id"`
+	Cursor *any `json:"cursor,omitempty"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	Status *any `json:"status,omitempty"`
+	SystemId *string `json:"system_id,omitempty"`
 }
 
 // ApiEntitiesCiLintResult is the typed data model for the api_entities_ci_lint_result entity.
@@ -993,11 +1051,18 @@ type ApiEntitiesCiLintResult struct {
 // ApiEntitiesCiLintResultListMatch is the typed request payload for ApiEntitiesCiLintResult.ListTyped.
 type ApiEntitiesCiLintResultListMatch struct {
 	ProjectId string `json:"project_id"`
+	ContentRef *any `json:"content_ref,omitempty"`
+	DryRun *any `json:"dry_run,omitempty"`
+	DryRunRef *any `json:"dry_run_ref,omitempty"`
+	IncludeJob *any `json:"include_job,omitempty"`
+	Ref *any `json:"ref,omitempty"`
+	Sha *any `json:"sha,omitempty"`
 }
 
 // ApiEntitiesCiLintResultCreateData is the typed request payload for ApiEntitiesCiLintResult.CreateTyped.
 type ApiEntitiesCiLintResultCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdCiLint map[string]any `json:"post_api_v4_projects_id_ci_lint"`
 	Blob *string `json:"blob,omitempty"`
 	ContextProject *string `json:"context_project,omitempty"`
 	ContextSha *string `json:"context_sha,omitempty"`
@@ -1021,8 +1086,11 @@ type ApiEntitiesCiPipeline struct {
 type ApiEntitiesCiPipelineCreateData struct {
 	MergeRequestId *string `json:"merge_request_id,omitempty"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdMergeRequestsMergeRequestIidPipeline *map[string]any `json:"post_api_v4_projects_id_merge_requests_merge_request_iid_pipeline,omitempty"`
 	RefId *string `json:"ref_id,omitempty"`
+	PostApiV4ProjectsIdRefRefTriggerPipeline *map[string]any `json:"post_api_v4_projects_id(ref_ref)trigger_pipeline,omitempty"`
 	PipelineId *string `json:"pipeline_id,omitempty"`
+	PostApiV4ProjectsIdPipeline *map[string]any `json:"post_api_v4_projects_id_pipeline,omitempty"`
 }
 
 // ApiEntitiesCiPipelineBasic is the typed data model for the api_entities_ci_pipeline_basic entity.
@@ -1048,6 +1116,22 @@ type ApiEntitiesCiPipelineBasicLoadMatch struct {
 // ApiEntitiesCiPipelineBasicListMatch is the typed request payload for ApiEntitiesCiPipelineBasic.ListTyped.
 type ApiEntitiesCiPipelineBasicListMatch struct {
 	ProjectId string `json:"project_id"`
+	CreatedAfter *any `json:"created_after,omitempty"`
+	CreatedBefore *any `json:"created_before,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Ref *any `json:"ref,omitempty"`
+	Scope *any `json:"scope,omitempty"`
+	Sha *any `json:"sha,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	Source *any `json:"source,omitempty"`
+	Status *any `json:"status,omitempty"`
+	UpdatedAfter *any `json:"updated_after,omitempty"`
+	UpdatedBefore *any `json:"updated_before,omitempty"`
+	Username *string `json:"username,omitempty"`
+	YamlError *any `json:"yaml_error,omitempty"`
 	PipelineScheduleId *string `json:"pipeline_schedule_id,omitempty"`
 }
 
@@ -1069,6 +1153,9 @@ type ApiEntitiesCiPipelineSchedule struct {
 // ApiEntitiesCiPipelineScheduleListMatch is the typed request payload for ApiEntitiesCiPipelineSchedule.ListTyped.
 type ApiEntitiesCiPipelineScheduleListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Scope *any `json:"scope,omitempty"`
 }
 
 // ApiEntitiesCiPipelineScheduleDetail is the typed data model for the api_entities_ci_pipeline_schedule_detail entity.
@@ -1098,6 +1185,7 @@ type ApiEntitiesCiPipelineScheduleDetailLoadMatch struct {
 type ApiEntitiesCiPipelineScheduleDetailCreateData struct {
 	PipelineScheduleId *string `json:"pipeline_schedule_id,omitempty"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdPipelineSchedule *map[string]any `json:"post_api_v4_projects_id_pipeline_schedule,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Cron *string `json:"cron,omitempty"`
@@ -1117,6 +1205,7 @@ type ApiEntitiesCiPipelineScheduleDetailCreateData struct {
 type ApiEntitiesCiPipelineScheduleDetailUpdateData struct {
 	PipelineScheduleId string `json:"pipeline_schedule_id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdPipelineSchedulesPipelineScheduleId map[string]any `json:"put_api_v4_projects_id_pipeline_schedules_pipeline_schedule_id"`
 	Active *bool `json:"active,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Cron *string `json:"cron,omitempty"`
@@ -1138,6 +1227,7 @@ type ApiEntitiesCiResetTokenResult struct {
 
 // ApiEntitiesCiResetTokenResultCreateData is the typed request payload for ApiEntitiesCiResetTokenResult.CreateTyped.
 type ApiEntitiesCiResetTokenResultCreateData struct {
+	PostApiV4RunnersResetAuthenticationToken map[string]any `json:"post_api_v4_runners_reset_authentication_token"`
 }
 
 // ApiEntitiesCiResourceGroup is the typed data model for the api_entities_ci_resource_group entity.
@@ -1158,12 +1248,15 @@ type ApiEntitiesCiResourceGroupLoadMatch struct {
 // ApiEntitiesCiResourceGroupListMatch is the typed request payload for ApiEntitiesCiResourceGroup.ListTyped.
 type ApiEntitiesCiResourceGroupListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesCiResourceGroupUpdateData is the typed request payload for ApiEntitiesCiResourceGroup.UpdateTyped.
 type ApiEntitiesCiResourceGroupUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdResourceGroupsKey map[string]any `json:"put_api_v4_projects_id_resource_groups_key"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Key *string `json:"key,omitempty"`
 	ProcessMode *string `json:"process_mode,omitempty"`
@@ -1186,21 +1279,20 @@ type ApiEntitiesCiRunner struct {
 
 // ApiEntitiesCiRunnerLoadMatch is the typed request payload for ApiEntitiesCiRunner.LoadTyped.
 type ApiEntitiesCiRunnerLoadMatch struct {
-	AvatarPath *string `json:"avatar_path,omitempty"`
-	AvatarUrl *string `json:"avatar_url,omitempty"`
-	CustomAttributes *[]any `json:"custom_attributes,omitempty"`
-	Id int `json:"id"`
-	Locked *bool `json:"locked,omitempty"`
-	Name *string `json:"name,omitempty"`
-	PublicEmail *string `json:"public_email,omitempty"`
-	State *string `json:"state,omitempty"`
-	Username *string `json:"username,omitempty"`
-	WebUrl *string `json:"web_url,omitempty"`
+	Page *int `json:"page,omitempty"`
+	Paused *any `json:"paused,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Scope *any `json:"scope,omitempty"`
+	Status *any `json:"status,omitempty"`
+	TagList *any `json:"tag_list,omitempty"`
+	Type *any `json:"type,omitempty"`
+	VersionPrefix *any `json:"version_prefix,omitempty"`
 }
 
 // ApiEntitiesCiRunnerCreateData is the typed request payload for ApiEntitiesCiRunner.CreateTyped.
 type ApiEntitiesCiRunnerCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdRunner map[string]any `json:"post_api_v4_projects_id_runner"`
 	AvatarPath *string `json:"avatar_path,omitempty"`
 	AvatarUrl *string `json:"avatar_url,omitempty"`
 	CustomAttributes *[]any `json:"custom_attributes,omitempty"`
@@ -1251,6 +1343,7 @@ type ApiEntitiesCiRunnerDetailLoadMatch struct {
 // ApiEntitiesCiRunnerDetailUpdateData is the typed request payload for ApiEntitiesCiRunnerDetail.UpdateTyped.
 type ApiEntitiesCiRunnerDetailUpdateData struct {
 	Id string `json:"id"`
+	PutApiV4RunnersId map[string]any `json:"put_api_v4_runners_id"`
 	AccessLevel *string `json:"access_level,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	Architecture *string `json:"architecture,omitempty"`
@@ -1304,6 +1397,7 @@ type ApiEntitiesCiRunnerRegistrationDetail struct {
 
 // ApiEntitiesCiRunnerRegistrationDetailCreateData is the typed request payload for ApiEntitiesCiRunnerRegistrationDetail.CreateTyped.
 type ApiEntitiesCiRunnerRegistrationDetailCreateData struct {
+	PostApiV4Runner map[string]any `json:"post_api_v4_runner"`
 }
 
 // ApiEntitiesCiSecureFile is the typed data model for the api_entities_ci_secure_file entity.
@@ -1314,12 +1408,15 @@ type ApiEntitiesCiSecureFile struct {
 // ApiEntitiesCiSecureFileLoadMatch is the typed request payload for ApiEntitiesCiSecureFile.LoadTyped.
 type ApiEntitiesCiSecureFileLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 	Id *string `json:"id,omitempty"`
 }
 
 // ApiEntitiesCiSecureFileCreateData is the typed request payload for ApiEntitiesCiSecureFile.CreateTyped.
 type ApiEntitiesCiSecureFileCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdSecureFile map[string]any `json:"post_api_v4_projects_id_secure_file"`
 	Id *string `json:"id,omitempty"`
 }
 
@@ -1341,6 +1438,7 @@ type ApiEntitiesCiVariable struct {
 type ApiEntitiesCiVariableLoadMatch struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	FilterEnvironmentScope *any `json:"filter_environment_scope,omitempty"`
 }
 
 // ApiEntitiesCiVariableListMatch is the typed request payload for ApiEntitiesCiVariable.ListTyped.
@@ -1352,6 +1450,7 @@ type ApiEntitiesCiVariableListMatch struct {
 // ApiEntitiesCiVariableCreateData is the typed request payload for ApiEntitiesCiVariable.CreateTyped.
 type ApiEntitiesCiVariableCreateData struct {
 	GroupId string `json:"group_id"`
+	PostApiV4GroupsIdVariable map[string]any `json:"post_api_v4_groups_id_variable"`
 	Description *string `json:"description,omitempty"`
 	EnvironmentScope *string `json:"environment_scope,omitempty"`
 	Hidden *bool `json:"hidden,omitempty"`
@@ -1369,7 +1468,11 @@ type ApiEntitiesCiVariableUpdateData struct {
 	Id string `json:"id"`
 	PipelineScheduleId *string `json:"pipeline_schedule_id,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
+	PutApiV4ProjectsIdPipelineSchedulesPipelineScheduleIdVariablesKey *map[string]any `json:"put_api_v4_projects_id_pipeline_schedules_pipeline_schedule_id_variables_key,omitempty"`
 	GroupId *string `json:"group_id,omitempty"`
+	PutApiV4GroupsIdVariablesKey *map[string]any `json:"put_api_v4_groups_id_variables_key,omitempty"`
+	PutApiV4ProjectsIdVariablesKey *map[string]any `json:"put_api_v4_projects_id_variables_key,omitempty"`
+	PutApiV4AdminCiVariablesKey *map[string]any `json:"put_api_v4_admin_ci_variables_key,omitempty"`
 	Description *string `json:"description,omitempty"`
 	EnvironmentScope *string `json:"environment_scope,omitempty"`
 	Hidden *bool `json:"hidden,omitempty"`
@@ -1426,6 +1529,7 @@ type ApiEntitiesClusterListMatch struct {
 
 // ApiEntitiesClusterCreateData is the typed request payload for ApiEntitiesCluster.CreateTyped.
 type ApiEntitiesClusterCreateData struct {
+	PostApiV4AdminClustersAdd map[string]any `json:"post_api_v4_admin_clusters_add"`
 	ClusterType *string `json:"cluster_type,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Domain *string `json:"domain,omitempty"`
@@ -1446,6 +1550,7 @@ type ApiEntitiesClusterCreateData struct {
 // ApiEntitiesClusterUpdateData is the typed request payload for ApiEntitiesCluster.UpdateTyped.
 type ApiEntitiesClusterUpdateData struct {
 	Id string `json:"id"`
+	PutApiV4AdminClustersClusterId map[string]any `json:"put_api_v4_admin_clusters_cluster_id"`
 	ClusterType *string `json:"cluster_type,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Domain *string `json:"domain,omitempty"`
@@ -1491,6 +1596,7 @@ type ApiEntitiesClusterGroupLoadMatch struct {
 // ApiEntitiesClusterGroupCreateData is the typed request payload for ApiEntitiesClusterGroup.CreateTyped.
 type ApiEntitiesClusterGroupCreateData struct {
 	GroupId string `json:"group_id"`
+	PostApiV4GroupsIdClustersUser map[string]any `json:"post_api_v4_groups_id_clusters_user"`
 	ClusterType *string `json:"cluster_type,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Domain *string `json:"domain,omitempty"`
@@ -1513,6 +1619,7 @@ type ApiEntitiesClusterGroupCreateData struct {
 type ApiEntitiesClusterGroupUpdateData struct {
 	ClusterId string `json:"cluster_id"`
 	GroupId string `json:"group_id"`
+	PutApiV4GroupsIdClustersClusterId map[string]any `json:"put_api_v4_groups_id_clusters_cluster_id"`
 	ClusterType *string `json:"cluster_type,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Domain *string `json:"domain,omitempty"`
@@ -1560,6 +1667,7 @@ type ApiEntitiesClusterProjectLoadMatch struct {
 // ApiEntitiesClusterProjectCreateData is the typed request payload for ApiEntitiesClusterProject.CreateTyped.
 type ApiEntitiesClusterProjectCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdClustersUser map[string]any `json:"post_api_v4_projects_id_clusters_user"`
 	ClusterType *string `json:"cluster_type,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Domain *string `json:"domain,omitempty"`
@@ -1582,6 +1690,7 @@ type ApiEntitiesClusterProjectCreateData struct {
 type ApiEntitiesClusterProjectUpdateData struct {
 	ClusterId string `json:"cluster_id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdClustersClusterId map[string]any `json:"put_api_v4_projects_id_clusters_cluster_id"`
 	ClusterType *string `json:"cluster_type,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Domain *string `json:"domain,omitempty"`
@@ -1614,12 +1723,15 @@ type ApiEntitiesClustersAgent struct {
 // ApiEntitiesClustersAgentLoadMatch is the typed request payload for ApiEntitiesClustersAgent.LoadTyped.
 type ApiEntitiesClustersAgentLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 	AgentId *string `json:"agent_id,omitempty"`
 }
 
 // ApiEntitiesClustersAgentCreateData is the typed request payload for ApiEntitiesClustersAgent.CreateTyped.
 type ApiEntitiesClustersAgentCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdClusterAgent map[string]any `json:"post_api_v4_projects_id_cluster_agent"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -1663,6 +1775,8 @@ type ApiEntitiesClustersAgentTokenBasic struct {
 type ApiEntitiesClustersAgentTokenBasicLoadMatch struct {
 	ClusterAgentId string `json:"cluster_agent_id"`
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesClustersAgentTokenWithToken is the typed data model for the api_entities_clusters_agent_token_with_token entity.
@@ -1673,6 +1787,7 @@ type ApiEntitiesClustersAgentTokenWithToken struct {
 type ApiEntitiesClustersAgentTokenWithTokenCreateData struct {
 	ClusterAgentId string `json:"cluster_agent_id"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdClusterAgentsAgentIdToken map[string]any `json:"post_api_v4_projects_id_cluster_agents_agent_id_token"`
 }
 
 // ApiEntitiesCommit is the typed data model for the api_entities_commit entity.
@@ -1697,14 +1812,30 @@ type ApiEntitiesCommit struct {
 // ApiEntitiesCommitListMatch is the typed request payload for ApiEntitiesCommit.ListTyped.
 type ApiEntitiesCommitListMatch struct {
 	ProjectId string `json:"project_id"`
+	All *any `json:"all,omitempty"`
+	Author *any `json:"author,omitempty"`
+	FirstParent *any `json:"first_parent,omitempty"`
+	Order *any `json:"order,omitempty"`
+	Page *int `json:"page,omitempty"`
+	Path *string `json:"path,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	RefName *any `json:"ref_name,omitempty"`
+	Since *any `json:"since,omitempty"`
+	Trailer *any `json:"trailer,omitempty"`
+	Until *any `json:"until,omitempty"`
+	WithStat *any `json:"with_stat,omitempty"`
 	MergeRequestId *string `json:"merge_request_id,omitempty"`
+	Ref *any `json:"ref,omitempty"`
 }
 
 // ApiEntitiesCommitCreateData is the typed request payload for ApiEntitiesCommit.CreateTyped.
 type ApiEntitiesCommitCreateData struct {
 	MergeRequestId *string `json:"merge_request_id,omitempty"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdMergeRequestsMergeRequestIidContextCommit *map[string]any `json:"post_api_v4_projects_id_merge_requests_merge_request_iid_context_commit,omitempty"`
 	Sha *any `json:"sha,omitempty"`
+	PostApiV4ProjectsIdRepositoryCommitsShaCherryPick *map[string]any `json:"post_api_v4_projects_id_repository_commits_sha_cherry_pick,omitempty"`
+	PostApiV4ProjectsIdRepositoryCommitsShaRevert *map[string]any `json:"post_api_v4_projects_id_repository_commits_sha_revert,omitempty"`
 	AuthorEmail *string `json:"author_email,omitempty"`
 	AuthorName *string `json:"author_name,omitempty"`
 	AuthoredDate *string `json:"authored_date,omitempty"`
@@ -1749,11 +1880,13 @@ type ApiEntitiesCommitDetail struct {
 type ApiEntitiesCommitDetailLoadMatch struct {
 	ProjectId string `json:"project_id"`
 	Sha any `json:"sha"`
+	Stat *any `json:"stat,omitempty"`
 }
 
 // ApiEntitiesCommitDetailCreateData is the typed request payload for ApiEntitiesCommitDetail.CreateTyped.
 type ApiEntitiesCommitDetailCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdRepositoryCommit map[string]any `json:"post_api_v4_projects_id_repository_commit"`
 	AuthorEmail *string `json:"author_email,omitempty"`
 	AuthorName *string `json:"author_name,omitempty"`
 	AuthoredDate *string `json:"authored_date,omitempty"`
@@ -1778,6 +1911,7 @@ type ApiEntitiesCommitDetailCreateData struct {
 type ApiEntitiesCommitDetailUpdateData struct {
 	ProjectId string `json:"project_id"`
 	Submodule any `json:"submodule"`
+	PutApiV4ProjectsIdRepositorySubmodulesSubmodule map[string]any `json:"put_api_v4_projects_id_repository_submodules_submodule"`
 	AuthorEmail *string `json:"author_email,omitempty"`
 	AuthorName *string `json:"author_name,omitempty"`
 	AuthoredDate *string `json:"authored_date,omitempty"`
@@ -1822,12 +1956,15 @@ type ApiEntitiesCommitNote struct {
 type ApiEntitiesCommitNoteListMatch struct {
 	ProjectId string `json:"project_id"`
 	Sha any `json:"sha"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesCommitNoteCreateData is the typed request payload for ApiEntitiesCommitNote.CreateTyped.
 type ApiEntitiesCommitNoteCreateData struct {
 	ProjectId string `json:"project_id"`
 	Sha any `json:"sha"`
+	PostApiV4ProjectsIdRepositoryCommitsShaComment map[string]any `json:"post_api_v4_projects_id_repository_commits_sha_comment"`
 	Author *map[string]any `json:"author,omitempty"`
 	AvatarPath *string `json:"avatar_path,omitempty"`
 	AvatarUrl *string `json:"avatar_url,omitempty"`
@@ -1855,6 +1992,7 @@ type ApiEntitiesCommitSequence struct {
 type ApiEntitiesCommitSequenceLoadMatch struct {
 	ProjectId string `json:"project_id"`
 	Sha any `json:"sha"`
+	FirstParent *any `json:"first_parent,omitempty"`
 }
 
 // ApiEntitiesCommitSignature is the typed data model for the api_entities_commit_signature entity.
@@ -1900,12 +2038,22 @@ type ApiEntitiesCommitStatus struct {
 type ApiEntitiesCommitStatusListMatch struct {
 	ProjectId string `json:"project_id"`
 	Sha any `json:"sha"`
+	All *any `json:"all,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	PipelineId *string `json:"pipeline_id,omitempty"`
+	Ref *any `json:"ref,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	Stage *any `json:"stage,omitempty"`
 }
 
 // ApiEntitiesCommitStatusCreateData is the typed request payload for ApiEntitiesCommitStatus.CreateTyped.
 type ApiEntitiesCommitStatusCreateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdStatusesSha map[string]any `json:"post_api_v4_projects_id_statuses_sha"`
 	AllowFailure *bool `json:"allow_failure,omitempty"`
 	Author *map[string]any `json:"author,omitempty"`
 	AvatarPath *string `json:"avatar_path,omitempty"`
@@ -1942,6 +2090,11 @@ type ApiEntitiesCompare struct {
 // ApiEntitiesCompareListMatch is the typed request payload for ApiEntitiesCompare.ListTyped.
 type ApiEntitiesCompareListMatch struct {
 	ProjectId string `json:"project_id"`
+	From any `json:"from"`
+	FromProjectId *string `json:"from_project_id,omitempty"`
+	Straight *any `json:"straight,omitempty"`
+	To any `json:"to"`
+	Unidiff *any `json:"unidiff,omitempty"`
 }
 
 // ApiEntitiesContainerRegistryRepository is the typed data model for the api_entities_container_registry_repository entity.
@@ -1963,11 +2116,18 @@ type ApiEntitiesContainerRegistryRepository struct {
 // ApiEntitiesContainerRegistryRepositoryLoadMatch is the typed request payload for ApiEntitiesContainerRegistryRepository.LoadTyped.
 type ApiEntitiesContainerRegistryRepositoryLoadMatch struct {
 	Id string `json:"id"`
+	Size *int `json:"size,omitempty"`
+	Tag *any `json:"tag,omitempty"`
+	TagsCount *int `json:"tags_count,omitempty"`
 }
 
 // ApiEntitiesContainerRegistryRepositoryListMatch is the typed request payload for ApiEntitiesContainerRegistryRepository.ListTyped.
 type ApiEntitiesContainerRegistryRepositoryListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Tag *any `json:"tag,omitempty"`
+	TagsCount *int `json:"tags_count,omitempty"`
 }
 
 // ApiEntitiesContainerRegistryTag is the typed data model for the api_entities_container_registry_tag entity.
@@ -1981,6 +2141,8 @@ type ApiEntitiesContainerRegistryTag struct {
 type ApiEntitiesContainerRegistryTagListMatch struct {
 	ProjectId string `json:"project_id"`
 	RepositoryId string `json:"repository_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesContainerRegistryTagDetail is the typed data model for the api_entities_container_registry_tag_detail entity.
@@ -2014,6 +2176,11 @@ type ApiEntitiesContributor struct {
 // ApiEntitiesContributorLoadMatch is the typed request payload for ApiEntitiesContributor.LoadTyped.
 type ApiEntitiesContributorLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Ref *any `json:"ref,omitempty"`
+	Sort *any `json:"sort,omitempty"`
 }
 
 // ApiEntitiesDeployKey is the typed data model for the api_entities_deploy_key entity.
@@ -2033,21 +2200,14 @@ type ApiEntitiesDeployKey struct {
 
 // ApiEntitiesDeployKeyListMatch is the typed request payload for ApiEntitiesDeployKey.ListTyped.
 type ApiEntitiesDeployKeyListMatch struct {
-	CreatedAt *string `json:"created_at,omitempty"`
-	ExpiresAt *string `json:"expires_at,omitempty"`
-	Fingerprint *string `json:"fingerprint,omitempty"`
-	FingerprintSha256 *string `json:"fingerprint_sha256,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Key *string `json:"key,omitempty"`
-	LastUsedAt *string `json:"last_used_at,omitempty"`
-	ProjectsWithReadonlyAccess *map[string]any `json:"projects_with_readonly_access,omitempty"`
-	ProjectsWithWriteAccess *map[string]any `json:"projects_with_write_access,omitempty"`
-	Title *string `json:"title,omitempty"`
-	UsageType *string `json:"usage_type,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Public *bool `json:"public,omitempty"`
 }
 
 // ApiEntitiesDeployKeyCreateData is the typed request payload for ApiEntitiesDeployKey.CreateTyped.
 type ApiEntitiesDeployKeyCreateData struct {
+	PostApiV4DeployKey map[string]any `json:"post_api_v4_deploy_key"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	ExpiresAt *string `json:"expires_at,omitempty"`
 	Fingerprint *string `json:"fingerprint,omitempty"`
@@ -2065,6 +2225,7 @@ type ApiEntitiesDeployKeyCreateData struct {
 type ApiEntitiesDeployKeyUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdDeployKeysKeyId map[string]any `json:"put_api_v4_projects_id_deploy_keys_key_id"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	ExpiresAt *string `json:"expires_at,omitempty"`
 	Fingerprint *string `json:"fingerprint,omitempty"`
@@ -2102,11 +2263,14 @@ type ApiEntitiesDeployKeysProjectLoadMatch struct {
 // ApiEntitiesDeployKeysProjectListMatch is the typed request payload for ApiEntitiesDeployKeysProject.ListTyped.
 type ApiEntitiesDeployKeysProjectListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesDeployKeysProjectCreateData is the typed request payload for ApiEntitiesDeployKeysProject.CreateTyped.
 type ApiEntitiesDeployKeysProjectCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdDeployKey map[string]any `json:"post_api_v4_projects_id_deploy_key"`
 	CanPush *bool `json:"can_push,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	ExpiresAt *string `json:"expires_at,omitempty"`
@@ -2141,13 +2305,9 @@ type ApiEntitiesDeployTokenLoadMatch struct {
 
 // ApiEntitiesDeployTokenListMatch is the typed request payload for ApiEntitiesDeployToken.ListTyped.
 type ApiEntitiesDeployTokenListMatch struct {
-	Expired *bool `json:"expired,omitempty"`
-	ExpiresAt *string `json:"expires_at,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Revoked *bool `json:"revoked,omitempty"`
-	Scopes *[]any `json:"scopes,omitempty"`
-	Username *string `json:"username,omitempty"`
+	Active *bool `json:"active,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesDeployTokenWithToken is the typed data model for the api_entities_deploy_token_with_token entity.
@@ -2157,6 +2317,7 @@ type ApiEntitiesDeployTokenWithToken struct {
 // ApiEntitiesDeployTokenWithTokenCreateData is the typed request payload for ApiEntitiesDeployTokenWithToken.CreateTyped.
 type ApiEntitiesDeployTokenWithTokenCreateData struct {
 	GroupId string `json:"group_id"`
+	PostApiV4GroupsIdDeployToken map[string]any `json:"post_api_v4_groups_id_deploy_token"`
 }
 
 // ApiEntitiesDeployment is the typed data model for the api_entities_deployment entity.
@@ -2176,6 +2337,16 @@ type ApiEntitiesDeployment struct {
 // ApiEntitiesDeploymentListMatch is the typed request payload for ApiEntitiesDeployment.ListTyped.
 type ApiEntitiesDeploymentListMatch struct {
 	ProjectId string `json:"project_id"`
+	Environment *any `json:"environment,omitempty"`
+	FinishedAfter *any `json:"finished_after,omitempty"`
+	FinishedBefore *any `json:"finished_before,omitempty"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	Status *any `json:"status,omitempty"`
+	UpdatedAfter *any `json:"updated_after,omitempty"`
+	UpdatedBefore *any `json:"updated_before,omitempty"`
 }
 
 // ApiEntitiesDeploymentExtended is the typed data model for the api_entities_deployment_extended entity.
@@ -2204,6 +2375,7 @@ type ApiEntitiesDeploymentExtendedLoadMatch struct {
 // ApiEntitiesDeploymentExtendedCreateData is the typed request payload for ApiEntitiesDeploymentExtended.CreateTyped.
 type ApiEntitiesDeploymentExtendedCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdDeployment map[string]any `json:"post_api_v4_projects_id_deployment"`
 	ApprovalSummary *map[string]any `json:"approval_summary,omitempty"`
 	Approvals *map[string]any `json:"approvals,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
@@ -2223,6 +2395,7 @@ type ApiEntitiesDeploymentExtendedCreateData struct {
 type ApiEntitiesDeploymentExtendedUpdateData struct {
 	DeploymentId string `json:"deployment_id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdDeploymentsDeploymentId map[string]any `json:"put_api_v4_projects_id_deployments_deployment_id"`
 	ApprovalSummary *map[string]any `json:"approval_summary,omitempty"`
 	Approvals *map[string]any `json:"approvals,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
@@ -2246,6 +2419,7 @@ type ApiEntitiesDeploymentsApproval struct {
 type ApiEntitiesDeploymentsApprovalCreateData struct {
 	DeploymentId string `json:"deployment_id"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdDeploymentsDeploymentIdApproval map[string]any `json:"post_api_v4_projects_id_deployments_deployment_id_approval"`
 }
 
 // ApiEntitiesDictionaryTable is the typed data model for the api_entities_dictionary_table entity.
@@ -2280,12 +2454,18 @@ type ApiEntitiesDiff struct {
 type ApiEntitiesDiffLoadMatch struct {
 	MergeRequestId string `json:"merge_request_id"`
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Unidiff *any `json:"unidiff,omitempty"`
 }
 
 // ApiEntitiesDiffListMatch is the typed request payload for ApiEntitiesDiff.ListTyped.
 type ApiEntitiesDiffListMatch struct {
 	ProjectId string `json:"project_id"`
 	Sha any `json:"sha"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Unidiff *any `json:"unidiff,omitempty"`
 }
 
 // ApiEntitiesDiscoveredCluster is the typed data model for the api_entities_discovered_cluster entity.
@@ -2296,8 +2476,7 @@ type ApiEntitiesDiscoveredCluster struct {
 
 // ApiEntitiesDiscoveredClusterLoadMatch is the typed request payload for ApiEntitiesDiscoveredCluster.LoadTyped.
 type ApiEntitiesDiscoveredClusterLoadMatch struct {
-	Groups *string `json:"groups,omitempty"`
-	Projects *string `json:"projects,omitempty"`
+	GroupId string `json:"group_id"`
 }
 
 // ApiEntitiesDraftNote is the typed data model for the api_entities_draft_note entity.
@@ -2330,6 +2509,7 @@ type ApiEntitiesDraftNoteListMatch struct {
 type ApiEntitiesDraftNoteCreateData struct {
 	MergeRequestId string `json:"merge_request_id"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdMergeRequestsMergeRequestIidDraftNote map[string]any `json:"post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note"`
 	AuthorId *int `json:"author_id,omitempty"`
 	CommitId *int `json:"commit_id,omitempty"`
 	DiscussionId *int `json:"discussion_id,omitempty"`
@@ -2345,6 +2525,7 @@ type ApiEntitiesDraftNoteUpdateData struct {
 	Id string `json:"id"`
 	MergeRequestId string `json:"merge_request_id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdMergeRequestsMergeRequestIidDraftNotesDraftNoteId map[string]any `json:"put_api_v4_projects_id_merge_requests_merge_request_iid_draft_notes_draft_note_id"`
 	AuthorId *int `json:"author_id,omitempty"`
 	CommitId *int `json:"commit_id,omitempty"`
 	DiscussionId *int `json:"discussion_id,omitempty"`
@@ -2383,12 +2564,19 @@ type ApiEntitiesEnvironmentLoadMatch struct {
 // ApiEntitiesEnvironmentListMatch is the typed request payload for ApiEntitiesEnvironment.ListTyped.
 type ApiEntitiesEnvironmentListMatch struct {
 	ProjectId string `json:"project_id"`
+	Name *string `json:"name,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Search *any `json:"search,omitempty"`
+	State *any `json:"state,omitempty"`
 }
 
 // ApiEntitiesEnvironmentCreateData is the typed request payload for ApiEntitiesEnvironment.CreateTyped.
 type ApiEntitiesEnvironmentCreateData struct {
 	EnvironmentId *string `json:"environment_id,omitempty"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdEnvironmentsEnvironmentIdStop *map[string]any `json:"post_api_v4_projects_id_environments_environment_id_stop,omitempty"`
+	PostApiV4ProjectsIdEnvironment *map[string]any `json:"post_api_v4_projects_id_environment,omitempty"`
 	AutoStopAt *string `json:"auto_stop_at,omitempty"`
 	AutoStopSetting *string `json:"auto_stop_setting,omitempty"`
 	ClusterAgent *map[string]any `json:"cluster_agent,omitempty"`
@@ -2411,6 +2599,7 @@ type ApiEntitiesEnvironmentCreateData struct {
 type ApiEntitiesEnvironmentUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdEnvironmentsEnvironmentId map[string]any `json:"put_api_v4_projects_id_environments_environment_id"`
 	AutoStopAt *string `json:"auto_stop_at,omitempty"`
 	AutoStopSetting *string `json:"auto_stop_setting,omitempty"`
 	ClusterAgent *map[string]any `json:"cluster_agent,omitempty"`
@@ -2467,6 +2656,7 @@ type ApiEntitiesErrorTrackingProjectSettingLoadMatch struct {
 // ApiEntitiesErrorTrackingProjectSettingUpdateData is the typed request payload for ApiEntitiesErrorTrackingProjectSetting.UpdateTyped.
 type ApiEntitiesErrorTrackingProjectSettingUpdateData struct {
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdErrorTrackingSetting map[string]any `json:"put_api_v4_projects_id_error_tracking_setting"`
 	Active *bool `json:"active,omitempty"`
 	ApiUrl *string `json:"api_url,omitempty"`
 	Integrated *bool `json:"integrated,omitempty"`
@@ -2497,26 +2687,25 @@ type ApiEntitiesEvent struct {
 // ApiEntitiesEventLoadMatch is the typed request payload for ApiEntitiesEvent.LoadTyped.
 type ApiEntitiesEventLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	Action *any `json:"action,omitempty"`
+	After *any `json:"after,omitempty"`
+	Before *any `json:"before,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	TargetType *any `json:"target_type,omitempty"`
 }
 
 // ApiEntitiesEventListMatch is the typed request payload for ApiEntitiesEvent.ListTyped.
 type ApiEntitiesEventListMatch struct {
-	ActionName *string `json:"action_name,omitempty"`
-	Author *map[string]any `json:"author,omitempty"`
-	AuthorId *int `json:"author_id,omitempty"`
-	AuthorUsername *string `json:"author_username,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Imported *bool `json:"imported,omitempty"`
-	ImportedFrom *string `json:"imported_from,omitempty"`
-	Note *map[string]any `json:"note,omitempty"`
-	ProjectId *int `json:"project_id,omitempty"`
-	PushData *map[string]any `json:"push_data,omitempty"`
-	TargetId *int `json:"target_id,omitempty"`
-	TargetIid *int `json:"target_iid,omitempty"`
-	TargetTitle *string `json:"target_title,omitempty"`
-	TargetType *string `json:"target_type,omitempty"`
-	WikiPage *map[string]any `json:"wiki_page,omitempty"`
+	Action *any `json:"action,omitempty"`
+	After *any `json:"after,omitempty"`
+	Before *any `json:"before,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Scope *any `json:"scope,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	TargetType *any `json:"target_type,omitempty"`
 }
 
 // ApiEntitiesFeature is the typed data model for the api_entities_feature entity.
@@ -2540,6 +2729,7 @@ type ApiEntitiesFeatureListMatch struct {
 // ApiEntitiesFeatureCreateData is the typed request payload for ApiEntitiesFeature.CreateTyped.
 type ApiEntitiesFeatureCreateData struct {
 	Id string `json:"id"`
+	PostApiV4FeaturesName map[string]any `json:"post_api_v4_features_name"`
 	Definition *map[string]any `json:"definition,omitempty"`
 	Gates *map[string]any `json:"gates,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -2598,11 +2788,15 @@ type ApiEntitiesFeatureFlagLoadMatch struct {
 // ApiEntitiesFeatureFlagListMatch is the typed request payload for ApiEntitiesFeatureFlag.ListTyped.
 type ApiEntitiesFeatureFlagListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Scope *any `json:"scope,omitempty"`
 }
 
 // ApiEntitiesFeatureFlagCreateData is the typed request payload for ApiEntitiesFeatureFlag.CreateTyped.
 type ApiEntitiesFeatureFlagCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdFeatureFlag map[string]any `json:"post_api_v4_projects_id_feature_flag"`
 	Active *bool `json:"active,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -2620,6 +2814,7 @@ type ApiEntitiesFeatureFlagCreateData struct {
 type ApiEntitiesFeatureFlagUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdFeatureFlagsFeatureFlagName map[string]any `json:"put_api_v4_projects_id_feature_flags_feature_flag_name"`
 	Active *bool `json:"active,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -2654,11 +2849,15 @@ type ApiEntitiesFeatureFlagUserListLoadMatch struct {
 // ApiEntitiesFeatureFlagUserListListMatch is the typed request payload for ApiEntitiesFeatureFlagUserList.ListTyped.
 type ApiEntitiesFeatureFlagUserListListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Search *any `json:"search,omitempty"`
 }
 
 // ApiEntitiesFeatureFlagUserListCreateData is the typed request payload for ApiEntitiesFeatureFlagUserList.CreateTyped.
 type ApiEntitiesFeatureFlagUserListCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdFeatureFlagsUserList map[string]any `json:"post_api_v4_projects_id_feature_flags_user_list"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	EditPath *string `json:"edit_path,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -2673,6 +2872,7 @@ type ApiEntitiesFeatureFlagUserListCreateData struct {
 type ApiEntitiesFeatureFlagUserListUpdateData struct {
 	Iid any `json:"iid"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdFeatureFlagsUserListsIid map[string]any `json:"put_api_v4_projects_id_feature_flags_user_lists_iid"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	EditPath *string `json:"edit_path,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -2701,11 +2901,14 @@ type ApiEntitiesFreezePeriodLoadMatch struct {
 // ApiEntitiesFreezePeriodListMatch is the typed request payload for ApiEntitiesFreezePeriod.ListTyped.
 type ApiEntitiesFreezePeriodListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesFreezePeriodCreateData is the typed request payload for ApiEntitiesFreezePeriod.CreateTyped.
 type ApiEntitiesFreezePeriodCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdFreezePeriod map[string]any `json:"post_api_v4_projects_id_freeze_period"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	CronTimezone *string `json:"cron_timezone,omitempty"`
 	FreezeEnd *string `json:"freeze_end,omitempty"`
@@ -2718,6 +2921,7 @@ type ApiEntitiesFreezePeriodCreateData struct {
 type ApiEntitiesFreezePeriodUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdFreezePeriodsFreezePeriodId map[string]any `json:"put_api_v4_projects_id_freeze_periods_freeze_period_id"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	CronTimezone *string `json:"cron_timezone,omitempty"`
 	FreezeEnd *string `json:"freeze_end,omitempty"`
@@ -2747,6 +2951,7 @@ type ApiEntitiesGoModuleVersion struct {
 type ApiEntitiesGoModuleVersionLoadMatch struct {
 	ModuleVersion any `json:"module_version"`
 	ProjectId string `json:"project_id"`
+	ModuleName any `json:"module_name"`
 }
 
 // ApiEntitiesGroup is the typed data model for the api_entities_group entity.
@@ -2804,62 +3009,33 @@ type ApiEntitiesGroup struct {
 // ApiEntitiesGroupLoadMatch is the typed request payload for ApiEntitiesGroup.LoadTyped.
 type ApiEntitiesGroupLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	Search *any `json:"search,omitempty"`
 }
 
 // ApiEntitiesGroupListMatch is the typed request payload for ApiEntitiesGroup.ListTyped.
 type ApiEntitiesGroupListMatch struct {
+	Active *bool `json:"active,omitempty"`
+	AllAvailable *any `json:"all_available,omitempty"`
 	Archived *bool `json:"archived,omitempty"`
-	AutoDevopsEnabled *string `json:"auto_devops_enabled,omitempty"`
-	AutoDuoCodeReviewEnabled *string `json:"auto_duo_code_review_enabled,omitempty"`
-	AvatarUrl *string `json:"avatar_url,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	CustomAttributes *map[string]any `json:"custom_attributes,omitempty"`
-	DefaultBranch *string `json:"default_branch,omitempty"`
-	DefaultBranchProtection *string `json:"default_branch_protection,omitempty"`
-	DefaultBranchProtectionDefaults *string `json:"default_branch_protection_defaults,omitempty"`
-	Description *string `json:"description,omitempty"`
-	DuoCoreFeaturesEnabled *bool `json:"duo_core_features_enabled,omitempty"`
-	DuoFeaturesEnabled *string `json:"duo_features_enabled,omitempty"`
-	EmailsDisabled *bool `json:"emails_disabled,omitempty"`
-	EmailsEnabled *bool `json:"emails_enabled,omitempty"`
-	FileTemplateProjectId *string `json:"file_template_project_id,omitempty"`
-	FullName *string `json:"full_name,omitempty"`
-	FullPath *string `json:"full_path,omitempty"`
-	Id *string `json:"id,omitempty"`
-	LdapAccess *string `json:"ldap_access,omitempty"`
-	LdapCn *string `json:"ldap_cn,omitempty"`
-	LdapGroupLinks *map[string]any `json:"ldap_group_links,omitempty"`
-	LfsEnabled *string `json:"lfs_enabled,omitempty"`
-	LockDuoFeaturesEnabled *string `json:"lock_duo_features_enabled,omitempty"`
-	LockMathRenderingLimitsEnabled *bool `json:"lock_math_rendering_limits_enabled,omitempty"`
-	MarkedForDeletionOn *string `json:"marked_for_deletion_on,omitempty"`
-	MathRenderingLimitsEnabled *bool `json:"math_rendering_limits_enabled,omitempty"`
-	MaxArtifactsSize *int `json:"max_artifacts_size,omitempty"`
-	MentionsDisabled *string `json:"mentions_disabled,omitempty"`
-	Name *string `json:"name,omitempty"`
-	OrganizationId *string `json:"organization_id,omitempty"`
-	ParentId *string `json:"parent_id,omitempty"`
-	Path *string `json:"path,omitempty"`
-	ProjectCreationLevel *string `json:"project_creation_level,omitempty"`
-	RepositoryStorage *string `json:"repository_storage,omitempty"`
-	RequestAccessEnabled *string `json:"request_access_enabled,omitempty"`
-	RequireTwoFactorAuthentication *string `json:"require_two_factor_authentication,omitempty"`
-	RootStorageStatistics *map[string]any `json:"root_storage_statistics,omitempty"`
-	SamlGroupLinks *map[string]any `json:"saml_group_links,omitempty"`
-	ShareWithGroupLock *string `json:"share_with_group_lock,omitempty"`
-	SharedRunnersSetting *string `json:"shared_runners_setting,omitempty"`
-	ShowDiffPreviewInEmail *bool `json:"show_diff_preview_in_email,omitempty"`
-	Statistics *map[string]any `json:"statistics,omitempty"`
-	SubgroupCreationLevel *string `json:"subgroup_creation_level,omitempty"`
-	TwoFactorGracePeriod *string `json:"two_factor_grace_period,omitempty"`
-	Visibility *string `json:"visibility,omitempty"`
-	WebBasedCommitSigningEnabled *string `json:"web_based_commit_signing_enabled,omitempty"`
-	WebUrl *string `json:"web_url,omitempty"`
-	WikiAccessLevel *string `json:"wiki_access_level,omitempty"`
+	MarkedForDeletionOn *any `json:"marked_for_deletion_on,omitempty"`
+	MinAccessLevel *any `json:"min_access_level,omitempty"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Owned *any `json:"owned,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	RepositoryStorage *any `json:"repository_storage,omitempty"`
+	Search *any `json:"search,omitempty"`
+	SkipGroup *any `json:"skip_group,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	Statistic *any `json:"statistic,omitempty"`
+	TopLevelOnly *any `json:"top_level_only,omitempty"`
+	Visibility *any `json:"visibility,omitempty"`
+	WithCustomAttribute *any `json:"with_custom_attribute,omitempty"`
 }
 
 // ApiEntitiesGroupCreateData is the typed request payload for ApiEntitiesGroup.CreateTyped.
 type ApiEntitiesGroupCreateData struct {
+	PostApiV4Group map[string]any `json:"post_api_v4_group"`
 	Archived *bool `json:"archived,omitempty"`
 	AutoDevopsEnabled *string `json:"auto_devops_enabled,omitempty"`
 	AutoDuoCodeReviewEnabled *string `json:"auto_duo_code_review_enabled,omitempty"`
@@ -2913,6 +3089,7 @@ type ApiEntitiesGroupCreateData struct {
 // ApiEntitiesGroupUpdateData is the typed request payload for ApiEntitiesGroup.UpdateTyped.
 type ApiEntitiesGroupUpdateData struct {
 	Id string `json:"id"`
+	PutApiV4GroupsId map[string]any `json:"put_api_v4_groups_id"`
 	Archived *bool `json:"archived,omitempty"`
 	AutoDevopsEnabled *string `json:"auto_devops_enabled,omitempty"`
 	AutoDuoCodeReviewEnabled *string `json:"auto_duo_code_review_enabled,omitempty"`
@@ -3035,11 +3212,14 @@ type ApiEntitiesGroupDetail struct {
 // ApiEntitiesGroupDetailLoadMatch is the typed request payload for ApiEntitiesGroupDetail.LoadTyped.
 type ApiEntitiesGroupDetailLoadMatch struct {
 	Id string `json:"id"`
+	WithCustomAttribute *any `json:"with_custom_attribute,omitempty"`
+	WithProject *any `json:"with_project,omitempty"`
 }
 
 // ApiEntitiesGroupDetailCreateData is the typed request payload for ApiEntitiesGroupDetail.CreateTyped.
 type ApiEntitiesGroupDetailCreateData struct {
 	GroupId string `json:"group_id"`
+	PostApiV4GroupsIdShare *map[string]any `json:"post_api_v4_groups_id_share,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
 	AllowedEmailDomainsList *string `json:"allowed_email_domains_list,omitempty"`
 	Archived *bool `json:"archived,omitempty"`
@@ -3137,27 +3317,13 @@ type ApiEntitiesHookLoadMatch struct {
 
 // ApiEntitiesHookListMatch is the typed request payload for ApiEntitiesHook.ListTyped.
 type ApiEntitiesHookListMatch struct {
-	AlertStatus *any `json:"alert_status,omitempty"`
-	BranchFilterStrategy *string `json:"branch_filter_strategy,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	CustomHeaders *[]any `json:"custom_headers,omitempty"`
-	CustomWebhookTemplate *string `json:"custom_webhook_template,omitempty"`
-	Description *string `json:"description,omitempty"`
-	DisabledUntil *string `json:"disabled_until,omitempty"`
-	EnableSslVerification *bool `json:"enable_ssl_verification,omitempty"`
-	Id *string `json:"id,omitempty"`
-	MergeRequestsEvents *bool `json:"merge_requests_events,omitempty"`
-	Name *string `json:"name,omitempty"`
-	PushEvents *bool `json:"push_events,omitempty"`
-	PushEventsBranchFilter *string `json:"push_events_branch_filter,omitempty"`
-	RepositoryUpdateEvents *bool `json:"repository_update_events,omitempty"`
-	TagPushEvents *bool `json:"tag_push_events,omitempty"`
-	Url *string `json:"url,omitempty"`
-	UrlVariables *[]any `json:"url_variables,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesHookCreateData is the typed request payload for ApiEntitiesHook.CreateTyped.
 type ApiEntitiesHookCreateData struct {
+	PostApiV4Hook map[string]any `json:"post_api_v4_hook"`
 	AlertStatus *any `json:"alert_status,omitempty"`
 	BranchFilterStrategy *string `json:"branch_filter_strategy,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
@@ -3180,6 +3346,7 @@ type ApiEntitiesHookCreateData struct {
 // ApiEntitiesHookUpdateData is the typed request payload for ApiEntitiesHook.UpdateTyped.
 type ApiEntitiesHookUpdateData struct {
 	Id string `json:"id"`
+	PutApiV4HooksHookId map[string]any `json:"put_api_v4_hooks_hook_id"`
 	AlertStatus *any `json:"alert_status,omitempty"`
 	BranchFilterStrategy *string `json:"branch_filter_strategy,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
@@ -3244,6 +3411,7 @@ type ApiEntitiesIntegrationBasicListMatch struct {
 // ApiEntitiesIntegrationBasicUpdateData is the typed request payload for ApiEntitiesIntegrationBasic.UpdateTyped.
 type ApiEntitiesIntegrationBasicUpdateData struct {
 	GroupId string `json:"group_id"`
+	PutApiV4GroupsIdIntegrationsAppleAppStore map[string]any `json:"put_api_v4_groups_id_integrations_apple_app_store"`
 	Active *bool `json:"active,omitempty"`
 	AlertEvents *bool `json:"alert_events,omitempty"`
 	CommentOnEventEnabled *bool `json:"comment_on_event_enabled,omitempty"`
@@ -3284,11 +3452,15 @@ type ApiEntitiesInvitation struct {
 // ApiEntitiesInvitationListMatch is the typed request payload for ApiEntitiesInvitation.ListTyped.
 type ApiEntitiesInvitationListMatch struct {
 	GroupId string `json:"group_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Query *any `json:"query,omitempty"`
 }
 
 // ApiEntitiesInvitationCreateData is the typed request payload for ApiEntitiesInvitation.CreateTyped.
 type ApiEntitiesInvitationCreateData struct {
 	GroupId string `json:"group_id"`
+	PostApiV4GroupsIdInvitation map[string]any `json:"post_api_v4_groups_id_invitation"`
 	AccessLevel *string `json:"access_level,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	CreatedByName *string `json:"created_by_name,omitempty"`
@@ -3303,7 +3475,9 @@ type ApiEntitiesInvitationCreateData struct {
 type ApiEntitiesInvitationUpdateData struct {
 	GroupId *string `json:"group_id,omitempty"`
 	Id string `json:"id"`
+	PutApiV4GroupsIdInvitationsEmail *map[string]any `json:"put_api_v4_groups_id_invitations_email,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
+	PutApiV4ProjectsIdInvitationsEmail *map[string]any `json:"put_api_v4_projects_id_invitations_email,omitempty"`
 	AccessLevel *string `json:"access_level,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	CreatedByName *string `json:"created_by_name,omitempty"`
@@ -3332,7 +3506,11 @@ type ApiEntitiesIssuableTimeStatLoadMatch struct {
 type ApiEntitiesIssuableTimeStatCreateData struct {
 	IssueId *string `json:"issue_id,omitempty"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdIssuesIssueIidAddSpentTime *map[string]any `json:"post_api_v4_projects_id_issues_issue_iid_add_spent_time,omitempty"`
+	PostApiV4ProjectsIdIssuesIssueIidTimeEstimate *map[string]any `json:"post_api_v4_projects_id_issues_issue_iid_time_estimate,omitempty"`
 	MergeRequestId *string `json:"merge_request_id,omitempty"`
+	PostApiV4ProjectsIdMergeRequestsMergeRequestIidAddSpentTime *map[string]any `json:"post_api_v4_projects_id_merge_requests_merge_request_iid_add_spent_time,omitempty"`
+	PostApiV4ProjectsIdMergeRequestsMergeRequestIidTimeEstimate *map[string]any `json:"post_api_v4_projects_id_merge_requests_merge_request_iid_time_estimate,omitempty"`
 	HumanTimeEstimate *string `json:"human_time_estimate,omitempty"`
 	HumanTotalTimeSpent *string `json:"human_total_time_spent,omitempty"`
 	TimeEstimate *int `json:"time_estimate,omitempty"`
@@ -3394,55 +3572,58 @@ type ApiEntitiesIssueLoadMatch struct {
 
 // ApiEntitiesIssueListMatch is the typed request payload for ApiEntitiesIssue.ListTyped.
 type ApiEntitiesIssueListMatch struct {
-	Assignee *map[string]any `json:"assignee,omitempty"`
-	Assignees *map[string]any `json:"assignees,omitempty"`
-	Author *map[string]any `json:"author,omitempty"`
-	BlockingIssuesCount *string `json:"blocking_issues_count,omitempty"`
-	ClosedAt *string `json:"closed_at,omitempty"`
-	ClosedBy *map[string]any `json:"closed_by,omitempty"`
-	Confidential *bool `json:"confidential,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	Description *string `json:"description,omitempty"`
-	DiscussionLocked *bool `json:"discussion_locked,omitempty"`
-	Downvotes *string `json:"downvotes,omitempty"`
-	DueDate *string `json:"due_date,omitempty"`
-	Epic *map[string]any `json:"epic,omitempty"`
-	EpicIid *string `json:"epic_iid,omitempty"`
-	HasTasks *bool `json:"has_tasks,omitempty"`
-	HealthStatus *string `json:"health_status,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Iid *int `json:"iid,omitempty"`
-	Imported *string `json:"imported,omitempty"`
-	ImportedFrom *string `json:"imported_from,omitempty"`
-	IssueType *string `json:"issue_type,omitempty"`
-	Iteration *map[string]any `json:"iteration,omitempty"`
-	Labels *[]any `json:"labels,omitempty"`
-	Links *map[string]any `json:"links,omitempty"`
-	MergeRequestsCount *string `json:"merge_requests_count,omitempty"`
-	Milestone *map[string]any `json:"milestone,omitempty"`
-	MovedToId *string `json:"moved_to_id,omitempty"`
-	ProjectId *int `json:"project_id,omitempty"`
-	References *map[string]any `json:"references,omitempty"`
-	ServiceDeskReplyTo *string `json:"service_desk_reply_to,omitempty"`
-	Severity *string `json:"severity,omitempty"`
-	State *string `json:"state,omitempty"`
-	Subscribed *string `json:"subscribed,omitempty"`
-	TaskCompletionStatus *string `json:"task_completion_status,omitempty"`
-	TaskStatus *string `json:"task_status,omitempty"`
-	TimeStats *map[string]any `json:"time_stats,omitempty"`
-	Title *string `json:"title,omitempty"`
-	Type *string `json:"type,omitempty"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
-	Upvotes *string `json:"upvotes,omitempty"`
-	UserNotesCount *string `json:"user_notes_count,omitempty"`
-	WebUrl *string `json:"web_url,omitempty"`
-	Weight *string `json:"weight,omitempty"`
+	AssigneeId *string `json:"assignee_id,omitempty"`
+	AssigneeUsername *any `json:"assignee_username,omitempty"`
+	AuthorId *string `json:"author_id,omitempty"`
+	AuthorUsername *any `json:"author_username,omitempty"`
+	ClosedById *string `json:"closed_by_id,omitempty"`
+	Confidential *any `json:"confidential,omitempty"`
+	CreatedAfter *any `json:"created_after,omitempty"`
+	CreatedBefore *any `json:"created_before,omitempty"`
+	DueDate *any `json:"due_date,omitempty"`
+	EpicId *string `json:"epic_id,omitempty"`
+	HealthStatus *any `json:"health_status,omitempty"`
+	Iid *any `json:"iid,omitempty"`
+	In *any `json:"in,omitempty"`
+	IssueType *any `json:"issue_type,omitempty"`
+	IterationId *string `json:"iteration_id,omitempty"`
+	IterationTitle *any `json:"iteration_title,omitempty"`
+	Label *string `json:"label,omitempty"`
+	Milestone *any `json:"milestone,omitempty"`
+	MilestoneId *string `json:"milestone_id,omitempty"`
+	MyReactionEmoji *any `json:"my_reaction_emoji,omitempty"`
+	NonArchived *any `json:"non_archived,omitempty"`
+	NotAssigneeId *string `json:"not_assignee_id,omitempty"`
+	NotAssigneeUsername *any `json:"not_assignee_username,omitempty"`
+	NotAuthorId *string `json:"not_author_id,omitempty"`
+	NotAuthorUsername *any `json:"not_author_username,omitempty"`
+	NotIid *any `json:"not_iid,omitempty"`
+	NotIterationId *string `json:"not_iteration_id,omitempty"`
+	NotIterationTitle *any `json:"not_iteration_title,omitempty"`
+	NotLabel *any `json:"not_label,omitempty"`
+	NotMilestone *any `json:"not_milestone,omitempty"`
+	NotMilestoneId *string `json:"not_milestone_id,omitempty"`
+	NotWeight *any `json:"not_weight,omitempty"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Scope *any `json:"scope,omitempty"`
+	Search *any `json:"search,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	State *any `json:"state,omitempty"`
+	UpdatedAfter *any `json:"updated_after,omitempty"`
+	UpdatedBefore *any `json:"updated_before,omitempty"`
+	Weight *float64 `json:"weight,omitempty"`
+	WithLabelsDetail *any `json:"with_labels_detail,omitempty"`
 }
 
 // ApiEntitiesIssueCreateData is the typed request payload for ApiEntitiesIssue.CreateTyped.
 type ApiEntitiesIssueCreateData struct {
 	IssueId *string `json:"issue_id,omitempty"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdIssuesIssueIidClone *map[string]any `json:"post_api_v4_projects_id_issues_issue_iid_clone,omitempty"`
+	PostApiV4ProjectsIdIssuesIssueIidMove *map[string]any `json:"post_api_v4_projects_id_issues_issue_iid_move,omitempty"`
+	PostApiV4ProjectsIdIssue *map[string]any `json:"post_api_v4_projects_id_issue,omitempty"`
 	Assignee *map[string]any `json:"assignee,omitempty"`
 	Assignees *map[string]any `json:"assignees,omitempty"`
 	Author *map[string]any `json:"author,omitempty"`
@@ -3491,7 +3672,9 @@ type ApiEntitiesIssueCreateData struct {
 type ApiEntitiesIssueUpdateData struct {
 	Id *string `json:"id,omitempty"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdIssuesIssueIid *map[string]any `json:"put_api_v4_projects_id_issues_issue_iid,omitempty"`
 	IssueId *string `json:"issue_id,omitempty"`
+	PutApiV4ProjectsIdIssuesIssueIidReorder *map[string]any `json:"put_api_v4_projects_id_issues_issue_iid_reorder,omitempty"`
 	Assignee *map[string]any `json:"assignee,omitempty"`
 	Assignees *map[string]any `json:"assignees,omitempty"`
 	Author *map[string]any `json:"author,omitempty"`
@@ -3554,6 +3737,7 @@ type ApiEntitiesIssueLinkLoadMatch struct {
 type ApiEntitiesIssueLinkCreateData struct {
 	IssueId string `json:"issue_id"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdIssuesIssueIidLink map[string]any `json:"post_api_v4_projects_id_issues_issue_iid_link"`
 	Id *string `json:"id,omitempty"`
 	LinkType *string `json:"link_type,omitempty"`
 	SourceIssue *map[string]any `json:"source_issue,omitempty"`
@@ -3581,6 +3765,9 @@ type ApiEntitiesLicenseLoadMatch struct {
 	Id string `json:"id"`
 	Name string `json:"name"`
 	Type any `json:"type"`
+	Fullname *any `json:"fullname,omitempty"`
+	Project *any `json:"project,omitempty"`
+	SourceTemplateProjectId *string `json:"source_template_project_id,omitempty"`
 }
 
 // ApiEntitiesMarkdown is the typed data model for the api_entities_markdown entity.
@@ -3589,6 +3776,7 @@ type ApiEntitiesMarkdown struct {
 
 // ApiEntitiesMarkdownCreateData is the typed request payload for ApiEntitiesMarkdown.CreateTyped.
 type ApiEntitiesMarkdownCreateData struct {
+	PostApiV4Markdown map[string]any `json:"post_api_v4_markdown"`
 }
 
 // ApiEntitiesMarkdownUploadAdmin is the typed data model for the api_entities_markdown_upload_admin entity.
@@ -3603,6 +3791,8 @@ type ApiEntitiesMarkdownUploadAdmin struct {
 // ApiEntitiesMarkdownUploadAdminListMatch is the typed request payload for ApiEntitiesMarkdownUploadAdmin.ListTyped.
 type ApiEntitiesMarkdownUploadAdminListMatch struct {
 	GroupId string `json:"group_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesMember is the typed data model for the api_entities_member entity.
@@ -3641,11 +3831,19 @@ type ApiEntitiesMemberLoadMatch struct {
 // ApiEntitiesMemberListMatch is the typed request payload for ApiEntitiesMember.ListTyped.
 type ApiEntitiesMemberListMatch struct {
 	GroupId string `json:"group_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Query *any `json:"query,omitempty"`
+	ShowSeatInfo *any `json:"show_seat_info,omitempty"`
+	SkipUser *any `json:"skip_user,omitempty"`
+	UserId *string `json:"user_id,omitempty"`
+	WithSamlIdentity *any `json:"with_saml_identity,omitempty"`
 }
 
 // ApiEntitiesMemberCreateData is the typed request payload for ApiEntitiesMember.CreateTyped.
 type ApiEntitiesMemberCreateData struct {
 	GroupId string `json:"group_id"`
+	PostApiV4GroupsIdMember map[string]any `json:"post_api_v4_groups_id_member"`
 	AccessLevel *string `json:"access_level,omitempty"`
 	AvatarPath *string `json:"avatar_path,omitempty"`
 	AvatarUrl *string `json:"avatar_url,omitempty"`
@@ -3675,7 +3873,9 @@ type ApiEntitiesMemberCreateData struct {
 type ApiEntitiesMemberUpdateData struct {
 	GroupId *string `json:"group_id,omitempty"`
 	Id string `json:"id"`
+	PutApiV4GroupsIdMembersUserId *map[string]any `json:"put_api_v4_groups_id_members_user_id,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
+	PutApiV4ProjectsIdMembersUserId *map[string]any `json:"put_api_v4_projects_id_members_user_id,omitempty"`
 	AccessLevel *string `json:"access_level,omitempty"`
 	AvatarPath *string `json:"avatar_path,omitempty"`
 	AvatarUrl *string `json:"avatar_url,omitempty"`
@@ -3782,12 +3982,16 @@ type ApiEntitiesMerge struct {
 type ApiEntitiesMergeLoadMatch struct {
 	MergeRequestIid any `json:"merge_request_iid"`
 	ProjectId string `json:"project_id"`
+	IncludeDivergedCommitsCount *int `json:"include_diverged_commits_count,omitempty"`
+	IncludeRebaseInProgress *any `json:"include_rebase_in_progress,omitempty"`
+	RenderHtml *any `json:"render_html,omitempty"`
 }
 
 // ApiEntitiesMergeCreateData is the typed request payload for ApiEntitiesMerge.CreateTyped.
 type ApiEntitiesMergeCreateData struct {
 	MergeRequestId *string `json:"merge_request_id,omitempty"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdMergeRequest *map[string]any `json:"post_api_v4_projects_id_merge_request,omitempty"`
 	AllowCollaboration *bool `json:"allow_collaboration,omitempty"`
 	AllowMaintainerToPush *bool `json:"allow_maintainer_to_push,omitempty"`
 	ApprovalsBeforeMerge *string `json:"approvals_before_merge,omitempty"`
@@ -3861,7 +4065,9 @@ type ApiEntitiesMergeCreateData struct {
 type ApiEntitiesMergeUpdateData struct {
 	MergeRequestId *string `json:"merge_request_id,omitempty"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdMergeRequestsMergeRequestIidMerge *map[string]any `json:"put_api_v4_projects_id_merge_requests_merge_request_iid_merge,omitempty"`
 	MergeRequestIid *any `json:"merge_request_iid,omitempty"`
+	PutApiV4ProjectsIdMergeRequestsMergeRequestIid *map[string]any `json:"put_api_v4_projects_id_merge_requests_merge_request_iid,omitempty"`
 	AllowCollaboration *bool `json:"allow_collaboration,omitempty"`
 	AllowMaintainerToPush *bool `json:"allow_maintainer_to_push,omitempty"`
 	ApprovalsBeforeMerge *string `json:"approvals_before_merge,omitempty"`
@@ -3947,6 +4153,7 @@ type ApiEntitiesMergeRequestApprovalLoadMatch struct {
 type ApiEntitiesMergeRequestApprovalCreateData struct {
 	MergeRequestId string `json:"merge_request_id"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdMergeRequestsMergeRequestIidApprove *map[string]any `json:"post_api_v4_projects_id_merge_requests_merge_request_iid_approve,omitempty"`
 	ApprovedAt *string `json:"approved_at,omitempty"`
 	User *map[string]any `json:"user,omitempty"`
 }
@@ -4012,67 +4219,101 @@ type ApiEntitiesMergeRequestBasic struct {
 
 // ApiEntitiesMergeRequestBasicLoadMatch is the typed request payload for ApiEntitiesMergeRequestBasic.LoadTyped.
 type ApiEntitiesMergeRequestBasicLoadMatch struct {
-	AllowCollaboration *bool `json:"allow_collaboration,omitempty"`
-	AllowMaintainerToPush *bool `json:"allow_maintainer_to_push,omitempty"`
-	ApprovalsBeforeMerge *string `json:"approvals_before_merge,omitempty"`
-	Assignee *map[string]any `json:"assignee,omitempty"`
-	Assignees *map[string]any `json:"assignees,omitempty"`
-	Author *map[string]any `json:"author,omitempty"`
-	BlockingDiscussionsResolved *string `json:"blocking_discussions_resolved,omitempty"`
-	ClosedAt *string `json:"closed_at,omitempty"`
-	ClosedBy *map[string]any `json:"closed_by,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	Description *string `json:"description,omitempty"`
-	DescriptionHtml *string `json:"description_html,omitempty"`
-	DetailedMergeStatus *string `json:"detailed_merge_status,omitempty"`
-	DiscussionLocked *string `json:"discussion_locked,omitempty"`
-	Downvotes *string `json:"downvotes,omitempty"`
-	Draft *string `json:"draft,omitempty"`
-	ForceRemoveSourceBranch *string `json:"force_remove_source_branch,omitempty"`
-	HasConflicts *bool `json:"has_conflicts,omitempty"`
-	Id int `json:"id"`
-	Iid *int `json:"iid,omitempty"`
-	Imported *string `json:"imported,omitempty"`
-	ImportedFrom *string `json:"imported_from,omitempty"`
-	Labels *string `json:"labels,omitempty"`
-	MergeAfter *string `json:"merge_after,omitempty"`
-	MergeCommitSha *string `json:"merge_commit_sha,omitempty"`
-	MergeStatus *string `json:"merge_status,omitempty"`
-	MergeUser *map[string]any `json:"merge_user,omitempty"`
-	MergeWhenPipelineSucceeds *string `json:"merge_when_pipeline_succeeds,omitempty"`
-	MergedAt *string `json:"merged_at,omitempty"`
-	MergedBy *map[string]any `json:"merged_by,omitempty"`
-	Milestone *map[string]any `json:"milestone,omitempty"`
-	PreparedAt *string `json:"prepared_at,omitempty"`
-	ProjectId *int `json:"project_id,omitempty"`
-	Reference *string `json:"reference,omitempty"`
-	References *map[string]any `json:"references,omitempty"`
-	Reviewers *map[string]any `json:"reviewers,omitempty"`
-	Sha *string `json:"sha,omitempty"`
-	ShouldRemoveSourceBranch *bool `json:"should_remove_source_branch,omitempty"`
-	SourceBranch *string `json:"source_branch,omitempty"`
+	Approved *any `json:"approved,omitempty"`
+	ApprovedById *string `json:"approved_by_id,omitempty"`
+	ApprovedByUsername *any `json:"approved_by_username,omitempty"`
+	ApproverId *string `json:"approver_id,omitempty"`
+	AssigneeId *string `json:"assignee_id,omitempty"`
+	AssigneeUsername *any `json:"assignee_username,omitempty"`
+	AuthorId *string `json:"author_id,omitempty"`
+	AuthorUsername *any `json:"author_username,omitempty"`
+	CreatedAfter *any `json:"created_after,omitempty"`
+	CreatedBefore *any `json:"created_before,omitempty"`
+	DeployedAfter *any `json:"deployed_after,omitempty"`
+	DeployedBefore *any `json:"deployed_before,omitempty"`
+	Environment *any `json:"environment,omitempty"`
+	In *any `json:"in,omitempty"`
+	Label *string `json:"label,omitempty"`
+	MergeUserId *string `json:"merge_user_id,omitempty"`
+	MergeUserUsername *any `json:"merge_user_username,omitempty"`
+	Milestone *any `json:"milestone,omitempty"`
+	MyReactionEmoji *any `json:"my_reaction_emoji,omitempty"`
+	NotAssigneeId *string `json:"not_assignee_id,omitempty"`
+	NotAssigneeUsername *any `json:"not_assignee_username,omitempty"`
+	NotAuthorId *string `json:"not_author_id,omitempty"`
+	NotAuthorUsername *any `json:"not_author_username,omitempty"`
+	NotLabel *any `json:"not_label,omitempty"`
+	NotMilestone *any `json:"not_milestone,omitempty"`
+	NotMyReactionEmoji *any `json:"not_my_reaction_emoji,omitempty"`
+	NotReviewerId *string `json:"not_reviewer_id,omitempty"`
+	NotReviewerUsername *any `json:"not_reviewer_username,omitempty"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	ReviewerId *string `json:"reviewer_id,omitempty"`
+	ReviewerUsername *any `json:"reviewer_username,omitempty"`
+	Scope *any `json:"scope,omitempty"`
+	Search *any `json:"search,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	SourceBranch *any `json:"source_branch,omitempty"`
 	SourceProjectId *string `json:"source_project_id,omitempty"`
-	Squash *string `json:"squash,omitempty"`
-	SquashCommitSha *string `json:"squash_commit_sha,omitempty"`
-	SquashOnMerge *string `json:"squash_on_merge,omitempty"`
-	State *string `json:"state,omitempty"`
-	TargetBranch *string `json:"target_branch,omitempty"`
-	TargetProjectId *string `json:"target_project_id,omitempty"`
-	TaskCompletionStatus *string `json:"task_completion_status,omitempty"`
-	TimeStats *map[string]any `json:"time_stats,omitempty"`
-	Title *string `json:"title,omitempty"`
-	TitleHtml *string `json:"title_html,omitempty"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
-	Upvotes *string `json:"upvotes,omitempty"`
-	UserNotesCount *string `json:"user_notes_count,omitempty"`
-	WebUrl *string `json:"web_url,omitempty"`
-	WorkInProgress *string `json:"work_in_progress,omitempty"`
+	State *any `json:"state,omitempty"`
+	TargetBranch *any `json:"target_branch,omitempty"`
+	UpdatedAfter *any `json:"updated_after,omitempty"`
+	UpdatedBefore *any `json:"updated_before,omitempty"`
+	View *any `json:"view,omitempty"`
+	Wip *any `json:"wip,omitempty"`
+	WithLabelsDetail *any `json:"with_labels_detail,omitempty"`
+	WithMergeStatusRecheck *any `json:"with_merge_status_recheck,omitempty"`
 }
 
 // ApiEntitiesMergeRequestBasicListMatch is the typed request payload for ApiEntitiesMergeRequestBasic.ListTyped.
 type ApiEntitiesMergeRequestBasicListMatch struct {
 	DeploymentId *string `json:"deployment_id,omitempty"`
 	ProjectId string `json:"project_id"`
+	Approved *any `json:"approved,omitempty"`
+	AssigneeId *string `json:"assignee_id,omitempty"`
+	AssigneeUsername *any `json:"assignee_username,omitempty"`
+	AuthorId *string `json:"author_id,omitempty"`
+	AuthorUsername *any `json:"author_username,omitempty"`
+	CreatedAfter *any `json:"created_after,omitempty"`
+	CreatedBefore *any `json:"created_before,omitempty"`
+	DeployedAfter *any `json:"deployed_after,omitempty"`
+	DeployedBefore *any `json:"deployed_before,omitempty"`
+	Environment *any `json:"environment,omitempty"`
+	In *any `json:"in,omitempty"`
+	Label *string `json:"label,omitempty"`
+	MergeUserId *string `json:"merge_user_id,omitempty"`
+	MergeUserUsername *any `json:"merge_user_username,omitempty"`
+	Milestone *any `json:"milestone,omitempty"`
+	MyReactionEmoji *any `json:"my_reaction_emoji,omitempty"`
+	NotAssigneeId *string `json:"not_assignee_id,omitempty"`
+	NotAssigneeUsername *any `json:"not_assignee_username,omitempty"`
+	NotAuthorId *string `json:"not_author_id,omitempty"`
+	NotAuthorUsername *any `json:"not_author_username,omitempty"`
+	NotLabel *any `json:"not_label,omitempty"`
+	NotMilestone *any `json:"not_milestone,omitempty"`
+	NotMyReactionEmoji *any `json:"not_my_reaction_emoji,omitempty"`
+	NotReviewerId *string `json:"not_reviewer_id,omitempty"`
+	NotReviewerUsername *any `json:"not_reviewer_username,omitempty"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	ReviewerId *string `json:"reviewer_id,omitempty"`
+	ReviewerUsername *any `json:"reviewer_username,omitempty"`
+	Scope *any `json:"scope,omitempty"`
+	Search *any `json:"search,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	SourceBranch *any `json:"source_branch,omitempty"`
+	SourceProjectId *string `json:"source_project_id,omitempty"`
+	State *any `json:"state,omitempty"`
+	TargetBranch *any `json:"target_branch,omitempty"`
+	UpdatedAfter *any `json:"updated_after,omitempty"`
+	UpdatedBefore *any `json:"updated_before,omitempty"`
+	View *any `json:"view,omitempty"`
+	Wip *any `json:"wip,omitempty"`
+	WithLabelsDetail *any `json:"with_labels_detail,omitempty"`
+	WithMergeStatusRecheck *any `json:"with_merge_status_recheck,omitempty"`
 	Sha *any `json:"sha,omitempty"`
 }
 
@@ -4154,6 +4395,7 @@ type ApiEntitiesMergeRequestChange struct {
 type ApiEntitiesMergeRequestChangeLoadMatch struct {
 	MergeRequestId string `json:"merge_request_id"`
 	ProjectId string `json:"project_id"`
+	Unidiff *any `json:"unidiff,omitempty"`
 }
 
 // ApiEntitiesMergeRequestDiff is the typed data model for the api_entities_merge_request_diff entity.
@@ -4173,6 +4415,8 @@ type ApiEntitiesMergeRequestDiff struct {
 type ApiEntitiesMergeRequestDiffListMatch struct {
 	MergeRequestId string `json:"merge_request_id"`
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesMergeRequestDiffFull is the typed data model for the api_entities_merge_request_diff_full entity.
@@ -4195,6 +4439,7 @@ type ApiEntitiesMergeRequestDiffFullLoadMatch struct {
 	MergeRequestId string `json:"merge_request_id"`
 	ProjectId string `json:"project_id"`
 	VersionId string `json:"version_id"`
+	Unidiff *any `json:"unidiff,omitempty"`
 }
 
 // ApiEntitiesMergeRequestReviewer is the typed data model for the api_entities_merge_request_reviewer entity.
@@ -4237,12 +4482,13 @@ type ApiEntitiesMetricImageListMatch struct {
 type ApiEntitiesMetricImageCreateData struct {
 	AlertManagementAlertId string `json:"alert_management_alert_id"`
 	ProjectId string `json:"project_id"`
+	File any `json:"file"`
+	Url *string `json:"url,omitempty"`
+	UrlText *any `json:"url_text,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	FilePath *string `json:"file_path,omitempty"`
 	Filename *string `json:"filename,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Url *string `json:"url,omitempty"`
-	UrlText *string `json:"url_text,omitempty"`
 }
 
 // ApiEntitiesMetricImageUpdateData is the typed request payload for ApiEntitiesMetricImage.UpdateTyped.
@@ -4250,11 +4496,11 @@ type ApiEntitiesMetricImageUpdateData struct {
 	AlertManagementAlertId string `json:"alert_management_alert_id"`
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	Url *string `json:"url,omitempty"`
+	UrlText *any `json:"url_text,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	FilePath *string `json:"file_path,omitempty"`
 	Filename *string `json:"filename,omitempty"`
-	Url *string `json:"url,omitempty"`
-	UrlText *string `json:"url_text,omitempty"`
 }
 
 // ApiEntitiesMrNote is the typed data model for the api_entities_mr_note entity.
@@ -4275,6 +4521,8 @@ type ApiEntitiesMrNote struct {
 type ApiEntitiesMrNoteLoadMatch struct {
 	MergeRequestId string `json:"merge_request_id"`
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesNamespace is the typed data model for the api_entities_namespace entity.
@@ -4311,34 +4559,19 @@ type ApiEntitiesNamespaceLoadMatch struct {
 
 // ApiEntitiesNamespaceListMatch is the typed request payload for ApiEntitiesNamespace.ListTyped.
 type ApiEntitiesNamespaceListMatch struct {
-	AdditionalPurchasedStorageEndsOn *string `json:"additional_purchased_storage_ends_on,omitempty"`
-	AdditionalPurchasedStorageSize *int `json:"additional_purchased_storage_size,omitempty"`
-	AvatarUrl *string `json:"avatar_url,omitempty"`
-	BillableMembersCount *int `json:"billable_members_count,omitempty"`
-	EndDate *string `json:"end_date,omitempty"`
-	ExtraSharedRunnersMinutesLimit *int `json:"extra_shared_runners_minutes_limit,omitempty"`
-	FullPath *string `json:"full_path,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Kind *string `json:"kind,omitempty"`
-	MaxSeatsUsed *int `json:"max_seats_used,omitempty"`
-	MaxSeatsUsedChangedAt *string `json:"max_seats_used_changed_at,omitempty"`
-	MembersCountWithDescendants *int `json:"members_count_with_descendants,omitempty"`
-	Name *string `json:"name,omitempty"`
-	ParentId *int `json:"parent_id,omitempty"`
-	Path *string `json:"path,omitempty"`
-	Plan *string `json:"plan,omitempty"`
-	ProjectsCount *int `json:"projects_count,omitempty"`
-	RootRepositorySize *int `json:"root_repository_size,omitempty"`
-	SeatsInUse *int `json:"seats_in_use,omitempty"`
-	SharedRunnersMinutesLimit *int `json:"shared_runners_minutes_limit,omitempty"`
-	Trial *bool `json:"trial,omitempty"`
-	TrialEndsOn *string `json:"trial_ends_on,omitempty"`
-	WebUrl *string `json:"web_url,omitempty"`
+	FullPathSearch *any `json:"full_path_search,omitempty"`
+	OwnedOnly *any `json:"owned_only,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	RequestedHostedPlan *any `json:"requested_hosted_plan,omitempty"`
+	Search *any `json:"search,omitempty"`
+	TopLevelOnly *any `json:"top_level_only,omitempty"`
 }
 
 // ApiEntitiesNamespaceUpdateData is the typed request payload for ApiEntitiesNamespace.UpdateTyped.
 type ApiEntitiesNamespaceUpdateData struct {
 	Id string `json:"id"`
+	PutApiV4NamespacesId map[string]any `json:"put_api_v4_namespaces_id"`
 	AdditionalPurchasedStorageEndsOn *string `json:"additional_purchased_storage_ends_on,omitempty"`
 	AdditionalPurchasedStorageSize *int `json:"additional_purchased_storage_size,omitempty"`
 	AvatarUrl *string `json:"avatar_url,omitempty"`
@@ -4372,6 +4605,7 @@ type ApiEntitiesNamespaceExistence struct {
 // ApiEntitiesNamespaceExistenceListMatch is the typed request payload for ApiEntitiesNamespaceExistence.ListTyped.
 type ApiEntitiesNamespaceExistenceListMatch struct {
 	NamespaceId string `json:"namespace_id"`
+	ParentId *string `json:"parent_id,omitempty"`
 }
 
 // ApiEntitiesNamespacesStorageLimitExclusion is the typed data model for the api_entities_namespaces_storage_limit_exclusion entity.
@@ -4384,15 +4618,14 @@ type ApiEntitiesNamespacesStorageLimitExclusion struct {
 
 // ApiEntitiesNamespacesStorageLimitExclusionLoadMatch is the typed request payload for ApiEntitiesNamespacesStorageLimitExclusion.LoadTyped.
 type ApiEntitiesNamespacesStorageLimitExclusionLoadMatch struct {
-	Id int `json:"id"`
-	NamespaceId *int `json:"namespace_id,omitempty"`
-	NamespaceName *string `json:"namespace_name,omitempty"`
-	Reason *string `json:"reason,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesNamespacesStorageLimitExclusionCreateData is the typed request payload for ApiEntitiesNamespacesStorageLimitExclusion.CreateTyped.
 type ApiEntitiesNamespacesStorageLimitExclusionCreateData struct {
 	NamespaceId string `json:"namespace_id"`
+	PostApiV4NamespacesIdStorageLimitExclusion map[string]any `json:"post_api_v4_namespaces_id_storage_limit_exclusion"`
 	Id *int `json:"id,omitempty"`
 	NamespaceName *string `json:"namespace_name,omitempty"`
 	Reason *string `json:"reason,omitempty"`
@@ -4407,9 +4640,9 @@ type ApiEntitiesNpmPackage struct {
 
 // ApiEntitiesNpmPackageLoadMatch is the typed request payload for ApiEntitiesNpmPackage.LoadTyped.
 type ApiEntitiesNpmPackageLoadMatch struct {
-	Disttags *map[string]any `json:"disttags,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Versions *map[string]any `json:"versions,omitempty"`
+	GroupId *string `json:"group_id,omitempty"`
+	PackageName any `json:"package_name"`
+	ProjectId *string `json:"project_id,omitempty"`
 }
 
 // ApiEntitiesNpmPackageTag is the typed data model for the api_entities_npm_package_tag entity.
@@ -4418,6 +4651,9 @@ type ApiEntitiesNpmPackageTag struct {
 
 // ApiEntitiesNpmPackageTagLoadMatch is the typed request payload for ApiEntitiesNpmPackageTag.LoadTyped.
 type ApiEntitiesNpmPackageTagLoadMatch struct {
+	GroupId *string `json:"group_id,omitempty"`
+	PackageName any `json:"package_name"`
+	ProjectId *string `json:"project_id,omitempty"`
 }
 
 // ApiEntitiesNugetPackagesVersion is the typed data model for the api_entities_nuget_packages_version entity.
@@ -4428,6 +4664,7 @@ type ApiEntitiesNugetPackagesVersion struct {
 // ApiEntitiesNugetPackagesVersionListMatch is the typed request payload for ApiEntitiesNugetPackagesVersion.ListTyped.
 type ApiEntitiesNugetPackagesVersionListMatch struct {
 	ProjectId string `json:"project_id"`
+	PackageName any `json:"package_name"`
 }
 
 // ApiEntitiesNugetSearchResult is the typed data model for the api_entities_nuget_search_result entity.
@@ -4451,6 +4688,10 @@ type ApiEntitiesNugetSearchResult struct {
 // ApiEntitiesNugetSearchResultListMatch is the typed request payload for ApiEntitiesNugetSearchResult.ListTyped.
 type ApiEntitiesNugetSearchResultListMatch struct {
 	ProjectId string `json:"project_id"`
+	Prerelease *any `json:"prerelease,omitempty"`
+	Q *any `json:"q,omitempty"`
+	Skip *int `json:"skip,omitempty"`
+	Take *any `json:"take,omitempty"`
 }
 
 // ApiEntitiesNugetServiceIndex is the typed data model for the api_entities_nuget_service_index entity.
@@ -4470,6 +4711,7 @@ type ApiEntitiesOrganizationsOrganization struct {
 
 // ApiEntitiesOrganizationsOrganizationCreateData is the typed request payload for ApiEntitiesOrganizationsOrganization.CreateTyped.
 type ApiEntitiesOrganizationsOrganizationCreateData struct {
+	PostApiV4Organization map[string]any `json:"post_api_v4_organization"`
 }
 
 // ApiEntitiesPackage is the typed data model for the api_entities_package entity.
@@ -4500,6 +4742,16 @@ type ApiEntitiesPackageLoadMatch struct {
 // ApiEntitiesPackageListMatch is the typed request payload for ApiEntitiesPackage.ListTyped.
 type ApiEntitiesPackageListMatch struct {
 	GroupId string `json:"group_id"`
+	ExcludeSubgroup *any `json:"exclude_subgroup,omitempty"`
+	IncludeVersionless *any `json:"include_versionless,omitempty"`
+	OrderBy *any `json:"order_by,omitempty"`
+	PackageName *any `json:"package_name,omitempty"`
+	PackageType *any `json:"package_type,omitempty"`
+	PackageVersion *any `json:"package_version,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	Status *any `json:"status,omitempty"`
 }
 
 // ApiEntitiesPackageFile is the typed data model for the api_entities_package_file entity.
@@ -4519,6 +4771,10 @@ type ApiEntitiesPackageFile struct {
 type ApiEntitiesPackageFileListMatch struct {
 	PackageId string `json:"package_id"`
 	ProjectId string `json:"project_id"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Sort *any `json:"sort,omitempty"`
 }
 
 // ApiEntitiesPackagePipeline is the typed data model for the api_entities_package_pipeline entity.
@@ -4539,6 +4795,9 @@ type ApiEntitiesPackagePipeline struct {
 type ApiEntitiesPackagePipelineLoadMatch struct {
 	PackageId string `json:"package_id"`
 	ProjectId string `json:"project_id"`
+	Cursor *any `json:"cursor,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesPackagesConanFilesList is the typed data model for the api_entities_packages_conan_files_list entity.
@@ -4700,11 +4959,23 @@ type ApiEntitiesPackagesDebianDistributionLoadMatch struct {
 // ApiEntitiesPackagesDebianDistributionListMatch is the typed request payload for ApiEntitiesPackagesDebianDistribution.ListTyped.
 type ApiEntitiesPackagesDebianDistributionListMatch struct {
 	ProjectId string `json:"project_id"`
+	Architecture *any `json:"architecture,omitempty"`
+	Codename *any `json:"codename,omitempty"`
+	Component *any `json:"component,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Label *string `json:"label,omitempty"`
+	Origin *any `json:"origin,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Suite *any `json:"suite,omitempty"`
+	ValidTimeDurationSecond *any `json:"valid_time_duration_second,omitempty"`
+	Version *any `json:"version,omitempty"`
 }
 
 // ApiEntitiesPackagesDebianDistributionCreateData is the typed request payload for ApiEntitiesPackagesDebianDistribution.CreateTyped.
 type ApiEntitiesPackagesDebianDistributionCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdDebianDistribution map[string]any `json:"post_api_v4_projects_id_debian_distribution"`
 	Architectures *[]any `json:"architectures,omitempty"`
 	Codename *string `json:"codename,omitempty"`
 	Components *[]any `json:"components,omitempty"`
@@ -4721,7 +4992,9 @@ type ApiEntitiesPackagesDebianDistributionCreateData struct {
 type ApiEntitiesPackagesDebianDistributionUpdateData struct {
 	GroupId *string `json:"group_id,omitempty"`
 	Id string `json:"id"`
+	PutApiV4GroupsIdDebianDistributionsCodename *map[string]any `json:"put_api_v4_groups_id_debian_distributions_codename,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
+	PutApiV4ProjectsIdDebianDistributionsCodename *map[string]any `json:"put_api_v4_projects_id_debian_distributions_codename,omitempty"`
 	Architectures *[]any `json:"architectures,omitempty"`
 	Codename *string `json:"codename,omitempty"`
 	Components *[]any `json:"components,omitempty"`
@@ -4757,11 +5030,14 @@ type ApiEntitiesPagesDomainLoadMatch struct {
 // ApiEntitiesPagesDomainListMatch is the typed request payload for ApiEntitiesPagesDomain.ListTyped.
 type ApiEntitiesPagesDomainListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesPagesDomainCreateData is the typed request payload for ApiEntitiesPagesDomain.CreateTyped.
 type ApiEntitiesPagesDomainCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdPagesDomain map[string]any `json:"post_api_v4_projects_id_pages_domain"`
 	AutoSslEnabled *string `json:"auto_ssl_enabled,omitempty"`
 	Certificate *string `json:"certificate,omitempty"`
 	CertificateText *string `json:"certificate_text,omitempty"`
@@ -4800,8 +5076,8 @@ type ApiEntitiesPagesDomainBasic struct {
 
 // ApiEntitiesPagesDomainBasicLoadMatch is the typed request payload for ApiEntitiesPagesDomainBasic.LoadTyped.
 type ApiEntitiesPagesDomainBasicLoadMatch struct {
-	Expiration *string `json:"expiration,omitempty"`
-	Expired *string `json:"expired,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesPersonalAccessToken is the typed data model for the api_entities_personal_access_token entity.
@@ -4820,16 +5096,9 @@ type ApiEntitiesPersonalAccessToken struct {
 
 // ApiEntitiesPersonalAccessTokenListMatch is the typed request payload for ApiEntitiesPersonalAccessToken.ListTyped.
 type ApiEntitiesPersonalAccessTokenListMatch struct {
-	Active *bool `json:"active,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ExpiresAt *string `json:"expires_at,omitempty"`
-	Id *int `json:"id,omitempty"`
-	LastUsedAt *string `json:"last_used_at,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Revoked *bool `json:"revoked,omitempty"`
-	Scopes *[]any `json:"scopes,omitempty"`
-	UserId *int `json:"user_id,omitempty"`
+	MinAccessLevel *any `json:"min_access_level,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesPersonalAccessTokenWithLastUsedIp is the typed data model for the api_entities_personal_access_token_with_last_used_ip entity.
@@ -4854,17 +5123,19 @@ type ApiEntitiesPersonalAccessTokenWithLastUsedIpLoadMatch struct {
 
 // ApiEntitiesPersonalAccessTokenWithLastUsedIpListMatch is the typed request payload for ApiEntitiesPersonalAccessTokenWithLastUsedIp.ListTyped.
 type ApiEntitiesPersonalAccessTokenWithLastUsedIpListMatch struct {
-	Active *bool `json:"active,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	Description *string `json:"description,omitempty"`
-	ExpiresAt *string `json:"expires_at,omitempty"`
-	Id *int `json:"id,omitempty"`
-	LastUsedAt *string `json:"last_used_at,omitempty"`
-	LastUsedIps *[]any `json:"last_used_ips,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Revoked *bool `json:"revoked,omitempty"`
-	Scopes *[]any `json:"scopes,omitempty"`
-	UserId *int `json:"user_id,omitempty"`
+	CreatedAfter *any `json:"created_after,omitempty"`
+	CreatedBefore *any `json:"created_before,omitempty"`
+	ExpiresAfter *any `json:"expires_after,omitempty"`
+	ExpiresBefore *any `json:"expires_before,omitempty"`
+	LastUsedAfter *any `json:"last_used_after,omitempty"`
+	LastUsedBefore *any `json:"last_used_before,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Revoked *any `json:"revoked,omitempty"`
+	Search *any `json:"search,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	State *any `json:"state,omitempty"`
+	UserId *string `json:"user_id,omitempty"`
 }
 
 // ApiEntitiesPersonalAccessTokenWithToken is the typed data model for the api_entities_personal_access_token_with_token entity.
@@ -4885,6 +5156,7 @@ type ApiEntitiesPersonalAccessTokenWithToken struct {
 // ApiEntitiesPersonalAccessTokenWithTokenCreateData is the typed request payload for ApiEntitiesPersonalAccessTokenWithToken.CreateTyped.
 type ApiEntitiesPersonalAccessTokenWithTokenCreateData struct {
 	PersonalAccessTokenId string `json:"personal_access_token_id"`
+	PostApiV4PersonalAccessTokensIdRotate map[string]any `json:"post_api_v4_personal_access_tokens_id_rotate"`
 	Active *bool `json:"active,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -4926,27 +5198,15 @@ type ApiEntitiesPersonalSnippetLoadMatch struct {
 
 // ApiEntitiesPersonalSnippetListMatch is the typed request payload for ApiEntitiesPersonalSnippet.ListTyped.
 type ApiEntitiesPersonalSnippetListMatch struct {
-	Author *map[string]any `json:"author,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	Description *string `json:"description,omitempty"`
-	FileName *string `json:"file_name,omitempty"`
-	Files *[]any `json:"files,omitempty"`
-	HttpUrlToRepo *string `json:"http_url_to_repo,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Imported *bool `json:"imported,omitempty"`
-	ImportedFrom *string `json:"imported_from,omitempty"`
-	ProjectId *int `json:"project_id,omitempty"`
-	RawUrl *string `json:"raw_url,omitempty"`
-	RepositoryStorage *string `json:"repository_storage,omitempty"`
-	SshUrlToRepo *string `json:"ssh_url_to_repo,omitempty"`
-	Title *string `json:"title,omitempty"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
-	Visibility *string `json:"visibility,omitempty"`
-	WebUrl *string `json:"web_url,omitempty"`
+	CreatedAfter *any `json:"created_after,omitempty"`
+	CreatedBefore *any `json:"created_before,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesPersonalSnippetCreateData is the typed request payload for ApiEntitiesPersonalSnippet.CreateTyped.
 type ApiEntitiesPersonalSnippetCreateData struct {
+	PostApiV4Snippet map[string]any `json:"post_api_v4_snippet"`
 	Author *map[string]any `json:"author,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -4969,6 +5229,7 @@ type ApiEntitiesPersonalSnippetCreateData struct {
 // ApiEntitiesPersonalSnippetUpdateData is the typed request payload for ApiEntitiesPersonalSnippet.UpdateTyped.
 type ApiEntitiesPersonalSnippetUpdateData struct {
 	Id string `json:"id"`
+	PutApiV4SnippetsId map[string]any `json:"put_api_v4_snippets_id"`
 	Author *map[string]any `json:"author,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -4993,10 +5254,12 @@ type ApiEntitiesPlanLimit struct {
 
 // ApiEntitiesPlanLimitLoadMatch is the typed request payload for ApiEntitiesPlanLimit.LoadTyped.
 type ApiEntitiesPlanLimitLoadMatch struct {
+	PlanName *any `json:"plan_name,omitempty"`
 }
 
 // ApiEntitiesPlanLimitUpdateData is the typed request payload for ApiEntitiesPlanLimit.UpdateTyped.
 type ApiEntitiesPlanLimitUpdateData struct {
+	PutApiV4ApplicationPlanLimit map[string]any `json:"put_api_v4_application_plan_limit"`
 }
 
 // ApiEntitiesProject is the typed data model for the api_entities_project entity.
@@ -5153,11 +5416,45 @@ type ApiEntitiesProject struct {
 // ApiEntitiesProjectListMatch is the typed request payload for ApiEntitiesProject.ListTyped.
 type ApiEntitiesProjectListMatch struct {
 	ProjectId string `json:"project_id"`
+	Active *bool `json:"active,omitempty"`
+	Archived *bool `json:"archived,omitempty"`
+	IdAfter *any `json:"id_after,omitempty"`
+	IdBefore *any `json:"id_before,omitempty"`
+	Imported *any `json:"imported,omitempty"`
+	IncludeHidden *any `json:"include_hidden,omitempty"`
+	IncludePendingDelete *any `json:"include_pending_delete,omitempty"`
+	LastActivityAfter *any `json:"last_activity_after,omitempty"`
+	LastActivityBefore *any `json:"last_activity_before,omitempty"`
+	MarkedForDeletionOn *any `json:"marked_for_deletion_on,omitempty"`
+	Membership *any `json:"membership,omitempty"`
+	MinAccessLevel *any `json:"min_access_level,omitempty"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Owned *any `json:"owned,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	RepositoryChecksumFailed *any `json:"repository_checksum_failed,omitempty"`
+	RepositoryStorage *any `json:"repository_storage,omitempty"`
+	Search *any `json:"search,omitempty"`
+	SearchNamespace *any `json:"search_namespace,omitempty"`
+	Simple *any `json:"simple,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	Starred *any `json:"starred,omitempty"`
+	Topic *any `json:"topic,omitempty"`
+	TopicId *string `json:"topic_id,omitempty"`
+	UpdatedAfter *any `json:"updated_after,omitempty"`
+	UpdatedBefore *any `json:"updated_before,omitempty"`
+	Visibility *any `json:"visibility,omitempty"`
+	WikiChecksumFailed *any `json:"wiki_checksum_failed,omitempty"`
+	WithCustomAttribute *any `json:"with_custom_attribute,omitempty"`
+	WithIssuesEnabled *any `json:"with_issues_enabled,omitempty"`
+	WithMergeRequestsEnabled *any `json:"with_merge_requests_enabled,omitempty"`
+	WithProgrammingLanguage *any `json:"with_programming_language,omitempty"`
 }
 
 // ApiEntitiesProjectCreateData is the typed request payload for ApiEntitiesProject.CreateTyped.
 type ApiEntitiesProjectCreateData struct {
 	UserId string `json:"user_id"`
+	PostApiV4ProjectsUserUserId map[string]any `json:"post_api_v4_projects_user_user_id"`
 	AllowMergeOnSkippedPipeline *bool `json:"allow_merge_on_skipped_pipeline,omitempty"`
 	AllowPipelineTriggerApproveDeployment *bool `json:"allow_pipeline_trigger_approve_deployment,omitempty"`
 	AnalyticsAccessLevel *string `json:"analytics_access_level,omitempty"`
@@ -5310,6 +5607,7 @@ type ApiEntitiesProjectCreateData struct {
 // ApiEntitiesProjectUpdateData is the typed request payload for ApiEntitiesProject.UpdateTyped.
 type ApiEntitiesProjectUpdateData struct {
 	Id string `json:"id"`
+	PutApiV4ProjectsId map[string]any `json:"put_api_v4_projects_id"`
 	AllowMergeOnSkippedPipeline *bool `json:"allow_merge_on_skipped_pipeline,omitempty"`
 	AllowPipelineTriggerApproveDeployment *bool `json:"allow_pipeline_trigger_approve_deployment,omitempty"`
 	AnalyticsAccessLevel *string `json:"analytics_access_level,omitempty"`
@@ -5487,6 +5785,7 @@ type ApiEntitiesProjectGroupLink struct {
 // ApiEntitiesProjectGroupLinkCreateData is the typed request payload for ApiEntitiesProjectGroupLink.CreateTyped.
 type ApiEntitiesProjectGroupLinkCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdShare map[string]any `json:"post_api_v4_projects_id_share"`
 }
 
 // ApiEntitiesProjectHook is the typed data model for the api_entities_project_hook entity.
@@ -5534,11 +5833,14 @@ type ApiEntitiesProjectHookLoadMatch struct {
 // ApiEntitiesProjectHookListMatch is the typed request payload for ApiEntitiesProjectHook.ListTyped.
 type ApiEntitiesProjectHookListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesProjectHookCreateData is the typed request payload for ApiEntitiesProjectHook.CreateTyped.
 type ApiEntitiesProjectHookCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdHook map[string]any `json:"post_api_v4_projects_id_hook"`
 	AlertStatus *any `json:"alert_status,omitempty"`
 	BranchFilterStrategy *string `json:"branch_filter_strategy,omitempty"`
 	ConfidentialIssuesEvents *bool `json:"confidential_issues_events,omitempty"`
@@ -5576,6 +5878,7 @@ type ApiEntitiesProjectHookCreateData struct {
 type ApiEntitiesProjectHookUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdHooksHookId map[string]any `json:"put_api_v4_projects_id_hooks_hook_id"`
 	AlertStatus *any `json:"alert_status,omitempty"`
 	BranchFilterStrategy *string `json:"branch_filter_strategy,omitempty"`
 	ConfidentialIssuesEvents *bool `json:"confidential_issues_events,omitempty"`
@@ -5626,6 +5929,111 @@ type ApiEntitiesProjectImportStatusListMatch struct {
 
 // ApiEntitiesProjectImportStatusCreateData is the typed request payload for ApiEntitiesProjectImportStatus.CreateTyped.
 type ApiEntitiesProjectImportStatusCreateData struct {
+	File *any `json:"file,omitempty"`
+	FileEtag *any `json:"file_etag,omitempty"`
+	FileMd5 *any `json:"file_md5,omitempty"`
+	FileName *any `json:"file_name,omitempty"`
+	FilePath *any `json:"file_path,omitempty"`
+	FileRemoteId *string `json:"file_remote_id,omitempty"`
+	FileRemoteUrl *any `json:"file_remote_url,omitempty"`
+	FileSha1 *any `json:"file_sha1,omitempty"`
+	FileSha256 *any `json:"file_sha256,omitempty"`
+	FileSize *any `json:"file_size,omitempty"`
+	FileType *any `json:"file_type,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Namespace *any `json:"namespace,omitempty"`
+	OverrideParamsAllowMergeOnSkippedPipeline *any `json:"override_params_allow_merge_on_skipped_pipeline,omitempty"`
+	OverrideParamsAnalyticsAccessLevel *any `json:"override_params_analytics_access_level,omitempty"`
+	OverrideParamsApprovalsBeforeMerge *any `json:"override_params_approvals_before_merge,omitempty"`
+	OverrideParamsAutoCancelPendingPipeline *any `json:"override_params_auto_cancel_pending_pipeline,omitempty"`
+	OverrideParamsAutoDevopsDeployStrategy *any `json:"override_params_auto_devops_deploy_strategy,omitempty"`
+	OverrideParamsAutoDevopsEnabled *any `json:"override_params_auto_devops_enabled,omitempty"`
+	OverrideParamsAutoDuoCodeReviewEnabled *any `json:"override_params_auto_duo_code_review_enabled,omitempty"`
+	OverrideParamsAutocloseReferencedIssue *any `json:"override_params_autoclose_referenced_issue,omitempty"`
+	OverrideParamsAvatar *any `json:"override_params_avatar,omitempty"`
+	OverrideParamsBuildGitStrategy *any `json:"override_params_build_git_strategy,omitempty"`
+	OverrideParamsBuildTimeout *any `json:"override_params_build_timeout,omitempty"`
+	OverrideParamsBuildsAccessLevel *any `json:"override_params_builds_access_level,omitempty"`
+	OverrideParamsCiConfigPath *any `json:"override_params_ci_config_path,omitempty"`
+	OverrideParamsContainerExpirationPolicyAttributesCadence *any `json:"override_params_container_expiration_policy_attributes_cadence,omitempty"`
+	OverrideParamsContainerExpirationPolicyAttributesEnabled *any `json:"override_params_container_expiration_policy_attributes_enabled,omitempty"`
+	OverrideParamsContainerExpirationPolicyAttributesKeepN *any `json:"override_params_container_expiration_policy_attributes_keep_n,omitempty"`
+	OverrideParamsContainerExpirationPolicyAttributesNameRegex *any `json:"override_params_container_expiration_policy_attributes_name_regex,omitempty"`
+	OverrideParamsContainerExpirationPolicyAttributesNameRegexKeep *any `json:"override_params_container_expiration_policy_attributes_name_regex_keep,omitempty"`
+	OverrideParamsContainerExpirationPolicyAttributesOlderThan *any `json:"override_params_container_expiration_policy_attributes_older_than,omitempty"`
+	OverrideParamsContainerRegistryAccessLevel *any `json:"override_params_container_registry_access_level,omitempty"`
+	OverrideParamsContainerRegistryEnabled *any `json:"override_params_container_registry_enabled,omitempty"`
+	OverrideParamsDescription *any `json:"override_params_description,omitempty"`
+	OverrideParamsDuoRemoteFlowsEnabled *any `json:"override_params_duo_remote_flows_enabled,omitempty"`
+	OverrideParamsEmailsDisabled *any `json:"override_params_emails_disabled,omitempty"`
+	OverrideParamsEmailsEnabled *any `json:"override_params_emails_enabled,omitempty"`
+	OverrideParamsEnforceAuthChecksOnUpload *any `json:"override_params_enforce_auth_checks_on_upload,omitempty"`
+	OverrideParamsEnvironmentsAccessLevel *any `json:"override_params_environments_access_level,omitempty"`
+	OverrideParamsExternalAuthorizationClassificationLabel *any `json:"override_params_external_authorization_classification_label,omitempty"`
+	OverrideParamsFeatureFlagsAccessLevel *any `json:"override_params_feature_flags_access_level,omitempty"`
+	OverrideParamsForkingAccessLevel *any `json:"override_params_forking_access_level,omitempty"`
+	OverrideParamsGroupRunnersEnabled *any `json:"override_params_group_runners_enabled,omitempty"`
+	OverrideParamsInfrastructureAccessLevel *any `json:"override_params_infrastructure_access_level,omitempty"`
+	OverrideParamsIssueBranchTemplate *any `json:"override_params_issue_branch_template,omitempty"`
+	OverrideParamsIssuesAccessLevel *any `json:"override_params_issues_access_level,omitempty"`
+	OverrideParamsIssuesEnabled *any `json:"override_params_issues_enabled,omitempty"`
+	OverrideParamsJobsEnabled *any `json:"override_params_jobs_enabled,omitempty"`
+	OverrideParamsLfsEnabled *any `json:"override_params_lfs_enabled,omitempty"`
+	OverrideParamsMergeCommitTemplate *any `json:"override_params_merge_commit_template,omitempty"`
+	OverrideParamsMergeMethod *any `json:"override_params_merge_method,omitempty"`
+	OverrideParamsMergeRequestTitleRegex *any `json:"override_params_merge_request_title_regex,omitempty"`
+	OverrideParamsMergeRequestTitleRegexDescription *any `json:"override_params_merge_request_title_regex_description,omitempty"`
+	OverrideParamsMergeRequestsAccessLevel *any `json:"override_params_merge_requests_access_level,omitempty"`
+	OverrideParamsMergeRequestsEnabled *any `json:"override_params_merge_requests_enabled,omitempty"`
+	OverrideParamsMirror *any `json:"override_params_mirror,omitempty"`
+	OverrideParamsMirrorTriggerBuild *any `json:"override_params_mirror_trigger_build,omitempty"`
+	OverrideParamsModelExperimentsAccessLevel *any `json:"override_params_model_experiments_access_level,omitempty"`
+	OverrideParamsModelRegistryAccessLevel *any `json:"override_params_model_registry_access_level,omitempty"`
+	OverrideParamsMonitorAccessLevel *any `json:"override_params_monitor_access_level,omitempty"`
+	OverrideParamsMrDefaultTargetSelf *any `json:"override_params_mr_default_target_self,omitempty"`
+	OverrideParamsOnlyAllowMergeIfAllDiscussionsAreResolved *any `json:"override_params_only_allow_merge_if_all_discussions_are_resolved,omitempty"`
+	OverrideParamsOnlyAllowMergeIfAllStatusChecksPassed *any `json:"override_params_only_allow_merge_if_all_status_checks_passed,omitempty"`
+	OverrideParamsOnlyAllowMergeIfPipelineSucceed *any `json:"override_params_only_allow_merge_if_pipeline_succeed,omitempty"`
+	OverrideParamsPackageRegistryAccessLevel *any `json:"override_params_package_registry_access_level,omitempty"`
+	OverrideParamsPackagesEnabled *any `json:"override_params_packages_enabled,omitempty"`
+	OverrideParamsPagesAccessLevel *any `json:"override_params_pages_access_level,omitempty"`
+	OverrideParamsPreventMergeWithoutJiraIssue *any `json:"override_params_prevent_merge_without_jira_issue,omitempty"`
+	OverrideParamsPrintingMergeRequestLinkEnabled *any `json:"override_params_printing_merge_request_link_enabled,omitempty"`
+	OverrideParamsPublicBuild *any `json:"override_params_public_build,omitempty"`
+	OverrideParamsPublicJob *any `json:"override_params_public_job,omitempty"`
+	OverrideParamsReleasesAccessLevel *any `json:"override_params_releases_access_level,omitempty"`
+	OverrideParamsRemoveSourceBranchAfterMerge *any `json:"override_params_remove_source_branch_after_merge,omitempty"`
+	OverrideParamsRepositoryAccessLevel *any `json:"override_params_repository_access_level,omitempty"`
+	OverrideParamsRepositoryStorage *any `json:"override_params_repository_storage,omitempty"`
+	OverrideParamsRequestAccessEnabled *any `json:"override_params_request_access_enabled,omitempty"`
+	OverrideParamsRequirementsAccessLevel *any `json:"override_params_requirements_access_level,omitempty"`
+	OverrideParamsResolveOutdatedDiffDiscussion *any `json:"override_params_resolve_outdated_diff_discussion,omitempty"`
+	OverrideParamsResourceGroupDefaultProcessMode *any `json:"override_params_resource_group_default_process_mode,omitempty"`
+	OverrideParamsSecurityAndComplianceAccessLevel *any `json:"override_params_security_and_compliance_access_level,omitempty"`
+	OverrideParamsServiceDeskEnabled *any `json:"override_params_service_desk_enabled,omitempty"`
+	OverrideParamsSharedRunnersEnabled *any `json:"override_params_shared_runners_enabled,omitempty"`
+	OverrideParamsShowDefaultAwardEmoji *any `json:"override_params_show_default_award_emoji,omitempty"`
+	OverrideParamsShowDiffPreviewInEmail *any `json:"override_params_show_diff_preview_in_email,omitempty"`
+	OverrideParamsSnippetsAccessLevel *any `json:"override_params_snippets_access_level,omitempty"`
+	OverrideParamsSnippetsEnabled *any `json:"override_params_snippets_enabled,omitempty"`
+	OverrideParamsSppRepositoryPipelineAccess *any `json:"override_params_spp_repository_pipeline_access,omitempty"`
+	OverrideParamsSquashCommitTemplate *any `json:"override_params_squash_commit_template,omitempty"`
+	OverrideParamsSquashOption *any `json:"override_params_squash_option,omitempty"`
+	OverrideParamsSuggestionCommitMessage *any `json:"override_params_suggestion_commit_message,omitempty"`
+	OverrideParamsTagList *any `json:"override_params_tag_list,omitempty"`
+	OverrideParamsTopic *any `json:"override_params_topic,omitempty"`
+	OverrideParamsVisibility *any `json:"override_params_visibility,omitempty"`
+	OverrideParamsWarnAboutPotentiallyUnwantedCharacter *any `json:"override_params_warn_about_potentially_unwanted_character,omitempty"`
+	OverrideParamsWikiAccessLevel *any `json:"override_params_wiki_access_level,omitempty"`
+	OverrideParamsWikiEnabled *any `json:"override_params_wiki_enabled,omitempty"`
+	Overwrite *any `json:"overwrite,omitempty"`
+	Path string `json:"path"`
+	AccessKeyId *string `json:"access_key_id,omitempty"`
+	BucketName *any `json:"bucket_name,omitempty"`
+	FileKey *any `json:"file_key,omitempty"`
+	Region *any `json:"region,omitempty"`
+	SecretAccessKey *any `json:"secret_access_key,omitempty"`
+	Url *string `json:"url,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	ExceptionClass *string `json:"exception_class,omitempty"`
 	ExceptionMessage *string `json:"exception_message,omitempty"`
@@ -5692,11 +6100,14 @@ type ApiEntitiesProjectSnippetListMatch struct {
 	FilePath *any `json:"file_path,omitempty"`
 	ProjectId string `json:"project_id"`
 	SnippetId *string `json:"snippet_id,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesProjectSnippetCreateData is the typed request payload for ApiEntitiesProjectSnippet.CreateTyped.
 type ApiEntitiesProjectSnippetCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdSnippet map[string]any `json:"post_api_v4_projects_id_snippet"`
 	Author *map[string]any `json:"author,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -5719,6 +6130,7 @@ type ApiEntitiesProjectSnippetCreateData struct {
 type ApiEntitiesProjectSnippetUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdSnippetsSnippetId map[string]any `json:"put_api_v4_projects_id_snippets_snippet_id"`
 	Author *map[string]any `json:"author,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -5743,6 +6155,7 @@ type ApiEntitiesProjectUpload struct {
 // ApiEntitiesProjectUploadCreateData is the typed request payload for ApiEntitiesProjectUpload.CreateTyped.
 type ApiEntitiesProjectUploadCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdUpload map[string]any `json:"post_api_v4_projects_id_upload"`
 }
 
 // ApiEntitiesProjectWithAccess is the typed data model for the api_entities_project_with_access entity.
@@ -5900,6 +6313,163 @@ type ApiEntitiesProjectWithAccess struct {
 // ApiEntitiesProjectWithAccessLoadMatch is the typed request payload for ApiEntitiesProjectWithAccess.LoadTyped.
 type ApiEntitiesProjectWithAccessLoadMatch struct {
 	Id string `json:"id"`
+	License *any `json:"license,omitempty"`
+	Statistic *any `json:"statistic,omitempty"`
+	WithCustomAttribute *any `json:"with_custom_attribute,omitempty"`
+}
+
+// ApiEntitiesProjectWithAccessCreateData is the typed request payload for ApiEntitiesProjectWithAccess.CreateTyped.
+type ApiEntitiesProjectWithAccessCreateData struct {
+	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdHousekeeping *map[string]any `json:"post_api_v4_projects_id_housekeeping,omitempty"`
+	AllowMergeOnSkippedPipeline *bool `json:"allow_merge_on_skipped_pipeline,omitempty"`
+	AllowPipelineTriggerApproveDeployment *bool `json:"allow_pipeline_trigger_approve_deployment,omitempty"`
+	AnalyticsAccessLevel *string `json:"analytics_access_level,omitempty"`
+	ApprovalsBeforeMerge *string `json:"approvals_before_merge,omitempty"`
+	Archived *bool `json:"archived,omitempty"`
+	AutoCancelPendingPipelines *string `json:"auto_cancel_pending_pipelines,omitempty"`
+	AutoDevopsDeployStrategy *string `json:"auto_devops_deploy_strategy,omitempty"`
+	AutoDevopsEnabled *bool `json:"auto_devops_enabled,omitempty"`
+	AutoDuoCodeReviewEnabled *string `json:"auto_duo_code_review_enabled,omitempty"`
+	AutocloseReferencedIssues *bool `json:"autoclose_referenced_issues,omitempty"`
+	AvatarUrl *string `json:"avatar_url,omitempty"`
+	BuildGitStrategy *string `json:"build_git_strategy,omitempty"`
+	BuildTimeout *int `json:"build_timeout,omitempty"`
+	BuildsAccessLevel *string `json:"builds_access_level,omitempty"`
+	CanCreateMergeRequestIn *bool `json:"can_create_merge_request_in,omitempty"`
+	CiAllowForkPipelinesToRunInParentProject *bool `json:"ci_allow_fork_pipelines_to_run_in_parent_project,omitempty"`
+	CiConfigPath *string `json:"ci_config_path,omitempty"`
+	CiDefaultGitDepth *int `json:"ci_default_git_depth,omitempty"`
+	CiDeletePipelinesInSeconds *int `json:"ci_delete_pipelines_in_seconds,omitempty"`
+	CiForwardDeploymentEnabled *bool `json:"ci_forward_deployment_enabled,omitempty"`
+	CiForwardDeploymentRollbackAllowed *bool `json:"ci_forward_deployment_rollback_allowed,omitempty"`
+	CiIdTokenSubClaimComponents *[]any `json:"ci_id_token_sub_claim_components,omitempty"`
+	CiJobTokenScopeEnabled *bool `json:"ci_job_token_scope_enabled,omitempty"`
+	CiPipelineVariablesMinimumOverrideRole *string `json:"ci_pipeline_variables_minimum_override_role,omitempty"`
+	CiPushRepositoryForJobTokenAllowed *bool `json:"ci_push_repository_for_job_token_allowed,omitempty"`
+	CiRestrictPipelineCancellationRole *string `json:"ci_restrict_pipeline_cancellation_role,omitempty"`
+	CiSeparatedCaches *bool `json:"ci_separated_caches,omitempty"`
+	ComplianceFrameworks *string `json:"compliance_frameworks,omitempty"`
+	ContainerExpirationPolicy *map[string]any `json:"container_expiration_policy,omitempty"`
+	ContainerRegistryAccessLevel *string `json:"container_registry_access_level,omitempty"`
+	ContainerRegistryEnabled *bool `json:"container_registry_enabled,omitempty"`
+	ContainerRegistryImagePrefix *string `json:"container_registry_image_prefix,omitempty"`
+	CreatedAt *string `json:"created_at,omitempty"`
+	CreatorId *int `json:"creator_id,omitempty"`
+	CustomAttributes *map[string]any `json:"custom_attributes,omitempty"`
+	DefaultBranch *string `json:"default_branch,omitempty"`
+	Description *string `json:"description,omitempty"`
+	DescriptionHtml *string `json:"description_html,omitempty"`
+	DuoRemoteFlowsEnabled *string `json:"duo_remote_flows_enabled,omitempty"`
+	EmailsDisabled *bool `json:"emails_disabled,omitempty"`
+	EmailsEnabled *bool `json:"emails_enabled,omitempty"`
+	EmptyRepo *bool `json:"empty_repo,omitempty"`
+	EnforceAuthChecksOnUploads *bool `json:"enforce_auth_checks_on_uploads,omitempty"`
+	EnvironmentsAccessLevel *string `json:"environments_access_level,omitempty"`
+	ExternalAuthorizationClassificationLabel *string `json:"external_authorization_classification_label,omitempty"`
+	FeatureFlagsAccessLevel *string `json:"feature_flags_access_level,omitempty"`
+	ForkedFromProject *map[string]any `json:"forked_from_project,omitempty"`
+	ForkingAccessLevel *string `json:"forking_access_level,omitempty"`
+	ForksCount *int `json:"forks_count,omitempty"`
+	GroupRunnersEnabled *bool `json:"group_runners_enabled,omitempty"`
+	HttpUrlToRepo *string `json:"http_url_to_repo,omitempty"`
+	Id *int `json:"id,omitempty"`
+	ImportError *string `json:"import_error,omitempty"`
+	ImportStatus *string `json:"import_status,omitempty"`
+	ImportType *string `json:"import_type,omitempty"`
+	ImportUrl *string `json:"import_url,omitempty"`
+	InfrastructureAccessLevel *string `json:"infrastructure_access_level,omitempty"`
+	IssueBranchTemplate *string `json:"issue_branch_template,omitempty"`
+	IssuesAccessLevel *string `json:"issues_access_level,omitempty"`
+	IssuesEnabled *bool `json:"issues_enabled,omitempty"`
+	IssuesTemplate *string `json:"issues_template,omitempty"`
+	JobsEnabled *bool `json:"jobs_enabled,omitempty"`
+	KeepLatestArtifact *bool `json:"keep_latest_artifact,omitempty"`
+	LastActivityAt *string `json:"last_activity_at,omitempty"`
+	LfsEnabled *bool `json:"lfs_enabled,omitempty"`
+	License *map[string]any `json:"license,omitempty"`
+	LicenseUrl *string `json:"license_url,omitempty"`
+	Links *map[string]any `json:"links,omitempty"`
+	MarkedForDeletionAt *string `json:"marked_for_deletion_at,omitempty"`
+	MarkedForDeletionOn *string `json:"marked_for_deletion_on,omitempty"`
+	MaxArtifactsSize *int `json:"max_artifacts_size,omitempty"`
+	MergeCommitTemplate *string `json:"merge_commit_template,omitempty"`
+	MergeMethod *string `json:"merge_method,omitempty"`
+	MergePipelinesEnabled *string `json:"merge_pipelines_enabled,omitempty"`
+	MergeRequestTitleRegex *string `json:"merge_request_title_regex,omitempty"`
+	MergeRequestTitleRegexDescription *string `json:"merge_request_title_regex_description,omitempty"`
+	MergeRequestsAccessLevel *string `json:"merge_requests_access_level,omitempty"`
+	MergeRequestsEnabled *bool `json:"merge_requests_enabled,omitempty"`
+	MergeRequestsTemplate *string `json:"merge_requests_template,omitempty"`
+	MergeTrainsEnabled *string `json:"merge_trains_enabled,omitempty"`
+	MergeTrainsSkipTrainAllowed *string `json:"merge_trains_skip_train_allowed,omitempty"`
+	Mirror *string `json:"mirror,omitempty"`
+	MirrorOverwritesDivergedBranches *string `json:"mirror_overwrites_diverged_branches,omitempty"`
+	MirrorTriggerBuilds *string `json:"mirror_trigger_builds,omitempty"`
+	MirrorUserId *string `json:"mirror_user_id,omitempty"`
+	ModelExperimentsAccessLevel *string `json:"model_experiments_access_level,omitempty"`
+	ModelRegistryAccessLevel *string `json:"model_registry_access_level,omitempty"`
+	MonitorAccessLevel *string `json:"monitor_access_level,omitempty"`
+	MrDefaultTargetSelf *bool `json:"mr_default_target_self,omitempty"`
+	Name *string `json:"name,omitempty"`
+	NameWithNamespace *string `json:"name_with_namespace,omitempty"`
+	Namespace *map[string]any `json:"namespace,omitempty"`
+	OnlyAllowMergeIfAllDiscussionsAreResolved *bool `json:"only_allow_merge_if_all_discussions_are_resolved,omitempty"`
+	OnlyAllowMergeIfAllStatusChecksPassed *string `json:"only_allow_merge_if_all_status_checks_passed,omitempty"`
+	OnlyAllowMergeIfPipelineSucceeds *bool `json:"only_allow_merge_if_pipeline_succeeds,omitempty"`
+	OnlyMirrorProtectedBranches *string `json:"only_mirror_protected_branches,omitempty"`
+	OpenIssuesCount *int `json:"open_issues_count,omitempty"`
+	Owner *map[string]any `json:"owner,omitempty"`
+	PackageRegistryAccessLevel *string `json:"package_registry_access_level,omitempty"`
+	PackagesEnabled *bool `json:"packages_enabled,omitempty"`
+	PagesAccessLevel *string `json:"pages_access_level,omitempty"`
+	Path *string `json:"path,omitempty"`
+	PathWithNamespace *string `json:"path_with_namespace,omitempty"`
+	Permissions *map[string]any `json:"permissions,omitempty"`
+	PreReceiveSecretDetectionEnabled *bool `json:"pre_receive_secret_detection_enabled,omitempty"`
+	PreventMergeWithoutJiraIssue *string `json:"prevent_merge_without_jira_issue,omitempty"`
+	PrintingMergeRequestLinkEnabled *bool `json:"printing_merge_request_link_enabled,omitempty"`
+	PublicJobs *bool `json:"public_jobs,omitempty"`
+	ReadmeUrl *string `json:"readme_url,omitempty"`
+	ReleasesAccessLevel *string `json:"releases_access_level,omitempty"`
+	RemoveSourceBranchAfterMerge *bool `json:"remove_source_branch_after_merge,omitempty"`
+	RepositoryAccessLevel *string `json:"repository_access_level,omitempty"`
+	RepositoryObjectFormat *string `json:"repository_object_format,omitempty"`
+	RepositoryStorage *string `json:"repository_storage,omitempty"`
+	RequestAccessEnabled *bool `json:"request_access_enabled,omitempty"`
+	RequirementsAccessLevel *string `json:"requirements_access_level,omitempty"`
+	RequirementsEnabled *string `json:"requirements_enabled,omitempty"`
+	ResolveOutdatedDiffDiscussions *bool `json:"resolve_outdated_diff_discussions,omitempty"`
+	ResourceGroupDefaultProcessMode *string `json:"resource_group_default_process_mode,omitempty"`
+	RestrictUserDefinedVariables *bool `json:"restrict_user_defined_variables,omitempty"`
+	RunnerTokenExpirationInterval *int `json:"runner_token_expiration_interval,omitempty"`
+	RunnersToken *string `json:"runners_token,omitempty"`
+	SecretPushProtectionEnabled *bool `json:"secret_push_protection_enabled,omitempty"`
+	SecurityAndComplianceAccessLevel *string `json:"security_and_compliance_access_level,omitempty"`
+	SecurityAndComplianceEnabled *string `json:"security_and_compliance_enabled,omitempty"`
+	ServiceDeskAddress *string `json:"service_desk_address,omitempty"`
+	ServiceDeskEnabled *bool `json:"service_desk_enabled,omitempty"`
+	SharedRunnersEnabled *bool `json:"shared_runners_enabled,omitempty"`
+	SharedWithGroups *[]any `json:"shared_with_groups,omitempty"`
+	ShowDiffPreviewInEmail *bool `json:"show_diff_preview_in_email,omitempty"`
+	SnippetsAccessLevel *string `json:"snippets_access_level,omitempty"`
+	SnippetsEnabled *bool `json:"snippets_enabled,omitempty"`
+	SppRepositoryPipelineAccess *bool `json:"spp_repository_pipeline_access,omitempty"`
+	SquashCommitTemplate *string `json:"squash_commit_template,omitempty"`
+	SquashOption *string `json:"squash_option,omitempty"`
+	SshUrlToRepo *string `json:"ssh_url_to_repo,omitempty"`
+	StarCount *int `json:"star_count,omitempty"`
+	Statistics *map[string]any `json:"statistics,omitempty"`
+	SuggestionCommitMessage *string `json:"suggestion_commit_message,omitempty"`
+	TagList *[]any `json:"tag_list,omitempty"`
+	Topics *[]any `json:"topics,omitempty"`
+	UpdatedAt *string `json:"updated_at,omitempty"`
+	Visibility *string `json:"visibility,omitempty"`
+	WarnAboutPotentiallyUnwantedCharacters *bool `json:"warn_about_potentially_unwanted_characters,omitempty"`
+	WebBasedCommitSigningEnabled *string `json:"web_based_commit_signing_enabled,omitempty"`
+	WebUrl *string `json:"web_url,omitempty"`
+	WikiAccessLevel *string `json:"wiki_access_level,omitempty"`
+	WikiEnabled *bool `json:"wiki_enabled,omitempty"`
 }
 
 // ApiEntitiesProjectsContainerRegistryProtectionRule is the typed data model for the api_entities_projects_container_registry_protection_rule entity.
@@ -5919,6 +6489,7 @@ type ApiEntitiesProjectsContainerRegistryProtectionRuleListMatch struct {
 // ApiEntitiesProjectsContainerRegistryProtectionRuleCreateData is the typed request payload for ApiEntitiesProjectsContainerRegistryProtectionRule.CreateTyped.
 type ApiEntitiesProjectsContainerRegistryProtectionRuleCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdRegistryProtectionRepositoryRule map[string]any `json:"post_api_v4_projects_id_registry_protection_repository_rule"`
 	Id *int `json:"id,omitempty"`
 	MinimumAccessLevelForDelete *string `json:"minimum_access_level_for_delete,omitempty"`
 	MinimumAccessLevelForPush *string `json:"minimum_access_level_for_push,omitempty"`
@@ -5929,6 +6500,7 @@ type ApiEntitiesProjectsContainerRegistryProtectionRuleCreateData struct {
 type ApiEntitiesProjectsContainerRegistryProtectionRuleUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PatchApiV4ProjectsIdRegistryProtectionRepositoryRulesProtectionRuleId map[string]any `json:"patch_api_v4_projects_id_registry_protection_repository_rules_protection_rule_id"`
 	MinimumAccessLevelForDelete *string `json:"minimum_access_level_for_delete,omitempty"`
 	MinimumAccessLevelForPush *string `json:"minimum_access_level_for_push,omitempty"`
 	RepositoryPathPattern *string `json:"repository_path_pattern,omitempty"`
@@ -5952,6 +6524,7 @@ type ApiEntitiesProjectsPackagesProtectionRuleListMatch struct {
 // ApiEntitiesProjectsPackagesProtectionRuleCreateData is the typed request payload for ApiEntitiesProjectsPackagesProtectionRule.CreateTyped.
 type ApiEntitiesProjectsPackagesProtectionRuleCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdPackagesProtectionRule map[string]any `json:"post_api_v4_projects_id_packages_protection_rule"`
 	Id *int `json:"id,omitempty"`
 	MinimumAccessLevelForDelete *string `json:"minimum_access_level_for_delete,omitempty"`
 	MinimumAccessLevelForPush *string `json:"minimum_access_level_for_push,omitempty"`
@@ -5963,6 +6536,7 @@ type ApiEntitiesProjectsPackagesProtectionRuleCreateData struct {
 type ApiEntitiesProjectsPackagesProtectionRuleUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PatchApiV4ProjectsIdPackagesProtectionRulesPackageProtectionRuleId map[string]any `json:"patch_api_v4_projects_id_packages_protection_rules_package_protection_rule_id"`
 	MinimumAccessLevelForDelete *string `json:"minimum_access_level_for_delete,omitempty"`
 	MinimumAccessLevelForPush *string `json:"minimum_access_level_for_push,omitempty"`
 	PackageNamePattern *string `json:"package_name_pattern,omitempty"`
@@ -5987,6 +6561,7 @@ type ApiEntitiesProjectsTopicLoadMatch struct {
 
 // ApiEntitiesProjectsTopicCreateData is the typed request payload for ApiEntitiesProjectsTopic.CreateTyped.
 type ApiEntitiesProjectsTopicCreateData struct {
+	PostApiV4Topic map[string]any `json:"post_api_v4_topic"`
 	AvatarUrl *string `json:"avatar_url,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -5999,6 +6574,7 @@ type ApiEntitiesProjectsTopicCreateData struct {
 // ApiEntitiesProjectsTopicUpdateData is the typed request payload for ApiEntitiesProjectsTopic.UpdateTyped.
 type ApiEntitiesProjectsTopicUpdateData struct {
 	Id string `json:"id"`
+	PutApiV4TopicsId map[string]any `json:"put_api_v4_topics_id"`
 	AvatarUrl *string `json:"avatar_url,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -6028,11 +6604,15 @@ type ApiEntitiesProtectedBranchLoadMatch struct {
 // ApiEntitiesProtectedBranchListMatch is the typed request payload for ApiEntitiesProtectedBranch.ListTyped.
 type ApiEntitiesProtectedBranchListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Search *any `json:"search,omitempty"`
 }
 
 // ApiEntitiesProtectedBranchCreateData is the typed request payload for ApiEntitiesProtectedBranch.CreateTyped.
 type ApiEntitiesProtectedBranchCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdProtectedBranch map[string]any `json:"post_api_v4_projects_id_protected_branch"`
 	AllowForcePush *bool `json:"allow_force_push,omitempty"`
 	CodeOwnerApprovalRequired *bool `json:"code_owner_approval_required,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -6047,6 +6627,7 @@ type ApiEntitiesProtectedBranchCreateData struct {
 type ApiEntitiesProtectedBranchUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PatchApiV4ProjectsIdProtectedBranchesName map[string]any `json:"patch_api_v4_projects_id_protected_branches_name"`
 	AllowForcePush *bool `json:"allow_force_push,omitempty"`
 	CodeOwnerApprovalRequired *bool `json:"code_owner_approval_required,omitempty"`
 	Inherited *bool `json:"inherited,omitempty"`
@@ -6077,11 +6658,14 @@ type ApiEntitiesProtectedTagLoadMatch struct {
 // ApiEntitiesProtectedTagListMatch is the typed request payload for ApiEntitiesProtectedTag.ListTyped.
 type ApiEntitiesProtectedTagListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesProtectedTagCreateData is the typed request payload for ApiEntitiesProtectedTag.CreateTyped.
 type ApiEntitiesProtectedTagCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdProtectedTag map[string]any `json:"post_api_v4_projects_id_protected_tag"`
 	AccessLevel *int `json:"access_level,omitempty"`
 	AccessLevelDescription *string `json:"access_level_description,omitempty"`
 	CreateAccessLevels *map[string]any `json:"create_access_levels,omitempty"`
@@ -6105,6 +6689,13 @@ type ApiEntitiesPublicGroupDetail struct {
 // ApiEntitiesPublicGroupDetailListMatch is the typed request payload for ApiEntitiesPublicGroupDetail.ListTyped.
 type ApiEntitiesPublicGroupDetailListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Search *any `json:"search,omitempty"`
+	SharedMinAccessLevel *any `json:"shared_min_access_level,omitempty"`
+	SharedVisibleOnly *any `json:"shared_visible_only,omitempty"`
+	SkipGroup *any `json:"skip_group,omitempty"`
+	WithShared *any `json:"with_shared,omitempty"`
 }
 
 // ApiEntitiesRelatedIssue is the typed data model for the api_entities_related_issue entity.
@@ -6170,6 +6761,19 @@ type ApiEntitiesRelationImportTracker struct {
 
 // ApiEntitiesRelationImportTrackerCreateData is the typed request payload for ApiEntitiesRelationImportTracker.CreateTyped.
 type ApiEntitiesRelationImportTrackerCreateData struct {
+	File any `json:"file"`
+	FileEtag *any `json:"file_etag,omitempty"`
+	FileMd5 *any `json:"file_md5,omitempty"`
+	FileName *any `json:"file_name,omitempty"`
+	FilePath *any `json:"file_path,omitempty"`
+	FileRemoteId *string `json:"file_remote_id,omitempty"`
+	FileRemoteUrl *any `json:"file_remote_url,omitempty"`
+	FileSha1 *any `json:"file_sha1,omitempty"`
+	FileSha256 *any `json:"file_sha256,omitempty"`
+	FileSize *any `json:"file_size,omitempty"`
+	FileType *any `json:"file_type,omitempty"`
+	Path string `json:"path"`
+	Relation any `json:"relation"`
 }
 
 // ApiEntitiesRelease is the typed data model for the api_entities_release entity.
@@ -6196,16 +6800,25 @@ type ApiEntitiesRelease struct {
 type ApiEntitiesReleaseLoadMatch struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	IncludeHtmlDescription *any `json:"include_html_description,omitempty"`
 }
 
 // ApiEntitiesReleaseListMatch is the typed request payload for ApiEntitiesRelease.ListTyped.
 type ApiEntitiesReleaseListMatch struct {
 	ProjectId string `json:"project_id"`
+	IncludeHtmlDescription *any `json:"include_html_description,omitempty"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Sort *any `json:"sort,omitempty"`
+	UpdatedAfter *any `json:"updated_after,omitempty"`
+	UpdatedBefore *any `json:"updated_before,omitempty"`
 }
 
 // ApiEntitiesReleaseCreateData is the typed request payload for ApiEntitiesRelease.CreateTyped.
 type ApiEntitiesReleaseCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdRelease *map[string]any `json:"post_api_v4_projects_id_release,omitempty"`
 	TagName *any `json:"tag_name,omitempty"`
 	Assets *map[string]any `json:"assets,omitempty"`
 	Author *map[string]any `json:"author,omitempty"`
@@ -6228,6 +6841,7 @@ type ApiEntitiesReleaseCreateData struct {
 type ApiEntitiesReleaseUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdReleasesTagName map[string]any `json:"put_api_v4_projects_id_releases_tag_name"`
 	Assets *map[string]any `json:"assets,omitempty"`
 	Author *map[string]any `json:"author,omitempty"`
 	Commit *map[string]any `json:"commit,omitempty"`
@@ -6265,12 +6879,15 @@ type ApiEntitiesReleasesLinkLoadMatch struct {
 type ApiEntitiesReleasesLinkListMatch struct {
 	ProjectId string `json:"project_id"`
 	ReleaseId string `json:"release_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesReleasesLinkCreateData is the typed request payload for ApiEntitiesReleasesLink.CreateTyped.
 type ApiEntitiesReleasesLinkCreateData struct {
 	ProjectId string `json:"project_id"`
 	ReleaseId string `json:"release_id"`
+	PostApiV4ProjectsIdReleasesTagNameAssetsLink map[string]any `json:"post_api_v4_projects_id_releases_tag_name_assets_link"`
 	DirectAssetUrl *string `json:"direct_asset_url,omitempty"`
 	Id *int `json:"id,omitempty"`
 	LinkType *string `json:"link_type,omitempty"`
@@ -6283,6 +6900,7 @@ type ApiEntitiesReleasesLinkUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
 	ReleaseId string `json:"release_id"`
+	PutApiV4ProjectsIdReleasesTagNameAssetsLinksLinkId map[string]any `json:"put_api_v4_projects_id_releases_tag_name_assets_links_link_id"`
 	DirectAssetUrl *string `json:"direct_asset_url,omitempty"`
 	LinkType *string `json:"link_type,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -6315,11 +6933,14 @@ type ApiEntitiesRemoteMirrorLoadMatch struct {
 // ApiEntitiesRemoteMirrorListMatch is the typed request payload for ApiEntitiesRemoteMirror.ListTyped.
 type ApiEntitiesRemoteMirrorListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesRemoteMirrorCreateData is the typed request payload for ApiEntitiesRemoteMirror.CreateTyped.
 type ApiEntitiesRemoteMirrorCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdRemoteMirror map[string]any `json:"post_api_v4_projects_id_remote_mirror"`
 	AuthMethod *string `json:"auth_method,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
 	HostKeys *[]any `json:"host_keys,omitempty"`
@@ -6339,6 +6960,7 @@ type ApiEntitiesRemoteMirrorCreateData struct {
 type ApiEntitiesRemoteMirrorUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdRemoteMirrorsMirrorId map[string]any `json:"put_api_v4_projects_id_remote_mirrors_mirror_id"`
 	AuthMethod *string `json:"auth_method,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
 	HostKeys *[]any `json:"host_keys,omitempty"`
@@ -6371,6 +6993,7 @@ type ApiEntitiesRepositoryHealth struct {
 // ApiEntitiesRepositoryHealthLoadMatch is the typed request payload for ApiEntitiesRepositoryHealth.LoadTyped.
 type ApiEntitiesRepositoryHealthLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	Generate *any `json:"generate,omitempty"`
 }
 
 // ApiEntitiesResourceAccessTokenWithToken is the typed data model for the api_entities_resource_access_token_with_token entity.
@@ -6394,6 +7017,7 @@ type ApiEntitiesResourceAccessTokenWithToken struct {
 // ApiEntitiesResourceAccessTokenWithTokenCreateData is the typed request payload for ApiEntitiesResourceAccessTokenWithToken.CreateTyped.
 type ApiEntitiesResourceAccessTokenWithTokenCreateData struct {
 	GroupId string `json:"group_id"`
+	PostApiV4GroupsIdAccessTokensSelfRotate map[string]any `json:"post_api_v4_groups_id_access_tokens_self_rotate"`
 	AccessLevel *int `json:"access_level,omitempty"`
 	Active *bool `json:"active,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
@@ -6434,6 +7058,8 @@ type ApiEntitiesResourceMilestoneEventLoadMatch struct {
 type ApiEntitiesResourceMilestoneEventListMatch struct {
 	IssueId *string `json:"issue_id,omitempty"`
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 	MergeRequestId *string `json:"merge_request_id,omitempty"`
 }
 
@@ -6460,23 +7086,10 @@ type ApiEntitiesSnippet struct {
 
 // ApiEntitiesSnippetListMatch is the typed request payload for ApiEntitiesSnippet.ListTyped.
 type ApiEntitiesSnippetListMatch struct {
-	Author *map[string]any `json:"author,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	Description *string `json:"description,omitempty"`
-	FileName *string `json:"file_name,omitempty"`
-	Files *[]any `json:"files,omitempty"`
-	HttpUrlToRepo *string `json:"http_url_to_repo,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Imported *bool `json:"imported,omitempty"`
-	ImportedFrom *string `json:"imported_from,omitempty"`
-	ProjectId *int `json:"project_id,omitempty"`
-	RawUrl *string `json:"raw_url,omitempty"`
-	RepositoryStorage *string `json:"repository_storage,omitempty"`
-	SshUrlToRepo *string `json:"ssh_url_to_repo,omitempty"`
-	Title *string `json:"title,omitempty"`
-	UpdatedAt *string `json:"updated_at,omitempty"`
-	Visibility *string `json:"visibility,omitempty"`
-	WebUrl *string `json:"web_url,omitempty"`
+	CreatedAfter *any `json:"created_after,omitempty"`
+	CreatedBefore *any `json:"created_before,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesSshKeyWithUser is the typed data model for the api_entities_ssh_key_with_user entity.
@@ -6547,6 +7160,7 @@ type ApiEntitiesSuggestion struct {
 
 // ApiEntitiesSuggestionUpdateData is the typed request payload for ApiEntitiesSuggestion.UpdateTyped.
 type ApiEntitiesSuggestionUpdateData struct {
+	PutApiV4SuggestionsBatchApply map[string]any `json:"put_api_v4_suggestions_batch_apply"`
 	Appliable *string `json:"appliable,omitempty"`
 	Applied *string `json:"applied,omitempty"`
 	FromContent *string `json:"from_content,omitempty"`
@@ -6579,6 +7193,7 @@ type ApiEntitiesSystemBroadcastMessageLoadMatch struct {
 
 // ApiEntitiesSystemBroadcastMessageCreateData is the typed request payload for ApiEntitiesSystemBroadcastMessage.CreateTyped.
 type ApiEntitiesSystemBroadcastMessageCreateData struct {
+	PostApiV4BroadcastMessage map[string]any `json:"post_api_v4_broadcast_message"`
 	Active *bool `json:"active,omitempty"`
 	BroadcastType *string `json:"broadcast_type,omitempty"`
 	Color *string `json:"color,omitempty"`
@@ -6596,6 +7211,7 @@ type ApiEntitiesSystemBroadcastMessageCreateData struct {
 // ApiEntitiesSystemBroadcastMessageUpdateData is the typed request payload for ApiEntitiesSystemBroadcastMessage.UpdateTyped.
 type ApiEntitiesSystemBroadcastMessageUpdateData struct {
 	Id string `json:"id"`
+	PutApiV4BroadcastMessagesId map[string]any `json:"put_api_v4_broadcast_messages_id"`
 	Active *bool `json:"active,omitempty"`
 	BroadcastType *string `json:"broadcast_type,omitempty"`
 	Color *string `json:"color,omitempty"`
@@ -6635,11 +7251,18 @@ type ApiEntitiesTagLoadMatch struct {
 // ApiEntitiesTagListMatch is the typed request payload for ApiEntitiesTag.ListTyped.
 type ApiEntitiesTagListMatch struct {
 	ProjectId string `json:"project_id"`
+	OrderBy *any `json:"order_by,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PageToken *any `json:"page_token,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Search *any `json:"search,omitempty"`
+	Sort *any `json:"sort,omitempty"`
 }
 
 // ApiEntitiesTagCreateData is the typed request payload for ApiEntitiesTag.CreateTyped.
 type ApiEntitiesTagCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdRepositoryTag map[string]any `json:"post_api_v4_projects_id_repository_tag"`
 	Commit *map[string]any `json:"commit,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -6672,10 +7295,13 @@ type ApiEntitiesTemplatesList struct {
 type ApiEntitiesTemplatesListLoadMatch struct {
 	ProjectId string `json:"project_id"`
 	Type any `json:"type"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesTerraformModuleVersion is the typed data model for the api_entities_terraform_module_version entity.
 type ApiEntitiesTerraformModuleVersion struct {
+	Id *string `json:"id,omitempty"`
 	Modules *string `json:"modules,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Provider *string `json:"provider,omitempty"`
@@ -6692,6 +7318,7 @@ type ApiEntitiesTerraformModuleVersionLoadMatch struct {
 	ModuleName any `json:"module_name"`
 	ModuleSystem any `json:"module_system"`
 	V1Id *string `json:"v1_id,omitempty"`
+	ModuleVersion *any `json:"module_version,omitempty"`
 	ModuleNamespace *any `json:"module_namespace,omitempty"`
 }
 
@@ -6714,6 +7341,13 @@ type ApiEntitiesTreeObject struct {
 // ApiEntitiesTreeObjectLoadMatch is the typed request payload for ApiEntitiesTreeObject.LoadTyped.
 type ApiEntitiesTreeObjectLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PageToken *any `json:"page_token,omitempty"`
+	Pagination *any `json:"pagination,omitempty"`
+	Path *string `json:"path,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Recursive *any `json:"recursive,omitempty"`
+	Ref *any `json:"ref,omitempty"`
 }
 
 // ApiEntitiesTrigger is the typed data model for the api_entities_trigger entity.
@@ -6746,11 +7380,14 @@ type ApiEntitiesTriggerLoadMatch struct {
 // ApiEntitiesTriggerListMatch is the typed request payload for ApiEntitiesTrigger.ListTyped.
 type ApiEntitiesTriggerListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // ApiEntitiesTriggerCreateData is the typed request payload for ApiEntitiesTrigger.CreateTyped.
 type ApiEntitiesTriggerCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdTrigger map[string]any `json:"post_api_v4_projects_id_trigger"`
 	AvatarPath *string `json:"avatar_path,omitempty"`
 	AvatarUrl *string `json:"avatar_url,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
@@ -6774,6 +7411,7 @@ type ApiEntitiesTriggerCreateData struct {
 type ApiEntitiesTriggerUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdTriggersTriggerId map[string]any `json:"put_api_v4_projects_id_triggers_trigger_id"`
 	AvatarPath *string `json:"avatar_path,omitempty"`
 	AvatarUrl *string `json:"avatar_url,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
@@ -6877,6 +7515,14 @@ type ApiEntitiesUserPublic struct {
 // ApiEntitiesUserPublicListMatch is the typed request payload for ApiEntitiesUserPublic.ListTyped.
 type ApiEntitiesUserPublicListMatch struct {
 	GroupId string `json:"group_id"`
+	Active *bool `json:"active,omitempty"`
+	Blocked *bool `json:"blocked,omitempty"`
+	CreatedAfter *any `json:"created_after,omitempty"`
+	CreatedBefore *any `json:"created_before,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Search *any `json:"search,omitempty"`
+	Username *string `json:"username,omitempty"`
 }
 
 // ApiEntitiesUserWithAdmin is the typed data model for the api_entities_user_with_admin entity.
@@ -6887,8 +7533,7 @@ type ApiEntitiesUserWithAdmin struct {
 
 // ApiEntitiesUserWithAdminListMatch is the typed request payload for ApiEntitiesUserWithAdmin.ListTyped.
 type ApiEntitiesUserWithAdminListMatch struct {
-	Key *string `json:"key,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Fingerprint any `json:"fingerprint"`
 }
 
 // ApiEntitiesWikiAttachment is the typed data model for the api_entities_wiki_attachment entity.
@@ -6898,6 +7543,7 @@ type ApiEntitiesWikiAttachment struct {
 // ApiEntitiesWikiAttachmentCreateData is the typed request payload for ApiEntitiesWikiAttachment.CreateTyped.
 type ApiEntitiesWikiAttachmentCreateData struct {
 	GroupId string `json:"group_id"`
+	PostApiV4GroupsIdWikisAttachment map[string]any `json:"post_api_v4_groups_id_wikis_attachment"`
 }
 
 // ApiEntitiesWikiPage is the typed data model for the api_entities_wiki_page entity.
@@ -6908,19 +7554,24 @@ type ApiEntitiesWikiPage struct {
 type ApiEntitiesWikiPageLoadMatch struct {
 	GroupId *string `json:"group_id,omitempty"`
 	Slug string `json:"slug"`
+	RenderHtml *any `json:"render_html,omitempty"`
+	Version *any `json:"version,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
 }
 
 // ApiEntitiesWikiPageCreateData is the typed request payload for ApiEntitiesWikiPage.CreateTyped.
 type ApiEntitiesWikiPageCreateData struct {
 	GroupId string `json:"group_id"`
+	PostApiV4GroupsIdWiki map[string]any `json:"post_api_v4_groups_id_wiki"`
 }
 
 // ApiEntitiesWikiPageUpdateData is the typed request payload for ApiEntitiesWikiPage.UpdateTyped.
 type ApiEntitiesWikiPageUpdateData struct {
 	GroupId *string `json:"group_id,omitempty"`
 	Slug string `json:"slug"`
+	PutApiV4GroupsIdWikisSlug *map[string]any `json:"put_api_v4_groups_id_wikis_slug,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
+	PutApiV4ProjectsIdWikisSlug *map[string]any `json:"put_api_v4_projects_id_wikis_slug,omitempty"`
 }
 
 // ApiEntitiesWikiPageBasic is the typed data model for the api_entities_wiki_page_basic entity.
@@ -6934,6 +7585,7 @@ type ApiEntitiesWikiPageBasic struct {
 // ApiEntitiesWikiPageBasicListMatch is the typed request payload for ApiEntitiesWikiPageBasic.ListTyped.
 type ApiEntitiesWikiPageBasicListMatch struct {
 	GroupId string `json:"group_id"`
+	WithContent *any `json:"with_content,omitempty"`
 }
 
 // Application is the typed data model for the application entity.
@@ -7004,6 +7656,7 @@ type CiVariable struct {
 type CiVariableRemoveMatch struct {
 	Id string `json:"id"`
 	ProjectId *string `json:"project_id,omitempty"`
+	FilterEnvironmentScope *any `json:"filter_environment_scope,omitempty"`
 	GroupId *string `json:"group_id,omitempty"`
 }
 
@@ -7038,6 +7691,7 @@ type Composer struct {
 // ComposerCreateData is the typed request payload for Composer.CreateTyped.
 type ComposerCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdPackagesComposer map[string]any `json:"post_api_v4_projects_id_packages_composer"`
 }
 
 // ComposerPackage is the typed data model for the composer_package entity.
@@ -7090,11 +7744,17 @@ type ConanPackageUpdateData struct {
 	PackageUsername any `json:"package_username"`
 	PackageVersion any `json:"package_version"`
 	RecipeRevision *any `json:"recipe_revision,omitempty"`
+	PutApiV4ProjectsIdPackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileName *map[string]any `json:"put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name,omitempty"`
 	ConanId *string `json:"conan_id,omitempty"`
 	PackageId *string `json:"package_id,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
 	RevisionId *string `json:"revision_id,omitempty"`
+	PutApiV4ProjectsIdPackagesConanV2ConansPackageNamePackageVersionPackageUsernamePackageChannelRevisionsRecipeRevisionPackagesConanPackageReferenceRevisionsPackageRevisionFilesFileName *map[string]any `json:"put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_packages_conan_package_reference_revisions_package_revision_files_file_name,omitempty"`
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionPackageConanPackageReferencePackageRevisionFileName *map[string]any `json:"put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name,omitempty"`
 	FileId *string `json:"file_id,omitempty"`
+	PutApiV4ProjectsIdPackagesConanV2ConansPackageNamePackageVersionPackageUsernamePackageChannelRevisionsRecipeRevisionFilesFileName *map[string]any `json:"put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_files_file_name,omitempty"`
+	PutApiV4ProjectsIdPackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileName *map[string]any `json:"put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_export_file_name,omitempty"`
+	PutApiV4PackagesConanV1FilesPackageNamePackageVersionPackageUsernamePackageChannelRecipeRevisionExportFileName *map[string]any `json:"put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_export_file_name,omitempty"`
 }
 
 // ConanPackageRemoveMatch is the typed request payload for ConanPackage.RemoveTyped.
@@ -7118,6 +7778,11 @@ type ContainerRegistry struct {
 type ContainerRegistryRemoveMatch struct {
 	ProjectId string `json:"project_id"`
 	RepositoryId string `json:"repository_id"`
+	KeepN *any `json:"keep_n,omitempty"`
+	NameRegex *any `json:"name_regex,omitempty"`
+	NameRegexDelete *any `json:"name_regex_delete,omitempty"`
+	NameRegexKeep *any `json:"name_regex_keep,omitempty"`
+	OlderThan *any `json:"older_than,omitempty"`
 	TagName *any `json:"tag_name,omitempty"`
 }
 
@@ -7151,6 +7816,7 @@ type Debian struct {
 type DebianUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdPackagesDebianFileName map[string]any `json:"put_api_v4_projects_id_packages_debian_file_name"`
 }
 
 // DebianDistribution is the typed data model for the debian_distribution entity.
@@ -7162,6 +7828,14 @@ type DebianDistribution struct {
 type DebianDistributionRemoveMatch struct {
 	GroupId *string `json:"group_id,omitempty"`
 	Id string `json:"id"`
+	Architecture *any `json:"architecture,omitempty"`
+	Component *any `json:"component,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Label *string `json:"label,omitempty"`
+	Origin *any `json:"origin,omitempty"`
+	Suite *any `json:"suite,omitempty"`
+	ValidTimeDurationSecond *any `json:"valid_time_duration_second,omitempty"`
+	Version *any `json:"version,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
 }
 
@@ -7173,18 +7847,16 @@ type DebianPackage struct {
 // DebianPackageLoadMatch is the typed request payload for DebianPackage.LoadTyped.
 type DebianPackageLoadMatch struct {
 	Distribution any `json:"distribution"`
-	FileName any `json:"file_name"`
-	Id string `json:"id"`
-	Letter any `json:"letter"`
-	PackageName any `json:"package_name"`
-	PackageVersion any `json:"package_version"`
-}
-
-// DebianPackageUpdateData is the typed request payload for DebianPackage.UpdateTyped.
-type DebianPackageUpdateData struct {
-	FileName any `json:"file_name"`
-	ProjectId string `json:"project_id"`
+	FileName *any `json:"file_name,omitempty"`
 	Id *string `json:"id,omitempty"`
+	Letter *any `json:"letter,omitempty"`
+	PackageName *any `json:"package_name,omitempty"`
+	PackageVersion *any `json:"package_version,omitempty"`
+	ProjectId *string `json:"project_id,omitempty"`
+	Architecture *any `json:"architecture,omitempty"`
+	DistributionId *string `json:"distribution_id,omitempty"`
+	FileSha256 *any `json:"file_sha256,omitempty"`
+	GroupId *string `json:"group_id,omitempty"`
 }
 
 // DependencyProxy is the typed data model for the dependency_proxy entity.
@@ -7238,6 +7910,7 @@ type EeApiEntitiesApprovalState struct {
 type EeApiEntitiesApprovalStateCreateData struct {
 	MergeRequestId string `json:"merge_request_id"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdMergeRequestsMergeRequestIidApproval map[string]any `json:"post_api_v4_projects_id_merge_requests_merge_request_iid_approval"`
 }
 
 // EeApiEntitiesAuditEvent is the typed data model for the ee_api_entities_audit_event entity.
@@ -7261,6 +7934,10 @@ type EeApiEntitiesAuditEventLoadMatch struct {
 // EeApiEntitiesAuditEventListMatch is the typed request payload for EeApiEntitiesAuditEvent.ListTyped.
 type EeApiEntitiesAuditEventListMatch struct {
 	GroupId string `json:"group_id"`
+	CreatedAfter *any `json:"created_after,omitempty"`
+	CreatedBefore *any `json:"created_before,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // EeApiEntitiesBillableMembership is the typed data model for the ee_api_entities_billable_membership entity.
@@ -7274,6 +7951,8 @@ type EeApiEntitiesBillableMembership struct {
 type EeApiEntitiesBillableMembershipLoadMatch struct {
 	BillableMemberId string `json:"billable_member_id"`
 	GroupId string `json:"group_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // EeApiEntitiesGeoNodeStatus is the typed data model for the ee_api_entities_geo_node_status entity.
@@ -7519,6 +8198,7 @@ type EeApiEntitiesGeoNodeStatus struct {
 
 // EeApiEntitiesGeoNodeStatusCreateData is the typed request payload for EeApiEntitiesGeoNodeStatus.CreateTyped.
 type EeApiEntitiesGeoNodeStatusCreateData struct {
+	PostApiV4GeoStatus map[string]any `json:"post_api_v4_geo_status"`
 	CiSecureFilesChecksumFailedCount *string `json:"ci_secure_files_checksum_failed_count,omitempty"`
 	CiSecureFilesChecksumTotalCount *string `json:"ci_secure_files_checksum_total_count,omitempty"`
 	CiSecureFilesChecksummedCount *string `json:"ci_secure_files_checksummed_count,omitempty"`
@@ -7782,6 +8462,7 @@ type EeApiEntitiesIssuableMetricImage struct {
 type EeApiEntitiesIssuableMetricImageCreateData struct {
 	IssueId string `json:"issue_id"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdIssuesIssueIidMetricImage map[string]any `json:"post_api_v4_projects_id_issues_issue_iid_metric_image"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	FilePath *string `json:"file_path,omitempty"`
 	Filename *string `json:"filename,omitempty"`
@@ -7795,6 +8476,7 @@ type EeApiEntitiesIssuableMetricImageUpdateData struct {
 	Id string `json:"id"`
 	IssueId string `json:"issue_id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdIssuesIssueIidMetricImagesMetricImageId map[string]any `json:"put_api_v4_projects_id_issues_issue_iid_metric_images_metric_image_id"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	FilePath *string `json:"file_path,omitempty"`
 	Filename *string `json:"filename,omitempty"`
@@ -7845,11 +8527,14 @@ type EeApiEntitiesSshCertificate struct {
 // EeApiEntitiesSshCertificateListMatch is the typed request payload for EeApiEntitiesSshCertificate.ListTyped.
 type EeApiEntitiesSshCertificateListMatch struct {
 	GroupId string `json:"group_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // EeApiEntitiesSshCertificateCreateData is the typed request payload for EeApiEntitiesSshCertificate.CreateTyped.
 type EeApiEntitiesSshCertificateCreateData struct {
 	GroupId string `json:"group_id"`
+	PostApiV4GroupsIdSshCertificate map[string]any `json:"post_api_v4_groups_id_ssh_certificate"`
 	CreatedAt *string `json:"created_at,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Key *string `json:"key,omitempty"`
@@ -7864,6 +8549,7 @@ type Environment struct {
 // EnvironmentCreateData is the typed request payload for Environment.CreateTyped.
 type EnvironmentCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdEnvironmentsStopStale map[string]any `json:"post_api_v4_projects_id_environments_stop_stale"`
 	Id *string `json:"id,omitempty"`
 }
 
@@ -7902,11 +8588,15 @@ type FeatureFlag struct {
 // FeatureFlagLoadMatch is the typed request payload for FeatureFlag.LoadTyped.
 type FeatureFlagLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	AppName *any `json:"app_name,omitempty"`
+	InstanceId *string `json:"instance_id,omitempty"`
 }
 
 // FeatureFlagCreateData is the typed request payload for FeatureFlag.CreateTyped.
 type FeatureFlagCreateData struct {
 	UnleashId string `json:"unleash_id"`
+	PostApiV4FeatureFlagsUnleashProjectIdClientMetric *map[string]any `json:"post_api_v4_feature_flags_unleash_project_id_client_metric,omitempty"`
+	PostApiV4FeatureFlagsUnleashProjectIdClientRegister *map[string]any `json:"post_api_v4_feature_flags_unleash_project_id_client_register,omitempty"`
 	Id *string `json:"id,omitempty"`
 }
 
@@ -7947,6 +8637,8 @@ type GenericPackageLoadMatch struct {
 	FileName any `json:"file_name"`
 	GenericId string `json:"generic_id"`
 	ProjectId string `json:"project_id"`
+	PackageVersion any `json:"package_version"`
+	Path *string `json:"path,omitempty"`
 }
 
 // GenericPackageUpdateData is the typed request payload for GenericPackage.UpdateTyped.
@@ -7954,10 +8646,13 @@ type GenericPackageUpdateData struct {
 	FileName any `json:"file_name"`
 	GenericId string `json:"generic_id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdPackagesGenericPackageNamePackageVersionPathFileName *map[string]any `json:"put_api_v4_projects_id_packages_generic_package_name*package_version(*path)_file_name,omitempty"`
+	PutApiV4ProjectsIdPackagesGenericPackageNamePackageVersionPathFileNameAuthorize *map[string]any `json:"put_api_v4_projects_id_packages_generic_package_name*package_version(*path)_file_name_authorize,omitempty"`
 }
 
 // Geo is the typed data model for the geo entity.
 type Geo struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // GeoLoadMatch is the typed request payload for Geo.LoadTyped.
@@ -7968,6 +8663,8 @@ type GeoLoadMatch struct {
 
 // GeoCreateData is the typed request payload for Geo.CreateTyped.
 type GeoCreateData struct {
+	PostApiV4GeoProxyGitSshInfoRefsReceivePack map[string]any `json:"post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack"`
+	Id *string `json:"id,omitempty"`
 }
 
 // GoProxy is the typed data model for the go_proxy entity.
@@ -7978,6 +8675,7 @@ type GoProxy struct {
 type GoProxyLoadMatch struct {
 	ModuleVersion *any `json:"module_version,omitempty"`
 	ProjectId string `json:"project_id"`
+	ModuleName any `json:"module_name"`
 }
 
 // Group is the typed data model for the group entity.
@@ -7996,13 +8694,15 @@ type GroupLoadMatch struct {
 // GroupCreateData is the typed request payload for Group.CreateTyped.
 type GroupCreateData struct {
 	Id string `json:"id"`
+	PostApiV4GroupsIdPlaceholderReassignment *map[string]any `json:"post_api_v4_groups_id_placeholder_reassignment,omitempty"`
+	PostApiV4GroupsIdTokensRevoke *map[string]any `json:"post_api_v4_groups_id_tokens_revoke,omitempty"`
 }
 
 // GroupUpdateData is the typed request payload for Group.UpdateTyped.
 type GroupUpdateData struct {
 	Id string `json:"id"`
-	Key *string `json:"key,omitempty"`
-	MemberId *string `json:"member_id,omitempty"`
+	Key string `json:"key"`
+	PutApiV4GroupsIdCustomAttributesKey map[string]any `json:"put_api_v4_groups_id_custom_attributes_key"`
 }
 
 // GroupRemoveMatch is the typed request payload for Group.RemoveTyped.
@@ -8035,6 +8735,9 @@ type GroupExport struct {
 // GroupExportLoadMatch is the typed request payload for GroupExport.LoadTyped.
 type GroupExportLoadMatch struct {
 	GroupId string `json:"group_id"`
+	BatchNumber *int `json:"batch_number,omitempty"`
+	Batched *any `json:"batched,omitempty"`
+	Relation *any `json:"relation,omitempty"`
 }
 
 // GroupExportCreateData is the typed request payload for GroupExport.CreateTyped.
@@ -8048,6 +8751,11 @@ type GroupImport struct {
 
 // GroupImportCreateData is the typed request payload for GroupImport.CreateTyped.
 type GroupImportCreateData struct {
+	File any `json:"file"`
+	Name string `json:"name"`
+	OrganizationId *string `json:"organization_id,omitempty"`
+	ParentId *string `json:"parent_id,omitempty"`
+	Path string `json:"path"`
 }
 
 // HelmPackage is the typed data model for the helm_package entity.
@@ -8066,6 +8774,7 @@ type HelmPackageLoadMatch struct {
 type HelmPackageCreateData struct {
 	Channel *any `json:"channel,omitempty"`
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdPackagesHelmApiChannelChart *map[string]any `json:"post_api_v4_projects_id_packages_helm_api_channel_chart,omitempty"`
 	ApiId *string `json:"api_id,omitempty"`
 }
 
@@ -8083,6 +8792,8 @@ type HookCreateData struct {
 type HookUpdateData struct {
 	Id string `json:"id"`
 	Key string `json:"key"`
+	PutApiV4HooksHookIdCustomHeadersKey *map[string]any `json:"put_api_v4_hooks_hook_id_custom_headers_key,omitempty"`
+	PutApiV4HooksHookIdUrlVariablesKey *map[string]any `json:"put_api_v4_hooks_hook_id_url_variables_key,omitempty"`
 }
 
 // HookRemoveMatch is the typed request payload for Hook.RemoveTyped.
@@ -8097,6 +8808,7 @@ type Import struct {
 
 // ImportCreateData is the typed request payload for Import.CreateTyped.
 type ImportCreateData struct {
+	PostApiV4ImportGithubGist map[string]any `json:"post_api_v4_import_github_gist"`
 }
 
 // Integration is the typed data model for the integration entity.
@@ -8106,6 +8818,7 @@ type Integration struct {
 
 // IntegrationCreateData is the typed request payload for Integration.CreateTyped.
 type IntegrationCreateData struct {
+	PostApiV4IntegrationsSlackEvent map[string]any `json:"post_api_v4_integrations_slack_event"`
 	Id *string `json:"id,omitempty"`
 }
 
@@ -8145,6 +8858,39 @@ type IssuesStatistic struct {
 
 // IssuesStatisticLoadMatch is the typed request payload for IssuesStatistic.LoadTyped.
 type IssuesStatisticLoadMatch struct {
+	AssigneeId *string `json:"assignee_id,omitempty"`
+	AssigneeUsername *any `json:"assignee_username,omitempty"`
+	AuthorId *string `json:"author_id,omitempty"`
+	AuthorUsername *any `json:"author_username,omitempty"`
+	Confidential *any `json:"confidential,omitempty"`
+	CreatedAfter *any `json:"created_after,omitempty"`
+	CreatedBefore *any `json:"created_before,omitempty"`
+	EpicId *string `json:"epic_id,omitempty"`
+	HealthStatus *any `json:"health_status,omitempty"`
+	Iid *any `json:"iid,omitempty"`
+	In *any `json:"in,omitempty"`
+	IterationId *string `json:"iteration_id,omitempty"`
+	IterationTitle *any `json:"iteration_title,omitempty"`
+	Label *string `json:"label,omitempty"`
+	Milestone *any `json:"milestone,omitempty"`
+	MilestoneId *string `json:"milestone_id,omitempty"`
+	MyReactionEmoji *any `json:"my_reaction_emoji,omitempty"`
+	NotAssigneeId *string `json:"not_assignee_id,omitempty"`
+	NotAssigneeUsername *any `json:"not_assignee_username,omitempty"`
+	NotAuthorId *string `json:"not_author_id,omitempty"`
+	NotAuthorUsername *any `json:"not_author_username,omitempty"`
+	NotIid *any `json:"not_iid,omitempty"`
+	NotIterationId *string `json:"not_iteration_id,omitempty"`
+	NotIterationTitle *any `json:"not_iteration_title,omitempty"`
+	NotLabel *any `json:"not_label,omitempty"`
+	NotMilestone *any `json:"not_milestone,omitempty"`
+	NotMilestoneId *string `json:"not_milestone_id,omitempty"`
+	NotWeight *any `json:"not_weight,omitempty"`
+	Scope *any `json:"scope,omitempty"`
+	Search *any `json:"search,omitempty"`
+	UpdatedAfter *any `json:"updated_after,omitempty"`
+	UpdatedBefore *any `json:"updated_before,omitempty"`
+	Weight *float64 `json:"weight,omitempty"`
 }
 
 // Job is the typed data model for the job entity.
@@ -8155,16 +8901,20 @@ type Job struct {
 // JobLoadMatch is the typed request payload for Job.LoadTyped.
 type JobLoadMatch struct {
 	Id string `json:"id"`
+	DirectDownload *any `json:"direct_download,omitempty"`
+	Token *string `json:"token,omitempty"`
 }
 
 // JobCreateData is the typed request payload for Job.CreateTyped.
 type JobCreateData struct {
+	PostApiV4JobsRequest map[string]any `json:"post_api_v4_jobs_request"`
 	Id *string `json:"id,omitempty"`
 }
 
 // JobUpdateData is the typed request payload for Job.UpdateTyped.
 type JobUpdateData struct {
 	Id string `json:"id"`
+	PutApiV4JobsId map[string]any `json:"put_api_v4_jobs_id"`
 }
 
 // MavenPackage is the typed data model for the maven_package entity.
@@ -8175,6 +8925,7 @@ type MavenPackage struct {
 type MavenPackageLoadMatch struct {
 	FileName any `json:"file_name"`
 	GroupId *string `json:"group_id,omitempty"`
+	Path string `json:"path"`
 	ProjectId *string `json:"project_id,omitempty"`
 }
 
@@ -8182,6 +8933,7 @@ type MavenPackageLoadMatch struct {
 type MavenPackageUpdateData struct {
 	FileName any `json:"file_name"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdPackagesMavenPathFileName map[string]any `json:"put_api_v4_projects_id_packages_maven*path_file_name"`
 }
 
 // Member is the typed data model for the member entity.
@@ -8189,10 +8941,18 @@ type Member struct {
 	Id *string `json:"id,omitempty"`
 }
 
+// MemberUpdateData is the typed request payload for Member.UpdateTyped.
+type MemberUpdateData struct {
+	GroupId string `json:"group_id"`
+	Id string `json:"id"`
+}
+
 // MemberRemoveMatch is the typed request payload for Member.RemoveTyped.
 type MemberRemoveMatch struct {
 	GroupId *string `json:"group_id,omitempty"`
 	Id string `json:"id"`
+	SkipSubresource *any `json:"skip_subresource,omitempty"`
+	UnassignIssuable *any `json:"unassign_issuable,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
 }
 
@@ -8205,6 +8965,8 @@ type MergeRequest struct {
 type MergeRequestLoadMatch struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // MergeRequestUpdateData is the typed request payload for MergeRequest.UpdateTyped.
@@ -8242,6 +9004,7 @@ type Migration struct {
 // MigrationCreateData is the typed request payload for Migration.CreateTyped.
 type MigrationCreateData struct {
 	Timestamp any `json:"timestamp"`
+	PostApiV4AdminMigrationsTimestampMark map[string]any `json:"post_api_v4_admin_migrations_timestamp_mark"`
 }
 
 // MlModelRegistry is the typed data model for the ml_model_registry entity.
@@ -8253,6 +9016,8 @@ type MlModelRegistryLoadMatch struct {
 	FileName any `json:"file_name"`
 	MlModelId string `json:"ml_model_id"`
 	ProjectId string `json:"project_id"`
+	Path *string `json:"path,omitempty"`
+	Status *any `json:"status,omitempty"`
 }
 
 // MlModelRegistryUpdateData is the typed request payload for MlModelRegistry.UpdateTyped.
@@ -8260,6 +9025,8 @@ type MlModelRegistryUpdateData struct {
 	FileName any `json:"file_name"`
 	MlModelId string `json:"ml_model_id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilesPathFileName *map[string]any `json:"put_api_v4_projects_id_packages_ml_models_model_version_id_files(*path)_file_name,omitempty"`
+	PutApiV4ProjectsIdPackagesMlModelsModelVersionIdFilesPathFileNameAuthorize *map[string]any `json:"put_api_v4_projects_id_packages_ml_models_model_version_id_files(*path)_file_name_authorize,omitempty"`
 }
 
 // Namespace is the typed data model for the namespace entity.
@@ -8281,6 +9048,7 @@ type Npm struct {
 type NpmUpdateData struct {
 	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdPackagesNpmPackageName map[string]any `json:"put_api_v4_projects_id_packages_npm_package_name"`
 }
 
 // NpmPackage is the typed data model for the npm_package entity.
@@ -8290,6 +9058,8 @@ type NpmPackage struct {
 // NpmPackageLoadMatch is the typed request payload for NpmPackage.LoadTyped.
 type NpmPackageLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	FileName any `json:"file_name"`
+	PackageName any `json:"package_name"`
 }
 
 // NpmPackageCreateData is the typed request payload for NpmPackage.CreateTyped.
@@ -8300,13 +9070,17 @@ type NpmPackageCreateData struct {
 type NpmPackageUpdateData struct {
 	GroupId *string `json:"group_id,omitempty"`
 	Tag any `json:"tag"`
+	PutApiV4GroupsIdPackagesNpmPackagePackageNameDistTagsTag *map[string]any `json:"put_api_v4_groups_id_packages_npm_package*package_name_dist_tags_tag,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
+	PutApiV4ProjectsIdPackagesNpmPackagePackageNameDistTagsTag *map[string]any `json:"put_api_v4_projects_id_packages_npm_package*package_name_dist_tags_tag,omitempty"`
+	PutApiV4PackagesNpmPackagePackageNameDistTagsTag *map[string]any `json:"put_api_v4_packages_npm_package*package_name_dist_tags_tag,omitempty"`
 }
 
 // NpmPackageRemoveMatch is the typed request payload for NpmPackage.RemoveTyped.
 type NpmPackageRemoveMatch struct {
 	GroupId *string `json:"group_id,omitempty"`
 	Tag any `json:"tag"`
+	PackageName any `json:"package_name"`
 	ProjectId *string `json:"project_id,omitempty"`
 }
 
@@ -8317,6 +9091,7 @@ type Nuget struct {
 // NugetUpdateData is the typed request payload for Nuget.UpdateTyped.
 type NugetUpdateData struct {
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdPackagesNuget map[string]any `json:"put_api_v4_projects_id_packages_nuget"`
 }
 
 // NugetPackage is the typed data model for the nuget_package entity.
@@ -8346,12 +9121,16 @@ type NugetPackageLoadMatch struct {
 
 // NugetPackageListMatch is the typed request payload for NugetPackage.ListTyped.
 type NugetPackageListMatch struct {
-	ProjectId string `json:"project_id"`
+	GroupId *string `json:"group_id,omitempty"`
+	PackageName any `json:"package_name"`
+	ProjectId *string `json:"project_id,omitempty"`
 }
 
 // NugetPackageUpdateData is the typed request payload for NugetPackage.UpdateTyped.
 type NugetPackageUpdateData struct {
 	ProjectId string `json:"project_id"`
+	PutApiV4ProjectsIdPackagesNugetSymbolpackage *map[string]any `json:"put_api_v4_projects_id_packages_nuget_symbolpackage,omitempty"`
+	PutApiV4ProjectsIdPackagesNugetV2 *map[string]any `json:"put_api_v4_projects_id_packages_nuget_v2,omitempty"`
 	Authors *string `json:"authors,omitempty"`
 	Count *int `json:"count,omitempty"`
 	DependencyGroups *[]any `json:"dependencyGroups,omitempty"`
@@ -8373,6 +9152,8 @@ type NugetPackageUpdateData struct {
 // NugetPackageRemoveMatch is the typed request payload for NugetPackage.RemoveTyped.
 type NugetPackageRemoveMatch struct {
 	ProjectId string `json:"project_id"`
+	PackageName any `json:"package_name"`
+	PackageVersion any `json:"package_version"`
 }
 
 // PackageFile is the typed data model for the package_file entity.
@@ -8406,6 +9187,7 @@ type PageLoadMatch struct {
 // PageUpdateData is the typed request payload for Page.UpdateTyped.
 type PageUpdateData struct {
 	ProjectId string `json:"project_id"`
+	PatchApiV4ProjectsIdPage map[string]any `json:"patch_api_v4_projects_id_page"`
 }
 
 // PageRemoveMatch is the typed request payload for Page.RemoveTyped.
@@ -8466,9 +9248,19 @@ type Project struct {
 type ProjectLoadMatch struct {
 	ArtifactId *string `json:"artifact_id,omitempty"`
 	Id string `json:"id"`
+	ArtifactPath *any `json:"artifact_path,omitempty"`
+	Job *any `json:"job,omitempty"`
+	JobToken *any `json:"job_token,omitempty"`
 	FilePath *any `json:"file_path,omitempty"`
+	RangeEnd *any `json:"range_end,omitempty"`
+	RangeStart *any `json:"range_start,omitempty"`
+	Ref *any `json:"ref,omitempty"`
 	HookId *string `json:"hook_id,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Status *any `json:"status,omitempty"`
 	JobId *string `json:"job_id,omitempty"`
+	Lfs *any `json:"lfs,omitempty"`
 	RefName *any `json:"ref_name,omitempty"`
 	Filename *any `json:"filename,omitempty"`
 	Secret *any `json:"secret,omitempty"`
@@ -8484,10 +9276,10 @@ type ProjectCreateData struct {
 	HookId *string `json:"hook_id,omitempty"`
 	Id string `json:"id"`
 	FilePath *any `json:"file_path,omitempty"`
+	PostApiV4ProjectsIdRepositoryFilesFilePath *map[string]any `json:"post_api_v4_projects_id_repository_files_file_path,omitempty"`
 	Trigger *any `json:"trigger,omitempty"`
 	IssueId *string `json:"issue_id,omitempty"`
 	MergeRequestId *string `json:"merge_request_id,omitempty"`
-	PipelineScheduleId *string `json:"pipeline_schedule_id,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
 	BeforeSha *string `json:"before_sha,omitempty"`
 	CommittedAt *string `json:"committed_at,omitempty"`
@@ -8516,11 +9308,13 @@ type ProjectUpdateData struct {
 	HookId *string `json:"hook_id,omitempty"`
 	Id string `json:"id"`
 	Key *string `json:"key,omitempty"`
+	PutApiV4ProjectsIdHooksHookIdCustomHeadersKey *map[string]any `json:"put_api_v4_projects_id_hooks_hook_id_custom_headers_key,omitempty"`
+	PutApiV4ProjectsIdHooksHookIdUrlVariablesKey *map[string]any `json:"put_api_v4_projects_id_hooks_hook_id_url_variables_key,omitempty"`
 	Domain *any `json:"domain,omitempty"`
-	DraftNoteId *string `json:"draft_note_id,omitempty"`
-	MergeRequestId *string `json:"merge_request_id,omitempty"`
+	PutApiV4ProjectsIdPagesDomainsDomain *map[string]any `json:"put_api_v4_projects_id_pages_domains_domain,omitempty"`
 	FilePath *any `json:"file_path,omitempty"`
-	PipelineId *string `json:"pipeline_id,omitempty"`
+	PutApiV4ProjectsIdRepositoryFilesFilePath *map[string]any `json:"put_api_v4_projects_id_repository_files_file_path,omitempty"`
+	PutApiV4ProjectsIdCustomAttributesKey *map[string]any `json:"put_api_v4_projects_id_custom_attributes_key,omitempty"`
 	BeforeSha *string `json:"before_sha,omitempty"`
 	CommittedAt *string `json:"committed_at,omitempty"`
 	Coverage *float64 `json:"coverage,omitempty"`
@@ -8548,6 +9342,11 @@ type ProjectUpdateData struct {
 type ProjectRemoveMatch struct {
 	FilePath *any `json:"file_path,omitempty"`
 	Id string `json:"id"`
+	AuthorEmail *any `json:"author_email,omitempty"`
+	AuthorName *any `json:"author_name,omitempty"`
+	Branch *any `json:"branch,omitempty"`
+	CommitMessage *any `json:"commit_message,omitempty"`
+	StartBranch *any `json:"start_branch,omitempty"`
 	DraftNoteId *string `json:"draft_note_id,omitempty"`
 	MergeRequestId *string `json:"merge_request_id,omitempty"`
 	Filename *any `json:"filename,omitempty"`
@@ -8583,6 +9382,7 @@ type ProjectEntity struct {
 
 // ProjectEntityCreateData is the typed request payload for ProjectEntity.CreateTyped.
 type ProjectEntityCreateData struct {
+	PostApiV4ImportBitbucketServer map[string]any `json:"post_api_v4_import_bitbucket_server"`
 }
 
 // ProjectExport is the typed data model for the project_export entity.
@@ -8593,11 +9393,15 @@ type ProjectExport struct {
 // ProjectExportLoadMatch is the typed request payload for ProjectExport.LoadTyped.
 type ProjectExportLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	BatchNumber *int `json:"batch_number,omitempty"`
+	Batched *any `json:"batched,omitempty"`
+	Relation *any `json:"relation,omitempty"`
 }
 
 // ProjectExportCreateData is the typed request payload for ProjectExport.CreateTyped.
 type ProjectExportCreateData struct {
 	Id string `json:"id"`
+	PostApiV4ProjectsIdExport map[string]any `json:"post_api_v4_projects_id_export"`
 }
 
 // ProjectHook is the typed data model for the project_hook entity.
@@ -8638,6 +9442,7 @@ type ProjectImportEntity struct {
 
 // ProjectImportEntityCreateData is the typed request payload for ProjectImportEntity.CreateTyped.
 type ProjectImportEntityCreateData struct {
+	PostApiV4ImportBitbucket map[string]any `json:"post_api_v4_import_bitbucket"`
 	Forked *bool `json:"forked,omitempty"`
 	FullName *string `json:"full_name,omitempty"`
 	FullPath *string `json:"full_path,omitempty"`
@@ -8682,6 +9487,7 @@ type ProjectsJobTokenScope struct {
 // ProjectsJobTokenScopeUpdateData is the typed request payload for ProjectsJobTokenScope.UpdateTyped.
 type ProjectsJobTokenScopeUpdateData struct {
 	ProjectId string `json:"project_id"`
+	PatchApiV4ProjectsIdJobTokenScope map[string]any `json:"patch_api_v4_projects_id_job_token_scope"`
 }
 
 // ProjectsJobTokenScopeRemoveMatch is the typed request payload for ProjectsJobTokenScope.RemoveTyped.
@@ -8709,6 +9515,7 @@ type Pypi struct {
 // PypiCreateData is the typed request payload for Pypi.CreateTyped.
 type PypiCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdPackagesPypi map[string]any `json:"post_api_v4_projects_id_packages_pypi"`
 }
 
 // PypiPackage is the typed data model for the pypi_package entity.
@@ -8733,6 +9540,7 @@ type Release struct {
 // ReleaseLoadMatch is the typed request payload for Release.LoadTyped.
 type ReleaseLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	SuffixPath any `json:"suffix_path"`
 }
 
 // ReleaseRemoveMatch is the typed request payload for Release.RemoveTyped.
@@ -8764,12 +9572,6 @@ type RemoteMirrorLoadMatch struct {
 	ProjectId string `json:"project_id"`
 }
 
-// RemoteMirrorCreateData is the typed request payload for RemoteMirror.CreateTyped.
-type RemoteMirrorCreateData struct {
-	Id string `json:"id"`
-	ProjectId string `json:"project_id"`
-}
-
 // RemoteMirrorRemoveMatch is the typed request payload for RemoteMirror.RemoveTyped.
 type RemoteMirrorRemoveMatch struct {
 	Id string `json:"id"`
@@ -8792,6 +9594,8 @@ type RpmPackage struct {
 // RpmPackageLoadMatch is the typed request payload for RpmPackage.LoadTyped.
 type RpmPackageLoadMatch struct {
 	ProjectId string `json:"project_id"`
+	FileName any `json:"file_name"`
+	PackageFileId *string `json:"package_file_id,omitempty"`
 }
 
 // RpmPackageCreateData is the typed request payload for RpmPackage.CreateTyped.
@@ -8818,11 +9622,13 @@ type RubygemPackage struct {
 type RubygemPackageLoadMatch struct {
 	FileName *any `json:"file_name,omitempty"`
 	ProjectId string `json:"project_id"`
+	Gem *any `json:"gem,omitempty"`
 }
 
 // RubygemPackageCreateData is the typed request payload for RubygemPackage.CreateTyped.
 type RubygemPackageCreateData struct {
 	ProjectId string `json:"project_id"`
+	PostApiV4ProjectsIdPackagesRubygemsApiV1Gem *map[string]any `json:"post_api_v4_projects_id_packages_rubygems_api_v1_gem,omitempty"`
 }
 
 // Runner is the typed data model for the runner entity.
@@ -8832,6 +9638,7 @@ type Runner struct {
 
 // RunnerCreateData is the typed request payload for Runner.CreateTyped.
 type RunnerCreateData struct {
+	PostApiV4RunnersVerify map[string]any `json:"post_api_v4_runners_verify"`
 	Id *string `json:"id,omitempty"`
 }
 
@@ -8846,6 +9653,13 @@ type Search struct {
 
 // SearchLoadMatch is the typed request payload for Search.LoadTyped.
 type SearchLoadMatch struct {
+	Confidential *any `json:"confidential,omitempty"`
+	Field *any `json:"field,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Scope any `json:"scope"`
+	Search any `json:"search"`
+	State *any `json:"state,omitempty"`
 }
 
 // SecureFile is the typed data model for the secure_file entity.
@@ -8871,6 +9685,7 @@ type Slack struct {
 
 // SlackCreateData is the typed request payload for Slack.CreateTyped.
 type SlackCreateData struct {
+	PostApiV4SlackTrigger map[string]any `json:"post_api_v4_slack_trigger"`
 }
 
 // Snippet is the typed data model for the snippet entity.
@@ -8907,6 +9722,9 @@ type Starrer struct {
 // StarrerListMatch is the typed request payload for Starrer.ListTyped.
 type StarrerListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Search *any `json:"search,omitempty"`
 }
 
 // SystemHook is the typed data model for the system_hook entity.
@@ -8940,6 +9758,8 @@ type TerraformRegistryLoadMatch struct {
 	ModuleId *string `json:"module_id,omitempty"`
 	ModuleSystem any `json:"module_system"`
 	ProjectId *string `json:"project_id,omitempty"`
+	ModuleVersion *any `json:"module_version,omitempty"`
+	TerraformGet *any `json:"terraform_get,omitempty"`
 	Id *string `json:"id,omitempty"`
 	ModuleName *any `json:"module_name,omitempty"`
 	V1Id *string `json:"v1_id,omitempty"`
@@ -8950,6 +9770,9 @@ type TerraformRegistryUpdateData struct {
 	ModuleId string `json:"module_id"`
 	ModuleSystem any `json:"module_system"`
 	ProjectId string `json:"project_id"`
+	File *any `json:"file,omitempty"`
+	ModuleVersion *any `json:"module_version,omitempty"`
+	PutApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystemModuleVersionFileAuthorize *map[string]any `json:"put_api_v4_projects_id_packages_terraform_modules_module_name_module_system*module_version_file_authorize,omitempty"`
 	Id *string `json:"id,omitempty"`
 }
 
@@ -8968,14 +9791,12 @@ type TerraformStateLoadMatch struct {
 
 // TerraformStateCreateData is the typed request payload for TerraformState.CreateTyped.
 type TerraformStateCreateData struct {
-	Name *string `json:"name,omitempty"`
+	Id string `json:"id"`
 	ProjectId string `json:"project_id"`
-	Id *string `json:"id,omitempty"`
 }
 
 // TerraformStateRemoveMatch is the typed request payload for TerraformState.RemoveTyped.
 type TerraformStateRemoveMatch struct {
-	Name *string `json:"name,omitempty"`
 	ProjectId string `json:"project_id"`
 	Serial *any `json:"serial,omitempty"`
 	StateId *string `json:"state_id,omitempty"`
@@ -9031,6 +9852,8 @@ type UnleashApi struct {
 // UnleashApiLoadMatch is the typed request payload for UnleashApi.LoadTyped.
 type UnleashApiLoadMatch struct {
 	UnleashId string `json:"unleash_id"`
+	AppName *any `json:"app_name,omitempty"`
+	InstanceId *string `json:"instance_id,omitempty"`
 }
 
 // UsageData is the typed data model for the usage_data entity.
@@ -9039,10 +9862,12 @@ type UsageData struct {
 
 // UsageDataLoadMatch is the typed request payload for UsageData.LoadTyped.
 type UsageDataLoadMatch struct {
+	IncludePath *any `json:"include_path,omitempty"`
 }
 
 // UsageDataCreateData is the typed request payload for UsageData.CreateTyped.
 type UsageDataCreateData struct {
+	PostApiV4UsageDataIncrementCounter map[string]any `json:"post_api_v4_usage_data_increment_counter"`
 }
 
 // User is the typed data model for the user entity.
@@ -9062,6 +9887,10 @@ type User struct {
 // UserListMatch is the typed request payload for User.ListTyped.
 type UserListMatch struct {
 	ProjectId string `json:"project_id"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
+	Search *any `json:"search,omitempty"`
+	SkipUser *any `json:"skip_user,omitempty"`
 }
 
 // WebCommit is the typed data model for the web_commit entity.

@@ -11,7 +11,8 @@
         "note": "s60",
         "position": {},
         "resolve_discussion": true,
-        "project_id": "PROJECT01"
+        "project_id": "PROJECT01",
+        "draft_note_id": "DRAFT_NOTE01"
       },
       "API_ENTITIES_DRAFT_NOTE01": {
         "author_id": "AUTHOR01",
@@ -23,7 +24,8 @@
         "note": "sba",
         "position": {},
         "resolve_discussion": true,
-        "project_id": "PROJECT01"
+        "project_id": "PROJECT01",
+        "draft_note_id": "DRAFT_NOTE01"
       },
       "API_ENTITIES_DRAFT_NOTE02": {
         "author_id": "AUTHOR01",
@@ -35,7 +37,8 @@
         "note": "s114",
         "position": {},
         "resolve_discussion": true,
-        "project_id": "PROJECT01"
+        "project_id": "PROJECT01",
+        "draft_note_id": "DRAFT_NOTE01"
       }
     }
   },

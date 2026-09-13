@@ -70,7 +70,7 @@ def _go_proxy_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["go_proxy01", "go_proxy02", "go_proxy03", "project01", "project02", "project03", "@v01", "@v02", "@v03"],
+        ["go_proxy01", "go_proxy02", "go_proxy03", "project01", "project02", "project03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",
@@ -90,7 +90,7 @@ def _go_proxy_basic_setup(extra):
         "GITLAB_TEST_GO_PROXY_ENTID": idmap,
         "GITLAB_TEST_LIVE": "FALSE",
         "GITLAB_TEST_EXPLAIN": "FALSE",
-        "GITLAB_APIKEY": "NONE",
+        "GITLAB_APIKEY": "",
     })
 
     idmap_resolved = helpers.to_map(
@@ -100,6 +100,10 @@ def _go_proxy_basic_setup(extra):
 
     if env.get("GITLAB_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
                 "apikey": env.get("GITLAB_APIKEY"),
             },
