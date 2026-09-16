@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>NugetPackage | GitLab API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">GitLab API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/gitlab-sdk">voxgig-sdk/gitlab-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">GitLab API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/access_request.html">AccessRequest</a>
+<a href="../api/alert_management.html">AlertManagement</a>
+<a href="../api/api_entities_access_requester.html">ApiEntitiesAccessRequester</a>
+<a href="../api/api_entities_appearance.html">ApiEntitiesAppearance</a>
+<a href="../api/api_entities_application.html">ApiEntitiesApplication</a>
+<a href="../api/api_entities_application_statistic.html">ApiEntitiesApplicationStatistic</a>
+<a href="../api/api_entities_application_with_secret.html">ApiEntitiesApplicationWithSecret</a>
+<a href="../api/api_entities_avatar.html">ApiEntitiesAvatar</a>
+<a href="../api/api_entities_award_emoji.html">ApiEntitiesAwardEmoji</a>
+<a href="../api/api_entities_badge.html">ApiEntitiesBadge</a>
+<a href="../api/api_entities_basic_badge_detail.html">ApiEntitiesBasicBadgeDetail</a>
+<a href="../api/api_entities_basic_group_detail.html">ApiEntitiesBasicGroupDetail</a>
+<a href="../api/api_entities_basic_project_detail.html">ApiEntitiesBasicProjectDetail</a>
+<a href="../api/api_entities_basic_ref.html">ApiEntitiesBasicRef</a>
+<a href="../api/api_entities_basic_success.html">ApiEntitiesBasicSuccess</a>
+<a href="../api/api_entities_batched_background_migration.html">ApiEntitiesBatchedBackgroundMigration</a>
+<a href="../api/api_entities_branch.html">ApiEntitiesBranch</a>
+<a href="../api/api_entities_bulk_import.html">ApiEntitiesBulkImport</a>
+<a href="../api/api_entities_bulk_imports_entity_failure.html">ApiEntitiesBulkImportsEntityFailure</a>
+<a href="../api/api_entities_bulk_imports_export_status.html">ApiEntitiesBulkImportsExportStatus</a>
+<a href="../api/api_entities_changelog.html">ApiEntitiesChangelog</a>
+<a href="../api/api_entities_ci_bridge.html">ApiEntitiesCiBridge</a>
+<a href="../api/api_entities_ci_catalog_resources_version.html">ApiEntitiesCiCatalogResourcesVersion</a>
+<a href="../api/api_entities_ci_job.html">ApiEntitiesCiJob</a>
+<a href="../api/api_entities_ci_job_basic.html">ApiEntitiesCiJobBasic</a>
+<a href="../api/api_entities_ci_job_basic_with_project.html">ApiEntitiesCiJobBasicWithProject</a>
+<a href="../api/api_entities_ci_lint_result.html">ApiEntitiesCiLintResult</a>
+<a href="../api/api_entities_ci_pipeline.html">ApiEntitiesCiPipeline</a>
+<a href="../api/api_entities_ci_pipeline_basic.html">ApiEntitiesCiPipelineBasic</a>
+<a href="../api/api_entities_ci_pipeline_schedule.html">ApiEntitiesCiPipelineSchedule</a>
+<a href="../api/api_entities_ci_pipeline_schedule_detail.html">ApiEntitiesCiPipelineScheduleDetail</a>
+<a href="../api/api_entities_ci_reset_token_result.html">ApiEntitiesCiResetTokenResult</a>
+<a href="../api/api_entities_ci_resource_group.html">ApiEntitiesCiResourceGroup</a>
+<a href="../api/api_entities_ci_runner.html">ApiEntitiesCiRunner</a>
+<a href="../api/api_entities_ci_runner_detail.html">ApiEntitiesCiRunnerDetail</a>
+<a href="../api/api_entities_ci_runner_manager.html">ApiEntitiesCiRunnerManager</a>
+<a href="../api/api_entities_ci_runner_registration_detail.html">ApiEntitiesCiRunnerRegistrationDetail</a>
+<a href="../api/api_entities_ci_secure_file.html">ApiEntitiesCiSecureFile</a>
+<a href="../api/api_entities_ci_variable.html">ApiEntitiesCiVariable</a>
+<a href="../api/api_entities_cluster.html">ApiEntitiesCluster</a>
+<a href="../api/api_entities_cluster_group.html">ApiEntitiesClusterGroup</a>
+<a href="../api/api_entities_cluster_project.html">ApiEntitiesClusterProject</a>
+<a href="../api/api_entities_clusters_agent.html">ApiEntitiesClustersAgent</a>
+<a href="../api/api_entities_clusters_agent_token.html">ApiEntitiesClustersAgentToken</a>
+<a href="../api/api_entities_clusters_agent_token_basic.html">ApiEntitiesClustersAgentTokenBasic</a>
+<a href="../api/api_entities_clusters_agent_token_with_token.html">ApiEntitiesClustersAgentTokenWithToken</a>
+<a href="../api/api_entities_commit.html">ApiEntitiesCommit</a>
+<a href="../api/api_entities_commit_detail.html">ApiEntitiesCommitDetail</a>
+<a href="../api/api_entities_commit_note.html">ApiEntitiesCommitNote</a>
+<a href="../api/api_entities_commit_sequence.html">ApiEntitiesCommitSequence</a>
+<a href="../api/api_entities_commit_signature.html">ApiEntitiesCommitSignature</a>
+<a href="../api/api_entities_commit_status.html">ApiEntitiesCommitStatus</a>
+<a href="../api/api_entities_compare.html">ApiEntitiesCompare</a>
+<a href="../api/api_entities_container_registry_repository.html">ApiEntitiesContainerRegistryRepository</a>
+<a href="../api/api_entities_container_registry_tag.html">ApiEntitiesContainerRegistryTag</a>
+<a href="../api/api_entities_container_registry_tag_detail.html">ApiEntitiesContainerRegistryTagDetail</a>
+<a href="../api/api_entities_contributor.html">ApiEntitiesContributor</a>
+<a href="../api/api_entities_deploy_key.html">ApiEntitiesDeployKey</a>
+<a href="../api/api_entities_deploy_keys_project.html">ApiEntitiesDeployKeysProject</a>
+<a href="../api/api_entities_deploy_token.html">ApiEntitiesDeployToken</a>
+<a href="../api/api_entities_deploy_token_with_token.html">ApiEntitiesDeployTokenWithToken</a>
+<a href="../api/api_entities_deployment.html">ApiEntitiesDeployment</a>
+<a href="../api/api_entities_deployment_extended.html">ApiEntitiesDeploymentExtended</a>
+<a href="../api/api_entities_deployments_approval.html">ApiEntitiesDeploymentsApproval</a>
+<a href="../api/api_entities_dictionary_table.html">ApiEntitiesDictionaryTable</a>
+<a href="../api/api_entities_diff.html">ApiEntitiesDiff</a>
+<a href="../api/api_entities_discovered_cluster.html">ApiEntitiesDiscoveredCluster</a>
+<a href="../api/api_entities_draft_note.html">ApiEntitiesDraftNote</a>
+<a href="../api/api_entities_environment.html">ApiEntitiesEnvironment</a>
+<a href="../api/api_entities_error_tracking_client_key.html">ApiEntitiesErrorTrackingClientKey</a>
+<a href="../api/api_entities_error_tracking_project_setting.html">ApiEntitiesErrorTrackingProjectSetting</a>
+<a href="../api/api_entities_event.html">ApiEntitiesEvent</a>
+<a href="../api/api_entities_feature.html">ApiEntitiesFeature</a>
+<a href="../api/api_entities_feature_definition.html">ApiEntitiesFeatureDefinition</a>
+<a href="../api/api_entities_feature_flag.html">ApiEntitiesFeatureFlag</a>
+<a href="../api/api_entities_feature_flag_user_list.html">ApiEntitiesFeatureFlagUserList</a>
+<a href="../api/api_entities_freeze_period.html">ApiEntitiesFreezePeriod</a>
+<a href="../api/api_entities_gitlab_subscription.html">ApiEntitiesGitlabSubscription</a>
+<a href="../api/api_entities_go_module_version.html">ApiEntitiesGoModuleVersion</a>
+<a href="../api/api_entities_group.html">ApiEntitiesGroup</a>
+<a href="../api/api_entities_group_detail.html">ApiEntitiesGroupDetail</a>
+<a href="../api/api_entities_hook.html">ApiEntitiesHook</a>
+<a href="../api/api_entities_integration.html">ApiEntitiesIntegration</a>
+<a href="../api/api_entities_integration_basic.html">ApiEntitiesIntegrationBasic</a>
+<a href="../api/api_entities_invitation.html">ApiEntitiesInvitation</a>
+<a href="../api/api_entities_issuable_time_stat.html">ApiEntitiesIssuableTimeStat</a>
+<a href="../api/api_entities_issue.html">ApiEntitiesIssue</a>
+<a href="../api/api_entities_issue_link.html">ApiEntitiesIssueLink</a>
+<a href="../api/api_entities_license.html">ApiEntitiesLicense</a>
+<a href="../api/api_entities_markdown.html">ApiEntitiesMarkdown</a>
+<a href="../api/api_entities_markdown_upload_admin.html">ApiEntitiesMarkdownUploadAdmin</a>
+<a href="../api/api_entities_member.html">ApiEntitiesMember</a>
+<a href="../api/api_entities_merge.html">ApiEntitiesMerge</a>
+<a href="../api/api_entities_merge_request_approval.html">ApiEntitiesMergeRequestApproval</a>
+<a href="../api/api_entities_merge_request_basic.html">ApiEntitiesMergeRequestBasic</a>
+<a href="../api/api_entities_merge_request_change.html">ApiEntitiesMergeRequestChange</a>
+<a href="../api/api_entities_merge_request_diff.html">ApiEntitiesMergeRequestDiff</a>
+<a href="../api/api_entities_merge_request_diff_full.html">ApiEntitiesMergeRequestDiffFull</a>
+<a href="../api/api_entities_merge_request_reviewer.html">ApiEntitiesMergeRequestReviewer</a>
+<a href="../api/api_entities_metric_image.html">ApiEntitiesMetricImage</a>
+<a href="../api/api_entities_mr_note.html">ApiEntitiesMrNote</a>
+<a href="../api/api_entities_namespace.html">ApiEntitiesNamespace</a>
+<a href="../api/api_entities_namespace_existence.html">ApiEntitiesNamespaceExistence</a>
+<a href="../api/api_entities_namespaces_storage_limit_exclusion.html">ApiEntitiesNamespacesStorageLimitExclusion</a>
+<a href="../api/api_entities_npm_package.html">ApiEntitiesNpmPackage</a>
+<a href="../api/api_entities_npm_package_tag.html">ApiEntitiesNpmPackageTag</a>
+<a href="../api/api_entities_nuget_packages_version.html">ApiEntitiesNugetPackagesVersion</a>
+<a href="../api/api_entities_nuget_search_result.html">ApiEntitiesNugetSearchResult</a>
+<a href="../api/api_entities_nuget_service_index.html">ApiEntitiesNugetServiceIndex</a>
+<a href="../api/api_entities_organizations_organization.html">ApiEntitiesOrganizationsOrganization</a>
+<a href="../api/api_entities_package.html">ApiEntitiesPackage</a>
+<a href="../api/api_entities_package_file.html">ApiEntitiesPackageFile</a>
+<a href="../api/api_entities_package_pipeline.html">ApiEntitiesPackagePipeline</a>
+<a href="../api/api_entities_packages_conan_files_list.html">ApiEntitiesPackagesConanFilesList</a>
+<a href="../api/api_entities_packages_conan_package_manifest.html">ApiEntitiesPackagesConanPackageManifest</a>
+<a href="../api/api_entities_packages_conan_package_revision.html">ApiEntitiesPackagesConanPackageRevision</a>
+<a href="../api/api_entities_packages_conan_package_snapshot.html">ApiEntitiesPackagesConanPackageSnapshot</a>
+<a href="../api/api_entities_packages_conan_recipe_manifest.html">ApiEntitiesPackagesConanRecipeManifest</a>
+<a href="../api/api_entities_packages_conan_recipe_revision.html">ApiEntitiesPackagesConanRecipeRevision</a>
+<a href="../api/api_entities_packages_conan_recipe_snapshot.html">ApiEntitiesPackagesConanRecipeSnapshot</a>
+<a href="../api/api_entities_packages_conan_revision.html">ApiEntitiesPackagesConanRevision</a>
+<a href="../api/api_entities_packages_conan_upload_url.html">ApiEntitiesPackagesConanUploadUrl</a>
+<a href="../api/api_entities_packages_debian_distribution.html">ApiEntitiesPackagesDebianDistribution</a>
+<a href="../api/api_entities_pages_domain.html">ApiEntitiesPagesDomain</a>
+<a href="../api/api_entities_pages_domain_basic.html">ApiEntitiesPagesDomainBasic</a>
+<a href="../api/api_entities_personal_access_token.html">ApiEntitiesPersonalAccessToken</a>
+<a href="../api/api_entities_personal_access_token_with_last_used_ip.html">ApiEntitiesPersonalAccessTokenWithLastUsedIp</a>
+<a href="../api/api_entities_personal_access_token_with_token.html">ApiEntitiesPersonalAccessTokenWithToken</a>
+<a href="../api/api_entities_personal_snippet.html">ApiEntitiesPersonalSnippet</a>
+<a href="../api/api_entities_plan_limit.html">ApiEntitiesPlanLimit</a>
+<a href="../api/api_entities_project.html">ApiEntitiesProject</a>
+<a href="../api/api_entities_project_daily_statistic.html">ApiEntitiesProjectDailyStatistic</a>
+<a href="../api/api_entities_project_export_status.html">ApiEntitiesProjectExportStatus</a>
+<a href="../api/api_entities_project_group_link.html">ApiEntitiesProjectGroupLink</a>
+<a href="../api/api_entities_project_hook.html">ApiEntitiesProjectHook</a>
+<a href="../api/api_entities_project_import_status.html">ApiEntitiesProjectImportStatus</a>
+<a href="../api/api_entities_project_job_token_scope.html">ApiEntitiesProjectJobTokenScope</a>
+<a href="../api/api_entities_project_repository_storage.html">ApiEntitiesProjectRepositoryStorage</a>
+<a href="../api/api_entities_project_snippet.html">ApiEntitiesProjectSnippet</a>
+<a href="../api/api_entities_project_upload.html">ApiEntitiesProjectUpload</a>
+<a href="../api/api_entities_project_with_access.html">ApiEntitiesProjectWithAccess</a>
+<a href="../api/api_entities_projects_container_registry_protection_rule.html">ApiEntitiesProjectsContainerRegistryProtectionRule</a>
+<a href="../api/api_entities_projects_packages_protection_rule.html">ApiEntitiesProjectsPackagesProtectionRule</a>
+<a href="../api/api_entities_projects_topic.html">ApiEntitiesProjectsTopic</a>
+<a href="../api/api_entities_protected_branch.html">ApiEntitiesProtectedBranch</a>
+<a href="../api/api_entities_protected_tag.html">ApiEntitiesProtectedTag</a>
+<a href="../api/api_entities_public_group_detail.html">ApiEntitiesPublicGroupDetail</a>
+<a href="../api/api_entities_related_issue.html">ApiEntitiesRelatedIssue</a>
+<a href="../api/api_entities_relation_import_tracker.html">ApiEntitiesRelationImportTracker</a>
+<a href="../api/api_entities_release.html">ApiEntitiesRelease</a>
+<a href="../api/api_entities_releases_link.html">ApiEntitiesReleasesLink</a>
+<a href="../api/api_entities_remote_mirror.html">ApiEntitiesRemoteMirror</a>
+<a href="../api/api_entities_repository_health.html">ApiEntitiesRepositoryHealth</a>
+<a href="../api/api_entities_resource_access_token_with_token.html">ApiEntitiesResourceAccessTokenWithToken</a>
+<a href="../api/api_entities_resource_milestone_event.html">ApiEntitiesResourceMilestoneEvent</a>
+<a href="../api/api_entities_snippet.html">ApiEntitiesSnippet</a>
+<a href="../api/api_entities_ssh_key_with_user.html">ApiEntitiesSshKeyWithUser</a>
+<a href="../api/api_entities_suggestion.html">ApiEntitiesSuggestion</a>
+<a href="../api/api_entities_system_broadcast_message.html">ApiEntitiesSystemBroadcastMessage</a>
+<a href="../api/api_entities_tag.html">ApiEntitiesTag</a>
+<a href="../api/api_entities_tag_signature.html">ApiEntitiesTagSignature</a>
+<a href="../api/api_entities_templates_list.html">ApiEntitiesTemplatesList</a>
+<a href="../api/api_entities_terraform_module_version.html">ApiEntitiesTerraformModuleVersion</a>
+<a href="../api/api_entities_tree_object.html">ApiEntitiesTreeObject</a>
+<a href="../api/api_entities_trigger.html">ApiEntitiesTrigger</a>
+<a href="../api/api_entities_user_agent_detail.html">ApiEntitiesUserAgentDetail</a>
+<a href="../api/api_entities_user_count.html">ApiEntitiesUserCount</a>
+<a href="../api/api_entities_user_public.html">ApiEntitiesUserPublic</a>
+<a href="../api/api_entities_user_with_admin.html">ApiEntitiesUserWithAdmin</a>
+<a href="../api/api_entities_wiki_attachment.html">ApiEntitiesWikiAttachment</a>
+<a href="../api/api_entities_wiki_page.html">ApiEntitiesWikiPage</a>
+<a href="../api/api_entities_wiki_page_basic.html">ApiEntitiesWikiPageBasic</a>
+<a href="../api/application.html">Application</a>
+<a href="../api/award_emoji.html">AwardEmoji</a>
+<a href="../api/badge.html">Badge</a>
+<a href="../api/branch.html">Branch</a>
+<a href="../api/cargo_package.html">CargoPackage</a>
+<a href="../api/ci_variable.html">CiVariable</a>
+<a href="../api/cluster.html">Cluster</a>
+<a href="../api/cluster_agent.html">ClusterAgent</a>
+<a href="../api/composer.html">Composer</a>
+<a href="../api/composer_package.html">ComposerPackage</a>
+<a href="../api/conan.html">Conan</a>
+<a href="../api/conan_package.html">ConanPackage</a>
+<a href="../api/container_registry.html">ContainerRegistry</a>
+<a href="../api/container_registry_event.html">ContainerRegistryEvent</a>
+<a href="../api/custom_attribute.html">CustomAttribute</a>
+<a href="../api/debian.html">Debian</a>
+<a href="../api/debian_distribution.html">DebianDistribution</a>
+<a href="../api/debian_package.html">DebianPackage</a>
+<a href="../api/dependency_proxy.html">DependencyProxy</a>
+<a href="../api/deploy_key.html">DeployKey</a>
+<a href="../api/deploy_token.html">DeployToken</a>
+<a href="../api/deployment.html">Deployment</a>
+<a href="../api/ee_api_entities_approval_state.html">EeApiEntitiesApprovalState</a>
+<a href="../api/ee_api_entities_audit_event.html">EeApiEntitiesAuditEvent</a>
+<a href="../api/ee_api_entities_billable_membership.html">EeApiEntitiesBillableMembership</a>
+<a href="../api/ee_api_entities_geo_node_status.html">EeApiEntitiesGeoNodeStatus</a>
+<a href="../api/ee_api_entities_geo_pipeline_ref.html">EeApiEntitiesGeoPipelineRef</a>
+<a href="../api/ee_api_entities_issuable_metric_image.html">EeApiEntitiesIssuableMetricImage</a>
+<a href="../api/ee_api_entities_merge_request_approval_state.html">EeApiEntitiesMergeRequestApprovalState</a>
+<a href="../api/ee_api_entities_ssh_certificate.html">EeApiEntitiesSshCertificate</a>
+<a href="../api/environment.html">Environment</a>
+<a href="../api/error_tracking_client_key.html">ErrorTrackingClientKey</a>
+<a href="../api/feature.html">Feature</a>
+<a href="../api/feature_flag.html">FeatureFlag</a>
+<a href="../api/feature_flags_user_list.html">FeatureFlagsUserList</a>
+<a href="../api/freeze_period.html">FreezePeriod</a>
+<a href="../api/generic_package.html">GenericPackage</a>
+<a href="../api/geo.html">Geo</a>
+<a href="../api/go_proxy.html">GoProxy</a>
+<a href="../api/group.html">Group</a>
+<a href="../api/group_avatar.html">GroupAvatar</a>
+<a href="../api/group_export.html">GroupExport</a>
+<a href="../api/group_import.html">GroupImport</a>
+<a href="../api/helm_package.html">HelmPackage</a>
+<a href="../api/hook.html">Hook</a>
+<a href="../api/import.html">Import</a>
+<a href="../api/integration.html">Integration</a>
+<a href="../api/invitation.html">Invitation</a>
+<a href="../api/issue_link.html">IssueLink</a>
+<a href="../api/issues_statistic.html">IssuesStatistic</a>
+<a href="../api/job.html">Job</a>
+<a href="../api/maven_package.html">MavenPackage</a>
+<a href="../api/member.html">Member</a>
+<a href="../api/merge_request.html">MergeRequest</a>
+<a href="../api/metadata.html">Metadata</a>
+<a href="../api/migration.html">Migration</a>
+<a href="../api/ml_model_registry.html">MlModelRegistry</a>
+<a href="../api/namespace.html">Namespace</a>
+<a href="../api/npm.html">Npm</a>
+<a href="../api/npm_package.html">NpmPackage</a>
+<a href="../api/nuget.html">Nuget</a>
+<a aria-current="page" href="../api/nuget_package.html">NugetPackage</a><div class="nav-sections"><a class="nav-section" href="#get-apiv4groupsid-packagesnugetmetadatapackage_nameindex">GET /api/v4/groups/{id}/-/packages/nuget/metadata/*package_name/index</a>
+<a class="nav-section" href="#get-apiv4projectsidpackagesnugetmetadatapackage_nameindex">GET /api/v4/projects/{id}/packages/nuget/metadata/*package_name/index</a>
+<a class="nav-section" href="#get-apiv4groupsid-packagesnugetsymbolfilesfile_namesignaturesame_file_name">GET /api/v4/groups/{id}/-/packages/nuget/symbolfiles/*file_name/*signature/*same_file_name</a>
+<a class="nav-section" href="#get-apiv4projectsidpackagesnugetsymbolfilesfile_namesignaturesame_file_name">GET /api/v4/projects/{id}/packages/nuget/symbolfiles/*file_name/*signature/*same_file_name</a>
+<a class="nav-section" href="#get-apiv4projectsidpackagesnugetdownloadpackage_namepackage_versionpackage_filename">GET /api/v4/projects/{id}/packages/nuget/download/*package_name/*package_version/*package_filename</a>
+<a class="nav-section" href="#get-apiv4groupsid-packagesnugetmetadatapackage_namepackage_version">GET /api/v4/groups/{id}/-/packages/nuget/metadata/*package_name/*package_version</a>
+<a class="nav-section" href="#get-apiv4projectsidpackagesnugetmetadatapackage_namepackage_version">GET /api/v4/projects/{id}/packages/nuget/metadata/*package_name/*package_version</a>
+<a class="nav-section" href="#get-apiv4projectsproject_idpackagesnugetv2packagesidpackage_nameversionpackage_version">GET /api/v4/projects/{project_id}/packages/nuget/v2/Packages\(Id=&#39;*package_name&#39;,Version=&#39;*package_version&#39;\)</a>
+<a class="nav-section" href="#get-apiv4projectsproject_idpackagesnugetv2packages">GET /api/v4/projects/{project_id}/packages/nuget/v2/Packages\(\)</a>
+<a class="nav-section" href="#get-apiv4projectsproject_idpackagesnugetv2findpackagesbyid">GET /api/v4/projects/{project_id}/packages/nuget/v2/FindPackagesById\(\)</a>
+<a class="nav-section" href="#get-apiv4groupsid-packagesnugetv2">GET /api/v4/groups/{id}/-/packages/nuget/v2</a>
+<a class="nav-section" href="#get-apiv4groupsid-packagesnugetv2metadata">GET /api/v4/groups/{id}/-/packages/nuget/v2/$metadata</a>
+<a class="nav-section" href="#get-apiv4projectsidpackagesnugetv2">GET /api/v4/projects/{id}/packages/nuget/v2</a>
+<a class="nav-section" href="#get-apiv4projectsidpackagesnugetv2metadata">GET /api/v4/projects/{id}/packages/nuget/v2/$metadata</a>
+<a class="nav-section" href="#delete-apiv4projectsidpackagesnugetpackage_namepackage_version">DELETE /api/v4/projects/{id}/packages/nuget/*package_name/*package_version</a>
+<a class="nav-section" href="#put-apiv4projectsidpackagesnugetsymbolpackage">PUT /api/v4/projects/{id}/packages/nuget/symbolpackage</a>
+<a class="nav-section" href="#put-apiv4projectsidpackagesnugetv2">PUT /api/v4/projects/{id}/packages/nuget/v2</a>
+<a class="nav-section" href="#put-apiv4projectsidpackagesnugetauthorize">PUT /api/v4/projects/{id}/packages/nuget/authorize</a>
+<a class="nav-section" href="#put-apiv4projectsidpackagesnugetsymbolpackageauthorize">PUT /api/v4/projects/{id}/packages/nuget/symbolpackage/authorize</a>
+<a class="nav-section" href="#put-apiv4projectsidpackagesnugetv2authorize">PUT /api/v4/projects/{id}/packages/nuget/v2/authorize</a></div>
+<a href="../api/package_file.html">PackageFile</a>
+<a href="../api/page.html">Page</a>
+<a href="../api/participant.html">Participant</a>
+<a href="../api/personal_access_token.html">PersonalAccessToken</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_avatar.html">ProjectAvatar</a>
+<a href="../api/project_entity.html">ProjectEntity</a>
+<a href="../api/project_export.html">ProjectExport</a>
+<a href="../api/project_hook.html">ProjectHook</a>
+<a href="../api/project_import.html">ProjectImport</a>
+<a href="../api/project_import_entity.html">ProjectImportEntity</a>
+<a href="../api/project_package.html">ProjectPackage</a>
+<a href="../api/project_snippet.html">ProjectSnippet</a>
+<a href="../api/projects_job_token_scope.html">ProjectsJobTokenScope</a>
+<a href="../api/protected_tag.html">ProtectedTag</a>
+<a href="../api/pypi.html">Pypi</a>
+<a href="../api/pypi_package.html">PypiPackage</a>
+<a href="../api/release.html">Release</a>
+<a href="../api/release_link.html">ReleaseLink</a>
+<a href="../api/remote_mirror.html">RemoteMirror</a>
+<a href="../api/rpm.html">Rpm</a>
+<a href="../api/rpm_package.html">RpmPackage</a>
+<a href="../api/rubygem.html">Rubygem</a>
+<a href="../api/rubygem_package.html">RubygemPackage</a>
+<a href="../api/runner.html">Runner</a>
+<a href="../api/search.html">Search</a>
+<a href="../api/secure_file.html">SecureFile</a>
+<a href="../api/slack.html">Slack</a>
+<a href="../api/snippet.html">Snippet</a>
+<a href="../api/starrer.html">Starrer</a>
+<a href="../api/system_hook.html">SystemHook</a>
+<a href="../api/tag.html">Tag</a>
+<a href="../api/terraform_registry.html">TerraformRegistry</a>
+<a href="../api/terraform_state.html">TerraformState</a>
+<a href="../api/test_report.html">TestReport</a>
+<a href="../api/test_report_summary.html">TestReportSummary</a>
+<a href="../api/topic.html">Topic</a>
+<a href="../api/unleash_api.html">UnleashApi</a>
+<a href="../api/usage_data.html">UsageData</a>
+<a href="../api/user.html">User</a>
+<a href="../api/web_commit.html">WebCommit</a>
+<a href="../api/wiki.html">Wiki</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="nugetpackage">NugetPackage</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4groupsid-packagesnugetmetadatapackage_nameindex"><code>/api/v4/groups/{id}/-/packages/nuget/metadata/*package_name/index</code></a></td>
+<td><code>list</code></td>
+<td>The NuGet Metadata Service - Package name level</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4projectsidpackagesnugetmetadatapackage_nameindex"><code>/api/v4/projects/{id}/packages/nuget/metadata/*package_name/index</code></a></td>
+<td><code>list</code></td>
+<td>The NuGet Metadata Service - Package name level</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4groupsid-packagesnugetsymbolfilesfile_namesignaturesame_file_name"><code>/api/v4/groups/{id}/-/packages/nuget/symbolfiles/*file_name/*signature/*same_file_name</code></a></td>
+<td><code>load</code></td>
+<td>The NuGet Symbol File Download Endpoint</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4projectsidpackagesnugetsymbolfilesfile_namesignaturesame_file_name"><code>/api/v4/projects/{id}/packages/nuget/symbolfiles/*file_name/*signature/*same_file_name</code></a></td>
+<td><code>load</code></td>
+<td>The NuGet Symbol File Download Endpoint</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4projectsidpackagesnugetdownloadpackage_namepackage_versionpackage_filename"><code>/api/v4/projects/{id}/packages/nuget/download/*package_name/*package_version/*package_filename</code></a></td>
+<td><code>load</code></td>
+<td>The NuGet Content Service - content request</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4groupsid-packagesnugetmetadatapackage_namepackage_version"><code>/api/v4/groups/{id}/-/packages/nuget/metadata/*package_name/*package_version</code></a></td>
+<td><code>load</code></td>
+<td>The NuGet Metadata Service - Package name and version level</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4projectsidpackagesnugetmetadatapackage_namepackage_version"><code>/api/v4/projects/{id}/packages/nuget/metadata/*package_name/*package_version</code></a></td>
+<td><code>load</code></td>
+<td>The NuGet Metadata Service - Package name and version level</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4projectsproject_idpackagesnugetv2packagesidpackage_nameversionpackage_version"><code>/api/v4/projects/{project_id}/packages/nuget/v2/Packages\(Id='*package_name',Version='*package_version'\)</code></a></td>
+<td><code>load</code></td>
+<td>The NuGet V2 Feed Single Package Metadata endpoint</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4projectsproject_idpackagesnugetv2packages"><code>/api/v4/projects/{project_id}/packages/nuget/v2/Packages\(\)</code></a></td>
+<td><code>load</code></td>
+<td>The NuGet V2 Feed Enumerate Packages endpoint</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4projectsproject_idpackagesnugetv2findpackagesbyid"><code>/api/v4/projects/{project_id}/packages/nuget/v2/FindPackagesById\(\)</code></a></td>
+<td><code>load</code></td>
+<td>The NuGet V2 Feed Find Packages by ID endpoint</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4groupsid-packagesnugetv2"><code>/api/v4/groups/{id}/-/packages/nuget/v2</code></a></td>
+<td><code>load</code></td>
+<td>The NuGet V2 Feed Service Index</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4groupsid-packagesnugetv2metadata"><code>/api/v4/groups/{id}/-/packages/nuget/v2/$metadata</code></a></td>
+<td><code>load</code></td>
+<td>The NuGet V2 Feed Package $metadata endpoint</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4projectsidpackagesnugetv2"><code>/api/v4/projects/{id}/packages/nuget/v2</code></a></td>
+<td><code>load</code></td>
+<td>The NuGet V2 Feed Service Index</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4projectsidpackagesnugetv2metadata"><code>/api/v4/projects/{id}/packages/nuget/v2/$metadata</code></a></td>
+<td><code>load</code></td>
+<td>The NuGet V2 Feed Package $metadata endpoint</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-apiv4projectsidpackagesnugetpackage_namepackage_version"><code>/api/v4/projects/{id}/packages/nuget/*package_name/*package_version</code></a></td>
+<td><code>remove</code></td>
+<td>The NuGet Package Delete endpoint</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-apiv4projectsidpackagesnugetsymbolpackage"><code>/api/v4/projects/{id}/packages/nuget/symbolpackage</code></a></td>
+<td><code>update</code></td>
+<td>The NuGet Symbol Package Publish endpoint</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-apiv4projectsidpackagesnugetv2"><code>/api/v4/projects/{id}/packages/nuget/v2</code></a></td>
+<td><code>update</code></td>
+<td>The NuGet V2 Feed Package Publish endpoint</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-apiv4projectsidpackagesnugetauthorize"><code>/api/v4/projects/{id}/packages/nuget/authorize</code></a></td>
+<td><code>update</code></td>
+<td>The NuGet Package Authorize endpoint</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-apiv4projectsidpackagesnugetsymbolpackageauthorize"><code>/api/v4/projects/{id}/packages/nuget/symbolpackage/authorize</code></a></td>
+<td><code>update</code></td>
+<td>The NuGet Symbol Package Authorize endpoint</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-apiv4projectsidpackagesnugetv2authorize"><code>/api/v4/projects/{id}/packages/nuget/v2/authorize</code></a></td>
+<td><code>update</code></td>
+<td>The NuGet V2 Feed Package Authorize endpoint</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authors</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>dependencyGroups</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>iconUrl</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>items</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>licenseUrl</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lower</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>packageContent</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>projectUrl</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>published</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>summary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>upper</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-apiv4groupsid-packagesnugetmetadatapackage_nameindex" class="operation" data-method="get"><code>GET</code> /api/v4/groups/{id}/-/packages/nuget/metadata/*package_name/index</h3>
+<p>Operation ID: <code>getApiV4GroupsIdPackagesNugetMetadata*packageNameIndex</code>.</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The group ID or full group path. |
+| <code>package_name</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package name |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-the-nuget-metadata-service---package-name-level" class="status" data-status="2xx">200: The NuGet Metadata Service - Package name level</h5>
+<h5 id="401-unauthorized" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="get-apiv4projectsidpackagesnugetmetadatapackage_nameindex" class="operation" data-method="get"><code>GET</code> /api/v4/projects/{id}/packages/nuget/metadata/*package_name/index</h3>
+<p>Operation ID: <code>getApiV4ProjectsIdPackagesNugetMetadata*packageNameIndex</code>.</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |
+| <code>package_name</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package name |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-the-nuget-metadata-service---package-name-level-1" class="status" data-status="2xx">200: The NuGet Metadata Service - Package name level</h5>
+<h5 id="401-unauthorized-1" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-1" class="status" data-status="4xx">404: Not Found</h5>
+<h2 id="load">load</h2>
+<h3 id="get-apiv4groupsid-packagesnugetsymbolfilesfile_namesignaturesame_file_name" class="operation" data-method="get"><code>GET</code> /api/v4/groups/{id}/-/packages/nuget/symbolfiles/*file_name/*signature/*same_file_name</h3>
+<p>Operation ID: <code>getApiV4GroupsIdPackagesNugetSymbolfiles*fileName*signature*sameFileName</code>.</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>Symbolchecksum</code> | <code>header</code> | <code>any</code> | Yes |  |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The group ID or full group path. |
+| <code>file_name</code> | <code>query</code> | <code>any</code> | Yes | The symbol file name |
+| <code>signature</code> | <code>query</code> | <code>any</code> | Yes | The symbol file signature |
+| <code>same_file_name</code> | <code>query</code> | <code>any</code> | Yes |  |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-the-nuget-symbol-file-download-endpoint" class="status" data-status="2xx">200: The NuGet Symbol File Download Endpoint</h5>
+<h5 id="400-bad-request" class="status" data-status="4xx">400: Bad Request</h5>
+<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="get-apiv4projectsidpackagesnugetsymbolfilesfile_namesignaturesame_file_name" class="operation" data-method="get"><code>GET</code> /api/v4/projects/{id}/packages/nuget/symbolfiles/*file_name/*signature/*same_file_name</h3>
+<p>Operation ID: <code>getApiV4ProjectsIdPackagesNugetSymbolfiles*fileName*signature*sameFileName</code>.</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>Symbolchecksum</code> | <code>header</code> | <code>any</code> | Yes |  |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |
+| <code>file_name</code> | <code>query</code> | <code>any</code> | Yes | The symbol file name |
+| <code>signature</code> | <code>query</code> | <code>any</code> | Yes | The symbol file signature |
+| <code>same_file_name</code> | <code>query</code> | <code>any</code> | Yes |  |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-the-nuget-symbol-file-download-endpoint-1" class="status" data-status="2xx">200: The NuGet Symbol File Download Endpoint</h5>
+<h5 id="400-bad-request-1" class="status" data-status="4xx">400: Bad Request</h5>
+<h5 id="403-forbidden-3" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-3" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="get-apiv4projectsidpackagesnugetdownloadpackage_namepackage_versionpackage_filename" class="operation" data-method="get"><code>GET</code> /api/v4/projects/{id}/packages/nuget/download/*package_name/*package_version/*package_filename</h3>
+<p>Operation ID: <code>getApiV4ProjectsIdPackagesNugetDownload*packageName*packageVersion*packageFilename</code>.</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |
+| <code>package_name</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package name |
+| <code>package_version</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package version |
+| <code>package_filename</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package filename |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-the-nuget-content-service---content-request" class="status" data-status="2xx">200: The NuGet Content Service - content request</h5>
+<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="get-apiv4groupsid-packagesnugetmetadatapackage_namepackage_version" class="operation" data-method="get"><code>GET</code> /api/v4/groups/{id}/-/packages/nuget/metadata/*package_name/*package_version</h3>
+<p>Operation ID: <code>getApiV4GroupsIdPackagesNugetMetadata*packageName*packageVersion</code>.</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The group ID or full group path. |
+| <code>package_name</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package name |
+| <code>package_version</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package version |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-the-nuget-metadata-service---package-name-and-version-level" class="status" data-status="2xx">200: The NuGet Metadata Service - Package name and version level</h5>
+<h5 id="401-unauthorized-3" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-5" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-5" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="get-apiv4projectsidpackagesnugetmetadatapackage_namepackage_version" class="operation" data-method="get"><code>GET</code> /api/v4/projects/{id}/packages/nuget/metadata/*package_name/*package_version</h3>
+<p>Operation ID: <code>getApiV4ProjectsIdPackagesNugetMetadata*packageName*packageVersion</code>.</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |
+| <code>package_name</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package name |
+| <code>package_version</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package version |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-the-nuget-metadata-service---package-name-and-version-level-1" class="status" data-status="2xx">200: The NuGet Metadata Service - Package name and version level</h5>
+<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-6" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-6" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="get-apiv4projectsproject_idpackagesnugetv2packagesidpackage_nameversionpackage_version" class="operation" data-method="get"><code>GET</code> /api/v4/projects/{project_id}/packages/nuget/v2/Packages(Id='*package_name',Version='*package_version')</h3>
+<p>Operation ID: <code>getApiV4ProjectsProjectIdPackagesNugetV2Packages\(id='*packageName',version='*packageVersion'\)</code>.</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |
+| <code>package_name</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package name |
+| <code>package_version</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package version |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-the-nuget-v2-feed-single-package-metadata-endpoint" class="status" data-status="2xx">200: The NuGet V2 Feed Single Package Metadata endpoint</h5>
+<h5 id="400-bad-request-2" class="status" data-status="4xx">400: Bad Request</h5>
+<h5 id="404-not-found-7" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="get-apiv4projectsproject_idpackagesnugetv2packages" class="operation" data-method="get"><code>GET</code> /api/v4/projects/{project_id}/packages/nuget/v2/Packages()</h3>
+<p>Operation ID: <code>getApiV4ProjectsProjectIdPackagesNugetV2Packages\(\)</code>.</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |
+| <code>$filter</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package name |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-the-nuget-v2-feed-enumerate-packages-endpoint" class="status" data-status="2xx">200: The NuGet V2 Feed Enumerate Packages endpoint</h5>
+<h5 id="400-bad-request-3" class="status" data-status="4xx">400: Bad Request</h5>
+<h5 id="404-not-found-8" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="get-apiv4projectsproject_idpackagesnugetv2findpackagesbyid" class="operation" data-method="get"><code>GET</code> /api/v4/projects/{project_id}/packages/nuget/v2/FindPackagesById()</h3>
+<p>Operation ID: <code>getApiV4ProjectsProjectIdPackagesNugetV2Findpackagesbyid\(\)</code>.</p>
+<h4 id="parameters-9">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>project_id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |
+| <code>id</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package name |</p>
+<h4 id="responses-9">Responses</h4>
+<h5 id="200-the-nuget-v2-feed-find-packages-by-id-endpoint" class="status" data-status="2xx">200: The NuGet V2 Feed Find Packages by ID endpoint</h5>
+<h5 id="400-bad-request-4" class="status" data-status="4xx">400: Bad Request</h5>
+<h5 id="404-not-found-9" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="get-apiv4groupsid-packagesnugetv2" class="operation" data-method="get"><code>GET</code> /api/v4/groups/{id}/-/packages/nuget/v2</h3>
+<p>Operation ID: <code>getApiV4GroupsIdPackagesNugetV2</code>.</p>
+<h4 id="parameters-10">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The group ID or full group path. |</p>
+<h4 id="responses-10">Responses</h4>
+<h5 id="200-the-nuget-v2-feed-service-index" class="status" data-status="2xx">200: The NuGet V2 Feed Service Index</h5>
+<h5 id="404-not-found-10" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="get-apiv4groupsid-packagesnugetv2metadata" class="operation" data-method="get"><code>GET</code> /api/v4/groups/{id}/-/packages/nuget/v2/$metadata</h3>
+<p>Operation ID: <code>getApiV4GroupsIdPackagesNugetV2$metadata</code>.</p>
+<h4 id="parameters-11">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The group ID or full group path. |</p>
+<h4 id="responses-11">Responses</h4>
+<h5 id="200-the-nuget-v2-feed-package-metadata-endpoint" class="status" data-status="2xx">200: The NuGet V2 Feed Package $metadata endpoint</h5>
+<h3 id="get-apiv4projectsidpackagesnugetv2" class="operation" data-method="get"><code>GET</code> /api/v4/projects/{id}/packages/nuget/v2</h3>
+<p>Operation ID: <code>getApiV4ProjectsIdPackagesNugetV2</code>.</p>
+<h4 id="parameters-12">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |</p>
+<h4 id="responses-12">Responses</h4>
+<h5 id="200-the-nuget-v2-feed-service-index-1" class="status" data-status="2xx">200: The NuGet V2 Feed Service Index</h5>
+<h5 id="404-not-found-11" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="get-apiv4projectsidpackagesnugetv2metadata" class="operation" data-method="get"><code>GET</code> /api/v4/projects/{id}/packages/nuget/v2/$metadata</h3>
+<p>Operation ID: <code>getApiV4ProjectsIdPackagesNugetV2$metadata</code>.</p>
+<h4 id="parameters-13">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |</p>
+<h4 id="responses-13">Responses</h4>
+<h5 id="200-the-nuget-v2-feed-package-metadata-endpoint-1" class="status" data-status="2xx">200: The NuGet V2 Feed Package $metadata endpoint</h5>
+<h2 id="remove">remove</h2>
+<h3 id="delete-apiv4projectsidpackagesnugetpackage_namepackage_version" class="operation" data-method="delete"><code>DELETE</code> /api/v4/projects/{id}/packages/nuget/*package_name/*package_version</h3>
+<p>Operation ID: <code>deleteApiV4ProjectsIdPackagesNuget*packageName*packageVersion</code>.</p>
+<h4 id="parameters-14">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |
+| <code>package_name</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package name |
+| <code>package_version</code> | <code>query</code> | <code>any</code> | Yes | The NuGet package version |</p>
+<h4 id="responses-14">Responses</h4>
+<h5 id="204-the-nuget-package-delete-endpoint" class="status" data-status="2xx">204: The NuGet Package Delete endpoint</h5>
+<h5 id="401-unauthorized-5" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-7" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-12" class="status" data-status="4xx">404: Not Found</h5>
+<h2 id="update">update</h2>
+<h3 id="put-apiv4projectsidpackagesnugetsymbolpackage" class="operation" data-method="put"><code>PUT</code> /api/v4/projects/{id}/packages/nuget/symbolpackage</h3>
+<p>Operation ID: <code>putApiV4ProjectsIdPackagesNugetSymbolpackage</code>.</p>
+<h4 id="parameters-15">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |
+| <code>putApiV4ProjectsIdPackagesNugetSymbolpackage</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
+<h4 id="responses-15">Responses</h4>
+<h5 id="201-the-nuget-symbol-package-publish-endpoint" class="status" data-status="2xx">201: The NuGet Symbol Package Publish endpoint</h5>
+<h5 id="400-bad-request-5" class="status" data-status="4xx">400: Bad Request</h5>
+<h5 id="401-unauthorized-6" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-8" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-13" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="put-apiv4projectsidpackagesnugetv2" class="operation" data-method="put"><code>PUT</code> /api/v4/projects/{id}/packages/nuget/v2</h3>
+<p>Operation ID: <code>putApiV4ProjectsIdPackagesNugetV2</code>.</p>
+<h4 id="parameters-16">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |
+| <code>putApiV4ProjectsIdPackagesNugetV2</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
+<h4 id="responses-16">Responses</h4>
+<h5 id="201-the-nuget-v2-feed-package-publish-endpoint" class="status" data-status="2xx">201: The NuGet V2 Feed Package Publish endpoint</h5>
+<h5 id="400-bad-request-6" class="status" data-status="4xx">400: Bad Request</h5>
+<h5 id="401-unauthorized-7" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-9" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-14" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="put-apiv4projectsidpackagesnugetauthorize" class="operation" data-method="put"><code>PUT</code> /api/v4/projects/{id}/packages/nuget/authorize</h3>
+<p>Operation ID: <code>putApiV4ProjectsIdPackagesNugetAuthorize</code>.</p>
+<h4 id="parameters-17">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |</p>
+<h4 id="responses-17">Responses</h4>
+<h5 id="200-the-nuget-package-authorize-endpoint" class="status" data-status="2xx">200: The NuGet Package Authorize endpoint</h5>
+<h5 id="401-unauthorized-8" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-10" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-15" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="put-apiv4projectsidpackagesnugetsymbolpackageauthorize" class="operation" data-method="put"><code>PUT</code> /api/v4/projects/{id}/packages/nuget/symbolpackage/authorize</h3>
+<p>Operation ID: <code>putApiV4ProjectsIdPackagesNugetSymbolpackageAuthorize</code>.</p>
+<h4 id="parameters-18">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |</p>
+<h4 id="responses-18">Responses</h4>
+<h5 id="200-the-nuget-symbol-package-authorize-endpoint" class="status" data-status="2xx">200: The NuGet Symbol Package Authorize endpoint</h5>
+<h5 id="401-unauthorized-9" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-11" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-16" class="status" data-status="4xx">404: Not Found</h5>
+<h3 id="put-apiv4projectsidpackagesnugetv2authorize" class="operation" data-method="put"><code>PUT</code> /api/v4/projects/{id}/packages/nuget/v2/authorize</h3>
+<p>Operation ID: <code>putApiV4ProjectsIdPackagesNugetV2Authorize</code>.</p>
+<h4 id="parameters-19">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |</p>
+<h4 id="responses-19">Responses</h4>
+<h5 id="200-the-nuget-v2-feed-package-authorize-endpoint" class="status" data-status="2xx">200: The NuGet V2 Feed Package Authorize endpoint</h5>
+<h5 id="401-unauthorized-10" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-12" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-17" class="status" data-status="4xx">404: Not Found</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

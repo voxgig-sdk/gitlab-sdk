@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ApiEntitiesProjectImportStatus | GitLab API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">GitLab API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/gitlab-sdk">voxgig-sdk/gitlab-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">GitLab API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/access_request.html">AccessRequest</a>
+<a href="../api/alert_management.html">AlertManagement</a>
+<a href="../api/api_entities_access_requester.html">ApiEntitiesAccessRequester</a>
+<a href="../api/api_entities_appearance.html">ApiEntitiesAppearance</a>
+<a href="../api/api_entities_application.html">ApiEntitiesApplication</a>
+<a href="../api/api_entities_application_statistic.html">ApiEntitiesApplicationStatistic</a>
+<a href="../api/api_entities_application_with_secret.html">ApiEntitiesApplicationWithSecret</a>
+<a href="../api/api_entities_avatar.html">ApiEntitiesAvatar</a>
+<a href="../api/api_entities_award_emoji.html">ApiEntitiesAwardEmoji</a>
+<a href="../api/api_entities_badge.html">ApiEntitiesBadge</a>
+<a href="../api/api_entities_basic_badge_detail.html">ApiEntitiesBasicBadgeDetail</a>
+<a href="../api/api_entities_basic_group_detail.html">ApiEntitiesBasicGroupDetail</a>
+<a href="../api/api_entities_basic_project_detail.html">ApiEntitiesBasicProjectDetail</a>
+<a href="../api/api_entities_basic_ref.html">ApiEntitiesBasicRef</a>
+<a href="../api/api_entities_basic_success.html">ApiEntitiesBasicSuccess</a>
+<a href="../api/api_entities_batched_background_migration.html">ApiEntitiesBatchedBackgroundMigration</a>
+<a href="../api/api_entities_branch.html">ApiEntitiesBranch</a>
+<a href="../api/api_entities_bulk_import.html">ApiEntitiesBulkImport</a>
+<a href="../api/api_entities_bulk_imports_entity_failure.html">ApiEntitiesBulkImportsEntityFailure</a>
+<a href="../api/api_entities_bulk_imports_export_status.html">ApiEntitiesBulkImportsExportStatus</a>
+<a href="../api/api_entities_changelog.html">ApiEntitiesChangelog</a>
+<a href="../api/api_entities_ci_bridge.html">ApiEntitiesCiBridge</a>
+<a href="../api/api_entities_ci_catalog_resources_version.html">ApiEntitiesCiCatalogResourcesVersion</a>
+<a href="../api/api_entities_ci_job.html">ApiEntitiesCiJob</a>
+<a href="../api/api_entities_ci_job_basic.html">ApiEntitiesCiJobBasic</a>
+<a href="../api/api_entities_ci_job_basic_with_project.html">ApiEntitiesCiJobBasicWithProject</a>
+<a href="../api/api_entities_ci_lint_result.html">ApiEntitiesCiLintResult</a>
+<a href="../api/api_entities_ci_pipeline.html">ApiEntitiesCiPipeline</a>
+<a href="../api/api_entities_ci_pipeline_basic.html">ApiEntitiesCiPipelineBasic</a>
+<a href="../api/api_entities_ci_pipeline_schedule.html">ApiEntitiesCiPipelineSchedule</a>
+<a href="../api/api_entities_ci_pipeline_schedule_detail.html">ApiEntitiesCiPipelineScheduleDetail</a>
+<a href="../api/api_entities_ci_reset_token_result.html">ApiEntitiesCiResetTokenResult</a>
+<a href="../api/api_entities_ci_resource_group.html">ApiEntitiesCiResourceGroup</a>
+<a href="../api/api_entities_ci_runner.html">ApiEntitiesCiRunner</a>
+<a href="../api/api_entities_ci_runner_detail.html">ApiEntitiesCiRunnerDetail</a>
+<a href="../api/api_entities_ci_runner_manager.html">ApiEntitiesCiRunnerManager</a>
+<a href="../api/api_entities_ci_runner_registration_detail.html">ApiEntitiesCiRunnerRegistrationDetail</a>
+<a href="../api/api_entities_ci_secure_file.html">ApiEntitiesCiSecureFile</a>
+<a href="../api/api_entities_ci_variable.html">ApiEntitiesCiVariable</a>
+<a href="../api/api_entities_cluster.html">ApiEntitiesCluster</a>
+<a href="../api/api_entities_cluster_group.html">ApiEntitiesClusterGroup</a>
+<a href="../api/api_entities_cluster_project.html">ApiEntitiesClusterProject</a>
+<a href="../api/api_entities_clusters_agent.html">ApiEntitiesClustersAgent</a>
+<a href="../api/api_entities_clusters_agent_token.html">ApiEntitiesClustersAgentToken</a>
+<a href="../api/api_entities_clusters_agent_token_basic.html">ApiEntitiesClustersAgentTokenBasic</a>
+<a href="../api/api_entities_clusters_agent_token_with_token.html">ApiEntitiesClustersAgentTokenWithToken</a>
+<a href="../api/api_entities_commit.html">ApiEntitiesCommit</a>
+<a href="../api/api_entities_commit_detail.html">ApiEntitiesCommitDetail</a>
+<a href="../api/api_entities_commit_note.html">ApiEntitiesCommitNote</a>
+<a href="../api/api_entities_commit_sequence.html">ApiEntitiesCommitSequence</a>
+<a href="../api/api_entities_commit_signature.html">ApiEntitiesCommitSignature</a>
+<a href="../api/api_entities_commit_status.html">ApiEntitiesCommitStatus</a>
+<a href="../api/api_entities_compare.html">ApiEntitiesCompare</a>
+<a href="../api/api_entities_container_registry_repository.html">ApiEntitiesContainerRegistryRepository</a>
+<a href="../api/api_entities_container_registry_tag.html">ApiEntitiesContainerRegistryTag</a>
+<a href="../api/api_entities_container_registry_tag_detail.html">ApiEntitiesContainerRegistryTagDetail</a>
+<a href="../api/api_entities_contributor.html">ApiEntitiesContributor</a>
+<a href="../api/api_entities_deploy_key.html">ApiEntitiesDeployKey</a>
+<a href="../api/api_entities_deploy_keys_project.html">ApiEntitiesDeployKeysProject</a>
+<a href="../api/api_entities_deploy_token.html">ApiEntitiesDeployToken</a>
+<a href="../api/api_entities_deploy_token_with_token.html">ApiEntitiesDeployTokenWithToken</a>
+<a href="../api/api_entities_deployment.html">ApiEntitiesDeployment</a>
+<a href="../api/api_entities_deployment_extended.html">ApiEntitiesDeploymentExtended</a>
+<a href="../api/api_entities_deployments_approval.html">ApiEntitiesDeploymentsApproval</a>
+<a href="../api/api_entities_dictionary_table.html">ApiEntitiesDictionaryTable</a>
+<a href="../api/api_entities_diff.html">ApiEntitiesDiff</a>
+<a href="../api/api_entities_discovered_cluster.html">ApiEntitiesDiscoveredCluster</a>
+<a href="../api/api_entities_draft_note.html">ApiEntitiesDraftNote</a>
+<a href="../api/api_entities_environment.html">ApiEntitiesEnvironment</a>
+<a href="../api/api_entities_error_tracking_client_key.html">ApiEntitiesErrorTrackingClientKey</a>
+<a href="../api/api_entities_error_tracking_project_setting.html">ApiEntitiesErrorTrackingProjectSetting</a>
+<a href="../api/api_entities_event.html">ApiEntitiesEvent</a>
+<a href="../api/api_entities_feature.html">ApiEntitiesFeature</a>
+<a href="../api/api_entities_feature_definition.html">ApiEntitiesFeatureDefinition</a>
+<a href="../api/api_entities_feature_flag.html">ApiEntitiesFeatureFlag</a>
+<a href="../api/api_entities_feature_flag_user_list.html">ApiEntitiesFeatureFlagUserList</a>
+<a href="../api/api_entities_freeze_period.html">ApiEntitiesFreezePeriod</a>
+<a href="../api/api_entities_gitlab_subscription.html">ApiEntitiesGitlabSubscription</a>
+<a href="../api/api_entities_go_module_version.html">ApiEntitiesGoModuleVersion</a>
+<a href="../api/api_entities_group.html">ApiEntitiesGroup</a>
+<a href="../api/api_entities_group_detail.html">ApiEntitiesGroupDetail</a>
+<a href="../api/api_entities_hook.html">ApiEntitiesHook</a>
+<a href="../api/api_entities_integration.html">ApiEntitiesIntegration</a>
+<a href="../api/api_entities_integration_basic.html">ApiEntitiesIntegrationBasic</a>
+<a href="../api/api_entities_invitation.html">ApiEntitiesInvitation</a>
+<a href="../api/api_entities_issuable_time_stat.html">ApiEntitiesIssuableTimeStat</a>
+<a href="../api/api_entities_issue.html">ApiEntitiesIssue</a>
+<a href="../api/api_entities_issue_link.html">ApiEntitiesIssueLink</a>
+<a href="../api/api_entities_license.html">ApiEntitiesLicense</a>
+<a href="../api/api_entities_markdown.html">ApiEntitiesMarkdown</a>
+<a href="../api/api_entities_markdown_upload_admin.html">ApiEntitiesMarkdownUploadAdmin</a>
+<a href="../api/api_entities_member.html">ApiEntitiesMember</a>
+<a href="../api/api_entities_merge.html">ApiEntitiesMerge</a>
+<a href="../api/api_entities_merge_request_approval.html">ApiEntitiesMergeRequestApproval</a>
+<a href="../api/api_entities_merge_request_basic.html">ApiEntitiesMergeRequestBasic</a>
+<a href="../api/api_entities_merge_request_change.html">ApiEntitiesMergeRequestChange</a>
+<a href="../api/api_entities_merge_request_diff.html">ApiEntitiesMergeRequestDiff</a>
+<a href="../api/api_entities_merge_request_diff_full.html">ApiEntitiesMergeRequestDiffFull</a>
+<a href="../api/api_entities_merge_request_reviewer.html">ApiEntitiesMergeRequestReviewer</a>
+<a href="../api/api_entities_metric_image.html">ApiEntitiesMetricImage</a>
+<a href="../api/api_entities_mr_note.html">ApiEntitiesMrNote</a>
+<a href="../api/api_entities_namespace.html">ApiEntitiesNamespace</a>
+<a href="../api/api_entities_namespace_existence.html">ApiEntitiesNamespaceExistence</a>
+<a href="../api/api_entities_namespaces_storage_limit_exclusion.html">ApiEntitiesNamespacesStorageLimitExclusion</a>
+<a href="../api/api_entities_npm_package.html">ApiEntitiesNpmPackage</a>
+<a href="../api/api_entities_npm_package_tag.html">ApiEntitiesNpmPackageTag</a>
+<a href="../api/api_entities_nuget_packages_version.html">ApiEntitiesNugetPackagesVersion</a>
+<a href="../api/api_entities_nuget_search_result.html">ApiEntitiesNugetSearchResult</a>
+<a href="../api/api_entities_nuget_service_index.html">ApiEntitiesNugetServiceIndex</a>
+<a href="../api/api_entities_organizations_organization.html">ApiEntitiesOrganizationsOrganization</a>
+<a href="../api/api_entities_package.html">ApiEntitiesPackage</a>
+<a href="../api/api_entities_package_file.html">ApiEntitiesPackageFile</a>
+<a href="../api/api_entities_package_pipeline.html">ApiEntitiesPackagePipeline</a>
+<a href="../api/api_entities_packages_conan_files_list.html">ApiEntitiesPackagesConanFilesList</a>
+<a href="../api/api_entities_packages_conan_package_manifest.html">ApiEntitiesPackagesConanPackageManifest</a>
+<a href="../api/api_entities_packages_conan_package_revision.html">ApiEntitiesPackagesConanPackageRevision</a>
+<a href="../api/api_entities_packages_conan_package_snapshot.html">ApiEntitiesPackagesConanPackageSnapshot</a>
+<a href="../api/api_entities_packages_conan_recipe_manifest.html">ApiEntitiesPackagesConanRecipeManifest</a>
+<a href="../api/api_entities_packages_conan_recipe_revision.html">ApiEntitiesPackagesConanRecipeRevision</a>
+<a href="../api/api_entities_packages_conan_recipe_snapshot.html">ApiEntitiesPackagesConanRecipeSnapshot</a>
+<a href="../api/api_entities_packages_conan_revision.html">ApiEntitiesPackagesConanRevision</a>
+<a href="../api/api_entities_packages_conan_upload_url.html">ApiEntitiesPackagesConanUploadUrl</a>
+<a href="../api/api_entities_packages_debian_distribution.html">ApiEntitiesPackagesDebianDistribution</a>
+<a href="../api/api_entities_pages_domain.html">ApiEntitiesPagesDomain</a>
+<a href="../api/api_entities_pages_domain_basic.html">ApiEntitiesPagesDomainBasic</a>
+<a href="../api/api_entities_personal_access_token.html">ApiEntitiesPersonalAccessToken</a>
+<a href="../api/api_entities_personal_access_token_with_last_used_ip.html">ApiEntitiesPersonalAccessTokenWithLastUsedIp</a>
+<a href="../api/api_entities_personal_access_token_with_token.html">ApiEntitiesPersonalAccessTokenWithToken</a>
+<a href="../api/api_entities_personal_snippet.html">ApiEntitiesPersonalSnippet</a>
+<a href="../api/api_entities_plan_limit.html">ApiEntitiesPlanLimit</a>
+<a href="../api/api_entities_project.html">ApiEntitiesProject</a>
+<a href="../api/api_entities_project_daily_statistic.html">ApiEntitiesProjectDailyStatistic</a>
+<a href="../api/api_entities_project_export_status.html">ApiEntitiesProjectExportStatus</a>
+<a href="../api/api_entities_project_group_link.html">ApiEntitiesProjectGroupLink</a>
+<a href="../api/api_entities_project_hook.html">ApiEntitiesProjectHook</a>
+<a aria-current="page" href="../api/api_entities_project_import_status.html">ApiEntitiesProjectImportStatus</a><div class="nav-sections"><a class="nav-section" href="#post-apiv4projectsimport">POST /api/v4/projects/import</a>
+<a class="nav-section" href="#post-apiv4projectsremote-import-s3">POST /api/v4/projects/remote-import-s3</a>
+<a class="nav-section" href="#post-apiv4projectsremote-import">POST /api/v4/projects/remote-import</a>
+<a class="nav-section" href="#get-apiv4projectsidimport">GET /api/v4/projects/{id}/import</a>
+<a class="nav-section" href="#get-apiv4projectsidrelation-imports">GET /api/v4/projects/{id}/relation-imports</a></div>
+<a href="../api/api_entities_project_job_token_scope.html">ApiEntitiesProjectJobTokenScope</a>
+<a href="../api/api_entities_project_repository_storage.html">ApiEntitiesProjectRepositoryStorage</a>
+<a href="../api/api_entities_project_snippet.html">ApiEntitiesProjectSnippet</a>
+<a href="../api/api_entities_project_upload.html">ApiEntitiesProjectUpload</a>
+<a href="../api/api_entities_project_with_access.html">ApiEntitiesProjectWithAccess</a>
+<a href="../api/api_entities_projects_container_registry_protection_rule.html">ApiEntitiesProjectsContainerRegistryProtectionRule</a>
+<a href="../api/api_entities_projects_packages_protection_rule.html">ApiEntitiesProjectsPackagesProtectionRule</a>
+<a href="../api/api_entities_projects_topic.html">ApiEntitiesProjectsTopic</a>
+<a href="../api/api_entities_protected_branch.html">ApiEntitiesProtectedBranch</a>
+<a href="../api/api_entities_protected_tag.html">ApiEntitiesProtectedTag</a>
+<a href="../api/api_entities_public_group_detail.html">ApiEntitiesPublicGroupDetail</a>
+<a href="../api/api_entities_related_issue.html">ApiEntitiesRelatedIssue</a>
+<a href="../api/api_entities_relation_import_tracker.html">ApiEntitiesRelationImportTracker</a>
+<a href="../api/api_entities_release.html">ApiEntitiesRelease</a>
+<a href="../api/api_entities_releases_link.html">ApiEntitiesReleasesLink</a>
+<a href="../api/api_entities_remote_mirror.html">ApiEntitiesRemoteMirror</a>
+<a href="../api/api_entities_repository_health.html">ApiEntitiesRepositoryHealth</a>
+<a href="../api/api_entities_resource_access_token_with_token.html">ApiEntitiesResourceAccessTokenWithToken</a>
+<a href="../api/api_entities_resource_milestone_event.html">ApiEntitiesResourceMilestoneEvent</a>
+<a href="../api/api_entities_snippet.html">ApiEntitiesSnippet</a>
+<a href="../api/api_entities_ssh_key_with_user.html">ApiEntitiesSshKeyWithUser</a>
+<a href="../api/api_entities_suggestion.html">ApiEntitiesSuggestion</a>
+<a href="../api/api_entities_system_broadcast_message.html">ApiEntitiesSystemBroadcastMessage</a>
+<a href="../api/api_entities_tag.html">ApiEntitiesTag</a>
+<a href="../api/api_entities_tag_signature.html">ApiEntitiesTagSignature</a>
+<a href="../api/api_entities_templates_list.html">ApiEntitiesTemplatesList</a>
+<a href="../api/api_entities_terraform_module_version.html">ApiEntitiesTerraformModuleVersion</a>
+<a href="../api/api_entities_tree_object.html">ApiEntitiesTreeObject</a>
+<a href="../api/api_entities_trigger.html">ApiEntitiesTrigger</a>
+<a href="../api/api_entities_user_agent_detail.html">ApiEntitiesUserAgentDetail</a>
+<a href="../api/api_entities_user_count.html">ApiEntitiesUserCount</a>
+<a href="../api/api_entities_user_public.html">ApiEntitiesUserPublic</a>
+<a href="../api/api_entities_user_with_admin.html">ApiEntitiesUserWithAdmin</a>
+<a href="../api/api_entities_wiki_attachment.html">ApiEntitiesWikiAttachment</a>
+<a href="../api/api_entities_wiki_page.html">ApiEntitiesWikiPage</a>
+<a href="../api/api_entities_wiki_page_basic.html">ApiEntitiesWikiPageBasic</a>
+<a href="../api/application.html">Application</a>
+<a href="../api/award_emoji.html">AwardEmoji</a>
+<a href="../api/badge.html">Badge</a>
+<a href="../api/branch.html">Branch</a>
+<a href="../api/cargo_package.html">CargoPackage</a>
+<a href="../api/ci_variable.html">CiVariable</a>
+<a href="../api/cluster.html">Cluster</a>
+<a href="../api/cluster_agent.html">ClusterAgent</a>
+<a href="../api/composer.html">Composer</a>
+<a href="../api/composer_package.html">ComposerPackage</a>
+<a href="../api/conan.html">Conan</a>
+<a href="../api/conan_package.html">ConanPackage</a>
+<a href="../api/container_registry.html">ContainerRegistry</a>
+<a href="../api/container_registry_event.html">ContainerRegistryEvent</a>
+<a href="../api/custom_attribute.html">CustomAttribute</a>
+<a href="../api/debian.html">Debian</a>
+<a href="../api/debian_distribution.html">DebianDistribution</a>
+<a href="../api/debian_package.html">DebianPackage</a>
+<a href="../api/dependency_proxy.html">DependencyProxy</a>
+<a href="../api/deploy_key.html">DeployKey</a>
+<a href="../api/deploy_token.html">DeployToken</a>
+<a href="../api/deployment.html">Deployment</a>
+<a href="../api/ee_api_entities_approval_state.html">EeApiEntitiesApprovalState</a>
+<a href="../api/ee_api_entities_audit_event.html">EeApiEntitiesAuditEvent</a>
+<a href="../api/ee_api_entities_billable_membership.html">EeApiEntitiesBillableMembership</a>
+<a href="../api/ee_api_entities_geo_node_status.html">EeApiEntitiesGeoNodeStatus</a>
+<a href="../api/ee_api_entities_geo_pipeline_ref.html">EeApiEntitiesGeoPipelineRef</a>
+<a href="../api/ee_api_entities_issuable_metric_image.html">EeApiEntitiesIssuableMetricImage</a>
+<a href="../api/ee_api_entities_merge_request_approval_state.html">EeApiEntitiesMergeRequestApprovalState</a>
+<a href="../api/ee_api_entities_ssh_certificate.html">EeApiEntitiesSshCertificate</a>
+<a href="../api/environment.html">Environment</a>
+<a href="../api/error_tracking_client_key.html">ErrorTrackingClientKey</a>
+<a href="../api/feature.html">Feature</a>
+<a href="../api/feature_flag.html">FeatureFlag</a>
+<a href="../api/feature_flags_user_list.html">FeatureFlagsUserList</a>
+<a href="../api/freeze_period.html">FreezePeriod</a>
+<a href="../api/generic_package.html">GenericPackage</a>
+<a href="../api/geo.html">Geo</a>
+<a href="../api/go_proxy.html">GoProxy</a>
+<a href="../api/group.html">Group</a>
+<a href="../api/group_avatar.html">GroupAvatar</a>
+<a href="../api/group_export.html">GroupExport</a>
+<a href="../api/group_import.html">GroupImport</a>
+<a href="../api/helm_package.html">HelmPackage</a>
+<a href="../api/hook.html">Hook</a>
+<a href="../api/import.html">Import</a>
+<a href="../api/integration.html">Integration</a>
+<a href="../api/invitation.html">Invitation</a>
+<a href="../api/issue_link.html">IssueLink</a>
+<a href="../api/issues_statistic.html">IssuesStatistic</a>
+<a href="../api/job.html">Job</a>
+<a href="../api/maven_package.html">MavenPackage</a>
+<a href="../api/member.html">Member</a>
+<a href="../api/merge_request.html">MergeRequest</a>
+<a href="../api/metadata.html">Metadata</a>
+<a href="../api/migration.html">Migration</a>
+<a href="../api/ml_model_registry.html">MlModelRegistry</a>
+<a href="../api/namespace.html">Namespace</a>
+<a href="../api/npm.html">Npm</a>
+<a href="../api/npm_package.html">NpmPackage</a>
+<a href="../api/nuget.html">Nuget</a>
+<a href="../api/nuget_package.html">NugetPackage</a>
+<a href="../api/package_file.html">PackageFile</a>
+<a href="../api/page.html">Page</a>
+<a href="../api/participant.html">Participant</a>
+<a href="../api/personal_access_token.html">PersonalAccessToken</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_avatar.html">ProjectAvatar</a>
+<a href="../api/project_entity.html">ProjectEntity</a>
+<a href="../api/project_export.html">ProjectExport</a>
+<a href="../api/project_hook.html">ProjectHook</a>
+<a href="../api/project_import.html">ProjectImport</a>
+<a href="../api/project_import_entity.html">ProjectImportEntity</a>
+<a href="../api/project_package.html">ProjectPackage</a>
+<a href="../api/project_snippet.html">ProjectSnippet</a>
+<a href="../api/projects_job_token_scope.html">ProjectsJobTokenScope</a>
+<a href="../api/protected_tag.html">ProtectedTag</a>
+<a href="../api/pypi.html">Pypi</a>
+<a href="../api/pypi_package.html">PypiPackage</a>
+<a href="../api/release.html">Release</a>
+<a href="../api/release_link.html">ReleaseLink</a>
+<a href="../api/remote_mirror.html">RemoteMirror</a>
+<a href="../api/rpm.html">Rpm</a>
+<a href="../api/rpm_package.html">RpmPackage</a>
+<a href="../api/rubygem.html">Rubygem</a>
+<a href="../api/rubygem_package.html">RubygemPackage</a>
+<a href="../api/runner.html">Runner</a>
+<a href="../api/search.html">Search</a>
+<a href="../api/secure_file.html">SecureFile</a>
+<a href="../api/slack.html">Slack</a>
+<a href="../api/snippet.html">Snippet</a>
+<a href="../api/starrer.html">Starrer</a>
+<a href="../api/system_hook.html">SystemHook</a>
+<a href="../api/tag.html">Tag</a>
+<a href="../api/terraform_registry.html">TerraformRegistry</a>
+<a href="../api/terraform_state.html">TerraformState</a>
+<a href="../api/test_report.html">TestReport</a>
+<a href="../api/test_report_summary.html">TestReportSummary</a>
+<a href="../api/topic.html">Topic</a>
+<a href="../api/unleash_api.html">UnleashApi</a>
+<a href="../api/usage_data.html">UsageData</a>
+<a href="../api/user.html">User</a>
+<a href="../api/web_commit.html">WebCommit</a>
+<a href="../api/wiki.html">Wiki</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesprojectimportstatus">ApiEntitiesProjectImportStatus</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-apiv4projectsimport"><code>/api/v4/projects/import</code></a></td>
+<td><code>create</code></td>
+<td>Create a new project import</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-apiv4projectsremote-import-s3"><code>/api/v4/projects/remote-import-s3</code></a></td>
+<td><code>create</code></td>
+<td>Create a new project import using a file from AWS S3</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-apiv4projectsremote-import"><code>/api/v4/projects/remote-import</code></a></td>
+<td><code>create</code></td>
+<td>Create a new project import using a remote object storage path</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4projectsidimport"><code>/api/v4/projects/{id}/import</code></a></td>
+<td><code>list</code></td>
+<td>Get a project import status</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv4projectsidrelation-imports"><code>/api/v4/projects/{id}/relation-imports</code></a></td>
+<td><code>list</code></td>
+<td>Get the statuses of relation imports for specified project</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>exception_class</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>exception_message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>line_number</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>relation_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-apiv4projectsimport" class="operation" data-method="post"><code>POST</code> /api/v4/projects/import</h3>
+<p>Operation ID: <code>postApiV4ProjectsImport</code>.</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>path</code> | <code>formData</code> | <code>any</code> | Yes | The new project path and name |
+| <code>file</code> | <code>formData</code> | <code>any</code> | Yes | The project export file to be imported |
+| <code>name</code> | <code>formData</code> | <code>any</code> | No | The name of the project to be imported. Defaults to the path of the project if not provided. |
+| <code>namespace</code> | <code>formData</code> | <code>any</code> | No | The ID or name of the namespace that the project will be imported into. Defaults to the current user's namespace. |
+| <code>overwrite</code> | <code>formData</code> | <code>any</code> | No | If there is a project in the same namespace and with the same name overwrite it |
+| <code>override_params[description]</code> | <code>formData</code> | <code>any</code> | No | The description of the project |
+| <code>override_params[build_git_strategy]</code> | <code>formData</code> | <code>any</code> | No | The Git strategy. Defaults to <code>fetch</code> |
+| <code>override_params[build_timeout]</code> | <code>formData</code> | <code>any</code> | No | Build timeout |
+| <code>override_params[auto_cancel_pending_pipelines]</code> | <code>formData</code> | <code>any</code> | No | Auto-cancel pending pipelines |
+| <code>override_params[ci_config_path]</code> | <code>formData</code> | <code>any</code> | No | The path to CI config file. Defaults to <code>.gitlab-ci.yml</code> |
+| <code>override_params[service_desk_enabled]</code> | <code>formData</code> | <code>any</code> | No | Disable or enable the service desk |
+| <code>override_params[issues_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if the issue tracker is enabled |
+| <code>override_params[merge_requests_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if merge requests are enabled |
+| <code>override_params[wiki_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if the wiki is enabled |
+| <code>override_params[jobs_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if jobs are enabled |
+| <code>override_params[snippets_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if snippets are enabled |
+| <code>override_params[issues_access_level]</code> | <code>formData</code> | <code>any</code> | No | Issues access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[repository_access_level]</code> | <code>formData</code> | <code>any</code> | No | Repository access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[merge_requests_access_level]</code> | <code>formData</code> | <code>any</code> | No | Merge requests access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[forking_access_level]</code> | <code>formData</code> | <code>any</code> | No | Forks access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[wiki_access_level]</code> | <code>formData</code> | <code>any</code> | No | Wiki access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[builds_access_level]</code> | <code>formData</code> | <code>any</code> | No | Builds access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[snippets_access_level]</code> | <code>formData</code> | <code>any</code> | No | Snippets access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[package_registry_access_level]</code> | <code>formData</code> | <code>any</code> | No | Controls visibility of the package registry. One of <code>disabled</code>, <code>private</code>, <code>enabled</code> or <code>public</code>. <code>private</code> will make the package registry accessible only to project members (reporter role and above). <code>enabled</code> will make the package registry accessible to everyone who has access to the project. <code>public</code> will make the package registry accessible to everyone. <code>disabled</code> will disable the package registry |
+| <code>override_params[pages_access_level]</code> | <code>formData</code> | <code>any</code> | No | Pages access level. One of <code>disabled</code>, <code>private</code>, <code>enabled</code> or <code>public</code> |
+| <code>override_params[analytics_access_level]</code> | <code>formData</code> | <code>any</code> | No | Analytics access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[container_registry_access_level]</code> | <code>formData</code> | <code>any</code> | No | Controls visibility of the container registry. One of <code>disabled</code>, <code>private</code> or <code>enabled</code>. <code>private</code> will make the container registry accessible only to project members (reporter role and above). <code>enabled</code> will make the container registry accessible to everyone who has access to the project. <code>disabled</code> will disable the container registry |
+| <code>override_params[security_and_compliance_access_level]</code> | <code>formData</code> | <code>any</code> | No | Security and compliance access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[releases_access_level]</code> | <code>formData</code> | <code>any</code> | No | Releases access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[environments_access_level]</code> | <code>formData</code> | <code>any</code> | No | Environments access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[feature_flags_access_level]</code> | <code>formData</code> | <code>any</code> | No | Feature flags access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[infrastructure_access_level]</code> | <code>formData</code> | <code>any</code> | No | Infrastructure access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[monitor_access_level]</code> | <code>formData</code> | <code>any</code> | No | Monitor access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[model_experiments_access_level]</code> | <code>formData</code> | <code>any</code> | No | Model experiments access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[model_registry_access_level]</code> | <code>formData</code> | <code>any</code> | No | Model registry access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[emails_disabled]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use emails_enabled instead. |
+| <code>override_params[emails_enabled]</code> | <code>formData</code> | <code>any</code> | No | Enable email notifications |
+| <code>override_params[show_default_award_emojis]</code> | <code>formData</code> | <code>any</code> | No | Show default award emojis |
+| <code>override_params[show_diff_preview_in_email]</code> | <code>formData</code> | <code>any</code> | No | Include the code diff preview in merge request notification emails |
+| <code>override_params[warn_about_potentially_unwanted_characters]</code> | <code>formData</code> | <code>any</code> | No | Warn about potentially unwanted characters |
+| <code>override_params[enforce_auth_checks_on_uploads]</code> | <code>formData</code> | <code>any</code> | No | Enforce auth check on uploads |
+| <code>override_params[shared_runners_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if shared runners are enabled for that project |
+| <code>override_params[group_runners_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if group runners are enabled for that project |
+| <code>override_params[resource_group_default_process_mode]</code> | <code>formData</code> | <code>any</code> | No | The process mode of the resource group |
+| <code>override_params[resolve_outdated_diff_discussions]</code> | <code>formData</code> | <code>any</code> | No | Automatically resolve merge request diff threads on lines changed with a push |
+| <code>override_params[remove_source_branch_after_merge]</code> | <code>formData</code> | <code>any</code> | No | Remove the source branch by default after merge |
+| <code>override_params[packages_enabled]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use :package_registry_access_level instead. Enable project packages feature |
+| <code>override_params[container_registry_enabled]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use :container_registry_access_level instead. Flag indication if the container registry is enabled for that project |
+| <code>override_params[container_expiration_policy_attributes][cadence]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy cadence for recurring job |
+| <code>override_params[container_expiration_policy_attributes][keep_n]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy number of images to keep |
+| <code>override_params[container_expiration_policy_attributes][older_than]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy remove images older than value |
+| <code>override_params[container_expiration_policy_attributes][name_regex]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy regex for image removal |
+| <code>override_params[container_expiration_policy_attributes][name_regex_keep]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy regex for image retention |
+| <code>override_params[container_expiration_policy_attributes][enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if container expiration policy is enabled |
+| <code>override_params[lfs_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if Git LFS is enabled for that project |
+| <code>override_params[visibility]</code> | <code>formData</code> | <code>any</code> | No | The visibility of the project. |
+| <code>override_params[public_builds]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use public_jobs instead. |
+| <code>override_params[public_jobs]</code> | <code>formData</code> | <code>any</code> | No | Perform public builds |
+| <code>override_params[request_access_enabled]</code> | <code>formData</code> | <code>any</code> | No | Allow users to request member access |
+| <code>override_params[only_allow_merge_if_pipeline_succeeds]</code> | <code>formData</code> | <code>any</code> | No | Only allow to merge if builds succeed |
+| <code>override_params[allow_merge_on_skipped_pipeline]</code> | <code>formData</code> | <code>any</code> | No | Allow to merge if pipeline is skipped |
+| <code>override_params[only_allow_merge_if_all_discussions_are_resolved]</code> | <code>formData</code> | <code>any</code> | No | Only allow to merge if all threads are resolved |
+| <code>override_params[tag_list]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use :topics instead |
+| <code>override_params[topics]</code> | <code>formData</code> | <code>any</code> | No | The list of topics for a project |
+| <code>override_params[avatar]</code> | <code>formData</code> | <code>any</code> | No | Avatar image for project |
+| <code>override_params[printing_merge_request_link_enabled]</code> | <code>formData</code> | <code>any</code> | No | Show link to create/view merge request when pushing from the command line |
+| <code>override_params[merge_method]</code> | <code>formData</code> | <code>any</code> | No | The merge method used when merging merge requests |
+| <code>override_params[suggestion_commit_message]</code> | <code>formData</code> | <code>any</code> | No | The commit message used to apply merge request suggestions |
+| <code>override_params[merge_commit_template]</code> | <code>formData</code> | <code>any</code> | No | Template used to create merge commit message |
+| <code>override_params[squash_commit_template]</code> | <code>formData</code> | <code>any</code> | No | Template used to create squash commit message |
+| <code>override_params[issue_branch_template]</code> | <code>formData</code> | <code>any</code> | No | Template used to create a branch from an issue |
+| <code>override_params[auto_devops_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if Auto DevOps is enabled |
+| <code>override_params[auto_devops_deploy_strategy]</code> | <code>formData</code> | <code>any</code> | No | Auto Deploy strategy |
+| <code>override_params[autoclose_referenced_issues]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if referenced issues auto-closing is enabled |
+| <code>override_params[repository_storage]</code> | <code>formData</code> | <code>any</code> | No | Which storage shard the repository is on. Available only to admins |
+| <code>override_params[squash_option]</code> | <code>formData</code> | <code>any</code> | No | Squash default for project. One of <code>never</code>, <code>always</code>, <code>default_on</code>, or <code>default_off</code>. |
+| <code>override_params[mr_default_target_self]</code> | <code>formData</code> | <code>any</code> | No | Merge requests of this forked project targets itself by default |
+| <code>override_params[merge_request_title_regex]</code> | <code>formData</code> | <code>any</code> | No | The regex the Merge Request must adhere to |
+| <code>override_params[merge_request_title_regex_description]</code> | <code>formData</code> | <code>any</code> | No | The description for the regex the Merge Request must adhere to |
+| <code>override_params[only_allow_merge_if_all_status_checks_passed]</code> | <code>formData</code> | <code>any</code> | No | Blocks merge requests from merging unless all status checks have passed |
+| <code>override_params[approvals_before_merge]</code> | <code>formData</code> | <code>any</code> | No | How many approvers should approve merge request by default |
+| <code>override_params[mirror]</code> | <code>formData</code> | <code>any</code> | No | [Deprecated] Enables pull mirroring in a project |
+| <code>override_params[mirror_trigger_builds]</code> | <code>formData</code> | <code>any</code> | No | [Deprecated] Pull mirroring triggers builds |
+| <code>override_params[external_authorization_classification_label]</code> | <code>formData</code> | <code>any</code> | No | The classification label for the project |
+| <code>override_params[requirements_access_level]</code> | <code>formData</code> | <code>any</code> | No | Requirements feature access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[prevent_merge_without_jira_issue]</code> | <code>formData</code> | <code>any</code> | No | Require an associated issue from Jira |
+| <code>override_params[auto_duo_code_review_enabled]</code> | <code>formData</code> | <code>any</code> | No | Enable automatic reviews by GitLab Duo on merge requests |
+| <code>override_params[duo_remote_flows_enabled]</code> | <code>formData</code> | <code>any</code> | No | Enable GitLab Duo remote flows for this project |
+| <code>override_params[spp_repository_pipeline_access]</code> | <code>formData</code> | <code>any</code> | No | Grant read-only access to security policy configurations for enforcement in linked CI/CD projects |
+| <code>file.path</code> | <code>formData</code> | <code>any</code> | No | Path to locally stored body (generated by Workhorse) |
+| <code>file.name</code> | <code>formData</code> | <code>any</code> | No | Real filename as send in Content-Disposition (generated by Workhorse) |
+| <code>file.type</code> | <code>formData</code> | <code>any</code> | No | Real content type as send in Content-Type (generated by Workhorse) |
+| <code>file.size</code> | <code>formData</code> | <code>any</code> | No | Real size of file (generated by Workhorse) |
+| <code>file.md5</code> | <code>formData</code> | <code>any</code> | No | MD5 checksum of the file (generated by Workhorse) |
+| <code>file.sha1</code> | <code>formData</code> | <code>any</code> | No | SHA1 checksum of the file (generated by Workhorse) |
+| <code>file.sha256</code> | <code>formData</code> | <code>any</code> | No | SHA256 checksum of the file (generated by Workhorse) |
+| <code>file.etag</code> | <code>formData</code> | <code>any</code> | No | Etag of the file (generated by Workhorse) |
+| <code>file.remote_id</code> | <code>formData</code> | <code>any</code> | No | Remote_id of the file (generated by Workhorse) |
+| <code>file.remote_url</code> | <code>formData</code> | <code>any</code> | No | Remote_url of the file (generated by Workhorse) |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="201-create-a-new-project-import" class="status" data-status="2xx">201: Create a new project import</h5>
+<h5 id="400-bad-request" class="status" data-status="4xx">400: Bad request</h5>
+<h5 id="401-unauthorized" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="503-service-unavailable" class="status" data-status="5xx">503: Service unavailable</h5>
+<h3 id="post-apiv4projectsremote-import-s3" class="operation" data-method="post"><code>POST</code> /api/v4/projects/remote-import-s3</h3>
+<p>Operation ID: <code>postApiV4ProjectsRemoteImportS3</code>.</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>region</code> | <code>formData</code> | <code>any</code> | Yes | AWS region |
+| <code>bucket_name</code> | <code>formData</code> | <code>any</code> | Yes | Bucket name |
+| <code>file_key</code> | <code>formData</code> | <code>any</code> | Yes | File key |
+| <code>access_key_id</code> | <code>formData</code> | <code>any</code> | Yes | Access key id |
+| <code>secret_access_key</code> | <code>formData</code> | <code>any</code> | Yes | Secret access key |
+| <code>path</code> | <code>formData</code> | <code>any</code> | Yes | The new project path and name |
+| <code>name</code> | <code>formData</code> | <code>any</code> | No | The name of the project to be imported. Defaults to the path of the project if not provided. |
+| <code>namespace</code> | <code>formData</code> | <code>any</code> | No | The ID or name of the namespace that the project will be imported into. Defaults to the current user's namespace. |
+| <code>overwrite</code> | <code>formData</code> | <code>any</code> | No | If there is a project in the same namespace and with the same name overwrite it |
+| <code>override_params[description]</code> | <code>formData</code> | <code>any</code> | No | The description of the project |
+| <code>override_params[build_git_strategy]</code> | <code>formData</code> | <code>any</code> | No | The Git strategy. Defaults to <code>fetch</code> |
+| <code>override_params[build_timeout]</code> | <code>formData</code> | <code>any</code> | No | Build timeout |
+| <code>override_params[auto_cancel_pending_pipelines]</code> | <code>formData</code> | <code>any</code> | No | Auto-cancel pending pipelines |
+| <code>override_params[ci_config_path]</code> | <code>formData</code> | <code>any</code> | No | The path to CI config file. Defaults to <code>.gitlab-ci.yml</code> |
+| <code>override_params[service_desk_enabled]</code> | <code>formData</code> | <code>any</code> | No | Disable or enable the service desk |
+| <code>override_params[issues_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if the issue tracker is enabled |
+| <code>override_params[merge_requests_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if merge requests are enabled |
+| <code>override_params[wiki_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if the wiki is enabled |
+| <code>override_params[jobs_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if jobs are enabled |
+| <code>override_params[snippets_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if snippets are enabled |
+| <code>override_params[issues_access_level]</code> | <code>formData</code> | <code>any</code> | No | Issues access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[repository_access_level]</code> | <code>formData</code> | <code>any</code> | No | Repository access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[merge_requests_access_level]</code> | <code>formData</code> | <code>any</code> | No | Merge requests access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[forking_access_level]</code> | <code>formData</code> | <code>any</code> | No | Forks access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[wiki_access_level]</code> | <code>formData</code> | <code>any</code> | No | Wiki access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[builds_access_level]</code> | <code>formData</code> | <code>any</code> | No | Builds access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[snippets_access_level]</code> | <code>formData</code> | <code>any</code> | No | Snippets access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[package_registry_access_level]</code> | <code>formData</code> | <code>any</code> | No | Controls visibility of the package registry. One of <code>disabled</code>, <code>private</code>, <code>enabled</code> or <code>public</code>. <code>private</code> will make the package registry accessible only to project members (reporter role and above). <code>enabled</code> will make the package registry accessible to everyone who has access to the project. <code>public</code> will make the package registry accessible to everyone. <code>disabled</code> will disable the package registry |
+| <code>override_params[pages_access_level]</code> | <code>formData</code> | <code>any</code> | No | Pages access level. One of <code>disabled</code>, <code>private</code>, <code>enabled</code> or <code>public</code> |
+| <code>override_params[analytics_access_level]</code> | <code>formData</code> | <code>any</code> | No | Analytics access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[container_registry_access_level]</code> | <code>formData</code> | <code>any</code> | No | Controls visibility of the container registry. One of <code>disabled</code>, <code>private</code> or <code>enabled</code>. <code>private</code> will make the container registry accessible only to project members (reporter role and above). <code>enabled</code> will make the container registry accessible to everyone who has access to the project. <code>disabled</code> will disable the container registry |
+| <code>override_params[security_and_compliance_access_level]</code> | <code>formData</code> | <code>any</code> | No | Security and compliance access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[releases_access_level]</code> | <code>formData</code> | <code>any</code> | No | Releases access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[environments_access_level]</code> | <code>formData</code> | <code>any</code> | No | Environments access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[feature_flags_access_level]</code> | <code>formData</code> | <code>any</code> | No | Feature flags access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[infrastructure_access_level]</code> | <code>formData</code> | <code>any</code> | No | Infrastructure access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[monitor_access_level]</code> | <code>formData</code> | <code>any</code> | No | Monitor access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[model_experiments_access_level]</code> | <code>formData</code> | <code>any</code> | No | Model experiments access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[model_registry_access_level]</code> | <code>formData</code> | <code>any</code> | No | Model registry access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[emails_disabled]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use emails_enabled instead. |
+| <code>override_params[emails_enabled]</code> | <code>formData</code> | <code>any</code> | No | Enable email notifications |
+| <code>override_params[show_default_award_emojis]</code> | <code>formData</code> | <code>any</code> | No | Show default award emojis |
+| <code>override_params[show_diff_preview_in_email]</code> | <code>formData</code> | <code>any</code> | No | Include the code diff preview in merge request notification emails |
+| <code>override_params[warn_about_potentially_unwanted_characters]</code> | <code>formData</code> | <code>any</code> | No | Warn about potentially unwanted characters |
+| <code>override_params[enforce_auth_checks_on_uploads]</code> | <code>formData</code> | <code>any</code> | No | Enforce auth check on uploads |
+| <code>override_params[shared_runners_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if shared runners are enabled for that project |
+| <code>override_params[group_runners_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if group runners are enabled for that project |
+| <code>override_params[resource_group_default_process_mode]</code> | <code>formData</code> | <code>any</code> | No | The process mode of the resource group |
+| <code>override_params[resolve_outdated_diff_discussions]</code> | <code>formData</code> | <code>any</code> | No | Automatically resolve merge request diff threads on lines changed with a push |
+| <code>override_params[remove_source_branch_after_merge]</code> | <code>formData</code> | <code>any</code> | No | Remove the source branch by default after merge |
+| <code>override_params[packages_enabled]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use :package_registry_access_level instead. Enable project packages feature |
+| <code>override_params[container_registry_enabled]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use :container_registry_access_level instead. Flag indication if the container registry is enabled for that project |
+| <code>override_params[container_expiration_policy_attributes][cadence]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy cadence for recurring job |
+| <code>override_params[container_expiration_policy_attributes][keep_n]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy number of images to keep |
+| <code>override_params[container_expiration_policy_attributes][older_than]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy remove images older than value |
+| <code>override_params[container_expiration_policy_attributes][name_regex]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy regex for image removal |
+| <code>override_params[container_expiration_policy_attributes][name_regex_keep]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy regex for image retention |
+| <code>override_params[container_expiration_policy_attributes][enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if container expiration policy is enabled |
+| <code>override_params[lfs_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if Git LFS is enabled for that project |
+| <code>override_params[visibility]</code> | <code>formData</code> | <code>any</code> | No | The visibility of the project. |
+| <code>override_params[public_builds]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use public_jobs instead. |
+| <code>override_params[public_jobs]</code> | <code>formData</code> | <code>any</code> | No | Perform public builds |
+| <code>override_params[request_access_enabled]</code> | <code>formData</code> | <code>any</code> | No | Allow users to request member access |
+| <code>override_params[only_allow_merge_if_pipeline_succeeds]</code> | <code>formData</code> | <code>any</code> | No | Only allow to merge if builds succeed |
+| <code>override_params[allow_merge_on_skipped_pipeline]</code> | <code>formData</code> | <code>any</code> | No | Allow to merge if pipeline is skipped |
+| <code>override_params[only_allow_merge_if_all_discussions_are_resolved]</code> | <code>formData</code> | <code>any</code> | No | Only allow to merge if all threads are resolved |
+| <code>override_params[tag_list]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use :topics instead |
+| <code>override_params[topics]</code> | <code>formData</code> | <code>any</code> | No | The list of topics for a project |
+| <code>override_params[avatar]</code> | <code>formData</code> | <code>any</code> | No | Avatar image for project |
+| <code>override_params[printing_merge_request_link_enabled]</code> | <code>formData</code> | <code>any</code> | No | Show link to create/view merge request when pushing from the command line |
+| <code>override_params[merge_method]</code> | <code>formData</code> | <code>any</code> | No | The merge method used when merging merge requests |
+| <code>override_params[suggestion_commit_message]</code> | <code>formData</code> | <code>any</code> | No | The commit message used to apply merge request suggestions |
+| <code>override_params[merge_commit_template]</code> | <code>formData</code> | <code>any</code> | No | Template used to create merge commit message |
+| <code>override_params[squash_commit_template]</code> | <code>formData</code> | <code>any</code> | No | Template used to create squash commit message |
+| <code>override_params[issue_branch_template]</code> | <code>formData</code> | <code>any</code> | No | Template used to create a branch from an issue |
+| <code>override_params[auto_devops_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if Auto DevOps is enabled |
+| <code>override_params[auto_devops_deploy_strategy]</code> | <code>formData</code> | <code>any</code> | No | Auto Deploy strategy |
+| <code>override_params[autoclose_referenced_issues]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if referenced issues auto-closing is enabled |
+| <code>override_params[repository_storage]</code> | <code>formData</code> | <code>any</code> | No | Which storage shard the repository is on. Available only to admins |
+| <code>override_params[squash_option]</code> | <code>formData</code> | <code>any</code> | No | Squash default for project. One of <code>never</code>, <code>always</code>, <code>default_on</code>, or <code>default_off</code>. |
+| <code>override_params[mr_default_target_self]</code> | <code>formData</code> | <code>any</code> | No | Merge requests of this forked project targets itself by default |
+| <code>override_params[merge_request_title_regex]</code> | <code>formData</code> | <code>any</code> | No | The regex the Merge Request must adhere to |
+| <code>override_params[merge_request_title_regex_description]</code> | <code>formData</code> | <code>any</code> | No | The description for the regex the Merge Request must adhere to |
+| <code>override_params[only_allow_merge_if_all_status_checks_passed]</code> | <code>formData</code> | <code>any</code> | No | Blocks merge requests from merging unless all status checks have passed |
+| <code>override_params[approvals_before_merge]</code> | <code>formData</code> | <code>any</code> | No | How many approvers should approve merge request by default |
+| <code>override_params[mirror]</code> | <code>formData</code> | <code>any</code> | No | [Deprecated] Enables pull mirroring in a project |
+| <code>override_params[mirror_trigger_builds]</code> | <code>formData</code> | <code>any</code> | No | [Deprecated] Pull mirroring triggers builds |
+| <code>override_params[external_authorization_classification_label]</code> | <code>formData</code> | <code>any</code> | No | The classification label for the project |
+| <code>override_params[requirements_access_level]</code> | <code>formData</code> | <code>any</code> | No | Requirements feature access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[prevent_merge_without_jira_issue]</code> | <code>formData</code> | <code>any</code> | No | Require an associated issue from Jira |
+| <code>override_params[auto_duo_code_review_enabled]</code> | <code>formData</code> | <code>any</code> | No | Enable automatic reviews by GitLab Duo on merge requests |
+| <code>override_params[duo_remote_flows_enabled]</code> | <code>formData</code> | <code>any</code> | No | Enable GitLab Duo remote flows for this project |
+| <code>override_params[spp_repository_pipeline_access]</code> | <code>formData</code> | <code>any</code> | No | Grant read-only access to security policy configurations for enforcement in linked CI/CD projects |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="201-create-a-new-project-import-using-a-file-from-aws-s3" class="status" data-status="2xx">201: Create a new project import using a file from AWS S3</h5>
+<h5 id="400-bad-request-1" class="status" data-status="4xx">400: Bad request</h5>
+<h5 id="401-unauthorized-1" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="429-too-many-requests" class="status" data-status="4xx">429: Too many requests</h5>
+<h5 id="503-service-unavailable-1" class="status" data-status="5xx">503: Service unavailable</h5>
+<h3 id="post-apiv4projectsremote-import" class="operation" data-method="post"><code>POST</code> /api/v4/projects/remote-import</h3>
+<p>Operation ID: <code>postApiV4ProjectsRemoteImport</code>.</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>url</code> | <code>formData</code> | <code>any</code> | Yes | The URL for the file. |
+| <code>path</code> | <code>formData</code> | <code>any</code> | Yes | The new project path and name |
+| <code>name</code> | <code>formData</code> | <code>any</code> | No | The name of the project to be imported. Defaults to the path of the project if not provided. |
+| <code>namespace</code> | <code>formData</code> | <code>any</code> | No | The ID or name of the namespace that the project will be imported into. Defaults to the current user's namespace. |
+| <code>overwrite</code> | <code>formData</code> | <code>any</code> | No | If there is a project in the same namespace and with the same name overwrite it |
+| <code>override_params[description]</code> | <code>formData</code> | <code>any</code> | No | The description of the project |
+| <code>override_params[build_git_strategy]</code> | <code>formData</code> | <code>any</code> | No | The Git strategy. Defaults to <code>fetch</code> |
+| <code>override_params[build_timeout]</code> | <code>formData</code> | <code>any</code> | No | Build timeout |
+| <code>override_params[auto_cancel_pending_pipelines]</code> | <code>formData</code> | <code>any</code> | No | Auto-cancel pending pipelines |
+| <code>override_params[ci_config_path]</code> | <code>formData</code> | <code>any</code> | No | The path to CI config file. Defaults to <code>.gitlab-ci.yml</code> |
+| <code>override_params[service_desk_enabled]</code> | <code>formData</code> | <code>any</code> | No | Disable or enable the service desk |
+| <code>override_params[issues_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if the issue tracker is enabled |
+| <code>override_params[merge_requests_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if merge requests are enabled |
+| <code>override_params[wiki_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if the wiki is enabled |
+| <code>override_params[jobs_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if jobs are enabled |
+| <code>override_params[snippets_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if snippets are enabled |
+| <code>override_params[issues_access_level]</code> | <code>formData</code> | <code>any</code> | No | Issues access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[repository_access_level]</code> | <code>formData</code> | <code>any</code> | No | Repository access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[merge_requests_access_level]</code> | <code>formData</code> | <code>any</code> | No | Merge requests access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[forking_access_level]</code> | <code>formData</code> | <code>any</code> | No | Forks access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[wiki_access_level]</code> | <code>formData</code> | <code>any</code> | No | Wiki access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[builds_access_level]</code> | <code>formData</code> | <code>any</code> | No | Builds access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[snippets_access_level]</code> | <code>formData</code> | <code>any</code> | No | Snippets access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[package_registry_access_level]</code> | <code>formData</code> | <code>any</code> | No | Controls visibility of the package registry. One of <code>disabled</code>, <code>private</code>, <code>enabled</code> or <code>public</code>. <code>private</code> will make the package registry accessible only to project members (reporter role and above). <code>enabled</code> will make the package registry accessible to everyone who has access to the project. <code>public</code> will make the package registry accessible to everyone. <code>disabled</code> will disable the package registry |
+| <code>override_params[pages_access_level]</code> | <code>formData</code> | <code>any</code> | No | Pages access level. One of <code>disabled</code>, <code>private</code>, <code>enabled</code> or <code>public</code> |
+| <code>override_params[analytics_access_level]</code> | <code>formData</code> | <code>any</code> | No | Analytics access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[container_registry_access_level]</code> | <code>formData</code> | <code>any</code> | No | Controls visibility of the container registry. One of <code>disabled</code>, <code>private</code> or <code>enabled</code>. <code>private</code> will make the container registry accessible only to project members (reporter role and above). <code>enabled</code> will make the container registry accessible to everyone who has access to the project. <code>disabled</code> will disable the container registry |
+| <code>override_params[security_and_compliance_access_level]</code> | <code>formData</code> | <code>any</code> | No | Security and compliance access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[releases_access_level]</code> | <code>formData</code> | <code>any</code> | No | Releases access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[environments_access_level]</code> | <code>formData</code> | <code>any</code> | No | Environments access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[feature_flags_access_level]</code> | <code>formData</code> | <code>any</code> | No | Feature flags access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[infrastructure_access_level]</code> | <code>formData</code> | <code>any</code> | No | Infrastructure access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[monitor_access_level]</code> | <code>formData</code> | <code>any</code> | No | Monitor access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[model_experiments_access_level]</code> | <code>formData</code> | <code>any</code> | No | Model experiments access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[model_registry_access_level]</code> | <code>formData</code> | <code>any</code> | No | Model registry access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[emails_disabled]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use emails_enabled instead. |
+| <code>override_params[emails_enabled]</code> | <code>formData</code> | <code>any</code> | No | Enable email notifications |
+| <code>override_params[show_default_award_emojis]</code> | <code>formData</code> | <code>any</code> | No | Show default award emojis |
+| <code>override_params[show_diff_preview_in_email]</code> | <code>formData</code> | <code>any</code> | No | Include the code diff preview in merge request notification emails |
+| <code>override_params[warn_about_potentially_unwanted_characters]</code> | <code>formData</code> | <code>any</code> | No | Warn about potentially unwanted characters |
+| <code>override_params[enforce_auth_checks_on_uploads]</code> | <code>formData</code> | <code>any</code> | No | Enforce auth check on uploads |
+| <code>override_params[shared_runners_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if shared runners are enabled for that project |
+| <code>override_params[group_runners_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if group runners are enabled for that project |
+| <code>override_params[resource_group_default_process_mode]</code> | <code>formData</code> | <code>any</code> | No | The process mode of the resource group |
+| <code>override_params[resolve_outdated_diff_discussions]</code> | <code>formData</code> | <code>any</code> | No | Automatically resolve merge request diff threads on lines changed with a push |
+| <code>override_params[remove_source_branch_after_merge]</code> | <code>formData</code> | <code>any</code> | No | Remove the source branch by default after merge |
+| <code>override_params[packages_enabled]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use :package_registry_access_level instead. Enable project packages feature |
+| <code>override_params[container_registry_enabled]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use :container_registry_access_level instead. Flag indication if the container registry is enabled for that project |
+| <code>override_params[container_expiration_policy_attributes][cadence]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy cadence for recurring job |
+| <code>override_params[container_expiration_policy_attributes][keep_n]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy number of images to keep |
+| <code>override_params[container_expiration_policy_attributes][older_than]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy remove images older than value |
+| <code>override_params[container_expiration_policy_attributes][name_regex]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy regex for image removal |
+| <code>override_params[container_expiration_policy_attributes][name_regex_keep]</code> | <code>formData</code> | <code>any</code> | No | Container expiration policy regex for image retention |
+| <code>override_params[container_expiration_policy_attributes][enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if container expiration policy is enabled |
+| <code>override_params[lfs_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if Git LFS is enabled for that project |
+| <code>override_params[visibility]</code> | <code>formData</code> | <code>any</code> | No | The visibility of the project. |
+| <code>override_params[public_builds]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use public_jobs instead. |
+| <code>override_params[public_jobs]</code> | <code>formData</code> | <code>any</code> | No | Perform public builds |
+| <code>override_params[request_access_enabled]</code> | <code>formData</code> | <code>any</code> | No | Allow users to request member access |
+| <code>override_params[only_allow_merge_if_pipeline_succeeds]</code> | <code>formData</code> | <code>any</code> | No | Only allow to merge if builds succeed |
+| <code>override_params[allow_merge_on_skipped_pipeline]</code> | <code>formData</code> | <code>any</code> | No | Allow to merge if pipeline is skipped |
+| <code>override_params[only_allow_merge_if_all_discussions_are_resolved]</code> | <code>formData</code> | <code>any</code> | No | Only allow to merge if all threads are resolved |
+| <code>override_params[tag_list]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use :topics instead |
+| <code>override_params[topics]</code> | <code>formData</code> | <code>any</code> | No | The list of topics for a project |
+| <code>override_params[avatar]</code> | <code>formData</code> | <code>any</code> | No | Avatar image for project |
+| <code>override_params[printing_merge_request_link_enabled]</code> | <code>formData</code> | <code>any</code> | No | Show link to create/view merge request when pushing from the command line |
+| <code>override_params[merge_method]</code> | <code>formData</code> | <code>any</code> | No | The merge method used when merging merge requests |
+| <code>override_params[suggestion_commit_message]</code> | <code>formData</code> | <code>any</code> | No | The commit message used to apply merge request suggestions |
+| <code>override_params[merge_commit_template]</code> | <code>formData</code> | <code>any</code> | No | Template used to create merge commit message |
+| <code>override_params[squash_commit_template]</code> | <code>formData</code> | <code>any</code> | No | Template used to create squash commit message |
+| <code>override_params[issue_branch_template]</code> | <code>formData</code> | <code>any</code> | No | Template used to create a branch from an issue |
+| <code>override_params[auto_devops_enabled]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if Auto DevOps is enabled |
+| <code>override_params[auto_devops_deploy_strategy]</code> | <code>formData</code> | <code>any</code> | No | Auto Deploy strategy |
+| <code>override_params[autoclose_referenced_issues]</code> | <code>formData</code> | <code>any</code> | No | Flag indication if referenced issues auto-closing is enabled |
+| <code>override_params[repository_storage]</code> | <code>formData</code> | <code>any</code> | No | Which storage shard the repository is on. Available only to admins |
+| <code>override_params[squash_option]</code> | <code>formData</code> | <code>any</code> | No | Squash default for project. One of <code>never</code>, <code>always</code>, <code>default_on</code>, or <code>default_off</code>. |
+| <code>override_params[mr_default_target_self]</code> | <code>formData</code> | <code>any</code> | No | Merge requests of this forked project targets itself by default |
+| <code>override_params[merge_request_title_regex]</code> | <code>formData</code> | <code>any</code> | No | The regex the Merge Request must adhere to |
+| <code>override_params[merge_request_title_regex_description]</code> | <code>formData</code> | <code>any</code> | No | The description for the regex the Merge Request must adhere to |
+| <code>override_params[only_allow_merge_if_all_status_checks_passed]</code> | <code>formData</code> | <code>any</code> | No | Blocks merge requests from merging unless all status checks have passed |
+| <code>override_params[approvals_before_merge]</code> | <code>formData</code> | <code>any</code> | No | How many approvers should approve merge request by default |
+| <code>override_params[mirror]</code> | <code>formData</code> | <code>any</code> | No | [Deprecated] Enables pull mirroring in a project |
+| <code>override_params[mirror_trigger_builds]</code> | <code>formData</code> | <code>any</code> | No | [Deprecated] Pull mirroring triggers builds |
+| <code>override_params[external_authorization_classification_label]</code> | <code>formData</code> | <code>any</code> | No | The classification label for the project |
+| <code>override_params[requirements_access_level]</code> | <code>formData</code> | <code>any</code> | No | Requirements feature access level. One of <code>disabled</code>, <code>private</code> or <code>enabled</code> |
+| <code>override_params[prevent_merge_without_jira_issue]</code> | <code>formData</code> | <code>any</code> | No | Require an associated issue from Jira |
+| <code>override_params[auto_duo_code_review_enabled]</code> | <code>formData</code> | <code>any</code> | No | Enable automatic reviews by GitLab Duo on merge requests |
+| <code>override_params[duo_remote_flows_enabled]</code> | <code>formData</code> | <code>any</code> | No | Enable GitLab Duo remote flows for this project |
+| <code>override_params[spp_repository_pipeline_access]</code> | <code>formData</code> | <code>any</code> | No | Grant read-only access to security policy configurations for enforcement in linked CI/CD projects |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="201-create-a-new-project-import-using-a-remote-object-storage-path" class="status" data-status="2xx">201: Create a new project import using a remote object storage path</h5>
+<h5 id="400-bad-request-2" class="status" data-status="4xx">400: Bad request</h5>
+<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="429-too-many-requests-1" class="status" data-status="4xx">429: Too many requests</h5>
+<h5 id="503-service-unavailable-2" class="status" data-status="5xx">503: Service unavailable</h5>
+<h2 id="list">list</h2>
+<h3 id="get-apiv4projectsidimport" class="operation" data-method="get"><code>GET</code> /api/v4/projects/{id}/import</h3>
+<p>Operation ID: <code>getApiV4ProjectsIdImport</code>.</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-get-a-project-import-status" class="status" data-status="2xx">200: Get a project import status</h5>
+<h5 id="400-bad-request-3" class="status" data-status="4xx">400: Bad request</h5>
+<h5 id="401-unauthorized-3" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-3" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="503-service-unavailable-3" class="status" data-status="5xx">503: Service unavailable</h5>
+<h3 id="get-apiv4projectsidrelation-imports" class="operation" data-method="get"><code>GET</code> /api/v4/projects/{id}/relation-imports</h3>
+<p>Operation ID: <code>getApiV4ProjectsIdRelationImports</code>.</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-get-the-statuses-of-relation-imports-for-specified-project" class="status" data-status="2xx">200: Get the statuses of relation imports for specified project</h5>
+<h5 id="400-bad-request-4" class="status" data-status="4xx">400: Bad request</h5>
+<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="503-service-unavailable-4" class="status" data-status="5xx">503: Service unavailable</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('DebianDistributionEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of []) {
-      if (maybeSkipControl(t, 'entityOp', 'debian_distribution.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'debian_distribution.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_DEBIAN_DISTRIBUTION_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":0}],"id":{"field":"id","name":"id"},"name":"debian_distribution","op":{"remove":{"input":"data","name":"remove","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"group_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0},{"active":true,"example":"sid","kind":"param","name":"id","orig":"codename","reqd":true,"type":"`$STRING`","index$":1}],"query":[{"active":true,"example":"amd64","kind":"query","name":"architecture","orig":"architecture","reqd":false,"type":"`$ANY`","index$":0},{"active":true,"example":"main","kind":"query","name":"component","orig":"component","reqd":false,"type":"`$ANY`","index$":1},{"active":true,"example":"My description","kind":"query","name":"description","orig":"description","reqd":false,"type":"`$STRING`","index$":2},{"active":true,"example":"grep.be","kind":"query","name":"label","orig":"label","reqd":false,"type":"`$STRING`","index$":3},{"active":true,"example":"Grep","kind":"query","name":"origin","orig":"origin","reqd":false,"type":"`$ANY`","index$":4},{"active":true,"example":"unstable","kind":"query","name":"suite","orig":"suite","reqd":false,"type":"`$ANY`","index$":5},{"active":true,"example":604800,"kind":"query","name":"valid_time_duration_second","orig":"valid_time_duration_second","reqd":false,"type":"`$ANY`","index$":6},{"active":true,"example":"12","kind":"query","name":"version","orig":"version","reqd":false,"type":"`$ANY`","index$":7}]},"contract":{"id":"DELETE /api/v4/groups/{id}/-/debian_distributions/{codename}","json":"{\"operationId\":\"deleteApiV4GroupsIdDebianDistributionsCodename\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the group\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The Debian Codename\",\"example\":\"sid\",\"in\":\"path\",\"name\":\"codename\",\"required\":true,\"type\":\"string\"},{\"description\":\"The Debian Suite\",\"example\":\"unstable\",\"in\":\"query\",\"name\":\"suite\",\"required\":false,\"type\":\"string\"},{\"description\":\"The Debian Origin\",\"example\":\"Grep\",\"in\":\"query\",\"name\":\"origin\",\"required\":false,\"type\":\"string\"},{\"description\":\"The Debian Label\",\"example\":\"grep.be\",\"in\":\"query\",\"name\":\"label\",\"required\":false,\"type\":\"string\"},{\"description\":\"The Debian Version\",\"example\":\"12\",\"in\":\"query\",\"name\":\"version\",\"required\":false,\"type\":\"string\"},{\"description\":\"The Debian Description\",\"example\":\"My description\",\"in\":\"query\",\"name\":\"description\",\"required\":false,\"type\":\"string\"},{\"description\":\"The duration before the Release file should be considered expired by the client\",\"example\":604800,\"format\":\"int32\",\"in\":\"query\",\"name\":\"valid_time_duration_seconds\",\"required\":false,\"type\":\"integer\"},{\"description\":\"The list of Components\",\"example\":\"main\",\"in\":\"query\",\"items\":{\"type\":\"string\"},\"name\":\"components\",\"required\":false,\"type\":\"array\"},{\"description\":\"The list of Architectures\",\"example\":\"amd64\",\"in\":\"query\",\"items\":{\"type\":\"string\"},\"name\":\"architectures\",\"required\":false,\"type\":\"array\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"202\":{\"description\":\"Delete a Debian Distribution\"},\"400\":{\"description\":\"Bad Request\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"404\":{\"description\":\"Not Found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"DELETE","orig":"/api/v4/groups/{id}/-/debian_distributions/{codename}","rename":{"param":{"codename":"id","id":"group_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"groups"},{"var":"group_id"},{"lit":"-"},{"lit":"debian_distributions"},{"var":"id"}],"select":{"exist":["architecture","component","description","group_id","id","label","origin","suite","valid_time_duration_second","version"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{"params":[{"active":true,"example":"sid","kind":"param","name":"id","orig":"codename","reqd":true,"type":"`$STRING`","index$":0},{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":1}],"query":[{"active":true,"example":"amd64","kind":"query","name":"architecture","orig":"architecture","reqd":false,"type":"`$ANY`","index$":0},{"active":true,"example":"main","kind":"query","name":"component","orig":"component","reqd":false,"type":"`$ANY`","index$":1},{"active":true,"example":"My description","kind":"query","name":"description","orig":"description","reqd":false,"type":"`$STRING`","index$":2},{"active":true,"example":"grep.be","kind":"query","name":"label","orig":"label","reqd":false,"type":"`$STRING`","index$":3},{"active":true,"example":"Grep","kind":"query","name":"origin","orig":"origin","reqd":false,"type":"`$ANY`","index$":4},{"active":true,"example":"unstable","kind":"query","name":"suite","orig":"suite","reqd":false,"type":"`$ANY`","index$":5},{"active":true,"example":604800,"kind":"query","name":"valid_time_duration_second","orig":"valid_time_duration_second","reqd":false,"type":"`$ANY`","index$":6},{"active":true,"example":"12","kind":"query","name":"version","orig":"version","reqd":false,"type":"`$ANY`","index$":7}]},"contract":{"id":"DELETE /api/v4/projects/{id}/debian_distributions/{codename}","json":"{\"operationId\":\"deleteApiV4ProjectsIdDebianDistributionsCodename\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The Debian Codename\",\"example\":\"sid\",\"in\":\"path\",\"name\":\"codename\",\"required\":true,\"type\":\"string\"},{\"description\":\"The Debian Suite\",\"example\":\"unstable\",\"in\":\"query\",\"name\":\"suite\",\"required\":false,\"type\":\"string\"},{\"description\":\"The Debian Origin\",\"example\":\"Grep\",\"in\":\"query\",\"name\":\"origin\",\"required\":false,\"type\":\"string\"},{\"description\":\"The Debian Label\",\"example\":\"grep.be\",\"in\":\"query\",\"name\":\"label\",\"required\":false,\"type\":\"string\"},{\"description\":\"The Debian Version\",\"example\":\"12\",\"in\":\"query\",\"name\":\"version\",\"required\":false,\"type\":\"string\"},{\"description\":\"The Debian Description\",\"example\":\"My description\",\"in\":\"query\",\"name\":\"description\",\"required\":false,\"type\":\"string\"},{\"description\":\"The duration before the Release file should be considered expired by the client\",\"example\":604800,\"format\":\"int32\",\"in\":\"query\",\"name\":\"valid_time_duration_seconds\",\"required\":false,\"type\":\"integer\"},{\"description\":\"The list of Components\",\"example\":\"main\",\"in\":\"query\",\"items\":{\"type\":\"string\"},\"name\":\"components\",\"required\":false,\"type\":\"array\"},{\"description\":\"The list of Architectures\",\"example\":\"amd64\",\"in\":\"query\",\"items\":{\"type\":\"string\"},\"name\":\"architectures\",\"required\":false,\"type\":\"array\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"202\":{\"description\":\"Delete a Debian Distribution\"},\"400\":{\"description\":\"Bad Request\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"404\":{\"description\":\"Not Found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"DELETE","orig":"/api/v4/projects/{id}/debian_distributions/{codename}","rename":{"param":{"codename":"id","id":"project_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"debian_distributions"},{"var":"id"}],"select":{"exist":["architecture","component","description","id","label","origin","project_id","suite","valid_time_duration_second","version"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"remove"}},"relations":{"ancestors":[["group"],["project"]]},"key$":"debian_distribution","name__orig":"debian_distribution","Name":"DebianDistribution","name_":"debian_distribution","name-":"debian-distribution","NAME":"DEBIAN_DISTRIBUTION","index$":188}, {"active":true,"entity":"debian_distribution","key$":"BasicDebianDistributionFlow","kind":"basic","name":"BasicDebianDistributionFlow","param":{},"step":[]}, 'DebianDistribution')
     }
     const client = setup.client
     const struct = setup.struct
@@ -102,13 +101,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_DEBIAN_DISTRIBUTION_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_DEBIAN_DISTRIBUTION_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -120,7 +112,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_DEBIAN_DISTRIBUTION_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -133,7 +131,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -146,7 +145,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

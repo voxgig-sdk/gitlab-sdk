@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('ApiEntitiesApplicationWithSecretEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['create']) {
-      if (maybeSkipControl(t, 'entityOp', 'api_entities_application_with_secret.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'api_entities_application_with_secret.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_API_ENTITIES_APPLICATION_WITH_SECRET_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"application_id","req":false,"type":"`$STRING`","index$":0},{"active":true,"name":"application_name","req":false,"type":"`$STRING`","index$":1},{"active":true,"name":"callback_url","req":false,"type":"`$STRING`","index$":2},{"active":true,"name":"confidential","req":false,"type":"`$BOOLEAN`","index$":3},{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":4},{"active":true,"name":"secret","req":false,"type":"`$STRING`","index$":5}],"id":{"field":"id","name":"id"},"name":"api_entities_application_with_secret","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"application_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"POST /api/v4/applications/{id}/renew-secret","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"postApiV4ApplicationsIdRenewSecret\",\"parameters\":[{\"description\":\"The ID of the application (not the application_id)\",\"format\":\"int32\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Renew an application secret\",\"schema\":{\"description\":\"API_Entities_ApplicationWithSecret model\",\"properties\":{\"application_id\":{\"example\":\"5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737\",\"type\":\"string\"},\"application_name\":{\"example\":\"MyApplication\",\"type\":\"string\"},\"callback_url\":{\"example\":\"https://redirect.uri\",\"type\":\"string\"},\"confidential\":{\"example\":true,\"type\":\"boolean\"},\"id\":{\"type\":\"string\"},\"secret\":{\"example\":\"ee1dd64b6adc89cf7e2c23099301ccc2c61b441064e9324d963c46902a85ec34\",\"type\":\"string\"}},\"type\":\"object\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"POST","orig":"/api/v4/applications/{id}/renew-secret","rename":{"param":{"id":"application_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"applications"},{"var":"application_id"},{"lit":"renew-secret"}],"select":{"exist":["application_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{"query":[{"active":true,"kind":"query","name":"post_api_v4_application","orig":"post_api_v4_application","reqd":true,"type":"`$OBJECT`","index$":0}]},"contract":{"id":"POST /api/v4/applications","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"postApiV4Applications\",\"parameters\":[{\"in\":\"body\",\"name\":\"postApiV4Applications\",\"required\":true,\"schema\":{\"description\":\"Create a new application\",\"properties\":{\"confidential\":{\"default\":true,\"description\":\"The application is used where the client secret can be kept confidential. Native mobile apps \\\\\\n                        and Single Page Apps are considered non-confidential. Defaults to true if not supplied\",\"type\":\"boolean\"},\"name\":{\"description\":\"Name of the application.\",\"example\":\"MyApplication\",\"type\":\"string\"},\"redirect_uri\":{\"description\":\"Redirect URI of the application.\",\"example\":\"https://redirect.uri\",\"type\":\"string\"},\"scopes\":{\"description\":\"Scopes of the application. You can specify multiple scopes by separating\\\\\\n                                 each scope using a space\",\"type\":\"string\"}},\"required\":[\"name\",\"redirect_uri\",\"scopes\"],\"type\":\"object\"}}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Create a new application\",\"schema\":{\"description\":\"API_Entities_ApplicationWithSecret model\",\"properties\":{\"application_id\":{\"example\":\"5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737\",\"type\":\"string\"},\"application_name\":{\"example\":\"MyApplication\",\"type\":\"string\"},\"callback_url\":{\"example\":\"https://redirect.uri\",\"type\":\"string\"},\"confidential\":{\"example\":true,\"type\":\"boolean\"},\"id\":{\"type\":\"string\"},\"secret\":{\"example\":\"ee1dd64b6adc89cf7e2c23099301ccc2c61b441064e9324d963c46902a85ec34\",\"type\":\"string\"}},\"type\":\"object\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"POST","orig":"/api/v4/applications","segments":[{"lit":"api"},{"lit":"v4"},{"lit":"applications"}],"select":{"exist":["post_api_v4_application"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[["application"]]},"key$":"api_entities_application_with_secret","name__orig":"api_entities_application_with_secret","Name":"ApiEntitiesApplicationWithSecret","name_":"api_entities_application_with_secret","name-":"api-entities-application-with-secret","NAME":"API_ENTITIES_APPLICATION_WITH_SECRET","index$":6}, {"active":true,"entity":"api_entities_application_with_secret","key$":"BasicApiEntitiesApplicationWithSecretFlow","kind":"basic","name":"BasicApiEntitiesApplicationWithSecretFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"api_entities_application_with_secret_ref01"},"match":{},"op":"create","spec":[],"valid":[],"index$":0}]}, 'ApiEntitiesApplicationWithSecret')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_API_ENTITIES_APPLICATION_WITH_SECRET_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_API_ENTITIES_APPLICATION_WITH_SECRET_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -127,7 +119,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_API_ENTITIES_APPLICATION_WITH_SECRET_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -140,7 +138,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -153,7 +152,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

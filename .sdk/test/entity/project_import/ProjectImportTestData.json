@@ -16,5 +16,71 @@
     "project_import": {
       "project_import_ref01": {}
     }
+  },
+  "requests": {
+    "POST /api/v4/projects/import-relation/authorize": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsImportRelationAuthorize",
+        "parameters": [],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Workhorse authorize the project relation import upload"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "POST /api/v4/projects/import/authorize": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsImportAuthorize",
+        "parameters": [],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Workhorse authorize the project import upload"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

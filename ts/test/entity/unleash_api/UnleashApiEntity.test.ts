@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('UnleashApiEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'unleash_api.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'unleash_api.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_UNLEASH_API_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":0}],"id":{"field":"id","name":"id"},"name":"unleash_api","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"project_id","reqd":true,"type":"`$STRING`"}],"query":[{"active":true,"kind":"query","name":"app_name","orig":"app_name","reqd":false,"type":"`$ANY`"},{"active":true,"kind":"query","name":"instance_id","orig":"instance_id","reqd":false,"type":"`$STRING`"}]},"contract":{"id":"GET /api/v4/feature_flags/unleash/{project_id}/features","json":"{\"operationId\":\"getApiV4FeatureFlagsUnleashProjectIdFeatures\",\"parameters\":[{\"description\":\"The ID of a project\",\"in\":\"path\",\"name\":\"project_id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The instance ID of Unleash Client\",\"in\":\"query\",\"name\":\"instance_id\",\"required\":false,\"type\":\"string\"},{\"description\":\"The application name of Unleash Client\",\"in\":\"query\",\"name\":\"app_name\",\"required\":false,\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get a list of features (deprecated, v2 client support)\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/feature_flags/unleash/{project_id}/features","rename":{"param":{"project_id":"id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"feature_flags"},{"lit":"unleash"},{"var":"id"},{"lit":"features"}],"select":{"$action":"features","exist":["app_name","id","instance_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"unleash_id","orig":"project_id","reqd":true,"type":"`$STRING`","index$":0}],"query":[{"active":true,"kind":"query","name":"app_name","orig":"app_name","reqd":false,"type":"`$ANY`","index$":0},{"active":true,"kind":"query","name":"instance_id","orig":"instance_id","reqd":false,"type":"`$STRING`","index$":1}]},"contract":{"id":"GET /api/v4/feature_flags/unleash/{project_id}/client/features","json":"{\"operationId\":\"getApiV4FeatureFlagsUnleashProjectIdClientFeatures\",\"parameters\":[{\"description\":\"The ID of a project\",\"in\":\"path\",\"name\":\"project_id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The instance ID of Unleash Client\",\"in\":\"query\",\"name\":\"instance_id\",\"required\":false,\"type\":\"string\"},{\"description\":\"The application name of Unleash Client\",\"in\":\"query\",\"name\":\"app_name\",\"required\":false,\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get a list of features\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/feature_flags/unleash/{project_id}/client/features","rename":{"param":{"project_id":"unleash_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"feature_flags"},{"lit":"unleash"},{"var":"unleash_id"},{"lit":"client"},{"lit":"features"}],"select":{"exist":["app_name","instance_id","unleash_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"load"}},"relations":{"ancestors":[["unleash"]]},"key$":"unleash_api","name__orig":"unleash_api","Name":"UnleashApi","name_":"unleash_api","name-":"unleash-api","NAME":"UNLEASH_API","index$":271}, {"active":true,"entity":"unleash_api","key$":"BasicUnleashApiFlow","kind":"basic","name":"BasicUnleashApiFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"unleash_api_ref01","srcdatavar":"unleash_api_ref01_data","suffix":"_dt0"},"match":{"id":"unleash_api01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-unleash_api_ref01"}}],"index$":0}]}, 'UnleashApi')
     }
     const client = setup.client
     const struct = setup.struct
@@ -110,13 +109,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_UNLEASH_API_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_UNLEASH_API_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -128,7 +120,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_UNLEASH_API_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -141,7 +139,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -154,7 +153,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

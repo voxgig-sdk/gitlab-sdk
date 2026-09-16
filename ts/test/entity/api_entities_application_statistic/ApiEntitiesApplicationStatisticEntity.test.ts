@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('ApiEntitiesApplicationStatisticEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'api_entities_application_statistic.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'api_entities_application_statistic.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_API_ENTITIES_APPLICATION_STATISTIC_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"format":"int32","name":"active_users","req":false,"short":"Number of active users","type":"`$INTEGER`","index$":0},{"active":true,"format":"int32","name":"forks","req":false,"short":"Approximate number of repo forks","type":"`$INTEGER`","index$":1},{"active":true,"format":"int32","name":"groups","req":false,"short":"Approximate number of projects","type":"`$INTEGER`","index$":2},{"active":true,"format":"int32","name":"issues","req":false,"short":"Approximate number of issues","type":"`$INTEGER`","index$":3},{"active":true,"format":"int32","name":"merge_requests","req":false,"short":"Approximate number of merge requests","type":"`$INTEGER`","index$":4},{"active":true,"format":"int32","name":"milestones","req":false,"short":"Approximate number of milestones","type":"`$INTEGER`","index$":5},{"active":true,"format":"int32","name":"notes","req":false,"short":"Approximate number of notes","type":"`$INTEGER`","index$":6},{"active":true,"format":"int32","name":"projects","req":false,"short":"Approximate number of projects","type":"`$INTEGER`","index$":7},{"active":true,"format":"int32","name":"snippets","req":false,"short":"Approximate number of snippets","type":"`$INTEGER`","index$":8},{"active":true,"format":"int32","name":"ssh_keys","req":false,"short":"Approximate number of SSH keys","type":"`$INTEGER`","index$":9},{"active":true,"format":"int32","name":"users","req":false,"short":"Approximate number of users","type":"`$INTEGER`","index$":10}],"name":"api_entities_application_statistic","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{},"contract":{"id":"GET /api/v4/application/statistics","json":"{\"operationId\":\"getApiV4ApplicationStatistics\",\"parameters\":[],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get the current application statistics\",\"schema\":{\"description\":\"API_Entities_ApplicationStatistics model\",\"properties\":{\"active_users\":{\"description\":\"Number of active users\",\"example\":21,\"format\":\"int32\",\"type\":\"integer\"},\"forks\":{\"description\":\"Approximate number of repo forks\",\"example\":6,\"format\":\"int32\",\"type\":\"integer\"},\"groups\":{\"description\":\"Approximate number of projects\",\"example\":1,\"format\":\"int32\",\"type\":\"integer\"},\"issues\":{\"description\":\"Approximate number of issues\",\"example\":121,\"format\":\"int32\",\"type\":\"integer\"},\"merge_requests\":{\"description\":\"Approximate number of merge requests\",\"example\":49,\"format\":\"int32\",\"type\":\"integer\"},\"milestones\":{\"description\":\"Approximate number of milestones\",\"example\":3,\"format\":\"int32\",\"type\":\"integer\"},\"notes\":{\"description\":\"Approximate number of notes\",\"example\":6,\"format\":\"int32\",\"type\":\"integer\"},\"projects\":{\"description\":\"Approximate number of projects\",\"example\":4,\"format\":\"int32\",\"type\":\"integer\"},\"snippets\":{\"description\":\"Approximate number of snippets\",\"example\":4,\"format\":\"int32\",\"type\":\"integer\"},\"ssh_keys\":{\"description\":\"Approximate number of SSH keys\",\"example\":11,\"format\":\"int32\",\"type\":\"integer\"},\"users\":{\"description\":\"Approximate number of users\",\"example\":22,\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/application/statistics","segments":[{"lit":"api"},{"lit":"v4"},{"lit":"application"},{"lit":"statistics"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"api_entities_application_statistic","name__orig":"api_entities_application_statistic","Name":"ApiEntitiesApplicationStatistic","name_":"api_entities_application_statistic","name-":"api-entities-application-statistic","NAME":"API_ENTITIES_APPLICATION_STATISTIC","index$":5}, {"active":true,"entity":"api_entities_application_statistic","key$":"BasicApiEntitiesApplicationStatisticFlow","kind":"basic","name":"BasicApiEntitiesApplicationStatisticFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"api_entities_application_statistic_ref01","srcdatavar":"api_entities_application_statistic_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-api_entities_application_statistic_ref01"}}],"index$":0}]}, 'ApiEntitiesApplicationStatistic')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_API_ENTITIES_APPLICATION_STATISTIC_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_API_ENTITIES_APPLICATION_STATISTIC_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -127,7 +119,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_API_ENTITIES_APPLICATION_STATISTIC_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -140,7 +138,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -153,7 +152,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

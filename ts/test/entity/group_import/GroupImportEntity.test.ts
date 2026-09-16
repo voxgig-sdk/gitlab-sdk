@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('GroupImportEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['create']) {
-      if (maybeSkipControl(t, 'entityOp', 'group_import.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'group_import.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_GROUP_IMPORT_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"group_import","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{"query":[{"active":true,"kind":"query","name":"file","orig":"file","reqd":true,"type":"`$ANY`","index$":0},{"active":true,"kind":"query","name":"name","orig":"name","reqd":true,"type":"`$STRING`","index$":1},{"active":true,"kind":"query","name":"organization_id","orig":"organization_id","reqd":false,"type":"`$STRING`","index$":2},{"active":true,"kind":"query","name":"parent_id","orig":"parent_id","reqd":false,"type":"`$STRING`","index$":3},{"active":true,"kind":"query","name":"path","orig":"path","reqd":true,"type":"`$STRING`","index$":4}]},"contract":{"id":"POST /api/v4/groups/import","json":"{\"consumes\":[\"multipart/form-data\"],\"operationId\":\"postApiV4GroupsImport\",\"parameters\":[{\"description\":\"Group path\",\"in\":\"formData\",\"name\":\"path\",\"required\":true,\"type\":\"string\"},{\"description\":\"Group name\",\"in\":\"formData\",\"name\":\"name\",\"required\":true,\"type\":\"string\"},{\"description\":\"The group export file to be imported\",\"in\":\"formData\",\"name\":\"file\",\"required\":true,\"type\":\"file\"},{\"description\":\"The ID of the parent group that the group will be imported into. Defaults to the current user's namespace.\",\"format\":\"int32\",\"in\":\"formData\",\"name\":\"parent_id\",\"required\":false,\"type\":\"integer\"},{\"default\":{},\"description\":\"The ID of the organization that the group will be part of. \",\"format\":\"int32\",\"in\":\"formData\",\"name\":\"organization_id\",\"required\":false,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"202\":{\"description\":\"Create a new group import\"},\"400\":{\"description\":\"Bad request\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"503\":{\"description\":\"Service unavailable\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"POST","orig":"/api/v4/groups/import","segments":[{"lit":"api"},{"lit":"v4"},{"lit":"groups"},{"lit":"import"}],"select":{"exist":["file","name","organization_id","parent_id","path"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{},"contract":{"id":"POST /api/v4/groups/import/authorize","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"postApiV4GroupsImportAuthorize\",\"parameters\":[],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"201\":{\"description\":\"Workhorse authorize the group import upload\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"POST","orig":"/api/v4/groups/import/authorize","segments":[{"lit":"api"},{"lit":"v4"},{"lit":"groups"},{"lit":"import"},{"lit":"authorize"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"group_import","name__orig":"group_import","Name":"GroupImport","name_":"group_import","name-":"group-import","NAME":"GROUP_IMPORT","index$":214}, {"active":true,"entity":"group_import","key$":"BasicGroupImportFlow","kind":"basic","name":"BasicGroupImportFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"group_import_ref01"},"match":{},"op":"create","spec":[],"valid":[],"index$":0}]}, 'GroupImport')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_GROUP_IMPORT_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_GROUP_IMPORT_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -127,7 +119,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_GROUP_IMPORT_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -140,7 +138,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -153,7 +152,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

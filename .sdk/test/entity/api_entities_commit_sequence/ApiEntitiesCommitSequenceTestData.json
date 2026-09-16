@@ -2,19 +2,19 @@
   "existing": {
     "api_entities_commit_sequence": {
       "API_ENTITIES_COMMIT_SEQUENCE00": {
-        "count": "sa",
+        "count": 10,
         "project_id": "PROJECT01",
         "sha": "SHA01",
         "id": "API_ENTITIES_COMMIT_SEQUENCE00"
       },
       "API_ENTITIES_COMMIT_SEQUENCE01": {
-        "count": "s14",
+        "count": 20,
         "project_id": "PROJECT01",
         "sha": "SHA01",
         "id": "API_ENTITIES_COMMIT_SEQUENCE01"
       },
       "API_ENTITIES_COMMIT_SEQUENCE02": {
-        "count": "s1e",
+        "count": 30,
         "project_id": "PROJECT01",
         "sha": "SHA01",
         "id": "API_ENTITIES_COMMIT_SEQUENCE02"
@@ -24,7 +24,75 @@
   "new": {
     "api_entities_commit_sequence": {
       "api_entities_commit_sequence_ref01": {
-        "count": "s28"
+        "count": 40
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v4/projects/{id}/repository/commits/{sha}/sequence": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdRepositoryCommitsShaSequence",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "A commit SHA",
+            "in": "path",
+            "name": "sha",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": false,
+            "description": "Only include the first parent of merges",
+            "in": "query",
+            "name": "first_parent",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get the sequence count of a commit SHA",
+            "schema": {
+              "description": "API_Entities_CommitSequence model",
+              "properties": {
+                "count": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

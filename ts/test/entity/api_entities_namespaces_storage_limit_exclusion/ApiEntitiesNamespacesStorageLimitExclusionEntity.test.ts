@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('ApiEntitiesNamespacesStorageLimitExclusionEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['create', 'load']) {
-      if (maybeSkipControl(t, 'entityOp', 'api_entities_namespaces_storage_limit_exclusion.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'api_entities_namespaces_storage_limit_exclusion.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_API_ENTITIES_NAMESPACES_STORAGE_LIMIT_EXCLUSION_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"format":"int32","name":"id","req":false,"type":"`$INTEGER`","index$":0},{"active":true,"format":"int32","name":"namespace_id","req":false,"type":"`$INTEGER`","index$":1},{"active":true,"name":"namespace_name","req":false,"type":"`$STRING`","index$":2},{"active":true,"name":"reason","req":false,"type":"`$STRING`","index$":3}],"id":{"field":"id","name":"id"},"name":"api_entities_namespaces_storage_limit_exclusion","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"namespace_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}],"query":[{"active":true,"kind":"query","name":"post_api_v4_namespaces_id_storage_limit_exclusion","orig":"post_api_v4_namespaces_id_storage_limit_exclusion","reqd":true,"type":"`$OBJECT`","index$":0}]},"contract":{"id":"POST /api/v4/namespaces/{id}/storage/limit_exclusion","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"postApiV4NamespacesIdStorageLimitExclusion\",\"parameters\":[{\"format\":\"int32\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"integer\"},{\"in\":\"body\",\"name\":\"postApiV4NamespacesIdStorageLimitExclusion\",\"required\":true,\"schema\":{\"description\":\"Creates a storage limit exclusion for a Namespace\",\"properties\":{\"reason\":{\"description\":\"The reason the Namespace is being excluded\",\"type\":\"string\"}},\"required\":[\"reason\"],\"type\":\"object\"}}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"201\":{\"description\":\"Creates a storage limit exclusion for a Namespace\",\"schema\":{\"description\":\"API_Entities_Namespaces_Storage_LimitExclusion model\",\"properties\":{\"id\":{\"example\":1,\"format\":\"int32\",\"type\":\"integer\"},\"namespace_id\":{\"example\":123,\"format\":\"int32\",\"type\":\"integer\"},\"namespace_name\":{\"example\":\"GitLab\",\"type\":\"string\"},\"reason\":{\"example\":\"a reason\",\"type\":\"string\"}},\"type\":\"object\"}},\"400\":{\"description\":\"Bad request\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"404\":{\"description\":\"Not found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"POST","orig":"/api/v4/namespaces/{id}/storage/limit_exclusion","rename":{"param":{"id":"namespace_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"namespaces"},{"var":"namespace_id"},{"lit":"storage"},{"lit":"limit_exclusion"}],"select":{"exist":["namespace_id","post_api_v4_namespaces_id_storage_limit_exclusion"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{"query":[{"active":true,"example":1,"kind":"query","name":"page","orig":"page","reqd":false,"type":"`$INTEGER`","index$":0},{"active":true,"example":20,"kind":"query","name":"per_page","orig":"per_page","reqd":false,"type":"`$INTEGER`","index$":1}]},"contract":{"id":"GET /api/v4/namespaces/storage/limit_exclusions","json":"{\"operationId\":\"getApiV4NamespacesStorageLimitExclusions\",\"parameters\":[{\"default\":1,\"description\":\"Current page number\",\"example\":1,\"format\":\"int32\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"type\":\"integer\"},{\"default\":20,\"description\":\"Number of items per page\",\"example\":20,\"format\":\"int32\",\"in\":\"query\",\"name\":\"per_page\",\"required\":false,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Retrieve all limit exclusions\",\"schema\":{\"description\":\"API_Entities_Namespaces_Storage_LimitExclusion model\",\"properties\":{\"id\":{\"example\":1,\"format\":\"int32\",\"type\":\"integer\"},\"namespace_id\":{\"example\":123,\"format\":\"int32\",\"type\":\"integer\"},\"namespace_name\":{\"example\":\"GitLab\",\"type\":\"string\"},\"reason\":{\"example\":\"a reason\",\"type\":\"string\"}},\"type\":\"object\"}},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/namespaces/storage/limit_exclusions","segments":[{"lit":"api"},{"lit":"v4"},{"lit":"namespaces"},{"lit":"storage"},{"lit":"limit_exclusions"}],"select":{"exist":["page","per_page"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[["namespace"]]},"key$":"api_entities_namespaces_storage_limit_exclusion","name__orig":"api_entities_namespaces_storage_limit_exclusion","Name":"ApiEntitiesNamespacesStorageLimitExclusion","name_":"api_entities_namespaces_storage_limit_exclusion","name-":"api-entities-namespaces-storage-limit-exclusion","NAME":"API_ENTITIES_NAMESPACES_STORAGE_LIMIT_EXCLUSION","index$":103}, {"active":true,"entity":"api_entities_namespaces_storage_limit_exclusion","key$":"BasicApiEntitiesNamespacesStorageLimitExclusionFlow","kind":"basic","name":"BasicApiEntitiesNamespacesStorageLimitExclusionFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"api_entities_namespaces_storage_limit_exclusion_ref01"},"match":{"namespace_id":"namespace01"},"op":"create","spec":[],"valid":[],"index$":0},{"active":true,"data":{},"input":{"ref":"api_entities_namespaces_storage_limit_exclusion_ref01","srcdatavar":"api_entities_namespaces_storage_limit_exclusion_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-api_entities_namespaces_storage_limit_exclusion_ref01"}}],"index$":1}]}, 'ApiEntitiesNamespacesStorageLimitExclusion')
     }
     const client = setup.client
     const struct = setup.struct
@@ -117,13 +116,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_API_ENTITIES_NAMESPACES_STORAGE_LIMIT_EXCLUSION_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_API_ENTITIES_NAMESPACES_STORAGE_LIMIT_EXCLUSION_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -135,7 +127,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_API_ENTITIES_NAMESPACES_STORAGE_LIMIT_EXCLUSION_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -148,7 +146,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -161,7 +160,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

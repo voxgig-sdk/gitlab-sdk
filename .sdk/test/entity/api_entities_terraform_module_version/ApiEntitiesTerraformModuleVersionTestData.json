@@ -65,5 +65,251 @@
         "versions": "s199"
       }
     }
+  },
+  "requests": {
+    "GET /api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}/versions": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemVersions",
+        "parameters": [
+          {
+            "description": "Group's ID or slug",
+            "in": "path",
+            "name": "module_namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "module_name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "module_system",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "List versions for a module",
+            "schema": {
+              "items": {
+                "description": "API_Entities_Terraform_ModuleVersions model",
+                "properties": {
+                  "modules": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}/*module_version": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystem*moduleVersion",
+        "parameters": [
+          {
+            "description": "Group's ID or slug",
+            "in": "path",
+            "name": "module_namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "module_name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "module_system",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module version",
+            "in": "query",
+            "name": "module_version",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get details about specific version of a module",
+            "schema": {
+              "description": "API_Entities_Terraform_ModuleVersion model",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "providers": {
+                  "type": "string"
+                },
+                "root": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "submodules": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "versions": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystem",
+        "parameters": [
+          {
+            "description": "Group's ID or slug",
+            "in": "path",
+            "name": "module_namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "module_name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "module_system",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get details about the latest version of a module",
+            "schema": {
+              "description": "API_Entities_Terraform_ModuleVersion model",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "providers": {
+                  "type": "string"
+                },
+                "root": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "submodules": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "versions": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

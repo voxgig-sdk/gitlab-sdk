@@ -25,5 +25,197 @@
     "projects_job_token_scope": {
       "projects_job_token_scope_ref01": {}
     }
+  },
+  "requests": {
+    "DELETE /api/v4/projects/{id}/job_token_scope/groups_allowlist/{target_group_id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "deleteApiV4ProjectsIdJobTokenScopeGroupsAllowlistTargetGroupId",
+        "parameters": [
+          {
+            "description": "ID of user project",
+            "example": 1,
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "ID of the group to be removed from the allowlist",
+            "example": 2,
+            "format": "int32",
+            "in": "path",
+            "name": "target_group_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "Delete target group from allowlist."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "DELETE /api/v4/projects/{id}/job_token_scope/allowlist/{target_project_id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "deleteApiV4ProjectsIdJobTokenScopeAllowlistTargetProjectId",
+        "parameters": [
+          {
+            "description": "ID of user project",
+            "example": 1,
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "ID of the project to be removed from the allowlist",
+            "example": 2,
+            "format": "int32",
+            "in": "path",
+            "name": "target_project_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "Delete project from allowlist."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PATCH /api/v4/projects/{id}/job_token_scope": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "patchApiV4ProjectsIdJobTokenScope",
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "patchApiV4ProjectsIdJobTokenScope",
+            "required": true,
+            "schema": {
+              "description": "Patch CI_JOB_TOKEN access settings.",
+              "properties": {
+                "enabled": {
+                  "description": "Indicates CI/CD job tokens generated in other projects have restricted access to this project.",
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "enabled"
+              ],
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "Patch CI_JOB_TOKEN access settings."
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

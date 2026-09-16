@@ -7,7 +7,7 @@
         "host_keys": [],
         "id": "API_ENTITIES_REMOTE_MIRROR00",
         "keep_divergent_refs": true,
-        "last_error": "s87",
+        "last_error": 135,
         "last_successful_update_at": "s88",
         "last_update_at": "s89",
         "last_update_started_at": "s8a",
@@ -24,7 +24,7 @@
         "host_keys": [],
         "id": "API_ENTITIES_REMOTE_MIRROR01",
         "keep_divergent_refs": true,
-        "last_error": "s109",
+        "last_error": 265,
         "last_successful_update_at": "s10a",
         "last_update_at": "s10b",
         "last_update_started_at": "s10c",
@@ -41,7 +41,7 @@
         "host_keys": [],
         "id": "API_ENTITIES_REMOTE_MIRROR02",
         "keep_divergent_refs": true,
-        "last_error": "s18b",
+        "last_error": 395,
         "last_successful_update_at": "s18c",
         "last_update_at": "s18d",
         "last_update_started_at": "s18e",
@@ -61,7 +61,7 @@
         "enabled": false,
         "host_keys": [],
         "keep_divergent_refs": true,
-        "last_error": "s20d",
+        "last_error": 525,
         "last_successful_update_at": "s20e",
         "last_update_at": "s20f",
         "last_update_started_at": "s210",
@@ -69,6 +69,628 @@
         "only_protected_branches": true,
         "update_status": "s213",
         "url": "s214"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v4/projects/{id}/remote_mirrors": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdRemoteMirrors",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "postApiV4ProjectsIdRemoteMirrors",
+            "required": true,
+            "schema": {
+              "description": "Create remote mirror for a project",
+              "properties": {
+                "auth_method": {
+                  "description": "Determines the mirror authentication method",
+                  "enum": [
+                    "ssh_public_key",
+                    "password"
+                  ],
+                  "type": "string"
+                },
+                "enabled": {
+                  "description": "Determines if the mirror is enabled",
+                  "type": "boolean"
+                },
+                "keep_divergent_refs": {
+                  "description": "Determines if divergent refs are kept on the target",
+                  "type": "boolean"
+                },
+                "mirror_branch_regex": {
+                  "description": "Determines if only matched branches are mirrored",
+                  "type": "string"
+                },
+                "only_protected_branches": {
+                  "description": "Determines if only protected branches are mirrored",
+                  "type": "boolean"
+                },
+                "url": {
+                  "description": "The URL for a remote mirror",
+                  "example": "https://*****:*****@example.com/gitlab/example.git",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "url"
+              ],
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Create remote mirror for a project",
+            "schema": {
+              "description": "API_Entities_RemoteMirror model",
+              "properties": {
+                "auth_method": {
+                  "example": "password",
+                  "type": "string"
+                },
+                "enabled": {
+                  "example": true,
+                  "type": "boolean"
+                },
+                "host_keys": {
+                  "items": {
+                    "properties": {
+                      "fingerprint_sha256": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "id": {
+                  "example": 101486,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "keep_divergent_refs": {
+                  "type": "boolean"
+                },
+                "last_error": {
+                  "example": "The remote mirror URL is invalid.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "last_successful_update_at": {
+                  "example": "2020-01-06T17:31:55.864Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "last_update_at": {
+                  "example": "2020-01-06T17:32:02.823Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "last_update_started_at": {
+                  "example": "2020-01-06T17:32:02.823Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "mirror_branch_regex": {
+                  "type": "string"
+                },
+                "only_protected_branches": {
+                  "type": "boolean"
+                },
+                "update_status": {
+                  "example": "finished",
+                  "type": "string"
+                },
+                "url": {
+                  "example": "https://*****:*****@example.com/gitlab/example.git",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "POST /api/v4/projects/{id}/remote_mirrors/{mirror_id}/sync": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdRemoteMirrorsMirrorIdSync",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The ID of a remote mirror",
+            "in": "path",
+            "name": "mirror_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "Triggers a push mirror operation"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/projects/{id}/remote_mirrors": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdRemoteMirrors",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": 1,
+            "description": "Current page number",
+            "example": 1,
+            "format": "int32",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 20,
+            "description": "Number of items per page",
+            "example": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "List the project's remote mirrors",
+            "schema": {
+              "items": {
+                "description": "API_Entities_RemoteMirror model",
+                "properties": {
+                  "auth_method": {
+                    "example": "password",
+                    "type": "string"
+                  },
+                  "enabled": {
+                    "example": true,
+                    "type": "boolean"
+                  },
+                  "host_keys": {
+                    "items": {
+                      "properties": {
+                        "fingerprint_sha256": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "id": {
+                    "example": 101486,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "keep_divergent_refs": {
+                    "type": "boolean"
+                  },
+                  "last_error": {
+                    "example": "The remote mirror URL is invalid.",
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "last_successful_update_at": {
+                    "example": "2020-01-06T17:31:55.864Z",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "last_update_at": {
+                    "example": "2020-01-06T17:32:02.823Z",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "last_update_started_at": {
+                    "example": "2020-01-06T17:32:02.823Z",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "mirror_branch_regex": {
+                    "type": "string"
+                  },
+                  "only_protected_branches": {
+                    "type": "boolean"
+                  },
+                  "update_status": {
+                    "example": "finished",
+                    "type": "string"
+                  },
+                  "url": {
+                    "example": "https://*****:*****@example.com/gitlab/example.git",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/projects/{id}/remote_mirrors/{mirror_id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdRemoteMirrorsMirrorId",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The ID of a remote mirror",
+            "in": "path",
+            "name": "mirror_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get a single remote mirror",
+            "schema": {
+              "description": "API_Entities_RemoteMirror model",
+              "properties": {
+                "auth_method": {
+                  "example": "password",
+                  "type": "string"
+                },
+                "enabled": {
+                  "example": true,
+                  "type": "boolean"
+                },
+                "host_keys": {
+                  "items": {
+                    "properties": {
+                      "fingerprint_sha256": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "id": {
+                  "example": 101486,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "keep_divergent_refs": {
+                  "type": "boolean"
+                },
+                "last_error": {
+                  "example": "The remote mirror URL is invalid.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "last_successful_update_at": {
+                  "example": "2020-01-06T17:31:55.864Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "last_update_at": {
+                  "example": "2020-01-06T17:32:02.823Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "last_update_started_at": {
+                  "example": "2020-01-06T17:32:02.823Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "mirror_branch_regex": {
+                  "type": "string"
+                },
+                "only_protected_branches": {
+                  "type": "boolean"
+                },
+                "update_status": {
+                  "example": "finished",
+                  "type": "string"
+                },
+                "url": {
+                  "example": "https://*****:*****@example.com/gitlab/example.git",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PUT /api/v4/projects/{id}/remote_mirrors/{mirror_id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "putApiV4ProjectsIdRemoteMirrorsMirrorId",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The ID of a remote mirror",
+            "in": "path",
+            "name": "mirror_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "putApiV4ProjectsIdRemoteMirrorsMirrorId",
+            "required": true,
+            "schema": {
+              "description": "Update the attributes of a single remote mirror",
+              "properties": {
+                "auth_method": {
+                  "description": "Determines the mirror authentication method",
+                  "type": "string"
+                },
+                "enabled": {
+                  "description": "Determines if the mirror is enabled",
+                  "example": true,
+                  "type": "boolean"
+                },
+                "keep_divergent_refs": {
+                  "description": "Determines if divergent refs are kept on the target",
+                  "type": "boolean"
+                },
+                "mirror_branch_regex": {
+                  "description": "Determines if only matched branches are mirrored",
+                  "type": "string"
+                },
+                "only_protected_branches": {
+                  "description": "Determines if only protected branches are mirrored",
+                  "type": "boolean"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Update the attributes of a single remote mirror",
+            "schema": {
+              "description": "API_Entities_RemoteMirror model",
+              "properties": {
+                "auth_method": {
+                  "example": "password",
+                  "type": "string"
+                },
+                "enabled": {
+                  "example": true,
+                  "type": "boolean"
+                },
+                "host_keys": {
+                  "items": {
+                    "properties": {
+                      "fingerprint_sha256": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "id": {
+                  "example": 101486,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "keep_divergent_refs": {
+                  "type": "boolean"
+                },
+                "last_error": {
+                  "example": "The remote mirror URL is invalid.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "last_successful_update_at": {
+                  "example": "2020-01-06T17:31:55.864Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "last_update_at": {
+                  "example": "2020-01-06T17:32:02.823Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "last_update_started_at": {
+                  "example": "2020-01-06T17:32:02.823Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "mirror_branch_regex": {
+                  "type": "string"
+                },
+                "only_protected_branches": {
+                  "type": "boolean"
+                },
+                "update_status": {
+                  "example": "finished",
+                  "type": "string"
+                },
+                "url": {
+                  "example": "https://*****:*****@example.com/gitlab/example.git",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

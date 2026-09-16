@@ -16,5 +16,45 @@
     "application": {
       "application_ref01": {}
     }
+  },
+  "requests": {
+    "DELETE /api/v4/applications/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "deleteApiV4ApplicationsId",
+        "parameters": [
+          {
+            "description": "The ID of the application (not the application_id)",
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "Delete an application"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

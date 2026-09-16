@@ -63,5 +63,399 @@
         "verified": true
       }
     }
+  },
+  "requests": {
+    "POST /api/v4/projects/{id}/pages/domains": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdPagesDomains",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "postApiV4ProjectsIdPagesDomains",
+            "required": true,
+            "schema": {
+              "description": "Create a new pages domain",
+              "properties": {
+                "auto_ssl_enabled": {
+                  "default": false,
+                  "description": "Enables automatic generation of SSL certificates issued by Let's Encrypt for custom domains.",
+                  "type": "boolean"
+                },
+                "certificate": {
+                  "description": "The certificate",
+                  "type": "file"
+                },
+                "domain": {
+                  "description": "The domain",
+                  "type": "string"
+                },
+                "key": {
+                  "description": "The key",
+                  "type": "file"
+                },
+                "user_provided_certificate": {
+                  "type": "string"
+                },
+                "user_provided_key": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "domain"
+              ],
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Create a new pages domain",
+            "schema": {
+              "description": "API_Entities_PagesDomain model",
+              "properties": {
+                "auto_ssl_enabled": {
+                  "type": "string"
+                },
+                "certificate": {
+                  "properties": {
+                    "certificate": {
+                      "type": "string"
+                    },
+                    "certificate_text": {
+                      "type": "string"
+                    },
+                    "expired": {
+                      "type": "string"
+                    },
+                    "subject": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "domain": {
+                  "type": "string"
+                },
+                "enabled_until": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "verification_code": {
+                  "type": "string"
+                },
+                "verified": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/projects/{id}/pages/domains": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdPagesDomains",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": 1,
+            "description": "Current page number",
+            "example": 1,
+            "format": "int32",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 20,
+            "description": "Number of items per page",
+            "example": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get all pages domains",
+            "schema": {
+              "items": {
+                "description": "API_Entities_PagesDomain model",
+                "properties": {
+                  "auto_ssl_enabled": {
+                    "type": "string"
+                  },
+                  "certificate": {
+                    "properties": {
+                      "certificate": {
+                        "type": "string"
+                      },
+                      "certificate_text": {
+                        "type": "string"
+                      },
+                      "expired": {
+                        "type": "string"
+                      },
+                      "subject": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "domain": {
+                    "type": "string"
+                  },
+                  "enabled_until": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "verification_code": {
+                    "type": "string"
+                  },
+                  "verified": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/projects/{id}/pages/domains/{domain}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdPagesDomainsDomain",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The domain",
+            "in": "path",
+            "name": "domain",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get a single pages domain",
+            "schema": {
+              "description": "API_Entities_PagesDomain model",
+              "properties": {
+                "auto_ssl_enabled": {
+                  "type": "string"
+                },
+                "certificate": {
+                  "properties": {
+                    "certificate": {
+                      "type": "string"
+                    },
+                    "certificate_text": {
+                      "type": "string"
+                    },
+                    "expired": {
+                      "type": "string"
+                    },
+                    "subject": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "domain": {
+                  "type": "string"
+                },
+                "enabled_until": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "verification_code": {
+                  "type": "string"
+                },
+                "verified": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PUT /api/v4/projects/{id}/pages/domains/{domain}/verify": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "putApiV4ProjectsIdPagesDomainsDomainVerify",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The domain to verify",
+            "in": "path",
+            "name": "domain",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Verify a pages domain",
+            "schema": {
+              "description": "API_Entities_PagesDomain model",
+              "properties": {
+                "auto_ssl_enabled": {
+                  "type": "string"
+                },
+                "certificate": {
+                  "properties": {
+                    "certificate": {
+                      "type": "string"
+                    },
+                    "certificate_text": {
+                      "type": "string"
+                    },
+                    "expired": {
+                      "type": "string"
+                    },
+                    "subject": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "domain": {
+                  "type": "string"
+                },
+                "enabled_until": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "verification_code": {
+                  "type": "string"
+                },
+                "verified": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

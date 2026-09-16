@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('ReleaseEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'release.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'release.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_RELEASE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":0}],"id":{"field":"id","name":"id"},"name":"release","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`"},{"active":true,"kind":"param","name":"release_id","orig":"tag_name","reqd":true,"type":"`$STRING`"}],"query":[{"active":true,"kind":"query","name":"direct_asset_path","orig":"direct_asset_path","reqd":true,"type":"`$ANY`"}]},"contract":{"id":"GET /api/v4/projects/{id}/releases/{tag_name}/downloads/*direct_asset_path","json":"{\"operationId\":\"getApiV4ProjectsIdReleasesTagNameDownloads*directAssetPath\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The Git tag the release is associated with\",\"in\":\"path\",\"name\":\"tag_name\",\"required\":true,\"type\":\"string\"},{\"description\":\"The path to the file to download, as specified when creating the release asset\",\"in\":\"query\",\"name\":\"direct_asset_path\",\"required\":true,\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Download a project release asset file\"},\"401\":{\"description\":\"Unauthorized\"},\"404\":{\"description\":\"Not found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/projects/{id}/releases/{tag_name}/downloads/*direct_asset_path","rename":{"param":{"id":"project_id","tag_name":"release_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"releases"},{"var":"release_id"},{"lit":"downloads"},{"lit":"*direct_asset_path"}],"select":{"$action":"download_direct_asset_path","exist":["direct_asset_path","project_id","release_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}],"query":[{"active":true,"kind":"query","name":"suffix_path","orig":"suffix_path","reqd":true,"type":"`$ANY`","index$":0}]},"contract":{"id":"GET /api/v4/projects/{id}/releases/permalink/latest(/)(*suffix_path)","json":"{\"operationId\":\"getApiV4ProjectsIdReleasesPermalinkLatest()(*suffixPath)\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The path to be suffixed to the latest release\",\"in\":\"query\",\"name\":\"suffix_path\",\"required\":true,\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get the latest project release\"},\"401\":{\"description\":\"Unauthorized\"},\"404\":{\"description\":\"Not found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/projects/{id}/releases/permalink/latest(/)(*suffix_path)","rename":{"param":{"id":"project_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"releases"},{"lit":"permalink"},{"lit":"latest("},{"lit":")(*suffix_path)"}],"select":{"exist":["project_id","suffix_path"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"load"},"remove":{"input":"data","name":"remove","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"tag_name","reqd":true,"type":"`$STRING`","index$":0},{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":1}]},"contract":{"id":"DELETE /api/v4/projects/{id}/releases/{tag_name}","json":"{\"operationId\":\"deleteApiV4ProjectsIdReleasesTagName\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The Git tag the release is associated with\",\"in\":\"path\",\"name\":\"tag_name\",\"required\":true,\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"204\":{\"description\":\"Delete a release\",\"schema\":{\"description\":\"API_Entities_Release model\",\"properties\":{\"_links\":{\"properties\":{\"closed_issues_url\":{\"type\":\"string\"},\"closed_merge_requests_url\":{\"type\":\"string\"},\"edit_url\":{\"type\":\"string\"},\"merged_merge_requests_url\":{\"type\":\"string\"},\"opened_issues_url\":{\"type\":\"string\"},\"opened_merge_requests_url\":{\"type\":\"string\"},\"self\":{\"type\":\"string\"}},\"type\":\"object\"},\"assets\":{\"properties\":{\"count\":{\"example\":2,\"format\":\"int32\",\"type\":\"integer\"},\"links\":{\"description\":\"API_Entities_Releases_Link model\",\"properties\":{\"direct_asset_url\":{\"example\":\"https://gitlab.example.com/root/app/-/releases/v1.0/downloads/app-v1.0.dmg\",\"type\":\"string\"},\"id\":{\"example\":1,\"format\":\"int32\",\"type\":\"integer\"},\"link_type\":{\"example\":\"other\",\"type\":\"string\"},\"name\":{\"example\":\"app-v1.0.dmg\",\"type\":\"string\"},\"url\":{\"example\":\"https://gitlab.example.com/root/app/-/jobs/688/artifacts/raw/bin/app-v1.0.dmg\",\"type\":\"string\"}},\"type\":\"object\"},\"sources\":{\"properties\":{\"format\":{\"example\":\"zip\",\"type\":\"string\"},\"url\":{\"example\":\"https://gitlab.example.com/root/app/-/archive/v1.0/app-v1.0.zip\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"},\"author\":{\"description\":\"API_Entities_UserBasic model\",\"properties\":{\"avatar_path\":{\"example\":\"/user/avatar/28/The-Big-Lebowski-400-400.png\",\"type\":\"string\"},\"avatar_url\":{\"example\":\"https://gravatar.com/avatar/1\",\"type\":\"string\"},\"custom_attributes\":{\"items\":{\"description\":\"API_Entities_CustomAttribute model\",\"properties\":{\"key\":{\"example\":\"foo\",\"type\":\"string\"},\"value\":{\"example\":\"bar\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"id\":{\"example\":1,\"format\":\"int32\",\"type\":\"integer\"},\"locked\":{\"type\":\"boolean\"},\"name\":{\"example\":\"Administrator\",\"type\":\"string\"},\"public_email\":{\"example\":\"john@example.com\",\"type\":\"string\"},\"state\":{\"example\":\"active\",\"type\":\"string\"},\"username\":{\"example\":\"admin\",\"type\":\"string\"},\"web_url\":{\"example\":\"https://gitlab.example.com/root\",\"type\":\"string\"}},\"type\":\"object\"},\"commit\":{\"description\":\"API_Entities_Commit model\",\"properties\":{\"author_email\":{\"example\":\"john@example.com\",\"type\":\"string\"},\"author_name\":{\"example\":\"John Smith\",\"type\":\"string\"},\"authored_date\":{\"example\":\"2012-05-28T04:42:42-07:00\",\"format\":\"date-time\",\"type\":\"string\"},\"committed_date\":{\"example\":\"2012-05-28T04:42:42-07:00\",\"format\":\"date-time\",\"type\":\"string\"},\"committer_email\":{\"example\":\"jack@example.com\",\"type\":\"string\"},\"committer_name\":{\"example\":\"Jack Smith\",\"type\":\"string\"},\"created_at\":{\"example\":\"2017-07-26T11:08:53.000+02:00\",\"format\":\"date-time\",\"type\":\"string\"},\"extended_trailers\":{\"example\":\"{ \\\"Signed-off-by\\\": [\\\"John Doe <johndoe@gitlab.com>\\\", \\\"Jane Doe <janedoe@gitlab.com>\\\"] }\",\"type\":\"object\"},\"id\":{\"example\":\"2695effb5807a22ff3d138d593fd856244e155e7\",\"type\":\"string\"},\"message\":{\"example\":\"Initial commit\",\"type\":\"string\"},\"parent_ids\":{\"example\":\"2a4b78934375d7f53875269ffd4f45fd83a84ebe\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"short_id\":{\"example\":\"2695effb\",\"type\":\"string\"},\"title\":{\"example\":\"Initial commit\",\"type\":\"string\"},\"trailers\":{\"example\":\"{ \\\"Merged-By\\\": \\\"Jane Doe janedoe@gitlab.com\\\" }\",\"type\":\"object\"},\"web_url\":{\"example\":\"https://gitlab.example.com/janedoe/gitlab-foss/-/commit/ed899a2f4b50b4370feeea94676502b42383c746\",\"type\":\"string\"}},\"type\":\"object\"},\"commit_path\":{\"example\":\"/root/app/commit/588440f66559714280628a4f9799f0c4eb880a4a\",\"type\":\"string\"},\"created_at\":{\"example\":\"2019-01-03T01:56:19.539Z\",\"format\":\"date-time\",\"type\":\"string\"},\"description\":{\"example\":\"Finally released v1.0\",\"type\":\"string\"},\"description_html\":{\"type\":\"string\"},\"evidences\":{\"properties\":{\"collected_at\":{\"example\":\"2019-01-03T01:56:19.539Z\",\"format\":\"date-time\",\"type\":\"string\"},\"filepath\":{\"example\":\"https://gitlab.example.com/root/app/-/releases/v1.0/evidence.json\",\"type\":\"string\"},\"sha\":{\"example\":\"760d6cdfb0879c3ffedec13af470e0f71cf52c6cde4d\",\"type\":\"string\"}},\"type\":\"object\"},\"milestones\":{\"properties\":{\"created_at\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"due_date\":{\"type\":\"string\"},\"expired\":{\"type\":\"string\"},\"group_id\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"iid\":{\"type\":\"string\"},\"issue_stats\":{\"properties\":{\"closed\":{\"type\":\"string\"},\"total\":{\"type\":\"string\"}},\"type\":\"object\"},\"project_id\":{\"type\":\"string\"},\"start_date\":{\"type\":\"string\"},\"state\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"},\"updated_at\":{\"type\":\"string\"},\"web_url\":{\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"example\":\"Release v1.0\",\"type\":\"string\"},\"released_at\":{\"example\":\"2019-01-03T01:56:19.539Z\",\"format\":\"date-time\",\"type\":\"string\"},\"tag_name\":{\"example\":\"v1.0\",\"type\":\"string\"},\"tag_path\":{\"example\":\"/root/app/-/tags/v1.0\",\"type\":\"string\"},\"upcoming_release\":{\"type\":\"boolean\"}},\"type\":\"object\"}},\"400\":{\"description\":\"Bad request\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"404\":{\"description\":\"Not found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"DELETE","orig":"/api/v4/projects/{id}/releases/{tag_name}","rename":{"param":{"id":"project_id","tag_name":"id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"releases"},{"var":"id"}],"select":{"exist":["id","project_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"}},"relations":{"ancestors":[["project"],["project","release"]]},"key$":"release","name__orig":"release","Name":"Release","name_":"release","name-":"release","NAME":"RELEASE","index$":251}, {"active":true,"entity":"release","key$":"BasicReleaseFlow","kind":"basic","name":"BasicReleaseFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"release_ref01","srcdatavar":"release_ref01_data","suffix":"_dt0"},"match":{"id":"release01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-release_ref01"}}],"index$":0}]}, 'Release')
     }
     const client = setup.client
     const struct = setup.struct
@@ -110,13 +109,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_RELEASE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_RELEASE_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -128,7 +120,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_RELEASE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -141,7 +139,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -154,7 +153,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

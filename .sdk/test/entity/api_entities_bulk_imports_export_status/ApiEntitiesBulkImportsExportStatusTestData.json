@@ -4,11 +4,11 @@
       "API_ENTITIES_BULK_IMPORTS_EXPORT_STATUS00": {
         "batched": true,
         "batches": {},
-        "batches_count": "s52",
+        "batches_count": 82,
         "error": "s53",
         "relation": "s54",
         "status": "s55",
-        "total_objects_count": "s56",
+        "total_objects_count": 86,
         "updated_at": "s57",
         "group_id": "GROUP01",
         "project_id": "PROJECT01"
@@ -16,11 +16,11 @@
       "API_ENTITIES_BULK_IMPORTS_EXPORT_STATUS01": {
         "batched": true,
         "batches": {},
-        "batches_count": "sa2",
+        "batches_count": 162,
         "error": "sa3",
         "relation": "sa4",
         "status": "sa5",
-        "total_objects_count": "sa6",
+        "total_objects_count": 166,
         "updated_at": "sa7",
         "group_id": "GROUP01",
         "project_id": "PROJECT01"
@@ -28,11 +28,11 @@
       "API_ENTITIES_BULK_IMPORTS_EXPORT_STATUS02": {
         "batched": true,
         "batches": {},
-        "batches_count": "sf2",
+        "batches_count": 242,
         "error": "sf3",
         "relation": "sf4",
         "status": "sf5",
-        "total_objects_count": "sf6",
+        "total_objects_count": 246,
         "updated_at": "sf7",
         "group_id": "GROUP01",
         "project_id": "PROJECT01"
@@ -44,12 +44,282 @@
       "api_entities_bulk_imports_export_status_ref01": {
         "batched": true,
         "batches": {},
-        "batches_count": "s142",
+        "batches_count": 322,
         "error": "s143",
         "relation": "s144",
         "status": "s145",
-        "total_objects_count": "s146",
+        "total_objects_count": 326,
         "updated_at": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v4/groups/{id}/export_relations/status": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4GroupsIdExportRelationsStatus",
+        "parameters": [
+          {
+            "description": "The ID of a group",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Group relation name",
+            "in": "query",
+            "name": "relation",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Relations export status",
+            "schema": {
+              "items": {
+                "description": "API_Entities_BulkImports_ExportStatus model",
+                "properties": {
+                  "batched": {
+                    "example": true,
+                    "type": "boolean"
+                  },
+                  "batches": {
+                    "properties": {
+                      "batch_number": {
+                        "example": 1,
+                        "format": "int32",
+                        "type": "integer"
+                      },
+                      "error": {
+                        "example": "Error message",
+                        "type": "string"
+                      },
+                      "objects_count": {
+                        "example": 100,
+                        "format": "int32",
+                        "type": "integer"
+                      },
+                      "status": {
+                        "enum": [
+                          "started",
+                          "finished",
+                          "failed"
+                        ],
+                        "example": "started",
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "example": "2012-05-28T04:42:42-07:00",
+                        "format": "date-time",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "batches_count": {
+                    "example": 2,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "error": {
+                    "example": "Error message",
+                    "type": "string"
+                  },
+                  "relation": {
+                    "example": "issues",
+                    "type": "string"
+                  },
+                  "status": {
+                    "enum": [
+                      "started",
+                      "finished",
+                      "failed"
+                    ],
+                    "example": "started",
+                    "type": "string"
+                  },
+                  "total_objects_count": {
+                    "example": 100,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "updated_at": {
+                    "example": "2012-05-28T04:42:42-07:00",
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "503": {
+            "description": "Service unavailable"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/projects/{id}/export_relations/status": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdExportRelationsStatus",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Project relation name",
+            "in": "query",
+            "name": "relation",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Relations export status",
+            "schema": {
+              "items": {
+                "description": "API_Entities_BulkImports_ExportStatus model",
+                "properties": {
+                  "batched": {
+                    "example": true,
+                    "type": "boolean"
+                  },
+                  "batches": {
+                    "properties": {
+                      "batch_number": {
+                        "example": 1,
+                        "format": "int32",
+                        "type": "integer"
+                      },
+                      "error": {
+                        "example": "Error message",
+                        "type": "string"
+                      },
+                      "objects_count": {
+                        "example": 100,
+                        "format": "int32",
+                        "type": "integer"
+                      },
+                      "status": {
+                        "enum": [
+                          "started",
+                          "finished",
+                          "failed"
+                        ],
+                        "example": "started",
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "example": "2012-05-28T04:42:42-07:00",
+                        "format": "date-time",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "batches_count": {
+                    "example": 2,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "error": {
+                    "example": "Error message",
+                    "type": "string"
+                  },
+                  "relation": {
+                    "example": "issues",
+                    "type": "string"
+                  },
+                  "status": {
+                    "enum": [
+                      "started",
+                      "finished",
+                      "failed"
+                    ],
+                    "example": "started",
+                    "type": "string"
+                  },
+                  "total_objects_count": {
+                    "example": 100,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "updated_at": {
+                    "example": "2012-05-28T04:42:42-07:00",
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "503": {
+            "description": "Service unavailable"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

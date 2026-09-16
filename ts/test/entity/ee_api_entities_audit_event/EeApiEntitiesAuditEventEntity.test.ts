@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('EeApiEntitiesAuditEventEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['list', 'load']) {
-      if (maybeSkipControl(t, 'entityOp', 'ee_api_entities_audit_event.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'ee_api_entities_audit_event.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_EE_API_ENTITIES_AUDIT_EVENT_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"author_id","req":false,"type":"`$STRING`","index$":0},{"active":true,"name":"created_at","req":false,"type":"`$STRING`","index$":1},{"active":true,"name":"details","req":false,"type":"`$STRING`","index$":2},{"active":true,"name":"entity_id","req":false,"type":"`$STRING`","index$":3},{"active":true,"name":"entity_type","req":false,"type":"`$STRING`","index$":4},{"active":true,"name":"event_name","req":false,"type":"`$STRING`","index$":5},{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":6}],"id":{"field":"id","name":"id"},"name":"ee_api_entities_audit_event","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"group_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}],"query":[{"active":true,"example":"2016-01-19T09:05:50.355Z","kind":"query","name":"created_after","orig":"created_after","reqd":false,"type":"`$ANY`","index$":0},{"active":true,"example":"2016-01-19T09:05:50.355Z","kind":"query","name":"created_before","orig":"created_before","reqd":false,"type":"`$ANY`","index$":1},{"active":true,"example":1,"kind":"query","name":"page","orig":"page","reqd":false,"type":"`$INTEGER`","index$":2},{"active":true,"example":20,"kind":"query","name":"per_page","orig":"per_page","reqd":false,"type":"`$INTEGER`","index$":3}]},"contract":{"id":"GET /api/v4/groups/{id}/audit_events","json":"{\"operationId\":\"getApiV4GroupsIdAuditEvents\",\"parameters\":[{\"description\":\"Return audit events created after the specified time\",\"example\":\"2016-01-19T09:05:50.355Z\",\"format\":\"date-time\",\"in\":\"query\",\"name\":\"created_after\",\"required\":false,\"type\":\"string\"},{\"description\":\"Return audit events created before the specified time\",\"example\":\"2016-01-19T09:05:50.355Z\",\"format\":\"date-time\",\"in\":\"query\",\"name\":\"created_before\",\"required\":false,\"type\":\"string\"},{\"default\":1,\"description\":\"Current page number\",\"example\":1,\"format\":\"int32\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"type\":\"integer\"},{\"default\":20,\"description\":\"Number of items per page\",\"example\":20,\"format\":\"int32\",\"in\":\"query\",\"name\":\"per_page\",\"required\":false,\"type\":\"integer\"},{\"format\":\"int32\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get a list of audit events in this group.\",\"schema\":{\"items\":{\"description\":\"EE_API_Entities_AuditEvent model\",\"properties\":{\"author_id\":{\"type\":\"string\"},\"created_at\":{\"type\":\"string\"},\"details\":{\"type\":\"string\"},\"entity_id\":{\"type\":\"string\"},\"entity_type\":{\"type\":\"string\"},\"event_name\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/groups/{id}/audit_events","rename":{"param":{"id":"group_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"groups"},{"var":"group_id"},{"lit":"audit_events"}],"select":{"exist":["created_after","created_before","group_id","page","per_page"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}],"query":[{"active":true,"example":"2016-01-19T09:05:50.355Z","kind":"query","name":"created_after","orig":"created_after","reqd":false,"type":"`$ANY`","index$":0},{"active":true,"example":"2016-01-19T09:05:50.355Z","kind":"query","name":"created_before","orig":"created_before","reqd":false,"type":"`$ANY`","index$":1},{"active":true,"example":1,"kind":"query","name":"page","orig":"page","reqd":false,"type":"`$INTEGER`","index$":2},{"active":true,"example":20,"kind":"query","name":"per_page","orig":"per_page","reqd":false,"type":"`$INTEGER`","index$":3}]},"contract":{"id":"GET /api/v4/projects/{id}/audit_events","json":"{\"operationId\":\"getApiV4ProjectsIdAuditEvents\",\"parameters\":[{\"description\":\"Return audit events created after the specified time\",\"example\":\"2016-01-19T09:05:50.355Z\",\"format\":\"date-time\",\"in\":\"query\",\"name\":\"created_after\",\"required\":false,\"type\":\"string\"},{\"description\":\"Return audit events created before the specified time\",\"example\":\"2016-01-19T09:05:50.355Z\",\"format\":\"date-time\",\"in\":\"query\",\"name\":\"created_before\",\"required\":false,\"type\":\"string\"},{\"default\":1,\"description\":\"Current page number\",\"example\":1,\"format\":\"int32\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"type\":\"integer\"},{\"default\":20,\"description\":\"Number of items per page\",\"example\":20,\"format\":\"int32\",\"in\":\"query\",\"name\":\"per_page\",\"required\":false,\"type\":\"integer\"},{\"format\":\"int32\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get a list of audit events in this project.\",\"schema\":{\"items\":{\"description\":\"EE_API_Entities_AuditEvent model\",\"properties\":{\"author_id\":{\"type\":\"string\"},\"created_at\":{\"type\":\"string\"},\"details\":{\"type\":\"string\"},\"entity_id\":{\"type\":\"string\"},\"entity_type\":{\"type\":\"string\"},\"event_name\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/projects/{id}/audit_events","rename":{"param":{"id":"project_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"audit_events"}],"select":{"exist":["created_after","created_before","page","per_page","project_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"group_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0},{"active":true,"kind":"param","name":"id","orig":"audit_event_id","reqd":true,"type":"`$STRING`","index$":1}]},"contract":{"id":"GET /api/v4/groups/{id}/audit_events/{audit_event_id}","json":"{\"operationId\":\"getApiV4GroupsIdAuditEventsAuditEventId\",\"parameters\":[{\"description\":\"The ID of the audit event\",\"format\":\"int32\",\"in\":\"path\",\"name\":\"audit_event_id\",\"required\":true,\"type\":\"integer\"},{\"format\":\"int32\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get a specific audit event in this group.\",\"schema\":{\"description\":\"EE_API_Entities_AuditEvent model\",\"properties\":{\"author_id\":{\"type\":\"string\"},\"created_at\":{\"type\":\"string\"},\"details\":{\"type\":\"string\"},\"entity_id\":{\"type\":\"string\"},\"entity_type\":{\"type\":\"string\"},\"event_name\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/groups/{id}/audit_events/{audit_event_id}","rename":{"param":{"audit_event_id":"id","id":"group_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"groups"},{"var":"group_id"},{"lit":"audit_events"},{"var":"id"}],"select":{"exist":["group_id","id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"audit_event_id","reqd":true,"type":"`$STRING`","index$":0},{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":1}]},"contract":{"id":"GET /api/v4/projects/{id}/audit_events/{audit_event_id}","json":"{\"operationId\":\"getApiV4ProjectsIdAuditEventsAuditEventId\",\"parameters\":[{\"description\":\"The ID of the audit event\",\"format\":\"int32\",\"in\":\"path\",\"name\":\"audit_event_id\",\"required\":true,\"type\":\"integer\"},{\"format\":\"int32\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get a specific audit event in this project.\",\"schema\":{\"description\":\"EE_API_Entities_AuditEvent model\",\"properties\":{\"author_id\":{\"type\":\"string\"},\"created_at\":{\"type\":\"string\"},\"details\":{\"type\":\"string\"},\"entity_id\":{\"type\":\"string\"},\"entity_type\":{\"type\":\"string\"},\"event_name\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/projects/{id}/audit_events/{audit_event_id}","rename":{"param":{"audit_event_id":"id","id":"project_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"audit_events"},{"var":"id"}],"select":{"exist":["id","project_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"load"}},"relations":{"ancestors":[["group"],["project"]]},"key$":"ee_api_entities_audit_event","name__orig":"ee_api_entities_audit_event","Name":"EeApiEntitiesAuditEvent","name_":"ee_api_entities_audit_event","name-":"ee-api-entities-audit-event","NAME":"EE_API_ENTITIES_AUDIT_EVENT","index$":195}, {"active":true,"entity":"ee_api_entities_audit_event","key$":"BasicEeApiEntitiesAuditEventFlow","kind":"basic","name":"BasicEeApiEntitiesAuditEventFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{"project_id":"project01"},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"ee_api_entities_audit_event_ref01"}}],"index$":0},{"active":true,"data":{},"input":{"ref":"ee_api_entities_audit_event_ref01","srcdatavar":"ee_api_entities_audit_event_ref01_data","suffix":"_dt0"},"match":{"id":"ee_api_entities_audit_event01","project_id":"project01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-ee_api_entities_audit_event_ref01"}}],"index$":1}]}, 'EeApiEntitiesAuditEvent')
     }
     const client = setup.client
     const struct = setup.struct
@@ -117,13 +116,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_EE_API_ENTITIES_AUDIT_EVENT_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_EE_API_ENTITIES_AUDIT_EVENT_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -135,7 +127,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_EE_API_ENTITIES_AUDIT_EVENT_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -148,7 +146,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -161,7 +160,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

@@ -2,7 +2,7 @@
   "existing": {
     "api_entities_resource_access_token_with_token": {
       "API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN00": {
-        "access_level": "s8c",
+        "access_level": 140,
         "active": false,
         "created_at": "s8e",
         "description": "s8f",
@@ -20,7 +20,7 @@
         "project_id": "PROJECT01"
       },
       "API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN01": {
-        "access_level": "s118",
+        "access_level": 280,
         "active": false,
         "created_at": "s11a",
         "description": "s11b",
@@ -38,7 +38,7 @@
         "project_id": "PROJECT01"
       },
       "API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN02": {
-        "access_level": "s1a4",
+        "access_level": 420,
         "active": false,
         "created_at": "s1a6",
         "description": "s1a7",
@@ -60,7 +60,7 @@
   "new": {
     "api_entities_resource_access_token_with_token": {
       "api_entities_resource_access_token_with_token_ref01": {
-        "access_level": "s230",
+        "access_level": 560,
         "active": false,
         "created_at": "s232",
         "description": "s233",
@@ -73,6 +73,302 @@
         "scopes": [],
         "token": "s23c",
         "user_id": "USER01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v4/groups/{id}/access_tokens/self/rotate": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4GroupsIdAccessTokensSelfRotate",
+        "parameters": [
+          {
+            "description": "The group ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "postApiV4GroupsIdAccessTokensSelfRotate",
+            "required": true,
+            "schema": {
+              "description": "Rotate a resource access token",
+              "properties": {
+                "expires_at": {
+                  "description": "The expiration date of the token",
+                  "example": "2021-01-31",
+                  "format": "date",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Rotate a resource access token",
+            "schema": {
+              "description": "API_Entities_ResourceAccessTokenWithToken model",
+              "properties": {
+                "access_level": {
+                  "enum": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    50
+                  ],
+                  "example": 40,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "boolean"
+                },
+                "created_at": {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "description": {
+                  "example": "Token to manage api",
+                  "type": "string"
+                },
+                "expires_at": {
+                  "example": "2020-08-31T15:53:00.073Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "id": {
+                  "example": 2,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "last_used_at": {
+                  "example": "2020-08-31T15:53:00.073Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "name": {
+                  "example": "John Doe",
+                  "type": "string"
+                },
+                "resource_id": {
+                  "example": 1234,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "resource_type": {
+                  "enum": [
+                    "project",
+                    "group"
+                  ],
+                  "example": "project",
+                  "type": "string"
+                },
+                "revoked": {
+                  "type": "boolean"
+                },
+                "scopes": {
+                  "example": [
+                    "api"
+                  ],
+                  "type": "array"
+                },
+                "token": {
+                  "type": "string"
+                },
+                "user_id": {
+                  "example": 3,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "POST /api/v4/projects/{id}/access_tokens/self/rotate": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdAccessTokensSelfRotate",
+        "parameters": [
+          {
+            "description": "The project ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "postApiV4ProjectsIdAccessTokensSelfRotate",
+            "required": true,
+            "schema": {
+              "description": "Rotate a resource access token",
+              "properties": {
+                "expires_at": {
+                  "description": "The expiration date of the token",
+                  "example": "2021-01-31",
+                  "format": "date",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Rotate a resource access token",
+            "schema": {
+              "description": "API_Entities_ResourceAccessTokenWithToken model",
+              "properties": {
+                "access_level": {
+                  "enum": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    50
+                  ],
+                  "example": 40,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "boolean"
+                },
+                "created_at": {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "description": {
+                  "example": "Token to manage api",
+                  "type": "string"
+                },
+                "expires_at": {
+                  "example": "2020-08-31T15:53:00.073Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "id": {
+                  "example": 2,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "last_used_at": {
+                  "example": "2020-08-31T15:53:00.073Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "name": {
+                  "example": "John Doe",
+                  "type": "string"
+                },
+                "resource_id": {
+                  "example": 1234,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "resource_type": {
+                  "enum": [
+                    "project",
+                    "group"
+                  ],
+                  "example": "project",
+                  "type": "string"
+                },
+                "revoked": {
+                  "type": "boolean"
+                },
+                "scopes": {
+                  "example": [
+                    "api"
+                  ],
+                  "type": "array"
+                },
+                "token": {
+                  "type": "string"
+                },
+                "user_id": {
+                  "example": 3,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

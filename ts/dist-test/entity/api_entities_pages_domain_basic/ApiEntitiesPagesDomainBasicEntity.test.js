@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.GITLAB_TEST_LIVE;
         for (const op of ['load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'api_entities_pages_domain_basic.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'api_entities_pages_domain_basic.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_API_ENTITIES_PAGES_DOMAIN_BASIC_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "expiration", "req": false, "type": "`$STRING`", "index$": 0 }, { "active": true, "name": "expired", "req": false, "type": "`$STRING`", "index$": 1 }], "name": "api_entities_pages_domain_basic", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "query": [{ "active": true, "example": 1, "kind": "query", "name": "page", "orig": "page", "reqd": false, "type": "`$INTEGER`", "index$": 0 }, { "active": true, "example": 20, "kind": "query", "name": "per_page", "orig": "per_page", "reqd": false, "type": "`$INTEGER`", "index$": 1 }] }, "contract": { "id": "GET /api/v4/pages/domains", "json": "{\"operationId\":\"getApiV4PagesDomains\",\"parameters\":[{\"default\":1,\"description\":\"Current page number\",\"example\":1,\"format\":\"int32\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"type\":\"integer\"},{\"default\":20,\"description\":\"Number of items per page\",\"example\":20,\"format\":\"int32\",\"in\":\"query\",\"name\":\"per_page\",\"required\":false,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get all pages domains\",\"schema\":{\"description\":\"API_Entities_PagesDomainBasic model\",\"properties\":{\"auto_ssl_enabled\":{\"type\":\"string\"},\"certificate_expiration\":{\"properties\":{\"expiration\":{\"type\":\"string\"},\"expired\":{\"type\":\"string\"}},\"type\":\"object\"},\"domain\":{\"type\":\"string\"},\"enabled_until\":{\"type\":\"string\"},\"project_id\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"},\"verification_code\":{\"type\":\"string\"},\"verified\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/v4/pages/domains", "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "pages" }, { "lit": "domains" }], "select": { "exist": ["page", "per_page"] }, "transform": { "req": "`reqdata`", "res": "`body.certificate_expiration`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "api_entities_pages_domain_basic", "name__orig": "api_entities_pages_domain_basic", "Name": "ApiEntitiesPagesDomainBasic", "name_": "api_entities_pages_domain_basic", "name-": "api-entities-pages-domain-basic", "NAME": "API_ENTITIES_PAGES_DOMAIN_BASIC", "index$": 124 }, { "active": true, "entity": "api_entities_pages_domain_basic", "key$": "BasicApiEntitiesPagesDomainBasicFlow", "kind": "basic", "name": "BasicApiEntitiesPagesDomainBasicFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "api_entities_pages_domain_basic_ref01", "srcdatavar": "api_entities_pages_domain_basic_ref01_data", "suffix": "_dt0" }, "match": {}, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-api_entities_pages_domain_basic_ref01" } }], "index$": 0 }] }, 'ApiEntitiesPagesDomainBasic');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -102,12 +100,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['GITLAB_TEST_API_ENTITIES_PAGES_DOMAIN_BASIC_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'GITLAB_TEST_API_ENTITIES_PAGES_DOMAIN_BASIC_ENTID': idmap,
         'GITLAB_TEST_LIVE': 'FALSE',
@@ -116,7 +108,13 @@ function basicSetup(extra) {
     });
     idmap = env['GITLAB_TEST_API_ENTITIES_PAGES_DOMAIN_BASIC_ENTID'];
     const live = 'TRUE' === env.GITLAB_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['GITLAB_TEST_API_ENTITIES_PAGES_DOMAIN_BASIC_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.GitlabSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -129,7 +127,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -141,7 +140,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

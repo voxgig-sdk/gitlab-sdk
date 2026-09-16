@@ -36,5 +36,287 @@
         "updated_at": "scc"
       }
     }
+  },
+  "requests": {
+    "GET /api/v4/projects/{id}/resource_groups": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdResourceGroups",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": 1,
+            "description": "Current page number",
+            "example": 1,
+            "format": "int32",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 20,
+            "description": "Number of items per page",
+            "example": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get all resource groups for a project",
+            "schema": {
+              "items": {
+                "description": "API_Entities_Ci_ResourceGroup model",
+                "properties": {
+                  "created_at": {
+                    "example": "2021-09-01T08:04:59.650Z",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "id": {
+                    "example": 1,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "key": {
+                    "example": "production",
+                    "type": "string"
+                  },
+                  "process_mode": {
+                    "example": "unordered",
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "example": "2021-09-01T08:04:59.650Z",
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/projects/{id}/resource_groups/{key}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdResourceGroupsKey",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The key of the resource group",
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get a specific resource group",
+            "schema": {
+              "description": "API_Entities_Ci_ResourceGroup model",
+              "properties": {
+                "created_at": {
+                  "example": "2021-09-01T08:04:59.650Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "id": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "key": {
+                  "example": "production",
+                  "type": "string"
+                },
+                "process_mode": {
+                  "example": "unordered",
+                  "type": "string"
+                },
+                "updated_at": {
+                  "example": "2021-09-01T08:04:59.650Z",
+                  "format": "date-time",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PUT /api/v4/projects/{id}/resource_groups/{key}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "putApiV4ProjectsIdResourceGroupsKey",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The key of the resource group",
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "putApiV4ProjectsIdResourceGroupsKey",
+            "required": true,
+            "schema": {
+              "description": "Edit an existing resource group",
+              "properties": {
+                "process_mode": {
+                  "description": "The process mode of the resource group",
+                  "enum": [
+                    "unordered",
+                    "oldest_first",
+                    "newest_first",
+                    "newest_ready_first"
+                  ],
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Edit an existing resource group",
+            "schema": {
+              "description": "API_Entities_Ci_ResourceGroup model",
+              "properties": {
+                "created_at": {
+                  "example": "2021-09-01T08:04:59.650Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "id": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "key": {
+                  "example": "production",
+                  "type": "string"
+                },
+                "process_mode": {
+                  "example": "unordered",
+                  "type": "string"
+                },
+                "updated_at": {
+                  "example": "2021-09-01T08:04:59.650Z",
+                  "format": "date-time",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

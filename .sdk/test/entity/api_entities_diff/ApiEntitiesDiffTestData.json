@@ -70,5 +70,252 @@
         "too_large": true
       }
     }
+  },
+  "requests": {
+    "GET /api/v4/projects/{id}/repository/commits/{sha}/diff": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdRepositoryCommitsShaDiff",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "A commit sha, or the name of a branch or tag",
+            "in": "path",
+            "name": "sha",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": 1,
+            "description": "Current page number",
+            "example": 1,
+            "format": "int32",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 20,
+            "description": "Number of items per page",
+            "example": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": false,
+            "description": "A diff in a Unified diff format",
+            "in": "query",
+            "name": "unidiff",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get the diff for a specific commit of a project",
+            "schema": {
+              "items": {
+                "description": "API_Entities_Diff model",
+                "properties": {
+                  "a_mode": {
+                    "example": "100755",
+                    "type": "string"
+                  },
+                  "b_mode": {
+                    "example": "100644",
+                    "type": "string"
+                  },
+                  "collapsed": {
+                    "type": "boolean"
+                  },
+                  "deleted_file": {
+                    "type": "boolean"
+                  },
+                  "diff": {
+                    "example": "@@ -71,6 +71,8 @@\\n...",
+                    "type": "string"
+                  },
+                  "generated_file": {
+                    "type": "boolean"
+                  },
+                  "new_file": {
+                    "type": "boolean"
+                  },
+                  "new_path": {
+                    "example": "doc/update/5.4-to-6.0.md",
+                    "type": "string"
+                  },
+                  "old_path": {
+                    "example": "doc/update/5.4-to-6.0.md",
+                    "type": "string"
+                  },
+                  "renamed_file": {
+                    "type": "boolean"
+                  },
+                  "too_large": {
+                    "type": "boolean"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/projects/{id}/merge_requests/{merge_request_iid}/diffs": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdMergeRequestsMergeRequestIidDiffs",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the merge request.",
+            "format": "int32",
+            "in": "path",
+            "name": "merge_request_iid",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "default": 1,
+            "description": "Current page number",
+            "example": 1,
+            "format": "int32",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 20,
+            "description": "Number of items per page",
+            "example": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": false,
+            "description": "A diff in a Unified diff format",
+            "in": "query",
+            "name": "unidiff",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get the merge request diffs",
+            "schema": {
+              "description": "API_Entities_Diff model",
+              "properties": {
+                "a_mode": {
+                  "example": "100755",
+                  "type": "string"
+                },
+                "b_mode": {
+                  "example": "100644",
+                  "type": "string"
+                },
+                "collapsed": {
+                  "type": "boolean"
+                },
+                "deleted_file": {
+                  "type": "boolean"
+                },
+                "diff": {
+                  "example": "@@ -71,6 +71,8 @@\\n...",
+                  "type": "string"
+                },
+                "generated_file": {
+                  "type": "boolean"
+                },
+                "new_file": {
+                  "type": "boolean"
+                },
+                "new_path": {
+                  "example": "doc/update/5.4-to-6.0.md",
+                  "type": "string"
+                },
+                "old_path": {
+                  "example": "doc/update/5.4-to-6.0.md",
+                  "type": "string"
+                },
+                "renamed_file": {
+                  "type": "boolean"
+                },
+                "too_large": {
+                  "type": "boolean"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

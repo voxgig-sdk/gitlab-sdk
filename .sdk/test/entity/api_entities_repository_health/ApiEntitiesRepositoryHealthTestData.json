@@ -11,7 +11,7 @@
         "multi_pack_index_bitmap": {},
         "objects": {},
         "references": {},
-        "size": "s77",
+        "size": 119,
         "updated_at": "s78",
         "project_id": "PROJECT01",
         "id": "API_ENTITIES_REPOSITORY_HEALTH00"
@@ -26,7 +26,7 @@
         "multi_pack_index_bitmap": {},
         "objects": {},
         "references": {},
-        "size": "se5",
+        "size": 229,
         "updated_at": "se6",
         "project_id": "PROJECT01",
         "id": "API_ENTITIES_REPOSITORY_HEALTH01"
@@ -41,7 +41,7 @@
         "multi_pack_index_bitmap": {},
         "objects": {},
         "references": {},
-        "size": "s153",
+        "size": 339,
         "updated_at": "s154",
         "project_id": "PROJECT01",
         "id": "API_ENTITIES_REPOSITORY_HEALTH02"
@@ -60,8 +60,216 @@
         "multi_pack_index_bitmap": {},
         "objects": {},
         "references": {},
-        "size": "s1c1",
+        "size": 449,
         "updated_at": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v4/projects/{id}/repository/health": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdRepositoryHealth",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "example": 1,
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": false,
+            "description": "Triggers a new health report to be generated",
+            "in": "query",
+            "name": "generate",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get repository health",
+            "schema": {
+              "description": "API_Entities_RepositoryHealth model",
+              "properties": {
+                "alternates": {
+                  "type": "object"
+                },
+                "bitmap": {
+                  "properties": {
+                    "has_hash_cache": {
+                      "type": "boolean"
+                    },
+                    "has_lookup_table": {
+                      "type": "boolean"
+                    },
+                    "version": {
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "commit_graph": {
+                  "properties": {
+                    "commit_graph_chain_length": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "has_bloom_filters": {
+                      "type": "boolean"
+                    },
+                    "has_generation_data": {
+                      "type": "boolean"
+                    },
+                    "has_generation_data_overflow": {
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                },
+                "is_object_pool": {
+                  "type": "boolean"
+                },
+                "last_full_repack": {
+                  "properties": {
+                    "nanos": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "seconds": {
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "multi_pack_index": {
+                  "properties": {
+                    "packfile_count": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "version": {
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "multi_pack_index_bitmap": {
+                  "properties": {
+                    "has_hash_cache": {
+                      "type": "boolean"
+                    },
+                    "has_lookup_table": {
+                      "type": "boolean"
+                    },
+                    "version": {
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "objects": {
+                  "properties": {
+                    "cruft_count": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "keep_count": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "keep_size": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "loose_objects_count": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "loose_objects_garbage_count": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "packfile_count": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "recent_size": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "reverse_index_count": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "size": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "stale_loose_objects_count": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "stale_size": {
+                      "format": "int32",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                },
+                "references": {
+                  "properties": {
+                    "loose_count": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "packed_size": {
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "reference_backend": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "size": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "updated_at": {
+                  "example": "2025-02-24T09:05:50.355Z",
+                  "format": "date-time",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

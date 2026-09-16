@@ -5,7 +5,7 @@
         "created_at": "s5a",
         "edit_path": "s5b",
         "id": "API_ENTITIES_FEATURE_FLAG_USER_LIST00",
-        "iid": "s5d",
+        "iid": 93,
         "name": "s5e",
         "path": "s5f",
         "project_id": "PROJECT01",
@@ -16,7 +16,7 @@
         "created_at": "sb4",
         "edit_path": "sb5",
         "id": "API_ENTITIES_FEATURE_FLAG_USER_LIST01",
-        "iid": "sb7",
+        "iid": 183,
         "name": "sb8",
         "path": "sb9",
         "project_id": "PROJECT01",
@@ -27,7 +27,7 @@
         "created_at": "s10e",
         "edit_path": "s10f",
         "id": "API_ENTITIES_FEATURE_FLAG_USER_LIST02",
-        "iid": "s111",
+        "iid": 273,
         "name": "s112",
         "path": "s113",
         "project_id": "PROJECT01",
@@ -41,12 +41,464 @@
       "api_entities_feature_flag_user_list_ref01": {
         "created_at": "s168",
         "edit_path": "s169",
-        "iid": "s16b",
+        "iid": 363,
         "name": "s16c",
         "path": "s16d",
         "project_id": "PROJECT01",
         "updated_at": "s16f",
         "user_xids": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v4/projects/{id}/feature_flags_user_lists": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdFeatureFlagsUserLists",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "postApiV4ProjectsIdFeatureFlagsUserLists",
+            "required": true,
+            "schema": {
+              "description": "Create a feature flag user list",
+              "properties": {
+                "name": {
+                  "description": "The name of the list",
+                  "type": "string"
+                },
+                "user_xids": {
+                  "description": "A comma separated list of external user ids",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "user_xids"
+              ],
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Create a feature flag user list",
+            "schema": {
+              "description": "API_Entities_FeatureFlag_UserList model",
+              "properties": {
+                "created_at": {
+                  "example": "2020-02-04T08:13:10.507Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "edit_path": {
+                  "type": "string"
+                },
+                "id": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "iid": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "name": {
+                  "example": "user_list",
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "project_id": {
+                  "example": 2,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "updated_at": {
+                  "example": "2020-02-04T08:13:10.507Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "user_xids": {
+                  "example": "user1,user2",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/projects/{id}/feature_flags_user_lists": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdFeatureFlagsUserLists",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Return user lists matching the search criteria",
+            "in": "query",
+            "name": "search",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": 1,
+            "description": "Current page number",
+            "example": 1,
+            "format": "int32",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 20,
+            "description": "Number of items per page",
+            "example": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "List all feature flag user lists for a project",
+            "schema": {
+              "items": {
+                "description": "API_Entities_FeatureFlag_UserList model",
+                "properties": {
+                  "created_at": {
+                    "example": "2020-02-04T08:13:10.507Z",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "edit_path": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "example": 1,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "iid": {
+                    "example": 1,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "name": {
+                    "example": "user_list",
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "project_id": {
+                    "example": 2,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "updated_at": {
+                    "example": "2020-02-04T08:13:10.507Z",
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "user_xids": {
+                    "example": "user1,user2",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/projects/{id}/feature_flags_user_lists/{iid}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdFeatureFlagsUserListsIid",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the project's feature flag user list",
+            "in": "path",
+            "name": "iid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get a feature flag user list",
+            "schema": {
+              "description": "API_Entities_FeatureFlag_UserList model",
+              "properties": {
+                "created_at": {
+                  "example": "2020-02-04T08:13:10.507Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "edit_path": {
+                  "type": "string"
+                },
+                "id": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "iid": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "name": {
+                  "example": "user_list",
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "project_id": {
+                  "example": 2,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "updated_at": {
+                  "example": "2020-02-04T08:13:10.507Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "user_xids": {
+                  "example": "user1,user2",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PUT /api/v4/projects/{id}/feature_flags_user_lists/{iid}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "putApiV4ProjectsIdFeatureFlagsUserListsIid",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the project's feature flag user list",
+            "in": "path",
+            "name": "iid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "putApiV4ProjectsIdFeatureFlagsUserListsIid",
+            "required": true,
+            "schema": {
+              "description": "Update a feature flag user list",
+              "properties": {
+                "name": {
+                  "description": "The name of the list",
+                  "type": "string"
+                },
+                "user_xids": {
+                  "description": "A comma separated list of external user ids",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Update a feature flag user list",
+            "schema": {
+              "description": "API_Entities_FeatureFlag_UserList model",
+              "properties": {
+                "created_at": {
+                  "example": "2020-02-04T08:13:10.507Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "edit_path": {
+                  "type": "string"
+                },
+                "id": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "iid": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "name": {
+                  "example": "user_list",
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "project_id": {
+                  "example": 2,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "updated_at": {
+                  "example": "2020-02-04T08:13:10.507Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "user_xids": {
+                  "example": "user1,user2",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

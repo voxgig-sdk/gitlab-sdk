@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('ApiEntitiesPublicGroupDetailEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'api_entities_public_group_detail.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'api_entities_public_group_detail.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_API_ENTITIES_PUBLIC_GROUP_DETAIL_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"avatar_url","req":false,"type":"`$STRING`","index$":0},{"active":true,"name":"full_name","req":false,"type":"`$STRING`","index$":1},{"active":true,"name":"full_path","req":false,"type":"`$STRING`","index$":2},{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":3},{"active":true,"name":"name","req":false,"type":"`$STRING`","index$":4},{"active":true,"name":"web_url","req":false,"type":"`$STRING`","index$":5}],"id":{"field":"id","name":"id"},"name":"api_entities_public_group_detail","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}],"query":[{"active":true,"example":1,"kind":"query","name":"page","orig":"page","reqd":false,"type":"`$INTEGER`","index$":0},{"active":true,"example":20,"kind":"query","name":"per_page","orig":"per_page","reqd":false,"type":"`$INTEGER`","index$":1},{"active":true,"example":"group","kind":"query","name":"search","orig":"search","reqd":false,"type":"`$ANY`","index$":2},{"active":true,"kind":"query","name":"shared_min_access_level","orig":"shared_min_access_level","reqd":false,"type":"`$ANY`","index$":3},{"active":true,"kind":"query","name":"shared_visible_only","orig":"shared_visible_only","reqd":false,"type":"`$ANY`","index$":4},{"active":true,"kind":"query","name":"skip_group","orig":"skip_group","reqd":false,"type":"`$ANY`","index$":5},{"active":true,"kind":"query","name":"with_shared","orig":"with_shared","reqd":false,"type":"`$ANY`","index$":6}]},"contract":{"id":"GET /api/v4/projects/{id}/groups","json":"{\"operationId\":\"getApiV4ProjectsIdGroups\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"Return list of groups matching the search criteria\",\"example\":\"group\",\"in\":\"query\",\"name\":\"search\",\"required\":false,\"type\":\"string\"},{\"description\":\"Array of group ids to exclude from list\",\"in\":\"query\",\"items\":{\"format\":\"int32\",\"type\":\"integer\"},\"name\":\"skip_groups\",\"required\":false,\"type\":\"array\"},{\"default\":false,\"description\":\"Include shared groups\",\"in\":\"query\",\"name\":\"with_shared\",\"required\":false,\"type\":\"boolean\"},{\"default\":false,\"description\":\"Limit to shared groups user has access to\",\"in\":\"query\",\"name\":\"shared_visible_only\",\"required\":false,\"type\":\"boolean\"},{\"description\":\"Limit returned shared groups by minimum access level to the project\",\"enum\":[10,15,20,30,40,50],\"format\":\"int32\",\"in\":\"query\",\"name\":\"shared_min_access_level\",\"required\":false,\"type\":\"integer\"},{\"default\":1,\"description\":\"Current page number\",\"example\":1,\"format\":\"int32\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"type\":\"integer\"},{\"default\":20,\"description\":\"Number of items per page\",\"example\":20,\"format\":\"int32\",\"in\":\"query\",\"name\":\"per_page\",\"required\":false,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get ancestor and shared groups for a project\",\"schema\":{\"items\":{\"description\":\"API_Entities_PublicGroupDetails model\",\"properties\":{\"avatar_url\":{\"type\":\"string\"},\"full_name\":{\"type\":\"string\"},\"full_path\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"web_url\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"403\":{\"description\":\"Unauthenticated\"},\"404\":{\"description\":\"Not found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/projects/{id}/groups","rename":{"param":{"id":"project_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"groups"}],"select":{"exist":["page","per_page","project_id","search","shared_min_access_level","shared_visible_only","skip_group","with_shared"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}],"query":[{"active":true,"example":1,"kind":"query","name":"page","orig":"page","reqd":false,"type":"`$INTEGER`","index$":0},{"active":true,"example":20,"kind":"query","name":"per_page","orig":"per_page","reqd":false,"type":"`$INTEGER`","index$":1},{"active":true,"example":"search","kind":"query","name":"search","orig":"search","reqd":false,"type":"`$ANY`","index$":2}]},"contract":{"id":"GET /api/v4/projects/{id}/transfer_locations","json":"{\"operationId\":\"getApiV4ProjectsIdTransferLocations\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"Return list of namespaces matching the search criteria\",\"example\":\"search\",\"in\":\"query\",\"name\":\"search\",\"required\":false,\"type\":\"string\"},{\"default\":1,\"description\":\"Current page number\",\"example\":1,\"format\":\"int32\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"type\":\"integer\"},{\"default\":20,\"description\":\"Number of items per page\",\"example\":20,\"format\":\"int32\",\"in\":\"query\",\"name\":\"per_page\",\"required\":false,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get the namespaces to where the project can be transferred\",\"schema\":{\"items\":{\"description\":\"API_Entities_PublicGroupDetails model\",\"properties\":{\"avatar_url\":{\"type\":\"string\"},\"full_name\":{\"type\":\"string\"},\"full_path\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"web_url\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"403\":{\"description\":\"Unauthenticated\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/projects/{id}/transfer_locations","rename":{"param":{"id":"project_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"transfer_locations"}],"select":{"exist":["page","per_page","project_id","search"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"list"}},"relations":{"ancestors":[["project"]]},"key$":"api_entities_public_group_detail","name__orig":"api_entities_public_group_detail","Name":"ApiEntitiesPublicGroupDetail","name_":"api_entities_public_group_detail","name-":"api-entities-public-group-detail","NAME":"API_ENTITIES_PUBLIC_GROUP_DETAIL","index$":146}, {"active":true,"entity":"api_entities_public_group_detail","key$":"BasicApiEntitiesPublicGroupDetailFlow","kind":"basic","name":"BasicApiEntitiesPublicGroupDetailFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{"project_id":"project01"},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"api_entities_public_group_detail_ref01"}}],"index$":0}]}, 'ApiEntitiesPublicGroupDetail')
     }
     const client = setup.client
     const struct = setup.struct
@@ -110,13 +109,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_API_ENTITIES_PUBLIC_GROUP_DETAIL_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_API_ENTITIES_PUBLIC_GROUP_DETAIL_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -128,7 +120,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_API_ENTITIES_PUBLIC_GROUP_DETAIL_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -141,7 +139,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -154,7 +153,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

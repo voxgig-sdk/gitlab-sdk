@@ -2,41 +2,41 @@
   "existing": {
     "test_report": {
       "TEST_REPORT00": {
-        "error_count": "s5a",
-        "failed_count": "s5b",
+        "error_count": 90,
+        "failed_count": 91,
         "name": "s5c",
-        "skipped_count": "s5d",
-        "success_count": "s5e",
+        "skipped_count": 93,
+        "success_count": 94,
         "suite_error": "s5f",
         "test_cases": [],
-        "total_count": "s61",
-        "total_time": "s62",
+        "total_count": 97,
+        "total_time": 98,
         "pipeline_id": "PIPELINE01",
         "project_id": "PROJECT01"
       },
       "TEST_REPORT01": {
-        "error_count": "sb4",
-        "failed_count": "sb5",
+        "error_count": 180,
+        "failed_count": 181,
         "name": "sb6",
-        "skipped_count": "sb7",
-        "success_count": "sb8",
+        "skipped_count": 183,
+        "success_count": 184,
         "suite_error": "sb9",
         "test_cases": [],
-        "total_count": "sbb",
-        "total_time": "sbc",
+        "total_count": 187,
+        "total_time": 188,
         "pipeline_id": "PIPELINE01",
         "project_id": "PROJECT01"
       },
       "TEST_REPORT02": {
-        "error_count": "s10e",
-        "failed_count": "s10f",
+        "error_count": 270,
+        "failed_count": 271,
         "name": "s110",
-        "skipped_count": "s111",
-        "success_count": "s112",
+        "skipped_count": 273,
+        "success_count": 274,
         "suite_error": "s113",
         "test_cases": [],
-        "total_count": "s115",
-        "total_time": "s116",
+        "total_count": 277,
+        "total_time": 278,
         "pipeline_id": "PIPELINE01",
         "project_id": "PROJECT01"
       }
@@ -45,15 +45,203 @@
   "new": {
     "test_report": {
       "test_report_ref01": {
-        "error_count": "s168",
-        "failed_count": "s169",
+        "error_count": 360,
+        "failed_count": 361,
         "name": "s16a",
-        "skipped_count": "s16b",
-        "success_count": "s16c",
+        "skipped_count": 363,
+        "success_count": 364,
         "suite_error": "s16d",
         "test_cases": [],
-        "total_count": "s16f",
-        "total_time": "s170"
+        "total_count": 367,
+        "total_time": 368
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v4/projects/{id}/pipelines/{pipeline_id}/test_report": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdPipelinesPipelineIdTestReport",
+        "parameters": [
+          {
+            "description": "The project ID or URL-encoded path",
+            "example": 11,
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The pipeline ID",
+            "example": 18,
+            "format": "int32",
+            "in": "path",
+            "name": "pipeline_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Gets the test report for a given pipeline",
+            "schema": {
+              "description": "TestReportEntity model",
+              "properties": {
+                "error_count": {
+                  "example": 0,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "failed_count": {
+                  "example": 0,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "skipped_count": {
+                  "example": 0,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "success_count": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "test_suites": {
+                  "items": {
+                    "properties": {
+                      "error_count": {
+                        "example": 0,
+                        "format": "int32",
+                        "type": "integer"
+                      },
+                      "failed_count": {
+                        "example": 0,
+                        "format": "int32",
+                        "type": "integer"
+                      },
+                      "name": {
+                        "example": "test",
+                        "type": "string"
+                      },
+                      "skipped_count": {
+                        "example": 12,
+                        "format": "int32",
+                        "type": "integer"
+                      },
+                      "success_count": {
+                        "example": 3351,
+                        "format": "int32",
+                        "type": "integer"
+                      },
+                      "suite_error": {
+                        "example": "JUnit XML parsing failed: 1:1: FATAL: Document is empty",
+                        "type": "string"
+                      },
+                      "test_cases": {
+                        "items": {
+                          "properties": {
+                            "attachment_url": {
+                              "example": "http://localhost/namespace1/project1/-/jobs/1/artifacts/file/some/path.png",
+                              "type": "string"
+                            },
+                            "classname": {
+                              "example": "vulnerability_management_spec",
+                              "type": "string"
+                            },
+                            "execution_time": {
+                              "example": 180,
+                              "format": "int32",
+                              "type": "integer"
+                            },
+                            "file": {
+                              "example": "./spec/test_spec.rb",
+                              "type": "string"
+                            },
+                            "name": {
+                              "example": "Security Reports can create an auto-remediation MR",
+                              "type": "string"
+                            },
+                            "recent_failures": {
+                              "example": {
+                                "base_branch": "develop",
+                                "count": 3
+                              },
+                              "type": "string"
+                            },
+                            "stack_trace": {
+                              "example": "Failure/Error: is_expected.to eq(3)",
+                              "type": "string"
+                            },
+                            "status": {
+                              "example": "success",
+                              "type": "string"
+                            },
+                            "system_output": {
+                              "example": "Failure/Error: is_expected.to eq(3)",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "total_count": {
+                        "example": 3363,
+                        "format": "int32",
+                        "type": "integer"
+                      },
+                      "total_time": {
+                        "example": 1904,
+                        "format": "int32",
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "total_count": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "total_time": {
+                  "example": 180,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

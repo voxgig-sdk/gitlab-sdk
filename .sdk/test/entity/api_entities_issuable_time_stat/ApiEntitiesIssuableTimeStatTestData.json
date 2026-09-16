@@ -4,8 +4,8 @@
       "API_ENTITIES_ISSUABLE_TIME_STAT00": {
         "human_time_estimate": "s28",
         "human_total_time_spent": "s29",
-        "time_estimate": "s2a",
-        "total_time_spent": "s2b",
+        "time_estimate": 42,
+        "total_time_spent": 43,
         "issue_id": "ISSUE01",
         "project_id": "PROJECT01",
         "merge_request_id": "MERGE_REQUEST01",
@@ -14,8 +14,8 @@
       "API_ENTITIES_ISSUABLE_TIME_STAT01": {
         "human_time_estimate": "s50",
         "human_total_time_spent": "s51",
-        "time_estimate": "s52",
-        "total_time_spent": "s53",
+        "time_estimate": 82,
+        "total_time_spent": 83,
         "issue_id": "ISSUE01",
         "project_id": "PROJECT01",
         "merge_request_id": "MERGE_REQUEST01",
@@ -24,8 +24,8 @@
       "API_ENTITIES_ISSUABLE_TIME_STAT02": {
         "human_time_estimate": "s78",
         "human_total_time_spent": "s79",
-        "time_estimate": "s7a",
-        "total_time_spent": "s7b",
+        "time_estimate": 122,
+        "total_time_spent": 123,
         "issue_id": "ISSUE01",
         "project_id": "PROJECT01",
         "merge_request_id": "MERGE_REQUEST01",
@@ -38,8 +38,864 @@
       "api_entities_issuable_time_stat_ref01": {
         "human_time_estimate": "sa0",
         "human_total_time_spent": "sa1",
-        "time_estimate": "sa2",
-        "total_time_spent": "sa3"
+        "time_estimate": 162,
+        "total_time_spent": 163
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v4/projects/{id}/issues/{issue_iid}/add_spent_time": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdIssuesIssueIidAddSpentTime",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the issue.",
+            "format": "int32",
+            "in": "path",
+            "name": "issue_iid",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "postApiV4ProjectsIdIssuesIssueIidAddSpentTime",
+            "required": true,
+            "schema": {
+              "description": "Add spent time for a issue",
+              "properties": {
+                "duration": {
+                  "description": "The duration in human format.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "duration"
+              ],
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Add spent time for a issue",
+            "schema": {
+              "description": "API_Entities_IssuableTimeStats model",
+              "properties": {
+                "human_time_estimate": {
+                  "example": "3h 30m",
+                  "type": "string"
+                },
+                "human_total_time_spent": {
+                  "example": "1h",
+                  "type": "string"
+                },
+                "time_estimate": {
+                  "example": 12600,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "total_time_spent": {
+                  "example": 3600,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "POST /api/v4/projects/{id}/issues/{issue_iid}/time_estimate": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdIssuesIssueIidTimeEstimate",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the issue.",
+            "format": "int32",
+            "in": "path",
+            "name": "issue_iid",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "postApiV4ProjectsIdIssuesIssueIidTimeEstimate",
+            "required": true,
+            "schema": {
+              "description": "Set a time estimate for a issue",
+              "properties": {
+                "duration": {
+                  "description": "The duration in human format.",
+                  "example": "3h30m",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "duration"
+              ],
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Set a time estimate for a issue",
+            "schema": {
+              "description": "API_Entities_IssuableTimeStats model",
+              "properties": {
+                "human_time_estimate": {
+                  "example": "3h 30m",
+                  "type": "string"
+                },
+                "human_total_time_spent": {
+                  "example": "1h",
+                  "type": "string"
+                },
+                "time_estimate": {
+                  "example": 12600,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "total_time_spent": {
+                  "example": 3600,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "POST /api/v4/projects/{id}/merge_requests/{merge_request_iid}/add_spent_time": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdMergeRequestsMergeRequestIidAddSpentTime",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the merge_request.",
+            "format": "int32",
+            "in": "path",
+            "name": "merge_request_iid",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "postApiV4ProjectsIdMergeRequestsMergeRequestIidAddSpentTime",
+            "required": true,
+            "schema": {
+              "description": "Add spent time for a merge_request",
+              "properties": {
+                "duration": {
+                  "description": "The duration in human format.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "duration"
+              ],
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Add spent time for a merge_request",
+            "schema": {
+              "description": "API_Entities_IssuableTimeStats model",
+              "properties": {
+                "human_time_estimate": {
+                  "example": "3h 30m",
+                  "type": "string"
+                },
+                "human_total_time_spent": {
+                  "example": "1h",
+                  "type": "string"
+                },
+                "time_estimate": {
+                  "example": 12600,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "total_time_spent": {
+                  "example": 3600,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "POST /api/v4/projects/{id}/merge_requests/{merge_request_iid}/time_estimate": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdMergeRequestsMergeRequestIidTimeEstimate",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the merge_request.",
+            "format": "int32",
+            "in": "path",
+            "name": "merge_request_iid",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "postApiV4ProjectsIdMergeRequestsMergeRequestIidTimeEstimate",
+            "required": true,
+            "schema": {
+              "description": "Set a time estimate for a merge_request",
+              "properties": {
+                "duration": {
+                  "description": "The duration in human format.",
+                  "example": "3h30m",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "duration"
+              ],
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Set a time estimate for a merge_request",
+            "schema": {
+              "description": "API_Entities_IssuableTimeStats model",
+              "properties": {
+                "human_time_estimate": {
+                  "example": "3h 30m",
+                  "type": "string"
+                },
+                "human_total_time_spent": {
+                  "example": "1h",
+                  "type": "string"
+                },
+                "time_estimate": {
+                  "example": 12600,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "total_time_spent": {
+                  "example": 3600,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "POST /api/v4/projects/{id}/issues/{issue_iid}/reset_spent_time": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdIssuesIssueIidResetSpentTime",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the issue",
+            "format": "int32",
+            "in": "path",
+            "name": "issue_iid",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Reset spent time for a issue",
+            "schema": {
+              "description": "API_Entities_IssuableTimeStats model",
+              "properties": {
+                "human_time_estimate": {
+                  "example": "3h 30m",
+                  "type": "string"
+                },
+                "human_total_time_spent": {
+                  "example": "1h",
+                  "type": "string"
+                },
+                "time_estimate": {
+                  "example": 12600,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "total_time_spent": {
+                  "example": 3600,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "POST /api/v4/projects/{id}/issues/{issue_iid}/reset_time_estimate": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdIssuesIssueIidResetTimeEstimate",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the issue.",
+            "format": "int32",
+            "in": "path",
+            "name": "issue_iid",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Reset the time estimate for a project issue",
+            "schema": {
+              "description": "API_Entities_IssuableTimeStats model",
+              "properties": {
+                "human_time_estimate": {
+                  "example": "3h 30m",
+                  "type": "string"
+                },
+                "human_total_time_spent": {
+                  "example": "1h",
+                  "type": "string"
+                },
+                "time_estimate": {
+                  "example": 12600,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "total_time_spent": {
+                  "example": 3600,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "POST /api/v4/projects/{id}/merge_requests/{merge_request_iid}/reset_spent_time": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdMergeRequestsMergeRequestIidResetSpentTime",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the merge_request",
+            "format": "int32",
+            "in": "path",
+            "name": "merge_request_iid",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Reset spent time for a merge_request",
+            "schema": {
+              "description": "API_Entities_IssuableTimeStats model",
+              "properties": {
+                "human_time_estimate": {
+                  "example": "3h 30m",
+                  "type": "string"
+                },
+                "human_total_time_spent": {
+                  "example": "1h",
+                  "type": "string"
+                },
+                "time_estimate": {
+                  "example": 12600,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "total_time_spent": {
+                  "example": 3600,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "POST /api/v4/projects/{id}/merge_requests/{merge_request_iid}/reset_time_estimate": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4ProjectsIdMergeRequestsMergeRequestIidResetTimeEstimate",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the merge_request.",
+            "format": "int32",
+            "in": "path",
+            "name": "merge_request_iid",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Reset the time estimate for a project merge_request",
+            "schema": {
+              "description": "API_Entities_IssuableTimeStats model",
+              "properties": {
+                "human_time_estimate": {
+                  "example": "3h 30m",
+                  "type": "string"
+                },
+                "human_total_time_spent": {
+                  "example": "1h",
+                  "type": "string"
+                },
+                "time_estimate": {
+                  "example": 12600,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "total_time_spent": {
+                  "example": 3600,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/projects/{id}/issues/{issue_iid}/time_stats": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdIssuesIssueIidTimeStats",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the issue",
+            "format": "int32",
+            "in": "path",
+            "name": "issue_iid",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get time tracking stats",
+            "schema": {
+              "description": "API_Entities_IssuableTimeStats model",
+              "properties": {
+                "human_time_estimate": {
+                  "example": "3h 30m",
+                  "type": "string"
+                },
+                "human_total_time_spent": {
+                  "example": "1h",
+                  "type": "string"
+                },
+                "time_estimate": {
+                  "example": 12600,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "total_time_spent": {
+                  "example": 3600,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/projects/{id}/merge_requests/{merge_request_iid}/time_stats": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdMergeRequestsMergeRequestIidTimeStats",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The internal ID of the merge_request",
+            "format": "int32",
+            "in": "path",
+            "name": "merge_request_iid",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get time tracking stats",
+            "schema": {
+              "description": "API_Entities_IssuableTimeStats model",
+              "properties": {
+                "human_time_estimate": {
+                  "example": "3h 30m",
+                  "type": "string"
+                },
+                "human_total_time_spent": {
+                  "example": "1h",
+                  "type": "string"
+                },
+                "time_estimate": {
+                  "example": 12600,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "total_time_spent": {
+                  "example": 3600,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

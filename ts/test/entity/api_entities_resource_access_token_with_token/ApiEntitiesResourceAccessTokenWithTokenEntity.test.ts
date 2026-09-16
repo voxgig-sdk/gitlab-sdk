@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('ApiEntitiesResourceAccessTokenWithTokenEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['create']) {
-      if (maybeSkipControl(t, 'entityOp', 'api_entities_resource_access_token_with_token.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'api_entities_resource_access_token_with_token.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"format":"int32","name":"access_level","req":false,"type":"`$INTEGER`","index$":0},{"active":true,"name":"active","req":false,"type":"`$BOOLEAN`","index$":1},{"active":true,"format":"date-time","name":"created_at","req":false,"type":"`$STRING`","index$":2},{"active":true,"name":"description","req":false,"type":"`$STRING`","index$":3},{"active":true,"format":"date-time","name":"expires_at","req":false,"type":"`$STRING`","index$":4},{"active":true,"format":"int32","name":"id","req":false,"type":"`$INTEGER`","index$":5},{"active":true,"format":"date-time","name":"last_used_at","req":false,"type":"`$STRING`","index$":6},{"active":true,"name":"name","req":false,"type":"`$STRING`","index$":7},{"active":true,"format":"int32","name":"resource_id","req":false,"type":"`$INTEGER`","index$":8},{"active":true,"name":"resource_type","req":false,"type":"`$STRING`","index$":9},{"active":true,"name":"revoked","req":false,"type":"`$BOOLEAN`","index$":10},{"active":true,"name":"scopes","req":false,"type":"`$ARRAY`","index$":11},{"active":true,"name":"token","req":false,"type":"`$STRING`","index$":12},{"active":true,"format":"int32","name":"user_id","req":false,"type":"`$INTEGER`","index$":13}],"id":{"field":"id","name":"id"},"name":"api_entities_resource_access_token_with_token","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"group_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}],"query":[{"active":true,"kind":"query","name":"post_api_v4_groups_id_access_tokens_self_rotate","orig":"post_api_v4_groups_id_access_tokens_self_rotate","reqd":true,"type":"`$OBJECT`","index$":0}]},"contract":{"id":"POST /api/v4/groups/{id}/access_tokens/self/rotate","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"postApiV4GroupsIdAccessTokensSelfRotate\",\"parameters\":[{\"description\":\"The group ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"in\":\"body\",\"name\":\"postApiV4GroupsIdAccessTokensSelfRotate\",\"required\":true,\"schema\":{\"description\":\"Rotate a resource access token\",\"properties\":{\"expires_at\":{\"description\":\"The expiration date of the token\",\"example\":\"2021-01-31\",\"format\":\"date\",\"type\":\"string\"}},\"type\":\"object\"}}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Rotate a resource access token\",\"schema\":{\"description\":\"API_Entities_ResourceAccessTokenWithToken model\",\"properties\":{\"access_level\":{\"enum\":[10,20,30,40,50],\"example\":40,\"format\":\"int32\",\"type\":\"integer\"},\"active\":{\"type\":\"boolean\"},\"created_at\":{\"format\":\"date-time\",\"type\":\"string\"},\"description\":{\"example\":\"Token to manage api\",\"type\":\"string\"},\"expires_at\":{\"example\":\"2020-08-31T15:53:00.073Z\",\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":2,\"format\":\"int32\",\"type\":\"integer\"},\"last_used_at\":{\"example\":\"2020-08-31T15:53:00.073Z\",\"format\":\"date-time\",\"type\":\"string\"},\"name\":{\"example\":\"John Doe\",\"type\":\"string\"},\"resource_id\":{\"example\":1234,\"format\":\"int32\",\"type\":\"integer\"},\"resource_type\":{\"enum\":[\"project\",\"group\"],\"example\":\"project\",\"type\":\"string\"},\"revoked\":{\"type\":\"boolean\"},\"scopes\":{\"example\":[\"api\"],\"type\":\"array\"},\"token\":{\"type\":\"string\"},\"user_id\":{\"example\":3,\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"}},\"400\":{\"description\":\"Bad Request\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"405\":{\"description\":\"Method not allowed\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"POST","orig":"/api/v4/groups/{id}/access_tokens/self/rotate","rename":{"param":{"id":"group_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"groups"},{"var":"group_id"},{"lit":"access_tokens"},{"lit":"self"},{"lit":"rotate"}],"select":{"exist":["group_id","post_api_v4_groups_id_access_tokens_self_rotate"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}],"query":[{"active":true,"kind":"query","name":"post_api_v4_projects_id_access_tokens_self_rotate","orig":"post_api_v4_projects_id_access_tokens_self_rotate","reqd":true,"type":"`$OBJECT`","index$":0}]},"contract":{"id":"POST /api/v4/projects/{id}/access_tokens/self/rotate","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"postApiV4ProjectsIdAccessTokensSelfRotate\",\"parameters\":[{\"description\":\"The project ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"in\":\"body\",\"name\":\"postApiV4ProjectsIdAccessTokensSelfRotate\",\"required\":true,\"schema\":{\"description\":\"Rotate a resource access token\",\"properties\":{\"expires_at\":{\"description\":\"The expiration date of the token\",\"example\":\"2021-01-31\",\"format\":\"date\",\"type\":\"string\"}},\"type\":\"object\"}}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Rotate a resource access token\",\"schema\":{\"description\":\"API_Entities_ResourceAccessTokenWithToken model\",\"properties\":{\"access_level\":{\"enum\":[10,20,30,40,50],\"example\":40,\"format\":\"int32\",\"type\":\"integer\"},\"active\":{\"type\":\"boolean\"},\"created_at\":{\"format\":\"date-time\",\"type\":\"string\"},\"description\":{\"example\":\"Token to manage api\",\"type\":\"string\"},\"expires_at\":{\"example\":\"2020-08-31T15:53:00.073Z\",\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":2,\"format\":\"int32\",\"type\":\"integer\"},\"last_used_at\":{\"example\":\"2020-08-31T15:53:00.073Z\",\"format\":\"date-time\",\"type\":\"string\"},\"name\":{\"example\":\"John Doe\",\"type\":\"string\"},\"resource_id\":{\"example\":1234,\"format\":\"int32\",\"type\":\"integer\"},\"resource_type\":{\"enum\":[\"project\",\"group\"],\"example\":\"project\",\"type\":\"string\"},\"revoked\":{\"type\":\"boolean\"},\"scopes\":{\"example\":[\"api\"],\"type\":\"array\"},\"token\":{\"type\":\"string\"},\"user_id\":{\"example\":3,\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"}},\"400\":{\"description\":\"Bad Request\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"405\":{\"description\":\"Method not allowed\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"POST","orig":"/api/v4/projects/{id}/access_tokens/self/rotate","rename":{"param":{"id":"project_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"access_tokens"},{"lit":"self"},{"lit":"rotate"}],"select":{"exist":["post_api_v4_projects_id_access_tokens_self_rotate","project_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"create"}},"relations":{"ancestors":[["group"],["project"]]},"key$":"api_entities_resource_access_token_with_token","name__orig":"api_entities_resource_access_token_with_token","Name":"ApiEntitiesResourceAccessTokenWithToken","name_":"api_entities_resource_access_token_with_token","name-":"api-entities-resource-access-token-with-token","NAME":"API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN","index$":153}, {"active":true,"entity":"api_entities_resource_access_token_with_token","key$":"BasicApiEntitiesResourceAccessTokenWithTokenFlow","kind":"basic","name":"BasicApiEntitiesResourceAccessTokenWithTokenFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"api_entities_resource_access_token_with_token_ref01"},"match":{"project_id":"project01"},"op":"create","spec":[],"valid":[],"index$":0}]}, 'ApiEntitiesResourceAccessTokenWithToken')
     }
     const client = setup.client
     const struct = setup.struct
@@ -110,13 +109,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -128,7 +120,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_API_ENTITIES_RESOURCE_ACCESS_TOKEN_WITH_TOKEN_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -141,7 +139,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -154,7 +153,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.GITLAB_TEST_LIVE;
         for (const op of []) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'freeze_period.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'freeze_period.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_FREEZE_PERIOD_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "id", "req": false, "type": "`$STRING`", "index$": 0 }], "id": { "field": "id", "name": "id" }, "name": "freeze_period", "op": { "remove": { "input": "data", "name": "remove", "points": [{ "active": true, "args": { "params": [{ "active": true, "kind": "param", "name": "id", "orig": "freeze_period_id", "reqd": true, "type": "`$STRING`", "index$": 0 }, { "active": true, "kind": "param", "name": "project_id", "orig": "id", "reqd": true, "type": "`$STRING`", "index$": 1 }] }, "contract": { "id": "DELETE /api/v4/projects/{id}/freeze_periods/{freeze_period_id}", "json": "{\"operationId\":\"deleteApiV4ProjectsIdFreezePeriodsFreezePeriodId\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The ID of the freeze period\",\"format\":\"int32\",\"in\":\"path\",\"name\":\"freeze_period_id\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"204\":{\"description\":\"Delete a freeze period\",\"schema\":{\"description\":\"API_Entities_FreezePeriod model\",\"properties\":{\"created_at\":{\"example\":\"2020-05-15T17:03:35.702Z\",\"format\":\"date-time\",\"type\":\"string\"},\"cron_timezone\":{\"example\":\"UTC\",\"type\":\"string\"},\"freeze_end\":{\"example\":\"0 8 * * 1\",\"type\":\"string\"},\"freeze_start\":{\"example\":\"0 23 * * 5\",\"type\":\"string\"},\"id\":{\"example\":1,\"format\":\"int32\",\"type\":\"integer\"},\"updated_at\":{\"example\":\"2020-05-15T17:03:35.702Z\",\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}},\"401\":{\"description\":\"Unauthorized\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "DELETE", "orig": "/api/v4/projects/{id}/freeze_periods/{freeze_period_id}", "rename": { "param": { "freeze_period_id": "id", "id": "project_id" } }, "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "projects" }, { "var": "project_id" }, { "lit": "freeze_periods" }, { "var": "id" }], "select": { "exist": ["id", "project_id"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "remove" } }, "relations": { "ancestors": [["project"]] }, "key$": "freeze_period", "name__orig": "freeze_period", "Name": "FreezePeriod", "name_": "freeze_period", "name-": "freeze-period", "NAME": "FREEZE_PERIOD", "index$": 207 }, { "active": true, "entity": "freeze_period", "key$": "BasicFreezePeriodFlow", "kind": "basic", "name": "BasicFreezePeriodFlow", "param": {}, "step": [] }, 'FreezePeriod');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -97,12 +95,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['GITLAB_TEST_FREEZE_PERIOD_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'GITLAB_TEST_FREEZE_PERIOD_ENTID': idmap,
         'GITLAB_TEST_LIVE': 'FALSE',
@@ -111,7 +103,13 @@ function basicSetup(extra) {
     });
     idmap = env['GITLAB_TEST_FREEZE_PERIOD_ENTID'];
     const live = 'TRUE' === env.GITLAB_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['GITLAB_TEST_FREEZE_PERIOD_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.GitlabSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -124,7 +122,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -136,7 +135,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.GITLAB_TEST_LIVE;
         for (const op of ['update']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'debian.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'debian.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_DEBIAN_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "id", "req": false, "type": "`$STRING`", "index$": 0 }], "id": { "field": "id", "name": "id" }, "name": "debian", "op": { "update": { "input": "data", "name": "update", "points": [{ "active": true, "args": { "params": [{ "active": true, "example": "example_1.0.0~alpha2_amd64.deb", "kind": "param", "name": "file_name", "orig": "file_name", "reqd": true, "type": "`$ANY`" }, { "active": true, "kind": "param", "name": "project_id", "orig": "id", "reqd": true, "type": "`$STRING`" }], "query": [{ "active": true, "kind": "query", "name": "put_api_v4_projects_id_packages_debian_file_name_authorize", "orig": "put_api_v4_projects_id_packages_debian_file_name_authorize", "reqd": true, "type": "`$OBJECT`" }] }, "contract": { "id": "PUT /api/v4/projects/{id}/packages/debian/{file_name}/authorize", "json": "{\"consumes\":[\"application/json\"],\"operationId\":\"putApiV4ProjectsIdPackagesDebianFileNameAuthorize\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The filename\",\"example\":\"example_1.0.0~alpha2_amd64.deb\",\"in\":\"path\",\"name\":\"file_name\",\"required\":true,\"type\":\"string\"},{\"in\":\"body\",\"name\":\"putApiV4ProjectsIdPackagesDebianFileNameAuthorize\",\"required\":true,\"schema\":{\"description\":\"Authorize Debian package upload\",\"properties\":{\"component\":{\"description\":\"The Debian Component\",\"type\":\"string\"},\"distribution\":{\"description\":\"The Debian Codename or Suite\",\"type\":\"string\"}},\"required\":[\"component\"],\"type\":\"object\"}}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Authorize Debian package upload\"},\"400\":{\"description\":\"Bad Request\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"404\":{\"description\":\"Not Found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "PUT", "orig": "/api/v4/projects/{id}/packages/debian/{file_name}/authorize", "rename": { "param": { "id": "project_id" } }, "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "projects" }, { "var": "project_id" }, { "lit": "packages" }, { "lit": "debian" }, { "var": "file_name" }, { "lit": "authorize" }], "select": { "$action": "authorize", "exist": ["file_name", "project_id", "put_api_v4_projects_id_packages_debian_file_name_authorize"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }, { "active": true, "args": { "params": [{ "active": true, "example": "example_1.0.0~alpha2_amd64.deb", "kind": "param", "name": "id", "orig": "file_name", "reqd": true, "type": "`$STRING`", "index$": 0 }, { "active": true, "kind": "param", "name": "project_id", "orig": "id", "reqd": true, "type": "`$STRING`", "index$": 1 }], "query": [{ "active": true, "kind": "query", "name": "put_api_v4_projects_id_packages_debian_file_name", "orig": "put_api_v4_projects_id_packages_debian_file_name", "reqd": true, "type": "`$OBJECT`", "index$": 0 }] }, "contract": { "id": "PUT /api/v4/projects/{id}/packages/debian/{file_name}", "json": "{\"consumes\":[\"application/json\"],\"operationId\":\"putApiV4ProjectsIdPackagesDebianFileName\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The filename\",\"example\":\"example_1.0.0~alpha2_amd64.deb\",\"in\":\"path\",\"name\":\"file_name\",\"required\":true,\"type\":\"string\"},{\"in\":\"body\",\"name\":\"putApiV4ProjectsIdPackagesDebianFileName\",\"required\":true,\"schema\":{\"description\":\"Upload Debian package\",\"properties\":{\"component\":{\"description\":\"The Debian Component\",\"type\":\"string\"},\"distribution\":{\"description\":\"The Debian Codename or Suite\",\"type\":\"string\"},\"file\":{\"description\":\"The package file to be published (generated by Multipart middleware)\",\"type\":\"file\"}},\"required\":[\"file\",\"component\"],\"type\":\"object\"}}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"201\":{\"description\":\"Upload Debian package\"},\"400\":{\"description\":\"Bad Request\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"404\":{\"description\":\"Not Found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "PUT", "orig": "/api/v4/projects/{id}/packages/debian/{file_name}", "rename": { "param": { "file_name": "id", "id": "project_id" } }, "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "projects" }, { "var": "project_id" }, { "lit": "packages" }, { "lit": "debian" }, { "var": "id" }], "select": { "exist": ["id", "project_id", "put_api_v4_projects_id_packages_debian_file_name"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 1 }], "key$": "update" } }, "relations": { "ancestors": [["project"], ["project", "debian"]] }, "key$": "debian", "name__orig": "debian", "Name": "Debian", "name_": "debian", "name-": "debian", "NAME": "DEBIAN", "index$": 187 }, { "active": true, "entity": "debian", "key$": "BasicDebianFlow", "kind": "basic", "name": "BasicDebianFlow", "param": {}, "step": [{ "active": true, "data": { "project_id": "project01" }, "input": { "ref": "debian_ref01", "srcdatavar": "debian_ref01_data", "suffix": "_up0" }, "match": {}, "op": "update", "spec": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-debian_ref01" } }], "valid": [], "index$": 0 }] }, 'Debian');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -104,12 +102,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['GITLAB_TEST_DEBIAN_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'GITLAB_TEST_DEBIAN_ENTID': idmap,
         'GITLAB_TEST_LIVE': 'FALSE',
@@ -118,7 +110,13 @@ function basicSetup(extra) {
     });
     idmap = env['GITLAB_TEST_DEBIAN_ENTID'];
     const live = 'TRUE' === env.GITLAB_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['GITLAB_TEST_DEBIAN_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.GitlabSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -131,7 +129,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -143,7 +142,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

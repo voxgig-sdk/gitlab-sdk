@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('TestReportEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'test_report.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'test_report.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_TEST_REPORT_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"format":"int32","name":"error_count","req":false,"type":"`$INTEGER`","index$":0},{"active":true,"format":"int32","name":"failed_count","req":false,"type":"`$INTEGER`","index$":1},{"active":true,"name":"name","req":false,"type":"`$STRING`","index$":2},{"active":true,"format":"int32","name":"skipped_count","req":false,"type":"`$INTEGER`","index$":3},{"active":true,"format":"int32","name":"success_count","req":false,"type":"`$INTEGER`","index$":4},{"active":true,"name":"suite_error","req":false,"type":"`$STRING`","index$":5},{"active":true,"name":"test_cases","req":false,"type":"`$ARRAY`","index$":6},{"active":true,"format":"int32","name":"total_count","req":false,"type":"`$INTEGER`","index$":7},{"active":true,"format":"int32","name":"total_time","req":false,"type":"`$INTEGER`","index$":8}],"name":"test_report","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{"params":[{"active":true,"example":18,"kind":"param","name":"pipeline_id","orig":"pipeline_id","reqd":true,"type":"`$STRING`","index$":0},{"active":true,"example":11,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":1}]},"contract":{"id":"GET /api/v4/projects/{id}/pipelines/{pipeline_id}/test_report","json":"{\"operationId\":\"getApiV4ProjectsIdPipelinesPipelineIdTestReport\",\"parameters\":[{\"description\":\"The project ID or URL-encoded path\",\"example\":11,\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The pipeline ID\",\"example\":18,\"format\":\"int32\",\"in\":\"path\",\"name\":\"pipeline_id\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Gets the test report for a given pipeline\",\"schema\":{\"description\":\"TestReportEntity model\",\"properties\":{\"error_count\":{\"example\":0,\"format\":\"int32\",\"type\":\"integer\"},\"failed_count\":{\"example\":0,\"format\":\"int32\",\"type\":\"integer\"},\"skipped_count\":{\"example\":0,\"format\":\"int32\",\"type\":\"integer\"},\"success_count\":{\"example\":1,\"format\":\"int32\",\"type\":\"integer\"},\"test_suites\":{\"items\":{\"properties\":{\"error_count\":{\"example\":0,\"format\":\"int32\",\"type\":\"integer\"},\"failed_count\":{\"example\":0,\"format\":\"int32\",\"type\":\"integer\"},\"name\":{\"example\":\"test\",\"type\":\"string\"},\"skipped_count\":{\"example\":12,\"format\":\"int32\",\"type\":\"integer\"},\"success_count\":{\"example\":3351,\"format\":\"int32\",\"type\":\"integer\"},\"suite_error\":{\"example\":\"JUnit XML parsing failed: 1:1: FATAL: Document is empty\",\"type\":\"string\"},\"test_cases\":{\"items\":{\"properties\":{\"attachment_url\":{\"example\":\"http://localhost/namespace1/project1/-/jobs/1/artifacts/file/some/path.png\",\"type\":\"string\"},\"classname\":{\"example\":\"vulnerability_management_spec\",\"type\":\"string\"},\"execution_time\":{\"example\":180,\"format\":\"int32\",\"type\":\"integer\"},\"file\":{\"example\":\"./spec/test_spec.rb\",\"type\":\"string\"},\"name\":{\"example\":\"Security Reports can create an auto-remediation MR\",\"type\":\"string\"},\"recent_failures\":{\"example\":{\"base_branch\":\"develop\",\"count\":3},\"type\":\"string\"},\"stack_trace\":{\"example\":\"Failure/Error: is_expected.to eq(3)\",\"type\":\"string\"},\"status\":{\"example\":\"success\",\"type\":\"string\"},\"system_output\":{\"example\":\"Failure/Error: is_expected.to eq(3)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"total_count\":{\"example\":3363,\"format\":\"int32\",\"type\":\"integer\"},\"total_time\":{\"example\":1904,\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"total_count\":{\"example\":1,\"format\":\"int32\",\"type\":\"integer\"},\"total_time\":{\"example\":180,\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"}},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"404\":{\"description\":\"Not found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/projects/{id}/pipelines/{pipeline_id}/test_report","rename":{"param":{"id":"project_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"pipelines"},{"var":"pipeline_id"},{"lit":"test_report"}],"select":{"exist":["pipeline_id","project_id"]},"transform":{"req":"`reqdata`","res":"`body.test_suites`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[["project","pipeline"]]},"key$":"test_report","name__orig":"test_report","Name":"TestReport","name_":"test_report","name-":"test-report","NAME":"TEST_REPORT","index$":268}, {"active":true,"entity":"test_report","key$":"BasicTestReportFlow","kind":"basic","name":"BasicTestReportFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{"pipeline_id":"pipeline01","project_id":"project01"},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"test_report_ref01"}}],"index$":0}]}, 'TestReport')
     }
     const client = setup.client
     const struct = setup.struct
@@ -111,13 +110,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_TEST_REPORT_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_TEST_REPORT_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -129,7 +121,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_TEST_REPORT_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -142,7 +140,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -155,7 +154,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

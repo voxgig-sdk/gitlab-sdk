@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.GITLAB_TEST_LIVE;
         for (const op of ['list']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'api_entities_personal_access_token.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'api_entities_personal_access_token.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_API_ENTITIES_PERSONAL_ACCESS_TOKEN_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "active", "req": false, "type": "`$BOOLEAN`", "index$": 0 }, { "active": true, "format": "date-time", "name": "created_at", "req": false, "type": "`$STRING`", "index$": 1 }, { "active": true, "name": "description", "req": false, "type": "`$STRING`", "index$": 2 }, { "active": true, "format": "date-time", "name": "expires_at", "req": false, "type": "`$STRING`", "index$": 3 }, { "active": true, "format": "int32", "name": "id", "req": false, "type": "`$INTEGER`", "index$": 4 }, { "active": true, "format": "date-time", "name": "last_used_at", "req": false, "type": "`$STRING`", "index$": 5 }, { "active": true, "name": "name", "req": false, "type": "`$STRING`", "index$": 6 }, { "active": true, "name": "revoked", "req": false, "type": "`$BOOLEAN`", "index$": 7 }, { "active": true, "name": "scopes", "req": false, "type": "`$ARRAY`", "index$": 8 }, { "active": true, "format": "int32", "name": "user_id", "req": false, "type": "`$INTEGER`", "index$": 9 }], "id": { "field": "id", "name": "id" }, "name": "api_entities_personal_access_token", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "query": [{ "active": true, "kind": "query", "name": "min_access_level", "orig": "min_access_level", "reqd": false, "type": "`$ANY`", "index$": 0 }, { "active": true, "example": 1, "kind": "query", "name": "page", "orig": "page", "reqd": false, "type": "`$INTEGER`", "index$": 1 }, { "active": true, "example": 20, "kind": "query", "name": "per_page", "orig": "per_page", "reqd": false, "type": "`$INTEGER`", "index$": 2 }] }, "contract": { "id": "GET /api/v4/personal_access_tokens/self/associations", "json": "{\"operationId\":\"getApiV4PersonalAccessTokensSelfAssociations\",\"parameters\":[{\"description\":\"Limit by minimum access level of authenticated user\",\"enum\":[10,15,20,30,40,50],\"format\":\"int32\",\"in\":\"query\",\"name\":\"min_access_level\",\"required\":false,\"type\":\"integer\"},{\"default\":1,\"description\":\"Current page number\",\"example\":1,\"format\":\"int32\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"type\":\"integer\"},{\"default\":20,\"description\":\"Number of items per page\",\"example\":20,\"format\":\"int32\",\"in\":\"query\",\"name\":\"per_page\",\"required\":false,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Return personal access token associations\",\"schema\":{\"description\":\"API_Entities_PersonalAccessToken model\",\"properties\":{\"active\":{\"type\":\"boolean\"},\"created_at\":{\"format\":\"date-time\",\"type\":\"string\"},\"description\":{\"example\":\"Token to manage api\",\"type\":\"string\"},\"expires_at\":{\"example\":\"2020-08-31T15:53:00.073Z\",\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":2,\"format\":\"int32\",\"type\":\"integer\"},\"last_used_at\":{\"example\":\"2020-08-31T15:53:00.073Z\",\"format\":\"date-time\",\"type\":\"string\"},\"name\":{\"example\":\"John Doe\",\"type\":\"string\"},\"revoked\":{\"type\":\"boolean\"},\"scopes\":{\"example\":[\"api\"],\"type\":\"array\"},\"user_id\":{\"example\":3,\"format\":\"int32\",\"type\":\"integer\"}},\"type\":\"object\"}},\"401\":{\"description\":\"Unauthorized\"},\"404\":{\"description\":\"Not found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/v4/personal_access_tokens/self/associations", "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "personal_access_tokens" }, { "lit": "self" }, { "lit": "associations" }], "select": { "exist": ["min_access_level", "page", "per_page"] }, "transform": { "req": "`reqdata`", "res": "`body.scopes`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "api_entities_personal_access_token", "name__orig": "api_entities_personal_access_token", "Name": "ApiEntitiesPersonalAccessToken", "name_": "api_entities_personal_access_token", "name-": "api-entities-personal-access-token", "NAME": "API_ENTITIES_PERSONAL_ACCESS_TOKEN", "index$": 125 }, { "active": true, "entity": "api_entities_personal_access_token", "key$": "BasicApiEntitiesPersonalAccessTokenFlow", "kind": "basic", "name": "BasicApiEntitiesPersonalAccessTokenFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": {}, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "api_entities_personal_access_token_ref01" } }], "index$": 0 }] }, 'ApiEntitiesPersonalAccessToken');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -101,12 +99,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['GITLAB_TEST_API_ENTITIES_PERSONAL_ACCESS_TOKEN_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'GITLAB_TEST_API_ENTITIES_PERSONAL_ACCESS_TOKEN_ENTID': idmap,
         'GITLAB_TEST_LIVE': 'FALSE',
@@ -115,7 +107,13 @@ function basicSetup(extra) {
     });
     idmap = env['GITLAB_TEST_API_ENTITIES_PERSONAL_ACCESS_TOKEN_ENTID'];
     const live = 'TRUE' === env.GITLAB_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['GITLAB_TEST_API_ENTITIES_PERSONAL_ACCESS_TOKEN_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.GitlabSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -128,7 +126,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -140,7 +139,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

@@ -3,75 +3,75 @@
     "api_entities_namespace": {
       "API_ENTITIES_NAMESPACE00": {
         "additional_purchased_storage_ends_on": "se6",
-        "additional_purchased_storage_size": "se7",
+        "additional_purchased_storage_size": 231,
         "avatar_url": "se8",
-        "billable_members_count": "se9",
+        "billable_members_count": 233,
         "end_date": "sea",
-        "extra_shared_runners_minutes_limit": "seb",
+        "extra_shared_runners_minutes_limit": 235,
         "full_path": "sec",
         "id": "API_ENTITIES_NAMESPACE00",
         "kind": "see",
-        "max_seats_used": "sef",
+        "max_seats_used": 239,
         "max_seats_used_changed_at": "sf0",
-        "members_count_with_descendants": "sf1",
+        "members_count_with_descendants": 241,
         "name": "sf2",
         "parent_id": "PARENT01",
         "path": "sf4",
         "plan": "sf5",
-        "projects_count": "sf6",
-        "root_repository_size": "sf7",
-        "seats_in_use": "sf8",
-        "shared_runners_minutes_limit": "sf9",
+        "projects_count": 246,
+        "root_repository_size": 247,
+        "seats_in_use": 248,
+        "shared_runners_minutes_limit": 249,
         "trial": true,
         "trial_ends_on": "sfb",
         "web_url": "sfc"
       },
       "API_ENTITIES_NAMESPACE01": {
         "additional_purchased_storage_ends_on": "s1cc",
-        "additional_purchased_storage_size": "s1cd",
+        "additional_purchased_storage_size": 461,
         "avatar_url": "s1ce",
-        "billable_members_count": "s1cf",
+        "billable_members_count": 463,
         "end_date": "s1d0",
-        "extra_shared_runners_minutes_limit": "s1d1",
+        "extra_shared_runners_minutes_limit": 465,
         "full_path": "s1d2",
         "id": "API_ENTITIES_NAMESPACE01",
         "kind": "s1d4",
-        "max_seats_used": "s1d5",
+        "max_seats_used": 469,
         "max_seats_used_changed_at": "s1d6",
-        "members_count_with_descendants": "s1d7",
+        "members_count_with_descendants": 471,
         "name": "s1d8",
         "parent_id": "PARENT01",
         "path": "s1da",
         "plan": "s1db",
-        "projects_count": "s1dc",
-        "root_repository_size": "s1dd",
-        "seats_in_use": "s1de",
-        "shared_runners_minutes_limit": "s1df",
+        "projects_count": 476,
+        "root_repository_size": 477,
+        "seats_in_use": 478,
+        "shared_runners_minutes_limit": 479,
         "trial": true,
         "trial_ends_on": "s1e1",
         "web_url": "s1e2"
       },
       "API_ENTITIES_NAMESPACE02": {
         "additional_purchased_storage_ends_on": "s2b2",
-        "additional_purchased_storage_size": "s2b3",
+        "additional_purchased_storage_size": 691,
         "avatar_url": "s2b4",
-        "billable_members_count": "s2b5",
+        "billable_members_count": 693,
         "end_date": "s2b6",
-        "extra_shared_runners_minutes_limit": "s2b7",
+        "extra_shared_runners_minutes_limit": 695,
         "full_path": "s2b8",
         "id": "API_ENTITIES_NAMESPACE02",
         "kind": "s2ba",
-        "max_seats_used": "s2bb",
+        "max_seats_used": 699,
         "max_seats_used_changed_at": "s2bc",
-        "members_count_with_descendants": "s2bd",
+        "members_count_with_descendants": 701,
         "name": "s2be",
         "parent_id": "PARENT01",
         "path": "s2c0",
         "plan": "s2c1",
-        "projects_count": "s2c2",
-        "root_repository_size": "s2c3",
-        "seats_in_use": "s2c4",
-        "shared_runners_minutes_limit": "s2c5",
+        "projects_count": 706,
+        "root_repository_size": 707,
+        "seats_in_use": 708,
+        "shared_runners_minutes_limit": 709,
         "trial": true,
         "trial_ends_on": "s2c7",
         "web_url": "s2c8"
@@ -82,27 +82,624 @@
     "api_entities_namespace": {
       "api_entities_namespace_ref01": {
         "additional_purchased_storage_ends_on": "s398",
-        "additional_purchased_storage_size": "s399",
+        "additional_purchased_storage_size": 921,
         "avatar_url": "s39a",
-        "billable_members_count": "s39b",
+        "billable_members_count": 923,
         "end_date": "s39c",
-        "extra_shared_runners_minutes_limit": "s39d",
+        "extra_shared_runners_minutes_limit": 925,
         "full_path": "s39e",
         "kind": "s3a0",
-        "max_seats_used": "s3a1",
+        "max_seats_used": 929,
         "max_seats_used_changed_at": "s3a2",
-        "members_count_with_descendants": "s3a3",
+        "members_count_with_descendants": 931,
         "name": "s3a4",
         "parent_id": "PARENT01",
         "path": "s3a6",
         "plan": "s3a7",
-        "projects_count": "s3a8",
-        "root_repository_size": "s3a9",
-        "seats_in_use": "s3aa",
-        "shared_runners_minutes_limit": "s3ab",
+        "projects_count": 936,
+        "root_repository_size": 937,
+        "seats_in_use": 938,
+        "shared_runners_minutes_limit": 939,
         "trial": true,
         "trial_ends_on": "s3ad",
         "web_url": "s3ae"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v4/namespaces": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4Namespaces",
+        "parameters": [
+          {
+            "description": "Returns a list of namespaces the user is authorized to view based on the search criteria",
+            "in": "query",
+            "name": "search",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "In GitLab 14.2 and later, returns a list of owned namespaces only",
+            "in": "query",
+            "name": "owned_only",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": false,
+            "description": "Only include top level namespaces",
+            "in": "query",
+            "name": "top_level_only",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": false,
+            "description": "If `true`, the `search` parameter is matched against the full path of the namespaces",
+            "in": "query",
+            "name": "full_path_search",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "default": 1,
+            "description": "Current page number",
+            "example": 1,
+            "format": "int32",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 20,
+            "description": "Number of items per page",
+            "example": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Name of the hosted plan requested by the customer",
+            "in": "query",
+            "name": "requested_hosted_plan",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "List namespaces",
+            "schema": {
+              "items": {
+                "description": "API_Entities_Namespace model",
+                "properties": {
+                  "additional_purchased_storage_ends_on": {
+                    "example": "2022-06-18",
+                    "format": "date",
+                    "type": "string"
+                  },
+                  "additional_purchased_storage_size": {
+                    "example": 1000,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "avatar_url": {
+                    "example": "https://example.com/avatar/12345",
+                    "type": "string"
+                  },
+                  "billable_members_count": {
+                    "example": 2,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "end_date": {
+                    "example": "2022-06-18",
+                    "format": "date",
+                    "type": "string"
+                  },
+                  "extra_shared_runners_minutes_limit": {
+                    "example": 133,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "full_path": {
+                    "example": "group/my_project",
+                    "type": "string"
+                  },
+                  "id": {
+                    "example": 2,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "kind": {
+                    "example": "project",
+                    "type": "string"
+                  },
+                  "max_seats_used": {
+                    "example": 100,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "max_seats_used_changed_at": {
+                    "example": "2022-06-18",
+                    "format": "date",
+                    "type": "string"
+                  },
+                  "members_count_with_descendants": {
+                    "example": 5,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "name": {
+                    "example": "project",
+                    "type": "string"
+                  },
+                  "parent_id": {
+                    "example": 1,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "path": {
+                    "example": "my_project",
+                    "type": "string"
+                  },
+                  "plan": {
+                    "example": "default",
+                    "type": "string"
+                  },
+                  "projects_count": {
+                    "example": 123,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "root_repository_size": {
+                    "example": 123,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "seats_in_use": {
+                    "example": 5,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "shared_runners_minutes_limit": {
+                    "example": 133,
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "trial": {
+                    "type": "boolean"
+                  },
+                  "trial_ends_on": {
+                    "example": "2022-06-18",
+                    "format": "date",
+                    "type": "string"
+                  },
+                  "web_url": {
+                    "example": "https://example.com/group/my_project",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/namespaces/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4NamespacesId",
+        "parameters": [
+          {
+            "description": "ID or URL-encoded path of the namespace",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get namespace by ID",
+            "schema": {
+              "description": "API_Entities_Namespace model",
+              "properties": {
+                "additional_purchased_storage_ends_on": {
+                  "example": "2022-06-18",
+                  "format": "date",
+                  "type": "string"
+                },
+                "additional_purchased_storage_size": {
+                  "example": 1000,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "avatar_url": {
+                  "example": "https://example.com/avatar/12345",
+                  "type": "string"
+                },
+                "billable_members_count": {
+                  "example": 2,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "end_date": {
+                  "example": "2022-06-18",
+                  "format": "date",
+                  "type": "string"
+                },
+                "extra_shared_runners_minutes_limit": {
+                  "example": 133,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "full_path": {
+                  "example": "group/my_project",
+                  "type": "string"
+                },
+                "id": {
+                  "example": 2,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "kind": {
+                  "example": "project",
+                  "type": "string"
+                },
+                "max_seats_used": {
+                  "example": 100,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "max_seats_used_changed_at": {
+                  "example": "2022-06-18",
+                  "format": "date",
+                  "type": "string"
+                },
+                "members_count_with_descendants": {
+                  "example": 5,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "name": {
+                  "example": "project",
+                  "type": "string"
+                },
+                "parent_id": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "path": {
+                  "example": "my_project",
+                  "type": "string"
+                },
+                "plan": {
+                  "example": "default",
+                  "type": "string"
+                },
+                "projects_count": {
+                  "example": 123,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "root_repository_size": {
+                  "example": 123,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "seats_in_use": {
+                  "example": 5,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "shared_runners_minutes_limit": {
+                  "example": 133,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "trial": {
+                  "type": "boolean"
+                },
+                "trial_ends_on": {
+                  "example": "2022-06-18",
+                  "format": "date",
+                  "type": "string"
+                },
+                "web_url": {
+                  "example": "https://example.com/group/my_project",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PUT /api/v4/namespaces/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "putApiV4NamespacesId",
+        "parameters": [
+          {
+            "format": "int32",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "putApiV4NamespacesId",
+            "required": true,
+            "schema": {
+              "description": "[DEPRECATED] Update a namespace",
+              "properties": {
+                "additional_purchased_storage_ends_on": {
+                  "description": "End of subscription of the additional purchased storage",
+                  "format": "date",
+                  "type": "string"
+                },
+                "additional_purchased_storage_size": {
+                  "description": "Additional storage size for this namespace",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "extra_shared_runners_minutes_limit": {
+                  "description": "Extra compute minutes for this namespace",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "gitlab_subscription_attributes": {
+                  "properties": {
+                    "auto_renew": {
+                      "description": "Whether subscription will auto renew on end date",
+                      "type": "boolean"
+                    },
+                    "end_date": {
+                      "description": "End date of subscription",
+                      "format": "date",
+                      "type": "string"
+                    },
+                    "max_seats_used": {
+                      "description": "Highest number of active users in the last month",
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "plan_code": {
+                      "description": "Subscription tier code",
+                      "type": "string"
+                    },
+                    "seats": {
+                      "description": "Number of seats in subscription",
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "start_date": {
+                      "description": "Start date of subscription",
+                      "format": "date",
+                      "type": "string"
+                    },
+                    "trial": {
+                      "description": "Whether the subscription is a trial",
+                      "type": "boolean"
+                    },
+                    "trial_ends_on": {
+                      "description": "End date of trial",
+                      "format": "date",
+                      "type": "string"
+                    },
+                    "trial_extension_type": {
+                      "description": "Whether subscription is an extended or reactivated trial",
+                      "format": "int32",
+                      "type": "integer"
+                    },
+                    "trial_starts_on": {
+                      "description": "Start date of trial",
+                      "format": "date",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "shared_runners_minutes_limit": {
+                  "description": "Compute minutes quota for this namespace",
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "[DEPRECATED] Update a namespace",
+            "schema": {
+              "description": "API_Entities_Namespace model",
+              "properties": {
+                "additional_purchased_storage_ends_on": {
+                  "example": "2022-06-18",
+                  "format": "date",
+                  "type": "string"
+                },
+                "additional_purchased_storage_size": {
+                  "example": 1000,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "avatar_url": {
+                  "example": "https://example.com/avatar/12345",
+                  "type": "string"
+                },
+                "billable_members_count": {
+                  "example": 2,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "end_date": {
+                  "example": "2022-06-18",
+                  "format": "date",
+                  "type": "string"
+                },
+                "extra_shared_runners_minutes_limit": {
+                  "example": 133,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "full_path": {
+                  "example": "group/my_project",
+                  "type": "string"
+                },
+                "id": {
+                  "example": 2,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "kind": {
+                  "example": "project",
+                  "type": "string"
+                },
+                "max_seats_used": {
+                  "example": 100,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "max_seats_used_changed_at": {
+                  "example": "2022-06-18",
+                  "format": "date",
+                  "type": "string"
+                },
+                "members_count_with_descendants": {
+                  "example": 5,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "name": {
+                  "example": "project",
+                  "type": "string"
+                },
+                "parent_id": {
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "path": {
+                  "example": "my_project",
+                  "type": "string"
+                },
+                "plan": {
+                  "example": "default",
+                  "type": "string"
+                },
+                "projects_count": {
+                  "example": 123,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "root_repository_size": {
+                  "example": 123,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "seats_in_use": {
+                  "example": 5,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "shared_runners_minutes_limit": {
+                  "example": 133,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "trial": {
+                  "type": "boolean"
+                },
+                "trial_ends_on": {
+                  "example": "2022-06-18",
+                  "format": "date",
+                  "type": "string"
+                },
+                "web_url": {
+                  "example": "https://example.com/group/my_project",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

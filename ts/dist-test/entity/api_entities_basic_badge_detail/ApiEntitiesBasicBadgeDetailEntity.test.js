@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.GITLAB_TEST_LIVE;
         for (const op of ['load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'api_entities_basic_badge_detail.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'api_entities_basic_badge_detail.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_API_ENTITIES_BASIC_BADGE_DETAIL_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "image_url", "req": false, "type": "`$STRING`", "index$": 0 }, { "active": true, "name": "link_url", "req": false, "type": "`$STRING`", "index$": 1 }, { "active": true, "name": "name", "req": false, "type": "`$STRING`", "index$": 2 }, { "active": true, "name": "rendered_image_url", "req": false, "type": "`$STRING`", "index$": 3 }, { "active": true, "name": "rendered_link_url", "req": false, "type": "`$STRING`", "index$": 4 }], "name": "api_entities_basic_badge_detail", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "params": [{ "active": true, "kind": "param", "name": "group_id", "orig": "id", "reqd": true, "type": "`$STRING`", "index$": 0 }], "query": [{ "active": true, "kind": "query", "name": "image_url", "orig": "image_url", "reqd": true, "type": "`$ANY`", "index$": 0 }, { "active": true, "kind": "query", "name": "link_url", "orig": "link_url", "reqd": true, "type": "`$ANY`", "index$": 1 }] }, "contract": { "id": "GET /api/v4/groups/{id}/badges/render", "json": "{\"operationId\":\"getApiV4GroupsIdBadgesRender\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the group owned by the authenticated user.\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"URL of the badge link\",\"in\":\"query\",\"name\":\"link_url\",\"required\":true,\"type\":\"string\"},{\"description\":\"URL of the badge image\",\"in\":\"query\",\"name\":\"image_url\",\"required\":true,\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Preview a badge from a group.\",\"schema\":{\"description\":\"API_Entities_BasicBadgeDetails model\",\"properties\":{\"image_url\":{\"type\":\"string\"},\"link_url\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"rendered_image_url\":{\"type\":\"string\"},\"rendered_link_url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/v4/groups/{id}/badges/render", "rename": { "param": { "id": "group_id" } }, "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "groups" }, { "var": "group_id" }, { "lit": "badges" }, { "lit": "render" }], "select": { "exist": ["group_id", "image_url", "link_url"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }, { "active": true, "args": { "params": [{ "active": true, "kind": "param", "name": "project_id", "orig": "id", "reqd": true, "type": "`$STRING`", "index$": 0 }], "query": [{ "active": true, "kind": "query", "name": "image_url", "orig": "image_url", "reqd": true, "type": "`$ANY`", "index$": 0 }, { "active": true, "kind": "query", "name": "link_url", "orig": "link_url", "reqd": true, "type": "`$ANY`", "index$": 1 }] }, "contract": { "id": "GET /api/v4/projects/{id}/badges/render", "json": "{\"operationId\":\"getApiV4ProjectsIdBadgesRender\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project owned by the authenticated user.\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"URL of the badge link\",\"in\":\"query\",\"name\":\"link_url\",\"required\":true,\"type\":\"string\"},{\"description\":\"URL of the badge image\",\"in\":\"query\",\"name\":\"image_url\",\"required\":true,\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Preview a badge from a project.\",\"schema\":{\"description\":\"API_Entities_BasicBadgeDetails model\",\"properties\":{\"image_url\":{\"type\":\"string\"},\"link_url\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"rendered_image_url\":{\"type\":\"string\"},\"rendered_link_url\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/v4/projects/{id}/badges/render", "rename": { "param": { "id": "project_id" } }, "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "projects" }, { "var": "project_id" }, { "lit": "badges" }, { "lit": "render" }], "select": { "exist": ["image_url", "link_url", "project_id"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 1 }], "key$": "load" } }, "relations": { "ancestors": [["group"], ["project"]] }, "key$": "api_entities_basic_badge_detail", "name__orig": "api_entities_basic_badge_detail", "Name": "ApiEntitiesBasicBadgeDetail", "name_": "api_entities_basic_badge_detail", "name-": "api-entities-basic-badge-detail", "NAME": "API_ENTITIES_BASIC_BADGE_DETAIL", "index$": 10 }, { "active": true, "entity": "api_entities_basic_badge_detail", "key$": "BasicApiEntitiesBasicBadgeDetailFlow", "kind": "basic", "name": "BasicApiEntitiesBasicBadgeDetailFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "api_entities_basic_badge_detail_ref01", "srcdatavar": "api_entities_basic_badge_detail_ref01_data", "suffix": "_dt0" }, "match": { "id": "api_entities_basic_badge_detail01" }, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-api_entities_basic_badge_detail_ref01" } }], "index$": 0 }] }, 'ApiEntitiesBasicBadgeDetail');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -100,12 +98,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['GITLAB_TEST_API_ENTITIES_BASIC_BADGE_DETAIL_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'GITLAB_TEST_API_ENTITIES_BASIC_BADGE_DETAIL_ENTID': idmap,
         'GITLAB_TEST_LIVE': 'FALSE',
@@ -114,7 +106,13 @@ function basicSetup(extra) {
     });
     idmap = env['GITLAB_TEST_API_ENTITIES_BASIC_BADGE_DETAIL_ENTID'];
     const live = 'TRUE' === env.GITLAB_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['GITLAB_TEST_API_ENTITIES_BASIC_BADGE_DETAIL_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.GitlabSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -127,7 +125,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -139,7 +138,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

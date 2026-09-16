@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('ApiEntitiesErrorTrackingClientKeyEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['create', 'list']) {
-      if (maybeSkipControl(t, 'entityOp', 'api_entities_error_tracking_client_key.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'api_entities_error_tracking_client_key.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_API_ENTITIES_ERROR_TRACKING_CLIENT_KEY_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"active","req":false,"type":"`$BOOLEAN`","index$":0},{"active":true,"format":"int32","name":"id","req":false,"type":"`$INTEGER`","index$":1},{"active":true,"name":"public_key","req":false,"type":"`$STRING`","index$":2},{"active":true,"name":"sentry_dsn","req":false,"type":"`$STRING`","index$":3}],"id":{"field":"id","name":"id"},"name":"api_entities_error_tracking_client_key","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"POST /api/v4/projects/{id}/error_tracking/client_keys","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"postApiV4ProjectsIdErrorTrackingClientKeys\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project owned by the authenticated user\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"201\":{\"description\":\"Create a client key\",\"schema\":{\"description\":\"API_Entities_ErrorTracking_ClientKey model\",\"properties\":{\"active\":{\"type\":\"boolean\"},\"id\":{\"example\":1,\"format\":\"int32\",\"type\":\"integer\"},\"public_key\":{\"example\":\"glet_aa77551d849c083f76d0bc545ed053a3\",\"type\":\"string\"},\"sentry_dsn\":{\"example\":\"https://glet_aa77551d849c083f76d0bc545ed053a3@example.com/errortracking/api/v1/projects/5\",\"type\":\"string\"}},\"type\":\"object\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"POST","orig":"/api/v4/projects/{id}/error_tracking/client_keys","rename":{"param":{"id":"project_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"error_tracking"},{"lit":"client_keys"}],"select":{"exist":["project_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"GET /api/v4/projects/{id}/error_tracking/client_keys","json":"{\"operationId\":\"getApiV4ProjectsIdErrorTrackingClientKeys\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project owned by the authenticated user\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"List project client keys\",\"schema\":{\"items\":{\"description\":\"API_Entities_ErrorTracking_ClientKey model\",\"properties\":{\"active\":{\"type\":\"boolean\"},\"id\":{\"example\":1,\"format\":\"int32\",\"type\":\"integer\"},\"public_key\":{\"example\":\"glet_aa77551d849c083f76d0bc545ed053a3\",\"type\":\"string\"},\"sentry_dsn\":{\"example\":\"https://glet_aa77551d849c083f76d0bc545ed053a3@example.com/errortracking/api/v1/projects/5\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/projects/{id}/error_tracking/client_keys","rename":{"param":{"id":"project_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"error_tracking"},{"lit":"client_keys"}],"select":{"exist":["project_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[["project"]]},"key$":"api_entities_error_tracking_client_key","name__orig":"api_entities_error_tracking_client_key","Name":"ApiEntitiesErrorTrackingClientKey","name_":"api_entities_error_tracking_client_key","name-":"api-entities-error-tracking-client-key","NAME":"API_ENTITIES_ERROR_TRACKING_CLIENT_KEY","index$":69}, {"active":true,"entity":"api_entities_error_tracking_client_key","key$":"BasicApiEntitiesErrorTrackingClientKeyFlow","kind":"basic","name":"BasicApiEntitiesErrorTrackingClientKeyFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"api_entities_error_tracking_client_key_ref01"},"match":{"project_id":"project01"},"op":"create","spec":[],"valid":[],"index$":0},{"active":true,"data":{},"input":{},"match":{"project_id":"project01"},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"api_entities_error_tracking_client_key_ref01"}}],"index$":1}]}, 'ApiEntitiesErrorTrackingClientKey')
     }
     const client = setup.client
     const struct = setup.struct
@@ -119,13 +118,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_API_ENTITIES_ERROR_TRACKING_CLIENT_KEY_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_API_ENTITIES_ERROR_TRACKING_CLIENT_KEY_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -137,7 +129,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_API_ENTITIES_ERROR_TRACKING_CLIENT_KEY_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -150,7 +148,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -163,7 +162,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

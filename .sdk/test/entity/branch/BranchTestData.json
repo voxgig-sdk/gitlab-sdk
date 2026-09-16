@@ -19,5 +19,94 @@
     "branch": {
       "branch_ref01": {}
     }
+  },
+  "requests": {
+    "DELETE /api/v4/projects/{id}/repository/branches/{branch}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "deleteApiV4ProjectsIdRepositoryBranchesBranch",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The name of the branch",
+            "in": "path",
+            "name": "branch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "Delete a branch"
+          },
+          "404": {
+            "description": "Branch Not Found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "DELETE /api/v4/projects/{id}/repository/merged_branches": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "deleteApiV4ProjectsIdRepositoryMergedBranches",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "202": {
+            "description": "202 Accepted"
+          },
+          "404": {
+            "description": "404 Project Not Found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -16,5 +16,44 @@
     "group_avatar": {
       "group_avatar_ref01": {}
     }
+  },
+  "requests": {
+    "GET /api/v4/groups/{id}/avatar": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4GroupsIdAvatar",
+        "parameters": [
+          {
+            "description": "The ID of the group",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Download the group avatar"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -2,45 +2,45 @@
   "existing": {
     "api_entities_application_statistic": {
       "API_ENTITIES_APPLICATION_STATISTIC00": {
-        "active_users": "s6e",
-        "forks": "s6f",
-        "groups": "s70",
-        "issues": "s71",
-        "merge_requests": "s72",
-        "milestones": "s73",
-        "notes": "s74",
-        "projects": "s75",
-        "snippets": "s76",
-        "ssh_keys": "s77",
-        "users": "s78",
+        "active_users": 110,
+        "forks": 111,
+        "groups": 112,
+        "issues": 113,
+        "merge_requests": 114,
+        "milestones": 115,
+        "notes": 116,
+        "projects": 117,
+        "snippets": 118,
+        "ssh_keys": 119,
+        "users": 120,
         "id": "API_ENTITIES_APPLICATION_STATISTIC00"
       },
       "API_ENTITIES_APPLICATION_STATISTIC01": {
-        "active_users": "sdc",
-        "forks": "sdd",
-        "groups": "sde",
-        "issues": "sdf",
-        "merge_requests": "se0",
-        "milestones": "se1",
-        "notes": "se2",
-        "projects": "se3",
-        "snippets": "se4",
-        "ssh_keys": "se5",
-        "users": "se6",
+        "active_users": 220,
+        "forks": 221,
+        "groups": 222,
+        "issues": 223,
+        "merge_requests": 224,
+        "milestones": 225,
+        "notes": 226,
+        "projects": 227,
+        "snippets": 228,
+        "ssh_keys": 229,
+        "users": 230,
         "id": "API_ENTITIES_APPLICATION_STATISTIC01"
       },
       "API_ENTITIES_APPLICATION_STATISTIC02": {
-        "active_users": "s14a",
-        "forks": "s14b",
-        "groups": "s14c",
-        "issues": "s14d",
-        "merge_requests": "s14e",
-        "milestones": "s14f",
-        "notes": "s150",
-        "projects": "s151",
-        "snippets": "s152",
-        "ssh_keys": "s153",
-        "users": "s154",
+        "active_users": 330,
+        "forks": 331,
+        "groups": 332,
+        "issues": 333,
+        "merge_requests": 334,
+        "milestones": 335,
+        "notes": 336,
+        "projects": 337,
+        "snippets": 338,
+        "ssh_keys": 339,
+        "users": 340,
         "id": "API_ENTITIES_APPLICATION_STATISTIC02"
       }
     }
@@ -48,17 +48,120 @@
   "new": {
     "api_entities_application_statistic": {
       "api_entities_application_statistic_ref01": {
-        "active_users": "s1b8",
-        "forks": "s1b9",
-        "groups": "s1ba",
-        "issues": "s1bb",
-        "merge_requests": "s1bc",
-        "milestones": "s1bd",
-        "notes": "s1be",
-        "projects": "s1bf",
-        "snippets": "s1c0",
-        "ssh_keys": "s1c1",
-        "users": "s1c2"
+        "active_users": 440,
+        "forks": 441,
+        "groups": 442,
+        "issues": 443,
+        "merge_requests": 444,
+        "milestones": 445,
+        "notes": 446,
+        "projects": 447,
+        "snippets": 448,
+        "ssh_keys": 449,
+        "users": 450
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v4/application/statistics": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ApplicationStatistics",
+        "parameters": [],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get the current application statistics",
+            "schema": {
+              "description": "API_Entities_ApplicationStatistics model",
+              "properties": {
+                "active_users": {
+                  "description": "Number of active users",
+                  "example": 21,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "forks": {
+                  "description": "Approximate number of repo forks",
+                  "example": 6,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "groups": {
+                  "description": "Approximate number of projects",
+                  "example": 1,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "issues": {
+                  "description": "Approximate number of issues",
+                  "example": 121,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "merge_requests": {
+                  "description": "Approximate number of merge requests",
+                  "example": 49,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "milestones": {
+                  "description": "Approximate number of milestones",
+                  "example": 3,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "notes": {
+                  "description": "Approximate number of notes",
+                  "example": 6,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "projects": {
+                  "description": "Approximate number of projects",
+                  "example": 4,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "snippets": {
+                  "description": "Approximate number of snippets",
+                  "example": 4,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "ssh_keys": {
+                  "description": "Approximate number of SSH keys",
+                  "example": 11,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "users": {
+                  "description": "Approximate number of users",
+                  "example": 22,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

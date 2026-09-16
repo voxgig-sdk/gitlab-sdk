@@ -19,5 +19,270 @@
     "hook": {
       "hook_ref01": {}
     }
+  },
+  "requests": {
+    "POST /api/v4/hooks/{hook_id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "postApiV4HooksHookId",
+        "parameters": [
+          {
+            "description": "The ID of the hook",
+            "format": "int32",
+            "in": "path",
+            "name": "hook_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "created Hook"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "DELETE /api/v4/hooks/{hook_id}/custom_headers/{key}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "deleteApiV4HooksHookIdCustomHeadersKey",
+        "parameters": [
+          {
+            "description": "The ID of the hook",
+            "format": "int32",
+            "in": "path",
+            "name": "hook_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "The key of the custom header",
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "Un-Set a custom header"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "DELETE /api/v4/hooks/{hook_id}/url_variables/{key}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "deleteApiV4HooksHookIdUrlVariablesKey",
+        "parameters": [
+          {
+            "description": "The ID of the hook",
+            "format": "int32",
+            "in": "path",
+            "name": "hook_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "The key of the variable",
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "Un-Set a url variable"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PUT /api/v4/hooks/{hook_id}/custom_headers/{key}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "putApiV4HooksHookIdCustomHeadersKey",
+        "parameters": [
+          {
+            "description": "The ID of the hook",
+            "format": "int32",
+            "in": "path",
+            "name": "hook_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "The key of the custom header",
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "putApiV4HooksHookIdCustomHeadersKey",
+            "required": true,
+            "schema": {
+              "description": "Set a custom header",
+              "properties": {
+                "value": {
+                  "description": "The value of the custom header",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Set a custom header"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PUT /api/v4/hooks/{hook_id}/url_variables/{key}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "putApiV4HooksHookIdUrlVariablesKey",
+        "parameters": [
+          {
+            "description": "The ID of the hook",
+            "format": "int32",
+            "in": "path",
+            "name": "hook_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "The key of the variable",
+            "in": "path",
+            "name": "key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "putApiV4HooksHookIdUrlVariablesKey",
+            "required": true,
+            "schema": {
+              "description": "Set a url variable",
+              "properties": {
+                "value": {
+                  "description": "The value of the variable",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Set a url variable"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

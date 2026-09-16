@@ -9,7 +9,7 @@
         "path": "s54",
         "revision": "s55",
         "short_revision": "s56",
-        "total_size": "s57",
+        "total_size": 87,
         "project_id": "PROJECT01",
         "repository_id": "REPOSITORY01",
         "tag_name": "TAG_NAME01",
@@ -23,7 +23,7 @@
         "path": "sa4",
         "revision": "sa5",
         "short_revision": "sa6",
-        "total_size": "sa7",
+        "total_size": 167,
         "project_id": "PROJECT01",
         "repository_id": "REPOSITORY01",
         "tag_name": "TAG_NAME01",
@@ -37,7 +37,7 @@
         "path": "sf4",
         "revision": "sf5",
         "short_revision": "sf6",
-        "total_size": "sf7",
+        "total_size": 247,
         "project_id": "PROJECT01",
         "repository_id": "REPOSITORY01",
         "tag_name": "TAG_NAME01",
@@ -55,7 +55,110 @@
         "path": "s144",
         "revision": "s145",
         "short_revision": "s146",
-        "total_size": "s147"
+        "total_size": 327
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v4/projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdRegistryRepositoriesRepositoryIdTagsTagName",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The ID of the repository",
+            "format": "int32",
+            "in": "path",
+            "name": "repository_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "The name of the tag",
+            "in": "path",
+            "name": "tag_name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get details about a repository tag",
+            "schema": {
+              "description": "API_Entities_ContainerRegistry_TagDetails model",
+              "properties": {
+                "created_at": {
+                  "example": "2022-01-10T13:39:08.229Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "digest": {
+                  "example": "shadigest",
+                  "type": "string"
+                },
+                "location": {
+                  "example": "registry.dev/namespace1/project1/test_image_1:latest",
+                  "type": "string"
+                },
+                "name": {
+                  "example": "latest",
+                  "type": "string"
+                },
+                "path": {
+                  "example": "namespace1/project1/test_image_1:latest",
+                  "type": "string"
+                },
+                "revision": {
+                  "example": "tagrevision",
+                  "type": "string"
+                },
+                "short_revision": {
+                  "example": "shortrevison",
+                  "type": "string"
+                },
+                "total_size": {
+                  "example": 3,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

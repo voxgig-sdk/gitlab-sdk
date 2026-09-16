@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('ApiEntitiesBulkImportsEntityFailureEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'api_entities_bulk_imports_entity_failure.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'api_entities_bulk_imports_entity_failure.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_API_ENTITIES_BULK_IMPORTS_ENTITY_FAILURE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"correlation_id_value","req":false,"type":"`$STRING`","index$":0},{"active":true,"name":"exception_class","req":false,"type":"`$STRING`","index$":1},{"active":true,"name":"exception_message","req":false,"type":"`$STRING`","index$":2},{"active":true,"name":"relation","req":false,"type":"`$STRING`","index$":3},{"active":true,"name":"source_title","req":false,"type":"`$STRING`","index$":4},{"active":true,"name":"source_url","req":false,"type":"`$STRING`","index$":5}],"name":"api_entities_bulk_imports_entity_failure","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"bulk_import_id","orig":"import_id","reqd":true,"type":"`$STRING`","index$":0},{"active":true,"kind":"param","name":"entity_id","orig":"entity_id","reqd":true,"type":"`$STRING`","index$":1}]},"contract":{"id":"GET /api/v4/bulk_imports/{import_id}/entities/{entity_id}/failures","json":"{\"operationId\":\"getApiV4BulkImportsImportIdEntitiesEntityIdFailures\",\"parameters\":[{\"description\":\"The ID of user's GitLab Migration\",\"format\":\"int32\",\"in\":\"path\",\"name\":\"import_id\",\"required\":true,\"type\":\"integer\"},{\"description\":\"The ID of GitLab Migration entity\",\"format\":\"int32\",\"in\":\"path\",\"name\":\"entity_id\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get GitLab Migration entity failures\",\"schema\":{\"description\":\"API_Entities_BulkImports_EntityFailure model\",\"properties\":{\"correlation_id_value\":{\"example\":\"dfcf583058ed4508e4c7c617bd7f0edd\",\"type\":\"string\"},\"exception_class\":{\"example\":\"Exception\",\"type\":\"string\"},\"exception_message\":{\"example\":\"error message\",\"type\":\"string\"},\"relation\":{\"example\":\"label\",\"type\":\"string\"},\"source_title\":{\"example\":\"title\",\"type\":\"string\"},\"source_url\":{\"example\":\"https://source.gitlab.com/group/-/epics/1\",\"type\":\"string\"}},\"type\":\"object\"}},\"401\":{\"description\":\"Unauthorized\"},\"404\":{\"description\":\"Not found\"},\"503\":{\"description\":\"Service unavailable\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/bulk_imports/{import_id}/entities/{entity_id}/failures","rename":{"param":{"import_id":"bulk_import_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"bulk_imports"},{"var":"bulk_import_id"},{"lit":"entities"},{"var":"entity_id"},{"lit":"failures"}],"select":{"exist":["bulk_import_id","entity_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[["bulk_import","entity"]]},"key$":"api_entities_bulk_imports_entity_failure","name__orig":"api_entities_bulk_imports_entity_failure","Name":"ApiEntitiesBulkImportsEntityFailure","name_":"api_entities_bulk_imports_entity_failure","name-":"api-entities-bulk-imports-entity-failure","NAME":"API_ENTITIES_BULK_IMPORTS_ENTITY_FAILURE","index$":18}, {"active":true,"entity":"api_entities_bulk_imports_entity_failure","key$":"BasicApiEntitiesBulkImportsEntityFailureFlow","kind":"basic","name":"BasicApiEntitiesBulkImportsEntityFailureFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"api_entities_bulk_imports_entity_failure_ref01","srcdatavar":"api_entities_bulk_imports_entity_failure_ref01_data","suffix":"_dt0"},"match":{"bulk_import_id":"bulk_import01","id":"api_entities_bulk_imports_entity_failure01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-api_entities_bulk_imports_entity_failure_ref01"}}],"index$":0}]}, 'ApiEntitiesBulkImportsEntityFailure')
     }
     const client = setup.client
     const struct = setup.struct
@@ -107,13 +106,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_API_ENTITIES_BULK_IMPORTS_ENTITY_FAILURE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_API_ENTITIES_BULK_IMPORTS_ENTITY_FAILURE_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -125,7 +117,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_API_ENTITIES_BULK_IMPORTS_ENTITY_FAILURE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

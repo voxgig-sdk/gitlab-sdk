@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ErrorTrackingClientKey | GitLab API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">GitLab API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/gitlab-sdk">voxgig-sdk/gitlab-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">GitLab API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/access_request.html">AccessRequest</a>
+<a href="../api/alert_management.html">AlertManagement</a>
+<a href="../api/api_entities_access_requester.html">ApiEntitiesAccessRequester</a>
+<a href="../api/api_entities_appearance.html">ApiEntitiesAppearance</a>
+<a href="../api/api_entities_application.html">ApiEntitiesApplication</a>
+<a href="../api/api_entities_application_statistic.html">ApiEntitiesApplicationStatistic</a>
+<a href="../api/api_entities_application_with_secret.html">ApiEntitiesApplicationWithSecret</a>
+<a href="../api/api_entities_avatar.html">ApiEntitiesAvatar</a>
+<a href="../api/api_entities_award_emoji.html">ApiEntitiesAwardEmoji</a>
+<a href="../api/api_entities_badge.html">ApiEntitiesBadge</a>
+<a href="../api/api_entities_basic_badge_detail.html">ApiEntitiesBasicBadgeDetail</a>
+<a href="../api/api_entities_basic_group_detail.html">ApiEntitiesBasicGroupDetail</a>
+<a href="../api/api_entities_basic_project_detail.html">ApiEntitiesBasicProjectDetail</a>
+<a href="../api/api_entities_basic_ref.html">ApiEntitiesBasicRef</a>
+<a href="../api/api_entities_basic_success.html">ApiEntitiesBasicSuccess</a>
+<a href="../api/api_entities_batched_background_migration.html">ApiEntitiesBatchedBackgroundMigration</a>
+<a href="../api/api_entities_branch.html">ApiEntitiesBranch</a>
+<a href="../api/api_entities_bulk_import.html">ApiEntitiesBulkImport</a>
+<a href="../api/api_entities_bulk_imports_entity_failure.html">ApiEntitiesBulkImportsEntityFailure</a>
+<a href="../api/api_entities_bulk_imports_export_status.html">ApiEntitiesBulkImportsExportStatus</a>
+<a href="../api/api_entities_changelog.html">ApiEntitiesChangelog</a>
+<a href="../api/api_entities_ci_bridge.html">ApiEntitiesCiBridge</a>
+<a href="../api/api_entities_ci_catalog_resources_version.html">ApiEntitiesCiCatalogResourcesVersion</a>
+<a href="../api/api_entities_ci_job.html">ApiEntitiesCiJob</a>
+<a href="../api/api_entities_ci_job_basic.html">ApiEntitiesCiJobBasic</a>
+<a href="../api/api_entities_ci_job_basic_with_project.html">ApiEntitiesCiJobBasicWithProject</a>
+<a href="../api/api_entities_ci_lint_result.html">ApiEntitiesCiLintResult</a>
+<a href="../api/api_entities_ci_pipeline.html">ApiEntitiesCiPipeline</a>
+<a href="../api/api_entities_ci_pipeline_basic.html">ApiEntitiesCiPipelineBasic</a>
+<a href="../api/api_entities_ci_pipeline_schedule.html">ApiEntitiesCiPipelineSchedule</a>
+<a href="../api/api_entities_ci_pipeline_schedule_detail.html">ApiEntitiesCiPipelineScheduleDetail</a>
+<a href="../api/api_entities_ci_reset_token_result.html">ApiEntitiesCiResetTokenResult</a>
+<a href="../api/api_entities_ci_resource_group.html">ApiEntitiesCiResourceGroup</a>
+<a href="../api/api_entities_ci_runner.html">ApiEntitiesCiRunner</a>
+<a href="../api/api_entities_ci_runner_detail.html">ApiEntitiesCiRunnerDetail</a>
+<a href="../api/api_entities_ci_runner_manager.html">ApiEntitiesCiRunnerManager</a>
+<a href="../api/api_entities_ci_runner_registration_detail.html">ApiEntitiesCiRunnerRegistrationDetail</a>
+<a href="../api/api_entities_ci_secure_file.html">ApiEntitiesCiSecureFile</a>
+<a href="../api/api_entities_ci_variable.html">ApiEntitiesCiVariable</a>
+<a href="../api/api_entities_cluster.html">ApiEntitiesCluster</a>
+<a href="../api/api_entities_cluster_group.html">ApiEntitiesClusterGroup</a>
+<a href="../api/api_entities_cluster_project.html">ApiEntitiesClusterProject</a>
+<a href="../api/api_entities_clusters_agent.html">ApiEntitiesClustersAgent</a>
+<a href="../api/api_entities_clusters_agent_token.html">ApiEntitiesClustersAgentToken</a>
+<a href="../api/api_entities_clusters_agent_token_basic.html">ApiEntitiesClustersAgentTokenBasic</a>
+<a href="../api/api_entities_clusters_agent_token_with_token.html">ApiEntitiesClustersAgentTokenWithToken</a>
+<a href="../api/api_entities_commit.html">ApiEntitiesCommit</a>
+<a href="../api/api_entities_commit_detail.html">ApiEntitiesCommitDetail</a>
+<a href="../api/api_entities_commit_note.html">ApiEntitiesCommitNote</a>
+<a href="../api/api_entities_commit_sequence.html">ApiEntitiesCommitSequence</a>
+<a href="../api/api_entities_commit_signature.html">ApiEntitiesCommitSignature</a>
+<a href="../api/api_entities_commit_status.html">ApiEntitiesCommitStatus</a>
+<a href="../api/api_entities_compare.html">ApiEntitiesCompare</a>
+<a href="../api/api_entities_container_registry_repository.html">ApiEntitiesContainerRegistryRepository</a>
+<a href="../api/api_entities_container_registry_tag.html">ApiEntitiesContainerRegistryTag</a>
+<a href="../api/api_entities_container_registry_tag_detail.html">ApiEntitiesContainerRegistryTagDetail</a>
+<a href="../api/api_entities_contributor.html">ApiEntitiesContributor</a>
+<a href="../api/api_entities_deploy_key.html">ApiEntitiesDeployKey</a>
+<a href="../api/api_entities_deploy_keys_project.html">ApiEntitiesDeployKeysProject</a>
+<a href="../api/api_entities_deploy_token.html">ApiEntitiesDeployToken</a>
+<a href="../api/api_entities_deploy_token_with_token.html">ApiEntitiesDeployTokenWithToken</a>
+<a href="../api/api_entities_deployment.html">ApiEntitiesDeployment</a>
+<a href="../api/api_entities_deployment_extended.html">ApiEntitiesDeploymentExtended</a>
+<a href="../api/api_entities_deployments_approval.html">ApiEntitiesDeploymentsApproval</a>
+<a href="../api/api_entities_dictionary_table.html">ApiEntitiesDictionaryTable</a>
+<a href="../api/api_entities_diff.html">ApiEntitiesDiff</a>
+<a href="../api/api_entities_discovered_cluster.html">ApiEntitiesDiscoveredCluster</a>
+<a href="../api/api_entities_draft_note.html">ApiEntitiesDraftNote</a>
+<a href="../api/api_entities_environment.html">ApiEntitiesEnvironment</a>
+<a href="../api/api_entities_error_tracking_client_key.html">ApiEntitiesErrorTrackingClientKey</a>
+<a href="../api/api_entities_error_tracking_project_setting.html">ApiEntitiesErrorTrackingProjectSetting</a>
+<a href="../api/api_entities_event.html">ApiEntitiesEvent</a>
+<a href="../api/api_entities_feature.html">ApiEntitiesFeature</a>
+<a href="../api/api_entities_feature_definition.html">ApiEntitiesFeatureDefinition</a>
+<a href="../api/api_entities_feature_flag.html">ApiEntitiesFeatureFlag</a>
+<a href="../api/api_entities_feature_flag_user_list.html">ApiEntitiesFeatureFlagUserList</a>
+<a href="../api/api_entities_freeze_period.html">ApiEntitiesFreezePeriod</a>
+<a href="../api/api_entities_gitlab_subscription.html">ApiEntitiesGitlabSubscription</a>
+<a href="../api/api_entities_go_module_version.html">ApiEntitiesGoModuleVersion</a>
+<a href="../api/api_entities_group.html">ApiEntitiesGroup</a>
+<a href="../api/api_entities_group_detail.html">ApiEntitiesGroupDetail</a>
+<a href="../api/api_entities_hook.html">ApiEntitiesHook</a>
+<a href="../api/api_entities_integration.html">ApiEntitiesIntegration</a>
+<a href="../api/api_entities_integration_basic.html">ApiEntitiesIntegrationBasic</a>
+<a href="../api/api_entities_invitation.html">ApiEntitiesInvitation</a>
+<a href="../api/api_entities_issuable_time_stat.html">ApiEntitiesIssuableTimeStat</a>
+<a href="../api/api_entities_issue.html">ApiEntitiesIssue</a>
+<a href="../api/api_entities_issue_link.html">ApiEntitiesIssueLink</a>
+<a href="../api/api_entities_license.html">ApiEntitiesLicense</a>
+<a href="../api/api_entities_markdown.html">ApiEntitiesMarkdown</a>
+<a href="../api/api_entities_markdown_upload_admin.html">ApiEntitiesMarkdownUploadAdmin</a>
+<a href="../api/api_entities_member.html">ApiEntitiesMember</a>
+<a href="../api/api_entities_merge.html">ApiEntitiesMerge</a>
+<a href="../api/api_entities_merge_request_approval.html">ApiEntitiesMergeRequestApproval</a>
+<a href="../api/api_entities_merge_request_basic.html">ApiEntitiesMergeRequestBasic</a>
+<a href="../api/api_entities_merge_request_change.html">ApiEntitiesMergeRequestChange</a>
+<a href="../api/api_entities_merge_request_diff.html">ApiEntitiesMergeRequestDiff</a>
+<a href="../api/api_entities_merge_request_diff_full.html">ApiEntitiesMergeRequestDiffFull</a>
+<a href="../api/api_entities_merge_request_reviewer.html">ApiEntitiesMergeRequestReviewer</a>
+<a href="../api/api_entities_metric_image.html">ApiEntitiesMetricImage</a>
+<a href="../api/api_entities_mr_note.html">ApiEntitiesMrNote</a>
+<a href="../api/api_entities_namespace.html">ApiEntitiesNamespace</a>
+<a href="../api/api_entities_namespace_existence.html">ApiEntitiesNamespaceExistence</a>
+<a href="../api/api_entities_namespaces_storage_limit_exclusion.html">ApiEntitiesNamespacesStorageLimitExclusion</a>
+<a href="../api/api_entities_npm_package.html">ApiEntitiesNpmPackage</a>
+<a href="../api/api_entities_npm_package_tag.html">ApiEntitiesNpmPackageTag</a>
+<a href="../api/api_entities_nuget_packages_version.html">ApiEntitiesNugetPackagesVersion</a>
+<a href="../api/api_entities_nuget_search_result.html">ApiEntitiesNugetSearchResult</a>
+<a href="../api/api_entities_nuget_service_index.html">ApiEntitiesNugetServiceIndex</a>
+<a href="../api/api_entities_organizations_organization.html">ApiEntitiesOrganizationsOrganization</a>
+<a href="../api/api_entities_package.html">ApiEntitiesPackage</a>
+<a href="../api/api_entities_package_file.html">ApiEntitiesPackageFile</a>
+<a href="../api/api_entities_package_pipeline.html">ApiEntitiesPackagePipeline</a>
+<a href="../api/api_entities_packages_conan_files_list.html">ApiEntitiesPackagesConanFilesList</a>
+<a href="../api/api_entities_packages_conan_package_manifest.html">ApiEntitiesPackagesConanPackageManifest</a>
+<a href="../api/api_entities_packages_conan_package_revision.html">ApiEntitiesPackagesConanPackageRevision</a>
+<a href="../api/api_entities_packages_conan_package_snapshot.html">ApiEntitiesPackagesConanPackageSnapshot</a>
+<a href="../api/api_entities_packages_conan_recipe_manifest.html">ApiEntitiesPackagesConanRecipeManifest</a>
+<a href="../api/api_entities_packages_conan_recipe_revision.html">ApiEntitiesPackagesConanRecipeRevision</a>
+<a href="../api/api_entities_packages_conan_recipe_snapshot.html">ApiEntitiesPackagesConanRecipeSnapshot</a>
+<a href="../api/api_entities_packages_conan_revision.html">ApiEntitiesPackagesConanRevision</a>
+<a href="../api/api_entities_packages_conan_upload_url.html">ApiEntitiesPackagesConanUploadUrl</a>
+<a href="../api/api_entities_packages_debian_distribution.html">ApiEntitiesPackagesDebianDistribution</a>
+<a href="../api/api_entities_pages_domain.html">ApiEntitiesPagesDomain</a>
+<a href="../api/api_entities_pages_domain_basic.html">ApiEntitiesPagesDomainBasic</a>
+<a href="../api/api_entities_personal_access_token.html">ApiEntitiesPersonalAccessToken</a>
+<a href="../api/api_entities_personal_access_token_with_last_used_ip.html">ApiEntitiesPersonalAccessTokenWithLastUsedIp</a>
+<a href="../api/api_entities_personal_access_token_with_token.html">ApiEntitiesPersonalAccessTokenWithToken</a>
+<a href="../api/api_entities_personal_snippet.html">ApiEntitiesPersonalSnippet</a>
+<a href="../api/api_entities_plan_limit.html">ApiEntitiesPlanLimit</a>
+<a href="../api/api_entities_project.html">ApiEntitiesProject</a>
+<a href="../api/api_entities_project_daily_statistic.html">ApiEntitiesProjectDailyStatistic</a>
+<a href="../api/api_entities_project_export_status.html">ApiEntitiesProjectExportStatus</a>
+<a href="../api/api_entities_project_group_link.html">ApiEntitiesProjectGroupLink</a>
+<a href="../api/api_entities_project_hook.html">ApiEntitiesProjectHook</a>
+<a href="../api/api_entities_project_import_status.html">ApiEntitiesProjectImportStatus</a>
+<a href="../api/api_entities_project_job_token_scope.html">ApiEntitiesProjectJobTokenScope</a>
+<a href="../api/api_entities_project_repository_storage.html">ApiEntitiesProjectRepositoryStorage</a>
+<a href="../api/api_entities_project_snippet.html">ApiEntitiesProjectSnippet</a>
+<a href="../api/api_entities_project_upload.html">ApiEntitiesProjectUpload</a>
+<a href="../api/api_entities_project_with_access.html">ApiEntitiesProjectWithAccess</a>
+<a href="../api/api_entities_projects_container_registry_protection_rule.html">ApiEntitiesProjectsContainerRegistryProtectionRule</a>
+<a href="../api/api_entities_projects_packages_protection_rule.html">ApiEntitiesProjectsPackagesProtectionRule</a>
+<a href="../api/api_entities_projects_topic.html">ApiEntitiesProjectsTopic</a>
+<a href="../api/api_entities_protected_branch.html">ApiEntitiesProtectedBranch</a>
+<a href="../api/api_entities_protected_tag.html">ApiEntitiesProtectedTag</a>
+<a href="../api/api_entities_public_group_detail.html">ApiEntitiesPublicGroupDetail</a>
+<a href="../api/api_entities_related_issue.html">ApiEntitiesRelatedIssue</a>
+<a href="../api/api_entities_relation_import_tracker.html">ApiEntitiesRelationImportTracker</a>
+<a href="../api/api_entities_release.html">ApiEntitiesRelease</a>
+<a href="../api/api_entities_releases_link.html">ApiEntitiesReleasesLink</a>
+<a href="../api/api_entities_remote_mirror.html">ApiEntitiesRemoteMirror</a>
+<a href="../api/api_entities_repository_health.html">ApiEntitiesRepositoryHealth</a>
+<a href="../api/api_entities_resource_access_token_with_token.html">ApiEntitiesResourceAccessTokenWithToken</a>
+<a href="../api/api_entities_resource_milestone_event.html">ApiEntitiesResourceMilestoneEvent</a>
+<a href="../api/api_entities_snippet.html">ApiEntitiesSnippet</a>
+<a href="../api/api_entities_ssh_key_with_user.html">ApiEntitiesSshKeyWithUser</a>
+<a href="../api/api_entities_suggestion.html">ApiEntitiesSuggestion</a>
+<a href="../api/api_entities_system_broadcast_message.html">ApiEntitiesSystemBroadcastMessage</a>
+<a href="../api/api_entities_tag.html">ApiEntitiesTag</a>
+<a href="../api/api_entities_tag_signature.html">ApiEntitiesTagSignature</a>
+<a href="../api/api_entities_templates_list.html">ApiEntitiesTemplatesList</a>
+<a href="../api/api_entities_terraform_module_version.html">ApiEntitiesTerraformModuleVersion</a>
+<a href="../api/api_entities_tree_object.html">ApiEntitiesTreeObject</a>
+<a href="../api/api_entities_trigger.html">ApiEntitiesTrigger</a>
+<a href="../api/api_entities_user_agent_detail.html">ApiEntitiesUserAgentDetail</a>
+<a href="../api/api_entities_user_count.html">ApiEntitiesUserCount</a>
+<a href="../api/api_entities_user_public.html">ApiEntitiesUserPublic</a>
+<a href="../api/api_entities_user_with_admin.html">ApiEntitiesUserWithAdmin</a>
+<a href="../api/api_entities_wiki_attachment.html">ApiEntitiesWikiAttachment</a>
+<a href="../api/api_entities_wiki_page.html">ApiEntitiesWikiPage</a>
+<a href="../api/api_entities_wiki_page_basic.html">ApiEntitiesWikiPageBasic</a>
+<a href="../api/application.html">Application</a>
+<a href="../api/award_emoji.html">AwardEmoji</a>
+<a href="../api/badge.html">Badge</a>
+<a href="../api/branch.html">Branch</a>
+<a href="../api/cargo_package.html">CargoPackage</a>
+<a href="../api/ci_variable.html">CiVariable</a>
+<a href="../api/cluster.html">Cluster</a>
+<a href="../api/cluster_agent.html">ClusterAgent</a>
+<a href="../api/composer.html">Composer</a>
+<a href="../api/composer_package.html">ComposerPackage</a>
+<a href="../api/conan.html">Conan</a>
+<a href="../api/conan_package.html">ConanPackage</a>
+<a href="../api/container_registry.html">ContainerRegistry</a>
+<a href="../api/container_registry_event.html">ContainerRegistryEvent</a>
+<a href="../api/custom_attribute.html">CustomAttribute</a>
+<a href="../api/debian.html">Debian</a>
+<a href="../api/debian_distribution.html">DebianDistribution</a>
+<a href="../api/debian_package.html">DebianPackage</a>
+<a href="../api/dependency_proxy.html">DependencyProxy</a>
+<a href="../api/deploy_key.html">DeployKey</a>
+<a href="../api/deploy_token.html">DeployToken</a>
+<a href="../api/deployment.html">Deployment</a>
+<a href="../api/ee_api_entities_approval_state.html">EeApiEntitiesApprovalState</a>
+<a href="../api/ee_api_entities_audit_event.html">EeApiEntitiesAuditEvent</a>
+<a href="../api/ee_api_entities_billable_membership.html">EeApiEntitiesBillableMembership</a>
+<a href="../api/ee_api_entities_geo_node_status.html">EeApiEntitiesGeoNodeStatus</a>
+<a href="../api/ee_api_entities_geo_pipeline_ref.html">EeApiEntitiesGeoPipelineRef</a>
+<a href="../api/ee_api_entities_issuable_metric_image.html">EeApiEntitiesIssuableMetricImage</a>
+<a href="../api/ee_api_entities_merge_request_approval_state.html">EeApiEntitiesMergeRequestApprovalState</a>
+<a href="../api/ee_api_entities_ssh_certificate.html">EeApiEntitiesSshCertificate</a>
+<a href="../api/environment.html">Environment</a>
+<a aria-current="page" href="../api/error_tracking_client_key.html">ErrorTrackingClientKey</a><div class="nav-sections"><a class="nav-section" href="#delete-apiv4projectsiderror_trackingclient_keyskey_id">DELETE /api/v4/projects/{id}/error_tracking/client_keys/{key_id}</a></div>
+<a href="../api/feature.html">Feature</a>
+<a href="../api/feature_flag.html">FeatureFlag</a>
+<a href="../api/feature_flags_user_list.html">FeatureFlagsUserList</a>
+<a href="../api/freeze_period.html">FreezePeriod</a>
+<a href="../api/generic_package.html">GenericPackage</a>
+<a href="../api/geo.html">Geo</a>
+<a href="../api/go_proxy.html">GoProxy</a>
+<a href="../api/group.html">Group</a>
+<a href="../api/group_avatar.html">GroupAvatar</a>
+<a href="../api/group_export.html">GroupExport</a>
+<a href="../api/group_import.html">GroupImport</a>
+<a href="../api/helm_package.html">HelmPackage</a>
+<a href="../api/hook.html">Hook</a>
+<a href="../api/import.html">Import</a>
+<a href="../api/integration.html">Integration</a>
+<a href="../api/invitation.html">Invitation</a>
+<a href="../api/issue_link.html">IssueLink</a>
+<a href="../api/issues_statistic.html">IssuesStatistic</a>
+<a href="../api/job.html">Job</a>
+<a href="../api/maven_package.html">MavenPackage</a>
+<a href="../api/member.html">Member</a>
+<a href="../api/merge_request.html">MergeRequest</a>
+<a href="../api/metadata.html">Metadata</a>
+<a href="../api/migration.html">Migration</a>
+<a href="../api/ml_model_registry.html">MlModelRegistry</a>
+<a href="../api/namespace.html">Namespace</a>
+<a href="../api/npm.html">Npm</a>
+<a href="../api/npm_package.html">NpmPackage</a>
+<a href="../api/nuget.html">Nuget</a>
+<a href="../api/nuget_package.html">NugetPackage</a>
+<a href="../api/package_file.html">PackageFile</a>
+<a href="../api/page.html">Page</a>
+<a href="../api/participant.html">Participant</a>
+<a href="../api/personal_access_token.html">PersonalAccessToken</a>
+<a href="../api/project.html">Project</a>
+<a href="../api/project_avatar.html">ProjectAvatar</a>
+<a href="../api/project_entity.html">ProjectEntity</a>
+<a href="../api/project_export.html">ProjectExport</a>
+<a href="../api/project_hook.html">ProjectHook</a>
+<a href="../api/project_import.html">ProjectImport</a>
+<a href="../api/project_import_entity.html">ProjectImportEntity</a>
+<a href="../api/project_package.html">ProjectPackage</a>
+<a href="../api/project_snippet.html">ProjectSnippet</a>
+<a href="../api/projects_job_token_scope.html">ProjectsJobTokenScope</a>
+<a href="../api/protected_tag.html">ProtectedTag</a>
+<a href="../api/pypi.html">Pypi</a>
+<a href="../api/pypi_package.html">PypiPackage</a>
+<a href="../api/release.html">Release</a>
+<a href="../api/release_link.html">ReleaseLink</a>
+<a href="../api/remote_mirror.html">RemoteMirror</a>
+<a href="../api/rpm.html">Rpm</a>
+<a href="../api/rpm_package.html">RpmPackage</a>
+<a href="../api/rubygem.html">Rubygem</a>
+<a href="../api/rubygem_package.html">RubygemPackage</a>
+<a href="../api/runner.html">Runner</a>
+<a href="../api/search.html">Search</a>
+<a href="../api/secure_file.html">SecureFile</a>
+<a href="../api/slack.html">Slack</a>
+<a href="../api/snippet.html">Snippet</a>
+<a href="../api/starrer.html">Starrer</a>
+<a href="../api/system_hook.html">SystemHook</a>
+<a href="../api/tag.html">Tag</a>
+<a href="../api/terraform_registry.html">TerraformRegistry</a>
+<a href="../api/terraform_state.html">TerraformState</a>
+<a href="../api/test_report.html">TestReport</a>
+<a href="../api/test_report_summary.html">TestReportSummary</a>
+<a href="../api/topic.html">Topic</a>
+<a href="../api/unleash_api.html">UnleashApi</a>
+<a href="../api/usage_data.html">UsageData</a>
+<a href="../api/user.html">User</a>
+<a href="../api/web_commit.html">WebCommit</a>
+<a href="../api/wiki.html">Wiki</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="errortrackingclientkey">ErrorTrackingClientKey</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-apiv4projectsiderror_trackingclient_keyskey_id"><code>/api/v4/projects/{id}/error_tracking/client_keys/{key_id}</code></a></td>
+<td><code>remove</code></td>
+<td>Bad request</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="remove">remove</h2>
+<h3 id="delete-apiv4projectsiderror_trackingclient_keyskey_id" class="operation" data-method="delete"><code>DELETE</code> /api/v4/projects/{id}/error_tracking/client_keys/{key_id}</h3>
+<p>Operation ID: <code>deleteApiV4ProjectsIdErrorTrackingClientKeysKeyId</code>.</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project owned by the authenticated user |
+| <code>key_id</code> | <code>path</code> | <code>any</code> | Yes |  |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="204-bad-request" class="status" data-status="2xx">204: Bad request</h5>
+<h5 id="401-unauthorized" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

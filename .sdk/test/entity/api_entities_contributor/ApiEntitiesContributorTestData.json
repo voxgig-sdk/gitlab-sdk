@@ -2,27 +2,27 @@
   "existing": {
     "api_entities_contributor": {
       "API_ENTITIES_CONTRIBUTOR00": {
-        "additions": "s32",
-        "commits": "s33",
-        "deletions": "s34",
+        "additions": 50,
+        "commits": 51,
+        "deletions": 52,
         "email": "s35",
         "name": "s36",
         "project_id": "PROJECT01",
         "id": "API_ENTITIES_CONTRIBUTOR00"
       },
       "API_ENTITIES_CONTRIBUTOR01": {
-        "additions": "s64",
-        "commits": "s65",
-        "deletions": "s66",
+        "additions": 100,
+        "commits": 101,
+        "deletions": 102,
         "email": "s67",
         "name": "s68",
         "project_id": "PROJECT01",
         "id": "API_ENTITIES_CONTRIBUTOR01"
       },
       "API_ENTITIES_CONTRIBUTOR02": {
-        "additions": "s96",
-        "commits": "s97",
-        "deletions": "s98",
+        "additions": 150,
+        "commits": 151,
+        "deletions": 152,
         "email": "s99",
         "name": "s9a",
         "project_id": "PROJECT01",
@@ -33,11 +33,133 @@
   "new": {
     "api_entities_contributor": {
       "api_entities_contributor_ref01": {
-        "additions": "sc8",
-        "commits": "sc9",
-        "deletions": "sca",
+        "additions": 200,
+        "commits": 201,
+        "deletions": 202,
         "email": "scb",
         "name": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v4/projects/{id}/repository/contributors": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdRepositoryContributors",
+        "parameters": [
+          {
+            "description": "The ID or URL-encoded path of the project",
+            "example": 1,
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": 1,
+            "description": "Current page number",
+            "example": 1,
+            "format": "int32",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": 20,
+            "description": "Number of items per page",
+            "example": 20,
+            "format": "int32",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "The name of a repository branch or tag, if not given the default branch is used",
+            "example": "main",
+            "in": "query",
+            "name": "ref",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "commits",
+            "description": "Return contributors ordered by `name` or `email` or `commits`",
+            "enum": [
+              "email",
+              "name",
+              "commits"
+            ],
+            "in": "query",
+            "name": "order_by",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "default": "asc",
+            "description": "Sort by asc (ascending) or desc (descending)",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Get repository contributors",
+            "schema": {
+              "description": "API_Entities_Contributor model",
+              "properties": {
+                "additions": {
+                  "example": 3,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "commits": {
+                  "example": 117,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "deletions": {
+                  "example": 5,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "email": {
+                  "example": "johndoe@example.com",
+                  "type": "string"
+                },
+                "name": {
+                  "example": "John Doe",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

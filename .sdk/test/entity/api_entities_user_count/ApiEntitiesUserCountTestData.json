@@ -2,27 +2,27 @@
   "existing": {
     "api_entities_user_count": {
       "API_ENTITIES_USER_COUNT00": {
-        "assigned_issues": "s32",
-        "assigned_merge_requests": "s33",
-        "merge_requests": "s34",
-        "review_requested_merge_requests": "s35",
-        "todos": "s36",
+        "assigned_issues": 50,
+        "assigned_merge_requests": 51,
+        "merge_requests": 52,
+        "review_requested_merge_requests": 53,
+        "todos": 54,
         "id": "API_ENTITIES_USER_COUNT00"
       },
       "API_ENTITIES_USER_COUNT01": {
-        "assigned_issues": "s64",
-        "assigned_merge_requests": "s65",
-        "merge_requests": "s66",
-        "review_requested_merge_requests": "s67",
-        "todos": "s68",
+        "assigned_issues": 100,
+        "assigned_merge_requests": 101,
+        "merge_requests": 102,
+        "review_requested_merge_requests": 103,
+        "todos": 104,
         "id": "API_ENTITIES_USER_COUNT01"
       },
       "API_ENTITIES_USER_COUNT02": {
-        "assigned_issues": "s96",
-        "assigned_merge_requests": "s97",
-        "merge_requests": "s98",
-        "review_requested_merge_requests": "s99",
-        "todos": "s9a",
+        "assigned_issues": 150,
+        "assigned_merge_requests": 151,
+        "merge_requests": 152,
+        "review_requested_merge_requests": 153,
+        "todos": 154,
         "id": "API_ENTITIES_USER_COUNT02"
       }
     }
@@ -30,11 +30,73 @@
   "new": {
     "api_entities_user_count": {
       "api_entities_user_count_ref01": {
-        "assigned_issues": "sc8",
-        "assigned_merge_requests": "sc9",
-        "merge_requests": "sca",
-        "review_requested_merge_requests": "scb",
-        "todos": "scc"
+        "assigned_issues": 200,
+        "assigned_merge_requests": 201,
+        "merge_requests": 202,
+        "review_requested_merge_requests": 203,
+        "todos": 204
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v4/user_counts": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4UserCounts",
+        "parameters": [],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Return the user specific counts",
+            "schema": {
+              "description": "API_Entities_UserCounts model",
+              "properties": {
+                "assigned_issues": {
+                  "example": 10,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "assigned_merge_requests": {
+                  "example": 10,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "merge_requests": {
+                  "example": 10,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "review_requested_merge_requests": {
+                  "example": 10,
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "todos": {
+                  "example": 10,
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

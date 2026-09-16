@@ -31,5 +31,502 @@
     "terraform_registry": {
       "terraform_registry_ref01": {}
     }
+  },
+  "requests": {
+    "GET /api/v4/projects/{id}/packages/terraform/modules/{module_name}/{module_system}/*module_version": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystem*moduleVersion",
+        "parameters": [
+          {
+            "description": "The ID or full path of a project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module name",
+            "example": "infra-registry",
+            "in": "path",
+            "name": "module_name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module system",
+            "example": "aws",
+            "in": "path",
+            "name": "module_system",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module version",
+            "in": "query",
+            "name": "module_version",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Terraform get redirection flag",
+            "enum": [
+              "1"
+            ],
+            "in": "query",
+            "name": "terraform-get",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "Download a specific version of a module"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/projects/{id}/packages/terraform/modules/{module_name}/{module_system}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystem",
+        "parameters": [
+          {
+            "description": "The ID or full path of a project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module name",
+            "example": "infra-registry",
+            "in": "path",
+            "name": "module_name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module system",
+            "example": "aws",
+            "in": "path",
+            "name": "module_system",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Terraform get redirection flag",
+            "enum": [
+              "1"
+            ],
+            "in": "query",
+            "name": "terraform-get",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "Download the latest version of a module"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}/*module_version/download": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystem*moduleVersionDownload",
+        "parameters": [
+          {
+            "description": "Group's ID or slug",
+            "in": "path",
+            "name": "module_namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "module_name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "module_system",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module version",
+            "in": "query",
+            "name": "module_version",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "Get download location for specific version of a module"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}/*module_version/file": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystem*moduleVersionFile",
+        "parameters": [
+          {
+            "description": "Group's ID or slug",
+            "in": "path",
+            "name": "module_namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "module_name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "module_system",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module version",
+            "in": "query",
+            "name": "module_version",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Download specific version of a module",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}/download": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiV4PackagesTerraformModulesV1ModuleNamespaceModuleNameModuleSystemDownload",
+        "parameters": [
+          {
+            "description": "Group's ID or slug",
+            "in": "path",
+            "name": "module_namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "",
+            "in": "path",
+            "name": "module_name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "module_system",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "302": {
+            "description": "Get download location for the latest version of a module"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PUT /api/v4/projects/{id}/packages/terraform/modules/{module_name}/{module_system}/*module_version/file": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "operationId": "putApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystem*moduleVersionFile",
+        "parameters": [
+          {
+            "description": "The ID or full path of a project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module name",
+            "example": "infra-registry",
+            "in": "path",
+            "name": "module_name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module system",
+            "example": "aws",
+            "in": "path",
+            "name": "module_system",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module version",
+            "in": "formData",
+            "name": "module_version",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "The package file to be published (generated by Multipart middleware)",
+            "in": "formData",
+            "name": "file",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "201": {
+            "description": "Upload Terraform Module package file"
+          },
+          "400": {
+            "description": "Invalid file"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PUT /api/v4/projects/{id}/packages/terraform/modules/{module_name}/{module_system}/*module_version/file/authorize": {
+      "provenance": "operation-contract",
+      "contract": {
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "putApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystem*moduleVersionFileAuthorize",
+        "parameters": [
+          {
+            "description": "The ID or full path of a project",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module name",
+            "example": "infra-registry",
+            "in": "path",
+            "name": "module_name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Module system",
+            "example": "aws",
+            "in": "path",
+            "name": "module_system",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "putApiV4ProjectsIdPackagesTerraformModulesModuleNameModuleSystem*moduleVersionFileAuthorize",
+            "required": true,
+            "schema": {
+              "description": "Workhorse authorize Terraform Module package file",
+              "properties": {
+                "module_version": {
+                  "description": "Module version",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "module_version"
+              ],
+              "type": "object"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Workhorse authorize Terraform Module package file"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "securitySchemes": {
+          "access_token_header": {
+            "in": "header",
+            "name": "PRIVATE-TOKEN",
+            "type": "apiKey"
+          },
+          "access_token_query": {
+            "in": "query",
+            "name": "private_token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

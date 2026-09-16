@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.GITLAB_TEST_LIVE;
         for (const op of ['list']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'api_entities_namespace_existence.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'api_entities_namespace_existence.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_API_ENTITIES_NAMESPACE_EXISTENCE_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "exists", "req": false, "type": "`$BOOLEAN`", "index$": 0 }, { "active": true, "name": "suggests", "req": false, "type": "`$ARRAY`", "index$": 1 }], "name": "api_entities_namespace_existence", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "params": [{ "active": true, "kind": "param", "name": "namespace_id", "orig": "id", "reqd": true, "type": "`$STRING`", "index$": 0 }], "query": [{ "active": true, "kind": "query", "name": "parent_id", "orig": "parent_id", "reqd": false, "type": "`$STRING`", "index$": 0 }] }, "contract": { "id": "GET /api/v4/namespaces/{id}/exists", "json": "{\"operationId\":\"getApiV4NamespacesIdExists\",\"parameters\":[{\"description\":\"Namespace’s path\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The ID of the parent namespace. If no ID is specified, only top-level namespaces are considered.\",\"format\":\"int32\",\"in\":\"query\",\"name\":\"parent_id\",\"required\":false,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get existence of a namespace\",\"schema\":{\"description\":\"API_Entities_NamespaceExistence model\",\"properties\":{\"exists\":{\"type\":\"boolean\"},\"suggests\":{\"example\":\"my-group1\",\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}},\"401\":{\"description\":\"Unauthorized\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/v4/namespaces/{id}/exists", "rename": { "param": { "id": "namespace_id" } }, "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "namespaces" }, { "var": "namespace_id" }, { "lit": "exists" }], "select": { "exist": ["namespace_id", "parent_id"] }, "transform": { "req": "`reqdata`", "res": "`body.suggests`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [["namespace"]] }, "key$": "api_entities_namespace_existence", "name__orig": "api_entities_namespace_existence", "Name": "ApiEntitiesNamespaceExistence", "name_": "api_entities_namespace_existence", "name-": "api-entities-namespace-existence", "NAME": "API_ENTITIES_NAMESPACE_EXISTENCE", "index$": 102 }, { "active": true, "entity": "api_entities_namespace_existence", "key$": "BasicApiEntitiesNamespaceExistenceFlow", "kind": "basic", "name": "BasicApiEntitiesNamespaceExistenceFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": { "namespace_id": "namespace01" }, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "api_entities_namespace_existence_ref01" } }], "index$": 0 }] }, 'ApiEntitiesNamespaceExistence');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -102,12 +100,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['GITLAB_TEST_API_ENTITIES_NAMESPACE_EXISTENCE_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'GITLAB_TEST_API_ENTITIES_NAMESPACE_EXISTENCE_ENTID': idmap,
         'GITLAB_TEST_LIVE': 'FALSE',
@@ -116,7 +108,13 @@ function basicSetup(extra) {
     });
     idmap = env['GITLAB_TEST_API_ENTITIES_NAMESPACE_EXISTENCE_ENTID'];
     const live = 'TRUE' === env.GITLAB_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['GITLAB_TEST_API_ENTITIES_NAMESPACE_EXISTENCE_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.GitlabSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -129,7 +127,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -141,7 +140,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

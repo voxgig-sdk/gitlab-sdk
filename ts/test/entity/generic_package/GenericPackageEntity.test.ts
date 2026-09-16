@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { GitlabSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('GenericPackageEntity', async () => {
 
     const live = 'TRUE' === process.env.GITLAB_TEST_LIVE
     for (const op of ['update', 'load']) {
-      if (maybeSkipControl(t, 'entityOp', 'generic_package.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'generic_package.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_GENERIC_PACKAGE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"generic_package","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"file_name","orig":"file_name","reqd":true,"type":"`$ANY`","index$":0},{"active":true,"kind":"param","name":"generic_id","orig":"package_name","reqd":true,"type":"`$STRING`","index$":1},{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":2}],"query":[{"active":true,"kind":"query","name":"package_version","orig":"package_version","reqd":true,"type":"`$ANY`","index$":0},{"active":true,"kind":"query","name":"path","orig":"path","reqd":false,"type":"`$STRING`","index$":1}]},"contract":{"id":"GET /api/v4/projects/{id}/packages/generic/{package_name}/*package_version/(*path/){file_name}","json":"{\"operationId\":\"getApiV4ProjectsIdPackagesGenericPackageName*packageVersion(*path)FileName\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"Package name\",\"in\":\"path\",\"name\":\"package_name\",\"required\":true,\"type\":\"string\"},{\"description\":\"Package version\",\"in\":\"query\",\"name\":\"package_version\",\"required\":true,\"type\":\"string\"},{\"description\":\"File directory path\",\"in\":\"query\",\"name\":\"path\",\"required\":false,\"type\":\"string\"},{\"description\":\"Package file name\",\"in\":\"path\",\"name\":\"file_name\",\"required\":true,\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Download package file\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"404\":{\"description\":\"Not Found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/projects/{id}/packages/generic/{package_name}/*package_version/(*path/){file_name}","rename":{"param":{"id":"project_id","package_name":"generic_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"packages"},{"lit":"generic"},{"var":"generic_id"},{"lit":"*package_version"},{"lit":"(*path"},{"lit":"){file_name}"}],"select":{"exist":["file_name","generic_id","package_version","path","project_id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"},"update":{"input":"data","name":"update","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"file_name","orig":"file_name","reqd":true,"type":"`$ANY`","index$":0},{"active":true,"kind":"param","name":"generic_id","orig":"package_name","reqd":true,"type":"`$STRING`","index$":1},{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":2}],"query":[{"active":true,"kind":"query","name":"put_api_v4_projects_id_packages_generic_package_name*package_version(*path)_file_name","orig":"put_api_v4_projects_id_packages_generic_package_name*package_version(*path)_file_name","reqd":true,"type":"`$OBJECT`","index$":0}]},"contract":{"id":"PUT /api/v4/projects/{id}/packages/generic/{package_name}/*package_version/(*path/){file_name}","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"putApiV4ProjectsIdPackagesGenericPackageName*packageVersion(*path)FileName\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"Package name\",\"in\":\"path\",\"name\":\"package_name\",\"required\":true,\"type\":\"string\"},{\"description\":\"Package file name\",\"in\":\"path\",\"name\":\"file_name\",\"required\":true,\"type\":\"string\"},{\"in\":\"body\",\"name\":\"putApiV4ProjectsIdPackagesGenericPackageName*packageVersion(*path)FileName\",\"required\":true,\"schema\":{\"description\":\"Upload package file\",\"properties\":{\"file\":{\"description\":\"The package file to be published (generated by Multipart middleware)\",\"type\":\"file\"},\"package_version\":{\"description\":\"Package version\",\"type\":\"string\"},\"path\":{\"description\":\"File directory path\",\"type\":\"string\"},\"select\":{\"enum\":[\"package_file\"],\"type\":\"string\"},\"status\":{\"description\":\"Package status\",\"enum\":[\"default\",\"hidden\"],\"type\":\"string\"}},\"required\":[\"package_version\",\"file\"],\"type\":\"object\"}}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Upload package file\"},\"201\":{\"description\":\"Upload package file\"},\"400\":{\"description\":\"Bad Request\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"404\":{\"description\":\"Not Found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"PUT","orig":"/api/v4/projects/{id}/packages/generic/{package_name}/*package_version/(*path/){file_name}","rename":{"param":{"id":"project_id","package_name":"generic_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"packages"},{"lit":"generic"},{"var":"generic_id"},{"lit":"*package_version"},{"lit":"(*path"},{"lit":"){file_name}"}],"select":{"exist":["file_name","generic_id","project_id","put_api_v4_projects_id_packages_generic_package_name*package_version(*path)_file_name"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"file_name","orig":"file_name","reqd":true,"type":"`$ANY`","index$":0},{"active":true,"kind":"param","name":"generic_id","orig":"package_name","reqd":true,"type":"`$STRING`","index$":1},{"active":true,"kind":"param","name":"project_id","orig":"id","reqd":true,"type":"`$STRING`","index$":2}],"query":[{"active":true,"kind":"query","name":"put_api_v4_projects_id_packages_generic_package_name*package_version(*path)_file_name_authorize","orig":"put_api_v4_projects_id_packages_generic_package_name*package_version(*path)_file_name_authorize","reqd":true,"type":"`$OBJECT`","index$":0}]},"contract":{"id":"PUT /api/v4/projects/{id}/packages/generic/{package_name}/*package_version/(*path/){file_name}/authorize","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"putApiV4ProjectsIdPackagesGenericPackageName*packageVersion(*path)FileNameAuthorize\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"Package name\",\"in\":\"path\",\"name\":\"package_name\",\"required\":true,\"type\":\"string\"},{\"description\":\"Package file name\",\"in\":\"path\",\"name\":\"file_name\",\"required\":true,\"type\":\"string\"},{\"in\":\"body\",\"name\":\"putApiV4ProjectsIdPackagesGenericPackageName*packageVersion(*path)FileNameAuthorize\",\"required\":true,\"schema\":{\"description\":\"Workhorse authorize generic package file\",\"properties\":{\"package_version\":{\"description\":\"Package version\",\"type\":\"string\"},\"path\":{\"format\":\"int32\",\"type\":\"integer\"},\"status\":{\"description\":\"Package status\",\"enum\":[\"default\",\"hidden\"],\"type\":\"string\"}},\"required\":[\"package_version\",\"path\"],\"type\":\"object\"}}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Workhorse authorize generic package file\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"404\":{\"description\":\"Not Found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"PUT","orig":"/api/v4/projects/{id}/packages/generic/{package_name}/*package_version/(*path/){file_name}/authorize","rename":{"param":{"id":"project_id","package_name":"generic_id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"projects"},{"var":"project_id"},{"lit":"packages"},{"lit":"generic"},{"var":"generic_id"},{"lit":"*package_version"},{"lit":"(*path"},{"lit":"){file_name}"},{"lit":"authorize"}],"select":{"exist":["file_name","generic_id","project_id","put_api_v4_projects_id_packages_generic_package_name*package_version(*path)_file_name_authorize"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"update"}},"relations":{"ancestors":[["project","generic"]]},"key$":"generic_package","name__orig":"generic_package","Name":"GenericPackage","name_":"generic_package","name-":"generic-package","NAME":"GENERIC_PACKAGE","index$":208}, {"active":true,"entity":"generic_package","key$":"BasicGenericPackageFlow","kind":"basic","name":"BasicGenericPackageFlow","param":{},"step":[{"active":true,"data":{"file_name":"file_name01","project_id":"project01"},"input":{"ref":"generic_package_ref01","srcdatavar":"generic_package_ref01_data","suffix":"_up0"},"match":{},"op":"update","spec":[{"apply":"TextFieldMark","def":{"mark":"Mark01-generic_package_ref01"}}],"valid":[],"index$":0},{"active":true,"data":{},"input":{"ref":"generic_package_ref01","srcdatavar":"generic_package_ref01_data","suffix":"_dt0"},"match":{"file_name":"file_name01","id":"generic_package01","project_id":"project01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-generic_package_ref01"}}],"index$":1}]}, 'GenericPackage')
     }
     const client = setup.client
     const struct = setup.struct
@@ -113,13 +112,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['GITLAB_TEST_GENERIC_PACKAGE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'GITLAB_TEST_GENERIC_PACKAGE_ENTID': idmap,
     'GITLAB_TEST_LIVE': 'FALSE',
@@ -131,7 +123,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.GITLAB_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['GITLAB_TEST_GENERIC_PACKAGE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new GitlabSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -144,7 +142,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -157,7 +156,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

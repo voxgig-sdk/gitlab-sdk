@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.GITLAB_TEST_LIVE;
         for (const op of ['load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'api_entities_user_agent_detail.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'api_entities_user_agent_detail.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_API_ENTITIES_USER_AGENT_DETAIL_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "akismet_submitted", "req": false, "type": "`$BOOLEAN`", "index$": 0 }, { "active": true, "name": "ip_address", "req": false, "type": "`$STRING`", "index$": 1 }, { "active": true, "name": "user_agent", "req": false, "type": "`$STRING`", "index$": 2 }], "name": "api_entities_user_agent_detail", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "params": [{ "active": true, "kind": "param", "name": "issue_id", "orig": "issue_iid", "reqd": true, "type": "`$STRING`", "index$": 0 }, { "active": true, "kind": "param", "name": "project_id", "orig": "id", "reqd": true, "type": "`$STRING`", "index$": 1 }] }, "contract": { "id": "GET /api/v4/projects/{id}/issues/{issue_iid}/user_agent_detail", "json": "{\"operationId\":\"getApiV4ProjectsIdIssuesIssueIidUserAgentDetail\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The internal ID of a project issue\",\"format\":\"int32\",\"in\":\"path\",\"name\":\"issue_iid\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get the user agent details for an issue\",\"schema\":{\"description\":\"API_Entities_UserAgentDetail model\",\"properties\":{\"akismet_submitted\":{\"example\":false,\"type\":\"boolean\"},\"ip_address\":{\"example\":\"127.0.0.1\",\"type\":\"string\"},\"user_agent\":{\"example\":\"AppleWebKit/537.36\",\"type\":\"string\"}},\"type\":\"object\"}}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/v4/projects/{id}/issues/{issue_iid}/user_agent_detail", "rename": { "param": { "id": "project_id", "issue_iid": "issue_id" } }, "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "projects" }, { "var": "project_id" }, { "lit": "issues" }, { "var": "issue_id" }, { "lit": "user_agent_detail" }], "select": { "exist": ["issue_id", "project_id"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }, { "active": true, "args": { "params": [{ "active": true, "kind": "param", "name": "project_id", "orig": "id", "reqd": true, "type": "`$STRING`", "index$": 0 }, { "active": true, "kind": "param", "name": "snippet_id", "orig": "snippet_id", "reqd": true, "type": "`$STRING`", "index$": 1 }] }, "contract": { "id": "GET /api/v4/projects/{id}/snippets/{snippet_id}/user_agent_detail", "json": "{\"operationId\":\"getApiV4ProjectsIdSnippetsSnippetIdUserAgentDetail\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The ID of a project snippet\",\"format\":\"int32\",\"in\":\"path\",\"name\":\"snippet_id\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get the user agent details for a project snippet\",\"schema\":{\"description\":\"API_Entities_UserAgentDetail model\",\"properties\":{\"akismet_submitted\":{\"example\":false,\"type\":\"boolean\"},\"ip_address\":{\"example\":\"127.0.0.1\",\"type\":\"string\"},\"user_agent\":{\"example\":\"AppleWebKit/537.36\",\"type\":\"string\"}},\"type\":\"object\"}},\"404\":{\"description\":\"Not found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/v4/projects/{id}/snippets/{snippet_id}/user_agent_detail", "rename": { "param": { "id": "project_id" } }, "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "projects" }, { "var": "project_id" }, { "lit": "snippets" }, { "var": "snippet_id" }, { "lit": "user_agent_detail" }], "select": { "exist": ["project_id", "snippet_id"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 1 }, { "active": true, "args": { "params": [{ "active": true, "kind": "param", "name": "snippet_id", "orig": "id", "reqd": true, "type": "`$STRING`", "index$": 0 }] }, "contract": { "id": "GET /api/v4/snippets/{id}/user_agent_detail", "json": "{\"operationId\":\"getApiV4SnippetsIdUserAgentDetail\",\"parameters\":[{\"description\":\"The ID of a snippet\",\"format\":\"int32\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get the user agent details for a snippet\",\"schema\":{\"description\":\"API_Entities_UserAgentDetail model\",\"properties\":{\"akismet_submitted\":{\"example\":false,\"type\":\"boolean\"},\"ip_address\":{\"example\":\"127.0.0.1\",\"type\":\"string\"},\"user_agent\":{\"example\":\"AppleWebKit/537.36\",\"type\":\"string\"}},\"type\":\"object\"}},\"404\":{\"description\":\"Not found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "GET", "orig": "/api/v4/snippets/{id}/user_agent_detail", "rename": { "param": { "id": "snippet_id" } }, "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "snippets" }, { "var": "snippet_id" }, { "lit": "user_agent_detail" }], "select": { "exist": ["snippet_id"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [["project", "issue"], ["project", "snippet"]] }, "key$": "api_entities_user_agent_detail", "name__orig": "api_entities_user_agent_detail", "Name": "ApiEntitiesUserAgentDetail", "name_": "api_entities_user_agent_detail", "name-": "api-entities-user-agent-detail", "NAME": "API_ENTITIES_USER_AGENT_DETAIL", "index$": 165 }, { "active": true, "entity": "api_entities_user_agent_detail", "key$": "BasicApiEntitiesUserAgentDetailFlow", "kind": "basic", "name": "BasicApiEntitiesUserAgentDetailFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "api_entities_user_agent_detail_ref01", "srcdatavar": "api_entities_user_agent_detail_ref01_data", "suffix": "_dt0" }, "match": { "id": "api_entities_user_agent_detail01" }, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-api_entities_user_agent_detail_ref01" } }], "index$": 0 }] }, 'ApiEntitiesUserAgentDetail');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -100,12 +98,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['GITLAB_TEST_API_ENTITIES_USER_AGENT_DETAIL_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'GITLAB_TEST_API_ENTITIES_USER_AGENT_DETAIL_ENTID': idmap,
         'GITLAB_TEST_LIVE': 'FALSE',
@@ -114,7 +106,13 @@ function basicSetup(extra) {
     });
     idmap = env['GITLAB_TEST_API_ENTITIES_USER_AGENT_DETAIL_ENTID'];
     const live = 'TRUE' === env.GITLAB_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['GITLAB_TEST_API_ENTITIES_USER_AGENT_DETAIL_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.GitlabSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -127,7 +125,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -139,7 +138,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

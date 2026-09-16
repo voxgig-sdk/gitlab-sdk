@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.GITLAB_TEST_LIVE;
         for (const op of ['create', 'remove']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'alert_management.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'alert_management.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set GITLAB_TEST_ALERT_MANAGEMENT_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [], "name": "alert_management", "op": { "create": { "input": "data", "name": "create", "points": [{ "active": true, "args": { "params": [{ "active": true, "example": 23, "kind": "param", "name": "alert_management_alert_id", "orig": "alert_iid", "reqd": true, "type": "`$STRING`", "index$": 0 }, { "active": true, "example": 17, "kind": "param", "name": "project_id", "orig": "id", "reqd": true, "type": "`$STRING`", "index$": 1 }] }, "contract": { "id": "POST /api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images/authorize", "json": "{\"consumes\":[\"application/json\"],\"operationId\":\"postApiV4ProjectsIdAlertManagementAlertsAlertIidMetricImagesAuthorize\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"example\":17,\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The IID of the Alert\",\"example\":23,\"format\":\"int32\",\"in\":\"path\",\"name\":\"alert_iid\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Workhorse authorize metric image file upload\"},\"403\":{\"description\":\"Forbidden\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "POST", "orig": "/api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images/authorize", "rename": { "param": { "alert_iid": "alert_management_alert_id", "id": "project_id" } }, "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "projects" }, { "var": "project_id" }, { "lit": "alert_management_alerts" }, { "var": "alert_management_alert_id" }, { "lit": "metric_images" }, { "lit": "authorize" }], "select": { "exist": ["alert_management_alert_id", "project_id"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "create" }, "remove": { "input": "data", "name": "remove", "points": [{ "active": true, "args": { "params": [{ "active": true, "example": 23, "kind": "param", "name": "alert_management_alert_id", "orig": "alert_iid", "reqd": true, "type": "`$STRING`", "index$": 0 }, { "active": true, "example": 42, "kind": "param", "name": "metric_image_id", "orig": "metric_image_id", "reqd": true, "type": "`$STRING`", "index$": 1 }, { "active": true, "example": 17, "kind": "param", "name": "project_id", "orig": "id", "reqd": true, "type": "`$STRING`", "index$": 2 }] }, "contract": { "id": "DELETE /api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images/{metric_image_id}", "json": "{\"operationId\":\"deleteApiV4ProjectsIdAlertManagementAlertsAlertIidMetricImagesMetricImageId\",\"parameters\":[{\"description\":\"The ID or URL-encoded path of the project\",\"example\":17,\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"string\"},{\"description\":\"The IID of the Alert\",\"example\":23,\"format\":\"int32\",\"in\":\"path\",\"name\":\"alert_iid\",\"required\":true,\"type\":\"integer\"},{\"description\":\"The ID of metric image\",\"example\":42,\"format\":\"int32\",\"in\":\"path\",\"name\":\"metric_image_id\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"204\":{\"description\":\"Remove a metric image for an alert\",\"schema\":{\"description\":\"API_Entities_MetricImage model\",\"properties\":{\"created_at\":{\"example\":\"2020-11-13T00:06:18.084Z\",\"format\":\"date-time\",\"type\":\"string\"},\"file_path\":{\"example\":\"/uploads/-/system/alert_metric_image/file/23/file.png\",\"type\":\"string\"},\"filename\":{\"example\":\"file.png\",\"type\":\"string\"},\"id\":{\"example\":23,\"format\":\"int32\",\"type\":\"integer\"},\"url\":{\"example\":\"https://example.com/metric\",\"type\":\"string\"},\"url_text\":{\"example\":\"An example metric\",\"type\":\"string\"}},\"type\":\"object\"}},\"403\":{\"description\":\"Forbidden\"},\"422\":{\"description\":\"Unprocessable entity\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}", "source": "swagger2", "version": 1 }, "kind": "http", "method": "DELETE", "orig": "/api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images/{metric_image_id}", "rename": { "param": { "alert_iid": "alert_management_alert_id", "id": "project_id" } }, "segments": [{ "lit": "api" }, { "lit": "v4" }, { "lit": "projects" }, { "var": "project_id" }, { "lit": "alert_management_alerts" }, { "var": "alert_management_alert_id" }, { "lit": "metric_images" }, { "var": "metric_image_id" }], "select": { "exist": ["alert_management_alert_id", "metric_image_id", "project_id"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "remove" } }, "relations": { "ancestors": [["project", "alert_management_alert"], ["project", "alert_management_alert", "metric_image"]] }, "key$": "alert_management", "name__orig": "alert_management", "Name": "AlertManagement", "name_": "alert_management", "name-": "alert-management", "NAME": "ALERT_MANAGEMENT", "index$": 1 }, { "active": true, "entity": "alert_management", "key$": "BasicAlertManagementFlow", "kind": "basic", "name": "BasicAlertManagementFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "alert_management_ref01" }, "match": { "alert_management_alert_id": "alert_management_alert01", "project_id": "project01" }, "op": "create", "spec": [], "valid": [], "index$": 0 }, { "active": true, "data": {}, "input": { "ref": "alert_management_ref01", "suffix": "_rm0" }, "match": { "alert_management_alert_id": "alert_management_alert01", "id": "alert_management01", "project_id": "project01" }, "op": "remove", "spec": [], "valid": [], "index$": 1 }] }, 'AlertManagement');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -103,12 +101,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['GITLAB_TEST_ALERT_MANAGEMENT_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'GITLAB_TEST_ALERT_MANAGEMENT_ENTID': idmap,
         'GITLAB_TEST_LIVE': 'FALSE',
@@ -117,7 +109,13 @@ function basicSetup(extra) {
     });
     idmap = env['GITLAB_TEST_ALERT_MANAGEMENT_ENTID'];
     const live = 'TRUE' === env.GITLAB_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['GITLAB_TEST_ALERT_MANAGEMENT_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.GitlabSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -130,7 +128,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -142,7 +141,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.GITLAB_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;
