@@ -1,0 +1,22 @@
+# BasicApiEntitiesResourceAccessTokenWithTokenFlow
+
+main: kit: flow: BasicApiEntitiesResourceAccessTokenWithTokenFlow:
+{
+  entity: "api_entities_resource_access_token_with_token",
+  kind: "basic",
+  name: "BasicApiEntitiesResourceAccessTokenWithTokenFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_resource_access_token_with_token_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesResourceAccessTokenWithTokenFlow"
+}

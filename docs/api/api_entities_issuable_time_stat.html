@@ -303,14 +303,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesissuabletimestat">ApiEntitiesIssuableTimeStat</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesissuabletimestat">ApiEntitiesIssuableTimeStat</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -339,13 +339,13 @@
 <td><code>POST</code></td>
 <td><a href="#post-apiv4projectsidmerge_requestsmerge_request_iidadd_spent_time"><code>/api/v4/projects/{id}/merge_requests/{merge_request_iid}/add_spent_time</code></a></td>
 <td><code>create</code></td>
-<td>Add spent time for a merge_request</td>
+<td>Add spent time for a <code>merge_request</code></td>
 </tr>
 <tr>
 <td><code>POST</code></td>
 <td><a href="#post-apiv4projectsidmerge_requestsmerge_request_iidtime_estimate"><code>/api/v4/projects/{id}/merge_requests/{merge_request_iid}/time_estimate</code></a></td>
 <td><code>create</code></td>
-<td>Set a time estimate for a merge_request</td>
+<td>Set a time estimate for a <code>merge_request</code></td>
 </tr>
 <tr>
 <td><code>POST</code></td>
@@ -363,13 +363,13 @@
 <td><code>POST</code></td>
 <td><a href="#post-apiv4projectsidmerge_requestsmerge_request_iidreset_spent_time"><code>/api/v4/projects/{id}/merge_requests/{merge_request_iid}/reset_spent_time</code></a></td>
 <td><code>create</code></td>
-<td>Reset spent time for a merge_request</td>
+<td>Reset spent time for a <code>merge_request</code></td>
 </tr>
 <tr>
 <td><code>POST</code></td>
 <td><a href="#post-apiv4projectsidmerge_requestsmerge_request_iidreset_time_estimate"><code>/api/v4/projects/{id}/merge_requests/{merge_request_iid}/reset_time_estimate</code></a></td>
 <td><code>create</code></td>
-<td>Reset the time estimate for a project merge_request</td>
+<td>Reset the time estimate for a project <code>merge_request</code></td>
 </tr>
 <tr>
 <td><code>GET</code></td>
@@ -385,6 +385,46 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_issuable_time_stat, err := client.ApiEntitiesIssuableTimeStat(nil).Load(map[string]any{&quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_issuable_time_stat)
+created, err := client.ApiEntitiesIssuableTimeStat(nil).Create(map[string]any{&quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_issuable_time_stat, err = client:ApiEntitiesIssuableTimeStat():load({ project_id = &quot;example&quot; })
+local created, err = client:ApiEntitiesIssuableTimeStat():create({ project_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_issuable_time_stat = $client-&gt;ApiEntitiesIssuableTimeStat()-&gt;load([&quot;project_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;ApiEntitiesIssuableTimeStat()-&gt;create([&quot;project_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_issuable_time_stat = client.ApiEntitiesIssuableTimeStat().load({&quot;project_id&quot;: &quot;example&quot;})
+created = client.ApiEntitiesIssuableTimeStat().create({ &quot;project_id&quot;: &quot;example&quot; })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_issuable_time_stat = client.ApiEntitiesIssuableTimeStat.load({ &quot;project_id&quot; =&gt; &quot;example&quot; })
+created = client.ApiEntitiesIssuableTimeStat.create({ &quot;project_id&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_issuable_time_stat = await client.ApiEntitiesIssuableTimeStat().load({ project_id: &quot;example&quot; })
+const created = await client.ApiEntitiesIssuableTimeStat().create({ project_id: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -400,25 +440,25 @@
 <td><code>human_time_estimate</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Human Time Estimate</td>
 </tr>
 <tr>
 <td><code>human_total_time_spent</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Human Total Time Spent</td>
 </tr>
 <tr>
 <td><code>time_estimate</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Time Estimate</td>
 </tr>
 <tr>
 <td><code>total_time_spent</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Total Time Spent</td>
 </tr>
 </tbody>
 </table>
@@ -454,7 +494,7 @@
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
 | <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project. |
-| <code>merge_request_iid</code> | <code>path</code> | <code>any</code> | Yes | The internal ID of the merge_request. |
+| <code>merge_request_iid</code> | <code>path</code> | <code>any</code> | Yes | The internal ID of the <code>merge_request</code>. |
 | <code>postApiV4ProjectsIdMergeRequestsMergeRequestIidAddSpentTime</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
 <h4 id="responses-2">Responses</h4>
 <h5 id="201-add-spent-time-for-a-merge_request" class="status" data-status="2xx">201: Add spent time for a merge_request</h5>
@@ -466,7 +506,7 @@
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
 | <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project. |
-| <code>merge_request_iid</code> | <code>path</code> | <code>any</code> | Yes | The internal ID of the merge_request. |
+| <code>merge_request_iid</code> | <code>path</code> | <code>any</code> | Yes | The internal ID of the <code>merge_request</code>. |
 | <code>postApiV4ProjectsIdMergeRequestsMergeRequestIidTimeEstimate</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
 <h4 id="responses-3">Responses</h4>
 <h5 id="201-set-a-time-estimate-for-a-merge_request" class="status" data-status="2xx">201: Set a time estimate for a merge_request</h5>
@@ -501,7 +541,7 @@
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
 | <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project. |
-| <code>merge_request_iid</code> | <code>path</code> | <code>any</code> | Yes | The internal ID of the merge_request |</p>
+| <code>merge_request_iid</code> | <code>path</code> | <code>any</code> | Yes | The internal ID of the <code>merge_request</code> |</p>
 <h4 id="responses-6">Responses</h4>
 <h5 id="201-reset-spent-time-for-a-merge_request" class="status" data-status="2xx">201: Reset spent time for a merge_request</h5>
 <h5 id="401-unauthorized-6" class="status" data-status="4xx">401: Unauthorized</h5>
@@ -512,7 +552,7 @@
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
 | <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project. |
-| <code>merge_request_iid</code> | <code>path</code> | <code>any</code> | Yes | The internal ID of the merge_request. |</p>
+| <code>merge_request_iid</code> | <code>path</code> | <code>any</code> | Yes | The internal ID of the <code>merge_request</code>. |</p>
 <h4 id="responses-7">Responses</h4>
 <h5 id="201-reset-the-time-estimate-for-a-project-merge_request" class="status" data-status="2xx">201: Reset the time estimate for a project merge_request</h5>
 <h5 id="401-unauthorized-7" class="status" data-status="4xx">401: Unauthorized</h5>
@@ -535,7 +575,7 @@
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
 | <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project. |
-| <code>merge_request_iid</code> | <code>path</code> | <code>any</code> | Yes | The internal ID of the merge_request |</p>
+| <code>merge_request_iid</code> | <code>path</code> | <code>any</code> | Yes | The internal ID of the <code>merge_request</code> |</p>
 <h4 id="responses-9">Responses</h4>
 <h5 id="200-get-time-tracking-stats-1" class="status" data-status="2xx">200: Get time tracking stats</h5>
 <h5 id="401-unauthorized-9" class="status" data-status="4xx">401: Unauthorized</h5>

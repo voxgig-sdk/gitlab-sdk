@@ -1,0 +1,112 @@
+# Entity: api_entities_plan_limit
+
+main: kit: entity: api_entities_plan_limit: {
+
+  alias: field: {}
+
+  name: "api_entities_plan_limit"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/application/plan_limits"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "plan_name"
+                or: "plan_name"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/application/plan_limits"
+          q: {
+            exist: [
+              "plan_name"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "application"
+            }
+            {
+              lit: "plan_limits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.limits_history`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/application/plan_limits"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_application_plan_limit"
+                or: "put_api_v4_application_plan_limit"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/application/plan_limits"
+          q: {
+            exist: [
+              "put_api_v4_application_plan_limit"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "application"
+            }
+            {
+              lit: "plan_limits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.limits_history`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

@@ -349,14 +349,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="project">Project</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="project">Project</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -667,7 +667,7 @@
 <td><code>DELETE</code></td>
 <td><a href="#delete-apiv4projectsidfork"><code>/api/v4/projects/{id}/fork</code></a></td>
 <td><code>remove</code></td>
-<td>Remove a forked_from relationship</td>
+<td>Remove a <code>forked_from</code> relationship</td>
 </tr>
 <tr>
 <td><code>PUT</code></td>
@@ -707,6 +707,66 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">project, err := client.Project(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(project)
+created, err := client.Project(nil).Create(map[string]any{&quot;id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Project(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;hook_id&quot;: &quot;example&quot;, &quot;key&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.Project(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local project, err = client:Project():load({ id = &quot;example_id&quot; })
+local created, err = client:Project():create({ id = &quot;example&quot; })
+local updated, err = client:Project():update({ id = &quot;example_id&quot;, hook_id = &quot;example&quot;, key = &quot;example&quot; })
+local removed, err = client:Project():remove({ id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$project = $client-&gt;Project()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;Project()-&gt;create([&quot;id&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;Project()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;hook_id&quot; =&gt; &quot;example&quot;, &quot;key&quot; =&gt; &quot;example&quot;]);
+$client-&gt;Project()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">project = client.Project().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.Project().create({ &quot;id&quot;: &quot;example&quot; })
+updated = client.Project().update({&quot;id&quot;: &quot;example_id&quot;, &quot;hook_id&quot;: &quot;example&quot;, &quot;key&quot;: &quot;example&quot;})
+client.Project().remove({&quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">project = client.Project.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.Project.create({ &quot;id&quot; =&gt; &quot;example&quot; })
+updated = client.Project.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;hook_id&quot; =&gt; &quot;example&quot;, &quot;key&quot; =&gt; &quot;example&quot; })
+client.Project.remove({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const project = await client.Project().load({ id: &quot;example_id&quot; })
+const created = await client.Project().create({ id: &quot;example&quot; })
+const updated = await client.Project().update({ id: &quot;example_id&quot;, hook_id: &quot;example&quot;, key: &quot;example&quot; })
+await client.Project().remove({ id: &quot;example_id&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -722,31 +782,31 @@
 <td><code>before_sha</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Before Sha</td>
 </tr>
 <tr>
 <td><code>committed_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Committed At</td>
 </tr>
 <tr>
 <td><code>coverage</code></td>
 <td><code>number</code></td>
 <td>No</td>
-<td></td>
+<td>Coverage</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>detailed_status</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Detailed Status</td>
 </tr>
 <tr>
 <td><code>duration</code></td>
@@ -758,31 +818,31 @@
 <td><code>finished_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Finished At</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>iid</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Iid</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>project_id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Project Id</td>
 </tr>
 <tr>
 <td><code>queued_duration</code></td>
@@ -794,61 +854,61 @@
 <td><code>ref</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Ref</td>
 </tr>
 <tr>
 <td><code>sha</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Sha</td>
 </tr>
 <tr>
 <td><code>source</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Source</td>
 </tr>
 <tr>
 <td><code>started_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Started At</td>
 </tr>
 <tr>
 <td><code>status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Status</td>
 </tr>
 <tr>
 <td><code>tag</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Tag</td>
 </tr>
 <tr>
 <td><code>updated_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Updated At</td>
 </tr>
 <tr>
 <td><code>user</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>web_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Web Url</td>
 </tr>
 <tr>
 <td><code>yaml_errors</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Yaml Errors</td>
 </tr>
 </tbody>
 </table>
@@ -977,7 +1037,7 @@
 | <code>confidential</code> | <code>query</code> | <code>any</code> | No | Filter confidential or public issues |
 | <code>weight</code> | <code>query</code> | <code>any</code> | No | The weight of the issue |
 | <code>epic_id</code> | <code>query</code> | <code>any</code> | No | The ID of an epic associated with the issues |
-| <code>health_status</code> | <code>query</code> | <code>any</code> | No | The health status of the issue. Must be one of: on_track, needs_attention, at_risk, none, any |
+| <code>health_status</code> | <code>query</code> | <code>any</code> | No | The health status of the issue. Must be one of: <code>on_track</code>, <code>needs_attention</code>, <code>at_risk</code>, none, any |
 | <code>iteration_id</code> | <code>query</code> | <code>any</code> | No | Return issues which are assigned to the iteration with the given ID |
 | <code>iteration_title</code> | <code>query</code> | <code>any</code> | No | Return issues which are assigned to the iteration with the given title |</p>
 <h4 id="responses-8">Responses</h4>

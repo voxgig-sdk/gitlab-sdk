@@ -1,0 +1,416 @@
+# Entity: maven_package
+
+main: kit: entity: maven_package: {
+
+  alias: field: {}
+
+  name: "maven_package"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/-/packages/maven/*path/{file_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "mypkg-1.0-SNAPSHOT.jar"
+                k: "param"
+                n: "file_name"
+                or: "file_name"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "foo/bar/mypkg/1.0-SNAPSHOT"
+                k: "query"
+                n: "path"
+                or: "path"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/-/packages/maven/*path/{file_name}"
+          q: {
+            exist: [
+              "file_name"
+              "group_id"
+              "path"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "maven"
+            }
+            {
+              lit: "*path"
+            }
+            {
+              var: "file_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/packages/maven/*path/{file_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "mypkg-1.0-SNAPSHOT.jar"
+                k: "param"
+                n: "file_name"
+                or: "file_name"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "foo/bar/mypkg/1.0-SNAPSHOT"
+                k: "query"
+                n: "path"
+                or: "path"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/packages/maven/*path/{file_name}"
+          q: {
+            exist: [
+              "file_name"
+              "path"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "maven"
+            }
+            {
+              lit: "*path"
+            }
+            {
+              var: "file_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/packages/maven/*path/{file_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "mypkg-1.0-SNAPSHOT.jar"
+                k: "param"
+                n: "file_name"
+                or: "file_name"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+            query: [
+              {
+                ex: "foo/bar/mypkg/1.0-SNAPSHOT"
+                k: "query"
+                n: "path"
+                or: "path"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/packages/maven/*path/{file_name}"
+          q: {
+            exist: [
+              "file_name"
+              "path"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "maven"
+            }
+            {
+              lit: "*path"
+            }
+            {
+              var: "file_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/packages/maven/*path/{file_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "mypkg-1.0-SNAPSHOT.pom"
+                k: "param"
+                n: "file_name"
+                or: "file_name"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_packages_maven*path_file_name"
+                or: "put_api_v4_projects_id_packages_maven*path_file_name"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/packages/maven/*path/{file_name}"
+          q: {
+            exist: [
+              "file_name"
+              "project_id"
+              "put_api_v4_projects_id_packages_maven*path_file_name"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "maven"
+            }
+            {
+              lit: "*path"
+            }
+            {
+              var: "file_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/packages/maven/*path/{file_name}/authorize"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "mypkg-1.0-SNAPSHOT.pom"
+                k: "param"
+                n: "file_name"
+                or: "file_name"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_packages_maven*path_file_name_authorize"
+                or: "put_api_v4_projects_id_packages_maven*path_file_name_authorize"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/packages/maven/*path/{file_name}/authorize"
+          q: {
+            "$action": "authorize"
+            exist: [
+              "file_name"
+              "project_id"
+              "put_api_v4_projects_id_packages_maven*path_file_name_authorize"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "maven"
+            }
+            {
+              lit: "*path"
+            }
+            {
+              var: "file_name"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.group")]
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

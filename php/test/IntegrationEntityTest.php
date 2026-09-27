@@ -74,7 +74,7 @@ function integration_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["integration01", "integration02", "integration03", "group01", "group02", "group03", "project01", "project02", "project03", "service01", "service02", "service03"] as $k) {
+    foreach (["integration01", "integration02", "integration03", "group01", "group02", "group03", "project01", "project02", "project03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

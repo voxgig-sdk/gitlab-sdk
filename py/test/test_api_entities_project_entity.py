@@ -129,7 +129,7 @@ def _api_entities_project_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["api_entities_project01", "api_entities_project02", "api_entities_project03", "group01", "group02", "group03", "user01", "user02", "user03", "project01", "project02", "project03", "fork01", "fork02", "fork03"],
+        ["api_entities_project01", "api_entities_project02", "api_entities_project03", "group01", "group02", "group03", "user01", "user02", "user03", "project01", "project02", "project03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

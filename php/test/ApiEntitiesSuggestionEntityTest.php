@@ -80,7 +80,7 @@ function api_entities_suggestion_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_suggestion01", "api_entities_suggestion02", "api_entities_suggestion03", "suggestion01", "suggestion02", "suggestion03"] as $k) {
+    foreach (["api_entities_suggestion01", "api_entities_suggestion02", "api_entities_suggestion03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

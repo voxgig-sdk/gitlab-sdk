@@ -1,0 +1,26 @@
+# BasicApiEntitiesCiPipelineScheduleFlow
+
+main: kit: flow: BasicApiEntitiesCiPipelineScheduleFlow:
+{
+  entity: "api_entities_ci_pipeline_schedule",
+  kind: "basic",
+  name: "BasicApiEntitiesCiPipelineScheduleFlow",
+  step: [
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_ci_pipeline_schedule_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCiPipelineScheduleFlow"
+}

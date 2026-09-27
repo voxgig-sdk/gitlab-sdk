@@ -41,63 +41,8 @@
   "requests": {
     "GET /api/v4/user_counts": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getApiV4UserCounts",
-        "parameters": [],
-        "produces": [
-          "application/json"
-        ],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "description": "Return the user specific counts",
-            "schema": {
-              "description": "API_Entities_UserCounts model",
-              "properties": {
-                "assigned_issues": {
-                  "example": 10,
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "assigned_merge_requests": {
-                  "example": 10,
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "merge_requests": {
-                  "example": 10,
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "review_requested_merge_requests": {
-                  "example": 10,
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "todos": {
-                  "example": 10,
-                  "format": "int32",
-                  "type": "integer"
-                }
-              },
-              "type": "object"
-            }
-          }
-        },
-        "securitySchemes": {
-          "access_token_header": {
-            "in": "header",
-            "name": "PRIVATE-TOKEN",
-            "type": "apiKey"
-          },
-          "access_token_query": {
-            "in": "query",
-            "name": "private_token",
-            "type": "apiKey"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "swagger2"
     }
   }
 }

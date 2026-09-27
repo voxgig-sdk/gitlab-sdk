@@ -1,0 +1,26 @@
+# BasicApiEntitiesNugetServiceIndexFlow
+
+main: kit: flow: BasicApiEntitiesNugetServiceIndexFlow:
+{
+  entity: "api_entities_nuget_service_index",
+  kind: "basic",
+  name: "BasicApiEntitiesNugetServiceIndexFlow",
+  step: [
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_nuget_service_index_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesNugetServiceIndexFlow"
+}

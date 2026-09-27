@@ -1,0 +1,126 @@
+# Entity: group_import
+
+main: kit: entity: group_import: {
+
+  alias: field: {}
+
+  name: "group_import"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/groups/import"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "file"
+                or: "file"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "name"
+                or: "name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "organization_id"
+                or: "organization_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "parent_id"
+                or: "parent_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "path"
+                or: "path"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/import"
+          q: {
+            exist: [
+              "file"
+              "name"
+              "organization_id"
+              "parent_id"
+              "path"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              lit: "import"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/groups/import/authorize"
+            source: "swagger2"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v4/groups/import/authorize"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              lit: "import"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

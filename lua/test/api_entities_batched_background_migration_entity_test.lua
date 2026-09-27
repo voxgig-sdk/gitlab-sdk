@@ -140,7 +140,7 @@ function api_entities_batched_background_migration_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "api_entities_batched_background_migration01", "api_entities_batched_background_migration02", "api_entities_batched_background_migration03", "batched_background_migration01", "batched_background_migration02", "batched_background_migration03" },
+    { "api_entities_batched_background_migration01", "api_entities_batched_background_migration02", "api_entities_batched_background_migration03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

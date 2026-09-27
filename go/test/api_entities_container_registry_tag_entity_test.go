@@ -151,7 +151,7 @@ func api_entities_container_registry_tagBasicSetup(extra map[string]any) *entity
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_container_registry_tag01", "api_entities_container_registry_tag02", "api_entities_container_registry_tag03", "project01", "project02", "project03", "repository01", "repository02", "repository03"},
+		[]any{"api_entities_container_registry_tag01", "api_entities_container_registry_tag02", "api_entities_container_registry_tag03", "project01", "project02", "project03", "repository01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

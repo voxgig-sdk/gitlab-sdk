@@ -84,7 +84,7 @@ function terraform_state_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["terraform_state01", "terraform_state02", "terraform_state03", "project01", "project02", "project03", "state01", "state02", "state03", "version01", "version02", "version03", "name01"] as $k) {
+    foreach (["terraform_state01", "terraform_state02", "terraform_state03", "project01", "project02", "project03", "name01", "state01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

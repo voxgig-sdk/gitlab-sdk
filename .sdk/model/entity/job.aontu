@@ -1,0 +1,383 @@
+# Entity: job
+
+main: kit: entity: job: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "job"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/jobs/{id}/artifacts"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_jobs_id_artifact"
+                or: "post_api_v4_jobs_id_artifact"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/jobs/{id}/artifacts"
+          q: {
+            "$action": "artifact"
+            exist: [
+              "id"
+              "post_api_v4_jobs_id_artifact"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "artifacts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/jobs/{id}/artifacts/authorize"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_jobs_id_artifacts_authorize"
+                or: "post_api_v4_jobs_id_artifacts_authorize"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/jobs/{id}/artifacts/authorize"
+          q: {
+            "$action": "artifact_authorize"
+            exist: [
+              "id"
+              "post_api_v4_jobs_id_artifacts_authorize"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/jobs/request"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_jobs_request"
+                or: "post_api_v4_jobs_request"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/jobs/request"
+          q: {
+            "$action": "request"
+            exist: [
+              "post_api_v4_jobs_request"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              lit: "request"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/jobs/{id}/artifacts"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "direct_download"
+                or: "direct_download"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "token"
+                or: "token"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/jobs/{id}/artifacts"
+          q: {
+            "$action": "artifact"
+            exist: [
+              "direct_download"
+              "id"
+              "token"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "artifacts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          co: {
+            id: "PATCH /api/v4/jobs/{id}/trace"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "patch_api_v4_jobs_id_trace"
+                or: "patch_api_v4_jobs_id_trace"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v4/jobs/{id}/trace"
+          q: {
+            "$action": "trace"
+            exist: [
+              "id"
+              "patch_api_v4_jobs_id_trace"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "trace"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/jobs/{id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_jobs_id"
+                or: "put_api_v4_jobs_id"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/jobs/{id}"
+          q: {
+            exist: [
+              "id"
+              "put_api_v4_jobs_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

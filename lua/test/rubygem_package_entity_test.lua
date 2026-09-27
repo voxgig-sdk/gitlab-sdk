@@ -74,7 +74,7 @@ function rubygem_package_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "rubygem_package01", "rubygem_package02", "rubygem_package03", "project01", "project02", "project03", "gem01", "gem02", "gem03", "marshal.4.801", "marshal.4.802", "marshal.4.803" },
+    { "rubygem_package01", "rubygem_package02", "rubygem_package03", "project01", "project02", "project03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

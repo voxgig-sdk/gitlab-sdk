@@ -74,7 +74,7 @@ function snippet_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["snippet01", "snippet02", "snippet03", "file01", "file02", "file03"] as $k) {
+    foreach (["snippet01", "snippet02", "snippet03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

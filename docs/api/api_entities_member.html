@@ -309,14 +309,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesmember">ApiEntitiesMember</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesmember">ApiEntitiesMember</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -427,6 +427,76 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_members, err := client.ApiEntitiesMember(nil).List(map[string]any{&quot;group_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_members)
+api_entities_member, err := client.ApiEntitiesMember(nil).Load(map[string]any{&quot;group_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_member)
+created, err := client.ApiEntitiesMember(nil).Create(map[string]any{&quot;group_id&quot;: &quot;example&quot;, &quot;post_api_v4_groups_id_member&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.ApiEntitiesMember(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;group_id&quot;: &quot;example&quot;, &quot;put_api_v4_groups_id_members_user_id&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.ApiEntitiesMember(nil).Remove(map[string]any{&quot;group_id&quot;: &quot;example&quot;, &quot;member_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_members, err = client:ApiEntitiesMember():list({ group_id = &quot;example&quot; })
+local api_entities_member, err = client:ApiEntitiesMember():load({ group_id = &quot;example&quot;, id = &quot;example_id&quot; })
+local created, err = client:ApiEntitiesMember():create({ group_id = &quot;example&quot;, post_api_v4_groups_id_member = {} })
+local updated, err = client:ApiEntitiesMember():update({ id = &quot;example_id&quot;, group_id = &quot;example&quot;, put_api_v4_groups_id_members_user_id = {} })
+local removed, err = client:ApiEntitiesMember():remove({ group_id = &quot;example&quot;, member_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_members = $client-&gt;ApiEntitiesMember()-&gt;list([&quot;group_id&quot; =&gt; &quot;example&quot;]);
+$api_entities_member = $client-&gt;ApiEntitiesMember()-&gt;load([&quot;group_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;ApiEntitiesMember()-&gt;create([&quot;group_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_groups_id_member&quot; =&gt; []]);
+$updated = $client-&gt;ApiEntitiesMember()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;group_id&quot; =&gt; &quot;example&quot;, &quot;put_api_v4_groups_id_members_user_id&quot; =&gt; []]);
+$client-&gt;ApiEntitiesMember()-&gt;remove([&quot;group_id&quot; =&gt; &quot;example&quot;, &quot;member_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_members = client.ApiEntitiesMember().list({&quot;group_id&quot;: &quot;example&quot;})
+api_entities_member = client.ApiEntitiesMember().load({&quot;group_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+created = client.ApiEntitiesMember().create({ &quot;group_id&quot;: &quot;example&quot;, &quot;post_api_v4_groups_id_member&quot;: {} })
+updated = client.ApiEntitiesMember().update({&quot;id&quot;: &quot;example_id&quot;, &quot;group_id&quot;: &quot;example&quot;, &quot;put_api_v4_groups_id_members_user_id&quot;: {}})
+client.ApiEntitiesMember().remove({&quot;group_id&quot;: &quot;example&quot;, &quot;member_id&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_members = client.ApiEntitiesMember.list({ &quot;group_id&quot; =&gt; &quot;example&quot; })
+api_entities_member = client.ApiEntitiesMember.load({ &quot;group_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.ApiEntitiesMember.create({ &quot;group_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_groups_id_member&quot; =&gt; {} })
+updated = client.ApiEntitiesMember.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;group_id&quot; =&gt; &quot;example&quot;, &quot;put_api_v4_groups_id_members_user_id&quot; =&gt; {} })
+client.ApiEntitiesMember.remove({ &quot;group_id&quot; =&gt; &quot;example&quot;, &quot;member_id&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_members = await client.ApiEntitiesMember().list({ group_id: &quot;example&quot; })
+const api_entities_member = await client.ApiEntitiesMember().load({ group_id: &quot;example&quot;, id: &quot;example_id&quot; })
+const created = await client.ApiEntitiesMember().create({ group_id: &quot;example&quot;, post_api_v4_groups_id_member: {} })
+const updated = await client.ApiEntitiesMember().update({ id: &quot;example_id&quot;, group_id: &quot;example&quot;, put_api_v4_groups_id_members_user_id: {} })
+await client.ApiEntitiesMember().remove({ group_id: &quot;example&quot;, member_id: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -442,139 +512,139 @@
 <td><code>access_level</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Access Level</td>
 </tr>
 <tr>
 <td><code>avatar_path</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Avatar Path</td>
 </tr>
 <tr>
 <td><code>avatar_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Avatar Url</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>custom_attributes</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Custom Attributes</td>
 </tr>
 <tr>
 <td><code>email</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Email</td>
 </tr>
 <tr>
 <td><code>expires_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Expires At</td>
 </tr>
 <tr>
 <td><code>group_saml_identity</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Group Saml Identity</td>
 </tr>
 <tr>
 <td><code>group_scim_identity</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Group Scim Identity</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>is_using_seat</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Is Using Seat</td>
 </tr>
 <tr>
 <td><code>key</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Key</td>
 </tr>
 <tr>
 <td><code>locked</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Locked</td>
 </tr>
 <tr>
 <td><code>member_role</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Member Role</td>
 </tr>
 <tr>
 <td><code>membership_state</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Membership State</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>override</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Override</td>
 </tr>
 <tr>
 <td><code>public_email</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Public Email</td>
 </tr>
 <tr>
 <td><code>state</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>State</td>
 </tr>
 <tr>
 <td><code>username</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Username</td>
 </tr>
 <tr>
 <td><code>value</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Value</td>
 </tr>
 <tr>
 <td><code>web_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Web Url</td>
 </tr>
 </tbody>
 </table>

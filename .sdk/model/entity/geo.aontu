@@ -1,0 +1,368 @@
+# Entity: geo
+
+main: kit: entity: geo: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "replicable_name"
+      "replicable_id"
+    ]
+    sep: "/"
+  }
+
+  name: "geo"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/geo/node_proxy/{id}/graphql"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "node_proxy_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/geo/node_proxy/{id}/graphql"
+          q: {
+            exist: [
+              "node_proxy_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "node_proxy_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "geo"
+            }
+            {
+              lit: "node_proxy"
+            }
+            {
+              var: "node_proxy_id"
+            }
+            {
+              lit: "graphql"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/geo/proxy_git_ssh/info_refs_receive_pack"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack"
+                or: "post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/geo/proxy_git_ssh/info_refs_receive_pack"
+          q: {
+            exist: [
+              "post_api_v4_geo_proxy_git_ssh_info_refs_receive_pack"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "geo"
+            }
+            {
+              lit: "proxy_git_ssh"
+            }
+            {
+              lit: "info_refs_receive_pack"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/geo/proxy_git_ssh/info_refs_upload_pack"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_geo_proxy_git_ssh_info_refs_upload_pack"
+                or: "post_api_v4_geo_proxy_git_ssh_info_refs_upload_pack"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/geo/proxy_git_ssh/info_refs_upload_pack"
+          q: {
+            exist: [
+              "post_api_v4_geo_proxy_git_ssh_info_refs_upload_pack"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "geo"
+            }
+            {
+              lit: "proxy_git_ssh"
+            }
+            {
+              lit: "info_refs_upload_pack"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/geo/proxy_git_ssh/receive_pack"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_geo_proxy_git_ssh_receive_pack"
+                or: "post_api_v4_geo_proxy_git_ssh_receive_pack"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/geo/proxy_git_ssh/receive_pack"
+          q: {
+            exist: [
+              "post_api_v4_geo_proxy_git_ssh_receive_pack"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "geo"
+            }
+            {
+              lit: "proxy_git_ssh"
+            }
+            {
+              lit: "receive_pack"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/geo/proxy_git_ssh/upload_pack"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_geo_proxy_git_ssh_upload_pack"
+                or: "post_api_v4_geo_proxy_git_ssh_upload_pack"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/geo/proxy_git_ssh/upload_pack"
+          q: {
+            exist: [
+              "post_api_v4_geo_proxy_git_ssh_upload_pack"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "geo"
+            }
+            {
+              lit: "proxy_git_ssh"
+            }
+            {
+              lit: "upload_pack"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/geo/retrieve/{replicable_name}/{replicable_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "replicable_id"
+                or: "replicable_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "package_file"
+                k: "param"
+                n: "replicable_name"
+                or: "replicable_name"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/geo/retrieve/{replicable_name}/{replicable_id}"
+          q: {
+            exist: [
+              "replicable_id"
+              "replicable_name"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "geo"
+            }
+            {
+              lit: "retrieve"
+            }
+            {
+              var: "replicable_name"
+            }
+            {
+              var: "replicable_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/geo/proxy"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v4/geo/proxy"
+          q: {
+            "$action": "proxy"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "geo"
+            }
+            {
+              lit: "proxy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

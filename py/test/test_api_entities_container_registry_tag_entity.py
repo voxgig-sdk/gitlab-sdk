@@ -108,7 +108,7 @@ def _api_entities_container_registry_tag_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["api_entities_container_registry_tag01", "api_entities_container_registry_tag02", "api_entities_container_registry_tag03", "project01", "project02", "project03", "repository01", "repository02", "repository03"],
+        ["api_entities_container_registry_tag01", "api_entities_container_registry_tag02", "api_entities_container_registry_tag03", "project01", "project02", "project03", "repository01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

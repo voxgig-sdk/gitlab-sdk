@@ -113,7 +113,7 @@ func ml_model_registryBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"ml_model_registry01", "ml_model_registry02", "ml_model_registry03", "project01", "project02", "project03", "ml_model01", "ml_model02", "ml_model03", "file_name01"},
+		[]any{"ml_model_registry01", "ml_model_registry02", "ml_model_registry03", "project01", "project02", "project03", "file_name01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

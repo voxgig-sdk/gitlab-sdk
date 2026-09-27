@@ -295,14 +295,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiescommitnote">ApiEntitiesCommitNote</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiescommitnote">ApiEntitiesCommitNote</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -329,6 +329,46 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_commit_notes, err := client.ApiEntitiesCommitNote(nil).List(map[string]any{&quot;project_id&quot;: &quot;example&quot;, &quot;sha&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_commit_notes)
+created, err := client.ApiEntitiesCommitNote(nil).Create(map[string]any{&quot;project_id&quot;: &quot;example&quot;, &quot;sha&quot;: &quot;example&quot;, &quot;post_api_v4_projects_id_repository_commits_sha_comment&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_commit_notes, err = client:ApiEntitiesCommitNote():list({ project_id = &quot;example&quot;, sha = &quot;example&quot; })
+local created, err = client:ApiEntitiesCommitNote():create({ project_id = &quot;example&quot;, sha = &quot;example&quot;, post_api_v4_projects_id_repository_commits_sha_comment = {} })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_commit_notes = $client-&gt;ApiEntitiesCommitNote()-&gt;list([&quot;project_id&quot; =&gt; &quot;example&quot;, &quot;sha&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;ApiEntitiesCommitNote()-&gt;create([&quot;project_id&quot; =&gt; &quot;example&quot;, &quot;sha&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_projects_id_repository_commits_sha_comment&quot; =&gt; []]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_commit_notes = client.ApiEntitiesCommitNote().list({&quot;project_id&quot;: &quot;example&quot;, &quot;sha&quot;: &quot;example&quot;})
+created = client.ApiEntitiesCommitNote().create({ &quot;project_id&quot;: &quot;example&quot;, &quot;sha&quot;: &quot;example&quot;, &quot;post_api_v4_projects_id_repository_commits_sha_comment&quot;: {} })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_commit_notes = client.ApiEntitiesCommitNote.list({ &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;sha&quot; =&gt; &quot;example&quot; })
+created = client.ApiEntitiesCommitNote.create({ &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;sha&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_projects_id_repository_commits_sha_comment&quot; =&gt; {} })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_commit_notes = await client.ApiEntitiesCommitNote().list({ project_id: &quot;example&quot;, sha: &quot;example&quot; })
+const created = await client.ApiEntitiesCommitNote().create({ project_id: &quot;example&quot;, sha: &quot;example&quot;, post_api_v4_projects_id_repository_commits_sha_comment: {} })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -344,97 +384,97 @@
 <td><code>author</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>avatar_path</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Avatar Path</td>
 </tr>
 <tr>
 <td><code>avatar_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Avatar Url</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>custom_attributes</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Custom Attributes</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>line</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Line</td>
 </tr>
 <tr>
 <td><code>line_type</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Line Type</td>
 </tr>
 <tr>
 <td><code>locked</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Locked</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>note</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Note</td>
 </tr>
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Path</td>
 </tr>
 <tr>
 <td><code>public_email</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Public Email</td>
 </tr>
 <tr>
 <td><code>state</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>State</td>
 </tr>
 <tr>
 <td><code>username</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Username</td>
 </tr>
 <tr>
 <td><code>web_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Web Url</td>
 </tr>
 </tbody>
 </table>

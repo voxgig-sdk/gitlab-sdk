@@ -74,7 +74,7 @@ def _debian_package_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["debian_package01", "debian_package02", "debian_package03", "group01", "group02", "group03", "project01", "project02", "project03", "pool01", "pool02", "pool03", "*distribution01", "*distribution02", "*distribution03", "sha25601", "sha25602", "sha25603"],
+        ["debian_package01", "debian_package02", "debian_package03", "group01", "group02", "group03", "project01", "project02", "project03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

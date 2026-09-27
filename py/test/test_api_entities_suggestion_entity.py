@@ -79,7 +79,7 @@ def _api_entities_suggestion_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["api_entities_suggestion01", "api_entities_suggestion02", "api_entities_suggestion03", "suggestion01", "suggestion02", "suggestion03"],
+        ["api_entities_suggestion01", "api_entities_suggestion02", "api_entities_suggestion03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

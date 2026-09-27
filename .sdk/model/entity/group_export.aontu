@@ -1,0 +1,277 @@
+# Entity: group_export
+
+main: kit: entity: group_export: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "group_export"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/groups/{id}/export_relations"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_groups_id_export_relation"
+                or: "post_api_v4_groups_id_export_relation"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/{id}/export_relations"
+          q: {
+            "$action": "export_relations"
+            exist: [
+              "id"
+              "post_api_v4_groups_id_export_relation"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "export_relations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/groups/{id}/export"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/{id}/export"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "export"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/export_relations/download"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "batch_number"
+                or: "batch_number"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "batched"
+                or: "batched"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "relation"
+                or: "relation"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/export_relations/download"
+          q: {
+            exist: [
+              "batch_number"
+              "batched"
+              "group_id"
+              "relation"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "export_relations"
+            }
+            {
+              lit: "download"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/export/download"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/export/download"
+          q: {
+            exist: [
+              "group_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "export"
+            }
+            {
+              lit: "download"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.group")]
+  ]
+
+}

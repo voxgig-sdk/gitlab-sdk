@@ -103,7 +103,7 @@ func api_entities_issuable_time_statBasicSetup(extra map[string]any) *entityTest
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_issuable_time_stat01", "api_entities_issuable_time_stat02", "api_entities_issuable_time_stat03", "project01", "project02", "project03", "issue01", "issue02", "issue03", "merge_request01", "merge_request02", "merge_request03"},
+		[]any{"api_entities_issuable_time_stat01", "api_entities_issuable_time_stat02", "api_entities_issuable_time_stat03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

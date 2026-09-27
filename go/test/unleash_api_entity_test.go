@@ -104,7 +104,7 @@ func unleash_apiBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"unleash_api01", "unleash_api02", "unleash_api03", "unleash01", "unleash02", "unleash03"},
+		[]any{"unleash_api01", "unleash_api02", "unleash_api03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

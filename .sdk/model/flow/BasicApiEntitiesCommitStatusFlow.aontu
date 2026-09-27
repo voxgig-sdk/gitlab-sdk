@@ -1,0 +1,40 @@
+# BasicApiEntitiesCommitStatusFlow
+
+main: kit: flow: BasicApiEntitiesCommitStatusFlow:
+{
+  entity: "api_entities_commit_status",
+  kind: "basic",
+  name: "BasicApiEntitiesCommitStatusFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_commit_status_ref01"
+      }
+
+      m: {
+        project_id: "project01",
+        sha: "sha01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        project_id: "project01",
+        sha: "sha01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_commit_status_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCommitStatusFlow"
+}

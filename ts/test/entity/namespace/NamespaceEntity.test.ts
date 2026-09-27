@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('NamespaceEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":0}],"id":{"field":"id","name":"id"},"name":"namespace","op":{"remove":{"input":"data","name":"remove","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"id","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"DELETE /api/v4/namespaces/{id}/storage/limit_exclusion","json":"{\"operationId\":\"deleteApiV4NamespacesIdStorageLimitExclusion\",\"parameters\":[{\"format\":\"int32\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"204\":{\"description\":\"Removes a storage limit exclusion for a Namespace\"},\"400\":{\"description\":\"Bad request\"},\"401\":{\"description\":\"Unauthorized\"},\"403\":{\"description\":\"Forbidden\"},\"422\":{\"description\":\"Unprocessable entity\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"DELETE","orig":"/api/v4/namespaces/{id}/storage/limit_exclusion","segments":[{"lit":"api"},{"lit":"v4"},{"lit":"namespaces"},{"var":"id"},{"lit":"storage"},{"lit":"limit_exclusion"}],"select":{"$action":"storage_limit_exclusion","exist":["id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"}},"relations":{"ancestors":[]},"key$":"namespace","name__orig":"namespace","Name":"Namespace","name_":"namespace","name-":"namespace","NAME":"NAMESPACE","index$":229}, {"active":true,"entity":"namespace","key$":"BasicNamespaceFlow","kind":"basic","name":"BasicNamespaceFlow","param":{},"step":[]}, 'Namespace')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":0}},"id":{"field":"id","name":"id"},"name":"namespace","op":{"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /api/v4/namespaces/{id}/storage/limit_exclusion","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/api/v4/namespaces/{id}/storage/limit_exclusion","q":{"$action":"storage_limit_exclusion","exist":["id"]},"r":{},"s":[{"lit":"api"},{"lit":"v4"},{"lit":"namespaces"},{"var":"id"},{"lit":"storage"},{"lit":"limit_exclusion"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"}},"relations":{"ancestors":[]},"key$":"namespace","name__orig":"namespace","Name":"Namespace","name_":"namespace","name-":"namespace","NAME":"NAMESPACE","index$":229}, {"active":true,"entity":"namespace","key$":"BasicNamespaceFlow","kind":"basic","name":"BasicNamespaceFlow","param":{},"step":[]}, 'Namespace', {"DELETE /api/v4/namespaces/{id}/storage/limit_exclusion":{"protocol":"http","parameters":[{"in":"path","name":"id","type":"integer","format":"int32","required":true,"index$":0}]}})
     }
     const client = setup.client
     const struct = setup.struct

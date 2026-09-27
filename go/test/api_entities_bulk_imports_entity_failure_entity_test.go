@@ -98,7 +98,7 @@ func api_entities_bulk_imports_entity_failureBasicSetup(extra map[string]any) *e
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_bulk_imports_entity_failure01", "api_entities_bulk_imports_entity_failure02", "api_entities_bulk_imports_entity_failure03", "bulk_import01", "bulk_import02", "bulk_import03", "entity01", "entity02", "entity03"},
+		[]any{"api_entities_bulk_imports_entity_failure01", "api_entities_bulk_imports_entity_failure02", "api_entities_bulk_imports_entity_failure03", "bulk_import01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

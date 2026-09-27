@@ -19,7 +19,6 @@ import type {
   ApiEntitiesBulkImportsExportStatusListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesBulkImportsExportStatusEntity extends GitlabEntityBase<ApiEntitiesBulkImportsExportStatus> {
 
   constructor(client: GitlabSDK, entopts: any) {

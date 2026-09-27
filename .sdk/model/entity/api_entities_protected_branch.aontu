@@ -1,0 +1,376 @@
+# Entity: api_entities_protected_branch
+
+main: kit: entity: api_entities_protected_branch: {
+
+  alias: field: {}
+
+  fields: {
+    allow_force_push: {
+      h: "Allow Force Push"
+      n: "allow_force_push"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    code_owner_approval_required: {
+      h: "Code Owner Approval Required"
+      n: "code_owner_approval_required"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    inherited: {
+      h: "Inherited"
+      n: "inherited"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    merge_access_levels: {
+      h: "Merge Access Levels"
+      n: "merge_access_levels"
+      r: false
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    push_access_levels: {
+      h: "Push Access Levels"
+      n: "push_access_levels"
+      r: false
+      t: "`$ARRAY`"
+    }
+    unprotect_access_levels: {
+      h: "Unprotect Access Levels"
+      n: "unprotect_access_levels"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_protected_branch"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/protected_branches"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "gitlab-org/gitlab"
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_protected_branch"
+                or: "post_api_v4_projects_id_protected_branch"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/protected_branches"
+          q: {
+            exist: [
+              "post_api_v4_projects_id_protected_branch"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "protected_branches"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/protected_branches"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "gitlab-org/gitlab"
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "mai"
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/protected_branches"
+          q: {
+            exist: [
+              "page"
+              "per_page"
+              "project_id"
+              "search"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "protected_branches"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/protected_branches/{name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "main"
+                k: "param"
+                n: "id"
+                or: "name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "gitlab-org/gitlab"
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/protected_branches/{name}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              name: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "protected_branches"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /api/v4/projects/{id}/protected_branches/{name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "main"
+                k: "param"
+                n: "id"
+                or: "name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "gitlab-org/gitlab"
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "patch_api_v4_projects_id_protected_branches_name"
+                or: "patch_api_v4_projects_id_protected_branches_name"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v4/projects/{id}/protected_branches/{name}"
+          q: {
+            exist: [
+              "id"
+              "patch_api_v4_projects_id_protected_branches_name"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              name: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "protected_branches"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

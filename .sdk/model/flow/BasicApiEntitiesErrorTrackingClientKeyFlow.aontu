@@ -1,0 +1,38 @@
+# BasicApiEntitiesErrorTrackingClientKeyFlow
+
+main: kit: flow: BasicApiEntitiesErrorTrackingClientKeyFlow:
+{
+  entity: "api_entities_error_tracking_client_key",
+  kind: "basic",
+  name: "BasicApiEntitiesErrorTrackingClientKeyFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_error_tracking_client_key_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_error_tracking_client_key_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesErrorTrackingClientKeyFlow"
+}

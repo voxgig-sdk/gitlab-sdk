@@ -98,7 +98,7 @@ func ee_api_entities_billable_membershipBasicSetup(extra map[string]any) *entity
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"ee_api_entities_billable_membership01", "ee_api_entities_billable_membership02", "ee_api_entities_billable_membership03", "group01", "group02", "group03", "billable_member01", "billable_member02", "billable_member03"},
+		[]any{"ee_api_entities_billable_membership01", "ee_api_entities_billable_membership02", "ee_api_entities_billable_membership03", "group01", "group02", "group03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -1,0 +1,32 @@
+# BasicDebianPackageFlow
+
+main: kit: flow: BasicDebianPackageFlow:
+{
+  entity: "debian_package",
+  kind: "basic",
+  name: "BasicDebianPackageFlow",
+  step: [
+    {
+      i: {
+        ref: "debian_package_ref01",
+        srcdatavar: "debian_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "debian_package01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-debian_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDebianPackageFlow"
+}

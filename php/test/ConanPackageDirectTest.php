@@ -27,19 +27,19 @@ class ConanPackageDirectTest extends TestCase
         $params = [];
         $query = [];
         if (!$setup["live"]) {
-            $params["conan_package_reference"] = "direct01";
+            $params["conan_id"] = "direct01";
             $params["file_name"] = "direct02";
-            $params["id"] = "direct03";
-            $params["package_channel"] = "direct04";
-            $params["package_name"] = "direct05";
-            $params["package_revision"] = "direct06";
-            $params["package_username"] = "direct07";
-            $params["package_version"] = "direct08";
-            $params["recipe_revision"] = "direct09";
+            $params["package_channel"] = "direct03";
+            $params["package_id"] = "direct04";
+            $params["package_revision"] = "direct05";
+            $params["package_username"] = "direct06";
+            $params["package_version"] = "direct07";
+            $params["project_id"] = "direct08";
+            $params["revision_id"] = "direct09";
         }
 
         $result = $client->direct([
-            "path" => "api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}",
+            "path" => "api/v4/projects/{project_id}/packages/conan/v2/conans/{conan_id}/{package_version}/{package_username}/{package_channel}/revisions/{revision_id}/packages/{package_id}/revisions/{package_revision}/files/{file_name}",
             "method" => "GET",
             "params" => $params,
             "query" => $query,

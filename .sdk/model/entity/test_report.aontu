@@ -1,0 +1,151 @@
+# Entity: test_report
+
+main: kit: entity: test_report: {
+
+  alias: field: {}
+
+  fields: {
+    error_count: {
+      fo: "int32"
+      h: "Error Count"
+      n: "error_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+    failed_count: {
+      fo: "int32"
+      h: "Failed Count"
+      n: "failed_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    skipped_count: {
+      fo: "int32"
+      h: "Skipped Count"
+      n: "skipped_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+    success_count: {
+      fo: "int32"
+      h: "Success Count"
+      n: "success_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+    suite_error: {
+      h: "Suite Error"
+      n: "suite_error"
+      r: false
+      t: "`$STRING`"
+    }
+    test_cases: {
+      h: "Test Cases"
+      n: "test_cases"
+      r: false
+      t: "`$ARRAY`"
+    }
+    total_count: {
+      fo: "int32"
+      h: "Total Count"
+      n: "total_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+    total_time: {
+      fo: "int32"
+      h: "Total Time"
+      n: "total_time"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "test_report"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/pipelines/{pipeline_id}/test_report"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 18
+                k: "param"
+                n: "pipeline_id"
+                or: "pipeline_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 11
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/pipelines/{pipeline_id}/test_report"
+          q: {
+            exist: [
+              "pipeline_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "pipelines"
+            }
+            {
+              var: "pipeline_id"
+            }
+            {
+              lit: "test_report"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.test_suites`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

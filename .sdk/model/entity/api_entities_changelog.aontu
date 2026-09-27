@@ -1,0 +1,150 @@
+# Entity: api_entities_changelog
+
+main: kit: entity: api_entities_changelog: {
+
+  alias: field: {}
+
+  fields: {
+    notes: {
+      h: "Notes"
+      n: "notes"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_entities_changelog"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/repository/changelog"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 1
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: ".gitlab/changelog_config.yml"
+                k: "query"
+                n: "config_file"
+                or: "config_file"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "main"
+                k: "query"
+                n: "config_file_ref"
+                or: "config_file_ref"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "2021-09-20T11:50:22.001+00:00"
+                k: "query"
+                n: "date"
+                or: "date"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "ed899a2f4b50b4370feeea94676502b42383c746"
+                k: "query"
+                n: "from"
+                or: "from"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "6104942438c14ec7bd21c6cd5bd995272b3faff6"
+                k: "query"
+                n: "to"
+                or: "to"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "Changelog"
+                k: "query"
+                n: "trailer"
+                or: "trailer"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "1.0.0"
+                k: "query"
+                n: "version"
+                or: "version"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/repository/changelog"
+          q: {
+            exist: [
+              "config_file"
+              "config_file_ref"
+              "date"
+              "from"
+              "project_id"
+              "to"
+              "trailer"
+              "version"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "changelog"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

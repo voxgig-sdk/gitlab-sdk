@@ -1,0 +1,44 @@
+# BasicApiEntitiesPersonalAccessTokenWithLastUsedIpFlow
+
+main: kit: flow: BasicApiEntitiesPersonalAccessTokenWithLastUsedIpFlow:
+{
+  entity: "api_entities_personal_access_token_with_last_used_ip",
+  kind: "basic",
+  name: "BasicApiEntitiesPersonalAccessTokenWithLastUsedIpFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_personal_access_token_with_last_used_ip_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_personal_access_token_with_last_used_ip_ref01",
+        srcdatavar: "api_entities_personal_access_token_with_last_used_ip_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_entities_personal_access_token_with_last_used_ip01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_personal_access_token_with_last_used_ip_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPersonalAccessTokenWithLastUsedIpFlow"
+}

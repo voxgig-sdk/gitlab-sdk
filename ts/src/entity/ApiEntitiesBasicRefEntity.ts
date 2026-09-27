@@ -19,7 +19,6 @@ import type {
   ApiEntitiesBasicRefListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesBasicRefEntity extends GitlabEntityBase<ApiEntitiesBasicRef> {
 
   constructor(client: GitlabSDK, entopts: any) {

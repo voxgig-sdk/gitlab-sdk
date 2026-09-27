@@ -1,0 +1,288 @@
+# Entity: api_entities_protected_tag
+
+main: kit: entity: api_entities_protected_tag: {
+
+  alias: field: {}
+
+  fields: {
+    access_level: {
+      fo: "int32"
+      h: "Access Level"
+      n: "access_level"
+      r: false
+      t: "`$INTEGER`"
+    }
+    access_level_description: {
+      h: "Access Level Description"
+      n: "access_level_description"
+      r: false
+      t: "`$STRING`"
+    }
+    create_access_levels: {
+      h: "Create Access Levels"
+      n: "create_access_levels"
+      r: false
+      t: "`$OBJECT`"
+    }
+    deploy_key_id: {
+      fo: "int32"
+      h: "Deploy Key Id"
+      n: "deploy_key_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    group_id: {
+      fo: "int32"
+      h: "Group Id"
+      n: "group_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    user_id: {
+      fo: "int32"
+      h: "User Id"
+      n: "user_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_protected_tag"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/protected_tags"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_protected_tag"
+                or: "post_api_v4_projects_id_protected_tag"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/protected_tags"
+          q: {
+            exist: [
+              "post_api_v4_projects_id_protected_tag"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "protected_tags"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.create_access_levels`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/protected_tags"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/protected_tags"
+          q: {
+            exist: [
+              "page"
+              "per_page"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "protected_tags"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/protected_tags/{name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "release*"
+                k: "param"
+                n: "id"
+                or: "name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/protected_tags/{name}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              name: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "protected_tags"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.create_access_levels`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

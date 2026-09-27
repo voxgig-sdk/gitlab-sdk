@@ -19,7 +19,6 @@ import type {
   ApiEntitiesDeploymentListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesDeploymentEntity extends GitlabEntityBase<ApiEntitiesDeployment> {
 
   constructor(client: GitlabSDK, entopts: any) {

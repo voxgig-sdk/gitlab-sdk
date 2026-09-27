@@ -138,7 +138,7 @@ function api_entities_metric_image_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_metric_image01", "api_entities_metric_image02", "api_entities_metric_image03", "project01", "project02", "project03", "alert_management_alert01", "alert_management_alert02", "alert_management_alert03"] as $k) {
+    foreach (["api_entities_metric_image01", "api_entities_metric_image02", "api_entities_metric_image03", "project01", "project02", "project03", "alert_management_alert01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

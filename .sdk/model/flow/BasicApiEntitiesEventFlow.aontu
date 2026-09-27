@@ -1,0 +1,48 @@
+# BasicApiEntitiesEventFlow
+
+main: kit: flow: BasicApiEntitiesEventFlow:
+{
+  entity: "api_entities_event",
+  kind: "basic",
+  name: "BasicApiEntitiesEventFlow",
+  step: [
+    {
+      m: {
+        user_id: "user01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_event_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_event_ref01",
+        srcdatavar: "api_entities_event_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_entities_event01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_event_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesEventFlow"
+}

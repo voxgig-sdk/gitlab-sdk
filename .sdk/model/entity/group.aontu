@@ -1,0 +1,1392 @@
+# Entity: group
+
+main: kit: entity: group: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "group"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/groups/{id}/placeholder_reassignments"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_groups_id_placeholder_reassignment"
+                or: "post_api_v4_groups_id_placeholder_reassignment"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/{id}/placeholder_reassignments"
+          q: {
+            "$action": "placeholder_reassignment"
+            exist: [
+              "id"
+              "post_api_v4_groups_id_placeholder_reassignment"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "placeholder_reassignments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/groups/{id}/tokens/revoke"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_groups_id_tokens_revoke"
+                or: "post_api_v4_groups_id_tokens_revoke"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/{id}/tokens/revoke"
+          q: {
+            "$action": "token_revoke"
+            exist: [
+              "id"
+              "post_api_v4_groups_id_tokens_revoke"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "tokens"
+            }
+            {
+              lit: "revoke"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/groups/{id}/members/approve_all"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/{id}/members/approve_all"
+          q: {
+            "$action": "member_approve_all"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "members"
+            }
+            {
+              lit: "approve_all"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/groups/{id}/placeholder_reassignments/authorize"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/{id}/placeholder_reassignments/authorize"
+          q: {
+            "$action": "placeholder_reassignment_authorize"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "placeholder_reassignments"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/issues_statistics"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "assignee_id"
+                or: "assignee_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "assignee_username"
+                or: "assignee_username"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "author_id"
+                or: "author_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "author_username"
+                or: "author_username"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "confidential"
+                or: "confidential"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "created_after"
+                or: "created_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "created_before"
+                or: "created_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "epic_id"
+                or: "epic_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "health_status"
+                or: "health_status"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "iid"
+                or: "iid"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "in"
+                or: "in"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "iteration_id"
+                or: "iteration_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "iteration_title"
+                or: "iteration_title"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "label"
+                or: "label"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "milestone"
+                or: "milestone"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "milestone_id"
+                or: "milestone_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "my_reaction_emoji"
+                or: "my_reaction_emoji"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_assignee_id"
+                or: "not_assignee_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "not_assignee_username"
+                or: "not_assignee_username"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_author_id"
+                or: "not_author_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "not_author_username"
+                or: "not_author_username"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_iid"
+                or: "not_iid"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_iteration_id"
+                or: "not_iteration_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "not_iteration_title"
+                or: "not_iteration_title"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_label"
+                or: "not_label"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_milestone"
+                or: "not_milestone"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_milestone_id"
+                or: "not_milestone_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "not_weight"
+                or: "not_weight"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "scope"
+                or: "scope"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "updated_after"
+                or: "updated_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "updated_before"
+                or: "updated_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "weight"
+                or: "weight"
+                r: false
+                t: "`$NUMBER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/issues_statistics"
+          q: {
+            "$action": "issues_statistic"
+            exist: [
+              "assignee_id"
+              "assignee_username"
+              "author_id"
+              "author_username"
+              "confidential"
+              "created_after"
+              "created_before"
+              "epic_id"
+              "health_status"
+              "id"
+              "iid"
+              "in"
+              "iteration_id"
+              "iteration_title"
+              "label"
+              "milestone"
+              "milestone_id"
+              "my_reaction_emoji"
+              "not_assignee_id"
+              "not_assignee_username"
+              "not_author_id"
+              "not_author_username"
+              "not_iid"
+              "not_iteration_id"
+              "not_iteration_title"
+              "not_label"
+              "not_milestone"
+              "not_milestone_id"
+              "not_weight"
+              "scope"
+              "search"
+              "updated_after"
+              "updated_before"
+              "weight"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "issues_statistics"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/(-/)search"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "confidential"
+                or: "confidential"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "field"
+                or: "field"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "scope"
+                or: "scope"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "state"
+                or: "state"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/(-/)search"
+          q: {
+            "$action": "_search"
+            exist: [
+              "confidential"
+              "field"
+              "id"
+              "page"
+              "per_page"
+              "scope"
+              "search"
+              "state"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "(-"
+            }
+            {
+              lit: ")search"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/uploads/{secret}/{filename}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "filename"
+                or: "filename"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "secret"
+                or: "secret"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/uploads/{secret}/{filename}"
+          q: {
+            exist: [
+              "filename"
+              "id"
+              "secret"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              var: "secret"
+            }
+            {
+              var: "filename"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/pending_members"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/pending_members"
+          q: {
+            "$action": "pending_member"
+            exist: [
+              "id"
+              "page"
+              "per_page"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pending_members"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/uploads/{upload_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "upload_id"
+                or: "upload_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/uploads/{upload_id}"
+          q: {
+            exist: [
+              "id"
+              "upload_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              var: "upload_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/placeholder_reassignments"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/placeholder_reassignments"
+          q: {
+            "$action": "placeholder_reassignment"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "placeholder_reassignments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v4/groups/{id}/uploads/{secret}/{filename}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "filename"
+                or: "filename"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "secret"
+                or: "secret"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/groups/{id}/uploads/{secret}/{filename}"
+          q: {
+            exist: [
+              "filename"
+              "id"
+              "secret"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              var: "secret"
+            }
+            {
+              var: "filename"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/groups/{id}/share/{group_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "group_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/groups/{id}/share/{group_id}"
+          q: {
+            exist: [
+              "group_id"
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "share"
+            }
+            {
+              var: "group_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/groups/{id}/custom_attributes/{key}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "key"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/groups/{id}/custom_attributes/{key}"
+          q: {
+            exist: [
+              "id"
+              "key"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "custom_attributes"
+            }
+            {
+              var: "key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/groups/{id}/ssh_certificates/{ssh_certificates_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "ssh_certificates_id"
+                or: "ssh_certificates_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/groups/{id}/ssh_certificates/{ssh_certificates_id}"
+          q: {
+            exist: [
+              "id"
+              "ssh_certificates_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "ssh_certificates"
+            }
+            {
+              var: "ssh_certificates_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/groups/{id}/uploads/{upload_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "upload_id"
+                or: "upload_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/groups/{id}/uploads/{upload_id}"
+          q: {
+            exist: [
+              "id"
+              "upload_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              var: "upload_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/groups/{id}/billable_members/{user_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/groups/{id}/billable_members/{user_id}"
+          q: {
+            exist: [
+              "id"
+              "user_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "billable_members"
+            }
+            {
+              var: "user_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/groups/{id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/groups/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/groups/{id}/custom_attributes/{key}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "key"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_groups_id_custom_attributes_key"
+                or: "put_api_v4_groups_id_custom_attributes_key"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/groups/{id}/custom_attributes/{key}"
+          q: {
+            exist: [
+              "id"
+              "key"
+              "put_api_v4_groups_id_custom_attributes_key"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "custom_attributes"
+            }
+            {
+              var: "key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.custom_attribute")]
+  ]
+
+}

@@ -70,7 +70,7 @@ function composer_package_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["composer_package01", "composer_package02", "composer_package03", "group01", "group02", "group03", "project01", "project02", "project03", "p01", "p02", "p03"] as $k) {
+    foreach (["composer_package01", "composer_package02", "composer_package03", "group01", "group02", "group03", "project01", "project02", "project03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

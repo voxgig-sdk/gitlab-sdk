@@ -110,7 +110,7 @@ def api_entities_commit_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["api_entities_commit01", "api_entities_commit02", "api_entities_commit03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03", "commit01", "commit02", "commit03", "sha01"],
+    ["api_entities_commit01", "api_entities_commit02", "api_entities_commit03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03", "sha01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

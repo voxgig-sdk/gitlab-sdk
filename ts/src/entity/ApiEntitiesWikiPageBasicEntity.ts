@@ -19,7 +19,6 @@ import type {
   ApiEntitiesWikiPageBasicListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesWikiPageBasicEntity extends GitlabEntityBase<ApiEntitiesWikiPageBasic> {
 
   constructor(client: GitlabSDK, entopts: any) {

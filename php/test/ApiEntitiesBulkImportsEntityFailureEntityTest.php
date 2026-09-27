@@ -70,7 +70,7 @@ function api_entities_bulk_imports_entity_failure_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_bulk_imports_entity_failure01", "api_entities_bulk_imports_entity_failure02", "api_entities_bulk_imports_entity_failure03", "bulk_import01", "bulk_import02", "bulk_import03", "entity01", "entity02", "entity03"] as $k) {
+    foreach (["api_entities_bulk_imports_entity_failure01", "api_entities_bulk_imports_entity_failure02", "api_entities_bulk_imports_entity_failure03", "bulk_import01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

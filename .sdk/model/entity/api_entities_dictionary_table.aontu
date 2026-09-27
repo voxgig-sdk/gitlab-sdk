@@ -1,0 +1,113 @@
+# Entity: api_entities_dictionary_table
+
+main: kit: entity: api_entities_dictionary_table: {
+
+  alias: field: {}
+
+  fields: {
+    feature_categories: {
+      h: "Feature Categories"
+      n: "feature_categories"
+      r: false
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    table_name: {
+      h: "Table Name"
+      n: "table_name"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_dictionary_table"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/admin/databases/{database_name}/dictionary/tables/{table_name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "database_id"
+                or: "database_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "table_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/admin/databases/{database_name}/dictionary/tables/{table_name}"
+          q: {
+            exist: [
+              "database_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_name: "database_id"
+              table_name: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_id"
+            }
+            {
+              lit: "dictionary"
+            }
+            {
+              lit: "tables"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

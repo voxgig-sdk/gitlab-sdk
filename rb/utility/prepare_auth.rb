@@ -1,7 +1,7 @@
 # Gitlab SDK utility: prepare_auth
 require_relative 'struct/voxgig_struct'
 module GitlabUtilities
-  HEADER_AUTH = "authorization"
+  HEADER_AUTH = "private-token"
   OPTION_APIKEY = "apikey"
   NOT_FOUND = "__NOTFOUND__"
 

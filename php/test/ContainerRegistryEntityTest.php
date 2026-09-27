@@ -64,7 +64,7 @@ function container_registry_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["container_registry01", "container_registry02", "container_registry03", "project01", "project02", "project03", "repository01", "repository02", "repository03", "tag01", "tag02", "tag03"] as $k) {
+    foreach (["container_registry01", "container_registry02", "container_registry03", "project01", "project02", "project03", "tag01", "tag02", "tag03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

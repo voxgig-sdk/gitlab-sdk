@@ -1,0 +1,350 @@
+# Entity: api_entities_container_registry_repository
+
+main: kit: entity: api_entities_container_registry_repository: {
+
+  alias: field: {}
+
+  fields: {
+    cleanup_policy_started_at: {
+      fo: "date-time"
+      h: "Cleanup Policy Started At"
+      n: "cleanup_policy_started_at"
+      r: false
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    delete_api_path: {
+      h: "Delete Api Path"
+      n: "delete_api_path"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    location: {
+      h: "Location"
+      n: "location"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    path: {
+      h: "Path"
+      n: "path"
+      r: false
+      t: "`$STRING`"
+    }
+    project_id: {
+      fo: "int32"
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    size: {
+      fo: "int32"
+      h: "Size"
+      n: "size"
+      r: false
+      t: "`$INTEGER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "API_Entities_ContainerRegistry_Tag model"
+      t: "`$OBJECT`"
+    }
+    tags_count: {
+      fo: "int32"
+      h: "Tags Count"
+      n: "tags_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_container_registry_repository"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/registry/repositories"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "tag"
+                or: "tag"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "tags_count"
+                or: "tags_count"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/registry/repositories"
+          q: {
+            exist: [
+              "page"
+              "per_page"
+              "project_id"
+              "tag"
+              "tags_count"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "repositories"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/registry/repositories"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/registry/repositories"
+          q: {
+            exist: [
+              "group_id"
+              "page"
+              "per_page"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "repositories"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/registry/repositories/{id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "size"
+                or: "size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "tag"
+                or: "tag"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "tags_count"
+                or: "tags_count"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/registry/repositories/{id}"
+          q: {
+            exist: [
+              "id"
+              "size"
+              "tag"
+              "tags_count"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tags`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.group")]
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

@@ -111,7 +111,7 @@ func geoBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"geo01", "geo02", "geo03", "node_proxy01", "node_proxy02", "node_proxy03", "retrieve01", "retrieve02", "retrieve03", "replicable_name01"},
+		[]any{"geo01", "geo02", "geo03", "replicable_name01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ApiEntitiesNugetServiceIndexEntity = void 0;
 const GitlabEntityBase_1 = require("../GitlabEntityBase");
-// TODO: needs Entity superclass
 class ApiEntitiesNugetServiceIndexEntity extends GitlabEntityBase_1.GitlabEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

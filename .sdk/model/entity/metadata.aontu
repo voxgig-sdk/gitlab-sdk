@@ -1,0 +1,93 @@
+# Entity: metadata
+
+main: kit: entity: metadata: {
+
+  alias: field: {}
+
+  fields: {
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    externalK8sProxyUrl: {
+      h: "External K8s Proxy Url"
+      n: "externalK8sProxyUrl"
+      r: false
+      t: "`$STRING`"
+    }
+    externalUrl: {
+      h: "External Url"
+      n: "externalUrl"
+      r: false
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "metadata"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/metadata"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v4/metadata"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "metadata"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.kas`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/version"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v4/version"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "version"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.kas`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -75,7 +75,7 @@ def feature_flag_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["feature_flag01", "feature_flag02", "feature_flag03", "unleash01", "unleash02", "unleash03", "project01", "project02", "project03"],
+    ["feature_flag01", "feature_flag02", "feature_flag03", "project01", "project02", "project03", "unleash01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

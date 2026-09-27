@@ -1,0 +1,73 @@
+# Entity: api_entities_discovered_cluster
+
+main: kit: entity: api_entities_discovered_cluster: {
+
+  alias: field: {}
+
+  fields: {
+    groups: {
+      h: "Groups"
+      n: "groups"
+      r: false
+      t: "`$STRING`"
+    }
+    projects: {
+      h: "Projects"
+      n: "projects"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_entities_discovered_cluster"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/discover-cert-based-clusters"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "group_id"
+                or: "group_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/discover-cert-based-clusters"
+          q: {
+            exist: [
+              "group_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "discover-cert-based-clusters"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

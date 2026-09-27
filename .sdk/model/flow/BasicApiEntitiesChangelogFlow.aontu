@@ -1,0 +1,32 @@
+# BasicApiEntitiesChangelogFlow
+
+main: kit: flow: BasicApiEntitiesChangelogFlow:
+{
+  entity: "api_entities_changelog",
+  kind: "basic",
+  name: "BasicApiEntitiesChangelogFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_changelog_ref01",
+        srcdatavar: "api_entities_changelog_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_entities_changelog01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_changelog_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesChangelogFlow"
+}

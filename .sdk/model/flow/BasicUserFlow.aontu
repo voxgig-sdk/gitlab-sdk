@@ -1,0 +1,26 @@
+# BasicUserFlow
+
+main: kit: flow: BasicUserFlow:
+{
+  entity: "user",
+  kind: "basic",
+  name: "BasicUserFlow",
+  step: [
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "user_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUserFlow"
+}

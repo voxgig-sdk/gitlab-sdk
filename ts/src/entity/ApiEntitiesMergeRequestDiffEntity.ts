@@ -19,7 +19,6 @@ import type {
   ApiEntitiesMergeRequestDiffListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesMergeRequestDiffEntity extends GitlabEntityBase<ApiEntitiesMergeRequestDiff> {
 
   constructor(client: GitlabSDK, entopts: any) {

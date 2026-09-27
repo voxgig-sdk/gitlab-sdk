@@ -1,0 +1,493 @@
+# Entity: api_entities_draft_note
+
+main: kit: entity: api_entities_draft_note: {
+
+  alias: field: {}
+
+  fields: {
+    author_id: {
+      fo: "int32"
+      h: "Author Id"
+      n: "author_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    commit_id: {
+      fo: "int32"
+      h: "Commit Id"
+      n: "commit_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    discussion_id: {
+      fo: "int32"
+      h: "Discussion Id"
+      n: "discussion_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    line_code: {
+      h: "Line Code"
+      n: "line_code"
+      r: false
+      t: "`$STRING`"
+    }
+    merge_request_id: {
+      fo: "int32"
+      h: "Merge Request Id"
+      n: "merge_request_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    note: {
+      h: "Note"
+      n: "note"
+      r: false
+      t: "`$STRING`"
+    }
+    position: {
+      h: "Position"
+      n: "position"
+      r: false
+      t: "`$OBJECT`"
+    }
+    resolve_discussion: {
+      h: "Resolve Discussion"
+      n: "resolve_discussion"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_draft_note"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note"
+                or: "post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes"
+          q: {
+            exist: [
+              "merge_request_id"
+              "post_api_v4_projects_id_merge_requests_merge_request_iid_draft_note"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "draft_notes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.position`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes"
+          q: {
+            exist: [
+              "merge_request_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "draft_notes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/{draft_note_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "draft_note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/{draft_note_id}"
+          q: {
+            exist: [
+              "id"
+              "merge_request_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              draft_note_id: "id"
+              id: "project_id"
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "draft_notes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.position`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/{draft_note_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "draft_note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_merge_requests_merge_request_iid_draft_notes_draft_note_id"
+                or: "put_api_v4_projects_id_merge_requests_merge_request_iid_draft_notes_draft_note_id"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/{draft_note_id}"
+          q: {
+            exist: [
+              "id"
+              "merge_request_id"
+              "project_id"
+              "put_api_v4_projects_id_merge_requests_merge_request_iid_draft_notes_draft_note_id"
+            ]
+          }
+          r: {
+            param: {
+              draft_note_id: "id"
+              id: "project_id"
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "draft_notes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.position`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/{draft_note_id}/publish"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "draft_note_id"
+                or: "draft_note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/{draft_note_id}/publish"
+          q: {
+            "$action": "publish"
+            exist: [
+              "draft_note_id"
+              "merge_request_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "draft_notes"
+            }
+            {
+              var: "draft_note_id"
+            }
+            {
+              lit: "publish"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.merge_request")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.merge_request")]
+  ]
+
+}

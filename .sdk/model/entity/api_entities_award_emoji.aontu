@@ -1,0 +1,2229 @@
+# Entity: api_entities_award_emoji
+
+main: kit: entity: api_entities_award_emoji: {
+
+  alias: field: {}
+
+  fields: {
+    avatar_path: {
+      h: "Avatar Path"
+      n: "avatar_path"
+      r: false
+      t: "`$STRING`"
+    }
+    avatar_url: {
+      h: "Avatar Url"
+      n: "avatar_url"
+      r: false
+      t: "`$STRING`"
+    }
+    awardable_id: {
+      fo: "int32"
+      h: "Awardable Id"
+      n: "awardable_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    awardable_type: {
+      h: "Awardable Type"
+      n: "awardable_type"
+      r: false
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    custom_attributes: {
+      h: "Custom Attributes"
+      n: "custom_attributes"
+      r: false
+      t: "`$ARRAY`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    locked: {
+      h: "Locked"
+      n: "locked"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    public_email: {
+      h: "Public Email"
+      n: "public_email"
+      r: false
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      t: "`$STRING`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: false
+      sh: "API_Entities_UserBasic model"
+      t: "`$OBJECT`"
+    }
+    username: {
+      h: "Username"
+      n: "username"
+      r: false
+      t: "`$STRING`"
+    }
+    web_url: {
+      h: "Web Url"
+      n: "web_url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_award_emoji"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/groups/{id}/epics/{epic_iid}/notes/{note_id}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "epic_id"
+                or: "epic_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "note_id"
+                or: "note_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_groups_id_epics_epic_iid_notes_note_id_award_emoji"
+                or: "post_api_v4_groups_id_epics_epic_iid_notes_note_id_award_emoji"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/{id}/epics/{epic_iid}/notes/{note_id}/award_emoji"
+          q: {
+            exist: [
+              "epic_id"
+              "group_id"
+              "note_id"
+              "post_api_v4_groups_id_epics_epic_iid_notes_note_id_award_emoji"
+            ]
+          }
+          r: {
+            param: {
+              epic_iid: "epic_id"
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "epics"
+            }
+            {
+              var: "epic_id"
+            }
+            {
+              lit: "notes"
+            }
+            {
+              var: "note_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "issue_id"
+                or: "issue_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "note_id"
+                or: "note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_issues_issue_iid_notes_note_id_award_emoji"
+                or: "post_api_v4_projects_id_issues_issue_iid_notes_note_id_award_emoji"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji"
+          q: {
+            exist: [
+              "issue_id"
+              "note_id"
+              "post_api_v4_projects_id_issues_issue_iid_notes_note_id_award_emoji"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              issue_iid: "issue_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "issues"
+            }
+            {
+              var: "issue_id"
+            }
+            {
+              lit: "notes"
+            }
+            {
+              var: "note_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "note_id"
+                or: "note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_merge_requests_merge_request_iid_notes_note_id_award_emoji"
+                or: "post_api_v4_projects_id_merge_requests_merge_request_iid_notes_note_id_award_emoji"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}/award_emoji"
+          q: {
+            exist: [
+              "merge_request_id"
+              "note_id"
+              "post_api_v4_projects_id_merge_requests_merge_request_iid_notes_note_id_award_emoji"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "notes"
+            }
+            {
+              var: "note_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/snippets/{snippet_id}/notes/{note_id}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "note_id"
+                or: "note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "snippet_id"
+                or: "snippet_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_snippets_snippet_id_notes_note_id_award_emoji"
+                or: "post_api_v4_projects_id_snippets_snippet_id_notes_note_id_award_emoji"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/snippets/{snippet_id}/notes/{note_id}/award_emoji"
+          q: {
+            exist: [
+              "note_id"
+              "post_api_v4_projects_id_snippets_snippet_id_notes_note_id_award_emoji"
+              "project_id"
+              "snippet_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "snippets"
+            }
+            {
+              var: "snippet_id"
+            }
+            {
+              lit: "notes"
+            }
+            {
+              var: "note_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/groups/{id}/epics/{epic_iid}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "epic_id"
+                or: "epic_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_groups_id_epics_epic_iid_award_emoji"
+                or: "post_api_v4_groups_id_epics_epic_iid_award_emoji"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/{id}/epics/{epic_iid}/award_emoji"
+          q: {
+            exist: [
+              "epic_id"
+              "group_id"
+              "post_api_v4_groups_id_epics_epic_iid_award_emoji"
+            ]
+          }
+          r: {
+            param: {
+              epic_iid: "epic_id"
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "epics"
+            }
+            {
+              var: "epic_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/issues/{issue_iid}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "issue_id"
+                or: "issue_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_issues_issue_iid_award_emoji"
+                or: "post_api_v4_projects_id_issues_issue_iid_award_emoji"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/issues/{issue_iid}/award_emoji"
+          q: {
+            exist: [
+              "issue_id"
+              "post_api_v4_projects_id_issues_issue_iid_award_emoji"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              issue_iid: "issue_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "issues"
+            }
+            {
+              var: "issue_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/merge_requests/{merge_request_iid}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_merge_requests_merge_request_iid_award_emoji"
+                or: "post_api_v4_projects_id_merge_requests_merge_request_iid_award_emoji"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/award_emoji"
+          q: {
+            exist: [
+              "merge_request_id"
+              "post_api_v4_projects_id_merge_requests_merge_request_iid_award_emoji"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/snippets/{snippet_id}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "snippet_id"
+                or: "snippet_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_snippets_snippet_id_award_emoji"
+                or: "post_api_v4_projects_id_snippets_snippet_id_award_emoji"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/snippets/{snippet_id}/award_emoji"
+          q: {
+            exist: [
+              "post_api_v4_projects_id_snippets_snippet_id_award_emoji"
+              "project_id"
+              "snippet_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "snippets"
+            }
+            {
+              var: "snippet_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/epics/{epic_iid}/notes/{note_id}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "epic_id"
+                or: "epic_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "note_id"
+                or: "note_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/epics/{epic_iid}/notes/{note_id}/award_emoji"
+          q: {
+            exist: [
+              "epic_id"
+              "group_id"
+              "note_id"
+              "page"
+              "per_page"
+            ]
+          }
+          r: {
+            param: {
+              epic_iid: "epic_id"
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "epics"
+            }
+            {
+              var: "epic_id"
+            }
+            {
+              lit: "notes"
+            }
+            {
+              var: "note_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "issue_id"
+                or: "issue_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "note_id"
+                or: "note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji"
+          q: {
+            exist: [
+              "issue_id"
+              "note_id"
+              "page"
+              "per_page"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              issue_iid: "issue_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "issues"
+            }
+            {
+              var: "issue_id"
+            }
+            {
+              lit: "notes"
+            }
+            {
+              var: "note_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "note_id"
+                or: "note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}/award_emoji"
+          q: {
+            exist: [
+              "merge_request_id"
+              "note_id"
+              "page"
+              "per_page"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "notes"
+            }
+            {
+              var: "note_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/snippets/{snippet_id}/notes/{note_id}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "note_id"
+                or: "note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "snippet_id"
+                or: "snippet_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/snippets/{snippet_id}/notes/{note_id}/award_emoji"
+          q: {
+            exist: [
+              "note_id"
+              "page"
+              "per_page"
+              "project_id"
+              "snippet_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "snippets"
+            }
+            {
+              var: "snippet_id"
+            }
+            {
+              lit: "notes"
+            }
+            {
+              var: "note_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/epics/{epic_iid}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "epic_id"
+                or: "epic_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/epics/{epic_iid}/award_emoji"
+          q: {
+            exist: [
+              "epic_id"
+              "group_id"
+              "page"
+              "per_page"
+            ]
+          }
+          r: {
+            param: {
+              epic_iid: "epic_id"
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "epics"
+            }
+            {
+              var: "epic_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/issues/{issue_iid}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "issue_id"
+                or: "issue_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/issues/{issue_iid}/award_emoji"
+          q: {
+            exist: [
+              "issue_id"
+              "page"
+              "per_page"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              issue_iid: "issue_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "issues"
+            }
+            {
+              var: "issue_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/merge_requests/{merge_request_iid}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/award_emoji"
+          q: {
+            exist: [
+              "merge_request_id"
+              "page"
+              "per_page"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/snippets/{snippet_id}/award_emoji"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "snippet_id"
+                or: "snippet_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/snippets/{snippet_id}/award_emoji"
+          q: {
+            exist: [
+              "page"
+              "per_page"
+              "project_id"
+              "snippet_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "snippets"
+            }
+            {
+              var: "snippet_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/epics/{epic_iid}/notes/{note_id}/award_emoji/{award_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "epic_id"
+                or: "epic_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "award_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "note_id"
+                or: "note_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/epics/{epic_iid}/notes/{note_id}/award_emoji/{award_id}"
+          q: {
+            exist: [
+              "epic_id"
+              "group_id"
+              "id"
+              "note_id"
+            ]
+          }
+          r: {
+            param: {
+              award_id: "id"
+              epic_iid: "epic_id"
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "epics"
+            }
+            {
+              var: "epic_id"
+            }
+            {
+              lit: "notes"
+            }
+            {
+              var: "note_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji/{award_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "award_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "issue_id"
+                or: "issue_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "note_id"
+                or: "note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji/{award_id}"
+          q: {
+            exist: [
+              "id"
+              "issue_id"
+              "note_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              award_id: "id"
+              id: "project_id"
+              issue_iid: "issue_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "issues"
+            }
+            {
+              var: "issue_id"
+            }
+            {
+              lit: "notes"
+            }
+            {
+              var: "note_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}/award_emoji/{award_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "award_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "note_id"
+                or: "note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}/award_emoji/{award_id}"
+          q: {
+            exist: [
+              "id"
+              "merge_request_id"
+              "note_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              award_id: "id"
+              id: "project_id"
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "notes"
+            }
+            {
+              var: "note_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/snippets/{snippet_id}/notes/{note_id}/award_emoji/{award_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "award_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "note_id"
+                or: "note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "snippet_id"
+                or: "snippet_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/snippets/{snippet_id}/notes/{note_id}/award_emoji/{award_id}"
+          q: {
+            exist: [
+              "id"
+              "note_id"
+              "project_id"
+              "snippet_id"
+            ]
+          }
+          r: {
+            param: {
+              award_id: "id"
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "snippets"
+            }
+            {
+              var: "snippet_id"
+            }
+            {
+              lit: "notes"
+            }
+            {
+              var: "note_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/epics/{epic_iid}/award_emoji/{award_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "epic_id"
+                or: "epic_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "award_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/epics/{epic_iid}/award_emoji/{award_id}"
+          q: {
+            exist: [
+              "epic_id"
+              "group_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              award_id: "id"
+              epic_iid: "epic_id"
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "epics"
+            }
+            {
+              var: "epic_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/issues/{issue_iid}/award_emoji/{award_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "award_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "issue_id"
+                or: "issue_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/issues/{issue_iid}/award_emoji/{award_id}"
+          q: {
+            exist: [
+              "id"
+              "issue_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              award_id: "id"
+              id: "project_id"
+              issue_iid: "issue_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "issues"
+            }
+            {
+              var: "issue_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/merge_requests/{merge_request_iid}/award_emoji/{award_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "award_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/award_emoji/{award_id}"
+          q: {
+            exist: [
+              "id"
+              "merge_request_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              award_id: "id"
+              id: "project_id"
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/snippets/{snippet_id}/award_emoji/{award_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "award_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "snippet_id"
+                or: "snippet_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/snippets/{snippet_id}/award_emoji/{award_id}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+              "snippet_id"
+            ]
+          }
+          r: {
+            param: {
+              award_id: "id"
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "snippets"
+            }
+            {
+              var: "snippet_id"
+            }
+            {
+              lit: "award_emoji"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.group")]
+    [path("$.main.kit.entity.project")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.merge_request")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.snippet")]
+    [path("$.main.kit.entity.group")]
+    [path("$.main.kit.entity.project")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.merge_request")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.snippet")]
+  ]
+
+}

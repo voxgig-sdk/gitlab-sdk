@@ -113,7 +113,7 @@ function api_entities_related_issue_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_related_issue01", "api_entities_related_issue02", "api_entities_related_issue03", "project01", "project02", "project03", "issue01", "issue02", "issue03"] as $k) {
+    foreach (["api_entities_related_issue01", "api_entities_related_issue02", "api_entities_related_issue03", "project01", "project02", "project03", "issue01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

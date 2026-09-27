@@ -1,0 +1,59 @@
+# BasicApiEntitiesProjectsTopicFlow
+
+main: kit: flow: BasicApiEntitiesProjectsTopicFlow:
+{
+  entity: "api_entities_projects_topic",
+  kind: "basic",
+  name: "BasicApiEntitiesProjectsTopicFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_projects_topic_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "api_entities_projects_topic_ref01",
+        srcdatavar: "api_entities_projects_topic_ref01_data",
+        suffix: "_up0",
+        textfield: "avatar_url"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_projects_topic_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_projects_topic_ref01",
+        srcdatavar: "api_entities_projects_topic_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_entities_projects_topic01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_projects_topic_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesProjectsTopicFlow"
+}

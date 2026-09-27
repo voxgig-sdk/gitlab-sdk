@@ -1,0 +1,72 @@
+# BasicApiEntitiesSystemBroadcastMessageFlow
+
+main: kit: flow: BasicApiEntitiesSystemBroadcastMessageFlow:
+{
+  entity: "api_entities_system_broadcast_message",
+  kind: "basic",
+  name: "BasicApiEntitiesSystemBroadcastMessageFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_system_broadcast_message_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "api_entities_system_broadcast_message_ref01",
+        srcdatavar: "api_entities_system_broadcast_message_ref01_data",
+        suffix: "_up0",
+        textfield: "broadcast_type"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_system_broadcast_message_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_system_broadcast_message_ref01",
+        srcdatavar: "api_entities_system_broadcast_message_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_entities_system_broadcast_message01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_system_broadcast_message_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_system_broadcast_message_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "api_entities_system_broadcast_message01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicApiEntitiesSystemBroadcastMessageFlow"
+}

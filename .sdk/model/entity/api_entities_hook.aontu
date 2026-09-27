@@ -1,0 +1,341 @@
+# Entity: api_entities_hook
+
+main: kit: entity: api_entities_hook: {
+
+  alias: field: {}
+
+  fields: {
+    alert_status: {
+      h: "Alert Status"
+      n: "alert_status"
+      r: false
+      t: "Any"
+    }
+    branch_filter_strategy: {
+      h: "Branch Filter Strategy"
+      n: "branch_filter_strategy"
+      r: false
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    custom_headers: {
+      h: "Custom Headers"
+      n: "custom_headers"
+      r: false
+      t: "`$ARRAY`"
+    }
+    custom_webhook_template: {
+      h: "Custom Webhook Template"
+      n: "custom_webhook_template"
+      r: false
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: "`$STRING`"
+    }
+    disabled_until: {
+      fo: "date-time"
+      h: "Disabled Until"
+      n: "disabled_until"
+      r: false
+      t: "`$STRING`"
+    }
+    enable_ssl_verification: {
+      h: "Enable Ssl Verification"
+      n: "enable_ssl_verification"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    merge_requests_events: {
+      h: "Merge Requests Events"
+      n: "merge_requests_events"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    push_events: {
+      h: "Push Events"
+      n: "push_events"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    push_events_branch_filter: {
+      h: "Push Events Branch Filter"
+      n: "push_events_branch_filter"
+      r: false
+      t: "`$STRING`"
+    }
+    repository_update_events: {
+      h: "Repository Update Events"
+      n: "repository_update_events"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    tag_push_events: {
+      h: "Tag Push Events"
+      n: "tag_push_events"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      t: "`$STRING`"
+    }
+    url_variables: {
+      h: "Url Variables"
+      n: "url_variables"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_hook"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/hooks"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_hook"
+                or: "post_api_v4_hook"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/hooks"
+          q: {
+            exist: [
+              "post_api_v4_hook"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "hooks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/hooks"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/hooks"
+          q: {
+            exist: [
+              "page"
+              "per_page"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "hooks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/hooks/{hook_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "hook_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/hooks/{hook_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              hook_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "hooks"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/hooks/{hook_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "hook_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_hooks_hook_id"
+                or: "put_api_v4_hooks_hook_id"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/hooks/{hook_id}"
+          q: {
+            exist: [
+              "id"
+              "put_api_v4_hooks_hook_id"
+            ]
+          }
+          r: {
+            param: {
+              hook_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "hooks"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

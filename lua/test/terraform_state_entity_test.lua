@@ -88,7 +88,7 @@ function terraform_state_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "terraform_state01", "terraform_state02", "terraform_state03", "project01", "project02", "project03", "state01", "state02", "state03", "version01", "version02", "version03", "name01" },
+    { "terraform_state01", "terraform_state02", "terraform_state03", "project01", "project02", "project03", "name01", "state01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

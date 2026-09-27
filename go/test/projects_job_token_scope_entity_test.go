@@ -101,7 +101,7 @@ func projects_job_token_scopeBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"projects_job_token_scope01", "projects_job_token_scope02", "projects_job_token_scope03", "project01", "project02", "project03", "allowlist01", "allowlist02", "allowlist03", "groups_allowlist01", "groups_allowlist02", "groups_allowlist03"},
+		[]any{"projects_job_token_scope01", "projects_job_token_scope02", "projects_job_token_scope03", "project01", "project02", "project03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

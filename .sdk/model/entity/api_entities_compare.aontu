@@ -1,0 +1,161 @@
+# Entity: api_entities_compare
+
+main: kit: entity: api_entities_compare: {
+
+  alias: field: {}
+
+  fields: {
+    commit: {
+      h: "Commit"
+      n: "commit"
+      r: false
+      sh: "API_Entities_Commit model"
+      t: "`$OBJECT`"
+    }
+    commits: {
+      h: "Commits"
+      n: "commits"
+      r: false
+      t: "`$ARRAY`"
+    }
+    compare_same_ref: {
+      h: "Compare Same Ref"
+      n: "compare_same_ref"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    compare_timeout: {
+      h: "Compare Timeout"
+      n: "compare_timeout"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    diffs: {
+      h: "Diffs"
+      n: "diffs"
+      r: false
+      t: "`$ARRAY`"
+    }
+    web_url: {
+      h: "Web Url"
+      n: "web_url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_entities_compare"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/repository/compare"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 1
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "main"
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "from_project_id"
+                or: "from_project_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "straight"
+                or: "straight"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "feature"
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "unidiff"
+                or: "unidiff"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/repository/compare"
+          q: {
+            exist: [
+              "from"
+              "from_project_id"
+              "project_id"
+              "straight"
+              "to"
+              "unidiff"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "compare"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

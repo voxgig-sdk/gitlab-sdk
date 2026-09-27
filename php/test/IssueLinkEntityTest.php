@@ -64,7 +64,7 @@ function issue_link_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["issue_link01", "issue_link02", "issue_link03", "project01", "project02", "project03", "issue01", "issue02", "issue03"] as $k) {
+    foreach (["issue_link01", "issue_link02", "issue_link03", "project01", "project02", "project03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

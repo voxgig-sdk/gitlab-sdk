@@ -191,7 +191,7 @@ func api_entities_metric_imageBasicSetup(extra map[string]any) *entityTestSetup 
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_metric_image01", "api_entities_metric_image02", "api_entities_metric_image03", "project01", "project02", "project03", "alert_management_alert01", "alert_management_alert02", "alert_management_alert03"},
+		[]any{"api_entities_metric_image01", "api_entities_metric_image02", "api_entities_metric_image03", "project01", "project02", "project03", "alert_management_alert01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

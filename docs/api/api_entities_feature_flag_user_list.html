@@ -297,14 +297,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesfeatureflaguserlist">ApiEntitiesFeatureFlagUserList</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesfeatureflaguserlist">ApiEntitiesFeatureFlagUserList</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -343,6 +343,66 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_feature_flag_user_lists, err := client.ApiEntitiesFeatureFlagUserList(nil).List(map[string]any{&quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_feature_flag_user_lists)
+api_entities_feature_flag_user_list, err := client.ApiEntitiesFeatureFlagUserList(nil).Load(map[string]any{&quot;iid&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_feature_flag_user_list)
+created, err := client.ApiEntitiesFeatureFlagUserList(nil).Create(map[string]any{&quot;project_id&quot;: &quot;example&quot;, &quot;post_api_v4_projects_id_feature_flags_user_list&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.ApiEntitiesFeatureFlagUserList(nil).Update(map[string]any{&quot;iid&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;, &quot;put_api_v4_projects_id_feature_flags_user_lists_iid&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_feature_flag_user_lists, err = client:ApiEntitiesFeatureFlagUserList():list({ project_id = &quot;example&quot; })
+local api_entities_feature_flag_user_list, err = client:ApiEntitiesFeatureFlagUserList():load({ iid = &quot;example&quot;, project_id = &quot;example&quot; })
+local created, err = client:ApiEntitiesFeatureFlagUserList():create({ project_id = &quot;example&quot;, post_api_v4_projects_id_feature_flags_user_list = {} })
+local updated, err = client:ApiEntitiesFeatureFlagUserList():update({ iid = &quot;example&quot;, project_id = &quot;example&quot;, put_api_v4_projects_id_feature_flags_user_lists_iid = {} })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_feature_flag_user_lists = $client-&gt;ApiEntitiesFeatureFlagUserList()-&gt;list([&quot;project_id&quot; =&gt; &quot;example&quot;]);
+$api_entities_feature_flag_user_list = $client-&gt;ApiEntitiesFeatureFlagUserList()-&gt;load([&quot;iid&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;ApiEntitiesFeatureFlagUserList()-&gt;create([&quot;project_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_projects_id_feature_flags_user_list&quot; =&gt; []]);
+$updated = $client-&gt;ApiEntitiesFeatureFlagUserList()-&gt;update([&quot;iid&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;put_api_v4_projects_id_feature_flags_user_lists_iid&quot; =&gt; []]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_feature_flag_user_lists = client.ApiEntitiesFeatureFlagUserList().list({&quot;project_id&quot;: &quot;example&quot;})
+api_entities_feature_flag_user_list = client.ApiEntitiesFeatureFlagUserList().load({&quot;iid&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;})
+created = client.ApiEntitiesFeatureFlagUserList().create({ &quot;project_id&quot;: &quot;example&quot;, &quot;post_api_v4_projects_id_feature_flags_user_list&quot;: {} })
+updated = client.ApiEntitiesFeatureFlagUserList().update({&quot;iid&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;, &quot;put_api_v4_projects_id_feature_flags_user_lists_iid&quot;: {}})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_feature_flag_user_lists = client.ApiEntitiesFeatureFlagUserList.list({ &quot;project_id&quot; =&gt; &quot;example&quot; })
+api_entities_feature_flag_user_list = client.ApiEntitiesFeatureFlagUserList.load({ &quot;iid&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+created = client.ApiEntitiesFeatureFlagUserList.create({ &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_projects_id_feature_flags_user_list&quot; =&gt; {} })
+updated = client.ApiEntitiesFeatureFlagUserList.update({ &quot;iid&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;put_api_v4_projects_id_feature_flags_user_lists_iid&quot; =&gt; {} })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_feature_flag_user_lists = await client.ApiEntitiesFeatureFlagUserList().list({ project_id: &quot;example&quot; })
+const api_entities_feature_flag_user_list = await client.ApiEntitiesFeatureFlagUserList().load({ iid: &quot;example&quot;, project_id: &quot;example&quot; })
+const created = await client.ApiEntitiesFeatureFlagUserList().create({ project_id: &quot;example&quot;, post_api_v4_projects_id_feature_flags_user_list: {} })
+const updated = await client.ApiEntitiesFeatureFlagUserList().update({ iid: &quot;example&quot;, project_id: &quot;example&quot;, put_api_v4_projects_id_feature_flags_user_lists_iid: {} })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -358,55 +418,55 @@
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>edit_path</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Edit Path</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>iid</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Iid</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Path</td>
 </tr>
 <tr>
 <td><code>project_id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Project Id</td>
 </tr>
 <tr>
 <td><code>updated_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Updated At</td>
 </tr>
 <tr>
 <td><code>user_xids</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>User Xids</td>
 </tr>
 </tbody>
 </table>

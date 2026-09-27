@@ -150,7 +150,7 @@ function api_entities_issue_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "api_entities_issue01", "api_entities_issue02", "api_entities_issue03", "group01", "group02", "group03", "project01", "project02", "project03", "issue01", "issue02", "issue03" },
+    { "api_entities_issue01", "api_entities_issue02", "api_entities_issue03", "group01", "group02", "group03", "project01", "project02", "project03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

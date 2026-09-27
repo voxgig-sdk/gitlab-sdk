@@ -301,14 +301,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesbadge">ApiEntitiesBadge</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesbadge">ApiEntitiesBadge</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -371,6 +371,66 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_badges, err := client.ApiEntitiesBadge(nil).List(map[string]any{&quot;group_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_badges)
+api_entities_badge, err := client.ApiEntitiesBadge(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_badge)
+created, err := client.ApiEntitiesBadge(nil).Create(map[string]any{&quot;group_id&quot;: &quot;example&quot;, &quot;post_api_v4_groups_id_badge&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.ApiEntitiesBadge(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;group_id&quot;: &quot;example&quot;, &quot;put_api_v4_groups_id_badges_badge_id&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_badges, err = client:ApiEntitiesBadge():list({ group_id = &quot;example&quot; })
+local api_entities_badge, err = client:ApiEntitiesBadge():load({ id = &quot;example_id&quot; })
+local created, err = client:ApiEntitiesBadge():create({ group_id = &quot;example&quot;, post_api_v4_groups_id_badge = {} })
+local updated, err = client:ApiEntitiesBadge():update({ id = &quot;example_id&quot;, group_id = &quot;example&quot;, put_api_v4_groups_id_badges_badge_id = {} })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_badges = $client-&gt;ApiEntitiesBadge()-&gt;list([&quot;group_id&quot; =&gt; &quot;example&quot;]);
+$api_entities_badge = $client-&gt;ApiEntitiesBadge()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;ApiEntitiesBadge()-&gt;create([&quot;group_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_groups_id_badge&quot; =&gt; []]);
+$updated = $client-&gt;ApiEntitiesBadge()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;group_id&quot; =&gt; &quot;example&quot;, &quot;put_api_v4_groups_id_badges_badge_id&quot; =&gt; []]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_badges = client.ApiEntitiesBadge().list({&quot;group_id&quot;: &quot;example&quot;})
+api_entities_badge = client.ApiEntitiesBadge().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.ApiEntitiesBadge().create({ &quot;group_id&quot;: &quot;example&quot;, &quot;post_api_v4_groups_id_badge&quot;: {} })
+updated = client.ApiEntitiesBadge().update({&quot;id&quot;: &quot;example_id&quot;, &quot;group_id&quot;: &quot;example&quot;, &quot;put_api_v4_groups_id_badges_badge_id&quot;: {}})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_badges = client.ApiEntitiesBadge.list({ &quot;group_id&quot; =&gt; &quot;example&quot; })
+api_entities_badge = client.ApiEntitiesBadge.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.ApiEntitiesBadge.create({ &quot;group_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_groups_id_badge&quot; =&gt; {} })
+updated = client.ApiEntitiesBadge.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;group_id&quot; =&gt; &quot;example&quot;, &quot;put_api_v4_groups_id_badges_badge_id&quot; =&gt; {} })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_badges = await client.ApiEntitiesBadge().list({ group_id: &quot;example&quot; })
+const api_entities_badge = await client.ApiEntitiesBadge().load({ id: &quot;example_id&quot; })
+const created = await client.ApiEntitiesBadge().create({ group_id: &quot;example&quot;, post_api_v4_groups_id_badge: {} })
+const updated = await client.ApiEntitiesBadge().update({ id: &quot;example_id&quot;, group_id: &quot;example&quot;, put_api_v4_groups_id_badges_badge_id: {} })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -386,43 +446,43 @@
 <td><code>id</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>image_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Image Url</td>
 </tr>
 <tr>
 <td><code>kind</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Kind</td>
 </tr>
 <tr>
 <td><code>link_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Link Url</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>rendered_image_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Rendered Image Url</td>
 </tr>
 <tr>
 <td><code>rendered_link_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Rendered Link Url</td>
 </tr>
 </tbody>
 </table>

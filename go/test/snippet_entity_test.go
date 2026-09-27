@@ -104,7 +104,7 @@ func snippetBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"snippet01", "snippet02", "snippet03", "file01", "file02", "file03"},
+		[]any{"snippet01", "snippet02", "snippet03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

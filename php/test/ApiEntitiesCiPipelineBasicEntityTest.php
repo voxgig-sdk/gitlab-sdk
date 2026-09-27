@@ -122,7 +122,7 @@ function api_entities_ci_pipeline_basic_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_ci_pipeline_basic01", "api_entities_ci_pipeline_basic02", "api_entities_ci_pipeline_basic03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03", "pipeline_schedule01", "pipeline_schedule02", "pipeline_schedule03"] as $k) {
+    foreach (["api_entities_ci_pipeline_basic01", "api_entities_ci_pipeline_basic02", "api_entities_ci_pipeline_basic03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03", "pipeline_schedule01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

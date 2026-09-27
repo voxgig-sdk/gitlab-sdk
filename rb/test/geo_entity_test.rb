@@ -68,7 +68,7 @@ def geo_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["geo01", "geo02", "geo03", "node_proxy01", "node_proxy02", "node_proxy03", "retrieve01", "retrieve02", "retrieve03", "replicable_name01"],
+    ["geo01", "geo02", "geo03", "replicable_name01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

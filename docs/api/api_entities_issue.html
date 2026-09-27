@@ -303,14 +303,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesissue">ApiEntitiesIssue</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesissue">ApiEntitiesIssue</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -385,6 +385,66 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_issues, err := client.ApiEntitiesIssue(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_issues)
+api_entities_issue, err := client.ApiEntitiesIssue(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_issue)
+created, err := client.ApiEntitiesIssue(nil).Create(map[string]any{&quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.ApiEntitiesIssue(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;, &quot;put_api_v4_projects_id_issues_issue_iid&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_issues, err = client:ApiEntitiesIssue():list()
+local api_entities_issue, err = client:ApiEntitiesIssue():load({ id = &quot;example_id&quot; })
+local created, err = client:ApiEntitiesIssue():create({ project_id = &quot;example&quot; })
+local updated, err = client:ApiEntitiesIssue():update({ id = &quot;example_id&quot;, project_id = &quot;example&quot;, put_api_v4_projects_id_issues_issue_iid = {} })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_issues = $client-&gt;ApiEntitiesIssue()-&gt;list();
+$api_entities_issue = $client-&gt;ApiEntitiesIssue()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;ApiEntitiesIssue()-&gt;create([&quot;project_id&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;ApiEntitiesIssue()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;put_api_v4_projects_id_issues_issue_iid&quot; =&gt; []]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_issues = client.ApiEntitiesIssue().list()
+api_entities_issue = client.ApiEntitiesIssue().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.ApiEntitiesIssue().create({ &quot;project_id&quot;: &quot;example&quot; })
+updated = client.ApiEntitiesIssue().update({&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;, &quot;put_api_v4_projects_id_issues_issue_iid&quot;: {}})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_issues = client.ApiEntitiesIssue.list()
+api_entities_issue = client.ApiEntitiesIssue.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.ApiEntitiesIssue.create({ &quot;project_id&quot; =&gt; &quot;example&quot; })
+updated = client.ApiEntitiesIssue.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;put_api_v4_projects_id_issues_issue_iid&quot; =&gt; {} })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_issues = await client.ApiEntitiesIssue().list()
+const api_entities_issue = await client.ApiEntitiesIssue().load({ id: &quot;example_id&quot; })
+const created = await client.ApiEntitiesIssue().create({ project_id: &quot;example&quot; })
+const updated = await client.ApiEntitiesIssue().update({ id: &quot;example_id&quot;, project_id: &quot;example&quot;, put_api_v4_projects_id_issues_issue_iid: {} })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -400,181 +460,181 @@
 <td><code>assignee</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>assignees</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>author</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>blocking_issues_count</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Blocking Issues Count</td>
 </tr>
 <tr>
 <td><code>closed_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Closed At</td>
 </tr>
 <tr>
 <td><code>closed_by</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>confidential</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Confidential</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>description</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Description</td>
 </tr>
 <tr>
 <td><code>discussion_locked</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Discussion Locked</td>
 </tr>
 <tr>
 <td><code>downvotes</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Downvotes</td>
 </tr>
 <tr>
 <td><code>due_date</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Due Date</td>
 </tr>
 <tr>
 <td><code>epic</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Epic</td>
 </tr>
 <tr>
 <td><code>epic_iid</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Epic Iid</td>
 </tr>
 <tr>
 <td><code>has_tasks</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Has Tasks</td>
 </tr>
 <tr>
 <td><code>health_status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Health Status</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>iid</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Iid</td>
 </tr>
 <tr>
 <td><code>imported</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Imported</td>
 </tr>
 <tr>
 <td><code>imported_from</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Imported From</td>
 </tr>
 <tr>
 <td><code>issue_type</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Issue Type</td>
 </tr>
 <tr>
 <td><code>iteration</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Iteration</td>
 </tr>
 <tr>
 <td><code>labels</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Labels</td>
 </tr>
 <tr>
 <td><code>links</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Links</td>
 </tr>
 <tr>
 <td><code>merge_requests_count</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Merge Requests Count</td>
 </tr>
 <tr>
 <td><code>milestone</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Milestone</td>
 </tr>
 <tr>
 <td><code>moved_to_id</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Moved To Id</td>
 </tr>
 <tr>
 <td><code>project_id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Project Id</td>
 </tr>
 <tr>
 <td><code>references</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>References</td>
 </tr>
 <tr>
 <td><code>service_desk_reply_to</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Service Desk Reply To</td>
 </tr>
 <tr>
 <td><code>severity</code></td>
@@ -586,73 +646,73 @@
 <td><code>state</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>State</td>
 </tr>
 <tr>
 <td><code>subscribed</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Subscribed</td>
 </tr>
 <tr>
 <td><code>task_completion_status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Task Completion Status</td>
 </tr>
 <tr>
 <td><code>task_status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Task Status</td>
 </tr>
 <tr>
 <td><code>time_stats</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_IssuableTimeStats model</td>
+<td><code>API_Entities_IssuableTimeStats</code> model</td>
 </tr>
 <tr>
 <td><code>title</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Title</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>One of [&quot;ISSUE&quot;, &quot;INCIDENT&quot;, &quot;TEST_CASE&quot;, &quot;REQUIREMENT&quot;, &quot;TASK&quot;, &quot;TICKET&quot;]</td>
+<td>One of [&quot;ISSUE&quot;, &quot;INCIDENT&quot;, &quot;<code>TEST_CASE</code>&quot;, &quot;REQUIREMENT&quot;, &quot;TASK&quot;, &quot;TICKET&quot;]</td>
 </tr>
 <tr>
 <td><code>updated_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Updated At</td>
 </tr>
 <tr>
 <td><code>upvotes</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Upvotes</td>
 </tr>
 <tr>
 <td><code>user_notes_count</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>User Notes Count</td>
 </tr>
 <tr>
 <td><code>web_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Web Url</td>
 </tr>
 <tr>
 <td><code>weight</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Weight</td>
 </tr>
 </tbody>
 </table>
@@ -699,7 +759,7 @@
 | <code>order_by</code> | <code>query</code> | <code>any</code> | No | Return issues ordered by <code>created_at</code>, <code>due_date</code>, <code>label_priority</code>, <code>milestone_due</code>, <code>popularity</code>, <code>priority</code>, <code>relative_position</code>, <code>title</code>, or <code>updated_at</code> fields. |
 | <code>sort</code> | <code>query</code> | <code>any</code> | No | Return issues sorted in <code>asc</code> or <code>desc</code> order. |
 | <code>due_date</code> | <code>query</code> | <code>any</code> | No | Return issues that have no due date (<code>0</code>), or whose due date is this week, this month, between two weeks ago and next month, or which are overdue. Accepts: <code>overdue</code>, <code>week</code>, <code>month</code>, <code>next_month_and_previous_two_weeks</code>, <code>0</code> |
-| <code>issue_type</code> | <code>query</code> | <code>any</code> | No | The type of the issue. Accepts: issue, incident, test_case, requirement, task, ticket |
+| <code>issue_type</code> | <code>query</code> | <code>any</code> | No | The type of the issue. Accepts: issue, incident, <code>test_case</code>, requirement, task, ticket |
 | <code>labels</code> | <code>query</code> | <code>any</code> | No | Comma-separated list of label names |
 | <code>milestone</code> | <code>query</code> | <code>any</code> | No | Milestone title |
 | <code>milestone_id</code> | <code>query</code> | <code>any</code> | No | Return issues assigned to milestones with the specified timebox value (&quot;Any&quot;, &quot;None&quot;, &quot;Upcoming&quot; or &quot;Started&quot;) |
@@ -730,7 +790,7 @@
 | <code>confidential</code> | <code>query</code> | <code>any</code> | No | Filter confidential or public issues |
 | <code>weight</code> | <code>query</code> | <code>any</code> | No | The weight of the issue |
 | <code>epic_id</code> | <code>query</code> | <code>any</code> | No | The ID of an epic associated with the issues |
-| <code>health_status</code> | <code>query</code> | <code>any</code> | No | The health status of the issue. Must be one of: on_track, needs_attention, at_risk, none, any |
+| <code>health_status</code> | <code>query</code> | <code>any</code> | No | The health status of the issue. Must be one of: <code>on_track</code>, <code>needs_attention</code>, <code>at_risk</code>, none, any |
 | <code>iteration_id</code> | <code>query</code> | <code>any</code> | No | Return issues which are assigned to the iteration with the given ID |
 | <code>iteration_title</code> | <code>query</code> | <code>any</code> | No | Return issues which are assigned to the iteration with the given title |
 | <code>page</code> | <code>query</code> | <code>any</code> | No | Current page number |
@@ -750,7 +810,7 @@
 | <code>order_by</code> | <code>query</code> | <code>any</code> | No | Return issues ordered by <code>created_at</code>, <code>due_date</code>, <code>label_priority</code>, <code>milestone_due</code>, <code>popularity</code>, <code>priority</code>, <code>relative_position</code>, <code>title</code>, or <code>updated_at</code> fields. |
 | <code>sort</code> | <code>query</code> | <code>any</code> | No | Return issues sorted in <code>asc</code> or <code>desc</code> order. |
 | <code>due_date</code> | <code>query</code> | <code>any</code> | No | Return issues that have no due date (<code>0</code>), or whose due date is this week, this month, between two weeks ago and next month, or which are overdue. Accepts: <code>overdue</code>, <code>week</code>, <code>month</code>, <code>next_month_and_previous_two_weeks</code>, <code>0</code> |
-| <code>issue_type</code> | <code>query</code> | <code>any</code> | No | The type of the issue. Accepts: issue, incident, test_case, requirement, task, ticket |
+| <code>issue_type</code> | <code>query</code> | <code>any</code> | No | The type of the issue. Accepts: issue, incident, <code>test_case</code>, requirement, task, ticket |
 | <code>labels</code> | <code>query</code> | <code>any</code> | No | Comma-separated list of label names |
 | <code>milestone</code> | <code>query</code> | <code>any</code> | No | Milestone title |
 | <code>milestone_id</code> | <code>query</code> | <code>any</code> | No | Return issues assigned to milestones with the specified timebox value (&quot;Any&quot;, &quot;None&quot;, &quot;Upcoming&quot; or &quot;Started&quot;) |
@@ -781,7 +841,7 @@
 | <code>confidential</code> | <code>query</code> | <code>any</code> | No | Filter confidential or public issues |
 | <code>weight</code> | <code>query</code> | <code>any</code> | No | The weight of the issue |
 | <code>epic_id</code> | <code>query</code> | <code>any</code> | No | The ID of an epic associated with the issues |
-| <code>health_status</code> | <code>query</code> | <code>any</code> | No | The health status of the issue. Must be one of: on_track, needs_attention, at_risk, none, any |
+| <code>health_status</code> | <code>query</code> | <code>any</code> | No | The health status of the issue. Must be one of: <code>on_track</code>, <code>needs_attention</code>, <code>at_risk</code>, none, any |
 | <code>iteration_id</code> | <code>query</code> | <code>any</code> | No | Return issues which are assigned to the iteration with the given ID |
 | <code>iteration_title</code> | <code>query</code> | <code>any</code> | No | Return issues which are assigned to the iteration with the given title |
 | <code>page</code> | <code>query</code> | <code>any</code> | No | Current page number |
@@ -800,7 +860,7 @@
 | <code>order_by</code> | <code>query</code> | <code>any</code> | No | Return issues ordered by <code>created_at</code>, <code>due_date</code>, <code>label_priority</code>, <code>milestone_due</code>, <code>popularity</code>, <code>priority</code>, <code>relative_position</code>, <code>title</code>, or <code>updated_at</code> fields. |
 | <code>sort</code> | <code>query</code> | <code>any</code> | No | Return issues sorted in <code>asc</code> or <code>desc</code> order. |
 | <code>due_date</code> | <code>query</code> | <code>any</code> | No | Return issues that have no due date (<code>0</code>), or whose due date is this week, this month, between two weeks ago and next month, or which are overdue. Accepts: <code>overdue</code>, <code>week</code>, <code>month</code>, <code>next_month_and_previous_two_weeks</code>, <code>0</code> |
-| <code>issue_type</code> | <code>query</code> | <code>any</code> | No | The type of the issue. Accepts: issue, incident, test_case, requirement, task, ticket |
+| <code>issue_type</code> | <code>query</code> | <code>any</code> | No | The type of the issue. Accepts: issue, incident, <code>test_case</code>, requirement, task, ticket |
 | <code>labels</code> | <code>query</code> | <code>any</code> | No | Comma-separated list of label names |
 | <code>milestone</code> | <code>query</code> | <code>any</code> | No | Milestone title |
 | <code>milestone_id</code> | <code>query</code> | <code>any</code> | No | Return issues assigned to milestones with the specified timebox value (&quot;Any&quot;, &quot;None&quot;, &quot;Upcoming&quot; or &quot;Started&quot;) |
@@ -831,7 +891,7 @@
 | <code>confidential</code> | <code>query</code> | <code>any</code> | No | Filter confidential or public issues |
 | <code>weight</code> | <code>query</code> | <code>any</code> | No | The weight of the issue |
 | <code>epic_id</code> | <code>query</code> | <code>any</code> | No | The ID of an epic associated with the issues |
-| <code>health_status</code> | <code>query</code> | <code>any</code> | No | The health status of the issue. Must be one of: on_track, needs_attention, at_risk, none, any |
+| <code>health_status</code> | <code>query</code> | <code>any</code> | No | The health status of the issue. Must be one of: <code>on_track</code>, <code>needs_attention</code>, <code>at_risk</code>, none, any |
 | <code>iteration_id</code> | <code>query</code> | <code>any</code> | No | Return issues which are assigned to the iteration with the given ID |
 | <code>iteration_title</code> | <code>query</code> | <code>any</code> | No | Return issues which are assigned to the iteration with the given title |
 | <code>page</code> | <code>query</code> | <code>any</code> | No | Current page number |

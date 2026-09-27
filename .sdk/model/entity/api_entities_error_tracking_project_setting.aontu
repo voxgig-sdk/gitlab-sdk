@@ -1,0 +1,246 @@
+# Entity: api_entities_error_tracking_project_setting
+
+main: kit: entity: api_entities_error_tracking_project_setting: {
+
+  alias: field: {}
+
+  fields: {
+    active: {
+      h: "Active"
+      n: "active"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    api_url: {
+      h: "Api Url"
+      n: "api_url"
+      r: false
+      t: "`$STRING`"
+    }
+    integrated: {
+      h: "Integrated"
+      n: "integrated"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    project_name: {
+      h: "Project Name"
+      n: "project_name"
+      r: false
+      t: "`$STRING`"
+    }
+    sentry_external_url: {
+      h: "Sentry External Url"
+      n: "sentry_external_url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_entities_error_tracking_project_setting"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/error_tracking/settings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/error_tracking/settings"
+          q: {
+            exist: [
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "error_tracking"
+            }
+            {
+              lit: "settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          co: {
+            id: "PATCH /api/v4/projects/{id}/error_tracking/settings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "patch_api_v4_projects_id_error_tracking_setting"
+                or: "patch_api_v4_projects_id_error_tracking_setting"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v4/projects/{id}/error_tracking/settings"
+          q: {
+            exist: [
+              "patch_api_v4_projects_id_error_tracking_setting"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "error_tracking"
+            }
+            {
+              lit: "settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/error_tracking/settings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_error_tracking_setting"
+                or: "put_api_v4_projects_id_error_tracking_setting"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/error_tracking/settings"
+          q: {
+            exist: [
+              "project_id"
+              "put_api_v4_projects_id_error_tracking_setting"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "error_tracking"
+            }
+            {
+              lit: "settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

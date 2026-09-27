@@ -1,0 +1,61 @@
+# Entity: api_entities_markdown
+
+main: kit: entity: api_entities_markdown: {
+
+  alias: field: {}
+
+  name: "api_entities_markdown"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/markdown"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_markdown"
+                or: "post_api_v4_markdown"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/markdown"
+          q: {
+            exist: [
+              "post_api_v4_markdown"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "markdown"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

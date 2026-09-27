@@ -85,7 +85,7 @@ func container_registryBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"container_registry01", "container_registry02", "container_registry03", "project01", "project02", "project03", "repository01", "repository02", "repository03", "tag01", "tag02", "tag03"},
+		[]any{"container_registry01", "container_registry02", "container_registry03", "project01", "project02", "project03", "tag01", "tag02", "tag03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

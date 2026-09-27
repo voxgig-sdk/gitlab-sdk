@@ -295,14 +295,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiescirunnerdetail">ApiEntitiesCiRunnerDetail</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiescirunnerdetail">ApiEntitiesCiRunnerDetail</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -329,6 +329,46 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_ci_runner_detail, err := client.ApiEntitiesCiRunnerDetail(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_ci_runner_detail)
+updated, err := client.ApiEntitiesCiRunnerDetail(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;put_api_v4_runners_id&quot;: map[string]any{}, &quot;access_level&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_ci_runner_detail, err = client:ApiEntitiesCiRunnerDetail():load({ id = &quot;example_id&quot; })
+local updated, err = client:ApiEntitiesCiRunnerDetail():update({ id = &quot;example_id&quot;, put_api_v4_runners_id = {}, access_level = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_ci_runner_detail = $client-&gt;ApiEntitiesCiRunnerDetail()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$updated = $client-&gt;ApiEntitiesCiRunnerDetail()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;put_api_v4_runners_id&quot; =&gt; [], &quot;access_level&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerDetail().load({&quot;id&quot;: &quot;example_id&quot;})
+updated = client.ApiEntitiesCiRunnerDetail().update({&quot;id&quot;: &quot;example_id&quot;, &quot;put_api_v4_runners_id&quot;: {}, &quot;access_level&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_ci_runner_detail = client.ApiEntitiesCiRunnerDetail.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+updated = client.ApiEntitiesCiRunnerDetail.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;put_api_v4_runners_id&quot; =&gt; {}, &quot;access_level&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_ci_runner_detail = await client.ApiEntitiesCiRunnerDetail().load({ id: &quot;example_id&quot; })
+const updated = await client.ApiEntitiesCiRunnerDetail().update({ id: &quot;example_id&quot;, put_api_v4_runners_id: {}, access_level: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -344,157 +384,157 @@
 <td><code>access_level</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Access Level</td>
 </tr>
 <tr>
 <td><code>active</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Active</td>
 </tr>
 <tr>
 <td><code>architecture</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Architecture</td>
 </tr>
 <tr>
 <td><code>contacted_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Contacted At</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>created_by</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>description</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Description</td>
 </tr>
 <tr>
 <td><code>groups</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_BasicGroupDetails model</td>
+<td><code>API_Entities_BasicGroupDetails</code> model</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>ip_address</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Ip Address</td>
 </tr>
 <tr>
 <td><code>is_shared</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Is Shared</td>
 </tr>
 <tr>
 <td><code>job_execution_status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Job Execution Status</td>
 </tr>
 <tr>
 <td><code>locked</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Locked</td>
 </tr>
 <tr>
 <td><code>maintenance_note</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Maintenance Note</td>
 </tr>
 <tr>
 <td><code>maximum_timeout</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Maximum Timeout</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>online</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Online</td>
 </tr>
 <tr>
 <td><code>paused</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Paused</td>
 </tr>
 <tr>
 <td><code>platform</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Platform</td>
 </tr>
 <tr>
 <td><code>projects</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_BasicProjectDetails model</td>
+<td><code>API_Entities_BasicProjectDetails</code> model</td>
 </tr>
 <tr>
 <td><code>revision</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Revision</td>
 </tr>
 <tr>
 <td><code>run_untagged</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Run Untagged</td>
 </tr>
 <tr>
 <td><code>runner_type</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Runner Type</td>
 </tr>
 <tr>
 <td><code>status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Status</td>
 </tr>
 <tr>
 <td><code>tag_list</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Tag List</td>
 </tr>
 <tr>
 <td><code>version</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Version</td>
 </tr>
 </tbody>
 </table>

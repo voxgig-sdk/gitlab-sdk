@@ -19,7 +19,6 @@ import type {
   ApiEntitiesNugetPackagesVersionListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesNugetPackagesVersionEntity extends GitlabEntityBase<ApiEntitiesNugetPackagesVersion> {
 
   constructor(client: GitlabSDK, entopts: any) {

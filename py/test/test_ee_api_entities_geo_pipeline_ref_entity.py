@@ -107,7 +107,7 @@ def _ee_api_entities_geo_pipeline_ref_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["ee_api_entities_geo_pipeline_ref01", "ee_api_entities_geo_pipeline_ref02", "ee_api_entities_geo_pipeline_ref03", "repository01", "repository02", "repository03", "gl_repository01"],
+        ["ee_api_entities_geo_pipeline_ref01", "ee_api_entities_geo_pipeline_ref02", "ee_api_entities_geo_pipeline_ref03", "gl_repository01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

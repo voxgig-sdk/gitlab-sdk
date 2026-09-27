@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('MigrationEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"migration","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"timestamp","orig":"timestamp","reqd":true,"type":"`$ANY`","index$":0}],"query":[{"active":true,"kind":"query","name":"post_api_v4_admin_migrations_timestamp_mark","orig":"post_api_v4_admin_migrations_timestamp_mark","reqd":true,"type":"`$OBJECT`","index$":0}]},"contract":{"id":"POST /api/v4/admin/migrations/{timestamp}/mark","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"postApiV4AdminMigrationsTimestampMark\",\"parameters\":[{\"description\":\"The migration version timestamp\",\"format\":\"int32\",\"in\":\"path\",\"name\":\"timestamp\",\"required\":true,\"type\":\"integer\"},{\"in\":\"body\",\"name\":\"postApiV4AdminMigrationsTimestampMark\",\"required\":true,\"schema\":{\"description\":\"Mark the migration as successfully executed\",\"properties\":{\"database\":{\"default\":\"main\",\"description\":\"The name of the database\",\"enum\":[\"main\",\"ci\",\"sec\",\"embedding\",\"geo\"],\"type\":\"string\"}},\"type\":\"object\"}}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"201\":{\"description\":\"201 Created\"},\"401\":{\"description\":\"401 Unauthorized\"},\"403\":{\"description\":\"403 Forbidden\"},\"404\":{\"description\":\"404 Not found\"},\"422\":{\"description\":\"You can mark only pending migrations\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"POST","orig":"/api/v4/admin/migrations/{timestamp}/mark","segments":[{"lit":"api"},{"lit":"v4"},{"lit":"admin"},{"lit":"migrations"},{"var":"timestamp"},{"lit":"mark"}],"select":{"$action":"mark","exist":["post_api_v4_admin_migrations_timestamp_mark","timestamp"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[["migration"]]},"key$":"migration","name__orig":"migration","Name":"Migration","name_":"migration","name-":"migration","NAME":"MIGRATION","index$":227}, {"active":true,"entity":"migration","key$":"BasicMigrationFlow","kind":"basic","name":"BasicMigrationFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"migration_ref01"},"match":{"timestamp":"timestamp01"},"op":"create","spec":[],"valid":[],"index$":0}]}, 'Migration')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"migration","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /api/v4/admin/migrations/{timestamp}/mark","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"timestamp","or":"timestamp","r":true,"t":"`$ANY`","index$":0}],"query":[{"a":true,"k":"query","n":"post_api_v4_admin_migrations_timestamp_mark","or":"post_api_v4_admin_migrations_timestamp_mark","r":true,"t":"`$OBJECT`","index$":0}]},"k":"http","m":"POST","o":"/api/v4/admin/migrations/{timestamp}/mark","q":{"$action":"mark","exist":["post_api_v4_admin_migrations_timestamp_mark","timestamp"]},"r":{},"s":[{"lit":"api"},{"lit":"v4"},{"lit":"admin"},{"lit":"migrations"},{"var":"timestamp"},{"lit":"mark"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"migration","name__orig":"migration","Name":"Migration","name_":"migration","name-":"migration","NAME":"MIGRATION","index$":227}, {"active":true,"entity":"migration","key$":"BasicMigrationFlow","kind":"basic","name":"BasicMigrationFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"migration_ref01"},"m":{"timestamp":"timestamp01"},"o":"create","s":[],"v":[],"index$":0}]}, 'Migration', {"POST /api/v4/admin/migrations/{timestamp}/mark":{"protocol":"http","parameters":[{"in":"path","name":"timestamp","description":"The migration version timestamp","type":"integer","format":"int32","required":true,"index$":0},{"name":"postApiV4AdminMigrationsTimestampMark","in":"body","required":true,"schema":{"type":"object","properties":{"database":{"type":"string","description":"The name of the database","enum":["main","ci","sec","embedding","geo"],"default":"main"}},"description":"Mark the migration as successfully executed","x-ref":"#/definitions/postApiV4AdminMigrationsTimestampMark"},"index$":1}]}})
     }
     const client = setup.client
     const struct = setup.struct
@@ -101,7 +97,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['migration01','migration02','migration03','migration01','migration02','migration03'],
+    ['migration01','migration02','migration03','timestamp01'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',

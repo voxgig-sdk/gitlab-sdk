@@ -19,7 +19,6 @@ import type {
   TestReportListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class TestReportEntity extends GitlabEntityBase<TestReport> {
 
   constructor(client: GitlabSDK, entopts: any) {

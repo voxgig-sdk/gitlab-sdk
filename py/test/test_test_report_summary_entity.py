@@ -70,7 +70,7 @@ def _test_report_summary_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["test_report_summary01", "test_report_summary02", "test_report_summary03", "project01", "project02", "project03", "pipeline01", "pipeline02", "pipeline03"],
+        ["test_report_summary01", "test_report_summary02", "test_report_summary03", "project01", "project02", "project03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

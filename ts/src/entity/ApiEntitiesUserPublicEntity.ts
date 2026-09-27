@@ -19,7 +19,6 @@ import type {
   ApiEntitiesUserPublicListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesUserPublicEntity extends GitlabEntityBase<ApiEntitiesUserPublic> {
 
   constructor(client: GitlabSDK, entopts: any) {

@@ -1,0 +1,87 @@
+# BasicApiEntitiesPackagesDebianDistributionFlow
+
+main: kit: flow: BasicApiEntitiesPackagesDebianDistributionFlow:
+{
+  entity: "api_entities_packages_debian_distribution",
+  kind: "basic",
+  name: "BasicApiEntitiesPackagesDebianDistributionFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_packages_debian_distribution_ref01"
+      }
+
+      m: {
+        codename: "codename01",
+        group_id: "group01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        codename: "codename01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_packages_debian_distribution_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "api_entities_packages_debian_distribution_ref01",
+        srcdatavar: "api_entities_packages_debian_distribution_ref01_data",
+        suffix: "_up0",
+        textfield: "codename"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_packages_debian_distribution_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_packages_debian_distribution_ref01",
+        srcdatavar: "api_entities_packages_debian_distribution_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_entities_packages_debian_distribution01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_packages_debian_distribution_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPackagesDebianDistributionFlow"
+}

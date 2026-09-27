@@ -64,7 +64,7 @@ function cluster_agent_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["cluster_agent01", "cluster_agent02", "cluster_agent03", "project01", "project02", "project03", "token01", "token02", "token03"] as $k) {
+    foreach (["cluster_agent01", "cluster_agent02", "cluster_agent03", "project01", "project02", "project03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

@@ -303,14 +303,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiescijob">ApiEntitiesCiJob</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiescijob">ApiEntitiesCiJob</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -385,6 +385,56 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_ci_jobs, err := client.ApiEntitiesCiJob(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_ci_jobs)
+api_entities_ci_job, err := client.ApiEntitiesCiJob(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_ci_job)
+created, err := client.ApiEntitiesCiJob(nil).Create(map[string]any{&quot;job_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_ci_jobs, err = client:ApiEntitiesCiJob():list()
+local api_entities_ci_job, err = client:ApiEntitiesCiJob():load({ id = &quot;example_id&quot;, project_id = &quot;example&quot; })
+local created, err = client:ApiEntitiesCiJob():create({ job_id = &quot;example&quot;, project_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_ci_jobs = $client-&gt;ApiEntitiesCiJob()-&gt;list();
+$api_entities_ci_job = $client-&gt;ApiEntitiesCiJob()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;ApiEntitiesCiJob()-&gt;create([&quot;job_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_ci_jobs = client.ApiEntitiesCiJob().list()
+api_entities_ci_job = client.ApiEntitiesCiJob().load({&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;})
+created = client.ApiEntitiesCiJob().create({ &quot;job_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot; })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_ci_jobs = client.ApiEntitiesCiJob.list()
+api_entities_ci_job = client.ApiEntitiesCiJob.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+created = client.ApiEntitiesCiJob.create({ &quot;job_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_ci_jobs = await client.ApiEntitiesCiJob().list()
+const api_entities_ci_job = await client.ApiEntitiesCiJob().load({ id: &quot;example_id&quot;, project_id: &quot;example&quot; })
+const created = await client.ApiEntitiesCiJob().create({ job_id: &quot;example&quot;, project_id: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -400,49 +450,49 @@
 <td><code>allow_failure</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Allow Failure</td>
 </tr>
 <tr>
 <td><code>archived</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Archived</td>
 </tr>
 <tr>
 <td><code>artifacts</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Artifacts</td>
 </tr>
 <tr>
 <td><code>artifacts_expire_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Artifacts Expire At</td>
 </tr>
 <tr>
 <td><code>artifacts_file</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Artifacts File</td>
 </tr>
 <tr>
 <td><code>commit</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_Commit model</td>
+<td><code>API_Entities_Commit</code> model</td>
 </tr>
 <tr>
 <td><code>coverage</code></td>
 <td><code>number</code></td>
 <td>No</td>
-<td></td>
+<td>Coverage</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>duration</code></td>
@@ -454,61 +504,61 @@
 <td><code>erased_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Erased At</td>
 </tr>
 <tr>
 <td><code>failure_reason</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Failure Reason</td>
 </tr>
 <tr>
 <td><code>file_format</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>File Format</td>
 </tr>
 <tr>
 <td><code>file_type</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>File Type</td>
 </tr>
 <tr>
 <td><code>filename</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Filename</td>
 </tr>
 <tr>
 <td><code>finished_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Finished At</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>pipeline</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_Ci_PipelineBasic model</td>
+<td><code>API_Entities_Ci_PipelineBasic</code> model</td>
 </tr>
 <tr>
 <td><code>project</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Project</td>
 </tr>
 <tr>
 <td><code>queued_duration</code></td>
@@ -520,67 +570,67 @@
 <td><code>ref</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Ref</td>
 </tr>
 <tr>
 <td><code>runner</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_Ci_Runner model</td>
+<td><code>API_Entities_Ci_Runner</code> model</td>
 </tr>
 <tr>
 <td><code>runner_manager</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_Ci_RunnerManager model</td>
+<td><code>API_Entities_Ci_RunnerManager</code> model</td>
 </tr>
 <tr>
 <td><code>size</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Size</td>
 </tr>
 <tr>
 <td><code>stage</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Stage</td>
 </tr>
 <tr>
 <td><code>started_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Started At</td>
 </tr>
 <tr>
 <td><code>status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Status</td>
 </tr>
 <tr>
 <td><code>tag</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Tag</td>
 </tr>
 <tr>
 <td><code>tag_list</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Tag List</td>
 </tr>
 <tr>
 <td><code>user</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>User</td>
 </tr>
 <tr>
 <td><code>web_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Web Url</td>
 </tr>
 </tbody>
 </table>

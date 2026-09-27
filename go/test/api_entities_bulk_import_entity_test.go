@@ -176,7 +176,7 @@ func api_entities_bulk_importBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_bulk_import01", "api_entities_bulk_import02", "api_entities_bulk_import03", "bulk_import01", "bulk_import02", "bulk_import03", "entity01", "entity02", "entity03"},
+		[]any{"api_entities_bulk_import01", "api_entities_bulk_import02", "api_entities_bulk_import03", "bulk_import01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

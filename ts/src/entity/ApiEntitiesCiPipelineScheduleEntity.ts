@@ -19,7 +19,6 @@ import type {
   ApiEntitiesCiPipelineScheduleListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesCiPipelineScheduleEntity extends GitlabEntityBase<ApiEntitiesCiPipelineSchedule> {
 
   constructor(client: GitlabSDK, entopts: any) {

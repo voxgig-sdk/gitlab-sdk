@@ -144,7 +144,7 @@ function api_entities_metric_image_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "api_entities_metric_image01", "api_entities_metric_image02", "api_entities_metric_image03", "project01", "project02", "project03", "alert_management_alert01", "alert_management_alert02", "alert_management_alert03" },
+    { "api_entities_metric_image01", "api_entities_metric_image02", "api_entities_metric_image03", "project01", "project02", "project03", "alert_management_alert01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

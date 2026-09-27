@@ -1,0 +1,32 @@
+# BasicCustomAttributeFlow
+
+main: kit: flow: BasicCustomAttributeFlow:
+{
+  entity: "custom_attribute",
+  kind: "basic",
+  name: "BasicCustomAttributeFlow",
+  step: [
+    {
+      i: {
+        ref: "custom_attribute_ref01",
+        srcdatavar: "custom_attribute_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "custom_attribute01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-custom_attribute_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCustomAttributeFlow"
+}

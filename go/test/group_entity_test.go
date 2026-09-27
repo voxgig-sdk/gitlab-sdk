@@ -137,7 +137,7 @@ func groupBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"group01", "group02", "group03", "billable_member01", "billable_member02", "billable_member03", "custom_attribute01", "custom_attribute02", "custom_attribute03", "share01", "share02", "share03", "ssh_certificate01", "ssh_certificate02", "ssh_certificate03", "upload01", "upload02", "upload03", "secret01"},
+		[]any{"group01", "group02", "group03", "custom_attribute01", "custom_attribute02", "custom_attribute03", "secret01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

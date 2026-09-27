@@ -19,7 +19,6 @@ import type {
   ParticipantListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ParticipantEntity extends GitlabEntityBase<Participant> {
 
   constructor(client: GitlabSDK, entopts: any) {

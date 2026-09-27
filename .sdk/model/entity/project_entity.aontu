@@ -1,0 +1,107 @@
+# Entity: project_entity
+
+main: kit: entity: project_entity: {
+
+  alias: field: {}
+
+  name: "project_entity"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/import/bitbucket_server"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_import_bitbucket_server"
+                or: "post_api_v4_import_bitbucket_server"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/import/bitbucket_server"
+          q: {
+            exist: [
+              "post_api_v4_import_bitbucket_server"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "import"
+            }
+            {
+              lit: "bitbucket_server"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/import/github"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_import_github"
+                or: "post_api_v4_import_github"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/import/github"
+          q: {
+            exist: [
+              "post_api_v4_import_github"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "import"
+            }
+            {
+              lit: "github"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

@@ -74,7 +74,7 @@ function api_entities_license_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_license01", "api_entities_license02", "api_entities_license03", "template01", "template02", "template03", "type01"] as $k) {
+    foreach (["api_entities_license01", "api_entities_license02", "api_entities_license03", "type01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

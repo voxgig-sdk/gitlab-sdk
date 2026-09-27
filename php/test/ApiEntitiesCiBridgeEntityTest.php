@@ -113,7 +113,7 @@ function api_entities_ci_bridge_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_ci_bridge01", "api_entities_ci_bridge02", "api_entities_ci_bridge03", "project01", "project02", "project03", "pipeline01", "pipeline02", "pipeline03"] as $k) {
+    foreach (["api_entities_ci_bridge01", "api_entities_ci_bridge02", "api_entities_ci_bridge03", "project01", "project02", "project03", "pipeline01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

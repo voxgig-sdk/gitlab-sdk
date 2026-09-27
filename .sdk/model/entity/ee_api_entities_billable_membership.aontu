@@ -1,0 +1,214 @@
+# Entity: ee_api_entities_billable_membership
+
+main: kit: entity: ee_api_entities_billable_membership: {
+
+  alias: field: {}
+
+  fields: {
+    custom_role: {
+      h: "Custom Role"
+      n: "custom_role"
+      r: false
+      t: "`$STRING`"
+    }
+    integer_value: {
+      h: "Integer Value"
+      n: "integer_value"
+      r: false
+      t: "`$STRING`"
+    }
+    string_value: {
+      h: "String Value"
+      n: "string_value"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "ee_api_entities_billable_membership"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/billable_members/{user_id}/indirect"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "billable_member_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/billable_members/{user_id}/indirect"
+          q: {
+            exist: [
+              "billable_member_id"
+              "group_id"
+              "page"
+              "per_page"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+              user_id: "billable_member_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "billable_members"
+            }
+            {
+              var: "billable_member_id"
+            }
+            {
+              lit: "indirect"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.access_level`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/billable_members/{user_id}/memberships"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "billable_member_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/billable_members/{user_id}/memberships"
+          q: {
+            exist: [
+              "billable_member_id"
+              "group_id"
+              "page"
+              "per_page"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+              user_id: "billable_member_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "billable_members"
+            }
+            {
+              var: "billable_member_id"
+            }
+            {
+              lit: "memberships"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.access_level`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.group")]
+  ]
+
+}

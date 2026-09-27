@@ -104,7 +104,7 @@ func api_entities_merge_request_diff_fullBasicSetup(extra map[string]any) *entit
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_merge_request_diff_full01", "api_entities_merge_request_diff_full02", "api_entities_merge_request_diff_full03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03", "version01", "version02", "version03"},
+		[]any{"api_entities_merge_request_diff_full01", "api_entities_merge_request_diff_full02", "api_entities_merge_request_diff_full03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('EeApiEntitiesGeoPipelineRefEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"pipeline_refs","req":false,"type":"`$ARRAY`","index$":0}],"name":"ee_api_entities_geo_pipeline_ref","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"gl_repository","orig":"gl_repository","reqd":true,"type":"`$ANY`","index$":0}]},"contract":{"id":"GET /api/v4/geo/repositories/{gl_repository}/pipeline_refs","json":"{\"operationId\":\"getApiV4GeoRepositoriesGlRepositoryPipelineRefs\",\"parameters\":[{\"description\":\"The repository to check\",\"in\":\"path\",\"name\":\"gl_repository\",\"required\":true,\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Returns the list of pipeline refs for the project\",\"schema\":{\"items\":{\"description\":\"EE_API_Entities_Geo_PipelineRefs model\",\"properties\":{\"pipeline_refs\":{\"example\":[\"refs/pipelines/1\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"type\":\"array\"}},\"401\":{\"description\":\"401 Unauthorized\"},\"404\":{\"description\":\"404 Not found\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/geo/repositories/{gl_repository}/pipeline_refs","segments":[{"lit":"api"},{"lit":"v4"},{"lit":"geo"},{"lit":"repositories"},{"var":"gl_repository"},{"lit":"pipeline_refs"}],"select":{"exist":["gl_repository"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[["repository"]]},"key$":"ee_api_entities_geo_pipeline_ref","name__orig":"ee_api_entities_geo_pipeline_ref","Name":"EeApiEntitiesGeoPipelineRef","name_":"ee_api_entities_geo_pipeline_ref","name-":"ee-api-entities-geo-pipeline-ref","NAME":"EE_API_ENTITIES_GEO_PIPELINE_REF","index$":198}, {"active":true,"entity":"ee_api_entities_geo_pipeline_ref","key$":"BasicEeApiEntitiesGeoPipelineRefFlow","kind":"basic","name":"BasicEeApiEntitiesGeoPipelineRefFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{"gl_repository":"gl_repository01"},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"ee_api_entities_geo_pipeline_ref_ref01"}}],"index$":0}]}, 'EeApiEntitiesGeoPipelineRef')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"pipeline_refs":{"a":true,"h":"Pipeline Refs","n":"pipeline_refs","r":false,"t":"`$ARRAY`","key$":"pipeline_refs","index$":0}},"name":"ee_api_entities_geo_pipeline_ref","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v4/geo/repositories/{gl_repository}/pipeline_refs","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"gl_repository","or":"gl_repository","r":true,"t":"`$ANY`","index$":0}]},"k":"http","m":"GET","o":"/api/v4/geo/repositories/{gl_repository}/pipeline_refs","q":{"exist":["gl_repository"]},"r":{},"s":[{"lit":"api"},{"lit":"v4"},{"lit":"geo"},{"lit":"repositories"},{"var":"gl_repository"},{"lit":"pipeline_refs"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"ee_api_entities_geo_pipeline_ref","name__orig":"ee_api_entities_geo_pipeline_ref","Name":"EeApiEntitiesGeoPipelineRef","name_":"ee_api_entities_geo_pipeline_ref","name-":"ee-api-entities-geo-pipeline-ref","NAME":"EE_API_ENTITIES_GEO_PIPELINE_REF","index$":198}, {"active":true,"entity":"ee_api_entities_geo_pipeline_ref","key$":"BasicEeApiEntitiesGeoPipelineRefFlow","kind":"basic","name":"BasicEeApiEntitiesGeoPipelineRefFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{"gl_repository":"gl_repository01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"ee_api_entities_geo_pipeline_ref_ref01"}}],"index$":0}]}, 'EeApiEntitiesGeoPipelineRef', {"GET /api/v4/geo/repositories/{gl_repository}/pipeline_refs":{"protocol":"http","parameters":[{"in":"path","name":"gl_repository","description":"The repository to check","type":"string","required":true,"index$":0}]}})
     }
     const client = setup.client
     const struct = setup.struct
@@ -101,7 +97,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['ee_api_entities_geo_pipeline_ref01','ee_api_entities_geo_pipeline_ref02','ee_api_entities_geo_pipeline_ref03','repository01','repository02','repository03'],
+    ['ee_api_entities_geo_pipeline_ref01','ee_api_entities_geo_pipeline_ref02','ee_api_entities_geo_pipeline_ref03','gl_repository01'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',

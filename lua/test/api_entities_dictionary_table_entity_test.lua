@@ -76,7 +76,7 @@ function api_entities_dictionary_table_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "api_entities_dictionary_table01", "api_entities_dictionary_table02", "api_entities_dictionary_table03", "databas01", "databas02", "databas03" },
+    { "api_entities_dictionary_table01", "api_entities_dictionary_table02", "api_entities_dictionary_table03", "database01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

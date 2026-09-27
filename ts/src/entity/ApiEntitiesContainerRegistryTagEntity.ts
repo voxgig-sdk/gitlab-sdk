@@ -19,7 +19,6 @@ import type {
   ApiEntitiesContainerRegistryTagListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesContainerRegistryTagEntity extends GitlabEntityBase<ApiEntitiesContainerRegistryTag> {
 
   constructor(client: GitlabSDK, entopts: any) {

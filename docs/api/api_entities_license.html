@@ -294,14 +294,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitieslicense">ApiEntitiesLicense</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitieslicense">ApiEntitiesLicense</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -322,6 +322,36 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_license, err := client.ApiEntitiesLicense(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;name&quot;: &quot;example&quot;, &quot;type&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_license)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_license, err = client:ApiEntitiesLicense():load({ id = &quot;example_id&quot;, name = &quot;example&quot;, type = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_license = $client-&gt;ApiEntitiesLicense()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;type&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_license = client.ApiEntitiesLicense().load({&quot;id&quot;: &quot;example_id&quot;, &quot;name&quot;: &quot;example&quot;, &quot;type&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_license = client.ApiEntitiesLicense.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;type&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_license = await client.ApiEntitiesLicense().load({ id: &quot;example_id&quot;, name: &quot;example&quot;, type: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -337,73 +367,73 @@
 <td><code>conditions</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Conditions</td>
 </tr>
 <tr>
 <td><code>content</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Content</td>
 </tr>
 <tr>
 <td><code>description</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Description</td>
 </tr>
 <tr>
 <td><code>html_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Html Url</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>key</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Key</td>
 </tr>
 <tr>
 <td><code>limitations</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Limitations</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>nickname</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Nickname</td>
 </tr>
 <tr>
 <td><code>permissions</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Permissions</td>
 </tr>
 <tr>
 <td><code>popular</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Popular</td>
 </tr>
 <tr>
 <td><code>source_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Source Url</td>
 </tr>
 </tbody>
 </table>
@@ -414,7 +444,7 @@
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
 | <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID or URL-encoded path of the project |
-| <code>type</code> | <code>path</code> | <code>any</code> | Yes | The type (dockerfiles|gitignores|gitlab_ci_ymls|licenses|issues|merge_requests) of the template |
+| <code>type</code> | <code>path</code> | <code>any</code> | Yes | The type (dockerfiles|gitignores|<code>gitlab_ci_ymls</code>|licenses|issues|<code>merge_requests</code>) of the template |
 | <code>name</code> | <code>path</code> | <code>any</code> | Yes | The key of the template, as obtained from the collection endpoint. |
 | <code>source_template_project_id</code> | <code>query</code> | <code>any</code> | No | The project id where a given template is being stored. This is useful when multiple templates from different projects have the same name |
 | <code>project</code> | <code>query</code> | <code>any</code> | No | The project name to use when expanding placeholders in the template. Only affects licenses |

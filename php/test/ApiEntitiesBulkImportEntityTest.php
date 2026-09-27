@@ -126,7 +126,7 @@ function api_entities_bulk_import_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_bulk_import01", "api_entities_bulk_import02", "api_entities_bulk_import03", "bulk_import01", "bulk_import02", "bulk_import03", "entity01", "entity02", "entity03"] as $k) {
+    foreach (["api_entities_bulk_import01", "api_entities_bulk_import02", "api_entities_bulk_import03", "bulk_import01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

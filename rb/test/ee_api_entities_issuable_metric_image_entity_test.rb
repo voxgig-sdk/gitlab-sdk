@@ -83,7 +83,7 @@ def ee_api_entities_issuable_metric_image_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["ee_api_entities_issuable_metric_image01", "ee_api_entities_issuable_metric_image02", "ee_api_entities_issuable_metric_image03", "project01", "project02", "project03", "issue01", "issue02", "issue03"],
+    ["ee_api_entities_issuable_metric_image01", "ee_api_entities_issuable_metric_image02", "ee_api_entities_issuable_metric_image03", "project01", "project02", "project03", "issue01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

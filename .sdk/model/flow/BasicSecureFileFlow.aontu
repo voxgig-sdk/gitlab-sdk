@@ -1,0 +1,33 @@
+# BasicSecureFileFlow
+
+main: kit: flow: BasicSecureFileFlow:
+{
+  entity: "secure_file",
+  kind: "basic",
+  name: "BasicSecureFileFlow",
+  step: [
+    {
+      i: {
+        ref: "secure_file_ref01",
+        srcdatavar: "secure_file_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "secure_file01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-secure_file_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSecureFileFlow"
+}

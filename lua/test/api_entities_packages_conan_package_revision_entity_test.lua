@@ -122,7 +122,7 @@ function api_entities_packages_conan_package_revision_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "api_entities_packages_conan_package_revision01", "api_entities_packages_conan_package_revision02", "api_entities_packages_conan_package_revision03", "project01", "project02", "project03", "conan01", "conan02", "conan03", "revision01", "revision02", "revision03", "package01", "package02", "package03", "conan_package_reference01", "package_channel01", "package_username01", "package_version01" },
+    { "api_entities_packages_conan_package_revision01", "api_entities_packages_conan_package_revision02", "api_entities_packages_conan_package_revision03", "project01", "project02", "project03", "conan01", "conan02", "conan03", "conan_package_reference01", "package_channel01", "package_username01", "package_version01", "revision01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

@@ -56,7 +56,7 @@ def container_registry_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["container_registry01", "container_registry02", "container_registry03", "project01", "project02", "project03", "repository01", "repository02", "repository03", "tag01", "tag02", "tag03"],
+    ["container_registry01", "container_registry02", "container_registry03", "project01", "project02", "project03", "tag01", "tag02", "tag03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

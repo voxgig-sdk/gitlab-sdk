@@ -108,7 +108,7 @@ def _api_entities_basic_ref_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["api_entities_basic_ref01", "api_entities_basic_ref02", "api_entities_basic_ref03", "project01", "project02", "project03", "commit01", "commit02", "commit03", "sha01"],
+        ["api_entities_basic_ref01", "api_entities_basic_ref02", "api_entities_basic_ref03", "project01", "project02", "project03", "sha01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

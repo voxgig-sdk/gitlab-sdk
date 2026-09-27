@@ -167,7 +167,7 @@ func api_entities_resource_milestone_eventBasicSetup(extra map[string]any) *enti
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_resource_milestone_event01", "api_entities_resource_milestone_event02", "api_entities_resource_milestone_event03", "project01", "project02", "project03", "issue01", "issue02", "issue03", "merge_request01", "merge_request02", "merge_request03"},
+		[]any{"api_entities_resource_milestone_event01", "api_entities_resource_milestone_event02", "api_entities_resource_milestone_event03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

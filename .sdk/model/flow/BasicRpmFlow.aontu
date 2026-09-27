@@ -1,0 +1,22 @@
+# BasicRpmFlow
+
+main: kit: flow: BasicRpmFlow:
+{
+  entity: "rpm",
+  kind: "basic",
+  name: "BasicRpmFlow",
+  step: [
+    {
+      i: {
+        ref: "rpm_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicRpmFlow"
+}

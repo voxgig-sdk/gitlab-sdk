@@ -74,7 +74,7 @@ function api_entities_merge_request_diff_full_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_merge_request_diff_full01", "api_entities_merge_request_diff_full02", "api_entities_merge_request_diff_full03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03", "version01", "version02", "version03"] as $k) {
+    foreach (["api_entities_merge_request_diff_full01", "api_entities_merge_request_diff_full02", "api_entities_merge_request_diff_full03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

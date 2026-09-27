@@ -66,7 +66,7 @@ def integration_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["integration01", "integration02", "integration03", "group01", "group02", "group03", "project01", "project02", "project03", "service01", "service02", "service03"],
+    ["integration01", "integration02", "integration03", "group01", "group02", "group03", "project01", "project02", "project03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

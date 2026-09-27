@@ -1,0 +1,22 @@
+# BasicApiEntitiesDeployTokenWithTokenFlow
+
+main: kit: flow: BasicApiEntitiesDeployTokenWithTokenFlow:
+{
+  entity: "api_entities_deploy_token_with_token",
+  kind: "basic",
+  name: "BasicApiEntitiesDeployTokenWithTokenFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_deploy_token_with_token_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicApiEntitiesDeployTokenWithTokenFlow"
+}

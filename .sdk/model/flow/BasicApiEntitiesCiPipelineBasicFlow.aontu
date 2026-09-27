@@ -1,0 +1,50 @@
+# BasicApiEntitiesCiPipelineBasicFlow
+
+main: kit: flow: BasicApiEntitiesCiPipelineBasicFlow:
+{
+  entity: "api_entities_ci_pipeline_basic",
+  kind: "basic",
+  name: "BasicApiEntitiesCiPipelineBasicFlow",
+  step: [
+    {
+      m: {
+        pipeline_schedule_id: "pipeline_schedule01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_ci_pipeline_basic_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_ci_pipeline_basic_ref01",
+        srcdatavar: "api_entities_ci_pipeline_basic_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_entities_ci_pipeline_basic01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_ci_pipeline_basic_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCiPipelineBasicFlow"
+}

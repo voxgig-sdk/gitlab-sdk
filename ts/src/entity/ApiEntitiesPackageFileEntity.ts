@@ -19,7 +19,6 @@ import type {
   ApiEntitiesPackageFileListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesPackageFileEntity extends GitlabEntityBase<ApiEntitiesPackageFile> {
 
   constructor(client: GitlabSDK, entopts: any) {

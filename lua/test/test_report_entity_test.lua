@@ -117,7 +117,7 @@ function test_report_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "test_report01", "test_report02", "test_report03", "project01", "project02", "project03", "pipeline01", "pipeline02", "pipeline03" },
+    { "test_report01", "test_report02", "test_report03", "project01", "project02", "project03", "pipeline01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

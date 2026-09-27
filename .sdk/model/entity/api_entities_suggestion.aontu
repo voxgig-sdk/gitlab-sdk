@@ -1,0 +1,172 @@
+# Entity: api_entities_suggestion
+
+main: kit: entity: api_entities_suggestion: {
+
+  alias: field: {}
+
+  fields: {
+    appliable: {
+      h: "Appliable"
+      n: "appliable"
+      r: false
+      t: "`$STRING`"
+    }
+    applied: {
+      h: "Applied"
+      n: "applied"
+      r: false
+      t: "`$STRING`"
+    }
+    from_content: {
+      h: "From Content"
+      n: "from_content"
+      r: false
+      t: "`$STRING`"
+    }
+    from_line: {
+      h: "From Line"
+      n: "from_line"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    to_content: {
+      h: "To Content"
+      n: "to_content"
+      r: false
+      t: "`$STRING`"
+    }
+    to_line: {
+      h: "To Line"
+      n: "to_line"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_suggestion"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/suggestions/{id}/apply"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "suggestion_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_suggestions_id_apply"
+                or: "put_api_v4_suggestions_id_apply"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/suggestions/{id}/apply"
+          q: {
+            exist: [
+              "put_api_v4_suggestions_id_apply"
+              "suggestion_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "suggestion_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "suggestions"
+            }
+            {
+              var: "suggestion_id"
+            }
+            {
+              lit: "apply"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /api/v4/suggestions/batch_apply"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_suggestions_batch_apply"
+                or: "put_api_v4_suggestions_batch_apply"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/suggestions/batch_apply"
+          q: {
+            exist: [
+              "put_api_v4_suggestions_batch_apply"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "suggestions"
+            }
+            {
+              lit: "batch_apply"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

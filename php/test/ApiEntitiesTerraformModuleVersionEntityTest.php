@@ -123,7 +123,7 @@ function api_entities_terraform_module_version_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_terraform_module_version01", "api_entities_terraform_module_version02", "api_entities_terraform_module_version03", "v101", "v102", "v103", "module_name01", "module_system01", "module_namespace01"] as $k) {
+    foreach (["api_entities_terraform_module_version01", "api_entities_terraform_module_version02", "api_entities_terraform_module_version03", "module_name01", "module_system01", "v101", "module_namespace01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

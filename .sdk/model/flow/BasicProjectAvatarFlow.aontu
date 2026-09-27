@@ -1,0 +1,32 @@
+# BasicProjectAvatarFlow
+
+main: kit: flow: BasicProjectAvatarFlow:
+{
+  entity: "project_avatar",
+  kind: "basic",
+  name: "BasicProjectAvatarFlow",
+  step: [
+    {
+      i: {
+        ref: "project_avatar_ref01",
+        srcdatavar: "project_avatar_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "project_avatar01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_avatar_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectAvatarFlow"
+}

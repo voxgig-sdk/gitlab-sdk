@@ -70,7 +70,7 @@ function api_entities_templates_list_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_templates_list01", "api_entities_templates_list02", "api_entities_templates_list03", "project01", "project02", "project03", "template01", "template02", "template03"] as $k) {
+    foreach (["api_entities_templates_list01", "api_entities_templates_list02", "api_entities_templates_list03", "project01", "project02", "project03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

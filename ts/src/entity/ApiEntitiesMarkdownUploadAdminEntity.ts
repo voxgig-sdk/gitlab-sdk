@@ -19,7 +19,6 @@ import type {
   ApiEntitiesMarkdownUploadAdminListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesMarkdownUploadAdminEntity extends GitlabEntityBase<ApiEntitiesMarkdownUploadAdmin> {
 
   constructor(client: GitlabSDK, entopts: any) {

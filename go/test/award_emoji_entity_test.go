@@ -85,7 +85,7 @@ func award_emojiBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"award_emoji01", "award_emoji02", "award_emoji03", "group01", "group02", "group03", "epic01", "epic02", "epic03", "project01", "project02", "project03", "issue01", "issue02", "issue03", "merge_request01", "merge_request02", "merge_request03", "snippet01", "snippet02", "snippet03", "note01", "note02", "note03"},
+		[]any{"award_emoji01", "award_emoji02", "award_emoji03", "group01", "group02", "group03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03", "snippet01", "snippet02", "snippet03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

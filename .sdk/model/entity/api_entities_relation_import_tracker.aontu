@@ -1,0 +1,160 @@
+# Entity: api_entities_relation_import_tracker
+
+main: kit: entity: api_entities_relation_import_tracker: {
+
+  alias: field: {}
+
+  name: "api_entities_relation_import_tracker"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/projects/import-relation"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "file"
+                or: "file"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "file_etag"
+                or: "file_etag"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "file_md5"
+                or: "file_md5"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "file_name"
+                or: "file_name"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "file_path"
+                or: "file_path"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "file_remote_id"
+                or: "file_remote_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "file_remote_url"
+                or: "file_remote_url"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "file_sha1"
+                or: "file_sha1"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "file_sha256"
+                or: "file_sha256"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "file_size"
+                or: "file_size"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "file_type"
+                or: "file_type"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "path"
+                or: "path"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "relation"
+                or: "relation"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/import-relation"
+          q: {
+            exist: [
+              "file"
+              "file_etag"
+              "file_md5"
+              "file_name"
+              "file_path"
+              "file_remote_id"
+              "file_remote_url"
+              "file_sha1"
+              "file_sha256"
+              "file_size"
+              "file_type"
+              "path"
+              "relation"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              lit: "import-relation"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

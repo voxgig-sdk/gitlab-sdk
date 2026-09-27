@@ -1,0 +1,67 @@
+# Entity: api_entities_basic_success
+
+main: kit: entity: api_entities_basic_success: {
+
+  alias: field: {}
+
+  name: "api_entities_basic_success"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/integrations/jira_connect/subscriptions"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_integrations_jira_connect_subscription"
+                or: "post_api_v4_integrations_jira_connect_subscription"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/integrations/jira_connect/subscriptions"
+          q: {
+            exist: [
+              "post_api_v4_integrations_jira_connect_subscription"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "integrations"
+            }
+            {
+              lit: "jira_connect"
+            }
+            {
+              lit: "subscriptions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.success`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

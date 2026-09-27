@@ -1,0 +1,63 @@
+# BasicApiEntitiesBatchedBackgroundMigrationFlow
+
+main: kit: flow: BasicApiEntitiesBatchedBackgroundMigrationFlow:
+{
+  entity: "api_entities_batched_background_migration",
+  kind: "basic",
+  name: "BasicApiEntitiesBatchedBackgroundMigrationFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_batched_background_migration_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_batched_background_migration_ref01",
+        srcdatavar: "api_entities_batched_background_migration_ref01_data",
+        suffix: "_up0",
+        textfield: "column_name"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_batched_background_migration_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_batched_background_migration_ref01",
+        srcdatavar: "api_entities_batched_background_migration_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_entities_batched_background_migration01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_batched_background_migration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesBatchedBackgroundMigrationFlow"
+}

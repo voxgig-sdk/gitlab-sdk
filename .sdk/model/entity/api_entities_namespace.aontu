@@ -1,0 +1,375 @@
+# Entity: api_entities_namespace
+
+main: kit: entity: api_entities_namespace: {
+
+  alias: field: {}
+
+  fields: {
+    additional_purchased_storage_ends_on: {
+      fo: "date"
+      h: "Additional Purchased Storage Ends On"
+      n: "additional_purchased_storage_ends_on"
+      r: false
+      t: "`$STRING`"
+    }
+    additional_purchased_storage_size: {
+      fo: "int32"
+      h: "Additional Purchased Storage Size"
+      n: "additional_purchased_storage_size"
+      r: false
+      t: "`$INTEGER`"
+    }
+    avatar_url: {
+      h: "Avatar Url"
+      n: "avatar_url"
+      r: false
+      t: "`$STRING`"
+    }
+    billable_members_count: {
+      fo: "int32"
+      h: "Billable Members Count"
+      n: "billable_members_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+    end_date: {
+      fo: "date"
+      h: "End Date"
+      n: "end_date"
+      r: false
+      t: "`$STRING`"
+    }
+    extra_shared_runners_minutes_limit: {
+      fo: "int32"
+      h: "Extra Shared Runners Minutes Limit"
+      n: "extra_shared_runners_minutes_limit"
+      r: false
+      t: "`$INTEGER`"
+    }
+    full_path: {
+      h: "Full Path"
+      n: "full_path"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: false
+      t: "`$STRING`"
+    }
+    max_seats_used: {
+      fo: "int32"
+      h: "Max Seats Used"
+      n: "max_seats_used"
+      r: false
+      t: "`$INTEGER`"
+    }
+    max_seats_used_changed_at: {
+      fo: "date"
+      h: "Max Seats Used Changed At"
+      n: "max_seats_used_changed_at"
+      r: false
+      t: "`$STRING`"
+    }
+    members_count_with_descendants: {
+      fo: "int32"
+      h: "Members Count With Descendants"
+      n: "members_count_with_descendants"
+      r: false
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    parent_id: {
+      fo: "int32"
+      h: "Parent Id"
+      n: "parent_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    path: {
+      h: "Path"
+      n: "path"
+      r: false
+      t: "`$STRING`"
+    }
+    plan: {
+      h: "Plan"
+      n: "plan"
+      r: false
+      t: "`$STRING`"
+    }
+    projects_count: {
+      fo: "int32"
+      h: "Projects Count"
+      n: "projects_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+    root_repository_size: {
+      fo: "int32"
+      h: "Root Repository Size"
+      n: "root_repository_size"
+      r: false
+      t: "`$INTEGER`"
+    }
+    seats_in_use: {
+      fo: "int32"
+      h: "Seats In Use"
+      n: "seats_in_use"
+      r: false
+      t: "`$INTEGER`"
+    }
+    shared_runners_minutes_limit: {
+      fo: "int32"
+      h: "Shared Runners Minutes Limit"
+      n: "shared_runners_minutes_limit"
+      r: false
+      t: "`$INTEGER`"
+    }
+    trial: {
+      h: "Trial"
+      n: "trial"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    trial_ends_on: {
+      fo: "date"
+      h: "Trial Ends On"
+      n: "trial_ends_on"
+      r: false
+      t: "`$STRING`"
+    }
+    web_url: {
+      h: "Web Url"
+      n: "web_url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_namespace"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/namespaces"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "full_path_search"
+                or: "full_path_search"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "owned_only"
+                or: "owned_only"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "requested_hosted_plan"
+                or: "requested_hosted_plan"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "top_level_only"
+                or: "top_level_only"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/namespaces"
+          q: {
+            exist: [
+              "full_path_search"
+              "owned_only"
+              "page"
+              "per_page"
+              "requested_hosted_plan"
+              "search"
+              "top_level_only"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "namespaces"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/namespaces/{id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/namespaces/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/namespaces/{id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_namespaces_id"
+                or: "put_api_v4_namespaces_id"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/namespaces/{id}"
+          q: {
+            exist: [
+              "id"
+              "put_api_v4_namespaces_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

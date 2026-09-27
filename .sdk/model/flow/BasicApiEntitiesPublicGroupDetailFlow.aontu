@@ -1,0 +1,26 @@
+# BasicApiEntitiesPublicGroupDetailFlow
+
+main: kit: flow: BasicApiEntitiesPublicGroupDetailFlow:
+{
+  entity: "api_entities_public_group_detail",
+  kind: "basic",
+  name: "BasicApiEntitiesPublicGroupDetailFlow",
+  step: [
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_public_group_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesPublicGroupDetailFlow"
+}

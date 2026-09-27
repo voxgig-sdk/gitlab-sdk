@@ -72,7 +72,7 @@ function api_entities_commit_signature_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "api_entities_commit_signature01", "api_entities_commit_signature02", "api_entities_commit_signature03", "project01", "project02", "project03", "commit01", "commit02", "commit03" },
+    { "api_entities_commit_signature01", "api_entities_commit_signature02", "api_entities_commit_signature03", "project01", "project02", "project03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

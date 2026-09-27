@@ -298,14 +298,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiessystembroadcastmessage">ApiEntitiesSystemBroadcastMessage</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiessystembroadcastmessage">ApiEntitiesSystemBroadcastMessage</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -350,6 +350,66 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_system_broadcast_message, err := client.ApiEntitiesSystemBroadcastMessage(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_system_broadcast_message)
+created, err := client.ApiEntitiesSystemBroadcastMessage(nil).Create(map[string]any{&quot;post_api_v4_broadcast_message&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.ApiEntitiesSystemBroadcastMessage(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;put_api_v4_broadcast_messages_id&quot;: map[string]any{}, &quot;active&quot;: true}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.ApiEntitiesSystemBroadcastMessage(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_system_broadcast_message, err = client:ApiEntitiesSystemBroadcastMessage():load({ id = &quot;example_id&quot; })
+local created, err = client:ApiEntitiesSystemBroadcastMessage():create({ post_api_v4_broadcast_message = {} })
+local updated, err = client:ApiEntitiesSystemBroadcastMessage():update({ id = &quot;example_id&quot;, put_api_v4_broadcast_messages_id = {}, active = true })
+local removed, err = client:ApiEntitiesSystemBroadcastMessage():remove({ id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_system_broadcast_message = $client-&gt;ApiEntitiesSystemBroadcastMessage()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;ApiEntitiesSystemBroadcastMessage()-&gt;create([&quot;post_api_v4_broadcast_message&quot; =&gt; []]);
+$updated = $client-&gt;ApiEntitiesSystemBroadcastMessage()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;put_api_v4_broadcast_messages_id&quot; =&gt; [], &quot;active&quot; =&gt; true]);
+$client-&gt;ApiEntitiesSystemBroadcastMessage()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_system_broadcast_message = client.ApiEntitiesSystemBroadcastMessage().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.ApiEntitiesSystemBroadcastMessage().create({ &quot;post_api_v4_broadcast_message&quot;: {} })
+updated = client.ApiEntitiesSystemBroadcastMessage().update({&quot;id&quot;: &quot;example_id&quot;, &quot;put_api_v4_broadcast_messages_id&quot;: {}, &quot;active&quot;: True})
+client.ApiEntitiesSystemBroadcastMessage().remove({&quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_system_broadcast_message = client.ApiEntitiesSystemBroadcastMessage.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.ApiEntitiesSystemBroadcastMessage.create({ &quot;post_api_v4_broadcast_message&quot; =&gt; {} })
+updated = client.ApiEntitiesSystemBroadcastMessage.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;put_api_v4_broadcast_messages_id&quot; =&gt; {}, &quot;active&quot; =&gt; true })
+client.ApiEntitiesSystemBroadcastMessage.remove({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_system_broadcast_message = await client.ApiEntitiesSystemBroadcastMessage().load({ id: &quot;example_id&quot; })
+const created = await client.ApiEntitiesSystemBroadcastMessage().create({ post_api_v4_broadcast_message: {} })
+const updated = await client.ApiEntitiesSystemBroadcastMessage().update({ id: &quot;example_id&quot;, put_api_v4_broadcast_messages_id: {}, active: true })
+await client.ApiEntitiesSystemBroadcastMessage().remove({ id: &quot;example_id&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -365,73 +425,73 @@
 <td><code>active</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Active</td>
 </tr>
 <tr>
 <td><code>broadcast_type</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Broadcast Type</td>
 </tr>
 <tr>
 <td><code>color</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Color</td>
 </tr>
 <tr>
 <td><code>dismissable</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Dismissable</td>
 </tr>
 <tr>
 <td><code>ends_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Ends At</td>
 </tr>
 <tr>
 <td><code>font</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Font</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>message</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Message</td>
 </tr>
 <tr>
 <td><code>starts_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Starts At</td>
 </tr>
 <tr>
 <td><code>target_access_levels</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Target Access Levels</td>
 </tr>
 <tr>
 <td><code>target_path</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Target Path</td>
 </tr>
 <tr>
 <td><code>theme</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Theme</td>
 </tr>
 </tbody>
 </table>

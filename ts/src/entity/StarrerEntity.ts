@@ -19,7 +19,6 @@ import type {
   StarrerListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class StarrerEntity extends GitlabEntityBase<Starrer> {
 
   constructor(client: GitlabSDK, entopts: any) {

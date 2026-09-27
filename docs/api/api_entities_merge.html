@@ -299,14 +299,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesmerge">ApiEntitiesMerge</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesmerge">ApiEntitiesMerge</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -357,6 +357,56 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_merge, err := client.ApiEntitiesMerge(nil).Load(map[string]any{&quot;merge_request_iid&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_merge)
+created, err := client.ApiEntitiesMerge(nil).Create(map[string]any{&quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.ApiEntitiesMerge(nil).Update(map[string]any{&quot;project_id&quot;: &quot;example&quot;, &quot;merge_request_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_merge, err = client:ApiEntitiesMerge():load({ merge_request_iid = &quot;example&quot;, project_id = &quot;example&quot; })
+local created, err = client:ApiEntitiesMerge():create({ project_id = &quot;example&quot; })
+local updated, err = client:ApiEntitiesMerge():update({ project_id = &quot;example&quot;, merge_request_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_merge = $client-&gt;ApiEntitiesMerge()-&gt;load([&quot;merge_request_iid&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;ApiEntitiesMerge()-&gt;create([&quot;project_id&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;ApiEntitiesMerge()-&gt;update([&quot;project_id&quot; =&gt; &quot;example&quot;, &quot;merge_request_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_merge = client.ApiEntitiesMerge().load({&quot;merge_request_iid&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;})
+created = client.ApiEntitiesMerge().create({ &quot;project_id&quot;: &quot;example&quot; })
+updated = client.ApiEntitiesMerge().update({&quot;project_id&quot;: &quot;example&quot;, &quot;merge_request_id&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_merge = client.ApiEntitiesMerge.load({ &quot;merge_request_iid&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+created = client.ApiEntitiesMerge.create({ &quot;project_id&quot; =&gt; &quot;example&quot; })
+updated = client.ApiEntitiesMerge.update({ &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;merge_request_id&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_merge = await client.ApiEntitiesMerge().load({ merge_request_iid: &quot;example&quot;, project_id: &quot;example&quot; })
+const created = await client.ApiEntitiesMerge().create({ project_id: &quot;example&quot; })
+const updated = await client.ApiEntitiesMerge().update({ project_id: &quot;example&quot;, merge_request_id: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -372,409 +422,409 @@
 <td><code>allow_collaboration</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Allow Collaboration</td>
 </tr>
 <tr>
 <td><code>allow_maintainer_to_push</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Allow Maintainer To Push</td>
 </tr>
 <tr>
 <td><code>approvals_before_merge</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Approvals Before Merge</td>
 </tr>
 <tr>
 <td><code>assignee</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>assignees</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>author</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>blocking_discussions_resolved</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Blocking Discussions Resolved</td>
 </tr>
 <tr>
 <td><code>changes_count</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Changes Count</td>
 </tr>
 <tr>
 <td><code>closed_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Closed At</td>
 </tr>
 <tr>
 <td><code>closed_by</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>description</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Description</td>
 </tr>
 <tr>
 <td><code>description_html</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Description Html</td>
 </tr>
 <tr>
 <td><code>detailed_merge_status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Detailed Merge Status</td>
 </tr>
 <tr>
 <td><code>diff_refs</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Diff Refs</td>
 </tr>
 <tr>
 <td><code>discussion_locked</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Discussion Locked</td>
 </tr>
 <tr>
 <td><code>diverged_commits_count</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Diverged Commits Count</td>
 </tr>
 <tr>
 <td><code>downvotes</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Downvotes</td>
 </tr>
 <tr>
 <td><code>draft</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Draft</td>
 </tr>
 <tr>
 <td><code>first_contribution</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>First Contribution</td>
 </tr>
 <tr>
 <td><code>first_deployed_to_production_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>First Deployed To Production At</td>
 </tr>
 <tr>
 <td><code>force_remove_source_branch</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Force Remove Source Branch</td>
 </tr>
 <tr>
 <td><code>has_conflicts</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Has Conflicts</td>
 </tr>
 <tr>
 <td><code>head_pipeline</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_Ci_Pipeline model</td>
+<td><code>API_Entities_Ci_Pipeline</code> model</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>iid</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Iid</td>
 </tr>
 <tr>
 <td><code>imported</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Imported</td>
 </tr>
 <tr>
 <td><code>imported_from</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Imported From</td>
 </tr>
 <tr>
 <td><code>labels</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Labels</td>
 </tr>
 <tr>
 <td><code>latest_build_finished_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Latest Build Finished At</td>
 </tr>
 <tr>
 <td><code>latest_build_started_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Latest Build Started At</td>
 </tr>
 <tr>
 <td><code>merge_after</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Merge After</td>
 </tr>
 <tr>
 <td><code>merge_commit_sha</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Merge Commit Sha</td>
 </tr>
 <tr>
 <td><code>merge_error</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Merge Error</td>
 </tr>
 <tr>
 <td><code>merge_status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Merge Status</td>
 </tr>
 <tr>
 <td><code>merge_user</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>merge_when_pipeline_succeeds</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Merge When Pipeline Succeeds</td>
 </tr>
 <tr>
 <td><code>merged_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Merged At</td>
 </tr>
 <tr>
 <td><code>merged_by</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>milestone</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Milestone</td>
 </tr>
 <tr>
 <td><code>pipeline</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_Ci_PipelineBasic model</td>
+<td><code>API_Entities_Ci_PipelineBasic</code> model</td>
 </tr>
 <tr>
 <td><code>prepared_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Prepared At</td>
 </tr>
 <tr>
 <td><code>project_id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Project Id</td>
 </tr>
 <tr>
 <td><code>rebase_in_progress</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Rebase In Progress</td>
 </tr>
 <tr>
 <td><code>reference</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Reference</td>
 </tr>
 <tr>
 <td><code>references</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>References</td>
 </tr>
 <tr>
 <td><code>reviewers</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_UserBasic model</td>
+<td><code>API_Entities_UserBasic</code> model</td>
 </tr>
 <tr>
 <td><code>sha</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Sha</td>
 </tr>
 <tr>
 <td><code>should_remove_source_branch</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Should Remove Source Branch</td>
 </tr>
 <tr>
 <td><code>source_branch</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Source Branch</td>
 </tr>
 <tr>
 <td><code>source_project_id</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Source Project Id</td>
 </tr>
 <tr>
 <td><code>squash</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Squash</td>
 </tr>
 <tr>
 <td><code>squash_commit_sha</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Squash Commit Sha</td>
 </tr>
 <tr>
 <td><code>squash_on_merge</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Squash On Merge</td>
 </tr>
 <tr>
 <td><code>state</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>State</td>
 </tr>
 <tr>
 <td><code>subscribed</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Subscribed</td>
 </tr>
 <tr>
 <td><code>target_branch</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Target Branch</td>
 </tr>
 <tr>
 <td><code>target_project_id</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Target Project Id</td>
 </tr>
 <tr>
 <td><code>task_completion_status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Task Completion Status</td>
 </tr>
 <tr>
 <td><code>time_stats</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_IssuableTimeStats model</td>
+<td><code>API_Entities_IssuableTimeStats</code> model</td>
 </tr>
 <tr>
 <td><code>title</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Title</td>
 </tr>
 <tr>
 <td><code>title_html</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Title Html</td>
 </tr>
 <tr>
 <td><code>updated_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Updated At</td>
 </tr>
 <tr>
 <td><code>upvotes</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Upvotes</td>
 </tr>
 <tr>
 <td><code>user</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>User</td>
 </tr>
 <tr>
 <td><code>user_notes_count</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>User Notes Count</td>
 </tr>
 <tr>
 <td><code>web_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Web Url</td>
 </tr>
 <tr>
 <td><code>work_in_progress</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Work In Progress</td>
 </tr>
 </tbody>
 </table>

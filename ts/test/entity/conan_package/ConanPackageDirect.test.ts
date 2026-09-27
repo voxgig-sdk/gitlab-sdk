@@ -17,10 +17,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -32,9 +28,6 @@ describe('ConanPackageDirect', async () => {
 
   test('direct-exists', async () => {
     const sdk = new GitlabSDK({
-      // Concrete base: a live construction must satisfy any server
-      // variables a templated base URL declares; overriding base with a
-      // literal (as the direct flow tests do) sidesteps the requirement.
       base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
@@ -47,7 +40,7 @@ describe('ConanPackageDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-conan_package', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["conan_package_reference01","file_name01","id01","package_channel01","package_name01","package_revision01","package_username01","package_version01","recipe_revision01"])) return
+    if (skipIfMissingIds(t, setup, ["conan_id01","file_name01","package_channel01","package_id01","package_revision01","package_username01","package_version01","project_id01","revision_id01"])) return
     const { client, calls } = setup
 
     const params: any = {}
@@ -55,19 +48,19 @@ describe('ConanPackageDirect', async () => {
     if (setup.live) {
 
     } else {
-      params.conan_package_reference = 'direct01'
+      params.conan_id = 'direct01'
       params.file_name = 'direct02'
-      params.id = 'direct03'
-      params.package_channel = 'direct04'
-      params.package_name = 'direct05'
-      params.package_revision = 'direct06'
-      params.package_username = 'direct07'
-      params.package_version = 'direct08'
-      params.recipe_revision = 'direct09'
+      params.package_channel = 'direct03'
+      params.package_id = 'direct04'
+      params.package_revision = 'direct05'
+      params.package_username = 'direct06'
+      params.package_version = 'direct07'
+      params.project_id = 'direct08'
+      params.revision_id = 'direct09'
     }
 
     const result: any = await client.direct({
-      path: 'api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}',
+      path: 'api/v4/projects/{project_id}/packages/conan/v2/conans/{conan_id}/{package_version}/{package_username}/{package_channel}/revisions/{revision_id}/packages/{package_id}/revisions/{package_revision}/files/{file_name}',
       method: 'GET',
       params,
       query,

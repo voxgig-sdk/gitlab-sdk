@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('FeatureEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"id","req":false,"type":"`$STRING`","index$":0}],"id":{"field":"id","name":"id"},"name":"feature","op":{"remove":{"input":"data","name":"remove","points":[{"active":true,"args":{"params":[{"active":true,"kind":"param","name":"id","orig":"name","reqd":true,"type":"`$STRING`","index$":0}]},"contract":{"id":"DELETE /api/v4/features/{name}","json":"{\"operationId\":\"deleteApiV4FeaturesName\",\"parameters\":[{\"format\":\"int32\",\"in\":\"path\",\"name\":\"name\",\"required\":true,\"type\":\"integer\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"204\":{\"description\":\"Delete a feature\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"DELETE","orig":"/api/v4/features/{name}","rename":{"param":{"name":"id"}},"segments":[{"lit":"api"},{"lit":"v4"},{"lit":"features"},{"var":"id"}],"select":{"exist":["id"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"}},"relations":{"ancestors":[]},"key$":"feature","name__orig":"feature","Name":"Feature","name_":"feature","name-":"feature","NAME":"FEATURE","index$":204}, {"active":true,"entity":"feature","key$":"BasicFeatureFlow","kind":"basic","name":"BasicFeatureFlow","param":{},"step":[]}, 'Feature')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":0}},"id":{"field":"id","name":"id"},"name":"feature","op":{"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /api/v4/features/{name}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"name","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/api/v4/features/{name}","q":{"exist":["id"]},"r":{"param":{"name":"id"}},"s":[{"lit":"api"},{"lit":"v4"},{"lit":"features"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"}},"relations":{"ancestors":[]},"key$":"feature","name__orig":"feature","Name":"Feature","name_":"feature","name-":"feature","NAME":"FEATURE","index$":204}, {"active":true,"entity":"feature","key$":"BasicFeatureFlow","kind":"basic","name":"BasicFeatureFlow","param":{},"step":[]}, 'Feature', {"DELETE /api/v4/features/{name}":{"protocol":"http","parameters":[{"in":"path","name":"name","type":"integer","format":"int32","required":true,"index$":0}]}})
     }
     const client = setup.client
     const struct = setup.struct

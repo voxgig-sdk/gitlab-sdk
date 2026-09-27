@@ -19,7 +19,6 @@ import type {
   ApiEntitiesFeatureDefinitionListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesFeatureDefinitionEntity extends GitlabEntityBase<ApiEntitiesFeatureDefinition> {
 
   constructor(client: GitlabSDK, entopts: any) {

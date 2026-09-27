@@ -300,14 +300,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesbulkimport">ApiEntitiesBulkImport</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesbulkimport">ApiEntitiesBulkImport</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -364,6 +364,56 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_bulk_imports, err := client.ApiEntitiesBulkImport(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_bulk_imports)
+api_entities_bulk_import, err := client.ApiEntitiesBulkImport(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_bulk_import)
+created, err := client.ApiEntitiesBulkImport(nil).Create(map[string]any{&quot;configuration_access_token&quot;: &quot;example&quot;, &quot;configuration_url&quot;: &quot;example&quot;, &quot;entities_destination_namespace&quot;: &quot;example&quot;, &quot;entities_source_full_path&quot;: &quot;example&quot;, &quot;entities_source_type&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_bulk_imports, err = client:ApiEntitiesBulkImport():list()
+local api_entities_bulk_import, err = client:ApiEntitiesBulkImport():load({ id = &quot;example_id&quot; })
+local created, err = client:ApiEntitiesBulkImport():create({ configuration_access_token = &quot;example&quot;, configuration_url = &quot;example&quot;, entities_destination_namespace = &quot;example&quot;, entities_source_full_path = &quot;example&quot;, entities_source_type = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_bulk_imports = $client-&gt;ApiEntitiesBulkImport()-&gt;list();
+$api_entities_bulk_import = $client-&gt;ApiEntitiesBulkImport()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;ApiEntitiesBulkImport()-&gt;create([&quot;configuration_access_token&quot; =&gt; &quot;example&quot;, &quot;configuration_url&quot; =&gt; &quot;example&quot;, &quot;entities_destination_namespace&quot; =&gt; &quot;example&quot;, &quot;entities_source_full_path&quot; =&gt; &quot;example&quot;, &quot;entities_source_type&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_bulk_imports = client.ApiEntitiesBulkImport().list()
+api_entities_bulk_import = client.ApiEntitiesBulkImport().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.ApiEntitiesBulkImport().create({ &quot;configuration_access_token&quot;: &quot;example&quot;, &quot;configuration_url&quot;: &quot;example&quot;, &quot;entities_destination_namespace&quot;: &quot;example&quot;, &quot;entities_source_full_path&quot;: &quot;example&quot;, &quot;entities_source_type&quot;: &quot;example&quot; })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_bulk_imports = client.ApiEntitiesBulkImport.list()
+api_entities_bulk_import = client.ApiEntitiesBulkImport.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.ApiEntitiesBulkImport.create({ &quot;configuration_access_token&quot; =&gt; &quot;example&quot;, &quot;configuration_url&quot; =&gt; &quot;example&quot;, &quot;entities_destination_namespace&quot; =&gt; &quot;example&quot;, &quot;entities_source_full_path&quot; =&gt; &quot;example&quot;, &quot;entities_source_type&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_bulk_imports = await client.ApiEntitiesBulkImport().list()
+const api_entities_bulk_import = await client.ApiEntitiesBulkImport().load({ id: &quot;example_id&quot; })
+const created = await client.ApiEntitiesBulkImport().create({ configuration_access_token: &quot;example&quot;, configuration_url: &quot;example&quot;, entities_destination_namespace: &quot;example&quot;, entities_source_full_path: &quot;example&quot;, entities_source_type: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -379,127 +429,127 @@
 <td><code>bulk_import_id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Bulk Import Id</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>destination_full_path</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Destination Full Path</td>
 </tr>
 <tr>
 <td><code>destination_name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Destination Name</td>
 </tr>
 <tr>
 <td><code>destination_namespace</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Destination Namespace</td>
 </tr>
 <tr>
 <td><code>destination_slug</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Destination Slug</td>
 </tr>
 <tr>
 <td><code>entity_type</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Entity Type</td>
 </tr>
 <tr>
 <td><code>failures</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Failures</td>
 </tr>
 <tr>
 <td><code>has_failures</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Has Failures</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>migrate_memberships</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Migrate Memberships</td>
 </tr>
 <tr>
 <td><code>migrate_projects</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Migrate Projects</td>
 </tr>
 <tr>
 <td><code>namespace_id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Namespace Id</td>
 </tr>
 <tr>
 <td><code>parent_id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Parent Id</td>
 </tr>
 <tr>
 <td><code>project_id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Project Id</td>
 </tr>
 <tr>
 <td><code>source_full_path</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Source Full Path</td>
 </tr>
 <tr>
 <td><code>source_type</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Source Type</td>
 </tr>
 <tr>
 <td><code>source_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Source Url</td>
 </tr>
 <tr>
 <td><code>stats</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Stats</td>
 </tr>
 <tr>
 <td><code>status</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Status</td>
 </tr>
 <tr>
 <td><code>updated_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Updated At</td>
 </tr>
 </tbody>
 </table>
@@ -515,7 +565,7 @@
 | <code>entities[source_full_path]</code> | <code>formData</code> | <code>any</code> | Yes | Relative path of the source entity to import |
 | <code>entities[destination_namespace]</code> | <code>formData</code> | <code>any</code> | Yes | Destination namespace for the entity |
 | <code>entities[destination_slug]</code> | <code>formData</code> | <code>any</code> | No | Destination slug for the entity |
-| <code>entities[destination_name]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use :destination_slug instead. Destination slug for the entity |
+| <code>entities[destination_name]</code> | <code>formData</code> | <code>any</code> | No | Deprecated: Use :<code>destination_slug</code> instead. Destination slug for the entity |
 | <code>entities[migrate_projects]</code> | <code>formData</code> | <code>any</code> | No | Indicates group migration should include nested projects |
 | <code>entities[migrate_memberships]</code> | <code>formData</code> | <code>any</code> | No | The option to migrate memberships or not |</p>
 <h4 id="responses">Responses</h4>

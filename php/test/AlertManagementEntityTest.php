@@ -68,7 +68,7 @@ function alert_management_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["alert_management01", "alert_management02", "alert_management03", "project01", "project02", "project03", "alert_management_alert01", "alert_management_alert02", "alert_management_alert03", "metric_image01", "metric_image02", "metric_image03"] as $k) {
+    foreach (["alert_management01", "alert_management02", "alert_management03", "project01", "project02", "project03", "alert_management_alert01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

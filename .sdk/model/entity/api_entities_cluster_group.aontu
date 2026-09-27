@@ -1,0 +1,336 @@
+# Entity: api_entities_cluster_group
+
+main: kit: entity: api_entities_cluster_group: {
+
+  alias: field: {}
+
+  fields: {
+    cluster_type: {
+      h: "Cluster Type"
+      n: "cluster_type"
+      r: false
+      t: "`$STRING`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    domain: {
+      h: "Domain"
+      n: "domain"
+      r: false
+      t: "`$STRING`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    environment_scope: {
+      h: "Environment Scope"
+      n: "environment_scope"
+      r: false
+      t: "`$STRING`"
+    }
+    group: {
+      h: "Group"
+      n: "group"
+      r: false
+      sh: "API_Entities_BasicGroupDetails model"
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    managed: {
+      h: "Managed"
+      n: "managed"
+      r: false
+      t: "`$STRING`"
+    }
+    management_project: {
+      h: "Management Project"
+      n: "management_project"
+      r: false
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    namespace_per_environment: {
+      h: "Namespace Per Environment"
+      n: "namespace_per_environment"
+      r: false
+      t: "`$STRING`"
+    }
+    platform_kubernetes: {
+      h: "Platform Kubernetes"
+      n: "platform_kubernetes"
+      r: false
+      t: "`$OBJECT`"
+    }
+    platform_type: {
+      h: "Platform Type"
+      n: "platform_type"
+      r: false
+      t: "`$STRING`"
+    }
+    provider_gcp: {
+      h: "Provider Gcp"
+      n: "provider_gcp"
+      r: false
+      t: "`$OBJECT`"
+    }
+    provider_type: {
+      h: "Provider Type"
+      n: "provider_type"
+      r: false
+      t: "`$STRING`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: false
+      sh: "API_Entities_UserBasic model"
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_cluster_group"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/groups/{id}/clusters/user"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_groups_id_clusters_user"
+                or: "post_api_v4_groups_id_clusters_user"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/{id}/clusters/user"
+          q: {
+            exist: [
+              "group_id"
+              "post_api_v4_groups_id_clusters_user"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "clusters"
+            }
+            {
+              lit: "user"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/clusters/{cluster_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cluster_id"
+                or: "cluster_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/clusters/{cluster_id}"
+          q: {
+            exist: [
+              "cluster_id"
+              "group_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "clusters"
+            }
+            {
+              var: "cluster_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/groups/{id}/clusters/{cluster_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cluster_id"
+                or: "cluster_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_groups_id_clusters_cluster_id"
+                or: "put_api_v4_groups_id_clusters_cluster_id"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/groups/{id}/clusters/{cluster_id}"
+          q: {
+            exist: [
+              "cluster_id"
+              "group_id"
+              "put_api_v4_groups_id_clusters_cluster_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "clusters"
+            }
+            {
+              var: "cluster_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.group")]
+    [path("$.main.kit.entity.group") path("$.main.kit.entity.cluster")]
+  ]
+
+}

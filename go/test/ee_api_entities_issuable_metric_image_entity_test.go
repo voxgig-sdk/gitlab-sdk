@@ -132,7 +132,7 @@ func ee_api_entities_issuable_metric_imageBasicSetup(extra map[string]any) *enti
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"ee_api_entities_issuable_metric_image01", "ee_api_entities_issuable_metric_image02", "ee_api_entities_issuable_metric_image03", "project01", "project02", "project03", "issue01", "issue02", "issue03"},
+		[]any{"ee_api_entities_issuable_metric_image01", "ee_api_entities_issuable_metric_image02", "ee_api_entities_issuable_metric_image03", "project01", "project02", "project03", "issue01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

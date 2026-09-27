@@ -19,7 +19,6 @@ import type {
   ApiEntitiesSnippetListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesSnippetEntity extends GitlabEntityBase<ApiEntitiesSnippet> {
 
   constructor(client: GitlabSDK, entopts: any) {

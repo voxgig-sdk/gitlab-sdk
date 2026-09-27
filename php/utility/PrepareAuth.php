@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 class GitlabPrepareAuth
 {
-    private const HEADER_AUTH = 'authorization';
+    private const HEADER_AUTH = 'private-token';
     private const OPTION_APIKEY = 'apikey';
     private const NOT_FOUND = '__NOTFOUND__';
 

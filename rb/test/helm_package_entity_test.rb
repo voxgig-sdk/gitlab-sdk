@@ -65,7 +65,7 @@ def helm_package_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["helm_package01", "helm_package02", "helm_package03", "project01", "project02", "project03", "api01", "api02", "api03", "helm01", "helm02", "helm03", "file_name01"],
+    ["helm_package01", "helm_package02", "helm_package03", "project01", "project02", "project03", "api01", "file_name01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

@@ -1,0 +1,391 @@
+# Entity: api_entities_related_issue
+
+main: kit: entity: api_entities_related_issue: {
+
+  alias: field: {}
+
+  fields: {
+    assignee: {
+      h: "Assignee"
+      n: "assignee"
+      r: false
+      sh: "API_Entities_UserBasic model"
+      t: "`$OBJECT`"
+    }
+    assignees: {
+      h: "Assignees"
+      n: "assignees"
+      r: false
+      sh: "API_Entities_UserBasic model"
+      t: "`$OBJECT`"
+    }
+    author: {
+      h: "Author"
+      n: "author"
+      r: false
+      sh: "API_Entities_UserBasic model"
+      t: "`$OBJECT`"
+    }
+    blocking_issues_count: {
+      h: "Blocking Issues Count"
+      n: "blocking_issues_count"
+      r: false
+      t: "`$STRING`"
+    }
+    closed_at: {
+      fo: "date-time"
+      h: "Closed At"
+      n: "closed_at"
+      r: false
+      t: "`$STRING`"
+    }
+    closed_by: {
+      h: "Closed By"
+      n: "closed_by"
+      r: false
+      sh: "API_Entities_UserBasic model"
+      t: "`$OBJECT`"
+    }
+    confidential: {
+      h: "Confidential"
+      n: "confidential"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: "`$STRING`"
+    }
+    discussion_locked: {
+      h: "Discussion Locked"
+      n: "discussion_locked"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    downvotes: {
+      h: "Downvotes"
+      n: "downvotes"
+      r: false
+      t: "`$STRING`"
+    }
+    due_date: {
+      fo: "date"
+      h: "Due Date"
+      n: "due_date"
+      r: false
+      t: "`$STRING`"
+    }
+    epic: {
+      h: "Epic"
+      n: "epic"
+      r: false
+      t: "`$OBJECT`"
+    }
+    epic_iid: {
+      h: "Epic Iid"
+      n: "epic_iid"
+      r: false
+      t: "`$STRING`"
+    }
+    has_tasks: {
+      h: "Has Tasks"
+      n: "has_tasks"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    health_status: {
+      h: "Health Status"
+      n: "health_status"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    iid: {
+      fo: "int32"
+      h: "Iid"
+      n: "iid"
+      r: false
+      t: "`$INTEGER`"
+    }
+    imported: {
+      h: "Imported"
+      n: "imported"
+      r: false
+      t: "`$STRING`"
+    }
+    imported_from: {
+      h: "Imported From"
+      n: "imported_from"
+      r: false
+      t: "`$STRING`"
+    }
+    issue_link_id: {
+      h: "Issue Link Id"
+      n: "issue_link_id"
+      r: false
+      t: "`$STRING`"
+    }
+    issue_type: {
+      h: "Issue Type"
+      n: "issue_type"
+      r: false
+      t: "`$STRING`"
+    }
+    iteration: {
+      h: "Iteration"
+      n: "iteration"
+      r: false
+      t: "`$OBJECT`"
+    }
+    labels: {
+      h: "Labels"
+      n: "labels"
+      r: false
+      t: "`$ARRAY`"
+    }
+    link_created_at: {
+      h: "Link Created At"
+      n: "link_created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    link_type: {
+      h: "Link Type"
+      n: "link_type"
+      r: false
+      t: "`$STRING`"
+    }
+    link_updated_at: {
+      h: "Link Updated At"
+      n: "link_updated_at"
+      r: false
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+    }
+    merge_requests_count: {
+      h: "Merge Requests Count"
+      n: "merge_requests_count"
+      r: false
+      t: "`$STRING`"
+    }
+    milestone: {
+      h: "Milestone"
+      n: "milestone"
+      r: false
+      t: "`$OBJECT`"
+    }
+    moved_to_id: {
+      h: "Moved To Id"
+      n: "moved_to_id"
+      r: false
+      t: "`$STRING`"
+    }
+    project_id: {
+      fo: "int32"
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    references: {
+      h: "References"
+      n: "references"
+      r: false
+      t: "`$OBJECT`"
+    }
+    service_desk_reply_to: {
+      h: "Service Desk Reply To"
+      n: "service_desk_reply_to"
+      r: false
+      t: "`$STRING`"
+    }
+    severity: {
+      h: "Severity"
+      n: "severity"
+      r: false
+      sh: "One of [\"UNKNOWN\", \"LOW\", \"MEDIUM\", \"HIGH\", \"CRITICAL\"]"
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      t: "`$STRING`"
+    }
+    subscribed: {
+      h: "Subscribed"
+      n: "subscribed"
+      r: false
+      t: "`$STRING`"
+    }
+    task_completion_status: {
+      h: "Task Completion Status"
+      n: "task_completion_status"
+      r: false
+      t: "`$STRING`"
+    }
+    task_status: {
+      h: "Task Status"
+      n: "task_status"
+      r: false
+      t: "`$STRING`"
+    }
+    time_stats: {
+      h: "Time Stats"
+      n: "time_stats"
+      r: false
+      sh: "API_Entities_IssuableTimeStats model"
+      t: "`$OBJECT`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "One of [\"ISSUE\", \"INCIDENT\", \"TEST_CASE\", \"REQUIREMENT\", \"TASK\", \"TICKET\"]"
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      t: "`$STRING`"
+    }
+    upvotes: {
+      h: "Upvotes"
+      n: "upvotes"
+      r: false
+      t: "`$STRING`"
+    }
+    user_notes_count: {
+      h: "User Notes Count"
+      n: "user_notes_count"
+      r: false
+      t: "`$STRING`"
+    }
+    web_url: {
+      h: "Web Url"
+      n: "web_url"
+      r: false
+      t: "`$STRING`"
+    }
+    weight: {
+      h: "Weight"
+      n: "weight"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_related_issue"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/issues/{issue_iid}/links"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "issue_id"
+                or: "issue_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/issues/{issue_iid}/links"
+          q: {
+            exist: [
+              "issue_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              issue_iid: "issue_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "issues"
+            }
+            {
+              var: "issue_id"
+            }
+            {
+              lit: "links"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

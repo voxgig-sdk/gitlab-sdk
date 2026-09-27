@@ -1,0 +1,28 @@
+# BasicApiEntitiesUserCountFlow
+
+main: kit: flow: BasicApiEntitiesUserCountFlow:
+{
+  entity: "api_entities_user_count",
+  kind: "basic",
+  name: "BasicApiEntitiesUserCountFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_user_count_ref01",
+        srcdatavar: "api_entities_user_count_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_user_count_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesUserCountFlow"
+}

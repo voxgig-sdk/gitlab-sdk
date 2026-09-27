@@ -104,7 +104,7 @@ func api_entities_dictionary_tableBasicSetup(extra map[string]any) *entityTestSe
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_dictionary_table01", "api_entities_dictionary_table02", "api_entities_dictionary_table03", "databas01", "databas02", "databas03"},
+		[]any{"api_entities_dictionary_table01", "api_entities_dictionary_table02", "api_entities_dictionary_table03", "database01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

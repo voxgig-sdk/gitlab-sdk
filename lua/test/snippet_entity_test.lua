@@ -76,7 +76,7 @@ function snippet_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "snippet01", "snippet02", "snippet03", "file01", "file02", "file03" },
+    { "snippet01", "snippet02", "snippet03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

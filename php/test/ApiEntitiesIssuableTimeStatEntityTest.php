@@ -72,7 +72,7 @@ function api_entities_issuable_time_stat_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_issuable_time_stat01", "api_entities_issuable_time_stat02", "api_entities_issuable_time_stat03", "project01", "project02", "project03", "issue01", "issue02", "issue03", "merge_request01", "merge_request02", "merge_request03"] as $k) {
+    foreach (["api_entities_issuable_time_stat01", "api_entities_issuable_time_stat02", "api_entities_issuable_time_stat03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

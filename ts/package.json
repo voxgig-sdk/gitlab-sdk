@@ -1,6 +1,6 @@
 {
-  "name": "@voxgig-sdk/gitlab",
-  "version": "0.0.2",
+  "name": "@voxgig-sdk/gitlab-sdk",
+  "version": "0.0.5",
   "description": "Unofficial generated TypeScript SDK for the GitLab public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [
     "voxgig",
@@ -23,7 +23,8 @@
   "types": "dist/GitlabSDK.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "README.md"
   ],
   "scripts": {
     "pretest": "npm run build",

@@ -148,7 +148,7 @@ function api_entities_project_snippet_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_project_snippet01", "api_entities_project_snippet02", "api_entities_project_snippet03", "project01", "project02", "project03", "snippet01", "snippet02", "snippet03", "file01", "file02", "file03", "file_path01"] as $k) {
+    foreach (["api_entities_project_snippet01", "api_entities_project_snippet02", "api_entities_project_snippet03", "project01", "project02", "project03", "snippet01", "snippet02", "snippet03", "file01", "file_path01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

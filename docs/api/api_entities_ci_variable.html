@@ -308,14 +308,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiescivariable">ApiEntitiesCiVariable</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiescivariable">ApiEntitiesCiVariable</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -420,6 +420,66 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_ci_variables, err := client.ApiEntitiesCiVariable(nil).List(map[string]any{&quot;pipeline_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_ci_variables)
+api_entities_ci_variable, err := client.ApiEntitiesCiVariable(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_ci_variable)
+created, err := client.ApiEntitiesCiVariable(nil).Create(map[string]any{&quot;group_id&quot;: &quot;example&quot;, &quot;post_api_v4_groups_id_variable&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.ApiEntitiesCiVariable(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;pipeline_schedule_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_ci_variables, err = client:ApiEntitiesCiVariable():list({ pipeline_id = &quot;example&quot;, project_id = &quot;example&quot; })
+local api_entities_ci_variable, err = client:ApiEntitiesCiVariable():load({ id = &quot;example_id&quot;, project_id = &quot;example&quot; })
+local created, err = client:ApiEntitiesCiVariable():create({ group_id = &quot;example&quot;, post_api_v4_groups_id_variable = {} })
+local updated, err = client:ApiEntitiesCiVariable():update({ id = &quot;example_id&quot;, pipeline_schedule_id = &quot;example&quot;, project_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_ci_variables = $client-&gt;ApiEntitiesCiVariable()-&gt;list([&quot;pipeline_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+$api_entities_ci_variable = $client-&gt;ApiEntitiesCiVariable()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;ApiEntitiesCiVariable()-&gt;create([&quot;group_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_groups_id_variable&quot; =&gt; []]);
+$updated = $client-&gt;ApiEntitiesCiVariable()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;pipeline_schedule_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_ci_variables = client.ApiEntitiesCiVariable().list({&quot;pipeline_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;})
+api_entities_ci_variable = client.ApiEntitiesCiVariable().load({&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;})
+created = client.ApiEntitiesCiVariable().create({ &quot;group_id&quot;: &quot;example&quot;, &quot;post_api_v4_groups_id_variable&quot;: {} })
+updated = client.ApiEntitiesCiVariable().update({&quot;id&quot;: &quot;example_id&quot;, &quot;pipeline_schedule_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_ci_variables = client.ApiEntitiesCiVariable.list({ &quot;pipeline_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+api_entities_ci_variable = client.ApiEntitiesCiVariable.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+created = client.ApiEntitiesCiVariable.create({ &quot;group_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_groups_id_variable&quot; =&gt; {} })
+updated = client.ApiEntitiesCiVariable.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;pipeline_schedule_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_ci_variables = await client.ApiEntitiesCiVariable().list({ pipeline_id: &quot;example&quot;, project_id: &quot;example&quot; })
+const api_entities_ci_variable = await client.ApiEntitiesCiVariable().load({ id: &quot;example_id&quot;, project_id: &quot;example&quot; })
+const created = await client.ApiEntitiesCiVariable().create({ group_id: &quot;example&quot;, post_api_v4_groups_id_variable: {} })
+const updated = await client.ApiEntitiesCiVariable().update({ id: &quot;example_id&quot;, pipeline_schedule_id: &quot;example&quot;, project_id: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -435,61 +495,61 @@
 <td><code>description</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Description</td>
 </tr>
 <tr>
 <td><code>environment_scope</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Environment Scope</td>
 </tr>
 <tr>
 <td><code>hidden</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Hidden</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>key</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Key</td>
 </tr>
 <tr>
 <td><code>masked</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Masked</td>
 </tr>
 <tr>
 <td><code>protected</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Protected</td>
 </tr>
 <tr>
 <td><code>raw</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Raw</td>
 </tr>
 <tr>
 <td><code>value</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Value</td>
 </tr>
 <tr>
 <td><code>variable_type</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Variable Type</td>
 </tr>
 </tbody>
 </table>
@@ -523,7 +583,7 @@
 <h4 id="parameters-2">Parameters</h4>
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
-| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID of a project or URL-encoded NAMESPACE/<code>PROJECT_NAME</code> of the project owned by the authenticated user |
 | <code>postApiV4ProjectsIdVariables</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
 <h4 id="responses-2">Responses</h4>
 <h5 id="201-create-a-new-variable-in-a-project" class="status" data-status="2xx">201: Create a new variable in a project</h5>
@@ -556,7 +616,7 @@
 <h4 id="parameters-5">Parameters</h4>
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
-| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID of a project or URL-encoded NAMESPACE/<code>PROJECT_NAME</code> of the project owned by the authenticated user |
 | <code>key</code> | <code>path</code> | <code>any</code> | Yes | The key of a variable |
 | <code>filter[environment_scope]</code> | <code>query</code> | <code>any</code> | No | The environment scope of a variable |</p>
 <h4 id="responses-5">Responses</h4>
@@ -577,7 +637,7 @@
 <h4 id="parameters-7">Parameters</h4>
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
-| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID of a project or URL-encoded NAMESPACE/<code>PROJECT_NAME</code> of the project owned by the authenticated user |
 | <code>page</code> | <code>query</code> | <code>any</code> | No | Current page number |
 | <code>per_page</code> | <code>query</code> | <code>any</code> | No | Number of items per page |</p>
 <h4 id="responses-7">Responses</h4>
@@ -643,7 +703,7 @@
 <h4 id="parameters-13">Parameters</h4>
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
-| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user |
+| <code>id</code> | <code>path</code> | <code>any</code> | Yes | The ID of a project or URL-encoded NAMESPACE/<code>PROJECT_NAME</code> of the project owned by the authenticated user |
 | <code>key</code> | <code>path</code> | <code>any</code> | Yes | The key of a variable |
 | <code>putApiV4ProjectsIdVariablesKey</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
 <h4 id="responses-13">Responses</h4>

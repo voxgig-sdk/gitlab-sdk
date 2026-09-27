@@ -19,7 +19,6 @@ import type {
   ApiEntitiesNugetServiceIndexListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesNugetServiceIndexEntity extends GitlabEntityBase<ApiEntitiesNugetServiceIndex> {
 
   constructor(client: GitlabSDK, entopts: any) {

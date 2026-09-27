@@ -87,7 +87,7 @@ function hook_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "hook01", "hook02", "hook03", "custom_header01", "custom_header02", "custom_header03", "url_variable01", "url_variable02", "url_variable03" },
+    { "hook01", "hook02", "hook03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

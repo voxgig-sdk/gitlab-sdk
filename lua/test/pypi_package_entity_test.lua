@@ -75,7 +75,7 @@ function pypi_package_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "pypi_package01", "pypi_package02", "pypi_package03", "group01", "group02", "group03", "project01", "project02", "project03", "file01", "file02", "file03" },
+    { "pypi_package01", "pypi_package02", "pypi_package03", "group01", "group02", "group03", "project01", "project02", "project03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

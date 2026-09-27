@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('SlackEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"slack","op":{"create":{"input":"data","name":"create","points":[{"active":true,"args":{"query":[{"active":true,"kind":"query","name":"post_api_v4_slack_trigger","orig":"post_api_v4_slack_trigger","reqd":true,"type":"`$OBJECT`","index$":0}]},"contract":{"id":"POST /api/v4/slack/trigger","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"postApiV4SlackTrigger\",\"parameters\":[{\"in\":\"body\",\"name\":\"postApiV4SlackTrigger\",\"required\":true,\"schema\":{\"description\":\"Trigger a global slack command\",\"properties\":{\"text\":{\"description\":\"Text of the slack command\",\"type\":\"string\"}},\"required\":[\"text\"],\"type\":\"object\"}}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"201\":{\"description\":\"Trigger a global slack command\"},\"401\":{\"description\":\"Unauthorized\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"POST","orig":"/api/v4/slack/trigger","segments":[{"lit":"api"},{"lit":"v4"},{"lit":"slack"},{"lit":"trigger"}],"select":{"$action":"trigger","exist":["post_api_v4_slack_trigger"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"slack","name__orig":"slack","Name":"Slack","name_":"slack","name-":"slack","NAME":"SLACK","index$":261}, {"active":true,"entity":"slack","key$":"BasicSlackFlow","kind":"basic","name":"BasicSlackFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"slack_ref01"},"match":{},"op":"create","spec":[],"valid":[],"index$":0}]}, 'Slack')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"slack","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /api/v4/slack/trigger","source":"swagger2","version":2},"g":{"query":[{"a":true,"k":"query","n":"post_api_v4_slack_trigger","or":"post_api_v4_slack_trigger","r":true,"t":"`$OBJECT`","index$":0}]},"k":"http","m":"POST","o":"/api/v4/slack/trigger","q":{"$action":"trigger","exist":["post_api_v4_slack_trigger"]},"r":{},"s":[{"lit":"api"},{"lit":"v4"},{"lit":"slack"},{"lit":"trigger"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"slack","name__orig":"slack","Name":"Slack","name_":"slack","name-":"slack","NAME":"SLACK","index$":261}, {"active":true,"entity":"slack","key$":"BasicSlackFlow","kind":"basic","name":"BasicSlackFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"slack_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'Slack', {"POST /api/v4/slack/trigger":{"protocol":"http","parameters":[{"name":"postApiV4SlackTrigger","in":"body","required":true,"schema":{"type":"object","properties":{"text":{"type":"string","description":"Text of the slack command"}},"required":["text"],"description":"Trigger a global slack command","x-ref":"#/definitions/postApiV4SlackTrigger"},"index$":0}]}})
     }
     const client = setup.client
     const struct = setup.struct

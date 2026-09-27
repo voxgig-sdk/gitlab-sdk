@@ -1,0 +1,26 @@
+# BasicApiEntitiesNugetPackagesVersionFlow
+
+main: kit: flow: BasicApiEntitiesNugetPackagesVersionFlow:
+{
+  entity: "api_entities_nuget_packages_version",
+  kind: "basic",
+  name: "BasicApiEntitiesNugetPackagesVersionFlow",
+  step: [
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_nuget_packages_version_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesNugetPackagesVersionFlow"
+}

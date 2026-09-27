@@ -74,7 +74,7 @@ function unleash_api_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["unleash_api01", "unleash_api02", "unleash_api03", "unleash01", "unleash02", "unleash03"] as $k) {
+    foreach (["unleash_api01", "unleash_api02", "unleash_api03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

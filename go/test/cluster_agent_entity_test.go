@@ -85,7 +85,7 @@ func cluster_agentBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"cluster_agent01", "cluster_agent02", "cluster_agent03", "project01", "project02", "project03", "token01", "token02", "token03"},
+		[]any{"cluster_agent01", "cluster_agent02", "cluster_agent03", "project01", "project02", "project03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -1,0 +1,339 @@
+# Entity: helm_package
+
+main: kit: entity: helm_package: {
+
+  alias: field: {}
+
+  name: "helm_package"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/packages/helm/api/{channel}/charts"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "stable"
+                k: "param"
+                n: "channel"
+                or: "channel"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_packages_helm_api_channel_chart"
+                or: "post_api_v4_projects_id_packages_helm_api_channel_chart"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/packages/helm/api/{channel}/charts"
+          q: {
+            exist: [
+              "channel"
+              "post_api_v4_projects_id_packages_helm_api_channel_chart"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "helm"
+            }
+            {
+              lit: "api"
+            }
+            {
+              var: "channel"
+            }
+            {
+              lit: "charts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/packages/helm/api/{channel}/charts/authorize"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "stable"
+                k: "param"
+                n: "api_id"
+                or: "channel"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/packages/helm/api/{channel}/charts/authorize"
+          q: {
+            exist: [
+              "api_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              channel: "api_id"
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "helm"
+            }
+            {
+              lit: "api"
+            }
+            {
+              var: "api_id"
+            }
+            {
+              lit: "charts"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/packages/helm/{channel}/charts/{file_name}.tgz"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "mychart"
+                k: "param"
+                n: "file_name"
+                or: "file_name"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: "stable"
+                k: "param"
+                n: "helm_id"
+                or: "channel"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/packages/helm/{channel}/charts/{file_name}.tgz"
+          q: {
+            exist: [
+              "file_name"
+              "helm_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              channel: "helm_id"
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "helm"
+            }
+            {
+              var: "helm_id"
+            }
+            {
+              lit: "charts"
+            }
+            {
+              lit: "{file_name}.tgz"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/packages/helm/{channel}/index.yaml"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "stable"
+                k: "param"
+                n: "channel"
+                or: "channel"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/packages/helm/{channel}/index.yaml"
+          q: {
+            exist: [
+              "channel"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "helm"
+            }
+            {
+              var: "channel"
+            }
+            {
+              lit: "index.yaml"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

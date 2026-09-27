@@ -74,7 +74,7 @@ def _package_file_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["package_file01", "package_file02", "package_file03", "project01", "project02", "project03", "package01", "package02", "package03"],
+        ["package_file01", "package_file02", "package_file03", "project01", "project02", "project03", "package01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

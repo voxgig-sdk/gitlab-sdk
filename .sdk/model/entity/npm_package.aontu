@@ -1,0 +1,997 @@
+# Entity: npm_package
+
+main: kit: entity: npm_package: {
+
+  alias: field: {}
+
+  name: "npm_package"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/groups/{id}/-/packages/npm/-/npm/v1/security/advisories/bulk"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/{id}/-/packages/npm/-/npm/v1/security/advisories/bulk"
+          q: {
+            exist: [
+              "group_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "advisories"
+            }
+            {
+              lit: "bulk"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/groups/{id}/-/packages/npm/-/npm/v1/security/audits/quick"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/{id}/-/packages/npm/-/npm/v1/security/audits/quick"
+          q: {
+            exist: [
+              "group_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "audits"
+            }
+            {
+              lit: "quick"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/packages/npm/-/npm/v1/security/advisories/bulk"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/packages/npm/-/npm/v1/security/advisories/bulk"
+          q: {
+            exist: [
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "advisories"
+            }
+            {
+              lit: "bulk"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/packages/npm/-/npm/v1/security/audits/quick"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/packages/npm/-/npm/v1/security/audits/quick"
+          q: {
+            exist: [
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "audits"
+            }
+            {
+              lit: "quick"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/packages/npm/-/npm/v1/security/advisories/bulk"
+            source: "swagger2"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v4/packages/npm/-/npm/v1/security/advisories/bulk"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "advisories"
+            }
+            {
+              lit: "bulk"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/packages/npm/-/npm/v1/security/audits/quick"
+            source: "swagger2"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v4/packages/npm/-/npm/v1/security/audits/quick"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "audits"
+            }
+            {
+              lit: "quick"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/packages/npm/*package_name/-/*file_name"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "file_name"
+                or: "file_name"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "package_name"
+                or: "package_name"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/packages/npm/*package_name/-/*file_name"
+          q: {
+            exist: [
+              "file_name"
+              "package_name"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "*package_name"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "*file_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v4/groups/{id}/-/packages/npm/-/package/*package_name/dist-tags/{tag}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "tag"
+                or: "tag"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "package_name"
+                or: "package_name"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/groups/{id}/-/packages/npm/-/package/*package_name/dist-tags/{tag}"
+          q: {
+            exist: [
+              "group_id"
+              "package_name"
+              "tag"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "package"
+            }
+            {
+              lit: "*package_name"
+            }
+            {
+              lit: "dist-tags"
+            }
+            {
+              var: "tag"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/packages/npm/-/package/*package_name/dist-tags/{tag}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "tag"
+                or: "tag"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "package_name"
+                or: "package_name"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/packages/npm/-/package/*package_name/dist-tags/{tag}"
+          q: {
+            exist: [
+              "package_name"
+              "project_id"
+              "tag"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "package"
+            }
+            {
+              lit: "*package_name"
+            }
+            {
+              lit: "dist-tags"
+            }
+            {
+              var: "tag"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/packages/npm/-/package/*package_name/dist-tags/{tag}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "tag"
+                or: "tag"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "package_name"
+                or: "package_name"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/packages/npm/-/package/*package_name/dist-tags/{tag}"
+          q: {
+            exist: [
+              "package_name"
+              "tag"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "package"
+            }
+            {
+              lit: "*package_name"
+            }
+            {
+              lit: "dist-tags"
+            }
+            {
+              var: "tag"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/groups/{id}/-/packages/npm/-/package/*package_name/dist-tags/{tag}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "tag"
+                or: "tag"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_groups_id_packages_npm_package*package_name_dist_tags_tag"
+                or: "put_api_v4_groups_id_packages_npm_package*package_name_dist_tags_tag"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/groups/{id}/-/packages/npm/-/package/*package_name/dist-tags/{tag}"
+          q: {
+            exist: [
+              "group_id"
+              "put_api_v4_groups_id_packages_npm_package*package_name_dist_tags_tag"
+              "tag"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "package"
+            }
+            {
+              lit: "*package_name"
+            }
+            {
+              lit: "dist-tags"
+            }
+            {
+              var: "tag"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/packages/npm/-/package/*package_name/dist-tags/{tag}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "tag"
+                or: "tag"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_packages_npm_package*package_name_dist_tags_tag"
+                or: "put_api_v4_projects_id_packages_npm_package*package_name_dist_tags_tag"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/packages/npm/-/package/*package_name/dist-tags/{tag}"
+          q: {
+            exist: [
+              "project_id"
+              "put_api_v4_projects_id_packages_npm_package*package_name_dist_tags_tag"
+              "tag"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "package"
+            }
+            {
+              lit: "*package_name"
+            }
+            {
+              lit: "dist-tags"
+            }
+            {
+              var: "tag"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /api/v4/packages/npm/-/package/*package_name/dist-tags/{tag}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "tag"
+                or: "tag"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_packages_npm_package*package_name_dist_tags_tag"
+                or: "put_api_v4_packages_npm_package*package_name_dist_tags_tag"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/packages/npm/-/package/*package_name/dist-tags/{tag}"
+          q: {
+            exist: [
+              "put_api_v4_packages_npm_package*package_name_dist_tags_tag"
+              "tag"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "npm"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "package"
+            }
+            {
+              lit: "*package_name"
+            }
+            {
+              lit: "dist-tags"
+            }
+            {
+              var: "tag"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.group")]
+    [path("$.main.kit.entity.project")]
+    [path("$.main.kit.entity.group")]
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

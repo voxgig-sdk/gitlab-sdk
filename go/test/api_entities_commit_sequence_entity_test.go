@@ -98,7 +98,7 @@ func api_entities_commit_sequenceBasicSetup(extra map[string]any) *entityTestSet
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_commit_sequence01", "api_entities_commit_sequence02", "api_entities_commit_sequence03", "project01", "project02", "project03", "commit01", "commit02", "commit03"},
+		[]any{"api_entities_commit_sequence01", "api_entities_commit_sequence02", "api_entities_commit_sequence03", "project01", "project02", "project03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

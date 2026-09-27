@@ -1,0 +1,958 @@
+# Entity: api_entities_packages_debian_distribution
+
+main: kit: entity: api_entities_packages_debian_distribution: {
+
+  alias: field: {}
+
+  fields: {
+    architectures: {
+      h: "Architectures"
+      n: "architectures"
+      r: false
+      t: "`$ARRAY`"
+    }
+    codename: {
+      h: "Codename"
+      n: "codename"
+      r: false
+      t: "`$STRING`"
+    }
+    components: {
+      h: "Components"
+      n: "components"
+      r: false
+      t: "`$ARRAY`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    label: {
+      h: "Label"
+      n: "label"
+      r: false
+      t: "`$STRING`"
+    }
+    origin: {
+      h: "Origin"
+      n: "origin"
+      r: false
+      t: "`$STRING`"
+    }
+    suite: {
+      h: "Suite"
+      n: "suite"
+      r: false
+      t: "`$STRING`"
+    }
+    valid_time_duration_seconds: {
+      fo: "int32"
+      h: "Valid Time Duration Seconds"
+      n: "valid_time_duration_seconds"
+      r: false
+      t: "`$INTEGER`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_packages_debian_distribution"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/groups/{id}/-/debian_distributions"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_groups_id_debian_distribution"
+                or: "post_api_v4_groups_id_debian_distribution"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/groups/{id}/-/debian_distributions"
+          q: {
+            exist: [
+              "group_id"
+              "post_api_v4_groups_id_debian_distribution"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "debian_distributions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/debian_distributions"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_debian_distribution"
+                or: "post_api_v4_projects_id_debian_distribution"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/debian_distributions"
+          q: {
+            exist: [
+              "post_api_v4_projects_id_debian_distribution"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "debian_distributions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/-/debian_distributions"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "amd64"
+                k: "query"
+                n: "architecture"
+                or: "architecture"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "sid"
+                k: "query"
+                n: "codename"
+                or: "codename"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "main"
+                k: "query"
+                n: "component"
+                or: "component"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "My description"
+                k: "query"
+                n: "description"
+                or: "description"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "grep.be"
+                k: "query"
+                n: "label"
+                or: "label"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "Grep"
+                k: "query"
+                n: "origin"
+                or: "origin"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "unstable"
+                k: "query"
+                n: "suite"
+                or: "suite"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 604800
+                k: "query"
+                n: "valid_time_duration_second"
+                or: "valid_time_duration_second"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "12"
+                k: "query"
+                n: "version"
+                or: "version"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/-/debian_distributions"
+          q: {
+            exist: [
+              "architecture"
+              "codename"
+              "component"
+              "description"
+              "group_id"
+              "label"
+              "origin"
+              "page"
+              "per_page"
+              "suite"
+              "valid_time_duration_second"
+              "version"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "debian_distributions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/debian_distributions"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "amd64"
+                k: "query"
+                n: "architecture"
+                or: "architecture"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "sid"
+                k: "query"
+                n: "codename"
+                or: "codename"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "main"
+                k: "query"
+                n: "component"
+                or: "component"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "My description"
+                k: "query"
+                n: "description"
+                or: "description"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "grep.be"
+                k: "query"
+                n: "label"
+                or: "label"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "Grep"
+                k: "query"
+                n: "origin"
+                or: "origin"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "unstable"
+                k: "query"
+                n: "suite"
+                or: "suite"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 604800
+                k: "query"
+                n: "valid_time_duration_second"
+                or: "valid_time_duration_second"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "12"
+                k: "query"
+                n: "version"
+                or: "version"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/debian_distributions"
+          q: {
+            exist: [
+              "architecture"
+              "codename"
+              "component"
+              "description"
+              "label"
+              "origin"
+              "page"
+              "per_page"
+              "project_id"
+              "suite"
+              "valid_time_duration_second"
+              "version"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "debian_distributions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/-/debian_distributions/{codename}/key.asc"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "sid"
+                k: "param"
+                n: "codename"
+                or: "codename"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/-/debian_distributions/{codename}/key.asc"
+          q: {
+            exist: [
+              "codename"
+              "group_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "debian_distributions"
+            }
+            {
+              var: "codename"
+            }
+            {
+              lit: "key.asc"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/debian_distributions/{codename}/key.asc"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "sid"
+                k: "param"
+                n: "codename"
+                or: "codename"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/debian_distributions/{codename}/key.asc"
+          q: {
+            exist: [
+              "codename"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "debian_distributions"
+            }
+            {
+              var: "codename"
+            }
+            {
+              lit: "key.asc"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/groups/{id}/-/debian_distributions/{codename}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "sid"
+                k: "param"
+                n: "id"
+                or: "codename"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/groups/{id}/-/debian_distributions/{codename}"
+          q: {
+            exist: [
+              "group_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              codename: "id"
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "debian_distributions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/debian_distributions/{codename}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "sid"
+                k: "param"
+                n: "id"
+                or: "codename"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/debian_distributions/{codename}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              codename: "id"
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "debian_distributions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/groups/{id}/-/debian_distributions/{codename}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "sid"
+                k: "param"
+                n: "id"
+                or: "codename"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_groups_id_debian_distributions_codename"
+                or: "put_api_v4_groups_id_debian_distributions_codename"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/groups/{id}/-/debian_distributions/{codename}"
+          q: {
+            exist: [
+              "group_id"
+              "id"
+              "put_api_v4_groups_id_debian_distributions_codename"
+            ]
+          }
+          r: {
+            param: {
+              codename: "id"
+              id: "group_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "groups"
+            }
+            {
+              var: "group_id"
+            }
+            {
+              lit: "-"
+            }
+            {
+              lit: "debian_distributions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/debian_distributions/{codename}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "sid"
+                k: "param"
+                n: "id"
+                or: "codename"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_debian_distributions_codename"
+                or: "put_api_v4_projects_id_debian_distributions_codename"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/debian_distributions/{codename}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+              "put_api_v4_projects_id_debian_distributions_codename"
+            ]
+          }
+          r: {
+            param: {
+              codename: "id"
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "debian_distributions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.group")]
+    [path("$.main.kit.entity.project")]
+    [path("$.main.kit.entity.group") path("$.main.kit.entity.debian_distribution")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.debian_distribution")]
+  ]
+
+}

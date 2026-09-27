@@ -1,0 +1,38 @@
+# BasicApiEntitiesCiLintResultFlow
+
+main: kit: flow: BasicApiEntitiesCiLintResultFlow:
+{
+  entity: "api_entities_ci_lint_result",
+  kind: "basic",
+  name: "BasicApiEntitiesCiLintResultFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_ci_lint_result_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_ci_lint_result_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCiLintResultFlow"
+}

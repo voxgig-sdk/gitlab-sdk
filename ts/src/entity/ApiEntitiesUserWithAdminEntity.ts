@@ -19,7 +19,6 @@ import type {
   ApiEntitiesUserWithAdminListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesUserWithAdminEntity extends GitlabEntityBase<ApiEntitiesUserWithAdmin> {
 
   constructor(client: GitlabSDK, entopts: any) {

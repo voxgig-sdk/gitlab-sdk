@@ -74,7 +74,7 @@ function package_file_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["package_file01", "package_file02", "package_file03", "project01", "project02", "project03", "package01", "package02", "package03"] as $k) {
+    foreach (["package_file01", "package_file02", "package_file03", "project01", "project02", "project03", "package01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

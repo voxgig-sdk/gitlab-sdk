@@ -128,7 +128,7 @@ function api_entities_terraform_module_version_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "api_entities_terraform_module_version01", "api_entities_terraform_module_version02", "api_entities_terraform_module_version03", "v101", "v102", "v103", "module_name01", "module_system01", "module_namespace01" },
+    { "api_entities_terraform_module_version01", "api_entities_terraform_module_version02", "api_entities_terraform_module_version03", "module_name01", "module_system01", "v101", "module_namespace01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

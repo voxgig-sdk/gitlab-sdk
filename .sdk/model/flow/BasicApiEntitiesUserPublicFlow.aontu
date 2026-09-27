@@ -1,0 +1,26 @@
+# BasicApiEntitiesUserPublicFlow
+
+main: kit: flow: BasicApiEntitiesUserPublicFlow:
+{
+  entity: "api_entities_user_public",
+  kind: "basic",
+  name: "BasicApiEntitiesUserPublicFlow",
+  step: [
+    {
+      m: {
+        group_id: "group01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_user_public_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesUserPublicFlow"
+}

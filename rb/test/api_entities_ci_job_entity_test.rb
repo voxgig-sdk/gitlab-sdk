@@ -117,7 +117,7 @@ def api_entities_ci_job_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["api_entities_ci_job01", "api_entities_ci_job02", "api_entities_ci_job03", "project01", "project02", "project03", "job01", "job02", "job03", "pipeline01", "pipeline02", "pipeline03"],
+    ["api_entities_ci_job01", "api_entities_ci_job02", "api_entities_ci_job03", "project01", "project02", "project03", "job01", "job02", "job03", "pipeline01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

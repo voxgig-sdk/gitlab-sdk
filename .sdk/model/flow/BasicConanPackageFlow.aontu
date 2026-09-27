@@ -1,0 +1,54 @@
+# BasicConanPackageFlow
+
+main: kit: flow: BasicConanPackageFlow:
+{
+  entity: "conan_package",
+  kind: "basic",
+  name: "BasicConanPackageFlow",
+  step: [
+    {
+      d: {
+        file_id: "file01",
+        package_channel: "package_channel01",
+        package_username: "package_username01",
+        package_version: "package_version01",
+        recipe_revision: "recipe_revision01"
+      }
+
+      i: {
+        ref: "conan_package_ref01",
+        srcdatavar: "conan_package_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-conan_package_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "conan_package_ref01",
+        srcdatavar: "conan_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-conan_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConanPackageFlow"
+}

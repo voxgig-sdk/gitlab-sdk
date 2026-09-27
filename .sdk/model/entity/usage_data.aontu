@@ -1,0 +1,337 @@
+# Entity: usage_data
+
+main: kit: entity: usage_data: {
+
+  alias: field: {}
+
+  name: "usage_data"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/usage_data/increment_counter"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_usage_data_increment_counter"
+                or: "post_api_v4_usage_data_increment_counter"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/usage_data/increment_counter"
+          q: {
+            "$action": "increment_counter"
+            exist: [
+              "post_api_v4_usage_data_increment_counter"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "usage_data"
+            }
+            {
+              lit: "increment_counter"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/usage_data/increment_unique_users"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_usage_data_increment_unique_user"
+                or: "post_api_v4_usage_data_increment_unique_user"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/usage_data/increment_unique_users"
+          q: {
+            "$action": "increment_unique_user"
+            exist: [
+              "post_api_v4_usage_data_increment_unique_user"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "usage_data"
+            }
+            {
+              lit: "increment_unique_users"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/usage_data/track_event"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_usage_data_track_event"
+                or: "post_api_v4_usage_data_track_event"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/usage_data/track_event"
+          q: {
+            "$action": "track_event"
+            exist: [
+              "post_api_v4_usage_data_track_event"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "usage_data"
+            }
+            {
+              lit: "track_event"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/usage_data/track_events"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_usage_data_track_event"
+                or: "post_api_v4_usage_data_track_event"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/usage_data/track_events"
+          q: {
+            "$action": "track_event"
+            exist: [
+              "post_api_v4_usage_data_track_event"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "usage_data"
+            }
+            {
+              lit: "track_events"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/usage_data/metric_definitions"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: true
+                k: "query"
+                n: "include_path"
+                or: "include_path"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/usage_data/metric_definitions"
+          q: {
+            "$action": "metric_definition"
+            exist: [
+              "include_path"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "usage_data"
+            }
+            {
+              lit: "metric_definitions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/usage_data/non_sql_metrics"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v4/usage_data/non_sql_metrics"
+          q: {
+            "$action": "non_sql_metric"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "usage_data"
+            }
+            {
+              lit: "non_sql_metrics"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/usage_data/queries"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v4/usage_data/queries"
+          q: {
+            "$action": "query"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "usage_data"
+            }
+            {
+              lit: "queries"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/usage_data/service_ping"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v4/usage_data/service_ping"
+          q: {
+            "$action": "service_ping"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "usage_data"
+            }
+            {
+              lit: "service_ping"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

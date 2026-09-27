@@ -121,7 +121,7 @@ func feature_flagBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"feature_flag01", "feature_flag02", "feature_flag03", "unleash01", "unleash02", "unleash03", "project01", "project02", "project03"},
+		[]any{"feature_flag01", "feature_flag02", "feature_flag03", "project01", "project02", "project03", "unleash01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -134,7 +134,7 @@ function api_entities_batched_background_migration_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_batched_background_migration01", "api_entities_batched_background_migration02", "api_entities_batched_background_migration03", "batched_background_migration01", "batched_background_migration02", "batched_background_migration03"] as $k) {
+    foreach (["api_entities_batched_background_migration01", "api_entities_batched_background_migration02", "api_entities_batched_background_migration03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

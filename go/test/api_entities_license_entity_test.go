@@ -104,7 +104,7 @@ func api_entities_licenseBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_license01", "api_entities_license02", "api_entities_license03", "template01", "template02", "template03", "type01"},
+		[]any{"api_entities_license01", "api_entities_license02", "api_entities_license03", "type01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

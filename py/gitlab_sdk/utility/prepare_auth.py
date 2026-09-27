@@ -3,7 +3,7 @@
 from __future__ import annotations
 from gitlab_sdk.utility.voxgig_struct import voxgig_struct as vs
 
-HEADER_AUTH = "authorization"
+HEADER_AUTH = "private-token"
 OPTION_APIKEY = "apikey"
 NOT_FOUND = "__NOTFOUND__"
 

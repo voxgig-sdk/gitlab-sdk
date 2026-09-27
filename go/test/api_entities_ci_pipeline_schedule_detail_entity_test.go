@@ -137,7 +137,7 @@ func api_entities_ci_pipeline_schedule_detailBasicSetup(extra map[string]any) *e
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_ci_pipeline_schedule_detail01", "api_entities_ci_pipeline_schedule_detail02", "api_entities_ci_pipeline_schedule_detail03", "project01", "project02", "project03", "pipeline_schedule01", "pipeline_schedule02", "pipeline_schedule03"},
+		[]any{"api_entities_ci_pipeline_schedule_detail01", "api_entities_ci_pipeline_schedule_detail02", "api_entities_ci_pipeline_schedule_detail03", "project01", "project02", "project03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

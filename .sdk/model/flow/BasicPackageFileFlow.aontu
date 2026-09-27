@@ -1,0 +1,34 @@
+# BasicPackageFileFlow
+
+main: kit: flow: BasicPackageFileFlow:
+{
+  entity: "package_file",
+  kind: "basic",
+  name: "BasicPackageFileFlow",
+  step: [
+    {
+      i: {
+        ref: "package_file_ref01",
+        srcdatavar: "package_file_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "package_file01",
+        package_id: "package01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-package_file_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPackageFileFlow"
+}

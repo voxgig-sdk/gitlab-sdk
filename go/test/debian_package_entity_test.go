@@ -104,7 +104,7 @@ func debian_packageBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"debian_package01", "debian_package02", "debian_package03", "group01", "group02", "group03", "project01", "project02", "project03", "pool01", "pool02", "pool03", "*distribution01", "*distribution02", "*distribution03", "sha25601", "sha25602", "sha25603"},
+		[]any{"debian_package01", "debian_package02", "debian_package03", "group01", "group02", "group03", "project01", "project02", "project03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

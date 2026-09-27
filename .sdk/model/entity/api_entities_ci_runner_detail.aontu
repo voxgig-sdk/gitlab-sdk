@@ -1,0 +1,288 @@
+# Entity: api_entities_ci_runner_detail
+
+main: kit: entity: api_entities_ci_runner_detail: {
+
+  alias: field: {}
+
+  fields: {
+    access_level: {
+      h: "Access Level"
+      n: "access_level"
+      r: false
+      t: "`$STRING`"
+    }
+    active: {
+      h: "Active"
+      n: "active"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    architecture: {
+      h: "Architecture"
+      n: "architecture"
+      r: false
+      t: "`$STRING`"
+    }
+    contacted_at: {
+      h: "Contacted At"
+      n: "contacted_at"
+      r: false
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    created_by: {
+      h: "Created By"
+      n: "created_by"
+      r: false
+      sh: "API_Entities_UserBasic model"
+      t: "`$OBJECT`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: "`$STRING`"
+    }
+    groups: {
+      h: "Groups"
+      n: "groups"
+      r: false
+      sh: "API_Entities_BasicGroupDetails model"
+      t: "`$OBJECT`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    ip_address: {
+      h: "Ip Address"
+      n: "ip_address"
+      r: false
+      t: "`$STRING`"
+    }
+    is_shared: {
+      h: "Is Shared"
+      n: "is_shared"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    job_execution_status: {
+      h: "Job Execution Status"
+      n: "job_execution_status"
+      r: false
+      t: "`$STRING`"
+    }
+    locked: {
+      h: "Locked"
+      n: "locked"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    maintenance_note: {
+      h: "Maintenance Note"
+      n: "maintenance_note"
+      r: false
+      t: "`$STRING`"
+    }
+    maximum_timeout: {
+      h: "Maximum Timeout"
+      n: "maximum_timeout"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    online: {
+      h: "Online"
+      n: "online"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    paused: {
+      h: "Paused"
+      n: "paused"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    platform: {
+      h: "Platform"
+      n: "platform"
+      r: false
+      t: "`$STRING`"
+    }
+    projects: {
+      h: "Projects"
+      n: "projects"
+      r: false
+      sh: "API_Entities_BasicProjectDetails model"
+      t: "`$OBJECT`"
+    }
+    revision: {
+      h: "Revision"
+      n: "revision"
+      r: false
+      t: "`$STRING`"
+    }
+    run_untagged: {
+      h: "Run Untagged"
+      n: "run_untagged"
+      r: false
+      t: "`$STRING`"
+    }
+    runner_type: {
+      h: "Runner Type"
+      n: "runner_type"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    tag_list: {
+      h: "Tag List"
+      n: "tag_list"
+      r: false
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_ci_runner_detail"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/runners/{id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/runners/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "runners"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/runners/{id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_runners_id"
+                or: "put_api_v4_runners_id"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/runners/{id}"
+          q: {
+            exist: [
+              "id"
+              "put_api_v4_runners_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "runners"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

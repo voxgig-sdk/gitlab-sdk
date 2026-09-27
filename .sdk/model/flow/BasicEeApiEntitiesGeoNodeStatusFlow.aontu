@@ -1,0 +1,18 @@
+# BasicEeApiEntitiesGeoNodeStatusFlow
+
+main: kit: flow: BasicEeApiEntitiesGeoNodeStatusFlow:
+{
+  entity: "ee_api_entities_geo_node_status",
+  kind: "basic",
+  name: "BasicEeApiEntitiesGeoNodeStatusFlow",
+  step: [
+    {
+      i: {
+        ref: "ee_api_entities_geo_node_status_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicEeApiEntitiesGeoNodeStatusFlow"
+}

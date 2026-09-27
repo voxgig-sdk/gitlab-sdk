@@ -78,7 +78,7 @@ def _maven_package_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["maven_package01", "maven_package02", "maven_package03", "group01", "group02", "group03", "*path01", "*path02", "*path03", "project01", "project02", "project03"],
+        ["maven_package01", "maven_package02", "maven_package03", "group01", "group02", "group03", "project01", "project02", "project03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

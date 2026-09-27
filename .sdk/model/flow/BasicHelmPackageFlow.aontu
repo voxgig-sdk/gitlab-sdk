@@ -1,0 +1,47 @@
+# BasicHelmPackageFlow
+
+main: kit: flow: BasicHelmPackageFlow:
+{
+  entity: "helm_package",
+  kind: "basic",
+  name: "BasicHelmPackageFlow",
+  step: [
+    {
+      i: {
+        ref: "helm_package_ref01"
+      }
+
+      m: {
+        api_id: "api01",
+        file_name: "file_name01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "helm_package_ref01",
+        srcdatavar: "helm_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "helm_package01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-helm_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicHelmPackageFlow"
+}

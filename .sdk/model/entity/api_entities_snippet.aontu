@@ -1,0 +1,276 @@
+# Entity: api_entities_snippet
+
+main: kit: entity: api_entities_snippet: {
+
+  alias: field: {}
+
+  fields: {
+    author: {
+      h: "Author"
+      n: "author"
+      r: false
+      sh: "API_Entities_UserBasic model"
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: "`$STRING`"
+    }
+    file_name: {
+      h: "File Name"
+      n: "file_name"
+      r: false
+      t: "`$STRING`"
+    }
+    files: {
+      h: "Files"
+      n: "files"
+      r: false
+      t: "`$ARRAY`"
+    }
+    http_url_to_repo: {
+      h: "Http Url To Repo"
+      n: "http_url_to_repo"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    imported: {
+      h: "Imported"
+      n: "imported"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    imported_from: {
+      h: "Imported From"
+      n: "imported_from"
+      r: false
+      t: "`$STRING`"
+    }
+    project_id: {
+      fo: "int32"
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    raw_url: {
+      h: "Raw Url"
+      n: "raw_url"
+      r: false
+      t: "`$STRING`"
+    }
+    repository_storage: {
+      h: "Repository Storage"
+      n: "repository_storage"
+      r: false
+      t: "`$STRING`"
+    }
+    ssh_url_to_repo: {
+      h: "Ssh Url To Repo"
+      n: "ssh_url_to_repo"
+      r: false
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      t: "`$STRING`"
+    }
+    visibility: {
+      h: "Visibility"
+      n: "visibility"
+      r: false
+      t: "`$STRING`"
+    }
+    web_url: {
+      h: "Web Url"
+      n: "web_url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_snippet"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/snippets/all"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "created_after"
+                or: "created_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "created_before"
+                or: "created_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "repository_storage"
+                or: "repository_storage"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/snippets/all"
+          q: {
+            exist: [
+              "created_after"
+              "created_before"
+              "page"
+              "per_page"
+              "repository_storage"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "snippets"
+            }
+            {
+              lit: "all"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/snippets"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "created_after"
+                or: "created_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "created_before"
+                or: "created_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/snippets"
+          q: {
+            exist: [
+              "created_after"
+              "created_before"
+              "page"
+              "per_page"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "snippets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

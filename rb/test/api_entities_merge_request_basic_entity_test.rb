@@ -111,7 +111,7 @@ def api_entities_merge_request_basic_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["api_entities_merge_request_basic01", "api_entities_merge_request_basic02", "api_entities_merge_request_basic03", "group01", "group02", "group03", "project01", "project02", "project03", "deployment01", "deployment02", "deployment03", "issue01", "issue02", "issue03", "commit01", "commit02", "commit03", "sha01"],
+    ["api_entities_merge_request_basic01", "api_entities_merge_request_basic02", "api_entities_merge_request_basic03", "group01", "group02", "group03", "project01", "project02", "project03", "deployment01", "deployment02", "deployment03", "sha01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

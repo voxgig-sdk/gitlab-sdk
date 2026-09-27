@@ -1,0 +1,33 @@
+# BasicRemoteMirrorFlow
+
+main: kit: flow: BasicRemoteMirrorFlow:
+{
+  entity: "remote_mirror",
+  kind: "basic",
+  name: "BasicRemoteMirrorFlow",
+  step: [
+    {
+      i: {
+        ref: "remote_mirror_ref01",
+        srcdatavar: "remote_mirror_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "remote_mirror01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-remote_mirror_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRemoteMirrorFlow"
+}

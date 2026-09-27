@@ -1,7 +1,7 @@
 -- Typed models for the Gitlab SDK (LuaLS annotations).
 --
--- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
--- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+-- params (op.<name>.points[].g.params[]). Field/param types come from the
 -- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
@@ -2060,7 +2060,7 @@
 ---@field table_name? string
 
 ---@class ApiEntitiesDictionaryTableLoadMatch
----@field databas_id string
+---@field database_id string
 ---@field id string
 
 ---@class ApiEntitiesDiff
@@ -6682,21 +6682,21 @@
 ---@field recipe_revision any
 
 ---@class ConanPackageUpdateData
----@field conan_package_reference? any
+---@field conan_id? string
 ---@field file_name any
----@field id? string
 ---@field package_channel any
----@field package_name? any
+---@field package_id? string
 ---@field package_revision? any
 ---@field package_username any
 ---@field package_version any
----@field recipe_revision? any
----@field put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name? table
----@field conan_id? string
----@field package_id? string
 ---@field project_id? string
 ---@field revision_id? string
 ---@field put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_packages_conan_package_reference_revisions_package_revision_files_file_name? table
+---@field conan_package_reference? any
+---@field id? string
+---@field package_name? any
+---@field recipe_revision? any
+---@field put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name? table
 ---@field put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name? table
 ---@field file_id? string
 ---@field put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_files_file_name? table

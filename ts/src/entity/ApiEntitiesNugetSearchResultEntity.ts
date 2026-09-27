@@ -19,7 +19,6 @@ import type {
   ApiEntitiesNugetSearchResultListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesNugetSearchResultEntity extends GitlabEntityBase<ApiEntitiesNugetSearchResult> {
 
   constructor(client: GitlabSDK, entopts: any) {

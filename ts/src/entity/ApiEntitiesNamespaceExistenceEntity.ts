@@ -19,7 +19,6 @@ import type {
   ApiEntitiesNamespaceExistenceListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesNamespaceExistenceEntity extends GitlabEntityBase<ApiEntitiesNamespaceExistence> {
 
   constructor(client: GitlabSDK, entopts: any) {

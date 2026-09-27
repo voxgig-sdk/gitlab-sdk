@@ -19,7 +19,6 @@ import type {
   ApiEntitiesCompareListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesCompareEntity extends GitlabEntityBase<ApiEntitiesCompare> {
 
   constructor(client: GitlabSDK, entopts: any) {

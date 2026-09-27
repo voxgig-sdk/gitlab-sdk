@@ -19,7 +19,6 @@ import type {
   ApiEntitiesCiBridgeListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesCiBridgeEntity extends GitlabEntityBase<ApiEntitiesCiBridge> {
 
   constructor(client: GitlabSDK, entopts: any) {

@@ -19,7 +19,6 @@ import type {
   EeApiEntitiesGeoPipelineRefListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class EeApiEntitiesGeoPipelineRefEntity extends GitlabEntityBase<EeApiEntitiesGeoPipelineRef> {
 
   constructor(client: GitlabSDK, entopts: any) {

@@ -1,0 +1,61 @@
+# Entity: api_entities_organizations_organization
+
+main: kit: entity: api_entities_organizations_organization: {
+
+  alias: field: {}
+
+  name: "api_entities_organizations_organization"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/organizations"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_organization"
+                or: "post_api_v4_organization"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/organizations"
+          q: {
+            exist: [
+              "post_api_v4_organization"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "organizations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

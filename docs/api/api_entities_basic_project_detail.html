@@ -300,14 +300,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesbasicprojectdetail">ApiEntitiesBasicProjectDetail</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesbasicprojectdetail">ApiEntitiesBasicProjectDetail</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -354,16 +354,56 @@
 <td><code>GET</code></td>
 <td><a href="#get-apiv4projectsidjob_token_scopeallowlist"><code>/api/v4/projects/{id}/job_token_scope/allowlist</code></a></td>
 <td><code>list</code></td>
-<td>Fetch project inbound allowlist for CI_JOB_TOKEN access settings</td>
+<td>Fetch project inbound allowlist for <code>CI_JOB_TOKEN</code> access settings</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv4projectsidjob_token_scopegroups_allowlist"><code>/api/v4/projects/{id}/job_token_scope/groups_allowlist</code></a></td>
 <td><code>list</code></td>
-<td>Fetch project groups allowlist for CI_JOB_TOKEN access settings</td>
+<td>Fetch project groups allowlist for <code>CI_JOB_TOKEN</code> access settings</td>
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_basic_project_details, err := client.ApiEntitiesBasicProjectDetail(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_basic_project_details)
+created, err := client.ApiEntitiesBasicProjectDetail(nil).Create(map[string]any{&quot;project_id&quot;: &quot;example&quot;, &quot;post_api_v4_projects_id_job_token_scope_allowlist&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_basic_project_details, err = client:ApiEntitiesBasicProjectDetail():list()
+local created, err = client:ApiEntitiesBasicProjectDetail():create({ project_id = &quot;example&quot;, post_api_v4_projects_id_job_token_scope_allowlist = {} })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_basic_project_details = $client-&gt;ApiEntitiesBasicProjectDetail()-&gt;list();
+$created = $client-&gt;ApiEntitiesBasicProjectDetail()-&gt;create([&quot;project_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_projects_id_job_token_scope_allowlist&quot; =&gt; []]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_basic_project_details = client.ApiEntitiesBasicProjectDetail().list()
+created = client.ApiEntitiesBasicProjectDetail().create({ &quot;project_id&quot;: &quot;example&quot;, &quot;post_api_v4_projects_id_job_token_scope_allowlist&quot;: {} })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_basic_project_details = client.ApiEntitiesBasicProjectDetail.list()
+created = client.ApiEntitiesBasicProjectDetail.create({ &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_projects_id_job_token_scope_allowlist&quot; =&gt; {} })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_basic_project_details = await client.ApiEntitiesBasicProjectDetail().list()
+const created = await client.ApiEntitiesBasicProjectDetail().create({ project_id: &quot;example&quot;, post_api_v4_projects_id_job_token_scope_allowlist: {} })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -379,145 +419,145 @@
 <td><code>avatar_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Avatar Url</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>custom_attributes</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_CustomAttribute model</td>
+<td><code>API_Entities_CustomAttribute</code> model</td>
 </tr>
 <tr>
 <td><code>default_branch</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Default Branch</td>
 </tr>
 <tr>
 <td><code>description</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Description</td>
 </tr>
 <tr>
 <td><code>forks_count</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Forks Count</td>
 </tr>
 <tr>
 <td><code>http_url_to_repo</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Http Url To Repo</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>last_activity_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Last Activity At</td>
 </tr>
 <tr>
 <td><code>license</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>License</td>
 </tr>
 <tr>
 <td><code>license_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>License Url</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>name_with_namespace</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name With Namespace</td>
 </tr>
 <tr>
 <td><code>namespace</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Namespace</td>
 </tr>
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Path</td>
 </tr>
 <tr>
 <td><code>path_with_namespace</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Path With Namespace</td>
 </tr>
 <tr>
 <td><code>readme_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Readme Url</td>
 </tr>
 <tr>
 <td><code>repository_storage</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Repository Storage</td>
 </tr>
 <tr>
 <td><code>ssh_url_to_repo</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Ssh Url To Repo</td>
 </tr>
 <tr>
 <td><code>star_count</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Star Count</td>
 </tr>
 <tr>
 <td><code>tag_list</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Tag List</td>
 </tr>
 <tr>
 <td><code>topics</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Topics</td>
 </tr>
 <tr>
 <td><code>visibility</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Visibility</td>
 </tr>
 <tr>
 <td><code>web_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Web Url</td>
 </tr>
 </tbody>
 </table>
@@ -543,7 +583,7 @@
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
 | <code>user_id</code> | <code>path</code> | <code>any</code> | Yes | The ID or username of the user |
-| <code>order_by</code> | <code>query</code> | <code>any</code> | No | Return projects ordered by field. storage_size, repository_size, wiki_size, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to. |
+| <code>order_by</code> | <code>query</code> | <code>any</code> | No | Return projects ordered by field. <code>storage_size</code>, <code>repository_size</code>, <code>wiki_size</code>, <code>packages_size</code> are only available to admins. Similarity is available when searching and is limited to projects the user has access to. |
 | <code>sort</code> | <code>query</code> | <code>any</code> | No | Return projects sorted in ascending and descending order |
 | <code>archived</code> | <code>query</code> | <code>any</code> | No | Limit by archived status |
 | <code>visibility</code> | <code>query</code> | <code>any</code> | No | Limit by visibility |
@@ -559,8 +599,8 @@
 | <code>min_access_level</code> | <code>query</code> | <code>any</code> | No | Limit by minimum access level of authenticated user |
 | <code>id_after</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with IDs greater than the specified ID |
 | <code>id_before</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with IDs less than the specified ID |
-| <code>last_activity_after</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with last_activity after specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ |
-| <code>last_activity_before</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with last_activity before specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ |
+| <code>last_activity_after</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with <code>last_activity</code> after specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ |
+| <code>last_activity_before</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with <code>last_activity</code> before specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ |
 | <code>repository_storage</code> | <code>query</code> | <code>any</code> | No | Which storage shard the repository is on. Available only to admins |
 | <code>topic</code> | <code>query</code> | <code>any</code> | No | Comma-separated list of topics. Limit results to projects having all topics |
 | <code>topic_id</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with the assigned topic given by the topic ID |
@@ -586,7 +626,7 @@
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
 | <code>user_id</code> | <code>path</code> | <code>any</code> | Yes | The ID or username of the user |
-| <code>order_by</code> | <code>query</code> | <code>any</code> | No | Return projects ordered by field. storage_size, repository_size, wiki_size, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to. |
+| <code>order_by</code> | <code>query</code> | <code>any</code> | No | Return projects ordered by field. <code>storage_size</code>, <code>repository_size</code>, <code>wiki_size</code>, <code>packages_size</code> are only available to admins. Similarity is available when searching and is limited to projects the user has access to. |
 | <code>sort</code> | <code>query</code> | <code>any</code> | No | Return projects sorted in ascending and descending order |
 | <code>archived</code> | <code>query</code> | <code>any</code> | No | Limit by archived status |
 | <code>visibility</code> | <code>query</code> | <code>any</code> | No | Limit by visibility |
@@ -602,8 +642,8 @@
 | <code>min_access_level</code> | <code>query</code> | <code>any</code> | No | Limit by minimum access level of authenticated user |
 | <code>id_after</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with IDs greater than the specified ID |
 | <code>id_before</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with IDs less than the specified ID |
-| <code>last_activity_after</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with last_activity after specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ |
-| <code>last_activity_before</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with last_activity before specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ |
+| <code>last_activity_after</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with <code>last_activity</code> after specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ |
+| <code>last_activity_before</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with <code>last_activity</code> before specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ |
 | <code>repository_storage</code> | <code>query</code> | <code>any</code> | No | Which storage shard the repository is on. Available only to admins |
 | <code>topic</code> | <code>query</code> | <code>any</code> | No | Comma-separated list of topics. Limit results to projects having all topics |
 | <code>topic_id</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with the assigned topic given by the topic ID |
@@ -627,7 +667,7 @@
 <h4 id="parameters-3">Parameters</h4>
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
-| <code>order_by</code> | <code>query</code> | <code>any</code> | No | Return projects ordered by field. storage_size, repository_size, wiki_size, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to. |
+| <code>order_by</code> | <code>query</code> | <code>any</code> | No | Return projects ordered by field. <code>storage_size</code>, <code>repository_size</code>, <code>wiki_size</code>, <code>packages_size</code> are only available to admins. Similarity is available when searching and is limited to projects the user has access to. |
 | <code>sort</code> | <code>query</code> | <code>any</code> | No | Return projects sorted in ascending and descending order |
 | <code>archived</code> | <code>query</code> | <code>any</code> | No | Limit by archived status |
 | <code>visibility</code> | <code>query</code> | <code>any</code> | No | Limit by visibility |
@@ -643,8 +683,8 @@
 | <code>min_access_level</code> | <code>query</code> | <code>any</code> | No | Limit by minimum access level of authenticated user |
 | <code>id_after</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with IDs greater than the specified ID |
 | <code>id_before</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with IDs less than the specified ID |
-| <code>last_activity_after</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with last_activity after specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ |
-| <code>last_activity_before</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with last_activity before specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ |
+| <code>last_activity_after</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with <code>last_activity</code> after specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ |
+| <code>last_activity_before</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with <code>last_activity</code> before specified time. Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ |
 | <code>repository_storage</code> | <code>query</code> | <code>any</code> | No | Which storage shard the repository is on. Available only to admins |
 | <code>topic</code> | <code>query</code> | <code>any</code> | No | Comma-separated list of topics. Limit results to projects having all topics |
 | <code>topic_id</code> | <code>query</code> | <code>any</code> | No | Limit results to projects with the assigned topic given by the topic ID |
@@ -670,7 +710,7 @@
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
 | <code>user_id</code> | <code>path</code> | <code>any</code> | Yes | The ID or username of the user |
-| <code>order_by</code> | <code>query</code> | <code>any</code> | No | Return projects ordered by field. storage_size, repository_size, wiki_size, packages_size are only available to admins. Similarity is available when searching and is limited to projects the user has access to. |
+| <code>order_by</code> | <code>query</code> | <code>any</code> | No | Return projects ordered by field. <code>storage_size</code>, <code>repository_size</code>, <code>wiki_size</code>, <code>packages_size</code> are only available to admins. Similarity is available when searching and is limited to projects the user has access to. |
 | <code>sort</code> | <code>query</code> | <code>any</code> | No | Return projects sorted in ascending and descending order |
 | <code>page</code> | <code>query</code> | <code>any</code> | No | Current page number |
 | <code>per_page</code> | <code>query</code> | <code>any</code> | No | Number of items per page |

@@ -1,0 +1,1430 @@
+# Entity: api_entities_basic_project_detail
+
+main: kit: entity: api_entities_basic_project_detail: {
+
+  alias: field: {}
+
+  fields: {
+    avatar_url: {
+      h: "Avatar Url"
+      n: "avatar_url"
+      r: false
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    custom_attributes: {
+      h: "Custom Attributes"
+      n: "custom_attributes"
+      r: false
+      sh: "API_Entities_CustomAttribute model"
+      t: "`$OBJECT`"
+    }
+    default_branch: {
+      h: "Default Branch"
+      n: "default_branch"
+      r: false
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: "`$STRING`"
+    }
+    forks_count: {
+      fo: "int32"
+      h: "Forks Count"
+      n: "forks_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+    http_url_to_repo: {
+      h: "Http Url To Repo"
+      n: "http_url_to_repo"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    last_activity_at: {
+      fo: "date-time"
+      h: "Last Activity At"
+      n: "last_activity_at"
+      r: false
+      t: "`$STRING`"
+    }
+    license: {
+      h: "License"
+      n: "license"
+      r: false
+      t: "`$OBJECT`"
+    }
+    license_url: {
+      h: "License Url"
+      n: "license_url"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    name_with_namespace: {
+      h: "Name With Namespace"
+      n: "name_with_namespace"
+      r: false
+      t: "`$STRING`"
+    }
+    namespace: {
+      h: "Namespace"
+      n: "namespace"
+      r: false
+      t: "`$OBJECT`"
+    }
+    path: {
+      h: "Path"
+      n: "path"
+      r: false
+      t: "`$STRING`"
+    }
+    path_with_namespace: {
+      h: "Path With Namespace"
+      n: "path_with_namespace"
+      r: false
+      t: "`$STRING`"
+    }
+    readme_url: {
+      h: "Readme Url"
+      n: "readme_url"
+      r: false
+      t: "`$STRING`"
+    }
+    repository_storage: {
+      h: "Repository Storage"
+      n: "repository_storage"
+      r: false
+      t: "`$STRING`"
+    }
+    ssh_url_to_repo: {
+      h: "Ssh Url To Repo"
+      n: "ssh_url_to_repo"
+      r: false
+      t: "`$STRING`"
+    }
+    star_count: {
+      fo: "int32"
+      h: "Star Count"
+      n: "star_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+    tag_list: {
+      h: "Tag List"
+      n: "tag_list"
+      r: false
+      t: "`$ARRAY`"
+    }
+    topics: {
+      h: "Topics"
+      n: "topics"
+      r: false
+      t: "`$ARRAY`"
+    }
+    visibility: {
+      h: "Visibility"
+      n: "visibility"
+      r: false
+      t: "`$STRING`"
+    }
+    web_url: {
+      h: "Web Url"
+      n: "web_url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_basic_project_detail"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/job_token_scope/allowlist"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 1
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_job_token_scope_allowlist"
+                or: "post_api_v4_projects_id_job_token_scope_allowlist"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/job_token_scope/allowlist"
+          q: {
+            exist: [
+              "post_api_v4_projects_id_job_token_scope_allowlist"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "job_token_scope"
+            }
+            {
+              lit: "allowlist"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/users/{user_id}/projects"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "active"
+                or: "active"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "id_after"
+                or: "id_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "id_before"
+                or: "id_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "imported"
+                or: "imported"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "include_hidden"
+                or: "include_hidden"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "include_pending_delete"
+                or: "include_pending_delete"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "last_activity_after"
+                or: "last_activity_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "last_activity_before"
+                or: "last_activity_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "marked_for_deletion_on"
+                or: "marked_for_deletion_on"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "membership"
+                or: "membership"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "min_access_level"
+                or: "min_access_level"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "order_by"
+                or: "order_by"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "owned"
+                or: "owned"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "repository_checksum_failed"
+                or: "repository_checksum_failed"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "repository_storage"
+                or: "repository_storage"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "search_namespace"
+                or: "search_namespace"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "simple"
+                or: "simple"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "starred"
+                or: "starred"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "statistic"
+                or: "statistic"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "topic"
+                or: "topic"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "topic_id"
+                or: "topic_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "updated_after"
+                or: "updated_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "updated_before"
+                or: "updated_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "visibility"
+                or: "visibility"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "wiki_checksum_failed"
+                or: "wiki_checksum_failed"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "with_custom_attribute"
+                or: "with_custom_attribute"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "with_issues_enabled"
+                or: "with_issues_enabled"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "with_merge_requests_enabled"
+                or: "with_merge_requests_enabled"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "with_programming_language"
+                or: "with_programming_language"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/users/{user_id}/projects"
+          q: {
+            exist: [
+              "active"
+              "archived"
+              "id_after"
+              "id_before"
+              "imported"
+              "include_hidden"
+              "include_pending_delete"
+              "last_activity_after"
+              "last_activity_before"
+              "marked_for_deletion_on"
+              "membership"
+              "min_access_level"
+              "order_by"
+              "owned"
+              "page"
+              "per_page"
+              "repository_checksum_failed"
+              "repository_storage"
+              "search"
+              "search_namespace"
+              "simple"
+              "sort"
+              "starred"
+              "statistic"
+              "topic"
+              "topic_id"
+              "updated_after"
+              "updated_before"
+              "user_id"
+              "visibility"
+              "wiki_checksum_failed"
+              "with_custom_attribute"
+              "with_issues_enabled"
+              "with_merge_requests_enabled"
+              "with_programming_language"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "projects"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/users/{user_id}/starred_projects"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "active"
+                or: "active"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "id_after"
+                or: "id_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "id_before"
+                or: "id_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "imported"
+                or: "imported"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "include_hidden"
+                or: "include_hidden"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "include_pending_delete"
+                or: "include_pending_delete"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "last_activity_after"
+                or: "last_activity_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "last_activity_before"
+                or: "last_activity_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "marked_for_deletion_on"
+                or: "marked_for_deletion_on"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "membership"
+                or: "membership"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "min_access_level"
+                or: "min_access_level"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "order_by"
+                or: "order_by"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "owned"
+                or: "owned"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "repository_checksum_failed"
+                or: "repository_checksum_failed"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "repository_storage"
+                or: "repository_storage"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "search_namespace"
+                or: "search_namespace"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "simple"
+                or: "simple"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "starred"
+                or: "starred"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "statistic"
+                or: "statistic"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "topic"
+                or: "topic"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "topic_id"
+                or: "topic_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "updated_after"
+                or: "updated_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "updated_before"
+                or: "updated_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "visibility"
+                or: "visibility"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "wiki_checksum_failed"
+                or: "wiki_checksum_failed"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "with_issues_enabled"
+                or: "with_issues_enabled"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "with_merge_requests_enabled"
+                or: "with_merge_requests_enabled"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "with_programming_language"
+                or: "with_programming_language"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/users/{user_id}/starred_projects"
+          q: {
+            exist: [
+              "active"
+              "archived"
+              "id_after"
+              "id_before"
+              "imported"
+              "include_hidden"
+              "include_pending_delete"
+              "last_activity_after"
+              "last_activity_before"
+              "marked_for_deletion_on"
+              "membership"
+              "min_access_level"
+              "order_by"
+              "owned"
+              "page"
+              "per_page"
+              "repository_checksum_failed"
+              "repository_storage"
+              "search"
+              "search_namespace"
+              "simple"
+              "sort"
+              "starred"
+              "statistic"
+              "topic"
+              "topic_id"
+              "updated_after"
+              "updated_before"
+              "user_id"
+              "visibility"
+              "wiki_checksum_failed"
+              "with_issues_enabled"
+              "with_merge_requests_enabled"
+              "with_programming_language"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "starred_projects"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "active"
+                or: "active"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                k: "query"
+                n: "id_after"
+                or: "id_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "id_before"
+                or: "id_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "imported"
+                or: "imported"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "include_hidden"
+                or: "include_hidden"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "include_pending_delete"
+                or: "include_pending_delete"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "last_activity_after"
+                or: "last_activity_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "last_activity_before"
+                or: "last_activity_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "marked_for_deletion_on"
+                or: "marked_for_deletion_on"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "membership"
+                or: "membership"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "min_access_level"
+                or: "min_access_level"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "order_by"
+                or: "order_by"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "owned"
+                or: "owned"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "repository_checksum_failed"
+                or: "repository_checksum_failed"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "repository_storage"
+                or: "repository_storage"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "search_namespace"
+                or: "search_namespace"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "simple"
+                or: "simple"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "starred"
+                or: "starred"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "statistic"
+                or: "statistic"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "topic"
+                or: "topic"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "topic_id"
+                or: "topic_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "updated_after"
+                or: "updated_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "updated_before"
+                or: "updated_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "visibility"
+                or: "visibility"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "wiki_checksum_failed"
+                or: "wiki_checksum_failed"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "with_custom_attribute"
+                or: "with_custom_attribute"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "with_issues_enabled"
+                or: "with_issues_enabled"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "with_merge_requests_enabled"
+                or: "with_merge_requests_enabled"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "with_programming_language"
+                or: "with_programming_language"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects"
+          q: {
+            exist: [
+              "active"
+              "archived"
+              "id_after"
+              "id_before"
+              "imported"
+              "include_hidden"
+              "include_pending_delete"
+              "last_activity_after"
+              "last_activity_before"
+              "marked_for_deletion_on"
+              "membership"
+              "min_access_level"
+              "order_by"
+              "owned"
+              "page"
+              "per_page"
+              "repository_checksum_failed"
+              "repository_storage"
+              "search"
+              "search_namespace"
+              "simple"
+              "sort"
+              "starred"
+              "statistic"
+              "topic"
+              "topic_id"
+              "updated_after"
+              "updated_before"
+              "visibility"
+              "wiki_checksum_failed"
+              "with_custom_attribute"
+              "with_issues_enabled"
+              "with_merge_requests_enabled"
+              "with_programming_language"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/users/{user_id}/contributed_projects"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "order_by"
+                or: "order_by"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "simple"
+                or: "simple"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/users/{user_id}/contributed_projects"
+          q: {
+            exist: [
+              "order_by"
+              "page"
+              "per_page"
+              "simple"
+              "sort"
+              "user_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "contributed_projects"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/job_token_scope/allowlist"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/job_token_scope/allowlist"
+          q: {
+            exist: [
+              "page"
+              "per_page"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "job_token_scope"
+            }
+            {
+              lit: "allowlist"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/job_token_scope/groups_allowlist"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/job_token_scope/groups_allowlist"
+          q: {
+            exist: [
+              "page"
+              "per_page"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "job_token_scope"
+            }
+            {
+              lit: "groups_allowlist"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+    [path("$.main.kit.entity.user")]
+  ]
+
+}

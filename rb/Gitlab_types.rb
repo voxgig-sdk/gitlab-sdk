@@ -2,8 +2,8 @@
 
 # Typed models for the Gitlab SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Member types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Member types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Ruby types are unenforced; these YARD
 # annotations document the shapes. Do not edit by hand.
@@ -7666,13 +7666,13 @@ ApiEntitiesDictionaryTable = Struct.new(
 
 # Request payload for ApiEntitiesDictionaryTable#load.
 #
-# @!attribute [rw] databas_id
+# @!attribute [rw] database_id
 #   @return [String]
 #
 # @!attribute [rw] id
 #   @return [String]
 ApiEntitiesDictionaryTableLoadMatch = Struct.new(
-  :databas_id,
+  :database_id,
   :id,
   keyword_init: true
 )
@@ -25114,20 +25114,17 @@ ConanPackageLoadMatch = Struct.new(
 
 # Request payload for ConanPackage#update.
 #
-# @!attribute [rw] conan_package_reference
-#   @return [Object, nil]
+# @!attribute [rw] conan_id
+#   @return [String, nil]
 #
 # @!attribute [rw] file_name
 #   @return [Object]
 #
-# @!attribute [rw] id
-#   @return [String, nil]
-#
 # @!attribute [rw] package_channel
 #   @return [Object]
 #
-# @!attribute [rw] package_name
-#   @return [Object, nil]
+# @!attribute [rw] package_id
+#   @return [String, nil]
 #
 # @!attribute [rw] package_revision
 #   @return [Object, nil]
@@ -25138,18 +25135,6 @@ ConanPackageLoadMatch = Struct.new(
 # @!attribute [rw] package_version
 #   @return [Object]
 #
-# @!attribute [rw] recipe_revision
-#   @return [Object, nil]
-#
-# @!attribute [rw] put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name
-#   @return [Hash, nil]
-#
-# @!attribute [rw] conan_id
-#   @return [String, nil]
-#
-# @!attribute [rw] package_id
-#   @return [String, nil]
-#
 # @!attribute [rw] project_id
 #   @return [String, nil]
 #
@@ -25157,6 +25142,21 @@ ConanPackageLoadMatch = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_packages_conan_package_reference_revisions_package_revision_files_file_name
+#   @return [Hash, nil]
+#
+# @!attribute [rw] conan_package_reference
+#   @return [Object, nil]
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+#
+# @!attribute [rw] package_name
+#   @return [Object, nil]
+#
+# @!attribute [rw] recipe_revision
+#   @return [Object, nil]
+#
+# @!attribute [rw] put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name
 #   @return [Hash, nil]
 #
 # @!attribute [rw] put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name
@@ -25174,21 +25174,21 @@ ConanPackageLoadMatch = Struct.new(
 # @!attribute [rw] put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_export_file_name
 #   @return [Hash, nil]
 ConanPackageUpdateData = Struct.new(
-  :conan_package_reference,
+  :conan_id,
   :file_name,
-  :id,
   :package_channel,
-  :package_name,
+  :package_id,
   :package_revision,
   :package_username,
   :package_version,
-  :recipe_revision,
-  :put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name,
-  :conan_id,
-  :package_id,
   :project_id,
   :revision_id,
   :put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_packages_conan_package_reference_revisions_package_revision_files_file_name,
+  :conan_package_reference,
+  :id,
+  :package_name,
+  :recipe_revision,
+  :put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name,
   :put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name,
   :file_id,
   :put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_files_file_name,

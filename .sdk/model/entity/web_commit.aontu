@@ -1,0 +1,51 @@
+# Entity: web_commit
+
+main: kit: entity: web_commit: {
+
+  alias: field: {}
+
+  name: "web_commit"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/web_commits/public_key"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v4/web_commits/public_key"
+          q: {
+            "$action": "public_key"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "web_commits"
+            }
+            {
+              lit: "public_key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

@@ -1,0 +1,180 @@
+# Entity: api_entities_namespaces_storage_limit_exclusion
+
+main: kit: entity: api_entities_namespaces_storage_limit_exclusion: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    namespace_id: {
+      fo: "int32"
+      h: "Namespace Id"
+      n: "namespace_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    namespace_name: {
+      h: "Namespace Name"
+      n: "namespace_name"
+      r: false
+      t: "`$STRING`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_namespaces_storage_limit_exclusion"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/namespaces/{id}/storage/limit_exclusion"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "namespace_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_namespaces_id_storage_limit_exclusion"
+                or: "post_api_v4_namespaces_id_storage_limit_exclusion"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/namespaces/{id}/storage/limit_exclusion"
+          q: {
+            exist: [
+              "namespace_id"
+              "post_api_v4_namespaces_id_storage_limit_exclusion"
+            ]
+          }
+          r: {
+            param: {
+              id: "namespace_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              var: "namespace_id"
+            }
+            {
+              lit: "storage"
+            }
+            {
+              lit: "limit_exclusion"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/namespaces/storage/limit_exclusions"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/namespaces/storage/limit_exclusions"
+          q: {
+            exist: [
+              "page"
+              "per_page"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              lit: "storage"
+            }
+            {
+              lit: "limit_exclusions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.namespace")]
+  ]
+
+}

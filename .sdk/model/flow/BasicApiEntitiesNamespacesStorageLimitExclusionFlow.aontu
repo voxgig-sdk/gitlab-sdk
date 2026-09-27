@@ -1,0 +1,40 @@
+# BasicApiEntitiesNamespacesStorageLimitExclusionFlow
+
+main: kit: flow: BasicApiEntitiesNamespacesStorageLimitExclusionFlow:
+{
+  entity: "api_entities_namespaces_storage_limit_exclusion",
+  kind: "basic",
+  name: "BasicApiEntitiesNamespacesStorageLimitExclusionFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_namespaces_storage_limit_exclusion_ref01"
+      }
+
+      m: {
+        namespace_id: "namespace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "api_entities_namespaces_storage_limit_exclusion_ref01",
+        srcdatavar: "api_entities_namespaces_storage_limit_exclusion_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_namespaces_storage_limit_exclusion_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesNamespacesStorageLimitExclusionFlow"
+}

@@ -1,0 +1,4269 @@
+# Entity: project
+
+main: kit: entity: project: {
+
+  alias: field: {}
+
+  fields: {
+    before_sha: {
+      h: "Before Sha"
+      n: "before_sha"
+      r: false
+      t: "`$STRING`"
+    }
+    committed_at: {
+      fo: "date-time"
+      h: "Committed At"
+      n: "committed_at"
+      r: false
+      t: "`$STRING`"
+    }
+    coverage: {
+      fo: "float"
+      h: "Coverage"
+      n: "coverage"
+      r: false
+      t: "`$NUMBER`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    detailed_status: {
+      h: "Detailed Status"
+      n: "detailed_status"
+      r: false
+      t: "`$OBJECT`"
+    }
+    duration: {
+      fo: "int32"
+      h: "Duration"
+      n: "duration"
+      r: false
+      sh: "Time spent running in seconds"
+      t: "`$INTEGER`"
+    }
+    finished_at: {
+      fo: "date-time"
+      h: "Finished At"
+      n: "finished_at"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    iid: {
+      fo: "int32"
+      h: "Iid"
+      n: "iid"
+      r: false
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    project_id: {
+      fo: "int32"
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    queued_duration: {
+      fo: "int32"
+      h: "Queued Duration"
+      n: "queued_duration"
+      r: false
+      sh: "Time spent enqueued in seconds"
+      t: "`$INTEGER`"
+    }
+    ref: {
+      h: "Ref"
+      n: "ref"
+      r: false
+      t: "`$STRING`"
+    }
+    sha: {
+      h: "Sha"
+      n: "sha"
+      r: false
+      t: "`$STRING`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: false
+      t: "`$STRING`"
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    tag: {
+      h: "Tag"
+      n: "tag"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      t: "`$STRING`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: false
+      sh: "API_Entities_UserBasic model"
+      t: "`$OBJECT`"
+    }
+    web_url: {
+      h: "Web Url"
+      n: "web_url"
+      r: false
+      t: "`$STRING`"
+    }
+    yaml_errors: {
+      h: "Yaml Errors"
+      n: "yaml_errors"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "project"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/hooks/{hook_id}/events/{hook_log_id}/resend"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "event_id"
+                or: "hook_log_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "hook_id"
+                or: "hook_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/hooks/{hook_id}/events/{hook_log_id}/resend"
+          q: {
+            exist: [
+              "event_id"
+              "hook_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              hook_log_id: "event_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "hooks"
+            }
+            {
+              var: "hook_id"
+            }
+            {
+              lit: "events"
+            }
+            {
+              var: "event_id"
+            }
+            {
+              lit: "resend"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/repository/files/{file_path}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "lib%2Fclass%2Erb"
+                k: "param"
+                n: "file_path"
+                or: "file_path"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: "gitlab-org/gitlab"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_repository_files_file_path"
+                or: "post_api_v4_projects_id_repository_files_file_path"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/repository/files/{file_path}"
+          q: {
+            exist: [
+              "file_path"
+              "id"
+              "post_api_v4_projects_id_repository_files_file_path"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_path"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/hooks/{hook_id}/test/{trigger}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "hook_id"
+                or: "hook_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "trigger"
+                or: "trigger"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/hooks/{hook_id}/test/{trigger}"
+          q: {
+            exist: [
+              "hook_id"
+              "id"
+              "trigger"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "hooks"
+            }
+            {
+              var: "hook_id"
+            }
+            {
+              lit: "test"
+            }
+            {
+              var: "trigger"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/issues/{issue_iid}/metric_images/authorize"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "issue_id"
+                or: "issue_iid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/issues/{issue_iid}/metric_images/authorize"
+          q: {
+            exist: [
+              "id"
+              "issue_id"
+            ]
+          }
+          r: {
+            param: {
+              issue_iid: "issue_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "issues"
+            }
+            {
+              var: "issue_id"
+            }
+            {
+              lit: "metric_images"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/bulk_publish"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/bulk_publish"
+          q: {
+            exist: [
+              "id"
+              "merge_request_id"
+            ]
+          }
+          r: {
+            param: {
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "draft_notes"
+            }
+            {
+              lit: "bulk_publish"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/repository/changelog"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 1
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_repository_changelog"
+                or: "post_api_v4_projects_id_repository_changelog"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/repository/changelog"
+          q: {
+            "$action": "repository_changelog"
+            exist: [
+              "id"
+              "post_api_v4_projects_id_repository_changelog"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "changelog"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/import_project_members/{project_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/import_project_members/{project_id}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "import_project_members"
+            }
+            {
+              var: "project_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/uploads/authorize"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/uploads/authorize"
+          q: {
+            "$action": "upload_authorize"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/issues_statistics"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "assignee_id"
+                or: "assignee_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "assignee_username"
+                or: "assignee_username"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "author_id"
+                or: "author_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "author_username"
+                or: "author_username"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "confidential"
+                or: "confidential"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "created_after"
+                or: "created_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "created_before"
+                or: "created_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "epic_id"
+                or: "epic_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "health_status"
+                or: "health_status"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "iid"
+                or: "iid"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "in"
+                or: "in"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "iteration_id"
+                or: "iteration_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "iteration_title"
+                or: "iteration_title"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "label"
+                or: "label"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "milestone"
+                or: "milestone"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "milestone_id"
+                or: "milestone_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "my_reaction_emoji"
+                or: "my_reaction_emoji"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_assignee_id"
+                or: "not_assignee_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "not_assignee_username"
+                or: "not_assignee_username"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_author_id"
+                or: "not_author_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "not_author_username"
+                or: "not_author_username"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_iid"
+                or: "not_iid"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_iteration_id"
+                or: "not_iteration_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "not_iteration_title"
+                or: "not_iteration_title"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_label"
+                or: "not_label"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_milestone"
+                or: "not_milestone"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "not_milestone_id"
+                or: "not_milestone_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "not_weight"
+                or: "not_weight"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "scope"
+                or: "scope"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "updated_after"
+                or: "updated_after"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "updated_before"
+                or: "updated_before"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "weight"
+                or: "weight"
+                r: false
+                t: "`$NUMBER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/issues_statistics"
+          q: {
+            "$action": "issues_statistic"
+            exist: [
+              "assignee_id"
+              "assignee_username"
+              "author_id"
+              "author_username"
+              "confidential"
+              "created_after"
+              "created_before"
+              "epic_id"
+              "health_status"
+              "id"
+              "iid"
+              "in"
+              "iteration_id"
+              "iteration_title"
+              "label"
+              "milestone"
+              "milestone_id"
+              "my_reaction_emoji"
+              "not_assignee_id"
+              "not_assignee_username"
+              "not_author_id"
+              "not_author_username"
+              "not_iid"
+              "not_iteration_id"
+              "not_iteration_title"
+              "not_label"
+              "not_milestone"
+              "not_milestone_id"
+              "not_weight"
+              "scope"
+              "search"
+              "updated_after"
+              "updated_before"
+              "weight"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "issues_statistics"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/(-/)search"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "confidential"
+                or: "confidential"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "field"
+                or: "field"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "ref"
+                or: "ref"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "scope"
+                or: "scope"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "state"
+                or: "state"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/(-/)search"
+          q: {
+            "$action": "_search"
+            exist: [
+              "confidential"
+              "field"
+              "id"
+              "page"
+              "per_page"
+              "ref"
+              "scope"
+              "search"
+              "state"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "(-"
+            }
+            {
+              lit: ")search"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/repository/archive"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 1
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "exclude_path"
+                or: "exclude_path"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "tar.gz"
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "include_lfs_blob"
+                or: "include_lfs_blob"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "files/archives"
+                k: "query"
+                n: "path"
+                or: "path"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "7d70e02340bac451f281cecf0a980907974bd8be"
+                k: "query"
+                n: "sha"
+                or: "sha"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/repository/archive"
+          q: {
+            "$action": "repository_archive"
+            exist: [
+              "exclude_path"
+              "format"
+              "id"
+              "include_lfs_blob"
+              "path"
+              "sha"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "archive"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/jobs/artifacts/{ref_name}/raw/*artifact_path"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "artifact_id"
+                or: "ref_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "artifact_path"
+                or: "artifact_path"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "job"
+                or: "job"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "job_token"
+                or: "job_token"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/jobs/artifacts/{ref_name}/raw/*artifact_path"
+          q: {
+            exist: [
+              "artifact_id"
+              "artifact_path"
+              "id"
+              "job"
+              "job_token"
+            ]
+          }
+          r: {
+            param: {
+              ref_name: "artifact_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              var: "artifact_id"
+            }
+            {
+              lit: "raw"
+            }
+            {
+              lit: "*artifact_path"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/repository/files/{file_path}/blame"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "lib%2Fclass%2Erb"
+                k: "param"
+                n: "file_path"
+                or: "file_path"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: "gitlab-org/gitlab"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "range_end"
+                or: "range_end"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "range_start"
+                or: "range_start"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: "main"
+                k: "query"
+                n: "ref"
+                or: "ref"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/repository/files/{file_path}/blame"
+          q: {
+            exist: [
+              "file_path"
+              "id"
+              "range_end"
+              "range_start"
+              "ref"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_path"
+            }
+            {
+              lit: "blame"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/hooks/{hook_id}/events"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "hook_id"
+                or: "hook_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/hooks/{hook_id}/events"
+          q: {
+            exist: [
+              "hook_id"
+              "id"
+              "page"
+              "per_page"
+              "status"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "hooks"
+            }
+            {
+              var: "hook_id"
+            }
+            {
+              lit: "events"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/jobs/{job_id}/artifacts/*artifact_path"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "job_id"
+                or: "job_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "artifact_path"
+                or: "artifact_path"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "job_token"
+                or: "job_token"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/jobs/{job_id}/artifacts/*artifact_path"
+          q: {
+            exist: [
+              "artifact_path"
+              "id"
+              "job_id"
+              "job_token"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "job_id"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "*artifact_path"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/repository/files/{file_path}/raw"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "lib%2Fclass%2Erb"
+                k: "param"
+                n: "file_path"
+                or: "file_path"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: "gitlab-org/gitlab"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "lfs"
+                or: "lfs"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "main"
+                k: "query"
+                n: "ref"
+                or: "ref"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/repository/files/{file_path}/raw"
+          q: {
+            exist: [
+              "file_path"
+              "id"
+              "lfs"
+              "ref"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_path"
+            }
+            {
+              lit: "raw"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/jobs/artifacts/{ref_name}/download"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "ref_name"
+                or: "ref_name"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "job"
+                or: "job"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "job_token"
+                or: "job_token"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/jobs/artifacts/{ref_name}/download"
+          q: {
+            exist: [
+              "id"
+              "job"
+              "job_token"
+              "ref_name"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              var: "ref_name"
+            }
+            {
+              lit: "download"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/repository/files/{file_path}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "lib%2Fclass%2Erb"
+                k: "param"
+                n: "file_path"
+                or: "file_path"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: "gitlab-org/gitlab"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "main"
+                k: "query"
+                n: "ref"
+                or: "ref"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/repository/files/{file_path}"
+          q: {
+            exist: [
+              "file_path"
+              "id"
+              "ref"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_path"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/uploads/{secret}/{filename}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "filename"
+                or: "filename"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "secret"
+                or: "secret"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/uploads/{secret}/{filename}"
+          q: {
+            exist: [
+              "filename"
+              "id"
+              "secret"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              var: "secret"
+            }
+            {
+              var: "filename"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/jobs/{job_id}/artifacts"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "job_id"
+                or: "job_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "job_token"
+                or: "job_token"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/jobs/{job_id}/artifacts"
+          q: {
+            exist: [
+              "id"
+              "job_id"
+              "job_token"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "job_id"
+            }
+            {
+              lit: "artifacts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/issues/{issue_iid}/metric_images"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "issue_id"
+                or: "issue_iid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/issues/{issue_iid}/metric_images"
+          q: {
+            exist: [
+              "id"
+              "issue_id"
+            ]
+          }
+          r: {
+            param: {
+              issue_iid: "issue_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "issues"
+            }
+            {
+              var: "issue_id"
+            }
+            {
+              lit: "metric_images"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/pipelines/{pipeline_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 11
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 18
+                k: "param"
+                n: "pipeline_id"
+                or: "pipeline_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/pipelines/{pipeline_id}"
+          q: {
+            exist: [
+              "id"
+              "pipeline_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pipelines"
+            }
+            {
+              var: "pipeline_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/pipelines/latest"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 11
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "develop"
+                k: "query"
+                n: "ref"
+                or: "ref"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/pipelines/latest"
+          q: {
+            "$action": "pipeline_latest"
+            exist: [
+              "id"
+              "ref"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pipelines"
+            }
+            {
+              lit: "latest"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/repository/blobs/{sha}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 1
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "7d70e02340bac451f281cecf0a980907974bd8be"
+                k: "param"
+                n: "sha"
+                or: "sha"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/repository/blobs/{sha}"
+          q: {
+            exist: [
+              "id"
+              "sha"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "blobs"
+            }
+            {
+              var: "sha"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/repository/blobs/{sha}/raw"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 1
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "7d70e02340bac451f281cecf0a980907974bd8be"
+                k: "param"
+                n: "sha"
+                or: "sha"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/repository/blobs/{sha}/raw"
+          q: {
+            exist: [
+              "id"
+              "sha"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "blobs"
+            }
+            {
+              var: "sha"
+            }
+            {
+              lit: "raw"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/uploads/{upload_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "upload_id"
+                or: "upload_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/uploads/{upload_id}"
+          q: {
+            exist: [
+              "id"
+              "upload_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              var: "upload_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/snapshot"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "wiki"
+                or: "wiki"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/snapshot"
+          q: {
+            "$action": "snapshot"
+            exist: [
+              "id"
+              "wiki"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "snapshot"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/languages"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/languages"
+          q: {
+            "$action": "language"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "languages"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/pages_access"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/pages_access"
+          q: {
+            "$action": "pages_access"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pages_access"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/repository/files/{file_path}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "lib%2Fclass%2Erb"
+                k: "param"
+                n: "file_path"
+                or: "file_path"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: "gitlab-org/gitlab"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "johndoe@example.com"
+                k: "query"
+                n: "author_email"
+                or: "author_email"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "John Doe"
+                k: "query"
+                n: "author_name"
+                or: "author_name"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "main"
+                k: "query"
+                n: "branch"
+                or: "branch"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: "Initial commit"
+                k: "query"
+                n: "commit_message"
+                or: "commit_message"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: "main"
+                k: "query"
+                n: "start_branch"
+                or: "start_branch"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/repository/files/{file_path}"
+          q: {
+            exist: [
+              "author_email"
+              "author_name"
+              "branch"
+              "commit_message"
+              "file_path"
+              "id"
+              "start_branch"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_path"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/{draft_note_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "draft_note_id"
+                or: "draft_note_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "merge_request_id"
+                or: "merge_request_iid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/merge_requests/{merge_request_iid}/draft_notes/{draft_note_id}"
+          q: {
+            exist: [
+              "draft_note_id"
+              "id"
+              "merge_request_id"
+            ]
+          }
+          r: {
+            param: {
+              merge_request_iid: "merge_request_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "merge_requests"
+            }
+            {
+              var: "merge_request_id"
+            }
+            {
+              lit: "draft_notes"
+            }
+            {
+              var: "draft_note_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/uploads/{secret}/{filename}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "filename"
+                or: "filename"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "secret"
+                or: "secret"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/uploads/{secret}/{filename}"
+          q: {
+            exist: [
+              "filename"
+              "id"
+              "secret"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              var: "secret"
+            }
+            {
+              var: "filename"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/hooks/{hook_id}/custom_headers/{key}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "hook_id"
+                or: "hook_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "key"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/hooks/{hook_id}/custom_headers/{key}"
+          q: {
+            exist: [
+              "hook_id"
+              "id"
+              "key"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "hooks"
+            }
+            {
+              var: "hook_id"
+            }
+            {
+              lit: "custom_headers"
+            }
+            {
+              var: "key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/hooks/{hook_id}/url_variables/{key}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "hook_id"
+                or: "hook_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "key"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/hooks/{hook_id}/url_variables/{key}"
+          q: {
+            exist: [
+              "hook_id"
+              "id"
+              "key"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "hooks"
+            }
+            {
+              var: "hook_id"
+            }
+            {
+              lit: "url_variables"
+            }
+            {
+              var: "key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/variables/{key}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 18
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "NEW_VARIABLE"
+                k: "param"
+                n: "key"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 13
+                k: "param"
+                n: "pipeline_schedule_id"
+                or: "pipeline_schedule_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/variables/{key}"
+          q: {
+            exist: [
+              "id"
+              "key"
+              "pipeline_schedule_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pipeline_schedules"
+            }
+            {
+              var: "pipeline_schedule_id"
+            }
+            {
+              lit: "variables"
+            }
+            {
+              var: "key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/pages/domains/{domain}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "domain"
+                or: "domain"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/pages/domains/{domain}"
+          q: {
+            exist: [
+              "domain"
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "domains"
+            }
+            {
+              var: "domain"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/share/{group_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "group_id"
+                or: "group_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/share/{group_id}"
+          q: {
+            exist: [
+              "group_id"
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "share"
+            }
+            {
+              var: "group_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/issues/{issue_iid}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "issue_iid"
+                or: "issue_iid"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/issues/{issue_iid}"
+          q: {
+            exist: [
+              "id"
+              "issue_iid"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "issues"
+            }
+            {
+              var: "issue_iid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/jobs/{job_id}/artifacts"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "job_id"
+                or: "job_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/jobs/{job_id}/artifacts"
+          q: {
+            exist: [
+              "id"
+              "job_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "job_id"
+            }
+            {
+              lit: "artifacts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/custom_attributes/{key}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "key"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/custom_attributes/{key}"
+          q: {
+            exist: [
+              "id"
+              "key"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "custom_attributes"
+            }
+            {
+              var: "key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/protected_branches/{name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "gitlab-org/gitlab"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "main"
+                k: "param"
+                n: "name"
+                or: "name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/protected_branches/{name}"
+          q: {
+            exist: [
+              "id"
+              "name"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "protected_branches"
+            }
+            {
+              var: "name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/packages/protection/rules/{package_protection_rule_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "package_protection_rule_id"
+                or: "package_protection_rule_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/packages/protection/rules/{package_protection_rule_id}"
+          q: {
+            exist: [
+              "id"
+              "package_protection_rule_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "protection"
+            }
+            {
+              lit: "rules"
+            }
+            {
+              var: "package_protection_rule_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/pipelines/{pipeline_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 11
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 18
+                k: "param"
+                n: "pipeline_id"
+                or: "pipeline_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/pipelines/{pipeline_id}"
+          q: {
+            exist: [
+              "id"
+              "pipeline_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pipelines"
+            }
+            {
+              var: "pipeline_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 18
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 13
+                k: "param"
+                n: "pipeline_schedule_id"
+                or: "pipeline_schedule_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/pipeline_schedules/{pipeline_schedule_id}"
+          q: {
+            exist: [
+              "id"
+              "pipeline_schedule_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pipeline_schedules"
+            }
+            {
+              var: "pipeline_schedule_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/registry/protection/repository/rules/{protection_rule_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "protection_rule_id"
+                or: "protection_rule_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/registry/protection/repository/rules/{protection_rule_id}"
+          q: {
+            exist: [
+              "id"
+              "protection_rule_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "protection"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "rules"
+            }
+            {
+              var: "protection_rule_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/triggers/{trigger_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 18
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 10
+                k: "param"
+                n: "trigger_id"
+                or: "trigger_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/triggers/{trigger_id}"
+          q: {
+            exist: [
+              "id"
+              "trigger_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "triggers"
+            }
+            {
+              var: "trigger_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/uploads/{upload_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "upload_id"
+                or: "upload_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/uploads/{upload_id}"
+          q: {
+            exist: [
+              "id"
+              "upload_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "uploads"
+            }
+            {
+              var: "upload_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/artifacts"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/artifacts"
+          q: {
+            "$action": "artifact"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "artifacts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /api/v4/projects/{id}/fork"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v4/projects/{id}/fork"
+          q: {
+            "$action": "fork"
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "fork"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/hooks/{hook_id}/custom_headers/{key}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "hook_id"
+                or: "hook_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "key"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_hooks_hook_id_custom_headers_key"
+                or: "put_api_v4_projects_id_hooks_hook_id_custom_headers_key"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/hooks/{hook_id}/custom_headers/{key}"
+          q: {
+            exist: [
+              "hook_id"
+              "id"
+              "key"
+              "put_api_v4_projects_id_hooks_hook_id_custom_headers_key"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "hooks"
+            }
+            {
+              var: "hook_id"
+            }
+            {
+              lit: "custom_headers"
+            }
+            {
+              var: "key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/hooks/{hook_id}/url_variables/{key}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "hook_id"
+                or: "hook_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "key"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_hooks_hook_id_url_variables_key"
+                or: "put_api_v4_projects_id_hooks_hook_id_url_variables_key"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/hooks/{hook_id}/url_variables/{key}"
+          q: {
+            exist: [
+              "hook_id"
+              "id"
+              "key"
+              "put_api_v4_projects_id_hooks_hook_id_url_variables_key"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "hooks"
+            }
+            {
+              var: "hook_id"
+            }
+            {
+              lit: "url_variables"
+            }
+            {
+              var: "key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/pages/domains/{domain}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "domain"
+                or: "domain"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_pages_domains_domain"
+                or: "put_api_v4_projects_id_pages_domains_domain"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/pages/domains/{domain}"
+          q: {
+            exist: [
+              "domain"
+              "id"
+              "put_api_v4_projects_id_pages_domains_domain"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "domains"
+            }
+            {
+              var: "domain"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/repository/files/{file_path}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "lib%2Fclass%2Erb"
+                k: "param"
+                n: "file_path"
+                or: "file_path"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: "gitlab-org/gitlab"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_repository_files_file_path"
+                or: "put_api_v4_projects_id_repository_files_file_path"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/repository/files/{file_path}"
+          q: {
+            exist: [
+              "file_path"
+              "id"
+              "put_api_v4_projects_id_repository_files_file_path"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "files"
+            }
+            {
+              var: "file_path"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/custom_attributes/{key}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "key"
+                or: "key"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_custom_attributes_key"
+                or: "put_api_v4_projects_id_custom_attributes_key"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/custom_attributes/{key}"
+          q: {
+            exist: [
+              "id"
+              "key"
+              "put_api_v4_projects_id_custom_attributes_key"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "custom_attributes"
+            }
+            {
+              var: "key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/pipelines/{pipeline_id}/metadata"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 11
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 18
+                k: "param"
+                n: "pipeline_id"
+                or: "pipeline_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_pipelines_pipeline_id_metadata"
+                or: "put_api_v4_projects_id_pipelines_pipeline_id_metadata"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/pipelines/{pipeline_id}/metadata"
+          q: {
+            "$action": "metadata"
+            exist: [
+              "id"
+              "pipeline_id"
+              "put_api_v4_projects_id_pipelines_pipeline_id_metadata"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pipelines"
+            }
+            {
+              var: "pipeline_id"
+            }
+            {
+              lit: "metadata"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.custom_attribute")]
+    [path("$.main.kit.entity.hook")]
+    [path("$.main.kit.entity.job")]
+    [path("$.main.kit.entity.merge_request")]
+    [path("$.main.kit.entity.hook")]
+    [path("$.main.kit.entity.hook")]
+    [path("$.main.kit.entity.hook")]
+    [path("$.main.kit.entity.hook")]
+    [path("$.main.kit.entity.merge_request")]
+  ]
+
+}

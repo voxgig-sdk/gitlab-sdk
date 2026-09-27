@@ -19,7 +19,6 @@ import type {
   ApiEntitiesPersonalAccessTokenListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesPersonalAccessTokenEntity extends GitlabEntityBase<ApiEntitiesPersonalAccessToken> {
 
   constructor(client: GitlabSDK, entopts: any) {

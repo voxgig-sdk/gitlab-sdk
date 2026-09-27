@@ -92,7 +92,7 @@ function api_entities_commit_detail_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_commit_detail01", "api_entities_commit_detail02", "api_entities_commit_detail03", "project01", "project02", "project03", "commit01", "commit02", "commit03", "submodule01", "submodule02", "submodule03"] as $k) {
+    foreach (["api_entities_commit_detail01", "api_entities_commit_detail02", "api_entities_commit_detail03", "project01", "project02", "project03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

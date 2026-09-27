@@ -1,0 +1,41 @@
+# BasicApiEntitiesCiJobBasicFlow
+
+main: kit: flow: BasicApiEntitiesCiJobBasicFlow:
+{
+  entity: "api_entities_ci_job_basic",
+  kind: "basic",
+  name: "BasicApiEntitiesCiJobBasicFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_ci_job_basic_ref01"
+      }
+
+      m: {
+        job_id: "job01",
+        key: "key01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        key: "key01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_ci_job_basic_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCiJobBasicFlow"
+}

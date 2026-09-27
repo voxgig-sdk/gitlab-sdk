@@ -123,7 +123,7 @@ func terraform_registryBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"terraform_registry01", "terraform_registry02", "terraform_registry03", "v101", "v102", "v103", "project01", "project02", "project03", "module01", "module02", "module03", "module_name01"},
+		[]any{"terraform_registry01", "terraform_registry02", "terraform_registry03", "project01", "project02", "project03", "module01", "module_name01", "v101"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

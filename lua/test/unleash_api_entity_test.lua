@@ -76,7 +76,7 @@ function unleash_api_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "unleash_api01", "unleash_api02", "unleash_api03", "unleash01", "unleash02", "unleash03" },
+    { "unleash_api01", "unleash_api02", "unleash_api03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

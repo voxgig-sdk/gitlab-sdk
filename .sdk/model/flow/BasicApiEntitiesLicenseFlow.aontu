@@ -1,0 +1,33 @@
+# BasicApiEntitiesLicenseFlow
+
+main: kit: flow: BasicApiEntitiesLicenseFlow:
+{
+  entity: "api_entities_license",
+  kind: "basic",
+  name: "BasicApiEntitiesLicenseFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_license_ref01",
+        srcdatavar: "api_entities_license_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_entities_license01",
+        type: "type01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_license_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesLicenseFlow"
+}

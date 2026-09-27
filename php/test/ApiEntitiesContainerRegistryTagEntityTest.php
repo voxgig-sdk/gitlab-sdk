@@ -113,7 +113,7 @@ function api_entities_container_registry_tag_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_container_registry_tag01", "api_entities_container_registry_tag02", "api_entities_container_registry_tag03", "project01", "project02", "project03", "repository01", "repository02", "repository03"] as $k) {
+    foreach (["api_entities_container_registry_tag01", "api_entities_container_registry_tag02", "api_entities_container_registry_tag03", "project01", "project02", "project03", "repository01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

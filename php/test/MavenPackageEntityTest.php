@@ -79,7 +79,7 @@ function maven_package_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["maven_package01", "maven_package02", "maven_package03", "group01", "group02", "group03", "*path01", "*path02", "*path03", "project01", "project02", "project03"] as $k) {
+    foreach (["maven_package01", "maven_package02", "maven_package03", "group01", "group02", "group03", "project01", "project02", "project03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

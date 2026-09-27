@@ -1,0 +1,31 @@
+# BasicRunnerFlow
+
+main: kit: flow: BasicRunnerFlow:
+{
+  entity: "runner",
+  kind: "basic",
+  name: "BasicRunnerFlow",
+  step: [
+    {
+      i: {
+        ref: "runner_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "runner_ref01",
+        suffix: "_rm0"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicRunnerFlow"
+}

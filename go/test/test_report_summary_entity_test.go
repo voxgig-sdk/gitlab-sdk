@@ -98,7 +98,7 @@ func test_report_summaryBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"test_report_summary01", "test_report_summary02", "test_report_summary03", "project01", "project02", "project03", "pipeline01", "pipeline02", "pipeline03"},
+		[]any{"test_report_summary01", "test_report_summary02", "test_report_summary03", "project01", "project02", "project03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

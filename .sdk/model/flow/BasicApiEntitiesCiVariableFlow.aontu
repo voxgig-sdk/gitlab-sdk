@@ -1,0 +1,83 @@
+# BasicApiEntitiesCiVariableFlow
+
+main: kit: flow: BasicApiEntitiesCiVariableFlow:
+{
+  entity: "api_entities_ci_variable",
+  kind: "basic",
+  name: "BasicApiEntitiesCiVariableFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_ci_variable_ref01"
+      }
+
+      m: {
+        group_id: "group01",
+        pipeline_id: "pipeline01",
+        pipeline_schedule_id: "pipeline_schedule01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        pipeline_id: "pipeline01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_ci_variable_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_ci_variable_ref01",
+        srcdatavar: "api_entities_ci_variable_ref01_data",
+        suffix: "_up0",
+        textfield: "description"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_ci_variable_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_ci_variable_ref01",
+        srcdatavar: "api_entities_ci_variable_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_entities_ci_variable01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_ci_variable_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesCiVariableFlow"
+}

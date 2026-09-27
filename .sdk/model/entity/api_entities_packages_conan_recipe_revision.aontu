@@ -1,0 +1,150 @@
+# Entity: api_entities_packages_conan_recipe_revision
+
+main: kit: entity: api_entities_packages_conan_recipe_revision: {
+
+  alias: field: {}
+
+  fields: {
+    revision: {
+      h: "Revision"
+      n: "revision"
+      r: false
+      sh: "The revision hash of the Conan recipe or package"
+      t: "`$STRING`"
+    }
+    time: {
+      h: "Time"
+      n: "time"
+      r: false
+      sh: "The UTC timestamp when the revision was created"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_entities_packages_conan_recipe_revision"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "my-package"
+                k: "param"
+                n: "conan_id"
+                or: "package_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "stable"
+                k: "param"
+                n: "package_channel"
+                or: "package_channel"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: "my-group+my-project"
+                k: "param"
+                n: "package_username"
+                or: "package_username"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                ex: "1.0"
+                k: "param"
+                n: "package_version"
+                or: "package_version"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions"
+          q: {
+            exist: [
+              "conan_id"
+              "package_channel"
+              "package_username"
+              "package_version"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              package_name: "conan_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "conan"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "conans"
+            }
+            {
+              var: "conan_id"
+            }
+            {
+              var: "package_version"
+            }
+            {
+              var: "package_username"
+            }
+            {
+              var: "package_channel"
+            }
+            {
+              lit: "revisions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.revisions`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.conan")]
+  ]
+
+}

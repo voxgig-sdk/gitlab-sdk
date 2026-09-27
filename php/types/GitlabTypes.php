@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 // Typed models for the Gitlab SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 //
@@ -2613,7 +2613,7 @@ class ApiEntitiesDictionaryTable
 /** Request payload for ApiEntitiesDictionaryTable#load. */
 class ApiEntitiesDictionaryTableLoadMatch
 {
-    public string $databas_id;
+    public string $database_id;
     public string $id;
 }
 
@@ -8258,21 +8258,21 @@ class ConanPackageLoadMatch
 /** Request payload for ConanPackage#update. */
 class ConanPackageUpdateData
 {
-    public mixed $conan_package_reference = null;
+    public ?string $conan_id = null;
     public mixed $file_name;
-    public ?string $id = null;
     public mixed $package_channel;
-    public mixed $package_name = null;
+    public ?string $package_id = null;
     public mixed $package_revision = null;
     public mixed $package_username;
     public mixed $package_version;
-    public mixed $recipe_revision = null;
-    public ?array $put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name = null;
-    public ?string $conan_id = null;
-    public ?string $package_id = null;
     public ?string $project_id = null;
     public ?string $revision_id = null;
     public ?array $put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_packages_conan_package_reference_revisions_package_revision_files_file_name = null;
+    public mixed $conan_package_reference = null;
+    public ?string $id = null;
+    public mixed $package_name = null;
+    public mixed $recipe_revision = null;
+    public ?array $put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name = null;
     public ?array $put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name = null;
     public ?string $file_id = null;
     public ?array $put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_files_file_name = null;

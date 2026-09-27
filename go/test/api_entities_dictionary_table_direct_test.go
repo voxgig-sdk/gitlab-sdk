@@ -25,7 +25,7 @@ func TestApiEntitiesDictionaryTableDirect(t *testing.T) {
 			return
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"databas_id01", "id01"} {
+			for _, _liveKey := range []string{"database_id01", "id01"} {
 				if v := setup.idmap[_liveKey]; v == nil {
 					t.Skipf("live test needs %s via *_ENTID env var (synthetic IDs only)", _liveKey)
 					return
@@ -38,12 +38,12 @@ func TestApiEntitiesDictionaryTableDirect(t *testing.T) {
 		query := map[string]any{}
 		if setup.live {
 		} else {
-			params["databas_id"] = "direct01"
+			params["database_id"] = "direct01"
 			params["id"] = "direct02"
 		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "api/v4/admin/databases/{databas_id}/dictionary/tables/{id}",
+			"path":   "api/v4/admin/databases/{database_id}/dictionary/tables/{id}",
 			"method": "GET",
 			"params": params,
 			"query":  query,

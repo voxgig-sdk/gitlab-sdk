@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('WebCommitEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"web_commit","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{},"contract":{"id":"GET /api/v4/web_commits/public_key","json":"{\"operationId\":\"getApiV4WebCommitsPublicKey\",\"parameters\":[],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Get the public key for web commits\"},\"404\":{\"description\":\"Public key not found.\"},\"503\":{\"description\":\"The git server, Gitaly, is not available at this time. Please contact your administrator.\"}},\"securitySchemes\":{\"access_token_header\":{\"in\":\"header\",\"name\":\"PRIVATE-TOKEN\",\"type\":\"apiKey\"},\"access_token_query\":{\"in\":\"query\",\"name\":\"private_token\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/v4/web_commits/public_key","segments":[{"lit":"api"},{"lit":"v4"},{"lit":"web_commits"},{"lit":"public_key"}],"select":{"$action":"public_key"},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"web_commit","name__orig":"web_commit","Name":"WebCommit","name_":"web_commit","name-":"web-commit","NAME":"WEB_COMMIT","index$":274}, {"active":true,"entity":"web_commit","key$":"BasicWebCommitFlow","kind":"basic","name":"BasicWebCommitFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"web_commit_ref01","srcdatavar":"web_commit_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-web_commit_ref01"}}],"index$":0}]}, 'WebCommit')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"web_commit","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v4/web_commits/public_key","source":"swagger2","version":2},"g":{},"k":"http","m":"GET","o":"/api/v4/web_commits/public_key","q":{"$action":"public_key"},"r":{},"s":[{"lit":"api"},{"lit":"v4"},{"lit":"web_commits"},{"lit":"public_key"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"web_commit","name__orig":"web_commit","Name":"WebCommit","name_":"web_commit","name-":"web-commit","NAME":"WEB_COMMIT","index$":274}, {"active":true,"entity":"web_commit","key$":"BasicWebCommitFlow","kind":"basic","name":"BasicWebCommitFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"web_commit_ref01","srcdatavar":"web_commit_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-web_commit_ref01"}}],"index$":0}]}, 'WebCommit', {"GET /api/v4/web_commits/public_key":{"protocol":"http","parameters":[]}})
     }
     const client = setup.client
     const struct = setup.struct

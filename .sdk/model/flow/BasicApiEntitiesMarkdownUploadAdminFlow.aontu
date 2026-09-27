@@ -1,0 +1,26 @@
+# BasicApiEntitiesMarkdownUploadAdminFlow
+
+main: kit: flow: BasicApiEntitiesMarkdownUploadAdminFlow:
+{
+  entity: "api_entities_markdown_upload_admin",
+  kind: "basic",
+  name: "BasicApiEntitiesMarkdownUploadAdminFlow",
+  step: [
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_markdown_upload_admin_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesMarkdownUploadAdminFlow"
+}

@@ -19,7 +19,6 @@ import type {
   EeApiEntitiesMergeRequestApprovalStateListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class EeApiEntitiesMergeRequestApprovalStateEntity extends GitlabEntityBase<EeApiEntitiesMergeRequestApprovalState> {
 
   constructor(client: GitlabSDK, entopts: any) {

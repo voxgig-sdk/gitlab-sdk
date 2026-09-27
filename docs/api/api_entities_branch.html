@@ -298,14 +298,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesbranch">ApiEntitiesBranch</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiesbranch">ApiEntitiesBranch</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -350,6 +350,66 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_branchs, err := client.ApiEntitiesBranch(nil).List(map[string]any{&quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_branchs)
+api_entities_branch, err := client.ApiEntitiesBranch(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_branch)
+created, err := client.ApiEntitiesBranch(nil).Create(map[string]any{&quot;project_id&quot;: &quot;example&quot;, &quot;post_api_v4_projects_id_repository_branch&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.ApiEntitiesBranch(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;branch_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_branchs, err = client:ApiEntitiesBranch():list({ project_id = &quot;example&quot; })
+local api_entities_branch, err = client:ApiEntitiesBranch():load({ id = &quot;example_id&quot;, project_id = &quot;example&quot; })
+local created, err = client:ApiEntitiesBranch():create({ project_id = &quot;example&quot;, post_api_v4_projects_id_repository_branch = {} })
+local updated, err = client:ApiEntitiesBranch():update({ id = &quot;example_id&quot;, branch_id = &quot;example&quot;, project_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_branchs = $client-&gt;ApiEntitiesBranch()-&gt;list([&quot;project_id&quot; =&gt; &quot;example&quot;]);
+$api_entities_branch = $client-&gt;ApiEntitiesBranch()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;ApiEntitiesBranch()-&gt;create([&quot;project_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_projects_id_repository_branch&quot; =&gt; []]);
+$updated = $client-&gt;ApiEntitiesBranch()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;branch_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_branchs = client.ApiEntitiesBranch().list({&quot;project_id&quot;: &quot;example&quot;})
+api_entities_branch = client.ApiEntitiesBranch().load({&quot;id&quot;: &quot;example_id&quot;, &quot;project_id&quot;: &quot;example&quot;})
+created = client.ApiEntitiesBranch().create({ &quot;project_id&quot;: &quot;example&quot;, &quot;post_api_v4_projects_id_repository_branch&quot;: {} })
+updated = client.ApiEntitiesBranch().update({&quot;id&quot;: &quot;example_id&quot;, &quot;branch_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_branchs = client.ApiEntitiesBranch.list({ &quot;project_id&quot; =&gt; &quot;example&quot; })
+api_entities_branch = client.ApiEntitiesBranch.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+created = client.ApiEntitiesBranch.create({ &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_projects_id_repository_branch&quot; =&gt; {} })
+updated = client.ApiEntitiesBranch.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;branch_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_branchs = await client.ApiEntitiesBranch().list({ project_id: &quot;example&quot; })
+const api_entities_branch = await client.ApiEntitiesBranch().load({ id: &quot;example_id&quot;, project_id: &quot;example&quot; })
+const created = await client.ApiEntitiesBranch().create({ project_id: &quot;example&quot;, post_api_v4_projects_id_repository_branch: {} })
+const updated = await client.ApiEntitiesBranch().update({ id: &quot;example_id&quot;, branch_id: &quot;example&quot;, project_id: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -365,139 +425,139 @@
 <td><code>author_email</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Author Email</td>
 </tr>
 <tr>
 <td><code>author_name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Author Name</td>
 </tr>
 <tr>
 <td><code>authored_date</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Authored Date</td>
 </tr>
 <tr>
 <td><code>can_push</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Can Push</td>
 </tr>
 <tr>
 <td><code>commit</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td>API_Entities_Commit model</td>
+<td><code>API_Entities_Commit</code> model</td>
 </tr>
 <tr>
 <td><code>committed_date</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Committed Date</td>
 </tr>
 <tr>
 <td><code>committer_email</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Committer Email</td>
 </tr>
 <tr>
 <td><code>committer_name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Committer Name</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>default</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Default</td>
 </tr>
 <tr>
 <td><code>developers_can_merge</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Developers Can Merge</td>
 </tr>
 <tr>
 <td><code>developers_can_push</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Developers Can Push</td>
 </tr>
 <tr>
 <td><code>extended_trailers</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Extended Trailers</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>merged</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Merged</td>
 </tr>
 <tr>
 <td><code>message</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Message</td>
 </tr>
 <tr>
 <td><code>name</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Name</td>
 </tr>
 <tr>
 <td><code>parent_ids</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Parent Ids</td>
 </tr>
 <tr>
 <td><code>protected</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Protected</td>
 </tr>
 <tr>
 <td><code>short_id</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Short Id</td>
 </tr>
 <tr>
 <td><code>title</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Title</td>
 </tr>
 <tr>
 <td><code>trailers</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Trailers</td>
 </tr>
 <tr>
 <td><code>web_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Web Url</td>
 </tr>
 </tbody>
 </table>

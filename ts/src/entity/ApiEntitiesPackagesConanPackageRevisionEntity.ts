@@ -19,7 +19,6 @@ import type {
   ApiEntitiesPackagesConanPackageRevisionListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesPackagesConanPackageRevisionEntity extends GitlabEntityBase<ApiEntitiesPackagesConanPackageRevision> {
 
   constructor(client: GitlabSDK, entopts: any) {

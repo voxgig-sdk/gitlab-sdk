@@ -102,7 +102,7 @@ def participant_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["participant01", "participant02", "participant03", "project01", "project02", "project03", "issue01", "issue02", "issue03", "merge_request01", "merge_request02", "merge_request03"],
+    ["participant01", "participant02", "participant03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

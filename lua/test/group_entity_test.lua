@@ -97,7 +97,7 @@ function group_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "group01", "group02", "group03", "billable_member01", "billable_member02", "billable_member03", "custom_attribute01", "custom_attribute02", "custom_attribute03", "share01", "share02", "share03", "ssh_certificate01", "ssh_certificate02", "ssh_certificate03", "upload01", "upload02", "upload03", "secret01" },
+    { "group01", "group02", "group03", "custom_attribute01", "custom_attribute02", "custom_attribute03", "secret01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

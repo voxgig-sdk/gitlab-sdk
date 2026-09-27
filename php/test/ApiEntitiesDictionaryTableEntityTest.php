@@ -74,7 +74,7 @@ function api_entities_dictionary_table_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_dictionary_table01", "api_entities_dictionary_table02", "api_entities_dictionary_table03", "databas01", "databas02", "databas03"] as $k) {
+    foreach (["api_entities_dictionary_table01", "api_entities_dictionary_table02", "api_entities_dictionary_table03", "database01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

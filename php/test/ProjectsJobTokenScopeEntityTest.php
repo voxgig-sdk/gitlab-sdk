@@ -73,7 +73,7 @@ function projects_job_token_scope_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["projects_job_token_scope01", "projects_job_token_scope02", "projects_job_token_scope03", "project01", "project02", "project03", "allowlist01", "allowlist02", "allowlist03", "groups_allowlist01", "groups_allowlist02", "groups_allowlist03"] as $k) {
+    foreach (["projects_job_token_scope01", "projects_job_token_scope02", "projects_job_token_scope03", "project01", "project02", "project03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

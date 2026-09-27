@@ -1,0 +1,34 @@
+# BasicApiEntitiesFeatureFlow
+
+main: kit: flow: BasicApiEntitiesFeatureFlow:
+{
+  entity: "api_entities_feature",
+  kind: "basic",
+  name: "BasicApiEntitiesFeatureFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_feature_ref01"
+      }
+
+      m: {
+        name: "name01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_feature_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesFeatureFlow"
+}

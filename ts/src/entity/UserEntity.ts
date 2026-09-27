@@ -19,7 +19,6 @@ import type {
   UserListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class UserEntity extends GitlabEntityBase<User> {
 
   constructor(client: GitlabSDK, entopts: any) {

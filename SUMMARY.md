@@ -1155,6 +1155,7 @@ Key fields to recognise:
 
 - `author`: API_Entities_UserBasic model
 - `commit`: API_Entities_Commit model
+- `links`: API_Entities_Releases_Link model
 
 ### [ApiEntitiesReleasesLink](docs/api/api_entities_releases_link.html)
 
@@ -2668,8 +2669,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ComposerPackage](docs/api/composer_package.html) | `load` | `GET /api/v4/group/{id}/-/packages/composer/packages` | See reference |
 | [Conan](docs/api/conan.html) | `remove` | `DELETE /api/v4/projects/{id}/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}` | See reference |
 | [Conan](docs/api/conan.html) | `remove` | `DELETE /api/v4/packages/conan/v1/conans/{package_name}/{package_version}/{package_username}/{package_channel}` | See reference |
-| [ConanPackage](docs/api/conan_package.html) | `load` | `GET /api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}` | See reference |
 | [ConanPackage](docs/api/conan_package.html) | `load` | `GET /api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/packages/{conan_package_reference}/revisions/{package_revision}/files/{file_name}` | See reference |
+| [ConanPackage](docs/api/conan_package.html) | `load` | `GET /api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}` | See reference |
 | [ConanPackage](docs/api/conan_package.html) | `load` | `GET /api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}` | See reference |
 | [ConanPackage](docs/api/conan_package.html) | `load` | `GET /api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/files/{file_name}` | See reference |
 | [ConanPackage](docs/api/conan_package.html) | `load` | `GET /api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}` | See reference |
@@ -2691,11 +2692,11 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ConanPackage](docs/api/conan_package.html) | `load` | `GET /api/v4/packages/conan/v1/users/check_credentials` | See reference |
 | [ConanPackage](docs/api/conan_package.html) | `remove` | `DELETE /api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/packages/{conan_package_reference}/revisions/{package_revision}` | See reference |
 | [ConanPackage](docs/api/conan_package.html) | `remove` | `DELETE /api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}` | See reference |
-| [ConanPackage](docs/api/conan_package.html) | `update` | `PUT /api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}` | See reference |
 | [ConanPackage](docs/api/conan_package.html) | `update` | `PUT /api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/packages/{conan_package_reference}/revisions/{package_revision}/files/{file_name}` | See reference |
+| [ConanPackage](docs/api/conan_package.html) | `update` | `PUT /api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}` | See reference |
+| [ConanPackage](docs/api/conan_package.html) | `update` | `PUT /api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/packages/{conan_package_reference}/revisions/{package_revision}/files/{file_name}/authorize` | See reference |
 | [ConanPackage](docs/api/conan_package.html) | `update` | `PUT /api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}` | See reference |
 | [ConanPackage](docs/api/conan_package.html) | `update` | `PUT /api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}/authorize` | See reference |
-| [ConanPackage](docs/api/conan_package.html) | `update` | `PUT /api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/packages/{conan_package_reference}/revisions/{package_revision}/files/{file_name}/authorize` | See reference |
 | [ConanPackage](docs/api/conan_package.html) | `update` | `PUT /api/v4/projects/{id}/packages/conan/v2/conans/{package_name}/{package_version}/{package_username}/{package_channel}/revisions/{recipe_revision}/files/{file_name}` | See reference |
 | [ConanPackage](docs/api/conan_package.html) | `update` | `PUT /api/v4/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/package/{conan_package_reference}/{package_revision}/{file_name}/authorize` | See reference |
 | [ConanPackage](docs/api/conan_package.html) | `update` | `PUT /api/v4/projects/{id}/packages/conan/v1/files/{package_name}/{package_version}/{package_username}/{package_channel}/{recipe_revision}/export/{file_name}` | See reference |

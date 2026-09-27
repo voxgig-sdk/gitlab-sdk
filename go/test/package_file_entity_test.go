@@ -104,7 +104,7 @@ func package_fileBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"package_file01", "package_file02", "package_file03", "project01", "project02", "project03", "package01", "package02", "package03"},
+		[]any{"package_file01", "package_file02", "package_file03", "project01", "project02", "project03", "package01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

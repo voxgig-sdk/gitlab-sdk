@@ -1,0 +1,76 @@
+# Entity: ee_api_entities_geo_pipeline_ref
+
+main: kit: entity: ee_api_entities_geo_pipeline_ref: {
+
+  alias: field: {}
+
+  fields: {
+    pipeline_refs: {
+      h: "Pipeline Refs"
+      n: "pipeline_refs"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "ee_api_entities_geo_pipeline_ref"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/geo/repositories/{gl_repository}/pipeline_refs"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "gl_repository"
+                or: "gl_repository"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/geo/repositories/{gl_repository}/pipeline_refs"
+          q: {
+            exist: [
+              "gl_repository"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "geo"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "gl_repository"
+            }
+            {
+              lit: "pipeline_refs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

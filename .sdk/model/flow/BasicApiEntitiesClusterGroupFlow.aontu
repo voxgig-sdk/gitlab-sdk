@@ -1,0 +1,68 @@
+# BasicApiEntitiesClusterGroupFlow
+
+main: kit: flow: BasicApiEntitiesClusterGroupFlow:
+{
+  entity: "api_entities_cluster_group",
+  kind: "basic",
+  name: "BasicApiEntitiesClusterGroupFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_cluster_group_ref01"
+      }
+
+      m: {
+        group_id: "group01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        group_id: "group01"
+      }
+
+      i: {
+        ref: "api_entities_cluster_group_ref01",
+        srcdatavar: "api_entities_cluster_group_ref01_data",
+        suffix: "_up0",
+        textfield: "cluster_type"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_cluster_group_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_cluster_group_ref01",
+        srcdatavar: "api_entities_cluster_group_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        group_id: "group01",
+        id: "api_entities_cluster_group01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_cluster_group_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesClusterGroupFlow"
+}

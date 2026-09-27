@@ -1,0 +1,345 @@
+# Entity: api_entities_terraform_module_version
+
+main: kit: entity: api_entities_terraform_module_version: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    modules: {
+      h: "Modules"
+      n: "modules"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: false
+      t: "`$STRING`"
+    }
+    providers: {
+      h: "Providers"
+      n: "providers"
+      r: false
+      t: "`$STRING`"
+    }
+    root: {
+      h: "Root"
+      n: "root"
+      r: false
+      t: "`$STRING`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: false
+      t: "`$STRING`"
+    }
+    submodules: {
+      h: "Submodules"
+      n: "submodules"
+      r: false
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      t: "`$STRING`"
+    }
+    versions: {
+      h: "Versions"
+      n: "versions"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "module_namespace"
+      "module_name"
+      "module_system"
+    ]
+    sep: "/"
+  }
+
+  name: "api_entities_terraform_module_version"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}/versions"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "module_name"
+                or: "module_name"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "module_system"
+                or: "module_system"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "v1_id"
+                or: "module_namespace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}/versions"
+          q: {
+            exist: [
+              "module_name"
+              "module_system"
+              "v1_id"
+            ]
+          }
+          r: {
+            param: {
+              module_namespace: "v1_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "terraform"
+            }
+            {
+              lit: "modules"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              var: "v1_id"
+            }
+            {
+              var: "module_name"
+            }
+            {
+              var: "module_system"
+            }
+            {
+              lit: "versions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}/*module_version"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "module_name"
+                or: "module_name"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "module_system"
+                or: "module_system"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "v1_id"
+                or: "module_namespace"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "module_version"
+                or: "module_version"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}/*module_version"
+          q: {
+            exist: [
+              "module_name"
+              "module_system"
+              "module_version"
+              "v1_id"
+            ]
+          }
+          r: {
+            param: {
+              module_namespace: "v1_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "terraform"
+            }
+            {
+              lit: "modules"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              var: "v1_id"
+            }
+            {
+              var: "module_name"
+            }
+            {
+              var: "module_system"
+            }
+            {
+              lit: "*module_version"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "module_name"
+                or: "module_name"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "module_namespace"
+                or: "module_namespace"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "param"
+                n: "module_system"
+                or: "module_system"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/packages/terraform/modules/v1/{module_namespace}/{module_name}/{module_system}"
+          q: {
+            exist: [
+              "module_name"
+              "module_namespace"
+              "module_system"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "packages"
+            }
+            {
+              lit: "terraform"
+            }
+            {
+              lit: "modules"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              var: "module_namespace"
+            }
+            {
+              var: "module_name"
+            }
+            {
+              var: "module_system"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

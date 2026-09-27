@@ -1,0 +1,204 @@
+# Entity: api_entities_license
+
+main: kit: entity: api_entities_license: {
+
+  alias: field: {}
+
+  fields: {
+    conditions: {
+      h: "Conditions"
+      n: "conditions"
+      r: false
+      t: "`$ARRAY`"
+    }
+    content: {
+      h: "Content"
+      n: "content"
+      r: false
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: "`$STRING`"
+    }
+    html_url: {
+      h: "Html Url"
+      n: "html_url"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: false
+      t: "`$STRING`"
+    }
+    limitations: {
+      h: "Limitations"
+      n: "limitations"
+      r: false
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    nickname: {
+      h: "Nickname"
+      n: "nickname"
+      r: false
+      t: "`$STRING`"
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: false
+      t: "`$ARRAY`"
+    }
+    popular: {
+      h: "Popular"
+      n: "popular"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    source_url: {
+      h: "Source Url"
+      n: "source_url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    from: {
+      name: "name"
+    }
+    name: "id"
+    parts: [
+      "type"
+      "name"
+    ]
+    sep: "/"
+  }
+
+  name: "api_entities_license"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/templates/{type}/{name}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "MIT"
+                k: "param"
+                n: "name"
+                or: "name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "type"
+                or: "type"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+            query: [
+              {
+                ex: "GitLab B.V."
+                k: "query"
+                n: "fullname"
+                or: "fullname"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: "GitLab"
+                k: "query"
+                n: "project"
+                or: "project"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "source_template_project_id"
+                or: "source_template_project_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/templates/{type}/{name}"
+          q: {
+            exist: [
+              "fullname"
+              "id"
+              "name"
+              "project"
+              "source_template_project_id"
+              "type"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "templates"
+            }
+            {
+              var: "type"
+            }
+            {
+              var: "name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

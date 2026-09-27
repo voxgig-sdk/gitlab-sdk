@@ -2054,7 +2054,7 @@ export interface ApiEntitiesDictionaryTable {
     table_name?: string;
 }
 export interface ApiEntitiesDictionaryTableLoadMatch {
-    databas_id: string;
+    database_id: string;
     id: string;
 }
 export interface ApiEntitiesDiff {
@@ -6688,21 +6688,21 @@ export interface ConanPackageLoadMatch {
     recipe_revision: any;
 }
 export interface ConanPackageUpdateData {
-    conan_package_reference?: any;
+    conan_id?: string;
     file_name: any;
-    id?: string;
     package_channel: any;
-    package_name?: any;
+    package_id?: string;
     package_revision?: any;
     package_username: any;
     package_version: any;
-    recipe_revision?: any;
-    put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name?: Record<string, any>;
-    conan_id?: string;
-    package_id?: string;
     project_id?: string;
     revision_id?: string;
     put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_packages_conan_package_reference_revisions_package_revision_files_file_name?: Record<string, any>;
+    conan_package_reference?: any;
+    id?: string;
+    package_name?: any;
+    recipe_revision?: any;
+    put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name?: Record<string, any>;
     put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name?: Record<string, any>;
     file_id?: string;
     put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_files_file_name?: Record<string, any>;

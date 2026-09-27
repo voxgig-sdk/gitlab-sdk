@@ -19,7 +19,6 @@ import type {
   ApiEntitiesRelatedIssueListMatch,
 } from '../GitlabTypes'
 
-// TODO: needs Entity superclass
 class ApiEntitiesRelatedIssueEntity extends GitlabEntityBase<ApiEntitiesRelatedIssue> {
 
   constructor(client: GitlabSDK, entopts: any) {

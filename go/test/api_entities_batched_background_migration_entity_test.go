@@ -189,7 +189,7 @@ func api_entities_batched_background_migrationBasicSetup(extra map[string]any) *
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_batched_background_migration01", "api_entities_batched_background_migration02", "api_entities_batched_background_migration03", "batched_background_migration01", "batched_background_migration02", "batched_background_migration03"},
+		[]any{"api_entities_batched_background_migration01", "api_entities_batched_background_migration02", "api_entities_batched_background_migration03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

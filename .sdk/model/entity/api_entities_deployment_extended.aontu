@@ -1,0 +1,322 @@
+# Entity: api_entities_deployment_extended
+
+main: kit: entity: api_entities_deployment_extended: {
+
+  alias: field: {}
+
+  fields: {
+    approval_summary: {
+      h: "Approval Summary"
+      n: "approval_summary"
+      r: false
+      t: "`$OBJECT`"
+    }
+    approvals: {
+      h: "Approvals"
+      n: "approvals"
+      r: false
+      sh: "API_Entities_Deployments_Approval model"
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    deployable: {
+      h: "Deployable"
+      n: "deployable"
+      r: false
+      sh: "API_Entities_Ci_Job model"
+      t: "`$OBJECT`"
+    }
+    environment: {
+      h: "Environment"
+      n: "environment"
+      r: false
+      sh: "API_Entities_EnvironmentBasic model"
+      t: "`$OBJECT`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    iid: {
+      fo: "int32"
+      h: "Iid"
+      n: "iid"
+      r: false
+      t: "`$INTEGER`"
+    }
+    pending_approval_count: {
+      fo: "int32"
+      h: "Pending Approval Count"
+      n: "pending_approval_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+    ref: {
+      h: "Ref"
+      n: "ref"
+      r: false
+      t: "`$STRING`"
+    }
+    sha: {
+      h: "Sha"
+      n: "sha"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      t: "`$STRING`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: false
+      sh: "API_Entities_UserBasic model"
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_deployment_extended"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/deployments"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_deployment"
+                or: "post_api_v4_projects_id_deployment"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/deployments"
+          q: {
+            exist: [
+              "post_api_v4_projects_id_deployment"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "deployments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/deployments/{deployment_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "deployment_id"
+                or: "deployment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/deployments/{deployment_id}"
+          q: {
+            exist: [
+              "deployment_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "deployment_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/deployments/{deployment_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "deployment_id"
+                or: "deployment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_deployments_deployment_id"
+                or: "put_api_v4_projects_id_deployments_deployment_id"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/deployments/{deployment_id}"
+          q: {
+            exist: [
+              "deployment_id"
+              "project_id"
+              "put_api_v4_projects_id_deployments_deployment_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "deployment_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.deployment")]
+  ]
+
+}

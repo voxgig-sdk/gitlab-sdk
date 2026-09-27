@@ -1,0 +1,28 @@
+# BasicProjectsJobTokenScopeFlow
+
+main: kit: flow: BasicProjectsJobTokenScopeFlow:
+{
+  entity: "projects_job_token_scope",
+  kind: "basic",
+  name: "BasicProjectsJobTokenScopeFlow",
+  step: [
+    {
+      i: {
+        ref: "projects_job_token_scope_ref01",
+        srcdatavar: "projects_job_token_scope_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-projects_job_token_scope_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectsJobTokenScopeFlow"
+}

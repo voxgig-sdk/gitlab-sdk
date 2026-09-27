@@ -121,7 +121,7 @@ func hookBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"hook01", "hook02", "hook03", "custom_header01", "custom_header02", "custom_header03", "url_variable01", "url_variable02", "url_variable03"},
+		[]any{"hook01", "hook02", "hook03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

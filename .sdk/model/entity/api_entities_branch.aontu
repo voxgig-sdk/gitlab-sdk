@@ -1,0 +1,571 @@
+# Entity: api_entities_branch
+
+main: kit: entity: api_entities_branch: {
+
+  alias: field: {}
+
+  fields: {
+    author_email: {
+      h: "Author Email"
+      n: "author_email"
+      r: false
+      t: "`$STRING`"
+    }
+    author_name: {
+      h: "Author Name"
+      n: "author_name"
+      r: false
+      t: "`$STRING`"
+    }
+    authored_date: {
+      fo: "date-time"
+      h: "Authored Date"
+      n: "authored_date"
+      r: false
+      t: "`$STRING`"
+    }
+    can_push: {
+      h: "Can Push"
+      n: "can_push"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    commit: {
+      h: "Commit"
+      n: "commit"
+      r: false
+      sh: "API_Entities_Commit model"
+      t: "`$OBJECT`"
+    }
+    committed_date: {
+      fo: "date-time"
+      h: "Committed Date"
+      n: "committed_date"
+      r: false
+      t: "`$STRING`"
+    }
+    committer_email: {
+      h: "Committer Email"
+      n: "committer_email"
+      r: false
+      t: "`$STRING`"
+    }
+    committer_name: {
+      h: "Committer Name"
+      n: "committer_name"
+      r: false
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    default: {
+      h: "Default"
+      n: "default"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    developers_can_merge: {
+      h: "Developers Can Merge"
+      n: "developers_can_merge"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    developers_can_push: {
+      h: "Developers Can Push"
+      n: "developers_can_push"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    extended_trailers: {
+      h: "Extended Trailers"
+      n: "extended_trailers"
+      r: false
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    merged: {
+      h: "Merged"
+      n: "merged"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    parent_ids: {
+      h: "Parent Ids"
+      n: "parent_ids"
+      r: false
+      t: "`$ARRAY`"
+    }
+    protected: {
+      h: "Protected"
+      n: "protected"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    short_id: {
+      h: "Short Id"
+      n: "short_id"
+      r: false
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      t: "`$STRING`"
+    }
+    trailers: {
+      h: "Trailers"
+      n: "trailers"
+      r: false
+      t: "`$OBJECT`"
+    }
+    web_url: {
+      h: "Web Url"
+      n: "web_url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_branch"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/repository/branches"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_repository_branch"
+                or: "post_api_v4_projects_id_repository_branch"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/repository/branches"
+          q: {
+            exist: [
+              "post_api_v4_projects_id_repository_branch"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "branches"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.commit`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/repository/branches"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "page_token"
+                or: "page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "regex"
+                or: "regex"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/repository/branches"
+          q: {
+            exist: [
+              "page"
+              "page_token"
+              "per_page"
+              "project_id"
+              "regex"
+              "search"
+              "sort"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "branches"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/repository/branches/{branch}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "branch"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/repository/branches/{branch}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              branch: "id"
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.commit`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/repository/branches/{branch}/protect"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_repository_branches_branch_protect"
+                or: "put_api_v4_projects_id_repository_branches_branch_protect"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/repository/branches/{branch}/protect"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+              "put_api_v4_projects_id_repository_branches_branch_protect"
+            ]
+          }
+          r: {
+            param: {
+              branch: "branch_id"
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "protect"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.commit`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/repository/branches/{branch}/unprotect"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "branch_id"
+                or: "branch"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/repository/branches/{branch}/unprotect"
+          q: {
+            exist: [
+              "branch_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              branch: "branch_id"
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "repository"
+            }
+            {
+              lit: "branches"
+            }
+            {
+              var: "branch_id"
+            }
+            {
+              lit: "unprotect"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.commit`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.branch")]
+  ]
+
+}

@@ -92,7 +92,7 @@ function conan_package_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "conan_package01", "conan_package02", "conan_package03", "project01", "project02", "project03", "conan01", "conan02", "conan03", "file01", "file02", "file03", "export01", "export02", "export03", "package01", "package02", "package03", "revision01", "revision02", "revision03", "package_channel01", "package_username01", "package_version01", "recipe_revision01" },
+    { "conan_package01", "conan_package02", "conan_package03", "project01", "project02", "project03", "conan01", "conan02", "conan03", "file01", "package_channel01", "package_username01", "package_version01", "recipe_revision01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

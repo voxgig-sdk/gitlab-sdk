@@ -1,0 +1,61 @@
+# BasicApiEntitiesDeployKeysProjectFlow
+
+main: kit: flow: BasicApiEntitiesDeployKeysProjectFlow:
+{
+  entity: "api_entities_deploy_keys_project",
+  kind: "basic",
+  name: "BasicApiEntitiesDeployKeysProjectFlow",
+  step: [
+    {
+      i: {
+        ref: "api_entities_deploy_keys_project_ref01"
+      }
+
+      m: {
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_entities_deploy_keys_project_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_entities_deploy_keys_project_ref01",
+        srcdatavar: "api_entities_deploy_keys_project_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_entities_deploy_keys_project01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_entities_deploy_keys_project_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiEntitiesDeployKeysProjectFlow"
+}

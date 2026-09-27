@@ -96,7 +96,7 @@ function api_entities_ci_pipeline_schedule_detail_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "api_entities_ci_pipeline_schedule_detail01", "api_entities_ci_pipeline_schedule_detail02", "api_entities_ci_pipeline_schedule_detail03", "project01", "project02", "project03", "pipeline_schedule01", "pipeline_schedule02", "pipeline_schedule03" },
+    { "api_entities_ci_pipeline_schedule_detail01", "api_entities_ci_pipeline_schedule_detail02", "api_entities_ci_pipeline_schedule_detail03", "project01", "project02", "project03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

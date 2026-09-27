@@ -83,7 +83,7 @@ function ml_model_registry_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "ml_model_registry01", "ml_model_registry02", "ml_model_registry03", "project01", "project02", "project03", "ml_model01", "ml_model02", "ml_model03", "file_name01" },
+    { "ml_model_registry01", "ml_model_registry02", "ml_model_registry03", "project01", "project02", "project03", "file_name01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

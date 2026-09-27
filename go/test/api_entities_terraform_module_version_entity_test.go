@@ -168,7 +168,7 @@ func api_entities_terraform_module_versionBasicSetup(extra map[string]any) *enti
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_terraform_module_version01", "api_entities_terraform_module_version02", "api_entities_terraform_module_version03", "v101", "v102", "v103", "module_name01", "module_system01", "module_namespace01"},
+		[]any{"api_entities_terraform_module_version01", "api_entities_terraform_module_version02", "api_entities_terraform_module_version03", "module_name01", "module_system01", "v101", "module_namespace01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

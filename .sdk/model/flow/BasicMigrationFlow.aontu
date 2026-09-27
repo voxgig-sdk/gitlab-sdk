@@ -1,0 +1,22 @@
+# BasicMigrationFlow
+
+main: kit: flow: BasicMigrationFlow:
+{
+  entity: "migration",
+  kind: "basic",
+  name: "BasicMigrationFlow",
+  step: [
+    {
+      i: {
+        ref: "migration_ref01"
+      }
+
+      m: {
+        timestamp: "timestamp01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicMigrationFlow"
+}

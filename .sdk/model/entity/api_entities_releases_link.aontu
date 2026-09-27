@@ -1,0 +1,415 @@
+# Entity: api_entities_releases_link
+
+main: kit: entity: api_entities_releases_link: {
+
+  alias: field: {}
+
+  fields: {
+    direct_asset_url: {
+      h: "Direct Asset Url"
+      n: "direct_asset_url"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int32"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    link_type: {
+      h: "Link Type"
+      n: "link_type"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_releases_link"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/releases/{tag_name}/assets/links"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "release_id"
+                or: "tag_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_releases_tag_name_assets_link"
+                or: "post_api_v4_projects_id_releases_tag_name_assets_link"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/releases/{tag_name}/assets/links"
+          q: {
+            exist: [
+              "post_api_v4_projects_id_releases_tag_name_assets_link"
+              "project_id"
+              "release_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              tag_name: "release_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "releases"
+            }
+            {
+              var: "release_id"
+            }
+            {
+              lit: "assets"
+            }
+            {
+              lit: "links"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/releases/{tag_name}/assets/links"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "release_id"
+                or: "tag_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/releases/{tag_name}/assets/links"
+          q: {
+            exist: [
+              "page"
+              "per_page"
+              "project_id"
+              "release_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              tag_name: "release_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "releases"
+            }
+            {
+              var: "release_id"
+            }
+            {
+              lit: "assets"
+            }
+            {
+              lit: "links"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "link_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "release_id"
+                or: "tag_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+              "release_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              link_id: "id"
+              tag_name: "release_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "releases"
+            }
+            {
+              var: "release_id"
+            }
+            {
+              lit: "assets"
+            }
+            {
+              lit: "links"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "link_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "release_id"
+                or: "tag_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "put_api_v4_projects_id_releases_tag_name_assets_links_link_id"
+                or: "put_api_v4_projects_id_releases_tag_name_assets_links_link_id"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v4/projects/{id}/releases/{tag_name}/assets/links/{link_id}"
+          q: {
+            exist: [
+              "id"
+              "project_id"
+              "put_api_v4_projects_id_releases_tag_name_assets_links_link_id"
+              "release_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              link_id: "id"
+              tag_name: "release_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "releases"
+            }
+            {
+              var: "release_id"
+            }
+            {
+              lit: "assets"
+            }
+            {
+              lit: "links"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.release")]
+  ]
+
+}

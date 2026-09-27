@@ -1,0 +1,212 @@
+# Entity: api_entities_issue_link
+
+main: kit: entity: api_entities_issue_link: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    link_type: {
+      h: "Link Type"
+      n: "link_type"
+      r: false
+      t: "`$STRING`"
+    }
+    source_issue: {
+      h: "Source Issue"
+      n: "source_issue"
+      r: false
+      t: "`$OBJECT`"
+    }
+    target_issue: {
+      h: "Target Issue"
+      n: "target_issue"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_entities_issue_link"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/issues/{issue_iid}/links"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "issue_id"
+                or: "issue_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_issues_issue_iid_link"
+                or: "post_api_v4_projects_id_issues_issue_iid_link"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/issues/{issue_iid}/links"
+          q: {
+            exist: [
+              "issue_id"
+              "post_api_v4_projects_id_issues_issue_iid_link"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              issue_iid: "issue_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "issues"
+            }
+            {
+              var: "issue_id"
+            }
+            {
+              lit: "links"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/projects/{id}/issues/{issue_iid}/links/{issue_link_id}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "issue_link_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "issue_id"
+                or: "issue_iid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/projects/{id}/issues/{issue_iid}/links/{issue_link_id}"
+          q: {
+            exist: [
+              "id"
+              "issue_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+              issue_iid: "issue_id"
+              issue_link_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "issues"
+            }
+            {
+              var: "issue_id"
+            }
+            {
+              lit: "links"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project")]
+  ]
+
+}

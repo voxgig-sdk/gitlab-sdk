@@ -70,7 +70,7 @@ function test_report_summary_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["test_report_summary01", "test_report_summary02", "test_report_summary03", "project01", "project02", "project03", "pipeline01", "pipeline02", "pipeline03"] as $k) {
+    foreach (["test_report_summary01", "test_report_summary02", "test_report_summary03", "project01", "project02", "project03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

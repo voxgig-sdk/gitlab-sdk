@@ -72,7 +72,7 @@ function ee_api_entities_billable_membership_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "ee_api_entities_billable_membership01", "ee_api_entities_billable_membership02", "ee_api_entities_billable_membership03", "group01", "group02", "group03", "billable_member01", "billable_member02", "billable_member03" },
+    { "ee_api_entities_billable_membership01", "ee_api_entities_billable_membership02", "ee_api_entities_billable_membership03", "group01", "group02", "group03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

@@ -89,7 +89,7 @@ function terraform_registry_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "terraform_registry01", "terraform_registry02", "terraform_registry03", "v101", "v102", "v103", "project01", "project02", "project03", "module01", "module02", "module03", "module_name01" },
+    { "terraform_registry01", "terraform_registry02", "terraform_registry03", "project01", "project02", "project03", "module01", "module_name01", "v101" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

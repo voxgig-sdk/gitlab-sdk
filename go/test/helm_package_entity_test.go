@@ -104,7 +104,7 @@ func helm_packageBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"helm_package01", "helm_package02", "helm_package03", "project01", "project02", "project03", "api01", "api02", "api03", "helm01", "helm02", "helm03", "file_name01"},
+		[]any{"helm_package01", "helm_package02", "helm_package03", "project01", "project02", "project03", "api01", "file_name01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

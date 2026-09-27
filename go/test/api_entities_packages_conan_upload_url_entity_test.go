@@ -95,7 +95,7 @@ func api_entities_packages_conan_upload_urlBasicSetup(extra map[string]any) *ent
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_packages_conan_upload_url01", "api_entities_packages_conan_upload_url02", "api_entities_packages_conan_upload_url03", "project01", "project02", "project03", "conan01", "conan02", "conan03", "package01", "package02", "package03", "package_channel01", "package_username01", "package_version01"},
+		[]any{"api_entities_packages_conan_upload_url01", "api_entities_packages_conan_upload_url02", "api_entities_packages_conan_upload_url03", "project01", "project02", "project03", "conan01", "conan02", "conan03", "package_channel01", "package_username01", "package_version01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -141,7 +141,7 @@ def _api_entities_draft_note_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["api_entities_draft_note01", "api_entities_draft_note02", "api_entities_draft_note03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03", "draft_note01", "draft_note02", "draft_note03"],
+        ["api_entities_draft_note01", "api_entities_draft_note02", "api_entities_draft_note03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

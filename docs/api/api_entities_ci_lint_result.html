@@ -295,14 +295,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiescilintresult">ApiEntitiesCiLintResult</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="apientitiescilintresult">ApiEntitiesCiLintResult</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -329,6 +329,46 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">api_entities_ci_lint_results, err := client.ApiEntitiesCiLintResult(nil).List(map[string]any{&quot;project_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(api_entities_ci_lint_results)
+created, err := client.ApiEntitiesCiLintResult(nil).Create(map[string]any{&quot;project_id&quot;: &quot;example&quot;, &quot;post_api_v4_projects_id_ci_lint&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local api_entities_ci_lint_results, err = client:ApiEntitiesCiLintResult():list({ project_id = &quot;example&quot; })
+local created, err = client:ApiEntitiesCiLintResult():create({ project_id = &quot;example&quot;, post_api_v4_projects_id_ci_lint = {} })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$api_entities_ci_lint_results = $client-&gt;ApiEntitiesCiLintResult()-&gt;list([&quot;project_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;ApiEntitiesCiLintResult()-&gt;create([&quot;project_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_projects_id_ci_lint&quot; =&gt; []]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">api_entities_ci_lint_results = client.ApiEntitiesCiLintResult().list({&quot;project_id&quot;: &quot;example&quot;})
+created = client.ApiEntitiesCiLintResult().create({ &quot;project_id&quot;: &quot;example&quot;, &quot;post_api_v4_projects_id_ci_lint&quot;: {} })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">api_entities_ci_lint_results = client.ApiEntitiesCiLintResult.list({ &quot;project_id&quot; =&gt; &quot;example&quot; })
+created = client.ApiEntitiesCiLintResult.create({ &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;post_api_v4_projects_id_ci_lint&quot; =&gt; {} })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const api_entities_ci_lint_results = await client.ApiEntitiesCiLintResult().list({ project_id: &quot;example&quot; })
+const created = await client.ApiEntitiesCiLintResult().create({ project_id: &quot;example&quot;, post_api_v4_projects_id_ci_lint: {} })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -344,79 +384,79 @@
 <td><code>blob</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Blob</td>
 </tr>
 <tr>
 <td><code>context_project</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Context Project</td>
 </tr>
 <tr>
 <td><code>context_sha</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Context Sha</td>
 </tr>
 <tr>
 <td><code>errors</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Errors</td>
 </tr>
 <tr>
 <td><code>extra</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
+<td>Extra</td>
 </tr>
 <tr>
 <td><code>includes</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Includes</td>
 </tr>
 <tr>
 <td><code>jobs</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Jobs</td>
 </tr>
 <tr>
 <td><code>location</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Location</td>
 </tr>
 <tr>
 <td><code>merged_yaml</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Merged Yaml</td>
 </tr>
 <tr>
 <td><code>raw</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Raw</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Type</td>
 </tr>
 <tr>
 <td><code>valid</code></td>
 <td><code>boolean</code></td>
 <td>No</td>
-<td></td>
+<td>Valid</td>
 </tr>
 <tr>
 <td><code>warnings</code></td>
 <td><code>array</code></td>
 <td>No</td>
-<td></td>
+<td>Warnings</td>
 </tr>
 </tbody>
 </table>
@@ -436,12 +476,12 @@
 <h4 id="parameters-1">Parameters</h4>
 <p>| Parameter | In | Type | Required | Description |
 | --- | --- | --- | --- |
-| <code>sha</code> | <code>query</code> | <code>any</code> | No | Deprecated: Use content_ref instead |
+| <code>sha</code> | <code>query</code> | <code>any</code> | No | Deprecated: Use <code>content_ref</code> instead |
 | <code>content_ref</code> | <code>query</code> | <code>any</code> | No | The CI/CD configuration content is taken from this commit SHA, branch or tag. Defaults to the HEAD of the project's default branch |
 | <code>dry_run</code> | <code>query</code> | <code>any</code> | No | Run pipeline creation simulation, or only do static check. This is false by default |
 | <code>include_jobs</code> | <code>query</code> | <code>any</code> | No | If the list of jobs that would exist in a static check or pipeline simulation should be included in the response. This is false by default |
-| <code>ref</code> | <code>query</code> | <code>any</code> | No | Deprecated: Use dry_run_ref instead |
-| <code>dry_run_ref</code> | <code>query</code> | <code>any</code> | No | Branch or tag used as context when executing a dry run. Defaults to the default branch of the project. Only used when dry_run is true |
+| <code>ref</code> | <code>query</code> | <code>any</code> | No | Deprecated: Use <code>dry_run_ref</code> instead |
+| <code>dry_run_ref</code> | <code>query</code> | <code>any</code> | No | Branch or tag used as context when executing a dry run. Defaults to the default branch of the project. Only used when <code>dry_run</code> is true |
 | <code>id</code> | <code>path</code> | <code>any</code> | Yes |  |</p>
 <h4 id="responses-1">Responses</h4>
 <h5 id="200-validates-a-ci-yaml-configuration-with-a-namespace" class="status" data-status="2xx">200: Validates a CI YAML configuration with a namespace</h5>

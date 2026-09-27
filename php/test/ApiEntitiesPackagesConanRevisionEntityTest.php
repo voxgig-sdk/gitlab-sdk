@@ -70,7 +70,7 @@ function api_entities_packages_conan_revision_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["api_entities_packages_conan_revision01", "api_entities_packages_conan_revision02", "api_entities_packages_conan_revision03", "project01", "project02", "project03", "conan01", "conan02", "conan03", "revision01", "revision02", "revision03", "package01", "package02", "package03", "package_username01", "package_version01"] as $k) {
+    foreach (["api_entities_packages_conan_revision01", "api_entities_packages_conan_revision02", "api_entities_packages_conan_revision03", "project01", "project02", "project03", "conan01", "conan02", "conan03", "package_username01", "package_version01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

@@ -1,7 +1,7 @@
 # Typed models for the Gitlab SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Field/param types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
 #
@@ -2490,7 +2490,7 @@ class ApiEntitiesDictionaryTable(TypedDict, total=False):
 
 
 class ApiEntitiesDictionaryTableLoadMatch(TypedDict):
-    databas_id: str
+    database_id: str
     id: str
 
 
@@ -7894,17 +7894,17 @@ class ConanPackageUpdateDataRequired(TypedDict):
 
 
 class ConanPackageUpdateData(ConanPackageUpdateDataRequired, total=False):
-    conan_package_reference: Any
-    id: str
-    package_name: Any
-    package_revision: Any
-    recipe_revision: Any
-    put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name: dict
     conan_id: str
     package_id: str
+    package_revision: Any
     project_id: str
     revision_id: str
     put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_packages_conan_package_reference_revisions_package_revision_files_file_name: dict
+    conan_package_reference: Any
+    id: str
+    package_name: Any
+    recipe_revision: Any
+    put_api_v4_projects_id_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name: dict
     put_api_v4_packages_conan_v1_files_package_name_package_version_package_username_package_channel_recipe_revision_package_conan_package_reference_package_revision_file_name: dict
     file_id: str
     put_api_v4_projects_id_packages_conan_v2_conans_package_name_package_version_package_username_package_channel_revisions_recipe_revision_files_file_name: dict

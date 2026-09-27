@@ -70,7 +70,7 @@ function alert_management_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "alert_management01", "alert_management02", "alert_management03", "project01", "project02", "project03", "alert_management_alert01", "alert_management_alert02", "alert_management_alert03", "metric_image01", "metric_image02", "metric_image03" },
+    { "alert_management01", "alert_management02", "alert_management03", "project01", "project02", "project03", "alert_management_alert01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

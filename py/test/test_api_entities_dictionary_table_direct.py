@@ -28,11 +28,11 @@ class TestApiEntitiesDictionaryTableDirect:
         params = {}
         query = {}
         if not setup["live"]:
-            params["databas_id"] = "direct01"
+            params["database_id"] = "direct01"
             params["id"] = "direct02"
 
         result = client.direct({
-            "path": "api/v4/admin/databases/{databas_id}/dictionary/tables/{id}",
+            "path": "api/v4/admin/databases/{database_id}/dictionary/tables/{id}",
             "method": "GET",
             "params": params,
             "query": query,

@@ -85,7 +85,7 @@ function npm_package_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "npm_package01", "npm_package02", "npm_package03", "group01", "group02", "group03", "project01", "project02", "project03", "dist_tag01", "dist_tag02", "dist_tag03" },
+    { "npm_package01", "npm_package02", "npm_package03", "group01", "group02", "group03", "project01", "project02", "project03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

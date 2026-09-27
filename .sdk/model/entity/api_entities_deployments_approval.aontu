@@ -1,0 +1,99 @@
+# Entity: api_entities_deployments_approval
+
+main: kit: entity: api_entities_deployments_approval: {
+
+  alias: field: {}
+
+  name: "api_entities_deployments_approval"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v4/projects/{id}/deployments/{deployment_id}/approval"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "deployment_id"
+                or: "deployment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "post_api_v4_projects_id_deployments_deployment_id_approval"
+                or: "post_api_v4_projects_id_deployments_deployment_id_approval"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v4/projects/{id}/deployments/{deployment_id}/approval"
+          q: {
+            exist: [
+              "deployment_id"
+              "post_api_v4_projects_id_deployments_deployment_id_approval"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "project_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "deployment_id"
+            }
+            {
+              lit: "approval"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.project") path("$.main.kit.entity.deployment")]
+  ]
+
+}

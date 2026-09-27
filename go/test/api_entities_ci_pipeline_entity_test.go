@@ -92,7 +92,7 @@ func api_entities_ci_pipelineBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"api_entities_ci_pipeline01", "api_entities_ci_pipeline02", "api_entities_ci_pipeline03", "project01", "project02", "project03", "(ref01", "(ref02", "(ref03", "merge_request01", "merge_request02", "merge_request03", "pipeline01", "pipeline02", "pipeline03"},
+		[]any{"api_entities_ci_pipeline01", "api_entities_ci_pipeline02", "api_entities_ci_pipeline03", "project01", "project02", "project03", "merge_request01", "merge_request02", "merge_request03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -1,0 +1,86 @@
+# Entity: api_entities_pages_domain_basic
+
+main: kit: entity: api_entities_pages_domain_basic: {
+
+  alias: field: {}
+
+  fields: {
+    expiration: {
+      h: "Expiration"
+      n: "expiration"
+      r: false
+      t: "`$STRING`"
+    }
+    expired: {
+      h: "Expired"
+      n: "expired"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_entities_pages_domain_basic"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v4/pages/domains"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v4/pages/domains"
+          q: {
+            exist: [
+              "page"
+              "per_page"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v4"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "domains"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.certificate_expiration`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,67 @@
+# BasicNugetPackageFlow
+
+main: kit: flow: BasicNugetPackageFlow:
+{
+  entity: "nuget_package",
+  kind: "basic",
+  name: "BasicNugetPackageFlow",
+  step: [
+    {
+      m: {
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "nuget_package_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "nuget_package_ref01",
+        srcdatavar: "nuget_package_ref01_data",
+        suffix: "_up0",
+        textfield: "authors"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-nuget_package_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "nuget_package_ref01",
+        srcdatavar: "nuget_package_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "nuget_package01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-nuget_package_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNugetPackageFlow"
+}

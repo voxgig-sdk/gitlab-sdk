@@ -70,7 +70,7 @@ function ee_api_entities_billable_membership_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["ee_api_entities_billable_membership01", "ee_api_entities_billable_membership02", "ee_api_entities_billable_membership03", "group01", "group02", "group03", "billable_member01", "billable_member02", "billable_member03"] as $k) {
+    foreach (["ee_api_entities_billable_membership01", "ee_api_entities_billable_membership02", "ee_api_entities_billable_membership03", "group01", "group02", "group03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 
